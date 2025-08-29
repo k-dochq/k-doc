@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # K-Doc
 
 K-Doc 프로젝트는 Feature-Sliced Design (FSD) 아키텍처를 기반으로 한 Next.js 애플리케이션입니다.
@@ -66,3 +67,6 @@ pnpm format
 - **Clean Architecture**: 비즈니스 로직과 인프라 분리
 - **Type Safety**: TypeScript를 통한 타입 안전성 보장
 - **Component Composition**: 재사용 가능한 컴포넌트 설계
+=======
+# k-doc
+>>>>>>> ba043a5dfc7f514670a3dc28bddc8fb4cc70d806
