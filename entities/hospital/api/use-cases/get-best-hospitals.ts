@@ -7,29 +7,7 @@ export async function getBestHospitals(): Promise<Hospital[]> {
     const hospitals = await prisma.hospital.findMany({
       where: {
         approvalStatusType: 'APPROVED',
-        // rating: {
-        //   gte: 1.0,
-        // },
-        // reviewCount: {
-        //   gte: 5,
-        // },
       },
-      include: {
-        HospitalContent: {
-          where: {
-            contentType: 'IMAGE',
-            hospitalContentType: 'MAIN_IMAGE',
-          },
-          orderBy: { order: 'asc' },
-          take: 1,
-        },
-      },
-      orderBy: [
-        { rating: 'desc' },
-        { reviewCount: 'desc' },
-        { bookmarkCount: 'desc' },
-        { viewCount: 'desc' },
-      ],
       take: 10, // 상위 10개 병원
     });
 
@@ -45,7 +23,7 @@ export async function getBestHospitals(): Promise<Hospital[]> {
       ranking: hospital.ranking,
       createdAt: hospital.createdAt,
       updatedAt: hospital.updatedAt,
-      mainImageUrl: hospital.HospitalContent[0]?.url || null,
+      mainImageUrl: null,
     }));
   } catch (error) {
     throw handleDatabaseError(error, 'getBestHospitals');
