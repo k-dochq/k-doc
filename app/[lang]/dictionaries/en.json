@@ -1,0 +1,16 @@
+{
+  "quickMenu": {
+    "title": "Popular Treatment Areas",
+    "error": {
+      "message": "An error occurred while loading data.",
+      "retryButton": "Retry"
+    },
+    "empty": {
+      "message": "No treatment areas to display.",
+      "description": "New treatment areas will be added soon."
+    }
+  },
+  "search": {
+    "placeholder": "Search hospitals, doctors, procedures"
+  }
+}

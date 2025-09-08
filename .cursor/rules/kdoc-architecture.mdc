@@ -790,3 +790,64 @@ shared/
       response.ts               # ✅ 공통 API 유틸리티
     utils/                      # ✅ 공통 유틸리티
 ```
+
+## Data Fetching Strategy
+
+### ✅ **Server Component에서 직접 데이터 조회 (GET 요청)**
+
+**GET 요청**의 경우 **서버 컴포넌트**에서 **Prisma ORM**을 사용하여 직접 데이터를 조회합니다.
+
+#### **구현 패턴**
+
+```typescript
+// features/quick-menu/api/use-cases/get-categories.ts
+import { prisma } from 'shared/lib/prisma';
+
+export async function getCategories() {
+  try {
+    const categories = await prisma.category.findMany({
+      where: {
+        categoryType: 'PART',
+        isActive: true,
+      },
+      orderBy: [
+        { order: 'asc' },
+        { createdAt: 'asc' },
+      ],
+    });
+
+    return categories;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    throw new Error('Failed to fetch categories');
+  }
+}
+
+// app/[lang]/main/page.tsx
+import { getCategories } from 'features/quick-menu/api/use-cases/get-categories';
+
+export default async function MainPage({ params }: MainPageProps) {
+  const { lang } = await params;
+
+  // 서버 컴포넌트에서 Prisma로 직접 데이터 조회
+  const categories = await getCategories();
+
+  return (
+    <div>
+      <QuickMenu lang={lang} categories={categories} />
+    </div>
+  );
+}
+```
+
+#### **장점**
+
+- **성능**: 서버에서 직접 데이터 조회로 클라이언트-서버 왕복 시간 단축
+- **SEO**: 서버 사이드 렌더링으로 검색 엔진 최적화
+- **단순성**: API Route Handler 불필요
+- **타입 안전성**: Prisma ORM의 타입 안전성 활용
+
+### ✅ **Client-Side Data Fetching Strategy (POST/PUT/DELETE)**
+
+**POST/PUT/DELETE 요청**의 경우 **클라이언트 사이드**에서 **TanStack Query**와 **Route Handler**를
+조합하여 구현합니다.

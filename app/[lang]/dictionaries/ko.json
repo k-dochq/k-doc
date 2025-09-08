@@ -1,0 +1,16 @@
+{
+  "quickMenu": {
+    "title": "인기 시술 부위",
+    "error": {
+      "message": "데이터를 불러오는 중 오류가 발생했습니다.",
+      "retryButton": "다시 시도"
+    },
+    "empty": {
+      "message": "표시할 시술 부위가 없습니다.",
+      "description": "곧 새로운 시술 부위가 추가될 예정입니다."
+    }
+  },
+  "search": {
+    "placeholder": "병원, 의사, 시술 부위를 검색해보세요"
+  }
+}

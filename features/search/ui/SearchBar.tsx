@@ -2,26 +2,14 @@
 
 import { Search } from 'lucide-react';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 
 interface SearchBarProps {
   lang: Locale;
+  dict: Dictionary;
 }
 
-export function SearchBar({ lang }: SearchBarProps) {
-  const messages = {
-    ko: {
-      placeholder: '병원, 의사, 시술 부위를 검색해보세요',
-    },
-    en: {
-      placeholder: 'Search hospitals, doctors, procedures',
-    },
-    th: {
-      placeholder: 'ค้นหาโรงพยาบาล แพทย์ และขั้นตอนการรักษา',
-    },
-  };
-
-  const dict = messages[lang];
-
+export function SearchBar({ lang, dict }: SearchBarProps) {
   return (
     <div className='w-full'>
       <div className='relative'>
@@ -30,7 +18,7 @@ export function SearchBar({ lang }: SearchBarProps) {
         </div>
         <input
           type='text'
-          placeholder={dict.placeholder}
+          placeholder={dict.search.placeholder}
           className='w-full rounded-lg border border-gray-300 bg-white py-3 pr-4 pl-10 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none'
         />
       </div>
