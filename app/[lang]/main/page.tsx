@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { SearchBar } from 'features/search';
 import { QuickMenuWrapper } from 'features/quick-menu/ui/QuickMenuWrapper';
+import { HospitalCarouselWrapper } from 'widgets/hospital-carousel';
 import { getDictionary } from 'app/[lang]/dictionaries';
 
 interface MainPageProps {
@@ -19,6 +20,10 @@ export default async function MainPage({ params }: MainPageProps) {
 
       <div className='mb-8'>
         <QuickMenuWrapper lang={lang} dict={dict} />
+      </div>
+
+      <div className='mb-8'>
+        <HospitalCarouselWrapper lang={lang} dict={dict} />
       </div>
     </>
   );
