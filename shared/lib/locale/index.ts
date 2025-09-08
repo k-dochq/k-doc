@@ -1,2 +1,2 @@
 export * from './utils';
-export * from './locale-detector';
+export * from './locale-cookies';

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { SUPPORTED_LOCALES, type Locale } from 'shared/config';
-import { getLocaleFromRequest } from 'shared/lib/locale';
+import { getLocaleFromRequest } from 'shared/lib/locale/locale-detector';
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

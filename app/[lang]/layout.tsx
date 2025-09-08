@@ -41,9 +41,5 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
 export default async function LangLayout({ children, params }: LangLayoutProps) {
   const { lang } = await params;
 
-  return (
-    <html lang={lang}>
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }
