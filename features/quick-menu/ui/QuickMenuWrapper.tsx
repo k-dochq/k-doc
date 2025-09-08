@@ -21,16 +21,7 @@ export const revalidate = 1800; // 30분 (1800초)
 
 export function QuickMenuWrapper({ lang, dict }: QuickMenuWrapperProps) {
   return (
-    <ErrorBoundary
-      fallback={
-        <LocalizedErrorDisplay
-          error={null}
-          lang={lang}
-          dict={dict}
-          onRetry={() => window.location.reload()}
-        />
-      }
-    >
+    <ErrorBoundary fallback={<LocalizedErrorDisplay error={null} lang={lang} dict={dict} />}>
       <Suspense fallback={<QuickMenuSkeleton />}>
         <QuickMenuContent lang={lang} dict={dict} />
       </Suspense>

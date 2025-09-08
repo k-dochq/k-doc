@@ -19,12 +19,21 @@ export function LocalizedErrorDisplay({
   onRetry,
   className = '',
 }: LocalizedErrorDisplayProps) {
+  // onRetry가 제공되지 않은 경우 기본적으로 페이지 새로고침
+  const handleRetry =
+    onRetry ||
+    (() => {
+      if (typeof window !== 'undefined') {
+        window.location.reload();
+      }
+    });
+
   return (
     <ErrorDisplay
       error={error}
       title={dict.error.title}
       description={dict.error.description}
-      onRetry={onRetry}
+      onRetry={handleRetry}
       className={className}
     />
   );

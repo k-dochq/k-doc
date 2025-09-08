@@ -22,16 +22,7 @@ export const revalidate = 600; // 10분 (600초)
 
 export function HospitalCarouselWrapper({ lang, dict }: HospitalCarouselWrapperProps) {
   return (
-    <ErrorBoundary
-      fallback={
-        <LocalizedErrorDisplay
-          error={null}
-          lang={lang}
-          dict={dict}
-          onRetry={() => window.location.reload()}
-        />
-      }
-    >
+    <ErrorBoundary fallback={<LocalizedErrorDisplay error={null} lang={lang} dict={dict} />}>
       <Suspense fallback={<HospitalCarouselSkeleton />}>
         <HospitalCarouselContent lang={lang} dict={dict} />
       </Suspense>
