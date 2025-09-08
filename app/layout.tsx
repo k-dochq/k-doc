@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+// metadata for SEO
 export const metadata: Metadata = {
   title: 'K-DOC',
   description: 'K-DOC Service',
