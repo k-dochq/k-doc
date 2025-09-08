@@ -3,10 +3,14 @@ import { SearchBar } from 'features/search';
 import { QuickMenuWrapper } from 'features/quick-menu/ui/QuickMenuWrapper';
 import { HospitalCarouselWrapper } from 'widgets/hospital-carousel';
 import { getDictionary } from 'app/[lang]/dictionaries';
+import { CACHE_TIMES } from 'shared/lib/cache';
 
 interface MainPageProps {
   params: Promise<{ lang: Locale }>;
 }
+
+// 메인 페이지는 가장 동적인 콘텐츠(병원 데이터)에 맞춰 10분 캐시
+export const revalidate = CACHE_TIMES.SHORT; // 10분 (600초)
 
 export default async function MainPage({ params }: MainPageProps) {
   const { lang } = await params;

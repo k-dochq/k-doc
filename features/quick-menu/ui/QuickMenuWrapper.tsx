@@ -5,6 +5,7 @@ import { QuickMenu } from './QuickMenu';
 import { QuickMenuSkeleton } from './QuickMenuSkeleton';
 import { ErrorBoundary, LocalizedErrorDisplay } from 'shared/ui/error-display';
 import { getCategories } from '../api/use-cases/get-categories';
+import { CACHE_TIMES } from 'shared/lib/cache';
 
 interface QuickMenuWrapperProps {
   lang: Locale;
@@ -15,6 +16,9 @@ async function QuickMenuContent({ lang, dict }: QuickMenuWrapperProps) {
   const categories = await getCategories();
   return <QuickMenu lang={lang} dict={dict} categories={categories} />;
 }
+
+// 카테고리 데이터는 자주 변경되지 않으므로 30분 캐시
+export const revalidate = CACHE_TIMES.MEDIUM; // 30분 (1800초)
 
 export function QuickMenuWrapper({ lang, dict }: QuickMenuWrapperProps) {
   return (
