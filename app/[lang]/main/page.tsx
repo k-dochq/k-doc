@@ -1,4 +1,5 @@
 import { type Locale } from 'shared/config';
+import { SearchBar } from 'features/search';
 
 interface MainPageProps {
   params: Promise<{ lang: Locale }>;
@@ -29,18 +30,8 @@ export default async function MainPage({ params }: MainPageProps) {
 
   return (
     <>
-      <div className='mb-8 text-center'>
-        <h1 className='mb-4 text-4xl font-bold text-gray-900'>{dict.title}</h1>
-        <p className='text-lg text-gray-600'>{dict.description}</p>
-      </div>
-
-      <div className='rounded-lg bg-white p-8 shadow-md'>
-        <h2 className='mb-4 text-2xl font-semibold text-gray-800'>{dict.welcome}</h2>
-        <p className='text-gray-600'>
-          {lang === 'ko' && '이곳은 K-DOC의 메인 페이지입니다. 다양한 기능을 이용해보세요.'}
-          {lang === 'en' && 'This is the main page of K-DOC. Explore various features.'}
-          {lang === 'th' && 'นี่คือหน้าหลักของ K-DOC ลองใช้ฟีเจอร์ต่างๆ ดู'}
-        </p>
+      <div className='mb-8'>
+        <SearchBar lang={lang} />
       </div>
     </>
   );
