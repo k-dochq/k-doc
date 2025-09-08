@@ -14,6 +14,16 @@ export async function getBestHospitals(): Promise<Hospital[]> {
         //   gte: 5,
         // },
       },
+      include: {
+        HospitalContent: {
+          where: {
+            contentType: 'IMAGE',
+            hospitalContentType: 'MAIN_IMAGE',
+          },
+          orderBy: { order: 'asc' },
+          take: 1,
+        },
+      },
       orderBy: [
         { rating: 'desc' },
         { reviewCount: 'desc' },
@@ -23,7 +33,20 @@ export async function getBestHospitals(): Promise<Hospital[]> {
       take: 10, // 상위 10개 병원
     });
 
-    return hospitals;
+    // Hospital 타입에 맞게 데이터 변환
+    return hospitals.map((hospital) => ({
+      id: hospital.id,
+      name: hospital.name,
+      rating: hospital.rating,
+      reviewCount: hospital.reviewCount,
+      bookmarkCount: hospital.bookmarkCount,
+      viewCount: hospital.viewCount,
+      approvalStatusType: hospital.approvalStatusType,
+      ranking: hospital.ranking,
+      createdAt: hospital.createdAt,
+      updatedAt: hospital.updatedAt,
+      mainImageUrl: hospital.HospitalContent[0]?.url || null,
+    }));
   } catch (error) {
     throw handleDatabaseError(error, 'getBestHospitals');
   }

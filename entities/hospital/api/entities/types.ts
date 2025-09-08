@@ -11,6 +11,7 @@ export interface Hospital {
   ranking: number | null;
   createdAt: Date;
   updatedAt: Date;
+  mainImageUrl?: string | null; // 메인 이미지 URL
 }
 
 export interface GetBestHospitalsRequest {
