@@ -12,5 +12,20 @@
   },
   "search": {
     "placeholder": "Search hospitals, doctors, procedures"
+  },
+  "hospitalCarousel": {
+    "title": "Recommended Hospitals",
+    "error": {
+      "message": "An error occurred while loading hospital information.",
+      "retryButton": "Retry"
+    },
+    "empty": {
+      "message": "No recommended hospitals available.",
+      "description": "New hospitals will be added soon."
+    }
+  },
+  "error": {
+    "title": "An unexpected error occurred",
+    "description": "Please refresh the page or try again later"
   }
 }
