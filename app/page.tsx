@@ -8,18 +8,6 @@ export default function HomePage() {
           <div className='relative h-32 w-32'>
             <Image src='/kdoc_logo.png' alt='K-DOC Logo' fill className='object-contain' priority />
           </div>
-
-          <div className='text-3xl font-medium text-white'>|</div>
-
-          <div className='relative h-32 w-32'>
-            <Image
-              src='/klosed_logo.png'
-              alt='Klosed Logo'
-              fill
-              className='object-contain'
-              priority
-            />
-          </div>
         </div>
 
         <div className='mt-8 flex justify-center'>
