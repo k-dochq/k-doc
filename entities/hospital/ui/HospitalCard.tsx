@@ -1,7 +1,8 @@
 'use client';
 
-import { Star, MapPin, Users, Eye } from 'lucide-react';
-import { type Locale } from 'shared/config';
+import { useState } from 'react';
+import { Star, MapPin, Users, Eye, Building2 } from 'lucide-react';
+import { type Locale, getHospitalImageUrl } from 'shared/config';
 import { type Hospital } from '../api/entities/types';
 
 interface HospitalCardProps {
@@ -10,6 +11,7 @@ interface HospitalCardProps {
 }
 
 export function HospitalCard({ hospital, lang }: HospitalCardProps) {
+  const [imageError, setImageError] = useState(false);
   const getHospitalName = (hospital: Hospital): string => {
     // JsonValue를 안전하게 처리
     if (!hospital.name || typeof hospital.name !== 'object' || hospital.name === null) {
@@ -42,10 +44,26 @@ export function HospitalCard({ hospital, lang }: HospitalCardProps) {
   };
 
   return (
-    <div className='flex h-48 flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md'>
+    <div className='flex min-h-[200px] flex-col justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md'>
+      {/* 병원 이미지 */}
+      <div className='mb-3'>
+        {hospital.mainImageUrl && !imageError ? (
+          <img
+            src={hospital.mainImageUrl}
+            alt={getHospitalName(hospital)}
+            className='h-20 w-full rounded object-cover'
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className='flex h-20 w-full items-center justify-center rounded bg-gray-100'>
+            <Building2 className='h-8 w-8 text-gray-400' />
+          </div>
+        )}
+      </div>
+
       {/* 병원 이름 */}
       <div>
-        <h3 className='line-clamp-2 text-lg font-semibold text-gray-900'>
+        <h3 className='truncate text-lg font-semibold text-gray-900'>
           {getHospitalName(hospital)}
         </h3>
       </div>

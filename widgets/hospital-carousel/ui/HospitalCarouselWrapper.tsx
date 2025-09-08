@@ -13,6 +13,8 @@ interface HospitalCarouselWrapperProps {
 
 async function HospitalCarouselContent({ lang, dict }: HospitalCarouselWrapperProps) {
   const hospitals = await getBestHospitals();
+
+  console.log(hospitals);
   return <HospitalCarousel hospitals={hospitals} lang={lang} dict={dict} />;
 }
 

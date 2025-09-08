@@ -104,9 +104,9 @@ export function HospitalCarousel({ hospitals, lang, dict }: HospitalCarouselProp
             loop: true,
           }}
         >
-          <CarouselContent className='-ml-2 md:-ml-4'>
+          <CarouselContent className='-ml-2 md:-ml-4 min-h-[200px]'>
             {hospitals.map((hospital) => (
-              <CarouselItem key={hospital.id} className='basis-1/2 pl-2 md:basis-1/3 md:pl-4'>
+              <CarouselItem key={hospital.id} className='basis-1/2 pl-2 md:basis-1/3 md:pl-4 h-full'>
                 <HospitalCard hospital={hospital} lang={lang} />
               </CarouselItem>
             ))}
