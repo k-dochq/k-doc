@@ -10,18 +10,14 @@ datasource db {
 }
 
 model Category {
-  id                  String                @id @default(uuid()) @db.Uuid
-  name                Json
-  categoryType        CategoryType
-  description         String?
-  order               Int?
-  isActive            Boolean               @default(true)
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
-  DoctorCategoryMap   DoctorCategoryMap[]
-  HospitalCategoryMap HospitalCategoryMap[]
-  ProductCategoryMap  ProductCategoryMap[]
-  ReviewCategoryMap   ReviewCategoryMap[]
+  id           String       @id @default(uuid()) @db.Uuid
+  name         Json
+  categoryType CategoryType
+  description  String?
+  order        Int?
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 
   @@schema("public")
 }
@@ -37,294 +33,6 @@ model AdminRole {
   createdAt   DateTime   @default(now())
   UserRole    UserRole[]
 
-  @@schema("public")
-}
-
-model Advertisement {
-  id                   String                          @id @db.Uuid
-  title                Json
-  description          Json?
-  startDate            DateTime?
-  endDate              DateTime?
-  isActive             Boolean                         @default(true)
-  clickCount           Int                             @default(0)
-  viewCount            Int                             @default(0)
-  approvalStatusType   AdvertisementApprovalStatusType @default(PENDING)
-  rejectReason         String?
-  locale               UserLocale                      @default(ko_KR)
-  hospitalId           String                          @db.Uuid
-  createdAt            DateTime                        @default(now())
-  updatedAt            DateTime
-  Hospital             Hospital                        @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  AdvertisementContent AdvertisementContent[]
-  AdvertisementProduct AdvertisementProduct[]
-
-  @@index([hospitalId])
-  @@schema("public")
-}
-
-model AdvertisementContent {
-  id              String        @id @db.Uuid
-  url             String
-  contentType     ContentType
-  locale          UserLocale    @default(ko_KR)
-  title           String?
-  description     String?
-  order           Int?
-  advertisementId String        @db.Uuid
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime
-  Advertisement   Advertisement @relation(fields: [advertisementId], references: [id], onDelete: Cascade)
-
-  @@index([advertisementId])
-  @@schema("public")
-}
-
-model AdvertisementProduct {
-  id                String            @id @db.Uuid
-  advertisementType AdvertisementType @default(BANNER)
-  locale            UserLocale        @default(ko_KR)
-  order             Int?
-  advertisementId   String            @db.Uuid
-  productId         String            @db.Uuid
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime
-  Advertisement     Advertisement     @relation(fields: [advertisementId], references: [id], onDelete: Cascade)
-  Product           Product           @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@index([advertisementId])
-  @@index([productId])
-  @@schema("public")
-}
-
-model AiReport {
-  id         String   @id @db.Uuid
-  title      String
-  content    Json
-  score      Float?
-  reportType String?
-  hospitalId String   @db.Uuid
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime
-  Hospital   Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-
-  @@index([hospitalId])
-  @@schema("public")
-}
-
-model Appointment {
-  id              String                 @id @db.Uuid
-  appointmentDate DateTime
-  notes           String?
-  status          AppointmentStatus      @default(PENDING)
-  genderType      AppointmentGenderType?
-  age             Int?
-  phoneNumber     String?                @db.VarChar(20)
-  userId          String                 @db.Uuid
-  hospitalId      String                 @db.Uuid
-  createdAt       DateTime               @default(now())
-  updatedAt       DateTime
-  Hospital        Hospital               @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  User            User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([hospitalId])
-  @@index([userId])
-  @@schema("public")
-}
-
-model Bookmark {
-  id         String             @id @db.Uuid
-  entityType BookmarkEntityType
-  entityId   String             @db.Uuid
-  userId     String             @db.Uuid
-  createdAt  DateTime           @default(now())
-  User       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, entityType, entityId])
-  @@index([entityId])
-  @@index([userId])
-  @@schema("public")
-}
-
-model CarService {
-  id                    String                  @id @db.Uuid
-  name                  Json
-  description           Json?
-  price                 Int?
-  duration              Int?
-  isActive              Boolean                 @default(true)
-  createdAt             DateTime                @default(now())
-  updatedAt             DateTime
-  CarServiceAppointment CarServiceAppointment[]
-  CarServiceSlot        CarServiceSlot[]
-
-  @@schema("public")
-}
-
-model CarServiceAppointment {
-  id              String            @id @db.Uuid
-  appointmentDate DateTime
-  status          AppointmentStatus @default(PENDING)
-  notes           String?
-  carServiceId    String            @db.Uuid
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime
-  CarService      CarService        @relation(fields: [carServiceId], references: [id], onDelete: Cascade)
-
-  @@index([carServiceId])
-  @@schema("public")
-}
-
-model CarServiceSlot {
-  id           String     @id @db.Uuid
-  startTime    DateTime
-  endTime      DateTime
-  isAvailable  Boolean    @default(true)
-  carServiceId String     @db.Uuid
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime
-  CarService   CarService @relation(fields: [carServiceId], references: [id], onDelete: Cascade)
-
-  @@index([carServiceId])
-  @@schema("public")
-}
-
-model Chat {
-  id            String        @id @db.Uuid
-  title         String?
-  userType      ChatUserType  @default(USER)
-  locale        UserLocale    @default(ko_KR)
-  lastMessageAt DateTime?
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime
-  ChatContent   ChatContent[]
-  ChatRoom      ChatRoom[]
-
-  @@schema("public")
-}
-
-model ChatContent {
-  id          String      @id @db.Uuid
-  message     String
-  contentType ContentType @default(TEXT)
-  locale      UserLocale  @default(ko_KR)
-  isRead      Boolean     @default(false)
-  chatId      String      @db.Uuid
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime
-  Chat        Chat        @relation(fields: [chatId], references: [id], onDelete: Cascade)
-
-  @@index([chatId])
-  @@schema("public")
-}
-
-model ChatRoom {
-  id           String         @id @db.Uuid
-  name         String?
-  isActive     Boolean        @default(true)
-  chatId       String         @db.Uuid
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime
-  Chat         Chat           @relation(fields: [chatId], references: [id], onDelete: Cascade)
-  ChatRoomUser ChatRoomUser[]
-
-  @@index([chatId])
-  @@schema("public")
-}
-
-model ChatRoomUser {
-  id         String           @id @db.Uuid
-  userType   ChatRoomUserType @default(MEMBER)
-  joinedAt   DateTime         @default(now())
-  leftAt     DateTime?
-  chatRoomId String           @db.Uuid
-  userId     String           @db.Uuid
-  createdAt  DateTime         @default(now())
-  updatedAt  DateTime
-  ChatRoom   ChatRoom         @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
-  User       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([chatRoomId])
-  @@index([userId])
-  @@schema("public")
-}
-
-model Community {
-  id               String             @id @db.Uuid
-  title            Json
-  content          Json?
-  communityType    CommunityType      @default(GENERAL)
-  viewCount        Int                @default(0)
-  likeCount        Int                @default(0)
-  commentCount     Int                @default(0)
-  isNotice         Boolean            @default(false)
-  isPinned         Boolean            @default(false)
-  locale           UserLocale         @default(ko_KR)
-  userId           String             @db.Uuid
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime
-  User             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-  CommunityContent CommunityContent[]
-  CommunityThread  CommunityThread[]
-
-  @@index([userId])
-  @@schema("public")
-}
-
-model CommunityContent {
-  id          String      @id @db.Uuid
-  url         String
-  contentType ContentType
-  locale      UserLocale  @default(ko_KR)
-  title       String?
-  description String?
-  order       Int?
-  communityId String      @db.Uuid
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime
-  Community   Community   @relation(fields: [communityId], references: [id], onDelete: Cascade)
-
-  @@index([communityId])
-  @@schema("public")
-}
-
-model CommunityThread {
-  id          String    @id @db.Uuid
-  content     Json
-  likeCount   Int       @default(0)
-  isDeleted   Boolean   @default(false)
-  communityId String    @db.Uuid
-  userId      String    @db.Uuid
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime
-  Community   Community @relation(fields: [communityId], references: [id], onDelete: Cascade)
-  User        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([communityId])
-  @@index([userId])
-  @@schema("public")
-}
-
-model Consulting {
-  id             String                @id @db.Uuid
-  title          String?
-  content        String?
-  status         ConsultingStatusType  @default(PENDING)
-  timeType       ConsultingTimeType?
-  genderType     ConsultingGenderType?
-  age            Int?
-  phoneNumber    String?               @db.VarChar(20)
-  consultingDate DateTime?
-  locale         UserLocale            @default(ko_KR)
-  userId         String                @db.Uuid
-  hospitalId     String                @db.Uuid
-  createdAt      DateTime              @default(now())
-  updatedAt      DateTime
-  Hospital       Hospital              @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  User           User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([hospitalId])
-  @@index([userId])
   @@schema("public")
 }
 
@@ -359,162 +67,61 @@ model Doctor {
   createdAt          DateTime                 @default(now())
   updatedAt          DateTime
   Hospital           Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  DoctorCategoryMap  DoctorCategoryMap[]
-  DoctorContent      DoctorContent[]
 
   @@index([baseId])
   @@index([hospitalId])
   @@schema("public")
 }
 
-model DoctorCategoryMap {
-  doctorId   String   @db.Uuid
-  categoryId String   @db.Uuid
-  createdAt  DateTime @default(now())
-  Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  Doctor     Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
-
-  @@id([doctorId, categoryId])
-  @@index([categoryId])
-  @@index([doctorId])
-  @@schema("public")
-}
-
-model DoctorContent {
-  id                String            @id @db.Uuid
-  url               String
-  contentType       ContentType
-  doctorContentType DoctorContentType
-  locale            UserLocale        @default(ko_KR)
-  title             String?
-  description       String?
-  order             Int?
-  doctorId          String            @db.Uuid
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime
-  Doctor            Doctor            @relation(fields: [doctorId], references: [id], onDelete: Cascade)
-
-  @@index([doctorId])
-  @@schema("public")
-}
-
 model Hospital {
-  id                  String                     @id @db.Uuid
-  name                Json
-  address             Json
-  directions          Json?
-  phoneNumber         String?                    @db.VarChar(20)
-  description         Json?
-  openingHours        Json?
-  reviewCount         Int                        @default(0)
-  productCount        Int                        @default(0)
-  bookmarkCount       Int                        @default(0)
-  viewCount           Int                        @default(0)
-  rating              Float                      @default(0)
-  point               Int                        @default(0)
-  email               String?                    @unique @db.VarChar(255)
-  subPhoneNumbers     Json                       @default("[]")
-  lineId              String?                    @db.VarChar(255)
-  memo                String?
-  reviewUrl           String?
-  settings            Json?
-  enableJp            Boolean                    @default(false)
-  prices              Json?
-  ranking             Int?
-  discountRate        Float?
-  approvalStatusType  HospitalApprovalStatusType @default(APPROVED)
-  rejectReason        String?
-  baseId              String?                    @db.Uuid
-  hasClone            Boolean                    @default(false)
-  districtId          String?                    @db.Uuid
-  hospitalInfoId      String?                    @unique @db.Uuid
-  createdAt           DateTime                   @default(now())
-  updatedAt           DateTime
-  Advertisement       Advertisement[]
-  AiReport            AiReport[]
-  Appointment         Appointment[]
-  Consulting          Consulting[]
-  Doctor              Doctor[]
-  District            District?                  @relation(fields: [districtId], references: [id], onDelete: Cascade)
-  HospitalInfo        HospitalInfo?              @relation(fields: [hospitalInfoId], references: [id])
-  HospitalCategoryMap HospitalCategoryMap[]
-  HospitalContent     HospitalContent[]
-  HospitalPropertyMap HospitalPropertyMap[]
-  Payment             Payment[]
-  PointChargeHistory  PointChargeHistory[]
-  PointUsageHistory   PointUsageHistory[]
-  Product             Product[]
-  Review              Review[]
+  id                 String                     @id @db.Uuid
+  name               Json
+  address            Json
+  directions         Json?
+  phoneNumber        String?                    @db.VarChar(20)
+  description        Json?
+  openingHours       Json?
+  reviewCount        Int                        @default(0)
+  productCount       Int                        @default(0)
+  bookmarkCount      Int                        @default(0)
+  viewCount          Int                        @default(0)
+  rating             Float                      @default(0)
+  point              Int                        @default(0)
+  email              String?                    @unique @db.VarChar(255)
+  subPhoneNumbers    Json                       @default("[]")
+  lineId             String?                    @db.VarChar(255)
+  memo               String?
+  reviewUrl          String?
+  settings           Json?
+  enableJp           Boolean                    @default(false)
+  prices             Json?
+  ranking            Int?
+  discountRate       Float?
+  approvalStatusType HospitalApprovalStatusType @default(APPROVED)
+  rejectReason       String?
+  baseId             String?                    @db.Uuid
+  hasClone           Boolean                    @default(false)
+  districtId         String?                    @db.Uuid
+  createdAt          DateTime                   @default(now())
+  updatedAt          DateTime
+  Doctor             Doctor[]
+  District           District?                  @relation(fields: [districtId], references: [id], onDelete: Cascade)
+  Product            Product[]
+  Review             Review[]
 
   @@index([baseId])
   @@index([districtId])
   @@schema("public")
 }
 
-model HospitalCategoryMap {
-  hospitalId String   @db.Uuid
-  categoryId String   @db.Uuid
-  createdAt  DateTime @default(now())
-  Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  Hospital   Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-
-  @@id([hospitalId, categoryId])
-  @@index([categoryId])
-  @@index([hospitalId])
-  @@schema("public")
-}
-
-model HospitalContent {
-  id                  String              @id @db.Uuid
-  url                 String
-  contentType         ContentType
-  hospitalContentType HospitalContentType
-  locale              UserLocale          @default(ko_KR)
-  title               String?
-  description         String?
-  order               Int?
-  hospitalId          String              @db.Uuid
-  createdAt           DateTime            @default(now())
-  updatedAt           DateTime
-  Hospital            Hospital            @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-
-  @@index([hospitalId])
-  @@schema("public")
-}
-
-model HospitalInfo {
-  id        String    @id @db.Uuid
-  info      Json
-  createdAt DateTime  @default(now())
-  updatedAt DateTime
-  Hospital  Hospital?
-
-  @@schema("public")
-}
-
 model HospitalProperty {
-  id                  String                @id @db.Uuid
-  name                Json
-  description         Json?
-  isActive            Boolean               @default(true)
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime
-  HospitalPropertyMap HospitalPropertyMap[]
+  id          String   @id @db.Uuid
+  name        Json
+  description Json?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
 
-  @@schema("public")
-}
-
-model HospitalPropertyMap {
-  hospitalId       String           @db.Uuid
-  propertyId       String           @db.Uuid
-  value            String?
-  createdAt        DateTime         @default(now())
-  Hospital         Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  HospitalProperty HospitalProperty @relation(fields: [propertyId], references: [id], onDelete: Cascade)
-
-  @@id([hospitalId, propertyId])
-  @@index([hospitalId])
-  @@index([propertyId])
   @@schema("public")
 }
 
@@ -530,300 +137,107 @@ model InvitationCode {
   @@schema("public")
 }
 
-model Payment {
-  id         String        @id @db.Uuid
-  amount     Int
-  status     PaymentStatus @default(PENDING)
-  type       PaymentType
-  paymentKey String?       @unique
-  orderId    String?       @unique
-  currency   String?       @default("KRW")
-  userId     String        @db.Uuid
-  hospitalId String        @db.Uuid
-  createdAt  DateTime      @default(now())
-  updatedAt  DateTime
-  Hospital   Hospital      @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  User       User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([hospitalId])
-  @@index([userId])
-  @@schema("public")
-}
-
-model PointChargeHistory {
-  id         String                @id @db.Uuid
-  amount     Int
-  status     PointChargeStatusType @default(PENDING)
-  paymentKey String?
-  orderId    String?               @unique
-  hospitalId String                @db.Uuid
-  createdAt  DateTime              @default(now())
-  updatedAt  DateTime
-  Hospital   Hospital              @relation(fields: [hospitalId], references: [id])
-
-  @@index([hospitalId])
-  @@schema("public")
-}
-
-model PointUsageHistory {
-  id         String               @id @db.Uuid
-  amount     Int
-  status     PointUsageStatusType @default(COMPLETED)
-  entityType PointUsageEntityType
-  entityId   String?              @db.Uuid
-  hospitalId String               @db.Uuid
-  productId  String?              @db.Uuid
-  createdAt  DateTime             @default(now())
-  updatedAt  DateTime
-  Hospital   Hospital             @relation(fields: [hospitalId], references: [id])
-  Product    Product?             @relation(fields: [productId], references: [id])
-
-  @@index([hospitalId])
-  @@index([productId])
-  @@schema("public")
-}
-
 model Product {
-  id                   String                    @id @db.Uuid
-  name                 Json
-  description          Json?
-  price                Int?
-  discountPrice        Int?
-  isActive             Boolean                   @default(true)
-  viewCount            Int                       @default(0)
-  bookmarkCount        Int                       @default(0)
-  order                Int?
-  approvalStatusType   ProductApprovalStatusType @default(APPROVED)
-  rejectReason         String?
-  baseId               String?                   @db.Uuid
-  hasClone             Boolean                   @default(false)
-  hospitalId           String                    @db.Uuid
-  createdAt            DateTime                  @default(now())
-  updatedAt            DateTime
-  AdvertisementProduct AdvertisementProduct[]
-  PointUsageHistory    PointUsageHistory[]
-  Hospital             Hospital                  @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  ProductCategoryMap   ProductCategoryMap[]
-  ProductContent       ProductContent[]
+  id            String   @id @db.Uuid
+  name          Json
+  description   Json?
+  price         Int?
+  discountPrice Int?
+  isActive      Boolean  @default(true)
+  viewCount     Int      @default(0)
+  bookmarkCount Int      @default(0)
+  order         Int?
+  baseId        String?  @db.Uuid
+  hasClone      Boolean  @default(false)
+  hospitalId    String   @db.Uuid
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime
+  Hospital      Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
 
   @@index([baseId])
   @@index([hospitalId])
   @@schema("public")
 }
 
-model ProductCategoryMap {
-  productId  String   @db.Uuid
-  categoryId String   @db.Uuid
-  createdAt  DateTime @default(now())
-  Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  Product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@id([productId, categoryId])
-  @@index([categoryId])
-  @@index([productId])
-  @@schema("public")
-}
-
-model ProductContent {
-  id                 String             @id @db.Uuid
-  url                String
-  contentType        ContentType
-  productContentType ProductContentType
-  locale             UserLocale         @default(ko_KR)
-  title              String?
-  description        String?
-  order              Int?
-  productId          String             @db.Uuid
-  createdAt          DateTime           @default(now())
-  updatedAt          DateTime
-  Product            Product            @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@index([productId])
-  @@schema("public")
-}
-
 model Review {
-  id                String              @id @db.Uuid
-  rating            Float               @default(0)
-  title             Json?
-  content           Json?
-  isRecommended     Boolean             @default(false)
-  viewCount         Int                 @default(0)
-  likeCount         Int                 @default(0)
-  userId            String              @db.Uuid
-  hospitalId        String              @db.Uuid
-  createdAt         DateTime            @default(now())
-  updatedAt         DateTime
-  Hospital          Hospital            @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  User              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  ReviewCategoryMap ReviewCategoryMap[]
-  ReviewContent     ReviewContent[]
-  ReviewThread      ReviewThread[]
+  id            String   @id @db.Uuid
+  rating        Float    @default(0)
+  title         Json?
+  content       Json?
+  isRecommended Boolean  @default(false)
+  viewCount     Int      @default(0)
+  likeCount     Int      @default(0)
+  userId        String   @db.Uuid
+  hospitalId    String   @db.Uuid
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime
+  Hospital      Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  User          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([hospitalId])
   @@index([userId])
   @@schema("public")
 }
 
-model ReviewCategoryMap {
-  reviewId   String   @db.Uuid
-  categoryId String   @db.Uuid
-  createdAt  DateTime @default(now())
-  Category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  Review     Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
-
-  @@id([reviewId, categoryId])
-  @@index([categoryId])
-  @@index([reviewId])
-  @@schema("public")
-}
-
-model ReviewContent {
-  id                String            @id @db.Uuid
-  url               String
-  contentType       ContentType
-  reviewContentType ReviewContentType
-  locale            UserLocale        @default(ko_KR)
-  title             String?
-  description       String?
-  order             Int?
-  reviewId          String            @db.Uuid
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime
-  Review            Review            @relation(fields: [reviewId], references: [id], onDelete: Cascade)
-
-  @@index([reviewId])
-  @@schema("public")
-}
-
-model ReviewThread {
-  id        String   @id @db.Uuid
-  content   Json
-  likeCount Int      @default(0)
-  isDeleted Boolean  @default(false)
-  reviewId  String   @db.Uuid
-  userId    String   @db.Uuid
-  createdAt DateTime @default(now())
-  updatedAt DateTime
-  Review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
-  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([reviewId])
-  @@index([userId])
-  @@schema("public")
-}
-
-model SearchHistory {
-  id          String   @id @db.Uuid
-  searchTerm  String
-  searchCount Int      @default(1)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
-
-  @@schema("public")
-}
-
 model User {
-  id                          String            @id @db.Uuid
+  id                          String          @id @db.Uuid
   displayName                 String?
-  createdAt                   DateTime          @default(now())
+  createdAt                   DateTime        @default(now())
   updatedAt                   DateTime
-  aud                         String?           @db.VarChar(255)
-  banned_until                DateTime?         @db.Timestamptz(6)
-  confirmation_sent_at        DateTime?         @db.Timestamptz(6)
-  confirmation_token          String?           @db.VarChar(255)
-  confirmed_at                DateTime?         @db.Timestamptz(6)
-  deleted_at                  DateTime?         @db.Timestamptz(6)
-  email                       String?           @db.VarChar(255)
-  email_change                String?           @db.VarChar(255)
-  email_change_confirm_status Int?              @default(0) @db.SmallInt
-  email_change_sent_at        DateTime?         @db.Timestamptz(6)
-  email_change_token_current  String?           @default("") @db.VarChar(255)
-  email_change_token_new      String?           @db.VarChar(255)
-  email_confirmed_at          DateTime?         @db.Timestamptz(6)
-  encrypted_password          String?           @db.VarChar(255)
-  instance_id                 String?           @db.Uuid
-  invited_at                  DateTime?         @db.Timestamptz(6)
-  is_anonymous                Boolean           @default(false)
-  is_sso_user                 Boolean           @default(false)
+  aud                         String?         @db.VarChar(255)
+  banned_until                DateTime?       @db.Timestamptz(6)
+  confirmation_sent_at        DateTime?       @db.Timestamptz(6)
+  confirmation_token          String?         @db.VarChar(255)
+  confirmed_at                DateTime?       @db.Timestamptz(6)
+  deleted_at                  DateTime?       @db.Timestamptz(6)
+  email                       String?         @db.VarChar(255)
+  email_change                String?         @db.VarChar(255)
+  email_change_confirm_status Int?            @default(0) @db.SmallInt
+  email_change_sent_at        DateTime?       @db.Timestamptz(6)
+  email_change_token_current  String?         @default("") @db.VarChar(255)
+  email_change_token_new      String?         @db.VarChar(255)
+  email_confirmed_at          DateTime?       @db.Timestamptz(6)
+  encrypted_password          String?         @db.VarChar(255)
+  instance_id                 String?         @db.Uuid
+  invited_at                  DateTime?       @db.Timestamptz(6)
+  is_anonymous                Boolean         @default(false)
+  is_sso_user                 Boolean         @default(false)
   is_super_admin              Boolean?
-  last_sign_in_at             DateTime?         @db.Timestamptz(6)
-  phone                       String?           @unique
-  phone_change                String?           @default("")
-  phone_change_sent_at        DateTime?         @db.Timestamptz(6)
-  phone_change_token          String?           @default("") @db.VarChar(255)
-  phone_confirmed_at          DateTime?         @db.Timestamptz(6)
+  last_sign_in_at             DateTime?       @db.Timestamptz(6)
+  phone                       String?         @unique
+  phone_change                String?         @default("")
+  phone_change_sent_at        DateTime?       @db.Timestamptz(6)
+  phone_change_token          String?         @default("") @db.VarChar(255)
+  phone_confirmed_at          DateTime?       @db.Timestamptz(6)
   raw_app_meta_data           Json?
   raw_user_meta_data          Json?
-  reauthentication_sent_at    DateTime?         @db.Timestamptz(6)
-  reauthentication_token      String?           @default("") @db.VarChar(255)
-  recovery_sent_at            DateTime?         @db.Timestamptz(6)
-  recovery_token              String?           @db.VarChar(255)
-  role                        String?           @db.VarChar(255)
-  invitationCodeId            String?           @unique @db.Uuid
-  advertPush                  Boolean?          @default(false)
+  reauthentication_sent_at    DateTime?       @db.Timestamptz(6)
+  reauthentication_token      String?         @default("") @db.VarChar(255)
+  recovery_sent_at            DateTime?       @db.Timestamptz(6)
+  recovery_token              String?         @db.VarChar(255)
+  role                        String?         @db.VarChar(255)
+  invitationCodeId            String?         @unique @db.Uuid
+  advertPush                  Boolean?        @default(false)
   age                         Int?
-  collectPersonalInfo         Boolean?          @default(false)
-  communityAlarm              Boolean?          @default(false)
-  deviceInfo                  String?           @db.VarChar(256)
-  deviceToken                 String?           @db.VarChar(256)
+  collectPersonalInfo         Boolean?        @default(false)
+  communityAlarm              Boolean?        @default(false)
+  deviceInfo                  String?         @db.VarChar(256)
+  deviceToken                 String?         @db.VarChar(256)
   drRoleType                  UserRoleType?
   genderType                  UserGenderType?
-  locale                      UserLocale?       @default(ko_KR)
+  locale                      UserLocale?     @default(ko_KR)
   loggedInAt                  DateTime?
-  name                        String?           @db.VarChar(100)
-  nickName                    String?           @db.VarChar(100)
-  phoneNumber                 String?           @db.VarChar(255)
-  postAlarm                   Boolean?          @default(false)
+  name                        String?         @db.VarChar(100)
+  nickName                    String?         @db.VarChar(100)
+  phoneNumber                 String?         @db.VarChar(255)
+  postAlarm                   Boolean?        @default(false)
   profileImgUrl               String?
-  termsVersion                String?           @db.VarChar(20)
-  userStatusType              UserStatusType?   @default(ACTIVE)
-  Appointment                 Appointment[]
-  Bookmark                    Bookmark[]
-  ChatRoomUser                ChatRoomUser[]
-  Community                   Community[]
-  CommunityThread             CommunityThread[]
-  Consulting                  Consulting[]
-  Payment                     Payment[]
+  termsVersion                String?         @db.VarChar(20)
+  userStatusType              UserStatusType? @default(ACTIVE)
   Review                      Review[]
-  ReviewThread                ReviewThread[]
-  InvitationCode              InvitationCode?   @relation(fields: [invitationCodeId], references: [id], onDelete: Restrict)
-  UserLike                    UserLike[]
-  UserReport                  UserReport[]
+  InvitationCode              InvitationCode? @relation(fields: [invitationCodeId], references: [id], onDelete: Restrict)
   UserRole                    UserRole[]
 
-  @@schema("public")
-}
-
-model UserLike {
-  id         String             @id @db.Uuid
-  entityType UserLikeEntityType
-  entityId   String             @db.Uuid
-  userId     String             @db.Uuid
-  createdAt  DateTime           @default(now())
-  User       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId, entityType, entityId])
-  @@index([entityId])
-  @@index([userId])
-  @@schema("public")
-}
-
-model UserReport {
-  id         String               @id @db.Uuid
-  entityType UserReportEntityType
-  entityId   String               @db.Uuid
-  reason     String
-  status     UserReportStatusType @default(PENDING)
-  adminNote  String?
-  userId     String               @db.Uuid
-  createdAt  DateTime             @default(now())
-  updatedAt  DateTime
-  User       User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([entityId])
-  @@index([status])
-  @@index([userId])
   @@schema("public")
 }
 
@@ -856,115 +270,6 @@ enum AdminGrade {
   @@schema("public")
 }
 
-enum AdvertisementApprovalStatusType {
-  PENDING
-  APPROVED
-  REJECTED
-
-  @@schema("public")
-}
-
-enum AdvertisementType {
-  BANNER
-  POPUP
-  INLINE
-
-  @@schema("public")
-}
-
-enum AppointmentGenderType {
-  MALE
-  FEMALE
-  OTHER
-
-  @@schema("public")
-}
-
-enum AppointmentStatus {
-  PENDING
-  CONFIRMED
-  CANCELLED
-  COMPLETED
-
-  @@schema("public")
-}
-
-enum BookmarkEntityType {
-  HOSPITAL
-  DOCTOR
-  PRODUCT
-  REVIEW
-
-  @@schema("public")
-}
-
-enum BookmarkType {
-  HOSPITAL
-  DOCTOR
-  PRODUCT
-  REVIEW
-
-  @@schema("public")
-}
-
-enum ChatRoomUserType {
-  MEMBER
-  ADMIN
-
-  @@schema("public")
-}
-
-enum ChatUserType {
-  USER
-  DOCTOR
-  ADMIN
-
-  @@schema("public")
-}
-
-enum CommunityType {
-  GENERAL
-  QNA
-  REVIEW
-  EVENT
-
-  @@schema("public")
-}
-
-enum ConsultingGenderType {
-  MALE
-  FEMALE
-  OTHER
-
-  @@schema("public")
-}
-
-enum ConsultingStatusType {
-  PENDING
-  IN_PROGRESS
-  COMPLETED
-  CANCELLED
-
-  @@schema("public")
-}
-
-enum ConsultingTimeType {
-  MORNING
-  AFTERNOON
-  EVENING
-
-  @@schema("public")
-}
-
-enum ContentType {
-  IMAGE
-  VIDEO
-  TEXT
-  DOCUMENT
-
-  @@schema("public")
-}
-
 enum DistrictCountryCode {
   KR
   TH
@@ -977,14 +282,6 @@ enum DoctorApprovalStatusType {
   APPROVED
   REJECTED
   WAITING_APPROVAL
-
-  @@schema("public")
-}
-
-enum DoctorContentType {
-  PROFILE_IMAGE
-  CERTIFICATE
-  EXPERIENCE
 
   @@schema("public")
 }
@@ -1004,84 +301,9 @@ enum HospitalApprovalStatusType {
   @@schema("public")
 }
 
-enum HospitalContentType {
-  MAIN_IMAGE
-  GALLERY
-  CERTIFICATE
-  FACILITY
-
-  @@schema("public")
-}
-
 enum InvitationCodeKind {
   VIP
   PAYMENT_REFERENCE
-
-  @@schema("public")
-}
-
-enum PaymentStatus {
-  PENDING
-  COMPLETED
-  FAILED
-  CANCELLED
-  REFUNDED
-
-  @@schema("public")
-}
-
-enum PaymentType {
-  CREDIT_CARD
-  BANK_TRANSFER
-  POINT
-  CASH
-
-  @@schema("public")
-}
-
-enum PointChargeStatusType {
-  PENDING
-  COMPLETED
-  FAILED
-
-  @@schema("public")
-}
-
-enum PointUsageEntityType {
-  APPOINTMENT
-  PRODUCT
-  CONSULTING
-
-  @@schema("public")
-}
-
-enum PointUsageStatusType {
-  COMPLETED
-  REFUNDED
-
-  @@schema("public")
-}
-
-enum ProductApprovalStatusType {
-  PENDING
-  APPROVED
-  REJECTED
-
-  @@schema("public")
-}
-
-enum ProductContentType {
-  MAIN_IMAGE
-  DETAIL_IMAGE
-  BEFORE_AFTER
-
-  @@schema("public")
-}
-
-enum ReviewContentType {
-  BEFORE_IMAGE
-  AFTER_IMAGE
-  REVIEW_IMAGE
 
   @@schema("public")
 }
@@ -1094,40 +316,10 @@ enum UserGenderType {
   @@schema("public")
 }
 
-enum UserLikeEntityType {
-  HOSPITAL
-  DOCTOR
-  PRODUCT
-  REVIEW
-  COMMUNITY
-
-  @@schema("public")
-}
-
 enum UserLocale {
   ko_KR
   en_US
   th_TH
-
-  @@schema("public")
-}
-
-enum UserReportEntityType {
-  USER
-  HOSPITAL
-  DOCTOR
-  PRODUCT
-  REVIEW
-  COMMUNITY
-
-  @@schema("public")
-}
-
-enum UserReportStatusType {
-  PENDING
-  REVIEWED
-  RESOLVED
-  DISMISSED
 
   @@schema("public")
 }
