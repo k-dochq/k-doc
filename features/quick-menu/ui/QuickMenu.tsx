@@ -20,13 +20,8 @@ interface QuickMenuProps {
 }
 
 export function QuickMenu({ lang, dict, categories }: QuickMenuProps) {
-  // PART 타입만 필터링하고 order 순으로 정렬
-  const partCategories = categories
-    .filter((category) => category.categoryType === 'PART')
-    .sort((a, b) => (a.order || 0) - (b.order || 0));
-
   // 빈 데이터 상태 처리
-  if (partCategories.length === 0) {
+  if (categories.length === 0) {
     return <QuickMenuEmpty lang={lang} dict={dict} />;
   }
 
@@ -57,7 +52,7 @@ export function QuickMenu({ lang, dict, categories }: QuickMenuProps) {
       </div>
 
       <div className='grid grid-cols-5 gap-4'>
-        {partCategories.map((category) => (
+        {categories.map((category) => (
           <button
             key={category.id}
             className='flex flex-col items-center space-y-2 rounded-lg border border-gray-200 bg-white p-3 transition-colors hover:border-pink-300 hover:bg-pink-50'
