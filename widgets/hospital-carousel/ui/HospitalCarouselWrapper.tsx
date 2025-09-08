@@ -5,6 +5,7 @@ import { HospitalCarousel } from './HospitalCarousel';
 import { HospitalCarouselSkeleton } from './HospitalCarouselSkeleton';
 import { ErrorBoundary, LocalizedErrorDisplay } from 'shared/ui/error-display';
 import { getBestHospitals } from 'entities/hospital/api/use-cases/get-best-hospitals';
+import { CACHE_TIMES } from 'shared/lib/cache';
 
 interface HospitalCarouselWrapperProps {
   lang: Locale;
@@ -14,9 +15,11 @@ interface HospitalCarouselWrapperProps {
 async function HospitalCarouselContent({ lang, dict }: HospitalCarouselWrapperProps) {
   const hospitals = await getBestHospitals();
 
-  console.log(hospitals);
   return <HospitalCarousel hospitals={hospitals} lang={lang} dict={dict} />;
 }
+
+// 병원 데이터는 평점, 리뷰 등이 업데이트되므로 10분 캐시
+export const revalidate = CACHE_TIMES.SHORT; // 10분 (600초)
 
 export function HospitalCarouselWrapper({ lang, dict }: HospitalCarouselWrapperProps) {
   return (
