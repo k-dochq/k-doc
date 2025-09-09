@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type Hospital } from 'entities/hospital';
-import { HospitalCard } from 'entities/hospital/ui';
+import { HospitalListCard } from 'entities/hospital/ui';
 import {
   Carousel,
   CarouselContent,
@@ -104,10 +104,13 @@ export function HospitalCarousel({ hospitals, lang, dict }: HospitalCarouselProp
             loop: true,
           }}
         >
-          <CarouselContent className='-ml-2 md:-ml-4 min-h-[200px]'>
+          <CarouselContent className='-ml-2 min-h-[200px] md:-ml-4'>
             {hospitals.map((hospital) => (
-              <CarouselItem key={hospital.id} className='basis-1/2 pl-2 md:basis-1/3 md:pl-4 h-full'>
-                <HospitalCard hospital={hospital} lang={lang} />
+              <CarouselItem
+                key={hospital.id}
+                className='h-full basis-1/2 pl-2 md:basis-1/3 md:pl-4'
+              >
+                <HospitalListCard hospital={hospital} lang={lang} />
               </CarouselItem>
             ))}
           </CarouselContent>

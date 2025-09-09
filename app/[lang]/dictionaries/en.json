@@ -24,6 +24,16 @@
       "description": "New hospitals will be added soon."
     }
   },
+  "hospitals": {
+    "title": "Find Hospitals",
+    "totalCount": "{{count}} hospitals total",
+    "empty": {
+      "message": "No hospitals found."
+    },
+    "pagination": {
+      "page": "Page {{current}} / {{total}}"
+    }
+  },
   "error": {
     "title": "An unexpected error occurred",
     "description": "Please refresh the page or try again later"
