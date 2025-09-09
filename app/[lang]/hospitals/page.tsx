@@ -21,9 +21,7 @@ export default async function HospitalsPage({ params, searchParams }: HospitalsP
 
   return (
     <ErrorBoundary fallback={<LocalizedErrorDisplay error={null} lang={lang} dict={dict} />}>
-      <Suspense fallback={<HospitalsSkeleton />}>
-        <HospitalsInfiniteList lang={lang} searchParams={resolvedSearchParams} dict={dict} />
-      </Suspense>
+      <HospitalsInfiniteList lang={lang} searchParams={resolvedSearchParams} dict={dict} />
     </ErrorBoundary>
   );
 }
