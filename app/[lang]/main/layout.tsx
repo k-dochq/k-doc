@@ -1,5 +1,6 @@
 import { Header } from 'widgets/header';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
+import { BottomNavigation } from 'widgets/bottom-navigation';
 import { type Locale } from 'shared/config';
 
 interface MainLayoutProps {
@@ -13,7 +14,8 @@ export default async function MainLayout({ children, params }: MainLayoutProps) 
   return (
     <MaxWidthLayout>
       <Header currentLang={lang} />
-      <main className='py-8'>{children}</main>
+      <main className='py-8 pb-20'>{children}</main>
+      <BottomNavigation currentLang={lang} />
     </MaxWidthLayout>
   );
 }
