@@ -1,22 +1,14 @@
 'use client';
 
 import { type Locale } from 'shared/config';
-import { type Prisma } from '@prisma/client';
 import { type Dictionary } from 'shared/model/types';
+import { type MedicalSpecialty } from '../api/entities/types';
 import { QuickMenuEmpty } from './QuickMenuEmpty';
-
-interface Category {
-  id: string;
-  name: Prisma.JsonValue;
-  categoryType: 'PART' | 'PROCEDURE';
-  order: number | null;
-  isActive: boolean;
-}
 
 interface QuickMenuProps {
   lang: Locale;
   dict: Dictionary;
-  categories: Category[];
+  categories: MedicalSpecialty[];
 }
 
 export function QuickMenu({ lang, dict, categories }: QuickMenuProps) {
@@ -25,7 +17,7 @@ export function QuickMenu({ lang, dict, categories }: QuickMenuProps) {
     return <QuickMenuEmpty lang={lang} dict={dict} />;
   }
 
-  const getCategoryName = (category: Category): string => {
+  const getCategoryName = (category: MedicalSpecialty): string => {
     // JsonValue를 안전하게 처리
     if (!category.name || typeof category.name !== 'object' || category.name === null) {
       return 'Unknown';

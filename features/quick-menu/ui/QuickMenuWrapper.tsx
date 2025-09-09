@@ -4,7 +4,7 @@ import { type Dictionary } from 'shared/model/types';
 import { QuickMenu } from './QuickMenu';
 import { QuickMenuSkeleton } from './QuickMenuSkeleton';
 import { ErrorBoundary, LocalizedErrorDisplay } from 'shared/ui/error-display';
-import { getCategories } from '../api/use-cases/get-categories';
+import { getCategories } from '../api/use-cases/get-medical-specialties';
 
 interface QuickMenuWrapperProps {
   lang: Locale;
