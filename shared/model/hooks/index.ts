@@ -1,1 +1,1 @@
-export { useLocalizedRouter } from './useLocalizedRouter';
+export * from './useLocalizedRouter';
