@@ -51,8 +51,20 @@ export async function getHospitals(
 
     const offset = (page - 1) * limit;
 
-    // 정렬 조건 설정 - 단순하게 createdAt DESC로만 정렬
-    const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [{ createdAt: 'desc' }];
+    // 정렬 조건 설정
+    const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [];
+
+    if (sortBy === 'viewCount') {
+      // 인기순 (조회수 기준)
+      orderBy.push({ viewCount: sortOrder });
+      orderBy.push({ createdAt: 'desc' }); // 동일 조회수일 때 최신순
+    } else if (sortBy === 'createdAt') {
+      // 최신순
+      orderBy.push({ createdAt: sortOrder });
+    } else {
+      // 기본값: 최신순
+      orderBy.push({ createdAt: 'desc' });
+    }
 
     // 필터 조건 설정
     const where: Prisma.HospitalWhereInput = {

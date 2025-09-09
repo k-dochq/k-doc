@@ -25,7 +25,7 @@ export async function HospitalsContent({ lang, dict, searchParams }: HospitalsCo
   const hospitalsData = await getHospitals({
     page: parseInt(page, 10),
     limit: 20,
-    sortBy: sortBy as 'rating' | 'reviewCount' | 'createdAt',
+    sortBy: sortBy as 'createdAt' | 'viewCount',
     sortOrder: 'desc',
     specialtyType: validSpecialtyType,
   });

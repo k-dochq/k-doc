@@ -1,12 +1,14 @@
 'use client';
 
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { interpolateTemplate } from 'shared/lib';
 import { HospitalListCard } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
+import { HospitalSortSelector, type SortOption } from 'features/hospital-sort';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
 
 interface HospitalsInfiniteListProps {
@@ -20,16 +22,30 @@ interface HospitalsInfiniteListProps {
 }
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
-  const { sortBy = 'rating', specialtyType, minRating = '0' } = searchParams;
+  const router = useRouter();
+  const currentSearchParams = useSearchParams();
+
+  const { sortBy = 'createdAt', specialtyType, minRating = '0' } = searchParams;
 
   // 파라미터 변환
   const queryParams = {
     limit: 10,
-    sortBy: sortBy as 'rating' | 'reviewCount' | 'createdAt',
+    sortBy: sortBy as 'createdAt' | 'viewCount',
     sortOrder: 'desc' as const,
     specialtyType: specialtyType as MedicalSpecialtyType | undefined,
     minRating: parseFloat(minRating),
   };
+
+  // 정렬 변경 핸들러
+  const handleSortChange = useCallback(
+    (newSort: SortOption) => {
+      const params = new URLSearchParams(currentSearchParams.toString());
+      params.set('sortBy', newSort);
+      params.set('sortOrder', 'desc'); // 기본값으로 desc 설정
+      router.push(`/${lang}/hospitals?${params.toString()}`);
+    },
+    [currentSearchParams, router, lang],
+  );
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } =
     useInfiniteHospitals(queryParams);
@@ -102,11 +118,14 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
   return (
     <div>
       {/* 총 개수 */}
-      <div className='mb-6'>
+      <div className='mb-4'>
         <p className='text-sm text-gray-600'>
           {interpolateTemplate(dict.hospitals.totalCount, { count: totalCount })}
         </p>
       </div>
+
+      {/* 정렬 선택기 */}
+      <HospitalSortSelector currentSort={sortBy as SortOption} onSortChange={handleSortChange} />
 
       {/* 병원 리스트 */}
       {uniqueHospitals.length > 0 ? (

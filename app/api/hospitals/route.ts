@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     const hospitalsData = await getHospitals({
       page,
       limit,
-      sortBy: sortBy as 'rating' | 'reviewCount' | 'createdAt',
+      sortBy: sortBy as 'createdAt' | 'viewCount',
       sortOrder: sortOrder as 'asc' | 'desc',
       specialtyType: validSpecialtyType,
       minRating,
