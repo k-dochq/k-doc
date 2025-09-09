@@ -9,19 +9,6 @@ datasource db {
   schemas   = ["public"]
 }
 
-model Category {
-  id           String       @id @default(uuid()) @db.Uuid
-  name         Json
-  categoryType CategoryType
-  description  String?
-  order        Int?
-  isActive     Boolean      @default(true)
-  createdAt    DateTime     @default(now())
-  updatedAt    DateTime     @updatedAt
-
-  @@schema("public")
-}
-
 model AdminRole {
   id          Int        @id @default(autoincrement())
   name        String     @unique
@@ -74,40 +61,42 @@ model Doctor {
 }
 
 model Hospital {
-  id                 String                     @id @db.Uuid
-  name               Json
-  address            Json
-  directions         Json?
-  phoneNumber        String?                    @db.VarChar(20)
-  description        Json?
-  openingHours       Json?
-  reviewCount        Int                        @default(0)
-  productCount       Int                        @default(0)
-  bookmarkCount      Int                        @default(0)
-  viewCount          Int                        @default(0)
-  rating             Float                      @default(0)
-  point              Int                        @default(0)
-  email              String?                    @unique @db.VarChar(255)
-  subPhoneNumbers    Json                       @default("[]")
-  lineId             String?                    @db.VarChar(255)
-  memo               String?
-  reviewUrl          String?
-  settings           Json?
-  enableJp           Boolean                    @default(false)
-  prices             Json?
-  ranking            Int?
-  discountRate       Float?
-  approvalStatusType HospitalApprovalStatusType @default(APPROVED)
-  rejectReason       String?
-  baseId             String?                    @db.Uuid
-  hasClone           Boolean                    @default(false)
-  districtId         String?                    @db.Uuid
-  createdAt          DateTime                   @default(now())
-  updatedAt          DateTime
-  Doctor             Doctor[]
-  District           District?                  @relation(fields: [districtId], references: [id], onDelete: Cascade)
-  Product            Product[]
-  Review             Review[]
+  id                       String                     @id @db.Uuid
+  name                     Json
+  address                  Json
+  directions               Json?
+  phoneNumber              String?                    @db.VarChar(20)
+  description              Json?
+  openingHours             Json?
+  reviewCount              Int                        @default(0)
+  productCount             Int                        @default(0)
+  bookmarkCount            Int                        @default(0)
+  viewCount                Int                        @default(0)
+  rating                   Float                      @default(0)
+  point                    Int                        @default(0)
+  email                    String?                    @unique @db.VarChar(255)
+  subPhoneNumbers          Json                       @default("[]")
+  lineId                   String?                    @db.VarChar(255)
+  memo                     String?
+  reviewUrl                String?
+  settings                 Json?
+  enableJp                 Boolean                    @default(false)
+  prices                   Json?
+  ranking                  Int?
+  discountRate             Float?
+  approvalStatusType       HospitalApprovalStatusType @default(APPROVED)
+  rejectReason             String?
+  baseId                   String?                    @db.Uuid
+  hasClone                 Boolean                    @default(false)
+  districtId               String?                    @db.Uuid
+  createdAt                DateTime                   @default(now())
+  updatedAt                DateTime
+  Doctor                   Doctor[]
+  District                 District?                  @relation(fields: [districtId], references: [id], onDelete: Cascade)
+  HospitalImage            HospitalImage[]
+  HospitalMedicalSpecialty HospitalMedicalSpecialty[]
+  Product                  Product[]
+  Review                   Review[]
 
   @@index([baseId])
   @@index([districtId])
@@ -256,9 +245,47 @@ model UserRole {
   @@schema("public")
 }
 
-enum CategoryType {
-  PART
-  PROCEDURE
+model HospitalImage {
+  id         String            @id @db.Uuid
+  hospitalId String            @db.Uuid
+  imageType  HospitalImageType
+  imageUrl   String            @db.VarChar(500)
+  alt        String?           @db.VarChar(255)
+  order      Int?
+  isActive   Boolean           @default(true)
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime
+  Hospital   Hospital          @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+
+  @@index([hospitalId])
+  @@index([imageType])
+  @@schema("public")
+}
+
+model HospitalMedicalSpecialty {
+  id                 String           @id @db.Uuid
+  hospitalId         String           @db.Uuid
+  medicalSpecialtyId String           @db.Uuid
+  createdAt          DateTime         @default(now())
+  Hospital           Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+
+  @@unique([hospitalId, medicalSpecialtyId])
+  @@index([hospitalId])
+  @@index([medicalSpecialtyId])
+  @@schema("public")
+}
+
+model MedicalSpecialty {
+  id                       String                     @id @db.Uuid
+  name                     Json
+  specialtyType            MedicalSpecialtyType
+  description              Json?
+  order                    Int?
+  isActive                 Boolean                    @default(true)
+  createdAt                DateTime                   @default(now())
+  updatedAt                DateTime
+  HospitalMedicalSpecialty HospitalMedicalSpecialty[]
 
   @@schema("public")
 }
@@ -338,6 +365,29 @@ enum UserStatusType {
   INACTIVE
   SUSPENDED
   DELETED
+
+  @@schema("public")
+}
+
+enum HospitalImageType {
+  MAIN
+  THUMBNAIL
+  PROMOTION
+  DETAIL
+  INTERIOR
+
+  @@schema("public")
+}
+
+enum MedicalSpecialtyType {
+  EYES
+  NOSE
+  FACIAL_CONTOURING
+  BREAST
+  STEM_CELL
+  LIPOSUCTION
+  LIFTING
+  HAIR_TRANSPLANT
 
   @@schema("public")
 }
