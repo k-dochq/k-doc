@@ -1,9 +1,16 @@
 import type { Metadata } from 'next';
-import { type Locale } from 'shared/config';
+import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 
 interface LangLayoutProps {
   children: React.ReactNode;
   params: Promise<{ lang: Locale }>;
+}
+
+// 모든 하위 페이지에 적용되는 정적 파라미터 생성
+export async function generateStaticParams() {
+  return SUPPORTED_LOCALES.map((lang) => ({
+    lang,
+  }));
 }
 
 export async function generateMetadata({ params }: LangLayoutProps): Promise<Metadata> {
