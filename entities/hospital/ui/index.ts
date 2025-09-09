@@ -1,1 +1,1 @@
-export { HospitalCard } from './HospitalCard';
+export * from './HospitalListCard';
