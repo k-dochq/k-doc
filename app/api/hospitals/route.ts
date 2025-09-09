@@ -4,7 +4,13 @@ import { isValidMedicalSpecialtyType } from 'shared/config';
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    const url = new URL(request.url);
+    const queryString = url.search;
+
+    // 캐시 확인용 로그 (쿼리 파라미터 포함)
+    console.log(`[${new Date().toISOString()}] API 호출: /api/hospitals${queryString}`);
+
+    const { searchParams } = url;
 
     // 쿼리 파라미터 추출
     const page = parseInt(searchParams.get('page') || '1', 10);
@@ -28,10 +34,18 @@ export async function GET(request: NextRequest) {
       minRating,
     });
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       data: hospitalsData,
     });
+
+    // Vercel Edge 캐시 및 브라우저 캐시 설정
+    response.headers.set(
+      'Cache-Control',
+      'public, max-age=300, s-maxage=300, stale-while-revalidate=600',
+    );
+
+    return response;
   } catch (error) {
     console.error('Error fetching hospitals:', error);
     return NextResponse.json(
