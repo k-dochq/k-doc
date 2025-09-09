@@ -40,7 +40,10 @@ async function fetchHospitals({
     params.append('specialtyType', specialtyType);
   }
 
-  const response = await fetch(`/api/hospitals?${params.toString()}`);
+  const response = await fetch(`/api/hospitals?${params.toString()}`, {
+    // Next.js 캐싱: 5분간 캐시, 그 후 재검증
+    next: { revalidate: 300 },
+  });
 
   if (!response.ok) {
     throw new Error('Failed to fetch hospitals');
