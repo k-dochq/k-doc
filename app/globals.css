@@ -5,3 +5,9 @@
     cursor: pointer;
   }
 }
+
+@layer utilities {
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
