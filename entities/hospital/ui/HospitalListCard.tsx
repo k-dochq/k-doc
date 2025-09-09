@@ -1,8 +1,7 @@
-'use client';
-
 import Image from 'next/image';
 import { Building2, MapPin, Star } from 'lucide-react';
 import { extractLocalizedText } from 'shared/lib';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { type Hospital } from '../api/entities/types';
 import { type Locale } from 'shared/config';
 
@@ -15,15 +14,11 @@ export function HospitalListCard({ hospital, lang }: HospitalListCardProps) {
   const hospitalName = extractLocalizedText(hospital.name, lang);
   const hospitalAddress = extractLocalizedText(hospital.address, lang);
 
-  const handleClick = () => {
-    // TODO: 병원 상세 페이지로 이동
-    console.log('Navigate to hospital detail:', hospital.id);
-  };
-
   return (
-    <div
-      className='cursor-pointer rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md'
-      onClick={handleClick}
+    <LocaleLink
+      href={`/hospitals/${hospital.id}`}
+      locale={lang}
+      className='block rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md'
     >
       {/* 썸네일 이미지 */}
       <div className='mb-3'>
@@ -37,8 +32,13 @@ export function HospitalListCard({ hospital, lang }: HospitalListCardProps) {
               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             />
           ) : (
-            <div className='flex h-full items-center justify-center'>
-              <Building2 className='h-12 w-12 text-gray-400' />
+            <div className='flex h-full items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100'>
+              <div className='text-center'>
+                <div className='mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm'>
+                  <Building2 className='h-5 w-5 text-gray-600' />
+                </div>
+                <p className='text-xs text-gray-500'>이미지 준비중</p>
+              </div>
             </div>
           )}
         </div>
@@ -86,6 +86,6 @@ export function HospitalListCard({ hospital, lang }: HospitalListCardProps) {
         </div>
         <span className='text-sm text-gray-500'>({hospital.reviewCount}개 리뷰)</span>
       </div>
-    </div>
+    </LocaleLink>
   );
 }
