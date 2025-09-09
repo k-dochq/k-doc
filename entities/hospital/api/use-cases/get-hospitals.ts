@@ -51,17 +51,8 @@ export async function getHospitals(
 
     const offset = (page - 1) * limit;
 
-    // 정렬 조건 설정
-    const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [];
-    if (sortBy === 'rating') {
-      orderBy.push({ rating: sortOrder });
-      orderBy.push({ reviewCount: 'desc' }); // 동일 평점일 때 리뷰 수로 정렬
-    } else if (sortBy === 'reviewCount') {
-      orderBy.push({ reviewCount: sortOrder });
-      orderBy.push({ rating: 'desc' }); // 동일 리뷰 수일 때 평점으로 정렬
-    } else {
-      orderBy.push({ createdAt: sortOrder });
-    }
+    // 정렬 조건 설정 - 단순하게 createdAt DESC로만 정렬
+    const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [{ createdAt: 'desc' }];
 
     // 필터 조건 설정
     const where: Prisma.HospitalWhereInput = {
