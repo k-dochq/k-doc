@@ -1,8 +1,14 @@
+import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
+
 interface MaxWidthLayoutProps {
   children: React.ReactNode;
   className?: string;
 }
 
 export function MaxWidthLayout({ children, className = '' }: MaxWidthLayoutProps) {
-  return <div className={`mx-auto min-h-screen max-w-[500px] px-4 ${className}`}>{children}</div>;
+  return (
+    <div className={`mx-auto min-h-screen px-4 ${MAX_MOBILE_WIDTH_CLASS} ${className}`}>
+      {children}
+    </div>
+  );
 }
