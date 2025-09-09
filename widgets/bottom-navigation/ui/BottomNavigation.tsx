@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { type BottomNavigationProps } from '../model/types';
 import { navigationItems } from '../model/navigation-items';
 
@@ -15,8 +16,8 @@ export function BottomNavigation({ currentLang }: BottomNavigationProps) {
   };
 
   return (
-    <nav className='safe-area-pb fixed right-0 bottom-0 left-0 z-50 border-t border-gray-200 bg-white'>
-      <div className='mx-auto max-w-[500px]'>
+    <nav className='safe-area-pb fixed right-0 bottom-0 left-0 z-50 bg-white'>
+      <div className={`mx-auto ${MAX_MOBILE_WIDTH_CLASS} border-t border-gray-200`}>
         <div className='flex items-center justify-around py-2'>
           {navigationItems.map((item) => {
             const Icon = item.icon;
