@@ -6,7 +6,7 @@ import { type GetHospitalsResponse } from '../api/entities/types';
 
 interface UseInfiniteHospitalsParams {
   limit?: number;
-  sortBy?: 'rating' | 'reviewCount' | 'createdAt';
+  sortBy?: 'createdAt' | 'viewCount';
   sortOrder?: 'asc' | 'desc';
   specialtyType?: MedicalSpecialtyType;
   minRating?: number;
@@ -21,7 +21,7 @@ interface HospitalsApiResponse {
 async function fetchHospitals({
   pageParam = 1,
   limit = 10,
-  sortBy = 'rating',
+  sortBy = 'createdAt',
   sortOrder = 'desc',
   specialtyType,
   minRating = 0,
@@ -65,7 +65,7 @@ export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
     'infinite',
     {
       limit: params.limit || 10,
-      sortBy: params.sortBy || 'rating',
+      sortBy: params.sortBy || 'createdAt',
       sortOrder: params.sortOrder || 'desc',
       specialtyType: params.specialtyType || null,
       minRating: params.minRating || 0,

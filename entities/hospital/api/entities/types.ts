@@ -48,7 +48,7 @@ export interface GetBestHospitalsResponse {
 export interface GetHospitalsRequest {
   page?: number;
   limit?: number;
-  sortBy?: 'rating' | 'reviewCount' | 'createdAt';
+  sortBy?: 'createdAt' | 'viewCount';
   sortOrder?: 'asc' | 'desc';
   specialtyType?: MedicalSpecialtyType;
   minRating?: number;
