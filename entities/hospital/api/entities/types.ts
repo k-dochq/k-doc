@@ -18,6 +18,22 @@ export interface MedicalSpecialty {
   specialtyType: MedicalSpecialtyType;
 }
 
+export interface HospitalDoctor {
+  id: string;
+  name: Prisma.JsonValue;
+  position?: Prisma.JsonValue;
+  description?: string;
+  genderType: 'MALE' | 'FEMALE';
+  hospital: {
+    id: string;
+    name: Prisma.JsonValue;
+  };
+  medicalSpecialties: MedicalSpecialty[];
+  order?: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Hospital {
   id: string;
   name: Prisma.JsonValue;
@@ -33,6 +49,7 @@ export interface Hospital {
   mainImageUrl?: string | null; // 메인 이미지 URL (썸네일 이미지에서 추출)
   hospitalImages?: HospitalImage[]; // 병원 이미지 관계
   medicalSpecialties?: MedicalSpecialty[]; // 진료 부위
+  doctors?: HospitalDoctor[]; // 소속 의사
 }
 
 export interface GetBestHospitalsRequest {

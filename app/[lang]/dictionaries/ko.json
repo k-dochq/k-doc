@@ -32,6 +32,11 @@
     },
     "pagination": {
       "page": "페이지 {{current}} / {{total}}"
+    },
+    "doctors": {
+      "title": "소속의료진",
+      "specialties": "시술부위",
+      "empty": "등록된 의료진이 없습니다."
     }
   },
   "error": {

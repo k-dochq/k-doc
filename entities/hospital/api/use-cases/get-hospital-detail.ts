@@ -3,6 +3,7 @@ import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError, extractLocalizedText } from 'shared/lib';
 import { type Hospital } from '../entities/types';
 import { type OpeningHours } from '../entities/opening-hours-types';
+import { getHospitalDoctors } from './get-hospital-doctors';
 
 // Prisma 타입 정의
 type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
@@ -65,8 +66,12 @@ export async function getHospitalDetail(
       throw new Error(`Hospital not found with id: ${id}`);
     }
 
+    // 소속 의사 정보 조회
+    const { doctors } = await getHospitalDoctors({ hospitalId: id });
+
     // 데이터 변환 (조회수 증가 없음)
     const hospital = transformHospitalDetailStatic(hospitalData);
+    hospital.doctors = doctors;
 
     return {
       hospital,

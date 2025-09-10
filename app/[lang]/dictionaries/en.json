@@ -32,6 +32,11 @@
     },
     "pagination": {
       "page": "Page {{current}} / {{total}}"
+    },
+    "doctors": {
+      "title": "Medical Staff",
+      "specialties": "Specialties",
+      "empty": "No medical staff registered."
     }
   },
   "error": {
