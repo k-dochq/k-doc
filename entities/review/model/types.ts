@@ -57,6 +57,7 @@ export type ReviewCardData = {
 // 병원 리뷰 목록 조회 파라미터
 export interface GetHospitalReviewsParams {
   hospitalId: string;
+  page?: number;
   limit?: number;
   offset?: number;
 }
@@ -65,5 +66,7 @@ export interface GetHospitalReviewsParams {
 export interface GetHospitalReviewsResponse {
   reviews: ReviewCardData[];
   totalCount: number;
-  hasMore: boolean;
+  currentPage: number;
+  hasNextPage: boolean;
+  hasMore: boolean; // 기존 호환성을 위해 유지
 }

@@ -49,6 +49,18 @@
     "empty": {
       "message": "No reviews available.",
       "description": "Be the first to write a review."
+    },
+    "viewAll": "View All"
+  },
+  "hospitalReviews": {
+    "title": "Reviews",
+    "subtitle": "'s Reviews",
+    "loadingMore": "Loading more reviews...",
+    "allLoaded": "All reviews loaded.",
+    "retry": "Retry",
+    "empty": {
+      "title": "No reviews yet",
+      "description": "Be the first to write a review."
     }
   },
   "reviewDetail": {
