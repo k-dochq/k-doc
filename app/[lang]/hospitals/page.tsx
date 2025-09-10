@@ -1,3 +1,4 @@
+import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { ErrorBoundary, LocalizedErrorDisplay } from 'shared/ui/error-display';
 import { getDictionary } from 'app/[lang]/dictionaries';
@@ -27,7 +28,7 @@ export default async function HospitalsPage({ params, searchParams }: HospitalsP
       limit: 10,
       sortBy: sortBy as 'createdAt' | 'viewCount',
       sortOrder: 'desc',
-      specialtyType: specialtyType as any,
+      specialtyType: specialtyType as MedicalSpecialtyType | undefined,
       minRating: parseFloat(minRating),
     });
 

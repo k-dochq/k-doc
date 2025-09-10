@@ -22,12 +22,7 @@ interface HospitalsInfiniteListProps {
   initialData?: GetHospitalsResponse;
 }
 
-export function HospitalsInfiniteList({
-  lang,
-  dict,
-  searchParams,
-  initialData,
-}: HospitalsInfiniteListProps) {
+export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
   const router = useRouter();
   const currentSearchParams = useSearchParams();
 

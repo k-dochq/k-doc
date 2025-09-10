@@ -14,6 +14,24 @@ const DAYS_OF_WEEK = {
 };
 
 export function HospitalOperatingHours({ openingHours, lang }: HospitalOperatingHoursProps) {
+  // 시간 문자열을 포맷팅하는 유틸리티 함수
+  const formatTimeString = (timeString: string): string => {
+    // 먼저 유효한 Date 객체로 변환 가능한지 체크
+    const date = new Date(timeString);
+
+    // Date 객체가 유효하고 ISO 형식인 경우 (예: "2023-01-01T10:00:00Z")
+    if (!isNaN(date.getTime()) && timeString.includes('T')) {
+      return date.toLocaleTimeString('ko-KR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+    }
+
+    // 이미 "HH:MM" 형식이거나 다른 문자열 형식인 경우 그대로 반환
+    return timeString;
+  };
+
   // 운영시간 포맷팅
   const formatOperatingHours = () => {
     if (!openingHours) {
@@ -40,17 +58,9 @@ export function HospitalOperatingHours({ openingHours, lang }: HospitalOperating
           return `${dayName}: 시간 미정`;
         }
 
-        // ISO 시간을 한국 시간으로 변환
-        const openTime = new Date(dayInfo.openTime).toLocaleTimeString('ko-KR', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false,
-        });
-        const closeTime = new Date(dayInfo.closeTime).toLocaleTimeString('ko-KR', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false,
-        });
+        // 시간 문자열을 유연하게 포맷팅 (날짜 형식이면 변환, 아니면 그대로)
+        const openTime = formatTimeString(dayInfo.openTime);
+        const closeTime = formatTimeString(dayInfo.closeTime);
 
         return `${dayName}: ${openTime} - ${closeTime}`;
       })
