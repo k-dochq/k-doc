@@ -7,10 +7,14 @@ import {
 
 export async function getHospitalReviews({
   hospitalId,
+  page = 1,
   limit = 10,
-  offset = 0,
+  offset,
 }: GetHospitalReviewsParams): Promise<GetHospitalReviewsResponse> {
   try {
+    // offset 계산 (page가 제공된 경우 우선 사용)
+    const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
+
     // 병원의 총 리뷰 수 조회
     const totalCount = await prisma.review.count({
       where: {
@@ -52,7 +56,7 @@ export async function getHospitalReviews({
         createdAt: 'desc',
       },
       take: limit,
-      skip: offset,
+      skip: calculatedOffset,
     });
 
     // 데이터 변환
@@ -80,11 +84,14 @@ export async function getHospitalReviews({
       })),
     }));
 
-    const hasMore = offset + limit < totalCount;
+    const hasNextPage = calculatedOffset + limit < totalCount;
+    const hasMore = hasNextPage; // 기존 호환성을 위해 유지
 
     return {
       reviews: reviewCardData,
       totalCount,
+      currentPage: page,
+      hasNextPage,
       hasMore,
     };
   } catch (error) {

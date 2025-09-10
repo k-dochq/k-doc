@@ -49,6 +49,18 @@
     "empty": {
       "message": "ไม่มีรีวิว",
       "description": "เป็นคนแรกที่เขียนรีวิว"
+    },
+    "viewAll": "ดูทั้งหมด"
+  },
+  "hospitalReviews": {
+    "title": "รีวิวการรักษา",
+    "subtitle": "รีวิวของ",
+    "loadingMore": "กำลังโหลดรีวิวเพิ่มเติม...",
+    "allLoaded": "โหลดรีวิวทั้งหมดแล้ว",
+    "retry": "ลองใหม่",
+    "empty": {
+      "title": "ยังไม่มีรีวิว",
+      "description": "เป็นคนแรกที่เขียนรีวิว"
     }
   },
   "reviewDetail": {

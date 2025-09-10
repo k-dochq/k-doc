@@ -40,7 +40,7 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
 
         {/* 리뷰 섹션 */}
         <div className='border-t border-gray-200 pt-8'>
-          <ReviewCarouselWrapper reviews={reviews} lang={lang} dict={dict} />
+          <ReviewCarouselWrapper reviews={reviews} hospitalId={id} lang={lang} dict={dict} />
         </div>
       </div>
     );

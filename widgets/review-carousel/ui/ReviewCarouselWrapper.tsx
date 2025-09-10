@@ -11,15 +11,21 @@ import { ErrorBoundary } from 'shared/ui/error-display';
 
 interface ReviewCarouselWrapperProps {
   reviews: ReviewCardData[];
+  hospitalId: string;
   lang: Locale;
   dict: Dictionary;
 }
 
-export function ReviewCarouselWrapper({ reviews, lang, dict }: ReviewCarouselWrapperProps) {
+export function ReviewCarouselWrapper({
+  reviews,
+  hospitalId,
+  lang,
+  dict,
+}: ReviewCarouselWrapperProps) {
   return (
     <ErrorBoundary fallback={<ReviewCarouselError lang={lang} dict={dict} />}>
       <Suspense fallback={<ReviewCarouselSkeleton />}>
-        <ReviewCarousel reviews={reviews} lang={lang} dict={dict} />
+        <ReviewCarousel reviews={reviews} hospitalId={hospitalId} lang={lang} dict={dict} />
       </Suspense>
     </ErrorBoundary>
   );
