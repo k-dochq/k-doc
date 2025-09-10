@@ -28,8 +28,9 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
+     * - auth/callback (OAuth callback routes)
      * - 파일 확장자가 있는 모든 파일 (이미지, CSS, JS 등)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*|robots.txt|sitemap.xml).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|auth/callback|.*\\..*|robots.txt|sitemap.xml).*)',
   ],
 };

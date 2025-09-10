@@ -98,5 +98,25 @@
   "error": {
     "title": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
     "description": "กรุณาโหลดหน้าใหม่หรือลองใหม่อีกครั้งในภายหลัง"
+  },
+  "auth": {
+    "login": {
+      "title": "เข้าสู่ระบบ",
+      "subtitle": "เข้าสู่ระบบบัญชีของคุณ",
+      "email": "อีเมล",
+      "password": "รหัสผ่าน",
+      "loginButton": "เข้าสู่ระบบ",
+      "socialLogin": "เข้าสู่ระบบด้วยโซเชียล",
+      "googleLogin": "เข้าสู่ระบบด้วย Google",
+      "kakaoLogin": "เข้าสู่ระบบด้วย Kakao",
+      "forgotPassword": "ลืมรหัสผ่าน?",
+      "signUp": "สมัครสมาชิก"
+    },
+    "error": {
+      "title": "Authentication Error",
+      "description": "An error occurred during authentication. Please try again.",
+      "tryAgain": "Try Again",
+      "goHome": "Go Home"
+    }
   }
 }
