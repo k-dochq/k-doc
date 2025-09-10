@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getDictionary } from '../../dictionaries';
 import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
@@ -6,9 +7,8 @@ import {
   getHospitalDetail,
   getAllHospitalIds,
 } from 'entities/hospital/api/use-cases/get-hospital-detail';
-import { HospitalDetailCard } from 'entities/hospital/ui/HospitalDetailCard';
-import { getHospitalReviews } from 'entities/review';
-import { ReviewCarouselWrapper } from 'widgets/review-carousel';
+import { HospitalDetailContent } from './HospitalDetailContent';
+import { HospitalDetailSkeleton } from './HospitalDetailSkeleton';
 
 interface HospitalDetailPageProps {
   params: Promise<{
@@ -21,31 +21,19 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
   const { lang, id } = await params;
 
   try {
-    // 병원 상세 데이터 조회
-    const { hospital } = await getHospitalDetail({ id });
-
-    // 병원 리뷰 데이터 조회
-    const { reviews } = await getHospitalReviews({
-      hospitalId: id,
-      limit: 10,
-    });
-
-    // 다국어 사전 조회
+    // 즉시 렌더링 가능한 데이터만 먼저 로드
     const dict = await getDictionary(lang);
 
     return (
       <div className='container mx-auto space-y-8 px-4 py-6'>
-        {/* 병원 상세 정보 */}
-        <HospitalDetailCard hospital={hospital} lang={lang} dict={dict} />
-
-        {/* 리뷰 섹션 */}
-        <div className='border-t border-gray-200 pt-8'>
-          <ReviewCarouselWrapper reviews={reviews} hospitalId={id} lang={lang} dict={dict} />
-        </div>
+        {/* 병원 상세 정보 - Suspense로 스트리밍 */}
+        <Suspense fallback={<HospitalDetailSkeleton />}>
+          <HospitalDetailContent hospitalId={id} lang={lang} dict={dict} />
+        </Suspense>
       </div>
     );
   } catch (error) {
-    console.error('Error loading hospital detail:', error);
+    console.error('Error loading hospital detail page:', error);
     notFound();
   }
 }
