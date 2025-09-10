@@ -150,22 +150,27 @@ model Product {
 }
 
 model Review {
-  id            String   @id @db.Uuid
-  rating        Float    @default(0)
-  title         Json?
-  content       Json?
-  isRecommended Boolean  @default(false)
-  viewCount     Int      @default(0)
-  likeCount     Int      @default(0)
-  userId        String   @db.Uuid
-  hospitalId    String   @db.Uuid
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime
-  Hospital      Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  User          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                 String           @id @db.Uuid
+  rating             Float            @default(0)
+  title              Json?
+  content            Json?
+  isRecommended      Boolean          @default(false)
+  viewCount          Int              @default(0)
+  likeCount          Int              @default(0)
+  userId             String           @db.Uuid
+  hospitalId         String           @db.Uuid
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime
+  concerns           String?          @db.VarChar(500)
+  medicalSpecialtyId String           @db.Uuid
+  Hospital           Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+  User               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ReviewImage        ReviewImage[]
 
   @@index([hospitalId])
   @@index([userId])
+  @@index([medicalSpecialtyId])
   @@schema("public")
 }
 
@@ -288,6 +293,7 @@ model MedicalSpecialty {
   updatedAt                DateTime
   DoctorMedicalSpecialty   DoctorMedicalSpecialty[]
   HospitalMedicalSpecialty HospitalMedicalSpecialty[]
+  Review                   Review[]
 
   @@schema("public")
 }
@@ -303,6 +309,23 @@ model DoctorMedicalSpecialty {
   @@unique([doctorId, medicalSpecialtyId])
   @@index([doctorId])
   @@index([medicalSpecialtyId])
+  @@schema("public")
+}
+
+model ReviewImage {
+  id        String          @id @db.Uuid
+  reviewId  String          @db.Uuid
+  imageType ReviewImageType
+  imageUrl  String          @db.VarChar(500)
+  alt       String?         @db.VarChar(255)
+  order     Int?
+  isActive  Boolean         @default(true)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime
+  Review    Review          @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@index([imageType])
+  @@index([reviewId])
   @@schema("public")
 }
 
@@ -404,6 +427,13 @@ enum MedicalSpecialtyType {
   LIPOSUCTION
   LIFTING
   HAIR_TRANSPLANT
+
+  @@schema("public")
+}
+
+enum ReviewImageType {
+  BEFORE
+  AFTER
 
   @@schema("public")
 }

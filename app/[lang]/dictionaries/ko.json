@@ -39,6 +39,18 @@
       "empty": "등록된 의료진이 없습니다."
     }
   },
+  "reviewCarousel": {
+    "title": "시술후기",
+    "error": {
+      "message": "리뷰를 불러오는 중 오류가 발생했습니다.",
+      "description": "잠시 후 다시 시도해주세요.",
+      "retry": "다시 시도"
+    },
+    "empty": {
+      "message": "등록된 리뷰가 없습니다.",
+      "description": "첫 번째 리뷰를 작성해보세요."
+    }
+  },
   "error": {
     "title": "예상치 못한 오류가 발생했습니다",
     "description": "페이지를 새로고침하거나 잠시 후 다시 시도해주세요"

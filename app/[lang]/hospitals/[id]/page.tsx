@@ -7,6 +7,8 @@ import {
   getAllHospitalIds,
 } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { HospitalDetailCard } from 'entities/hospital/ui/HospitalDetailCard';
+import { getHospitalReviews } from 'entities/review';
+import { ReviewCarouselWrapper } from 'widgets/review-carousel';
 
 interface HospitalDetailPageProps {
   params: Promise<{
@@ -22,12 +24,24 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
     // 병원 상세 데이터 조회
     const { hospital } = await getHospitalDetail({ id });
 
+    // 병원 리뷰 데이터 조회
+    const { reviews } = await getHospitalReviews({
+      hospitalId: id,
+      limit: 10,
+    });
+
     // 다국어 사전 조회
     const dict = await getDictionary(lang);
 
     return (
-      <div className='container mx-auto px-4 py-6'>
+      <div className='container mx-auto space-y-8 px-4 py-6'>
+        {/* 병원 상세 정보 */}
         <HospitalDetailCard hospital={hospital} lang={lang} dict={dict} />
+
+        {/* 리뷰 섹션 */}
+        <div className='border-t border-gray-200 pt-8'>
+          <ReviewCarouselWrapper reviews={reviews} lang={lang} dict={dict} />
+        </div>
       </div>
     );
   } catch (error) {
