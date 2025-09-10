@@ -10,6 +10,7 @@ interface UseInfiniteHospitalsParams {
   sortOrder?: 'asc' | 'desc';
   specialtyType?: MedicalSpecialtyType;
   minRating?: number;
+  initialData?: GetHospitalsResponse;
 }
 
 interface HospitalsApiResponse {
