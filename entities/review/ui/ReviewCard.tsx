@@ -6,6 +6,7 @@ import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar } from 'lucide-react';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface ReviewCardProps {
   review: ReviewCardData;
@@ -13,6 +14,7 @@ interface ReviewCardProps {
 }
 
 export function ReviewCard({ review, lang }: ReviewCardProps) {
+  const router = useLocalizedRouter();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const title = extractLocalizedText(review.title, lang) || '';
@@ -39,8 +41,16 @@ export function ReviewCard({ review, lang }: ReviewCardProps) {
     }).format(new Date(date));
   };
 
+  // 리뷰 상세 페이지로 이동
+  const handleCardClick = () => {
+    router.push(`/reviews/${review.id}`);
+  };
+
   return (
-    <div className='flex h-full flex-col rounded-lg border border-gray-200 bg-white p-4 shadow-sm'>
+    <div
+      className='flex h-full cursor-pointer flex-col rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md'
+      onClick={handleCardClick}
+    >
       {/* 헤더 */}
       <div className='mb-3 flex items-start justify-between'>
         <div className='flex items-center space-x-2'>
@@ -97,7 +107,10 @@ export function ReviewCard({ review, lang }: ReviewCardProps) {
               {displayImages.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setSelectedImageIndex(index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImageIndex(index);
+                  }}
                   className={`h-2 w-2 rounded-full ${
                     index === selectedImageIndex ? 'bg-gray-800' : 'bg-gray-300'
                   }`}

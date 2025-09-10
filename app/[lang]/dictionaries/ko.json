@@ -51,6 +51,11 @@
       "description": "첫 번째 리뷰를 작성해보세요."
     }
   },
+  "reviewDetail": {
+    "title": "시술후기",
+    "content": "후기 내용",
+    "backButton": "뒤로 가기"
+  },
   "error": {
     "title": "예상치 못한 오류가 발생했습니다",
     "description": "페이지를 새로고침하거나 잠시 후 다시 시도해주세요"
