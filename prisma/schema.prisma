@@ -35,25 +35,26 @@ model District {
 }
 
 model Doctor {
-  id                 String                   @id @db.Uuid
-  name               Json
-  position           Json?
-  licenseNumber      String?                  @db.VarChar(50)
-  licenseDate        DateTime?
-  description        String?                  @db.VarChar(500)
-  genderType         DoctorGenderType
-  viewCount          Int                      @default(0)
-  bookmarkCount      Int                      @default(0)
-  order              Int?
-  stop               Boolean                  @default(false)
-  approvalStatusType DoctorApprovalStatusType @default(APPROVED)
-  rejectReason       String?
-  baseId             String?                  @db.Uuid
-  hasClone           Boolean                  @default(false)
-  hospitalId         String                   @db.Uuid
-  createdAt          DateTime                 @default(now())
-  updatedAt          DateTime
-  Hospital           Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  id                     String                   @id @db.Uuid
+  name                   Json
+  position               Json?
+  licenseNumber          String?                  @db.VarChar(50)
+  licenseDate            DateTime?
+  description            String?                  @db.VarChar(500)
+  genderType             DoctorGenderType
+  viewCount              Int                      @default(0)
+  bookmarkCount          Int                      @default(0)
+  order                  Int?
+  stop                   Boolean                  @default(false)
+  approvalStatusType     DoctorApprovalStatusType @default(APPROVED)
+  rejectReason           String?
+  baseId                 String?                  @db.Uuid
+  hasClone               Boolean                  @default(false)
+  hospitalId             String                   @db.Uuid
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime
+  Hospital               Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  DoctorMedicalSpecialty DoctorMedicalSpecialty[]
 
   @@index([baseId])
   @@index([hospitalId])
@@ -285,8 +286,23 @@ model MedicalSpecialty {
   isActive                 Boolean                    @default(true)
   createdAt                DateTime                   @default(now())
   updatedAt                DateTime
+  DoctorMedicalSpecialty   DoctorMedicalSpecialty[]
   HospitalMedicalSpecialty HospitalMedicalSpecialty[]
 
+  @@schema("public")
+}
+
+model DoctorMedicalSpecialty {
+  id                 String           @id @db.Uuid
+  doctorId           String           @db.Uuid
+  medicalSpecialtyId String           @db.Uuid
+  createdAt          DateTime         @default(now())
+  Doctor             Doctor           @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, medicalSpecialtyId])
+  @@index([doctorId])
+  @@index([medicalSpecialtyId])
   @@schema("public")
 }
 
