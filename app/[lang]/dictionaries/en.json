@@ -63,6 +63,33 @@
       "description": "Be the first to write a review."
     }
   },
+  "allReviews": {
+    "title": "All Reviews",
+    "subtitle": "Check out reviews from all hospitals",
+    "loadingMore": "Loading more reviews...",
+    "allLoaded": "All reviews loaded.",
+    "retry": "Retry",
+    "filter": {
+      "all": "All",
+      "specialty": "By Specialty",
+      "eyes": "Eyes",
+      "nose": "Nose",
+      "facialContouring": "Facial Contouring",
+      "breast": "Breast",
+      "stemCell": "Stem Cell",
+      "liposuction": "Liposuction",
+      "lifting": "Lifting",
+      "hairTransplant": "Hair Transplant"
+    },
+    "sort": {
+      "latest": "Latest",
+      "popular": "Popular"
+    },
+    "empty": {
+      "title": "No reviews found",
+      "description": "Try searching with different criteria."
+    }
+  },
   "reviewDetail": {
     "title": "Review",
     "content": "Review Content",

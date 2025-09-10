@@ -63,6 +63,33 @@
       "description": "เป็นคนแรกที่เขียนรีวิว"
     }
   },
+  "allReviews": {
+    "title": "รีวิวทั้งหมด",
+    "subtitle": "ดูรีวิวจากโรงพยาบาลทั้งหมด",
+    "loadingMore": "กำลังโหลดรีวิวเพิ่มเติม...",
+    "allLoaded": "โหลดรีวิวทั้งหมดแล้ว",
+    "retry": "ลองใหม่",
+    "filter": {
+      "all": "ทั้งหมด",
+      "specialty": "แยกตามส่วน",
+      "eyes": "ตา",
+      "nose": "จมูก",
+      "facialContouring": "โครงหน้า",
+      "breast": "หน้าอก",
+      "stemCell": "สเต็มเซลล์",
+      "liposuction": "ดูดไขมัน",
+      "lifting": "ลิฟติ้ง",
+      "hairTransplant": "ปลูกผม"
+    },
+    "sort": {
+      "latest": "ล่าสุด",
+      "popular": "ยอดนิยม"
+    },
+    "empty": {
+      "title": "ไม่พบรีวิว",
+      "description": "ลองค้นหาด้วยเงื่อนไขอื่น"
+    }
+  },
   "reviewDetail": {
     "title": "รีวิวการรักษา",
     "content": "เนื้อหารีวิว",
