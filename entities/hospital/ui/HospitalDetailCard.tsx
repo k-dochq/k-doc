@@ -9,6 +9,7 @@ import { HospitalDescription } from './HospitalDescription';
 import { HospitalOperatingHours } from './HospitalOperatingHours';
 import { HospitalInteriorGallery } from './HospitalInteriorGallery';
 import { HospitalStats } from './HospitalStats';
+import { HospitalDoctors } from './HospitalDoctors';
 
 interface HospitalDetailCardProps {
   hospital: Hospital & {
@@ -40,6 +41,9 @@ export function HospitalDetailCard({ hospital, lang, dict }: HospitalDetailCardP
 
         {/* 운영시간 */}
         <HospitalOperatingHours openingHours={hospital.openingHours} lang={lang} />
+
+        {/* 소속의료진 */}
+        <HospitalDoctors doctors={hospital.doctors || []} lang={lang} dict={dict} />
 
         {/* 병원 내부 이미지 */}
         <HospitalInteriorGallery
