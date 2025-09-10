@@ -1,11 +1,12 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getDictionary } from '../../../dictionaries';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { extractLocalizedText } from 'shared/lib';
 import { getHospitalDetail } from 'entities/hospital';
-import { getHospitalReviews } from 'entities/review';
-import { HospitalReviewsInfiniteList } from './HospitalReviewsInfiniteList';
-import { ErrorBoundary, LocalizedErrorDisplay } from 'shared/ui/error-display';
+import { HospitalReviewsContent } from './HospitalReviewsContent';
+import { HospitalReviewsSkeleton } from './HospitalReviewsSkeleton';
 
 interface HospitalReviewsPageProps {
   params: Promise<{
@@ -21,42 +22,56 @@ export default async function HospitalReviewsPage({ params }: HospitalReviewsPag
   const { lang, id } = await params;
 
   try {
-    // 병원 정보와 첫 페이지 리뷰 데이터를 병렬로 조회
-    const [hospitalResult, dict, initialReviews] = await Promise.all([
-      getHospitalDetail({ id }),
-      getDictionary(lang),
-      getHospitalReviews({ hospitalId: id, limit: 10 }),
-    ]);
-
-    const { hospital } = hospitalResult;
+    // 즉시 렌더링 가능한 데이터만 먼저 로드
+    const dict = await getDictionary(lang);
 
     return (
       <div className='container mx-auto space-y-6 px-4 py-6'>
-        {/* 헤더 */}
+        {/* 헤더 - 병원 정보 로딩을 기다리지 않고 기본 제목 먼저 표시 */}
         <div className='border-b border-gray-200 pb-4'>
           <h1 className='text-2xl font-bold text-gray-900'>
             {dict.hospitalReviews?.title || '시술후기'}
           </h1>
-          <p className='mt-2 text-gray-600'>
-            {extractLocalizedText(hospital.name, lang)}{' '}
-            {dict.hospitalReviews?.subtitle || '의 시술후기'}
-          </p>
+          <Suspense
+            fallback={<div className='mt-2 h-5 w-64 animate-pulse rounded bg-gray-200'></div>}
+          >
+            <HospitalSubtitle hospitalId={id} lang={lang} dict={dict} />
+          </Suspense>
         </div>
 
-        {/* 리뷰 리스트 */}
-        <ErrorBoundary fallback={<LocalizedErrorDisplay error={null} lang={lang} dict={dict} />}>
-          <HospitalReviewsInfiniteList
-            hospitalId={id}
-            lang={lang}
-            dict={dict}
-            initialData={initialReviews}
-          />
-        </ErrorBoundary>
+        {/* 리뷰 리스트 - Suspense로 감싸서 스트리밍 */}
+        <Suspense fallback={<HospitalReviewsSkeleton />}>
+          <HospitalReviewsContent hospitalId={id} lang={lang} dict={dict} />
+        </Suspense>
       </div>
     );
   } catch (error) {
     console.error('Error loading hospital reviews page:', error);
     notFound();
+  }
+}
+
+// 병원 부제목을 별도 컴포넌트로 분리하여 스트리밍
+async function HospitalSubtitle({
+  hospitalId,
+  lang,
+  dict,
+}: {
+  hospitalId: string;
+  lang: Locale;
+  dict: Dictionary;
+}) {
+  try {
+    const { hospital } = await getHospitalDetail({ id: hospitalId });
+
+    return (
+      <p className='mt-2 text-gray-600'>
+        {extractLocalizedText(hospital.name, lang)}{' '}
+        {dict.hospitalReviews?.subtitle || '의 시술후기'}
+      </p>
+    );
+  } catch {
+    return <p className='mt-2 text-gray-600'>{dict.hospitalReviews?.subtitle || '의 시술후기'}</p>;
   }
 }
 

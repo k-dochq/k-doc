@@ -1,9 +1,11 @@
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getDictionary } from '../../dictionaries';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import { getReviewDetail } from 'entities/review';
-import { ReviewDetailCard } from 'entities/review/ui';
+import { ReviewDetailContent } from './ReviewDetailContent';
+import { ReviewDetailSkeleton } from './ReviewDetailSkeleton';
 
 interface ReviewDetailPageProps {
   params: Promise<{
@@ -19,15 +21,19 @@ export default async function ReviewDetailPage({ params }: ReviewDetailPageProps
   const { lang, id } = await params;
 
   try {
-    // 리뷰 상세 데이터 조회
-    const { review } = await getReviewDetail({ reviewId: id });
-
-    // 다국어 사전 조회
+    // 즉시 렌더링 가능한 데이터만 먼저 로드
     const dict = await getDictionary(lang);
 
-    return <ReviewDetailCard review={review} lang={lang} dict={dict} />;
+    return (
+      <div className='container mx-auto px-4 py-6'>
+        {/* 리뷰 상세 내용 - Suspense로 스트리밍 */}
+        <Suspense fallback={<ReviewDetailSkeleton />}>
+          <ReviewDetailContent reviewId={id} lang={lang} dict={dict} />
+        </Suspense>
+      </div>
+    );
   } catch (error) {
-    console.error('Error loading review detail:', error);
+    console.error('Error loading review detail page:', error);
     notFound();
   }
 }
