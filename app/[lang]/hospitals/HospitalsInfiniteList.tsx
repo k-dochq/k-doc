@@ -6,7 +6,7 @@ import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { interpolateTemplate } from 'shared/lib';
-import { HospitalListCard } from 'entities/hospital';
+import { HospitalListCard, type GetHospitalsResponse } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
 import { HospitalSortSelector, type SortOption } from 'features/hospital-sort';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
@@ -19,6 +19,7 @@ interface HospitalsInfiniteListProps {
     specialtyType?: string;
     minRating?: string;
   };
+  initialData?: GetHospitalsResponse;
 }
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {

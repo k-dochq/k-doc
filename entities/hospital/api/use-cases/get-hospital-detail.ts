@@ -28,7 +28,7 @@ export interface GetHospitalDetailResponse {
 }
 
 /**
- * 병원 상세 정보를 조회합니다.
+ * 병원 상세 정보를 조회합니다. (정적 생성용 - 조회수 증가 없음)
  */
 export async function getHospitalDetail(
   request: GetHospitalDetailRequest,
@@ -65,18 +65,8 @@ export async function getHospitalDetail(
       throw new Error(`Hospital not found with id: ${id}`);
     }
 
-    // 조회수 증가
-    await prisma.hospital.update({
-      where: { id },
-      data: {
-        viewCount: {
-          increment: 1,
-        },
-      },
-    });
-
-    // 데이터 변환
-    const hospital = transformHospitalDetail(hospitalData);
+    // 데이터 변환 (조회수 증가 없음)
+    const hospital = transformHospitalDetailStatic(hospitalData);
 
     return {
       hospital,
@@ -88,7 +78,80 @@ export async function getHospitalDetail(
 }
 
 /**
- * Prisma 데이터를 Hospital 타입으로 변환합니다.
+ * 모든 병원 ID 목록을 조회합니다. (정적 생성용)
+ */
+export async function getAllHospitalIds(): Promise<string[]> {
+  try {
+    const hospitals = await prisma.hospital.findMany({
+      where: {
+        approvalStatusType: 'APPROVED',
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    return hospitals.map((hospital) => hospital.id);
+  } catch (error) {
+    console.error('Error fetching hospital IDs:', error);
+    throw handleDatabaseError(error, 'getAllHospitalIds');
+  }
+}
+
+/**
+ * Prisma 데이터를 Hospital 타입으로 변환합니다. (정적 생성용 - 조회수 증가 없음)
+ */
+function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospital & {
+  description?: string;
+  openingHours?: OpeningHours;
+} {
+  // 메인 이미지 URL 추출 (MAIN 타입 우선, 없으면 첫 번째 이미지)
+  const mainImage =
+    data.HospitalImage.find((img) => img.imageType === 'MAIN') || data.HospitalImage[0];
+  const mainImageUrl = mainImage?.imageUrl || null;
+
+  // 진료 부위 변환
+  const medicalSpecialties = data.HospitalMedicalSpecialty.map((hms) => ({
+    id: hms.MedicalSpecialty.id,
+    name: hms.MedicalSpecialty.name,
+    specialtyType: hms.MedicalSpecialty.specialtyType,
+  }));
+
+  // 운영시간은 JSON 필드에서 직접 가져옴 (타입 안전성을 위해 캐스팅)
+  const openingHours = data.openingHours as OpeningHours;
+
+  return {
+    id: data.id,
+    name: data.name,
+    address: data.address,
+    rating: data.rating,
+    reviewCount: data.reviewCount,
+    bookmarkCount: data.bookmarkCount,
+    viewCount: data.viewCount, // 조회수 증가 없음
+    approvalStatusType: data.approvalStatusType,
+    ranking: data.ranking,
+    createdAt: data.createdAt,
+    updatedAt: data.updatedAt,
+    mainImageUrl,
+    hospitalImages: data.HospitalImage.map((img) => ({
+      id: img.id,
+      hospitalId: img.hospitalId,
+      imageType: img.imageType,
+      imageUrl: img.imageUrl,
+      alt: img.alt,
+      order: img.order,
+      isActive: img.isActive,
+      createdAt: img.createdAt,
+      updatedAt: img.updatedAt,
+    })),
+    medicalSpecialties,
+    description: extractLocalizedText(data.description, 'ko') || undefined,
+    openingHours,
+  };
+}
+
+/**
+ * Prisma 데이터를 Hospital 타입으로 변환합니다. (동적 조회용 - 조회수 증가 포함)
  */
 function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & {
   description?: string;

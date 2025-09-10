@@ -1,8 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getDictionary } from '../../dictionaries';
-import { type Locale } from 'shared/config';
+import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
-import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
+import {
+  getHospitalDetail,
+  getAllHospitalIds,
+} from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { HospitalDetailCard } from 'entities/hospital/ui/HospitalDetailCard';
 
 interface HospitalDetailPageProps {
@@ -35,6 +38,37 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
 
 // ISR 설정 - 10분마다 재검증
 export const revalidate = 600;
+
+// 빌드 타임에 생성되지 않은 경로도 동적으로 생성 허용
+export const dynamicParams = true;
+
+// 정적 생성을 위한 파라미터 생성
+export async function generateStaticParams() {
+  try {
+    // 모든 병원 ID 조회
+    const hospitalIds = await getAllHospitalIds();
+
+    // 모든 언어와 병원 ID 조합 생성
+    const params = [];
+    for (const lang of SUPPORTED_LOCALES) {
+      for (const id of hospitalIds) {
+        params.push({
+          lang,
+          id,
+        });
+      }
+    }
+
+    console.log(
+      `[${new Date().toISOString()}] 정적 생성할 병원 페이지 수: ${params.length} (병원: ${hospitalIds.length}개 × 언어: ${SUPPORTED_LOCALES.length}개)`,
+    );
+    return params;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    // 에러 발생 시 빈 배열 반환하여 동적 렌더링으로 fallback
+    return [];
+  }
+}
 
 // 정적 생성을 위한 메타데이터
 export async function generateMetadata({ params }: HospitalDetailPageProps) {
