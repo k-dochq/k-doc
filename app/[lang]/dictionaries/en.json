@@ -39,6 +39,18 @@
       "empty": "No medical staff registered."
     }
   },
+  "reviewCarousel": {
+    "title": "Reviews",
+    "error": {
+      "message": "An error occurred while loading reviews.",
+      "description": "Please try again later.",
+      "retry": "Retry"
+    },
+    "empty": {
+      "message": "No reviews available.",
+      "description": "Be the first to write a review."
+    }
+  },
   "error": {
     "title": "An unexpected error occurred",
     "description": "Please refresh the page or try again later"

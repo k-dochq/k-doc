@@ -1,0 +1,94 @@
+import { prisma } from 'shared/lib/prisma';
+import {
+  type GetHospitalReviewsParams,
+  type GetHospitalReviewsResponse,
+  type ReviewCardData,
+} from '../../model/types';
+
+export async function getHospitalReviews({
+  hospitalId,
+  limit = 10,
+  offset = 0,
+}: GetHospitalReviewsParams): Promise<GetHospitalReviewsResponse> {
+  try {
+    // 병원의 총 리뷰 수 조회
+    const totalCount = await prisma.review.count({
+      where: {
+        hospitalId,
+      },
+    });
+
+    // 리뷰 목록 조회 (이미지 포함)
+    const reviews = await prisma.review.findMany({
+      where: {
+        hospitalId,
+      },
+      include: {
+        User: {
+          select: {
+            displayName: true,
+            nickName: true,
+          },
+        },
+        MedicalSpecialty: {
+          select: {
+            name: true,
+          },
+        },
+        ReviewImage: {
+          select: {
+            id: true,
+            imageType: true,
+            imageUrl: true,
+            alt: true,
+            order: true,
+          },
+          orderBy: {
+            order: 'asc',
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: limit,
+      skip: offset,
+    });
+
+    // 데이터 변환
+    const reviewCardData: ReviewCardData[] = reviews.map((review) => ({
+      id: review.id,
+      rating: review.rating,
+      title: review.title as Record<string, string> | null,
+      content: review.content as Record<string, string> | null,
+      isRecommended: review.isRecommended,
+      concerns: review.concerns,
+      createdAt: review.createdAt,
+      user: {
+        displayName: review.User?.displayName || null,
+        nickName: review.User?.nickName || null,
+      },
+      medicalSpecialty: {
+        name: review.MedicalSpecialty.name as Record<string, string>,
+      },
+      images: review.ReviewImage.map((img) => ({
+        id: img.id,
+        imageType: img.imageType,
+        imageUrl: img.imageUrl,
+        alt: img.alt,
+        order: img.order,
+      })),
+    }));
+
+    const hasMore = offset + limit < totalCount;
+
+    return {
+      reviews: reviewCardData,
+      totalCount,
+      hasMore,
+    };
+  } catch (error) {
+    console.error('Error fetching hospital reviews:', error);
+    throw new Error('병원 리뷰를 불러오는 중 오류가 발생했습니다.');
+  }
+}
