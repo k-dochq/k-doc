@@ -1,32 +1,49 @@
 import { prisma } from 'shared/lib/prisma';
 import {
-  type GetHospitalReviewsParams,
-  type GetHospitalReviewsResponse,
+  type GetAllReviewsParams,
+  type GetAllReviewsResponse,
   type ReviewCardData,
 } from '../../model/types';
 
-export async function getHospitalReviews({
-  hospitalId,
+export async function getAllReviews({
   page = 1,
   limit = 10,
+  medicalSpecialtyId,
+  sortBy = 'latest',
   offset,
-}: GetHospitalReviewsParams): Promise<GetHospitalReviewsResponse> {
-  try {
-    // offset 계산 (page가 제공된 경우 우선 사용)
-    const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
+}: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
+  // offset이 제공되면 사용하고, 그렇지 않으면 page를 기반으로 계산
+  const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
 
-    // 병원의 총 리뷰 수 조회
+  try {
+    // 필터 조건 구성
+    const whereCondition = {
+      ...(medicalSpecialtyId && { medicalSpecialtyId }),
+    };
+
+    // 정렬 조건 구성
+    const orderBy = (() => {
+      switch (sortBy) {
+        case 'popular':
+          return [
+            { likeCount: 'desc' as const },
+            { viewCount: 'desc' as const },
+            { createdAt: 'desc' as const },
+          ];
+        case 'latest':
+        default:
+          return [{ createdAt: 'desc' as const }];
+      }
+    })();
+
+    // 전체 리뷰 수 조회
     const totalCount = await prisma.review.count({
-      where: {
-        hospitalId,
-      },
+      where: whereCondition,
     });
 
     // 리뷰 목록 조회 (이미지 포함)
     const reviews = await prisma.review.findMany({
-      where: {
-        hospitalId,
-      },
+      where: whereCondition,
       include: {
         User: {
           select: {
@@ -58,27 +75,25 @@ export async function getHospitalReviews({
           },
         },
       },
-      orderBy: {
-        createdAt: 'desc',
-      },
+      orderBy,
       take: limit,
       skip: calculatedOffset,
     });
 
-    // 데이터 변환
+    // ReviewCardData 형태로 변환
     const reviewCardData: ReviewCardData[] = reviews.map((review) => ({
       id: review.id,
       rating: review.rating,
       title: review.title as Record<string, string> | null,
       content: review.content as Record<string, string> | null,
-      isRecommended: review.isRecommended,
       concerns: review.concerns,
       createdAt: review.createdAt,
       viewCount: review.viewCount,
       likeCount: review.likeCount,
+      isRecommended: review.isRecommended,
       user: {
-        displayName: review.User?.displayName || null,
-        nickName: review.User?.nickName || null,
+        displayName: review.User.displayName,
+        nickName: review.User.nickName,
       },
       hospital: {
         name: review.Hospital.name as Record<string, string>,
@@ -116,7 +131,7 @@ export async function getHospitalReviews({
       hasMore,
     };
   } catch (error) {
-    console.error('Error fetching hospital reviews:', error);
-    throw new Error('병원 리뷰를 불러오는 중 오류가 발생했습니다.');
+    console.error('Error fetching all reviews:', error);
+    throw new Error('전체 리뷰 목록을 불러오는 중 오류가 발생했습니다.');
   }
 }

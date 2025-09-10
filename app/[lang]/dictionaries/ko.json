@@ -63,6 +63,33 @@
       "description": "첫 번째 후기를 작성해보세요."
     }
   },
+  "allReviews": {
+    "title": "전체 시술후기",
+    "subtitle": "모든 병원의 시술후기를 확인하세요",
+    "loadingMore": "더 많은 후기를 불러오는 중...",
+    "allLoaded": "모든 후기를 불러왔습니다.",
+    "retry": "다시 시도",
+    "filter": {
+      "all": "전체",
+      "specialty": "부위별",
+      "eyes": "눈",
+      "nose": "코",
+      "facialContouring": "윤곽",
+      "breast": "가슴",
+      "stemCell": "줄기세포",
+      "liposuction": "지방흡입",
+      "lifting": "리프팅",
+      "hairTransplant": "모발이식"
+    },
+    "sort": {
+      "latest": "최신순",
+      "popular": "인기순"
+    },
+    "empty": {
+      "title": "검색된 후기가 없습니다",
+      "description": "다른 조건으로 검색해보세요."
+    }
+  },
   "reviewDetail": {
     "title": "시술후기",
     "content": "후기 내용",

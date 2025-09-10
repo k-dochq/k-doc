@@ -28,6 +28,7 @@ export async function getReviewDetail({
         MedicalSpecialty: {
           select: {
             name: true,
+            specialtyType: true,
           },
         },
         Hospital: {
@@ -66,20 +67,35 @@ export async function getReviewDetail({
       isRecommended: review.isRecommended,
       concerns: review.concerns,
       createdAt: review.createdAt,
+      viewCount: review.viewCount,
+      likeCount: review.likeCount,
       user: {
         displayName: review.User?.displayName || null,
         nickName: review.User?.nickName || null,
       },
+      hospital: {
+        name: review.Hospital.name as Record<string, string>,
+      },
       medicalSpecialty: {
         name: review.MedicalSpecialty.name as Record<string, string>,
+        specialtyType: review.MedicalSpecialty.specialtyType,
       },
-      images: review.ReviewImage.map((img) => ({
-        id: img.id,
-        imageType: img.imageType,
-        imageUrl: img.imageUrl,
-        alt: img.alt,
-        order: img.order,
-      })),
+      images: {
+        before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
+          id: img.id,
+          imageType: img.imageType,
+          imageUrl: img.imageUrl,
+          alt: img.alt,
+          order: img.order,
+        })),
+        after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
+          id: img.id,
+          imageType: img.imageType,
+          imageUrl: img.imageUrl,
+          alt: img.alt,
+          order: img.order,
+        })),
+      },
     };
 
     return {

@@ -22,8 +22,8 @@ export function ReviewCard({ review, lang }: ReviewCardProps) {
   const medicalSpecialtyName = extractLocalizedText(review.medicalSpecialty.name, lang) || '';
 
   // Before/After 이미지 분리
-  const beforeImages = review.images.filter((img) => img.imageType === 'BEFORE');
-  const afterImages = review.images.filter((img) => img.imageType === 'AFTER');
+  const beforeImages = review.images.before;
+  const afterImages = review.images.after;
 
   // 표시할 이미지 선택 (After 우선, 없으면 Before)
   const displayImages = afterImages.length > 0 ? afterImages : beforeImages;
