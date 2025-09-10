@@ -51,6 +51,11 @@
       "description": "Be the first to write a review."
     }
   },
+  "reviewDetail": {
+    "title": "Review",
+    "content": "Review Content",
+    "backButton": "Go Back"
+  },
   "error": {
     "title": "An unexpected error occurred",
     "description": "Please refresh the page or try again later"
