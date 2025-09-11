@@ -29,20 +29,16 @@ export function QuickMenu({ lang, dict, categories }: QuickMenuProps) {
       case 'ko':
         return nameObj.ko_KR || nameObj.ko || 'Unknown';
       case 'en':
-        return nameObj.en_US || nameObj.en || 'Unknown';
+        return nameObj.en_US || nameObj.en || nameObj.ko_KR;
       case 'th':
-        return nameObj.th_TH || nameObj.th || 'Unknown';
+        return nameObj.th_TH || nameObj.th || nameObj.ko_KR;
       default:
-        return nameObj.ko_KR || nameObj.ko || 'Unknown';
+        return nameObj.ko_KR || nameObj.ko || nameObj.ko_KR;
     }
   };
 
   return (
     <div className='w-full'>
-      <div className='mb-4'>
-        <h2 className='text-lg font-semibold text-gray-900'>{dict.quickMenu.title}</h2>
-      </div>
-
       <div className='grid grid-cols-5 gap-4'>
         {categories.map((category) => (
           <button

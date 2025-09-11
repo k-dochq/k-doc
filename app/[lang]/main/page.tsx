@@ -21,7 +21,7 @@ export default async function MainPage({ params }: MainPageProps) {
         <SearchBar lang={lang} dict={dict} />
       </div>
 
-      <div className=''>
+      <div className='mt-4'>
         <QuickMenuWrapper lang={lang} dict={dict} />
       </div>
 
