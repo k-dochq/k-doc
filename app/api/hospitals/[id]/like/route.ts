@@ -31,25 +31,20 @@ export async function GET(request: NextRequest, { params }: RouteParams): Promis
       authService,
     );
 
-    // 사용자 인증 확인
-    const currentUser = await authService.getCurrentUser();
-    if (!currentUser) {
-      const authFailedError = new Error('User authentication failed');
-      const requestId = routeErrorLogger.logError({
-        error: authFailedError,
-        endpoint,
-        method,
-        request,
-      });
+    // 사용자 인증 확인 (비로그인 사용자도 허용)
+    const currentUser = await authService.getCurrentUserOrNull();
 
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Unauthorized',
-          requestId,
-        },
-        { status: 401 },
-      );
+    // 비로그인 사용자의 경우 기본값 반환
+    if (!currentUser) {
+      // 전체 좋아요 수만 조회
+      const likeCount = await hospitalLikeRepository.countLikesByHospital(hospitalId);
+
+      const response: GetHospitalLikeStatusResponse = {
+        isLiked: false, // 비로그인 사용자는 좋아요 안함
+        likeCount,
+      };
+
+      return NextResponse.json({ success: true, data: response });
     }
 
     // Use Case 실행
@@ -139,22 +134,13 @@ export async function POST(request: NextRequest, { params }: RouteParams): Promi
       authService,
     );
 
-    // 사용자 인증 확인
-    const currentUser = await authService.getCurrentUser();
+    // 사용자 인증 확인 (좋아요 토글은 로그인 필수)
+    const currentUser = await authService.getCurrentUserOrNull();
     if (!currentUser) {
-      const authFailedError = new Error('User authentication failed');
-      const requestId = routeErrorLogger.logError({
-        error: authFailedError,
-        endpoint,
-        method,
-        request,
-      });
-
       return NextResponse.json(
         {
           success: false,
-          error: 'Unauthorized',
-          requestId,
+          error: 'Login required',
         },
         { status: 401 },
       );
