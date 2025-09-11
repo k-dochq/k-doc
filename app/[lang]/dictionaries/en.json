@@ -141,5 +141,14 @@
       "tryAgain": "Try Again",
       "goHome": "Go Home"
     }
+  },
+  "hospital": {
+    "like": {
+      "like": "Like",
+      "liked": "Liked",
+      "loading": "Loading...",
+      "countLabel": "",
+      "error": "Error occurred"
+    }
   }
 }

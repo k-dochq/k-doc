@@ -1,5 +1,6 @@
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
+import { type Dictionary } from 'shared/model/types';
 import { type Hospital } from '../api/entities/types';
 import { type OpeningHours } from '../api/entities/opening-hours-types';
 import { HospitalMainImage } from './HospitalMainImage';
@@ -10,6 +11,7 @@ import { HospitalOperatingHours } from './HospitalOperatingHours';
 import { HospitalInteriorGallery } from './HospitalInteriorGallery';
 import { HospitalStats } from './HospitalStats';
 import { HospitalDoctors } from './HospitalDoctors';
+import { HospitalLikeSection } from './HospitalLikeSection';
 
 interface HospitalDetailCardProps {
   hospital: Hospital & {
@@ -17,7 +19,7 @@ interface HospitalDetailCardProps {
     openingHours?: OpeningHours;
   };
   lang: Locale;
-  dict: Record<string, any>; // 사전 타입도 개선
+  dict: Dictionary;
 }
 
 export function HospitalDetailCard({ hospital, lang, dict }: HospitalDetailCardProps) {
@@ -32,6 +34,9 @@ export function HospitalDetailCard({ hospital, lang, dict }: HospitalDetailCardP
       <div className='space-y-6 p-6'>
         {/* 기본 정보 (이름, 평점, 주소) */}
         <HospitalBasicInfo hospital={hospital} lang={lang} />
+
+        {/* 좋아요 버튼 */}
+        <HospitalLikeSection hospitalId={hospital.id} lang={lang} dict={dict} />
 
         {/* 진료 부위 태그 */}
         <HospitalSpecialties medicalSpecialties={hospital.medicalSpecialties} lang={lang} />
