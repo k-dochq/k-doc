@@ -1,5 +1,6 @@
-// 좋아요한 병원 관련 도메인 타입 정의
+// 좋아요한 병원/리뷰 관련 도메인 타입 정의
 import type { Hospital } from 'entities/hospital/api/entities/types';
+import type { ReviewCardData } from 'entities/review/model/types';
 
 export interface LikedHospitalsRequest {
   page: number;
@@ -31,4 +32,20 @@ export interface HospitalDistrict {
   id: string;
   name: Record<string, string>;
   countryCode: string;
+}
+
+// 좋아요한 리뷰 관련 타입
+export interface GetLikedReviewsRequest {
+  cursor?: string;
+  limit: number;
+}
+
+export interface GetLikedReviewsResult {
+  success: boolean;
+  data?: {
+    reviews: ReviewCardData[];
+    nextCursor?: string;
+    hasMore: boolean;
+  };
+  error?: string;
 }

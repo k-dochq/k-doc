@@ -12,7 +12,7 @@ importers:
         specifier: ^4.0.1
         version: 4.0.2
       '@prisma/client':
-        specifier: ^6.15.0
+        specifier: 6.15.0
         version: 6.15.0(prisma@6.15.0(typescript@5.9.2))(typescript@5.9.2)
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.1.16

@@ -7,3 +7,11 @@ export const likedHospitalsRequestSchema = z.object({
 });
 
 export type LikedHospitalsRequestSchema = z.infer<typeof likedHospitalsRequestSchema>;
+
+// 좋아요한 리뷰 요청 스키마
+export const likedReviewsRequestSchema = z.object({
+  cursor: z.string().optional(),
+  limit: z.number().int().min(1).max(50).default(10),
+});
+
+export type LikedReviewsRequestSchema = z.infer<typeof likedReviewsRequestSchema>;

@@ -36,5 +36,16 @@ export const queryKeys = {
       [...queryKeys.reviews.hospital(hospitalId), 'infinite', filters] as const,
     allInfinite: (filters: Record<string, unknown>) =>
       [...queryKeys.reviews.lists(), 'infinite', filters] as const,
+    liked: {
+      all: () => [...queryKeys.reviews.all, 'liked'] as const,
+      list: (params: Record<string, unknown>) =>
+        [...queryKeys.reviews.liked.all(), params] as const,
+    },
+  },
+
+  // 리뷰 좋아요 관련 쿼리
+  reviewLike: {
+    all: ['review-like'] as const,
+    status: (reviewId: string) => [...queryKeys.reviewLike.all, reviewId] as const,
   },
 } as const;

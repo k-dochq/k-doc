@@ -151,6 +151,15 @@
       "error": "Error occurred"
     }
   },
+  "review": {
+    "like": {
+      "like": "Like",
+      "liked": "Unlike",
+      "loading": "Loading...",
+      "countLabel": "",
+      "error": "Error occurred"
+    }
+  },
   "favorites": {
     "title": "Favorites",
     "hospitals": "Hospitals",

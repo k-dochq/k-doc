@@ -124,7 +124,7 @@ export function ReviewCarousel({ reviews, hospitalId, lang, dict }: ReviewCarous
             {reviews.map((review) => (
               <CarouselItem key={review.id} className='h-full basis-[85%] pl-4'>
                 <div className='h-full'>
-                  <ReviewCard review={review} lang={lang} />
+                  <ReviewCard review={review} lang={lang} dict={dict} />
                 </div>
               </CarouselItem>
             ))}

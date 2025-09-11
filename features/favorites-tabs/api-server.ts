@@ -13,4 +13,6 @@ export type { ILikedHospitalsRepository } from './api/infrastructure/repositorie
 // Use Cases
 export { GetLikedHospitalsUseCase } from './api/use-cases/get-liked-hospitals';
 export type { IGetLikedHospitalsUseCase } from './api/use-cases/get-liked-hospitals';
+export { GetLikedReviewsUseCase } from './api-server/use-cases/get-liked-reviews';
+export { LikedReviewsRepository } from './api-server/repositories/liked-reviews-repository';
 export type * from './api/use-cases/types';

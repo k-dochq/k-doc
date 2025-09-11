@@ -140,7 +140,7 @@ export function AllReviewsInfiniteList({
       ) : (
         <div className='space-y-6'>
           {allReviews.map((review) => (
-            <ReviewCard key={review.id} review={review} lang={lang} />
+            <ReviewCard key={review.id} review={review} lang={lang} dict={dict} />
           ))}
 
           {/* 무한 스크롤 트리거 */}

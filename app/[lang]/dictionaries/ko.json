@@ -151,6 +151,15 @@
       "error": "오류 발생"
     }
   },
+  "review": {
+    "like": {
+      "like": "좋아요",
+      "liked": "좋아요 취소",
+      "loading": "로딩 중...",
+      "countLabel": "개",
+      "error": "오류 발생"
+    }
+  },
   "favorites": {
     "title": "즐겨찾기",
     "hospitals": "병원",

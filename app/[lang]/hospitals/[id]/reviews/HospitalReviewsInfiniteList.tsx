@@ -112,7 +112,7 @@ export function HospitalReviewsInfiniteList({
               key={review.id}
               className='rounded-lg border border-gray-200 bg-white p-6 shadow-sm'
             >
-              <ReviewCard review={review} lang={lang} />
+              <ReviewCard review={review} lang={lang} dict={dict} />
             </div>
           ))}
 
