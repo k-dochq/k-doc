@@ -7,13 +7,16 @@ import { extractLocalizedText } from 'shared/lib';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar } from 'lucide-react';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { ReviewLikeButton } from 'features/review-like/ui/ReviewLikeButton';
+import type { Dictionary } from 'shared/model/types';
 
 interface ReviewCardProps {
   review: ReviewCardData;
   lang: Locale;
+  dict: Dictionary;
 }
 
-export function ReviewCard({ review, lang }: ReviewCardProps) {
+export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
   const router = useLocalizedRouter();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
@@ -138,13 +141,27 @@ export function ReviewCard({ review, lang }: ReviewCardProps) {
 
       {/* 푸터 */}
       <div className='flex items-center justify-between text-xs text-gray-500'>
-        <div className='flex items-center space-x-1'>
-          <User className='h-3 w-3' />
-          <span>{userName}</span>
+        <div className='flex items-center space-x-3'>
+          <div className='flex items-center space-x-1'>
+            <User className='h-3 w-3' />
+            <span>{userName}</span>
+          </div>
+          <div className='flex items-center space-x-1'>
+            <Calendar className='h-3 w-3' />
+            <span>{formatDate(review.createdAt)}</span>
+          </div>
         </div>
-        <div className='flex items-center space-x-1'>
-          <Calendar className='h-3 w-3' />
-          <span>{formatDate(review.createdAt)}</span>
+
+        {/* 좋아요 버튼 */}
+        <div onClick={(e) => e.stopPropagation()}>
+          <ReviewLikeButton
+            reviewId={review.id}
+            locale={lang}
+            dict={dict}
+            size='sm'
+            showCount={true}
+            className='border-0 bg-transparent shadow-none hover:bg-gray-50'
+          />
         </div>
       </div>
 

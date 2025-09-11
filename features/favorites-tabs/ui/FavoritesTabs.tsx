@@ -5,6 +5,7 @@ import { cn } from 'shared/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { type Locale } from 'shared/config';
 import { LikedHospitalsList } from './LikedHospitalsList';
+import { LikedReviewsList } from './LikedReviewsList';
 
 interface FavoritesTabsProps {
   lang: Locale;
@@ -109,13 +110,17 @@ export function FavoritesTabs({ lang, dict }: FavoritesTabsProps) {
           {/* 시술후기 탭 */}
           <CarouselItem className='min-h-[60vh] basis-full pl-0'>
             <div className='p-4'>
-              <div className='py-8 text-center'>
-                <div className='mb-4 text-6xl'>📝</div>
-                <h3 className='mb-2 text-lg font-medium text-gray-900'>
-                  {dict.empty.reviews.title}
-                </h3>
-                <p className='text-gray-500'>{dict.empty.reviews.description}</p>
-              </div>
+              <LikedReviewsList
+                lang={lang}
+                dict={{
+                  loading: dict.loading,
+                  error: dict.error,
+                  retry: dict.retry,
+                  empty: dict.empty.reviews,
+                  loadingMore: dict.loadingMore,
+                  allLoaded: dict.allLoaded,
+                }}
+              />
             </div>
           </CarouselItem>
         </CarouselContent>

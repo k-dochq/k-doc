@@ -1,0 +1,144 @@
+import 'server-only';
+
+import { prisma } from 'shared/lib/prisma';
+import type { ReviewCardData } from 'entities/review/model/types';
+import type { Prisma } from '@prisma/client';
+
+interface GetLikedReviewsParams {
+  userId: string;
+  cursor?: string;
+  limit: number;
+}
+
+interface GetLikedReviewsResponse {
+  reviews: ReviewCardData[];
+  nextCursor?: string;
+  hasMore: boolean;
+}
+
+/**
+ * 좋아요한 리뷰 데이터 액세스 계층
+ */
+export class LikedReviewsRepository {
+  /**
+   * 사용자가 좋아요한 리뷰 목록 조회
+   */
+  async getLikedReviews({
+    userId,
+    cursor,
+    limit,
+  }: GetLikedReviewsParams): Promise<GetLikedReviewsResponse> {
+    // 커서 기반 페이지네이션을 위한 where 조건
+    const whereCondition: Prisma.ReviewLikeWhereInput = {
+      userId,
+      ...(cursor && {
+        createdAt: {
+          lt: new Date(cursor),
+        },
+      }),
+    };
+
+    // 좋아요한 리뷰 조회 (limit + 1로 hasMore 판단)
+    const likedReviews = await prisma.reviewLike.findMany({
+      where: whereCondition,
+      include: {
+        Review: {
+          include: {
+            User: {
+              select: {
+                id: true,
+                displayName: true,
+                nickName: true,
+              },
+            },
+            Hospital: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+            MedicalSpecialty: {
+              select: {
+                id: true,
+                name: true,
+                specialtyType: true,
+              },
+            },
+            ReviewImage: {
+              select: {
+                id: true,
+                imageUrl: true,
+                imageType: true,
+                alt: true,
+                order: true,
+              },
+              where: {
+                isActive: true,
+              },
+              orderBy: {
+                order: 'asc',
+              },
+            },
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: limit + 1, // hasMore 판단을 위해 +1
+    });
+
+    // hasMore 판단 및 실제 반환할 데이터 추출
+    const hasMore = likedReviews.length > limit;
+    const reviews = hasMore ? likedReviews.slice(0, -1) : likedReviews;
+
+    // ReviewCardData 형태로 변환
+    const transformedReviews: ReviewCardData[] = reviews.map((likedReview) => {
+      const review = likedReview.Review;
+
+      // 이미지를 Before/After로 분류
+      const beforeImages = review.ReviewImage.filter((img) => img.imageType === 'BEFORE');
+      const afterImages = review.ReviewImage.filter((img) => img.imageType === 'AFTER');
+
+      return {
+        id: review.id,
+        rating: review.rating,
+        title: review.title as Record<string, string> | null,
+        content: review.content as Record<string, string> | null,
+        isRecommended: review.isRecommended,
+        viewCount: review.viewCount,
+        likeCount: review.likeCount,
+        createdAt: review.createdAt,
+        updatedAt: review.updatedAt,
+        concerns: review.concerns,
+        user: {
+          id: review.User.id,
+          displayName: review.User.displayName,
+          nickName: review.User.nickName,
+        },
+        hospital: {
+          id: review.Hospital.id,
+          name: review.Hospital.name as Record<string, string>,
+        },
+        medicalSpecialty: {
+          id: review.MedicalSpecialty.id,
+          name: review.MedicalSpecialty.name as Record<string, string>,
+          specialtyType: review.MedicalSpecialty.specialtyType,
+        },
+        images: {
+          before: beforeImages,
+          after: afterImages,
+        },
+      };
+    });
+
+    // 다음 커서 설정
+    const nextCursor = hasMore ? reviews[reviews.length - 1].createdAt.toISOString() : undefined;
+
+    return {
+      reviews: transformedReviews,
+      nextCursor,
+      hasMore,
+    };
+  }
+}

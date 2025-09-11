@@ -8,6 +8,7 @@ import { extractLocalizedText } from 'shared/lib';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { ReviewLikeButton } from 'features/review-like/ui/ReviewLikeButton';
 
 interface ReviewDetailCardProps {
   review: ReviewCardData;
@@ -226,14 +227,28 @@ export function ReviewDetailCard({ review, lang, dict }: ReviewDetailCardProps) 
         )}
 
         {/* 푸터 */}
-        <div className='flex items-center justify-between border-t border-gray-100 pt-4 text-sm text-gray-500'>
-          <div className='flex items-center space-x-1'>
-            <User className='h-4 w-4' />
-            <span>{userName}</span>
-          </div>
-          <div className='flex items-center space-x-1'>
-            <Calendar className='h-4 w-4' />
-            <span>{formatDate(review.createdAt)}</span>
+        <div className='border-t border-gray-100 pt-4'>
+          <div className='flex items-center justify-between text-sm text-gray-500'>
+            <div className='flex items-center space-x-4'>
+              <div className='flex items-center space-x-1'>
+                <User className='h-4 w-4' />
+                <span>{userName}</span>
+              </div>
+              <div className='flex items-center space-x-1'>
+                <Calendar className='h-4 w-4' />
+                <span>{formatDate(review.createdAt)}</span>
+              </div>
+            </div>
+
+            {/* 좋아요 버튼 */}
+            <ReviewLikeButton
+              reviewId={review.id}
+              locale={lang}
+              dict={dict}
+              size='md'
+              showCount={true}
+              className='shadow-sm'
+            />
           </div>
         </div>
       </div>

@@ -1,34 +1,9 @@
-import { type Prisma } from '@prisma/client';
+import { type Prisma, type MedicalSpecialty, type MedicalSpecialtyType } from '@prisma/client';
 
-export interface MedicalSpecialty {
-  id: string;
-  name: Prisma.JsonValue;
-  specialtyType:
-    | 'EYES'
-    | 'NOSE'
-    | 'FACIAL_CONTOURING'
-    | 'BREAST'
-    | 'STEM_CELL'
-    | 'LIPOSUCTION'
-    | 'LIFTING'
-    | 'HAIR_TRANSPLANT';
-  description: Prisma.JsonValue | null;
-  order: number | null;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export type { MedicalSpecialty };
 
 export interface GetMedicalSpecialtiesRequest {
-  specialtyType?:
-    | 'EYES'
-    | 'NOSE'
-    | 'FACIAL_CONTOURING'
-    | 'BREAST'
-    | 'STEM_CELL'
-    | 'LIPOSUCTION'
-    | 'LIFTING'
-    | 'HAIR_TRANSPLANT';
+  specialtyType?: MedicalSpecialtyType;
   isActive?: boolean;
   limit?: number;
   offset?: number;
