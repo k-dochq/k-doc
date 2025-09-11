@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { SUPPORTED_LOCALES, type Locale } from 'shared/config';
 import { getLocaleFromRequest } from 'shared/lib/locale/locale-detector';
-import { authGuard } from 'shared/lib/auth';
+import { authGuard } from 'shared/lib/auth/auth-middleware';
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

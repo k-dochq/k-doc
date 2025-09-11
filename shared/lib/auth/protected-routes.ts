@@ -30,6 +30,19 @@ export function isProtectedRoute(pathname: string): boolean {
   // PROTECTED_ROUTES의 각 경로와 비교
   const isProtected = PROTECTED_ROUTES.some((route) => {
     const cleanRoute = route.startsWith('/') ? route.slice(1) : route;
+
+    // 와일드카드 패턴 처리 (예: hospitals/*/consultation)
+    if (cleanRoute.includes('*')) {
+      const pattern = cleanRoute.replace(/\*/g, '[^/]+');
+      const regex = new RegExp(`^${pattern}(?:/.*)?$`);
+      const matches = regex.test(pathWithoutLocale);
+      console.log(
+        `  - Checking wildcard "${cleanRoute}" (regex: ${pattern}) against "${pathWithoutLocale}": ${matches}`,
+      );
+      return matches;
+    }
+
+    // 일반 경로 패턴 처리
     const matches = pathWithoutLocale.startsWith(cleanRoute);
     console.log(`  - Checking "${cleanRoute}" against "${pathWithoutLocale}": ${matches}`);
     return matches;

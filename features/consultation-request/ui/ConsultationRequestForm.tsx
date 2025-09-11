@@ -33,6 +33,8 @@ export function ConsultationRequestForm({ hospital, lang, dict }: ConsultationRe
     content: '',
   });
 
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
   const hospitalName = extractLocalizedText(hospital.name, lang) || '병원';
   const consultationDict = dict.consultation?.request;
 
@@ -43,13 +45,38 @@ export function ConsultationRequestForm({ hospital, lang, dict }: ConsultationRe
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('상담신청 데이터:', {
-      hospitalId: hospital.id,
-      hospitalName,
-      ...formData,
-    });
+
+    // 폼 유효성 검사
+    const errors: Partial<Record<keyof FormData, string>> = {};
+
+    if (!formData.name.trim()) errors.name = '이름을 입력해주세요';
+    if (!formData.gender) errors.gender = '성별을 선택해주세요';
+    if (!formData.ageGroup) errors.ageGroup = '나이대를 선택해주세요';
+    if (!formData.phoneNumber.trim()) errors.phoneNumber = '휴대폰번호를 입력해주세요';
+    if (!formData.preferredContactTime) errors.preferredContactTime = '선호연락시간을 선택해주세요';
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return;
+    }
+
+    try {
+      // 상담신청 데이터를 콘솔에 출력 (추후 API 호출로 변경)
+      console.log('상담신청 데이터:', {
+        hospitalId: hospital.id,
+        hospitalName,
+        ...formData,
+      });
+
+      // 채팅 페이지로 이동
+      const chatUrl = `/hospitals/${hospital.id}/consultation/chat`;
+      window.location.href = `/${lang}${chatUrl}`;
+    } catch (error) {
+      console.error('상담 신청 중 오류:', error);
+      alert('상담 신청 중 오류가 발생했습니다. 다시 시도해주세요.');
+    }
   };
 
   return (

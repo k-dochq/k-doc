@@ -1,6 +1,4 @@
-import { Header } from 'widgets/header';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
-import { BottomNavigation } from 'widgets/bottom-navigation';
 import { type Locale } from 'shared/config';
 
 interface HospitalsLayoutProps {
@@ -8,14 +6,6 @@ interface HospitalsLayoutProps {
   params: Promise<{ lang: Locale }>;
 }
 
-export default async function HospitalsLayout({ children, params }: HospitalsLayoutProps) {
-  const { lang } = await params;
-
-  return (
-    <MaxWidthLayout>
-      <Header currentLang={lang} />
-      <main className='py-8 pb-20'>{children}</main>
-      <BottomNavigation currentLang={lang} />
-    </MaxWidthLayout>
-  );
+export default async function HospitalsLayout({ children }: HospitalsLayoutProps) {
+  return <MaxWidthLayout>{children}</MaxWidthLayout>;
 }

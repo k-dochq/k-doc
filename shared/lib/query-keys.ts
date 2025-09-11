@@ -48,4 +48,16 @@ export const queryKeys = {
     all: ['review-like'] as const,
     status: (reviewId: string) => [...queryKeys.reviewLike.all, reviewId] as const,
   },
+
+  // 상담 채팅 관련 쿼리
+  consultationMessages: {
+    all: ['consultation-messages'] as const,
+    lists: () => [...queryKeys.consultationMessages.all, 'list'] as const,
+    list: (hospitalId: string, userId: string) => 
+      [...queryKeys.consultationMessages.lists(), hospitalId, userId] as const,
+    hospital: (hospitalId: string) => 
+      [...queryKeys.consultationMessages.all, 'hospital', hospitalId] as const,
+    user: (userId: string) => 
+      [...queryKeys.consultationMessages.all, 'user', userId] as const,
+  },
 } as const;
