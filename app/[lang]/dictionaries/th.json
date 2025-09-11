@@ -114,6 +114,19 @@
       "loading": "กำลังโหลด...",
       "loginError": "เกิดข้อผิดพลาดในการเข้าสู่ระบบ"
     },
+    "signup": {
+      "title": "สมัครสมาชิก",
+      "subtitle": "สร้างบัญชีใหม่",
+      "email": "อีเมล",
+      "password": "รหัสผ่าน",
+      "confirmPassword": "ยืนยันรหัสผ่าน",
+      "signupButton": "สมัครสมาชิก",
+      "loading": "กำลังสมัคร...",
+      "signupError": "เกิดข้อผิดพลาดในการสมัครสมาชิก",
+      "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+      "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
+      "loginLink": "เข้าสู่ระบบ"
+    },
     "error": {
       "title": "Authentication Error",
       "description": "An error occurred during authentication. Please try again.",

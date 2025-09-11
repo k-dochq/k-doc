@@ -114,6 +114,19 @@
       "loading": "Loading...",
       "loginError": "Login error occurred"
     },
+    "signup": {
+      "title": "Sign Up",
+      "subtitle": "Create a new account",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "signupButton": "Sign Up",
+      "loading": "Signing up...",
+      "signupError": "Sign up error occurred",
+      "passwordMismatch": "Passwords do not match",
+      "alreadyHaveAccount": "Already have an account?",
+      "loginLink": "Sign In"
+    },
     "error": {
       "title": "Authentication Error",
       "description": "An error occurred during authentication. Please try again.",
