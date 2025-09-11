@@ -88,8 +88,8 @@ export function ConsultationChat({ hospitalId, hospital, lang, dict }: Consultat
 
   return (
     <div className='flex h-screen flex-col bg-gray-50'>
-      {/* 헤더 */}
-      <div className='flex items-center justify-between border-b bg-white px-4 py-3 shadow-sm'>
+      {/* 헤더 - 상단 고정 */}
+      <div className='flex flex-shrink-0 items-center justify-between border-b bg-white px-4 py-3 shadow-sm'>
         <div className='flex items-center space-x-3'>
           <LocaleLink
             href={`/hospitals/${hospitalId}`}
@@ -117,56 +117,60 @@ export function ConsultationChat({ hospitalId, hospital, lang, dict }: Consultat
         </div>
       </div>
 
-      {/* 에러 메시지 */}
-      {error && <div className='bg-red-50 px-4 py-2 text-sm text-red-600'>{error}</div>}
+      {/* 에러 메시지 - 헤더 아래 고정 */}
+      {error && (
+        <div className='flex-shrink-0 bg-red-50 px-4 py-2 text-sm text-red-600'>{error}</div>
+      )}
 
-      {/* 메시지 목록 */}
-      <div className='flex-1 overflow-y-auto px-4 py-4'>
-        <div className='space-y-4'>
-          {Array.isArray(messages) &&
-            messages.map((message: any) => (
-              <div
-                key={message.id}
-                className={`flex ${message.senderType === 'USER' ? 'justify-end' : 'justify-start'}`}
-              >
+      {/* 메시지 목록 - 스크롤 가능한 영역 */}
+      <div className='flex-1 overflow-y-auto'>
+        <div className='px-4 py-4'>
+          <div className='space-y-4'>
+            {Array.isArray(messages) &&
+              messages.map((message: any) => (
                 <div
-                  className={`max-w-xs rounded-lg px-4 py-2 lg:max-w-md ${
-                    message.senderType === 'USER'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white text-gray-900 shadow-sm'
-                  }`}
+                  key={message.id}
+                  className={`flex ${message.senderType === 'USER' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <p className='text-sm'>{message.content}</p>
-                  <p
-                    className={`mt-1 text-xs ${
-                      message.senderType === 'USER' ? 'text-blue-100' : 'text-gray-500'
+                  <div
+                    className={`max-w-xs rounded-lg px-4 py-2 lg:max-w-md ${
+                      message.senderType === 'USER'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white text-gray-900 shadow-sm'
                     }`}
                   >
-                    {new Date(message.createdAt).toLocaleTimeString('ko-KR', {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </p>
+                    <p className='text-sm'>{message.content}</p>
+                    <p
+                      className={`mt-1 text-xs ${
+                        message.senderType === 'USER' ? 'text-blue-100' : 'text-gray-500'
+                      }`}
+                    >
+                      {new Date(message.createdAt).toLocaleTimeString('ko-KR', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+            {/* 메시지가 없을 때 */}
+            {Array.isArray(messages) && messages.length === 0 && (
+              <div className='flex items-center justify-center py-8'>
+                <div className='text-center text-gray-500'>
+                  <p>아직 메시지가 없습니다.</p>
+                  <p className='text-sm'>첫 메시지를 보내보세요!</p>
                 </div>
               </div>
-            ))}
+            )}
 
-          {/* 메시지가 없을 때 */}
-          {Array.isArray(messages) && messages.length === 0 && (
-            <div className='flex items-center justify-center py-8'>
-              <div className='text-center text-gray-500'>
-                <p>아직 메시지가 없습니다.</p>
-                <p className='text-sm'>첫 메시지를 보내보세요!</p>
-              </div>
-            </div>
-          )}
-
-          <div ref={messagesEndRef} />
+            <div ref={messagesEndRef} />
+          </div>
         </div>
       </div>
 
-      {/* 메시지 입력 */}
-      <div className='border-t bg-white px-4 py-3'>
+      {/* 메시지 입력 - 하단 고정 */}
+      <div className='flex-shrink-0 border-t bg-white px-4 py-3'>
         <div className='flex items-end space-x-2'>
           <div className='flex-1'>
             <textarea
