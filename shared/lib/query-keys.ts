@@ -53,11 +53,17 @@ export const queryKeys = {
   consultationMessages: {
     all: ['consultation-messages'] as const,
     lists: () => [...queryKeys.consultationMessages.all, 'list'] as const,
-    list: (hospitalId: string, userId: string) => 
+    list: (hospitalId: string, userId: string) =>
       [...queryKeys.consultationMessages.lists(), hospitalId, userId] as const,
-    hospital: (hospitalId: string) => 
+    hospital: (hospitalId: string) =>
       [...queryKeys.consultationMessages.all, 'hospital', hospitalId] as const,
-    user: (userId: string) => 
-      [...queryKeys.consultationMessages.all, 'user', userId] as const,
+    user: (userId: string) => [...queryKeys.consultationMessages.all, 'user', userId] as const,
+  },
+
+  // 상담중인 병원 관련 쿼리
+  consultationHospitals: {
+    all: () => ['consultation-hospitals'] as const,
+    list: (params?: Record<string, unknown>) =>
+      [...queryKeys.consultationHospitals.all(), 'list', params] as const,
   },
 } as const;

@@ -5,8 +5,8 @@ export type * from './api/entities/types';
 export * from './api/entities/schemas';
 
 // Infrastructure
-export { AuthService } from './api/infrastructure/services/auth-service';
-export type { IAuthService } from './api/infrastructure/services/auth-service';
+export { AuthService } from 'shared/lib/auth/server';
+export type { IAuthService } from 'shared/lib/auth/server';
 export { LikedHospitalsRepository } from './api/infrastructure/repositories/liked-hospitals-repository';
 export type { ILikedHospitalsRepository } from './api/infrastructure/repositories/liked-hospitals-repository';
 

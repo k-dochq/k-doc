@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { HospitalLikeRepository } from '../infrastructure/repositories/hospital-like-repository';
-import { AuthService } from '../infrastructure/services/auth-service';
+import { AuthService } from 'shared/lib/auth/server';
 import type { HospitalLikeStatusRequest, HospitalLikeStatusResult } from '../entities/types';
 
 /**

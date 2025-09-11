@@ -1,4 +1,4 @@
-import type { IAuthService } from '../infrastructure/services/auth-service';
+import type { IAuthService } from 'shared/lib/auth/server';
 import type { ILikedHospitalsRepository } from '../infrastructure/repositories/liked-hospitals-repository';
 import type { LikedHospitalsRequest, LikedHospitalsResult } from '../entities/types';
 

@@ -1,6 +1,6 @@
 import { type Prisma, SenderType } from '@prisma/client';
 import { type IConsultationMessageRepository } from '../infrastructure/repositories/consultation-message-repository';
-import { type IAuthService } from '../infrastructure/services/auth-service';
+import { type IAuthService } from 'shared/lib/auth/server';
 import { type CreateWelcomeMessageInput } from '../entities/schemas';
 import { type CreateWelcomeMessageResponse } from '../entities/types';
 

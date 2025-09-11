@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { ReviewLikeRepository } from '../infrastructure/repositories/review-like-repository';
-import { AuthService } from '../infrastructure/services/auth-service';
+import { AuthService } from 'shared/lib/auth/server';
 import type { ReviewLikeRequest, ReviewLikeResult } from '../entities/types';
 
 /**

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { routeErrorLogger } from 'shared/lib';
-import { AuthService } from 'features/review-like/api/infrastructure/services/auth-service';
+import { AuthService } from 'shared/lib/auth/server';
 import { LikedReviewsRepository, GetLikedReviewsUseCase } from 'features/favorites-tabs/api-server';
 import { likedReviewsRequestSchema } from 'features/favorites-tabs/api/entities/schemas';
 
