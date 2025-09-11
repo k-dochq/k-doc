@@ -1,7 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
-import { getHospitalReviews } from 'entities/review';
 import { HospitalDetailCard } from 'entities/hospital/ui/HospitalDetailCard';
 import { ReviewCarouselWrapper } from 'widgets/review-carousel';
 
@@ -17,11 +16,8 @@ export async function HospitalDetailContent({
   dict,
 }: HospitalDetailContentProps) {
   try {
-    // 병원 상세 데이터와 리뷰 데이터를 병렬로 조회
-    const [{ hospital }, { reviews }] = await Promise.all([
-      getHospitalDetail({ id: hospitalId }),
-      getHospitalReviews({ hospitalId, limit: 10 }),
-    ]);
+    // 병원 상세 데이터만 조회
+    const { hospital } = await getHospitalDetail({ id: hospitalId });
 
     return (
       <>
@@ -30,12 +26,7 @@ export async function HospitalDetailContent({
 
         {/* 리뷰 섹션 */}
         <div className='border-t border-gray-200 pt-8'>
-          <ReviewCarouselWrapper
-            reviews={reviews}
-            hospitalId={hospitalId}
-            lang={lang}
-            dict={dict}
-          />
+          <ReviewCarouselWrapper hospitalId={hospitalId} lang={lang} dict={dict} />
         </div>
       </>
     );
