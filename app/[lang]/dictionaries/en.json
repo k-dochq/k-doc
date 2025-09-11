@@ -125,7 +125,15 @@
       "signupError": "Sign up error occurred",
       "passwordMismatch": "Passwords do not match",
       "alreadyHaveAccount": "Already have an account?",
-      "loginLink": "Sign In"
+      "loginLink": "Sign In",
+      "errors": {
+        "emailAlreadyRegistered": "This email is already registered",
+        "passwordTooShort": "Password should be at least 6 characters",
+        "invalidEmail": "Please enter a valid email address",
+        "unexpectedError": "An unexpected error occurred",
+        "invalidCredentials": "Invalid email or password",
+        "emailNotConfirmed": "Please check your email and confirm your account"
+      }
     },
     "error": {
       "title": "Authentication Error",

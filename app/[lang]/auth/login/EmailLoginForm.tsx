@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { useEmailLogin } from 'features/email-auth';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface EmailLoginFormProps {
   lang: Locale;
@@ -14,29 +16,24 @@ interface EmailLoginFormProps {
 export function EmailLoginForm({ lang, dict, className = '' }: EmailLoginFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const router = useLocalizedRouter();
+
+  const { signInWithEmail, isLoading, error } = useEmailLogin({ locale: lang, dict });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
 
     if (!email || !password) {
       return;
     }
 
-    setIsLoading(true);
+    const result = await signInWithEmail(email, password);
 
-    // TODO: 실제 로그인 로직 구현
-    try {
-      // 임시로 2초 후 완료
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log('Email login:', { email, password });
-    } catch (_err) {
-      setError('로그인 중 오류가 발생했습니다.');
-    } finally {
-      setIsLoading(false);
+    if (result.success) {
+      // 로그인 성공 시 메인 페이지로 이동
+      router.push('/');
     }
+    // 에러는 useEmailLogin 훅에서 자동으로 처리됨
   };
 
   return (

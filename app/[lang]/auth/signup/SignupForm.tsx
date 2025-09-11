@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { useEmailSignup } from 'features/email-auth';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface SignupFormProps {
   lang: Locale;
@@ -15,34 +17,30 @@ export function SignupForm({ lang, dict, className = '' }: SignupFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const router = useLocalizedRouter();
+
+  const { signUpWithEmail, isLoading, error } = useEmailSignup({ locale: lang, dict });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
 
     if (!email || !password || !confirmPassword) {
       return;
     }
 
     if (password !== confirmPassword) {
-      setError(dict.auth?.signup?.passwordMismatch || '비밀번호가 일치하지 않습니다');
+      // 비밀번호 불일치는 useEmailSignup 훅의 error와 별도로 처리
+      alert(dict.auth?.signup?.passwordMismatch || '비밀번호가 일치하지 않습니다');
       return;
     }
 
-    setIsLoading(true);
+    const result = await signUpWithEmail(email, password);
 
-    // TODO: 실제 회원가입 로직 구현
-    try {
-      // 임시로 2초 후 완료
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log('Email signup:', { email, password });
-    } catch (_err) {
-      setError(dict.auth?.signup?.signupError || '회원가입 중 오류가 발생했습니다');
-    } finally {
-      setIsLoading(false);
+    if (result.success) {
+      // 회원가입 성공 시 로그인 페이지로 이동
+      router.push('/auth/login');
     }
+    // 에러는 useEmailSignup 훅에서 자동으로 처리됨
   };
 
   return (
