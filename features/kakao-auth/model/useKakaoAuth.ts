@@ -4,21 +4,27 @@ import { useState } from 'react';
 import { createClient } from 'shared/lib/supabase';
 import type { Locale } from 'shared/config';
 
-export function useGoogleAuth() {
+interface UseKakaoAuthOptions {
+  locale: Locale;
+}
+
+export function useKakaoAuth(options: UseKakaoAuthOptions) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const currentLocale = options.locale;
   const supabase = createClient();
 
-  const signInWithGoogle = async () => {
+  const signInWithKakao = async () => {
     try {
       setIsLoading(true);
       setError(null);
 
       const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
+        provider: 'kakao',
         options: {
           redirectTo: `${window.location.origin}/auth/callback`,
+          scopes: 'account_email',
         },
       });
 
@@ -29,7 +35,7 @@ export function useGoogleAuth() {
       return { data, error: null };
     } catch (err) {
       const errorMessage =
-        err instanceof Error ? err.message : 'An error occurred during Google login.';
+        err instanceof Error ? err.message : 'An error occurred during Kakao login.';
       setError(errorMessage);
       return { data: null, error: errorMessage };
     } finally {
@@ -59,7 +65,7 @@ export function useGoogleAuth() {
   };
 
   return {
-    signInWithGoogle,
+    signInWithKakao,
     signOut,
     isLoading,
     error,

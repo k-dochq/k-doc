@@ -5,3 +5,5 @@ export * from './cache';
 export * from './localized-text';
 export * from './template';
 export * from './query-client';
+export * from './error-logger';
+export * from './api/redirect-utils';

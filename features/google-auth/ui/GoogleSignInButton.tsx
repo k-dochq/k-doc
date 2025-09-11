@@ -9,15 +9,11 @@ interface GoogleSignInButtonProps {
   dict: Dictionary;
   className?: string;
   children?: React.ReactNode;
+  redirectTo?: string;
 }
 
-export function GoogleSignInButton({
-  locale,
-  dict,
-  className = '',
-  children,
-}: GoogleSignInButtonProps) {
-  const { signInWithGoogle, isLoading, error } = useGoogleAuth({ locale });
+export function GoogleSignInButton({ dict, className = '', children }: GoogleSignInButtonProps) {
+  const { signInWithGoogle, isLoading, error } = useGoogleAuth();
 
   const handleClick = () => {
     signInWithGoogle();
@@ -60,11 +56,15 @@ export function GoogleSignInButton({
         )}
         <span className='font-medium text-gray-700'>
           {isLoading
-            ? '로그인 중...'
+            ? dict.auth?.login?.loading || '로딩 중...'
             : children || dict.auth?.login?.googleLogin || 'Google로 로그인'}
         </span>
       </button>
-      {error && <p className='text-sm text-red-600'>{error}</p>}
+      {error && (
+        <p className='text-center text-sm text-red-600'>
+          {dict.auth?.login?.loginError || '로그인 중 오류가 발생했습니다'}: {error}
+        </p>
+      )}
     </div>
   );
 }
