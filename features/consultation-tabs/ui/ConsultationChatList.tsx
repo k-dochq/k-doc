@@ -1,11 +1,18 @@
 'use client';
 
 import type { Locale } from 'shared/config';
-import type { Dictionary } from 'shared/model/types';
 
 interface ConsultationChatListProps {
   lang: Locale;
-  dict: Dictionary;
+  dict: {
+    loading: string;
+    error: string;
+    retry: string;
+    empty: {
+      title: string;
+      description: string;
+    };
+  };
 }
 
 export function ConsultationChatList({ lang, dict }: ConsultationChatListProps) {
@@ -30,10 +37,8 @@ export function ConsultationChatList({ lang, dict }: ConsultationChatListProps) 
             />
           </svg>
         </div>
-        <h3 className='mb-2 text-lg font-medium text-gray-900'>
-          {dict.consultation?.empty?.chat?.title}
-        </h3>
-        <p className='text-gray-500'>{dict.consultation?.empty?.chat?.description}</p>
+        <h3 className='mb-2 text-lg font-medium text-gray-900'>{dict.empty.title}</h3>
+        <p className='text-gray-500'>{dict.empty.description}</p>
       </div>
     );
   }
