@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { routeErrorLogger } from 'shared/lib';
 import { HospitalLikeRepository } from 'features/hospital-like/api/infrastructure/repositories/hospital-like-repository';
-import { AuthService } from 'features/hospital-like/api/infrastructure/services/auth-service';
+import { AuthService } from 'shared/lib/auth/server';
 import { GetHospitalLikeStatusUseCase } from 'features/hospital-like/api/use-cases/get-hospital-like-status';
 import { ToggleHospitalLikeUseCase } from 'features/hospital-like/api/use-cases/toggle-hospital-like';
 import type {

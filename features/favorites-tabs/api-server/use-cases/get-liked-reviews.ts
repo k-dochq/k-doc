@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { AuthService } from 'features/review-like/api/infrastructure/services/auth-service';
+import { AuthService } from 'shared/lib/auth/server';
 import { LikedReviewsRepository } from 'features/favorites-tabs/api-server/repositories/liked-reviews-repository';
 import type {
   GetLikedReviewsRequest,

@@ -1,5 +1,5 @@
 import { type IConsultationMessageRepository } from '../infrastructure/repositories/consultation-message-repository';
-import { type IAuthService } from '../infrastructure/services/auth-service';
+import { type IAuthService } from 'shared/lib/auth/server';
 import { type GetConsultationMessagesInput } from '../entities/schemas';
 import { type GetConsultationMessagesResponse } from '../entities/types';
 

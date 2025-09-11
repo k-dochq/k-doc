@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { routeErrorLogger } from 'shared/lib';
 import { ReviewLikeRepository } from 'features/review-like/api/infrastructure/repositories/review-like-repository';
-import { AuthService } from 'features/review-like/api/infrastructure/services/auth-service';
+import { AuthService } from 'shared/lib/auth/server';
 import { GetReviewLikeStatusUseCase } from 'features/review-like/api/use-cases/get-review-like-status';
 import { ToggleReviewLikeUseCase } from 'features/review-like/api/use-cases/toggle-review-like';
 import type {
