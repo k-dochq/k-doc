@@ -1,6 +1,7 @@
 'use client';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { queryKeys } from 'shared/lib/query-keys';
 import { type GetAllReviewsResponse } from './types';
 
 interface UseInfiniteAllReviewsParams {
@@ -58,8 +59,10 @@ export function useInfiniteAllReviews({
   sortBy = 'latest',
   initialData,
 }: UseInfiniteAllReviewsParams = {}) {
+  const filters = { limit, medicalSpecialtyId, sortBy };
+
   return useInfiniteQuery({
-    queryKey: ['reviews', 'infinite', { limit, medicalSpecialtyId, sortBy }],
+    queryKey: queryKeys.reviews.allInfinite(filters),
     queryFn: ({ pageParam }) =>
       fetchAllReviews({
         pageParam,

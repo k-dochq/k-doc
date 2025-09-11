@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { queryKeys } from 'shared/lib/query-keys';
 import type {
   GetHospitalLikeStatusResponse,
   HospitalLikeToggleResponse,
@@ -75,7 +76,7 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
     isLoading,
     error: queryError,
   } = useQuery({
-    queryKey: ['hospital-like', hospitalId],
+    queryKey: queryKeys.hospitalLike.status(hospitalId),
     queryFn: () => fetchHospitalLikeStatus(hospitalId),
     enabled: enabled && !!hospitalId,
     staleTime: 30 * 1000, // 30초
@@ -93,8 +94,15 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
   const toggleMutation = useMutation({
     mutationFn: () => toggleHospitalLike(hospitalId),
     onSuccess: (data) => {
-      // 캐시 업데이트
-      queryClient.setQueryData(['hospital-like', hospitalId], data);
+      // 현재 병원의 좋아요 상태 캐시 업데이트
+      queryClient.setQueryData(queryKeys.hospitalLike.status(hospitalId), data);
+
+      // 좋아요한 병원 리스트 쿼리 invalidate
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.hospitals.liked.all(),
+        exact: false, // 모든 liked hospitals 쿼리를 invalidate
+      });
+
       setError(null);
     },
     onError: (error: Error) => {

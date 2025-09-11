@@ -150,5 +150,25 @@
       "countLabel": "",
       "error": "Error occurred"
     }
+  },
+  "favorites": {
+    "title": "Favorites",
+    "hospitals": "Hospitals",
+    "reviews": "Reviews",
+    "loading": "Loading...",
+    "error": "An error occurred while loading data.",
+    "retry": "Retry",
+    "empty": {
+      "hospitals": {
+        "title": "No liked hospitals",
+        "description": "Find hospitals you like and tap the heart icon"
+      },
+      "reviews": {
+        "title": "No liked reviews",
+        "description": "Find helpful reviews and tap the heart icon"
+      }
+    },
+    "loadingMore": "Loading more data...",
+    "allLoaded": "All data loaded"
   }
 }
