@@ -168,6 +168,7 @@ model Review {
   MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
   User               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   ReviewImage        ReviewImage[]
+  ReviewLike         ReviewLike[]
 
   @@index([hospitalId])
   @@index([userId])
@@ -232,6 +233,7 @@ model User {
   userStatusType              UserStatusType? @default(ACTIVE)
   HospitalLike                HospitalLike[]
   Review                      Review[]
+  ReviewLike                  ReviewLike[]
   InvitationCode              InvitationCode? @relation(fields: [invitationCodeId], references: [id], onDelete: Restrict)
   UserRole                    UserRole[]
 
@@ -342,6 +344,21 @@ model HospitalLike {
   @@unique([userId, hospitalId])
   @@index([createdAt])
   @@index([hospitalId])
+  @@index([userId])
+  @@schema("public")
+}
+
+model ReviewLike {
+  id        String   @id @db.Uuid
+  userId    String   @db.Uuid
+  reviewId  String   @db.Uuid
+  createdAt DateTime @default(now())
+  Review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, reviewId])
+  @@index([createdAt])
+  @@index([reviewId])
   @@index([userId])
   @@schema("public")
 }
