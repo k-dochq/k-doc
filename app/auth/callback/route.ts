@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from 'shared/lib/supabase/server';
+import { routeErrorLogger, redirectToAuthFailure } from 'shared/lib';
 import { extractLocaleFromCookie } from 'shared/lib/locale';
 
 export async function GET(request: NextRequest) {
+  const endpoint = '/auth/callback';
+  const method = 'GET';
+
   try {
     const { searchParams, origin } = new URL(request.url);
     const code = searchParams.get('code');
@@ -18,16 +22,38 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // 인증 코드가 없거나 인증 실패 시 에러 페이지로 리다이렉트
-    console.error('Auth callback error: No code or authentication failed');
-    const locale = extractLocaleFromCookie(request);
-    return NextResponse.redirect(`${origin}/${locale}/auth/auth-code-error`);
-  } catch (error) {
-    console.error('Auth callback error:', error);
+    // 인증 코드가 없거나 인증 실패 시
+    const authError = new Error('Authentication code error or invalid code');
+    const requestId = routeErrorLogger.logError({
+      error: authError,
+      endpoint,
+      method,
+      request,
+    });
 
-    // 에러 발생 시에도 에러 페이지로 리다이렉트
     const locale = extractLocaleFromCookie(request);
-    const { origin } = new URL(request.url);
-    return NextResponse.redirect(`${origin}/${locale}/auth/auth-code-error`);
+    return redirectToAuthFailure({
+      request,
+      locale,
+      errorCode: 'AUTH_CODE_ERROR',
+      errorMessage: authError.message,
+      requestId,
+    });
+  } catch (error) {
+    const requestId = routeErrorLogger.logError({
+      error: error as Error,
+      endpoint,
+      method,
+      request,
+    });
+
+    const locale = extractLocaleFromCookie(request);
+    return redirectToAuthFailure({
+      request,
+      locale,
+      errorCode: 'AUTH_CODE_ERROR',
+      errorMessage: (error as Error).message,
+      requestId,
+    });
   }
 }
