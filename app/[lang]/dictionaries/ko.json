@@ -110,7 +110,9 @@
       "googleLogin": "Google로 로그인",
       "kakaoLogin": "카카오로 로그인",
       "forgotPassword": "비밀번호를 잊으셨나요?",
-      "signUp": "회원가입"
+      "signUp": "회원가입",
+      "loading": "로딩 중...",
+      "loginError": "로그인 중 오류가 발생했습니다"
     },
     "error": {
       "title": "Authentication Error",

@@ -110,7 +110,9 @@
       "googleLogin": "เข้าสู่ระบบด้วย Google",
       "kakaoLogin": "เข้าสู่ระบบด้วย Kakao",
       "forgotPassword": "ลืมรหัสผ่าน?",
-      "signUp": "สมัครสมาชิก"
+      "signUp": "สมัครสมาชิก",
+      "loading": "กำลังโหลด...",
+      "loginError": "เกิดข้อผิดพลาดในการเข้าสู่ระบบ"
     },
     "error": {
       "title": "Authentication Error",
