@@ -9,17 +9,17 @@ export class AuthService implements IAuthService {
     try {
       const supabase = await createClient();
       const {
-        data: { user },
+        data: { session },
         error,
-      } = await supabase.auth.getUser();
+      } = await supabase.auth.getSession();
 
-      if (error || !user) {
+      if (error || !session?.user) {
         return null;
       }
 
       return {
-        id: user.id,
-        email: user.email,
+        id: session.user.id,
+        email: session.user.email,
       };
     } catch (error) {
       console.error('Error getting current user:', error);

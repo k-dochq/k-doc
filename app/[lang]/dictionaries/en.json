@@ -179,5 +179,23 @@
     },
     "loadingMore": "Loading more data...",
     "allLoaded": "All data loaded"
+  },
+  "consultation": {
+    "title": "Consultation",
+    "chat": "Chat",
+    "appointment": "Appointment",
+    "loading": "Loading...",
+    "error": "An error occurred while loading data.",
+    "retry": "Retry",
+    "empty": {
+      "chat": {
+        "title": "No ongoing consultations",
+        "description": "Start a consultation with a hospital"
+      },
+      "appointment": {
+        "title": "No appointment requests",
+        "description": "Make an appointment request with your preferred hospital"
+      }
+    }
   }
 }

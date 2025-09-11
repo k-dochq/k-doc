@@ -179,5 +179,23 @@
     },
     "loadingMore": "더 많은 데이터를 불러오는 중...",
     "allLoaded": "모든 데이터를 불러왔습니다"
+  },
+  "consultation": {
+    "title": "상담",
+    "chat": "상담채팅",
+    "appointment": "예약신청",
+    "loading": "로딩 중...",
+    "error": "데이터를 불러오는 중 오류가 발생했습니다.",
+    "retry": "다시 시도",
+    "empty": {
+      "chat": {
+        "title": "진행 중인 상담이 없습니다",
+        "description": "병원과 상담을 시작해보세요"
+      },
+      "appointment": {
+        "title": "예약 신청 내역이 없습니다",
+        "description": "원하는 병원에 예약을 신청해보세요"
+      }
+    }
   }
 }
