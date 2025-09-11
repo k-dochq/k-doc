@@ -150,5 +150,10 @@
       "countLabel": "개",
       "error": "오류 발생"
     }
+  },
+  "favorites": {
+    "title": "즐겨찾기",
+    "hospitals": "병원",
+    "reviews": "시술후기"
   }
 }

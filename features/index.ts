@@ -6,3 +6,4 @@ export * from './review-filter';
 export * from './google-auth';
 export * from './kakao-auth';
 export * from './email-auth';
+export * from './favorites-tabs';

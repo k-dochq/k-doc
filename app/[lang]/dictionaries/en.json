@@ -150,5 +150,10 @@
       "countLabel": "",
       "error": "Error occurred"
     }
+  },
+  "favorites": {
+    "title": "Favorites",
+    "hospitals": "Hospitals",
+    "reviews": "Reviews"
   }
 }
