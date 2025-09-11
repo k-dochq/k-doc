@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { SUPPORTED_LOCALES, type Locale } from 'shared/config';
 import { getLocaleFromRequest } from 'shared/lib/locale/locale-detector';
+import { authGuard } from 'shared/lib/auth';
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -17,7 +18,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(request.nextUrl);
   }
 
-  return NextResponse.next();
+  // locale 추출 후 인증 가드 실행
+  const locale = pathname.split('/')[1] as Locale;
+  return await authGuard(request, locale);
 }
 
 export const config = {
