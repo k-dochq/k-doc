@@ -39,7 +39,7 @@ const fetchMessages = async (
   }
 
   const result = await response.json();
-  return result.data || [];
+  return result.messages || result.data || [];
 };
 
 const sendMessage = async (data: {
@@ -98,13 +98,54 @@ export function useConsultationChat({ hospitalId, userId }: UseConsultationChatP
   const sendMessageMutation = useMutation({
     mutationFn: (content: string) =>
       sendMessage({ hospitalId, content, senderType: SenderType.USER }),
+    onMutate: async (content: string) => {
+      // Optimistic Update: 즉시 UI에 메시지 추가
+      await queryClient.cancelQueries({
+        queryKey: queryKeys.consultationMessages.list(hospitalId, userId!),
+      });
+
+      // 이전 데이터 백업
+      const previousMessages = queryClient.getQueryData<ConsultationMessage[]>(
+        queryKeys.consultationMessages.list(hospitalId, userId!),
+      );
+
+      // 임시 메시지 생성
+      const optimisticMessage: ConsultationMessage = {
+        id: `temp-${Date.now()}`, // 임시 ID
+        userId: userId!,
+        hospitalId,
+        senderType: SenderType.USER,
+        content,
+        createdAt: new Date(),
+        User: {
+          id: userId!,
+          displayName: null,
+          name: null,
+        },
+      };
+
+      // 즉시 UI 업데이트
+      queryClient.setQueryData<ConsultationMessage[]>(
+        queryKeys.consultationMessages.list(hospitalId, userId!),
+        (old) => [...(old || []), optimisticMessage],
+      );
+
+      return { previousMessages };
+    },
     onSuccess: () => {
-      // 메시지 전송 후 즉시 새로고침
+      // 성공 시 서버에서 최신 데이터 가져오기
       queryClient.invalidateQueries({
         queryKey: queryKeys.consultationMessages.list(hospitalId, userId!),
       });
     },
-    onError: (err) => {
+    onError: (err, content, context) => {
+      // 에러 시 이전 상태로 롤백
+      if (context?.previousMessages) {
+        queryClient.setQueryData(
+          queryKeys.consultationMessages.list(hospitalId, userId!),
+          context.previousMessages,
+        );
+      }
       console.error('Error sending message:', err);
       setError(err instanceof Error ? err.message : 'Failed to send message');
     },

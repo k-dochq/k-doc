@@ -150,6 +150,17 @@ export function ConsultationChat({ hospitalId, hospital, lang, dict }: Consultat
                 </div>
               </div>
             ))}
+
+          {/* 메시지가 없을 때 */}
+          {Array.isArray(messages) && messages.length === 0 && (
+            <div className='flex items-center justify-center py-8'>
+              <div className='text-center text-gray-500'>
+                <p>아직 메시지가 없습니다.</p>
+                <p className='text-sm'>첫 메시지를 보내보세요!</p>
+              </div>
+            </div>
+          )}
+
           <div ref={messagesEndRef} />
         </div>
       </div>
