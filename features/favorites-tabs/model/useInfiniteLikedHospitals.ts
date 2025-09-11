@@ -1,6 +1,7 @@
 'use client';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { queryKeys } from 'shared/lib/query-keys';
 import type { LikedHospital, LikedHospitalsResult } from '../api/entities/types';
 
 interface LikedHospitalsParams {
@@ -42,7 +43,7 @@ export function useInfiniteLikedHospitals(params: LikedHospitalsParams = {}) {
   const { limit = 10 } = params;
 
   return useInfiniteQuery({
-    queryKey: ['hospitals', 'liked', { limit }],
+    queryKey: queryKeys.hospitals.liked.list({ limit }),
     queryFn: ({ pageParam = 1 }) => fetchLikedHospitals({ pageParam, limit }),
     getNextPageParam: (lastPage) => {
       return lastPage.hasNextPage ? lastPage.nextPage : undefined;

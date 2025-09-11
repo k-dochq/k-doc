@@ -1,0 +1,40 @@
+/**
+ * 중앙 집중식 쿼리 키 관리
+ * TanStack Query의 쿼리 키를 일관성 있게 관리합니다.
+ */
+
+export const queryKeys = {
+  // 병원 관련 쿼리
+  hospitals: {
+    all: ['hospitals'] as const,
+    lists: () => [...queryKeys.hospitals.all, 'list'] as const,
+    list: (filters: Record<string, unknown>) => [...queryKeys.hospitals.lists(), filters] as const,
+    details: () => [...queryKeys.hospitals.all, 'detail'] as const,
+    detail: (id: string) => [...queryKeys.hospitals.details(), id] as const,
+    liked: {
+      all: () => [...queryKeys.hospitals.all, 'liked'] as const,
+      list: (params: Record<string, unknown>) =>
+        [...queryKeys.hospitals.liked.all(), params] as const,
+    },
+    infinite: (filters: Record<string, unknown>) =>
+      [...queryKeys.hospitals.lists(), 'infinite', filters] as const,
+  },
+
+  // 병원 좋아요 관련 쿼리
+  hospitalLike: {
+    all: ['hospital-like'] as const,
+    status: (hospitalId: string) => [...queryKeys.hospitalLike.all, hospitalId] as const,
+  },
+
+  // 리뷰 관련 쿼리
+  reviews: {
+    all: ['reviews'] as const,
+    lists: () => [...queryKeys.reviews.all, 'list'] as const,
+    list: (filters: Record<string, unknown>) => [...queryKeys.reviews.lists(), filters] as const,
+    hospital: (hospitalId: string) => [...queryKeys.reviews.all, 'hospital', hospitalId] as const,
+    hospitalInfinite: (hospitalId: string, filters: Record<string, unknown>) =>
+      [...queryKeys.reviews.hospital(hospitalId), 'infinite', filters] as const,
+    allInfinite: (filters: Record<string, unknown>) =>
+      [...queryKeys.reviews.lists(), 'infinite', filters] as const,
+  },
+} as const;

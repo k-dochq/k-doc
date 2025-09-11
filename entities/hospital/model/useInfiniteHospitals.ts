@@ -2,6 +2,7 @@
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { type MedicalSpecialtyType } from '@prisma/client';
+import { queryKeys } from 'shared/lib/query-keys';
 import { type GetHospitalsResponse } from '../api/entities/types';
 
 interface UseInfiniteHospitalsParams {
@@ -61,20 +62,16 @@ async function fetchHospitals({
 
 export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
   // queryKey를 더 구체적으로 구성하여 파라미터 변경 시 새로운 쿼리로 인식되도록 함
-  const queryKey = [
-    'hospitals',
-    'infinite',
-    {
-      limit: params.limit || 10,
-      sortBy: params.sortBy || 'createdAt',
-      sortOrder: params.sortOrder || 'desc',
-      specialtyType: params.specialtyType || null,
-      minRating: params.minRating || 0,
-    },
-  ];
+  const filters = {
+    limit: params.limit || 10,
+    sortBy: params.sortBy || 'createdAt',
+    sortOrder: params.sortOrder || 'desc',
+    specialtyType: params.specialtyType || null,
+    minRating: params.minRating || 0,
+  };
 
   return useInfiniteQuery({
-    queryKey,
+    queryKey: queryKeys.hospitals.infinite(filters),
     queryFn: ({ pageParam }) => fetchHospitals({ pageParam, ...params }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {

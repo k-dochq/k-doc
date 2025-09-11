@@ -1,6 +1,7 @@
 'use client';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { queryKeys } from 'shared/lib/query-keys';
 import { type GetHospitalReviewsResponse } from './types';
 
 interface UseInfiniteHospitalReviewsParams {
@@ -47,17 +48,12 @@ async function fetchHospitalReviews({
 
 export function useInfiniteHospitalReviews(params: UseInfiniteHospitalReviewsParams) {
   // queryKey를 더 구체적으로 구성하여 파라미터 변경 시 새로운 쿼리로 인식되도록 함
-  const queryKey = [
-    'hospital-reviews',
-    'infinite',
-    {
-      hospitalId: params.hospitalId,
-      limit: params.limit || 10,
-    },
-  ];
+  const filters = {
+    limit: params.limit || 10,
+  };
 
   return useInfiniteQuery({
-    queryKey,
+    queryKey: queryKeys.reviews.hospitalInfinite(params.hospitalId, filters),
     queryFn: ({ pageParam }) => fetchHospitalReviews({ pageParam, ...params }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
