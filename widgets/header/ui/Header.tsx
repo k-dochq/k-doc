@@ -1,5 +1,6 @@
 import { HeaderLogo } from './HeaderLogo';
 import { HeaderLanguageSwitcher } from './HeaderLanguageSwitcher';
+import { HeaderProfile } from './HeaderProfile';
 import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';
 
@@ -9,12 +10,15 @@ interface HeaderProps {
 
 export function Header({ currentLang }: HeaderProps) {
   return (
-    <header className='sticky top-0 z-50 w-full bg-white px-4 sm:px-0'>
-      <div className='flex items-center justify-between py-4'>
+    <header className='sticky top-0 z-50 w-full bg-white px-5 py-4'>
+      <div className='flex items-center justify-between'>
         <LocaleLink href='/'>
           <HeaderLogo />
         </LocaleLink>
-        <HeaderLanguageSwitcher currentLang={currentLang} />
+        <div className='flex items-center gap-2'>
+          <HeaderLanguageSwitcher currentLang={currentLang} />
+          <HeaderProfile />
+        </div>
       </div>
     </header>
   );

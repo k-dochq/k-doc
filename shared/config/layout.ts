@@ -12,6 +12,4 @@ export const MAX_MOBILE_WIDTH_CLASS = `max-w-[${MAX_MOBILE_WIDTH}px]`;
 export const LAYOUT = {
   MAX_MOBILE_WIDTH,
   MAX_MOBILE_WIDTH_CLASS,
-  HEADER_HEIGHT: 64, // 헤더 높이
-  BOTTOM_NAV_HEIGHT: 80, // 하단 네비게이션 높이
 } as const;

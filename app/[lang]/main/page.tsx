@@ -16,18 +16,18 @@ export default async function MainPage({ params }: MainPageProps) {
   const dict = await getDictionary(lang);
 
   return (
-    <>
-      <div className='mb-8'>
+    <div className='px-5'>
+      <div className='mt-2'>
         <SearchBar lang={lang} dict={dict} />
       </div>
 
-      <div className='mb-8'>
+      <div className=''>
         <QuickMenuWrapper lang={lang} dict={dict} />
       </div>
 
-      <div className='mb-8'>
+      <div className=''>
         <HospitalCarouselWrapper lang={lang} dict={dict} />
       </div>
-    </>
+    </div>
   );
 }
