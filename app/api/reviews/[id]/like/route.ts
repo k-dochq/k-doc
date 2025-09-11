@@ -47,26 +47,21 @@ export async function GET(request: NextRequest, { params }: RouteParams): Promis
       authService,
     );
 
-    // 사용자 인증 확인
-    const currentUser = await authService.getCurrentUser();
+    // 사용자 인증 확인 (비로그인 사용자도 허용)
+    const currentUser = await authService.getCurrentUserOrNull();
+
+    // 비로그인 사용자의 경우 기본값 반환
     if (!currentUser) {
-      const authFailedError = new Error('User authentication failed');
-      const requestId = routeErrorLogger.logError({
-        error: authFailedError,
-        endpoint,
-        method,
-        request,
-      });
+      // 전체 좋아요 수만 조회
+      const likeCount = await reviewLikeRepository.countLikesByReview(reviewId);
 
       return NextResponse.json(
         {
-          success: false,
-          isLiked: false,
-          likeCount: 0,
-          error: 'Unauthorized',
-          requestId,
+          success: true,
+          isLiked: false, // 비로그인 사용자는 좋아요 안함
+          likeCount,
         } satisfies ReviewLikeStatusResponse,
-        { status: 401 },
+        { status: 200 },
       );
     }
 
@@ -141,24 +136,15 @@ export async function POST(request: NextRequest, { params }: RouteParams): Promi
     const authService = new AuthService();
     const toggleReviewLikeUseCase = new ToggleReviewLikeUseCase(reviewLikeRepository, authService);
 
-    // 사용자 인증 확인
-    const currentUser = await authService.getCurrentUser();
+    // 사용자 인증 확인 (좋아요 토글은 로그인 필수)
+    const currentUser = await authService.getCurrentUserOrNull();
     if (!currentUser) {
-      const authFailedError = new Error('User authentication failed');
-      const requestId = routeErrorLogger.logError({
-        error: authFailedError,
-        endpoint,
-        method,
-        request,
-      });
-
       return NextResponse.json(
         {
           success: false,
           isLiked: false,
           likeCount: 0,
-          error: 'Unauthorized',
-          requestId,
+          error: 'Login required',
         } satisfies ReviewLikeToggleResponse,
         { status: 401 },
       );
