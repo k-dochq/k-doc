@@ -1,16 +1,4 @@
-import { getDictionary } from '../dictionaries';
-import { type Locale } from 'shared/config';
-
-interface FavoritesPageProps {
-  params: Promise<{
-    lang: Locale;
-  }>;
-}
-
-export default async function FavoritesPage({ params }: FavoritesPageProps) {
-  const { lang } = await params;
-  const dict = await getDictionary(lang);
-
+export default async function FavoritesPage() {
   return (
     <div className='container mx-auto px-4 py-8'>
       <div className='mx-auto max-w-4xl'>

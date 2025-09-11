@@ -11,9 +11,10 @@ interface EmailLoginFormProps {
   lang: Locale;
   dict: Dictionary;
   className?: string;
+  redirectTo?: string;
 }
 
-export function EmailLoginForm({ lang, dict, className = '' }: EmailLoginFormProps) {
+export function EmailLoginForm({ lang, dict, className = '', redirectTo }: EmailLoginFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useLocalizedRouter();
@@ -30,8 +31,9 @@ export function EmailLoginForm({ lang, dict, className = '' }: EmailLoginFormPro
     const result = await signInWithEmail(email, password);
 
     if (result.success) {
-      // 로그인 성공 시 메인 페이지로 이동
-      router.push('/');
+      // 로그인 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 이동
+      const targetUrl = redirectTo || '/';
+      router.push(targetUrl);
     }
     // 에러는 useEmailLogin 훅에서 자동으로 처리됨
   };

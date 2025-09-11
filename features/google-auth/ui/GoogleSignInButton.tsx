@@ -9,15 +9,11 @@ interface GoogleSignInButtonProps {
   dict: Dictionary;
   className?: string;
   children?: React.ReactNode;
+  redirectTo?: string;
 }
 
-export function GoogleSignInButton({
-  locale,
-  dict,
-  className = '',
-  children,
-}: GoogleSignInButtonProps) {
-  const { signInWithGoogle, isLoading, error } = useGoogleAuth({ locale });
+export function GoogleSignInButton({ dict, className = '', children }: GoogleSignInButtonProps) {
+  const { signInWithGoogle, isLoading, error } = useGoogleAuth();
 
   const handleClick = () => {
     signInWithGoogle();

@@ -6,13 +6,14 @@ import { SocialLoginSection } from './SocialLoginSection';
 interface LoginContentProps {
   lang: Locale;
   dict: Dictionary;
+  redirectTo?: string;
 }
 
-export async function LoginContent({ lang, dict }: LoginContentProps) {
+export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
   return (
     <div className='space-y-6'>
       {/* 이메일 로그인 폼 */}
-      <EmailLoginForm lang={lang} dict={dict} />
+      <EmailLoginForm lang={lang} dict={dict} redirectTo={redirectTo} />
 
       {/* 구분선 */}
       <div className='relative'>
@@ -27,7 +28,7 @@ export async function LoginContent({ lang, dict }: LoginContentProps) {
       </div>
 
       {/* 소셜 로그인 섹션 */}
-      <SocialLoginSection lang={lang} dict={dict} />
+      <SocialLoginSection lang={lang} dict={dict} redirectTo={redirectTo} />
     </div>
   );
 }

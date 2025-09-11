@@ -5,12 +5,13 @@ import { GoogleSignInButton } from 'features';
 interface SocialLoginSectionProps {
   lang: Locale;
   dict: Dictionary;
+  redirectTo?: string;
 }
 
-export function SocialLoginSection({ lang, dict }: SocialLoginSectionProps) {
+export function SocialLoginSection({ lang, dict, redirectTo }: SocialLoginSectionProps) {
   return (
     <div className='space-y-3'>
-      <GoogleSignInButton locale={lang} dict={dict} />
+      <GoogleSignInButton locale={lang} dict={dict} redirectTo={redirectTo} />
       {/* 카카오 로그인 버튼 임시 숨김 */}
       {/* <KakaoSignInButton locale={lang} dict={dict} /> */}
     </div>

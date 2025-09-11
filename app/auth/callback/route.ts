@@ -10,15 +10,19 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams, origin } = new URL(request.url);
     const code = searchParams.get('code');
+    const redirectTo = searchParams.get('redirect'); // 원래 페이지 URL
 
     if (code) {
       const supabase = await createClient();
       const { error, data } = await supabase.auth.exchangeCodeForSession(code);
 
       if (!error && data?.user) {
-        // 성공적으로 로그인된 경우 홈페이지로 리다이렉트
+        // 성공적으로 로그인된 경우
         const locale = extractLocaleFromCookie(request);
-        return NextResponse.redirect(`${origin}/${locale}`);
+
+        // redirectTo가 있으면 해당 페이지로, 없으면 홈페이지로 리다이렉트
+        const targetUrl = redirectTo ? `${origin}${redirectTo}` : `${origin}/${locale}`;
+        return NextResponse.redirect(targetUrl);
       }
     }
 

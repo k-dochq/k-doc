@@ -4,15 +4,10 @@ import { useState } from 'react';
 import { createClient } from 'shared/lib/supabase';
 import type { Locale } from 'shared/config';
 
-interface UseGoogleAuthOptions {
-  locale: Locale;
-}
-
-export function useGoogleAuth(options: UseGoogleAuthOptions) {
+export function useGoogleAuth() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const currentLocale = options.locale;
   const supabase = createClient();
 
   const signInWithGoogle = async () => {

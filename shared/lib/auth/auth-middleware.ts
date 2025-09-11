@@ -26,7 +26,10 @@ export async function authGuard(request: NextRequest, locale: Locale) {
     const authPath = getAuthPath(locale);
     const url = request.nextUrl.clone();
     url.pathname = authPath;
-    console.log('🚫 Redirecting to:', authPath);
+
+    // 원래 URL을 redirect 쿼리 파라미터로 전달
+    url.searchParams.set('redirect', request.nextUrl.pathname);
+
     return NextResponse.redirect(url);
   }
 

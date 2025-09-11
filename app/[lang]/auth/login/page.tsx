@@ -6,10 +6,12 @@ import { LoginSkeleton } from './LoginSkeleton';
 
 interface LoginPageProps {
   params: Promise<{ lang: Locale }>;
+  searchParams: Promise<{ redirect?: string }>;
 }
 
-export default async function LoginPage({ params }: LoginPageProps) {
+export default async function LoginPage({ params, searchParams }: LoginPageProps) {
   const { lang } = await params;
+  const { redirect } = await searchParams;
   const dict = await getDictionary(lang);
 
   return (
@@ -28,7 +30,7 @@ export default async function LoginPage({ params }: LoginPageProps) {
 
         {/* 로그인 폼 - Suspense로 스트리밍 */}
         <Suspense fallback={<LoginSkeleton />}>
-          <LoginContent lang={lang} dict={dict} />
+          <LoginContent lang={lang} dict={dict} redirectTo={redirect} />
         </Suspense>
       </div>
     </div>
