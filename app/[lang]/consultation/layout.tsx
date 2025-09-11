@@ -13,9 +13,7 @@ export default async function ConsultationLayout({ children, params }: Consultat
 
   return (
     <MaxWidthLayout>
-      <Header currentLang={lang} />
       <main className='py-8 pb-20'>{children}</main>
-      <BottomNavigation currentLang={lang} />
     </MaxWidthLayout>
   );
 }

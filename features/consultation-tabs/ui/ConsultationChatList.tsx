@@ -88,7 +88,7 @@ export function ConsultationChatList({ lang, dict }: ConsultationChatListProps) 
         return (
           <LocaleLink
             key={hospital.id}
-            href={`/hospitals/${hospital.id}/consultation/chat`}
+            href={`/consultation/chat?hospitalId=${hospital.id}`}
             locale={lang}
             className='block'
           >

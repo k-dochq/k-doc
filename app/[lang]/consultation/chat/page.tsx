@@ -1,20 +1,31 @@
 import { Suspense } from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { ConsultationChat } from 'features/consultation-chat';
 import { extractLocalizedText } from 'shared/lib/localized-text';
-import { getDictionary } from '../../../../dictionaries';
+import { getDictionary } from '../../dictionaries';
 
 interface ConsultationChatPageProps {
   params: Promise<{
     lang: Locale;
-    id: string;
+  }>;
+  searchParams: Promise<{
+    hospitalId?: string;
   }>;
 }
 
-export default async function ConsultationChatPage({ params }: ConsultationChatPageProps) {
-  const { lang, id: hospitalId } = await params;
+export default async function ConsultationChatPage({
+  params,
+  searchParams,
+}: ConsultationChatPageProps) {
+  const { lang } = await params;
+  const { hospitalId } = await searchParams;
+
+  // hospitalId가 없으면 상담 목록 페이지로 리다이렉트
+  if (!hospitalId) {
+    redirect(`/${lang}/consultation`);
+  }
 
   try {
     const [{ hospital }, dict] = await Promise.all([
@@ -39,11 +50,19 @@ export default async function ConsultationChatPage({ params }: ConsultationChatP
   }
 }
 
-export const revalidate = 0; // 실시간 채팅이므로 캐시 비활성화
+export const revalidate = 0;
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }: ConsultationChatPageProps) {
-  const { lang, id: hospitalId } = await params;
+export async function generateMetadata({ params, searchParams }: ConsultationChatPageProps) {
+  const { lang } = await params;
+  const { hospitalId } = await searchParams;
+
+  if (!hospitalId) {
+    return {
+      title: '상담채팅',
+      description: '병원과의 실시간 상담',
+    };
+  }
 
   try {
     const [{ hospital }, dict] = await Promise.all([

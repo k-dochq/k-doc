@@ -71,7 +71,7 @@ export function ConsultationRequestForm({ hospital, lang, dict }: ConsultationRe
       });
 
       // 채팅 페이지로 이동
-      const chatUrl = `/hospitals/${hospital.id}/consultation/chat`;
+      const chatUrl = `/consultation/chat?hospitalId=${hospital.id}`;
       window.location.href = `/${lang}${chatUrl}`;
     } catch (error) {
       console.error('상담 신청 중 오류:', error);
