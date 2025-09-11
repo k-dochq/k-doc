@@ -444,6 +444,7 @@ enum MedicalSpecialtyType {
   LIPOSUCTION
   LIFTING
   HAIR_TRANSPLANT
+  DERMATOLOGY
 
   @@schema("public")
 }
