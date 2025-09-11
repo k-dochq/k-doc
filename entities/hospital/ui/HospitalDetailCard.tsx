@@ -12,6 +12,7 @@ import { HospitalInteriorGallery } from './HospitalInteriorGallery';
 import { HospitalStats } from './HospitalStats';
 import { HospitalDoctors } from './HospitalDoctors';
 import { HospitalLikeSection } from './HospitalLikeSection';
+import { ConsultationRequestButton } from 'features/consultation-request';
 
 interface HospitalDetailCardProps {
   hospital: Hospital & {
@@ -58,6 +59,11 @@ export function HospitalDetailCard({ hospital, lang, dict }: HospitalDetailCardP
 
         {/* 통계 정보 */}
         <HospitalStats hospital={hospital} />
+
+        {/* 상담신청 버튼 */}
+        <div className='border-t border-gray-200 pt-6'>
+          <ConsultationRequestButton hospitalId={hospital.id} locale={lang} dict={dict} />
+        </div>
       </div>
     </div>
   );

@@ -179,5 +179,67 @@
     },
     "loadingMore": "Loading more data...",
     "allLoaded": "All data loaded"
+  },
+  "consultation": {
+    "title": "Consultation",
+    "chat": "Chat",
+    "appointment": "Appointment",
+    "loading": "Loading...",
+    "error": "An error occurred while loading data.",
+    "retry": "Retry",
+    "empty": {
+      "chat": {
+        "title": "No ongoing consultations",
+        "description": "Start a consultation with a hospital"
+      },
+      "appointment": {
+        "title": "No appointment requests",
+        "description": "Make an appointment request with your preferred hospital"
+      }
+    },
+    "request": {
+      "title": "Consultation Request",
+      "button": "Request Consultation",
+      "backButton": "Back",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Please enter your name"
+        },
+        "gender": {
+          "label": "Gender",
+          "male": "Male",
+          "female": "Female"
+        },
+        "ageGroup": {
+          "label": "Age Group",
+          "placeholder": "Please select your age group",
+          "10s": "10s",
+          "20s": "20s",
+          "30s": "30s",
+          "40s": "40s",
+          "50s": "50s",
+          "60s": "60s+"
+        },
+        "phoneNumber": {
+          "label": "Phone Number",
+          "placeholder": "010-0000-0000"
+        },
+        "preferredContactTime": {
+          "label": "Preferred Contact Time",
+          "placeholder": "Please select preferred contact time",
+          "morning": "Morning (09:00 - 12:00)",
+          "afternoon": "Afternoon (12:00 - 18:00)",
+          "evening": "Evening (18:00 - 21:00)",
+          "anytime": "Anytime"
+        },
+        "content": {
+          "label": "Consultation Details",
+          "placeholder": "Please describe what you would like to consult about"
+        },
+        "required": "Required",
+        "submitButton": "Request Consultation"
+      }
+    }
   }
 }
