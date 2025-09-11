@@ -141,5 +141,14 @@
       "tryAgain": "Try Again",
       "goHome": "Go Home"
     }
+  },
+  "hospital": {
+    "like": {
+      "like": "ถูกใจ",
+      "liked": "ถูกใจแล้ว",
+      "loading": "กำลังโหลด...",
+      "countLabel": "",
+      "error": "เกิดข้อผิดพลาด"
+    }
   }
 }

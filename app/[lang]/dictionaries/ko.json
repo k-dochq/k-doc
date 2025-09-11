@@ -141,5 +141,14 @@
       "tryAgain": "Try Again",
       "goHome": "Go Home"
     }
+  },
+  "hospital": {
+    "like": {
+      "like": "찜하기",
+      "liked": "찜 완료",
+      "loading": "로딩 중...",
+      "countLabel": "개",
+      "error": "오류 발생"
+    }
   }
 }
