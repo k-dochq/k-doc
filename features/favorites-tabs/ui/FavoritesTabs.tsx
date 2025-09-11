@@ -3,15 +3,33 @@
 import { useState, useEffect } from 'react';
 import { cn } from 'shared/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
+import { type Locale } from 'shared/config';
+import { LikedHospitalsList } from './LikedHospitalsList';
 
 interface FavoritesTabsProps {
+  lang: Locale;
   dict: {
     hospitals: string;
     reviews: string;
+    loading: string;
+    error: string;
+    retry: string;
+    empty: {
+      hospitals: {
+        title: string;
+        description: string;
+      };
+      reviews: {
+        title: string;
+        description: string;
+      };
+    };
+    loadingMore: string;
+    allLoaded: string;
   };
 }
 
-export function FavoritesTabs({ dict }: FavoritesTabsProps) {
+export function FavoritesTabs({ lang, dict }: FavoritesTabsProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [activeTab, setActiveTab] = useState(0);
 
@@ -74,10 +92,17 @@ export function FavoritesTabs({ dict }: FavoritesTabsProps) {
           {/* 병원 탭 */}
           <CarouselItem className='min-h-[60vh] basis-full pl-0'>
             <div className='p-4'>
-              <div className='py-8 text-center'>
-                <h3 className='mb-2 text-lg font-medium text-gray-900'>즐겨찾기한 병원</h3>
-                <p className='text-gray-500'>아직 즐겨찾기한 병원이 없습니다.</p>
-              </div>
+              <LikedHospitalsList
+                lang={lang}
+                dict={{
+                  loading: dict.loading,
+                  error: dict.error,
+                  retry: dict.retry,
+                  empty: dict.empty.hospitals,
+                  loadingMore: dict.loadingMore,
+                  allLoaded: dict.allLoaded,
+                }}
+              />
             </div>
           </CarouselItem>
 
@@ -85,8 +110,11 @@ export function FavoritesTabs({ dict }: FavoritesTabsProps) {
           <CarouselItem className='min-h-[60vh] basis-full pl-0'>
             <div className='p-4'>
               <div className='py-8 text-center'>
-                <h3 className='mb-2 text-lg font-medium text-gray-900'>즐겨찾기한 시술후기</h3>
-                <p className='text-gray-500'>아직 즐겨찾기한 시술후기가 없습니다.</p>
+                <div className='mb-4 text-6xl'>📝</div>
+                <h3 className='mb-2 text-lg font-medium text-gray-900'>
+                  {dict.empty.reviews.title}
+                </h3>
+                <p className='text-gray-500'>{dict.empty.reviews.description}</p>
               </div>
             </div>
           </CarouselItem>
