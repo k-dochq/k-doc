@@ -196,6 +196,50 @@
         "title": "예약 신청 내역이 없습니다",
         "description": "원하는 병원에 예약을 신청해보세요"
       }
+    },
+    "request": {
+      "title": "상담신청",
+      "button": "상담신청",
+      "backButton": "뒤로가기",
+      "form": {
+        "name": {
+          "label": "이름",
+          "placeholder": "이름을 입력해주세요"
+        },
+        "gender": {
+          "label": "성별",
+          "male": "남성",
+          "female": "여성"
+        },
+        "ageGroup": {
+          "label": "나이대",
+          "placeholder": "나이대를 선택해주세요",
+          "10s": "10대",
+          "20s": "20대",
+          "30s": "30대",
+          "40s": "40대",
+          "50s": "50대",
+          "60s": "60대 이상"
+        },
+        "phoneNumber": {
+          "label": "휴대폰번호",
+          "placeholder": "010-0000-0000"
+        },
+        "preferredContactTime": {
+          "label": "선호연락시간",
+          "placeholder": "선호연락시간을 선택해주세요",
+          "morning": "오전 (09:00 - 12:00)",
+          "afternoon": "오후 (12:00 - 18:00)",
+          "evening": "저녁 (18:00 - 21:00)",
+          "anytime": "언제든지"
+        },
+        "content": {
+          "label": "상담내용",
+          "placeholder": "상담받고 싶은 내용을 자유롭게 작성해주세요"
+        },
+        "required": "필수",
+        "submitButton": "상담신청"
+      }
     }
   }
 }

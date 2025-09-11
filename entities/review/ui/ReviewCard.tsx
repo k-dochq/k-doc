@@ -6,7 +6,7 @@ import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar } from 'lucide-react';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { ReviewLikeButton } from 'features/review-like/ui/ReviewLikeButton';
 import type { Dictionary } from 'shared/model/types';
 
@@ -17,7 +17,6 @@ interface ReviewCardProps {
 }
 
 export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
-  const router = useLocalizedRouter();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const title = extractLocalizedText(review.title, lang) || '';
@@ -44,15 +43,11 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
     }).format(new Date(date));
   };
 
-  // 리뷰 상세 페이지로 이동
-  const handleCardClick = () => {
-    router.push(`/reviews/${review.id}`);
-  };
-
   return (
-    <div
+    <LocaleLink
+      href={`/reviews/${review.id}`}
+      locale={lang}
       className='flex h-full cursor-pointer flex-col rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md'
-      onClick={handleCardClick}
     >
       {/* 헤더 */}
       <div className='mb-3 flex items-start justify-between'>
@@ -167,6 +162,6 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
 
       {/* 시술 분야 */}
       <div className='mt-2 text-xs text-gray-500'>{medicalSpecialtyName}</div>
-    </div>
+    </LocaleLink>
   );
 }

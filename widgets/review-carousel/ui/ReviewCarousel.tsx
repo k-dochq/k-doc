@@ -5,7 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from 'entities/review';
 import { ReviewCard } from 'entities/review/ui';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { LocaleLink } from 'shared/ui/locale-link';
 import {
   Carousel,
   CarouselContent,
@@ -23,7 +23,6 @@ interface ReviewCarouselProps {
 }
 
 export function ReviewCarousel({ reviews, hospitalId, lang, dict }: ReviewCarouselProps) {
-  const router = useLocalizedRouter();
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -102,12 +101,13 @@ export function ReviewCarousel({ reviews, hospitalId, lang, dict }: ReviewCarous
         </h2>
         <div className='flex items-center space-x-3'>
           <span className='text-sm text-gray-500'>{reviews.length}개의 후기</span>
-          <button
-            onClick={() => router.push(`/hospitals/${hospitalId}/reviews`)}
+          <LocaleLink
+            href={`/hospitals/${hospitalId}/reviews`}
+            locale={lang}
             className='text-sm text-blue-600 hover:text-blue-800 hover:underline'
           >
             {dict.reviewCarousel?.viewAll || '전체보기'}
-          </button>
+          </LocaleLink>
         </div>
       </div>
 
