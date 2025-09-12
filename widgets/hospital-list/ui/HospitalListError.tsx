@@ -3,14 +3,14 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
-interface HospitalCarouselErrorProps {
+interface HospitalListErrorProps {
   lang: Locale;
   dict: Dictionary;
   error?: Error;
   onRetry?: () => void;
 }
 
-export function HospitalCarouselError({ lang, dict, error, onRetry }: HospitalCarouselErrorProps) {
+export function HospitalListError({ lang, dict, error, onRetry }: HospitalListErrorProps) {
   return (
     <div className='w-full'>
       <div className='mb-4'>

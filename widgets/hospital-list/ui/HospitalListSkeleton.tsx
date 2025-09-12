@@ -1,4 +1,4 @@
-export function HospitalCarouselSkeleton() {
+export function HospitalListSkeleton() {
   return (
     <div className='w-full'>
       <div className='mb-4'>

@@ -15,13 +15,13 @@ import {
   type CarouselApi,
 } from 'shared/ui/carousel';
 
-interface HospitalCarouselProps {
+interface HospitalListProps {
   hospitals: Hospital[];
   lang: Locale;
   dict: Dictionary;
 }
 
-export function HospitalCarousel({ hospitals, lang, dict }: HospitalCarouselProps) {
+export function HospitalList({ hospitals, lang, dict }: HospitalListProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
 

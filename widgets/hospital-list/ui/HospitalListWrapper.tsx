@@ -1,30 +1,30 @@
 import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { HospitalCarousel } from './HospitalCarousel';
-import { HospitalCarouselSkeleton } from './HospitalCarouselSkeleton';
+import { HospitalList } from './HospitalList';
+import { HospitalListSkeleton } from './HospitalListSkeleton';
 import { ErrorBoundary, LocalizedErrorDisplay } from 'shared/ui/error-display';
 import { getBestHospitals } from 'entities/hospital/api/use-cases/get-best-hospitals';
 
-interface HospitalCarouselWrapperProps {
+interface HospitalListWrapperProps {
   lang: Locale;
   dict: Dictionary;
 }
 
-async function HospitalCarouselContent({ lang, dict }: HospitalCarouselWrapperProps) {
+async function HospitalListContent({ lang, dict }: HospitalListWrapperProps) {
   const hospitals = await getBestHospitals();
 
-  return <HospitalCarousel hospitals={hospitals} lang={lang} dict={dict} />;
+  return <HospitalList hospitals={hospitals} lang={lang} dict={dict} />;
 }
 
 // 병원 데이터는 평점, 리뷰 등이 업데이트되므로 10분 캐시
 export const revalidate = 600; // 10분 (600초)
 
-export function HospitalCarouselWrapper({ lang, dict }: HospitalCarouselWrapperProps) {
+export function HospitalListWrapper({ lang, dict }: HospitalListWrapperProps) {
   return (
     <ErrorBoundary fallback={<LocalizedErrorDisplay error={null} lang={lang} dict={dict} />}>
-      <Suspense fallback={<HospitalCarouselSkeleton />}>
-        <HospitalCarouselContent lang={lang} dict={dict} />
+      <Suspense fallback={<HospitalListSkeleton />}>
+        <HospitalListContent lang={lang} dict={dict} />
       </Suspense>
     </ErrorBoundary>
   );
