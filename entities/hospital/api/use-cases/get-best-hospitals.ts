@@ -1,7 +1,7 @@
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError } from 'shared/lib';
-import { type Hospital } from '../entities/types';
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
+import { type BestHospital, parseLocalizedText, parsePriceInfo } from 'shared/model/types/common';
 
 // 카테고리별 병원 조회 옵션
 export interface GetBestHospitalsOptions {
@@ -9,7 +9,7 @@ export interface GetBestHospitalsOptions {
   limit?: number;
 }
 
-export async function getBestHospitals(options: GetBestHospitalsOptions = {}): Promise<Hospital[]> {
+export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
   try {
     const { category = 'ALL', limit = 5 } = options;
 
@@ -32,17 +32,26 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}): P
 
     const hospitals = await prisma.hospital.findMany({
       where: whereCondition,
-      include: {
+      select: {
+        id: true,
+        name: true,
+        address: true,
+        prices: true,
+        rating: true,
+        discountRate: true,
         HospitalImage: {
           where: {
             imageType: 'THUMBNAIL',
           },
           orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
           take: 1, // 첫 번째 썸네일 이미지만
+          select: {
+            imageUrl: true,
+          },
         },
-        HospitalMedicalSpecialty: {
-          include: {
-            MedicalSpecialty: true,
+        _count: {
+          select: {
+            Review: true, // 실제 리뷰 수 계산
           },
         },
       },
@@ -50,7 +59,17 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}): P
       take: limit, // 지정된 개수만큼 제한
     });
 
-    return hospitals;
+    // 직접 BestHospital 타입으로 반환 (JsonValue를 적절한 타입으로 파싱)
+    return hospitals.map((hospital) => ({
+      id: hospital.id,
+      name: parseLocalizedText(hospital.name),
+      address: parseLocalizedText(hospital.address),
+      prices: parsePriceInfo(hospital.prices),
+      rating: hospital.rating,
+      reviewCount: hospital._count.Review, // 실제 리뷰 수
+      thumbnailImageUrl: hospital.HospitalImage[0]?.imageUrl || null,
+      discountRate: hospital.discountRate,
+    }));
   } catch (error) {
     throw handleDatabaseError(error, 'getBestHospitals');
   }

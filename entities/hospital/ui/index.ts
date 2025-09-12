@@ -7,3 +7,7 @@ export * from './HospitalSpecialties';
 export * from './HospitalDescription';
 export * from './HospitalOperatingHours';
 export * from './HospitalStats';
+export * from './HospitalThumbnail';
+export * from './HospitalInfo';
+export * from './HospitalCard';
+export * from './HospitalList';
