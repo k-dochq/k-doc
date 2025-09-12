@@ -1,0 +1,1 @@
+export { HospitalListError } from './HospitalListError';
