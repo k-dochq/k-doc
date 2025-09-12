@@ -10,6 +10,13 @@ const config: Config = {
     './features/**/*.{js,ts,jsx,tsx,mdx}',
     './widgets/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        pretendard: ['var(--font-pretendard)'],
+      },
+    },
+  },
   plugins: [],
 };
 
