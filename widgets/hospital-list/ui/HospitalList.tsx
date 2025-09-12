@@ -9,7 +9,6 @@ import { useBestHospitals } from 'entities/hospital/api/queries/get-best-hospita
 import { HospitalList as HospitalListComponent } from 'entities/hospital/ui/HospitalList';
 import { HospitalListTitle } from './HospitalListTitle';
 import { HospitalListTabs } from './HospitalListTabs';
-import { HospitalListTabsSkeleton } from './HospitalListTabsSkeleton';
 import { HospitalListSkeleton } from './HospitalListSkeleton';
 
 interface HospitalListProps {
@@ -40,23 +39,6 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
     setSelectedCategory(category);
   };
 
-  // 로딩 상태 처리
-  if (isLoading) {
-    return (
-      <div className='w-full'>
-        <div className='mb-4'>
-          <HospitalListTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
-        </div>
-        <div className='mb-4'>
-          <HospitalListTabsSkeleton />
-        </div>
-        <div className='mb-4'>
-          <HospitalListSkeleton />
-        </div>
-      </div>
-    );
-  }
-
   // 에러 상태 처리
   if (error) {
     return (
@@ -65,7 +47,13 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
           <HospitalListTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
         </div>
         <div className='mb-4'>
-          <HospitalListTabsSkeleton />
+          <HospitalListTabs
+            lang={lang}
+            dict={dict}
+            medicalSpecialties={medicalSpecialties}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
         </div>
         <div className='text-center text-red-500'>
           병원 데이터를 불러오는 중 오류가 발생했습니다.
@@ -95,9 +83,11 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
 
       {/* 병원 리스트 표시 */}
       <div className=''>
-        {bestHospitals && (
+        {isLoading ? (
+          <HospitalListSkeleton />
+        ) : bestHospitals ? (
           <HospitalListComponent hospitals={bestHospitals} dict={dict} lang={lang} />
-        )}
+        ) : null}
       </div>
     </div>
   );

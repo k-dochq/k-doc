@@ -44,23 +44,25 @@ export function HospitalInfo({
         </h3>
       </div>
 
-      {/* 가격 정보 */}
-      <div className='flex gap-1'>
-        <span className='text-base font-semibold text-neutral-900'>
-          ${prices?.minPrice?.toLocaleString() || 'N/A'}~
-        </span>
-        {discountRate && (
-          <div
-            className='flex items-center justify-center rounded-[4px] px-1 py-0.5 text-xs font-semibold text-white'
-            style={{
-              backgroundImage:
-                'linear-gradient(90deg, rgb(255, 87, 41) 0%, rgb(255, 43, 159) 100%)',
-            }}
-          >
-            {discountRate}% OFF
-          </div>
-        )}
-      </div>
+      {/* 가격 정보 - 가격이 있을 때만 표시 */}
+      {prices?.minPrice && (
+        <div className='flex gap-1'>
+          <span className='text-base font-semibold text-neutral-900'>
+            ${prices.minPrice.toLocaleString()}~
+          </span>
+          {discountRate && (
+            <div
+              className='flex items-center justify-center rounded-[4px] px-1 py-0.5 text-xs font-semibold text-white'
+              style={{
+                backgroundImage:
+                  'linear-gradient(90deg, rgb(255, 87, 41) 0%, rgb(255, 43, 159) 100%)',
+              }}
+            >
+              {discountRate}% OFF
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 평점 정보 */}
       <div className='flex items-center gap-0.5'>

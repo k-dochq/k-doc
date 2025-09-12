@@ -15,7 +15,7 @@ export function HospitalThumbnail({
         <img src={imageUrl} alt={alt} className='h-full w-full rounded-lg object-contain' />
       ) : (
         <img
-          src='/images/shared/default_image.png'
+          src='/images/shared/default_image_square.png'
           alt={alt}
           className='h-full w-full rounded-lg object-fill'
         />
