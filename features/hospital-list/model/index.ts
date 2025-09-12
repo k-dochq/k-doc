@@ -1,0 +1,1 @@
+export { usePrefetchHospitalCategories } from './usePrefetchHospitalCategories';

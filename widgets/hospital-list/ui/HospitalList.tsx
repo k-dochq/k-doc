@@ -6,6 +6,8 @@ import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { useBestHospitals } from 'entities/hospital/api/queries/get-best-hospitals';
+import { usePrefetchHospitalCategories } from 'features/hospital-list/model';
+import { HospitalListError } from 'features/hospital-list/ui';
 import { HospitalList as HospitalListComponent } from 'entities/hospital/ui/HospitalList';
 import { HospitalListTitle } from './HospitalListTitle';
 import { HospitalListTabs } from './HospitalListTabs';
@@ -30,6 +32,12 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
     limit: 5,
   });
 
+  // 모든 카테고리의 데이터를 미리 prefetch
+  usePrefetchHospitalCategories({
+    medicalSpecialties,
+    selectedCategory,
+  });
+
   const handleViewAll = () => {
     // TODO: 전체보기 페이지로 이동하는 로직 구현
     console.log('View all hospitals for category:', selectedCategory);
@@ -42,23 +50,14 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
   // 에러 상태 처리
   if (error) {
     return (
-      <div className='w-full'>
-        <div className='mb-4'>
-          <HospitalListTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
-        </div>
-        <div className='mb-4'>
-          <HospitalListTabs
-            lang={lang}
-            dict={dict}
-            medicalSpecialties={medicalSpecialties}
-            selectedCategory={selectedCategory}
-            onCategoryChange={handleCategoryChange}
-          />
-        </div>
-        <div className='text-center text-red-500'>
-          병원 데이터를 불러오는 중 오류가 발생했습니다.
-        </div>
-      </div>
+      <HospitalListError
+        lang={lang}
+        dict={dict}
+        medicalSpecialties={medicalSpecialties}
+        selectedCategory={selectedCategory}
+        onViewAll={handleViewAll}
+        onCategoryChange={handleCategoryChange}
+      />
     );
   }
 
