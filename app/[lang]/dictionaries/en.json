@@ -11,10 +11,11 @@
     }
   },
   "search": {
-    "placeholder": "Search hospitals, doctors, procedures"
+    "placeholder": "Search hospitals, procedures"
   },
-  "hospitalCarousel": {
-    "title": "Recommended Hospitals",
+  "hospitalList": {
+    "title": "Popular Hospitals",
+    "viewAll": "View All",
     "error": {
       "message": "An error occurred while loading hospital information.",
       "retryButton": "Retry"

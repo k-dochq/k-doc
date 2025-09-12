@@ -7,8 +7,6 @@ interface MaxWidthLayoutProps {
 
 export function MaxWidthLayout({ children, className = '' }: MaxWidthLayoutProps) {
   return (
-    <div className={`mx-auto min-h-screen px-4 ${MAX_MOBILE_WIDTH_CLASS} ${className}`}>
-      {children}
-    </div>
+    <div className={`mx-auto min-h-screen ${MAX_MOBILE_WIDTH_CLASS} ${className}`}>{children}</div>
   );
 }

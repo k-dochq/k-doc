@@ -48,7 +48,6 @@ export function isProtectedRoute(pathname: string): boolean {
     return matches;
   });
 
-  console.log(`🛡️ Final result: ${isProtected}`);
   return isProtected;
 }
 

@@ -11,10 +11,11 @@
     }
   },
   "search": {
-    "placeholder": "병원, 의사, 시술 부위를 검색해보세요"
+    "placeholder": "병원, 시술 부위를 검색해보세요"
   },
-  "hospitalCarousel": {
-    "title": "추천 병원",
+  "hospitalList": {
+    "title": "많이 찾는 병원",
+    "viewAll": "전체보기",
     "error": {
       "message": "병원 정보를 불러오는 중 오류가 발생했습니다.",
       "retryButton": "다시 시도"

@@ -14,7 +14,7 @@ export default async function MainLayout({ children, params }: MainLayoutProps) 
   return (
     <MaxWidthLayout>
       <Header currentLang={lang} />
-      <main className='py-8 pb-20'>{children}</main>
+      <main>{children}</main>
       <BottomNavigation currentLang={lang} />
     </MaxWidthLayout>
   );
