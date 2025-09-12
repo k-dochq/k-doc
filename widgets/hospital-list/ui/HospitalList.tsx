@@ -12,12 +12,11 @@ import { HospitalListTabsSkeleton } from './HospitalListTabsSkeleton';
 
 interface HospitalListProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
-  bestHospitals: Hospital[];
   lang: Locale;
   dict: Dictionary;
 }
 
-export function HospitalList({ medicalSpecialties, bestHospitals, lang, dict }: HospitalListProps) {
+export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListProps) {
   const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
 
   const handleViewAll = () => {
