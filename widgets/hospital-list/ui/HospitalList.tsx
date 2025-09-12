@@ -3,18 +3,18 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { type Hospital } from 'entities/hospital';
 import { type MedicalSpecialtyType } from '@prisma/client';
+import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { HospitalListTitle } from './HospitalListTitle';
 import { HospitalListTabs } from './HospitalListTabs';
 
 interface HospitalListProps {
-  hospitalsByCategory: Record<string, Hospital[]>;
+  medicalSpecialties: MedicalSpecialtyWithTranslations[];
   lang: Locale;
   dict: Dictionary;
 }
 
-export function HospitalList({ lang, dict }: HospitalListProps) {
+export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListProps) {
   const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
 
   const handleViewAll = () => {
@@ -36,6 +36,7 @@ export function HospitalList({ lang, dict }: HospitalListProps) {
         <HospitalListTabs
           lang={lang}
           dict={dict}
+          medicalSpecialties={medicalSpecialties}
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
         />

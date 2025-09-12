@@ -3,40 +3,40 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
+import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
+import { type LocalizedText, extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalListTabsProps {
   lang: Locale;
   dict: Dictionary;
+  medicalSpecialties: MedicalSpecialtyWithTranslations[];
   selectedCategory: MedicalSpecialtyType | 'ALL';
   onCategoryChange: (category: MedicalSpecialtyType | 'ALL') => void;
 }
 
-// 카테고리 정의 (QuickMenu와 동일한 순서)
-const CATEGORIES = [
-  { id: 'ALL' as const, labels: { ko: '전체', en: 'All', th: 'ทั้งหมด' } },
-  { id: 'EYES' as const, labels: { ko: '눈', en: 'Eyes', th: 'ตา' } },
-  { id: 'NOSE' as const, labels: { ko: '코', en: 'Nose', th: 'จมูก' } },
-  { id: 'LIFTING' as const, labels: { ko: '리프팅', en: 'Lifting', th: 'ลิฟติ้ง' } },
-  {
-    id: 'FACIAL_CONTOURING' as const,
-    labels: { ko: '안면윤곽', en: 'Facial Contouring', th: 'แต่งหน้า' },
-  },
-  { id: 'BREAST' as const, labels: { ko: '가슴', en: 'Breast', th: 'หน้าอก' } },
-] as const;
-
 export function HospitalListTabs({
   lang,
+  medicalSpecialties,
   selectedCategory,
   onCategoryChange,
 }: HospitalListTabsProps) {
-  const getLabel = (category: (typeof CATEGORIES)[number]): string => {
-    return category.labels[lang] || category.labels.ko;
+  // 전체 카테고리 + 의료 전문 분야 카테고리 조합
+  const allCategories = [
+    { id: 'ALL' as const, name: { ko_KR: '전체', en_US: 'All', th_TH: 'ทั้งหมด' } },
+    ...medicalSpecialties.map((specialty) => ({
+      id: specialty.specialtyType,
+      name: specialty.name as LocalizedText,
+    })),
+  ];
+
+  const getLabel = (category: { name: LocalizedText }): string => {
+    return extractLocalizedText(category.name, lang);
   };
 
   return (
     <div className='w-full overflow-x-auto'>
       <div className='flex items-center gap-2 pb-2'>
-        {CATEGORIES.map((category) => {
+        {allCategories.map((category) => {
           const isSelected = selectedCategory === category.id;
 
           return (

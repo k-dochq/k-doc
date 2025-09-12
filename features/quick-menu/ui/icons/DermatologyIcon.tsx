@@ -4,30 +4,30 @@ export function DermatologyIcon() {
       <path
         d='M11.4952 1.9541C11.4952 1.9541 5.328 5.67744 6.67786 13.6826C6.67786 13.6826 7.64204 16.1028 5.90651 18.3368L2.62829 21.8739C2.62829 21.8739 1.47127 22.8048 3.2068 24.1079L5.13517 25.2249C5.13517 25.2249 4.55666 26.7143 5.52084 28.2036C5.52084 28.2036 4.12303 29.0882 5.71367 30.6238C7.66704 32.5096 5.13516 36.5811 9.37757 37.3258C13.62 38.0705 21.3334 36.395 25.1866 30.9961'
         stroke='#404040'
-        stroke-width='1.5'
-        stroke-linecap='round'
-        stroke-linejoin='round'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       />
       <path
         d='M19.4014 36.0193C19.4014 36.0193 20.1834 36.564 21.594 41.0458'
         stroke='#404040'
-        stroke-width='1.5'
-        stroke-linecap='round'
-        stroke-linejoin='round'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       />
       <path
         d='M29.0649 18.1471C29.0649 18.1471 32.6145 15.989 33.8858 19.2641C35.0428 22.2428 33.1144 23.7321 32.7288 25.5938C32.3431 27.4555 30.9932 28.7586 28.6792 28.5725'
         stroke='#404040'
-        stroke-width='1.5'
-        stroke-linecap='round'
-        stroke-linejoin='round'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       />
       <path
         d='M31.186 20.9396C31.186 20.9396 29.0648 20.7534 28.2935 23.7321'
         stroke='#404040'
-        stroke-width='1.5'
-        stroke-linecap='round'
-        stroke-linejoin='round'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       />
       <path
         d='M10.15 21.5462C10.6471 21.5462 11.05 21.1499 11.05 20.6609C11.05 20.172 10.6471 19.7756 10.15 19.7756C9.65294 19.7756 9.25 20.172 9.25 20.6609C9.25 21.1499 9.65294 21.5462 10.15 21.5462Z'

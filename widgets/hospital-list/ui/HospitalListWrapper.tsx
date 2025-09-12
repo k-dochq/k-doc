@@ -8,6 +8,10 @@ import {
   getBestHospitals,
   type GetBestHospitalsOptions,
 } from 'entities/hospital/api/use-cases/get-best-hospitals';
+import {
+  getMainMedicalSpecialties,
+  type MedicalSpecialtyWithTranslations,
+} from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { type MedicalSpecialtyType } from '@prisma/client';
 
 interface HospitalListWrapperProps {
@@ -16,26 +20,29 @@ interface HospitalListWrapperProps {
 }
 
 async function HospitalListContent({ lang, dict }: HospitalListWrapperProps) {
-  // 카테고리별 병원 데이터를 미리 로드
-  const categoriesData = await Promise.all([
-    getBestHospitals({ category: 'ALL', limit: 5 }),
-    getBestHospitals({ category: 'EYES', limit: 5 }),
-    getBestHospitals({ category: 'NOSE', limit: 5 }),
-    getBestHospitals({ category: 'LIFTING', limit: 5 }),
-    getBestHospitals({ category: 'FACIAL_CONTOURING', limit: 5 }),
-    getBestHospitals({ category: 'BREAST', limit: 5 }),
-  ]);
+  // 의료 전문 분야 데이터 조회
+  const medicalSpecialties = await getMainMedicalSpecialties();
 
-  const hospitalsByCategory = {
-    ALL: categoriesData[0],
-    EYES: categoriesData[1],
-    NOSE: categoriesData[2],
-    LIFTING: categoriesData[3],
-    FACIAL_CONTOURING: categoriesData[4],
-    BREAST: categoriesData[5],
-  };
+  // 전체 카테고리 포함 (ALL 추가)
+  const allCategories: Array<MedicalSpecialtyType | 'ALL'> = [
+    'ALL',
+    ...medicalSpecialties.map((specialty) => specialty.specialtyType),
+  ];
 
-  return <HospitalList hospitalsByCategory={hospitalsByCategory} lang={lang} dict={dict} />;
+  // 카테고리별 병원 데이터를 병렬로 로드
+  const categoriesData = await Promise.all(
+    allCategories.map((category) => getBestHospitals({ category, limit: 5 })),
+  );
+
+  return (
+    <HospitalList
+      allCategories={allCategories}
+      categoriesData={categoriesData}
+      medicalSpecialties={medicalSpecialties}
+      lang={lang}
+      dict={dict}
+    />
+  );
 }
 
 // 병원 데이터는 평점, 리뷰 등이 업데이트되므로 10분 캐시
