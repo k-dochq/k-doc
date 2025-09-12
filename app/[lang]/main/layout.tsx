@@ -15,6 +15,7 @@ export default async function MainLayout({ children, params }: MainLayoutProps) 
     <MaxWidthLayout>
       <Header currentLang={lang} />
       <main>{children}</main>
+      <div className='h-16' />
       <BottomNavigation currentLang={lang} />
     </MaxWidthLayout>
   );
