@@ -5,6 +5,7 @@ import {
 } from 'shared/model/types/common';
 import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
+import { StarIcon } from 'shared/ui/star-icon';
 
 interface HospitalInfoProps {
   name: LocalizedText;
@@ -62,12 +63,12 @@ export function HospitalInfo({
       </div>
 
       {/* 평점 정보 */}
-      {/* <div className='flex items-center gap-1'>
-        <span className='text-purple-500'>★</span>
-        <span className='text-sm font-medium text-gray-700'>
-          {rating.toFixed(1)} ({reviewCount})
+      <div className='flex items-center gap-0.5'>
+        <StarIcon />
+        <span className='text-xs font-medium text-neutral-900'>
+          {rating.toFixed(1)} <span className='text-neutral-400'>({reviewCount})</span>
         </span>
-      </div> */}
+      </div>
     </div>
   );
 }
