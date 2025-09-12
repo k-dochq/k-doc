@@ -23,26 +23,7 @@ async function HospitalListContent({ lang, dict }: HospitalListWrapperProps) {
   // 의료 전문 분야 데이터 조회
   const medicalSpecialties = await getMainMedicalSpecialties();
 
-  // 전체 카테고리 포함 (ALL 추가)
-  const allCategories: Array<MedicalSpecialtyType | 'ALL'> = [
-    'ALL',
-    ...medicalSpecialties.map((specialty) => specialty.specialtyType),
-  ];
-
-  // 카테고리별 병원 데이터를 병렬로 로드
-  const categoriesData = await Promise.all(
-    allCategories.map((category) => getBestHospitals({ category, limit: 5 })),
-  );
-
-  return (
-    <HospitalList
-      allCategories={allCategories}
-      categoriesData={categoriesData}
-      medicalSpecialties={medicalSpecialties}
-      lang={lang}
-      dict={dict}
-    />
-  );
+  return <HospitalList medicalSpecialties={medicalSpecialties} lang={lang} dict={dict} />;
 }
 
 // 병원 데이터는 평점, 리뷰 등이 업데이트되므로 10분 캐시

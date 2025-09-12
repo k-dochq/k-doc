@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { HospitalListTitle } from './HospitalListTitle';
 import { HospitalListTabs } from './HospitalListTabs';
+import { HospitalListTabsSkeleton } from './HospitalListTabsSkeleton';
 
 interface HospitalListProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];

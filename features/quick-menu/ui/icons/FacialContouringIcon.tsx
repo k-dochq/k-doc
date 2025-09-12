@@ -1,7 +1,7 @@
 export function FacialContouringIcon() {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='50' height='40' viewBox='0 0 50 40' fill='none'>
-      <g clip-path='url(#clip0_941_3297)'>
+      <g clipPath='url(#clip0_941_3297)'>
         <path
           d='M39.104 16.1549V29.4609C39.104 34.4067 35.462 38.7879 30.6282 38.7879H19.8721C15.0344 38.7879 11.4038 34.4028 11.4038 29.4609V16.1549C11.4 8.33387 17.598 1.99341 25.2482 1.99341H25.252C32.9021 1.99341 39.104 8.33387 39.104 16.1549Z'
           stroke='#404040'
