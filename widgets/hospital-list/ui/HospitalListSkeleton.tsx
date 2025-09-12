@@ -14,7 +14,7 @@ export function HospitalListSkeleton() {
             <div className='h-4 w-8 animate-pulse rounded bg-gray-200'></div>
           </div>
           {/* 의료 전문 분야 탭들 스켈레톤 */}
-          {Array.from({ length: 6 }).map((_, index) => (
+          {Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
               className='flex min-w-[43px] shrink-0 items-center justify-center rounded-full px-3 py-2'

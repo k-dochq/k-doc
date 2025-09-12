@@ -5,17 +5,19 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
+import { type Hospital } from 'entities/hospital/api/entities/types';
 import { HospitalListTitle } from './HospitalListTitle';
 import { HospitalListTabs } from './HospitalListTabs';
 import { HospitalListTabsSkeleton } from './HospitalListTabsSkeleton';
 
 interface HospitalListProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
+  bestHospitals: Hospital[];
   lang: Locale;
   dict: Dictionary;
 }
 
-export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListProps) {
+export function HospitalList({ medicalSpecialties, bestHospitals, lang, dict }: HospitalListProps) {
   const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
 
   const handleViewAll = () => {

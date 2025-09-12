@@ -20,10 +20,20 @@ interface HospitalListWrapperProps {
 }
 
 async function HospitalListContent({ lang, dict }: HospitalListWrapperProps) {
-  // 의료 전문 분야 데이터 조회
-  const medicalSpecialties = await getMainMedicalSpecialties();
+  // 의료 전문 분야 데이터와 인기병원리스트를 병렬로 조회
+  const [medicalSpecialties, bestHospitals] = await Promise.all([
+    getMainMedicalSpecialties(),
+    getBestHospitals({ category: 'ALL', limit: 5 }),
+  ]);
 
-  return <HospitalList medicalSpecialties={medicalSpecialties} lang={lang} dict={dict} />;
+  return (
+    <HospitalList
+      medicalSpecialties={medicalSpecialties}
+      bestHospitals={bestHospitals}
+      lang={lang}
+      dict={dict}
+    />
+  );
 }
 
 // 병원 데이터는 평점, 리뷰 등이 업데이트되므로 10분 캐시
