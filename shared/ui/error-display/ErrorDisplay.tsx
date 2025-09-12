@@ -20,7 +20,7 @@ export function ErrorDisplay({
   const errorMessage = error instanceof Error ? error.message : '알 수 없는 오류';
 
   return (
-    <div className={`rounded-3xl bg-gray-50 p-8 text-center ${className}`}>
+    <div className={`rounded-3xl p-8 text-center ${className}`}>
       {/* 에러 아이콘 */}
       <div className='mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100'>
         <AlertTriangle className='h-8 w-8 text-red-600' />
