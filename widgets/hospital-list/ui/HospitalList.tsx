@@ -62,9 +62,6 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
     );
   }
 
-  // 데이터 로깅 (개발용)
-  console.log('Best hospitals data:', bestHospitals);
-
   return (
     <div className='w-full'>
       <div className='mb-4'>

@@ -16,7 +16,7 @@ export function BottomNavigation({ currentLang }: BottomNavigationProps) {
   };
 
   return (
-    <nav className='safe-area-pb fixed right-0 bottom-0 left-0 z-50 bg-white'>
+    <nav className='sticky right-0 bottom-0 left-0 z-50 bg-white'>
       <div className={`mx-auto ${MAX_MOBILE_WIDTH_CLASS} border-t border-gray-200`}>
         <div className='flex items-center justify-around py-2'>
           {navigationItems.map((item) => {
