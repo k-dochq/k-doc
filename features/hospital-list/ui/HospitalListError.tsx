@@ -3,7 +3,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { HospitalListTitle } from 'widgets/hospital-list/ui/HospitalListTitle';
-import { HospitalListTabs } from 'widgets/hospital-list/ui/HospitalListTabs';
+import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
 
 interface HospitalListErrorProps {
   lang: Locale;
@@ -28,7 +28,7 @@ export function HospitalListError({
         <HospitalListTitle lang={lang} dict={dict} onViewAll={onViewAll} />
       </div>
       <div className='mb-4'>
-        <HospitalListTabs
+        <CategoryFilterTabs
           lang={lang}
           dict={dict}
           medicalSpecialties={medicalSpecialties}

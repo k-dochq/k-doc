@@ -8,7 +8,7 @@ import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use
 import { type LocalizedText, extractLocalizedText } from 'shared/lib/localized-text';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 
-interface HospitalListTabsProps {
+interface CategoryFilterTabsProps {
   lang: Locale;
   dict: Dictionary;
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
@@ -16,12 +16,12 @@ interface HospitalListTabsProps {
   onCategoryChange: (category: MedicalSpecialtyType | 'ALL') => void;
 }
 
-export function HospitalListTabs({
+export function CategoryFilterTabs({
   lang,
   medicalSpecialties,
   selectedCategory,
   onCategoryChange,
-}: HospitalListTabsProps) {
+}: CategoryFilterTabsProps) {
   const [api, setApi] = useState<CarouselApi>();
 
   // 전체 카테고리 + 의료 전문 분야 카테고리 조합
