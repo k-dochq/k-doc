@@ -1,4 +1,4 @@
-import { type BestHospital } from 'shared/model/types/common';
+import { type BestHospital } from 'shared/model/types';
 import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';

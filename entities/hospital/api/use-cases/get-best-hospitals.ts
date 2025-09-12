@@ -1,7 +1,7 @@
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError } from 'shared/lib';
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
-import { type BestHospital, parseLocalizedText, parsePriceInfo } from 'shared/model/types/common';
+import { type BestHospital, parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 
 // 카테고리별 병원 조회 옵션
 export interface GetBestHospitalsOptions {

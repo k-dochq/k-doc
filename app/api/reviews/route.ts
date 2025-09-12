@@ -52,9 +52,6 @@ export async function GET(request: NextRequest) {
       data: reviewsData,
     });
 
-    // 캐시 헤더 설정 (5분 캐시)
-    response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
-
     return response;
   } catch (error) {
     console.error('Error in /api/reviews:', error);

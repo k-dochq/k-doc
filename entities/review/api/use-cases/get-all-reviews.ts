@@ -4,6 +4,7 @@ import {
   type GetAllReviewsResponse,
   type ReviewCardData,
 } from '../../model/types';
+import { type LocalizedText } from 'shared/lib/localized-text';
 
 export async function getAllReviews({
   page = 1,
@@ -84,8 +85,8 @@ export async function getAllReviews({
     const reviewCardData: ReviewCardData[] = reviews.map((review) => ({
       id: review.id,
       rating: review.rating,
-      title: review.title as Record<string, string> | null,
-      content: review.content as Record<string, string> | null,
+      title: review.title as LocalizedText | null,
+      content: review.content as LocalizedText | null,
       concerns: review.concerns,
       createdAt: review.createdAt,
       viewCount: review.viewCount,
@@ -96,10 +97,10 @@ export async function getAllReviews({
         nickName: review.User.nickName,
       },
       hospital: {
-        name: review.Hospital.name as Record<string, string>,
+        name: review.Hospital.name as LocalizedText,
       },
       medicalSpecialty: {
-        name: review.MedicalSpecialty.name as Record<string, string>,
+        name: review.MedicalSpecialty.name as LocalizedText,
         specialtyType: review.MedicalSpecialty.specialtyType,
       },
       images: {
