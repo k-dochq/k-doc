@@ -1,6 +1,7 @@
 import { type BestHospital } from 'shared/model/types/common';
 import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { HospitalCard } from './HospitalCard';
 
 interface HospitalListProps {
@@ -21,7 +22,9 @@ export function HospitalList({ hospitals, dict, lang }: HospitalListProps) {
   return (
     <div className='space-y-3'>
       {hospitals.map((hospital) => (
-        <HospitalCard key={hospital.id} hospital={hospital} dict={dict} lang={lang} />
+        <LocaleLink key={hospital.id} href={`/hospitals/${hospital.id}`} className='block'>
+          <HospitalCard hospital={hospital} dict={dict} lang={lang} />
+        </LocaleLink>
       ))}
     </div>
   );
