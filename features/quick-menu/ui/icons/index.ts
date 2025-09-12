@@ -1,0 +1,10 @@
+export { EyesIcon } from './EyesIcon';
+export { NoseIcon } from './NoseIcon';
+export { LiftingIcon } from './LiftingIcon';
+export { FacialContouringIcon } from './FacialContouringIcon';
+export { BreastIcon } from './BreastIcon';
+export { LiposuctionIcon } from './LiposuctionIcon';
+export { HairTransplantIcon } from './HairTransplantIcon';
+export { StemCellIcon } from './StemCellIcon';
+export { DermatologyIcon } from './DermatologyIcon';
+export { AllIcon } from './AllIcon';

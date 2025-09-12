@@ -22,7 +22,7 @@ export default async function MainPage({ params }: MainPageProps) {
       </div>
 
       <div className='mt-4'>
-        <QuickMenuWrapper lang={lang} dict={dict} />
+        <QuickMenuWrapper lang={lang} />
       </div>
 
       <div className=''>

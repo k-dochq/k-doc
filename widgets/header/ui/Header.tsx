@@ -15,7 +15,7 @@ export function Header({ currentLang }: HeaderProps) {
         <LocaleLink href='/'>
           <HeaderLogo />
         </LocaleLink>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center'>
           <HeaderLanguageSwitcher currentLang={currentLang} />
           <HeaderProfile />
         </div>
