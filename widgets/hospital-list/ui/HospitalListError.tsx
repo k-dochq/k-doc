@@ -14,7 +14,7 @@ export function HospitalListError({ lang, dict, error, onRetry }: HospitalListEr
   return (
     <div className='w-full'>
       <div className='mb-4'>
-        <h2 className='text-lg font-semibold text-gray-900'>{dict.hospitalCarousel.title}</h2>
+        <h2 className='text-lg font-semibold text-gray-900'>{dict.hospitalList.title}</h2>
       </div>
       <div className='flex flex-col items-center justify-center py-8 text-center'>
         <div className='mb-4'>
@@ -35,7 +35,7 @@ export function HospitalListError({ lang, dict, error, onRetry }: HospitalListEr
           </div>
         </div>
         <h3 className='mb-2 text-sm font-medium text-gray-900'>
-          {dict.hospitalCarousel.error.message}
+          {dict.hospitalList.error.message}
         </h3>
         {error && (
           <p className='mb-4 max-w-sm text-xs text-gray-500'>
@@ -47,7 +47,7 @@ export function HospitalListError({ lang, dict, error, onRetry }: HospitalListEr
             onClick={onRetry}
             className='inline-flex items-center rounded-md border border-transparent bg-blue-600 px-3 py-2 text-sm leading-4 font-medium text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none'
           >
-            {dict.hospitalCarousel.error.retryButton}
+            {dict.hospitalList.error.retryButton}
           </button>
         )}
       </div>

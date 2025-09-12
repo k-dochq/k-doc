@@ -13,8 +13,9 @@
   "search": {
     "placeholder": "ค้นหาโรงพยาบาล ขั้นตอนการรักษา"
   },
-  "hospitalCarousel": {
-    "title": "โรงพยาบาลแนะนำ",
+  "hospitalList": {
+    "title": "โรงพยาบาลยอดนิยม",
+    "viewAll": "ดูทั้งหมด",
     "error": {
       "message": "เกิดข้อผิดพลาดขณะโหลดข้อมูลโรงพยาบาล",
       "retryButton": "ลองใหม่"
