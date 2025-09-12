@@ -1,3 +1,5 @@
+import { HotLabel } from 'shared/ui/hot-label';
+
 interface HospitalThumbnailProps {
   imageUrl: string | null;
   alt?: string;
@@ -8,17 +10,18 @@ export function HospitalThumbnail({
   alt = 'Hospital thumbnail',
 }: HospitalThumbnailProps) {
   return (
-    <div className='relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg'>
+    <div className='relative h-[120px] w-[120px] flex-shrink-0'>
       {imageUrl ? (
-        <img src={imageUrl} alt={alt} className='h-full w-full object-cover' />
+        <img src={imageUrl} alt={alt} className='h-full w-full rounded-lg object-contain' />
       ) : (
-        <div className='flex h-full w-full items-center justify-center bg-gray-200'>
-          <span className='text-xs text-gray-400'>No Image</span>
-        </div>
+        <img
+          src='/images/shared/default_image.png'
+          alt={alt}
+          className='h-full w-full rounded-lg object-fill'
+        />
       )}
-      {/* HOT 라벨 */}
-      <div className='absolute top-2 left-2 rounded bg-pink-500 px-2 py-1 text-xs font-medium text-white'>
-        HOT
+      <div className='absolute top-[-5px] left-[-5px]'>
+        <HotLabel />
       </div>
     </div>
   );

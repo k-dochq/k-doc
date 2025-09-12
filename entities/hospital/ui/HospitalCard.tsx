@@ -1,14 +1,18 @@
 import { type BestHospital } from 'shared/model/types/common';
+import { type Dictionary } from 'shared/model/types';
+import { type Locale } from 'shared/config';
 import { HospitalThumbnail } from './HospitalThumbnail';
 import { HospitalInfo } from './HospitalInfo';
 
 interface HospitalCardProps {
   hospital: BestHospital;
+  dict: Dictionary;
+  lang: Locale;
 }
 
-export function HospitalCard({ hospital }: HospitalCardProps) {
+export function HospitalCard({ hospital, dict, lang }: HospitalCardProps) {
   return (
-    <div className='flex gap-4'>
+    <div className='flex gap-3'>
       <HospitalThumbnail imageUrl={hospital.thumbnailImageUrl} />
       <HospitalInfo
         name={hospital.name}
@@ -17,6 +21,8 @@ export function HospitalCard({ hospital }: HospitalCardProps) {
         rating={hospital.rating}
         reviewCount={hospital.reviewCount}
         discountRate={hospital.discountRate}
+        dict={dict}
+        lang={lang}
       />
     </div>
   );

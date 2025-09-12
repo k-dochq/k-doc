@@ -94,8 +94,10 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
       </div>
 
       {/* 병원 리스트 표시 */}
-      <div className='mb-4'>
-        {bestHospitals && <HospitalListComponent hospitals={bestHospitals} />}
+      <div className=''>
+        {bestHospitals && (
+          <HospitalListComponent hospitals={bestHospitals} dict={dict} lang={lang} />
+        )}
       </div>
     </div>
   );
