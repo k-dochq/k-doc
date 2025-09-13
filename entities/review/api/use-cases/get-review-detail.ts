@@ -1,5 +1,6 @@
 import { prisma } from 'shared/lib/prisma';
 import { type ReviewCardData } from '../../model/types';
+import { type LocalizedText } from 'shared/lib/localized-text';
 
 export interface GetReviewDetailParams {
   reviewId: string;
@@ -34,6 +35,11 @@ export async function getReviewDetail({
         Hospital: {
           select: {
             name: true,
+            District: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         ReviewImage: {
@@ -62,8 +68,8 @@ export async function getReviewDetail({
     const reviewCardData: ReviewCardData = {
       id: review.id,
       rating: review.rating,
-      title: review.title as Record<string, string> | null,
-      content: review.content as Record<string, string> | null,
+      title: review.title as LocalizedText | null,
+      content: review.content as LocalizedText | null,
       isRecommended: review.isRecommended,
       concerns: review.concerns,
       createdAt: review.createdAt,
@@ -74,10 +80,13 @@ export async function getReviewDetail({
         nickName: review.User?.nickName || null,
       },
       hospital: {
-        name: review.Hospital.name as Record<string, string>,
+        name: review.Hospital.name as LocalizedText,
+        district: {
+          name: review.Hospital.District?.name as LocalizedText,
+        },
       },
       medicalSpecialty: {
-        name: review.MedicalSpecialty.name as Record<string, string>,
+        name: review.MedicalSpecialty.name as LocalizedText,
         specialtyType: review.MedicalSpecialty.specialtyType,
       },
       images: {
