@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { getDictionary } from 'app/[lang]/dictionaries';
+import { ErrorBoundary } from 'shared/ui/error-display';
+import { ErrorState } from 'shared/ui/error-state';
 import { HospitalsContent } from './HospitalsContent';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
 
@@ -19,17 +21,21 @@ export default async function HospitalsPage({ params, searchParams }: HospitalsP
   const dict = await getDictionary(lang);
 
   return (
-    <div className='container mx-auto space-y-6 px-4 py-6'>
-      {/* 헤더 - 즉시 표시 */}
-      <div className='border-b border-gray-200 pb-4'>
-        <h1 className='text-2xl font-bold text-gray-900'>{dict.hospitals?.title || '병원 목록'}</h1>
-        <p className='mt-2 text-gray-600'>다양한 병원들을 확인하세요</p>
-      </div>
-
-      {/* 병원 리스트 - Suspense로 스트리밍 */}
-      <Suspense fallback={<HospitalsSkeleton />}>
-        <HospitalsContent lang={lang} searchParams={resolvedSearchParams} dict={dict} />
-      </Suspense>
+    <div className=''>
+      {/* 병원 리스트 - ErrorBoundary와 Suspense로 스트리밍 */}
+      <ErrorBoundary
+        fallback={
+          <ErrorState
+            title='병원 데이터를 불러올 수 없습니다'
+            message='네트워크 연결을 확인하고 다시 시도해주세요.'
+            retryButtonText='다시 시도'
+          />
+        }
+      >
+        <Suspense fallback={<HospitalsSkeleton />}>
+          <HospitalsContent lang={lang} searchParams={resolvedSearchParams} dict={dict} />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }

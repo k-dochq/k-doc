@@ -19,7 +19,6 @@ interface HospitalsInfiniteListProps {
     specialtyType?: string;
     minRating?: string;
   };
-  initialData?: GetHospitalsResponse;
 }
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
