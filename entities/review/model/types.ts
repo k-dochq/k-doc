@@ -1,4 +1,4 @@
-import { type Prisma } from '@prisma/client';
+import { MedicalSpecialtyType, type Prisma } from '@prisma/client';
 import { type LocalizedText } from 'shared/lib/localized-text';
 
 // 기본 리뷰 타입 (Prisma에서 생성)
@@ -89,7 +89,7 @@ export interface GetAllReviewsParams {
   page?: number;
   limit?: number;
   offset?: number;
-  medicalSpecialtyId?: string; // 부위별 필터
+  category?: MedicalSpecialtyType | 'ALL';
   sortBy?: 'latest' | 'popular'; // 정렬 옵션
 }
 

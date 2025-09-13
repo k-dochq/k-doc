@@ -5,11 +5,12 @@ import {
   type ReviewCardData,
 } from '../../model/types';
 import { type LocalizedText } from 'shared/lib/localized-text';
+import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 
 export async function getAllReviews({
   page = 1,
   limit = 10,
-  medicalSpecialtyId,
+  category,
   sortBy = 'latest',
   offset,
 }: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
@@ -18,9 +19,15 @@ export async function getAllReviews({
 
   try {
     // 필터 조건 구성
-    const whereCondition = {
-      ...(medicalSpecialtyId && { medicalSpecialtyId }),
-    };
+    const whereCondition: Prisma.ReviewWhereInput = {};
+
+    // category가 있으면 MedicalSpecialty의 some 조건으로 필터링
+    if (category && category !== 'ALL') {
+      whereCondition.MedicalSpecialty = {
+        specialtyType: category as MedicalSpecialtyType,
+        isActive: true,
+      };
+    }
 
     // 정렬 조건 구성
     const orderBy = (() => {

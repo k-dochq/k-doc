@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllReviews } from 'entities/review';
+import { type MedicalSpecialtyType } from '@prisma/client';
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,7 +15,9 @@ export async function GET(request: NextRequest) {
     // 쿼리 파라미터 추출
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') || '10', 10);
-    const medicalSpecialtyId = searchParams.get('medicalSpecialtyId') || undefined;
+    const categoryParam = searchParams.get('category') || 'ALL';
+    const category: MedicalSpecialtyType | undefined =
+      categoryParam === 'ALL' ? undefined : (categoryParam as MedicalSpecialtyType);
     const sortBy = (searchParams.get('sortBy') as 'latest' | 'popular') || 'latest';
 
     // 파라미터 유효성 검사
@@ -43,7 +46,7 @@ export async function GET(request: NextRequest) {
     const reviewsData = await getAllReviews({
       page,
       limit,
-      medicalSpecialtyId,
+      category,
       sortBy,
     });
 
