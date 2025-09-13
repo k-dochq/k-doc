@@ -46,7 +46,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
   };
 
   // 좋아요 토글 뮤테이션
-  const toggleLikeMutation = useToggleHospitalLike({ queryParams });
+  const toggleLikeMutation = useToggleHospitalLike({ queryParams, user });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteHospitals(queryParams);
