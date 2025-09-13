@@ -1,10 +1,8 @@
-import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { getDictionary } from 'app/[lang]/dictionaries';
 import { ErrorBoundary } from 'shared/ui/error-display';
 import { ErrorState } from 'shared/ui/error-state';
 import { HospitalsContent } from './HospitalsContent';
-import { HospitalsSkeleton } from './HospitalsSkeleton';
 
 interface HospitalsPageProps {
   params: Promise<{ lang: Locale }>;
