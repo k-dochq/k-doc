@@ -2,11 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
-import {
-  type HospitalSort,
-  HOSPITAL_SORT_OPTIONS,
-  DEFAULT_HOSPITAL_SORT,
-} from 'shared/model/types';
+import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface HospitalFilterBarProps {
@@ -17,17 +13,19 @@ export function HospitalFilterBar({ lang }: HospitalFilterBarProps) {
   const searchParams = useSearchParams();
 
   // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
-  const createSortUrl = (sort: HospitalSort) => {
+  const createSortUrl = (sort: HospitalSortOption) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set('sort', sort);
     return `/hospitals?${params.toString()}`;
   };
 
   // 타입 안전하게 현재 정렬 옵션 가져오기
-  const currentSort: HospitalSort =
-    searchParams.get('sort') === 'popular' || searchParams.get('sort') === 'recommended'
-      ? (searchParams.get('sort') as HospitalSort)
-      : DEFAULT_HOSPITAL_SORT;
+  const currentSort: HospitalSortOption =
+    searchParams.get('sort') === HOSPITAL_SORT_OPTIONS.POPULAR ||
+    searchParams.get('sort') === HOSPITAL_SORT_OPTIONS.RECOMMENDED ||
+    searchParams.get('sort') === HOSPITAL_SORT_OPTIONS.NEWEST
+      ? (searchParams.get('sort') as HospitalSortOption)
+      : HOSPITAL_SORT_OPTIONS.POPULAR;
 
   return (
     <div className='flex items-center justify-between border-t border-b border-neutral-200 px-5 py-3'>

@@ -6,6 +6,7 @@ import {
   type GetHospitalsRequest,
   type GetHospitalsResponse,
 } from '../entities/types';
+import { DEFAULT_HOSPITAL_QUERY_PARAMS, type DbSortField } from 'shared/model/types/hospital-query';
 
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
@@ -51,12 +52,12 @@ export async function getHospitals(
 ): Promise<GetHospitalsResponse> {
   try {
     const {
-      page = 1,
-      limit = 20,
-      sortBy = 'rating',
-      sortOrder = 'desc',
+      page = DEFAULT_HOSPITAL_QUERY_PARAMS.page,
+      limit = DEFAULT_HOSPITAL_QUERY_PARAMS.limit,
+      sortBy = 'rating' as DbSortField,
+      sortOrder = DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
       specialtyType,
-      minRating = 0,
+      minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
     } = request;
 
     const offset = (page - 1) * limit;
@@ -64,7 +65,12 @@ export async function getHospitals(
     // 정렬 조건 설정
     const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [];
 
-    if (sortBy === 'viewCount') {
+    if (sortBy === 'rating') {
+      // 평점순
+      orderBy.push({ rating: sortOrder });
+      orderBy.push({ reviewCount: 'desc' }); // 동일 평점일 때 리뷰 수 많은 순
+      orderBy.push({ createdAt: 'desc' }); // 최종적으로 최신순
+    } else if (sortBy === 'viewCount') {
       // 인기순 (조회수 기준)
       orderBy.push({ viewCount: sortOrder });
       orderBy.push({ createdAt: 'desc' }); // 동일 조회수일 때 최신순
@@ -72,7 +78,9 @@ export async function getHospitals(
       // 최신순
       orderBy.push({ createdAt: sortOrder });
     } else {
-      // 기본값: 최신순
+      // 기본값: 평점순
+      orderBy.push({ rating: 'desc' });
+      orderBy.push({ reviewCount: 'desc' });
       orderBy.push({ createdAt: 'desc' });
     }
 

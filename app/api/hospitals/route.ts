@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getHospitals } from 'entities/hospital';
-import { isValidMedicalSpecialtyType } from 'shared/config';
+import {
+  convertToDbQueryParams,
+  validateHospitalQueryParams,
+} from 'shared/lib/hospital-query-utils';
 
 export async function GET(request: NextRequest) {
   try {
@@ -12,27 +15,26 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = url;
 
-    // 쿼리 파라미터 추출
-    const page = parseInt(searchParams.get('page') || '1', 10);
-    const limit = parseInt(searchParams.get('limit') || '10', 10);
-    const sortBy = searchParams.get('sortBy') || 'rating';
-    const sortOrder = searchParams.get('sortOrder') || 'desc';
-    const specialtyType = searchParams.get('specialtyType');
-    const minRating = parseFloat(searchParams.get('minRating') || '0');
+    // 타입 안전한 쿼리 파라미터 유효성 검증
+    const validationResult = validateHospitalQueryParams(searchParams);
 
-    // specialtyType 검증
-    const validSpecialtyType =
-      specialtyType && isValidMedicalSpecialtyType(specialtyType) ? specialtyType : undefined;
+    if (!validationResult.isValid) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Invalid query parameters',
+          details: validationResult.errors,
+        },
+        { status: 400 },
+      );
+    }
+
+    // 타입 안전한 파라미터 파싱 및 변환
+    const parsedParams = validationResult.params!;
+    const dbParams = convertToDbQueryParams(parsedParams);
 
     // 병원 데이터 조회
-    const hospitalsData = await getHospitals({
-      page,
-      limit,
-      sortBy: sortBy as 'createdAt' | 'viewCount',
-      sortOrder: sortOrder as 'asc' | 'desc',
-      specialtyType: validSpecialtyType,
-      minRating,
-    });
+    const hospitalsData = await getHospitals(dbParams);
 
     const response = NextResponse.json({
       success: true,

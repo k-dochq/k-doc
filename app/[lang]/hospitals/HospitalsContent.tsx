@@ -1,7 +1,8 @@
 'use client';
 
 import { type Locale } from 'shared/config';
-import { type Dictionary, type HospitalSort, DEFAULT_HOSPITAL_SORT } from 'shared/model/types';
+import { type Dictionary } from 'shared/model/types';
+import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { HospitalsInfiniteList } from './HospitalsInfiniteList';
 import { CategorySection, useCategories } from 'features/category-filter';
 import { HospitalFilterBar } from 'features/hospital-filter';
@@ -28,10 +29,12 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
   const currentCategory = searchParams.category as MedicalSpecialtyType | undefined;
 
   // 정렬 파라미터 처리 - 타입 안전하게 변환
-  const currentSort: HospitalSort =
-    searchParams.sort === 'popular' || searchParams.sort === 'recommended'
-      ? searchParams.sort
-      : DEFAULT_HOSPITAL_SORT;
+  const currentSort: HospitalSortOption =
+    searchParams.sort === HOSPITAL_SORT_OPTIONS.POPULAR ||
+    searchParams.sort === HOSPITAL_SORT_OPTIONS.RECOMMENDED ||
+    searchParams.sort === HOSPITAL_SORT_OPTIONS.NEWEST
+      ? (searchParams.sort as HospitalSortOption)
+      : HOSPITAL_SORT_OPTIONS.POPULAR;
 
   return (
     <div className=''>

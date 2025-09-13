@@ -16,7 +16,7 @@ export const queryKeys = {
       list: (params: Record<string, unknown>) =>
         [...queryKeys.hospitals.liked.all(), params] as const,
     },
-    infinite: (filters: Record<string, unknown>) =>
+    infinite: <T extends Record<string, unknown>>(filters: T) =>
       [...queryKeys.hospitals.lists(), 'infinite', filters] as const,
   },
 
