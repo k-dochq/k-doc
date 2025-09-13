@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { HospitalsInfiniteList } from './HospitalsInfiniteList';
 import { CategorySection, useCategories } from 'features/category-filter';
+import { HospitalFilterBar } from 'features/hospital-filter';
 import { type MedicalSpecialtyType } from '@prisma/client';
 
 interface HospitalsContentProps {
@@ -36,8 +37,8 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
         error={categoriesError}
       />
 
-      {/* 병원 리스트 */}
-      <HospitalsInfiniteList lang={lang} searchParams={{ category: currentCategory }} dict={dict} />
+      {/* 정렬/필터 바 */}
+      <HospitalFilterBar lang={lang} />
     </div>
   );
 }
