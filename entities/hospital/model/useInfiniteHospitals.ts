@@ -7,7 +7,7 @@ import { type GetHospitalsResponse } from '../api/entities/types';
 
 interface UseInfiniteHospitalsParams {
   limit?: number;
-  sortBy?: 'createdAt' | 'viewCount';
+  sortBy?: 'createdAt' | 'viewCount' | 'rating';
   sortOrder?: 'asc' | 'desc';
   specialtyType?: MedicalSpecialtyType;
   minRating?: number;

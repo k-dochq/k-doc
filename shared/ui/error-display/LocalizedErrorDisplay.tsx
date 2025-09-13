@@ -2,7 +2,7 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { ErrorDisplay } from './ErrorDisplay';
+import { ErrorState } from '../error-state/ErrorState';
 
 interface LocalizedErrorDisplayProps {
   error: unknown;
@@ -11,7 +11,6 @@ interface LocalizedErrorDisplayProps {
   onRetry?: () => void;
   className?: string;
 }
-
 export function LocalizedErrorDisplay({
   error,
   lang,
@@ -29,10 +28,9 @@ export function LocalizedErrorDisplay({
     });
 
   return (
-    <ErrorDisplay
-      error={error}
+    <ErrorState
       title={dict.error.title}
-      description={dict.error.description}
+      message={dict.error.description}
       onRetry={handleRetry}
       className={className}
     />

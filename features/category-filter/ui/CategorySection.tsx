@@ -49,7 +49,7 @@ export function CategorySection({
   });
 
   return (
-    <div className='w-full'>
+    <div className='w-full px-5 py-4'>
       <Carousel
         setApi={setApi}
         opts={{

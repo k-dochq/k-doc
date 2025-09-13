@@ -1,53 +1,49 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
-import { type Dictionary } from 'shared/model/types';
-import { interpolateTemplate } from 'shared/lib';
+import { type Dictionary, type HospitalSort } from 'shared/model/types';
 import { HospitalListCard } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
-import { HospitalSortSelector, type SortOption } from 'features/hospital-sort';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
+import { ErrorState } from 'shared/ui/error-state';
 
 interface HospitalsInfiniteListProps {
   lang: Locale;
   dict: Dictionary;
   searchParams: {
     category?: MedicalSpecialtyType;
+    sort?: HospitalSort;
   };
 }
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
-  const router = useRouter();
-  // const currentSearchParams = useSearchParams();
+  const { category, sort } = searchParams;
 
-  const { category } = searchParams;
+  // 정렬 파라미터를 API 형식으로 변환
+  const getSortParams = (sortType?: HospitalSort) => {
+    switch (sortType) {
+      case 'popular':
+        return { sortBy: 'viewCount' as const, sortOrder: 'desc' as const };
+      case 'recommended':
+        return { sortBy: 'createdAt' as const, sortOrder: 'desc' as const };
+      default:
+        return { sortBy: 'viewCount' as const, sortOrder: 'desc' as const };
+    }
+  };
+
+  const sortParams = getSortParams(sort);
 
   // 파라미터 변환
   const queryParams = {
     limit: 10,
-    sortBy: 'createdAt' as const,
-    sortOrder: 'desc' as const,
+    ...sortParams,
     specialtyType: category as MedicalSpecialtyType | undefined,
     minRating: 0,
   };
 
-  // 정렬 변경 핸들러
-  const handleSortChange = useCallback(
-    (newSort: SortOption) => {
-      const params = new URLSearchParams();
-      if (category) {
-        params.set('category', category);
-      }
-      params.set('sortBy', newSort);
-      router.push(`/${lang}/hospitals?${params.toString()}`);
-    },
-    [category, router, lang],
-  );
-
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteHospitals(queryParams);
 
   // 무한 스크롤을 위한 Intersection Observer
@@ -89,51 +85,24 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
   // 에러 상태
   if (isError) {
     return (
-      <div className='flex flex-col items-center justify-center py-12'>
-        <div className='text-center'>
-          <p className='mb-4 text-red-500'>
-            {error instanceof Error ? error.message : '데이터를 불러오는 중 오류가 발생했습니다.'}
-          </p>
-          <button
-            onClick={() => window.location.reload()}
-            className='rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'
-          >
-            다시 시도
-          </button>
-        </div>
-      </div>
+      <ErrorState
+        title='병원 데이터를 불러올 수 없습니다'
+        message='네트워크 연결을 확인하고 잠시 후 다시 시도해주세요'
+        onRetry={() => window.location.reload()}
+        className='py-12'
+      />
     );
   }
 
-  // 데이터 플래튼 및 중복 제거
+  // 데이터 플래튼
   const allHospitals = data?.pages.flatMap((page) => page.hospitals) || [];
-
-  // 중복된 병원 ID 제거 (같은 병원이 여러 페이지에 나타나는 것을 방지)
-  const uniqueHospitals = allHospitals.filter(
-    (hospital, index, array) => array.findIndex((h) => h.id === hospital.id) === index,
-  );
-
-  const totalCount = data?.pages[0]?.totalCount || 0;
 
   return (
     <div>
-      {/* 총 개수 */}
-      <div className='mb-4'>
-        <p className='text-sm text-gray-600'>
-          {interpolateTemplate(dict.hospitals.totalCount, { count: totalCount })}
-        </p>
-      </div>
-
-      {/* 정렬 선택기 */}
-      <HospitalSortSelector
-        currentSort={'createdAt' as SortOption}
-        onSortChange={handleSortChange}
-      />
-
       {/* 병원 리스트 */}
-      {uniqueHospitals.length > 0 ? (
+      {allHospitals.length > 0 ? (
         <div className='space-y-4'>
-          {uniqueHospitals.map((hospital) => (
+          {allHospitals.map((hospital) => (
             <HospitalListCard key={hospital.id} hospital={hospital} lang={lang} />
           ))}
 
@@ -147,7 +116,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
                 </div>
               </div>
             )}
-            {!hasNextPage && uniqueHospitals.length > 0 && (
+            {!hasNextPage && allHospitals.length > 0 && (
               <div className='text-center text-sm text-gray-500'>모든 병원을 불러왔습니다.</div>
             )}
           </div>

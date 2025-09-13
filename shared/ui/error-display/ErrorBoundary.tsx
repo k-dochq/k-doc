@@ -1,7 +1,7 @@
 'use client';
 
 import { Component, ReactNode } from 'react';
-import { ErrorDisplay } from './ErrorDisplay';
+import { ErrorState } from '../error-state/ErrorState';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -40,10 +40,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       }
 
       return (
-        <ErrorDisplay
-          error={this.state.error}
+        <ErrorState
           title='예상치 못한 오류가 발생했습니다'
-          description='페이지를 새로고침하거나 잠시 후 다시 시도해주세요'
+          message='페이지를 새로고침하거나 잠시 후 다시 시도해주세요'
           onRetry={this.handleRetry}
         />
       );
