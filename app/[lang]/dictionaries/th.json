@@ -157,6 +157,7 @@
   },
   "hospital": {
     "region": "ภูมิภาค",
+    "reviewsButton": "รีวิวการรักษา",
     "like": {
       "like": "ถูกใจ",
       "liked": "ถูกใจแล้ว",

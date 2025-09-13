@@ -3,6 +3,7 @@ import { type Dictionary } from 'shared/model/types';
 import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { HospitalDetailErrorState } from 'shared/ui/error-state';
 import { HospitalDetailHeader } from 'widgets/hospital-detail-header';
+import { HospitalDetailPhotos } from 'widgets/hospital-detail-photos';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
@@ -29,6 +30,9 @@ export async function HospitalDetailContent({
           hospitalId={hospitalId}
           hospitalName={extractLocalizedText(hospital.name, lang)}
         />
+
+        {/* 병원 사진 섹션 */}
+        <HospitalDetailPhotos hospital={hospital} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {

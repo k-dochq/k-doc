@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { type Hospital } from '../api/entities/types';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
+import { DEFAULT_IMAGES } from 'shared/config/images';
 
 interface HospitalCardImageProps {
   hospital: Hospital;
@@ -23,7 +24,7 @@ export function HospitalCardImage({ hospital, lang }: HospitalCardImageProps) {
         />
       ) : (
         <Image
-          src='/images/shared/default_image.png'
+          src={DEFAULT_IMAGES.HOSPITAL_DEFAULT}
           alt={`${hospitalName} 기본 이미지`}
           fill
           className='object-cover'
