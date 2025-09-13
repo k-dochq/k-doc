@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type User } from '@supabase/supabase-js';
 import { HospitalCardImage } from './HospitalCardImage';
 import { HospitalCardHeader } from './HospitalCardHeader';
+import { HospitalCardName } from './HospitalCardName';
 import { HospitalCardTags } from './HospitalCardTags';
 import { HospitalCardRating } from './HospitalCardRating';
 
@@ -43,10 +44,17 @@ export function HospitalListCard({
           isLikeLoading={isLikeLoading}
         />
 
-        <div className='flex w-full flex-col items-start justify-start gap-2'>
-          <HospitalCardTags hospital={hospital} lang={lang} />
-          <HospitalCardRating hospital={hospital} />
-        </div>
+        <div className='h-0.5' />
+
+        <HospitalCardName hospital={hospital} lang={lang} />
+
+        <div className='h-[6px]' />
+
+        <HospitalCardTags hospital={hospital} lang={lang} />
+
+        <div className='h-2' />
+
+        <HospitalCardRating hospital={hospital} />
       </div>
     </LocaleLink>
   );

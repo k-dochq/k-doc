@@ -75,7 +75,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
     <div>
       {/* 병원 리스트 */}
       {allHospitals.length > 0 ? (
-        <div className='space-y-4'>
+        <div className=''>
           {allHospitals.map((hospital) => (
             <HospitalListCard
               key={hospital.id}
