@@ -148,28 +148,33 @@ export async function getHospitals(
     });
 
     // 데이터 변환
-    const transformedHospitals: Hospital[] = hospitals.map((hospital) => ({
-      id: hospital.id,
-      name: hospital.name,
-      address: hospital.address,
-      rating: hospital.rating,
-      reviewCount: hospital.reviewCount,
-      bookmarkCount: hospital.bookmarkCount,
-      viewCount: hospital.viewCount,
-      likeCount: hospital._count.HospitalLike,
-      likedUserIds: hospital.HospitalLike.map((like) => like.userId), // 좋아요를 한 사용자 ID들
-      approvalStatusType: hospital.approvalStatusType,
-      ranking: hospital.ranking,
-      createdAt: hospital.createdAt,
-      updatedAt: hospital.updatedAt,
-      mainImageUrl: extractMainImageUrl(hospital.HospitalImage),
-      medicalSpecialties:
-        hospital.HospitalMedicalSpecialty?.map((hms) => ({
-          id: hms.MedicalSpecialty.id,
-          name: hms.MedicalSpecialty.name,
-          specialtyType: hms.MedicalSpecialty.specialtyType,
-        })) || [],
-    }));
+    const transformedHospitals: Hospital[] = hospitals.map((hospital) => {
+      const likedUserIds = hospital.HospitalLike.map((like) => like.userId);
+
+      return {
+        id: hospital.id,
+        name: hospital.name,
+        address: hospital.address,
+        rating: hospital.rating,
+        reviewCount: hospital.reviewCount,
+        bookmarkCount: hospital.bookmarkCount,
+        viewCount: hospital.viewCount,
+        likeCount: hospital._count.HospitalLike,
+        likedUserIds, // 좋아요를 한 사용자 ID들
+        isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
+        approvalStatusType: hospital.approvalStatusType,
+        ranking: hospital.ranking,
+        createdAt: hospital.createdAt,
+        updatedAt: hospital.updatedAt,
+        mainImageUrl: extractMainImageUrl(hospital.HospitalImage),
+        medicalSpecialties:
+          hospital.HospitalMedicalSpecialty?.map((hms) => ({
+            id: hms.MedicalSpecialty.id,
+            name: hms.MedicalSpecialty.name,
+            specialtyType: hms.MedicalSpecialty.specialtyType,
+          })) || [],
+      };
+    });
 
     const totalPages = Math.ceil(totalCount / limit);
     const hasNextPage = page < totalPages;

@@ -144,6 +144,8 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     bookmarkCount: data.bookmarkCount,
     viewCount: data.viewCount, // 조회수 증가 없음
     likeCount: data._count.HospitalLike,
+    likedUserIds: [], // 빈 배열로 설정
+    isLiked: false, // 기본값으로 false 설정
     approvalStatusType: data.approvalStatusType,
     ranking: data.ranking,
     createdAt: data.createdAt,
@@ -197,6 +199,8 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
     bookmarkCount: data.bookmarkCount,
     viewCount: data.viewCount + 1, // 조회수 증가 반영
     likeCount: data._count.HospitalLike,
+    likedUserIds: [], // 빈 배열로 설정
+    isLiked: false, // 기본값으로 false 설정
     approvalStatusType: data.approvalStatusType,
     ranking: data.ranking,
     createdAt: data.createdAt,

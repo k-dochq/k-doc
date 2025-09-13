@@ -1,7 +1,10 @@
+'use client';
+
 import { type Hospital } from '../api/entities/types';
 import { type Locale } from 'shared/config';
 import { LikeButton } from 'shared/ui/buttons/LikeButton';
 import { HospitalCardLocation } from './HospitalCardLocation';
+import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface HospitalCardHeaderProps {
   hospital: Hospital;
@@ -9,12 +12,17 @@ interface HospitalCardHeaderProps {
 }
 
 export function HospitalCardHeader({ hospital, lang }: HospitalCardHeaderProps) {
+  const { user } = useAuth();
+
+  // 클라이언트에서 현재 사용자의 좋아요 상태 계산
+  const isLiked = user ? hospital.likedUserIds.includes(user.id) : false;
+
   return (
     <div className='flex w-full flex-col items-start justify-between'>
       <div className='flex w-full items-center'>
         <HospitalCardLocation hospital={hospital} lang={lang} />
         <div className='ml-auto'>
-          <LikeButton count={hospital.likeCount} />
+          <LikeButton count={hospital.likeCount} isLiked={isLiked} />
         </div>
       </div>
     </div>
