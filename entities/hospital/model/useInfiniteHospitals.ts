@@ -61,7 +61,7 @@ export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
   // queryKey를 더 구체적으로 구성하여 파라미터 변경 시 새로운 쿼리로 인식되도록 함
   const filters = {
     limit: params.limit || 10,
-    sortBy: params.sortBy || 'createdAt',
+    sortBy: params.sortBy || 'popular',
     sortOrder: params.sortOrder || 'desc',
     category: params.category || null,
   };
