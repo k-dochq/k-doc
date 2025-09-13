@@ -1,8 +1,9 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
-import { HospitalDetailCard } from 'entities/hospital/ui/HospitalDetailCard';
-import { ReviewCarouselWrapper } from 'widgets/review-carousel';
+import { HospitalDetailErrorState } from 'shared/ui/error-state';
+import { HospitalDetailHeader } from 'widgets/hospital-detail-header';
+import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
   hospitalId: string;
@@ -20,27 +21,17 @@ export async function HospitalDetailContent({
     const { hospital } = await getHospitalDetail({ id: hospitalId });
 
     return (
-      <>
-        {/* 병원 상세 정보 */}
-        <HospitalDetailCard hospital={hospital} lang={lang} dict={dict} />
-
-        {/* 리뷰 섹션 */}
-        <div className='border-t border-gray-200 pt-8'>
-          <ReviewCarouselWrapper hospitalId={hospitalId} lang={lang} dict={dict} />
-        </div>
-      </>
+      <div className='min-h-screen bg-gradient-to-b from-[#FE906C] to-[#FF6CA5]'>
+        {/* 헤더 */}
+        <HospitalDetailHeader
+          lang={lang}
+          dict={dict}
+          hospitalName={extractLocalizedText(hospital.name, lang)}
+        />
+      </div>
     );
   } catch (error) {
     console.error('Error loading hospital detail content:', error);
-    return (
-      <div className='flex flex-col items-center justify-center py-12'>
-        <div className='text-center'>
-          <h2 className='mb-2 text-lg font-medium text-gray-900'>
-            병원 정보를 불러오는 중 오류가 발생했습니다
-          </h2>
-          <p className='text-gray-500'>잠시 후 다시 시도해주세요.</p>
-        </div>
-      </div>
-    );
+    return <HospitalDetailErrorState className='min-h-screen' />;
   }
 }
