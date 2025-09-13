@@ -255,5 +255,26 @@
         "submitButton": "Request Consultation"
       }
     }
+  },
+  "cautionSection": {
+    "title": "Important Notes",
+    "items": [
+      "Limousine service is only available for hospital/procedure reservations when visiting Korea.",
+      "The limousine option can be selected during the reservation application stage after applying for a consultation.",
+      "Concierge service, such as hot places and restaurant tours in Korea, is provided for advance reservations.",
+      {
+        "title": "Daily limousine usage fees are as follows.",
+        "details": [
+          "- Supercar Lamborghini Urus: 1,080 USD per day",
+          "- Staria: 495 USD per day",
+          "- Includes driver's fee, driver's meal, toll gate fees, and taxes",
+          "- Based on 8 hours of use from 8:30 AM to 5:30 PM",
+          "- Additional charges for extra hours: Supercar 150 USD/hour, Staria 80 USD/hour (on-site card payment)",
+          "- Fuel costs settled later (on-site card payment)",
+          "- Additional charges for driving outside Seoul (on-site card payment)"
+        ]
+      },
+      "Payment is only possible based on 8 hours per day. If short-term travel is needed, it is convenient to use international taxis or local taxi apps after arriving in Korea."
+    ]
   }
 }
