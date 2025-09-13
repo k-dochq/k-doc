@@ -6,9 +6,7 @@ interface HospitalsContentProps {
   lang: Locale;
   dict: Dictionary;
   searchParams: {
-    sortBy?: string;
-    specialtyType?: string;
-    minRating?: string;
+    category?: string;
   };
 }
 

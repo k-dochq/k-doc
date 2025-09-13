@@ -9,7 +9,7 @@ export function QuickMenuButton({ category, lang }: CategoryButtonProps) {
 
   return (
     <LocaleLink
-      href={`/hospitals?category=${category.id}`}
+      href={`/hospitals?category=${category.type}`}
       className='flex min-w-0 flex-col items-center gap-1'
     >
       <div className='flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-[#f9d1ff] bg-white transition-shadow hover:shadow-md'>

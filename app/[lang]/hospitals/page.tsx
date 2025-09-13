@@ -9,9 +9,7 @@ import { HospitalsSkeleton } from './HospitalsSkeleton';
 interface HospitalsPageProps {
   params: Promise<{ lang: Locale }>;
   searchParams: Promise<{
-    sortBy?: string;
-    specialtyType?: string;
-    minRating?: string;
+    category?: string;
   }>;
 }
 

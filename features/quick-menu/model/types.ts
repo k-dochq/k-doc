@@ -3,6 +3,7 @@ import { type LocalizedText } from 'shared/model/types/common';
 
 export interface CategoryItem {
   id: string;
+  type: string;
   icon: () => React.ReactNode;
   labels: LocalizedText;
 }
