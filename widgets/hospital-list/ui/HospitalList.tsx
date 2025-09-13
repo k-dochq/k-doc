@@ -27,6 +27,7 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
     data: bestHospitals,
     isLoading,
     error,
+    refetch,
   } = useBestHospitals({
     category: selectedCategory,
     limit: 5,
@@ -47,6 +48,11 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
     setSelectedCategory(category);
   };
 
+  const handleRetry = () => {
+    // TanStack Query의 refetch를 사용하여 재시도
+    refetch();
+  };
+
   // 에러 상태 처리
   if (error) {
     return (
@@ -57,6 +63,7 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
         selectedCategory={selectedCategory}
         onViewAll={handleViewAll}
         onCategoryChange={handleCategoryChange}
+        onRetry={handleRetry}
       />
     );
   }

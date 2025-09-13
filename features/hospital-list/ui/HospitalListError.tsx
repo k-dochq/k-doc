@@ -4,6 +4,7 @@ import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { HospitalListTitle } from 'widgets/hospital-list/ui/HospitalListTitle';
 import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
+import { ErrorState } from 'shared/ui/error-state';
 
 interface HospitalListErrorProps {
   lang: Locale;
@@ -12,6 +13,7 @@ interface HospitalListErrorProps {
   selectedCategory: MedicalSpecialtyType | 'ALL';
   onViewAll: () => void;
   onCategoryChange: (category: MedicalSpecialtyType | 'ALL') => void;
+  onRetry?: () => void;
 }
 
 export function HospitalListError({
@@ -21,6 +23,7 @@ export function HospitalListError({
   selectedCategory,
   onViewAll,
   onCategoryChange,
+  onRetry,
 }: HospitalListErrorProps) {
   return (
     <div className='w-full'>
@@ -36,7 +39,12 @@ export function HospitalListError({
           onCategoryChange={onCategoryChange}
         />
       </div>
-      <div className='text-center text-red-500'>병원 데이터를 불러오는 중 오류가 발생했습니다.</div>
+      <ErrorState
+        title='병원 데이터를 불러올 수 없습니다'
+        message='네트워크 연결을 확인하고 다시 시도해주세요.'
+        onRetry={onRetry}
+        retryButtonText='다시 시도'
+      />
     </div>
   );
 }
