@@ -3,7 +3,7 @@ export function CategorySectionSkeleton() {
     <div className='w-full px-5 py-4'>
       <div className='flex gap-3 overflow-hidden'>
         {/* 카테고리 버튼 스켈레톤들 */}
-        {Array.from({ length: 3 }).map((_, index) => (
+        {Array.from({ length: 4 }).map((_, index) => (
           <div key={index} className='flex min-w-0 flex-col items-center gap-1'>
             {/* 아이콘 영역 스켈레톤 */}
             <div className='flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-neutral-200 bg-white'>
