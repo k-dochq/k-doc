@@ -23,5 +23,12 @@ export function LikeButtonWrapper({ hospitalId }: LikeButtonWrapperProps) {
     return <LikeButton likeCount={0} isLiked={false} onLikeToggle={() => {}} />;
   }
 
-  return <LikeButton likeCount={likeCount} isLiked={isLiked} onLikeToggle={toggleLike} />;
+  return (
+    <LikeButton
+      likeCount={likeCount}
+      isLiked={isLiked}
+      onLikeToggle={toggleLike}
+      isLoading={isToggling}
+    />
+  );
 }

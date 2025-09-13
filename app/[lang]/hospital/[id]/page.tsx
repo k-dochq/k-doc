@@ -7,7 +7,6 @@ import {
   getHospitalDetail,
   getAllHospitalIds,
 } from 'entities/hospital/api/use-cases/get-hospital-detail';
-// import { HospitalDetailContent } from './HospitalDetailContent';
 import { HospitalDetailSkeleton } from './HospitalDetailSkeleton';
 import { HospitalDetailContent } from './HospitalDetailContent';
 
