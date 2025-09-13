@@ -55,6 +55,11 @@ export async function getAllReviews({
         Hospital: {
           select: {
             name: true,
+            District: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         MedicalSpecialty: {
@@ -98,6 +103,9 @@ export async function getAllReviews({
       },
       hospital: {
         name: review.Hospital.name as LocalizedText,
+        district: {
+          name: review.Hospital.District?.name as LocalizedText,
+        },
       },
       medicalSpecialty: {
         name: review.MedicalSpecialty.name as LocalizedText,

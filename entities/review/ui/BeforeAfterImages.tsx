@@ -36,7 +36,7 @@ export function BeforeAfterImages({
         />
 
         <span
-          className='absolute bottom-0 left-0 rounded-tl-none rounded-tr-sm rounded-br-none rounded-bl-none px-1 py-0.5 text-xs font-medium text-white'
+          className='absolute bottom-0 left-0 rounded-tl-none rounded-tr-sm rounded-br-none rounded-bl-none px-1 py-0.5 text-[11px] font-medium text-white'
           style={{ backgroundColor: 'rgba(23, 23, 23, 0.70)' }}
         >
           Before
@@ -53,7 +53,7 @@ export function BeforeAfterImages({
           sizes='(max-width: 768px) 45vw, 200px'
         />
         <span
-          className='absolute right-0 bottom-0 rounded-tl-sm rounded-tr-none rounded-br-none rounded-bl-none px-1 py-0.5 text-xs font-medium text-white'
+          className='absolute right-0 bottom-0 rounded-tl-sm rounded-tr-none rounded-br-none rounded-bl-none px-1 py-0.5 text-[11px] font-medium text-white'
           style={{ backgroundColor: 'rgba(218, 71, 239, 0.70)' }}
         >
           After

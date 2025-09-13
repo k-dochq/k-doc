@@ -30,7 +30,7 @@ export function PopularReviewCard({ review, lang, className = '' }: PopularRevie
     <LocaleLink
       href={`/reviews/${review.id}`}
       locale={lang}
-      className={`block w-full rounded-lg hover:shadow-md ${className}`}
+      className={`block w-full rounded-lg border border-neutral-200 ${className}`}
     >
       {/* Before/After 이미지 */}
       <div className=''>
@@ -53,7 +53,7 @@ export function PopularReviewCard({ review, lang, className = '' }: PopularRevie
         <div className='h-2' />
 
         {/* 병원 정보 */}
-        <ReviewHospitalInfo hospitalName={review.hospital.name} lang={lang} />
+        <ReviewHospitalInfo districtName={review.hospital.district.name} lang={lang} />
       </div>
     </LocaleLink>
   );

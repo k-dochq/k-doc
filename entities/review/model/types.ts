@@ -53,6 +53,9 @@ export type ReviewCardData = {
   };
   hospital: {
     name: LocalizedText;
+    district: {
+      name: LocalizedText;
+    };
   };
   medicalSpecialty: {
     name: LocalizedText;

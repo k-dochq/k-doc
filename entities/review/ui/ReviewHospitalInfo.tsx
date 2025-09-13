@@ -5,17 +5,17 @@ import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface ReviewHospitalInfoProps {
-  hospitalName: LocalizedText;
+  districtName: LocalizedText;
   lang: Locale;
   className?: string;
 }
 
 export function ReviewHospitalInfo({
-  hospitalName,
+  districtName,
   lang,
   className = '',
 }: ReviewHospitalInfoProps) {
-  const name = extractLocalizedText(hospitalName, lang) || '';
+  const name = extractLocalizedText(districtName, lang) || '';
 
   return (
     <div className={`text-xs text-gray-600 ${className}`}>
