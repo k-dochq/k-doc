@@ -92,7 +92,7 @@ export function ConsultationChat({ hospitalId, hospital, lang, dict }: Consultat
       <div className='flex flex-shrink-0 items-center justify-between border-b bg-white px-4 py-3 shadow-sm'>
         <div className='flex items-center space-x-3'>
           <LocaleLink
-            href={`/hospitals/${hospitalId}`}
+            href={`/hospital/${hospitalId}`}
             locale={lang}
             className='flex items-center justify-center rounded-full p-2 hover:bg-gray-100'
           >

@@ -15,7 +15,7 @@ export function ConsultationRequestButton({
 }: ConsultationRequestButtonProps) {
   return (
     <LocaleLink
-      href={`/hospitals/${hospitalId}/consultation`}
+      href={`/hospital/${hospitalId}/consultation`}
       locale={locale}
       className='block w-full rounded-lg bg-blue-600 px-6 py-3 text-center font-medium text-white transition-colors hover:bg-blue-700'
     >

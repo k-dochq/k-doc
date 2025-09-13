@@ -84,7 +84,7 @@ export function ConsultationRequestForm({ hospital, lang, dict }: ConsultationRe
       {/* 헤더 */}
       <div className='mb-6 flex items-center space-x-4'>
         <LocaleLink
-          href={`/hospitals/${hospital.id}`}
+          href={`/hospital/${hospital.id}`}
           locale={lang}
           className='flex items-center justify-center rounded-full bg-gray-100 p-2 hover:bg-gray-200'
         >

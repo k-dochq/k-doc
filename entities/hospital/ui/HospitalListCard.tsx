@@ -25,7 +25,7 @@ export function HospitalListCard({
 }: HospitalListCardProps) {
   return (
     <LocaleLink
-      href={`/hospitals/${hospital.id}`}
+      href={`/hospital/${hospital.id}`}
       locale={lang}
       className='flex w-full flex-col items-start justify-start px-5 py-4'
     >
