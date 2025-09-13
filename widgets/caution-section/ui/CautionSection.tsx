@@ -12,7 +12,8 @@ interface CautionSectionProps {
   };
 }
 
-const imgBull2Px = 'http://localhost:3845/assets/d970b4f257fdfb5193234b94f8df39cbbf524488.svg';
+// Simple bullet point using CSS instead of external image
+const BulletPoint = () => <div className='relative size-0.5 shrink-0 rounded-full bg-[#636363]' />;
 
 export function CautionSection({ lang, dict }: CautionSectionProps) {
   const renderItem = (item: string | { title: string; details: string[] }, index: number) => {
@@ -24,9 +25,7 @@ export function CautionSection({ lang, dict }: CautionSectionProps) {
         >
           <div className='flex flex-row items-center self-stretch'>
             <div className='relative flex h-full shrink-0 content-stretch items-center justify-start gap-2.5'>
-              <div className='relative size-0.5 shrink-0'>
-                <img alt='' className='block size-full max-w-none' src={imgBull2Px} />
-              </div>
+              <BulletPoint />
             </div>
           </div>
           <div className='relative min-h-px min-w-px shrink-0 grow basis-0 text-[12px] leading-[0] font-normal text-[#636363] not-italic'>
@@ -44,9 +43,7 @@ export function CautionSection({ lang, dict }: CautionSectionProps) {
         <div className='relative flex w-full shrink-0 content-stretch items-center justify-start gap-1'>
           <div className='flex flex-row items-center self-stretch'>
             <div className='relative box-border flex h-full shrink-0 content-stretch items-start justify-start gap-2.5 px-0 pt-[7px] pb-0'>
-              <div className='relative size-0.5 shrink-0'>
-                <img alt='' className='block size-full max-w-none' src={imgBull2Px} />
-              </div>
+              <BulletPoint />
             </div>
           </div>
           <div className='relative min-h-px min-w-px shrink-0 grow basis-0 text-[12px] leading-[0] font-normal text-[#636363] not-italic'>

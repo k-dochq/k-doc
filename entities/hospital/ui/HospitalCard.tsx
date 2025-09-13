@@ -12,7 +12,7 @@ interface HospitalCardProps {
 
 export function HospitalCard({ hospital, dict, lang }: HospitalCardProps) {
   return (
-    <div className='flex gap-3'>
+    <div className='flex min-w-0 gap-3'>
       <HospitalThumbnail imageUrl={hospital.thumbnailImageUrl} />
       <HospitalInfo
         name={hospital.name}
