@@ -14,12 +14,12 @@ export function HospitalCardTags({ hospital, lang }: HospitalCardTagsProps) {
 
   return (
     <div className='flex gap-1'>
-      {hospital.medicalSpecialties.slice(0, 1).map((specialty) => (
+      {hospital.medicalSpecialties.map((specialty) => (
         <div
           key={specialty.id}
-          className='flex items-center justify-center gap-2.5 rounded bg-[#fce4ff] px-1 py-0.5'
+          className='bg-primary-light flex items-center justify-center gap-2.5 rounded px-1 py-0.5'
         >
-          <span className='text-xs font-medium text-[#da47ef]'>
+          <span className='text-primary text-xs font-medium'>
             {extractLocalizedText(specialty.name, lang)}
           </span>
         </div>

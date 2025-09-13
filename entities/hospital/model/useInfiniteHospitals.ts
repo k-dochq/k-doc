@@ -4,12 +4,18 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { queryKeys } from 'shared/lib/query-keys';
 import { type GetHospitalsResponse } from '../api/entities/types';
-import { HospitalSort } from '@/shared/model/types';
+import {
+  type HospitalSortOption,
+  type SortOrderOption,
+  type ParsedHospitalQueryParams,
+  DEFAULT_HOSPITAL_QUERY_PARAMS,
+} from 'shared/model/types/hospital-query';
+import { buildHospitalQueryString } from 'shared/lib/hospital-query-utils';
 
 interface UseInfiniteHospitalsParams {
   limit?: number;
-  sortBy?: HospitalSort;
-  sortOrder?: 'asc' | 'desc';
+  sortBy?: HospitalSortOption;
+  sortOrder?: SortOrderOption;
   category?: MedicalSpecialtyType;
 }
 
@@ -21,31 +27,32 @@ interface HospitalsApiResponse {
 
 async function fetchHospitals({
   pageParam = 1,
-  limit = 10,
-  sortBy = 'popular',
-  sortOrder = 'desc',
+  limit = DEFAULT_HOSPITAL_QUERY_PARAMS.limit,
+  sortBy = DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
+  sortOrder = DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
   category,
 }: {
   pageParam: number;
 } & UseInfiniteHospitalsParams): Promise<GetHospitalsResponse> {
-  const params = new URLSearchParams({
-    page: pageParam.toString(),
-    limit: limit.toString(),
-    sort: sortBy.toString(),
+  // 타입 안전한 쿼리 스트링 생성
+  const queryParams: Partial<ParsedHospitalQueryParams> = {
+    page: pageParam,
+    limit,
+    sort: sortBy,
     sortOrder,
-  });
+    category,
+  };
 
-  if (category) {
-    params.append('category', category.toString());
-  }
+  const queryString = buildHospitalQueryString(queryParams);
+  const url = `/api/hospitals${queryString ? `?${queryString}` : ''}`;
 
-  const response = await fetch(`/api/hospitals?${params.toString()}`, {
+  const response = await fetch(url, {
     // Next.js 캐싱: 5분간 캐시, 그 후 재검증
     next: { revalidate: 300 },
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch hospitals');
+    throw new Error(`Failed to fetch hospitals: ${response.status} ${response.statusText}`);
   }
 
   const result: HospitalsApiResponse = await response.json();
@@ -58,12 +65,14 @@ async function fetchHospitals({
 }
 
 export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
-  // queryKey를 더 구체적으로 구성하여 파라미터 변경 시 새로운 쿼리로 인식되도록 함
-  const filters = {
-    limit: params.limit || 10,
-    sortBy: params.sortBy || 'popular',
-    sortOrder: params.sortOrder || 'desc',
-    category: params.category || null,
+  // 타입 안전한 필터 구성
+  const filters: ParsedHospitalQueryParams = {
+    page: 1, // 무한 스크롤에서는 페이지가 동적으로 변경됨
+    limit: params.limit || DEFAULT_HOSPITAL_QUERY_PARAMS.limit,
+    sort: params.sortBy || DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
+    sortOrder: params.sortOrder || DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
+    category: params.category,
+    minRating: DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
   };
 
   return useInfiniteQuery({

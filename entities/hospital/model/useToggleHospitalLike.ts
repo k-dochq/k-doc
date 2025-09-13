@@ -28,7 +28,9 @@ export function useToggleHospitalLike({ queryParams, user }: UseToggleHospitalLi
     mutationFn: (hospitalId: string) => {
       // 로그인 체크
       if (!user) {
-        router.push('/auth/login');
+        // 현재 페이지 URL을 redirect 파라미터로 설정
+        const currentPath = window.location.pathname + window.location.search;
+        router.push(`/auth/login?redirect=${encodeURIComponent(currentPath)}`);
         return Promise.reject(new Error('로그인이 필요합니다'));
       }
       return hospitalLikeApiService.toggleHospitalLike(hospitalId);

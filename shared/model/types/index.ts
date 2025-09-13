@@ -1,3 +1,3 @@
 export * from './dictionary';
 export * from './common';
-export * from './hospital';
+export * from './hospital-query';

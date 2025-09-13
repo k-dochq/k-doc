@@ -2,7 +2,8 @@
 
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
-import { type Dictionary, type HospitalSort } from 'shared/model/types';
+import { type Dictionary } from 'shared/model/types';
+import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { HospitalListCard } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
@@ -16,7 +17,7 @@ interface HospitalsInfiniteListProps {
   dict: Dictionary;
   searchParams: {
     category?: MedicalSpecialtyType;
-    sort?: HospitalSort;
+    sort?: HospitalSortOption;
   };
 }
 
@@ -24,25 +25,12 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
   const { category, sort } = searchParams;
   const { user } = useAuth();
 
-  // 정렬 파라미터를 API 형식으로 변환
-  const getSortParams = (sortType?: HospitalSort) => {
-    switch (sortType) {
-      case 'popular':
-        return { sortBy: 'popular' as const, sortOrder: 'desc' as const };
-      case 'recommended':
-        return { sortBy: 'recommended' as const, sortOrder: 'desc' as const };
-      default:
-        return { sortBy: 'popular' as const, sortOrder: 'desc' as const };
-    }
-  };
-
-  const sortParams = getSortParams(sort);
-
-  // 파라미터 변환
+  // 타입 안전한 파라미터 구성
   const queryParams = {
     limit: 10,
-    ...sortParams,
-    category: category as MedicalSpecialtyType | undefined,
+    sortBy: sort || HOSPITAL_SORT_OPTIONS.POPULAR,
+    sortOrder: 'desc' as const,
+    category,
   };
 
   // 좋아요 토글 뮤테이션
@@ -75,7 +63,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
     <div>
       {/* 병원 리스트 */}
       {allHospitals.length > 0 ? (
-        <div className='space-y-4'>
+        <div className=''>
           {allHospitals.map((hospital) => (
             <HospitalListCard
               key={hospital.id}

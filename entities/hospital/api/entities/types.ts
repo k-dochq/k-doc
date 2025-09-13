@@ -1,4 +1,5 @@
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
+import { type DbHospitalQueryParams } from 'shared/model/types/hospital-query';
 
 export interface HospitalImage {
   id: string;
@@ -65,14 +66,7 @@ export interface GetBestHospitalsResponse {
   hospitals: Hospital[];
 }
 
-export interface GetHospitalsRequest {
-  page?: number;
-  limit?: number;
-  sortBy?: 'createdAt' | 'viewCount';
-  sortOrder?: 'asc' | 'desc';
-  specialtyType?: MedicalSpecialtyType;
-  minRating?: number;
-}
+export interface GetHospitalsRequest extends Partial<DbHospitalQueryParams> {}
 
 export interface GetHospitalsResponse {
   hospitals: Hospital[];
