@@ -9,6 +9,7 @@ import {
 } from 'entities/hospital/api/use-cases/get-hospital-detail';
 // import { HospitalDetailContent } from './HospitalDetailContent';
 import { HospitalDetailSkeleton } from './HospitalDetailSkeleton';
+import { HospitalDetailContent } from './HospitalDetailContent';
 
 interface HospitalDetailPageProps {
   params: Promise<{
@@ -18,18 +19,17 @@ interface HospitalDetailPageProps {
 }
 
 export default async function HospitalDetailPage({ params }: HospitalDetailPageProps) {
-  const { lang, id: _id } = await params;
+  const { lang, id } = await params;
 
   try {
     // 즉시 렌더링 가능한 데이터만 먼저 로드
-    const _dict = await getDictionary(lang);
+    const dict = await getDictionary(lang);
 
     return (
-      <div className='container mx-auto space-y-8 px-4 py-6'>
+      <div className=''>
         {/* 병원 상세 정보 - Suspense로 스트리밍 */}
         <Suspense fallback={<HospitalDetailSkeleton />}>
-          {/* <HospitalDetailContent hospitalId={id} lang={lang} dict={dict} /> */}
-          <HospitalDetailSkeleton />
+          <HospitalDetailContent hospitalId={id} lang={lang} dict={dict} />
         </Suspense>
       </div>
     );
