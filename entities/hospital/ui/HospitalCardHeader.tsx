@@ -14,7 +14,7 @@ export function HospitalCardHeader({ hospital, lang }: HospitalCardHeaderProps) 
       <div className='flex w-full items-center'>
         <HospitalCardLocation hospital={hospital} lang={lang} />
         <div className='ml-auto'>
-          <LikeButton count={15} />
+          <LikeButton count={hospital.likeCount} />
         </div>
       </div>
     </div>

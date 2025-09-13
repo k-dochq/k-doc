@@ -1,12 +1,6 @@
 export function HospitalsSkeleton() {
   return (
-    <div className='py-6'>
-      {/* 페이지 제목 스켈레톤 */}
-      <div className='mb-6'>
-        <div className='mb-2 h-8 w-48 animate-pulse rounded bg-gray-200'></div>
-        <div className='h-4 w-32 animate-pulse rounded bg-gray-200'></div>
-      </div>
-
+    <div className='px-2 py-6'>
       {/* 병원 리스트 스켈레톤 */}
       <div className='space-y-4'>
         {Array.from({ length: 5 }).map((_, index) => (

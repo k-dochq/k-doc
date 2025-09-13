@@ -14,6 +14,11 @@ type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
         MedicalSpecialty: true;
       };
     };
+    _count: {
+      select: {
+        HospitalLike: true;
+      };
+    };
   };
 }>;
 
@@ -57,6 +62,11 @@ export async function getHospitalDetail(
         HospitalMedicalSpecialty: {
           include: {
             MedicalSpecialty: true,
+          },
+        },
+        _count: {
+          select: {
+            HospitalLike: true,
           },
         },
       },
@@ -133,6 +143,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     reviewCount: data.reviewCount,
     bookmarkCount: data.bookmarkCount,
     viewCount: data.viewCount, // 조회수 증가 없음
+    likeCount: data._count.HospitalLike,
     approvalStatusType: data.approvalStatusType,
     ranking: data.ranking,
     createdAt: data.createdAt,
@@ -185,6 +196,7 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
     reviewCount: data.reviewCount,
     bookmarkCount: data.bookmarkCount,
     viewCount: data.viewCount + 1, // 조회수 증가 반영
+    likeCount: data._count.HospitalLike,
     approvalStatusType: data.approvalStatusType,
     ranking: data.ranking,
     createdAt: data.createdAt,

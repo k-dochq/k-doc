@@ -30,9 +30,7 @@ export default async function HospitalsPage({ params, searchParams }: HospitalsP
           />
         }
       >
-        <Suspense fallback={<HospitalsSkeleton />}>
-          <HospitalsContent lang={lang} searchParams={resolvedSearchParams} dict={dict} />
-        </Suspense>
+        <HospitalsContent lang={lang} searchParams={resolvedSearchParams} dict={dict} />
       </ErrorBoundary>
     </div>
   );

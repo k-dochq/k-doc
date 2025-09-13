@@ -42,6 +42,7 @@ export interface Hospital {
   reviewCount: number;
   bookmarkCount: number;
   viewCount: number;
+  likeCount: number; // 좋아요 수
   approvalStatusType: 'PENDING' | 'APPROVED' | 'REJECTED';
   ranking: number | null;
   createdAt: Date;
