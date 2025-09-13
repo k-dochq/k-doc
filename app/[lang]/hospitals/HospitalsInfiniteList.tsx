@@ -1,14 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary, type HospitalSort } from 'shared/model/types';
-import { interpolateTemplate } from 'shared/lib';
 import { HospitalListCard } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
-// import { HospitalSortSelector, type SortOption } from 'features/hospital-sort';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
 import { ErrorState } from 'shared/ui/error-state';
 
@@ -46,7 +43,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
     minRating: 0,
   };
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteHospitals(queryParams);
 
   // 무한 스크롤을 위한 Intersection Observer
