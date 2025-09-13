@@ -4,3 +4,4 @@ export * from './carousel';
 export * from './error-display';
 export * from './providers';
 export * from './section-title';
+export * from './category-button';

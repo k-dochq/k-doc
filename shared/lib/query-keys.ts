@@ -66,4 +66,10 @@ export const queryKeys = {
     list: (params?: Record<string, unknown>) =>
       [...queryKeys.consultationHospitals.all(), 'list', params] as const,
   },
+
+  // 카테고리 관련 쿼리
+  categories: {
+    all: ['categories'] as const,
+    list: () => [...queryKeys.categories.all, 'list'] as const,
+  },
 } as const;

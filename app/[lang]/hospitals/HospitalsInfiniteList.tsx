@@ -15,37 +15,36 @@ interface HospitalsInfiniteListProps {
   lang: Locale;
   dict: Dictionary;
   searchParams: {
-    sortBy?: string;
-    specialtyType?: string;
-    minRating?: string;
+    category?: string;
   };
-  initialData?: GetHospitalsResponse;
 }
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
   const router = useRouter();
   const currentSearchParams = useSearchParams();
 
-  const { sortBy = 'createdAt', specialtyType, minRating = '0' } = searchParams;
+  const { category } = searchParams;
 
   // 파라미터 변환
   const queryParams = {
     limit: 10,
-    sortBy: sortBy as 'createdAt' | 'viewCount',
+    sortBy: 'createdAt' as const,
     sortOrder: 'desc' as const,
-    specialtyType: specialtyType as MedicalSpecialtyType | undefined,
-    minRating: parseFloat(minRating),
+    specialtyType: category as MedicalSpecialtyType | undefined,
+    minRating: 0,
   };
 
   // 정렬 변경 핸들러
   const handleSortChange = useCallback(
     (newSort: SortOption) => {
-      const params = new URLSearchParams(currentSearchParams.toString());
+      const params = new URLSearchParams();
+      if (category) {
+        params.set('category', category);
+      }
       params.set('sortBy', newSort);
-      params.set('sortOrder', 'desc'); // 기본값으로 desc 설정
       router.push(`/${lang}/hospitals?${params.toString()}`);
     },
-    [currentSearchParams, router, lang],
+    [category, router, lang],
   );
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } =
@@ -126,7 +125,10 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
       </div>
 
       {/* 정렬 선택기 */}
-      <HospitalSortSelector currentSort={sortBy as SortOption} onSortChange={handleSortChange} />
+      <HospitalSortSelector
+        currentSort={'createdAt' as SortOption}
+        onSortChange={handleSortChange}
+      />
 
       {/* 병원 리스트 */}
       {uniqueHospitals.length > 0 ? (
