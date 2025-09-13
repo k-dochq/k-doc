@@ -12,9 +12,16 @@ interface HospitalListCardProps {
   lang: Locale;
   user: User | null;
   onToggleLike?: (hospitalId: string) => void;
+  isLikeLoading?: boolean;
 }
 
-export function HospitalListCard({ hospital, lang, user, onToggleLike }: HospitalListCardProps) {
+export function HospitalListCard({
+  hospital,
+  lang,
+  user,
+  onToggleLike,
+  isLikeLoading = false,
+}: HospitalListCardProps) {
   return (
     <LocaleLink
       href={`/hospitals/${hospital.id}`}
@@ -33,6 +40,7 @@ export function HospitalListCard({ hospital, lang, user, onToggleLike }: Hospita
           lang={lang}
           user={user}
           onToggleLike={onToggleLike}
+          isLikeLoading={isLikeLoading}
         />
 
         <div className='flex w-full flex-col items-start justify-start gap-2'>

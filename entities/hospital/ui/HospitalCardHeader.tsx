@@ -11,6 +11,7 @@ interface HospitalCardHeaderProps {
   lang: Locale;
   user: User | null;
   onToggleLike?: (hospitalId: string) => void;
+  isLikeLoading?: boolean;
 }
 
 export function HospitalCardHeader({
@@ -18,6 +19,7 @@ export function HospitalCardHeader({
   lang,
   user,
   onToggleLike,
+  isLikeLoading = false,
 }: HospitalCardHeaderProps) {
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
   const isLiked = user ? hospital.likedUserIds.includes(user.id) : false;
@@ -37,6 +39,7 @@ export function HospitalCardHeader({
             count={hospital.likeCount}
             isLiked={isLiked}
             onClick={() => onToggleLike?.(hospital.id)}
+            isLoading={isLikeLoading}
           />
         </div>
       </div>

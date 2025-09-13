@@ -8,9 +8,16 @@ interface LikeButtonProps {
   isLiked?: boolean;
   onClick?: (e: React.MouseEvent) => void;
   className?: string;
+  isLoading?: boolean;
 }
 
-export function LikeButton({ count, isLiked = false, onClick, className = '' }: LikeButtonProps) {
+export function LikeButton({
+  count,
+  isLiked = false,
+  onClick,
+  className = '',
+  isLoading = false,
+}: LikeButtonProps) {
   return (
     <button
       onClick={(e) => {
@@ -18,11 +25,16 @@ export function LikeButton({ count, isLiked = false, onClick, className = '' }: 
         e.stopPropagation();
         onClick?.(e);
       }}
-      className={`flex items-center gap-1 ${className}`}
+      className={`flex items-center gap-1 ${className} ${isLoading ? 'cursor-not-allowed opacity-50' : ''}`}
       type='button'
+      disabled={isLoading}
     >
-      {isLiked ? <HeartIcon /> : <HeartOutlineIcon />}
-      <span className='text-sm font-medium text-neutral-900'>{count}</span>
+      <div className={`${isLoading ? 'animate-pulse' : ''}`}>
+        {isLiked ? <HeartIcon /> : <HeartOutlineIcon />}
+      </div>
+      <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'animate-pulse' : ''}`}>
+        {count}
+      </span>
     </button>
   );
 }

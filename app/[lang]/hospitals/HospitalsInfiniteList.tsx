@@ -83,6 +83,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
               lang={lang}
               user={user}
               onToggleLike={(hospitalId) => toggleLikeMutation.mutate(hospitalId)}
+              isLikeLoading={toggleLikeMutation.isPending}
             />
           ))}
 
