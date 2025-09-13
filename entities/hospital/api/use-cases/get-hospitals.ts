@@ -16,6 +16,11 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
         MedicalSpecialty: true;
       };
     };
+    HospitalLike: {
+      select: {
+        userId: true;
+      };
+    };
     _count: {
       select: {
         HospitalLike: true;
@@ -126,6 +131,11 @@ export async function getHospitals(
             },
           },
         },
+        HospitalLike: {
+          select: {
+            userId: true,
+          },
+        },
         _count: {
           select: {
             HospitalLike: true,
@@ -147,6 +157,7 @@ export async function getHospitals(
       bookmarkCount: hospital.bookmarkCount,
       viewCount: hospital.viewCount,
       likeCount: hospital._count.HospitalLike,
+      likedUserIds: hospital.HospitalLike.map((like) => like.userId), // 좋아요를 한 사용자 ID들
       approvalStatusType: hospital.approvalStatusType,
       ranking: hospital.ranking,
       createdAt: hospital.createdAt,
