@@ -22,7 +22,7 @@ export function HospitalList({ hospitals, dict, lang }: HospitalListProps) {
   return (
     <div className='space-y-3'>
       {hospitals.map((hospital) => (
-        <LocaleLink key={hospital.id} href={`/hospitals/${hospital.id}`} className='block'>
+        <LocaleLink key={hospital.id} href={`/hospital/${hospital.id}`} className='block'>
           <HospitalCard hospital={hospital} dict={dict} lang={lang} />
         </LocaleLink>
       ))}

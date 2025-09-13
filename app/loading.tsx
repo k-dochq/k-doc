@@ -1,17 +1,12 @@
-import Image from 'next/image';
+import { HeaderLogo } from 'widgets/header/ui/HeaderLogo';
 
 export default function Loading() {
   return (
     <div className='flex min-h-screen items-center justify-center bg-white'>
       <div className='flex flex-col items-center space-y-6'>
-        {/* K-DOC 로고 */}
-        <div className='relative h-20 w-20'>
-          <Image src='/kdoc_logo.png' alt='K-DOC 로고' fill className='object-contain' priority />
-        </div>
-
-        {/* 로딩 스피너 */}
-        <div className='relative'>
-          <div className='h-8 w-8 animate-spin rounded-full border-2 border-gray-200 border-t-blue-500'></div>
+        {/* K-DOC 로고 with 애니메이션 */}
+        <div className='text-primary animate-bounce'>
+          <HeaderLogo />
         </div>
 
         {/* 로딩 텍스트 */}

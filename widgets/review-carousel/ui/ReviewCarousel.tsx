@@ -102,7 +102,7 @@ export function ReviewCarousel({ reviews, hospitalId, lang, dict }: ReviewCarous
         <div className='flex items-center space-x-3'>
           <span className='text-sm text-gray-500'>{reviews.length}개의 후기</span>
           <LocaleLink
-            href={`/hospitals/${hospitalId}/reviews`}
+            href={`/hospital/${hospitalId}/reviews`}
             locale={lang}
             className='text-sm text-blue-600 hover:text-blue-800 hover:underline'
           >
