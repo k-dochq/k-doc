@@ -27,7 +27,6 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
       <CategorySection
         lang={lang}
         dict={dict}
-        categories={categories}
         currentCategory={searchParams.category}
         isLoading={categoriesLoading}
         error={categoriesError}

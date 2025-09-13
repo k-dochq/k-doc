@@ -17,6 +17,7 @@ interface CategoryButtonProps {
   className?: string;
   iconClassName?: string;
   labelClassName?: string;
+  replace?: boolean;
 }
 
 export function CategoryButton({
@@ -27,6 +28,7 @@ export function CategoryButton({
   className = '',
   iconClassName = '',
   labelClassName = '',
+  replace = false,
 }: CategoryButtonProps) {
   const getLabel = (): string => {
     return getLocalizedTextByLocale(category.labels, lang);
@@ -49,7 +51,11 @@ export function CategoryButton({
 
   if (href) {
     return (
-      <LocaleLink href={href} className={`flex min-w-0 flex-col items-center gap-1 ${className}`}>
+      <LocaleLink
+        href={href}
+        replace={replace}
+        className={`flex min-w-0 flex-col items-center gap-1 ${className}`}
+      >
         {buttonContent}
       </LocaleLink>
     );
