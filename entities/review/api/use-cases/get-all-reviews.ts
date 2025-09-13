@@ -4,11 +4,13 @@ import {
   type GetAllReviewsResponse,
   type ReviewCardData,
 } from '../../model/types';
+import { type LocalizedText } from 'shared/lib/localized-text';
+import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 
 export async function getAllReviews({
   page = 1,
   limit = 10,
-  medicalSpecialtyId,
+  category,
   sortBy = 'latest',
   offset,
 }: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
@@ -17,9 +19,15 @@ export async function getAllReviews({
 
   try {
     // 필터 조건 구성
-    const whereCondition = {
-      ...(medicalSpecialtyId && { medicalSpecialtyId }),
-    };
+    const whereCondition: Prisma.ReviewWhereInput = {};
+
+    // category가 있으면 MedicalSpecialty의 some 조건으로 필터링
+    if (category && category !== 'ALL') {
+      whereCondition.MedicalSpecialty = {
+        specialtyType: category as MedicalSpecialtyType,
+        isActive: true,
+      };
+    }
 
     // 정렬 조건 구성
     const orderBy = (() => {
@@ -54,6 +62,11 @@ export async function getAllReviews({
         Hospital: {
           select: {
             name: true,
+            District: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         MedicalSpecialty: {
@@ -84,8 +97,8 @@ export async function getAllReviews({
     const reviewCardData: ReviewCardData[] = reviews.map((review) => ({
       id: review.id,
       rating: review.rating,
-      title: review.title as Record<string, string> | null,
-      content: review.content as Record<string, string> | null,
+      title: review.title as LocalizedText | null,
+      content: review.content as LocalizedText | null,
       concerns: review.concerns,
       createdAt: review.createdAt,
       viewCount: review.viewCount,
@@ -96,10 +109,13 @@ export async function getAllReviews({
         nickName: review.User.nickName,
       },
       hospital: {
-        name: review.Hospital.name as Record<string, string>,
+        name: review.Hospital.name as LocalizedText,
+        district: {
+          name: review.Hospital.District?.name as LocalizedText,
+        },
       },
       medicalSpecialty: {
-        name: review.MedicalSpecialty.name as Record<string, string>,
+        name: review.MedicalSpecialty.name as LocalizedText,
         specialtyType: review.MedicalSpecialty.specialtyType,
       },
       images: {

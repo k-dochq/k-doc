@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { type MedicalSpecialtyType } from '@prisma/client';
-import { type BestHospital } from 'shared/model/types/common';
+import { type BestHospital } from 'shared/model/types';
 
 export interface GetBestHospitalsParams {
   category?: MedicalSpecialtyType | 'ALL';

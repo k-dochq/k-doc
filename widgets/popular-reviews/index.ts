@@ -1,0 +1,1 @@
+export { PopularReviewsWrapper } from './ui';

@@ -1,8 +1,4 @@
-import {
-  type LocalizedText,
-  type PriceInfo,
-  getLocalizedTextByLocale,
-} from 'shared/model/types/common';
+import { type LocalizedText, type PriceInfo, getLocalizedTextByLocale } from 'shared/model/types';
 import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
 import { StarIcon } from 'shared/ui/star-icon';

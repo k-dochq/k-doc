@@ -1,4 +1,5 @@
-import { type Prisma } from '@prisma/client';
+import { MedicalSpecialtyType, type Prisma } from '@prisma/client';
+import { type LocalizedText } from 'shared/lib/localized-text';
 
 // 기본 리뷰 타입 (Prisma에서 생성)
 export type Review = Prisma.ReviewGetPayload<{
@@ -26,7 +27,7 @@ export type Review = Prisma.ReviewGetPayload<{
   };
 }>;
 
-// 리뷰 이미지 타입
+// 리뷰 이미지 타입 (필요한 필드만 선택)
 export type ReviewImage = {
   id: string;
   imageType: 'BEFORE' | 'AFTER';
@@ -35,12 +36,12 @@ export type ReviewImage = {
   order: number | null;
 };
 
-// 리뷰 카드에서 사용할 간소화된 타입
+// 리뷰 카드에서 사용할 타입 (Prisma 타입을 기반으로 확장)
 export type ReviewCardData = {
   id: string;
   rating: number;
-  title: Record<string, string> | null;
-  content: Record<string, string> | null;
+  title: LocalizedText | null;
+  content: LocalizedText | null;
   isRecommended: boolean;
   concerns: string | null;
   createdAt: Date;
@@ -51,10 +52,13 @@ export type ReviewCardData = {
     nickName: string | null;
   };
   hospital: {
-    name: Record<string, string>;
+    name: LocalizedText;
+    district: {
+      name: LocalizedText;
+    };
   };
   medicalSpecialty: {
-    name: Record<string, string>;
+    name: LocalizedText;
     specialtyType: string;
   };
   images: {
@@ -85,7 +89,7 @@ export interface GetAllReviewsParams {
   page?: number;
   limit?: number;
   offset?: number;
-  medicalSpecialtyId?: string; // 부위별 필터
+  category?: MedicalSpecialtyType | 'ALL';
   sortBy?: 'latest' | 'popular'; // 정렬 옵션
 }
 

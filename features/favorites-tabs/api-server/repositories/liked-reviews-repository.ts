@@ -55,6 +55,11 @@ export class LikedReviewsRepository {
               select: {
                 id: true,
                 name: true,
+                District: {
+                  select: {
+                    name: true,
+                  },
+                },
               },
             },
             MedicalSpecialty: {
@@ -119,6 +124,9 @@ export class LikedReviewsRepository {
         hospital: {
           id: review.Hospital.id,
           name: review.Hospital.name as Record<string, string>,
+          district: {
+            name: review.Hospital.District?.name as Record<string, string>,
+          },
         },
         medicalSpecialty: {
           id: review.MedicalSpecialty.id,

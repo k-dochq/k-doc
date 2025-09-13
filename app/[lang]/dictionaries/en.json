@@ -25,6 +25,18 @@
       "description": "New hospitals will be added soon."
     }
   },
+  "popularReviews": {
+    "title": "Popular Reviews",
+    "viewAll": "View All",
+    "error": {
+      "message": "An error occurred while loading review information.",
+      "retryButton": "Retry"
+    },
+    "empty": {
+      "message": "No reviews to display.",
+      "description": "New reviews will be added soon."
+    }
+  },
   "hospitals": {
     "title": "Find Hospitals",
     "totalCount": "{{count}} hospitals total",

@@ -2,6 +2,7 @@ import { type Locale } from 'shared/config';
 import { SearchBar } from 'features/search';
 import { QuickMenuWrapper } from 'features/quick-menu/ui/QuickMenuWrapper';
 import { HospitalListWrapper } from 'widgets/hospital-list';
+import { PopularReviewsWrapper } from 'widgets/popular-reviews';
 import { getDictionary } from 'app/[lang]/dictionaries';
 
 interface MainPageProps {
@@ -24,6 +25,10 @@ export default async function MainPage({ params }: MainPageProps) {
 
       <div className='mt-12'>
         <HospitalListWrapper lang={lang} dict={dict} />
+      </div>
+
+      <div className='mt-12'>
+        <PopularReviewsWrapper lang={lang} dict={dict} />
       </div>
     </div>
   );

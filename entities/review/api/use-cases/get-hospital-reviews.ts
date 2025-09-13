@@ -37,6 +37,11 @@ export async function getHospitalReviews({
         Hospital: {
           select: {
             name: true,
+            District: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
         MedicalSpecialty: {
@@ -82,6 +87,9 @@ export async function getHospitalReviews({
       },
       hospital: {
         name: review.Hospital.name as Record<string, string>,
+        district: {
+          name: review.Hospital.District?.name as Record<string, string>,
+        },
       },
       medicalSpecialty: {
         name: review.MedicalSpecialty.name as Record<string, string>,

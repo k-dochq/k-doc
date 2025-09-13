@@ -10,7 +10,7 @@ import { usePrefetchHospitalCategories } from 'features/hospital-list/model';
 import { HospitalListError } from 'features/hospital-list/ui';
 import { HospitalList as HospitalListComponent } from 'entities/hospital/ui/HospitalList';
 import { HospitalListTitle } from './HospitalListTitle';
-import { HospitalListTabs } from './HospitalListTabs';
+import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
 import { HospitalListSkeleton } from './HospitalListSkeleton';
 
 interface HospitalListProps {
@@ -68,7 +68,7 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
       </div>
 
       <div className='mb-4'>
-        <HospitalListTabs
+        <CategoryFilterTabs
           lang={lang}
           dict={dict}
           medicalSpecialties={medicalSpecialties}

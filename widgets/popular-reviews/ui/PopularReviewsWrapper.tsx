@@ -1,24 +1,24 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { HospitalList } from './HospitalList';
+import { PopularReviews } from './PopularReviews';
 import { ErrorBoundary, LocalizedErrorDisplay } from 'shared/ui/error-display';
 import { getMainMedicalSpecialties } from 'entities/hospital/api/use-cases/get-medical-specialties';
 
-interface HospitalListWrapperProps {
+interface PopularReviewsWrapperProps {
   lang: Locale;
   dict: Dictionary;
 }
 
-async function HospitalListContent({ lang, dict }: HospitalListWrapperProps) {
+async function PopularReviewsContent({ lang, dict }: PopularReviewsWrapperProps) {
   const medicalSpecialties = await getMainMedicalSpecialties();
 
-  return <HospitalList medicalSpecialties={medicalSpecialties} lang={lang} dict={dict} />;
+  return <PopularReviews medicalSpecialties={medicalSpecialties} lang={lang} dict={dict} />;
 }
 
-export function HospitalListWrapper({ lang, dict }: HospitalListWrapperProps) {
+export function PopularReviewsWrapper({ lang, dict }: PopularReviewsWrapperProps) {
   return (
     <ErrorBoundary fallback={<LocalizedErrorDisplay error={null} lang={lang} dict={dict} />}>
-      <HospitalListContent lang={lang} dict={dict} />
+      <PopularReviewsContent lang={lang} dict={dict} />
     </ErrorBoundary>
   );
 }
