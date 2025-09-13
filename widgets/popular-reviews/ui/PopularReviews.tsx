@@ -7,6 +7,9 @@ import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { usePopularReviews } from 'entities/review';
 import { PopularReviewsTitle } from './PopularReviewsTitle';
+import { PopularReviewsList } from './PopularReviewsList';
+import { PopularReviewsSkeleton } from './PopularReviewsSkeleton';
+import { PopularReviewsError } from './PopularReviewsError';
 import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
 
 interface PopularReviewsProps {
@@ -23,6 +26,7 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
     data: popularReviews,
     isLoading,
     error,
+    refetch,
   } = usePopularReviews({
     category: selectedCategory,
     limit: 5,
@@ -31,6 +35,11 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
   const handleViewAll = () => {
     // TODO: 전체보기 페이지로 이동하는 로직 구현
     console.log('View all popular reviews for category:', selectedCategory);
+  };
+
+  const handleRetry = () => {
+    // TanStack Query의 refetch를 사용하여 재시도
+    refetch();
   };
 
   const handleCategoryChange = (category: MedicalSpecialtyType | 'ALL') => {
@@ -56,16 +65,11 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
       {/* 후기 리스트 표시 */}
       <div className=''>
         {isLoading ? (
-          <div className='py-8 text-center text-gray-500'>후기를 불러오는 중...</div>
+          <PopularReviewsSkeleton />
         ) : error ? (
-          <div className='py-8 text-center text-red-500'>
-            후기를 불러오는 중 오류가 발생했습니다.
-          </div>
+          <PopularReviewsError lang={lang} dict={dict} onRetry={handleRetry} />
         ) : popularReviews && popularReviews.reviews.length > 0 ? (
-          <div className='py-8 text-center text-gray-500'>
-            {popularReviews.reviews.length}개의 인기 후기가 있습니다.
-            {/* TODO: 실제 후기 리스트 UI 구현 */}
-          </div>
+          <PopularReviewsList reviews={popularReviews.reviews} lang={lang} />
         ) : (
           <div className='py-8 text-center text-gray-500'>표시할 후기가 없습니다.</div>
         )}
