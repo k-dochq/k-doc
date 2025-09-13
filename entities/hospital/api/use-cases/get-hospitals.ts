@@ -25,15 +25,15 @@ type HospitalImageData = {
   imageUrl: string;
 };
 
-// 썸네일 이미지 URL 추출 헬퍼 함수
-function extractThumbnailImageUrl(hospitalImages?: HospitalImageData[]): string | null {
+// 메인 이미지 URL 추출 헬퍼 함수
+function extractMainImageUrl(hospitalImages?: HospitalImageData[]): string | null {
   if (!hospitalImages || hospitalImages.length === 0) return null;
 
-  const thumbnailImage = hospitalImages.find(
-    (img) => img.imageType === 'THUMBNAIL' && img.isActive && img.imageUrl,
+  const mainImage = hospitalImages.find(
+    (img) => img.imageType === 'MAIN' && img.isActive && img.imageUrl,
   );
 
-  return thumbnailImage?.imageUrl || null;
+  return mainImage?.imageUrl || null;
 }
 
 export async function getHospitals(
@@ -94,7 +94,7 @@ export async function getHospitals(
       include: {
         HospitalImage: {
           where: {
-            imageType: 'THUMBNAIL',
+            imageType: 'MAIN',
             isActive: true,
           },
           orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
@@ -140,7 +140,7 @@ export async function getHospitals(
       ranking: hospital.ranking,
       createdAt: hospital.createdAt,
       updatedAt: hospital.updatedAt,
-      mainImageUrl: extractThumbnailImageUrl(hospital.HospitalImage),
+      mainImageUrl: extractMainImageUrl(hospital.HospitalImage),
       medicalSpecialties:
         hospital.HospitalMedicalSpecialty?.map((hms) => ({
           id: hms.MedicalSpecialty.id,

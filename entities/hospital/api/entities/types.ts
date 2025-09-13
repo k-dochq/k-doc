@@ -46,7 +46,7 @@ export interface Hospital {
   ranking: number | null;
   createdAt: Date;
   updatedAt: Date;
-  mainImageUrl?: string | null; // 메인 이미지 URL (썸네일 이미지에서 추출)
+  mainImageUrl?: string | null; // 메인 이미지 URL
   hospitalImages?: HospitalImage[]; // 병원 이미지 관계
   medicalSpecialties?: MedicalSpecialty[]; // 진료 부위
   doctors?: HospitalDoctor[]; // 소속 의사
