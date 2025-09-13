@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { HospitalsInfiniteList } from './HospitalsInfiniteList';
 import { CategorySection, useCategories } from 'features/category-filter';
+import { type MedicalSpecialtyType } from '@prisma/client';
 
 interface HospitalsContentProps {
   lang: Locale;
@@ -16,10 +17,13 @@ interface HospitalsContentProps {
 export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentProps) {
   // TanStack Query로 카테고리 데이터 가져오기
   const {
-    data: categories = [],
+    // data: categories = [],
     isLoading: categoriesLoading,
     error: categoriesError,
   } = useCategories();
+
+  // string을 MedicalSpecialtyType으로 안전하게 변환
+  const currentCategory = searchParams.category as MedicalSpecialtyType | undefined;
 
   return (
     <div className=''>
@@ -27,13 +31,13 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
       <CategorySection
         lang={lang}
         dict={dict}
-        currentCategory={searchParams.category}
+        currentCategory={currentCategory}
         isLoading={categoriesLoading}
         error={categoriesError}
       />
 
       {/* 병원 리스트 */}
-      <HospitalsInfiniteList lang={lang} searchParams={searchParams} dict={dict} />
+      <HospitalsInfiniteList lang={lang} searchParams={{ category: currentCategory }} dict={dict} />
     </div>
   );
 }

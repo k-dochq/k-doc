@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { interpolateTemplate } from 'shared/lib';
-import { HospitalListCard, type GetHospitalsResponse } from 'entities/hospital';
+import { HospitalListCard } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
 import { HospitalSortSelector, type SortOption } from 'features/hospital-sort';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
@@ -15,13 +15,13 @@ interface HospitalsInfiniteListProps {
   lang: Locale;
   dict: Dictionary;
   searchParams: {
-    category?: string;
+    category?: MedicalSpecialtyType;
   };
 }
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
   const router = useRouter();
-  const currentSearchParams = useSearchParams();
+  // const currentSearchParams = useSearchParams();
 
   const { category } = searchParams;
 
