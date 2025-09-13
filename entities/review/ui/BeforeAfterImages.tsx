@@ -26,7 +26,7 @@ export function BeforeAfterImages({
   return (
     <div className={`flex ${className}`}>
       {/* Before 이미지 */}
-      <div className='relative aspect-square flex-1 overflow-hidden rounded-l-lg rounded-r-none'>
+      <div className='relative aspect-square flex-1 overflow-hidden'>
         <Image
           src={beforeImage.imageUrl}
           alt={beforeImage.alt || 'Before 이미지'}
@@ -44,7 +44,7 @@ export function BeforeAfterImages({
       </div>
 
       {/* After 이미지 */}
-      <div className='relative aspect-square flex-1 overflow-hidden rounded-l-none rounded-r-sm'>
+      <div className='relative aspect-square flex-1 overflow-hidden'>
         <Image
           src={afterImage.imageUrl}
           alt={afterImage.alt || 'After 이미지'}
