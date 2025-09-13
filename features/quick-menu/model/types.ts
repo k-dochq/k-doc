@@ -1,13 +1,10 @@
 import { type Locale } from 'shared/config';
+import { type LocalizedText } from 'shared/model/types/common';
 
 export interface CategoryItem {
   id: string;
   icon: () => React.ReactNode;
-  labels: {
-    ko: string;
-    en: string;
-    th: string;
-  };
+  labels: LocalizedText;
 }
 
 export interface QuickMenuProps {
