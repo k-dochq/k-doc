@@ -6,3 +6,6 @@ export * from './infinite-scroll-trigger';
 export * from './providers';
 export * from './section-title';
 export * from './category-button';
+export * from './icons/HeartIcon';
+export * from './icons/HeartOutlineIcon';
+export * from './buttons/LikeButton';

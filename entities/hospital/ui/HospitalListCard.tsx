@@ -21,12 +21,12 @@ export function HospitalListCard({ hospital, lang }: HospitalListCardProps) {
       {/* 병원 이미지 */}
       <HospitalCardImage hospital={hospital} lang={lang} />
 
+      <div className='h-3' />
+
       {/* 컨텐츠 영역 */}
-      <div className='flex w-full flex-col items-start justify-start gap-1'>
-        {/* 헤더 (병원명 + 북마크) */}
+      <div className='flex w-full flex-col items-start justify-start'>
         <HospitalCardHeader hospital={hospital} lang={lang} />
 
-        {/* 태그 + 평점 */}
         <div className='flex w-full flex-col items-start justify-start gap-2'>
           <HospitalCardTags hospital={hospital} lang={lang} />
           <HospitalCardRating hospital={hospital} />

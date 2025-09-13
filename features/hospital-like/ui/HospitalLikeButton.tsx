@@ -5,6 +5,7 @@ import { useHospitalLike } from '../model/useHospitalLike';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import type { Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
+import { HeartIcon } from 'shared/ui/icons/HeartIcon';
 
 interface HospitalLikeButtonProps {
   hospitalId: string;
@@ -95,22 +96,13 @@ export function HospitalLikeButton({
             className={`animate-spin rounded-full border-2 border-gray-300 border-t-current ${currentSize.icon}`}
           />
         ) : (
-          <svg
+          <HeartIcon
             className={`${currentSize.icon} transition-transform duration-200 ${
               isLiked ? 'scale-110' : 'scale-100'
             }`}
-            fill={isLiked ? 'currentColor' : 'none'}
-            stroke='currentColor'
-            strokeWidth={isLiked ? 0 : 2}
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z'
-            />
-          </svg>
+            width={parseInt(currentSize.icon.replace('h-', '').replace('w-', '')) * 4}
+            height={parseInt(currentSize.icon.replace('h-', '').replace('w-', '')) * 4}
+          />
         )}
 
         {/* 좋아요 수 표시 */}
