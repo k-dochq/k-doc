@@ -157,6 +157,7 @@
   },
   "hospital": {
     "region": "지역",
+    "reviewsButton": "시술후기",
     "like": {
       "like": "찜하기",
       "liked": "찜 완료",

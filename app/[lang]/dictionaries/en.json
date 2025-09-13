@@ -157,6 +157,7 @@
   },
   "hospital": {
     "region": "Region",
+    "reviewsButton": "Reviews",
     "like": {
       "like": "Like",
       "liked": "Liked",

@@ -32,10 +32,10 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className='relative h-32 w-32'>
             <Image
               src='/kdoc_logo.png'
-              alt={dict.logoAlt}
               fill
               className='object-contain'
               priority
+              alt={dict.logoAlt}
             />
           </div>
         </div>

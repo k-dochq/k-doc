@@ -1,14 +1,14 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getDictionary } from '../../dictionaries';
-import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
+import { type Locale, STATIC_GENERATION_LOCALES } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import {
   getHospitalDetail,
   getAllHospitalIds,
 } from 'entities/hospital/api/use-cases/get-hospital-detail';
-import { HospitalDetailContent } from './HospitalDetailContent';
 import { HospitalDetailSkeleton } from './HospitalDetailSkeleton';
+import { HospitalDetailContent } from './HospitalDetailContent';
 
 interface HospitalDetailPageProps {
   params: Promise<{
@@ -25,7 +25,7 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
     const dict = await getDictionary(lang);
 
     return (
-      <div className='container mx-auto space-y-8 px-4 py-6'>
+      <div className=''>
         {/* 병원 상세 정보 - Suspense로 스트리밍 */}
         <Suspense fallback={<HospitalDetailSkeleton />}>
           <HospitalDetailContent hospitalId={id} lang={lang} dict={dict} />
@@ -50,9 +50,9 @@ export async function generateStaticParams() {
     // 모든 병원 ID 조회
     const hospitalIds = await getAllHospitalIds();
 
-    // 모든 언어와 병원 ID 조합 생성
+    // 모든 언어와 병원 ID 조합 생성 (ko, th만)
     const params = [];
-    for (const lang of SUPPORTED_LOCALES) {
+    for (const lang of STATIC_GENERATION_LOCALES) {
       for (const id of hospitalIds) {
         params.push({
           lang,
@@ -62,7 +62,7 @@ export async function generateStaticParams() {
     }
 
     console.log(
-      `[${new Date().toISOString()}] 정적 생성할 병원 페이지 수: ${params.length} (병원: ${hospitalIds.length}개 × 언어: ${SUPPORTED_LOCALES.length}개)`,
+      `[${new Date().toISOString()}] 정적 생성할 병원 페이지 수: ${params.length} (병원: ${hospitalIds.length}개 × 언어: ${STATIC_GENERATION_LOCALES.length}개)`,
     );
     return params;
   } catch (error) {

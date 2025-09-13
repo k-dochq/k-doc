@@ -2,6 +2,7 @@
 
 import { HeartIcon } from '../icons/HeartIcon';
 import { HeartOutlineIcon } from '../icons/HeartOutlineIcon';
+import { LoadingIcon } from '../loading-icon';
 
 interface LikeButtonProps {
   count: number;
@@ -23,16 +24,20 @@ export function LikeButton({
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        onClick?.(e);
+        if (!isLoading) {
+          onClick?.(e);
+        }
       }}
-      className={`flex items-center gap-1 ${className} ${isLoading ? 'cursor-not-allowed opacity-50' : ''}`}
+      className={`flex items-center gap-1 ${className} ${isLoading ? 'cursor-not-allowed' : ''}`}
       type='button'
       disabled={isLoading}
     >
-      <div className={`${isLoading ? 'animate-pulse' : ''}`}>
-        {isLiked ? <HeartIcon /> : <HeartOutlineIcon />}
-      </div>
-      <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'animate-pulse' : ''}`}>
+      {isLoading ? (
+        <LoadingIcon size={16} className='text-neutral-500' />
+      ) : (
+        <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
+      )}
+      <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
         {count}
       </span>
     </button>

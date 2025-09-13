@@ -3,6 +3,7 @@ export * from './dropdown-menu';
 export * from './carousel';
 export * from './error-display';
 export * from './infinite-scroll-trigger';
+export * from './loading-icon';
 export * from './providers';
 export * from './section-title';
 export * from './category-button';

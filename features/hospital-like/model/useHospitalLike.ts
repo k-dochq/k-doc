@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from 'shared/lib/query-keys';
+import { useLocalizedRouter } from 'shared/model/hooks';
 import type {
   GetHospitalLikeStatusResponse,
   HospitalLikeToggleResponse,
@@ -18,15 +19,28 @@ interface HospitalLikeError {
   status?: number;
 }
 
+class HospitalLikeApiError extends Error {
+  status?: number;
+
+  constructor(message: string, status?: number) {
+    super(message);
+    this.name = 'HospitalLikeApiError';
+    this.status = status;
+  }
+}
+
 // 병원 좋아요 상태 조회 함수
 async function fetchHospitalLikeStatus(hospitalId: string): Promise<GetHospitalLikeStatusResponse> {
   const response = await fetch(`/api/hospitals/${hospitalId}/like`);
 
   if (!response.ok) {
     if (response.status === 401) {
-      throw new Error('로그인이 필요합니다');
+      throw new HospitalLikeApiError('로그인이 필요합니다', 401);
     }
-    throw new Error('좋아요 상태를 불러오는 중 오류가 발생했습니다');
+    throw new HospitalLikeApiError(
+      '좋아요 상태를 불러오는 중 오류가 발생했습니다',
+      response.status,
+    );
   }
 
   const result = await response.json();
@@ -49,12 +63,12 @@ async function toggleHospitalLike(hospitalId: string): Promise<HospitalLikeToggl
 
   if (!response.ok) {
     if (response.status === 401) {
-      throw new Error('로그인이 필요합니다');
+      throw new HospitalLikeApiError('로그인이 필요합니다', 401);
     }
     if (response.status === 404) {
-      throw new Error('병원을 찾을 수 없습니다');
+      throw new HospitalLikeApiError('병원을 찾을 수 없습니다', 404);
     }
-    throw new Error('좋아요 처리 중 오류가 발생했습니다');
+    throw new HospitalLikeApiError('좋아요 처리 중 오류가 발생했습니다', response.status);
   }
 
   const result = await response.json();
@@ -68,6 +82,7 @@ async function toggleHospitalLike(hospitalId: string): Promise<HospitalLikeToggl
 
 export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeOptions) {
   const queryClient = useQueryClient();
+  const router = useLocalizedRouter();
   const [error, setError] = useState<HospitalLikeError | null>(null);
 
   // 좋아요 상태 조회 쿼리
@@ -83,7 +98,7 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
     gcTime: 5 * 60 * 1000, // 5분
     retry: (failureCount, error) => {
       // 401 에러는 재시도하지 않음
-      if (error.message.includes('로그인이 필요합니다')) {
+      if (error instanceof HospitalLikeApiError && error.status === 401) {
         return false;
       }
       return failureCount < 2;
@@ -106,9 +121,14 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
       setError(null);
     },
     onError: (error: Error) => {
+      // 401 에러인 경우 로그인 페이지로 리다이렉트
+      if (error instanceof HospitalLikeApiError && error.status === 401) {
+        router.push('/auth/login');
+      }
+
       setError({
         message: error.message,
-        status: error.message.includes('로그인이 필요합니다') ? 401 : undefined,
+        status: error instanceof HospitalLikeApiError ? error.status : undefined,
       });
     },
   });
@@ -118,7 +138,7 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
     if (queryError) {
       setError({
         message: queryError.message,
-        status: queryError.message.includes('로그인이 필요합니다') ? 401 : undefined,
+        status: queryError instanceof HospitalLikeApiError ? queryError.status : undefined,
       });
     } else {
       setError(null);

@@ -39,6 +39,14 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteHospitals(queryParams);
 
+  // 좋아요 토글 핸들러
+  const handleToggleLike = (hospitalId: string) => {
+    toggleLikeMutation.mutate(hospitalId);
+  };
+
+  // 현재 로딩 중인 병원 ID (TanStack Query의 variables 활용)
+  const loadingHospitalId = toggleLikeMutation.isPending ? toggleLikeMutation.variables : null;
+
   // 로딩 상태
   if (isLoading) {
     return <HospitalsSkeleton />;
@@ -70,8 +78,8 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
               hospital={hospital}
               lang={lang}
               user={user}
-              onToggleLike={(hospitalId) => toggleLikeMutation.mutate(hospitalId)}
-              isLikeLoading={toggleLikeMutation.isPending}
+              onToggleLike={handleToggleLike}
+              isLikeLoading={loadingHospitalId === hospital.id}
             />
           ))}
 

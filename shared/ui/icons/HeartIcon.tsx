@@ -1,19 +1,18 @@
 interface HeartIconProps {
+  isLiked?: boolean;
   className?: string;
   width?: number;
   height?: number;
 }
 
-export function HeartIcon({ className = '', width = 20, height = 20 }: HeartIconProps) {
+export function HeartIcon({
+  isLiked = false,
+  className = '',
+  width = 20,
+  height = 20,
+}: HeartIconProps) {
   return (
-    <svg
-      className={className}
-      xmlns='http://www.w3.org/2000/svg'
-      width={width}
-      height={height}
-      viewBox='0 0 20 20'
-      fill='none'
-    >
+    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
       <path
         d='M6.06465 2.91675C3.63595 2.91675 1.6665 5.02165 1.6665 7.61738C1.6665 12.8126 9.99984 17.9167 9.99984 17.9167C9.99984 17.9167 18.3332 12.8126 18.3332 7.61738C18.3332 4.40136 16.3637 2.91675 13.935 2.91675C12.2128 2.91675 10.7221 3.97479 9.99984 5.51528C9.27762 3.97479 7.78688 2.91675 6.06465 2.91675Z'
         fill='url(#paint0_linear_964_7743)'

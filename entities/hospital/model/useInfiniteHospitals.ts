@@ -7,12 +7,11 @@ import { type GetHospitalsResponse } from '../api/entities/types';
 import {
   type HospitalSortOption,
   type SortOrderOption,
-  type ParsedHospitalQueryParams,
   DEFAULT_HOSPITAL_QUERY_PARAMS,
 } from 'shared/model/types/hospital-query';
 import { buildHospitalQueryString } from 'shared/lib/hospital-query-utils';
 
-interface UseInfiniteHospitalsParams {
+interface UseInfiniteHospitalsParams extends Record<string, unknown> {
   limit?: number;
   sortBy?: HospitalSortOption;
   sortOrder?: SortOrderOption;
@@ -35,7 +34,7 @@ async function fetchHospitals({
   pageParam: number;
 } & UseInfiniteHospitalsParams): Promise<GetHospitalsResponse> {
   // 타입 안전한 쿼리 스트링 생성
-  const queryParams: Partial<ParsedHospitalQueryParams> = {
+  const queryParams = {
     page: pageParam,
     limit,
     sort: sortBy,
@@ -65,18 +64,8 @@ async function fetchHospitals({
 }
 
 export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
-  // 타입 안전한 필터 구성
-  const filters: ParsedHospitalQueryParams = {
-    page: 1, // 무한 스크롤에서는 페이지가 동적으로 변경됨
-    limit: params.limit || DEFAULT_HOSPITAL_QUERY_PARAMS.limit,
-    sort: params.sortBy || DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
-    sortOrder: params.sortOrder || DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
-    category: params.category,
-    minRating: DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
-  };
-
   return useInfiniteQuery({
-    queryKey: queryKeys.hospitals.infinite(filters),
+    queryKey: queryKeys.hospitals.infinite(params),
     queryFn: ({ pageParam }) => fetchHospitals({ pageParam, ...params }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
