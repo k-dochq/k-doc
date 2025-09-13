@@ -33,6 +33,3 @@ export default async function HospitalsPage({ params, searchParams }: HospitalsP
     </div>
   );
 }
-
-// ISR 설정 - 5분마다 재검증 (리스트는 더 자주 업데이트)
-export const revalidate = 300;

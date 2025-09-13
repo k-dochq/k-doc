@@ -26,6 +26,7 @@ export async function HospitalDetailContent({
         <HospitalDetailHeader
           lang={lang}
           dict={dict}
+          hospitalId={hospitalId}
           hospitalName={extractLocalizedText(hospital.name, lang)}
         />
       </div>
