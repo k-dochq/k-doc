@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback } from 'react';
 import { type Locale } from 'shared/config';
 import { HospitalListCard } from 'entities/hospital';
 import { useInfiniteLikedHospitals } from '../model/useInfiniteLikedHospitals';
+import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface LikedHospitalsListProps {
   lang: Locale;
@@ -23,6 +24,7 @@ interface LikedHospitalsListProps {
 export function LikedHospitalsList({ lang, dict }: LikedHospitalsListProps) {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } =
     useInfiniteLikedHospitals({ limit: 10 });
+  const { user } = useAuth();
 
   // 무한 스크롤을 위한 Intersection Observer
   const loadMoreRef = useRef<HTMLDivElement>(null);
@@ -119,7 +121,7 @@ export function LikedHospitalsList({ lang, dict }: LikedHospitalsListProps) {
     <div className='space-y-4'>
       {/* 병원 리스트 */}
       {uniqueHospitals.map((hospital) => (
-        <HospitalListCard key={hospital.id} hospital={hospital} lang={lang} />
+        <HospitalListCard key={hospital.id} hospital={hospital} lang={lang} user={user} />
       ))}
 
       {/* 무한 스크롤 트리거 */}

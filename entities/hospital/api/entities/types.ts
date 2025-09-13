@@ -42,11 +42,14 @@ export interface Hospital {
   reviewCount: number;
   bookmarkCount: number;
   viewCount: number;
+  likeCount: number; // 좋아요 수
+  likedUserIds: string[]; // 좋아요를 한 사용자 ID들
+  isLiked: boolean; // 현재 사용자의 좋아요 상태
   approvalStatusType: 'PENDING' | 'APPROVED' | 'REJECTED';
   ranking: number | null;
   createdAt: Date;
   updatedAt: Date;
-  mainImageUrl?: string | null; // 메인 이미지 URL (썸네일 이미지에서 추출)
+  mainImageUrl?: string | null; // 메인 이미지 URL
   hospitalImages?: HospitalImage[]; // 병원 이미지 관계
   medicalSpecialties?: MedicalSpecialty[]; // 진료 부위
   doctors?: HospitalDoctor[]; // 소속 의사

@@ -16,6 +16,16 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
         MedicalSpecialty: true;
       };
     };
+    HospitalLike: {
+      select: {
+        userId: true;
+      };
+    };
+    _count: {
+      select: {
+        HospitalLike: true;
+      };
+    };
   };
 }>;
 
@@ -25,15 +35,15 @@ type HospitalImageData = {
   imageUrl: string;
 };
 
-// 썸네일 이미지 URL 추출 헬퍼 함수
-function extractThumbnailImageUrl(hospitalImages?: HospitalImageData[]): string | null {
+// 메인 이미지 URL 추출 헬퍼 함수
+function extractMainImageUrl(hospitalImages?: HospitalImageData[]): string | null {
   if (!hospitalImages || hospitalImages.length === 0) return null;
 
-  const thumbnailImage = hospitalImages.find(
-    (img) => img.imageType === 'THUMBNAIL' && img.isActive && img.imageUrl,
+  const mainImage = hospitalImages.find(
+    (img) => img.imageType === 'MAIN' && img.isActive && img.imageUrl,
   );
 
-  return thumbnailImage?.imageUrl || null;
+  return mainImage?.imageUrl || null;
 }
 
 export async function getHospitals(
@@ -94,7 +104,7 @@ export async function getHospitals(
       include: {
         HospitalImage: {
           where: {
-            imageType: 'THUMBNAIL',
+            imageType: 'MAIN',
             isActive: true,
           },
           orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
@@ -121,6 +131,16 @@ export async function getHospitals(
             },
           },
         },
+        HospitalLike: {
+          select: {
+            userId: true,
+          },
+        },
+        _count: {
+          select: {
+            HospitalLike: true,
+          },
+        },
       },
       orderBy,
       skip: offset,
@@ -128,26 +148,33 @@ export async function getHospitals(
     });
 
     // 데이터 변환
-    const transformedHospitals: Hospital[] = hospitals.map((hospital) => ({
-      id: hospital.id,
-      name: hospital.name,
-      address: hospital.address,
-      rating: hospital.rating,
-      reviewCount: hospital.reviewCount,
-      bookmarkCount: hospital.bookmarkCount,
-      viewCount: hospital.viewCount,
-      approvalStatusType: hospital.approvalStatusType,
-      ranking: hospital.ranking,
-      createdAt: hospital.createdAt,
-      updatedAt: hospital.updatedAt,
-      mainImageUrl: extractThumbnailImageUrl(hospital.HospitalImage),
-      medicalSpecialties:
-        hospital.HospitalMedicalSpecialty?.map((hms) => ({
-          id: hms.MedicalSpecialty.id,
-          name: hms.MedicalSpecialty.name,
-          specialtyType: hms.MedicalSpecialty.specialtyType,
-        })) || [],
-    }));
+    const transformedHospitals: Hospital[] = hospitals.map((hospital) => {
+      const likedUserIds = hospital.HospitalLike.map((like) => like.userId);
+
+      return {
+        id: hospital.id,
+        name: hospital.name,
+        address: hospital.address,
+        rating: hospital.rating,
+        reviewCount: hospital.reviewCount,
+        bookmarkCount: hospital.bookmarkCount,
+        viewCount: hospital.viewCount,
+        likeCount: hospital._count.HospitalLike,
+        likedUserIds, // 좋아요를 한 사용자 ID들
+        isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
+        approvalStatusType: hospital.approvalStatusType,
+        ranking: hospital.ranking,
+        createdAt: hospital.createdAt,
+        updatedAt: hospital.updatedAt,
+        mainImageUrl: extractMainImageUrl(hospital.HospitalImage),
+        medicalSpecialties:
+          hospital.HospitalMedicalSpecialty?.map((hms) => ({
+            id: hms.MedicalSpecialty.id,
+            name: hms.MedicalSpecialty.name,
+            specialtyType: hms.MedicalSpecialty.specialtyType,
+          })) || [],
+      };
+    });
 
     const totalPages = Math.ceil(totalCount / limit);
     const hasNextPage = page < totalPages;

@@ -14,9 +14,9 @@ export function useAuth() {
     const getUser = async () => {
       try {
         const {
-          data: { user },
-        } = await supabase.auth.getUser();
-        setUser(user);
+          data: { session },
+        } = await supabase.auth.getSession();
+        setUser(session?.user ?? null);
       } catch (error) {
         console.error('Error getting user:', error);
         setUser(null);

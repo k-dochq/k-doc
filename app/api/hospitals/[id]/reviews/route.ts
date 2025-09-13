@@ -36,12 +36,6 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
       data: reviewsData,
     });
 
-    // Vercel Edge 캐시 설정 (브라우저 캐시 제외)
-    response.headers.set(
-      'Cache-Control',
-      'public, max-age=0, s-maxage=300, stale-while-revalidate=600',
-    );
-
     return response;
   } catch (error) {
     console.error('Error fetching hospital reviews:', error);

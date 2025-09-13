@@ -4,14 +4,13 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { queryKeys } from 'shared/lib/query-keys';
 import { type GetHospitalsResponse } from '../api/entities/types';
+import { HospitalSort } from '@/shared/model/types';
 
 interface UseInfiniteHospitalsParams {
   limit?: number;
-  sortBy?: 'createdAt' | 'viewCount' | 'rating';
+  sortBy?: HospitalSort;
   sortOrder?: 'asc' | 'desc';
-  specialtyType?: MedicalSpecialtyType;
-  minRating?: number;
-  initialData?: GetHospitalsResponse;
+  category?: MedicalSpecialtyType;
 }
 
 interface HospitalsApiResponse {
@@ -23,23 +22,21 @@ interface HospitalsApiResponse {
 async function fetchHospitals({
   pageParam = 1,
   limit = 10,
-  sortBy = 'createdAt',
+  sortBy = 'popular',
   sortOrder = 'desc',
-  specialtyType,
-  minRating = 0,
+  category,
 }: {
   pageParam: number;
 } & UseInfiniteHospitalsParams): Promise<GetHospitalsResponse> {
   const params = new URLSearchParams({
     page: pageParam.toString(),
     limit: limit.toString(),
-    sortBy,
+    sort: sortBy.toString(),
     sortOrder,
-    minRating: minRating.toString(),
   });
 
-  if (specialtyType) {
-    params.append('specialtyType', specialtyType);
+  if (category) {
+    params.append('category', category.toString());
   }
 
   const response = await fetch(`/api/hospitals?${params.toString()}`, {
@@ -64,10 +61,9 @@ export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
   // queryKey를 더 구체적으로 구성하여 파라미터 변경 시 새로운 쿼리로 인식되도록 함
   const filters = {
     limit: params.limit || 10,
-    sortBy: params.sortBy || 'createdAt',
+    sortBy: params.sortBy || 'popular',
     sortOrder: params.sortOrder || 'desc',
-    specialtyType: params.specialtyType || null,
-    minRating: params.minRating || 0,
+    category: params.category || null,
   };
 
   return useInfiniteQuery({
