@@ -8,6 +8,7 @@ import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospita
 import { HospitalsSkeleton } from './HospitalsSkeleton';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
+import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface HospitalsInfiniteListProps {
   lang: Locale;
@@ -20,6 +21,7 @@ interface HospitalsInfiniteListProps {
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
   const { category, sort } = searchParams;
+  const { user } = useAuth();
 
   // 정렬 파라미터를 API 형식으로 변환
   const getSortParams = (sortType?: HospitalSort) => {
@@ -71,7 +73,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
       {allHospitals.length > 0 ? (
         <div className='space-y-4'>
           {allHospitals.map((hospital) => (
-            <HospitalListCard key={hospital.id} hospital={hospital} lang={lang} />
+            <HospitalListCard key={hospital.id} hospital={hospital} lang={lang} user={user} />
           ))}
 
           {/* 무한 스크롤 트리거 */}

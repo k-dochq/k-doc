@@ -2,18 +2,17 @@
 
 import { type Hospital } from '../api/entities/types';
 import { type Locale } from 'shared/config';
+import { type User } from '@supabase/supabase-js';
 import { LikeButton } from 'shared/ui/buttons/LikeButton';
 import { HospitalCardLocation } from './HospitalCardLocation';
-import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface HospitalCardHeaderProps {
   hospital: Hospital;
   lang: Locale;
+  user: User | null;
 }
 
-export function HospitalCardHeader({ hospital, lang }: HospitalCardHeaderProps) {
-  const { user } = useAuth();
-
+export function HospitalCardHeader({ hospital, lang, user }: HospitalCardHeaderProps) {
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
   const isLiked = user ? hospital.likedUserIds.includes(user.id) : false;
 

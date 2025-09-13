@@ -1,6 +1,7 @@
 import { LocaleLink } from 'shared/ui/locale-link';
 import { type Hospital } from '../api/entities/types';
 import { type Locale } from 'shared/config';
+import { type User } from '@supabase/supabase-js';
 import { HospitalCardImage } from './HospitalCardImage';
 import { HospitalCardHeader } from './HospitalCardHeader';
 import { HospitalCardTags } from './HospitalCardTags';
@@ -9,9 +10,10 @@ import { HospitalCardRating } from './HospitalCardRating';
 interface HospitalListCardProps {
   hospital: Hospital;
   lang: Locale;
+  user: User | null;
 }
 
-export function HospitalListCard({ hospital, lang }: HospitalListCardProps) {
+export function HospitalListCard({ hospital, lang, user }: HospitalListCardProps) {
   return (
     <LocaleLink
       href={`/hospitals/${hospital.id}`}
@@ -25,7 +27,7 @@ export function HospitalListCard({ hospital, lang }: HospitalListCardProps) {
 
       {/* 컨텐츠 영역 */}
       <div className='flex w-full flex-col items-start justify-start'>
-        <HospitalCardHeader hospital={hospital} lang={lang} />
+        <HospitalCardHeader hospital={hospital} lang={lang} user={user} />
 
         <div className='flex w-full flex-col items-start justify-start gap-2'>
           <HospitalCardTags hospital={hospital} lang={lang} />
