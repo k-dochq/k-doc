@@ -2,17 +2,15 @@
 
 import { type QuickMenuProps } from '../model/types';
 import { CATEGORIES } from '../model/categories';
-import { QuickMenuRow } from './QuickMenuRow';
+import { QuickMenuButton } from './QuickMenuButton';
 
 export function QuickMenu({ lang }: QuickMenuProps) {
   return (
     <div className='w-full'>
-      <div className='flex flex-col gap-3'>
-        {/* 첫 번째 행 */}
-        <QuickMenuRow categories={CATEGORIES.slice(0, 5)} lang={lang} />
-
-        {/* 두 번째 행 */}
-        <QuickMenuRow categories={CATEGORIES.slice(5, 10)} lang={lang} />
+      <div className='grid grid-cols-5 gap-3'>
+        {CATEGORIES.map((category) => (
+          <QuickMenuButton key={category.id} category={category} lang={lang} />
+        ))}
       </div>
     </div>
   );
