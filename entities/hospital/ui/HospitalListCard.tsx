@@ -11,9 +11,10 @@ interface HospitalListCardProps {
   hospital: Hospital;
   lang: Locale;
   user: User | null;
+  onToggleLike?: (hospitalId: string) => void;
 }
 
-export function HospitalListCard({ hospital, lang, user }: HospitalListCardProps) {
+export function HospitalListCard({ hospital, lang, user, onToggleLike }: HospitalListCardProps) {
   return (
     <LocaleLink
       href={`/hospitals/${hospital.id}`}
@@ -27,7 +28,12 @@ export function HospitalListCard({ hospital, lang, user }: HospitalListCardProps
 
       {/* 컨텐츠 영역 */}
       <div className='flex w-full flex-col items-start justify-start'>
-        <HospitalCardHeader hospital={hospital} lang={lang} user={user} />
+        <HospitalCardHeader
+          hospital={hospital}
+          lang={lang}
+          user={user}
+          onToggleLike={onToggleLike}
+        />
 
         <div className='flex w-full flex-col items-start justify-start gap-2'>
           <HospitalCardTags hospital={hospital} lang={lang} />

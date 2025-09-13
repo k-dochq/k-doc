@@ -9,6 +9,7 @@ import { HospitalsSkeleton } from './HospitalsSkeleton';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { useAuth } from 'shared/lib/auth/useAuth';
+import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospitalLike';
 
 interface HospitalsInfiniteListProps {
   lang: Locale;
@@ -44,6 +45,9 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
     category: category as MedicalSpecialtyType | undefined,
   };
 
+  // 좋아요 토글 뮤테이션
+  const toggleLikeMutation = useToggleHospitalLike({ queryParams });
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteHospitals(queryParams);
 
@@ -73,7 +77,13 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
       {allHospitals.length > 0 ? (
         <div className='space-y-4'>
           {allHospitals.map((hospital) => (
-            <HospitalListCard key={hospital.id} hospital={hospital} lang={lang} user={user} />
+            <HospitalListCard
+              key={hospital.id}
+              hospital={hospital}
+              lang={lang}
+              user={user}
+              onToggleLike={(hospitalId) => toggleLikeMutation.mutate(hospitalId)}
+            />
           ))}
 
           {/* 무한 스크롤 트리거 */}
