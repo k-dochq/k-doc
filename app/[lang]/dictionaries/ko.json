@@ -276,5 +276,15 @@
       },
       "하루 8시간 기준으로만 결제 가능합니다. 짧은 시간 이동이 필요하신 경우 한국 현지에 오셔서 국제 택시 또는 한국 현지 택시용 교통앱을 사용하시면 편리합니다."
     ]
+  },
+  "footer": {
+    "companyName": "주식회사 필만",
+    "ceo": "대표 : 우정호",
+    "address": "서울특별시 강남구 선릉로 157길 14",
+    "businessNumber": "사업자등록번호 620-30-01168",
+    "customerEmail": "고객센터 이메일 cs@k-doc.kr",
+    "companyInfo": "회사소개",
+    "termsOfService": "이용약관",
+    "privacyPolicy": "개인정보 처리방침"
   }
 }

@@ -1,3 +1,4 @@
+import { Locale } from '@/shared/config';
 import { type Prisma } from '@prisma/client';
 
 // 다국어 텍스트 타입
@@ -48,7 +49,7 @@ export function getLocalizedText(text: LocalizedText, locale: 'ko_KR' | 'en_US' 
 }
 
 // Locale을 LocalizedText 언어 코드로 변환하는 함수
-export function getLocalizedTextByLocale(text: LocalizedText, locale: 'ko' | 'en' | 'th'): string {
+export function getLocalizedTextByLocale(text: LocalizedText, locale: Locale): string {
   const localeKey = locale === 'ko' ? 'ko_KR' : locale === 'en' ? 'en_US' : 'th_TH';
   return text[localeKey] || text.ko_KR || text.en_US || text.th_TH || '';
 }

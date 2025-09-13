@@ -276,5 +276,15 @@
       },
       "Payment is only possible based on 8 hours per day. If short-term travel is needed, it is convenient to use international taxis or local taxi apps after arriving in Korea."
     ]
+  },
+  "footer": {
+    "companyName": "Pilman Co., Ltd.",
+    "ceo": "CEO: Woo Jung-ho",
+    "address": "14, Seolleung-ro 157-gil, Gangnam-gu, Seoul",
+    "businessNumber": "Business Registration Number: 620-30-01168",
+    "customerEmail": "Customer Service Email: cs@k-doc.kr",
+    "companyInfo": "About Us",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy"
   }
 }

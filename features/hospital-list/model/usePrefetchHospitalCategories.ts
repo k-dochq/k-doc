@@ -36,7 +36,6 @@ export function usePrefetchHospitalCategories({
 
       try {
         await Promise.all(prefetchPromises);
-        console.log('Successfully prefetched all categories:', categoriesToPrefetch);
       } catch (error) {
         console.error('Error prefetching categories:', error);
       }
