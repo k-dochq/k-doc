@@ -1,14 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
+import { useHospitalAddress } from '../model/useHospitalAddress';
+import { useAddressCopy } from '../model/useAddressCopy';
+import { HospitalMap } from './HospitalMap';
+import { HospitalAddressSection } from './HospitalAddressSection';
 
 interface HospitalDetailMapProps {
   lang: Locale;
@@ -17,57 +14,25 @@ interface HospitalDetailMapProps {
   longitude: number;
 }
 
+/**
+ * 병원 상세 지도 컴포넌트
+ * 지도와 주소 정보를 표시합니다.
+ */
 export function HospitalDetailMap({ lang, dict, latitude, longitude }: HospitalDetailMapProps) {
-  const mapRef = useRef<HTMLDivElement>(null);
+  const { address } = useHospitalAddress({ latitude, longitude });
+  const { copyAddress } = useAddressCopy();
 
-  useEffect(() => {
-    const loadKakaoMap = () => {
-      if (!window.kakao || !window.kakao.maps) {
-        console.error('Kakao Maps API가 로드되지 않았습니다.');
-        return;
-      }
-
-      if (!mapRef.current) return;
-
-      // 지도 옵션
-      const options = {
-        center: new window.kakao.maps.LatLng(latitude, longitude),
-        level: 3, // 확대 레벨
-      };
-
-      // 지도 생성
-      const map = new window.kakao.maps.Map(mapRef.current, options);
-
-      // 마커 생성
-      const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
-      const marker = new window.kakao.maps.Marker({
-        position: markerPosition,
-      });
-
-      // 마커를 지도에 표시
-      marker.setMap(map);
-    };
-
-    // Kakao Maps API 스크립트 로드
-    if (!window.kakao) {
-      const script = document.createElement('script');
-      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=6aee4a708ad4757cc28cc5c546a20586&autoload=false`;
-      script.async = true;
-      script.onload = () => {
-        window.kakao.maps.load(loadKakaoMap);
-      };
-      document.head.appendChild(script);
-    } else {
-      loadKakaoMap();
-    }
-  }, [latitude, longitude]);
+  const handleCopyAddress = () => {
+    copyAddress(address);
+  };
 
   return (
     <div className=''>
       <h2 className='text-base font-bold text-white'>{dict.hospital.map.title}</h2>
-      <div className='mt-4 h-[242px] w-full overflow-hidden rounded-lg'>
-        <div ref={mapRef} className='h-full w-full' style={{ width: '100%', height: '100%' }} />
-      </div>
+
+      <HospitalMap latitude={latitude} longitude={longitude} />
+
+      <HospitalAddressSection address={address} onCopyAddress={handleCopyAddress} />
     </div>
   );
 }
