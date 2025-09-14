@@ -8,7 +8,7 @@ import type { User } from '@supabase/supabase-js';
 interface UseToggleReviewLikeParams {
   queryParams: {
     limit: number;
-    sortBy?: string;
+    sort?: string;
     category?: string;
   };
   user: User | null;

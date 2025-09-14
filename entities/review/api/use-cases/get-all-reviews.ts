@@ -11,7 +11,7 @@ export async function getAllReviews({
   page = 1,
   limit = 10,
   category,
-  sortBy = 'latest',
+  sort = 'latest',
   offset,
 }: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
   // offset이 제공되면 사용하고, 그렇지 않으면 page를 기반으로 계산
@@ -31,7 +31,7 @@ export async function getAllReviews({
 
     // 정렬 조건 구성
     const orderBy = (() => {
-      switch (sortBy) {
+      switch (sort) {
         case 'popular':
           return [
             { likeCount: 'desc' as const },

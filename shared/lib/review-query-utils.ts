@@ -12,7 +12,7 @@ import {
 export interface ParsedReviewQueryParams {
   page: number;
   limit: number;
-  sortBy: ReviewSortOption;
+  sort: ReviewSortOption;
   category?: MedicalSpecialtyType;
 }
 
@@ -22,7 +22,7 @@ export interface ParsedReviewQueryParams {
 export interface DbReviewQueryParams {
   page: number;
   limit: number;
-  sortBy: ReviewSortOption;
+  sort: ReviewSortOption;
   category?: MedicalSpecialtyType;
 }
 
@@ -32,7 +32,7 @@ export interface DbReviewQueryParams {
 export const DEFAULT_REVIEW_QUERY_PARAMS = {
   page: 1,
   limit: 10,
-  sortBy: REVIEW_SORT_OPTIONS.LATEST,
+  sort: REVIEW_SORT_OPTIONS.LATEST,
 } as const;
 
 /**
@@ -49,11 +49,9 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
   const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10));
   const limit = Math.max(1, Math.min(50, parseInt(searchParams.get('limit') || '10', 10))); // 최대 50개 제한
 
-  const sortByParam = searchParams.get('sortBy');
-  const sortBy =
-    sortByParam && isValidReviewSortOption(sortByParam)
-      ? sortByParam
-      : DEFAULT_REVIEW_QUERY_PARAMS.sortBy;
+  const sortParam = searchParams.get('sort');
+  const sort =
+    sortParam && isValidReviewSortOption(sortParam) ? sortParam : DEFAULT_REVIEW_QUERY_PARAMS.sort;
 
   const categoryParam = searchParams.get('category');
   const category =
@@ -64,7 +62,7 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
   return {
     page,
     limit,
-    sortBy,
+    sort,
     category,
   };
 }
@@ -76,7 +74,7 @@ export function convertToDbReviewQueryParams(params: ParsedReviewQueryParams): D
   return {
     page: params.page,
     limit: params.limit,
-    sortBy: params.sortBy,
+    sort: params.sort,
     category: params.category,
   };
 }
@@ -95,8 +93,8 @@ export function buildReviewQueryString(params: Partial<ParsedReviewQueryParams>)
     searchParams.set('limit', params.limit.toString());
   }
 
-  if (params.sortBy && params.sortBy !== DEFAULT_REVIEW_QUERY_PARAMS.sortBy) {
-    searchParams.set('sortBy', params.sortBy);
+  if (params.sort && params.sort !== DEFAULT_REVIEW_QUERY_PARAMS.sort) {
+    searchParams.set('sort', params.sort);
   }
 
   if (params.category) {
@@ -135,8 +133,8 @@ export function validateReviewQueryParams(
       errors.push('Limit must be between 1 and 50');
     }
 
-    // sortBy 유효성 검증
-    if (!Object.values(REVIEW_SORT_OPTIONS).includes(params.sortBy)) {
+    // sort 유효성 검증
+    if (!Object.values(REVIEW_SORT_OPTIONS).includes(params.sort)) {
       errors.push('Invalid sort option. Use "latest" or "popular"');
     }
 
