@@ -58,6 +58,11 @@ export async function getReviewDetail({
             order: 'asc',
           },
         },
+        ReviewLike: {
+          select: {
+            userId: true,
+          },
+        },
       },
     });
 
@@ -66,6 +71,8 @@ export async function getReviewDetail({
     }
 
     // 데이터 변환
+    const likedUserIds = review.ReviewLike.map((like) => like.userId);
+
     const reviewCardData: ReviewCardData = {
       id: review.id,
       rating: review.rating,
@@ -76,6 +83,8 @@ export async function getReviewDetail({
       createdAt: review.createdAt,
       viewCount: review.viewCount,
       likeCount: review.likeCount,
+      likedUserIds, // 좋아요를 한 사용자 ID들
+      isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
       user: {
         displayName: review.User?.displayName || null,
         nickName: review.User?.nickName || null,

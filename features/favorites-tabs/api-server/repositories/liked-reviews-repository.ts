@@ -82,6 +82,11 @@ export class LikedReviewsRepository {
                 order: 'asc',
               },
             },
+            ReviewLike: {
+              select: {
+                userId: true,
+              },
+            },
           },
         },
       },
@@ -103,6 +108,9 @@ export class LikedReviewsRepository {
       const beforeImages = review.ReviewImage.filter((img) => img.imageType === 'BEFORE');
       const afterImages = review.ReviewImage.filter((img) => img.imageType === 'AFTER');
 
+      // 좋아요한 사용자 ID들
+      const likedUserIds = review.ReviewLike.map((like) => like.userId);
+
       return {
         id: review.id,
         rating: review.rating,
@@ -111,6 +119,8 @@ export class LikedReviewsRepository {
         isRecommended: review.isRecommended,
         viewCount: review.viewCount,
         likeCount: review.likeCount,
+        likedUserIds, // 좋아요를 한 사용자 ID들
+        isLiked: true, // 좋아요한 리뷰 리스트이므로 항상 true
         createdAt: review.createdAt,
         concerns: review.concerns,
         user: {

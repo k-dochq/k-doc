@@ -2,16 +2,12 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 
 interface ReviewContentSectionProps {
   content: string;
   lang: Locale;
-  dict: {
-    review: {
-      showMore: string;
-      showLess: string;
-    };
-  };
+  dict: Dictionary;
   className?: string;
 }
 

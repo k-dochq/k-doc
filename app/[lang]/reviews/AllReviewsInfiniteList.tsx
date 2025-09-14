@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { ReviewListCard, ReviewsSkeleton, useInfiniteAllReviews } from 'entities/review';
+import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { useAuth } from 'shared/lib/auth/useAuth';
@@ -20,7 +21,7 @@ interface AllReviewsInfiniteListProps {
 
 export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsInfiniteListProps) {
   const { category, sort } = searchParams;
-  const { user: _user } = useAuth();
+  const { user } = useAuth();
 
   // 타입 안전한 파라미터 구성
   const queryParams = {
@@ -29,8 +30,19 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
     category,
   };
 
+  // 좋아요 토글 뮤테이션
+  const toggleLikeMutation = useToggleReviewLike({ queryParams, user });
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteAllReviews(queryParams);
+
+  // 좋아요 토글 핸들러
+  const handleToggleLike = (reviewId: string) => {
+    toggleLikeMutation.mutate(reviewId);
+  };
+
+  // 현재 로딩 중인 리뷰 ID (TanStack Query의 variables 활용)
+  const loadingReviewId = toggleLikeMutation.isPending ? toggleLikeMutation.variables : null;
 
   // 로딩 상태
   if (isLoading) {
@@ -59,7 +71,14 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
         <div className=''>
           {allReviews.map((review) => (
             <div key={review.id} className='p-5'>
-              <ReviewListCard review={review} lang={lang} dict={dict} />
+              <ReviewListCard
+                review={review}
+                lang={lang}
+                dict={dict}
+                user={user}
+                onToggleLike={handleToggleLike}
+                isLikeLoading={loadingReviewId === review.id}
+              />
             </div>
           ))}
 

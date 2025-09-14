@@ -63,6 +63,11 @@ export async function getHospitalReviews({
             order: 'asc',
           },
         },
+        ReviewLike: {
+          select: {
+            userId: true,
+          },
+        },
       },
       orderBy: {
         createdAt: 'desc',
@@ -72,48 +77,54 @@ export async function getHospitalReviews({
     });
 
     // 데이터 변환
-    const reviewCardData: ReviewCardData[] = reviews.map((review) => ({
-      id: review.id,
-      rating: review.rating,
-      title: review.title as Record<string, string> | null,
-      content: review.content as Record<string, string> | null,
-      isRecommended: review.isRecommended,
-      concerns: review.concerns,
-      createdAt: review.createdAt,
-      viewCount: review.viewCount,
-      likeCount: review.likeCount,
-      user: {
-        displayName: review.User?.displayName || null,
-        nickName: review.User?.nickName || null,
-        name: review.User?.name || null,
-      },
-      hospital: {
-        name: review.Hospital.name as Record<string, string>,
-        district: {
-          name: review.Hospital.District?.name as Record<string, string>,
+    const reviewCardData: ReviewCardData[] = reviews.map((review) => {
+      const likedUserIds = review.ReviewLike.map((like) => like.userId);
+
+      return {
+        id: review.id,
+        rating: review.rating,
+        title: review.title as Record<string, string> | null,
+        content: review.content as Record<string, string> | null,
+        isRecommended: review.isRecommended,
+        concerns: review.concerns,
+        createdAt: review.createdAt,
+        viewCount: review.viewCount,
+        likeCount: review.likeCount,
+        likedUserIds, // 좋아요를 한 사용자 ID들
+        isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
+        user: {
+          displayName: review.User?.displayName || null,
+          nickName: review.User?.nickName || null,
+          name: review.User?.name || null,
         },
-      },
-      medicalSpecialty: {
-        name: review.MedicalSpecialty.name as Record<string, string>,
-        specialtyType: review.MedicalSpecialty.specialtyType,
-      },
-      images: {
-        before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
-          id: img.id,
-          imageType: img.imageType,
-          imageUrl: img.imageUrl,
-          alt: img.alt,
-          order: img.order,
-        })),
-        after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
-          id: img.id,
-          imageType: img.imageType,
-          imageUrl: img.imageUrl,
-          alt: img.alt,
-          order: img.order,
-        })),
-      },
-    }));
+        hospital: {
+          name: review.Hospital.name as Record<string, string>,
+          district: {
+            name: review.Hospital.District?.name as Record<string, string>,
+          },
+        },
+        medicalSpecialty: {
+          name: review.MedicalSpecialty.name as Record<string, string>,
+          specialtyType: review.MedicalSpecialty.specialtyType,
+        },
+        images: {
+          before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
+            id: img.id,
+            imageType: img.imageType,
+            imageUrl: img.imageUrl,
+            alt: img.alt,
+            order: img.order,
+          })),
+          after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
+            id: img.id,
+            imageType: img.imageType,
+            imageUrl: img.imageUrl,
+            alt: img.alt,
+            order: img.order,
+          })),
+        },
+      };
+    });
 
     const hasNextPage = calculatedOffset + limit < totalCount;
     const hasMore = hasNextPage; // 기존 호환성을 위해 유지

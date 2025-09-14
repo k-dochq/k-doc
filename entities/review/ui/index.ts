@@ -6,6 +6,7 @@ export { ReviewListCardHeader } from './ReviewListCardHeader';
 export { ReviewListCardFooter } from './ReviewListCardFooter';
 export { ReviewContentSection } from './ReviewContentSection';
 export { ReviewStatsSection } from './ReviewStatsSection';
+export { ReviewLikeDisplay } from './ReviewLikeDisplay';
 export { ReviewListImages } from './ReviewListImages';
 export { ImageTag } from './ImageTag';
 export { SingleImageDisplay } from './SingleImageDisplay';
