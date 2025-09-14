@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import { type HospitalDoctor } from 'entities/hospital/api/entities/types';
+import { MedicalSpecialtyTags } from 'shared/ui/medical-specialty-tags';
 
 interface DoctorCardProps {
   doctor: HospitalDoctor;
@@ -44,26 +45,9 @@ export function DoctorCard({ doctor, lang }: DoctorCardProps) {
         )}
 
         {/* 진료부위 태그 */}
-        {/* {doctor.medicalSpecialties && doctor.medicalSpecialties.length > 0 && (
-          <div className='flex flex-wrap gap-1'>
-            {doctor.medicalSpecialties.slice(0, 2).map((specialty) => {
-              const specialtyName = extractLocalizedText(specialty.name, lang) || '';
-              return (
-                <span
-                  key={specialty.id}
-                  className='inline-block rounded-full bg-white/20 px-2 py-1 text-xs text-white/90'
-                >
-                  {specialtyName}
-                </span>
-              );
-            })}
-            {doctor.medicalSpecialties.length > 2 && (
-              <span className='inline-block rounded-full bg-white/20 px-2 py-1 text-xs text-white/90'>
-                +{doctor.medicalSpecialties.length - 2}
-              </span>
-            )}
-          </div>
-        )} */}
+        <div className='mt-2'>
+          <MedicalSpecialtyTags specialties={doctor.medicalSpecialties || []} lang={lang} />
+        </div>
       </div>
     </div>
   );
