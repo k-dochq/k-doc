@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
-import { extractLocalizedText } from 'shared/lib';
+import { extractLocalizedText, formatDateSimple } from 'shared/lib';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar } from 'lucide-react';
 import { LocaleLink } from 'shared/ui/locale-link';
@@ -33,15 +33,6 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
 
   // 사용자 표시명 (닉네임 우선, 없으면 displayName, 둘 다 없으면 익명)
   const userName = review.user.nickName || review.user.displayName || '익명';
-
-  // 날짜 포맷팅
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : lang === 'th' ? 'th-TH' : 'en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    }).format(new Date(date));
-  };
 
   return (
     <LocaleLink
@@ -143,7 +134,7 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
           </div>
           <div className='flex items-center space-x-1'>
             <Calendar className='h-3 w-3' />
-            <span>{formatDate(review.createdAt)}</span>
+            <span>{formatDateSimple(review.createdAt, lang)}</span>
           </div>
         </div>
 

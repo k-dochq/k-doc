@@ -8,26 +8,18 @@ import { UserRatingInfo } from './UserRatingInfo';
 import { ReviewText } from './ReviewText';
 import { ReviewHashtags } from './ReviewHashtags';
 import { ReviewHospitalInfo } from './ReviewHospitalInfo';
+import { ReviewListCardHeader } from './ReviewListCardHeader';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ReviewListCardProps {
   review: ReviewCardData;
   lang: Locale;
   className?: string;
-  noBorder?: boolean;
 }
 
-export function ReviewListCard({
-  review,
-  lang,
-  className = '',
-  noBorder = false,
-}: ReviewListCardProps) {
+export function ReviewListCard({ review, lang, className = '' }: ReviewListCardProps) {
   const title = extractLocalizedText(review.title, lang) || '';
   const content = extractLocalizedText(review.content, lang) || '';
-
-  // 사용자 표시명 (닉네임 우선, 없으면 displayName, 둘 다 없으면 익명)
-  const userName = review.user.nickName || review.user.displayName || '익명';
 
   // 해시태그 추출 (concerns를 해시태그로 사용)
   const hashtags = review.concerns ? [review.concerns] : [];
@@ -36,31 +28,10 @@ export function ReviewListCard({
     <LocaleLink
       href={`/reviews/${review.id}`}
       locale={lang}
-      className={`block w-full overflow-hidden rounded-lg bg-white ${noBorder ? '' : 'border border-neutral-200'} ${className}`}
+      className={`block w-full overflow-hidden rounded-lg ${className}`}
     >
-      {/* Before/After 이미지 */}
-      <div className=''>
-        <BeforeAfterImages beforeImages={review.images.before} afterImages={review.images.after} />
-      </div>
-      <div className='p-4'>
-        {/* 사용자 정보 및 평점 */}
-        <UserRatingInfo userName={userName} rating={review.rating} />
-
-        <div className='h-2' />
-
-        {/* 리뷰 텍스트 */}
-        {content && <ReviewText text={content} maxLines={3} />}
-
-        <div className='h-2' />
-
-        {/* 해시태그 */}
-        {hashtags.length > 0 && <ReviewHashtags hashtags={hashtags} />}
-
-        <div className='h-2' />
-
-        {/* 병원 정보 */}
-        <ReviewHospitalInfo districtName={review.hospital.district.name} lang={lang} />
-      </div>
+      {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
+      <ReviewListCardHeader review={review} lang={lang} />
     </LocaleLink>
   );
 }

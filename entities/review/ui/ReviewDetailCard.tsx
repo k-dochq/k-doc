@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { extractLocalizedText } from 'shared/lib';
+import { extractLocalizedText, formatDateSimple } from 'shared/lib';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
@@ -35,15 +35,6 @@ export function ReviewDetailCard({ review, lang, dict }: ReviewDetailCardProps) 
 
   // 사용자 표시명 (닉네임 우선, 없으면 displayName, 둘 다 없으면 익명)
   const userName = review.user.nickName || review.user.displayName || '익명';
-
-  // 날짜 포맷팅
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat(lang === 'ko' ? 'ko-KR' : lang === 'th' ? 'th-TH' : 'en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(new Date(date));
-  };
 
   // 이미지 타입 변경
   const handleImageTypeChange = (type: 'BEFORE' | 'AFTER') => {
@@ -236,7 +227,7 @@ export function ReviewDetailCard({ review, lang, dict }: ReviewDetailCardProps) 
               </div>
               <div className='flex items-center space-x-1'>
                 <Calendar className='h-4 w-4' />
-                <span>{formatDate(review.createdAt)}</span>
+                <span>{formatDateSimple(review.createdAt, lang)}</span>
               </div>
             </div>
 
