@@ -4,6 +4,7 @@ import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-
 import { HospitalDetailErrorState } from 'shared/ui/error-state';
 import { HospitalDetailHeader } from 'widgets/hospital-detail-header';
 import { HospitalDetailPhotos } from 'widgets/hospital-detail-photos';
+import { HospitalDetailInfo } from 'widgets/hospital-detail-info';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
@@ -22,7 +23,7 @@ export async function HospitalDetailContent({
     const { hospital } = await getHospitalDetail({ id: hospitalId });
 
     return (
-      <div className='min-h-screen bg-gradient-to-b from-[#FE906C] to-[#FF6CA5]'>
+      <div className='min-h-screen bg-gradient-to-b from-[#FE906C] to-[#FF6CA5] text-white'>
         {/* 헤더 */}
         <HospitalDetailHeader
           lang={lang}
@@ -33,6 +34,9 @@ export async function HospitalDetailContent({
 
         {/* 병원 사진 섹션 */}
         <HospitalDetailPhotos hospital={hospital} lang={lang} dict={dict} />
+
+        {/* 병원 정보 섹션 */}
+        <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {
