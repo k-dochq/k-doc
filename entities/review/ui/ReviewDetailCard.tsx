@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { extractLocalizedText, formatDateSimple } from 'shared/lib';
+import { extractLocalizedText, formatDateSimple, getUserDisplayName } from 'shared/lib';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
@@ -33,8 +33,8 @@ export function ReviewDetailCard({ review, lang, dict }: ReviewDetailCardProps) 
   const currentImages = selectedImageType === 'AFTER' ? afterImages : beforeImages;
   const currentImage = currentImages[selectedImageIndex];
 
-  // 사용자 표시명 (닉네임 우선, 없으면 displayName, 둘 다 없으면 익명)
-  const userName = review.user.nickName || review.user.displayName || '익명';
+  // 사용자 표시명
+  const userName = getUserDisplayName(review.user);
 
   // 이미지 타입 변경
   const handleImageTypeChange = (type: 'BEFORE' | 'AFTER') => {

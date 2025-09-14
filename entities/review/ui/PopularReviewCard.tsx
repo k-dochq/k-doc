@@ -2,7 +2,7 @@
 
 import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
-import { extractLocalizedText } from 'shared/lib/localized-text';
+import { extractLocalizedText, getUserDisplayName } from 'shared/lib';
 import { BeforeAfterImages } from './BeforeAfterImages';
 import { UserRatingInfo } from './UserRatingInfo';
 import { ReviewText } from './ReviewText';
@@ -26,8 +26,8 @@ export function PopularReviewCard({
   const title = extractLocalizedText(review.title, lang) || '';
   const content = extractLocalizedText(review.content, lang) || '';
 
-  // 사용자 표시명 (닉네임 우선, 없으면 displayName, 둘 다 없으면 익명)
-  const userName = review.user.nickName || review.user.displayName || '익명';
+  // 사용자 표시명
+  const userName = getUserDisplayName(review.user);
 
   // 해시태그 추출 (concerns를 해시태그로 사용)
   const hashtags = review.concerns ? [review.concerns] : [];

@@ -4,7 +4,7 @@ import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
 import { UserAvatar } from './UserAvatar';
 import { StarIcon } from 'shared/ui/star-icon/StarIcon';
-import { formatRelativeDate } from 'shared/lib/date-utils';
+import { formatRelativeDate, getUserDisplayName } from 'shared/lib';
 
 interface ReviewListCardHeaderProps {
   review: ReviewCardData;
@@ -13,8 +13,8 @@ interface ReviewListCardHeaderProps {
 }
 
 export function ReviewListCardHeader({ review, lang, className = '' }: ReviewListCardHeaderProps) {
-  // 사용자 표시명 (닉네임 우선, 없으면 displayName, 없으면 name, 모두 없으면 익명)
-  const userName = review.user.nickName || review.user.displayName || review.user.name || '익명';
+  // 사용자 표시명
+  const userName = getUserDisplayName(review.user);
 
   return (
     <div className={`flex items-center justify-between ${className}`}>
