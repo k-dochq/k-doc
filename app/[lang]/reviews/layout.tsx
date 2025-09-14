@@ -14,7 +14,8 @@ export default async function ReviewsLayout({ children, params }: ReviewsLayoutP
   return (
     <MaxWidthLayout>
       <Header currentLang={lang} />
-      <main className='py-8 pb-20'>{children}</main>
+      <main>{children}</main>
+      <div className='h-16' />
       <BottomNavigation currentLang={lang} />
     </MaxWidthLayout>
   );

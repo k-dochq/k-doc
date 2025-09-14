@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllReviews } from 'entities/review';
-import { type MedicalSpecialtyType } from '@prisma/client';
+import {
+  convertToDbReviewQueryParams,
+  validateReviewQueryParams,
+} from 'shared/lib/review-query-utils';
 
 export async function GET(request: NextRequest) {
   try {
@@ -12,43 +15,26 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = url;
 
-    // 쿼리 파라미터 추출
-    const page = parseInt(searchParams.get('page') || '1', 10);
-    const limit = parseInt(searchParams.get('limit') || '10', 10);
-    const categoryParam = searchParams.get('category') || 'ALL';
-    const category: MedicalSpecialtyType | undefined =
-      categoryParam === 'ALL' ? undefined : (categoryParam as MedicalSpecialtyType);
-    const sortBy = (searchParams.get('sortBy') as 'latest' | 'popular') || 'latest';
+    // 타입 안전한 쿼리 파라미터 유효성 검증
+    const validationResult = validateReviewQueryParams(searchParams);
 
-    // 파라미터 유효성 검사
-    if (page < 1 || limit < 1 || limit > 50) {
+    if (!validationResult.isValid) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Invalid pagination parameters',
+          error: 'Invalid query parameters',
+          details: validationResult.errors,
         },
         { status: 400 },
       );
     }
 
-    // 정렬 옵션 유효성 검사
-    if (!['latest', 'popular'].includes(sortBy)) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Invalid sort option. Use "latest" or "popular"',
-        },
-        { status: 400 },
-      );
-    }
+    // 타입 안전한 파라미터 파싱 및 변환
+    const parsedParams = validationResult.params!;
+    const dbParams = convertToDbReviewQueryParams(parsedParams);
 
     // 리뷰 데이터 조회
-    const reviewsData = await getAllReviews({
-      page,
-      limit,
-      category,
-      sortBy,
-    });
+    const reviewsData = await getAllReviews(dbParams);
 
     const response = NextResponse.json({
       success: true,
@@ -57,12 +43,11 @@ export async function GET(request: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error('Error in /api/reviews:', error);
-
+    console.error('Error fetching reviews:', error);
     return NextResponse.json(
       {
         success: false,
-        error: error instanceof Error ? error.message : 'Internal server error',
+        error: 'Failed to fetch reviews',
       },
       { status: 500 },
     );

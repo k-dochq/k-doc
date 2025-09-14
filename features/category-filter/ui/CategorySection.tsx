@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { CategorySectionSkeleton } from './CategorySectionSkeleton';
@@ -27,6 +28,7 @@ export function CategorySection({
   onRetry,
 }: CategorySectionProps) {
   const [api, setApi] = useState<CarouselApi>();
+  const pathname = usePathname();
 
   if (isLoading) {
     return <CategorySectionSkeleton />;
@@ -67,8 +69,8 @@ export function CategorySection({
                 : currentCategory === categoryButton.type;
             const href =
               categoryButton.type === 'all'
-                ? '/hospitals'
-                : `/hospitals?category=${categoryButton.type}`;
+                ? pathname
+                : `${pathname}?category=${categoryButton.type}`;
 
             return (
               <CarouselItem key={categoryButton.type} className='basis-auto pl-3'>

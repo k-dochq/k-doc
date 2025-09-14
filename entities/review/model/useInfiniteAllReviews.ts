@@ -6,7 +6,7 @@ import { type GetAllReviewsResponse } from './types';
 
 interface UseInfiniteAllReviewsParams {
   limit?: number;
-  medicalSpecialtyId?: string;
+  category?: string;
   sortBy?: 'latest' | 'popular';
   initialData?: GetAllReviewsResponse;
 }
@@ -20,7 +20,7 @@ interface AllReviewsApiResponse {
 async function fetchAllReviews({
   pageParam = 1,
   limit = 10,
-  medicalSpecialtyId,
+  category,
   sortBy = 'latest',
 }: {
   pageParam: number;
@@ -31,8 +31,8 @@ async function fetchAllReviews({
     sortBy,
   });
 
-  if (medicalSpecialtyId) {
-    params.append('medicalSpecialtyId', medicalSpecialtyId);
+  if (category) {
+    params.append('category', category);
   }
 
   const response = await fetch(`/api/reviews?${params.toString()}`, {
@@ -55,11 +55,11 @@ async function fetchAllReviews({
 
 export function useInfiniteAllReviews({
   limit = 10,
-  medicalSpecialtyId,
+  category,
   sortBy = 'latest',
   initialData,
 }: UseInfiniteAllReviewsParams = {}) {
-  const filters = { limit, medicalSpecialtyId, sortBy };
+  const filters = { limit, category, sortBy };
 
   return useInfiniteQuery({
     queryKey: queryKeys.reviews.allInfinite(filters),
@@ -67,7 +67,7 @@ export function useInfiniteAllReviews({
       fetchAllReviews({
         pageParam,
         limit,
-        medicalSpecialtyId,
+        category,
         sortBy,
       }),
     getNextPageParam: (lastPage) => {
