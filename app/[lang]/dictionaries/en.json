@@ -196,7 +196,8 @@
       "loading": "Loading...",
       "countLabel": "",
       "error": "Error occurred"
-    }
+    },
+    "procedureTiming": "Procedure Date"
   },
   "favorites": {
     "title": "Favorites",

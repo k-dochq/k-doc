@@ -9,15 +9,21 @@ import { ReviewText } from './ReviewText';
 import { ReviewHashtags } from './ReviewHashtags';
 import { ReviewHospitalInfo } from './ReviewHospitalInfo';
 import { ReviewListCardHeader } from './ReviewListCardHeader';
+import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ReviewListCardProps {
   review: ReviewCardData;
   lang: Locale;
+  dict: {
+    review: {
+      procedureTiming: string;
+    };
+  };
   className?: string;
 }
 
-export function ReviewListCard({ review, lang, className = '' }: ReviewListCardProps) {
+export function ReviewListCard({ review, lang, dict, className = '' }: ReviewListCardProps) {
   const title = extractLocalizedText(review.title, lang) || '';
   const content = extractLocalizedText(review.content, lang) || '';
 
@@ -39,6 +45,9 @@ export function ReviewListCard({ review, lang, className = '' }: ReviewListCardP
         afterImages={review.images.after}
         className='mt-3'
       />
+
+      {/* 세 번째 섹션: 해시태그, 시술시기, 지역 정보 */}
+      <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />
     </LocaleLink>
   );
 }

@@ -196,7 +196,8 @@
       "loading": "กำลังโหลด...",
       "countLabel": "",
       "error": "เกิดข้อผิดพลาด"
-    }
+    },
+    "procedureTiming": "วันที่ทำการรักษา"
   },
   "favorites": {
     "title": "รายการโปรด",

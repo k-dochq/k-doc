@@ -59,7 +59,7 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
         <div className=''>
           {allReviews.map((review) => (
             <div key={review.id} className='p-5'>
-              <ReviewListCard review={review} lang={lang} />
+              <ReviewListCard review={review} lang={lang} dict={dict} />
             </div>
           ))}
 
