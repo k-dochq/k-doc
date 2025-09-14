@@ -43,7 +43,7 @@ export function ReviewListCard({
 
   return (
     <LocaleLink
-      href={`/reviews/${review.id}`}
+      href={`/review/${review.id}`}
       locale={lang}
       className={`block w-full overflow-hidden rounded-lg ${className}`}
     >
