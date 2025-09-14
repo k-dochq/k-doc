@@ -3,7 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
 import { extractLocalizedText } from 'shared/lib/localized-text';
-import { BeforeAfterImages } from './BeforeAfterImages';
+import { ReviewListImages } from './ReviewListImages';
 import { UserRatingInfo } from './UserRatingInfo';
 import { ReviewText } from './ReviewText';
 import { ReviewHashtags } from './ReviewHashtags';
@@ -32,6 +32,13 @@ export function ReviewListCard({ review, lang, className = '' }: ReviewListCardP
     >
       {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
       <ReviewListCardHeader review={review} lang={lang} />
+
+      {/* 두 번째 섹션: Before/After 이미지 */}
+      <ReviewListImages
+        beforeImages={review.images.before}
+        afterImages={review.images.after}
+        className='mt-3'
+      />
     </LocaleLink>
   );
 }
