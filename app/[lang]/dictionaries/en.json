@@ -164,6 +164,9 @@
     "info": {
       "title": "Hospital Information"
     },
+    "map": {
+      "title": "Location"
+    },
     "like": {
       "like": "Like",
       "liked": "Liked",

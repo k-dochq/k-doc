@@ -7,6 +7,7 @@ import { HospitalDetailPhotos } from 'widgets/hospital-detail-photos';
 import { HospitalDetailInfo } from 'widgets/hospital-detail-info';
 import { HospitalDetailIntroduction } from 'widgets/hospital-detail-introduction';
 import { HospitalDetailInfoSection } from 'widgets/hospital-detail-info-section';
+import { HospitalDetailMap } from 'widgets/hospital-detail-map';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
@@ -46,6 +47,8 @@ export async function HospitalDetailContent({
           <HospitalDetailIntroduction hospital={hospital} lang={lang} dict={dict} />
           <div className='h-8' />
           <HospitalDetailInfoSection hospital={hospital} lang={lang} dict={dict} />
+          <div className='h-8' />
+          <HospitalDetailMap lang={lang} dict={dict} />
         </div>
 
         <div className='h-5' />
