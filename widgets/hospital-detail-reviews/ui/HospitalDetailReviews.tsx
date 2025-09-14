@@ -4,6 +4,8 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useHospitalReviews } from 'entities/review';
 import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
+import { HospitalDetailReviewsLoading } from './HospitalDetailReviewsLoading';
+import { HospitalDetailReviewsError } from './HospitalDetailReviewsError';
 
 interface HospitalDetailReviewsProps {
   hospitalId: string;
@@ -20,62 +22,24 @@ export function HospitalDetailReviews({ hospitalId, lang, dict }: HospitalDetail
     data: reviewsData,
     isLoading,
     error,
+    refetch,
   } = useHospitalReviews({
     hospitalId,
     page: 1,
     limit: 5, // 최근 5개 리뷰만 표시
   });
 
+  const handleRetry = () => {
+    // TanStack Query의 refetch를 사용하여 재시도
+    refetch();
+  };
+
   if (isLoading) {
-    return (
-      <div className=''>
-        {/* 섹션 헤더 */}
-        <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-1'>
-            <h2 className='text-base leading-6 font-bold text-white'>시술후기</h2>
-            <span className='text-sm leading-[18px] font-semibold text-white'>(0)</span>
-          </div>
-
-          <button className='flex items-center gap-0.5'>
-            <span className='text-sm leading-[18px] font-medium text-white'>전체보기</span>
-            <div className='flex items-center justify-center'>
-              <ArrowRightIcon className='text-white' />
-            </div>
-          </button>
-        </div>
-
-        {/* 로딩 상태 */}
-        <div className='mt-4'>
-          <p className='text-sm text-white/80'>리뷰를 불러오는 중...</p>
-        </div>
-      </div>
-    );
+    return <HospitalDetailReviewsLoading />;
   }
 
   if (error) {
-    return (
-      <div className=''>
-        {/* 섹션 헤더 */}
-        <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-1'>
-            <h2 className='text-base leading-6 font-bold text-white'>시술후기</h2>
-            <span className='text-sm leading-[18px] font-semibold text-white'>(0)</span>
-          </div>
-
-          <button className='flex items-center gap-0.5'>
-            <span className='text-sm leading-[18px] font-medium text-white'>전체보기</span>
-            <div className='flex items-center justify-center'>
-              <ArrowRightIcon className='text-white' />
-            </div>
-          </button>
-        </div>
-
-        {/* 에러 상태 */}
-        <div className='mt-4'>
-          <p className='text-sm text-white/80'>리뷰를 불러오는 중 오류가 발생했습니다.</p>
-        </div>
-      </div>
-    );
+    return <HospitalDetailReviewsError lang={lang} dict={dict} onRetry={handleRetry} />;
   }
 
   const reviews = reviewsData?.data?.reviews || [];
