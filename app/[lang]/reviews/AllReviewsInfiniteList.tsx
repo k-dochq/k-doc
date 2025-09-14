@@ -14,7 +14,11 @@ interface AllReviewsInfiniteListProps {
   };
 }
 
-export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsInfiniteListProps) {
+export function AllReviewsInfiniteList({
+  lang: _lang,
+  dict: _dict,
+  searchParams,
+}: AllReviewsInfiniteListProps) {
   return (
     <div className='bg-gray-50'>
       {/* TODO: 리뷰 리스트 구현 예정 */}
