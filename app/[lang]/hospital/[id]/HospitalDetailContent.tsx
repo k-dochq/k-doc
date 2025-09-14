@@ -8,6 +8,7 @@ import { HospitalDetailInfo } from 'widgets/hospital-detail-info';
 import { HospitalDetailIntroduction } from 'widgets/hospital-detail-introduction';
 import { HospitalDetailInfoSection } from 'widgets/hospital-detail-info-section';
 import { HospitalDetailMap } from 'widgets/hospital-detail-map';
+import { HospitalDetailDoctors } from 'widgets/hospital-detail-doctors';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
@@ -56,6 +57,14 @@ export async function HospitalDetailContent({
                 latitude={hospital.latitude}
                 longitude={hospital.longitude}
               />
+            </>
+          )}
+
+          {/* 소속 의료진 섹션 */}
+          {hospital.doctors && hospital.doctors.length > 0 && (
+            <>
+              <div className='h-8' />
+              <HospitalDetailDoctors lang={lang} dict={dict} doctors={hospital.doctors} />
             </>
           )}
         </div>
