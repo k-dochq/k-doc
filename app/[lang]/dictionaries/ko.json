@@ -81,6 +81,9 @@
     "viewAll": "전체보기",
     "emptyMessage": "아직 등록된 리뷰가 없습니다."
   },
+  "hospitalDetailConsultation": {
+    "requestButton": "상담신청"
+  },
   "allReviews": {
     "title": "전체 시술후기",
     "subtitle": "모든 병원의 시술후기를 확인하세요",

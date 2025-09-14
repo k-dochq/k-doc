@@ -81,6 +81,9 @@
     "viewAll": "ดูทั้งหมด",
     "emptyMessage": "ยังไม่มีรีวิวที่ลงทะเบียน"
   },
+  "hospitalDetailConsultation": {
+    "requestButton": "ขอปรึกษา"
+  },
   "allReviews": {
     "title": "รีวิวทั้งหมด",
     "subtitle": "ดูรีวิวจากโรงพยาบาลทั้งหมด",

@@ -10,6 +10,7 @@ import { HospitalDetailInfoSection } from 'widgets/hospital-detail-info-section'
 import { HospitalDetailMap } from 'widgets/hospital-detail-map';
 import { HospitalDetailDoctors } from 'widgets/hospital-detail-doctors';
 import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
+import { HospitalDetailConsultationFloating } from 'widgets/hospital-detail-consultation-floating';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
@@ -72,9 +73,13 @@ export async function HospitalDetailContent({
           {/* 리뷰 후기 섹션 */}
           <div className='h-8' />
           <HospitalDetailReviews hospitalId={hospitalId} lang={lang} dict={dict} />
+
+          {/* 하단 고정 버튼을 위한 여백 */}
+          <div className='h-24' />
         </div>
 
-        <div className='h-5' />
+        {/* 하단 고정 상담신청 버튼 */}
+        <HospitalDetailConsultationFloating hospitalId={hospitalId} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {
