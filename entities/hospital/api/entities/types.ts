@@ -1,5 +1,6 @@
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 import { type DbHospitalQueryParams } from 'shared/model/types/hospital-query';
+import { type PriceInfo } from 'shared/model/types';
 
 export interface HospitalImage {
   id: string;
@@ -54,6 +55,8 @@ export interface Hospital {
   hospitalImages?: HospitalImage[]; // 병원 이미지 관계
   medicalSpecialties?: MedicalSpecialty[]; // 진료 부위
   doctors?: HospitalDoctor[]; // 소속 의사
+  prices?: PriceInfo | null; // 가격 정보
+  discountRate?: number | null; // 할인율
 }
 
 export interface GetBestHospitalsRequest {

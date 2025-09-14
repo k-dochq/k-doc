@@ -1,13 +1,29 @@
 import { type Prisma } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError, extractLocalizedText } from 'shared/lib';
+import { parsePriceInfo } from 'shared/model/types';
 import { type Hospital } from '../entities/types';
 import { type OpeningHours } from '../entities/opening-hours-types';
 import { getHospitalDoctors } from './get-hospital-doctors';
 
 // Prisma 타입 정의
 type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
-  include: {
+  select: {
+    id: true;
+    name: true;
+    address: true;
+    prices: true;
+    rating: true;
+    discountRate: true;
+    reviewCount: true;
+    bookmarkCount: true;
+    viewCount: true;
+    approvalStatusType: true;
+    ranking: true;
+    createdAt: true;
+    updatedAt: true;
+    description: true;
+    openingHours: true;
     HospitalImage: true;
     HospitalMedicalSpecialty: {
       include: {
@@ -49,7 +65,22 @@ export async function getHospitalDetail(
         id,
         approvalStatusType: 'APPROVED', // 승인된 병원만 조회
       },
-      include: {
+      select: {
+        id: true,
+        name: true,
+        address: true,
+        prices: true,
+        rating: true,
+        discountRate: true,
+        reviewCount: true,
+        bookmarkCount: true,
+        viewCount: true,
+        approvalStatusType: true,
+        ranking: true,
+        createdAt: true,
+        updatedAt: true,
+        description: true,
+        openingHours: true,
         HospitalImage: {
           where: {
             isActive: true,
@@ -165,6 +196,8 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     medicalSpecialties,
     description: extractLocalizedText(data.description, 'ko') || undefined,
     openingHours,
+    prices: parsePriceInfo(data.prices),
+    discountRate: data.discountRate,
   };
 }
 

@@ -8,7 +8,7 @@ interface HospitalMainImageProps {
 
 export function HospitalMainImage({ imageUrl, hospitalName }: HospitalMainImageProps) {
   return (
-    <div className='relative h-64 bg-gray-200 md:h-80'>
+    <div className='relative h-full w-full'>
       <Image
         src={imageUrl || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
         alt={hospitalName}
