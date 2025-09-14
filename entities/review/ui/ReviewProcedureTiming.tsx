@@ -9,6 +9,8 @@ interface ReviewProcedureTimingProps {
   dict: {
     review: {
       procedureTiming: string;
+      showMore: string;
+      showLess: string;
     };
   };
   className?: string;

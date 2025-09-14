@@ -10,6 +10,7 @@ import { ReviewHashtags } from './ReviewHashtags';
 import { ReviewHospitalInfo } from './ReviewHospitalInfo';
 import { ReviewListCardHeader } from './ReviewListCardHeader';
 import { ReviewListCardFooter } from './ReviewListCardFooter';
+import { ReviewContentSection } from './ReviewContentSection';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ReviewListCardProps {
@@ -18,6 +19,8 @@ interface ReviewListCardProps {
   dict: {
     review: {
       procedureTiming: string;
+      showMore: string;
+      showLess: string;
     };
   };
   className?: string;
@@ -46,8 +49,13 @@ export function ReviewListCard({ review, lang, dict, className = '' }: ReviewLis
         className='mt-3'
       />
 
-      {/* 세 번째 섹션: 해시태그, 시술시기, 지역 정보 */}
+      {/* 세 번째 섹션: 해시태그, 시술시기 */}
       <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />
+
+      {/* 네 번째 섹션: 리뷰 내용 */}
+      {content && (
+        <ReviewContentSection content={content} lang={lang} dict={dict} className='mt-3' />
+      )}
     </LocaleLink>
   );
 }

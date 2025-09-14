@@ -197,7 +197,9 @@
       "countLabel": "",
       "error": "Error occurred"
     },
-    "procedureTiming": "Procedure Date"
+    "procedureTiming": "Procedure Date",
+    "showMore": "Show More",
+    "showLess": "Show Less"
   },
   "favorites": {
     "title": "Favorites",
