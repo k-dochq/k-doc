@@ -34,9 +34,9 @@ export async function getAllReviews({
       switch (sort) {
         case 'popular':
           return [
-            { likeCount: 'desc' as const },
             { viewCount: 'desc' as const },
-            { createdAt: 'desc' as const },
+            { likeCount: 'desc' as const },
+            { createdAt: 'asc' as const },
           ];
         case 'latest':
         default:
