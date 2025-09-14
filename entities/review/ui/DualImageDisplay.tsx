@@ -36,6 +36,7 @@ export function DualImageDisplay({ images, type, className = '' }: DualImageDisp
           className='object-cover'
           sizes='(max-width: 768px) 50vw, 168px'
         />
+        <ImageTag type={type} />
       </div>
     </div>
   );
