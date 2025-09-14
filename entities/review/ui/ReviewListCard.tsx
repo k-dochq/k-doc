@@ -11,6 +11,7 @@ import { ReviewHospitalInfo } from './ReviewHospitalInfo';
 import { ReviewListCardHeader } from './ReviewListCardHeader';
 import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { ReviewContentSection } from './ReviewContentSection';
+import { ReviewStatsSection } from './ReviewStatsSection';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ReviewListCardProps {
@@ -56,6 +57,9 @@ export function ReviewListCard({ review, lang, dict, className = '' }: ReviewLis
       {content && (
         <ReviewContentSection content={content} lang={lang} dict={dict} className='mt-3' />
       )}
+
+      {/* 다섯 번째 섹션: 조회수, 좋아요 */}
+      <ReviewStatsSection review={review} lang={lang} className='mt-3' />
     </LocaleLink>
   );
 }
