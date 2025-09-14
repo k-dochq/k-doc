@@ -24,6 +24,7 @@ export async function getReviewDetail({
           select: {
             displayName: true,
             nickName: true,
+            name: true,
           },
         },
         MedicalSpecialty: {
@@ -78,6 +79,7 @@ export async function getReviewDetail({
       user: {
         displayName: review.User?.displayName || null,
         nickName: review.User?.nickName || null,
+        name: review.User?.name || null,
       },
       hospital: {
         name: review.Hospital.name as LocalizedText,

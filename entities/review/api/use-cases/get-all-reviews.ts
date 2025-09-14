@@ -57,6 +57,7 @@ export async function getAllReviews({
           select: {
             displayName: true,
             nickName: true,
+            name: true,
           },
         },
         Hospital: {
@@ -107,6 +108,7 @@ export async function getAllReviews({
       user: {
         displayName: review.User.displayName,
         nickName: review.User.nickName,
+        name: review.User.name,
       },
       hospital: {
         name: review.Hospital.name as LocalizedText,

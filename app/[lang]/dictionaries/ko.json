@@ -196,7 +196,10 @@
       "loading": "로딩 중...",
       "countLabel": "개",
       "error": "오류 발생"
-    }
+    },
+    "procedureTiming": "시술시기",
+    "showMore": "더보기",
+    "showLess": "접기"
   },
   "favorites": {
     "title": "즐겨찾기",

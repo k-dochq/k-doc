@@ -9,3 +9,4 @@ export * from './error-logger';
 export * from './api/redirect-utils';
 export * from './query-keys';
 export * from './opening-hours-utils';
+export * from './date-utils';

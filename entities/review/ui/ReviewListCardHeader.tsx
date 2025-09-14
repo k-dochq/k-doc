@@ -1,0 +1,41 @@
+'use client';
+
+import { type Locale } from 'shared/config';
+import { type ReviewCardData } from '../model/types';
+import { UserAvatar } from './UserAvatar';
+import { StarIcon } from 'shared/ui/star-icon/StarIcon';
+import { formatRelativeDate } from 'shared/lib/date-utils';
+
+interface ReviewListCardHeaderProps {
+  review: ReviewCardData;
+  lang: Locale;
+  className?: string;
+}
+
+export function ReviewListCardHeader({ review, lang, className = '' }: ReviewListCardHeaderProps) {
+  // 사용자 표시명 (닉네임 우선, 없으면 displayName, 없으면 name, 모두 없으면 익명)
+  const userName = review.user.nickName || review.user.displayName || review.user.name || '익명';
+
+  return (
+    <div className={`flex items-center justify-between ${className}`}>
+      <div className='flex items-center gap-3'>
+        {/* 프로필 사진 */}
+        <UserAvatar className='h-[30px] w-[30px]' />
+
+        {/* 닉네임과 작성일자 */}
+        <div className='flex items-center gap-1'>
+          <span className='text-sm font-semibold text-neutral-900'>{userName}</span>
+          <span className='text-xs font-medium text-neutral-400'>
+            {formatRelativeDate(review.createdAt, lang)}
+          </span>
+        </div>
+      </div>
+
+      {/* 평점 */}
+      <div className='flex items-center gap-1'>
+        <StarIcon />
+        <span className='text-sm font-medium text-neutral-900'>{review.rating.toFixed(1)}</span>
+      </div>
+    </div>
+  );
+}

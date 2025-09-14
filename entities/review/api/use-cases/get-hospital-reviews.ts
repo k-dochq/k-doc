@@ -32,6 +32,7 @@ export async function getHospitalReviews({
           select: {
             displayName: true,
             nickName: true,
+            name: true,
           },
         },
         Hospital: {
@@ -84,6 +85,7 @@ export async function getHospitalReviews({
       user: {
         displayName: review.User?.displayName || null,
         nickName: review.User?.nickName || null,
+        name: review.User?.name || null,
       },
       hospital: {
         name: review.Hospital.name as Record<string, string>,

@@ -196,7 +196,10 @@
       "loading": "กำลังโหลด...",
       "countLabel": "",
       "error": "เกิดข้อผิดพลาด"
-    }
+    },
+    "procedureTiming": "วันที่ทำการรักษา",
+    "showMore": "ดูเพิ่มเติม",
+    "showLess": "ย่อ"
   },
   "favorites": {
     "title": "รายการโปรด",

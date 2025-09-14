@@ -4,7 +4,7 @@ import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
-import { PopularReviewCard, ReviewsSkeleton, useInfiniteAllReviews } from 'entities/review';
+import { ReviewListCard, ReviewsSkeleton, useInfiniteAllReviews } from 'entities/review';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { useAuth } from 'shared/lib/auth/useAuth';
@@ -56,14 +56,11 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
     <div>
       {/* 리뷰 리스트 */}
       {allReviews.length > 0 ? (
-        <div className='space-y-4'>
+        <div className=''>
           {allReviews.map((review) => (
-            <PopularReviewCard
-              key={review.id}
-              review={review}
-              lang={lang}
-              className='border border-gray-200'
-            />
+            <div key={review.id} className='p-5'>
+              <ReviewListCard review={review} lang={lang} dict={dict} />
+            </div>
           ))}
 
           {/* 무한 스크롤 트리거 */}

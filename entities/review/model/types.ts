@@ -36,6 +36,15 @@ export type ReviewImage = {
   order: number | null;
 };
 
+// 기본 이미지 타입 (기본 이미지용)
+export type DefaultImage = {
+  imageUrl: string;
+  alt: string;
+};
+
+// 이미지 표시용 유니온 타입
+export type DisplayImage = ReviewImage | DefaultImage;
+
 // 리뷰 카드에서 사용할 타입 (Prisma 타입을 기반으로 확장)
 export type ReviewCardData = {
   id: string;
@@ -50,6 +59,7 @@ export type ReviewCardData = {
   user: {
     displayName: string | null;
     nickName: string | null;
+    name: string | null;
   };
   hospital: {
     name: LocalizedText;
