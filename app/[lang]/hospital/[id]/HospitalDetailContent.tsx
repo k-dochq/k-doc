@@ -47,8 +47,17 @@ export async function HospitalDetailContent({
           <HospitalDetailIntroduction hospital={hospital} lang={lang} dict={dict} />
           <div className='h-8' />
           <HospitalDetailInfoSection hospital={hospital} lang={lang} dict={dict} />
-          <div className='h-8' />
-          <HospitalDetailMap lang={lang} dict={dict} />
+          {hospital.latitude && hospital.longitude && (
+            <>
+              <div className='h-8' />
+              <HospitalDetailMap
+                lang={lang}
+                dict={dict}
+                latitude={hospital.latitude}
+                longitude={hospital.longitude}
+              />
+            </>
+          )}
         </div>
 
         <div className='h-5' />

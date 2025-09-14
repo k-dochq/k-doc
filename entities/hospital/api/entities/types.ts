@@ -57,6 +57,8 @@ export interface Hospital {
   doctors?: HospitalDoctor[]; // 소속 의사
   prices?: PriceInfo | null; // 가격 정보
   discountRate?: number | null; // 할인율
+  latitude?: number | null; // 위도
+  longitude?: number | null; // 경도
 }
 
 export interface GetBestHospitalsRequest {

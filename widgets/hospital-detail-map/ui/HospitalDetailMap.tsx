@@ -13,14 +13,12 @@ declare global {
 interface HospitalDetailMapProps {
   lang: Locale;
   dict: Dictionary;
+  latitude: number;
+  longitude: number;
 }
 
-export function HospitalDetailMap({ lang, dict }: HospitalDetailMapProps) {
+export function HospitalDetailMap({ lang, dict, latitude, longitude }: HospitalDetailMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
-
-  // 임의의 위도 경도 (강남역 근처)
-  const latitude = 37.4979;
-  const longitude = 127.0276;
 
   useEffect(() => {
     const loadKakaoMap = () => {
