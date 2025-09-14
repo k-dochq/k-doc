@@ -3,6 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useHospitalReviews } from 'entities/review';
+import { ReviewCarousel } from 'shared/ui/review-carousel';
 import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
 import { HospitalDetailReviewsLoading } from './HospitalDetailReviewsLoading';
 import { HospitalDetailReviewsError } from './HospitalDetailReviewsError';
@@ -63,20 +64,17 @@ export function HospitalDetailReviews({ hospitalId, lang, dict }: HospitalDetail
       </div>
 
       {/* 리뷰 목록 */}
-      <div className='mt-4 space-y-4'>
-        {reviews.length > 0 ? (
-          reviews.map((review) => (
-            <div key={review.id} className='rounded-lg bg-white/10 p-4'>
-              <p className='text-sm text-white'>리뷰 ID: {review.id}</p>
-              <p className='text-sm text-white/80'>평점: {review.rating}</p>
-              <p className='text-sm text-white/80'>
-                작성자: {review.user.displayName || review.user.nickName}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p className='text-sm text-white/80'>아직 등록된 리뷰가 없습니다.</p>
-        )}
+      <div className='mt-4'>
+        <ReviewCarousel
+          items={reviews}
+          lang={lang}
+          emptyMessage='아직 등록된 리뷰가 없습니다.'
+          loop={true}
+          align='start'
+          basis='basis-[280px] md:basis-[320px]'
+          itemClassName='pl-2 md:pl-4'
+          noBorder={true}
+        />
       </div>
     </div>
   );

@@ -14,9 +14,15 @@ interface PopularReviewCardProps {
   review: ReviewCardData;
   lang: Locale;
   className?: string;
+  noBorder?: boolean;
 }
 
-export function PopularReviewCard({ review, lang, className = '' }: PopularReviewCardProps) {
+export function PopularReviewCard({
+  review,
+  lang,
+  className = '',
+  noBorder = false,
+}: PopularReviewCardProps) {
   const title = extractLocalizedText(review.title, lang) || '';
   const content = extractLocalizedText(review.content, lang) || '';
 
@@ -30,7 +36,7 @@ export function PopularReviewCard({ review, lang, className = '' }: PopularRevie
     <LocaleLink
       href={`/reviews/${review.id}`}
       locale={lang}
-      className={`block w-full rounded-lg border border-neutral-200 ${className}`}
+      className={`block w-full overflow-hidden rounded-lg bg-white ${noBorder ? '' : 'border border-neutral-200'} ${className}`}
     >
       {/* Before/After 이미지 */}
       <div className=''>
