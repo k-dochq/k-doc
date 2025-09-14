@@ -2,19 +2,14 @@
 
 import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
+import { type Dictionary } from 'shared/model/types';
 import { ReviewHashtags } from './ReviewHashtags';
 import { ReviewProcedureTiming } from './ReviewProcedureTiming';
 
 interface ReviewListCardFooterProps {
   review: ReviewCardData;
   lang: Locale;
-  dict: {
-    review: {
-      procedureTiming: string;
-      showMore: string;
-      showLess: string;
-    };
-  };
+  dict: Dictionary;
   className?: string;
 }
 

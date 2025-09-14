@@ -2,6 +2,8 @@
 
 import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
+import { type Dictionary } from 'shared/model/types';
+import { type User } from '@supabase/supabase-js';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { ReviewListImages } from './ReviewListImages';
 import { UserRatingInfo } from './UserRatingInfo';
@@ -11,22 +13,28 @@ import { ReviewHospitalInfo } from './ReviewHospitalInfo';
 import { ReviewListCardHeader } from './ReviewListCardHeader';
 import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { ReviewContentSection } from './ReviewContentSection';
+import { ReviewStatsSection } from './ReviewStatsSection';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ReviewListCardProps {
   review: ReviewCardData;
   lang: Locale;
-  dict: {
-    review: {
-      procedureTiming: string;
-      showMore: string;
-      showLess: string;
-    };
-  };
+  dict: Dictionary;
+  user: User | null;
+  onToggleLike?: (reviewId: string) => void;
+  isLikeLoading?: boolean;
   className?: string;
 }
 
-export function ReviewListCard({ review, lang, dict, className = '' }: ReviewListCardProps) {
+export function ReviewListCard({
+  review,
+  lang,
+  dict,
+  user,
+  onToggleLike,
+  isLikeLoading = false,
+  className = '',
+}: ReviewListCardProps) {
   const title = extractLocalizedText(review.title, lang) || '';
   const content = extractLocalizedText(review.content, lang) || '';
 
@@ -56,6 +64,16 @@ export function ReviewListCard({ review, lang, dict, className = '' }: ReviewLis
       {content && (
         <ReviewContentSection content={content} lang={lang} dict={dict} className='mt-3' />
       )}
+
+      {/* 다섯 번째 섹션: 조회수, 좋아요 */}
+      <ReviewStatsSection
+        review={review}
+        lang={lang}
+        user={user}
+        onToggleLike={onToggleLike}
+        isLikeLoading={isLikeLoading && isLikeLoading}
+        className='mt-3'
+      />
     </LocaleLink>
   );
 }

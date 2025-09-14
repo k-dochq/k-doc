@@ -88,6 +88,16 @@ export async function getAllReviews({
             order: 'asc',
           },
         },
+        ReviewLike: {
+          select: {
+            userId: true,
+          },
+        },
+        _count: {
+          select: {
+            ReviewLike: true,
+          },
+        },
       },
       orderBy,
       take: limit,
@@ -95,48 +105,54 @@ export async function getAllReviews({
     });
 
     // ReviewCardData 형태로 변환
-    const reviewCardData: ReviewCardData[] = reviews.map((review) => ({
-      id: review.id,
-      rating: review.rating,
-      title: review.title as LocalizedText | null,
-      content: review.content as LocalizedText | null,
-      concerns: review.concerns,
-      createdAt: review.createdAt,
-      viewCount: review.viewCount,
-      likeCount: review.likeCount,
-      isRecommended: review.isRecommended,
-      user: {
-        displayName: review.User.displayName,
-        nickName: review.User.nickName,
-        name: review.User.name,
-      },
-      hospital: {
-        name: review.Hospital.name as LocalizedText,
-        district: {
-          name: review.Hospital.District?.name as LocalizedText,
+    const reviewCardData: ReviewCardData[] = reviews.map((review) => {
+      const likedUserIds = review.ReviewLike.map((like) => like.userId);
+
+      return {
+        id: review.id,
+        rating: review.rating,
+        title: review.title as LocalizedText | null,
+        content: review.content as LocalizedText | null,
+        concerns: review.concerns,
+        createdAt: review.createdAt,
+        viewCount: review.viewCount,
+        likeCount: review._count.ReviewLike, // 실시간 좋아요 수 계산
+        likedUserIds, // 좋아요를 한 사용자 ID들
+        isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
+        isRecommended: review.isRecommended,
+        user: {
+          displayName: review.User.displayName,
+          nickName: review.User.nickName,
+          name: review.User.name,
         },
-      },
-      medicalSpecialty: {
-        name: review.MedicalSpecialty.name as LocalizedText,
-        specialtyType: review.MedicalSpecialty.specialtyType,
-      },
-      images: {
-        before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
-          id: img.id,
-          imageType: img.imageType,
-          imageUrl: img.imageUrl,
-          alt: img.alt,
-          order: img.order,
-        })),
-        after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
-          id: img.id,
-          imageType: img.imageType,
-          imageUrl: img.imageUrl,
-          alt: img.alt,
-          order: img.order,
-        })),
-      },
-    }));
+        hospital: {
+          name: review.Hospital.name as LocalizedText,
+          district: {
+            name: review.Hospital.District?.name as LocalizedText,
+          },
+        },
+        medicalSpecialty: {
+          name: review.MedicalSpecialty.name as LocalizedText,
+          specialtyType: review.MedicalSpecialty.specialtyType,
+        },
+        images: {
+          before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
+            id: img.id,
+            imageType: img.imageType,
+            imageUrl: img.imageUrl,
+            alt: img.alt,
+            order: img.order,
+          })),
+          after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
+            id: img.id,
+            imageType: img.imageType,
+            imageUrl: img.imageUrl,
+            alt: img.alt,
+            order: img.order,
+          })),
+        },
+      };
+    });
 
     const hasNextPage = calculatedOffset + limit < totalCount;
     const hasMore = hasNextPage; // 기존 호환성을 위해 유지

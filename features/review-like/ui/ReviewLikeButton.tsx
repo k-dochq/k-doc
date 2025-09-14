@@ -6,6 +6,8 @@ import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import type { Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
 import { HeartIcon } from 'shared/ui/icons/HeartIcon';
+import { HeartOutlineIcon } from 'shared/ui/icons/HeartOutlineIcon';
+import { LoadingIcon } from 'shared/ui/loading-icon';
 
 interface ReviewLikeButtonProps {
   reviewId: string;
@@ -14,6 +16,7 @@ interface ReviewLikeButtonProps {
   className?: string;
   showCount?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  variant?: 'default' | 'compact';
 }
 
 export function ReviewLikeButton({
@@ -23,6 +26,7 @@ export function ReviewLikeButton({
   className = '',
   showCount = true,
   size = 'sm',
+  variant = 'default',
 }: ReviewLikeButtonProps) {
   const router = useLocalizedRouter();
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
@@ -73,6 +77,35 @@ export function ReviewLikeButton({
 
   const isDisabled = isLoading || isToggling;
 
+  // compact 스타일 (병원 리스트와 동일)
+  if (variant === 'compact') {
+    return (
+      <button
+        onClick={handleClick}
+        disabled={isDisabled}
+        className={`flex items-center gap-1 ${className} ${isDisabled ? 'cursor-not-allowed' : ''}`}
+        type='button'
+        aria-label={
+          isLiked ? dict.review?.like?.liked || '좋아요 취소' : dict.review?.like?.like || '좋아요'
+        }
+      >
+        {isDisabled ? (
+          <LoadingIcon size={16} className='text-neutral-400' />
+        ) : (
+          <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
+        )}
+        {showCount && (
+          <span
+            className={`text-sm font-medium text-neutral-400 ${isDisabled ? 'opacity-70' : ''}`}
+          >
+            {likeCount.toLocaleString()}
+          </span>
+        )}
+      </button>
+    );
+  }
+
+  // 기본 스타일 (기존 버튼 스타일)
   return (
     <div className='flex items-center space-x-1'>
       <button
@@ -107,11 +140,6 @@ export function ReviewLikeButton({
           <span className={`font-medium ${currentSize.text}`}>{likeCount.toLocaleString()}</span>
         )}
       </button>
-
-      {/* 에러 메시지 */}
-      {error && error.status !== 401 && (
-        <div className='mt-1 text-xs text-red-500'>{error.message}</div>
-      )}
     </div>
   );
 }
