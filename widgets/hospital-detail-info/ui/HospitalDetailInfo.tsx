@@ -8,6 +8,7 @@ import { HospitalDetailName } from 'entities/hospital/ui/HospitalDetailName';
 import { HospitalDetailLocation } from 'entities/hospital/ui/HospitalDetailLocation';
 import { HospitalDetailRating } from 'entities/hospital/ui/HospitalDetailRating';
 import { HospitalDetailPrice } from 'entities/hospital/ui/HospitalDetailPrice';
+import { HospitalCardTags } from '@/entities/hospital';
 
 interface HospitalDetailInfoProps {
   hospital: Hospital;
@@ -17,7 +18,7 @@ interface HospitalDetailInfoProps {
 
 export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoProps) {
   return (
-    <div className='p-5'>
+    <div className='border-b border-white/40 p-5'>
       <HotLabel />
       <div className='mt-0.5'>
         <HospitalDetailName hospital={hospital} lang={lang} />
@@ -30,6 +31,9 @@ export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoP
       <div className='mt-2 flex items-center gap-2'>
         <HospitalDetailRating hospital={hospital} />
         <HospitalDetailPrice hospital={hospital} />
+      </div>
+      <div className='mt-2'>
+        <HospitalCardTags hospital={hospital} lang={lang} />
       </div>
     </div>
   );
