@@ -36,7 +36,7 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
 
   return (
     <LocaleLink
-      href={`/reviews/${review.id}`}
+      href={`/review/${review.id}`}
       locale={lang}
       className='flex h-full cursor-pointer flex-col rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md'
     >

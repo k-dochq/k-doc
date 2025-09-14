@@ -34,7 +34,7 @@ export function PopularReviewCard({
 
   return (
     <LocaleLink
-      href={`/reviews/${review.id}`}
+      href={`/review/${review.id}`}
       locale={lang}
       className={`block w-full overflow-hidden rounded-lg bg-white ${noBorder ? '' : 'border border-neutral-200'} ${className}`}
     >
