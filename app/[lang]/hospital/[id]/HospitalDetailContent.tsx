@@ -9,6 +9,7 @@ import { HospitalDetailIntroduction } from 'widgets/hospital-detail-introduction
 import { HospitalDetailInfoSection } from 'widgets/hospital-detail-info-section';
 import { HospitalDetailMap } from 'widgets/hospital-detail-map';
 import { HospitalDetailDoctors } from 'widgets/hospital-detail-doctors';
+import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
@@ -67,6 +68,10 @@ export async function HospitalDetailContent({
               <HospitalDetailDoctors lang={lang} dict={dict} doctors={hospital.doctors} />
             </>
           )}
+
+          {/* 리뷰 후기 섹션 */}
+          <div className='h-8' />
+          <HospitalDetailReviews hospitalId={hospitalId} lang={lang} dict={dict} />
         </div>
 
         <div className='h-5' />
