@@ -85,7 +85,7 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
   const router = useLocalizedRouter();
   const [error, setError] = useState<HospitalLikeError | null>(null);
 
-  // 좋아요 상태 조회 쿼리
+  // 좋아요 상태 조회 쿼리 (캐싱 없이 매번 요청)
   const {
     data: likeStatus,
     isLoading,
@@ -94,8 +94,8 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
     queryKey: queryKeys.hospitalLike.status(hospitalId),
     queryFn: () => fetchHospitalLikeStatus(hospitalId),
     enabled: enabled && !!hospitalId,
-    staleTime: 30 * 1000, // 30초
-    gcTime: 5 * 60 * 1000, // 5분
+    staleTime: 0, // 캐싱하지 않음 - 매번 요청
+    gcTime: 0, // 가비지 컬렉션 시간도 0으로 설정
     retry: (failureCount, error) => {
       // 401 에러는 재시도하지 않음
       if (error instanceof HospitalLikeApiError && error.status === 401) {
@@ -112,7 +112,13 @@ export function useHospitalLike({ hospitalId, enabled = true }: UseHospitalLikeO
       // 현재 병원의 좋아요 상태 캐시 업데이트
       queryClient.setQueryData(queryKeys.hospitalLike.status(hospitalId), data);
 
-      // 좋아요한 병원 리스트 쿼리 invalidate
+      // 병원 관련 모든 쿼리 invalidate (리스트, 상세, 좋아요한 병원 등)
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.hospitals.all,
+        exact: false, // 모든 hospitals 관련 쿼리를 invalidate
+      });
+
+      // 좋아요한 병원 리스트 쿼리도 별도로 invalidate
       queryClient.invalidateQueries({
         queryKey: queryKeys.hospitals.liked.all(),
         exact: false, // 모든 liked hospitals 쿼리를 invalidate
