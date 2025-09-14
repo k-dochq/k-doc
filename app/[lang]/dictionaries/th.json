@@ -84,6 +84,12 @@
   "hospitalDetailConsultation": {
     "requestButton": "ขอปรึกษา"
   },
+  "hospitalDetailTabs": {
+    "introduction": "ข้อมูลโรงพยาบาล",
+    "procedures": "รายละเอียดการรักษา",
+    "proceduresComingSoon": "รายละเอียดการรักษากำลังเตรียมการ",
+    "comingSoonSubtext": "อัปเดตเร็วๆ นี้..."
+  },
   "allReviews": {
     "title": "รีวิวทั้งหมด",
     "subtitle": "ดูรีวิวจากโรงพยาบาลทั้งหมด",
