@@ -59,6 +59,7 @@ export type ReviewCardData = {
   user: {
     displayName: string | null;
     nickName: string | null;
+    name: string | null;
   };
   hospital: {
     name: LocalizedText;

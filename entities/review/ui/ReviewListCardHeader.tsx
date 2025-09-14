@@ -13,8 +13,8 @@ interface ReviewListCardHeaderProps {
 }
 
 export function ReviewListCardHeader({ review, lang, className = '' }: ReviewListCardHeaderProps) {
-  // 사용자 표시명 (닉네임 우선, 없으면 displayName, 둘 다 없으면 익명)
-  const userName = review.user.nickName || review.user.displayName || '익명';
+  // 사용자 표시명 (닉네임 우선, 없으면 displayName, 없으면 name, 모두 없으면 익명)
+  const userName = review.user.nickName || review.user.displayName || review.user.name || '익명';
 
   return (
     <div className={`flex items-center justify-between ${className}`}>

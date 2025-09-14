@@ -46,14 +46,13 @@ export class LikedReviewsRepository {
           include: {
             User: {
               select: {
-                id: true,
                 displayName: true,
                 nickName: true,
+                name: true,
               },
             },
             Hospital: {
               select: {
-                id: true,
                 name: true,
                 District: {
                   select: {
@@ -64,7 +63,6 @@ export class LikedReviewsRepository {
             },
             MedicalSpecialty: {
               select: {
-                id: true,
                 name: true,
                 specialtyType: true,
               },
@@ -114,22 +112,19 @@ export class LikedReviewsRepository {
         viewCount: review.viewCount,
         likeCount: review.likeCount,
         createdAt: review.createdAt,
-        updatedAt: review.updatedAt,
         concerns: review.concerns,
         user: {
-          id: review.User.id,
           displayName: review.User.displayName,
           nickName: review.User.nickName,
+          name: review.User.name,
         },
         hospital: {
-          id: review.Hospital.id,
           name: review.Hospital.name as Record<string, string>,
           district: {
             name: review.Hospital.District?.name as Record<string, string>,
           },
         },
         medicalSpecialty: {
-          id: review.MedicalSpecialty.id,
           name: review.MedicalSpecialty.name as Record<string, string>,
           specialtyType: review.MedicalSpecialty.specialtyType,
         },
