@@ -76,6 +76,11 @@
       "description": "Be the first to write a review."
     }
   },
+  "hospitalDetailReviews": {
+    "title": "Reviews",
+    "viewAll": "View All",
+    "emptyMessage": "No reviews available yet."
+  },
   "allReviews": {
     "title": "All Reviews",
     "subtitle": "Check out reviews from all hospitals",

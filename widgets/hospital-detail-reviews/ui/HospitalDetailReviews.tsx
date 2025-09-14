@@ -44,19 +44,23 @@ export function HospitalDetailReviews({ hospitalId, lang, dict }: HospitalDetail
   }
 
   const reviews = reviewsData?.data?.reviews || [];
-  const reviewCount = reviewsData?.data?.total || 0;
+  const reviewCount = reviews.length || 0;
 
   return (
     <div className=''>
       {/* 섹션 헤더 */}
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-1'>
-          <h2 className='text-base leading-6 font-bold text-white'>시술후기</h2>
+          <h2 className='text-base leading-6 font-bold text-white'>
+            {dict.hospitalDetailReviews.title}
+          </h2>
           <span className='text-sm leading-[18px] font-semibold text-white'>({reviewCount})</span>
         </div>
 
         <button className='flex items-center gap-0.5'>
-          <span className='text-sm leading-[18px] font-medium text-white'>전체보기</span>
+          <span className='text-sm leading-[18px] font-medium text-white'>
+            {dict.hospitalDetailReviews.viewAll}
+          </span>
           <div className='flex items-center justify-center'>
             <ArrowRightIcon className='text-white' />
           </div>
@@ -68,7 +72,7 @@ export function HospitalDetailReviews({ hospitalId, lang, dict }: HospitalDetail
         <ReviewCarousel
           items={reviews}
           lang={lang}
-          emptyMessage='아직 등록된 리뷰가 없습니다.'
+          emptyMessage={dict.hospitalDetailReviews.emptyMessage}
           loop={true}
           align='start'
           basis='basis-[280px] md:basis-[320px]'

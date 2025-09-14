@@ -76,6 +76,11 @@
       "description": "첫 번째 후기를 작성해보세요."
     }
   },
+  "hospitalDetailReviews": {
+    "title": "시술후기",
+    "viewAll": "전체보기",
+    "emptyMessage": "아직 등록된 리뷰가 없습니다."
+  },
   "allReviews": {
     "title": "전체 시술후기",
     "subtitle": "모든 병원의 시술후기를 확인하세요",
