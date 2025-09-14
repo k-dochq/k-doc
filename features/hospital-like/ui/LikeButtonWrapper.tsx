@@ -29,6 +29,7 @@ export function LikeButtonWrapper({ hospitalId }: LikeButtonWrapperProps) {
       isLiked={isLiked}
       onLikeToggle={toggleLike}
       isLoading={isToggling}
+      variant='detail'
     />
   );
 }

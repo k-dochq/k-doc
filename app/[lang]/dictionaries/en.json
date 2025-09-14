@@ -81,6 +81,9 @@
     "viewAll": "View All",
     "emptyMessage": "No reviews available yet."
   },
+  "hospitalDetailConsultation": {
+    "requestButton": "Request Consultation"
+  },
   "allReviews": {
     "title": "All Reviews",
     "subtitle": "Check out reviews from all hospitals",
