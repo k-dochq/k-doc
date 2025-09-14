@@ -24,6 +24,8 @@ type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
     updatedAt: true;
     description: true;
     openingHours: true;
+    latitude: true;
+    longitude: true;
     HospitalImage: true;
     HospitalMedicalSpecialty: {
       include: {
@@ -81,6 +83,8 @@ export async function getHospitalDetail(
         updatedAt: true,
         description: true,
         openingHours: true,
+        latitude: true,
+        longitude: true,
         HospitalImage: {
           where: {
             isActive: true,
@@ -198,6 +202,8 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     openingHours,
     prices: parsePriceInfo(data.prices),
     discountRate: data.discountRate,
+    latitude: data.latitude,
+    longitude: data.longitude,
   };
 }
 
@@ -253,5 +259,7 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
     medicalSpecialties,
     description: extractLocalizedText(data.description, 'ko') || undefined,
     openingHours,
+    latitude: data.latitude,
+    longitude: data.longitude,
   };
 }
