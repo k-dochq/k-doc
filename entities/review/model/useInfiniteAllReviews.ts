@@ -7,7 +7,7 @@ import { type GetAllReviewsResponse } from './types';
 interface UseInfiniteAllReviewsParams {
   limit?: number;
   category?: string;
-  sortBy?: 'latest' | 'popular';
+  sort?: 'latest' | 'popular';
   initialData?: GetAllReviewsResponse;
 }
 
@@ -21,14 +21,14 @@ async function fetchAllReviews({
   pageParam = 1,
   limit = 10,
   category,
-  sortBy = 'latest',
+  sort = 'latest',
 }: {
   pageParam: number;
 } & UseInfiniteAllReviewsParams): Promise<GetAllReviewsResponse> {
   const params = new URLSearchParams({
     page: pageParam.toString(),
     limit: limit.toString(),
-    sortBy,
+    sort,
   });
 
   if (category) {
@@ -56,10 +56,10 @@ async function fetchAllReviews({
 export function useInfiniteAllReviews({
   limit = 10,
   category,
-  sortBy = 'latest',
+  sort = 'latest',
   initialData,
 }: UseInfiniteAllReviewsParams = {}) {
-  const filters = { limit, category, sortBy };
+  const filters = { limit, category, sort };
 
   return useInfiniteQuery({
     queryKey: queryKeys.reviews.allInfinite(filters),
@@ -68,7 +68,7 @@ export function useInfiniteAllReviews({
         pageParam,
         limit,
         category,
-        sortBy,
+        sort,
       }),
     getNextPageParam: (lastPage) => {
       return lastPage.hasNextPage ? lastPage.currentPage + 1 : undefined;

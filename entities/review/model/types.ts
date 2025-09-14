@@ -102,7 +102,7 @@ export interface GetAllReviewsParams {
   limit?: number;
   offset?: number;
   category?: MedicalSpecialtyType | 'ALL';
-  sortBy?: 'latest' | 'popular'; // 정렬 옵션
+  sort?: 'latest' | 'popular'; // 정렬 옵션
 }
 
 // 전체 리뷰 목록 응답

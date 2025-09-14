@@ -15,7 +15,7 @@ export function ReviewFilterBar({ lang }: ReviewFilterBarProps) {
   // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
   const createSortUrl = (sort: ReviewSortOption) => {
     const params = new URLSearchParams(searchParams.toString());
-    params.set('sort', sort);
+    params.set('sort', sort); // 병원과 동일하게 sort 파라미터 사용
     return `/reviews?${params.toString()}`;
   };
 
