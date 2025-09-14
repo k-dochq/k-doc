@@ -161,6 +161,9 @@
     "introduction": {
       "title": "병원 소개"
     },
+    "info": {
+      "title": "병원정보"
+    },
     "like": {
       "like": "찜하기",
       "liked": "찜 완료",

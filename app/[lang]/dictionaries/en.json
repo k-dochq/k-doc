@@ -161,6 +161,9 @@
     "introduction": {
       "title": "Hospital Introduction"
     },
+    "info": {
+      "title": "Hospital Information"
+    },
     "like": {
       "like": "Like",
       "liked": "Liked",

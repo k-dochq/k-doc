@@ -21,7 +21,7 @@ export function HospitalDetailIntroduction({
   }
 
   return (
-    <div className='p-5'>
+    <div className=''>
       <h2 className='text-base font-bold text-white'>{dict.hospital.introduction.title}</h2>
       <p className='mt-4 text-sm leading-relaxed font-normal whitespace-pre-line text-white'>
         {description}
