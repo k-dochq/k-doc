@@ -18,7 +18,7 @@ interface HospitalDetailInfoProps {
 
 export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoProps) {
   return (
-    <div className='border-b border-white/40 p-5'>
+    <div className='p-5'>
       <HotLabel />
       <div className='mt-0.5'>
         <HospitalDetailName hospital={hospital} lang={lang} />

@@ -84,6 +84,12 @@
   "hospitalDetailConsultation": {
     "requestButton": "Request Consultation"
   },
+  "hospitalDetailTabs": {
+    "introduction": "Hospital Info",
+    "procedures": "Procedures",
+    "proceduresComingSoon": "Procedure details are coming soon.",
+    "comingSoonSubtext": "Updates coming soon..."
+  },
   "allReviews": {
     "title": "All Reviews",
     "subtitle": "Check out reviews from all hospitals",
