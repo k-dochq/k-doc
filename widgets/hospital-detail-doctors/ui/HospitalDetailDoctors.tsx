@@ -2,6 +2,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalDoctor } from 'entities/hospital/api/entities/types';
 import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
+import { DoctorCard } from './DoctorCard';
 
 interface HospitalDetailDoctorsProps {
   lang: Locale;
@@ -32,8 +33,12 @@ export function HospitalDetailDoctors({ lang, dict, doctors }: HospitalDetailDoc
         </button>
       </div>
 
-      {/* TODO: 의료진 목록 UI 구현 */}
-      <div className='mt-4 text-sm text-white'>의료진 목록 UI 구현 예정 (총 {doctorCount}명)</div>
+      {/* 의료진 목록 */}
+      <div className='mt-4 space-y-4'>
+        {doctors.map((doctor) => (
+          <DoctorCard key={doctor.id} doctor={doctor} lang={lang} />
+        ))}
+      </div>
     </div>
   );
 }
