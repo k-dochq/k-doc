@@ -6,15 +6,20 @@ interface AllReviewsPageProps {
   params: Promise<{
     lang: Locale;
   }>;
+  searchParams: Promise<{
+    category?: string;
+    sort?: string;
+  }>;
 }
 
-export default async function AllReviewsPage({ params }: AllReviewsPageProps) {
+export default async function AllReviewsPage({ params, searchParams }: AllReviewsPageProps) {
   const { lang } = await params;
+  const resolvedSearchParams = await searchParams;
   const dict = await getDictionary(lang);
 
   return (
     <div className=''>
-      <AllReviewsContent lang={lang} dict={dict} />
+      <AllReviewsContent lang={lang} dict={dict} searchParams={resolvedSearchParams} />
     </div>
   );
 }

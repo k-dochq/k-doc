@@ -1,43 +1,63 @@
+'use client';
+
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { getAllReviews, getMedicalSpecialties } from 'entities/review';
+import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { AllReviewsInfiniteList } from './AllReviewsInfiniteList';
-import { ErrorBoundary } from 'shared/ui/error-display';
+import { CategorySection, useCategories } from 'features/category-filter';
+import { ReviewFilterBar } from 'features/review-filter';
+import { type MedicalSpecialtyType } from '@prisma/client';
 
 interface AllReviewsContentProps {
   lang: Locale;
   dict: Dictionary;
+  searchParams: {
+    category?: string;
+    sort?: string;
+  };
 }
 
-export async function AllReviewsContent({ lang, dict }: AllReviewsContentProps) {
-  try {
-    // 첫 페이지 리뷰 데이터와 부위 목록을 병렬로 조회
-    const [initialReviews, specialties] = await Promise.all([
-      getAllReviews({ limit: 10 }),
-      getMedicalSpecialties(),
-    ]);
+export function AllReviewsContent({ lang, dict, searchParams }: AllReviewsContentProps) {
+  // TanStack Query로 카테고리 데이터 가져오기
+  const {
+    // data: categories = [],
+    isLoading: categoriesLoading,
+    error: categoriesError,
+  } = useCategories();
 
-    return (
-      <ErrorBoundary>
-        <AllReviewsInfiniteList
-          lang={lang}
-          dict={dict}
-          specialties={specialties}
-          initialData={initialReviews}
-        />
-      </ErrorBoundary>
-    );
-  } catch (error) {
-    console.error('Error loading all reviews content:', error);
-    return (
-      <div className='flex flex-col items-center justify-center py-12'>
-        <div className='text-center'>
-          <h2 className='mb-2 text-lg font-medium text-gray-900'>
-            리뷰를 불러오는 중 오류가 발생했습니다
-          </h2>
-          <p className='text-gray-500'>잠시 후 다시 시도해주세요.</p>
-        </div>
-      </div>
-    );
-  }
+  // string을 MedicalSpecialtyType으로 안전하게 변환
+  const currentCategory = searchParams.category as MedicalSpecialtyType | undefined;
+
+  // 정렬 파라미터 처리 - 타입 안전하게 변환
+  const currentSort: ReviewSortOption =
+    searchParams.sort === REVIEW_SORT_OPTIONS.LATEST ||
+    searchParams.sort === REVIEW_SORT_OPTIONS.POPULAR
+      ? (searchParams.sort as ReviewSortOption)
+      : REVIEW_SORT_OPTIONS.LATEST;
+
+  return (
+    <div className=''>
+      {/* 카테고리 섹션 */}
+      <CategorySection
+        lang={lang}
+        dict={dict}
+        currentCategory={currentCategory}
+        isLoading={categoriesLoading}
+        error={categoriesError}
+      />
+
+      {/* 정렬/필터 바 */}
+      <ReviewFilterBar lang={lang} />
+
+      {/* 리뷰 리스트 */}
+      <AllReviewsInfiniteList
+        lang={lang}
+        searchParams={{
+          category: currentCategory,
+          sort: currentSort,
+        }}
+        dict={dict}
+      />
+    </div>
+  );
 }
