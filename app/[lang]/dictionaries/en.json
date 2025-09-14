@@ -158,6 +158,12 @@
   "hospital": {
     "region": "Region",
     "reviewsButton": "Reviews",
+    "introduction": {
+      "title": "Hospital Introduction"
+    },
+    "info": {
+      "title": "Hospital Information"
+    },
     "like": {
       "like": "Like",
       "liked": "Liked",

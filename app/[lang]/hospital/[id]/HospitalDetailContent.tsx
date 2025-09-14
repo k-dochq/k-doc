@@ -5,6 +5,8 @@ import { HospitalDetailErrorState } from 'shared/ui/error-state';
 import { HospitalDetailHeader } from 'widgets/hospital-detail-header';
 import { HospitalDetailPhotos } from 'widgets/hospital-detail-photos';
 import { HospitalDetailInfo } from 'widgets/hospital-detail-info';
+import { HospitalDetailIntroduction } from 'widgets/hospital-detail-introduction';
+import { HospitalDetailInfoSection } from 'widgets/hospital-detail-info-section';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentProps {
@@ -37,6 +39,16 @@ export async function HospitalDetailContent({
 
         {/* 병원 정보 섹션 */}
         <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
+
+        <div className='h-8' />
+
+        <div className='flex flex-col px-5'>
+          <HospitalDetailIntroduction hospital={hospital} lang={lang} dict={dict} />
+          <div className='h-8' />
+          <HospitalDetailInfoSection hospital={hospital} lang={lang} dict={dict} />
+        </div>
+
+        <div className='h-5' />
       </div>
     );
   } catch (error) {
