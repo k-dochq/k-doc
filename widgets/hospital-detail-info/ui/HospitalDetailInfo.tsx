@@ -2,9 +2,12 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { type Hospital } from 'entities/hospital/api/use-cases/get-hospital-detail';
+import { type Hospital } from 'entities/hospital/api/entities/types';
 import { HotLabel } from '@/shared/ui/hot-label';
-import { extractLocalizedText } from 'shared/lib/localized-text';
+import { HospitalDetailName } from 'entities/hospital/ui/HospitalDetailName';
+import { HospitalDetailLocation } from 'entities/hospital/ui/HospitalDetailLocation';
+import { HospitalDetailRating } from 'entities/hospital/ui/HospitalDetailRating';
+import { HospitalDetailPrice } from 'entities/hospital/ui/HospitalDetailPrice';
 
 interface HospitalDetailInfoProps {
   hospital: Hospital;
@@ -13,16 +16,20 @@ interface HospitalDetailInfoProps {
 }
 
 export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoProps) {
-  const hospitalAddress = extractLocalizedText(hospital.address, lang);
-
   return (
     <div className='p-5'>
       <HotLabel />
-      <h1 className='mt-0.5 text-xl font-bold'>{extractLocalizedText(hospital.name, lang)}</h1>
-      <div className='mt-0.5 flex items-center gap-1'>
-        <span className='text-xs font-medium'>지역</span>
-        <div className='h-[10px] w-[1px] bg-white' />
-        <span className='text-xs font-medium'>{hospitalAddress}</span>
+      <div className='mt-0.5'>
+        <HospitalDetailName hospital={hospital} lang={lang} />
+      </div>
+      <div className='mt-0.5'>
+        <HospitalDetailLocation hospital={hospital} lang={lang} dict={dict} />
+      </div>
+
+      {/* 평점과 가격 정보 */}
+      <div className='mt-2 flex items-center gap-2'>
+        <HospitalDetailRating hospital={hospital} />
+        <HospitalDetailPrice hospital={hospital} />
       </div>
     </div>
   );
