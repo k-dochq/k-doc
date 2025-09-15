@@ -71,7 +71,7 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
       />
 
       {/* 정렬/필터 바 */}
-      <HospitalFilterBar lang={lang} districtFilter={districtFilter} />
+      <HospitalFilterBar lang={lang} dict={dict} districtFilter={districtFilter} />
 
       {/* 병원 리스트 */}
       <HospitalsInfiniteList

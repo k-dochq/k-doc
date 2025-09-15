@@ -199,6 +199,21 @@
       "error": "오류 발생"
     }
   },
+  "districtFilter": {
+    "title": "지역",
+    "button": "지역별",
+    "selectAll": "전체 선택",
+    "deselectAll": "전체 해제",
+    "complete": "완료",
+    "reset": "초기화",
+    "empty": {
+      "message": "선택된 지역이 없습니다."
+    }
+  },
+  "hospitalSort": {
+    "popular": "인기순",
+    "recommended": "추천순"
+  },
   "review": {
     "like": {
       "like": "좋아요",
