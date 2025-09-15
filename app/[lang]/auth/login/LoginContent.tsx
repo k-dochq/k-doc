@@ -3,7 +3,6 @@ import { type Dictionary } from 'shared/model/types';
 import { GoogleSignInButton } from 'features';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
-import { LoginFooter } from 'widgets/login-footer';
 import Image from 'next/image';
 import { HeaderLogo } from '@/widgets/header/ui/HeaderLogo';
 
