@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useReviewLike } from '../model/useReviewLike';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { useAuth } from 'shared/lib/auth/useAuth';
 import type { Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
 import { HeartIcon } from 'shared/ui/icons/HeartIcon';
@@ -29,12 +30,13 @@ export function ReviewLikeButton({
   variant = 'default',
 }: ReviewLikeButtonProps) {
   const router = useLocalizedRouter();
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   const { isLiked, likeCount, isLoading, isToggling, error, toggleLike, clearError } =
     useReviewLike({
       reviewId,
-      enabled: true,
+      enabled: true, // 모든 사용자가 좋아요 수를 볼 수 있도록 활성화
     });
 
   // 사이즈별 스타일 정의
@@ -59,6 +61,13 @@ export function ReviewLikeButton({
   const currentSize = sizeStyles[size];
 
   const handleClick = () => {
+    // 로그인 상태 확인
+    if (!isAuthenticated) {
+      const currentPath = window.location.pathname;
+      router.push(`/auth/login?redirect=${encodeURIComponent(currentPath)}`);
+      return;
+    }
+
     // 에러 초기화
     if (error) {
       clearError();
