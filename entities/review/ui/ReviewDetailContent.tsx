@@ -9,8 +9,9 @@ import { ReviewListCardHeader } from './ReviewListCardHeader';
 import { ReviewListImages } from './ReviewListImages';
 import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { ReviewContentSection } from './ReviewContentSection';
-import { EyeIcon } from 'shared/ui/icons/EyeIcon';
+import { ReviewStatsSection } from './ReviewStatsSection';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { ReviewHospitalSection } from 'entities/review';
 
 interface ReviewDetailContentProps {
   review: ReviewCardData;
@@ -68,13 +69,17 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
           />
         )}
 
-        {/* 다섯 번째 섹션: 조회수만 표시 (좋아요는 헤더에 있음) */}
-        <div className='mt-3 flex items-center justify-start'>
-          <div className='flex items-center gap-1'>
-            <EyeIcon className='text-sm text-neutral-400' />
-            <span className='text-sm font-medium text-neutral-400'>{review.viewCount}</span>
-          </div>
-        </div>
+        {/* 다섯 번째 섹션: 병원 정보 */}
+        <ReviewHospitalSection review={review} lang={lang} dict={dict} />
+
+        {/* 여섯 번째 섹션: 조회수만 표시 (좋아요는 헤더에 있음) */}
+        <ReviewStatsSection
+          review={review}
+          lang={lang}
+          user={null}
+          showLikeButton={false}
+          className='mt-3'
+        />
       </div>
     </div>
   );

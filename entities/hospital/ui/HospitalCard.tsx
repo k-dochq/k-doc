@@ -1,11 +1,11 @@
-import { type BestHospital } from 'shared/model/types';
+import { type HospitalCardData } from 'shared/model/types';
 import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
 import { HospitalThumbnail } from './HospitalThumbnail';
 import { HospitalInfo } from './HospitalInfo';
 
 interface HospitalCardProps {
-  hospital: BestHospital;
+  hospital: HospitalCardData;
   dict: Dictionary;
   lang: Locale;
 }
