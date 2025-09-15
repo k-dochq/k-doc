@@ -4,10 +4,10 @@ import { getDictionary } from '../../dictionaries';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import { getReviewDetail } from 'entities/review';
-import { ReviewDetailContent } from './ReviewDetailContent';
+import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
 import { ReviewDetailSkeleton } from './ReviewDetailSkeleton';
 
-interface ReviewDetailPageProps {
+interface PageProps {
   params: Promise<{
     lang: Locale;
     id: string;
@@ -17,7 +17,7 @@ interface ReviewDetailPageProps {
 // 리뷰 페이지는 서버 컴포넌트로 동적 렌더링, 10분 캐시
 export const revalidate = 1800;
 
-export default async function ReviewDetailPage({ params }: ReviewDetailPageProps) {
+export default async function ReviewDetailPage({ params }: PageProps) {
   const { lang, id } = await params;
 
   try {
@@ -26,7 +26,7 @@ export default async function ReviewDetailPage({ params }: ReviewDetailPageProps
 
     return (
       <Suspense fallback={<ReviewDetailSkeleton />}>
-        <ReviewDetailContent reviewId={id} lang={lang} dict={dict} />
+        <ReviewDetailPageComponent reviewId={id} lang={lang} dict={dict} />
       </Suspense>
     );
   } catch (error) {
@@ -36,7 +36,7 @@ export default async function ReviewDetailPage({ params }: ReviewDetailPageProps
 }
 
 // 동적 메타데이터 생성
-export async function generateMetadata({ params }: ReviewDetailPageProps) {
+export async function generateMetadata({ params }: PageProps) {
   const { lang, id } = await params;
 
   try {

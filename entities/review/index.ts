@@ -12,6 +12,7 @@ export * from './model/useToggleReviewLike';
 export * from './ui/PopularReviewCard';
 export * from './ui/ReviewListCard';
 export * from './ui/ReviewListCardHeader';
+export * from './ui/ReviewDetailContent';
 export * from './ui/ReviewsSkeleton';
 export * from './ui/BeforeAfterImages';
 export * from './ui/UserRatingInfo';

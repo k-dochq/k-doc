@@ -1,21 +1,21 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { getReviewDetail } from 'entities/review';
-import { ReviewDetailCard } from 'entities/review/ui';
+import { ReviewDetailContent as ReviewDetailContentComponent } from 'entities/review/ui';
 import { ErrorState } from 'shared/ui/error-state';
 
-interface ReviewDetailContentProps {
+interface ReviewDetailPageProps {
   reviewId: string;
   lang: Locale;
   dict: Dictionary;
 }
 
-export async function ReviewDetailContent({ reviewId, lang, dict }: ReviewDetailContentProps) {
+export async function ReviewDetailPage({ reviewId, lang, dict }: ReviewDetailPageProps) {
   try {
     // 리뷰 상세 데이터 조회
     const { review } = await getReviewDetail({ reviewId });
 
-    return <ReviewDetailCard review={review} lang={lang} dict={dict} />;
+    return <ReviewDetailContentComponent review={review} lang={lang} dict={dict} />;
   } catch (error) {
     console.error('Error loading review detail content:', error);
     return (
