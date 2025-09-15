@@ -9,6 +9,7 @@ import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { ReviewLikeButton } from 'features/review-like/ui/ReviewLikeButton';
+import { DetailHeader } from 'shared/ui/detail-header';
 
 interface ReviewDetailCardProps {
   review: ReviewCardData;
@@ -17,5 +18,27 @@ interface ReviewDetailCardProps {
 }
 
 export function ReviewDetailCard({ review, lang, dict }: ReviewDetailCardProps) {
-  return <div>d</div>;
+  const title = dict.reviewDetail?.title || '시술후기';
+
+  return (
+    <div className=''>
+      {/* 헤더 */}
+      <DetailHeader
+        lang={lang}
+        title={title}
+        fallbackUrl={`/${lang}/reviews`}
+        variant='light'
+        rightContent={
+          <ReviewLikeButton
+            reviewId={review.id}
+            locale={lang}
+            dict={dict}
+            variant='compact'
+            showCount={true}
+            size='md'
+          />
+        }
+      />
+    </div>
+  );
 }

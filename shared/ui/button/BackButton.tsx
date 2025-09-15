@@ -6,9 +6,10 @@ import { ArrowLeftIcon } from '../icon/ArrowLeftIcon';
 interface BackButtonProps {
   className?: string;
   fallbackUrl?: string;
+  variant?: 'light' | 'dark';
 }
 
-export function BackButton({ className = '', fallbackUrl }: BackButtonProps) {
+export function BackButton({ className = '', fallbackUrl, variant = 'dark' }: BackButtonProps) {
   const router = useRouter();
 
   const handleBack = () => {
@@ -20,12 +21,29 @@ export function BackButton({ className = '', fallbackUrl }: BackButtonProps) {
     }
   };
 
+  const getVariantStyles = () => {
+    if (variant === 'light') {
+      return {
+        button: 'hover:bg-gray-100',
+        icon: 'text-gray-900',
+      };
+    }
+
+    // dark variant (default)
+    return {
+      button: 'hover:bg-white/20',
+      icon: 'text-white',
+    };
+  };
+
+  const styles = getVariantStyles();
+
   return (
     <button
       onClick={handleBack}
-      className={`flex h-10 w-10 items-center justify-center rounded-full backdrop-blur-sm transition-colors hover:bg-white/20 ${className}`}
+      className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors ${styles.button} ${className}`}
     >
-      <ArrowLeftIcon className='text-white' width={20} height={20} />
+      <ArrowLeftIcon className={styles.icon} width={20} height={20} />
     </button>
   );
 }
