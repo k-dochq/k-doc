@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
@@ -12,6 +12,7 @@ import { HospitalList as HospitalListComponent } from 'entities/hospital/ui/Hosp
 import { HospitalListTitle } from './HospitalListTitle';
 import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
 import { HospitalListSkeleton } from './HospitalListSkeleton';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface HospitalListProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
@@ -21,6 +22,7 @@ interface HospitalListProps {
 
 export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListProps) {
   const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
+  const router = useLocalizedRouter();
 
   // TanStack Query를 사용하여 best hospitals 데이터 페칭
   const {
@@ -39,9 +41,13 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
     selectedCategory,
   });
 
+  // 페이지 prefetch
+  useEffect(() => {
+    router.prefetch('/hospitals');
+  }, [router]);
+
   const handleViewAll = () => {
-    // TODO: 전체보기 페이지로 이동하는 로직 구현
-    console.log('View all hospitals for category:', selectedCategory);
+    router.push('/hospitals');
   };
 
   const handleCategoryChange = (category: MedicalSpecialtyType | 'ALL') => {
