@@ -28,18 +28,6 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <main className='flex min-h-screen items-center justify-center bg-black text-white'>
       <div className='w-full text-center'>
-        <div className='flex items-center justify-center space-x-6'>
-          <div className='relative h-32 w-32'>
-            <Image
-              src='/kdoc_logo.png'
-              fill
-              className='object-contain'
-              priority
-              alt={dict.logoAlt}
-            />
-          </div>
-        </div>
-
         <div className='mt-8 flex justify-center'>
           <div className='relative h-16 w-48'>
             <Image
