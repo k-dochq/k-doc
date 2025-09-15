@@ -83,7 +83,6 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
           districtIds: districtFilter.selectedDistrictIds, // 지역 필터 추가
         }}
         dict={dict}
-        districtFilter={districtFilter} // 지역 필터 상태 전달
       />
     </div>
   );

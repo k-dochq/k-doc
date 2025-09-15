@@ -11,7 +11,6 @@ import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospitalLike';
-import { type useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
 
 interface HospitalsInfiniteListProps {
   lang: Locale;
@@ -22,15 +21,9 @@ interface HospitalsInfiniteListProps {
     search?: string;
     districtIds?: string[];
   };
-  districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
-export function HospitalsInfiniteList({
-  lang,
-  dict,
-  searchParams,
-  districtFilter,
-}: HospitalsInfiniteListProps) {
+export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
   const { category, sort, search, districtIds } = searchParams;
   const { user } = useAuth();
 
