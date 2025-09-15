@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { Drawer, DrawerContent, DrawerTrigger } from 'shared/ui/drawer';
 import { LocationIcon } from 'shared/ui/icons';
@@ -12,8 +13,14 @@ interface DistrictFilterButtonProps {
 }
 
 export function DistrictFilterButton({ lang, districtFilter }: DistrictFilterButtonProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <Drawer>
+    <Drawer open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>
         <button className='text-primary flex items-center gap-0.5 text-[13px] font-medium'>
           <span className='text-neutral-900'>
@@ -26,13 +33,7 @@ export function DistrictFilterButton({ lang, districtFilter }: DistrictFilterBut
         </button>
       </DrawerTrigger>
       <DrawerContent className='w-full bg-white'>
-        <DistrictFilterDrawer
-          lang={lang}
-          districtFilter={districtFilter}
-          onClose={() => {
-            // Drawer 닫기 로직은 vaul에서 자동으로 처리됨
-          }}
-        />
+        <DistrictFilterDrawer lang={lang} districtFilter={districtFilter} onClose={handleClose} />
       </DrawerContent>
     </Drawer>
   );
