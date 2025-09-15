@@ -15,6 +15,7 @@ export interface ParsedReviewQueryParams {
   sort: ReviewSortOption;
   category?: MedicalSpecialtyType;
   hospitalId?: string;
+  likedOnly?: boolean;
 }
 
 /**
@@ -26,6 +27,8 @@ export interface DbReviewQueryParams {
   sort: ReviewSortOption;
   category?: MedicalSpecialtyType;
   hospitalId?: string;
+  likedOnly?: boolean;
+  userId?: string; // likedOnly가 true일 때 필요한 사용자 ID
 }
 
 /**
@@ -62,6 +65,7 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
       : undefined;
 
   const hospitalId = searchParams.get('hospitalId') || undefined;
+  const likedOnly = searchParams.get('likedOnly') === 'true';
 
   return {
     page,
@@ -69,19 +73,25 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
     sort,
     category,
     hospitalId,
+    likedOnly,
   };
 }
 
 /**
  * 파싱된 쿼리 파라미터를 데이터베이스 쿼리 파라미터로 변환
  */
-export function convertToDbReviewQueryParams(params: ParsedReviewQueryParams): DbReviewQueryParams {
+export function convertToDbReviewQueryParams(
+  params: ParsedReviewQueryParams,
+  userId?: string,
+): DbReviewQueryParams {
   return {
     page: params.page,
     limit: params.limit,
     sort: params.sort,
     category: params.category,
     hospitalId: params.hospitalId,
+    likedOnly: params.likedOnly,
+    userId: params.likedOnly ? userId : undefined,
   };
 }
 
@@ -109,6 +119,10 @@ export function buildReviewQueryString(params: Partial<ParsedReviewQueryParams>)
 
   if (params.hospitalId) {
     searchParams.set('hospitalId', params.hospitalId);
+  }
+
+  if (params.likedOnly) {
+    searchParams.set('likedOnly', 'true');
   }
 
   return searchParams.toString();

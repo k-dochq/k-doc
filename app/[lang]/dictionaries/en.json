@@ -233,6 +233,7 @@
     "reviews": "Reviews",
     "loading": "Loading...",
     "error": "An error occurred while loading data.",
+    "errorMessage": "Please check your network connection and try again later",
     "retry": "Retry",
     "empty": {
       "hospitals": {

@@ -115,6 +115,8 @@ export interface GetAllReviewsParams {
   category?: MedicalSpecialtyType | 'ALL';
   sort?: 'latest' | 'popular'; // 정렬 옵션
   hospitalId?: string; // 특정 병원의 리뷰만 조회
+  likedOnly?: boolean; // 좋아요한 리뷰만 조회
+  userId?: string; // likedOnly가 true일 때 필요한 사용자 ID
 }
 
 // 전체 리뷰 목록 응답

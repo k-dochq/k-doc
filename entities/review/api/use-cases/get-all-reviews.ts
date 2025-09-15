@@ -15,6 +15,8 @@ export async function getAllReviews({
   sort = 'latest',
   offset,
   hospitalId,
+  likedOnly = false,
+  userId,
 }: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
   // offset이 제공되면 사용하고, 그렇지 않으면 page를 기반으로 계산
   const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
@@ -33,6 +35,15 @@ export async function getAllReviews({
       whereCondition.MedicalSpecialty = {
         specialtyType: category as MedicalSpecialtyType,
         isActive: true,
+      };
+    }
+
+    // likedOnly가 true이면 해당 사용자가 좋아요한 리뷰만 필터링
+    if (likedOnly && userId) {
+      whereCondition.ReviewLike = {
+        some: {
+          userId: userId,
+        },
       };
     }
 

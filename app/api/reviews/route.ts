@@ -4,6 +4,7 @@ import {
   convertToDbReviewQueryParams,
   validateReviewQueryParams,
 } from 'shared/lib/review-query-utils';
+import { AuthService } from 'shared/lib/auth/server';
 
 export async function GET(request: NextRequest) {
   try {
@@ -31,7 +32,25 @@ export async function GET(request: NextRequest) {
 
     // 타입 안전한 파라미터 파싱 및 변환
     const parsedParams = validationResult.params!;
-    const dbParams = convertToDbReviewQueryParams(parsedParams);
+
+    // likedOnly가 true인 경우 사용자 인증 확인
+    let userId: string | undefined;
+    if (parsedParams.likedOnly) {
+      const authService = new AuthService();
+      const user = await authService.getCurrentUser();
+      if (!user) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Unauthorized',
+          },
+          { status: 401 },
+        );
+      }
+      userId = user.id;
+    }
+
+    const dbParams = convertToDbReviewQueryParams(parsedParams, userId);
 
     // 리뷰 데이터 조회
     const reviewsData = await getAllReviews(dbParams);
