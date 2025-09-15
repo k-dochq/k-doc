@@ -49,6 +49,18 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
             imageUrl: true,
           },
         },
+        HospitalMedicalSpecialty: {
+          select: {
+            MedicalSpecialty: {
+              select: {
+                id: true,
+                name: true,
+                specialtyType: true,
+              },
+            },
+          },
+          take: 3, // 최대 3개의 전문 분야만 표시
+        },
         _count: {
           select: {
             Review: true, // 실제 리뷰 수 계산
@@ -69,6 +81,11 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
       reviewCount: hospital._count.Review, // 실제 리뷰 수
       thumbnailImageUrl: hospital.HospitalImage[0]?.imageUrl || null,
       discountRate: hospital.discountRate,
+      medicalSpecialties: hospital.HospitalMedicalSpecialty.map((hms) => ({
+        id: hms.MedicalSpecialty.id,
+        name: parseLocalizedText(hms.MedicalSpecialty.name),
+        specialtyType: hms.MedicalSpecialty.specialtyType,
+      })),
     }));
   } catch (error) {
     throw handleDatabaseError(error, 'getBestHospitals');

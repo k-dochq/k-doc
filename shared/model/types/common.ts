@@ -24,6 +24,13 @@ export interface HospitalCardData {
   reviewCount: number; // 실제 리뷰 수
   thumbnailImageUrl: string | null;
   discountRate: number | null;
+  medicalSpecialties?: MedicalSpecialty[]; // 시술부위 태그
+}
+
+export interface MedicalSpecialty {
+  id: string;
+  name: LocalizedText;
+  specialtyType: string;
 }
 
 // Prisma JsonValue를 LocalizedText로 변환하는 헬퍼 함수
