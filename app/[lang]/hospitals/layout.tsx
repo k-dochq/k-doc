@@ -1,5 +1,4 @@
 import { Header } from 'widgets/header';
-import { MaxWidthLayout } from 'widgets/max-width-layout';
 import { BottomNavigation } from 'widgets/bottom-navigation';
 import { Footer } from 'widgets/footer';
 import { type Locale } from 'shared/config';
@@ -15,12 +14,12 @@ export default async function HospitalsLayout({ children, params }: HospitalsLay
   const dict = await getDictionary(lang);
 
   return (
-    <MaxWidthLayout>
+    <>
       <Header currentLang={lang} />
       <main>{children}</main>
       <Footer lang={lang} dict={dict} />
       <div className='h-16' />
       <BottomNavigation currentLang={lang} />
-    </MaxWidthLayout>
+    </>
   );
 }

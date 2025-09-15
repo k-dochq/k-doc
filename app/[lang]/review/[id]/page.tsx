@@ -25,7 +25,7 @@ export default async function ReviewDetailPage({ params }: ReviewDetailPageProps
     const dict = await getDictionary(lang);
 
     return (
-      <div className='container mx-auto px-4 py-6'>
+      <div className='px-4 py-6'>
         {/* 리뷰 상세 내용 - Suspense로 스트리밍 */}
         <Suspense fallback={<ReviewDetailSkeleton />}>
           <ReviewDetailContent reviewId={id} lang={lang} dict={dict} />
