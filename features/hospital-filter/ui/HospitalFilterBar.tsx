@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { DistrictFilterButton } from './DistrictFilterButton';
@@ -9,10 +10,11 @@ import { type useDistrictFilter } from 'features/district-filter/model/useDistri
 
 interface HospitalFilterBarProps {
   lang: Locale;
+  dict: Dictionary;
   districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
-export function HospitalFilterBar({ lang, districtFilter }: HospitalFilterBarProps) {
+export function HospitalFilterBar({ lang, dict, districtFilter }: HospitalFilterBarProps) {
   const searchParams = useSearchParams();
 
   // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
@@ -38,7 +40,7 @@ export function HospitalFilterBar({ lang, districtFilter }: HospitalFilterBarPro
           replace
           className={`text-[13px] font-semibold ${currentSort === HOSPITAL_SORT_OPTIONS.POPULAR ? 'text-primary' : 'text-neutral-500'}`}
         >
-          인기순
+          {dict.hospitalSort.popular}
         </LocaleLink>
         <div className='h-3 w-0 border-l border-neutral-300'></div>
         <LocaleLink
@@ -46,10 +48,10 @@ export function HospitalFilterBar({ lang, districtFilter }: HospitalFilterBarPro
           replace
           className={`text-[13px] font-medium ${currentSort === HOSPITAL_SORT_OPTIONS.RECOMMENDED ? 'text-primary' : 'text-neutral-500'}`}
         >
-          추천순
+          {dict.hospitalSort.recommended}
         </LocaleLink>
       </div>
-      <DistrictFilterButton lang={lang} districtFilter={districtFilter} />
+      <DistrictFilterButton lang={lang} dict={dict} districtFilter={districtFilter} />
     </div>
   );
 }

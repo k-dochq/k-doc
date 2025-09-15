@@ -1,6 +1,7 @@
 'use client';
 
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { CheckboxButton, SelectAllButton } from 'shared/ui/buttons';
 import { ChildDistrictListError } from 'shared/ui/error-states';
@@ -10,6 +11,7 @@ import type { District } from '../model/types';
 
 interface ChildDistrictListProps {
   lang: Locale;
+  dict: Dictionary;
   selectedParentId: string | null;
   selectedChildIds: string[];
   onChildToggle: (childId: string) => void;
@@ -19,6 +21,7 @@ interface ChildDistrictListProps {
 
 export function ChildDistrictList({
   lang,
+  dict,
   selectedParentId,
   selectedChildIds,
   onChildToggle,
@@ -51,7 +54,7 @@ export function ChildDistrictList({
   if (!selectedParentId) {
     return (
       <div className='flex h-full w-full flex-col items-center justify-center'>
-        <span className='text-sm text-neutral-500'>지역을 선택해주세요</span>
+        <span className='text-sm text-neutral-500'>{dict.districtFilter.empty.message}</span>
       </div>
     );
   }
@@ -67,7 +70,7 @@ export function ChildDistrictList({
   if (childDistricts.length === 0) {
     return (
       <div className='flex h-full w-full flex-col items-center justify-center'>
-        <span className='text-sm text-neutral-500'>하위 지역이 없습니다</span>
+        <span className='text-sm text-neutral-500'>{dict.districtFilter.empty.message}</span>
       </div>
     );
   }

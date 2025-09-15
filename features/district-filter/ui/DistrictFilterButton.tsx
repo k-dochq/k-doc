@@ -1,17 +1,20 @@
 'use client';
 
 import type { District } from '../model/types';
+import type { Dictionary } from 'shared/model/types';
 
 interface DistrictFilterButtonProps {
   selectedChildIds: string[];
   childDistricts: District[];
   onComplete: () => void;
+  dict: Dictionary;
 }
 
 export function DistrictFilterButton({
   selectedChildIds,
   childDistricts,
   onComplete,
+  dict,
 }: DistrictFilterButtonProps) {
   const selectedDistricts = childDistricts.filter((district) =>
     selectedChildIds.includes(district.id),
@@ -37,7 +40,7 @@ export function DistrictFilterButton({
         className='flex w-full items-center justify-center gap-2 rounded-xl bg-[#da47ef] px-10 py-4 transition-opacity hover:opacity-90'
       >
         <span className='text-base leading-6 font-normal text-white'>
-          필터 선택 완료
+          {dict.districtFilter.complete}
           {selectedChildIds.length > 0 && ` (${selectedChildIds.length})`}
         </span>
       </button>

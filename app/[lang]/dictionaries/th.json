@@ -199,6 +199,21 @@
       "error": "เกิดข้อผิดพลาด"
     }
   },
+  "districtFilter": {
+    "title": "ภูมิภาค",
+    "button": "ตามภูมิภาค",
+    "selectAll": "เลือกทั้งหมด",
+    "deselectAll": "ยกเลิกทั้งหมด",
+    "complete": "เสร็จสิ้น",
+    "reset": "รีเซ็ต",
+    "empty": {
+      "message": "ไม่ได้เลือกภูมิภาค"
+    }
+  },
+  "hospitalSort": {
+    "popular": "ยอดนิยม",
+    "recommended": "แนะนำ"
+  },
   "review": {
     "like": {
       "like": "ถูกใจ",

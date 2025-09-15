@@ -199,6 +199,21 @@
       "error": "Error occurred"
     }
   },
+  "districtFilter": {
+    "title": "Region",
+    "button": "By Region",
+    "selectAll": "Select All",
+    "deselectAll": "Deselect All",
+    "complete": "Complete",
+    "reset": "Reset",
+    "empty": {
+      "message": "No regions selected."
+    }
+  },
+  "hospitalSort": {
+    "popular": "Popular",
+    "recommended": "Recommended"
+  },
   "review": {
     "like": {
       "like": "Like",

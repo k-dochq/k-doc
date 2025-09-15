@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { ResetButton } from 'shared/ui/buttons';
 import { ParentDistrictList } from './ParentDistrictList';
 import { ChildDistrictList } from './ChildDistrictList';
@@ -11,11 +12,17 @@ import { type useDistrictFilter } from '../model/useDistrictFilter';
 
 interface DistrictFilterDrawerProps {
   lang: Locale;
+  dict: Dictionary;
   onClose?: () => void;
   districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
-export function DistrictFilterDrawer({ lang, onClose, districtFilter }: DistrictFilterDrawerProps) {
+export function DistrictFilterDrawer({
+  lang,
+  dict,
+  onClose,
+  districtFilter,
+}: DistrictFilterDrawerProps) {
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
 
   const { data: childDistricts = [] } = useChildDistricts(selectedParentId);
@@ -57,7 +64,9 @@ export function DistrictFilterDrawer({ lang, onClose, districtFilter }: District
       {/* 헤더 */}
       <div className='flex items-center justify-between border-b border-neutral-200 px-5 pb-3'>
         <div className='flex items-start gap-0.5'>
-          <h2 className='text-lg leading-7 font-bold text-neutral-900'>지역</h2>
+          <h2 className='text-lg leading-7 font-bold text-neutral-900'>
+            {dict.districtFilter.title}
+          </h2>
         </div>
         <ResetButton onClick={handleReset} />
       </div>
@@ -74,6 +83,7 @@ export function DistrictFilterDrawer({ lang, onClose, districtFilter }: District
         {/* 오른쪽: 하위 지역 체크박스 리스트 */}
         <ChildDistrictList
           lang={lang}
+          dict={dict}
           selectedParentId={selectedParentId}
           selectedChildIds={districtFilter.selectedDistrictIds}
           onChildToggle={handleChildToggle}
@@ -87,6 +97,7 @@ export function DistrictFilterDrawer({ lang, onClose, districtFilter }: District
         selectedChildIds={districtFilter.selectedDistrictIds}
         childDistricts={childDistricts}
         onComplete={handleComplete}
+        dict={dict}
       />
     </div>
   );
