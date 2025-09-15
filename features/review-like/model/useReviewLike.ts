@@ -35,9 +35,7 @@ async function fetchReviewLikeStatus(reviewId: string): Promise<ReviewLikeStatus
   const response = await fetch(`/api/reviews/${reviewId}/like`);
 
   if (!response.ok) {
-    if (response.status === 401) {
-      throw new Error('로그인이 필요합니다');
-    }
+    // 401 에러는 이제 API에서 처리되므로 여기서는 일반적인 에러만 처리
     throw new Error('좋아요 상태를 불러오는 중 오류가 발생했습니다');
   }
 
@@ -94,10 +92,7 @@ export function useReviewLike({ reviewId, enabled = true }: UseReviewLikeOptions
     staleTime: 30 * 1000, // 30초
     gcTime: 5 * 60 * 1000, // 5분
     retry: (failureCount, error) => {
-      // 401 에러는 재시도하지 않음
-      if (error.message.includes('로그인이 필요합니다')) {
-        return false;
-      }
+      // 일반적인 네트워크 에러만 재시도
       return failureCount < 2;
     },
   });
@@ -136,7 +131,7 @@ export function useReviewLike({ reviewId, enabled = true }: UseReviewLikeOptions
     if (queryError) {
       setError({
         message: queryError.message,
-        status: queryError.message.includes('로그인이 필요합니다') ? 401 : undefined,
+        status: undefined,
       });
     } else {
       setError(null);
