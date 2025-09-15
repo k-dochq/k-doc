@@ -8,6 +8,7 @@ import { useHospitalSearch } from 'features/hospital-search';
 import { HospitalsInfiniteList } from './HospitalsInfiniteList';
 import { CategorySection, useCategories } from 'features/category-filter';
 import { HospitalFilterBar } from 'features/hospital-filter';
+import { useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
 import { type MedicalSpecialtyType } from '@prisma/client';
 
 interface HospitalsContentProps {
@@ -21,6 +22,9 @@ interface HospitalsContentProps {
 }
 
 export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentProps) {
+  // 지역 필터 상태 관리
+  const districtFilter = useDistrictFilter();
+
   // TanStack Query로 카테고리 데이터 가져오기
   const {
     // data: categories = [],
@@ -67,7 +71,7 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
       />
 
       {/* 정렬/필터 바 */}
-      <HospitalFilterBar lang={lang} />
+      <HospitalFilterBar lang={lang} districtFilter={districtFilter} />
 
       {/* 병원 리스트 */}
       <HospitalsInfiniteList
@@ -76,8 +80,10 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
           category: currentCategory,
           sort: currentSort,
           search: currentSearch,
+          districtIds: districtFilter.selectedDistrictIds, // 지역 필터 추가
         }}
         dict={dict}
+        districtFilter={districtFilter} // 지역 필터 상태 전달
       />
     </div>
   );

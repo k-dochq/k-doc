@@ -59,6 +59,7 @@ export async function getHospitals(
       specialtyType,
       minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
       search,
+      districtIds,
     } = request;
 
     const offset = (page - 1) * limit;
@@ -166,6 +167,16 @@ export async function getHospitals(
                       isActive: true,
                     },
                   },
+                },
+              },
+            ]
+          : []),
+        // 지역 필터링
+        ...(districtIds && districtIds.length > 0
+          ? [
+              {
+                districtId: {
+                  in: districtIds,
                 },
               },
             ]

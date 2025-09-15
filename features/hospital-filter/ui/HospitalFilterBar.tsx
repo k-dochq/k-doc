@@ -5,12 +5,14 @@ import { type Locale } from 'shared/config';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { DistrictFilterButton } from './DistrictFilterButton';
+import { type useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
 
 interface HospitalFilterBarProps {
   lang: Locale;
+  districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
-export function HospitalFilterBar({ lang }: HospitalFilterBarProps) {
+export function HospitalFilterBar({ lang, districtFilter }: HospitalFilterBarProps) {
   const searchParams = useSearchParams();
 
   // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
@@ -47,7 +49,7 @@ export function HospitalFilterBar({ lang }: HospitalFilterBarProps) {
           추천순
         </LocaleLink>
       </div>
-      <DistrictFilterButton lang={lang} />
+      <DistrictFilterButton lang={lang} districtFilter={districtFilter} />
     </div>
   );
 }
