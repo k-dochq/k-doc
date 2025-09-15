@@ -68,7 +68,7 @@ export function DistrictFilterDrawer({
             {dict.districtFilter.title}
           </h2>
         </div>
-        <ResetButton onClick={handleReset} />
+        <ResetButton onClick={handleReset} dict={dict} />
       </div>
 
       {/* 메인 컨텐츠 */}
