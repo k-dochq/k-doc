@@ -53,6 +53,8 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
 
   const minRating = Math.max(0, Math.min(5, parseFloat(searchParams.get('minRating') || '0'))); // 0-5 범위 제한
 
+  const search = searchParams.get('search')?.trim() || undefined;
+
   return {
     page,
     limit,
@@ -60,6 +62,7 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
     sortOrder,
     category,
     minRating,
+    search,
   };
 }
 
@@ -74,6 +77,7 @@ export function convertToDbQueryParams(params: ParsedHospitalQueryParams): DbHos
     sortOrder: params.sortOrder,
     specialtyType: params.category,
     minRating: params.minRating,
+    search: params.search,
   };
 }
 
@@ -105,6 +109,10 @@ export function buildHospitalQueryString(params: Partial<ParsedHospitalQueryPara
 
   if (params.minRating && params.minRating !== DEFAULT_HOSPITAL_QUERY_PARAMS.minRating) {
     searchParams.set('minRating', params.minRating.toString());
+  }
+
+  if (params.search) {
+    searchParams.set('search', params.search);
   }
 
   return searchParams.toString();

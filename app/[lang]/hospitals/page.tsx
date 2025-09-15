@@ -8,6 +8,8 @@ interface HospitalsPageProps {
   params: Promise<{ lang: Locale }>;
   searchParams: Promise<{
     category?: string;
+    sort?: string;
+    search?: string;
   }>;
 }
 

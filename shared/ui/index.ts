@@ -11,3 +11,4 @@ export * from './icons/HeartIcon';
 export * from './icons/HeartOutlineIcon';
 export * from './buttons/LikeButton';
 export * from './page-header';
+export * from './search-bar';

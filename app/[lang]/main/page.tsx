@@ -1,5 +1,5 @@
 import { type Locale } from 'shared/config';
-import { SearchBar } from 'features/search';
+import { SearchBar } from 'shared/ui';
 import { QuickMenuWrapper } from 'features/quick-menu/ui/QuickMenuWrapper';
 import { HospitalListWrapper } from 'widgets/hospital-list';
 import { PopularReviewsWrapper } from 'widgets/popular-reviews';
