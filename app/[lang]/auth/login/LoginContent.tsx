@@ -1,7 +1,11 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { EmailLoginForm } from './EmailLoginForm';
-import { SocialLoginSection } from './SocialLoginSection';
+import { GoogleSignInButton } from 'features';
+// import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
+import { EmailSignInButton } from 'features/email-auth';
+import { LoginFooter } from 'widgets/login-footer';
+import Image from 'next/image';
+import { HeaderLogo } from '@/widgets/header/ui/HeaderLogo';
 
 interface LoginContentProps {
   lang: Locale;
@@ -11,24 +15,33 @@ interface LoginContentProps {
 
 export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
   return (
-    <div className='space-y-6'>
-      {/* 이메일 로그인 폼 */}
-      <EmailLoginForm lang={lang} dict={dict} redirectTo={redirectTo} />
-
-      {/* 구분선 */}
-      <div className='relative'>
-        <div className='absolute inset-0 flex items-center'>
-          <div className='w-full border-t border-gray-300' />
-        </div>
-        <div className='relative flex justify-center text-sm'>
-          <span className='bg-white px-2 text-gray-500'>
-            {dict.auth?.login?.socialLogin || '소셜 로그인'}
-          </span>
-        </div>
+    <div className='relative min-h-screen w-full overflow-hidden px-5'>
+      {/* 배경 이미지 */}
+      <div className='absolute inset-0'>
+        <Image
+          src='/images/shared/splash.png'
+          alt='Background'
+          fill
+          className='object-cover'
+          priority
+        />
       </div>
 
-      {/* 소셜 로그인 섹션 */}
-      <SocialLoginSection lang={lang} dict={dict} redirectTo={redirectTo} />
+      {/* 컨텐츠 */}
+      <div className='relative z-10 flex min-h-screen flex-col'>
+        {/* 하단 로그인 버튼 영역 */}
+        <div className='mt-auto pb-5'>
+          <div className='space-y-3'>
+            <GoogleSignInButton locale={lang} dict={dict} redirectTo={redirectTo} />
+            {/* <KakaoSignInButton locale={lang} dict={dict} /> */}
+            <EmailSignInButton lang={lang} dict={dict} />
+            {/* 하단 로고 */}
+            <div className='flex w-full justify-center text-white'>
+              <HeaderLogo />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

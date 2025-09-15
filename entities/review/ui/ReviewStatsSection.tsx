@@ -26,7 +26,7 @@ export function ReviewStatsSection({
   showLikeButton = true,
 }: ReviewStatsSectionProps) {
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
-  const isLiked = user ? review.likedUserIds.includes(user.id) : false;
+  const isLiked = user && review.likedUserIds ? review.likedUserIds.includes(user.id) : false;
 
   return (
     <div
