@@ -95,6 +95,7 @@ export interface GetHospitalReviewsParams {
   page?: number;
   limit?: number;
   offset?: number;
+  excludeReviewId?: string; // 제외할 리뷰 ID
 }
 
 // 병원 리뷰 목록 응답

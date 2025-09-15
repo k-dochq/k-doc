@@ -121,7 +121,8 @@
     "title": "Review Detail",
     "content": "Review Content",
     "backButton": "Go Back",
-    "hospitalInfo": "Hospital Information"
+    "hospitalInfo": "Hospital Information",
+    "sameHospitalReviews": "Same Hospital Reviews"
   },
   "error": {
     "title": "An unexpected error occurred",

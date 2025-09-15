@@ -23,12 +23,14 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     // 쿼리 파라미터 추출
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') || '10', 10);
+    const excludeReviewId = searchParams.get('excludeReviewId') || undefined;
 
     // 리뷰 데이터 조회
     const reviewsData = await getHospitalReviews({
       hospitalId,
       page,
       limit,
+      excludeReviewId,
     });
 
     const response = NextResponse.json({
