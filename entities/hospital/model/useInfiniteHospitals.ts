@@ -16,6 +16,7 @@ interface UseInfiniteHospitalsParams extends Record<string, unknown> {
   sortBy?: HospitalSortOption;
   sortOrder?: SortOrderOption;
   category?: MedicalSpecialtyType;
+  search?: string;
 }
 
 interface HospitalsApiResponse {
@@ -30,6 +31,7 @@ async function fetchHospitals({
   sortBy = DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
   sortOrder = DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
   category,
+  search,
 }: {
   pageParam: number;
 } & UseInfiniteHospitalsParams): Promise<GetHospitalsResponse> {
@@ -40,6 +42,7 @@ async function fetchHospitals({
     sort: sortBy,
     sortOrder,
     category,
+    search,
   };
 
   const queryString = buildHospitalQueryString(queryParams);

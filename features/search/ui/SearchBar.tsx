@@ -1,7 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface SearchBarProps {
   lang: Locale;
@@ -9,12 +11,39 @@ interface SearchBarProps {
 }
 
 export function SearchBar({ lang, dict }: SearchBarProps) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const router = useLocalizedRouter();
+
+  const handleSearch = () => {
+    const trimmedSearch = searchTerm.trim();
+    if (trimmedSearch) {
+      // 검색어가 있으면 hospitals 페이지로 이동하면서 search 쿼리 파라미터 전달
+      router.push(`/hospitals?search=${encodeURIComponent(trimmedSearch)}`);
+    } else {
+      // 검색어가 없으면 그냥 hospitals 페이지로 이동
+      router.push('/hospitals');
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div className='w-full'>
       <div className='border-primary flex items-center rounded-full border bg-white py-2 pr-2 pl-4'>
         <div className='flex-1'>
           <input
             type='text'
+            value={searchTerm}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
             placeholder={dict.search.placeholder}
             className='w-full bg-transparent text-sm text-gray-900 placeholder-neutral-400 focus:outline-none'
           />
@@ -22,6 +51,7 @@ export function SearchBar({ lang, dict }: SearchBarProps) {
         <div className='shrink-0'>
           <button
             type='button'
+            onClick={handleSearch}
             className='bg-primary-light flex items-center justify-center rounded-full p-2'
             aria-label='검색'
           >

@@ -58,6 +58,7 @@ export async function getHospitals(
       sortOrder = DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
       specialtyType,
       minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
+      search,
     } = request;
 
     const offset = (page - 1) * limit;
@@ -84,23 +85,92 @@ export async function getHospitals(
       orderBy.push({ createdAt: 'desc' });
     }
 
+    // 검색 조건 설정 (병원명 또는 시술부위에서 다국어 검색)
+    const searchConditions: Prisma.HospitalWhereInput[] = [];
+
+    if (search) {
+      // 병원명에서 검색 (다국어 지원)
+      searchConditions.push({
+        OR: [
+          {
+            name: {
+              path: ['ko_KR'],
+              string_contains: search,
+            },
+          },
+          {
+            name: {
+              path: ['en_US'],
+              string_contains: search,
+            },
+          },
+          {
+            name: {
+              path: ['th_TH'],
+              string_contains: search,
+            },
+          },
+        ],
+      });
+
+      // 시술부위에서 검색 (다국어 지원)
+      searchConditions.push({
+        HospitalMedicalSpecialty: {
+          some: {
+            MedicalSpecialty: {
+              isActive: true,
+              OR: [
+                {
+                  name: {
+                    path: ['ko_KR'],
+                    string_contains: search,
+                  },
+                },
+                {
+                  name: {
+                    path: ['en_US'],
+                    string_contains: search,
+                  },
+                },
+                {
+                  name: {
+                    path: ['th_TH'],
+                    string_contains: search,
+                  },
+                },
+              ],
+            },
+          },
+        },
+      });
+    }
+
     // 필터 조건 설정
     const where: Prisma.HospitalWhereInput = {
       approvalStatusType: 'APPROVED',
       rating: {
         gte: minRating,
       },
-      // 진료 부위 필터링
-      ...(specialtyType && {
-        HospitalMedicalSpecialty: {
-          some: {
-            MedicalSpecialty: {
-              specialtyType: specialtyType,
-              isActive: true,
-            },
-          },
-        },
-      }),
+      // 검색 조건과 카테고리 필터를 AND 조건으로 결합
+      AND: [
+        // 검색 조건 (병원명 또는 시술부위)
+        ...(searchConditions.length > 0 ? [{ OR: searchConditions }] : []),
+        // 진료 부위 필터링
+        ...(specialtyType
+          ? [
+              {
+                HospitalMedicalSpecialty: {
+                  some: {
+                    MedicalSpecialty: {
+                      specialtyType: specialtyType,
+                      isActive: true,
+                    },
+                  },
+                },
+              },
+            ]
+          : []),
+      ],
     };
 
     // 총 개수 조회

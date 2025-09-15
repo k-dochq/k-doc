@@ -14,6 +14,7 @@ interface HospitalsContentProps {
   searchParams: {
     category?: string;
     sort?: string;
+    search?: string;
   };
 }
 
@@ -36,6 +37,9 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
       ? (searchParams.sort as HospitalSortOption)
       : HOSPITAL_SORT_OPTIONS.POPULAR;
 
+  // 검색어 파라미터 처리
+  const currentSearch = searchParams.search?.trim() || undefined;
+
   return (
     <div className=''>
       {/* 카테고리 섹션 */}
@@ -56,6 +60,7 @@ export function HospitalsContent({ lang, dict, searchParams }: HospitalsContentP
         searchParams={{
           category: currentCategory,
           sort: currentSort,
+          search: currentSearch,
         }}
         dict={dict}
       />

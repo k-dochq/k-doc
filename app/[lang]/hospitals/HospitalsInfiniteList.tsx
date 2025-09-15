@@ -18,11 +18,12 @@ interface HospitalsInfiniteListProps {
   searchParams: {
     category?: MedicalSpecialtyType;
     sort?: HospitalSortOption;
+    search?: string;
   };
 }
 
 export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInfiniteListProps) {
-  const { category, sort } = searchParams;
+  const { category, sort, search } = searchParams;
   const { user } = useAuth();
 
   // 타입 안전한 파라미터 구성
@@ -31,6 +32,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
     sortBy: sort || HOSPITAL_SORT_OPTIONS.POPULAR,
     sortOrder: 'desc' as const,
     category,
+    search,
   };
 
   // 좋아요 토글 뮤테이션

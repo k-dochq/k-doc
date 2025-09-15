@@ -41,6 +41,7 @@ export interface HospitalQueryParams {
   sortOrder?: SortOrderOption;
   category?: MedicalSpecialtyType;
   minRating?: string;
+  search?: string;
 }
 
 // 파싱된 쿼리 파라미터 타입 정의
@@ -51,6 +52,7 @@ export interface ParsedHospitalQueryParams extends Record<string, unknown> {
   sortOrder: SortOrderOption;
   category?: MedicalSpecialtyType;
   minRating: number;
+  search?: string;
 }
 
 // 데이터베이스 쿼리 파라미터 타입 정의
@@ -61,6 +63,7 @@ export interface DbHospitalQueryParams {
   sortOrder: SortOrderOption;
   specialtyType?: MedicalSpecialtyType;
   minRating: number;
+  search?: string;
 }
 
 // 기본값 정의
