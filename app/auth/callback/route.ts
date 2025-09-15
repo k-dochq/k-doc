@@ -20,8 +20,8 @@ export async function GET(request: NextRequest) {
         // 성공적으로 로그인된 경우
         const locale = extractLocaleFromCookie(request);
 
-        // redirectTo가 있으면 해당 페이지로, 없으면 홈페이지로 리다이렉트
-        const targetUrl = redirectTo ? `${origin}${redirectTo}` : `${origin}/${locale}`;
+        // redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 리다이렉트
+        const targetUrl = redirectTo ? `${origin}${redirectTo}` : `${origin}/${locale}/main`;
         return NextResponse.redirect(targetUrl);
       }
     }
