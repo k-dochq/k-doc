@@ -14,6 +14,7 @@ export default async function FavoritesLayout({ children, params }: FavoritesLay
     <>
       <Header currentLang={lang} />
       <main>{children}</main>
+      <div className='h-16' />
       <BottomNavigation currentLang={lang} />
     </>
   );
