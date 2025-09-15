@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { DistrictFilterButton } from './DistrictFilterButton';
 
 interface HospitalFilterBarProps {
   lang: Locale;
@@ -46,6 +47,7 @@ export function HospitalFilterBar({ lang }: HospitalFilterBarProps) {
           추천순
         </LocaleLink>
       </div>
+      <DistrictFilterButton lang={lang} />
     </div>
   );
 }
