@@ -8,6 +8,7 @@ interface DetailHeaderProps {
   rightContent?: React.ReactNode;
   className?: string;
   variant?: 'light' | 'dark';
+  bgClassName?: string;
 }
 
 export function DetailHeader({
@@ -17,13 +18,16 @@ export function DetailHeader({
   rightContent,
   className = '',
   variant = 'dark',
+  bgClassName,
 }: DetailHeaderProps) {
   const getTextColor = () => {
-    return variant === 'light' ? 'text-gray-900' : 'text-white';
+    return variant === 'light' ? 'text-neutral-900' : 'text-white';
   };
 
   return (
-    <div className={`flex w-full items-center justify-between px-5 py-4 ${className}`}>
+    <div
+      className={`sticky top-0 z-50 flex w-full items-center justify-between ${bgClassName || 'bg-white'} px-5 py-4 ${className}`}
+    >
       <div className='flex items-center gap-0'>
         {/* 뒤로가기 버튼 */}
         <BackButton fallbackUrl={fallbackUrl} variant={variant} />

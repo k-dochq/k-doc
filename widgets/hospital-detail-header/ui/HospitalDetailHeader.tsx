@@ -22,6 +22,7 @@ export function HospitalDetailHeader({
       title={hospitalName || ''}
       fallbackUrl={`/${lang}/hospitals`}
       variant='dark'
+      bgClassName='bg-gradient-to-b from-[#FE906C] to-[#FF6CA5]'
       rightContent={<LikeButtonWrapper hospitalId={hospitalId} />}
     />
   );
