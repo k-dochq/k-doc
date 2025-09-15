@@ -72,4 +72,13 @@ export const queryKeys = {
     all: ['categories'] as const,
     list: () => [...queryKeys.categories.all, 'list'] as const,
   },
+
+  // 지역 관련 쿼리
+  districts: {
+    all: ['districts'] as const,
+    lists: () => [...queryKeys.districts.all, 'list'] as const,
+    parentDistricts: () => [...queryKeys.districts.lists(), 'parent'] as const,
+    childDistricts: (parentId: string) =>
+      [...queryKeys.districts.lists(), 'children', parentId] as const,
+  },
 } as const;
