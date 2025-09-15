@@ -13,7 +13,7 @@ export default async function FavoritesLayout({ children, params }: FavoritesLay
   return (
     <>
       <Header currentLang={lang} />
-      <main className='py-8 pb-20'>{children}</main>
+      <main>{children}</main>
       <BottomNavigation currentLang={lang} />
     </>
   );

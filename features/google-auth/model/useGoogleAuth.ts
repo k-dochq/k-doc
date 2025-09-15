@@ -15,10 +15,17 @@ export function useGoogleAuth() {
       setIsLoading(true);
       setError(null);
 
+      // 환경에 따른 올바른 redirect URL 설정
+      const isProduction =
+        window.location.hostname === 'k-doc.kr' || window.location.hostname === 'www.k-doc.kr';
+      const redirectUrl = isProduction
+        ? 'https://www.k-doc.kr/auth/callback'
+        : `${window.location.origin}/auth/callback`;
+
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: redirectUrl,
         },
       });
 
