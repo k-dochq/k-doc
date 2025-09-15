@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
@@ -11,6 +11,7 @@ import { PopularReviewsList } from './PopularReviewsList';
 import { PopularReviewsSkeleton } from './PopularReviewsSkeleton';
 import { PopularReviewsError } from './PopularReviewsError';
 import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface PopularReviewsProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
@@ -20,6 +21,7 @@ interface PopularReviewsProps {
 
 export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReviewsProps) {
   const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
+  const router = useLocalizedRouter();
 
   // TanStack Query를 사용하여 popular reviews 데이터 페칭
   const {
@@ -32,9 +34,13 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
     limit: 5,
   });
 
+  // 페이지 prefetch
+  useEffect(() => {
+    router.prefetch('/reviews');
+  }, [router]);
+
   const handleViewAll = () => {
-    // TODO: 전체보기 페이지로 이동하는 로직 구현
-    console.log('View all popular reviews for category:', selectedCategory);
+    router.push('/reviews');
   };
 
   const handleRetry = () => {
