@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
+import { MaxWidthLayout } from 'widgets/max-width-layout';
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -46,5 +47,5 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
 }
 
 export default async function LangLayout({ children }: LangLayoutProps) {
-  return <>{children}</>;
+  return <MaxWidthLayout>{children}</MaxWidthLayout>;
 }

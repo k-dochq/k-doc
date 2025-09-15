@@ -1,4 +1,3 @@
-import { MaxWidthLayout } from 'widgets/max-width-layout';
 import { type Locale } from 'shared/config';
 
 interface ConsultationLayoutProps {
@@ -7,9 +6,5 @@ interface ConsultationLayoutProps {
 }
 
 export default async function ConsultationLayout({ children }: ConsultationLayoutProps) {
-  return (
-    <MaxWidthLayout>
-      <main className='py-8 pb-20'>{children}</main>
-    </MaxWidthLayout>
-  );
+  return <main className='py-8 pb-20'>{children}</main>;
 }

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { Home } from 'lucide-react';
 import { LocaleLink } from 'shared/ui/locale-link';
-import { MaxWidthLayout } from 'widgets/max-width-layout';
 
 // 다국어 메시지 정의
 const messages = {
@@ -35,40 +34,38 @@ export default async function NotFound({ params }: NotFoundProps) {
   const dict = messages[lang];
 
   return (
-    <MaxWidthLayout>
-      <div className='flex min-h-screen items-center justify-center px-4'>
-        <div className='w-full max-w-md text-center'>
-          {/* K-DOC 로고 */}
-          <div className='mb-8 flex justify-center'>
-            <div className='relative h-16 w-16'>
-              <Image
-                src='/kdoc_logo.png'
-                alt={dict.logoAlt}
-                fill
-                className='object-contain'
-                priority
-              />
-            </div>
+    <div className='flex min-h-screen items-center justify-center px-4'>
+      <div className='w-full max-w-md text-center'>
+        {/* K-DOC 로고 */}
+        <div className='mb-8 flex justify-center'>
+          <div className='relative h-16 w-16'>
+            <Image
+              src='/kdoc_logo.png'
+              alt={dict.logoAlt}
+              fill
+              className='object-contain'
+              priority
+            />
           </div>
-
-          {/* 404 메시지 */}
-          <div className='mb-8'>
-            <h1 className='mb-2 text-6xl font-bold text-gray-800'>404</h1>
-            <h2 className='mb-4 text-xl font-semibold text-gray-700'>{dict.title}</h2>
-            <p className='text-gray-500'>{dict.description}</p>
-          </div>
-
-          {/* 홈으로 돌아가기 버튼 */}
-          <LocaleLink
-            href='/'
-            locale={lang}
-            className='inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none'
-          >
-            <Home className='h-4 w-4' />
-            {dict.homeButton}
-          </LocaleLink>
         </div>
+
+        {/* 404 메시지 */}
+        <div className='mb-8'>
+          <h1 className='mb-2 text-6xl font-bold text-gray-800'>404</h1>
+          <h2 className='mb-4 text-xl font-semibold text-gray-700'>{dict.title}</h2>
+          <p className='text-gray-500'>{dict.description}</p>
+        </div>
+
+        {/* 홈으로 돌아가기 버튼 */}
+        <LocaleLink
+          href='/'
+          locale={lang}
+          className='inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none'
+        >
+          <Home className='h-4 w-4' />
+          {dict.homeButton}
+        </LocaleLink>
       </div>
-    </MaxWidthLayout>
+    </div>
   );
 }

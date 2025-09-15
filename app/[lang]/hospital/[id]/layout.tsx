@@ -1,5 +1,4 @@
 import { type Locale } from 'shared/config';
-import { MaxWidthLayout } from '@/widgets';
 
 interface HospitalsLayoutProps {
   children: React.ReactNode;
@@ -7,5 +6,5 @@ interface HospitalsLayoutProps {
 }
 
 export default async function HospitalsLayout({ children }: HospitalsLayoutProps) {
-  return <MaxWidthLayout>{children}</MaxWidthLayout>;
+  return <>{children}</>;
 }
