@@ -2,6 +2,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { getReviewDetail } from 'entities/review';
 import { ReviewDetailCard } from 'entities/review/ui';
+import { ErrorState } from 'shared/ui/error-state';
 
 interface ReviewDetailContentProps {
   reviewId: string;
@@ -18,14 +19,11 @@ export async function ReviewDetailContent({ reviewId, lang, dict }: ReviewDetail
   } catch (error) {
     console.error('Error loading review detail content:', error);
     return (
-      <div className='flex flex-col items-center justify-center py-12'>
-        <div className='text-center'>
-          <h2 className='mb-2 text-lg font-medium text-gray-900'>
-            리뷰를 불러오는 중 오류가 발생했습니다
-          </h2>
-          <p className='text-gray-500'>잠시 후 다시 시도해주세요.</p>
-        </div>
-      </div>
+      <ErrorState
+        title='리뷰를 불러오는 중 오류가 발생했습니다'
+        message='네트워크 연결을 확인하고 다시 시도해주세요.'
+        retryButtonText='다시 시도'
+      />
     );
   }
 }

@@ -15,7 +15,7 @@ interface ReviewDetailPageProps {
 }
 
 // 리뷰 페이지는 서버 컴포넌트로 동적 렌더링, 10분 캐시
-export const revalidate = 600; // 10분 (600초)
+export const revalidate = 1800;
 
 export default async function ReviewDetailPage({ params }: ReviewDetailPageProps) {
   const { lang, id } = await params;
@@ -25,12 +25,9 @@ export default async function ReviewDetailPage({ params }: ReviewDetailPageProps
     const dict = await getDictionary(lang);
 
     return (
-      <div className='px-4 py-6'>
-        {/* 리뷰 상세 내용 - Suspense로 스트리밍 */}
-        <Suspense fallback={<ReviewDetailSkeleton />}>
-          <ReviewDetailContent reviewId={id} lang={lang} dict={dict} />
-        </Suspense>
-      </div>
+      <Suspense fallback={<ReviewDetailSkeleton />}>
+        <ReviewDetailContent reviewId={id} lang={lang} dict={dict} />
+      </Suspense>
     );
   } catch (error) {
     console.error('Error loading review detail page:', error);
