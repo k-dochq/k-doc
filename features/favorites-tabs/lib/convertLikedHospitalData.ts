@@ -16,6 +16,13 @@ export function convertLikedHospitalToCardData(likedHospital: LikedHospital): Ho
     // THUMBNAIL 이미지 URL 사용 (best hospitals와 동일)
     thumbnailImageUrl: likedHospital.mainImageUrl || null,
     discountRate: likedHospital.discountRate || null,
+    // 시술부위 태그 추가
+    medicalSpecialties:
+      likedHospital.medicalSpecialties?.map((specialty) => ({
+        id: specialty.id,
+        name: parseLocalizedText(specialty.name),
+        specialtyType: specialty.specialtyType,
+      })) || [],
   };
 }
 

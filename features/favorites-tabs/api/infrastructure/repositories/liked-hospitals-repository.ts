@@ -43,7 +43,18 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
         },
         approvalStatusType: 'APPROVED',
       },
-      include: {
+      select: {
+        id: true,
+        name: true,
+        address: true,
+        prices: true, // 가격 정보 추가
+        discountRate: true, // 할인율 추가
+        rating: true,
+        viewCount: true,
+        approvalStatusType: true,
+        ranking: true,
+        createdAt: true,
+        updatedAt: true,
         HospitalImage: {
           where: {
             imageType: 'THUMBNAIL',
@@ -56,7 +67,7 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
           take: 1,
         },
         HospitalMedicalSpecialty: {
-          include: {
+          select: {
             MedicalSpecialty: {
               select: {
                 id: true,
@@ -95,6 +106,8 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
           id: hospital.id,
           name: hospital.name,
           address: hospital.address,
+          prices: hospital.prices, // 가격 정보 추가
+          discountRate: hospital.discountRate, // 할인율 추가
           rating: hospital.rating,
           reviewCount: hospital._count.Review,
           bookmarkCount: hospital._count.HospitalLike,
