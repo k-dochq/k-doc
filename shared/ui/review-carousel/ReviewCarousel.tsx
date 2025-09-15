@@ -58,7 +58,7 @@ export function ReviewCarousel({
   }, [api, onSlideChange]);
 
   if (items.length === 0) {
-    return <div className={`py-8 text-center text-gray-500 ${className}`}>{emptyMessage}</div>;
+    return <div className={`py-8 text-center ${className}`}>{emptyMessage}</div>;
   }
 
   return (

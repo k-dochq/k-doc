@@ -5,6 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { useHospitalReviews } from 'entities/review';
 import { ReviewCarousel } from 'shared/ui/review-carousel';
 import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { HospitalDetailReviewsLoading } from './HospitalDetailReviewsLoading';
 import { HospitalDetailReviewsError } from './HospitalDetailReviewsError';
 
@@ -66,14 +67,17 @@ export function HospitalDetailReviews({
           <span className='text-sm leading-[18px] font-semibold'>({reviewCount})</span>
         </div>
 
-        <button className='flex items-center gap-0.5'>
+        <LocaleLink
+          href={`/hospital/${hospitalId}/reviews`}
+          className='flex items-center gap-0.5 transition-opacity hover:opacity-80'
+        >
           <span className='text-[13px] leading-[18px] font-medium'>
             {dict.hospitalDetailReviews.viewAll}
           </span>
           <div className='flex items-center justify-center'>
             <ArrowRightIcon className='' />
           </div>
-        </button>
+        </LocaleLink>
       </div>
 
       {/* 리뷰 목록 */}

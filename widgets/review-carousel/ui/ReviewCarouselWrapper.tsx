@@ -36,7 +36,7 @@ export function ReviewCarouselWrapper({ hospitalId, lang, dict }: ReviewCarousel
     return (
       <div className='flex items-center justify-center py-8'>
         <div className='text-center'>
-          <p className='text-gray-500'>아직 등록된 리뷰가 없습니다.</p>
+          <p className=''>아직 등록된 리뷰가 없습니다.</p>
         </div>
       </div>
     );
