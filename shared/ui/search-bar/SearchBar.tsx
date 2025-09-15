@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
@@ -8,21 +9,50 @@ import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 interface SearchBarProps {
   lang: Locale;
   dict: Dictionary;
+  initialValue?: string;
+  placeholder?: string;
+  onSearch?: (searchTerm: string) => void;
 }
 
-export function SearchBar({ lang, dict }: SearchBarProps) {
-  const [searchTerm, setSearchTerm] = useState('');
+export function SearchBar({
+  lang,
+  dict,
+  initialValue = '',
+  placeholder,
+  onSearch,
+}: SearchBarProps) {
+  const [searchTerm, setSearchTerm] = useState(initialValue);
   const router = useLocalizedRouter();
+  const searchParams = useSearchParams();
+
+  // initialValue가 변경되면 searchTerm 업데이트
+  useEffect(() => {
+    setSearchTerm(initialValue);
+  }, [initialValue]);
 
   const handleSearch = () => {
     const trimmedSearch = searchTerm.trim();
-    if (trimmedSearch) {
-      // 검색어가 있으면 hospitals 페이지로 이동하면서 search 쿼리 파라미터 전달
-      router.push(`/hospitals?search=${encodeURIComponent(trimmedSearch)}`);
-    } else {
-      // 검색어가 없으면 그냥 hospitals 페이지로 이동
-      router.push('/hospitals');
+
+    // 커스텀 onSearch 핸들러가 있으면 사용
+    if (onSearch) {
+      onSearch(trimmedSearch);
+      return;
     }
+
+    // 기본 동작: 현재 쿼리 파라미터를 유지하면서 search만 변경
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (trimmedSearch) {
+      params.set('search', trimmedSearch);
+    } else {
+      params.delete('search');
+    }
+
+    // 페이지는 1로 리셋 (검색 결과가 바뀌므로)
+    params.set('page', '1');
+
+    const queryString = params.toString();
+    router.push(`/hospitals${queryString ? `?${queryString}` : ''}`);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -44,7 +74,7 @@ export function SearchBar({ lang, dict }: SearchBarProps) {
             value={searchTerm}
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
-            placeholder={dict.search.placeholder}
+            placeholder={placeholder || dict.search.placeholder}
             className='w-full bg-transparent text-sm text-gray-900 placeholder-neutral-400 focus:outline-none'
           />
         </div>
