@@ -7,6 +7,7 @@ interface UseHospitalReviewsParams {
   hospitalId: string;
   page?: number;
   limit?: number;
+  excludeReviewId?: string;
 }
 
 interface HospitalReviewsResponse {
@@ -22,6 +23,7 @@ async function fetchHospitalReviews({
   hospitalId,
   page = 1,
   limit = 10,
+  excludeReviewId,
 }: UseHospitalReviewsParams): Promise<HospitalReviewsResponse> {
   // 클라이언트 사이드에서만 실행되도록 보호
   if (typeof window === 'undefined') {
@@ -33,6 +35,10 @@ async function fetchHospitalReviews({
     limit: limit.toString(),
   });
 
+  if (excludeReviewId) {
+    searchParams.append('excludeReviewId', excludeReviewId);
+  }
+
   const response = await fetch(`/api/hospitals/${hospitalId}/reviews?${searchParams}`);
 
   if (!response.ok) {
@@ -43,10 +49,15 @@ async function fetchHospitalReviews({
   return response.json();
 }
 
-export function useHospitalReviews({ hospitalId, page = 1, limit = 10 }: UseHospitalReviewsParams) {
+export function useHospitalReviews({
+  hospitalId,
+  page = 1,
+  limit = 10,
+  excludeReviewId,
+}: UseHospitalReviewsParams) {
   return useQuery({
-    queryKey: ['hospital-reviews', hospitalId, { page, limit }],
-    queryFn: () => fetchHospitalReviews({ hospitalId, page, limit }),
+    queryKey: ['hospital-reviews', hospitalId, { page, limit, excludeReviewId }],
+    queryFn: () => fetchHospitalReviews({ hospitalId, page, limit, excludeReviewId }),
     staleTime: 5 * 60 * 1000, // 5분
     gcTime: 10 * 60 * 1000, // 10분
     retry: 3,

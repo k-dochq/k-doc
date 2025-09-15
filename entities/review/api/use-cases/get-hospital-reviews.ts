@@ -11,6 +11,7 @@ export async function getHospitalReviews({
   page = 1,
   limit = 10,
   offset,
+  excludeReviewId,
 }: GetHospitalReviewsParams): Promise<GetHospitalReviewsResponse> {
   try {
     // offset 계산 (page가 제공된 경우 우선 사용)
@@ -20,6 +21,11 @@ export async function getHospitalReviews({
     const totalCount = await prisma.review.count({
       where: {
         hospitalId,
+        ...(excludeReviewId && {
+          id: {
+            not: excludeReviewId,
+          },
+        }),
       },
     });
 
@@ -27,6 +33,11 @@ export async function getHospitalReviews({
     const reviews = await prisma.review.findMany({
       where: {
         hospitalId,
+        ...(excludeReviewId && {
+          id: {
+            not: excludeReviewId,
+          },
+        }),
       },
       include: {
         User: {

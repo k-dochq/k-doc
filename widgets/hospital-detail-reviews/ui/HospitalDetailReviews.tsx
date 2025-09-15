@@ -12,12 +12,20 @@ interface HospitalDetailReviewsProps {
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;
+  excludeReviewId?: string;
+  title?: string;
 }
 
 /**
  * 병원 리뷰 후기 섹션 컴포넌트
  */
-export function HospitalDetailReviews({ hospitalId, lang, dict }: HospitalDetailReviewsProps) {
+export function HospitalDetailReviews({
+  hospitalId,
+  lang,
+  dict,
+  excludeReviewId,
+  title,
+}: HospitalDetailReviewsProps) {
   // TanStack Query로 리뷰 데이터 요청
   const {
     data: reviewsData,
@@ -28,6 +36,7 @@ export function HospitalDetailReviews({ hospitalId, lang, dict }: HospitalDetail
     hospitalId,
     page: 1,
     limit: 5, // 최근 5개 리뷰만 표시
+    excludeReviewId,
   });
 
   const handleRetry = () => {
@@ -51,18 +60,18 @@ export function HospitalDetailReviews({ hospitalId, lang, dict }: HospitalDetail
       {/* 섹션 헤더 */}
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-1'>
-          <h2 className='text-base leading-6 font-bold text-white'>
-            {dict.hospitalDetailReviews.title}
+          <h2 className='text-base leading-6 font-semibold'>
+            {title || dict.hospitalDetailReviews.title}
           </h2>
-          <span className='text-sm leading-[18px] font-semibold text-white'>({reviewCount})</span>
+          <span className='text-sm leading-[18px] font-semibold'>({reviewCount})</span>
         </div>
 
         <button className='flex items-center gap-0.5'>
-          <span className='text-sm leading-[18px] font-medium text-white'>
+          <span className='text-[13px] leading-[18px] font-medium'>
             {dict.hospitalDetailReviews.viewAll}
           </span>
           <div className='flex items-center justify-center'>
-            <ArrowRightIcon className='text-white' />
+            <ArrowRightIcon className='' />
           </div>
         </button>
       </div>

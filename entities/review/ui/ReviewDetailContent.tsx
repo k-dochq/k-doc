@@ -12,6 +12,7 @@ import { ReviewContentSection } from './ReviewContentSection';
 import { ReviewStatsSection } from './ReviewStatsSection';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { ReviewHospitalSection } from 'entities/review';
+import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
 
 interface ReviewDetailContentProps {
   review: ReviewCardData;
@@ -79,6 +80,20 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
           user={null}
           showLikeButton={false}
           className='mt-3'
+        />
+      </div>
+
+      {/* 일곱 번째 섹션: 같은 병원의 다른 시술후기 */}
+
+      <div className='h-2 w-full bg-neutral-100' />
+
+      <div className='p-5'>
+        <HospitalDetailReviews
+          hospitalId={review.hospital.id}
+          lang={lang}
+          dict={dict}
+          excludeReviewId={review.id}
+          title={dict.reviewDetail?.sameHospitalReviews || '같은 시술 후기'}
         />
       </div>
     </div>
