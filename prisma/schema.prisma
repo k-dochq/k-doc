@@ -24,13 +24,22 @@ model AdminRole {
 }
 
 model District {
-  id          String              @id @db.Uuid
-  name        Json
-  countryCode DistrictCountryCode
-  createdAt   DateTime            @default(now())
-  updatedAt   DateTime
-  Hospital    Hospital[]
+  id             String              @id @db.Uuid
+  name           Json
+  countryCode    DistrictCountryCode
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime
+  displayName    String?             @db.VarChar(100)
+  level          Int                 @default(0)
+  order          Int?
+  parentId       String?             @db.Uuid
+  District       District?           @relation("DistrictToDistrict", fields: [parentId], references: [id], onDelete: Cascade)
+  other_District District[]          @relation("DistrictToDistrict")
+  Hospital       Hospital[]
 
+  @@index([countryCode])
+  @@index([level])
+  @@index([parentId])
   @@schema("public")
 }
 
