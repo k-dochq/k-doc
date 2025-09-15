@@ -11,8 +11,7 @@ import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { ReviewContentSection } from './ReviewContentSection';
 import { ReviewStatsSection } from './ReviewStatsSection';
 import { extractLocalizedText } from 'shared/lib/localized-text';
-import { convertReviewHospitalToHospitalCard } from 'entities/review';
-import { HospitalCard } from 'entities/hospital/ui/HospitalCard';
+import { ReviewHospitalSection } from 'entities/review';
 
 interface ReviewDetailContentProps {
   review: ReviewCardData;
@@ -71,20 +70,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
         )}
 
         {/* 다섯 번째 섹션: 병원 정보 */}
-        <div className='mt-3'>
-          <div className='mb-3'>
-            <h3 className='text-lg font-semibold text-gray-900'>
-              {dict.reviewDetail?.hospitalInfo || '시술 병원 정보'}
-            </h3>
-          </div>
-          <div className='rounded-lg border border-gray-200 bg-white p-4'>
-            <HospitalCard
-              hospital={convertReviewHospitalToHospitalCard(review)}
-              dict={dict}
-              lang={lang}
-            />
-          </div>
-        </div>
+        <ReviewHospitalSection review={review} lang={lang} dict={dict} />
 
         {/* 여섯 번째 섹션: 조회수만 표시 (좋아요는 헤더에 있음) */}
         <ReviewStatsSection

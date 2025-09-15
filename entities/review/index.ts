@@ -3,6 +3,7 @@ export * from './api/use-cases/get-hospital-reviews';
 export * from './api/use-cases/get-review-detail';
 export * from './api/use-cases/get-all-reviews';
 export * from './lib/convert-hospital-data';
+export * from './ui/ReviewHospitalSection';
 export * from './api/use-cases/get-medical-specialties';
 export * from './api/queries/get-popular-reviews';
 export * from './api/queries/use-popular-reviews';
