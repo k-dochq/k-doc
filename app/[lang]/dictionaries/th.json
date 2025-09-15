@@ -120,7 +120,8 @@
   "reviewDetail": {
     "title": "รายละเอียดรีวิวการรักษา",
     "content": "เนื้อหารีวิว",
-    "backButton": "กลับ"
+    "backButton": "กลับ",
+    "hospitalInfo": "ข้อมูลโรงพยาบาล"
   },
   "error": {
     "title": "เกิดข้อผิดพลาดที่ไม่คาดคิด",

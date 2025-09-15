@@ -64,7 +64,17 @@ export type ReviewCardData = {
     name: string | null;
   };
   hospital: {
+    id: string;
     name: LocalizedText;
+    address: LocalizedText;
+    prices: {
+      minPrice?: number;
+      maxPrice?: number;
+    } | null;
+    rating: number;
+    reviewCount: number;
+    thumbnailImageUrl: string | null;
+    discountRate: number | null;
     district: {
       name: LocalizedText;
     };

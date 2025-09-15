@@ -2,7 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { type MedicalSpecialtyType } from '@prisma/client';
-import { type BestHospital } from 'shared/model/types';
+import { type HospitalCardData } from 'shared/model/types';
 
 export interface GetBestHospitalsParams {
   category?: MedicalSpecialtyType | 'ALL';
@@ -11,12 +11,12 @@ export interface GetBestHospitalsParams {
 
 export interface GetBestHospitalsResponse {
   success: boolean;
-  data: BestHospital[];
+  data: HospitalCardData[];
 }
 
 export async function fetchBestHospitals(
   params: GetBestHospitalsParams = {},
-): Promise<BestHospital[]> {
+): Promise<HospitalCardData[]> {
   const { category = 'ALL', limit = 5 } = params;
 
   const searchParams = new URLSearchParams();

@@ -14,8 +14,8 @@ export interface PriceInfo {
   maxPrice?: number;
 }
 
-// Best Hospital 타입 정의 (필요한 필드만)
-export interface BestHospital {
+// Hospital Card Data 타입 정의 (병원 카드 컴포넌트에서 사용)
+export interface HospitalCardData {
   id: string;
   name: LocalizedText;
   address: LocalizedText;

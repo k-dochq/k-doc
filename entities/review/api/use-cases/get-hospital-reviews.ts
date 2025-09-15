@@ -4,6 +4,7 @@ import {
   type GetHospitalReviewsResponse,
   type ReviewCardData,
 } from '../../model/types';
+import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 
 export async function getHospitalReviews({
   hospitalId,
@@ -37,10 +38,30 @@ export async function getHospitalReviews({
         },
         Hospital: {
           select: {
+            id: true,
             name: true,
+            address: true,
+            prices: true,
+            rating: true,
+            discountRate: true,
             District: {
               select: {
                 name: true,
+              },
+            },
+            HospitalImage: {
+              where: {
+                imageType: 'THUMBNAIL',
+              },
+              orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
+              take: 1,
+              select: {
+                imageUrl: true,
+              },
+            },
+            _count: {
+              select: {
+                Review: true,
               },
             },
           },
@@ -88,8 +109,8 @@ export async function getHospitalReviews({
       return {
         id: review.id,
         rating: review.rating,
-        title: review.title as Record<string, string> | null,
-        content: review.content as Record<string, string> | null,
+        title: review.title ? parseLocalizedText(review.title) : null,
+        content: review.content ? parseLocalizedText(review.content) : null,
         isRecommended: review.isRecommended,
         concerns: review.concerns,
         createdAt: review.createdAt,
@@ -103,13 +124,22 @@ export async function getHospitalReviews({
           name: review.User?.name || null,
         },
         hospital: {
-          name: review.Hospital.name as Record<string, string>,
+          id: review.Hospital.id,
+          name: parseLocalizedText(review.Hospital.name),
+          address: parseLocalizedText(review.Hospital.address),
+          prices: parsePriceInfo(review.Hospital.prices),
+          rating: review.Hospital.rating,
+          reviewCount: review.Hospital._count.Review,
+          thumbnailImageUrl: review.Hospital.HospitalImage[0]?.imageUrl || null,
+          discountRate: review.Hospital.discountRate,
           district: {
-            name: review.Hospital.District?.name as Record<string, string>,
+            name: review.Hospital.District?.name
+              ? parseLocalizedText(review.Hospital.District.name)
+              : { ko_KR: '', en_US: '', th_TH: '' },
           },
         },
         medicalSpecialty: {
-          name: review.MedicalSpecialty.name as Record<string, string>,
+          name: parseLocalizedText(review.MedicalSpecialty.name),
           specialtyType: review.MedicalSpecialty.specialtyType,
         },
         images: {

@@ -120,7 +120,8 @@
   "reviewDetail": {
     "title": "Review Detail",
     "content": "Review Content",
-    "backButton": "Go Back"
+    "backButton": "Go Back",
+    "hospitalInfo": "Hospital Information"
   },
   "error": {
     "title": "An unexpected error occurred",

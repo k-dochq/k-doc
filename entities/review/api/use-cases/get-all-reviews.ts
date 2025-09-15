@@ -6,6 +6,7 @@ import {
 } from '../../model/types';
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
+import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 
 export async function getAllReviews({
   page = 1,
@@ -62,10 +63,30 @@ export async function getAllReviews({
         },
         Hospital: {
           select: {
+            id: true,
             name: true,
+            address: true,
+            prices: true,
+            rating: true,
+            discountRate: true,
             District: {
               select: {
                 name: true,
+              },
+            },
+            HospitalImage: {
+              where: {
+                imageType: 'THUMBNAIL',
+              },
+              orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
+              take: 1,
+              select: {
+                imageUrl: true,
+              },
+            },
+            _count: {
+              select: {
+                Review: true,
               },
             },
           },
@@ -111,8 +132,8 @@ export async function getAllReviews({
       return {
         id: review.id,
         rating: review.rating,
-        title: review.title as LocalizedText | null,
-        content: review.content as LocalizedText | null,
+        title: review.title ? parseLocalizedText(review.title) : null,
+        content: review.content ? parseLocalizedText(review.content) : null,
         concerns: review.concerns,
         createdAt: review.createdAt,
         viewCount: review.viewCount,
@@ -126,13 +147,22 @@ export async function getAllReviews({
           name: review.User.name,
         },
         hospital: {
-          name: review.Hospital.name as LocalizedText,
+          id: review.Hospital.id,
+          name: parseLocalizedText(review.Hospital.name),
+          address: parseLocalizedText(review.Hospital.address),
+          prices: parsePriceInfo(review.Hospital.prices),
+          rating: review.Hospital.rating,
+          reviewCount: review.Hospital._count.Review,
+          thumbnailImageUrl: review.Hospital.HospitalImage[0]?.imageUrl || null,
+          discountRate: review.Hospital.discountRate,
           district: {
-            name: review.Hospital.District?.name as LocalizedText,
+            name: review.Hospital.District?.name
+              ? parseLocalizedText(review.Hospital.District.name)
+              : { ko_KR: '', en_US: '', th_TH: '' },
           },
         },
         medicalSpecialty: {
-          name: review.MedicalSpecialty.name as LocalizedText,
+          name: parseLocalizedText(review.MedicalSpecialty.name),
           specialtyType: review.MedicalSpecialty.specialtyType,
         },
         images: {
