@@ -1,1 +1,0 @@
-export { DetailHeader } from './DetailHeader';

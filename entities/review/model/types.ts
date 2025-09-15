@@ -114,6 +114,7 @@ export interface GetAllReviewsParams {
   offset?: number;
   category?: MedicalSpecialtyType | 'ALL';
   sort?: 'latest' | 'popular'; // 정렬 옵션
+  hospitalId?: string; // 특정 병원의 리뷰만 조회
 }
 
 // 전체 리뷰 목록 응답

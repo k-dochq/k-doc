@@ -14,6 +14,7 @@ export interface ParsedReviewQueryParams {
   limit: number;
   sort: ReviewSortOption;
   category?: MedicalSpecialtyType;
+  hospitalId?: string;
 }
 
 /**
@@ -24,6 +25,7 @@ export interface DbReviewQueryParams {
   limit: number;
   sort: ReviewSortOption;
   category?: MedicalSpecialtyType;
+  hospitalId?: string;
 }
 
 /**
@@ -59,11 +61,14 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
       ? (categoryParam as MedicalSpecialtyType)
       : undefined;
 
+  const hospitalId = searchParams.get('hospitalId') || undefined;
+
   return {
     page,
     limit,
     sort,
     category,
+    hospitalId,
   };
 }
 
@@ -76,6 +81,7 @@ export function convertToDbReviewQueryParams(params: ParsedReviewQueryParams): D
     limit: params.limit,
     sort: params.sort,
     category: params.category,
+    hospitalId: params.hospitalId,
   };
 }
 
@@ -99,6 +105,10 @@ export function buildReviewQueryString(params: Partial<ParsedReviewQueryParams>)
 
   if (params.category) {
     searchParams.set('category', params.category);
+  }
+
+  if (params.hospitalId) {
+    searchParams.set('hospitalId', params.hospitalId);
   }
 
   return searchParams.toString();

@@ -1,6 +1,5 @@
 'use client';
 
-import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
@@ -9,26 +8,32 @@ import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyReviewsState } from 'shared/ui/empty-reviews-state';
+import { PageHeader } from 'shared/ui/page-header';
 import { useAuth } from 'shared/lib/auth/useAuth';
 
-interface AllReviewsInfiniteListProps {
+interface HospitalReviewsContentProps {
+  hospitalId: string;
   lang: Locale;
   dict: Dictionary;
-  searchParams: {
-    category?: MedicalSpecialtyType;
+  searchParams?: {
     sort?: ReviewSortOption;
   };
 }
 
-export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsInfiniteListProps) {
-  const { category, sort } = searchParams;
+export function HospitalReviewsContent({
+  hospitalId,
+  lang,
+  dict,
+  searchParams = {},
+}: HospitalReviewsContentProps) {
+  const { sort } = searchParams;
   const { user } = useAuth();
 
   // 타입 안전한 파라미터 구성
   const queryParams = {
+    hospitalId,
     limit: 10,
     sort: sort || REVIEW_SORT_OPTIONS.LATEST,
-    category,
   };
 
   // 좋아요 토글 뮤테이션
@@ -54,9 +59,10 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
   if (isError) {
     return (
       <ErrorState
-        title={dict.allReviews?.error?.title || '리뷰 데이터를 불러올 수 없습니다'}
+        title={dict.hospitalReviews?.error?.title || '리뷰 데이터를 불러올 수 없습니다'}
         message={
-          dict.allReviews?.error?.message || '네트워크 연결을 확인하고 잠시 후 다시 시도해주세요'
+          dict.hospitalReviews?.error?.message ||
+          '네트워크 연결을 확인하고 잠시 후 다시 시도해주세요'
         }
         onRetry={() => window.location.reload()}
         className='py-12'
@@ -68,7 +74,16 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
   const allReviews = data?.pages.flatMap((page) => page.reviews) || [];
 
   return (
-    <div>
+    <div className=''>
+      {/* 헤더 */}
+      <PageHeader
+        lang={lang}
+        title={dict.hospitalReviews?.title || '시술후기'}
+        fallbackUrl={`/${lang}/hospital/${hospitalId}`}
+        variant='light'
+        bgClassName='bg-white'
+      />
+
       {/* 리뷰 리스트 */}
       {allReviews.length > 0 ? (
         <div className=''>
@@ -94,8 +109,8 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
             onIntersect={fetchNextPage}
             hasNextPage={hasNextPage}
             isFetchingNextPage={isFetchingNextPage}
-            loadingText={dict.allReviews?.loadingMore || '더 많은 리뷰를 불러오는 중...'}
-            endText={dict.allReviews?.allLoaded || '모든 리뷰를 불러왔습니다.'}
+            loadingText={dict.hospitalReviews?.loadingMore || '더 많은 리뷰를 불러오는 중...'}
+            endText={dict.hospitalReviews?.allLoaded || '모든 리뷰를 불러왔습니다.'}
           />
         </div>
       ) : (

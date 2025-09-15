@@ -4,7 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from '../model/types';
 import { ReviewLikeButton } from 'features/review-like/ui/ReviewLikeButton';
-import { DetailHeader } from 'shared/ui/detail-header';
+import { PageHeader } from 'shared/ui/page-header';
 import { ReviewListCardHeader } from './ReviewListCardHeader';
 import { ReviewListImages } from './ReviewListImages';
 import { ReviewListCardFooter } from './ReviewListCardFooter';
@@ -27,7 +27,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
   return (
     <div className=''>
       {/* 헤더 */}
-      <DetailHeader
+      <PageHeader
         lang={lang}
         title={title}
         fallbackUrl={`/${lang}/reviews`}

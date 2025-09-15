@@ -14,6 +14,7 @@ export async function getAllReviews({
   category,
   sort = 'latest',
   offset,
+  hospitalId,
 }: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
   // offset이 제공되면 사용하고, 그렇지 않으면 page를 기반으로 계산
   const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
@@ -21,6 +22,11 @@ export async function getAllReviews({
   try {
     // 필터 조건 구성
     const whereCondition: Prisma.ReviewWhereInput = {};
+
+    // hospitalId가 있으면 해당 병원의 리뷰만 필터링
+    if (hospitalId) {
+      whereCondition.hospitalId = hospitalId;
+    }
 
     // category가 있으면 MedicalSpecialty의 some 조건으로 필터링
     if (category && category !== 'ALL') {

@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { DetailHeader } from 'shared/ui/detail-header';
+import { PageHeader } from 'shared/ui/page-header';
 import { LikeButtonWrapper } from 'features/hospital-like';
 
 interface HospitalDetailHeaderProps {
@@ -17,7 +17,7 @@ export function HospitalDetailHeader({
   hospitalName,
 }: HospitalDetailHeaderProps) {
   return (
-    <DetailHeader
+    <PageHeader
       lang={lang}
       title={hospitalName || ''}
       fallbackUrl={`/${lang}/hospitals`}
