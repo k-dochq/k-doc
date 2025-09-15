@@ -25,6 +25,8 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    // 이미지 최적화 비활성화
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
