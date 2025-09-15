@@ -8,6 +8,7 @@ import { ReviewListCard, ReviewsSkeleton, useInfiniteAllReviews } from 'entities
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
+import { EmptyReviewsState } from 'shared/ui/empty-reviews-state';
 import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface AllReviewsInfiniteListProps {
@@ -53,8 +54,10 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
   if (isError) {
     return (
       <ErrorState
-        title='리뷰 데이터를 불러올 수 없습니다'
-        message='네트워크 연결을 확인하고 잠시 후 다시 시도해주세요'
+        title={dict.allReviews?.error?.title || '리뷰 데이터를 불러올 수 없습니다'}
+        message={
+          dict.allReviews?.error?.message || '네트워크 연결을 확인하고 잠시 후 다시 시도해주세요'
+        }
         onRetry={() => window.location.reload()}
         className='py-12'
       />
@@ -91,16 +94,12 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
             onIntersect={fetchNextPage}
             hasNextPage={hasNextPage}
             isFetchingNextPage={isFetchingNextPage}
-            loadingText='더 많은 리뷰를 불러오는 중...'
-            endText='모든 리뷰를 불러왔습니다.'
+            loadingText={dict.allReviews?.loadingMore || '더 많은 리뷰를 불러오는 중...'}
+            endText={dict.allReviews?.allLoaded || '모든 리뷰를 불러왔습니다.'}
           />
         </div>
       ) : (
-        <div className='flex flex-col items-center justify-center py-12'>
-          <div className='text-center'>
-            <p className='text-gray-500'>{dict.allReviews?.empty?.title || '리뷰가 없습니다.'}</p>
-          </div>
-        </div>
+        <EmptyReviewsState dict={dict} />
       )}
     </div>
   );
