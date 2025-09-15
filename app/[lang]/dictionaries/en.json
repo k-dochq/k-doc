@@ -118,7 +118,7 @@
     }
   },
   "reviewDetail": {
-    "title": "Review",
+    "title": "Review Detail",
     "content": "Review Content",
     "backButton": "Go Back"
   },

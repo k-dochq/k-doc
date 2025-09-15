@@ -1,0 +1,38 @@
+import { type Locale } from 'shared/config';
+import { BackButton } from 'shared/ui/button';
+
+interface DetailHeaderProps {
+  lang: Locale;
+  title: string;
+  fallbackUrl?: string;
+  rightContent?: React.ReactNode;
+  className?: string;
+  variant?: 'light' | 'dark';
+}
+
+export function DetailHeader({
+  lang,
+  title,
+  fallbackUrl,
+  rightContent,
+  className = '',
+  variant = 'dark',
+}: DetailHeaderProps) {
+  const getTextColor = () => {
+    return variant === 'light' ? 'text-gray-900' : 'text-white';
+  };
+
+  return (
+    <div className={`flex w-full items-center justify-between px-5 py-4 ${className}`}>
+      <div className='flex items-center gap-0'>
+        {/* 뒤로가기 버튼 */}
+        <BackButton fallbackUrl={fallbackUrl} variant={variant} />
+        {/* 제목 */}
+        <h1 className={`text-lg font-semibold ${getTextColor()}`}>{title}</h1>
+      </div>
+
+      {/* 오른쪽 컨텐츠 (좋아요 버튼 등) */}
+      {rightContent && <div>{rightContent}</div>}
+    </div>
+  );
+}

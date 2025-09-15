@@ -4,10 +4,10 @@ import { getDictionary } from '../../dictionaries';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import { getReviewDetail } from 'entities/review';
-import { ReviewDetailContent } from './ReviewDetailContent';
+import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
 import { ReviewDetailSkeleton } from './ReviewDetailSkeleton';
 
-interface ReviewDetailPageProps {
+interface PageProps {
   params: Promise<{
     lang: Locale;
     id: string;
@@ -15,9 +15,9 @@ interface ReviewDetailPageProps {
 }
 
 // 리뷰 페이지는 서버 컴포넌트로 동적 렌더링, 10분 캐시
-export const revalidate = 600; // 10분 (600초)
+export const revalidate = 1800;
 
-export default async function ReviewDetailPage({ params }: ReviewDetailPageProps) {
+export default async function ReviewDetailPage({ params }: PageProps) {
   const { lang, id } = await params;
 
   try {
@@ -25,12 +25,9 @@ export default async function ReviewDetailPage({ params }: ReviewDetailPageProps
     const dict = await getDictionary(lang);
 
     return (
-      <div className='px-4 py-6'>
-        {/* 리뷰 상세 내용 - Suspense로 스트리밍 */}
-        <Suspense fallback={<ReviewDetailSkeleton />}>
-          <ReviewDetailContent reviewId={id} lang={lang} dict={dict} />
-        </Suspense>
-      </div>
+      <Suspense fallback={<ReviewDetailSkeleton />}>
+        <ReviewDetailPageComponent reviewId={id} lang={lang} dict={dict} />
+      </Suspense>
     );
   } catch (error) {
     console.error('Error loading review detail page:', error);
@@ -39,7 +36,7 @@ export default async function ReviewDetailPage({ params }: ReviewDetailPageProps
 }
 
 // 동적 메타데이터 생성
-export async function generateMetadata({ params }: ReviewDetailPageProps) {
+export async function generateMetadata({ params }: PageProps) {
   const { lang, id } = await params;
 
   try {

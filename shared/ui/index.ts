@@ -10,3 +10,4 @@ export * from './category-button';
 export * from './icons/HeartIcon';
 export * from './icons/HeartOutlineIcon';
 export * from './buttons/LikeButton';
+export * from './detail-header';

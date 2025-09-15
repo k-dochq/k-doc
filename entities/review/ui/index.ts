@@ -1,5 +1,5 @@
 export { ReviewCard } from './ReviewCard';
-export { ReviewDetailCard } from './ReviewDetailCard';
+export { ReviewDetailContent } from './ReviewDetailContent';
 export { PopularReviewCard } from './PopularReviewCard';
 export { ReviewListCard } from './ReviewListCard';
 export { ReviewListCardHeader } from './ReviewListCardHeader';
