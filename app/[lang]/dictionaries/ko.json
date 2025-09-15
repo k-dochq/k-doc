@@ -233,6 +233,7 @@
     "reviews": "시술후기",
     "loading": "로딩 중...",
     "error": "데이터를 불러오는 중 오류가 발생했습니다.",
+    "errorMessage": "네트워크 연결을 확인하고 잠시 후 다시 시도해주세요",
     "retry": "다시 시도",
     "empty": {
       "hospitals": {

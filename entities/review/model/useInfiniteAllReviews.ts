@@ -9,6 +9,7 @@ interface UseInfiniteAllReviewsParams {
   category?: string;
   sort?: 'latest' | 'popular';
   hospitalId?: string;
+  likedOnly?: boolean;
   initialData?: GetAllReviewsResponse;
 }
 
@@ -24,6 +25,7 @@ async function fetchAllReviews({
   category,
   sort = 'latest',
   hospitalId,
+  likedOnly = false,
 }: {
   pageParam: number;
 } & UseInfiniteAllReviewsParams): Promise<GetAllReviewsResponse> {
@@ -39,6 +41,10 @@ async function fetchAllReviews({
 
   if (hospitalId) {
     params.append('hospitalId', hospitalId);
+  }
+
+  if (likedOnly) {
+    params.append('likedOnly', 'true');
   }
 
   const response = await fetch(`/api/reviews?${params.toString()}`, {
@@ -64,9 +70,10 @@ export function useInfiniteAllReviews({
   category,
   sort = 'latest',
   hospitalId,
+  likedOnly = false,
   initialData,
 }: UseInfiniteAllReviewsParams = {}) {
-  const filters = { limit, category, sort, hospitalId };
+  const filters = { limit, category, sort, hospitalId, likedOnly };
 
   return useInfiniteQuery({
     queryKey: queryKeys.reviews.allInfinite(filters),
@@ -77,6 +84,7 @@ export function useInfiniteAllReviews({
         category,
         sort,
         hospitalId,
+        likedOnly,
       }),
     getNextPageParam: (lastPage) => {
       return lastPage.hasNextPage ? lastPage.currentPage + 1 : undefined;
