@@ -55,6 +55,12 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
 
   const search = searchParams.get('search')?.trim() || undefined;
 
+  // 지역 필터 파라미터 파싱
+  const districtsParam = searchParams.get('districts');
+  const districtIds = districtsParam
+    ? districtsParam.split(',').filter(Boolean).map(id => id.trim())
+    : undefined;
+
   return {
     page,
     limit,
@@ -63,6 +69,7 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
     category,
     minRating,
     search,
+    districtIds,
   };
 }
 
@@ -78,6 +85,7 @@ export function convertToDbQueryParams(params: ParsedHospitalQueryParams): DbHos
     specialtyType: params.category,
     minRating: params.minRating,
     search: params.search,
+    districtIds: params.districtIds,
   };
 }
 
@@ -113,6 +121,10 @@ export function buildHospitalQueryString(params: Partial<ParsedHospitalQueryPara
 
   if (params.search) {
     searchParams.set('search', params.search);
+  }
+
+  if (params.districtIds && params.districtIds.length > 0) {
+    searchParams.set('districts', params.districtIds.join(','));
   }
 
   return searchParams.toString();

@@ -7,40 +7,45 @@ import { ParentDistrictList } from './ParentDistrictList';
 import { ChildDistrictList } from './ChildDistrictList';
 import { DistrictFilterButton } from './DistrictFilterButton';
 import { useChildDistricts } from '../model/useDistricts';
+import { type useDistrictFilter } from '../model/useDistrictFilter';
 
 interface DistrictFilterDrawerProps {
   lang: Locale;
   onClose?: () => void;
+  districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
-export function DistrictFilterDrawer({ lang, onClose }: DistrictFilterDrawerProps) {
+export function DistrictFilterDrawer({ lang, onClose, districtFilter }: DistrictFilterDrawerProps) {
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
-  const [selectedChildIds, setSelectedChildIds] = useState<string[]>([]);
 
   const { data: childDistricts = [] } = useChildDistricts(selectedParentId);
 
   const handleParentSelect = (parentId: string) => {
     setSelectedParentId(parentId);
-    setSelectedChildIds([]); // 부모 지역 변경 시 선택된 하위 지역 초기화
+    // 부모 지역 변경 시 해당 부모의 하위 지역들 중 이미 선택된 것들만 유지하지 않고 초기화
+    // 필요하다면 나중에 개선할 수 있음
   };
 
   const handleChildToggle = (childId: string) => {
-    setSelectedChildIds((prev) =>
-      prev.includes(childId) ? prev.filter((id) => id !== childId) : [...prev, childId],
-    );
+    districtFilter.toggleDistrict(childId);
   };
 
   const handleSelectAll = () => {
-    setSelectedChildIds(childDistricts.map((district) => district.id));
+    districtFilter.selectAllDistricts(childDistricts.map((district) => district.id));
   };
 
   const handleDeselectAll = () => {
-    setSelectedChildIds([]);
+    // 현재 선택된 부모의 하위 지역들만 선택 해제
+    const currentChildIds = childDistricts.map((district) => district.id);
+    const otherSelectedIds = districtFilter.selectedDistrictIds.filter(
+      (id) => !currentChildIds.includes(id),
+    );
+    districtFilter.setSelectedDistrictIds(otherSelectedIds);
   };
 
   const handleReset = () => {
     setSelectedParentId(null);
-    setSelectedChildIds([]);
+    districtFilter.resetDistrictFilter();
   };
 
   const handleComplete = () => {
@@ -70,7 +75,7 @@ export function DistrictFilterDrawer({ lang, onClose }: DistrictFilterDrawerProp
         <ChildDistrictList
           lang={lang}
           selectedParentId={selectedParentId}
-          selectedChildIds={selectedChildIds}
+          selectedChildIds={districtFilter.selectedDistrictIds}
           onChildToggle={handleChildToggle}
           onSelectAll={handleSelectAll}
           onDeselectAll={handleDeselectAll}
@@ -79,7 +84,7 @@ export function DistrictFilterDrawer({ lang, onClose }: DistrictFilterDrawerProp
 
       {/* 하단 버튼 */}
       <DistrictFilterButton
-        selectedChildIds={selectedChildIds}
+        selectedChildIds={districtFilter.selectedDistrictIds}
         childDistricts={childDistricts}
         onComplete={handleComplete}
       />

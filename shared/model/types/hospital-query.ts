@@ -42,6 +42,7 @@ export interface HospitalQueryParams {
   category?: MedicalSpecialtyType;
   minRating?: string;
   search?: string;
+  districts?: string; // 쉼표로 구분된 지역 ID 문자열
 }
 
 // 파싱된 쿼리 파라미터 타입 정의
@@ -53,6 +54,7 @@ export interface ParsedHospitalQueryParams extends Record<string, unknown> {
   category?: MedicalSpecialtyType;
   minRating: number;
   search?: string;
+  districtIds?: string[]; // 파싱된 지역 ID 배열
 }
 
 // 데이터베이스 쿼리 파라미터 타입 정의
@@ -64,6 +66,7 @@ export interface DbHospitalQueryParams {
   specialtyType?: MedicalSpecialtyType;
   minRating: number;
   search?: string;
+  districtIds?: string[]; // 지역 ID 배열
 }
 
 // 기본값 정의
