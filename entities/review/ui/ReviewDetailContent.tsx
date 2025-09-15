@@ -23,7 +23,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
   const content = extractLocalizedText(review.content, lang);
 
   return (
-    <div className='space-y-6'>
+    <div className=''>
       {/* 헤더 */}
       <DetailHeader
         lang={lang}
@@ -43,7 +43,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
       />
 
       {/* 리뷰 컨텐츠 */}
-      <div className='space-y-6 px-4'>
+      <div className='px-5 py-4'>
         {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
         <ReviewListCardHeader review={review} lang={lang} />
 
