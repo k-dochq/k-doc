@@ -8,6 +8,7 @@ import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyReviewsState } from 'shared/ui/empty-reviews-state';
+import { PageHeader } from 'shared/ui/page-header';
 import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface HospitalReviewsContentProps {
@@ -74,6 +75,15 @@ export function HospitalReviewsContent({
 
   return (
     <div className=''>
+      {/* 헤더 */}
+      <PageHeader
+        lang={lang}
+        title={dict.hospitalReviews?.title || '시술후기'}
+        fallbackUrl={`/${lang}/hospital/${hospitalId}`}
+        variant='light'
+        bgClassName='bg-white'
+      />
+
       {/* 리뷰 리스트 */}
       {allReviews.length > 0 ? (
         <div className=''>
