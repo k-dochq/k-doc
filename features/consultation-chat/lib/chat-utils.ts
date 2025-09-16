@@ -4,6 +4,8 @@
  */
 
 import { type ChatMessage } from '../api/entities/types';
+import { formatDateCustom, formatTime } from 'shared/lib/date-utils';
+import dayjs from 'dayjs';
 
 /**
  * 채팅방 ID 생성 (hospitalId-userId 형태)
@@ -28,28 +30,27 @@ export function extractUserIdFromRoomId(roomId: string): string {
 }
 
 /**
- * 메시지 시간 포맷팅
+ * 메시지 시간 포맷팅 (HH:MM 형식)
+ * 공통 유틸리티 재활용
  */
 export function formatMessageTime(timestamp: string): string {
-  const date = new Date(timestamp);
-  const now = new Date();
-  const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
+  return formatTime(timestamp);
+}
 
-  if (diffInMinutes < 1) {
-    return '방금 전';
-  } else if (diffInMinutes < 60) {
-    return `${diffInMinutes}분 전`;
-  } else if (diffInMinutes < 1440) {
-    const hours = Math.floor(diffInMinutes / 60);
-    return `${hours}시간 전`;
-  } else {
-    return date.toLocaleDateString('ko-KR', {
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  }
+/**
+ * 메시지 날짜 포맷팅 (YYYY년 M월 D일 형식)
+ * 공통 유틸리티 재활용
+ */
+export function formatMessageDate(timestamp: string): string {
+  return formatDateCustom(timestamp, 'YYYY년 M월 D일');
+}
+
+/**
+ * 두 메시지가 같은 날인지 확인
+ * dayjs 사용으로 더 정확한 비교
+ */
+export function isSameDay(timestamp1: string, timestamp2: string): boolean {
+  return dayjs(timestamp1).isSame(dayjs(timestamp2), 'day');
 }
 
 /**

@@ -255,6 +255,9 @@
     "loading": "Loading...",
     "error": "An error occurred while loading data.",
     "retry": "Retry",
+    "input": {
+      "placeholder": "Ask anything!"
+    },
     "empty": {
       "chat": {
         "title": "No ongoing consultations",

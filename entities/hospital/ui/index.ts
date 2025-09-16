@@ -16,3 +16,5 @@ export * from './HospitalThumbnail';
 export * from './HospitalInfo';
 export * from './HospitalCard';
 export * from './HospitalList';
+export * from './HospitalAvatar';
+export * from './HospitalHeader';
