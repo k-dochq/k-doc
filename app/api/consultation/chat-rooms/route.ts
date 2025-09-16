@@ -14,7 +14,7 @@ export interface ChatRoom {
   unreadCount?: number;
 }
 
-export async function GET(request: NextRequest): Promise<NextResponse> {
+export async function GET(_request: NextRequest): Promise<NextResponse> {
   try {
     const supabase = await createClient();
 

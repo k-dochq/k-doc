@@ -5,6 +5,10 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useChatRooms } from 'lib/queries/consultation-chat-rooms';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
+import { ChatRoomCard } from './ChatRoomCard';
+import { ChatRoomSkeleton } from './ChatRoomSkeleton';
+import { ChatRoomErrorState } from './ChatRoomErrorState';
+import { ChatRoomEmptyState } from './ChatRoomEmptyState';
 
 interface ConsultationChatTabProps {
   lang: Locale;
@@ -47,5 +51,38 @@ export function ConsultationChatTab({ lang, dict }: ConsultationChatTabProps) {
     }
   }, [isLoading]);
 
-  return <div></div>;
+  const handleChatRoomClick = (hospitalId: string) => {
+    console.log('🏥 Chat room clicked:', hospitalId);
+    // TODO: 채팅방으로 이동하는 로직 구현
+  };
+
+  const handleRetry = () => {
+    // TanStack Query의 refetch 기능 사용
+    window.location.reload();
+  };
+
+  if (isLoading) {
+    return <ChatRoomSkeleton count={3} />;
+  }
+
+  if (error) {
+    return <ChatRoomErrorState onRetry={handleRetry} />;
+  }
+
+  if (!chatRooms || chatRooms.length === 0) {
+    return <ChatRoomEmptyState />;
+  }
+
+  return (
+    <div className='p-5'>
+      {chatRooms.map((chatRoom) => (
+        <ChatRoomCard
+          key={chatRoom.hospitalId}
+          chatRoom={chatRoom}
+          lang={lang}
+          onClick={handleChatRoomClick}
+        />
+      ))}
+    </div>
+  );
 }
