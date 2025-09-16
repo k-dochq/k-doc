@@ -59,7 +59,7 @@ export function InfiniteScrollTrigger({
           </div>
         </div>
       )}
-      {!hasNextPage && <div className='text-center text-sm text-gray-500'>{endText}</div>}
+      {/* {!hasNextPage && <div className='text-center text-sm text-gray-500'>{endText}</div>} */}
     </div>
   );
 }
