@@ -340,7 +340,15 @@
           }
         },
         "required": "Required",
-        "submitButton": "Request Consultation"
+        "submitButton": "Request Consultation",
+        "errorMessages": {
+          "UNAUTHORIZED": "Please log in to continue.",
+          "MISSING_REQUIRED_FIELDS": "Please fill in all required fields.",
+          "HOSPITAL_NOT_FOUND": "Hospital information not found.",
+          "INTERNAL_SERVER_ERROR": "A server error occurred. Please try again later.",
+          "NETWORK_ERROR": "A network error occurred. Please check your internet connection.",
+          "UNKNOWN_ERROR": "An unknown error occurred."
+        }
       }
     }
   },

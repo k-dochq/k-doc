@@ -73,9 +73,9 @@ export function useConsultationForm(lang: Locale, dict: Dictionary) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (onSuccess?: () => void) => {
     if (validateForm()) {
-      console.log('상담신청 데이터:', formData);
+      onSuccess?.();
       return true;
     }
     return false;

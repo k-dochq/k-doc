@@ -4,6 +4,8 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useConsultationForm } from '../model/useConsultationForm';
 import { AGE_GROUPS, GENDER_OPTIONS } from '../model/types';
+import { useConsultationRequest } from '../api/useConsultationRequest';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { FormInput } from './FormInput';
 import { FormTextarea } from './FormTextarea';
 import { FormSelect } from './FormSelect';
@@ -46,18 +48,77 @@ const CalendarIcon = ({ className }: { className?: string }) => (
 );
 
 interface ConsultationFormProps {
+  hospitalId: string;
   lang: Locale;
   dict: Dictionary;
 }
 
-export function ConsultationForm({ lang, dict }: ConsultationFormProps) {
+export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormProps) {
   const { formData, errors, updateField, handleSubmit, isFormValid } = useConsultationForm(
     lang,
     dict,
   );
+  const router = useLocalizedRouter();
+  const consultationMutation = useConsultationRequest();
 
   const onSubmit = () => {
-    handleSubmit();
+    handleSubmit(() => {
+      // 폼 유효성 검사 통과 시 API 호출
+      consultationMutation.mutate(
+        {
+          hospitalId,
+          name: formData.name,
+          gender: formData.gender,
+          ageGroup: formData.ageGroup,
+          phoneNumber: formData.phoneNumber,
+          preferredDate: formData.preferredDate,
+          content: formData.content,
+        },
+        {
+          onSuccess: () => {
+            // 성공 시 상담채팅 페이지로 이동
+            router.push(`/chat/${hospitalId}`);
+          },
+          onError: (error) => {
+            console.error('상담신청 실패:', error);
+
+            // 에러 메시지 매핑
+            const errorMessage = error.message;
+            let displayMessage =
+              dict.consultation?.request?.form?.errorMessages?.UNKNOWN_ERROR ||
+              '알 수 없는 오류가 발생했습니다.';
+
+            // 서버에서 반환된 에러 코드에 따른 메시지 매핑
+            if (errorMessage.includes('UNAUTHORIZED')) {
+              displayMessage =
+                dict.consultation?.request?.form?.errorMessages?.UNAUTHORIZED ||
+                '로그인이 필요합니다.';
+            } else if (errorMessage.includes('MISSING_REQUIRED_FIELDS')) {
+              displayMessage =
+                dict.consultation?.request?.form?.errorMessages?.MISSING_REQUIRED_FIELDS ||
+                '필수 항목을 모두 입력해주세요.';
+            } else if (errorMessage.includes('HOSPITAL_NOT_FOUND')) {
+              displayMessage =
+                dict.consultation?.request?.form?.errorMessages?.HOSPITAL_NOT_FOUND ||
+                '병원 정보를 찾을 수 없습니다.';
+            } else if (errorMessage.includes('INTERNAL_SERVER_ERROR')) {
+              displayMessage =
+                dict.consultation?.request?.form?.errorMessages?.INTERNAL_SERVER_ERROR ||
+                '서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
+            } else if (
+              errorMessage.includes('Failed to fetch') ||
+              errorMessage.includes('NetworkError')
+            ) {
+              displayMessage =
+                dict.consultation?.request?.form?.errorMessages?.NETWORK_ERROR ||
+                '네트워크 오류가 발생했습니다. 인터넷 연결을 확인해주세요.';
+            }
+
+            alert(displayMessage);
+          },
+        },
+      );
+    });
   };
 
   return (
@@ -158,8 +219,10 @@ export function ConsultationForm({ lang, dict }: ConsultationFormProps) {
       />
 
       {/* 상담신청 버튼 */}
-      <SubmitButton onClick={onSubmit} disabled={!isFormValid}>
-        {dict.consultation?.request?.form?.submitButton || '상담신청'}
+      <SubmitButton onClick={onSubmit} disabled={!isFormValid || consultationMutation.isPending}>
+        {consultationMutation.isPending
+          ? dict.consultation?.loading || '로딩 중...'
+          : dict.consultation?.request?.form?.submitButton || '상담신청'}
       </SubmitButton>
     </div>
   );

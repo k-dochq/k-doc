@@ -50,7 +50,7 @@ export function ConsultationRequestForm({ hospitalId, lang, dict }: Consultation
       <div className='h-[1px] bg-neutral-200' />
 
       {/* 상담신청 폼 */}
-      <ConsultationForm lang={lang} dict={dict} />
+      <ConsultationForm hospitalId={hospitalId} lang={lang} dict={dict} />
     </div>
   );
 }
