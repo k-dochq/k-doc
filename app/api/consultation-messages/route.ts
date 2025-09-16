@@ -1,129 +1,139 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {
-  ConsultationMessageRepository,
-  AuthService,
-  GetConsultationMessagesUseCase,
-  CreateConsultationMessageUseCase,
-} from 'features/consultation-message/api-server';
-import {
-  GetConsultationMessagesSchema,
-  CreateConsultationMessageSchema,
-} from 'features/consultation-message/api/entities/schemas';
-import { routeErrorLogger } from 'shared/lib';
+import { createClient } from 'shared/lib/supabase/server';
+import { prisma } from 'shared/lib/prisma';
+import { v4 as uuidv4 } from 'uuid';
 
-// 채팅 메시지 조회 (GET)
-export async function GET(request: NextRequest) {
-  const endpoint = '/api/consultation-messages';
-  const method = 'GET';
-
-  try {
-    // URL 파라미터 추출 및 검증
-    const { searchParams } = new URL(request.url);
-    const hospitalId = searchParams.get('hospitalId');
-    const userId = searchParams.get('userId');
-
-    if (!hospitalId || !userId) {
-      return NextResponse.json(
-        { success: false, error: 'Missing required parameters' },
-        { status: 400 },
-      );
-    }
-
-    // 입력 검증
-    const validationResult = GetConsultationMessagesSchema.safeParse({
-      hospitalId,
-      userId,
-    });
-
-    if (!validationResult.success) {
-      return NextResponse.json(
-        { success: false, error: validationResult.error.issues[0]?.message || 'Invalid input' },
-        { status: 400 },
-      );
-    }
-
-    // 의존성 주입
-    const consultationMessageRepository = new ConsultationMessageRepository();
-    const authService = new AuthService();
-    const getConsultationMessagesUseCase = new GetConsultationMessagesUseCase(
-      consultationMessageRepository,
-      authService,
-    );
-
-    // Use Case 실행
-    const result = await getConsultationMessagesUseCase.execute(validationResult.data);
-
-    return NextResponse.json(result, { status: 200 });
-  } catch (error) {
-    const requestId = routeErrorLogger.logError({
-      error: error as Error,
-      endpoint,
-      method,
-      request,
-    });
-
-    return NextResponse.json(
-      {
-        success: false,
-        error: (error as Error).message || 'Internal server error',
-        requestId,
-      },
-      { status: 500 },
-    );
-  }
+interface ConsultationRequestBody {
+  hospitalId: string;
+  name: string;
+  gender: 'MALE' | 'FEMALE';
+  ageGroup: string;
+  phoneNumber: string;
+  preferredDate: string;
+  content: string;
 }
 
-// 채팅 메시지 생성 (POST)
 export async function POST(request: NextRequest) {
-  const endpoint = '/api/consultation-messages';
-  const method = 'POST';
-
   try {
-    // 요청 본문 파싱
-    const body = await request.json();
-    const { hospitalId, content, senderType = 'USER' } = body;
+    const supabase = await createClient();
+    const {
+      data: { session },
+      error: authError,
+    } = await supabase.auth.getSession();
 
-    // 입력 검증
-    const validationResult = CreateConsultationMessageSchema.safeParse({
-      hospitalId,
-      content,
-      senderType,
-    });
+    if (authError || !session?.user?.id) {
+      return NextResponse.json({ success: false, error: 'UNAUTHORIZED' }, { status: 401 });
+    }
 
-    if (!validationResult.success) {
+    const body: ConsultationRequestBody = await request.json();
+    const { hospitalId, name, gender, ageGroup, phoneNumber, preferredDate, content } = body;
+
+    // 입력 데이터 검증
+    if (
+      !hospitalId ||
+      !name ||
+      !gender ||
+      !ageGroup ||
+      !phoneNumber ||
+      !preferredDate ||
+      !content
+    ) {
       return NextResponse.json(
-        { success: false, error: validationResult.error.issues[0]?.message || 'Invalid input' },
+        { success: false, error: 'MISSING_REQUIRED_FIELDS' },
         { status: 400 },
       );
     }
 
-    // 의존성 주입
-    const consultationMessageRepository = new ConsultationMessageRepository();
-    const authService = new AuthService();
-    const createConsultationMessageUseCase = new CreateConsultationMessageUseCase(
-      consultationMessageRepository,
-      authService,
-    );
-
-    // Use Case 실행
-    const result = await createConsultationMessageUseCase.execute(validationResult.data);
-
-    return NextResponse.json(result, { status: 201 });
-  } catch (error) {
-    const requestId = routeErrorLogger.logError({
-      error: error as Error,
-      endpoint,
-      method,
-      request,
+    // 병원 존재 여부 확인
+    const hospital = await prisma.hospital.findUnique({
+      where: { id: hospitalId },
+      select: { id: true, name: true },
     });
 
-    return NextResponse.json(
-      {
-        success: false,
-        error: (error as Error).message || 'Internal server error',
-        requestId,
+    if (!hospital) {
+      return NextResponse.json({ success: false, error: 'HOSPITAL_NOT_FOUND' }, { status: 404 });
+    }
+
+    // 해당 사용자와 병원 간의 기존 대화 확인
+    const existingMessages = await prisma.consultationMessage.findFirst({
+      where: {
+        userId: session.user.id,
+        hospitalId: hospitalId,
       },
-      { status: 500 },
-    );
+    });
+
+    const messages = [];
+
+    // 첫 대화인 경우 병원 어드민의 환영 메시지 추가
+    if (!existingMessages) {
+      const welcomeMessage = {
+        id: uuidv4(),
+        userId: session.user.id,
+        hospitalId: hospitalId,
+        senderType: 'ADMIN' as const,
+        content: '안녕하세요! 반갑습니다.\n성형과 관련된 무엇이든 물어보세요.',
+        createdAt: new Date(),
+      };
+      messages.push(welcomeMessage);
+    }
+
+    // 나이대 매핑
+    const ageGroupMap: Record<string, string> = {
+      '10s': '10대',
+      '20s': '20대',
+      '30s': '30대',
+      '40s': '40대',
+      '50s': '50대',
+      '60s': '60대 이상',
+    };
+
+    // 성별 매핑
+    const genderMap: Record<string, string> = {
+      MALE: '남성',
+      FEMALE: '여성',
+    };
+
+    // 병원 이름 추출 (다국어 JSON에서 한국어 이름)
+    const hospitalName =
+      typeof hospital.name === 'object' && hospital.name !== null
+        ? (hospital.name as any).ko || (hospital.name as any).en || '병원'
+        : '병원';
+
+    // 사용자의 상담신청 메시지 생성
+    const consultationRequestMessage = {
+      id: uuidv4(),
+      userId: session.user.id,
+      hospitalId: hospitalId,
+      senderType: 'USER' as const,
+      content: `(자동 생성 예약 신청서)
+${hospitalName} 시술 상담 신청합니다.
+
+이름: ${name}
+성별: ${genderMap[gender] || gender}
+나이대: ${ageGroupMap[ageGroup] || ageGroup}
+휴대폰번호: ${phoneNumber}
+예약 희망날짜: ${preferredDate}
+
+기타 문의사항:
+${content}`,
+      createdAt: new Date(),
+    };
+    messages.push(consultationRequestMessage);
+
+    // 데이터베이스에 메시지들 저장
+    await prisma.consultationMessage.createMany({
+      data: messages,
+    });
+
+    return NextResponse.json({
+      success: true,
+      data: {
+        hospitalId,
+        messageCount: messages.length,
+      },
+    });
+  } catch (error) {
+    console.error('Consultation request error:', error);
+    return NextResponse.json({ success: false, error: 'INTERNAL_SERVER_ERROR' }, { status: 500 });
   }
 }
