@@ -30,7 +30,14 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
       return;
     }
 
-    const result = await signUpWithEmail(formData.email, formData.password);
+    const result = await signUpWithEmail({
+      email: formData.email,
+      password: formData.password,
+      passportName: formData.passportName,
+      nationality: formData.nationality,
+      phoneNumber: formData.phoneNumber,
+      birthDate: formData.birthDate,
+    });
 
     if (result.success) {
       // 회원가입 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 이동
@@ -48,10 +55,9 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           type='email'
           value={formData.email}
           onChange={(e) => updateField('email', e.target.value)}
-          placeholder='your-email@example.com'
+          placeholder={dict.auth?.signup?.placeholders?.email || 'your-email@example.com'}
           error={errors.email}
           disabled={isLoading}
-          required
         />
 
         {/* 비밀번호 입력 */}
@@ -60,17 +66,9 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           type='password'
           value={formData.password}
           onChange={(e) => updateField('password', e.target.value)}
-          placeholder={
-            lang === 'en'
-              ? '6+ characters'
-              : lang === 'th'
-                ? '6 ตัวอักษรขึ้นไป'
-                : '6자 이상의 비밀번호'
-          }
+          placeholder={dict.auth?.signup?.placeholders?.password || '6자 이상의 비밀번호'}
           error={errors.password}
           disabled={isLoading}
-          minLength={6}
-          required
         />
 
         {/* 비밀번호 확인 입력 */}
@@ -80,16 +78,60 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           value={formData.confirmPassword}
           onChange={(e) => updateField('confirmPassword', e.target.value)}
           placeholder={
-            lang === 'en'
-              ? 'Confirm your password'
-              : lang === 'th'
-                ? 'ยืนยันรหัสผ่านของคุณ'
-                : '비밀번호를 다시 입력하세요'
+            dict.auth?.signup?.placeholders?.confirmPassword || '비밀번호를 다시 입력하세요'
           }
           error={errors.confirmPassword}
           disabled={isLoading}
-          minLength={6}
-          required
+        />
+
+        {/* 여권 영문 이름 입력 (필수) */}
+        <FormInput
+          label={dict.auth?.signup?.passportName || '여권 영문 이름'}
+          type='text'
+          value={formData.passportName}
+          onChange={(e) => updateField('passportName', e.target.value)}
+          placeholder={
+            dict.auth?.signup?.placeholders?.passportName || '여권에 기재된 영문 이름을 입력하세요'
+          }
+          error={errors.passportName}
+          disabled={isLoading}
+        />
+
+        {/* 국적 입력 (선택) */}
+        <FormInput
+          label={dict.auth?.signup?.nationality || '국적'}
+          type='text'
+          value={formData.nationality}
+          onChange={(e) => updateField('nationality', e.target.value)}
+          placeholder={
+            dict.auth?.signup?.placeholders?.nationality || '국적을 입력하세요 (선택사항)'
+          }
+          error={errors.nationality}
+          disabled={isLoading}
+        />
+
+        {/* 휴대폰번호 입력 (선택) */}
+        <FormInput
+          label={dict.auth?.signup?.phoneNumber || '휴대폰번호'}
+          type='tel'
+          value={formData.phoneNumber}
+          onChange={(e) => updateField('phoneNumber', e.target.value)}
+          placeholder={dict.auth?.signup?.placeholders?.phoneNumber || '010-0000-0000 (선택사항)'}
+          error={errors.phoneNumber}
+          disabled={isLoading}
+        />
+
+        {/* 생년월일 입력 (선택) */}
+        <FormInput
+          label={dict.auth?.signup?.birthDate || '생년월일'}
+          type='date'
+          value={formData.birthDate}
+          onChange={(e) => updateField('birthDate', e.target.value)}
+          placeholder={
+            dict.auth?.signup?.placeholders?.birthDate || '생년월일을 선택하세요 (선택사항)'
+          }
+          error={errors.birthDate}
+          disabled={isLoading}
         />
 
         {/* 에러 메시지 */}
@@ -100,7 +142,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
         )}
 
         {/* 회원가입 버튼 */}
-        <FormButton type='submit' loading={isLoading} disabled={!isFormValid || isLoading}>
+        <FormButton type='submit' loading={isLoading} disabled={isLoading}>
           {dict.auth?.signup?.signupButton || '회원가입'}
         </FormButton>
       </form>

@@ -31,7 +31,7 @@ export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps
         {/* 하단 로그인 버튼 영역 */}
         <div className='mt-auto pb-5'>
           <div className='space-y-3'>
-            <GoogleSignInButton locale={lang} dict={dict} redirectTo={redirectTo} />
+            {/* <GoogleSignInButton locale={lang} dict={dict} redirectTo={redirectTo} /> */}
             {/* <KakaoSignInButton locale={lang} dict={dict} /> */}
             <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
             {/* 하단 로고 */}

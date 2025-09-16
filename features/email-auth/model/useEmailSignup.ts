@@ -10,11 +10,17 @@ interface UseEmailSignupParams {
   dict: Dictionary;
 }
 
+interface SignupData {
+  email: string;
+  password: string;
+  passportName?: string;
+  nationality?: string;
+  phoneNumber?: string;
+  birthDate?: string;
+}
+
 interface UseEmailSignupReturn {
-  signUpWithEmail: (
-    email: string,
-    password: string,
-  ) => Promise<{ success: boolean; error?: string }>;
+  signUpWithEmail: (data: SignupData) => Promise<{ success: boolean; error?: string }>;
   isLoading: boolean;
   error: string | null;
 }
@@ -24,8 +30,7 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
   const [error, setError] = useState<string | null>(null);
 
   const signUpWithEmail = async (
-    email: string,
-    password: string,
+    signupData: SignupData,
   ): Promise<{ success: boolean; error?: string }> => {
     setIsLoading(true);
     setError(null);
@@ -33,11 +38,19 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
     try {
       const supabase = createClient();
 
+      // 메타데이터 준비
+      const metadata: Record<string, string> = {};
+      if (signupData.passportName) metadata.passport_name = signupData.passportName;
+      if (signupData.nationality) metadata.nationality = signupData.nationality;
+      if (signupData.phoneNumber) metadata.phone_number = signupData.phoneNumber;
+      if (signupData.birthDate) metadata.birth_date = signupData.birthDate;
+
       const { data, error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
+        email: signupData.email,
+        password: signupData.password,
         options: {
           emailRedirectTo: `${window.location.origin}/auth/callback`,
+          data: metadata,
         },
       });
 
