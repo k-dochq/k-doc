@@ -134,3 +134,10 @@ export function addToDate(
 export function formatDateCustom(date: Date | string, format: string): string {
   return dayjs(date).format(format);
 }
+
+/**
+ * 시간을 HH:MM 형식으로 포맷팅
+ */
+export function formatTime(date: Date | string): string {
+  return dayjs(date).format('HH:mm');
+}

@@ -11,7 +11,7 @@ export * from './model/useRealtimeChat';
 export * from './lib/chat-utils';
 
 // UI Components
-// export * from './ui/ConsultationChat'; // Removed - using empty screen for now
+export * from './ui/ConsultationChatClient';
 
 // Note: Available modules:
 // - ChatMessage, TypingEvent types
