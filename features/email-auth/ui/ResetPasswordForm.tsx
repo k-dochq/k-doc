@@ -11,16 +11,10 @@ import { usePasswordUpdate } from '../model/usePasswordUpdate';
 interface ResetPasswordFormProps {
   lang: Locale;
   dict: Dictionary;
-  accessToken: string;
-  refreshToken: string;
+  tokenHash: string;
 }
 
-export function ResetPasswordForm({
-  lang,
-  dict,
-  accessToken,
-  refreshToken,
-}: ResetPasswordFormProps) {
+export function ResetPasswordForm({ lang, dict, tokenHash }: ResetPasswordFormProps) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -29,8 +23,7 @@ export function ResetPasswordForm({
   const { updatePassword, isLoading, error, isSuccess } = usePasswordUpdate({
     locale: lang,
     dict,
-    accessToken,
-    refreshToken,
+    tokenHash,
   });
 
   const validatePassword = (password: string): boolean => {

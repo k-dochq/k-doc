@@ -8,8 +8,7 @@ import { createClient } from 'shared/lib/supabase/client';
 interface UsePasswordUpdateParams {
   locale: Locale;
   dict: Dictionary;
-  accessToken: string;
-  refreshToken: string;
+  tokenHash: string;
 }
 
 interface UsePasswordUpdateReturn {
@@ -22,36 +21,35 @@ interface UsePasswordUpdateReturn {
 export function usePasswordUpdate({
   locale,
   dict,
-  accessToken,
-  refreshToken,
+  tokenHash,
 }: UsePasswordUpdateParams): UsePasswordUpdateReturn {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    // 컴포넌트 마운트 시 세션 설정
-    const setSession = async () => {
+    // 컴포넌트 마운트 시 토큰 검증 및 세션 설정
+    const verifyToken = async () => {
       const supabase = createClient();
 
       try {
-        const { error } = await supabase.auth.setSession({
-          access_token: accessToken,
-          refresh_token: refreshToken,
+        const { error } = await supabase.auth.verifyOtp({
+          token_hash: tokenHash,
+          type: 'recovery',
         });
 
         if (error) {
-          console.error('Error setting session:', error);
-          setError(dict.auth?.resetPassword?.sessionError || '세션 설정 중 오류가 발생했습니다.');
+          console.error('Error verifying token:', error);
+          setError(dict.auth?.resetPassword?.sessionError || '토큰 검증 중 오류가 발생했습니다.');
         }
       } catch (err) {
-        console.error('Error setting session:', err);
-        setError(dict.auth?.resetPassword?.sessionError || '세션 설정 중 오류가 발생했습니다.');
+        console.error('Error verifying token:', err);
+        setError(dict.auth?.resetPassword?.sessionError || '토큰 검증 중 오류가 발생했습니다.');
       }
     };
 
-    setSession();
-  }, [accessToken, refreshToken, dict]);
+    verifyToken();
+  }, [tokenHash, dict]);
 
   const updatePassword = async (
     newPassword: string,

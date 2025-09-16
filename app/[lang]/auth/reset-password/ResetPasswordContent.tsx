@@ -7,20 +7,13 @@ import { ResetPasswordForm } from 'features/email-auth';
 interface ResetPasswordContentProps {
   lang: Locale;
   dict: Dictionary;
-  accessToken?: string;
-  refreshToken?: string;
+  tokenHash?: string;
   type?: string;
 }
 
-export function ResetPasswordContent({
-  lang,
-  dict,
-  accessToken,
-  refreshToken,
-  type,
-}: ResetPasswordContentProps) {
+export function ResetPasswordContent({ lang, dict, tokenHash, type }: ResetPasswordContentProps) {
   // 토큰이 없거나 type이 recovery가 아닌 경우 에러 표시
-  if (!accessToken || !refreshToken || type !== 'recovery') {
+  if (!tokenHash || type !== 'recovery') {
     return (
       <div className='flex min-h-screen items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8'>
         <div className='w-full max-w-md space-y-8'>
@@ -49,12 +42,7 @@ export function ResetPasswordContent({
             {dict.auth?.resetPassword?.description || '새로운 비밀번호를 입력해주세요.'}
           </p>
         </div>
-        <ResetPasswordForm
-          lang={lang}
-          dict={dict}
-          accessToken={accessToken}
-          refreshToken={refreshToken}
-        />
+        <ResetPasswordForm lang={lang} dict={dict} tokenHash={tokenHash} />
       </div>
     </div>
   );

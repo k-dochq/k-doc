@@ -7,24 +7,15 @@ interface ResetPasswordPageProps {
     lang: Locale;
   }>;
   searchParams: Promise<{
-    access_token?: string;
-    refresh_token?: string;
+    token_hash?: string;
     type?: string;
   }>;
 }
 
 export default async function ResetPasswordPage({ params, searchParams }: ResetPasswordPageProps) {
   const { lang } = await params;
-  const { access_token, refresh_token, type } = await searchParams;
+  const { token_hash, type } = await searchParams;
   const dict = await getDictionary(lang);
 
-  return (
-    <ResetPasswordContent
-      lang={lang}
-      dict={dict}
-      accessToken={access_token}
-      refreshToken={refresh_token}
-      type={type}
-    />
-  );
+  return <ResetPasswordContent lang={lang} dict={dict} tokenHash={token_hash} type={type} />;
 }
