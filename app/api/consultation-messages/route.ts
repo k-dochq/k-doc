@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from 'shared/lib/supabase/server';
 import { prisma } from 'shared/lib/prisma';
 import { v4 as uuidv4 } from 'uuid';
+import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface ConsultationRequestBody {
   hospitalId: string;
@@ -202,10 +203,7 @@ async function handleConsultationRequest(body: ConsultationRequestBody, userId: 
   };
 
   // 병원 이름 추출 (다국어 JSON에서 한국어 이름)
-  const hospitalName =
-    typeof hospital.name === 'object' && hospital.name !== null
-      ? (hospital.name as any).ko || (hospital.name as any).en || '병원'
-      : '병원';
+  const hospitalName = extractLocalizedText(hospital.name, 'ko') || '병원';
 
   // 사용자의 상담신청 메시지 생성
   const consultationRequestMessage = {
