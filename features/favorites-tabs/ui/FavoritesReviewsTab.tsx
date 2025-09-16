@@ -7,8 +7,8 @@ import { ReviewListCard, ReviewsSkeleton, useInfiniteAllReviews } from 'entities
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
-import { EmptyReviewsState } from 'shared/ui/empty-reviews-state';
 import { useAuth } from 'shared/lib/auth/useAuth';
+import { FavoritesHospitalsEmptyState } from './FavoritesHospitalsEmptyState';
 
 interface FavoritesReviewsTabProps {
   lang: Locale;
@@ -93,7 +93,12 @@ export function FavoritesReviewsTab({ lang, dict }: FavoritesReviewsTabProps) {
           />
         </div>
       ) : (
-        <EmptyReviewsState dict={dict} />
+        <FavoritesHospitalsEmptyState
+          lang={lang}
+          dict={dict}
+          title={dict.favorites.empty.reviews.title}
+          description={dict.favorites.empty.reviews.description}
+        />
       )}
     </div>
   );
