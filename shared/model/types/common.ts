@@ -25,6 +25,10 @@ export interface HospitalCardData {
   thumbnailImageUrl: string | null;
   discountRate: number | null;
   medicalSpecialties?: MedicalSpecialty[]; // 시술부위 태그
+  // 좋아요 관련 필드 (선택적)
+  likeCount?: number;
+  isLiked?: boolean;
+  likedUserIds?: string[];
 }
 
 export interface MedicalSpecialty {
