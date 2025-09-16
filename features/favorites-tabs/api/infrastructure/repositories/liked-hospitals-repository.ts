@@ -91,6 +91,11 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
             HospitalLike: true,
           },
         },
+        HospitalLike: {
+          select: {
+            userId: true,
+          },
+        },
       },
     });
 
@@ -111,6 +116,8 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
           rating: hospital.rating,
           reviewCount: hospital._count.Review,
           bookmarkCount: hospital._count.HospitalLike,
+          likeCount: hospital._count.HospitalLike, // 좋아요 수
+          likedUserIds: hospital.HospitalLike.map((like) => like.userId), // 좋아요한 사용자 ID들
           viewCount: hospital.viewCount,
           approvalStatusType: hospital.approvalStatusType,
           ranking: hospital.ranking,

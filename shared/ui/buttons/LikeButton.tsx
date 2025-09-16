@@ -10,6 +10,7 @@ interface LikeButtonProps {
   onClick?: (e: React.MouseEvent) => void;
   className?: string;
   isLoading?: boolean;
+  vertical?: boolean; // 수직 배치 옵션
 }
 
 export function LikeButton({
@@ -18,6 +19,7 @@ export function LikeButton({
   onClick,
   className = '',
   isLoading = false,
+  vertical = false,
 }: LikeButtonProps) {
   return (
     <button
@@ -28,7 +30,7 @@ export function LikeButton({
           onClick?.(e);
         }
       }}
-      className={`flex items-center gap-1 ${className} ${isLoading ? 'cursor-not-allowed' : ''}`}
+      className={`flex ${vertical ? 'flex-col items-center gap-0.5' : 'items-center gap-1'} ${className} ${isLoading ? 'cursor-not-allowed' : ''}`}
       type='button'
       disabled={isLoading}
     >

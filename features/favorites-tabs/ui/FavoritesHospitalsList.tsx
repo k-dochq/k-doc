@@ -7,11 +7,15 @@ import { LocaleLink } from 'shared/ui/locale-link';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { convertLikedHospitalsToCardData } from '../lib/convertLikedHospitalData';
 import { type LikedHospital } from '../api/entities/types';
+import { type User } from '@supabase/supabase-js';
 
 interface FavoritesHospitalsListProps {
   hospitals: LikedHospital[];
   lang: Locale;
   dict: Dictionary;
+  user: User | null;
+  onToggleLike?: (hospitalId: string) => void;
+  loadingHospitalId?: string | null;
   // 무한 스크롤 관련 props
   onLoadMore: () => void;
   hasNextPage: boolean;
@@ -23,6 +27,9 @@ export function FavoritesHospitalsList({
   hospitals,
   lang,
   dict,
+  user,
+  onToggleLike,
+  loadingHospitalId,
   onLoadMore,
   hasNextPage,
   isFetchingNextPage,
@@ -42,7 +49,15 @@ export function FavoritesHospitalsList({
       <div className='space-y-4'>
         {hospitalCardData.map((hospital) => (
           <LocaleLink key={hospital.id} href={`/hospital/${hospital.id}`} className='block'>
-            <HospitalCard hospital={hospital} dict={dict} lang={lang} />
+            <HospitalCard
+              hospital={hospital}
+              dict={dict}
+              lang={lang}
+              user={user}
+              onToggleLike={onToggleLike}
+              isLikeLoading={loadingHospitalId === hospital.id}
+              showLikeButton={true}
+            />
           </LocaleLink>
         ))}
       </div>
