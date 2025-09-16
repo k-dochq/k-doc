@@ -8,6 +8,7 @@ import { useAuth } from 'shared/lib/auth/useAuth';
 import { ConsultationRequestLoading } from './ConsultationRequestLoading';
 import { ConsultationRequestError } from './ConsultationRequestError';
 import { convertHospitalToCardData } from '../lib/convert-hospital-to-card-data';
+import { PageHeader } from 'shared/ui/page-header';
 
 interface ConsultationRequestFormProps {
   hospitalId: string;
@@ -29,13 +30,21 @@ export function ConsultationRequestForm({ hospitalId, lang, dict }: Consultation
 
   return (
     <div className=''>
-      <HospitalCard
-        hospital={convertHospitalToCardData(hospitalDetail.hospital)}
-        dict={dict}
+      <PageHeader
         lang={lang}
-        user={user}
-        showLikeButton={false}
+        title={dict.consultation?.request?.title || '상담신청'}
+        fallbackUrl={`/hospital/${hospitalId}`}
+        variant='light'
       />
+      <div className='p-5'>
+        <HospitalCard
+          hospital={convertHospitalToCardData(hospitalDetail.hospital)}
+          dict={dict}
+          lang={lang}
+          user={user}
+          showLikeButton={false}
+        />
+      </div>
     </div>
   );
 }
