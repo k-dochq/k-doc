@@ -2,16 +2,40 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { type Hospital } from 'entities/hospital/api/entities/types';
-import { extractLocalizedText } from 'shared/lib';
-import { ArrowLeft } from 'lucide-react';
-import { LocaleLink } from 'shared/ui/locale-link';
+import { useHospitalDetail } from 'entities/hospital/model/useHospitalDetail';
+import { HospitalCard } from 'entities/hospital/ui/HospitalCard';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { ConsultationRequestLoading } from './ConsultationRequestLoading';
+import { ConsultationRequestError } from './ConsultationRequestError';
+import { convertHospitalToCardData } from '../lib/convert-hospital-to-card-data';
 
 interface ConsultationRequestFormProps {
+  hospitalId: string;
   lang: Locale;
   dict: Dictionary;
 }
 
-export function ConsultationRequestForm({ lang, dict }: ConsultationRequestFormProps) {
-  return <div />;
+export function ConsultationRequestForm({ hospitalId, lang, dict }: ConsultationRequestFormProps) {
+  const { user } = useAuth();
+  const { data: hospitalDetail, isLoading, error } = useHospitalDetail(hospitalId);
+
+  if (isLoading) {
+    return <ConsultationRequestLoading />;
+  }
+
+  if (error || !hospitalDetail?.hospital) {
+    return <ConsultationRequestError lang={lang} dict={dict} />;
+  }
+
+  return (
+    <div className=''>
+      <HospitalCard
+        hospital={convertHospitalToCardData(hospitalDetail.hospital)}
+        dict={dict}
+        lang={lang}
+        user={user}
+        showLikeButton={false}
+      />
+    </div>
+  );
 }

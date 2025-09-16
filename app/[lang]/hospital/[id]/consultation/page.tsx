@@ -15,5 +15,5 @@ export default async function ConsultationRequestPage({ params }: ConsultationRe
   const { lang, id } = await params;
   const dict = await getDictionary(lang);
 
-  return <ConsultationRequestForm lang={lang} dict={dict} />;
+  return <ConsultationRequestForm hospitalId={id} lang={lang} dict={dict} />;
 }
