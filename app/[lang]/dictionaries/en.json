@@ -305,9 +305,39 @@
           "evening": "Evening (18:00 - 21:00)",
           "anytime": "Anytime"
         },
+        "preferredDate": {
+          "label": "Preferred Date",
+          "placeholder": "Please select a date"
+        },
         "content": {
           "label": "Consultation Details",
           "placeholder": "Please describe what you would like to consult about"
+        },
+        "privacyAgreement": {
+          "title": "Sensitive Information Collection Agreement",
+          "description": "I have reviewed and agree to the sensitive information collection and usage regulations for writing reviews and app utilization."
+        },
+        "errors": {
+          "name": {
+            "required": "Please enter your name."
+          },
+          "ageGroup": {
+            "required": "Please select your age group."
+          },
+          "phoneNumber": {
+            "required": "Please enter your phone number.",
+            "invalid": "Please enter a valid phone number."
+          },
+          "preferredDate": {
+            "required": "Please select your preferred date."
+          },
+          "content": {
+            "required": "Please enter consultation details.",
+            "maxLength": "Consultation details must be within 500 characters."
+          },
+          "agreeToPrivacy": {
+            "required": "Please agree to the privacy policy."
+          }
         },
         "required": "Required",
         "submitButton": "Request Consultation"

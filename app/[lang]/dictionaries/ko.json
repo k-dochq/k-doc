@@ -305,9 +305,39 @@
           "evening": "저녁 (18:00 - 21:00)",
           "anytime": "언제든지"
         },
+        "preferredDate": {
+          "label": "예약 희망 날짜",
+          "placeholder": "날짜를 선택해주세요"
+        },
         "content": {
           "label": "상담내용",
-          "placeholder": "상담받고 싶은 내용을 자유롭게 작성해주세요"
+          "placeholder": "상담받고 싶은 내용을 자세히 적어주세요"
+        },
+        "privacyAgreement": {
+          "title": "민감정보 수집 이용 동의",
+          "description": "시술후기 작성 및 앱내 활용을 위한 민감정보 수집, 이용 규정을 확인하였으며 이에 동의합니다."
+        },
+        "errors": {
+          "name": {
+            "required": "이름을 입력해주세요."
+          },
+          "ageGroup": {
+            "required": "나이대를 선택해주세요."
+          },
+          "phoneNumber": {
+            "required": "휴대폰 번호를 입력해주세요.",
+            "invalid": "올바른 휴대폰 번호를 입력해주세요."
+          },
+          "preferredDate": {
+            "required": "예약 희망 날짜를 선택해주세요."
+          },
+          "content": {
+            "required": "상담 내용을 입력해주세요.",
+            "maxLength": "상담 내용은 500자 이내로 입력해주세요."
+          },
+          "agreeToPrivacy": {
+            "required": "개인정보 수집 이용에 동의해주세요."
+          }
         },
         "required": "필수",
         "submitButton": "상담신청"

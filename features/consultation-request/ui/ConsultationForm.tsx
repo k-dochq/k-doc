@@ -1,0 +1,166 @@
+'use client';
+
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
+import { useConsultationForm } from '../model/useConsultationForm';
+import { AGE_GROUPS, GENDER_OPTIONS } from '../model/types';
+import { FormInput } from './FormInput';
+import { FormTextarea } from './FormTextarea';
+import { FormSelect } from './FormSelect';
+import { FormRadioGroup } from './FormRadioGroup';
+import { FormCheckbox } from './FormCheckbox';
+import { SubmitButton } from './SubmitButton';
+import { FormDatePicker } from './FormDatePicker';
+// 아이콘 SVG 컴포넌트들
+const UserIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={2}
+      d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
+    />
+  </svg>
+);
+
+const PhoneIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={2}
+      d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'
+    />
+  </svg>
+);
+
+const CalendarIcon = ({ className }: { className?: string }) => (
+  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+    <path
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      strokeWidth={2}
+      d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
+    />
+  </svg>
+);
+
+interface ConsultationFormProps {
+  lang: Locale;
+  dict: Dictionary;
+}
+
+export function ConsultationForm({ lang, dict }: ConsultationFormProps) {
+  const { formData, errors, updateField, handleSubmit, isFormValid } = useConsultationForm(
+    lang,
+    dict,
+  );
+
+  const onSubmit = () => {
+    handleSubmit();
+  };
+
+  return (
+    <div className='space-y-6 px-5 py-6'>
+      {/* 이름 */}
+      <FormInput
+        label={dict.consultation?.request?.form?.name?.label || '이름'}
+        value={formData.name}
+        onChange={(e) => updateField('name', e.target.value)}
+        placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
+        error={errors.name}
+        icon={<UserIcon />}
+      />
+
+      {/* 성별 */}
+      <FormRadioGroup
+        label={dict.consultation?.request?.form?.gender?.label || '성별'}
+        value={formData.gender}
+        onChange={(value) => updateField('gender', value as 'MALE' | 'FEMALE')}
+        options={GENDER_OPTIONS.map((option) => ({
+          value: option.value,
+          label:
+            option.value === 'MALE'
+              ? dict.consultation?.request?.form?.gender?.male || '남성'
+              : dict.consultation?.request?.form?.gender?.female || '여성',
+        }))}
+        error={errors.gender}
+      />
+
+      {/* 나이대 */}
+      <FormSelect
+        label={dict.consultation?.request?.form?.ageGroup?.label || '나이대'}
+        value={formData.ageGroup}
+        onChange={(value) => updateField('ageGroup', value)}
+        options={AGE_GROUPS.map((option) => ({
+          value: option.value,
+          label:
+            dict.consultation?.request?.form?.ageGroup?.[
+              option.value as keyof typeof dict.consultation.request.form.ageGroup
+            ] || option.label,
+        }))}
+        placeholder={
+          dict.consultation?.request?.form?.ageGroup?.placeholder || '나이대를 선택해주세요'
+        }
+        error={errors.ageGroup}
+      />
+
+      {/* 휴대폰 번호 */}
+      <FormInput
+        label={dict.consultation?.request?.form?.phoneNumber?.label || '휴대폰 번호'}
+        value={formData.phoneNumber}
+        onChange={(e) => updateField('phoneNumber', e.target.value)}
+        placeholder={dict.consultation?.request?.form?.phoneNumber?.placeholder || '010-0000-0000'}
+        error={errors.phoneNumber}
+        icon={<PhoneIcon />}
+      />
+
+      {/* 예약 희망 날짜 */}
+      <FormDatePicker
+        label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
+        value={formData.preferredDate ? new Date(formData.preferredDate) : undefined}
+        onChange={(date) =>
+          updateField('preferredDate', date ? date.toISOString().split('T')[0] : '')
+        }
+        locale={lang}
+        placeholder={
+          dict.consultation?.request?.form?.preferredDate?.placeholder || '날짜를 선택해주세요'
+        }
+        error={errors.preferredDate}
+      />
+
+      {/* 내용 */}
+      <FormTextarea
+        label={dict.consultation?.request?.form?.content?.label || '내용'}
+        value={formData.content}
+        onChange={(e) => updateField('content', e.target.value)}
+        placeholder={
+          dict.consultation?.request?.form?.content?.placeholder ||
+          '상담받고 싶은 내용을 자세히 적어주세요'
+        }
+        maxLength={500}
+        currentLength={formData.content.length}
+        error={errors.content}
+      />
+
+      {/* 개인정보 수집 이용 동의 */}
+      <FormCheckbox
+        checked={formData.agreeToPrivacy}
+        onChange={(checked) => updateField('agreeToPrivacy', checked)}
+        title={
+          dict.consultation?.request?.form?.privacyAgreement?.title || '민감정보 수집 이용 동의'
+        }
+        description={
+          dict.consultation?.request?.form?.privacyAgreement?.description ||
+          '시술후기 작성 및 앱내 활용을 위한 민감정보 수집, 이용 규정을 확인하였으며 이에 동의합니다.'
+        }
+        error={errors.agreeToPrivacy}
+      />
+
+      {/* 상담신청 버튼 */}
+      <SubmitButton onClick={onSubmit} disabled={!isFormValid}>
+        {dict.consultation?.request?.form?.submitButton || '상담신청'}
+      </SubmitButton>
+    </div>
+  );
+}
