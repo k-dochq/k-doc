@@ -26,7 +26,7 @@ export default async function ConsultationChatPage({
   }
 
   try {
-    const [{ hospital }, dict] = await Promise.all([
+    const [{ hospital }] = await Promise.all([
       getHospitalDetail({ id: hospitalId }),
       getDictionary(lang),
     ]);
