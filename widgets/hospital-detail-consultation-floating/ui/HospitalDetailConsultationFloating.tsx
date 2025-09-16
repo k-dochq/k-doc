@@ -2,6 +2,10 @@
 
 import { MAX_MOBILE_WIDTH_CLASS, type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { useCheckConsultationHistory } from 'features/consultation-request/model/useCheckConsultationHistory';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { getAuthPath } from 'shared/lib/auth/route-guard';
 
 interface HospitalDetailConsultationFloatingProps {
   hospitalId: string;
@@ -17,9 +21,39 @@ export function HospitalDetailConsultationFloating({
   lang,
   dict,
 }: HospitalDetailConsultationFloatingProps) {
+  const router = useLocalizedRouter();
+  const { isAuthenticated } = useAuth();
+  const checkConsultationHistory = useCheckConsultationHistory();
+
   const handleConsultationRequest = () => {
-    // TODO: 상담신청 페이지로 이동하는 로직 구현
-    console.log('상담신청 요청:', hospitalId);
+    // 로그인 체크
+    if (!isAuthenticated) {
+      // 로그인 페이지로 리다이렉트 (현재 페이지를 redirect 파라미터로 전달)
+      const currentPath = `/hospital/${hospitalId}`;
+      const authPath = getAuthPath(lang);
+      router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
+      return;
+    }
+
+    checkConsultationHistory.mutate(
+      { hospitalId },
+      {
+        onSuccess: (data) => {
+          if (data.hasHistory) {
+            // 기존 상담 내역이 있으면 채팅 페이지로 이동
+            router.push(`/chat/${hospitalId}`);
+          } else {
+            // 상담 내역이 없으면 상담신청 폼 페이지로 이동
+            router.push(`/hospital/${hospitalId}/consultation`);
+          }
+        },
+        onError: (error) => {
+          console.error('Error checking consultation history:', error);
+          // 에러 발생 시 상담신청 폼 페이지로 이동
+          router.push(`/hospital/${hospitalId}/consultation`);
+        },
+      },
+    );
   };
 
   return (
@@ -28,9 +62,12 @@ export function HospitalDetailConsultationFloating({
     >
       <button
         onClick={handleConsultationRequest}
-        className='bg-primary hover:bg-primary/70 w-full rounded-xl px-10 py-4 text-base leading-6 font-medium text-white transition-colors duration-200'
+        disabled={checkConsultationHistory.isPending}
+        className='bg-primary hover:bg-primary/70 disabled:bg-primary/50 w-full rounded-xl px-10 py-4 text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed'
       >
-        {dict.hospitalDetailConsultation.requestButton}
+        {checkConsultationHistory.isPending
+          ? dict.hospitalDetailConsultation.checking
+          : dict.hospitalDetailConsultation.requestButton}
       </button>
     </div>
   );

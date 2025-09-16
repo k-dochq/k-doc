@@ -1,7 +1,6 @@
 ---
 description: Figma Dev Mode MCP 규칙
-globs:
-alwaysApply: true
+alwaysApply: false
 ---
 
 - Figma Dev Mode MCP 서버는 이미지 및 SVG 에셋을 제공할 수 있는 끝점을 제공합니다.

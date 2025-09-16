@@ -86,7 +86,8 @@
     "emptyMessage": "아직 등록된 리뷰가 없습니다."
   },
   "hospitalDetailConsultation": {
-    "requestButton": "상담신청"
+    "requestButton": "상담신청",
+    "checking": "확인 중..."
   },
   "hospitalDetailTabs": {
     "introduction": "병원소개",
