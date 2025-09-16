@@ -14,7 +14,7 @@ interface LoginContentProps {
 
 export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
   return (
-    <div className='relative min-h-screen w-full overflow-hidden px-5'>
+    <div className='relative w-full overflow-hidden px-5'>
       {/* 배경 이미지 */}
       <div className='absolute inset-0'>
         <Image
@@ -33,7 +33,7 @@ export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps
           <div className='space-y-3'>
             <GoogleSignInButton locale={lang} dict={dict} redirectTo={redirectTo} />
             {/* <KakaoSignInButton locale={lang} dict={dict} /> */}
-            <EmailSignInButton lang={lang} dict={dict} />
+            <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
             {/* 하단 로고 */}
             <div className='flex w-full justify-center text-white'>
               <HeaderLogo />

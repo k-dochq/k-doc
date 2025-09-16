@@ -11,9 +11,10 @@ interface SignupFormProps {
   lang: Locale;
   dict: Dictionary;
   className?: string;
+  redirectTo?: string;
 }
 
-export function SignupForm({ lang, dict, className = '' }: SignupFormProps) {
+export function SignupForm({ lang, dict, className = '', redirectTo }: SignupFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -37,8 +38,9 @@ export function SignupForm({ lang, dict, className = '' }: SignupFormProps) {
     const result = await signUpWithEmail(email, password);
 
     if (result.success) {
-      // 회원가입 성공 시 로그인 페이지로 이동
-      router.push('/auth/login');
+      // 회원가입 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 로그인 페이지로 이동
+      const targetUrl = redirectTo || '/auth/login';
+      router.push(targetUrl);
     }
     // 에러는 useEmailSignup 훅에서 자동으로 처리됨
   };
