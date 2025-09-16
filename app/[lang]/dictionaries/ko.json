@@ -470,5 +470,9 @@
     "companyInfo": "회사소개",
     "termsOfService": "이용약관",
     "privacyPolicy": "개인정보 처리방침"
+  },
+  "my": {
+    "title": "마이페이지",
+    "description": "개인 정보 및 설정을 관리할 수 있습니다."
   }
 }

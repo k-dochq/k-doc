@@ -470,5 +470,9 @@
     "companyInfo": "About Us",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy"
+  },
+  "my": {
+    "title": "My Page",
+    "description": "Manage your personal information and settings."
   }
 }
