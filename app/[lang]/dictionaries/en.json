@@ -151,7 +151,20 @@
       "forgotPassword": "Forgot your password?",
       "signUp": "Sign Up",
       "loading": "Loading...",
-      "loginError": "Login error occurred"
+      "loginError": "Login error occurred",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Sign Up",
+      "placeholders": {
+        "email": "your-email@example.com",
+        "password": "Enter your password"
+      },
+      "errors": {
+        "emailRequired": "Please enter your email.",
+        "emailInvalid": "Please enter a valid email address.",
+        "passwordRequired": "Please enter your password.",
+        "invalidCredentials": "Invalid email or password.",
+        "emailNotConfirmed": "Please check your email and confirm your account."
+      }
     },
     "signup": {
       "title": "Sign Up",

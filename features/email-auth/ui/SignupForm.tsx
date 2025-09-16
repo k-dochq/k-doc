@@ -156,7 +156,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           <div className='h-0 w-2.5 rotate-90 border-t border-neutral-300' />
         </div>
         <LocaleLink
-          href='/auth/login'
+          href='/auth/login/email'
           className='text-sm leading-5 text-neutral-500 hover:text-neutral-700'
         >
           {dict.auth?.signup?.loginLink || '로그인하기'}

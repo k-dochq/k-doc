@@ -151,7 +151,20 @@
       "forgotPassword": "비밀번호를 잊으셨나요?",
       "signUp": "회원가입",
       "loading": "로딩 중...",
-      "loginError": "로그인 중 오류가 발생했습니다"
+      "loginError": "로그인 중 오류가 발생했습니다",
+      "noAccount": "계정이 없으신가요?",
+      "signupLink": "회원가입하기",
+      "placeholders": {
+        "email": "your-email@example.com",
+        "password": "비밀번호를 입력하세요"
+      },
+      "errors": {
+        "emailRequired": "이메일을 입력해주세요.",
+        "emailInvalid": "올바른 이메일 주소를 입력해주세요.",
+        "passwordRequired": "비밀번호를 입력해주세요.",
+        "invalidCredentials": "이메일 또는 비밀번호가 올바르지 않습니다.",
+        "emailNotConfirmed": "이메일을 확인하고 계정을 인증해주세요."
+      }
     },
     "signup": {
       "title": "회원가입",

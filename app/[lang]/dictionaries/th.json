@@ -151,7 +151,20 @@
       "forgotPassword": "ลืมรหัสผ่าน?",
       "signUp": "สมัครสมาชิก",
       "loading": "กำลังโหลด...",
-      "loginError": "เกิดข้อผิดพลาดในการเข้าสู่ระบบ"
+      "loginError": "เกิดข้อผิดพลาดในการเข้าสู่ระบบ",
+      "noAccount": "ยังไม่มีบัญชี?",
+      "signupLink": "สมัครสมาชิก",
+      "placeholders": {
+        "email": "your-email@example.com",
+        "password": "กรอกรหัสผ่านของคุณ"
+      },
+      "errors": {
+        "emailRequired": "กรุณากรอกอีเมลของคุณ",
+        "emailInvalid": "กรุณากรอกที่อยู่อีเมลที่ถูกต้อง",
+        "passwordRequired": "กรุณากรอกรหัสผ่านของคุณ",
+        "invalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+        "emailNotConfirmed": "กรุณาตรวจสอบอีเมลและยืนยันบัญชีของคุณ"
+      }
     },
     "signup": {
       "title": "สมัครสมาชิก",
