@@ -51,11 +51,6 @@ export function ConsultationChatTab({ lang, dict }: ConsultationChatTabProps) {
     }
   }, [isLoading]);
 
-  const handleChatRoomClick = (hospitalId: string) => {
-    console.log('🏥 Chat room clicked:', hospitalId);
-    // TODO: 채팅방으로 이동하는 로직 구현
-  };
-
   const handleRetry = () => {
     // TanStack Query의 refetch 기능 사용
     window.location.reload();
@@ -76,12 +71,7 @@ export function ConsultationChatTab({ lang, dict }: ConsultationChatTabProps) {
   return (
     <div className='p-5'>
       {chatRooms.map((chatRoom) => (
-        <ChatRoomCard
-          key={chatRoom.hospitalId}
-          chatRoom={chatRoom}
-          lang={lang}
-          onClick={handleChatRoomClick}
-        />
+        <ChatRoomCard key={chatRoom.hospitalId} chatRoom={chatRoom} lang={lang} />
       ))}
     </div>
   );
