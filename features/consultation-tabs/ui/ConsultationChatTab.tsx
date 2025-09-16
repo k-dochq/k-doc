@@ -9,5 +9,5 @@ interface ConsultationChatTabProps {
 }
 
 export function ConsultationChatTab({ lang, dict }: ConsultationChatTabProps) {
-  return <div>d</div>;
+  return <div></div>;
 }
