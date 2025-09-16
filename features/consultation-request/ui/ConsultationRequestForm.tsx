@@ -9,6 +9,7 @@ import { ConsultationRequestLoading } from './ConsultationRequestLoading';
 import { ConsultationRequestError } from './ConsultationRequestError';
 import { convertHospitalToCardData } from '../lib/convert-hospital-to-card-data';
 import { PageHeader } from 'shared/ui/page-header';
+import { ConsultationForm } from './ConsultationForm';
 
 interface ConsultationRequestFormProps {
   hospitalId: string;
@@ -45,6 +46,11 @@ export function ConsultationRequestForm({ hospitalId, lang, dict }: Consultation
           showLikeButton={false}
         />
       </div>
+
+      <div className='h-[1px] bg-neutral-200' />
+
+      {/* 상담신청 폼 */}
+      <ConsultationForm lang={lang} dict={dict} />
     </div>
   );
 }

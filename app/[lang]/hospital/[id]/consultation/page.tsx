@@ -1,7 +1,5 @@
-import { notFound } from 'next/navigation';
 import { getDictionary } from '../../../dictionaries';
 import { type Locale } from 'shared/config';
-import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { ConsultationRequestForm } from 'features/consultation-request/ui/ConsultationRequestForm';
 
 interface ConsultationRequestPageProps {

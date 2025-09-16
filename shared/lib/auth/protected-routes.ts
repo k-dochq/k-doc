@@ -36,15 +36,12 @@ export function isProtectedRoute(pathname: string): boolean {
       const pattern = cleanRoute.replace(/\*/g, '[^/]+');
       const regex = new RegExp(`^${pattern}(?:/.*)?$`);
       const matches = regex.test(pathWithoutLocale);
-      console.log(
-        `  - Checking wildcard "${cleanRoute}" (regex: ${pattern}) against "${pathWithoutLocale}": ${matches}`,
-      );
+
       return matches;
     }
 
     // 일반 경로 패턴 처리
     const matches = pathWithoutLocale.startsWith(cleanRoute);
-    console.log(`  - Checking "${cleanRoute}" against "${pathWithoutLocale}": ${matches}`);
     return matches;
   });
 
