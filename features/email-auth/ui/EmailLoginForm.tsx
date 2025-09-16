@@ -78,6 +78,16 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
         </FormButton>
       </form>
 
+      {/* 비밀번호 찾기 링크 */}
+      <div className='flex justify-center'>
+        <LocaleLink
+          href='/auth/forgot-password'
+          className='text-sm text-neutral-500 hover:text-neutral-700'
+        >
+          {dict.auth?.login?.forgotPassword || '비밀번호 찾기'}
+        </LocaleLink>
+      </div>
+
       {/* 회원가입 링크 */}
       <div className='flex items-center justify-center gap-4'>
         <span className='text-sm leading-5 text-neutral-500'>
