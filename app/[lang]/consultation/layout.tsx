@@ -1,3 +1,5 @@
+import { BottomNavigation } from '@/widgets/bottom-navigation';
+import { Header } from '@/widgets/header';
 import { type Locale } from 'shared/config';
 
 interface ConsultationLayoutProps {
@@ -5,6 +7,15 @@ interface ConsultationLayoutProps {
   params: Promise<{ lang: Locale }>;
 }
 
-export default async function ConsultationLayout({ children }: ConsultationLayoutProps) {
-  return <main className='py-8 pb-20'>{children}</main>;
+export default async function ConsultationLayout({ children, params }: ConsultationLayoutProps) {
+  const { lang } = await params;
+
+  return (
+    <>
+      <Header currentLang={lang} />
+      <main>{children}</main>
+      <div className='h-16' />
+      <BottomNavigation currentLang={lang} />
+    </>
+  );
 }
