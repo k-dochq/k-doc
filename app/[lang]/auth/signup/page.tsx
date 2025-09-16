@@ -1,7 +1,7 @@
 import { getDictionary } from '../../dictionaries';
 import { type Locale } from 'shared/config';
-import { SignupContent } from './SignupContent';
 import { PageHeader } from 'shared/ui/page-header';
+import { SignupForm } from 'features/email-auth';
 
 interface SignupPageProps {
   params: Promise<{
@@ -18,13 +18,19 @@ export default async function SignupPage({ params, searchParams }: SignupPagePro
   const dict = await getDictionary(lang);
 
   return (
-    <div className=''>
+    <div className='min-h-screen bg-white'>
       <PageHeader
         lang={lang}
         title={dict.auth?.signup?.title || '회원가입'}
         fallbackUrl='/auth/login'
         variant='light'
       />
+
+      <div className='px-5 py-6'>
+        <div className='mx-auto max-w-md'>
+          <SignupForm lang={lang} dict={dict} redirectTo={redirectTo} />
+        </div>
+      </div>
     </div>
   );
 }
