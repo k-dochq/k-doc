@@ -86,7 +86,8 @@
     "emptyMessage": "ยังไม่มีรีวิวที่ลงทะเบียน"
   },
   "hospitalDetailConsultation": {
-    "requestButton": "ขอปรึกษา"
+    "requestButton": "ขอปรึกษา",
+    "checking": "กำลังตรวจสอบ..."
   },
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",

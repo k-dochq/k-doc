@@ -86,7 +86,8 @@
     "emptyMessage": "No reviews available yet."
   },
   "hospitalDetailConsultation": {
-    "requestButton": "Request Consultation"
+    "requestButton": "Request Consultation",
+    "checking": "Checking..."
   },
   "hospitalDetailTabs": {
     "introduction": "Hospital Info",
