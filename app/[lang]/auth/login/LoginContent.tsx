@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { GoogleSignInButton } from 'features';
+// import { GoogleSignInButton } from 'features';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
 import Image from 'next/image';
