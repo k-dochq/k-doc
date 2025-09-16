@@ -1,8 +1,6 @@
-import { Suspense } from 'react';
 import { notFound, redirect } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
-import { ConsultationChat } from 'features/consultation-chat';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { getDictionary } from '../../dictionaries';
 
@@ -39,9 +37,16 @@ export default async function ConsultationChatPage({
 
     return (
       <div className='flex h-screen flex-col'>
-        <Suspense fallback={<div className='flex-1 animate-pulse bg-gray-100' />}>
-          <ConsultationChat hospitalId={hospitalId} hospital={hospital} lang={lang} dict={dict} />
-        </Suspense>
+        <div className='flex h-full items-center justify-center'>
+          <div className='text-center'>
+            <div className='mb-4 text-6xl'>💬</div>
+            <h2 className='mb-2 text-xl font-semibold text-gray-700'>상담 채팅</h2>
+            <p className='text-gray-500'>준비 중입니다</p>
+            <p className='mt-2 text-sm text-gray-400'>
+              병원: {extractLocalizedText(hospital.name, lang) || '병원'}
+            </p>
+          </div>
+        </div>
       </div>
     );
   } catch (error) {
