@@ -1,7 +1,11 @@
 export { EmailSignInButton } from './ui/EmailSignInButton';
 export { SignupForm } from './ui/SignupForm';
 export { EmailLoginForm } from './ui/EmailLoginForm';
+export { ForgotPasswordForm } from './ui/ForgotPasswordForm';
+export { ResetPasswordForm } from './ui/ResetPasswordForm';
 export { useEmailLogin } from './model/useEmailLogin';
 export { useEmailSignup } from './model/useEmailSignup';
 export { useSignupForm } from './model/useSignupForm';
 export { useEmailLoginForm } from './model/useEmailLoginForm';
+export { usePasswordReset } from './model/usePasswordReset';
+export { usePasswordUpdate } from './model/usePasswordUpdate';

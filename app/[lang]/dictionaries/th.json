@@ -206,6 +206,62 @@
         "emailNotConfirmed": "กรุณาตรวจสอบอีเมลและยืนยันบัญชีของคุณ"
       }
     },
+    "forgotPassword": {
+      "title": "ลืมรหัสผ่าน",
+      "description": "กรอกที่อยู่อีเมลของคุณ แล้วเราจะส่งลิงก์รีเซ็ตรหัสผ่านให้คุณ",
+      "email": "อีเมล",
+      "resetButton": "ส่งลิงก์รีเซ็ตรหัสผ่าน",
+      "backToLogin": "กลับไปหน้าเข้าสู่ระบบ",
+      "loginLink": "เข้าสู่ระบบ",
+      "resetError": "เกิดข้อผิดพลาดขณะรีเซ็ตรหัสผ่าน",
+      "placeholders": {
+        "email": "your-email@example.com"
+      },
+      "errors": {
+        "emailRequired": "กรุณากรอกอีเมลของคุณ",
+        "emailInvalid": "กรุณากรอกรูปแบบอีเมลที่ถูกต้อง",
+        "userNotFound": "ไม่พบบัญชีที่ใช้อีเมลนี้",
+        "rateLimitExceeded": "คำขอมากเกินไป กรุณาลองใหม่ภายหลัง"
+      },
+      "success": {
+        "title": "ส่งอีเมลแล้ว",
+        "description": "เราได้ส่งลิงก์รีเซ็ตรหัสผ่านไปยังอีเมลของคุณแล้ว กรุณาตรวจสอบอีเมลของคุณ"
+      }
+    },
+    "resetPassword": {
+      "title": "ตั้งรหัสผ่านใหม่",
+      "description": "กรอกรหัสผ่านใหม่ของคุณ",
+      "newPassword": "รหัสผ่านใหม่",
+      "confirmPassword": "ยืนยันรหัสผ่าน",
+      "updateButton": "อัปเดตรหัสผ่าน",
+      "backToLogin": "กลับไปหน้าเข้าสู่ระบบ",
+      "loginLink": "เข้าสู่ระบบ",
+      "goToLogin": "ไปหน้าเข้าสู่ระบบ",
+      "updateError": "เกิดข้อผิดพลาดขณะอัปเดตรหัสผ่าน",
+      "sessionError": "เกิดข้อผิดพลาดขณะตั้งค่าเซสชัน",
+      "placeholders": {
+        "newPassword": "กรอกรหัสผ่านใหม่ของคุณ",
+        "confirmPassword": "ยืนยันรหัสผ่านของคุณ"
+      },
+      "errors": {
+        "passwordRequired": "กรุณากรอกรหัสผ่านของคุณ",
+        "passwordTooShort": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+        "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
+        "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+        "invalidSession": "เซสชันไม่ถูกต้อง กรุณาลองใหม่",
+        "sessionMissing": "ไม่มีเซสชันการยืนยันตัวตน กรุณาลองใหม่"
+      },
+      "success": {
+        "title": "อัปเดตรหัสผ่านแล้ว",
+        "description": "รหัสผ่านของคุณได้รับการอัปเดตเรียบร้อยแล้ว กรุณาเข้าสู่ระบบด้วยรหัสผ่านใหม่"
+      },
+      "error": {
+        "invalidLink": {
+          "title": "ลิงก์ไม่ถูกต้อง",
+          "description": "ลิงก์รีเซ็ตรหัสผ่านไม่ถูกต้องหรือหมดอายุแล้ว กรุณาลองใหม่"
+        }
+      }
+    },
     "error": {
       "title": "Authentication Error",
       "description": "An error occurred during authentication. Please try again.",

@@ -206,6 +206,62 @@
         "emailNotConfirmed": "Please check your email and confirm your account"
       }
     },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "description": "Enter your email address and we'll send you a password reset link.",
+      "email": "Email",
+      "resetButton": "Send Password Reset Link",
+      "backToLogin": "Back to Login",
+      "loginLink": "Sign In",
+      "resetError": "An error occurred while resetting password",
+      "placeholders": {
+        "email": "your-email@example.com"
+      },
+      "errors": {
+        "emailRequired": "Please enter your email.",
+        "emailInvalid": "Please enter a valid email format.",
+        "userNotFound": "No account found with this email address.",
+        "rateLimitExceeded": "Too many requests. Please try again later."
+      },
+      "success": {
+        "title": "Email Sent",
+        "description": "We've sent a password reset link to your email address. Please check your email."
+      }
+    },
+    "resetPassword": {
+      "title": "Set New Password",
+      "description": "Enter your new password.",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "updateButton": "Update Password",
+      "backToLogin": "Back to Login",
+      "loginLink": "Sign In",
+      "goToLogin": "Go to Login",
+      "updateError": "An error occurred while updating password",
+      "sessionError": "An error occurred while setting session.",
+      "placeholders": {
+        "newPassword": "Enter your new password",
+        "confirmPassword": "Confirm your password"
+      },
+      "errors": {
+        "passwordRequired": "Please enter your password.",
+        "passwordTooShort": "Password must be at least 8 characters.",
+        "confirmPasswordRequired": "Please confirm your password.",
+        "passwordMismatch": "Passwords do not match.",
+        "invalidSession": "Session is invalid. Please try again.",
+        "sessionMissing": "Authentication session is missing. Please try again."
+      },
+      "success": {
+        "title": "Password Updated",
+        "description": "Your password has been successfully updated. Please sign in with your new password."
+      },
+      "error": {
+        "invalidLink": {
+          "title": "Invalid Link",
+          "description": "The password reset link is invalid or has expired. Please try again."
+        }
+      }
+    },
     "error": {
       "title": "Authentication Error",
       "description": "An error occurred during authentication. Please try again.",
