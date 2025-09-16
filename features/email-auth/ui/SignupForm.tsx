@@ -5,9 +5,8 @@ import { type Dictionary } from 'shared/model/types';
 import { FormInput } from 'shared/ui/form-input';
 import { FormButton } from 'shared/ui/form-button';
 import { LocaleLink } from 'shared/ui/locale-link';
-import { useSignupForm } from '../model/useSignupForm';
-import { useEmailSignup } from '../model/useEmailSignup';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { useSignupForm } from 'features/email-auth/model/useSignupForm';
+import { useEmailSignup } from 'features/email-auth/model/useEmailSignup';
 
 interface SignupFormProps {
   lang: Locale;
@@ -16,7 +15,6 @@ interface SignupFormProps {
 }
 
 export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
-  const router = useLocalizedRouter();
   const { formData, errors, updateField, validateForm, isFormValid } = useSignupForm({
     lang,
     dict,
@@ -41,8 +39,8 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
     if (result.success) {
       // 회원가입 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 이동
-      const targetUrl = redirectTo || '/main';
-      router.push(targetUrl);
+      const targetUrl = redirectTo || `/${lang}/main`;
+      window.location.href = targetUrl;
     }
   };
 
@@ -156,7 +154,11 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           <div className='h-0 w-2.5 rotate-90 border-t border-neutral-300' />
         </div>
         <LocaleLink
-          href='/auth/login/email'
+          href={
+            redirectTo
+              ? `/auth/login/email?redirectTo=${encodeURIComponent(redirectTo)}`
+              : '/auth/login/email'
+          }
           className='text-sm leading-5 text-neutral-500 hover:text-neutral-700'
         >
           {dict.auth?.signup?.loginLink || '로그인하기'}
