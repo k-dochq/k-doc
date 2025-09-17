@@ -17,7 +17,7 @@ export function PopularReviewsList({ reviews, lang, className = '' }: PopularRev
       lang={lang}
       className={className}
       emptyMessage='표시할 후기가 없습니다.'
-      loop={true}
+      loop={false}
       align='start'
     />
   );
