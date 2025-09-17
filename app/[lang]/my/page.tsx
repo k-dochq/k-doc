@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 import { PageHeader } from 'shared/ui/page-header';
+import { MyContent } from 'features/my-page';
 
 interface MyPageProps {
   params: Promise<{
@@ -15,6 +16,7 @@ export default async function MyPage({ params }: MyPageProps) {
   return (
     <div>
       <PageHeader title={dict.my.title} lang={lang} variant='light' />
+      <MyContent lang={lang} dict={dict} />
     </div>
   );
 }

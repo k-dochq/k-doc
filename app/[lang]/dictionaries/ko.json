@@ -473,6 +473,33 @@
   },
   "my": {
     "title": "마이페이지",
-    "description": "개인 정보 및 설정을 관리할 수 있습니다."
+    "description": "개인 정보 및 설정을 관리할 수 있습니다.",
+    "profile": {
+      "title": "내 프로필",
+      "editProfile": "프로필 수정",
+      "nicknameChange": "닉네임 변경",
+      "nameChange": "이름 변경",
+      "passwordChange": "비밀번호 변경"
+    },
+    "activity": {
+      "title": "활동",
+      "savedList": "내 저장 목록"
+    },
+    "notification": {
+      "title": "알림",
+      "myPosts": "내가 작성한 게시글",
+      "eventService": "이벤트/서비스 혜택 알림"
+    },
+    "customerService": {
+      "title": "고객센터",
+      "chat": "채팅",
+      "phone": "전화",
+      "phoneNumber": "1588-4591"
+    },
+    "account": {
+      "title": "계정",
+      "logout": "로그아웃",
+      "deleteAccount": "회원탈퇴"
+    }
   }
 }

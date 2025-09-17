@@ -473,6 +473,33 @@
   },
   "my": {
     "title": "My Page",
-    "description": "Manage your personal information and settings."
+    "description": "Manage your personal information and settings.",
+    "profile": {
+      "title": "My Profile",
+      "editProfile": "Edit Profile",
+      "nicknameChange": "Change Nickname",
+      "nameChange": "Change Name",
+      "passwordChange": "Change Password"
+    },
+    "activity": {
+      "title": "Activity",
+      "savedList": "My Saved List"
+    },
+    "notification": {
+      "title": "Notifications",
+      "myPosts": "My Posts",
+      "eventService": "Event/Service Benefits"
+    },
+    "customerService": {
+      "title": "Customer Service",
+      "chat": "Chat",
+      "phone": "Phone",
+      "phoneNumber": "1588-4591"
+    },
+    "account": {
+      "title": "Account",
+      "logout": "Logout",
+      "deleteAccount": "Delete Account"
+    }
   }
 }

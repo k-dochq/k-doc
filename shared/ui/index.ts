@@ -14,3 +14,4 @@ export * from './page-header';
 export * from './search-bar';
 export * from './drawer';
 export * from './message-bubble';
+export * from './switch';

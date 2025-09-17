@@ -473,6 +473,33 @@
   },
   "my": {
     "title": "หน้าของฉัน",
-    "description": "จัดการข้อมูลส่วนตัวและการตั้งค่าของคุณ"
+    "description": "จัดการข้อมูลส่วนตัวและการตั้งค่าของคุณ",
+    "profile": {
+      "title": "โปรไฟล์ของฉัน",
+      "editProfile": "แก้ไขโปรไฟล์",
+      "nicknameChange": "เปลี่ยนชื่อเล่น",
+      "nameChange": "เปลี่ยนชื่อ",
+      "passwordChange": "เปลี่ยนรหัสผ่าน"
+    },
+    "activity": {
+      "title": "กิจกรรม",
+      "savedList": "รายการที่บันทึกไว้"
+    },
+    "notification": {
+      "title": "การแจ้งเตือน",
+      "myPosts": "โพสต์ของฉัน",
+      "eventService": "ประโยชน์จากกิจกรรม/บริการ"
+    },
+    "customerService": {
+      "title": "บริการลูกค้า",
+      "chat": "แชท",
+      "phone": "โทรศัพท์",
+      "phoneNumber": "1588-4591"
+    },
+    "account": {
+      "title": "บัญชี",
+      "logout": "ออกจากระบบ",
+      "deleteAccount": "ลบบัญชี"
+    }
   }
 }
