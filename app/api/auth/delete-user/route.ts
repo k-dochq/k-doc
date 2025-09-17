@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient as createServerClient } from 'shared/lib/supabase/server';
 import { createServiceRoleClient } from 'shared/lib/supabase/service-role-client';
 
-export async function DELETE(request: NextRequest) {
+export async function DELETE(_request: NextRequest) {
   try {
     // 서버 클라이언트로 현재 사용자 세션 확인
     const supabase = await createServerClient();
