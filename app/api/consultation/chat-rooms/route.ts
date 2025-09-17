@@ -72,11 +72,13 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
           hospitalId,
           hospitalName: parseLocalizedText(hospital.name),
           hospitalThumbnailUrl: mainImage?.imageUrl,
-          districtName: district
-            ? district.displayName
-              ? parseLocalizedText(district.displayName)
-              : parseLocalizedText(district.name)
-            : undefined,
+          districtName: hospital.displayLocationName
+            ? parseLocalizedText(hospital.displayLocationName)
+            : district
+              ? district.displayName
+                ? parseLocalizedText(district.displayName)
+                : parseLocalizedText(district.name)
+              : undefined,
           lastMessageContent: message.content,
           lastMessageDate: message.createdAt.toISOString(),
           lastMessageSenderType: message.senderType,

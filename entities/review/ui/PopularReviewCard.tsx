@@ -60,7 +60,11 @@ export function PopularReviewCard({
 
         {/* 병원 정보 */}
         <ReviewHospitalInfo
-          districtName={review.hospital.district.displayName || review.hospital.district.name}
+          districtName={
+            review.hospital.displayLocationName ||
+            review.hospital.district.displayName ||
+            review.hospital.district.name
+          }
           lang={lang}
         />
       </div>

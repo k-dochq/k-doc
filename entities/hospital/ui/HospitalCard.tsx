@@ -30,13 +30,9 @@ export function HospitalCard({
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
   const isLiked = user && hospital.likedUserIds ? hospital.likedUserIds.includes(user.id) : false;
 
-  // district.displayName이 있으면 사용하고, 없으면 기존 address 사용
-  const displayAddress = hospital.district?.displayName
-    ? {
-        ko_KR: extractLocalizedText(hospital.district.displayName, 'ko'),
-        en_US: extractLocalizedText(hospital.district.displayName, 'en'),
-        th_TH: extractLocalizedText(hospital.district.displayName, 'th'),
-      }
+  // hospital.displayLocationName이 있으면 사용하고, 없으면 기존 address 사용
+  const displayAddress = hospital.displayLocationName
+    ? (hospital.displayLocationName as { ko_KR?: string; en_US?: string; th_TH?: string })
     : hospital.address;
 
   return (

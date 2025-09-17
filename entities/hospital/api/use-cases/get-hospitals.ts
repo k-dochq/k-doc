@@ -284,6 +284,7 @@ export async function getHospitals(
             name: hms.MedicalSpecialty.name,
             specialtyType: hms.MedicalSpecialty.specialtyType,
           })) || [],
+        displayLocationName: hospital.displayLocationName,
         district: hospital.District
           ? {
               id: hospital.District.id,

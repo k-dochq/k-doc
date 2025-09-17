@@ -8,9 +8,9 @@ interface HospitalCardLocationProps {
 }
 
 export function HospitalCardLocation({ hospital, lang }: HospitalCardLocationProps) {
-  // district.displayName이 있으면 사용하고, 없으면 기존 address 사용
-  const displayLocation = hospital.district?.displayName
-    ? extractLocalizedText(hospital.district.displayName, lang)
+  // hospital.displayLocationName이 있으면 사용하고, 없으면 기존 address 사용
+  const displayLocation = hospital.displayLocationName
+    ? extractLocalizedText(hospital.displayLocationName, lang)
     : extractLocalizedText(hospital.address, lang);
 
   return (
