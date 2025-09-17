@@ -18,7 +18,7 @@ export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps
       {/* 배경 이미지 */}
       <div className='absolute inset-0'>
         <Image
-          src='/images/shared/splash.png'
+          src='/images/shared/splash-compressed.png'
           alt='Background'
           fill
           className='object-cover'
