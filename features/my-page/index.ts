@@ -6,3 +6,4 @@ export { CustomerServiceSection } from './ui/CustomerServiceSection';
 export { AccountSection } from './ui/AccountSection';
 export { MenuItem } from './ui/MenuItem';
 export { SwitchMenuItem } from './ui/SwitchMenuItem';
+export { useDeleteAccount } from './model/useDeleteAccount';

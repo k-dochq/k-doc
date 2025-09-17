@@ -519,7 +519,9 @@
     "account": {
       "title": "Account",
       "logout": "Logout",
-      "deleteAccount": "Delete Account"
+      "deleteAccount": "Delete Account",
+      "deleteAccountConfirm": "Are you sure you want to delete your account? Your account will be deactivated and you'll need to contact customer service to reactivate it.",
+      "deleteAccountError": "An error occurred while deleting your account. Please try again."
     }
   }
 }

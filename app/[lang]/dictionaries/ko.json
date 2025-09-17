@@ -519,7 +519,9 @@
     "account": {
       "title": "계정",
       "logout": "로그아웃",
-      "deleteAccount": "회원탈퇴"
+      "deleteAccount": "회원탈퇴",
+      "deleteAccountConfirm": "정말로 회원탈퇴를 하시겠습니까? 계정이 비활성화되며 다시 활성화하려면 고객센터에 문의해야 합니다.",
+      "deleteAccountError": "회원탈퇴 중 오류가 발생했습니다. 다시 시도해주세요."
     }
   }
 }
