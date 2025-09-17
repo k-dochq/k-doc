@@ -43,7 +43,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
 
   const handleReportIssue = () => {
     // GitHub Issues나 고객 지원 시스템으로 리다이렉트
-    const issueUrl = `mailto:support@kdoc.com?subject=Error Report&body=Error ID: ${error.digest || 'unknown'}%0AMessage: ${encodeURIComponent(error.message)}%0APage: ${encodeURIComponent(pathname)}`;
+    const issueUrl = `mailto:support@kdoc.com?subject=Error Report&body=Error ID: ${error.digest || 'unknown'}%0AMessage: ${encodeURIComponent(error.message)}%0APage: ${encodeURIComponent(pathname || 'unknown')}`;
     window.open(issueUrl, '_blank');
   };
 

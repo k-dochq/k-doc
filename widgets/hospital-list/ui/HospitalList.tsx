@@ -2,7 +2,7 @@
 
 import { Suspense, useState, useEffect } from 'react';
 import { type Locale } from 'shared/config';
-import { type Dictionary } from 'shared/model/types';
+import { type Dictionary, type HospitalCardData } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { useBestHospitals } from 'entities/hospital/api/queries/get-best-hospitals';
@@ -18,9 +18,10 @@ interface HospitalListProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
   lang: Locale;
   dict: Dictionary;
+  initialData?: HospitalCardData[];
 }
 
-export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListProps) {
+export function HospitalList({ medicalSpecialties, lang, dict, initialData }: HospitalListProps) {
   const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
   const router = useLocalizedRouter();
 
@@ -30,10 +31,16 @@ export function HospitalList({ medicalSpecialties, lang, dict }: HospitalListPro
     isLoading,
     error,
     refetch,
-  } = useBestHospitals({
-    category: selectedCategory,
-    limit: 5,
-  });
+  } = useBestHospitals(
+    {
+      category: selectedCategory,
+      limit: 5,
+    },
+    {
+      // 서버에서 prefetch한 데이터를 초기 데이터로 사용 (ALL 카테고리일 때만)
+      initialData: selectedCategory === 'ALL' ? initialData : undefined,
+    },
+  );
 
   // 모든 카테고리의 데이터를 미리 prefetch
   usePrefetchHospitalCategories({

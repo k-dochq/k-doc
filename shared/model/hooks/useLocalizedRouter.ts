@@ -11,7 +11,7 @@ export function useLocalizedRouter() {
   const pathname = usePathname();
 
   // 현재 경로에서 locale 추출
-  const currentLocale = extractLocaleFromPathname(pathname);
+  const currentLocale = extractLocaleFromPathname(pathname || '');
 
   /**
    * 경로에 locale을 자동으로 추가하는 헬퍼 함수

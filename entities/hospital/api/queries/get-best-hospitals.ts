@@ -38,10 +38,16 @@ export async function fetchBestHospitals(
   return result.data;
 }
 
-export function useBestHospitals(params: GetBestHospitalsParams = {}) {
+export function useBestHospitals(
+  params: GetBestHospitalsParams = {},
+  options?: {
+    initialData?: HospitalCardData[];
+  },
+) {
   return useQuery({
     queryKey: ['best-hospitals', params.category, params.limit],
     queryFn: () => fetchBestHospitals(params),
+    initialData: options?.initialData,
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes
     retry: 3,

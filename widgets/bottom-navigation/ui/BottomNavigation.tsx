@@ -10,7 +10,7 @@ export function BottomNavigation({ currentLang }: BottomNavigationProps) {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    const currentPath = pathname.replace(`/${currentLang}`, '') || '/';
+    const currentPath = (pathname || '').replace(`/${currentLang}`, '') || '/';
     return currentPath === href || (href === '/main' && currentPath === '/');
   };
 
