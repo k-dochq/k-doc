@@ -52,7 +52,7 @@ export type ReviewCardData = {
   title: LocalizedText | null;
   content: LocalizedText | null;
   isRecommended: boolean;
-  concerns: string | null;
+  concernsMultilingual: LocalizedText | null;
   createdAt: Date;
   viewCount: number;
   likeCount: number;

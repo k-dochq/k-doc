@@ -114,10 +114,10 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
       {title && <h3 className='mb-2 line-clamp-1 text-sm font-semibold text-gray-900'>{title}</h3>}
 
       {/* 시술 부위 */}
-      {review.concerns && (
+      {review.concernsMultilingual && (
         <div className='mb-2'>
           <span className='inline-block rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600'>
-            {review.concerns}
+            {extractLocalizedText(review.concernsMultilingual, lang)}
           </span>
         </div>
       )}

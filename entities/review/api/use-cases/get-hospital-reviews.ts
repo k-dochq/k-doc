@@ -125,7 +125,9 @@ export async function getHospitalReviews({
         title: review.title ? parseLocalizedText(review.title) : null,
         content: review.content ? parseLocalizedText(review.content) : null,
         isRecommended: review.isRecommended,
-        concerns: review.concerns,
+        concernsMultilingual: review.concernsMultilingual
+          ? parseLocalizedText(review.concernsMultilingual)
+          : null,
         createdAt: review.createdAt,
         viewCount: review.viewCount,
         likeCount: review._count.ReviewLike, // 실시간 좋아요 수 계산

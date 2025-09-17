@@ -148,7 +148,9 @@ export class LikedReviewsRepository {
         likedUserIds, // 좋아요를 한 사용자 ID들
         isLiked: true, // 좋아요한 리뷰 리스트이므로 항상 true
         createdAt: review.createdAt,
-        concerns: review.concerns,
+        concernsMultilingual: review.concernsMultilingual
+          ? parseLocalizedText(review.concernsMultilingual)
+          : null,
         user: {
           displayName: review.User.displayName,
           nickName: review.User.nickName,

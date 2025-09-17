@@ -37,8 +37,9 @@ export function ReviewListCard({
   const title = extractLocalizedText(review.title, lang) || '';
   const content = extractLocalizedText(review.content, lang) || '';
 
-  // 해시태그 추출 (concerns를 해시태그로 사용)
-  const hashtags = review.concerns ? [review.concerns] : [];
+  // 해시태그 추출 (concernsMultilingual을 해시태그로 사용)
+  const concerns = extractLocalizedText(review.concernsMultilingual, lang) || '';
+  const hashtags = concerns ? [concerns] : [];
 
   return (
     <LocaleLink
