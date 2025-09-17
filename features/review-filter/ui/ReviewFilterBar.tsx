@@ -3,13 +3,15 @@
 import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
+import { type Dictionary } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ReviewFilterBarProps {
   lang: Locale;
+  dict: Dictionary;
 }
 
-export function ReviewFilterBar({ lang }: ReviewFilterBarProps) {
+export function ReviewFilterBar({ lang, dict }: ReviewFilterBarProps) {
   const searchParams = useSearchParams();
 
   // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
@@ -34,7 +36,7 @@ export function ReviewFilterBar({ lang }: ReviewFilterBarProps) {
           replace
           className={`text-[13px] font-semibold ${currentSort === REVIEW_SORT_OPTIONS.LATEST ? 'text-primary' : 'text-neutral-500'}`}
         >
-          최신순
+          {dict.allReviews.sort.latest}
         </LocaleLink>
         <div className='h-3 w-0 border-l border-neutral-300'></div>
         <LocaleLink
@@ -42,7 +44,7 @@ export function ReviewFilterBar({ lang }: ReviewFilterBarProps) {
           replace
           className={`text-[13px] font-medium ${currentSort === REVIEW_SORT_OPTIONS.POPULAR ? 'text-primary' : 'text-neutral-500'}`}
         >
-          인기순
+          {dict.allReviews.sort.popular}
         </LocaleLink>
       </div>
     </div>
