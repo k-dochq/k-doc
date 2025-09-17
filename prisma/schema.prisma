@@ -99,11 +99,11 @@ model Hospital {
   baseId                   String?                    @db.Uuid
   hasClone                 Boolean                    @default(false)
   districtId               String?                    @db.Uuid
-  displayLocationName      Json?                      // 표시 지역명 (다국어 지원)
   createdAt                DateTime                   @default(now())
   updatedAt                DateTime
   latitude                 Float?
   longitude                Float?
+  displayLocationName      Json?
   ConsultationMessage      ConsultationMessage[]
   Doctor                   Doctor[]
   District                 District?                  @relation(fields: [districtId], references: [id], onDelete: Cascade)
@@ -493,6 +493,10 @@ enum MedicalSpecialtyType {
   LIFTING
   HAIR_TRANSPLANT
   DERMATOLOGY
+  LIPS
+  CHIN
+  CHEEKS
+  FOREHEAD
 
   @@schema("public")
 }
