@@ -47,7 +47,7 @@ export function AllReviewsContent({ lang, dict, searchParams }: AllReviewsConten
       />
 
       {/* 정렬/필터 바 */}
-      <ReviewFilterBar lang={lang} />
+      <ReviewFilterBar lang={lang} dict={dict} />
 
       {/* 리뷰 리스트 */}
       <AllReviewsInfiniteList
