@@ -32,6 +32,9 @@ export function PopularReviewCard({
   // 해시태그 추출 (concerns를 해시태그로 사용)
   const hashtags = review.concerns ? [review.concerns] : [];
 
+  // 이미지가 모두 없는지 확인
+  const hasNoImages = review.images.before.length === 0 && review.images.after.length === 0;
+
   return (
     <LocaleLink
       href={`/review/${review.id}`}
@@ -49,7 +52,7 @@ export function PopularReviewCard({
         <div className='h-2' />
 
         {/* 리뷰 텍스트 */}
-        {content && <ReviewText text={content} maxLines={3} />}
+        {content && <ReviewText text={content} maxLines={hasNoImages ? 8 : 3} />}
 
         <div className='h-2' />
 
