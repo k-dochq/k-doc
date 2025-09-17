@@ -9,7 +9,6 @@ import { ReviewListImages } from './ReviewListImages';
 import { UserRatingInfo } from './UserRatingInfo';
 import { ReviewText } from './ReviewText';
 import { ReviewHashtags } from './ReviewHashtags';
-import { ReviewHospitalInfo } from './ReviewHospitalInfo';
 import { ReviewListCardHeader } from './ReviewListCardHeader';
 import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { ReviewContentSection } from './ReviewContentSection';

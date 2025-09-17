@@ -1,6 +1,7 @@
 'use client';
 
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from '../model/types';
 import { extractLocalizedText, getUserDisplayName } from 'shared/lib';
 import { BeforeAfterImages } from './BeforeAfterImages';
@@ -13,6 +14,7 @@ import { LocaleLink } from 'shared/ui/locale-link';
 interface PopularReviewCardProps {
   review: ReviewCardData;
   lang: Locale;
+  dict: Dictionary;
   className?: string;
   noBorder?: boolean;
 }
@@ -20,6 +22,7 @@ interface PopularReviewCardProps {
 export function PopularReviewCard({
   review,
   lang,
+  dict,
   className = '',
   noBorder = false,
 }: PopularReviewCardProps) {
@@ -69,6 +72,7 @@ export function PopularReviewCard({
             review.hospital.district.name
           }
           lang={lang}
+          dict={dict}
         />
       </div>
     </LocaleLink>

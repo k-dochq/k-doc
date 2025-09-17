@@ -85,6 +85,7 @@ export function HospitalDetailReviews({
         <ReviewCarousel
           items={reviews}
           lang={lang}
+          dict={dict}
           emptyMessage={dict.hospitalDetailReviews.emptyMessage}
           loop={true}
           align='start'

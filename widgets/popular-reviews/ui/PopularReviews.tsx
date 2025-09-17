@@ -75,7 +75,7 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
         ) : error ? (
           <PopularReviewsError lang={lang} dict={dict} onRetry={handleRetry} />
         ) : popularReviews && popularReviews.reviews.length > 0 ? (
-          <PopularReviewsList reviews={popularReviews.reviews} lang={lang} />
+          <PopularReviewsList reviews={popularReviews.reviews} lang={lang} dict={dict} />
         ) : (
           <div className='py-8 text-center text-gray-500'>표시할 후기가 없습니다.</div>
         )}
