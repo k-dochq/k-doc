@@ -22,6 +22,17 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
         userId: true;
       };
     };
+    District: {
+      select: {
+        id: true;
+        name: true;
+        displayName: true;
+        countryCode: true;
+        level: true;
+        order: true;
+        parentId: true;
+      };
+    };
     _count: {
       select: {
         HospitalLike: true;
@@ -225,6 +236,17 @@ export async function getHospitals(
             userId: true,
           },
         },
+        District: {
+          select: {
+            id: true,
+            name: true,
+            displayName: true,
+            countryCode: true,
+            level: true,
+            order: true,
+            parentId: true,
+          },
+        },
         _count: {
           select: {
             HospitalLike: true,
@@ -262,6 +284,17 @@ export async function getHospitals(
             name: hms.MedicalSpecialty.name,
             specialtyType: hms.MedicalSpecialty.specialtyType,
           })) || [],
+        district: hospital.District
+          ? {
+              id: hospital.District.id,
+              name: hospital.District.name,
+              displayName: hospital.District.displayName,
+              countryCode: hospital.District.countryCode,
+              level: hospital.District.level,
+              order: hospital.District.order,
+              parentId: hospital.District.parentId,
+            }
+          : null,
       };
     });
 

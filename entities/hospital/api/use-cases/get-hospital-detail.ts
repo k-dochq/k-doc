@@ -32,6 +32,17 @@ type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
         MedicalSpecialty: true;
       };
     };
+    District: {
+      select: {
+        id: true;
+        name: true;
+        displayName: true;
+        countryCode: true;
+        level: true;
+        order: true;
+        parentId: true;
+      };
+    };
     _count: {
       select: {
         HospitalLike: true;
@@ -97,6 +108,17 @@ export async function getHospitalDetail(
         HospitalMedicalSpecialty: {
           include: {
             MedicalSpecialty: true,
+          },
+        },
+        District: {
+          select: {
+            id: true,
+            name: true,
+            displayName: true,
+            countryCode: true,
+            level: true,
+            order: true,
+            parentId: true,
           },
         },
         _count: {
@@ -204,6 +226,17 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     discountRate: data.discountRate,
     latitude: data.latitude,
     longitude: data.longitude,
+    district: data.District
+      ? {
+          id: data.District.id,
+          name: data.District.name,
+          displayName: data.District.displayName,
+          countryCode: data.District.countryCode,
+          level: data.District.level,
+          order: data.District.order,
+          parentId: data.District.parentId,
+        }
+      : null,
   };
 }
 
@@ -261,5 +294,16 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
     openingHours,
     latitude: data.latitude,
     longitude: data.longitude,
+    district: data.District
+      ? {
+          id: data.District.id,
+          name: data.District.name,
+          displayName: data.District.displayName,
+          countryCode: data.District.countryCode,
+          level: data.District.level,
+          order: data.District.order,
+          parentId: data.District.parentId,
+        }
+      : null,
   };
 }

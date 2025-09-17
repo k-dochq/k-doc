@@ -16,8 +16,17 @@ export async function GET(_request: NextRequest) {
     // 중복된 이름의 지역 제거 (같은 이름이 여러 개 있을 때 가장 먼저 생성된 것만 유지)
     const uniqueDistricts = parentDistricts.reduce(
       (acc, district) => {
-        const districtName = parseLocalizedText(district.name).ko_KR;
-        if (!acc.some((d) => parseLocalizedText(d.name).ko_KR === districtName)) {
+        const districtName = district.displayName
+          ? parseLocalizedText(district.displayName).ko_KR
+          : parseLocalizedText(district.name).ko_KR;
+        if (
+          !acc.some((d) => {
+            const existingName = d.displayName
+              ? parseLocalizedText(d.displayName).ko_KR
+              : parseLocalizedText(d.name).ko_KR;
+            return existingName === districtName;
+          })
+        ) {
           acc.push(district);
         }
         return acc;

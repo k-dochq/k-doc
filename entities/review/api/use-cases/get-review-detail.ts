@@ -45,6 +45,7 @@ export async function getReviewDetail({
             District: {
               select: {
                 name: true,
+                displayName: true,
               },
             },
             HospitalImage: {
@@ -129,6 +130,9 @@ export async function getReviewDetail({
           name: review.Hospital.District?.name
             ? parseLocalizedText(review.Hospital.District.name)
             : { ko_KR: '', en_US: '', th_TH: '' },
+          displayName: review.Hospital.District?.displayName
+            ? parseLocalizedText(review.Hospital.District.displayName)
+            : null,
         },
       },
       medicalSpecialty: {

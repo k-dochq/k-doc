@@ -77,6 +77,7 @@ export type ReviewCardData = {
     discountRate: number | null;
     district: {
       name: LocalizedText;
+      displayName?: LocalizedText | null;
     };
   };
   medicalSpecialty: {

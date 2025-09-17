@@ -14,6 +14,19 @@ export interface PriceInfo {
   maxPrice?: number;
 }
 
+// District 타입을 Prisma에서 가져와서 사용 (JsonValue 타입 그대로 유지)
+export type DistrictInfo = Prisma.DistrictGetPayload<{
+  select: {
+    id: true;
+    name: true;
+    displayName: true;
+    countryCode: true;
+    level: true;
+    order: true;
+    parentId: true;
+  };
+}>;
+
 // Hospital Card Data 타입 정의 (병원 카드 컴포넌트에서 사용)
 export interface HospitalCardData {
   id: string;
@@ -25,6 +38,7 @@ export interface HospitalCardData {
   thumbnailImageUrl: string | null;
   discountRate: number | null;
   medicalSpecialties?: MedicalSpecialty[]; // 시술부위 태그
+  district?: DistrictInfo | null; // 지역 정보
   // 좋아요 관련 필드 (선택적)
   likeCount?: number;
   isLiked?: boolean;

@@ -12,7 +12,7 @@ export interface MultiLanguageName {
 export interface District {
   id: string;
   name: MultiLanguageName;
-  displayName: string | null;
+  displayName: MultiLanguageName | null;
   countryCode: 'KR' | 'TH';
   level: number;
   order: number | null;

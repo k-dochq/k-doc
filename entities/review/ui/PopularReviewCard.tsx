@@ -59,7 +59,10 @@ export function PopularReviewCard({
         <div className='h-2' />
 
         {/* 병원 정보 */}
-        <ReviewHospitalInfo districtName={review.hospital.district.name} lang={lang} />
+        <ReviewHospitalInfo
+          districtName={review.hospital.district.displayName || review.hospital.district.name}
+          lang={lang}
+        />
       </div>
     </LocaleLink>
   );
