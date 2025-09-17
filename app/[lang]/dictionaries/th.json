@@ -479,7 +479,27 @@
       "editProfile": "แก้ไขโปรไฟล์",
       "nicknameChange": "เปลี่ยนชื่อเล่น",
       "nameChange": "เปลี่ยนชื่อ",
-      "passwordChange": "เปลี่ยนรหัสผ่าน"
+      "passwordChange": "เปลี่ยนรหัสผ่าน",
+      "edit": {
+        "title": "แก้ไขโปรไฟล์",
+        "nickname": "ชื่อเล่น",
+        "name": "ชื่อ",
+        "email": "อีเมล",
+        "saveButton": "บันทึก",
+        "cancelButton": "ยกเลิก",
+        "success": "อัปเดตโปรไฟล์เรียบร้อยแล้ว",
+        "error": "เกิดข้อผิดพลาดขณะอัปเดตโปรไฟล์",
+        "placeholders": {
+          "nickname": "กรอกชื่อเล่นของคุณ",
+          "name": "กรอกชื่อของคุณ"
+        },
+        "errors": {
+          "nicknameRequired": "กรุณากรอกชื่อเล่น",
+          "nameRequired": "กรุณากรอกชื่อ",
+          "nicknameTooShort": "ชื่อเล่นต้องมีอย่างน้อย 2 ตัวอักษร",
+          "nameTooShort": "ชื่อต้องมีอย่างน้อย 2 ตัวอักษร"
+        }
+      }
     },
     "activity": {
       "title": "กิจกรรม",

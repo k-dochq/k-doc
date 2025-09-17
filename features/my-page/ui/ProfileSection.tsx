@@ -3,6 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { useUserProfile } from 'features/profile-edit';
 
 interface ProfileSectionProps {
   lang: Locale;
@@ -10,6 +11,12 @@ interface ProfileSectionProps {
 }
 
 export function ProfileSection({ lang, dict }: ProfileSectionProps) {
+  const { user, isLoading, error } = useUserProfile();
+
+  // 사용자 정보가 로딩 중이거나 에러가 있을 때 기본값 표시
+  const displayName = user?.user_metadata?.name || user?.user_metadata?.nickname || '사용자';
+  const displayEmail = user?.email || 'user@example.com';
+
   return (
     <div className='flex w-full flex-col gap-5'>
       {/* 프로필 헤더 - 클릭 가능한 전체 영역 */}
@@ -43,8 +50,10 @@ export function ProfileSection({ lang, dict }: ProfileSectionProps) {
           </svg>
         </div>
         <div className='flex-1'>
-          <h3 className='text-lg font-semibold text-gray-900'>사용자 이름</h3>
-          <p className='text-sm text-gray-500'>user@example.com</p>
+          <h3 className='text-lg font-semibold text-gray-900'>
+            {isLoading ? '로딩 중...' : displayName}
+          </h3>
+          <p className='text-sm text-gray-500'>{isLoading ? '로딩 중...' : displayEmail}</p>
         </div>
         <svg
           width='16'

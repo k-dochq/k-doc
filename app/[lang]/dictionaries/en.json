@@ -479,7 +479,27 @@
       "editProfile": "Edit Profile",
       "nicknameChange": "Change Nickname",
       "nameChange": "Change Name",
-      "passwordChange": "Change Password"
+      "passwordChange": "Change Password",
+      "edit": {
+        "title": "Edit Profile",
+        "nickname": "Nickname",
+        "name": "Name",
+        "email": "Email",
+        "saveButton": "Save",
+        "cancelButton": "Cancel",
+        "success": "Profile updated successfully.",
+        "error": "An error occurred while updating profile.",
+        "placeholders": {
+          "nickname": "Enter your nickname",
+          "name": "Enter your name"
+        },
+        "errors": {
+          "nicknameRequired": "Please enter your nickname.",
+          "nameRequired": "Please enter your name.",
+          "nicknameTooShort": "Nickname must be at least 2 characters.",
+          "nameTooShort": "Name must be at least 2 characters."
+        }
+      }
     },
     "activity": {
       "title": "Activity",
