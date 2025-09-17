@@ -8,6 +8,7 @@ import { getReviewDetail, getAllReviewIds } from 'entities/review/api/use-cases/
 import { ReviewDetailSkeleton } from './ReviewDetailSkeleton';
 import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
 
+// 리뷰 상세 페이지 프로퍼티
 interface ReviewDetailPageProps {
   params: Promise<{
     lang: Locale;
