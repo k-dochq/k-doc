@@ -40,7 +40,7 @@ export function SearchBar({
     }
 
     // 기본 동작: 현재 쿼리 파라미터를 유지하면서 search만 변경
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString() || '');
 
     if (trimmedSearch) {
       params.set('search', trimmedSearch);

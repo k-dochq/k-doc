@@ -6,6 +6,7 @@ import { PopularReviewsWrapper } from 'widgets/popular-reviews';
 import { CautionSection } from 'widgets/caution-section';
 import { TaxiReservationSection } from 'widgets/taxi-reservation';
 import { getDictionary } from 'app/[lang]/dictionaries';
+import { fetchBestHospitalsServer } from 'entities/hospital/api/server/fetch-best-hospitals-server';
 
 interface MainPageProps {
   params: Promise<{ lang: Locale }>;
@@ -14,6 +15,9 @@ interface MainPageProps {
 export default async function MainPage({ params }: MainPageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
+
+  // 서버에서 Best Hospitals 데이터 미리 가져오기
+  const initialBestHospitals = await fetchBestHospitalsServer();
 
   return (
     <>
@@ -27,7 +31,7 @@ export default async function MainPage({ params }: MainPageProps) {
         </div>
 
         <div className='mt-12'>
-          <HospitalListWrapper lang={lang} dict={dict} />
+          <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
         </div>
 
         <div className='mt-12'>

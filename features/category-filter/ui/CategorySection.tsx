@@ -69,8 +69,8 @@ export function CategorySection({
                 : currentCategory === categoryButton.type;
             const href =
               categoryButton.type === 'all'
-                ? pathname
-                : `${pathname}?category=${categoryButton.type}`;
+                ? pathname || undefined
+                : `${pathname || ''}?category=${categoryButton.type}`;
 
             return (
               <CarouselItem key={categoryButton.type} className='basis-auto pl-3'>

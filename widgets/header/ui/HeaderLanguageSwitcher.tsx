@@ -29,7 +29,7 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
     return path;
   };
 
-  const pathWithoutLocale = getPathWithoutLocale(pathname);
+  const pathWithoutLocale = getPathWithoutLocale(pathname || '');
 
   // 모든 locale에 대해 prefetch 수행
   useEffect(() => {

@@ -19,17 +19,17 @@ export function HospitalFilterBar({ lang, dict, districtFilter }: HospitalFilter
 
   // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
   const createSortUrl = (sort: HospitalSortOption) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString() || '');
     params.set('sort', sort);
     return `/hospitals?${params.toString()}`;
   };
 
   // 타입 안전하게 현재 정렬 옵션 가져오기
   const currentSort: HospitalSortOption =
-    searchParams.get('sort') === HOSPITAL_SORT_OPTIONS.POPULAR ||
-    searchParams.get('sort') === HOSPITAL_SORT_OPTIONS.RECOMMENDED ||
-    searchParams.get('sort') === HOSPITAL_SORT_OPTIONS.NEWEST
-      ? (searchParams.get('sort') as HospitalSortOption)
+    searchParams?.get('sort') === HOSPITAL_SORT_OPTIONS.POPULAR ||
+    searchParams?.get('sort') === HOSPITAL_SORT_OPTIONS.RECOMMENDED ||
+    searchParams?.get('sort') === HOSPITAL_SORT_OPTIONS.NEWEST
+      ? (searchParams?.get('sort') as HospitalSortOption)
       : HOSPITAL_SORT_OPTIONS.POPULAR;
 
   return (

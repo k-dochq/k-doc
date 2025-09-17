@@ -16,16 +16,16 @@ export function ReviewFilterBar({ lang, dict }: ReviewFilterBarProps) {
 
   // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
   const createSortUrl = (sort: ReviewSortOption) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString() || '');
     params.set('sort', sort); // 병원과 동일하게 sort 파라미터 사용
     return `/reviews?${params.toString()}`;
   };
 
   // 타입 안전하게 현재 정렬 옵션 가져오기
   const currentSort: ReviewSortOption =
-    searchParams.get('sort') === REVIEW_SORT_OPTIONS.LATEST ||
-    searchParams.get('sort') === REVIEW_SORT_OPTIONS.POPULAR
-      ? (searchParams.get('sort') as ReviewSortOption)
+    searchParams?.get('sort') === REVIEW_SORT_OPTIONS.LATEST ||
+    searchParams?.get('sort') === REVIEW_SORT_OPTIONS.POPULAR
+      ? (searchParams?.get('sort') as ReviewSortOption)
       : REVIEW_SORT_OPTIONS.LATEST;
 
   return (

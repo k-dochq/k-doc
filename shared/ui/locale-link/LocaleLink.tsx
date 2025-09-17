@@ -15,7 +15,7 @@ interface LocaleLinkProps extends Omit<LinkProps, 'href'> {
 
 export function LocaleLink({ href, children, locale, ...props }: LocaleLinkProps) {
   const pathname = usePathname();
-  const currentLocale = extractLocaleFromPathname(pathname);
+  const currentLocale = extractLocaleFromPathname(pathname || '');
 
   // 외부 링크 처리
   if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) {
