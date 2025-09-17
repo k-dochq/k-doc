@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from 'entities/review/model/types';
 import { PopularReviewCard } from 'entities/review/ui/PopularReviewCard';
 import {
@@ -16,6 +17,7 @@ import {
 interface ReviewCarouselProps {
   items: ReviewCardData[];
   lang: Locale;
+  dict: Dictionary;
   className?: string;
   itemClassName?: string;
   showNavigation?: boolean;
@@ -32,6 +34,7 @@ interface ReviewCarouselProps {
 export function ReviewCarousel({
   items,
   lang,
+  dict,
   className = '',
   itemClassName = '',
   showNavigation = false,
@@ -96,7 +99,7 @@ export function ReviewCarousel({
         <CarouselContent className='-ml-2 md:-ml-4'>
           {items.map((item) => (
             <CarouselItem key={item.id} className={`${basis} ${itemClassName}`}>
-              <PopularReviewCard review={item} lang={lang} noBorder={noBorder} />
+              <PopularReviewCard review={item} lang={lang} dict={dict} noBorder={noBorder} />
             </CarouselItem>
           ))}
         </CarouselContent>
