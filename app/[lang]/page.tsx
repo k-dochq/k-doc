@@ -32,7 +32,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className='relative h-16 w-48'>
             <Image
               src='/coming_soon.png'
-              alt={dict.comingSoonAlt}
+              alt={'Coming Soon'}
               fill
               className='object-contain'
               priority
