@@ -11,6 +11,29 @@ export interface GetReviewDetailResponse {
   review: ReviewCardData;
 }
 
+/**
+ * 모든 리뷰 ID를 조회하는 함수 (정적 생성용)
+ */
+export async function getAllReviewIds(): Promise<string[]> {
+  try {
+    const reviews = await prisma.review.findMany({
+      select: {
+        id: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      // 최대 1000개로 제한 (빌드 시간 고려)
+      take: 1000,
+    });
+
+    return reviews.map((review) => review.id);
+  } catch (error) {
+    console.error('Error fetching all review IDs:', error);
+    return [];
+  }
+}
+
 export async function getReviewDetail({
   reviewId,
 }: GetReviewDetailParams): Promise<GetReviewDetailResponse> {
