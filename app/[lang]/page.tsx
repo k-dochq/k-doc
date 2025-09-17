@@ -1,30 +1,6 @@
 import Image from 'next/image';
-import { type Locale } from 'shared/config';
 
-interface HomePageProps {
-  params: Promise<{ lang: Locale }>;
-}
-
-export default async function HomePage({ params }: HomePageProps) {
-  const { lang } = await params;
-
-  const messages = {
-    ko: {
-      logoAlt: 'K-DOC 로고',
-      comingSoonAlt: 'Coming Soon',
-    },
-    en: {
-      logoAlt: 'K-DOC Logo',
-      comingSoonAlt: 'Coming Soon',
-    },
-    th: {
-      logoAlt: 'โลโก้ K-DOC',
-      comingSoonAlt: 'เร็วๆ นี้',
-    },
-  };
-
-  const dict = messages[lang];
-
+export default async function HomePage() {
   return (
     <main className='flex min-h-screen items-center justify-center bg-black text-white'>
       <div className='w-full text-center'>
