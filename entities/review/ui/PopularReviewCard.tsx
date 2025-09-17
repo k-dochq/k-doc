@@ -36,7 +36,7 @@ export function PopularReviewCard({
     <LocaleLink
       href={`/review/${review.id}`}
       locale={lang}
-      className={`block w-full overflow-hidden rounded-lg bg-white ${noBorder ? '' : 'border border-neutral-200'} ${className}`}
+      className={`block h-full w-full overflow-hidden rounded-lg bg-white ${noBorder ? '' : 'border border-neutral-200'}`}
     >
       {/* Before/After 이미지 */}
       <div className=''>

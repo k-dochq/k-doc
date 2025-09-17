@@ -14,6 +14,11 @@ export function BeforeAfterImages({
   afterImages,
   className = '',
 }: BeforeAfterImagesProps) {
+  // before/after 이미지가 모두 없으면 null 반환
+  if (beforeImages.length === 0 && afterImages.length === 0) {
+    return null;
+  }
+
   // 기본 이미지 설정
   const defaultImage = {
     imageUrl: '/images/shared/default_image.png',
