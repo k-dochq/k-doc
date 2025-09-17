@@ -4,6 +4,7 @@ import { type MedicalSpecialtyType } from '@prisma/client';
 export interface GetPopularReviewsParams {
   category?: MedicalSpecialtyType | 'ALL';
   limit?: number;
+  hasBothImages?: boolean;
 }
 
 export interface GetPopularReviewsResponse {
@@ -14,12 +15,13 @@ export interface GetPopularReviewsResponse {
 export async function fetchPopularReviews(
   params: GetPopularReviewsParams = {},
 ): Promise<GetAllReviewsResponse> {
-  const { category = 'ALL', limit = 5 } = params;
+  const { category = 'ALL', limit = 5, hasBothImages = true } = params;
 
   const searchParams = new URLSearchParams();
   searchParams.set('category', category);
   searchParams.set('limit', limit.toString());
   searchParams.set('sortBy', 'popular'); // 인기순으로 정렬
+  searchParams.set('hasBothImages', hasBothImages.toString());
 
   const response = await fetch(`/api/reviews?${searchParams.toString()}`);
 

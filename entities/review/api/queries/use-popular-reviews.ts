@@ -5,7 +5,7 @@ import { fetchPopularReviews, type GetPopularReviewsParams } from './get-popular
 
 export function usePopularReviews(params: GetPopularReviewsParams = {}) {
   return useQuery({
-    queryKey: ['popular-reviews', params.category, params.limit],
+    queryKey: ['popular-reviews', params.category, params.limit, params.hasBothImages],
     queryFn: () => fetchPopularReviews(params),
     staleTime: 10 * 60 * 1000,
     gcTime: 20 * 60 * 1000,

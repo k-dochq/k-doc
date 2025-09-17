@@ -119,6 +119,7 @@ export interface GetAllReviewsParams {
   hospitalId?: string; // 특정 병원의 리뷰만 조회
   likedOnly?: boolean; // 좋아요한 리뷰만 조회
   userId?: string; // likedOnly가 true일 때 필요한 사용자 ID
+  hasBothImages?: boolean; // before/after 이미지가 모두 있는 리뷰만 조회
 }
 
 // 전체 리뷰 목록 응답
