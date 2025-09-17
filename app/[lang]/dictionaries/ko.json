@@ -470,5 +470,58 @@
     "companyInfo": "회사소개",
     "termsOfService": "이용약관",
     "privacyPolicy": "개인정보 처리방침"
+  },
+  "my": {
+    "title": "마이페이지",
+    "description": "개인 정보 및 설정을 관리할 수 있습니다.",
+    "profile": {
+      "title": "내 프로필",
+      "editProfile": "프로필 수정",
+      "nicknameChange": "닉네임 변경",
+      "nameChange": "이름 변경",
+      "passwordChange": "비밀번호 변경",
+      "edit": {
+        "title": "프로필 수정",
+        "nickname": "닉네임",
+        "name": "이름",
+        "email": "이메일",
+        "saveButton": "저장",
+        "cancelButton": "취소",
+        "success": "프로필이 성공적으로 업데이트되었습니다.",
+        "error": "프로필 업데이트 중 오류가 발생했습니다.",
+        "placeholders": {
+          "nickname": "닉네임을 입력하세요",
+          "name": "이름을 입력하세요"
+        },
+        "errors": {
+          "nicknameRequired": "닉네임을 입력해주세요.",
+          "nameRequired": "이름을 입력해주세요.",
+          "nicknameTooShort": "닉네임은 2자 이상이어야 합니다.",
+          "nameTooShort": "이름은 2자 이상이어야 합니다."
+        }
+      }
+    },
+    "activity": {
+      "title": "활동",
+      "savedList": "내 저장 목록"
+    },
+    "notification": {
+      "title": "알림",
+      "myPosts": "내가 작성한 게시글",
+      "eventService": "이벤트/서비스 혜택 알림"
+    },
+    "customerService": {
+      "title": "고객센터",
+      "chat": "채팅",
+      "phone": "전화",
+      "phoneNumber": "1588-4591"
+    },
+    "account": {
+      "title": "계정",
+      "logout": "로그아웃",
+      "deleteAccount": "회원탈퇴",
+      "deleteAccountConfirm": "정말로 회원탈퇴를 하시겠습니까? 계정이 비활성화되며 다시 활성화하려면 고객센터에 문의해야 합니다.",
+      "deleteAccountError": "회원탈퇴 중 오류가 발생했습니다. 다시 시도해주세요."
+    }
   }
 }

@@ -470,5 +470,58 @@
     "companyInfo": "About Us",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy"
+  },
+  "my": {
+    "title": "My Page",
+    "description": "Manage your personal information and settings.",
+    "profile": {
+      "title": "My Profile",
+      "editProfile": "Edit Profile",
+      "nicknameChange": "Change Nickname",
+      "nameChange": "Change Name",
+      "passwordChange": "Change Password",
+      "edit": {
+        "title": "Edit Profile",
+        "nickname": "Nickname",
+        "name": "Name",
+        "email": "Email",
+        "saveButton": "Save",
+        "cancelButton": "Cancel",
+        "success": "Profile updated successfully.",
+        "error": "An error occurred while updating profile.",
+        "placeholders": {
+          "nickname": "Enter your nickname",
+          "name": "Enter your name"
+        },
+        "errors": {
+          "nicknameRequired": "Please enter your nickname.",
+          "nameRequired": "Please enter your name.",
+          "nicknameTooShort": "Nickname must be at least 2 characters.",
+          "nameTooShort": "Name must be at least 2 characters."
+        }
+      }
+    },
+    "activity": {
+      "title": "Activity",
+      "savedList": "My Saved List"
+    },
+    "notification": {
+      "title": "Notifications",
+      "myPosts": "My Posts",
+      "eventService": "Event/Service Benefits"
+    },
+    "customerService": {
+      "title": "Customer Service",
+      "chat": "Chat",
+      "phone": "Phone",
+      "phoneNumber": "1588-4591"
+    },
+    "account": {
+      "title": "Account",
+      "logout": "Logout",
+      "deleteAccount": "Delete Account",
+      "deleteAccountConfirm": "Are you sure you want to delete your account? Your account will be deactivated and you'll need to contact customer service to reactivate it.",
+      "deleteAccountError": "An error occurred while deleting your account. Please try again."
+    }
   }
 }

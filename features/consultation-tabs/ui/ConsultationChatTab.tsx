@@ -65,7 +65,7 @@ export function ConsultationChatTab({ lang, dict }: ConsultationChatTabProps) {
   }
 
   if (!chatRooms || chatRooms.length === 0) {
-    return <ChatRoomEmptyState />;
+    return <ChatRoomEmptyState lang={lang} dict={dict} />;
   }
 
   return (

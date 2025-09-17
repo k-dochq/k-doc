@@ -1,9 +1,11 @@
+import { LocaleLink } from 'shared/ui/locale-link';
+
 export function HeaderProfile() {
   return (
-    <button
+    <LocaleLink
+      href='/my'
       className='rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900'
       aria-label='프로필'
-      type='button'
     >
       <svg
         width='24'
@@ -27,6 +29,6 @@ export function HeaderProfile() {
           strokeLinejoin='round'
         />
       </svg>
-    </button>
+    </LocaleLink>
   );
 }
