@@ -55,6 +55,7 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
         ranking: true,
         createdAt: true,
         updatedAt: true,
+        displayLocationName: true,
         HospitalImage: {
           where: {
             imageType: 'THUMBNAIL',
@@ -133,6 +134,7 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
             name: hms.MedicalSpecialty.name,
             specialtyType: hms.MedicalSpecialty.specialtyType,
           })),
+          displayLocationName: hospital.displayLocationName,
           district: hospital.District || null,
           isLiked: true, // 좋아요한 병원 목록이므로 항상 true
         }) as LikedHospital,

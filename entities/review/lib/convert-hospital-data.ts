@@ -25,5 +25,6 @@ export function convertReviewHospitalToHospitalCard(review: ReviewCardData): Hos
           parentId: null,
         }
       : null,
+    displayLocationName: null, // ReviewCardData에는 displayLocationName이 없으므로 null
   };
 }

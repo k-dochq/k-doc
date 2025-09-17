@@ -86,6 +86,7 @@ export async function getAllReviews({
             prices: true,
             rating: true,
             discountRate: true,
+            displayLocationName: true,
             District: {
               select: {
                 name: true,
@@ -181,6 +182,9 @@ export async function getAllReviews({
               ? parseLocalizedText(review.Hospital.District.displayName)
               : null,
           },
+          displayLocationName: review.Hospital.displayLocationName
+            ? parseLocalizedText(review.Hospital.displayLocationName)
+            : null,
         },
         medicalSpecialty: {
           name: parseLocalizedText(review.MedicalSpecialty.name),
