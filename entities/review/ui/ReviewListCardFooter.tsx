@@ -3,6 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
 import { type Dictionary } from 'shared/model/types';
+import { extractLocalizedText } from 'shared/lib/localized-text';
 import { ReviewHashtags } from './ReviewHashtags';
 import { ReviewProcedureTiming } from './ReviewProcedureTiming';
 
@@ -19,8 +20,9 @@ export function ReviewListCardFooter({
   dict,
   className = '',
 }: ReviewListCardFooterProps) {
-  // 해시태그 추출 (concerns를 해시태그로 사용)
-  const hashtags = review.concerns ? [review.concerns] : [];
+  // 해시태그 추출 (concernsMultilingual을 해시태그로 사용)
+  const concerns = extractLocalizedText(review.concernsMultilingual, lang) || '';
+  const hashtags = concerns ? [concerns] : [];
 
   return (
     <div className={`${className}`}>

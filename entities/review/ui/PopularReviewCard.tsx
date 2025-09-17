@@ -32,8 +32,9 @@ export function PopularReviewCard({
   // 사용자 표시명
   const userName = getUserDisplayName(review.user);
 
-  // 해시태그 추출 (concerns를 해시태그로 사용)
-  const hashtags = review.concerns ? [review.concerns] : [];
+  // 해시태그 추출 (concernsMultilingual을 해시태그로 사용)
+  const concerns = extractLocalizedText(review.concernsMultilingual, lang) || '';
+  const hashtags = concerns ? [concerns] : [];
 
   // 이미지가 모두 없는지 확인
   const hasNoImages = review.images.before.length === 0 && review.images.after.length === 0;
