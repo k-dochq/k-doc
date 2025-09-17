@@ -1,23 +1,27 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getDictionary } from '../../dictionaries';
-import { type Locale } from 'shared/config';
+import { type Locale, STATIC_GENERATION_LOCALES } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { extractLocalizedText } from 'shared/lib';
-import { getReviewDetail } from 'entities/review';
-import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
+import { getReviewDetail, getAllReviewIds } from 'entities/review/api/use-cases/get-review-detail';
 import { ReviewDetailSkeleton } from './ReviewDetailSkeleton';
+import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
 
-interface PageProps {
+interface ReviewDetailPageProps {
   params: Promise<{
     lang: Locale;
     id: string;
   }>;
 }
 
-// 리뷰 페이지는 서버 컴포넌트로 동적 렌더링, 10분 캐시
-export const revalidate = 1800;
+interface ReviewDetailContentProps {
+  reviewId: string;
+  lang: Locale;
+  dict: Dictionary;
+}
 
-export default async function ReviewDetailPage({ params }: PageProps) {
+export default async function ReviewDetailPage({ params }: ReviewDetailPageProps) {
   const { lang, id } = await params;
 
   try {
@@ -25,9 +29,12 @@ export default async function ReviewDetailPage({ params }: PageProps) {
     const dict = await getDictionary(lang);
 
     return (
-      <Suspense fallback={<ReviewDetailSkeleton />}>
-        <ReviewDetailPageComponent reviewId={id} lang={lang} dict={dict} />
-      </Suspense>
+      <div className=''>
+        {/* 리뷰 상세 정보 - Suspense로 스트리밍 */}
+        <Suspense fallback={<ReviewDetailSkeleton />}>
+          <ReviewDetailContent reviewId={id} lang={lang} dict={dict} />
+        </Suspense>
+      </div>
     );
   } catch (error) {
     console.error('Error loading review detail page:', error);
@@ -35,22 +42,69 @@ export default async function ReviewDetailPage({ params }: PageProps) {
   }
 }
 
-// 동적 메타데이터 생성
-export async function generateMetadata({ params }: PageProps) {
+// 리뷰 상세 컨텐츠 컴포넌트
+async function ReviewDetailContent({ reviewId, lang, dict }: ReviewDetailContentProps) {
+  try {
+    // 리뷰 상세 데이터 조회
+    const { review } = await getReviewDetail({ reviewId });
+
+    return <ReviewDetailPageComponent review={review} lang={lang} dict={dict} />;
+  } catch (error) {
+    console.error('Error loading review detail content:', error);
+    notFound();
+  }
+}
+
+// ISR 설정 - 15분마다 재검증
+export const revalidate = 900;
+
+// 빌드 타임에 생성되지 않은 경로도 동적으로 생성 허용
+export const dynamicParams = true;
+
+// 정적 생성을 위한 파라미터 생성
+export async function generateStaticParams() {
+  try {
+    // 모든 리뷰 ID 조회
+    const reviewIds = await getAllReviewIds();
+
+    // 모든 언어와 리뷰 ID 조합 생성 (ko, th만)
+    const params = [];
+    for (const lang of STATIC_GENERATION_LOCALES) {
+      for (const id of reviewIds) {
+        params.push({
+          lang,
+          id,
+        });
+      }
+    }
+
+    console.log(
+      `[${new Date().toISOString()}] 정적 생성할 리뷰 페이지 수: ${params.length} (리뷰: ${reviewIds.length}개 × 언어: ${STATIC_GENERATION_LOCALES.length}개)`,
+    );
+    return params;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    // 에러 발생 시 빈 배열 반환하여 동적 렌더링으로 fallback
+    return [];
+  }
+}
+
+// 정적 생성을 위한 메타데이터
+export async function generateMetadata({ params }: ReviewDetailPageProps) {
   const { lang, id } = await params;
 
   try {
     const { review } = await getReviewDetail({ reviewId: id });
     const dict = await getDictionary(lang);
 
-    const title = extractLocalizedText(review.title, lang) || '시술후기';
-    const medicalSpecialtyName = extractLocalizedText(review.medicalSpecialty.name, lang) || '';
+    const reviewTitle = extractLocalizedText(review.content, lang)?.slice(0, 50) || '시술후기';
+    const hospitalName = extractLocalizedText(review.hospital.name, lang) || '병원';
 
     return {
-      title: `${title} - ${dict.reviewDetail?.title || '시술후기'}`,
+      title: `${reviewTitle} - ${hospitalName} | ${dict.reviewDetail?.title || '시술후기'}`,
       description:
         extractLocalizedText(review.content, lang)?.slice(0, 160) ||
-        `${medicalSpecialtyName} 시술후기를 확인하세요.`,
+        `${hospitalName}의 시술후기를 확인하세요.`,
     };
   } catch (_error) {
     return {
