@@ -20,6 +20,8 @@ interface ReviewCarouselProps {
   itemClassName?: string;
   showNavigation?: boolean;
   loop?: boolean;
+  autoPlay?: boolean;
+  autoPlayInterval?: number; // milliseconds
   align?: 'start' | 'center' | 'end';
   basis?: string; // Tailwind basis class (e.g., 'basis-[280px]')
   emptyMessage?: string;
@@ -34,6 +36,8 @@ export function ReviewCarousel({
   itemClassName = '',
   showNavigation = false,
   loop = true,
+  autoPlay = false,
+  autoPlayInterval = 3000,
   align = 'start',
   basis = 'basis-[280px] md:basis-[320px]',
   emptyMessage = '표시할 후기가 없습니다.',
@@ -56,6 +60,24 @@ export function ReviewCarousel({
       onSlideChange?.(newSlide);
     });
   }, [api, onSlideChange]);
+
+  // Auto play 기능
+  useEffect(() => {
+    if (!autoPlay || !api || items.length <= 1) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else if (loop) {
+        // loop가 true이면 처음으로 돌아감
+        api.scrollTo(0);
+      }
+    }, autoPlayInterval);
+
+    return () => clearInterval(interval);
+  }, [api, autoPlay, autoPlayInterval, loop, items.length]);
 
   if (items.length === 0) {
     return <div className={`py-8 text-center ${className}`}>{emptyMessage}</div>;
