@@ -37,9 +37,8 @@ export function ChildDistrictList({
   const { data: parentDistricts = [] } = useParentDistricts();
 
   const getDistrictName = (district: District): string => {
-    return district.displayName
-      ? getLocalizedTextByLocale(district.displayName, lang)
-      : getLocalizedTextByLocale(district.name, lang);
+    // 지역 검색 drawer에서는 원래 name을 사용
+    return getLocalizedTextByLocale(district.name, lang);
   };
 
   const getParentDistrictName = (): string => {
