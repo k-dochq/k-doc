@@ -16,6 +16,7 @@ export interface ParsedReviewQueryParams {
   category?: MedicalSpecialtyType;
   hospitalId?: string;
   likedOnly?: boolean;
+  hasBothImages?: boolean;
 }
 
 /**
@@ -29,6 +30,7 @@ export interface DbReviewQueryParams {
   hospitalId?: string;
   likedOnly?: boolean;
   userId?: string; // likedOnly가 true일 때 필요한 사용자 ID
+  hasBothImages?: boolean;
 }
 
 /**
@@ -66,6 +68,7 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
 
   const hospitalId = searchParams.get('hospitalId') || undefined;
   const likedOnly = searchParams.get('likedOnly') === 'true';
+  const hasBothImages = searchParams.get('hasBothImages') === 'true';
 
   return {
     page,
@@ -74,6 +77,7 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
     category,
     hospitalId,
     likedOnly,
+    hasBothImages,
   };
 }
 
@@ -92,6 +96,7 @@ export function convertToDbReviewQueryParams(
     hospitalId: params.hospitalId,
     likedOnly: params.likedOnly,
     userId: params.likedOnly ? userId : undefined,
+    hasBothImages: params.hasBothImages,
   };
 }
 
@@ -123,6 +128,10 @@ export function buildReviewQueryString(params: Partial<ParsedReviewQueryParams>)
 
   if (params.likedOnly) {
     searchParams.set('likedOnly', 'true');
+  }
+
+  if (params.hasBothImages) {
+    searchParams.set('hasBothImages', 'true');
   }
 
   return searchParams.toString();

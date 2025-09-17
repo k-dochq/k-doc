@@ -17,6 +17,7 @@ export async function getAllReviews({
   hospitalId,
   likedOnly = false,
   userId,
+  hasBothImages = false,
 }: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
   // offset이 제공되면 사용하고, 그렇지 않으면 page를 기반으로 계산
   const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
@@ -45,6 +46,26 @@ export async function getAllReviews({
           userId: userId,
         },
       };
+    }
+
+    // hasBothImages가 true이면 before/after 이미지가 모두 있는 리뷰만 필터링
+    if (hasBothImages) {
+      whereCondition.AND = [
+        {
+          ReviewImage: {
+            some: {
+              imageType: 'BEFORE',
+            },
+          },
+        },
+        {
+          ReviewImage: {
+            some: {
+              imageType: 'AFTER',
+            },
+          },
+        },
+      ];
     }
 
     // 정렬 조건 구성
