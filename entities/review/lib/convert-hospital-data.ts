@@ -14,5 +14,16 @@ export function convertReviewHospitalToHospitalCard(review: ReviewCardData): Hos
     reviewCount: review.hospital.reviewCount,
     thumbnailImageUrl: review.hospital.thumbnailImageUrl,
     discountRate: review.hospital.discountRate,
+    district: review.hospital.district
+      ? {
+          id: '', // ReviewCardData에는 id가 없으므로 빈 문자열
+          name: review.hospital.district.name,
+          displayName: review.hospital.district.displayName || null,
+          countryCode: 'KR' as const, // 기본값
+          level: 0, // 기본값
+          order: null,
+          parentId: null,
+        }
+      : null,
   };
 }

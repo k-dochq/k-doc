@@ -29,7 +29,9 @@ export function ParentDistrictList({
   }
 
   const getDistrictName = (district: District): string => {
-    return getLocalizedTextByLocale(district.name, lang);
+    return district.displayName
+      ? getLocalizedTextByLocale(district.displayName, lang)
+      : getLocalizedTextByLocale(district.name, lang);
   };
 
   return (

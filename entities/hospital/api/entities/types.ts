@@ -36,6 +36,19 @@ export interface HospitalDoctor {
   updatedAt: Date;
 }
 
+// District 타입을 Prisma에서 가져와서 사용 (JsonValue 타입 그대로 유지)
+export type District = Prisma.DistrictGetPayload<{
+  select: {
+    id: true;
+    name: true;
+    displayName: true;
+    countryCode: true;
+    level: true;
+    order: true;
+    parentId: true;
+  };
+}>;
+
 export interface Hospital {
   id: string;
   name: Prisma.JsonValue;
@@ -59,6 +72,7 @@ export interface Hospital {
   discountRate?: number | null; // 할인율
   latitude?: number | null; // 위도
   longitude?: number | null; // 경도
+  district?: District | null; // 지역 정보
 }
 
 export interface GetBestHospitalsRequest {

@@ -82,7 +82,11 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
           select: {
             id: true,
             name: true,
+            displayName: true,
             countryCode: true,
+            level: true,
+            order: true,
+            parentId: true,
           },
         },
         _count: {
@@ -129,13 +133,7 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
             name: hms.MedicalSpecialty.name,
             specialtyType: hms.MedicalSpecialty.specialtyType,
           })),
-          district: hospital.District
-            ? {
-                id: hospital.District.id,
-                name: hospital.District.name as Record<string, string>,
-                countryCode: hospital.District.countryCode,
-              }
-            : null,
+          district: hospital.District || null,
           isLiked: true, // 좋아요한 병원 목록이므로 항상 true
         }) as LikedHospital,
     );

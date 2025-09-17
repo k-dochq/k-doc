@@ -25,7 +25,7 @@ export function DistrictFilterButton({
       selectedChildIds,
       selectedDistricts: selectedDistricts.map((district) => ({
         id: district.id,
-        name: district.name,
+        name: district.displayName || district.name,
         parentId: district.parentId,
       })),
     });

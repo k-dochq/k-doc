@@ -6,6 +6,7 @@ import { HospitalThumbnail } from './HospitalThumbnail';
 import { HospitalInfo } from './HospitalInfo';
 import { MedicalSpecialtyTags } from 'shared/ui/medical-specialty-tags';
 import { LikeButton } from 'shared/ui/buttons/LikeButton';
+import { extractLocalizedText } from 'shared/lib';
 
 interface HospitalCardProps {
   hospital: HospitalCardData;
@@ -29,6 +30,15 @@ export function HospitalCard({
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
   const isLiked = user && hospital.likedUserIds ? hospital.likedUserIds.includes(user.id) : false;
 
+  // district.displayName이 있으면 사용하고, 없으면 기존 address 사용
+  const displayAddress = hospital.district?.displayName
+    ? {
+        ko_KR: extractLocalizedText(hospital.district.displayName, 'ko'),
+        en_US: extractLocalizedText(hospital.district.displayName, 'en'),
+        th_TH: extractLocalizedText(hospital.district.displayName, 'th'),
+      }
+    : hospital.address;
+
   return (
     <div className='flex min-w-0 gap-3'>
       <HospitalThumbnail imageUrl={hospital.thumbnailImageUrl} />
@@ -37,7 +47,7 @@ export function HospitalCard({
           <div className='min-w-0 flex-1'>
             <HospitalInfo
               name={hospital.name}
-              address={hospital.address}
+              address={displayAddress}
               prices={hospital.prices}
               rating={hospital.rating}
               reviewCount={hospital.reviewCount}

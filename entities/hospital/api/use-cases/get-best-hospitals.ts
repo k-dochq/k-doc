@@ -61,6 +61,17 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
           },
           take: 3, // 최대 3개의 전문 분야만 표시
         },
+        District: {
+          select: {
+            id: true,
+            name: true,
+            displayName: true,
+            countryCode: true,
+            level: true,
+            order: true,
+            parentId: true,
+          },
+        },
         _count: {
           select: {
             Review: true, // 실제 리뷰 수 계산
@@ -86,6 +97,7 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
         name: parseLocalizedText(hms.MedicalSpecialty.name),
         specialtyType: hms.MedicalSpecialty.specialtyType,
       })),
+      district: hospital.District || null, // District 정보 추가
     }));
   } catch (error) {
     throw handleDatabaseError(error, 'getBestHospitals');

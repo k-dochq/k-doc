@@ -23,6 +23,8 @@ export function convertLikedHospitalToCardData(likedHospital: LikedHospital): Ho
         name: parseLocalizedText(specialty.name),
         specialtyType: specialty.specialtyType,
       })) || [],
+    // 지역 정보
+    district: likedHospital.district || null,
     // 좋아요 관련 필드 추가
     likeCount: likedHospital.likeCount,
     isLiked: likedHospital.isLiked,
