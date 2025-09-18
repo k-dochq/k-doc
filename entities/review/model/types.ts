@@ -56,6 +56,7 @@ export type ReviewCardData = {
   createdAt: Date;
   viewCount: number;
   likeCount: number;
+  commentCount: number; // 댓글 수
   likedUserIds: string[]; // 좋아요를 한 사용자 ID들
   isLiked: boolean; // 현재 사용자의 좋아요 상태
   user: {

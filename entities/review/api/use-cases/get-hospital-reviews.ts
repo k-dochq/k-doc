@@ -131,6 +131,7 @@ export async function getHospitalReviews({
         createdAt: review.createdAt,
         viewCount: review.viewCount,
         likeCount: review._count.ReviewLike, // 실시간 좋아요 수 계산
+        commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)
         likedUserIds, // 좋아요를 한 사용자 ID들
         isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
         user: {

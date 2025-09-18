@@ -145,6 +145,7 @@ export class LikedReviewsRepository {
         isRecommended: review.isRecommended,
         viewCount: review.viewCount,
         likeCount: review._count.ReviewLike, // 실시간 좋아요 수 계산
+        commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)
         likedUserIds, // 좋아요를 한 사용자 ID들
         isLiked: true, // 좋아요한 리뷰 리스트이므로 항상 true
         createdAt: review.createdAt,

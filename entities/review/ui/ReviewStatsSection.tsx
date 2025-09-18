@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
 import { type User } from '@supabase/supabase-js';
 import { EyeIcon } from 'shared/ui/icons/EyeIcon';
+import { CommentIcon } from 'shared/ui';
 import { ReviewLikeDisplay } from './ReviewLikeDisplay';
 
 interface ReviewStatsSectionProps {
@@ -32,10 +33,19 @@ export function ReviewStatsSection({
     <div
       className={`flex items-center ${showLikeButton ? 'justify-between' : 'justify-start'} ${className}`}
     >
-      {/* 조회수 */}
-      <div className='flex items-center gap-1'>
-        <EyeIcon className='text-sm text-neutral-400' />
-        <span className='text-sm font-medium text-neutral-400'>{review.viewCount}</span>
+      {/* 조회수 및 댓글수 */}
+      <div className='flex items-center gap-4'>
+        {/* 조회수 */}
+        <div className='flex items-center gap-1'>
+          <EyeIcon className='text-sm text-neutral-400' />
+          <span className='text-sm font-medium text-neutral-400'>{review.viewCount}</span>
+        </div>
+
+        {/* 댓글수 */}
+        <div className='flex items-center gap-1'>
+          <CommentIcon size={16} className='text-neutral-400' />
+          <span className='text-sm font-medium text-neutral-400'>{review.commentCount}</span>
+        </div>
       </div>
 
       {/* 좋아요 - showLikeButton이 true일 때만 표시 */}
