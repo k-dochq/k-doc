@@ -133,6 +133,10 @@
     "hospitalInfo": "Hospital Information",
     "sameHospitalReviews": "Same Hospital Reviews"
   },
+  "reviewImages": {
+    "beforePhoto": "Before Photo",
+    "afterPhoto": "After Photo"
+  },
   "error": {
     "title": "An unexpected error occurred",
     "description": "Please refresh the page or try again later"

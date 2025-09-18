@@ -54,6 +54,8 @@ export function ReviewListCard({
       <ReviewListImages
         beforeImages={review.images.before}
         afterImages={review.images.after}
+        reviewId={review.id}
+        lang={lang}
         className='mt-3'
       />
 
