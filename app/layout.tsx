@@ -14,7 +14,7 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   title: {
     default: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
-    template: '%s | K-DOC',
+    template: 'K-DOC',
   },
   description:
     'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
