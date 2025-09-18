@@ -527,5 +527,27 @@
   "taxiReservation": {
     "title": "Taxi reservation",
     "buttonText": "택시 예약하기"
+  },
+  "comments": {
+    "title": "댓글",
+    "form": {
+      "placeholder": "댓글을 입력하세요...",
+      "submit": "댓글 작성",
+      "submitting": "작성 중...",
+      "loginRequired": "댓글을 작성하려면 로그인이 필요합니다.",
+      "loginButton": "로그인"
+    },
+    "list": {
+      "empty": "첫 번째 댓글을 작성해보세요!",
+      "error": "댓글을 불러오는 중 오류가 발생했습니다.",
+      "loading": "로딩 중...",
+      "loadMore": "더 보기"
+    },
+    "time": {
+      "justNow": "방금 전",
+      "minutesAgo": "분 전",
+      "hoursAgo": "시간 전",
+      "daysAgo": "일 전"
+    }
   }
 }

@@ -527,5 +527,27 @@
   "taxiReservation": {
     "title": "Taxi reservation",
     "buttonText": "Book a Taxi"
+  },
+  "comments": {
+    "title": "Comments",
+    "form": {
+      "placeholder": "Write a comment...",
+      "submit": "Post Comment",
+      "submitting": "Posting...",
+      "loginRequired": "Please log in to write a comment.",
+      "loginButton": "Login"
+    },
+    "list": {
+      "empty": "Be the first to comment!",
+      "error": "An error occurred while loading comments.",
+      "loading": "Loading...",
+      "loadMore": "Load More"
+    },
+    "time": {
+      "justNow": "just now",
+      "minutesAgo": " minutes ago",
+      "hoursAgo": " hours ago",
+      "daysAgo": " days ago"
+    }
   }
 }

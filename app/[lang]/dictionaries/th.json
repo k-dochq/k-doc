@@ -527,5 +527,27 @@
   "taxiReservation": {
     "title": "Taxi reservation",
     "buttonText": "จองแท็กซี่"
+  },
+  "comments": {
+    "title": "ความคิดเห็น",
+    "form": {
+      "placeholder": "เขียนความคิดเห็น...",
+      "submit": "โพสต์ความคิดเห็น",
+      "submitting": "กำลังโพสต์...",
+      "loginRequired": "กรุณาเข้าสู่ระบบเพื่อเขียนความคิดเห็น",
+      "loginButton": "เข้าสู่ระบบ"
+    },
+    "list": {
+      "empty": "เป็นคนแรกที่แสดงความคิดเห็น!",
+      "error": "เกิดข้อผิดพลาดขณะโหลดความคิดเห็น",
+      "loading": "กำลังโหลด...",
+      "loadMore": "โหลดเพิ่มเติม"
+    },
+    "time": {
+      "justNow": "เมื่อสักครู่",
+      "minutesAgo": " นาทีที่แล้ว",
+      "hoursAgo": " ชั่วโมงที่แล้ว",
+      "daysAgo": " วันที่แล้ว"
+    }
   }
 }

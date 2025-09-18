@@ -13,6 +13,7 @@ import { ReviewStatsSection } from './ReviewStatsSection';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { ReviewHospitalSection } from 'entities/review';
 import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
+import { ReviewCommentsSection } from 'features/review-comments';
 
 interface ReviewDetailContentProps {
   review: ReviewCardData;
@@ -96,6 +97,8 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
           title={dict.reviewDetail?.sameHospitalReviews || '같은 시술 후기'}
         />
       </div>
+
+      <ReviewCommentsSection reviewId={review.id} lang={lang} dict={dict} />
     </div>
   );
 }
