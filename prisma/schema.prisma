@@ -178,6 +178,8 @@ model Review {
   concerns             String?          @db.VarChar(500)
   medicalSpecialtyId   String           @db.Uuid
   concernsMultilingual Json?
+  commentCount         Int              @default(0)
+  Comment              Comment[]
   Hospital             Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   MedicalSpecialty     MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
   User                 User             @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -245,6 +247,7 @@ model User {
   profileImgUrl               String?
   termsVersion                String?               @db.VarChar(20)
   userStatusType              UserStatusType?       @default(ACTIVE)
+  Comment                     Comment[]
   ConsultationMessage         ConsultationMessage[]
   HospitalLike                HospitalLike[]
   Review                      Review[]
@@ -391,6 +394,23 @@ model ConsultationMessage {
   @@index([createdAt])
   @@index([hospitalId])
   @@index([userId, hospitalId])
+  @@index([userId])
+  @@schema("public")
+}
+
+model Comment {
+  id        String   @id @db.Uuid
+  content   Json
+  userId    String   @db.Uuid
+  reviewId  String   @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  isDeleted Boolean  @default(false)
+  Review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([reviewId])
   @@index([userId])
   @@schema("public")
 }
