@@ -106,17 +106,6 @@ export function ReviewImagesContent({
           </div>
         )}
       </div>
-
-      {/* 하단 네비게이션 (추후 구현 가능) */}
-      <div className='border-t border-gray-200 bg-gray-50 p-4'>
-        <div className='text-center text-sm text-gray-600'>
-          {navigationData && (
-            <span>
-              {navigationData.currentIndex} / {navigationData.totalCount}
-            </span>
-          )}
-        </div>
-      </div>
     </div>
   );
 }
