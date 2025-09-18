@@ -1,4 +1,4 @@
-import { MedicalSpecialtyType, type Prisma } from '@prisma/client';
+import { MedicalSpecialtyType, ReviewImageType, type Prisma } from '@prisma/client';
 import { type LocalizedText } from 'shared/lib/localized-text';
 
 // 기본 리뷰 타입 (Prisma에서 생성)
@@ -27,14 +27,16 @@ export type Review = Prisma.ReviewGetPayload<{
   };
 }>;
 
-// 리뷰 이미지 타입 (필요한 필드만 선택)
-export type ReviewImage = {
-  id: string;
-  imageType: 'BEFORE' | 'AFTER';
-  imageUrl: string;
-  alt: string | null;
-  order: number | null;
-};
+// 리뷰 이미지 타입 (Prisma 타입 기반)
+export type ReviewImage = Prisma.ReviewImageGetPayload<{
+  select: {
+    id: true;
+    imageType: true;
+    imageUrl: true;
+    alt: true;
+    order: true;
+  };
+}>;
 
 // 기본 이미지 타입 (기본 이미지용)
 export type DefaultImage = {

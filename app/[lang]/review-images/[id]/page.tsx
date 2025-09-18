@@ -1,20 +1,27 @@
 import { type Locale } from 'shared/config';
+import { ReviewImagesContent } from './ReviewImagesContent';
 
 interface PageProps {
   params: Promise<{
     lang: Locale;
     id: string;
   }>;
+  searchParams: Promise<{
+    type?: string;
+    index?: string;
+  }>;
 }
 
-export default async function ReviewImagesPage({ params }: PageProps) {
+export default async function ReviewImagesPage({ params, searchParams }: PageProps) {
   const { lang, id } = await params;
+  const { type, index } = await searchParams;
 
   return (
-    <div className='container mx-auto px-4 py-8'>
-      <h1 className='mb-4 text-2xl font-bold'>리뷰 이미지 페이지</h1>
-      <p>리뷰 ID: {id}</p>
-      <p>언어: {lang}</p>
-    </div>
+    <ReviewImagesContent
+      reviewId={id}
+      lang={lang}
+      initialImageType={type}
+      initialImageIndex={index}
+    />
   );
 }

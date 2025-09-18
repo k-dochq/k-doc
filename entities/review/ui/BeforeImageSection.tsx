@@ -5,6 +5,7 @@ import { SingleImageDisplay } from './SingleImageDisplay';
 import { DualImageDisplay } from './DualImageDisplay';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type Locale } from 'shared/config';
+import { ReviewImageType } from '@prisma/client';
 
 interface BeforeImageSectionProps {
   beforeImages: ReviewImage[];
@@ -35,8 +36,8 @@ export function BeforeImageSection({
     e.preventDefault();
     e.stopPropagation();
 
-    // 이미지 페이지로 이동
-    router.push(`/review-images/${reviewId}`);
+    // Before 이미지의 첫 번째로 이동
+    router.push(`/review-images/${reviewId}?type=${ReviewImageType.BEFORE}&index=1`);
   };
 
   return (
