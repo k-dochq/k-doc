@@ -2,6 +2,7 @@ import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError } from 'shared/lib';
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 import { type HospitalCardData, parseLocalizedText, parsePriceInfo } from 'shared/model/types';
+import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
 
 // 카테고리별 병원 조회 옵션
 export interface GetBestHospitalsOptions {
@@ -42,11 +43,14 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
         displayLocationName: true,
         HospitalImage: {
           where: {
-            imageType: 'THUMBNAIL',
+            isActive: true,
           },
-          orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
-          take: 1, // 첫 번째 썸네일 이미지만
+          orderBy: [
+            { imageType: 'asc' }, // MAIN이 먼저 오도록
+            { order: 'asc' },
+          ],
           select: {
+            imageType: true,
             imageUrl: true,
           },
         },
@@ -91,7 +95,7 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
       prices: parsePriceInfo(hospital.prices),
       rating: hospital.rating,
       reviewCount: hospital._count.Review, // 실제 리뷰 수
-      thumbnailImageUrl: hospital.HospitalImage[0]?.imageUrl || null,
+      thumbnailImageUrl: getHospitalThumbnailImageUrl(hospital.HospitalImage),
       discountRate: hospital.discountRate,
       medicalSpecialties: hospital.HospitalMedicalSpecialty.map((hms) => ({
         id: hms.MedicalSpecialty.id,

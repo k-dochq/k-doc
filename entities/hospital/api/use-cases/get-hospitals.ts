@@ -7,11 +7,17 @@ import {
   type GetHospitalsResponse,
 } from '../entities/types';
 import { DEFAULT_HOSPITAL_QUERY_PARAMS, type DbSortField } from 'shared/model/types/hospital-query';
+import { getHospitalMainImageUrl } from '../../lib/image-utils';
 
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
   include: {
-    HospitalImage: true;
+    HospitalImage: {
+      select: {
+        imageType: true;
+        imageUrl: true;
+      };
+    };
     HospitalMedicalSpecialty: {
       include: {
         MedicalSpecialty: true;
@@ -48,15 +54,6 @@ type HospitalImageData = {
 };
 
 // 메인 이미지 URL 추출 헬퍼 함수
-function extractMainImageUrl(hospitalImages?: HospitalImageData[]): string | null {
-  if (!hospitalImages || hospitalImages.length === 0) return null;
-
-  const mainImage = hospitalImages.find(
-    (img) => img.imageType === 'MAIN' && img.isActive && img.imageUrl,
-  );
-
-  return mainImage?.imageUrl || null;
-}
 
 export async function getHospitals(
   request: GetHospitalsRequest = {},
@@ -204,11 +201,16 @@ export async function getHospitals(
       include: {
         HospitalImage: {
           where: {
-            imageType: 'MAIN',
             isActive: true,
           },
-          orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
-          take: 1,
+          orderBy: [
+            { imageType: 'asc' }, // MAIN이 먼저 오도록
+            { order: 'asc' },
+          ],
+          select: {
+            imageType: true,
+            imageUrl: true,
+          },
         },
         HospitalMedicalSpecialty: {
           include: {
@@ -277,7 +279,7 @@ export async function getHospitals(
         ranking: hospital.ranking,
         createdAt: hospital.createdAt,
         updatedAt: hospital.updatedAt,
-        mainImageUrl: extractMainImageUrl(hospital.HospitalImage),
+        mainImageUrl: getHospitalMainImageUrl(hospital.HospitalImage),
         medicalSpecialties:
           hospital.HospitalMedicalSpecialty?.map((hms) => ({
             id: hms.MedicalSpecialty.id,

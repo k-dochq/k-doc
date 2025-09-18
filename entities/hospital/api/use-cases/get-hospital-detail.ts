@@ -5,6 +5,7 @@ import { parsePriceInfo } from 'shared/model/types';
 import { type Hospital } from '../entities/types';
 import { type OpeningHours } from '../entities/opening-hours-types';
 import { getHospitalDoctors } from './get-hospital-doctors';
+import { getHospitalMainImageUrl } from '../../lib/image-utils';
 
 // Prisma 타입 정의
 type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
@@ -179,10 +180,8 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
   description?: string;
   openingHours?: OpeningHours;
 } {
-  // 메인 이미지 URL 추출 (MAIN 타입 우선, 없으면 첫 번째 이미지)
-  const mainImage =
-    data.HospitalImage.find((img) => img.imageType === 'MAIN') || data.HospitalImage[0];
-  const mainImageUrl = mainImage?.imageUrl || null;
+  // 메인 이미지 URL 추출 (MAIN → THUMBNAIL → 첫 번째 이미지 순서)
+  const mainImageUrl = getHospitalMainImageUrl(data.HospitalImage);
 
   // 진료 부위 변환
   const medicalSpecialties = data.HospitalMedicalSpecialty.map((hms) => ({
@@ -250,10 +249,8 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
   description?: string;
   openingHours?: OpeningHours;
 } {
-  // 메인 이미지 URL 추출 (MAIN 타입 우선, 없으면 첫 번째 이미지)
-  const mainImage =
-    data.HospitalImage.find((img) => img.imageType === 'MAIN') || data.HospitalImage[0];
-  const mainImageUrl = mainImage?.imageUrl || null;
+  // 메인 이미지 URL 추출 (MAIN → THUMBNAIL → 첫 번째 이미지 순서)
+  const mainImageUrl = getHospitalMainImageUrl(data.HospitalImage);
 
   // 진료 부위 변환
   const medicalSpecialties = data.HospitalMedicalSpecialty.map((hms) => ({
