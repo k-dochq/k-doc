@@ -28,7 +28,12 @@ export function ReviewListImages({
   return (
     <div className={`flex h-56 overflow-hidden rounded-xl ${className}`}>
       <BeforeImageSection beforeImages={beforeImages} reviewId={reviewId} lang={lang} />
-      <AfterImageSection afterImages={afterImages} reviewId={reviewId} lang={lang} />
+      <AfterImageSection
+        afterImages={afterImages}
+        beforeImagesCount={beforeImages.length}
+        reviewId={reviewId}
+        lang={lang}
+      />
     </div>
   );
 }

@@ -36,8 +36,8 @@ export function BeforeImageSection({
     e.preventDefault();
     e.stopPropagation();
 
-    // Before 이미지의 첫 번째로 이동
-    router.push(`/review-images/${reviewId}?type=${ReviewImageType.BEFORE}&index=1`);
+    // Before 이미지의 첫 번째로 이동 (전체 이미지 배열에서 인덱스 0)
+    router.push(`/review-images/${reviewId}?index=0`);
   };
 
   return (

@@ -12,16 +12,8 @@ interface PageProps {
   }>;
 }
 
-export default async function ReviewImagesPage({ params, searchParams }: PageProps) {
+export default async function ReviewImagesPage({ params }: PageProps) {
   const { lang, id } = await params;
-  const { type, index } = await searchParams;
 
-  return (
-    <ReviewImagesContent
-      reviewId={id}
-      lang={lang}
-      initialImageType={type}
-      initialImageIndex={index}
-    />
-  );
+  return <ReviewImagesContent reviewId={id} lang={lang} />;
 }

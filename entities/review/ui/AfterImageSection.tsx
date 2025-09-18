@@ -9,6 +9,7 @@ import { ReviewImageType } from '@prisma/client';
 
 interface AfterImageSectionProps {
   afterImages: ReviewImage[];
+  beforeImagesCount: number; // Before 이미지 개수 추가
   reviewId: string;
   lang: Locale;
   className?: string;
@@ -16,6 +17,7 @@ interface AfterImageSectionProps {
 
 export function AfterImageSection({
   afterImages,
+  beforeImagesCount,
   reviewId,
   lang,
   className = '',
@@ -36,8 +38,9 @@ export function AfterImageSection({
     e.preventDefault();
     e.stopPropagation();
 
-    // After 이미지의 첫 번째로 이동
-    router.push(`/review-images/${reviewId}?type=${ReviewImageType.AFTER}&index=1`);
+    // After 이미지의 첫 번째 인덱스 계산: Before 이미지 개수 + 0 (첫 번째 After 이미지)
+    const afterFirstIndex = beforeImagesCount;
+    router.push(`/review-images/${reviewId}?index=${afterFirstIndex}`);
   };
 
   return (
