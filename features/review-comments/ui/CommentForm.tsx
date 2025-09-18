@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { useCreateComment } from '../model';
 import { useAuth } from 'shared/lib/auth';
+import { CommentTextarea } from './CommentTextarea';
 
 interface CommentFormProps {
   reviewId: string;
@@ -49,21 +50,14 @@ export function CommentForm({ reviewId, lang, dict }: CommentFormProps) {
   return (
     <form onSubmit={handleSubmit} className='mb-6'>
       <div className='mb-3'>
-        <textarea
+        <CommentTextarea
           value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder={
-            !isAuthenticated
-              ? dict.comments?.form?.loginRequired || '로그인이 필요합니다'
-              : dict.comments?.form?.placeholder || '댓글을 입력하세요...'
-          }
-          className={`w-full resize-none rounded-lg border px-3 py-2 focus:outline-none ${
-            !isAuthenticated || authLoading
-              ? 'cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400'
-              : 'border-gray-300 focus:border-transparent focus:ring-2 focus:ring-blue-500'
-          }`}
+          onChange={setContent}
+          disabled={isSubmitting}
+          isAuthenticated={isAuthenticated}
+          authLoading={authLoading}
+          dict={dict}
           rows={3}
-          disabled={isSubmitting || !isAuthenticated || authLoading}
         />
       </div>
 
