@@ -1,16 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { type ReviewImagesData } from 'entities/review/model/image-navigation';
 
 interface ReviewImagesCarouselProps {
   imagesData: ReviewImagesData;
+  setApi: (api: CarouselApi) => void;
 }
 
-export function ReviewImagesCarousel({ imagesData }: ReviewImagesCarouselProps) {
-  const [api, setApi] = useState<CarouselApi>();
-
+export function ReviewImagesCarousel({ imagesData, setApi }: ReviewImagesCarouselProps) {
   return (
     <div className='flex flex-1 items-center justify-center'>
       <Carousel
