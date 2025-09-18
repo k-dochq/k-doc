@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type ReviewImage, type DefaultImage } from '../model/types';
 import { SingleImageDisplay } from './SingleImageDisplay';
 import { DualImageDisplay } from './DualImageDisplay';
@@ -33,13 +34,20 @@ export function AfterImageSection({
   // After 이미지 처리 (최대 2개)
   const displayAfterImages = afterImages.length > 0 ? afterImages.slice(0, 2) : [defaultImage];
 
+  // After 이미지의 첫 번째 인덱스 계산
+  const afterFirstIndex = beforeImagesCount;
+
+  // 페이지 prefetch
+  useEffect(() => {
+    router.prefetch(`/review-images/${reviewId}?index=${afterFirstIndex}`);
+  }, [router, reviewId, afterFirstIndex]);
+
   const handleImageClick = (e: React.MouseEvent) => {
     // 이벤트 전파를 막아서 상위 LocaleLink가 동작하지 않도록 함
     e.preventDefault();
     e.stopPropagation();
 
-    // After 이미지의 첫 번째 인덱스 계산: Before 이미지 개수 + 0 (첫 번째 After 이미지)
-    const afterFirstIndex = beforeImagesCount;
+    // After 이미지의 첫 번째로 이동
     router.push(`/review-images/${reviewId}?index=${afterFirstIndex}`);
   };
 
