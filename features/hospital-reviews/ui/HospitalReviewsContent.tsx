@@ -3,7 +3,12 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
-import { ReviewListCard, ReviewsSkeleton, useInfiniteAllReviews } from 'entities/review';
+import {
+  ReviewListCard,
+  ReviewsSkeleton,
+  useInfiniteAllReviews,
+  createHospitalReviewsInfiniteQueryParams,
+} from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
@@ -29,12 +34,12 @@ export function HospitalReviewsContent({
   const { sort } = searchParams;
   const { user } = useAuth();
 
-  // 타입 안전한 파라미터 구성
-  const queryParams = {
+  // 공통 쿼리 파라미터 생성 함수 사용
+  const queryParams = createHospitalReviewsInfiniteQueryParams(
     hospitalId,
-    limit: 10,
-    sort: sort || REVIEW_SORT_OPTIONS.LATEST,
-  };
+    sort || REVIEW_SORT_OPTIONS.LATEST,
+    10,
+  );
 
   // 좋아요 토글 뮤테이션
   const toggleLikeMutation = useToggleReviewLike({ queryParams, user });

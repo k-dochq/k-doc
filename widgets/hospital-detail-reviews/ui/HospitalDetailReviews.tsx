@@ -2,7 +2,7 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { useHospitalReviews } from 'entities/review';
+import { useHospitalReviews, usePrefetchHospitalReviews } from 'entities/review';
 import { ReviewCarousel } from 'shared/ui/review-carousel';
 import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
 import { LocaleLink } from 'shared/ui/locale-link';
@@ -27,6 +27,12 @@ export function HospitalDetailReviews({
   excludeReviewId,
   title,
 }: HospitalDetailReviewsProps) {
+  // 병원 리뷰 무한 스크롤 데이터 prefetch
+  usePrefetchHospitalReviews({
+    hospitalId,
+    enabled: !!hospitalId,
+  });
+
   // TanStack Query로 리뷰 데이터 요청
   const {
     data: reviewsData,

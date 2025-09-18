@@ -11,6 +11,8 @@ export * from './model/useInfiniteHospitalReviews';
 export * from './model/useInfiniteAllReviews';
 export * from './model/useHospitalReviews';
 export * from './model/useToggleReviewLike';
+export * from './model/usePrefetchHospitalReviews';
+export * from './lib/query-params';
 export * from './ui/PopularReviewCard';
 export * from './ui/ReviewListCard';
 export * from './ui/ReviewListCardHeader';
