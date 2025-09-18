@@ -81,4 +81,13 @@ export const queryKeys = {
     childDistricts: (parentId: string) =>
       [...queryKeys.districts.lists(), 'children', parentId] as const,
   },
+
+  // 댓글 관련 쿼리
+  comments: {
+    all: ['comments'] as const,
+    lists: () => [...queryKeys.comments.all, 'list'] as const,
+    review: (reviewId: string) => [...queryKeys.comments.all, 'review', reviewId] as const,
+    reviewInfinite: (reviewId: string, filters: Record<string, unknown>) =>
+      [...queryKeys.comments.review(reviewId), 'infinite', filters] as const,
+  },
 } as const;

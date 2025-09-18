@@ -18,30 +18,52 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   const { lang } = await params;
 
   const titles = {
-    ko: 'K-DOC',
-    en: 'K-DOC',
-    th: 'K-DOC',
+    ko: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    en: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    th: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
   };
 
   const descriptions = {
-    ko: 'K-DOC 서비스',
-    en: 'K-DOC Service',
-    th: 'บริการ K-DOC',
+    ko: 'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
+    en: 'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
+    th: 'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
   };
 
   return {
-    title: titles[lang],
+    title: {
+      default: titles[lang],
+      template: 'K-DOC',
+    },
     description: descriptions[lang],
+    keywords: [
+      'Korean plastic surgery',
+      'plastic surgery Korea',
+      'Korean cosmetic surgery',
+      'surgery booking Korea',
+      'plastic surgery reviews',
+      'Korean beauty clinics',
+    ],
+    metadataBase: new URL('https://k-doc.kr'),
     openGraph: {
+      type: 'website',
+      siteName: 'K-DOC',
       title: titles[lang],
       description: descriptions[lang],
-      type: 'website',
       locale: lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH',
+      images: [
+        {
+          url: '/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'K-DOC - Korean Plastic Surgery Platform',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: titles[lang],
       description: descriptions[lang],
+      images: ['/twitter-image.png'],
     },
   };
 }
