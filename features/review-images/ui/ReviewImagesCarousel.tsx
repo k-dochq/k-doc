@@ -19,13 +19,13 @@ export function ReviewImagesCarousel({ imagesData, setApi }: ReviewImagesCarouse
           align: 'center',
         }}
       >
-        <CarouselContent className='ml-0 h-full'>
+        <CarouselContent className='my-auto ml-0'>
           {imagesData.allImages.map((image, index) => (
             <CarouselItem
               key={image.id}
-              className='flex h-full w-full basis-full items-center justify-center pr-0 pl-0'
+              className='flex h-full w-full items-center justify-center pr-0 pl-0'
             >
-              <div className='h-full w-full bg-black'>
+              <div className='h-screen w-screen bg-black'>
                 <img
                   src={image.imageUrl}
                   alt={image.alt || '리뷰 이미지'}
