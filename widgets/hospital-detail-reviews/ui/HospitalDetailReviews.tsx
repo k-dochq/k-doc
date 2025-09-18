@@ -1,13 +1,18 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useHospitalReviews } from 'entities/review';
+import { fetchAllReviews } from 'entities/review/model/useInfiniteAllReviews';
 import { ReviewCarousel } from 'shared/ui/review-carousel';
 import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { HospitalDetailReviewsLoading } from './HospitalDetailReviewsLoading';
 import { HospitalDetailReviewsError } from './HospitalDetailReviewsError';
+import { useQueryClient } from '@tanstack/react-query';
+import { queryKeys } from 'shared/lib/query-keys';
+import { REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 
 interface HospitalDetailReviewsProps {
   hospitalId: string;
@@ -27,6 +32,8 @@ export function HospitalDetailReviews({
   excludeReviewId,
   title,
 }: HospitalDetailReviewsProps) {
+  const queryClient = useQueryClient();
+
   // TanStack Query로 리뷰 데이터 요청
   const {
     data: reviewsData,
@@ -39,6 +46,40 @@ export function HospitalDetailReviews({
     limit: 5, // 최근 5개 리뷰만 표시
     excludeReviewId,
   });
+
+  // HospitalReviewsContent와 동일한 쿼리키로 prefetch
+  useEffect(() => {
+    const prefetchHospitalReviews = async () => {
+      try {
+        // HospitalReviewsContent와 정확히 동일한 필터 구조 사용
+        const filters = {
+          limit: 10,
+          category: undefined,
+          sort: REVIEW_SORT_OPTIONS.LATEST,
+          hospitalId,
+          likedOnly: false,
+        };
+
+        await queryClient.prefetchInfiniteQuery({
+          queryKey: queryKeys.reviews.allInfinite(filters),
+          queryFn: ({ pageParam = 1 }) =>
+            fetchAllReviews({
+              pageParam,
+              limit: 10,
+              category: undefined,
+              sort: REVIEW_SORT_OPTIONS.LATEST,
+              hospitalId,
+              likedOnly: false,
+            }),
+          initialPageParam: 1,
+        });
+      } catch (error) {
+        console.warn('Failed to prefetch hospital reviews:', error);
+      }
+    };
+
+    prefetchHospitalReviews();
+  }, [queryClient, hospitalId]);
 
   const handleRetry = () => {
     // TanStack Query의 refetch를 사용하여 재시도

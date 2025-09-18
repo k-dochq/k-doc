@@ -19,7 +19,7 @@ interface AllReviewsApiResponse {
   error?: string;
 }
 
-async function fetchAllReviews({
+export async function fetchAllReviews({
   pageParam = 1,
   limit = 10,
   category,
