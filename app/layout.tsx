@@ -12,18 +12,41 @@ const pretendard = localFont({
 
 // metadata for SEO
 export const metadata: Metadata = {
-  title: 'K-DOC',
-  description: 'K-DOC Service',
+  title: {
+    default: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    template: '%s | K-DOC',
+  },
+  description:
+    'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
+  keywords: [
+    'Korean plastic surgery',
+    'plastic surgery Korea',
+    'Korean cosmetic surgery',
+    'surgery booking Korea',
+    'plastic surgery reviews',
+    'Korean beauty clinics',
+  ],
+  metadataBase: new URL('https://k-doc.kr'),
   openGraph: {
-    title: 'K-DOC',
-    description: 'K-DOC Service',
     type: 'website',
-    locale: 'ko_KR',
+    siteName: 'K-DOC',
+    title: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    description:
+      'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'K-DOC - Korean Plastic Surgery Platform',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'K-DOC',
-    description: 'K-DOC Service',
+    title: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    description: 'Book Korean plastic surgery consultations and read authentic reviews.',
+    images: ['/twitter-image.png'],
   },
 };
 

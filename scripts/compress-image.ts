@@ -3,9 +3,9 @@ import path from 'path';
 import fs from 'fs';
 
 // 압축하려는 이미지 경로
-const inputPath = './public/images/shared/splash.png';
+const inputPath = './public/images/shared/og.png';
 // 저장될 파일명 (압축된 버전)
-const outputPath = './public/images/shared/splash-compressed.png';
+const outputPath = './public/images/shared/og-compressed.png';
 
 async function compressImage() {
   try {
