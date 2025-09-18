@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type ReviewImage, type DefaultImage } from '../model/types';
 import { SingleImageDisplay } from './SingleImageDisplay';
 import { DualImageDisplay } from './DualImageDisplay';
@@ -30,6 +31,11 @@ export function BeforeImageSection({
 
   // Before 이미지 처리 (최대 2개)
   const displayBeforeImages = beforeImages.length > 0 ? beforeImages.slice(0, 2) : [defaultImage];
+
+  // 페이지 prefetch
+  useEffect(() => {
+    router.prefetch(`/review-images/${reviewId}?index=0`);
+  }, [router, reviewId]);
 
   const handleImageClick = (e: React.MouseEvent) => {
     // 이벤트 전파를 막아서 상위 LocaleLink가 동작하지 않도록 함
