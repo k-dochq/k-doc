@@ -10,7 +10,10 @@ import { ReviewImagesSkeleton } from 'features/review-images/ui/ReviewImagesSkel
 import { ReviewImagesErrorState } from 'features/review-images/ui/ReviewImagesErrorState';
 import { ReviewImagesEmptyState } from 'features/review-images/ui/ReviewImagesEmptyState';
 import { processReviewImages } from 'entities/review/model/image-navigation';
-import { generateReviewImagesHeaderText } from 'features/review-images/model';
+import {
+  generateReviewImagesHeaderText,
+  useReviewImagesCarousel,
+} from 'features/review-images/model';
 
 interface ReviewImagesContentProps {
   reviewId: string;
@@ -40,19 +43,27 @@ export function ReviewImagesContent({
     );
   }, [reviewData]);
 
+  // 초기 인덱스 파싱
+  const parsedInitialIndex = useMemo(() => {
+    if (!initialIndex) return 0;
+    const index = parseInt(initialIndex, 10);
+    return isNaN(index) ? 0 : index;
+  }, [initialIndex]);
+
+  // carousel 컨트롤러
+  const carousel = useReviewImagesCarousel({
+    imagesData: imagesData || { allImages: [], beforeImages: [], afterImages: [] },
+    initialIndex: parsedInitialIndex,
+  });
+
   // 헤더 텍스트 생성
   const headerText = useMemo(() => {
-    if (!imagesData || !initialIndex) {
+    if (!imagesData || carousel.currentIndex === undefined) {
       return null;
     }
 
-    const index = parseInt(initialIndex, 10);
-    if (isNaN(index)) {
-      return null;
-    }
-
-    return generateReviewImagesHeaderText(imagesData, index, dict);
-  }, [imagesData, initialIndex, dict]);
+    return generateReviewImagesHeaderText(imagesData, carousel.currentIndex, dict);
+  }, [imagesData, carousel.currentIndex, dict]);
 
   // 로딩 상태
   if (isLoading) {
@@ -75,7 +86,7 @@ export function ReviewImagesContent({
       <ReviewImagesHeader headerText={headerText} lang={lang} />
 
       {/* 이미지 캐러셀 */}
-      <ReviewImagesCarousel imagesData={imagesData} />
+      <ReviewImagesCarousel imagesData={imagesData} setApi={carousel.setApi} />
     </div>
   );
 }
