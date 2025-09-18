@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { useReviewDetail } from 'entities/review/model/useReviewDetail';
 import { ReviewImagesHeader } from 'features/review-images/ui/ReviewImagesHeader';
 import { ReviewImagesCarousel } from 'features/review-images/ui/ReviewImagesCarousel';
@@ -9,13 +10,21 @@ import { ReviewImagesSkeleton } from 'features/review-images/ui/ReviewImagesSkel
 import { ReviewImagesErrorState } from 'features/review-images/ui/ReviewImagesErrorState';
 import { ReviewImagesEmptyState } from 'features/review-images/ui/ReviewImagesEmptyState';
 import { processReviewImages } from 'entities/review/model/image-navigation';
+import { generateReviewImagesHeaderText } from 'features/review-images/model';
 
 interface ReviewImagesContentProps {
   reviewId: string;
   lang: Locale;
+  initialIndex?: string;
+  dict: Dictionary;
 }
 
-export function ReviewImagesContent({ reviewId, lang }: ReviewImagesContentProps) {
+export function ReviewImagesContent({
+  reviewId,
+  lang,
+  initialIndex,
+  dict,
+}: ReviewImagesContentProps) {
   // 리뷰 데이터 조회
   const { data: reviewData, isLoading, error } = useReviewDetail({ reviewId });
 
@@ -30,6 +39,20 @@ export function ReviewImagesContent({ reviewId, lang }: ReviewImagesContentProps
       reviewData.review.images.after || [],
     );
   }, [reviewData]);
+
+  // 헤더 텍스트 생성
+  const headerText = useMemo(() => {
+    if (!imagesData || !initialIndex) {
+      return null;
+    }
+
+    const index = parseInt(initialIndex, 10);
+    if (isNaN(index)) {
+      return null;
+    }
+
+    return generateReviewImagesHeaderText(imagesData, index, dict);
+  }, [imagesData, initialIndex, dict]);
 
   // 로딩 상태
   if (isLoading) {
@@ -49,7 +72,7 @@ export function ReviewImagesContent({ reviewId, lang }: ReviewImagesContentProps
   return (
     <div className='flex min-h-screen flex-col bg-white'>
       {/* 헤더 */}
-      <ReviewImagesHeader navigationData={null} lang={lang} />
+      <ReviewImagesHeader headerText={headerText} lang={lang} />
 
       {/* 이미지 캐러셀 */}
       <ReviewImagesCarousel imagesData={imagesData} />

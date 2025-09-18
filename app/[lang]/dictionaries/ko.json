@@ -133,6 +133,10 @@
     "hospitalInfo": "시술 병원 정보",
     "sameHospitalReviews": "같은 시술 후기"
   },
+  "reviewImages": {
+    "beforePhoto": "시술 전 사진",
+    "afterPhoto": "시술 후 사진"
+  },
   "error": {
     "title": "예상치 못한 오류가 발생했습니다",
     "description": "페이지를 새로고침하거나 잠시 후 다시 시도해주세요"

@@ -12,7 +12,7 @@ interface ReviewImagesEmptyStateProps {
 export function ReviewImagesEmptyState({ lang, className = '' }: ReviewImagesEmptyStateProps) {
   return (
     <div className={`flex min-h-screen flex-col bg-white ${className}`}>
-      <ReviewImagesHeader navigationData={null} lang={lang} />
+      <ReviewImagesHeader headerText={null} lang={lang} />
       <div className='flex flex-1 items-center justify-center'>
         <div className='flex flex-col items-center justify-center py-12'>
           {/* 빈 상태 아이콘 */}

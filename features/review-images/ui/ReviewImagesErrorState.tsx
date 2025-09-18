@@ -35,7 +35,7 @@ export function ReviewImagesErrorState({
 
   return (
     <div className={`flex min-h-screen flex-col bg-white ${className}`}>
-      <ReviewImagesHeader navigationData={null} lang={lang} />
+      <ReviewImagesHeader headerText={null} lang={lang} />
       <div className='flex flex-1 items-center justify-center'>
         <ErrorState title={title} message={message} onRetry={onRetry} retryButtonText='다시 시도' />
       </div>
