@@ -531,8 +531,8 @@
   "comments": {
     "title": "댓글",
     "form": {
-      "placeholder": "댓글을 입력하세요...",
-      "submit": "댓글 작성",
+      "placeholder": "댓글을 달아보세요.",
+      "submit": "등록",
       "submitting": "작성 중...",
       "loginRequired": "댓글을 작성하려면 로그인이 필요합니다.",
       "loginButton": "로그인"

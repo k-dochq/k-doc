@@ -532,7 +532,7 @@
     "title": "Comments",
     "form": {
       "placeholder": "Write a comment...",
-      "submit": "Post Comment",
+      "submit": "Post",
       "submitting": "Posting...",
       "loginRequired": "Please log in to write a comment.",
       "loginButton": "Login"

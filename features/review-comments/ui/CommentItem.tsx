@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type Comment } from 'entities/comment';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { UserAvatar } from 'shared/ui';
 
 interface CommentItemProps {
   comment: Comment;
@@ -36,11 +37,7 @@ export function CommentItem({ comment, lang, dict }: CommentItemProps) {
     <div className='flex space-x-3 py-3'>
       {/* 사용자 아바타 */}
       <div className='flex-shrink-0'>
-        <div className='flex h-8 w-8 items-center justify-center rounded-full bg-gray-300'>
-          <span className='text-sm font-medium text-gray-600'>
-            {displayName.charAt(0).toUpperCase()}
-          </span>
-        </div>
+        <UserAvatar size={32} />
       </div>
 
       {/* 댓글 내용 */}

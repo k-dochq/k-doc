@@ -6,7 +6,6 @@ import { type Dictionary } from 'shared/model/types';
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { useCreateComment } from '../model';
 import { useAuth } from 'shared/lib/auth';
-import { CommentTextarea } from './CommentTextarea';
 
 interface CommentFormProps {
   reviewId: string;
@@ -47,31 +46,42 @@ export function CommentForm({ reviewId, lang, dict }: CommentFormProps) {
     createCommentMutation.mutate(localizedContent);
   };
 
-  return (
-    <form onSubmit={handleSubmit} className='mb-6'>
-      <div className='mb-3'>
-        <CommentTextarea
-          value={content}
-          onChange={setContent}
-          disabled={isSubmitting}
-          isAuthenticated={isAuthenticated}
-          authLoading={authLoading}
-          dict={dict}
-          rows={3}
-        />
-      </div>
+  const getPlaceholderText = () => {
+    if (!isAuthenticated) {
+      return dict.comments?.form?.loginRequired || '로그인이 필요합니다';
+    }
+    return dict.comments?.form?.placeholder || '댓글을 달아보세요.';
+  };
 
-      <div className='flex justify-end'>
+  const getButtonText = () => {
+    if (authLoading) return '로딩 중...';
+    if (isSubmitting) return dict.comments?.form?.submitting || '작성 중...';
+    return dict.comments?.form?.submit || '등록';
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className='pb-2'>
+      <div className='relative flex items-center justify-between bg-white py-4'>
+        <input
+          type='text'
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder={getPlaceholderText()}
+          disabled={isSubmitting || !isAuthenticated || authLoading}
+          className={`flex-1 border-none bg-transparent text-sm leading-5 font-medium outline-none ${
+            !isAuthenticated || authLoading
+              ? 'cursor-not-allowed text-neutral-400'
+              : 'text-neutral-400 placeholder:text-neutral-400'
+          }`}
+          style={{ fontFamily: 'Pretendard, sans-serif' }}
+        />
         <button
           type='submit'
           disabled={!content.trim() || isSubmitting || !isAuthenticated || authLoading}
-          className='rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300'
+          className='text-sm leading-5 font-semibold text-[#da47ef] transition-colors disabled:cursor-not-allowed disabled:text-neutral-300'
+          style={{ fontFamily: 'Pretendard, sans-serif' }}
         >
-          {authLoading
-            ? '로딩 중...'
-            : isSubmitting
-              ? dict.comments?.form?.submitting || '작성 중...'
-              : dict.comments?.form?.submit || '댓글 작성'}
+          {getButtonText()}
         </button>
       </div>
     </form>
