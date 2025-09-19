@@ -60,7 +60,7 @@ export function CommentForm({ reviewId, lang, dict }: CommentFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='pb-2'>
+    <form onSubmit={handleSubmit} className='bg-white px-5 pb-7'>
       <div className='relative flex items-center justify-between bg-white py-4'>
         <input
           type='text'
@@ -70,8 +70,8 @@ export function CommentForm({ reviewId, lang, dict }: CommentFormProps) {
           disabled={isSubmitting || !isAuthenticated || authLoading}
           className={`flex-1 border-none bg-transparent text-sm leading-5 font-medium outline-none ${
             !isAuthenticated || authLoading
-              ? 'cursor-not-allowed text-neutral-400'
-              : 'text-neutral-400 placeholder:text-neutral-400'
+              ? 'cursor-not-allowed text-neutral-900'
+              : 'text-neutral-900 placeholder:text-neutral-400'
           }`}
           style={{ fontFamily: 'Pretendard, sans-serif' }}
         />

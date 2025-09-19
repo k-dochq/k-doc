@@ -23,7 +23,7 @@ export function ReviewListCardHeader({ review, lang, className = '' }: ReviewLis
         <UserAvatar className='h-[30px] w-[30px]' />
 
         {/* 닉네임과 작성일자 */}
-        <div className='flex items-center gap-1'>
+        <div className='flex items-center gap-2'>
           <span className='text-sm font-semibold text-neutral-900'>{userName}</span>
           <span className='text-xs font-medium text-neutral-400'>
             {formatRelativeDate(review.createdAt, lang)}

@@ -79,7 +79,9 @@ export function ReviewLikeButton({
           <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
         )}
         {showCount && (
-          <span className={`text-primary text-sm font-medium ${isDisabled ? 'opacity-70' : ''}`}>
+          <span
+            className={`text-sm font-medium text-neutral-900 ${isDisabled ? 'opacity-70' : ''}`}
+          >
             {likeCount.toLocaleString()}
           </span>
         )}
@@ -104,7 +106,7 @@ export function ReviewLikeButton({
         <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
       )}
       {showCount && (
-        <span className={`text-primary text-sm font-medium ${isDisabled ? 'opacity-70' : ''}`}>
+        <span className={`text-sm font-medium text-neutral-900 ${isDisabled ? 'opacity-70' : ''}`}>
           {likeCount.toLocaleString()}
         </span>
       )}

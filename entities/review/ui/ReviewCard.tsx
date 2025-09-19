@@ -144,7 +144,6 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
             reviewId={review.id}
             locale={lang}
             dict={dict}
-            size='sm'
             showCount={true}
             className='border-0 bg-transparent shadow-none hover:bg-gray-50'
           />

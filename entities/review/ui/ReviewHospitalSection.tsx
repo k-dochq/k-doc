@@ -22,7 +22,7 @@ export function ReviewHospitalSection({
 }: ReviewHospitalSectionProps) {
   return (
     <div className={`mt-4 ${className}`}>
-      <div className='rounded-xl border border-neutral-200 p-4'>
+      <div className='rounded-xl border border-neutral-200'>
         <LocaleLink href={`/hospital/${review.hospital.id}`}>
           <HospitalCard
             hospital={convertReviewHospitalToHospitalCard(review)}
