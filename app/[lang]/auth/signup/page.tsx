@@ -18,7 +18,7 @@ export default async function SignupPage({ params, searchParams }: SignupPagePro
   const dict = await getDictionary(lang);
 
   return (
-    <div className='min-h-screen bg-white'>
+    <div className='min-h-screen'>
       <PageHeader
         lang={lang}
         title={dict.auth?.signup?.title || '회원가입'}
