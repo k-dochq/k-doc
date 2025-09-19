@@ -33,20 +33,20 @@ export function HospitalFilterBar({ lang, dict, districtFilter }: HospitalFilter
       : HOSPITAL_SORT_OPTIONS.POPULAR;
 
   return (
-    <div className='flex items-center justify-between border-t border-b border-neutral-200 px-5 py-3'>
+    <div className='flex items-center justify-between border-t border-b border-white/60 bg-white/20 px-5 py-3'>
       <div className='flex items-center gap-2'>
         <LocaleLink
           href={createSortUrl(HOSPITAL_SORT_OPTIONS.POPULAR)}
           replace
-          className={`text-[13px] font-semibold ${currentSort === HOSPITAL_SORT_OPTIONS.POPULAR ? 'text-primary' : 'text-neutral-500'}`}
+          className={`text-[13px] font-semibold ${currentSort === HOSPITAL_SORT_OPTIONS.POPULAR ? 'text-primary' : 'text-neutral-900'}`}
         >
           {dict.hospitalSort.popular}
         </LocaleLink>
-        <div className='h-3 w-0 border-l border-neutral-300'></div>
+        <div className='h-3 w-0 border-l border-neutral-900'></div>
         <LocaleLink
           href={createSortUrl(HOSPITAL_SORT_OPTIONS.RECOMMENDED)}
           replace
-          className={`text-[13px] font-medium ${currentSort === HOSPITAL_SORT_OPTIONS.RECOMMENDED ? 'text-primary' : 'text-neutral-500'}`}
+          className={`text-[13px] font-medium ${currentSort === HOSPITAL_SORT_OPTIONS.RECOMMENDED ? 'text-primary' : 'text-neutral-900'}`}
         >
           {dict.hospitalSort.recommended}
         </LocaleLink>

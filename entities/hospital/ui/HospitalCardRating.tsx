@@ -10,7 +10,7 @@ export function HospitalCardRating({ hospital }: HospitalCardRatingProps) {
     <div className='flex items-center gap-0.5'>
       <StarIcon />
       <span className='text-xs font-medium text-neutral-900'>{hospital.rating.toFixed(1)}</span>
-      <span className='text-xs font-medium text-neutral-400'>({hospital.reviewCount})</span>
+      <span className='text-xs font-medium text-neutral-500'>({hospital.reviewCount})</span>
     </div>
   );
 }

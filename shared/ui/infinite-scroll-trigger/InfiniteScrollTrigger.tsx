@@ -55,7 +55,7 @@ export function InfiniteScrollTrigger({
         <div className='flex justify-center'>
           <div className='flex items-center space-x-2'>
             <div className='h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500'></div>
-            <span className='text-sm text-gray-500'>{loadingText}</span>
+            <span className='text-sm text-white'>{loadingText}</span>
           </div>
         </div>
       )}

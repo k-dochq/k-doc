@@ -29,32 +29,32 @@ export function HospitalListCard({
       locale={lang}
       className='flex w-full flex-col items-start justify-start px-5 py-4'
     >
-      {/* 병원 이미지 */}
-      <HospitalCardImage hospital={hospital} lang={lang} />
+      <div className='h-full w-full rounded-xl border border-white bg-white/50'>
+        {/* 병원 이미지 */}
+        <HospitalCardImage hospital={hospital} lang={lang} />
 
-      <div className='h-3' />
+        {/* 컨텐츠 영역 */}
+        <div className='flex w-full flex-col items-start justify-start px-5 py-4'>
+          <HospitalCardHeader
+            hospital={hospital}
+            lang={lang}
+            user={user}
+            onToggleLike={onToggleLike}
+            isLikeLoading={isLikeLoading}
+          />
 
-      {/* 컨텐츠 영역 */}
-      <div className='flex w-full flex-col items-start justify-start'>
-        <HospitalCardHeader
-          hospital={hospital}
-          lang={lang}
-          user={user}
-          onToggleLike={onToggleLike}
-          isLikeLoading={isLikeLoading}
-        />
+          <div className='h-0.5' />
 
-        <div className='h-0.5' />
+          <HospitalCardName hospital={hospital} lang={lang} />
 
-        <HospitalCardName hospital={hospital} lang={lang} />
+          <div className='h-[6px]' />
 
-        <div className='h-[6px]' />
+          <HospitalCardTags hospital={hospital} lang={lang} />
 
-        <HospitalCardTags hospital={hospital} lang={lang} />
+          <div className='h-2' />
 
-        <div className='h-2' />
-
-        <HospitalCardRating hospital={hospital} />
+          <HospitalCardRating hospital={hospital} />
+        </div>
       </div>
     </LocaleLink>
   );
