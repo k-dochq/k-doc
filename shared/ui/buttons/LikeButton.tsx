@@ -39,7 +39,7 @@ export function LikeButton({
       ) : (
         <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
       )}
-      <span className={`text-primary text-sm font-medium ${isLoading ? 'opacity-70' : ''}`}>
+      <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
         {count}
       </span>
     </button>

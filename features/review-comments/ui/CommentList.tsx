@@ -18,15 +18,15 @@ export function CommentList({ reviewId, lang, dict }: CommentListProps) {
 
   if (isLoading) {
     return (
-      <div className='space-y-4'>
+      <div className='py-4'>
         {Array.from({ length: 3 }).map((_, index) => (
           <div key={index} className='animate-pulse'>
             <div className='flex space-x-3'>
-              <div className='h-8 w-8 rounded-full bg-gray-200'></div>
+              <div className='h-8 w-8 rounded-full bg-white/50'></div>
               <div className='flex-1 space-y-2'>
-                <div className='h-4 w-1/4 rounded bg-gray-200'></div>
-                <div className='h-4 w-3/4 rounded bg-gray-200'></div>
-                <div className='h-3 w-1/6 rounded bg-gray-200'></div>
+                <div className='h-4 w-1/4 rounded bg-white/50'></div>
+                <div className='h-4 w-3/4 rounded bg-white/50'></div>
+                <div className='h-3 w-1/6 rounded bg-white/50'></div>
               </div>
             </div>
           </div>
@@ -49,16 +49,14 @@ export function CommentList({ reviewId, lang, dict }: CommentListProps) {
 
   if (comments.length === 0) {
     return (
-      <div className='py-8 text-center'>
-        <p className='text-gray-500'>
-          {dict.comments?.list?.empty || '첫 번째 댓글을 작성해보세요!'}
-        </p>
+      <div className='py-4 text-center'>
+        <p className=''>{dict.comments?.list?.empty || '첫 번째 댓글을 작성해보세요!'}</p>
       </div>
     );
   }
 
   return (
-    <div className='space-y-4'>
+    <div className='pt-4'>
       {comments.map((comment) => (
         <CommentItem key={comment.id} comment={comment} lang={lang} dict={dict} />
       ))}
@@ -68,7 +66,7 @@ export function CommentList({ reviewId, lang, dict }: CommentListProps) {
           <button
             onClick={() => fetchNextPage()}
             disabled={isFetchingNextPage}
-            className='px-4 py-2 text-blue-600 hover:text-blue-800 disabled:text-gray-400'
+            className='px-4 text-blue-600 hover:text-blue-800 disabled:text-gray-400'
           >
             {isFetchingNextPage
               ? dict.comments?.list?.loading || '로딩 중...'
