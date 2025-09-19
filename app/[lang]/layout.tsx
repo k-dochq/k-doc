@@ -1,6 +1,22 @@
+import { QueryProvider } from '@/shared/ui/providers';
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
+
+const pretendard = localFont({
+  src: '../../fonts/pretendard/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '100 900',
+  variable: '--font-pretendard',
+});
+
+const notoSansThaiLooped = localFont({
+  src: '../../fonts/notosansthai/NotoSansThaiLooped-VariableFont_wdth,wght.ttf',
+  display: 'swap',
+  weight: '100 900',
+  variable: '--font-noto-thai',
+});
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -68,6 +84,20 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   };
 }
 
-export default async function LangLayout({ children }: LangLayoutProps) {
-  return <MaxWidthLayout>{children}</MaxWidthLayout>;
+export default async function LangLayout({ children, params }: LangLayoutProps) {
+  const { lang } = await params;
+
+  // 언어별 폰트 선택
+  const currentFont = lang === 'th' ? notoSansThaiLooped : pretendard;
+  const allFontVariables = `${pretendard.variable} ${notoSansThaiLooped.variable}`;
+
+  return (
+    <html lang={lang} className={allFontVariables}>
+      <body className={currentFont.className}>
+        <QueryProvider>
+          <MaxWidthLayout>{children}</MaxWidthLayout>
+        </QueryProvider>
+      </body>
+    </html>
+  );
 }

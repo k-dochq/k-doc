@@ -14,6 +14,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
+        'noto-thai': ['var(--font-noto-thai)'],
+        sans: ['var(--font-pretendard)', 'var(--font-noto-thai)', 'system-ui', 'sans-serif'],
       },
     },
   },
