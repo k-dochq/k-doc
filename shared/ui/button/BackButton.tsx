@@ -24,8 +24,8 @@ export function BackButton({ className = '', fallbackUrl, variant = 'dark' }: Ba
   const getVariantStyles = () => {
     if (variant === 'light') {
       return {
-        button: 'hover:bg-gray-100',
-        icon: 'text-gray-900',
+        button: 'hover:bg-white/30',
+        icon: 'text-neutral-900',
       };
     }
 
