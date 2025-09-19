@@ -15,11 +15,11 @@ export function ReviewFilterBar({ lang, dict }: ReviewFilterBarProps) {
     {
       value: REVIEW_SORT_OPTIONS.LATEST,
       label: dict.allReviews.sort.latest,
-      isDefault: true,
     },
     {
       value: REVIEW_SORT_OPTIONS.POPULAR,
       label: dict.allReviews.sort.popular,
+      isDefault: true,
     },
   ];
 

@@ -47,7 +47,7 @@ export function ConsultationRequestForm({ hospitalId, lang, dict }: Consultation
         />
       </div>
 
-      <div className='h-[1px] bg-neutral-200' />
+      <div className='h-[1px] bg-white' />
 
       {/* 상담신청 폼 */}
       <ConsultationForm hospitalId={hospitalId} lang={lang} dict={dict} />

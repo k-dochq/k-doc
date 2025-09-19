@@ -26,7 +26,7 @@ export function HospitalCardImage({ hospital, lang }: HospitalCardImageProps) {
     : hospital.mainImageUrl || DEFAULT_IMAGES.HOSPITAL_DEFAULT;
 
   return (
-    <div className='relative h-[216px] w-full overflow-hidden rounded-xl bg-neutral-300'>
+    <div className='relative h-[216px] w-full overflow-hidden rounded-xl bg-white/50'>
       <Image
         src={imageSrc}
         alt={shouldShowDefaultImage ? `${hospitalName} 기본 이미지` : `${hospitalName} 썸네일`}

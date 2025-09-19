@@ -11,11 +11,11 @@ export default async function ReviewsLayout({ children, params }: ReviewsLayoutP
   const { lang } = await params;
 
   return (
-    <>
+    <div className='min-h-screen'>
       <Header currentLang={lang} />
       <main>{children}</main>
       <div className='h-16' />
       <BottomNavigation currentLang={lang} />
-    </>
+    </div>
   );
 }
