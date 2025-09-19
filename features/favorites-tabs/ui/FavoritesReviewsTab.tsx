@@ -78,8 +78,6 @@ export function FavoritesReviewsTab({ lang, dict }: FavoritesReviewsTabProps) {
                   isLikeLoading={loadingReviewId === review.id}
                 />
               </div>
-              {/* 마지막 아이템이 아닌 경우에만 구분선 추가 */}
-              {index < allReviews.length - 1 && <div className='h-2 bg-neutral-100' />}
             </div>
           ))}
 
