@@ -26,7 +26,7 @@ export function PageHeader({
 
   return (
     <div
-      className={`sticky top-0 z-50 flex w-full items-center justify-between ${bgClassName || ''} py-4 pr-5 ${className}`}
+      className={`sticky top-0 z-50 flex w-full items-center justify-between ${bgClassName || ''} py-4 pr-5 pl-1 ${className}`}
       style={{ background: 'rgba(254, 219, 249, 0.70)', backdropFilter: 'blur(15px)' }}
     >
       <div className='flex items-center gap-0'>
