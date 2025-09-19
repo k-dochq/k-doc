@@ -72,7 +72,7 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
       {/* 리뷰 리스트 */}
       {allReviews.length > 0 ? (
         <div className='flex flex-col gap-6 p-5'>
-          {allReviews.map((review, index) => (
+          {allReviews.map((review, _index) => (
             <div key={review.id}>
               <ReviewListCard
                 review={review}
