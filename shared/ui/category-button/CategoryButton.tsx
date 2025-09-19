@@ -2,6 +2,7 @@ import { type Locale } from 'shared/config';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { type LocalizedText } from 'shared/model/types/common';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { categoryButtonStyles } from './styles';
 
 export interface CategoryButtonData {
   type: string;
@@ -36,16 +37,8 @@ export function CategoryButton({
 
   const buttonContent = (
     <>
-      <div
-        className={`flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-[#f9d1ff] bg-white transition-shadow hover:shadow-md ${iconClassName}`}
-      >
-        {category.icon()}
-      </div>
-      <span
-        className={`w-full min-w-0 truncate text-center text-xs leading-4 font-medium text-neutral-900 ${labelClassName}`}
-      >
-        {getLabel()}
-      </span>
+      <div className={`${categoryButtonStyles.container} ${iconClassName}`}>{category.icon()}</div>
+      <span className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</span>
     </>
   );
 
@@ -54,7 +47,7 @@ export function CategoryButton({
       <LocaleLink
         href={href}
         replace={replace}
-        className={`flex min-w-0 flex-col items-center gap-1 ${className}`}
+        className={`${categoryButtonStyles.wrapper} ${className}`}
       >
         {buttonContent}
       </LocaleLink>
@@ -63,14 +56,12 @@ export function CategoryButton({
 
   if (onClick) {
     return (
-      <button onClick={onClick} className={`flex min-w-0 flex-col items-center gap-1 ${className}`}>
+      <button onClick={onClick} className={`${categoryButtonStyles.wrapper} ${className}`}>
         {buttonContent}
       </button>
     );
   }
 
   // 기본적으로 div로 렌더링 (href나 onClick이 없는 경우)
-  return (
-    <div className={`flex min-w-0 flex-col items-center gap-1 ${className}`}>{buttonContent}</div>
-  );
+  return <div className={`${categoryButtonStyles.wrapper} ${className}`}>{buttonContent}</div>;
 }

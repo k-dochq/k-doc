@@ -39,7 +39,9 @@ export async function HospitalDetailContent({
         <HospitalDetailPhotos hospital={hospital} lang={lang} dict={dict} />
 
         {/* 병원 정보 섹션 */}
-        <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
+        <div className='p-5'>
+          <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
+        </div>
 
         {/* 탭 기반 컨텐츠 */}
         <HospitalDetailTabs hospital={hospital} hospitalId={hospitalId} lang={lang} dict={dict} />
