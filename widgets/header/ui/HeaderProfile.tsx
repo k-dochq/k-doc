@@ -4,7 +4,7 @@ export function HeaderProfile() {
   return (
     <LocaleLink
       href='/my'
-      className='rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900'
+      className='hover:bg-primary-light rounded-lg p-2 text-gray-700 transition-colors hover:text-gray-900'
       aria-label='프로필'
     >
       <svg

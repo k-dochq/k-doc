@@ -47,13 +47,7 @@ export function HospitalInfo({
             ${prices.minPrice.toLocaleString()}~
           </span>
           {discountRate && (
-            <div
-              className='flex shrink-0 items-center justify-center rounded-[4px] px-1 py-0.5 text-xs font-semibold text-white'
-              style={{
-                backgroundImage:
-                  'linear-gradient(90deg, rgb(255, 87, 41) 0%, rgb(255, 43, 159) 100%)',
-              }}
-            >
+            <div className='flex shrink-0 items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
               {discountRate}% OFF
             </div>
           )}
@@ -61,7 +55,7 @@ export function HospitalInfo({
       )}
 
       {/* 평점 정보 */}
-      <div className='flex min-w-0 items-center gap-0.5'>
+      <div className='flex min-w-0 gap-0.5'>
         <StarIcon />
         <span className='min-w-0 truncate text-xs font-medium text-neutral-900'>
           {rating.toFixed(1)} <span className='text-neutral-400'>({reviewCount})</span>

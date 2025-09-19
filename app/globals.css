@@ -15,4 +15,24 @@
   .safe-area-pb {
     padding-bottom: env(safe-area-inset-bottom);
   }
+
+  .bg-gradient-primary {
+    background: linear-gradient(180deg, #ffdbf9 0.19%, #c7a8ff 99.82%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
 }

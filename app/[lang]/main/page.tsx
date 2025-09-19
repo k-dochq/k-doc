@@ -31,7 +31,7 @@ export default async function MainPage({ params }: MainPageProps) {
           <QuickMenuWrapper lang={lang} />
         </div>
 
-        <div className='mt-12 px-5'>
+        <div className='mt-12'>
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
         </div>
 
@@ -43,8 +43,10 @@ export default async function MainPage({ params }: MainPageProps) {
           <LimousineBanner />
         </div>
 
-        <div className='px-5'>
-          <CautionSection lang={lang} dict={dict} />
+        <div className='bg-[#FE7A8F]'>
+          <div className='px-5'>
+            <CautionSection lang={lang} dict={dict} />
+          </div>
         </div>
       </div>
       <TaxiReservationSection lang={lang} dict={dict} />
