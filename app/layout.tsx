@@ -51,11 +51,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang='ko' className={`${pretendard.variable}`}>
-      <body className={pretendard.className}>
-        <QueryProvider>{children}</QueryProvider>
-      </body>
-    </html>
-  );
+  return children;
 }

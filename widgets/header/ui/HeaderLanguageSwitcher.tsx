@@ -43,7 +43,13 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
   const handleLanguageChange = (locale: Locale) => {
     localeCookies.set(locale);
     const newPath = `/${locale}${pathWithoutLocale}`;
-    router.replace(newPath);
+
+    // 태국어로 변경하거나 태국어에서 다른 언어로 변경할 때는 새로고침
+    if (locale === 'th' || currentLang === 'th') {
+      window.location.href = newPath;
+    } else {
+      router.replace(newPath);
+    }
   };
 
   return (
