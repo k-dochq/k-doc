@@ -15,7 +15,7 @@ interface FavoritesTabHeaderProps {
 
 export function FavoritesTabHeader({ tabs, activeTab, onTabClick }: FavoritesTabHeaderProps) {
   return (
-    <div className='flex border-b border-gray-200 bg-white'>
+    <div className='flex border-b border-gray-200 bg-white/20'>
       {tabs.map((tab, index) => (
         <button
           key={tab.id}
@@ -25,7 +25,7 @@ export function FavoritesTabHeader({ tabs, activeTab, onTabClick }: FavoritesTab
             'border-b-2 border-transparent',
             activeTab === index
               ? 'border-primary text-primary'
-              : 'text-neutral-400 hover:text-neutral-600',
+              : 'text-primary/50 hover:text-primary/80',
           )}
         >
           {tab.label}

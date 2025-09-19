@@ -46,21 +46,20 @@ export function FavoritesHospitalsList({
   return (
     <div className={`w-full p-5 ${className}`}>
       {/* 병원 리스트 - best hospitals와 동일한 HospitalCard 사용 */}
-      <div className='space-y-4'>
-        {hospitalCardData.map((hospital) => (
-          <LocaleLink key={hospital.id} href={`/hospital/${hospital.id}`} className='block'>
-            <HospitalCard
-              hospital={hospital}
-              dict={dict}
-              lang={lang}
-              user={user}
-              onToggleLike={onToggleLike}
-              isLikeLoading={loadingHospitalId === hospital.id}
-              showLikeButton={true}
-            />
-          </LocaleLink>
-        ))}
-      </div>
+
+      {hospitalCardData.map((hospital) => (
+        <LocaleLink key={hospital.id} href={`/hospital/${hospital.id}`} className='block'>
+          <HospitalCard
+            hospital={hospital}
+            dict={dict}
+            lang={lang}
+            user={user}
+            onToggleLike={onToggleLike}
+            isLikeLoading={loadingHospitalId === hospital.id}
+            showLikeButton={true}
+          />
+        </LocaleLink>
+      ))}
 
       {/* 무한 스크롤 트리거 */}
       <InfiniteScrollTrigger

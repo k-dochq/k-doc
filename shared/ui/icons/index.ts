@@ -1,8 +1,14 @@
 export { LocationIcon } from './LocationIcon';
 export { ResetIcon } from './ResetIcon';
 export { HeartIcon } from './HeartIcon';
+export { HeartOutlineIcon } from './HeartOutlineIcon';
 export { GoogleIcon } from './GoogleIcon';
 export { KakaoIcon } from './KakaoIcon';
 export { DetailHeartIcon } from './DetailHeartIcon';
 export { BackIcon } from './BackIcon';
 export { MoreIcon } from './MoreIcon';
+export { HomeIcon } from './HomeIcon';
+export { HospitalIcon } from './HospitalIcon';
+export { ReviewIcon } from './ReviewIcon';
+export { FavoriteIcon } from './FavoriteIcon';
+export { ConsultationIcon } from './ConsultationIcon';

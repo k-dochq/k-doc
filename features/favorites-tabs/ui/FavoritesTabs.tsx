@@ -59,9 +59,7 @@ export function FavoritesTabs({ lang, dict }: FavoritesTabsProps) {
         <CarouselContent className='ml-0'>
           {/* 병원 탭 */}
           <CarouselItem className='min-h-[60vh] basis-full pl-0'>
-            <div className=''>
-              <FavoritesHospitalsTab lang={lang} dict={dict} />
-            </div>
+            <FavoritesHospitalsTab lang={lang} dict={dict} />
           </CarouselItem>
 
           {/* 시술후기 탭 */}

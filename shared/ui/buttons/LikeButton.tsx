@@ -11,6 +11,7 @@ interface LikeButtonProps {
   className?: string;
   isLoading?: boolean;
   vertical?: boolean; // 수직 배치 옵션
+  showCount?: boolean; // 숫자 표시 여부 옵션
 }
 
 export function LikeButton({
@@ -20,6 +21,7 @@ export function LikeButton({
   className = '',
   isLoading = false,
   vertical = false,
+  showCount = true,
 }: LikeButtonProps) {
   return (
     <button
@@ -39,9 +41,11 @@ export function LikeButton({
       ) : (
         <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
       )}
-      <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
-        {count}
-      </span>
+      {showCount && (
+        <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
+          {count}
+        </span>
+      )}
     </button>
   );
 }

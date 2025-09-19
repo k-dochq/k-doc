@@ -43,7 +43,7 @@ export function HospitalCard({
       }}
     >
       <HospitalThumbnail imageUrl={hospital.thumbnailImageUrl} />
-      <div className='flex min-w-0 flex-1 flex-col justify-center gap-1'>
+      <div className='flex min-w-0 flex-1 flex-col justify-center gap-1 pr-3'>
         <div className='flex items-start justify-between'>
           <div className='min-w-0 flex-1'>
             <HospitalInfo
@@ -61,7 +61,7 @@ export function HospitalCard({
           {/* 좋아요 버튼 - 로그인한 사용자에게만 표시 */}
           {showLikeButton && user && hospital.likeCount !== undefined && (
             <div
-              className='ml-2 flex-shrink-0'
+              className='mt-auto flex shrink-0'
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -73,6 +73,7 @@ export function HospitalCard({
                 onClick={() => onToggleLike?.(hospital.id)}
                 isLoading={isLikeLoading}
                 vertical={true}
+                showCount={false}
               />
             </div>
           )}
