@@ -86,26 +86,21 @@ export function HospitalReviewsContent({
         title={dict.hospitalReviews?.title || '시술후기'}
         fallbackUrl={`/${lang}/hospital/${hospitalId}`}
         variant='light'
-        bgClassName='bg-white'
       />
 
       {/* 리뷰 리스트 */}
       {allReviews.length > 0 ? (
-        <div className=''>
+        <div className='flex flex-col gap-6 px-5 py-5'>
           {allReviews.map((review, index) => (
             <div key={review.id}>
-              <div className='p-5'>
-                <ReviewListCard
-                  review={review}
-                  lang={lang}
-                  dict={dict}
-                  user={user}
-                  onToggleLike={handleToggleLike}
-                  isLikeLoading={loadingReviewId === review.id}
-                />
-              </div>
-              {/* 마지막 아이템이 아닌 경우에만 구분선 추가 */}
-              {index < allReviews.length - 1 && <div className='h-2 bg-neutral-100' />}
+              <ReviewListCard
+                review={review}
+                lang={lang}
+                dict={dict}
+                user={user}
+                onToggleLike={handleToggleLike}
+                isLikeLoading={loadingReviewId === review.id}
+              />
             </div>
           ))}
 
