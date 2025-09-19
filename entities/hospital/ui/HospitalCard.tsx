@@ -36,9 +36,14 @@ export function HospitalCard({
     : hospital.address;
 
   return (
-    <div className='flex min-w-0 gap-3'>
+    <div
+      className='flex min-w-0 gap-3 rounded-xl border border-white shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'
+      style={{
+        background: 'rgba(255, 255, 255, 0.50)',
+      }}
+    >
       <HospitalThumbnail imageUrl={hospital.thumbnailImageUrl} />
-      <div className='flex min-w-0 flex-1 flex-col gap-1'>
+      <div className='flex min-w-0 flex-1 flex-col justify-center gap-1'>
         <div className='flex items-start justify-between'>
           <div className='min-w-0 flex-1'>
             <HospitalInfo
@@ -74,14 +79,14 @@ export function HospitalCard({
         </div>
 
         {/* 시술부위 태그 */}
-        {hospital.medicalSpecialties && hospital.medicalSpecialties.length > 0 && (
+        {/* {hospital.medicalSpecialties && hospital.medicalSpecialties.length > 0 && (
           <MedicalSpecialtyTags
             specialties={hospital.medicalSpecialties}
             lang={lang}
             maxDisplay={3}
             className='mt-1'
           />
-        )}
+        )} */}
       </div>
     </div>
   );

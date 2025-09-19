@@ -43,8 +43,10 @@ export default async function MainPage({ params }: MainPageProps) {
           <LimousineBanner />
         </div>
 
-        <div className='px-5'>
-          <CautionSection lang={lang} dict={dict} />
+        <div className='bg-[#FE7A8F]'>
+          <div className='px-5'>
+            <CautionSection lang={lang} dict={dict} />
+          </div>
         </div>
       </div>
       <TaxiReservationSection lang={lang} dict={dict} />

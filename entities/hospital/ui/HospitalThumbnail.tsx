@@ -21,19 +21,25 @@ export function HospitalThumbnail({
   const shouldShowDefaultImage = !imageUrl || imageError;
 
   return (
-    <div className='relative h-[120px] w-[120px] flex-shrink-0'>
+    <div className='relative flex h-full w-[120px] flex-shrink-0 items-stretch'>
       {shouldShowDefaultImage ? (
         <img
           src='/images/shared/default_image_square.png'
           alt={alt}
-          className='h-full w-full rounded-lg object-fill'
+          className='h-full w-full rounded-l-lg object-fill'
+          style={{
+            height: '100%',
+          }}
         />
       ) : (
         <img
           src={imageUrl}
           alt={alt}
-          className='h-full w-full rounded-lg object-contain'
+          className='h-full w-full rounded-l-lg object-fill'
           onError={handleImageError}
+          style={{
+            height: '100%',
+          }}
         />
       )}
       <div className='absolute top-[-5px] left-[-5px]'>

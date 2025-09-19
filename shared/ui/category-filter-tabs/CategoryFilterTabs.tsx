@@ -57,9 +57,7 @@ export function CategoryFilterTabs({
                 <button
                   onClick={() => onCategoryChange(category.id)}
                   className={`flex min-w-[43px] shrink-0 items-center justify-center rounded-full px-3 py-2 text-xs font-medium whitespace-nowrap transition-colors ${
-                    isSelected
-                      ? 'bg-neutral-700 text-white'
-                      : 'border border-neutral-200 bg-white text-black hover:bg-neutral-50'
+                    isSelected ? 'bg-primary text-white' : 'bg-white text-black'
                   }`}
                 >
                   <span className='leading-4'>{getLabel(category)}</span>
