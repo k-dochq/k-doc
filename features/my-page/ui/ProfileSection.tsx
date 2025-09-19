@@ -22,7 +22,7 @@ export function ProfileSection({ lang, dict }: ProfileSectionProps) {
       {/* 프로필 헤더 - 클릭 가능한 전체 영역 */}
       <LocaleLink
         href='/my/profile/edit'
-        className='flex w-full items-center gap-4 rounded-lg bg-white p-4 transition-colors hover:bg-gray-50'
+        className='flex w-full items-center gap-4 rounded-lg bg-white/50 p-4 transition-colors hover:bg-white/30'
       >
         <div className='flex h-16 w-16 items-center justify-center rounded-full bg-gray-100'>
           <svg

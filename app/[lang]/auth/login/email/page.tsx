@@ -18,7 +18,7 @@ export default async function EmailLoginPage({ params, searchParams }: EmailLogi
   const dict = await getDictionary(lang);
 
   return (
-    <div className='min-h-screen bg-white'>
+    <div className='min-h-screen'>
       <PageHeader
         lang={lang}
         title={dict.auth?.login?.emailLogin || '이메일로 로그인'}

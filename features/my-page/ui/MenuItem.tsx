@@ -21,8 +21,8 @@ export function MenuItem({
   disabled = false,
   loading = false,
 }: MenuItemProps) {
-  const baseClasses = `flex w-full items-center justify-between rounded-lg bg-white p-4 text-left transition-colors ${
-    disabled || loading ? 'cursor-not-allowed opacity-50' : 'hover:bg-gray-50'
+  const baseClasses = `flex w-full items-center justify-between rounded-lg bg-white/50 p-4 text-left transition-colors ${
+    disabled || loading ? 'cursor-not-allowed opacity-50' : 'hover:bg-white/30'
   }`;
   const textClasses = isDanger ? 'text-red-600' : 'text-gray-900';
 

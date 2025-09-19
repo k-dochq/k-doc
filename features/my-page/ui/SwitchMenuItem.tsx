@@ -16,7 +16,7 @@ export function SwitchMenuItem({
   disabled = false,
 }: SwitchMenuItemProps) {
   return (
-    <div className='flex w-full items-center justify-between rounded-lg bg-white p-4'>
+    <div className='flex w-full items-center justify-between rounded-lg bg-white/50 p-4'>
       <span className='text-sm font-medium text-gray-900'>{title}</span>
       <div className='flex-shrink-0'>
         <Switch checked={checked} onCheckedChange={onChange} disabled={disabled} />
