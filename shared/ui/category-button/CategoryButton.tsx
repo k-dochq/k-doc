@@ -19,6 +19,7 @@ interface CategoryButtonProps {
   iconClassName?: string;
   labelClassName?: string;
   replace?: boolean;
+  isActive?: boolean;
 }
 
 export function CategoryButton({
@@ -30,14 +31,36 @@ export function CategoryButton({
   iconClassName = '',
   labelClassName = '',
   replace = false,
+  isActive = false,
 }: CategoryButtonProps) {
   const getLabel = (): string => {
     return getLocalizedTextByLocale(category.labels, lang);
   };
 
-  const buttonContent = (
+  const buttonContent = isActive ? (
     <>
-      <div className={`${categoryButtonStyles.container} ${iconClassName}`}>{category.icon()}</div>
+      <div
+        className='h-[50px] w-[50px] rounded-xl border-none p-0.5'
+        style={{
+          background: 'linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
+        }}
+      >
+        <div className='flex h-full w-full items-center justify-center rounded-xl bg-gradient-to-b from-white to-[#FFD9F9]'>
+          {category.icon()}
+        </div>
+      </div>
+      <span className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</span>
+    </>
+  ) : (
+    <>
+      <div
+        className='flex h-[50px] w-[50px] items-center justify-center rounded-xl border border-white'
+        style={{
+          background: 'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%)',
+        }}
+      >
+        {category.icon()}
+      </div>
       <span className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</span>
     </>
   );
