@@ -4,7 +4,7 @@ interface HeartBackgroundProps {
 }
 
 export function HeartBackground({
-  className = 'pointer-events-none absolute -top-10 -right-4 z-0 h-[123px] w-[154px] animate-float',
+  className = 'pointer-events-none absolute -top-10 -right-0 z-0 h-[123px] w-[154px] animate-float',
   opacity = 1,
 }: HeartBackgroundProps) {
   return (
