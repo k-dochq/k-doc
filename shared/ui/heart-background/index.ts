@@ -1,0 +1,1 @@
+export { HeartBackground } from './HeartBackground';
