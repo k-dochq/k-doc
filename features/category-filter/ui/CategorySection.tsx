@@ -79,8 +79,7 @@ export function CategorySection({
                   lang={lang}
                   href={href}
                   replace={true}
-                  iconClassName={isActive ? 'border-2 border-primary bg-primary/10' : ''}
-                  labelClassName={isActive ? 'text-primary font-semibold' : ''}
+                  isActive={isActive}
                 />
               </CarouselItem>
             );
