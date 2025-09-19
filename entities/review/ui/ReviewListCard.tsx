@@ -42,31 +42,32 @@ export function ReviewListCard({
   const hashtags = concerns ? [concerns] : [];
 
   return (
-    <LocaleLink
-      href={`/review/${review.id}`}
-      locale={lang}
-      className={`block w-full overflow-hidden rounded-lg ${className}`}
-    >
-      {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
-      <ReviewListCardHeader review={review} lang={lang} />
+    <div>
+      <LocaleLink
+        href={`/review/${review.id}`}
+        locale={lang}
+        className={`block w-full overflow-hidden rounded-t-lg border border-white bg-white/50 px-5 pt-5 pb-4 ${className}`}
+      >
+        {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
+        <ReviewListCardHeader review={review} lang={lang} />
 
-      {/* 두 번째 섹션: Before/After 이미지 */}
-      <ReviewListImages
-        beforeImages={review.images.before}
-        afterImages={review.images.after}
-        reviewId={review.id}
-        lang={lang}
-        className='mt-3'
-      />
+        {/* 두 번째 섹션: Before/After 이미지 */}
+        <ReviewListImages
+          beforeImages={review.images.before}
+          afterImages={review.images.after}
+          reviewId={review.id}
+          lang={lang}
+          className='mt-3'
+        />
 
-      {/* 세 번째 섹션: 해시태그, 시술시기 */}
-      <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />
+        {/* 세 번째 섹션: 해시태그, 시술시기 */}
+        <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />
 
-      {/* 네 번째 섹션: 리뷰 내용 */}
-      {content && (
-        <ReviewContentSection content={content} lang={lang} dict={dict} className='mt-3' />
-      )}
-
+        {/* 네 번째 섹션: 리뷰 내용 */}
+        {content && (
+          <ReviewContentSection content={content} lang={lang} dict={dict} className='mt-3' />
+        )}
+      </LocaleLink>
       {/* 다섯 번째 섹션: 조회수, 좋아요 */}
       <ReviewStatsSection
         review={review}
@@ -74,8 +75,8 @@ export function ReviewListCard({
         user={user}
         onToggleLike={onToggleLike}
         isLikeLoading={isLikeLoading && isLikeLoading}
-        className='mt-3'
+        className=''
       />
-    </LocaleLink>
+    </div>
   );
 }

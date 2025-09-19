@@ -1,10 +1,9 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
-import { LocaleLink } from 'shared/ui/locale-link';
+import { FilterBar, type FilterOption } from 'shared/ui/filter-bar';
 import { DistrictFilterButton } from './DistrictFilterButton';
 import { type useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
 
@@ -15,43 +14,27 @@ interface HospitalFilterBarProps {
 }
 
 export function HospitalFilterBar({ lang, dict, districtFilter }: HospitalFilterBarProps) {
-  const searchParams = useSearchParams();
-
-  // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
-  const createSortUrl = (sort: HospitalSortOption) => {
-    const params = new URLSearchParams(searchParams?.toString() || '');
-    params.set('sort', sort);
-    return `/hospitals?${params.toString()}`;
-  };
-
-  // 타입 안전하게 현재 정렬 옵션 가져오기
-  const currentSort: HospitalSortOption =
-    searchParams?.get('sort') === HOSPITAL_SORT_OPTIONS.POPULAR ||
-    searchParams?.get('sort') === HOSPITAL_SORT_OPTIONS.RECOMMENDED ||
-    searchParams?.get('sort') === HOSPITAL_SORT_OPTIONS.NEWEST
-      ? (searchParams?.get('sort') as HospitalSortOption)
-      : HOSPITAL_SORT_OPTIONS.POPULAR;
+  const filterOptions: FilterOption<HospitalSortOption>[] = [
+    {
+      value: HOSPITAL_SORT_OPTIONS.POPULAR,
+      label: dict.hospitalSort.popular,
+      isDefault: true,
+    },
+    {
+      value: HOSPITAL_SORT_OPTIONS.RECOMMENDED,
+      label: dict.hospitalSort.recommended,
+    },
+  ];
 
   return (
-    <div className='flex items-center justify-between border-t border-b border-white/60 bg-white/20 px-5 py-3'>
-      <div className='flex items-center gap-2'>
-        <LocaleLink
-          href={createSortUrl(HOSPITAL_SORT_OPTIONS.POPULAR)}
-          replace
-          className={`text-[13px] font-semibold ${currentSort === HOSPITAL_SORT_OPTIONS.POPULAR ? 'text-primary' : 'text-neutral-900'}`}
-        >
-          {dict.hospitalSort.popular}
-        </LocaleLink>
-        <div className='h-3 w-0 border-l border-neutral-900'></div>
-        <LocaleLink
-          href={createSortUrl(HOSPITAL_SORT_OPTIONS.RECOMMENDED)}
-          replace
-          className={`text-[13px] font-medium ${currentSort === HOSPITAL_SORT_OPTIONS.RECOMMENDED ? 'text-primary' : 'text-neutral-900'}`}
-        >
-          {dict.hospitalSort.recommended}
-        </LocaleLink>
-      </div>
-      <DistrictFilterButton lang={lang} dict={dict} districtFilter={districtFilter} />
-    </div>
+    <FilterBar
+      lang={lang}
+      options={filterOptions}
+      basePath='/hospitals'
+      paramName='sort'
+      rightContent={
+        <DistrictFilterButton lang={lang} dict={dict} districtFilter={districtFilter} />
+      }
+    />
   );
 }

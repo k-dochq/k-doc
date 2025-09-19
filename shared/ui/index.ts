@@ -10,6 +10,7 @@ export * from './category-button';
 export * from './icons/HeartIcon';
 export * from './icons/HeartOutlineIcon';
 export * from './icons/CommentIcon';
+export * from './icons/MoreIcon';
 export * from './buttons/LikeButton';
 export * from './page-header';
 export * from './search-bar';

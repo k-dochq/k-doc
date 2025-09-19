@@ -318,7 +318,8 @@
     },
     "procedureTiming": "วันที่ทำการรักษา",
     "showMore": "ดูเพิ่มเติม",
-    "showLess": "ย่อ"
+    "showLess": "ย่อ",
+    "view": "ดู"
   },
   "favorites": {
     "title": "รายการโปรด",

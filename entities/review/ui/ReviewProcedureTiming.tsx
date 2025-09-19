@@ -26,7 +26,7 @@ export function ReviewProcedureTiming({
 
   return (
     <div className={`${className}`}>
-      <span className='text-xs font-medium text-neutral-400'>
+      <span className='text-xs font-medium text-neutral-500'>
         {dict.review.procedureTiming} {timingText}
       </span>
     </div>
