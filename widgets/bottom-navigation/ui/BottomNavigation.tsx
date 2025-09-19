@@ -31,7 +31,10 @@ export function BottomNavigation({ currentLang }: BottomNavigationProps) {
                   active ? 'text-primary' : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
-                <Icon className={`mb-1 h-5 w-5 ${active ? 'text-primary' : 'text-gray-500'}`} />
+                <Icon
+                  className={`mb-1 h-5 w-5 ${active ? 'text-primary' : 'text-gray-500'}`}
+                  active={active}
+                />
                 <span
                   className={`truncate text-xs font-medium ${
                     active ? 'text-primary' : 'text-gray-500'
