@@ -18,7 +18,7 @@ export function ReviewImagesHeader({ headerText, lang }: ReviewImagesHeaderProps
   };
 
   return (
-    <div className='flex items-center justify-between py-4'>
+    <div className='flex items-center justify-between py-4 pr-5'>
       <button
         onClick={handleBackClick}
         aria-label='뒤로 가기'
