@@ -27,7 +27,7 @@ export function LocalizedCategoryButton({
   return (
     <LocaleLink href={href} className={`flex min-w-0 flex-col items-center gap-1 ${className}`}>
       <div
-        className={`flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-[#f9d1ff] bg-white transition-shadow hover:shadow-md ${iconClassName}`}
+        className={`flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-white bg-gradient-to-b from-white to-[#FFD9F9] shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] transition-shadow hover:shadow-md ${iconClassName}`}
       >
         {category.icon()}
       </div>

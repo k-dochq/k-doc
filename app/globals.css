@@ -15,4 +15,8 @@
   .safe-area-pb {
     padding-bottom: env(safe-area-inset-bottom);
   }
+
+  .bg-gradient-primary {
+    background: linear-gradient(180deg, #ffdbf9 0.19%, #c7a8ff 99.82%);
+  }
 }

@@ -10,7 +10,10 @@ interface HeaderProps {
 
 export function Header({ currentLang }: HeaderProps) {
   return (
-    <header className='sticky top-0 z-50 w-full bg-white px-5 py-4'>
+    <header
+      className='sticky top-0 z-50 w-full px-5 py-4'
+      style={{ background: 'rgba(254, 219, 249, 0.70)', backdropFilter: 'blur(15px)' }}
+    >
       <div className='flex items-center justify-between'>
         <LocaleLink href='/main' className='text-primary'>
           <HeaderLogo />
