@@ -1,14 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { QueryProvider } from 'shared/ui/providers';
-import localFont from 'next/font/local';
-
-const pretendard = localFont({
-  src: '../fonts/pretendard/PretendardVariable.woff2',
-  display: 'swap',
-  weight: '100 900',
-  variable: '--font-pretendard',
-});
 
 // metadata for SEO
 export const metadata: Metadata = {
