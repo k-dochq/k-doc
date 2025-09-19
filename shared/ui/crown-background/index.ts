@@ -1,0 +1,1 @@
+export { CrownBackground } from './CrownBackground';

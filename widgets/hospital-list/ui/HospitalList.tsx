@@ -13,6 +13,7 @@ import { HospitalListTitle } from './HospitalListTitle';
 import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
 import { HospitalListSkeleton } from './HospitalListSkeleton';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { CrownBackground } from 'shared/ui/crown-background';
 
 interface HospitalListProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
@@ -84,16 +85,7 @@ export function HospitalList({ medicalSpecialties, lang, dict, initialData }: Ho
   return (
     <div className='w-full'>
       <div className='relative mb-4'>
-        {/* Crown 배경 이미지 */}
-        <div
-          className='pointer-events-none absolute -top-15 -left-4 z-0 h-[123px] w-[154px]'
-          style={{
-            backgroundImage: 'url(/images/main/crown.svg)',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-          }}
-        />
+        <CrownBackground />
         <div className='relative z-20 px-5'>
           <HospitalListTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
         </div>
