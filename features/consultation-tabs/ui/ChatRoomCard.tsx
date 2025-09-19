@@ -16,7 +16,7 @@ export function ChatRoomCard({ chatRoom, lang }: ChatRoomCardProps) {
   const hospitalName = getLocalizedTextByLocale(chatRoom.hospitalName, lang);
 
   return (
-    <LocaleLink href={`/chat/${chatRoom.hospitalId}`}>
+    <LocaleLink href={`/chat/${chatRoom.hospitalId}`} className='rounded-xl bg-white/50 p-3'>
       <div className='flex cursor-pointer gap-3'>
         <ChatRoomThumbnail
           thumbnailUrl={chatRoom.hospitalThumbnailUrl}
