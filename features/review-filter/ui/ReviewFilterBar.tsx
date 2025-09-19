@@ -1,10 +1,9 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { type Dictionary } from 'shared/model/types';
-import { LocaleLink } from 'shared/ui/locale-link';
+import { FilterBar, type FilterOption } from 'shared/ui/filter-bar';
 
 interface ReviewFilterBarProps {
   lang: Locale;
@@ -12,41 +11,17 @@ interface ReviewFilterBarProps {
 }
 
 export function ReviewFilterBar({ lang, dict }: ReviewFilterBarProps) {
-  const searchParams = useSearchParams();
+  const filterOptions: FilterOption<ReviewSortOption>[] = [
+    {
+      value: REVIEW_SORT_OPTIONS.LATEST,
+      label: dict.allReviews.sort.latest,
+      isDefault: true,
+    },
+    {
+      value: REVIEW_SORT_OPTIONS.POPULAR,
+      label: dict.allReviews.sort.popular,
+    },
+  ];
 
-  // 현재 쿼리 파라미터를 유지하면서 정렬 옵션만 변경하는 헬퍼 함수
-  const createSortUrl = (sort: ReviewSortOption) => {
-    const params = new URLSearchParams(searchParams?.toString() || '');
-    params.set('sort', sort); // 병원과 동일하게 sort 파라미터 사용
-    return `/reviews?${params.toString()}`;
-  };
-
-  // 타입 안전하게 현재 정렬 옵션 가져오기
-  const currentSort: ReviewSortOption =
-    searchParams?.get('sort') === REVIEW_SORT_OPTIONS.LATEST ||
-    searchParams?.get('sort') === REVIEW_SORT_OPTIONS.POPULAR
-      ? (searchParams?.get('sort') as ReviewSortOption)
-      : REVIEW_SORT_OPTIONS.LATEST;
-
-  return (
-    <div className='flex items-center justify-between border-t border-b border-neutral-200 px-5 py-3'>
-      <div className='flex items-center gap-2'>
-        <LocaleLink
-          href={createSortUrl(REVIEW_SORT_OPTIONS.LATEST)}
-          replace
-          className={`text-[13px] font-semibold ${currentSort === REVIEW_SORT_OPTIONS.LATEST ? 'text-primary' : 'text-neutral-500'}`}
-        >
-          {dict.allReviews.sort.latest}
-        </LocaleLink>
-        <div className='h-3 w-0 border-l border-neutral-300'></div>
-        <LocaleLink
-          href={createSortUrl(REVIEW_SORT_OPTIONS.POPULAR)}
-          replace
-          className={`text-[13px] font-medium ${currentSort === REVIEW_SORT_OPTIONS.POPULAR ? 'text-primary' : 'text-neutral-500'}`}
-        >
-          {dict.allReviews.sort.popular}
-        </LocaleLink>
-      </div>
-    </div>
-  );
+  return <FilterBar lang={lang} options={filterOptions} basePath='/reviews' paramName='sort' />;
 }

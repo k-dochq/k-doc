@@ -71,21 +71,17 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
     <div>
       {/* 리뷰 리스트 */}
       {allReviews.length > 0 ? (
-        <div className=''>
+        <div className='flex flex-col gap-6 p-5'>
           {allReviews.map((review, index) => (
             <div key={review.id}>
-              <div className='p-5'>
-                <ReviewListCard
-                  review={review}
-                  lang={lang}
-                  dict={dict}
-                  user={user}
-                  onToggleLike={handleToggleLike}
-                  isLikeLoading={loadingReviewId === review.id}
-                />
-              </div>
-              {/* 마지막 아이템이 아닌 경우에만 구분선 추가 */}
-              {index < allReviews.length - 1 && <div className='h-2 bg-neutral-100' />}
+              <ReviewListCard
+                review={review}
+                lang={lang}
+                dict={dict}
+                user={user}
+                onToggleLike={handleToggleLike}
+                isLikeLoading={loadingReviewId === review.id}
+              />
             </div>
           ))}
 

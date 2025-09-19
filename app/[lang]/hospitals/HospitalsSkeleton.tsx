@@ -7,18 +7,18 @@ export function HospitalsSkeleton() {
           <div key={index} className='rounded-lg border border-white/60 bg-white/20 p-4'>
             {/* 썸네일 이미지 스켈레톤 */}
             <div className='mb-3'>
-              <div className='relative aspect-video w-full animate-pulse overflow-hidden rounded-lg bg-white'></div>
+              <div className='relative aspect-video w-full animate-pulse overflow-hidden rounded-lg bg-white/50'></div>
             </div>
 
             {/* 병원명 스켈레톤 */}
             <div className='mb-2'>
-              <div className='h-6 w-3/4 animate-pulse rounded bg-white'></div>
+              <div className='h-6 w-3/4 animate-pulse rounded bg-white/50'></div>
             </div>
 
             {/* 위치 스켈레톤 */}
             <div className='mb-2 flex items-center gap-1'>
-              <div className='h-4 w-4 animate-pulse rounded bg-white'></div>
-              <div className='h-4 w-1/2 animate-pulse rounded bg-white'></div>
+              <div className='h-4 w-4 animate-pulse rounded bg-white/50'></div>
+              <div className='h-4 w-1/2 animate-pulse rounded bg-white/50'></div>
             </div>
 
             {/* 부위 태그 스켈레톤 */}
@@ -27,7 +27,7 @@ export function HospitalsSkeleton() {
                 {Array.from({ length: 3 }).map((_, tagIndex) => (
                   <div
                     key={tagIndex}
-                    className='h-6 w-16 animate-pulse rounded-full bg-white'
+                    className='h-6 w-16 animate-pulse rounded-full bg-white/50'
                   ></div>
                 ))}
               </div>
@@ -36,10 +36,10 @@ export function HospitalsSkeleton() {
             {/* 평점 스켈레톤 */}
             <div className='flex items-center gap-2'>
               <div className='flex items-center gap-1'>
-                <div className='h-4 w-4 animate-pulse rounded bg-white'></div>
-                <div className='h-4 w-8 animate-pulse rounded bg-white'></div>
+                <div className='h-4 w-4 animate-pulse rounded bg-white/50'></div>
+                <div className='h-4 w-8 animate-pulse rounded bg-white/50'></div>
               </div>
-              <div className='h-4 w-20 animate-pulse rounded bg-white'></div>
+              <div className='h-4 w-20 animate-pulse rounded bg-white/50'></div>
             </div>
           </div>
         ))}

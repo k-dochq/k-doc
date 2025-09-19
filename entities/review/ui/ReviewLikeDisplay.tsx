@@ -37,7 +37,7 @@ export function ReviewLikeDisplay({
       ) : (
         <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
       )}
-      <span className={`text-base font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
+      <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
         {count.toLocaleString()}
       </span>
     </button>

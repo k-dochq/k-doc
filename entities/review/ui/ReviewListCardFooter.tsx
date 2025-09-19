@@ -29,8 +29,13 @@ export function ReviewListCardFooter({
       {/* 해시태그 */}
       {hashtags.length > 0 && <ReviewHashtags hashtags={hashtags} />}
 
-      {/* 시술시기 */}
-      <ReviewProcedureTiming createdAt={review.createdAt} lang={lang} dict={dict} />
+      <div className='flex items-center justify-between'>
+        {/* 시술시기 */}
+        <ReviewProcedureTiming createdAt={review.createdAt} lang={lang} dict={dict} />
+        <span className='text-xs font-medium text-neutral-900'>
+          {dict.review.view} {review.viewCount}
+        </span>
+      </div>
     </div>
   );
 }

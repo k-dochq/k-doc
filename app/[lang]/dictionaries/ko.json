@@ -318,7 +318,8 @@
     },
     "procedureTiming": "시술시기",
     "showMore": "더보기",
-    "showLess": "접기"
+    "showLess": "접기",
+    "view": "조회"
   },
   "favorites": {
     "title": "즐겨찾기",
