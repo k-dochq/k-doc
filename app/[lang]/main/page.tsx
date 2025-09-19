@@ -35,7 +35,7 @@ export default async function MainPage({ params }: MainPageProps) {
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
         </div>
 
-        <div className='mt-12 px-5'>
+        <div className='mt-12'>
           <PopularReviewsWrapper lang={lang} dict={dict} />
         </div>
 

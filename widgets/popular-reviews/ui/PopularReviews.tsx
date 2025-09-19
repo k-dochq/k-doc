@@ -12,6 +12,7 @@ import { PopularReviewsSkeleton } from './PopularReviewsSkeleton';
 import { PopularReviewsError } from './PopularReviewsError';
 import { CategoryFilterTabs } from 'shared/ui/category-filter-tabs';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { HeartBackground } from 'shared/ui/heart-background';
 
 interface PopularReviewsProps {
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
@@ -54,11 +55,14 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
 
   return (
     <div className='w-full'>
-      <div className='mb-4'>
-        <PopularReviewsTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
+      <div className='relative mb-4'>
+        <HeartBackground />
+        <div className='relative z-20 px-5'>
+          <PopularReviewsTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
+        </div>
       </div>
 
-      <div className='mb-4'>
+      <div className='mb-4 px-5'>
         <CategoryFilterTabs
           lang={lang}
           dict={dict}
@@ -69,7 +73,7 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
       </div>
 
       {/* 후기 리스트 표시 */}
-      <div className=''>
+      <div className='px-5'>
         {isLoading ? (
           <PopularReviewsSkeleton />
         ) : error ? (
