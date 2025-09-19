@@ -18,11 +18,11 @@ export function ReviewImagesHeader({ headerText, lang }: ReviewImagesHeaderProps
   };
 
   return (
-    <div className='flex items-center justify-between py-4 pr-5'>
+    <div className='flex items-center justify-between py-4 pr-5 pl-1'>
       <button
         onClick={handleBackClick}
         aria-label='뒤로 가기'
-        className='flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-gray-100'
+        className='flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-white/50'
       >
         <BackIcon />
       </button>

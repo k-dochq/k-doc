@@ -33,7 +33,7 @@ export function AllReviewsContent({ lang, dict, searchParams }: AllReviewsConten
     searchParams.sort === REVIEW_SORT_OPTIONS.LATEST ||
     searchParams.sort === REVIEW_SORT_OPTIONS.POPULAR
       ? (searchParams.sort as ReviewSortOption)
-      : REVIEW_SORT_OPTIONS.LATEST;
+      : REVIEW_SORT_OPTIONS.POPULAR;
 
   return (
     <div className=''>
