@@ -31,7 +31,7 @@ export default async function MainPage({ params }: MainPageProps) {
           <QuickMenuWrapper lang={lang} />
         </div>
 
-        <div className='mt-12 px-5'>
+        <div className='mt-12'>
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
         </div>
 

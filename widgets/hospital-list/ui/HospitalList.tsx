@@ -83,11 +83,23 @@ export function HospitalList({ medicalSpecialties, lang, dict, initialData }: Ho
 
   return (
     <div className='w-full'>
-      <div className='mb-4'>
-        <HospitalListTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
+      <div className='relative mb-4'>
+        {/* Crown 배경 이미지 */}
+        <div
+          className='pointer-events-none absolute -top-15 -left-4 z-0 h-[123px] w-[154px]'
+          style={{
+            backgroundImage: 'url(/images/main/crown.svg)',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className='relative z-20 px-5'>
+          <HospitalListTitle lang={lang} dict={dict} onViewAll={handleViewAll} />
+        </div>
       </div>
 
-      <div className='mb-4'>
+      <div className='mb-4 px-5'>
         <CategoryFilterTabs
           lang={lang}
           dict={dict}
@@ -98,7 +110,7 @@ export function HospitalList({ medicalSpecialties, lang, dict, initialData }: Ho
       </div>
 
       {/* 병원 리스트 표시 */}
-      <div className=''>
+      <div className='px-5'>
         {isLoading ? (
           <HospitalListSkeleton />
         ) : bestHospitals ? (
