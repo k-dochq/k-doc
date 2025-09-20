@@ -3,6 +3,7 @@ import { type Dictionary } from 'shared/model/types';
 // import { GoogleSignInButton } from 'features';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
+import { PageHeader } from 'shared/ui/page-header';
 import Image from 'next/image';
 import { HeaderLogo } from '@/widgets/header/ui/HeaderLogo';
 
@@ -14,7 +15,16 @@ interface LoginContentProps {
 
 export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
   return (
-    <div className='relative w-full overflow-hidden px-5'>
+    <div className='relative w-full overflow-hidden'>
+      {/* PageHeader */}
+      <PageHeader
+        lang={lang}
+        title=''
+        fallbackUrl={`/${lang}`}
+        variant='dark'
+        bgClassName='bg-white/5'
+      />
+
       {/* 배경 이미지 */}
       <div className='absolute inset-0'>
         <Image
