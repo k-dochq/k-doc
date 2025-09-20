@@ -63,6 +63,7 @@ model Doctor {
   createdAt              DateTime                 @default(now())
   updatedAt              DateTime
   Hospital               Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  DoctorImage            DoctorImage[]
   DoctorMedicalSpecialty DoctorMedicalSpecialty[]
 
   @@index([baseId])
@@ -415,6 +416,23 @@ model Comment {
   @@schema("public")
 }
 
+model DoctorImage {
+  id        String          @id @db.Uuid
+  doctorId  String          @db.Uuid
+  imageType DoctorImageType
+  imageUrl  String          @db.VarChar(500)
+  alt       String?         @db.VarChar(255)
+  order     Int?
+  isActive  Boolean         @default(true)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime
+  Doctor    Doctor          @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@index([doctorId])
+  @@index([imageType])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -532,6 +550,12 @@ enum ReviewImageType {
 enum SenderType {
   USER
   ADMIN
+
+  @@schema("public")
+}
+
+enum DoctorImageType {
+  PROFILE
 
   @@schema("public")
 }
