@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
+import { LoadingIcon } from 'shared/ui/loading-icon/LoadingIcon';
 
 interface InfiniteScrollTriggerProps {
   onIntersect: () => void;
@@ -54,12 +55,11 @@ export function InfiniteScrollTrigger({
       {isFetchingNextPage && (
         <div className='flex justify-center'>
           <div className='flex items-center space-x-2'>
-            <div className='h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500'></div>
+            <LoadingIcon size={16} className='text-white' />
             <span className='text-sm text-white'>{loadingText}</span>
           </div>
         </div>
       )}
-      {/* {!hasNextPage && <div className='text-center text-sm text-gray-500'>{endText}</div>} */}
     </div>
   );
 }

@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { useHospitalLike } from '../model/useHospitalLike';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 import type { Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
 import { HeartIcon } from 'shared/ui/icons/HeartIcon';
@@ -25,6 +28,7 @@ export function HospitalLikeButton({
   size = 'md',
 }: HospitalLikeButtonProps) {
   const router = useLocalizedRouter();
+  const { isAuthenticated } = useAuth();
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   const { isLiked, likeCount, isLoading, isToggling, error, toggleLike, clearError } =
@@ -55,15 +59,28 @@ export function HospitalLikeButton({
   const currentSize = sizeStyles[size];
 
   const handleClick = () => {
+    // 로그인 상태 확인
+    if (!isAuthenticated) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={locale} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
     // 에러 초기화
     if (error) {
       clearError();
     }
 
-    // 인증 에러인 경우 로그인 페이지로 이동
+    // 인증 에러인 경우 로그인 모달 표시
     if (error?.status === 401) {
-      const currentPath = window.location.pathname;
-      router.push(`/auth/login?redirect=${encodeURIComponent(currentPath)}`);
+      openModal({
+        content: (
+          <LoginRequiredModal lang={locale} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
       return;
     }
 
@@ -115,13 +132,6 @@ export function HospitalLikeButton({
       {error && error.status !== 401 && (
         <div className='rounded-md bg-red-50 px-2 py-1'>
           <p className='text-xs text-red-600'>{error.message}</p>
-        </div>
-      )}
-
-      {/* 로그인 필요 메시지 */}
-      {error?.status === 401 && (
-        <div className='rounded-md bg-blue-50 px-2 py-1'>
-          <p className='text-xs text-blue-600'>로그인이 필요합니다</p>
         </div>
       )}
     </div>

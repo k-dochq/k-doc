@@ -9,6 +9,9 @@ import { FavoritesHospitalsErrorState } from './FavoritesHospitalsErrorState';
 import { FavoritesHospitalsList } from './FavoritesHospitalsList';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospitalLike';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { EmptyFavoritesState } from 'shared/ui/empty-state';
 
 interface FavoritesHospitalsTabProps {
   lang: Locale;
@@ -34,7 +37,7 @@ export function FavoritesHospitalsTab({ lang, dict }: FavoritesHospitalsTabProps
   const queryParams = {
     limit: 10,
   };
-  const toggleLikeMutation = useToggleHospitalLike({ queryParams, user });
+  const toggleLikeMutation = useToggleHospitalLike({ queryParams });
 
   // 로딩 상태 (스켈레톤 UI)
   if (isLoading) {
@@ -54,6 +57,16 @@ export function FavoritesHospitalsTab({ lang, dict }: FavoritesHospitalsTabProps
 
   // 좋아요 토글 핸들러
   const handleToggleLike = (hospitalId: string) => {
+    // 로그인 체크
+    if (!user) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
     toggleLikeMutation.mutate(hospitalId);
   };
 
@@ -65,7 +78,7 @@ export function FavoritesHospitalsTab({ lang, dict }: FavoritesHospitalsTabProps
 
   // 빈 상태
   if (allLikedHospitals.length === 0) {
-    return <FavoritesHospitalsEmptyState lang={lang} dict={dict} />;
+    return <EmptyFavoritesState dict={dict} type='hospitals' />;
   }
 
   // 병원 리스트 표시

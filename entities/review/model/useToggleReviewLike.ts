@@ -1,9 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { queryKeys } from 'shared/lib/query-keys';
-import type { User } from '@supabase/supabase-js';
 
 interface UseToggleReviewLikeParams {
   queryParams: {
@@ -11,26 +9,16 @@ interface UseToggleReviewLikeParams {
     sort?: string;
     category?: string;
   };
-  user: User | null;
 }
 
 /**
  * 리뷰 좋아요 토글 뮤테이션 훅
  */
-export function useToggleReviewLike({ queryParams, user }: UseToggleReviewLikeParams) {
+export function useToggleReviewLike({ queryParams }: UseToggleReviewLikeParams) {
   const queryClient = useQueryClient();
-  const router = useLocalizedRouter();
 
   return useMutation({
     mutationFn: async (reviewId: string) => {
-      // 로그인 체크
-      if (!user) {
-        // 현재 페이지 URL을 redirect 파라미터로 설정
-        const currentPath = window.location.pathname + window.location.search;
-        router.push(`/auth/login?redirect=${encodeURIComponent(currentPath)}`);
-        return Promise.reject(new Error('로그인이 필요합니다'));
-      }
-
       // API 호출
       const response = await fetch(`/api/reviews/${reviewId}/like`, {
         method: 'POST',
@@ -78,7 +66,8 @@ export function useToggleReviewLike({ queryParams, user }: UseToggleReviewLikePa
     },
     onError: (error: Error) => {
       console.error('좋아요 처리 중 오류:', error.message);
-      alert(error.message);
+      // alert 대신 에러를 상위 컴포넌트에서 처리하도록 함
+      // 401 에러는 상위 컴포넌트에서 LoginRequiredModal로 처리됨
     },
   });
 }

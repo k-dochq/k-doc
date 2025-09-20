@@ -12,9 +12,11 @@ import {
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
-import { EmptyReviewsState } from 'shared/ui/empty-reviews-state';
+import { EmptyReviewsState } from 'shared/ui/empty-state';
 import { PageHeader } from 'shared/ui/page-header';
 import { useAuth } from 'shared/lib/auth/useAuth';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 
 interface HospitalReviewsContentProps {
   hospitalId: string;
@@ -42,13 +44,23 @@ export function HospitalReviewsContent({
   );
 
   // 좋아요 토글 뮤테이션
-  const toggleLikeMutation = useToggleReviewLike({ queryParams, user });
+  const toggleLikeMutation = useToggleReviewLike({ queryParams });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteAllReviews(queryParams);
 
   // 좋아요 토글 핸들러
   const handleToggleLike = (reviewId: string) => {
+    // 로그인 체크
+    if (!user) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
     toggleLikeMutation.mutate(reviewId);
   };
 

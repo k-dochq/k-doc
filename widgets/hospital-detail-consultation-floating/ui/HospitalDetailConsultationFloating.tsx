@@ -5,7 +5,8 @@ import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useCheckConsultationHistory } from 'features/consultation-request/model/useCheckConsultationHistory';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { getAuthPath } from 'shared/lib/auth/route-guard';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 
 interface HospitalDetailConsultationFloatingProps {
   hospitalId: string;
@@ -25,13 +26,14 @@ export function HospitalDetailConsultationFloating({
   const { isAuthenticated } = useAuth();
   const checkConsultationHistory = useCheckConsultationHistory();
 
-  const handleConsultationRequest = () => {
+  const handleConsultationRequest = async () => {
     // 로그인 체크
     if (!isAuthenticated) {
-      // 로그인 페이지로 리다이렉트 (현재 페이지를 redirect 파라미터로 전달)
-      const currentPath = `/hospital/${hospitalId}`;
-      const authPath = getAuthPath(lang);
-      router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={`/hospital/${hospitalId}`} />
+        ),
+      });
       return;
     }
 

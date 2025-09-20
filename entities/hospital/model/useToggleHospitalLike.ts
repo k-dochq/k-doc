@@ -1,9 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { type User } from '@supabase/supabase-js';
 import { queryKeys } from 'shared/lib/query-keys';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { HospitalLikeApiService } from '../api/infrastructure/services/hospital-like-api-service';
 
 interface UseToggleHospitalLikeParams {
@@ -13,26 +11,17 @@ interface UseToggleHospitalLikeParams {
     sortOrder?: 'asc' | 'desc';
     category?: string;
   };
-  user: User | null;
 }
 
 /**
  * 병원 좋아요 토글 뮤테이션 훅
  */
-export function useToggleHospitalLike({ queryParams, user }: UseToggleHospitalLikeParams) {
+export function useToggleHospitalLike({ queryParams }: UseToggleHospitalLikeParams) {
   const queryClient = useQueryClient();
-  const router = useLocalizedRouter();
   const hospitalLikeApiService = new HospitalLikeApiService();
 
   return useMutation({
     mutationFn: (hospitalId: string) => {
-      // 로그인 체크
-      if (!user) {
-        // 현재 페이지 URL을 redirect 파라미터로 설정
-        const currentPath = window.location.pathname + window.location.search;
-        router.push(`/auth/login?redirect=${encodeURIComponent(currentPath)}`);
-        return Promise.reject(new Error('로그인이 필요합니다'));
-      }
       return hospitalLikeApiService.toggleHospitalLike(hospitalId);
     },
     onSuccess: () => {
@@ -56,7 +45,8 @@ export function useToggleHospitalLike({ queryParams, user }: UseToggleHospitalLi
     },
     onError: (error: Error) => {
       console.error('좋아요 처리 중 오류:', error.message);
-      alert(error.message);
+      // alert 대신 에러를 상위 컴포넌트에서 처리하도록 함
+      // 401 에러는 상위 컴포넌트에서 LoginRequiredModal로 처리됨
     },
   });
 }

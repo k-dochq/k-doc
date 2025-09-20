@@ -35,4 +35,87 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  /* Radix UI Dialog 애니메이션 - data-state 기반 */
+  [data-state='open'] {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  [data-state='closed'] {
+    animation: fadeOut 0.3s ease-in;
+  }
+
+  /* 모달 컨텐츠에 줌 효과 추가 */
+  [data-radix-dialog-content][data-state='open'] {
+    animation: zoomIn 0.3s ease-out;
+  }
+
+  [data-radix-dialog-content][data-state='closed'] {
+    animation: zoomOut 0.3s ease-in;
+  }
+
+  /* 일반 클래스들 (fallback) */
+  .animate-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-out {
+    animation: fadeOut 0.3s ease-in;
+  }
+
+  .fade-in-0 {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .fade-out-0 {
+    animation: fadeOut 0.3s ease-in;
+  }
+
+  .zoom-in-95 {
+    animation: zoomIn 0.3s ease-out;
+  }
+
+  .zoom-out-95 {
+    animation: zoomOut 0.3s ease-in;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
 }

@@ -1,9 +1,37 @@
-import { LocaleLink } from 'shared/ui/locale-link';
+'use client';
 
-export function HeaderProfile() {
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { LocaleLink } from 'shared/ui/locale-link';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
+
+interface HeaderProfileProps {
+  lang: Locale;
+  dict: Dictionary;
+}
+
+export function HeaderProfile({ lang, dict }: HeaderProfileProps) {
+  const { isAuthenticated } = useAuth();
+  const router = useLocalizedRouter();
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated) {
+      e.preventDefault();
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+    }
+  };
+
   return (
     <LocaleLink
       href='/my'
+      onClick={handleClick}
       className='hover:bg-primary-light rounded-lg p-2 text-gray-700 transition-colors hover:text-gray-900'
       aria-label='프로필'
     >
