@@ -11,6 +11,7 @@ interface DualImageDisplayProps {
   className?: string;
   onFirstImageClick?: (e: React.MouseEvent) => void;
   onSecondImageClick?: (e: React.MouseEvent) => void;
+  additionalImagesCount?: number;
 }
 
 export function DualImageDisplay({
@@ -19,6 +20,7 @@ export function DualImageDisplay({
   className = '',
   onFirstImageClick,
   onSecondImageClick,
+  additionalImagesCount = 0,
 }: DualImageDisplayProps) {
   const [firstImage, secondImage] = images;
   const [firstImageError, setFirstImageError] = useState(false);
@@ -61,6 +63,16 @@ export function DualImageDisplay({
           onError={handleSecondImageError}
         />
         <ImageTag type={type} />
+
+        {/* 추가 이미지 오버레이 */}
+        {additionalImagesCount > 0 && (
+          <div
+            className='absolute inset-0 flex items-center justify-center'
+            style={{ background: 'rgba(0, 0, 0, 0.40)' }}
+          >
+            <span className='text-sm font-semibold text-white'>+{additionalImagesCount}</span>
+          </div>
+        )}
       </div>
     </div>
   );

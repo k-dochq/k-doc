@@ -32,6 +32,9 @@ export function BeforeImageSection({
   // Before 이미지 처리 (최대 2개)
   const displayBeforeImages = beforeImages.length > 0 ? beforeImages.slice(0, 2) : [defaultImage];
 
+  // 추가 이미지 개수 계산
+  const additionalImagesCount = beforeImages.length > 2 ? beforeImages.length - 2 : 0;
+
   // 페이지 prefetch
   useEffect(() => {
     router.prefetch(`/review-images/${reviewId}?index=0`);
@@ -60,6 +63,7 @@ export function BeforeImageSection({
           type='before'
           onFirstImageClick={handleImageClick(0)}
           onSecondImageClick={handleImageClick(1)}
+          additionalImagesCount={additionalImagesCount}
         />
       )}
     </div>

@@ -34,6 +34,9 @@ export function AfterImageSection({
   // After 이미지 처리 (최대 2개)
   const displayAfterImages = afterImages.length > 0 ? afterImages.slice(0, 2) : [defaultImage];
 
+  // 추가 이미지 개수 계산
+  const additionalImagesCount = afterImages.length > 2 ? afterImages.length - 2 : 0;
+
   // After 이미지의 첫 번째 인덱스 계산
   const afterFirstIndex = beforeImagesCount;
 
@@ -66,6 +69,7 @@ export function AfterImageSection({
           type='after'
           onFirstImageClick={handleImageClick(0)}
           onSecondImageClick={handleImageClick(1)}
+          additionalImagesCount={additionalImagesCount}
         />
       )}
     </div>
