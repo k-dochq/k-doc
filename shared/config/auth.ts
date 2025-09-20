@@ -5,6 +5,6 @@ export const PROTECTED_ROUTES = ['/favorites', '/consultation', '/my'] as const;
 export const AUTH_CONFIG = {
   authPath: '/auth/login',
   signupPath: '/auth/signup',
-  redirectAfterLogin: '/',
-  redirectAfterLogout: '/',
+  redirectAfterLogin: '/main',
+  redirectAfterLogout: '/main',
 } as const;
