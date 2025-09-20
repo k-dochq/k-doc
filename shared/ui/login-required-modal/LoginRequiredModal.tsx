@@ -5,6 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { getAuthPath } from 'shared/lib/auth/route-guard';
 import { closeModal } from 'shared/lib/modal';
+import { CloseIcon } from 'shared/ui/close-icon';
 
 interface LoginRequiredModalProps {
   lang: Locale;
@@ -39,25 +40,32 @@ export function LoginRequiredModal({
   };
 
   return (
-    <div
-      className='flex min-h-[361px] flex-col justify-end rounded-xl bg-cover bg-center bg-no-repeat px-4 py-6'
-      style={{
-        backgroundImage: 'url(/images/shared/login_required_bg.png)',
-      }}
-    >
-      <div className='flex flex-col items-center space-y-4'>
-        <button
-          onClick={handleLogin}
-          className='bg-primary hover:bg-primary/80 w-full rounded-xl px-8 py-4 text-center font-medium text-white transition-colors'
-        >
-          {dict.auth.login.loginButton}
-        </button>
-        <button
-          onClick={closeModal}
-          className='text-sm font-normal text-neutral-500 transition-colors hover:text-neutral-700'
-        >
-          {dict.auth.login.laterButton}
-        </button>
+    <div className='relative'>
+      {/* X 버튼 */}
+      <button className='absolute -top-8 right-0 z-10' onClick={closeModal}>
+        <CloseIcon />
+      </button>
+
+      <div
+        className='flex min-h-[361px] flex-col justify-end rounded-xl bg-cover bg-center bg-no-repeat px-4 py-6'
+        style={{
+          backgroundImage: 'url(/images/shared/login_required_bg.png)',
+        }}
+      >
+        <div className='flex flex-col items-center space-y-4'>
+          <button
+            onClick={handleLogin}
+            className='bg-primary hover:bg-primary/80 w-full rounded-xl px-8 py-4 text-center font-medium text-white transition-colors'
+          >
+            {dict.auth.login.loginButton}
+          </button>
+          <button
+            onClick={closeModal}
+            className='text-sm font-normal text-neutral-500 transition-colors hover:text-neutral-700'
+          >
+            {dict.auth.login.laterButton}
+          </button>
+        </div>
       </div>
     </div>
   );

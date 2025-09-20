@@ -21,3 +21,4 @@ export * from './user-avatar';
 export * from './dialog';
 export * from './global-modal';
 export * from './login-required-modal';
+export * from './close-icon';
