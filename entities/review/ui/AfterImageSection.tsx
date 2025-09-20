@@ -42,26 +42,30 @@ export function AfterImageSection({
     router.prefetch(`/review-images/${reviewId}?index=${afterFirstIndex}`);
   }, [router, reviewId, afterFirstIndex]);
 
-  const handleImageClick = (e: React.MouseEvent) => {
+  const handleImageClick = (imageIndex: number) => (e: React.MouseEvent) => {
     // 이벤트 전파를 막아서 상위 LocaleLink가 동작하지 않도록 함
     e.preventDefault();
     e.stopPropagation();
 
-    // After 이미지의 첫 번째로 이동
-    router.push(`/review-images/${reviewId}?index=${afterFirstIndex}`);
+    // After 이미지의 해당 인덱스로 이동 (전체 이미지 배열에서 인덱스)
+    const globalIndex = beforeImagesCount + imageIndex;
+    router.push(`/review-images/${reviewId}?index=${globalIndex}`);
   };
 
   return (
-    <div
-      className={`flex h-full flex-1 cursor-pointer flex-col border-l border-white ${className}`}
-      onClick={handleImageClick}
-    >
+    <div className={`flex h-full flex-1 flex-col border-l border-white ${className}`}>
       {displayAfterImages.length === 1 ? (
-        <SingleImageDisplay image={displayAfterImages[0]} type='after' />
+        <SingleImageDisplay
+          image={displayAfterImages[0]}
+          type='after'
+          onImageClick={handleImageClick(0)}
+        />
       ) : (
         <DualImageDisplay
           images={displayAfterImages as [DefaultImage, DefaultImage] | [ReviewImage, ReviewImage]}
           type='after'
+          onFirstImageClick={handleImageClick(0)}
+          onSecondImageClick={handleImageClick(1)}
         />
       )}
     </div>

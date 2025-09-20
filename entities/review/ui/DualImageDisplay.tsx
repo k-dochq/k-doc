@@ -9,9 +9,17 @@ interface DualImageDisplayProps {
   images: [DisplayImage, DisplayImage];
   type: 'before' | 'after';
   className?: string;
+  onFirstImageClick?: (e: React.MouseEvent) => void;
+  onSecondImageClick?: (e: React.MouseEvent) => void;
 }
 
-export function DualImageDisplay({ images, type, className = '' }: DualImageDisplayProps) {
+export function DualImageDisplay({
+  images,
+  type,
+  className = '',
+  onFirstImageClick,
+  onSecondImageClick,
+}: DualImageDisplayProps) {
   const [firstImage, secondImage] = images;
   const [firstImageError, setFirstImageError] = useState(false);
   const [secondImageError, setSecondImageError] = useState(false);
@@ -27,7 +35,7 @@ export function DualImageDisplay({ images, type, className = '' }: DualImageDisp
   return (
     <div className={`flex h-full flex-col ${className}`}>
       {/* 첫 번째 이미지 (태그 포함) */}
-      <div className='relative flex-1 overflow-hidden'>
+      <div className='relative flex-1 cursor-pointer overflow-hidden' onClick={onFirstImageClick}>
         <Image
           src={firstImageError ? '/images/shared/default_image.png' : firstImage.imageUrl}
           alt={firstImage.alt || `${type === 'before' ? 'Before' : 'After'} 이미지 1`}
@@ -40,7 +48,10 @@ export function DualImageDisplay({ images, type, className = '' }: DualImageDisp
       </div>
 
       {/* 두 번째 이미지 */}
-      <div className='relative flex-1 overflow-hidden border-t border-white'>
+      <div
+        className='relative flex-1 cursor-pointer overflow-hidden border-t border-white'
+        onClick={onSecondImageClick}
+      >
         <Image
           src={secondImageError ? '/images/shared/default_image.png' : secondImage.imageUrl}
           alt={secondImage.alt || `${type === 'before' ? 'Before' : 'After'} 이미지 2`}

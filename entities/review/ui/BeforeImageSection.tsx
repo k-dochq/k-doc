@@ -37,26 +37,29 @@ export function BeforeImageSection({
     router.prefetch(`/review-images/${reviewId}?index=0`);
   }, [router, reviewId]);
 
-  const handleImageClick = (e: React.MouseEvent) => {
+  const handleImageClick = (imageIndex: number) => (e: React.MouseEvent) => {
     // 이벤트 전파를 막아서 상위 LocaleLink가 동작하지 않도록 함
     e.preventDefault();
     e.stopPropagation();
 
-    // Before 이미지의 첫 번째로 이동 (전체 이미지 배열에서 인덱스 0)
-    router.push(`/review-images/${reviewId}?index=0`);
+    // Before 이미지의 해당 인덱스로 이동 (전체 이미지 배열에서 인덱스)
+    router.push(`/review-images/${reviewId}?index=${imageIndex}`);
   };
 
   return (
-    <div
-      className={`flex h-full flex-1 cursor-pointer flex-col ${className}`}
-      onClick={handleImageClick}
-    >
+    <div className={`flex h-full flex-1 flex-col ${className}`}>
       {displayBeforeImages.length === 1 ? (
-        <SingleImageDisplay image={displayBeforeImages[0]} type='before' />
+        <SingleImageDisplay
+          image={displayBeforeImages[0]}
+          type='before'
+          onImageClick={handleImageClick(0)}
+        />
       ) : (
         <DualImageDisplay
           images={displayBeforeImages as [DefaultImage, DefaultImage] | [ReviewImage, ReviewImage]}
           type='before'
+          onFirstImageClick={handleImageClick(0)}
+          onSecondImageClick={handleImageClick(1)}
         />
       )}
     </div>
