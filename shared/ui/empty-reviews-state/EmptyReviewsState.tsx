@@ -7,9 +7,9 @@ interface EmptyReviewsStateProps {
 
 export function EmptyReviewsState({ dict, className = '' }: EmptyReviewsStateProps) {
   return (
-    <div className={`flex flex-col items-center justify-center py-12 ${className}`}>
+    <div className={`flex min-h-screen flex-col items-center justify-center py-12 ${className}`}>
       <div className='text-center'>
-        <p className='text-gray-500'>{dict.allReviews?.empty?.title || '리뷰가 없습니다.'}</p>
+        <p className=''>{dict.allReviews?.empty?.title || '리뷰가 없습니다.'}</p>
       </div>
     </div>
   );
