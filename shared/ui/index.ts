@@ -18,3 +18,5 @@ export * from './drawer';
 export * from './message-bubble';
 export * from './switch';
 export * from './user-avatar';
+export * from './dialog';
+export * from './global-modal';

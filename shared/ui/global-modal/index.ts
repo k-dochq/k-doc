@@ -1,0 +1,1 @@
+export { GlobalModal } from './GlobalModal';

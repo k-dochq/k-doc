@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
+import { GlobalModal } from 'shared/ui/global-modal';
 
 const pretendard = localFont({
   src: '../../fonts/pretendard/PretendardVariable.woff2',
@@ -103,6 +104,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
               {children}
             </div>
           </MaxWidthLayout>
+          <GlobalModal />
         </QueryProvider>
       </body>
     </html>
