@@ -40,7 +40,7 @@ export default async function MainPage({ params }: MainPageProps) {
         </div>
 
         <div className='mt-12'>
-          <LimousineBanner />
+          <LimousineBanner lang={lang} />
         </div>
 
         <div className='bg-[#FE7A8F]'>
