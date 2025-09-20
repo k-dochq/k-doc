@@ -1,6 +1,7 @@
 'use client';
 
 import { confirm, alert, openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 
 export function ModalDemo() {
   const handleConfirm = async () => {
@@ -86,6 +87,20 @@ export function ModalDemo() {
     });
   };
 
+  const handleLoginRequiredModal = () => {
+    openModal({
+      content: (
+        <LoginRequiredModal
+          lang='ko'
+          dict={{ auth: { login: { loginButton: '로그인하기' } } } as any}
+          redirectPath='/some-page'
+          title='로그인 필요'
+          message='이 기능을 사용하려면 로그인이 필요합니다.'
+        />
+      ),
+    });
+  };
+
   return (
     <div className='space-y-4 p-6'>
       <h2 className='mb-4 text-2xl font-bold'>전역 모달 데모</h2>
@@ -121,9 +136,16 @@ export function ModalDemo() {
 
         <button
           onClick={handleReactComponentModal}
-          className='col-span-1 rounded-lg bg-green-600 p-4 text-white transition-colors hover:bg-green-700 md:col-span-2'
+          className='rounded-lg bg-green-600 p-4 text-white transition-colors hover:bg-green-700'
         >
           React 컴포넌트 모달
+        </button>
+
+        <button
+          onClick={handleLoginRequiredModal}
+          className='rounded-lg bg-indigo-600 p-4 text-white transition-colors hover:bg-indigo-700'
+        >
+          로그인 필요 모달
         </button>
       </div>
     </div>

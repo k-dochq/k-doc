@@ -151,6 +151,7 @@
       "email": "이메일",
       "password": "비밀번호",
       "loginButton": "로그인",
+      "laterButton": "나중에 하기",
       "socialLogin": "소셜 로그인",
       "googleLogin": "Google로 로그인",
       "kakaoLogin": "카카오로 로그인",

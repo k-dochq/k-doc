@@ -19,7 +19,6 @@ interface ModalOptions {
   title?: string;
   description?: string;
   content: ReactNode;
-  showCloseButton?: boolean;
 }
 
 // Promise resolver를 저장할 변수
@@ -42,7 +41,7 @@ function ConfirmDialog({
   onCancel: () => void;
 }) {
   return (
-    <div className='space-y-4'>
+    <div className='space-y-4 rounded-lg border bg-white p-6 shadow-lg'>
       <div className='text-sm'>{typeof message === 'string' ? <p>{message}</p> : message}</div>
       <div className='flex justify-end space-x-2'>
         {showCancel && (
@@ -75,7 +74,7 @@ function AlertDialog({
   onConfirm: () => void;
 }) {
   return (
-    <div className='space-y-4'>
+    <div className='space-y-4 rounded-lg border bg-white p-6 shadow-lg'>
       <div className='text-sm'>{typeof message === 'string' ? <p>{message}</p> : message}</div>
       <div className='flex justify-end'>
         <button
@@ -126,7 +125,6 @@ export function confirm(options: string | ConfirmOptions): Promise<boolean> {
           onCancel={handleCancel}
         />
       ),
-      showCloseButton: showCancel,
       onClose: handleClose,
     });
   });
@@ -156,7 +154,6 @@ export function alert(options: string | AlertOptions): Promise<void> {
           onConfirm={handleConfirm}
         />
       ),
-      showCloseButton: true,
       onClose: handleClose,
     });
   });
@@ -164,13 +161,12 @@ export function alert(options: string | AlertOptions): Promise<void> {
 
 // Custom Modal API
 export function openModal(options: ModalOptions): void {
-  const { title, description, content, showCloseButton = true } = options;
+  const { title, description, content } = options;
 
   useModalStore.getState().openModal({
     title,
     description,
     content,
-    showCloseButton,
   });
 }
 

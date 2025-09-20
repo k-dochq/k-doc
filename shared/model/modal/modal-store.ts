@@ -6,7 +6,6 @@ export interface ModalState {
   content: ReactNode | null;
   title?: string;
   description?: string;
-  showCloseButton?: boolean;
   onClose?: () => void;
 }
 
@@ -23,7 +22,6 @@ const initialState: ModalState = {
   content: null,
   title: undefined,
   description: undefined,
-  showCloseButton: true,
   onClose: undefined,
 };
 

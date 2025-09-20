@@ -110,7 +110,6 @@ const showFormModal = () => {
   openModal({
     title: '데이터 입력',
     content: <MyCustomComponent />,
-    showCloseButton: false, // X 버튼 숨기기
   });
 };
 ```
@@ -170,7 +169,6 @@ interface ModalOptions {
   title?: string; // 모달 제목
   description?: string; // 모달 설명
   content: ReactNode; // 모달 내용 (필수)
-  showCloseButton?: boolean; // X 버튼 표시 여부 (기본: true)
 }
 ```
 
@@ -193,3 +191,5 @@ interface ModalOptions {
 - 모달은 한 번에 하나만 표시됩니다
 - `confirm`과 `alert`는 Promise를 반환하므로 `await`와 함께 사용하는 것을 권장합니다
 - 커스텀 컴포넌트에서 모달을 닫으려면 `closeModal()` 함수를 사용하세요
+- X 버튼은 기본적으로 표시되지 않으며, 모달을 닫으려면 배경 클릭이나 `closeModal()` 함수를
+  사용하세요

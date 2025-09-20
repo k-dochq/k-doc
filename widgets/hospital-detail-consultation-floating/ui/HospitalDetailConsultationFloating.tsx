@@ -5,8 +5,8 @@ import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useCheckConsultationHistory } from 'features/consultation-request/model/useCheckConsultationHistory';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { getAuthPath } from 'shared/lib/auth/route-guard';
-import { alert, openModal } from 'shared/lib/modal';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 
 interface HospitalDetailConsultationFloatingProps {
   hospitalId: string;
@@ -31,16 +31,15 @@ export function HospitalDetailConsultationFloating({
     if (!isAuthenticated) {
       openModal({
         content: (
-          <div>
-            <h1>로그인 필요</h1>
-          </div>
+          <LoginRequiredModal
+            lang={lang}
+            dict={dict}
+            redirectPath={`/hospital/${hospitalId}`}
+            title='로그인 필요'
+            message='상담 신청을 위해서는 로그인이 필요합니다.'
+          />
         ),
       });
-
-      // 로그인 페이지로 리다이렉트 (현재 페이지를 redirect 파라미터로 전달)
-      const currentPath = `/hospital/${hospitalId}`;
-      const authPath = getAuthPath(lang);
-      router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
       return;
     }
 

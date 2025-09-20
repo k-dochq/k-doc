@@ -10,7 +10,7 @@ import {
 } from 'shared/ui/dialog';
 
 export function GlobalModal() {
-  const { isOpen, content, title, description, showCloseButton, closeModal } = useModalStore();
+  const { isOpen, content, title, description, closeModal } = useModalStore();
 
   const handleOpenChange = (open: boolean) => {
     if (!open) {
@@ -20,16 +20,14 @@ export function GlobalModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent
-        className={`w-[80vw] max-w-[335px] ${showCloseButton ? '' : '[&>button]:hidden'}`}
-      >
+      <DialogContent className='w-[80vw] max-w-[335px] border-none bg-transparent p-0 shadow-none'>
         {(title || description) && (
-          <DialogHeader>
+          <DialogHeader className='p-6 pb-0'>
             {title && <DialogTitle>{title}</DialogTitle>}
             {description && <DialogDescription>{description}</DialogDescription>}
           </DialogHeader>
         )}
-        {content}
+        <div className='p-0'>{content}</div>
       </DialogContent>
     </Dialog>
   );
