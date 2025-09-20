@@ -44,9 +44,8 @@ export function FavoritesHospitalsList({
   const hospitalCardData = convertLikedHospitalsToCardData(uniqueHospitals);
 
   return (
-    <div className={`w-full p-5 ${className}`}>
+    <div className={`w-full p-5 ${className} space-y-4`}>
       {/* 병원 리스트 - best hospitals와 동일한 HospitalCard 사용 */}
-
       {hospitalCardData.map((hospital) => (
         <LocaleLink key={hospital.id} href={`/hospital/${hospital.id}`} className='block'>
           <HospitalCard
