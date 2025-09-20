@@ -23,7 +23,7 @@ export function HospitalDetailHeader({
       fallbackUrl={`/${lang}/hospitals`}
       variant='dark'
       bgClassName='bg-white/50'
-      rightContent={<LikeButtonWrapper hospitalId={hospitalId} />}
+      rightContent={<LikeButtonWrapper hospitalId={hospitalId} lang={lang} dict={dict} />}
     />
   );
 }
