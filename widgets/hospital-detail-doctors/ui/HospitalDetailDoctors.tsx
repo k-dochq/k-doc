@@ -26,15 +26,6 @@ export function HospitalDetailDoctors({ lang, dict, doctors }: HospitalDetailDoc
           </h2>
           <span className='text-sm leading-[18px] font-semibold text-white'>({doctorCount})</span>
         </div>
-
-        <button className='flex items-center gap-0.5'>
-          <span className='text-sm leading-[18px] font-medium text-white'>
-            {dict.hospitalDetailDoctors?.viewAll || '전체보기'}
-          </span>
-          <div className='flex items-center justify-center'>
-            <ArrowRightIcon className='text-white' />
-          </div>
-        </button>
       </div>
 
       {/* 의료진 목록 */}
