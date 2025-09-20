@@ -17,16 +17,20 @@ export function DoctorCard({ doctor, lang }: DoctorCardProps) {
   const position = extractLocalizedText(doctor.position, lang) || '';
   const hospitalName = extractLocalizedText(doctor.hospital.name, lang) || '';
 
+  // 의사 이미지 중 첫 번째 이미지를 프로필 이미지로 사용
+  const profileImage =
+    doctor.doctorImages && doctor.doctorImages.length > 0 ? doctor.doctorImages[0] : null;
+
   return (
     <div className='flex h-full items-center gap-3 rounded-lg'>
       {/* 프로필 이미지 */}
       <div className='relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-xl'>
         <Image
-          src='/images/shared/default_image_square.png'
-          alt={`${doctorName} 의료진 프로필`}
+          src={profileImage?.imageUrl || '/images/shared/default_image_square.png'}
+          alt={profileImage?.alt || `${doctorName} 의료진 프로필`}
           fill
           className='object-cover'
-          sizes='48px'
+          sizes='100px'
         />
       </div>
 

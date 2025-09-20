@@ -20,6 +20,18 @@ export interface MedicalSpecialty {
   specialtyType: MedicalSpecialtyType;
 }
 
+export interface DoctorImage {
+  id: string;
+  doctorId: string;
+  imageType: 'PROFILE';
+  imageUrl: string;
+  alt: string | null;
+  order: number | null;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface HospitalDoctor {
   id: string;
   name: Prisma.JsonValue;
@@ -31,6 +43,7 @@ export interface HospitalDoctor {
     name: Prisma.JsonValue;
   };
   medicalSpecialties: MedicalSpecialty[];
+  doctorImages?: DoctorImage[];
   order?: number;
   createdAt: Date;
   updatedAt: Date;

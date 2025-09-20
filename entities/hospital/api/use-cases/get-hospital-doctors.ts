@@ -17,6 +17,12 @@ type DoctorWithRelations = Prisma.DoctorGetPayload<{
         MedicalSpecialty: true;
       };
     };
+    DoctorImage: {
+      where: {
+        isActive: true;
+      };
+      orderBy: [{ order: 'asc' }, { createdAt: 'asc' }];
+    };
   };
 }>;
 
@@ -59,6 +65,12 @@ export async function getHospitalDoctors(
             MedicalSpecialty: true,
           },
         },
+        DoctorImage: {
+          where: {
+            isActive: true,
+          },
+          orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
+        },
       },
       orderBy: [
         { order: 'asc' }, // 순서 우선
@@ -89,6 +101,19 @@ function transformDoctor(data: DoctorWithRelations): HospitalDoctor {
     specialtyType: dms.MedicalSpecialty.specialtyType,
   }));
 
+  // 의사 이미지 변환
+  const doctorImages = data.DoctorImage.map((img) => ({
+    id: img.id,
+    doctorId: img.doctorId,
+    imageType: img.imageType as 'PROFILE',
+    imageUrl: img.imageUrl,
+    alt: img.alt,
+    order: img.order,
+    isActive: img.isActive,
+    createdAt: img.createdAt,
+    updatedAt: img.updatedAt,
+  }));
+
   return {
     id: data.id,
     name: data.name,
@@ -100,6 +125,7 @@ function transformDoctor(data: DoctorWithRelations): HospitalDoctor {
       name: data.Hospital.name,
     },
     medicalSpecialties,
+    doctorImages,
     order: data.order || undefined,
     createdAt: data.createdAt,
     updatedAt: data.updatedAt,
