@@ -21,12 +21,16 @@ export function HospitalDetailDoctors({ lang, dict, doctors }: HospitalDetailDoc
       {/* 섹션 헤더 */}
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-1'>
-          <h2 className='text-base leading-6 font-bold text-white'>소속 의료진</h2>
+          <h2 className='text-base leading-6 font-bold text-white'>
+            {dict.hospitals?.doctors?.title || '소속 의료진'}
+          </h2>
           <span className='text-sm leading-[18px] font-semibold text-white'>({doctorCount})</span>
         </div>
 
         <button className='flex items-center gap-0.5'>
-          <span className='text-sm leading-[18px] font-medium text-white'>전체보기</span>
+          <span className='text-sm leading-[18px] font-medium text-white'>
+            {dict.hospitalDetailDoctors?.viewAll || '전체보기'}
+          </span>
           <div className='flex items-center justify-center'>
             <ArrowRightIcon className='text-white' />
           </div>

@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { cn } from 'shared/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { HospitalDetailIntroductionTab } from './HospitalDetailIntroductionTab';
 import { HospitalDetailProceduresTab } from './HospitalDetailProceduresTab';
+import { HospitalDetailTabsHeader } from './HospitalDetailTabsHeader';
 
 interface HospitalDetailTabsProps {
   hospital: any; // TODO: 정확한 타입 정의 필요
@@ -45,21 +45,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
   return (
     <div className='w-full'>
       {/* 탭 헤더 */}
-      <div className='flex border-b border-white/20 bg-transparent'>
-        {tabs.map((tab, index) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabClick(index)}
-            className={cn(
-              'flex-1 px-4 py-3 text-center text-sm font-medium transition-colors',
-              'border-b-2 border-transparent',
-              activeTab === index ? 'border-white text-white' : 'text-white/70 hover:text-white/90',
-            )}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      <HospitalDetailTabsHeader tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} />
 
       {/* Carousel 기반 컨텐츠 */}
       <Carousel
@@ -74,7 +60,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
       >
         <CarouselContent className='ml-0'>
           {/* 병원소개 탭 */}
-          <CarouselItem className='min-h-[60vh] basis-full pl-0'>
+          <CarouselItem className='basis-full pl-0'>
             <div className='px-5 py-4'>
               <HospitalDetailIntroductionTab
                 hospital={hospital}
@@ -86,7 +72,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
           </CarouselItem>
 
           {/* 시술상세 탭 */}
-          <CarouselItem className='min-h-[60vh] basis-full pl-0'>
+          <CarouselItem className='basis-full pl-0'>
             <div className='px-5 py-4'>
               <HospitalDetailProceduresTab
                 hospital={hospital}

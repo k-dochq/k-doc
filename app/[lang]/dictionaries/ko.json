@@ -95,6 +95,9 @@
     "proceduresComingSoon": "시술상세 컨텐츠가 준비 중입니다.",
     "comingSoonSubtext": "곧 업데이트 예정입니다."
   },
+  "hospitalDetailDoctors": {
+    "viewAll": "전체보기"
+  },
   "allReviews": {
     "title": "전체 시술후기",
     "subtitle": "모든 병원의 시술후기를 확인하세요",
