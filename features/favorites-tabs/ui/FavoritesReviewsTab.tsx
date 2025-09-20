@@ -9,6 +9,9 @@ import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { FavoritesHospitalsEmptyState } from './FavoritesHospitalsEmptyState';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { EmptyFavoritesState } from 'shared/ui/empty-state';
 
 interface FavoritesReviewsTabProps {
   lang: Locale;
@@ -26,13 +29,23 @@ export function FavoritesReviewsTab({ lang, dict }: FavoritesReviewsTabProps) {
   };
 
   // 좋아요 토글 뮤테이션
-  const toggleLikeMutation = useToggleReviewLike({ queryParams, user });
+  const toggleLikeMutation = useToggleReviewLike({ queryParams });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteAllReviews(queryParams);
 
   // 좋아요 토글 핸들러
   const handleToggleLike = (reviewId: string) => {
+    // 로그인 체크
+    if (!user) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
     toggleLikeMutation.mutate(reviewId);
   };
 
@@ -91,12 +104,7 @@ export function FavoritesReviewsTab({ lang, dict }: FavoritesReviewsTabProps) {
           />
         </div>
       ) : (
-        <FavoritesHospitalsEmptyState
-          lang={lang}
-          dict={dict}
-          title={dict.favorites.empty.reviews.title}
-          description={dict.favorites.empty.reviews.description}
-        />
+        <EmptyFavoritesState dict={dict} type='reviews' />
       )}
     </div>
   );

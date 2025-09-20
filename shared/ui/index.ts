@@ -7,6 +7,7 @@ export * from './loading-icon';
 export * from './providers';
 export * from './section-title';
 export * from './category-button';
+export * from './empty-state';
 export * from './icons/HeartIcon';
 export * from './icons/HeartOutlineIcon';
 export * from './icons/CommentIcon';

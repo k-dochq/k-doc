@@ -11,6 +11,9 @@ import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospitalLike';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { EmptyHospitalsState } from 'shared/ui/empty-state';
 
 interface HospitalsInfiniteListProps {
   lang: Locale;
@@ -38,13 +41,23 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
   };
 
   // 좋아요 토글 뮤테이션
-  const toggleLikeMutation = useToggleHospitalLike({ queryParams, user });
+  const toggleLikeMutation = useToggleHospitalLike({ queryParams });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteHospitals(queryParams);
 
   // 좋아요 토글 핸들러
   const handleToggleLike = (hospitalId: string) => {
+    // 로그인 체크
+    if (!user) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
     toggleLikeMutation.mutate(hospitalId);
   };
 
@@ -97,11 +110,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
           />
         </div>
       ) : (
-        <div className='flex flex-col items-center justify-center py-12'>
-          <div className='text-center'>
-            <p className='text-gray-500'>{dict.hospitals.empty.message}</p>
-          </div>
-        </div>
+        <EmptyHospitalsState dict={dict} />
       )}
     </div>
   );

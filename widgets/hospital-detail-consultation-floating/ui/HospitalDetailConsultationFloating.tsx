@@ -31,13 +31,7 @@ export function HospitalDetailConsultationFloating({
     if (!isAuthenticated) {
       openModal({
         content: (
-          <LoginRequiredModal
-            lang={lang}
-            dict={dict}
-            redirectPath={`/hospital/${hospitalId}`}
-            title='로그인 필요'
-            message='상담 신청을 위해서는 로그인이 필요합니다.'
-          />
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={`/hospital/${hospitalId}`} />
         ),
       });
       return;

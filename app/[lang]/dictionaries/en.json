@@ -41,7 +41,11 @@
     "title": "Find Hospitals",
     "totalCount": "{{count}} hospitals total",
     "empty": {
-      "message": "No hospitals found."
+      "message": "No hospitals found.",
+      "title": "No hospitals registered",
+      "description": "New hospitals will be added soon",
+      "searchTitle": "No hospitals found",
+      "searchDescription": "Try searching with different keywords"
     },
     "pagination": {
       "page": "Page {{current}} / {{total}}"
@@ -104,6 +108,12 @@
     "loadingMore": "Loading more reviews...",
     "allLoaded": "All reviews loaded.",
     "retry": "Retry",
+    "empty": {
+      "title": "No reviews registered",
+      "description": "Be the first to write a review",
+      "searchTitle": "No reviews found",
+      "searchDescription": "Try searching with different keywords"
+    },
     "error": {
       "title": "Unable to load review data",
       "message": "Please check your network connection and try again later"
@@ -123,10 +133,6 @@
     "sort": {
       "latest": "Latest",
       "popular": "Popular"
-    },
-    "empty": {
-      "title": "No reviews found",
-      "description": "Try searching with different criteria."
     }
   },
   "reviewDetail": {
@@ -335,12 +341,12 @@
     "retry": "Retry",
     "empty": {
       "hospitals": {
-        "title": "No liked hospitals",
-        "description": "Find hospitals you like and tap the heart icon"
+        "title": "No saved hospitals",
+        "description": "Save hospitals you like"
       },
       "reviews": {
-        "title": "No liked reviews",
-        "description": "Find helpful reviews and tap the heart icon"
+        "title": "No saved reviews",
+        "description": "Save reviews you like"
       }
     },
     "loadingMore": "Loading more data...",
