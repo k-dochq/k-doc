@@ -19,7 +19,7 @@ export function HospitalDetailProceduresTab({
   dict,
 }: HospitalDetailProceduresTabProps) {
   return (
-    <div className='flex min-h-[40vh] flex-col items-center justify-center text-center'>
+    <div className='flex flex-col items-center justify-center text-center'>
       <div className='text-base text-white/70'>{dict.hospitalDetailTabs.proceduresComingSoon}</div>
       <div className='mt-2 text-sm text-white/50'>{dict.hospitalDetailTabs.comingSoonSubtext}</div>
     </div>

@@ -95,6 +95,9 @@
     "proceduresComingSoon": "รายละเอียดการรักษากำลังเตรียมการ",
     "comingSoonSubtext": "อัปเดตเร็วๆ นี้..."
   },
+  "hospitalDetailDoctors": {
+    "viewAll": "ดูทั้งหมด"
+  },
   "allReviews": {
     "title": "รีวิวทั้งหมด",
     "subtitle": "ดูรีวิวจากโรงพยาบาลทั้งหมด",
@@ -275,7 +278,7 @@
   },
   "hospital": {
     "region": "ภูมิภาค",
-    "reviewsButton": "รีวิวการรักษา",
+    "reviewsButton": "Reviews",
     "introduction": {
       "title": "แนะนำโรงพยาบาล"
     },

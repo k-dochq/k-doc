@@ -95,6 +95,9 @@
     "proceduresComingSoon": "Procedure details are coming soon.",
     "comingSoonSubtext": "Updates coming soon..."
   },
+  "hospitalDetailDoctors": {
+    "viewAll": "View All"
+  },
   "allReviews": {
     "title": "All Reviews",
     "subtitle": "Check out reviews from all hospitals",
