@@ -15,7 +15,7 @@ interface LoginContentProps {
 
 export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
   return (
-    <div className='relative w-full overflow-hidden'>
+    <div className='relative w-full overflow-hidden px-5'>
       {/* PageHeader */}
       <PageHeader
         lang={lang}
