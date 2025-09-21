@@ -94,6 +94,7 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
               key={hospital.id}
               hospital={hospital}
               lang={lang}
+              dict={dict}
               user={user}
               onToggleLike={handleToggleLike}
               isLikeLoading={loadingHospitalId === hospital.id}

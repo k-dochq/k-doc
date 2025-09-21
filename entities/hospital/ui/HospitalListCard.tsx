@@ -2,6 +2,7 @@ import { LocaleLink } from 'shared/ui/locale-link';
 import { type Hospital } from '../api/entities/types';
 import { type Locale } from 'shared/config';
 import { type User } from '@supabase/supabase-js';
+import { type Dictionary } from 'shared/model/types';
 import { HospitalCardImage } from './HospitalCardImage';
 import { HospitalCardHeader } from './HospitalCardHeader';
 import { HospitalCardName } from './HospitalCardName';
@@ -11,6 +12,7 @@ import { HospitalCardRating } from './HospitalCardRating';
 interface HospitalListCardProps {
   hospital: Hospital;
   lang: Locale;
+  dict: Dictionary;
   user: User | null;
   onToggleLike?: (hospitalId: string) => void;
   isLikeLoading?: boolean;
@@ -19,6 +21,7 @@ interface HospitalListCardProps {
 export function HospitalListCard({
   hospital,
   lang,
+  dict,
   user,
   onToggleLike,
   isLikeLoading = false,
@@ -38,6 +41,7 @@ export function HospitalListCard({
           <HospitalCardHeader
             hospital={hospital}
             lang={lang}
+            dict={dict}
             user={user}
             onToggleLike={onToggleLike}
             isLikeLoading={isLikeLoading}

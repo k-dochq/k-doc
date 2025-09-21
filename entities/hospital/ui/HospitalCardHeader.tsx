@@ -3,12 +3,14 @@
 import { type Hospital } from '../api/entities/types';
 import { type Locale } from 'shared/config';
 import { type User } from '@supabase/supabase-js';
+import { type Dictionary } from 'shared/model/types';
 import { LikeButton } from 'shared/ui/buttons/LikeButton';
 import { HospitalCardLocation } from './HospitalCardLocation';
 
 interface HospitalCardHeaderProps {
   hospital: Hospital;
   lang: Locale;
+  dict: Dictionary;
   user: User | null;
   onToggleLike?: (hospitalId: string) => void;
   isLikeLoading?: boolean;
@@ -17,6 +19,7 @@ interface HospitalCardHeaderProps {
 export function HospitalCardHeader({
   hospital,
   lang,
+  dict,
   user,
   onToggleLike,
   isLikeLoading = false,
@@ -27,7 +30,7 @@ export function HospitalCardHeader({
   return (
     <div className='flex w-full flex-col items-start justify-between'>
       <div className='flex w-full items-center'>
-        <HospitalCardLocation hospital={hospital} lang={lang} />
+        <HospitalCardLocation hospital={hospital} lang={lang} dict={dict} />
         <div
           className='ml-auto'
           onClick={(e) => {

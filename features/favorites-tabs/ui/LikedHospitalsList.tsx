@@ -2,23 +2,14 @@
 
 import { useEffect, useRef, useCallback } from 'react';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { HospitalListCard } from 'entities/hospital';
 import { useInfiniteLikedHospitals } from '../model/useInfiniteLikedHospitals';
 import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface LikedHospitalsListProps {
   lang: Locale;
-  dict: {
-    loading: string;
-    error: string;
-    retry: string;
-    empty: {
-      title: string;
-      description: string;
-    };
-    loadingMore: string;
-    allLoaded: string;
-  };
+  dict: Dictionary;
 }
 
 export function LikedHospitalsList({ lang, dict }: LikedHospitalsListProps) {
@@ -84,12 +75,14 @@ export function LikedHospitalsList({ lang, dict }: LikedHospitalsListProps) {
     return (
       <div className='flex flex-col items-center justify-center py-12'>
         <div className='text-center'>
-          <p className='mb-4 text-red-500'>{error instanceof Error ? error.message : dict.error}</p>
+          <p className='mb-4 text-red-500'>
+            {error instanceof Error ? error.message : dict.favorites.error}
+          </p>
           <button
             onClick={() => window.location.reload()}
             className='rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'
           >
-            {dict.retry}
+            {dict.favorites.retry}
           </button>
         </div>
       </div>
@@ -110,8 +103,10 @@ export function LikedHospitalsList({ lang, dict }: LikedHospitalsListProps) {
       <div className='flex flex-col items-center justify-center py-12'>
         <div className='text-center'>
           <div className='mb-4 text-6xl'>💙</div>
-          <h3 className='mb-2 text-lg font-medium text-gray-900'>{dict.empty.title}</h3>
-          <p className='text-gray-500'>{dict.empty.description}</p>
+          <h3 className='mb-2 text-lg font-medium text-gray-900'>
+            {dict.favorites.empty.hospitals.title}
+          </h3>
+          <p className='text-gray-500'>{dict.favorites.empty.hospitals.description}</p>
         </div>
       </div>
     );
@@ -121,7 +116,13 @@ export function LikedHospitalsList({ lang, dict }: LikedHospitalsListProps) {
     <div className='space-y-4'>
       {/* 병원 리스트 */}
       {uniqueHospitals.map((hospital) => (
-        <HospitalListCard key={hospital.id} hospital={hospital} lang={lang} user={user} />
+        <HospitalListCard
+          key={hospital.id}
+          hospital={hospital}
+          lang={lang}
+          dict={dict}
+          user={user}
+        />
       ))}
 
       {/* 무한 스크롤 트리거 */}
@@ -130,12 +131,12 @@ export function LikedHospitalsList({ lang, dict }: LikedHospitalsListProps) {
           <div className='flex justify-center'>
             <div className='flex items-center space-x-2'>
               <div className='h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500'></div>
-              <span className='text-sm text-gray-500'>{dict.loadingMore}</span>
+              <span className='text-sm text-gray-500'>{dict.favorites.loadingMore}</span>
             </div>
           </div>
         )}
         {!hasNextPage && uniqueHospitals.length > 0 && (
-          <div className='text-center text-sm text-gray-500'>{dict.allLoaded}</div>
+          <div className='text-center text-sm text-gray-500'>{dict.favorites.allLoaded}</div>
         )}
       </div>
     </div>
