@@ -41,7 +41,7 @@ export function FavoritesTabs({ lang, dict }: FavoritesTabsProps) {
   };
 
   return (
-    <div className='w-full'>
+    <div className='min-h-screen w-full'>
       {/* 탭 헤더 */}
       <FavoritesTabHeader tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} />
 

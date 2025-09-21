@@ -3,9 +3,9 @@ import path from 'path';
 import fs from 'fs';
 
 // 압축하려는 이미지 경로
-const inputPath = './public/images/shared/og.png';
+const inputPath = './public/images/shared/default_thumbnail.jpg';
 // 저장될 파일명 (압축된 버전)
-const outputPath = './public/images/shared/og-compressed.png';
+const outputPath = './public/images/shared/default_thumbnail_optimized.jpg';
 
 async function compressImage() {
   try {
@@ -23,15 +23,15 @@ async function compressImage() {
     // 이미지 압축 실행
     await sharp(inputPath)
       .resize({
-        width: 800,
-        height: 800,
+        width: 400,
+        height: 400,
         fit: 'inside', // 비율 유지하면서 크기 조정
         withoutEnlargement: true, // 원본보다 크게 만들지 않음
       })
-      .png({
-        quality: 80, // PNG 품질 (0-100)
-        compressionLevel: 9, // PNG 압축 레벨 (0-9, 높을수록 더 압축)
+      .jpeg({
+        quality: 85, // JPEG 품질 (0-100)
         progressive: true, // 점진적 로딩
+        mozjpeg: true, // mozjpeg 엔진 사용 (더 나은 압축)
       })
       .toFile(outputPath);
 

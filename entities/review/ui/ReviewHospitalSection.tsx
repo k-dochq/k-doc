@@ -22,6 +22,9 @@ export function ReviewHospitalSection({
 }: ReviewHospitalSectionProps) {
   return (
     <div className={`mt-4 ${className}`}>
+      <h3 className='mt-4 mb-4 text-sm font-semibold text-neutral-900'>
+        {dict.reviewDetail.hospital}
+      </h3>
       <div className='rounded-xl border border-neutral-200'>
         <LocaleLink href={`/hospital/${review.hospital.id}`}>
           <HospitalCard

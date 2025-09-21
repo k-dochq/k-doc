@@ -12,11 +12,7 @@ interface HospitalListProps {
 
 export function HospitalList({ hospitals, dict, lang }: HospitalListProps) {
   if (hospitals.length === 0) {
-    return (
-      <div className='py-8 text-center text-gray-500'>
-        선택한 카테고리에 해당하는 병원이 없습니다.
-      </div>
-    );
+    return <div className='py-8 text-center text-gray-500'>{dict.hospitals.empty.message}</div>;
   }
 
   return (

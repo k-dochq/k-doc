@@ -140,6 +140,7 @@
     "content": "후기 내용",
     "backButton": "뒤로 가기",
     "hospitalInfo": "시술 병원 정보",
+    "hospital": "시술 병원",
     "sameHospitalReviews": "같은 시술 후기"
   },
   "reviewImages": {
