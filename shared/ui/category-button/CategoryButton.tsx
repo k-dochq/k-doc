@@ -49,7 +49,7 @@ export function CategoryButton({
           {category.icon()}
         </div>
       </div>
-      <span className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</span>
+      <div className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</div>
     </>
   ) : (
     <>
@@ -61,7 +61,7 @@ export function CategoryButton({
       >
         {category.icon()}
       </div>
-      <span className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</span>
+      <div className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</div>
     </>
   );
 
