@@ -87,7 +87,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
 
   if (userLoading) {
     return (
-      <div className='flex min-h-screen items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8'>
+      <div className='flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8'>
         <div className='w-full max-w-md space-y-8'>
           <div className='text-center'>
             <div className='mx-auto h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600'></div>
@@ -100,7 +100,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
 
   if (userError) {
     return (
-      <div className='flex min-h-screen items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8'>
+      <div className='flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8'>
         <div className='w-full max-w-md space-y-8'>
           <div className='rounded-xl border border-red-200 bg-red-50 p-4'>
             <h3 className='mb-2 text-lg font-semibold text-red-800'>오류</h3>
@@ -112,7 +112,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
   }
 
   return (
-    <div className='flex items-center bg-white px-4 py-3 sm:px-6 lg:px-8'>
+    <div className='flex min-h-screen px-4 py-3 sm:px-6 lg:px-8'>
       <div className='w-full max-w-md space-y-8'>
         <form onSubmit={handleSubmit} className='flex w-full flex-col gap-5'>
           {/* 이메일 (읽기 전용) */}
