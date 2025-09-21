@@ -140,6 +140,7 @@
     "content": "Review Content",
     "backButton": "Go Back",
     "hospitalInfo": "Hospital Information",
+    "hospital": "Procedure Hospital",
     "sameHospitalReviews": "Same Hospital Reviews"
   },
   "reviewImages": {
