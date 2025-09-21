@@ -5,9 +5,49 @@
   --color-primary-light: #fce4ff;
 }
 
+/* 베이스 토큰 */
+:root {
+  --press-alpha: 0.1; /* 눌림 불투명도 */
+  --press-scale: 0.98; /* 살짝 줄어드는 압력감(선택) */
+  --press-duration: 180ms;
+}
+
 @layer base {
   button {
     cursor: pointer;
+  }
+
+  /* a 자체에 state layer - 모든 a 태그에 자동 적용 */
+  a {
+    position: relative;
+    transition:
+      transform var(--press-duration) ease,
+      background-color var(--press-duration) ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:where(:active, :focus-visible) {
+    background: color-mix(in srgb, currentColor var(--press-alpha), transparent);
+    transform: scale(var(--press-scale));
+    outline: none;
+  }
+
+  /* 부모(카드/리스트 아이템)까지 눌린 듯 보이게 */
+  @supports selector(:has(*)) {
+    .item:has(> a:active),
+    .item:has(> a:focus-visible) {
+      background: color-mix(in srgb, currentColor var(--press-alpha), transparent);
+      transform: scale(var(--press-scale));
+    }
+  }
+
+  /* 모션을 줄이도록 설정한 사용자 배려 */
+  @media (prefers-reduced-motion: reduce) {
+    a,
+    .item {
+      transition: none;
+      transform: none;
+    }
   }
 }
 
