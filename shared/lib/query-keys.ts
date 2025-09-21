@@ -49,6 +49,12 @@ export const queryKeys = {
     status: (reviewId: string) => [...queryKeys.reviewLike.all, reviewId] as const,
   },
 
+  // 사용자 관련 쿼리
+  user: {
+    all: ['user'] as const,
+    profile: () => [...queryKeys.user.all, 'profile'] as const,
+  },
+
   // 상담 채팅 관련 쿼리
   consultationMessages: {
     all: ['consultation-messages'] as const,
