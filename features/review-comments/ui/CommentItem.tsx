@@ -14,7 +14,7 @@ interface CommentItemProps {
 
 export function CommentItem({ comment, lang, dict }: CommentItemProps) {
   const displayName =
-    comment.user.displayName || comment.user.nickName || comment.user.name || '익명';
+    comment.user.nickName || comment.user.displayName || comment.user.name || '익명';
   const commentText = extractLocalizedText(comment.content, lang);
 
   // 날짜 포맷팅
