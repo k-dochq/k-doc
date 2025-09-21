@@ -6,8 +6,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { FormInput } from 'shared/ui/form-input';
 import { FormButton } from 'shared/ui/form-button';
-import { useUserProfile } from '../model/useUserProfile';
-import { useUpdateProfile } from '../model/useUpdateProfile';
+import { useUserProfile, useUpdateUserProfile } from 'features/user-profile';
 
 interface ProfileEditFormProps {
   lang: Locale;
@@ -16,8 +15,17 @@ interface ProfileEditFormProps {
 
 export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
   const router = useRouter();
-  const { user, isLoading: userLoading, error: userError } = useUserProfile();
-  const { updateProfile, isLoading, error, isSuccess } = useUpdateProfile({ locale: lang, dict });
+  const { data: user, isLoading: userLoading, error: userError } = useUserProfile();
+  const {
+    mutate: updateProfile,
+    isPending: isLoading,
+    error,
+    isSuccess,
+  } = useUpdateUserProfile({
+    onSuccess: () => {
+      router.push(`/${lang}/my`);
+    },
+  });
 
   const [formData, setFormData] = useState({
     nickname: '',
@@ -33,18 +41,11 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
   useEffect(() => {
     if (user) {
       setFormData({
-        nickname: user.user_metadata?.nickname || '',
-        name: user.user_metadata?.name || '',
+        nickname: user.nickName || '',
+        name: user.name || '',
       });
     }
   }, [user]);
-
-  // 업데이트 성공 시 마이페이지로 이동
-  useEffect(() => {
-    if (isSuccess) {
-      router.push(`/${lang}/my`);
-    }
-  }, [isSuccess, lang, router]);
 
   const validateForm = () => {
     const newErrors: { nickname?: string; name?: string } = {};
@@ -75,8 +76,8 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
       return;
     }
 
-    await updateProfile({
-      nickname: formData.nickname.trim(),
+    updateProfile({
+      nickName: formData.nickname.trim(),
       name: formData.name.trim(),
     });
   };
@@ -104,7 +105,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
         <div className='w-full max-w-md space-y-8'>
           <div className='rounded-xl border border-red-200 bg-red-50 p-4'>
             <h3 className='mb-2 text-lg font-semibold text-red-800'>오류</h3>
-            <p className='text-sm text-red-700'>{userError}</p>
+            <p className='text-sm text-red-700'>{userError.message}</p>
           </div>
         </div>
       </div>
@@ -149,7 +150,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
           {/* 에러 메시지 */}
           {error && (
             <div className='rounded-xl border border-red-200 bg-red-50 p-4'>
-              <p className='text-sm text-red-600'>{error}</p>
+              <p className='text-sm text-red-600'>{error.message}</p>
             </div>
           )}
 

@@ -3,7 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
-import { useUserProfile } from 'features/profile-edit';
+import { useUserProfile } from 'features/user-profile';
 
 interface ProfileSectionProps {
   lang: Locale;
@@ -11,10 +11,10 @@ interface ProfileSectionProps {
 }
 
 export function ProfileSection({ lang, dict }: ProfileSectionProps) {
-  const { user, isLoading, error } = useUserProfile();
+  const { data: user, isLoading, error } = useUserProfile();
 
   // 사용자 정보가 로딩 중이거나 에러가 있을 때 기본값 표시
-  const displayName = user?.user_metadata?.name || user?.user_metadata?.nickname || '사용자';
+  const displayName = user?.nickName || user?.displayName || user?.name || '사용자';
   const displayEmail = user?.email || 'user@example.com';
 
   return (
