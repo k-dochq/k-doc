@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { createClient } from 'shared/lib/supabase/client';
+import { generateNickname } from 'shared/lib/nickname-generator';
 
 interface UseEmailSignupParams {
   locale: Locale;
@@ -38,8 +39,19 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
     try {
       const supabase = createClient();
 
+      // 닉네임 생성 (이메일을 시드로 사용하여 재현 가능하게)
+      const nicknameResult = await generateNickname({
+        style: 'pascal',
+        suffix: 'tag2',
+        maxLength: 20,
+        seed: signupData.email, // 이메일을 시드로 사용하여 재현 가능
+        avoidAmbiguous: true,
+      });
+
       // 메타데이터 준비
-      const metadata: Record<string, string> = {};
+      const metadata: Record<string, string> = {
+        nickname: nicknameResult.display, // 생성된 닉네임 추가
+      };
       if (signupData.passportName) metadata.passport_name = signupData.passportName;
       if (signupData.nationality) metadata.nationality = signupData.nationality;
       if (signupData.phoneNumber) metadata.phone_number = signupData.phoneNumber;
