@@ -70,7 +70,6 @@ export function HospitalDetailReviews({
           <h2 className='text-base leading-6 font-semibold'>
             {title || dict.hospitalDetailReviews.title}
           </h2>
-          <span className='text-sm leading-[18px] font-semibold'>({reviewCount})</span>
         </div>
 
         <LocaleLink
