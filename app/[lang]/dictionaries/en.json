@@ -136,8 +136,8 @@
       "hairTransplant": "Hair Transplant"
     },
     "sort": {
-      "latest": "Latest",
-      "popular": "Popular"
+      "popular": "Popular",
+      "recommended": "Recommended"
     }
   },
   "reviewDetail": {

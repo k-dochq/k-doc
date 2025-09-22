@@ -39,7 +39,7 @@ export interface DbReviewQueryParams {
 export const DEFAULT_REVIEW_QUERY_PARAMS = {
   page: 1,
   limit: 10,
-  sort: REVIEW_SORT_OPTIONS.LATEST,
+  sort: REVIEW_SORT_OPTIONS.POPULAR,
 } as const;
 
 /**
@@ -168,7 +168,7 @@ export function validateReviewQueryParams(
 
     // sort 유효성 검증
     if (!Object.values(REVIEW_SORT_OPTIONS).includes(params.sort)) {
-      errors.push('Invalid sort option. Use "latest" or "popular"');
+      errors.push('Invalid sort option. Use "popular" or "recommended"');
     }
 
     return {

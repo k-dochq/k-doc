@@ -7,7 +7,7 @@ import { type GetAllReviewsResponse } from './types';
 interface UseInfiniteAllReviewsParams {
   limit?: number;
   category?: string;
-  sort?: 'latest' | 'popular';
+  sort?: 'popular' | 'recommended';
   hospitalId?: string;
   likedOnly?: boolean;
   initialData?: GetAllReviewsResponse;
@@ -23,7 +23,7 @@ export async function fetchAllReviews({
   pageParam = 1,
   limit = 10,
   category,
-  sort = 'latest',
+  sort = 'popular',
   hospitalId,
   likedOnly = false,
 }: {
@@ -68,7 +68,7 @@ export async function fetchAllReviews({
 export function useInfiniteAllReviews({
   limit = 10,
   category,
-  sort = 'latest',
+  sort = 'popular',
   hospitalId,
   likedOnly = false,
   initialData,

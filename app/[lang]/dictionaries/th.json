@@ -136,8 +136,8 @@
       "hairTransplant": "ปลูกผม"
     },
     "sort": {
-      "latest": "ล่าสุด",
-      "popular": "ยอดนิยม"
+      "popular": "ยอดนิยม",
+      "recommended": "แนะนำ"
     }
   },
   "reviewDetail": {

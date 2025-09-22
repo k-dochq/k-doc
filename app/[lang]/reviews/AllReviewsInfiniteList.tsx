@@ -29,7 +29,7 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
   // 타입 안전한 파라미터 구성
   const queryParams = {
     limit: 10,
-    sort: sort || REVIEW_SORT_OPTIONS.LATEST,
+    sort: sort || REVIEW_SORT_OPTIONS.POPULAR,
     category,
   };
 

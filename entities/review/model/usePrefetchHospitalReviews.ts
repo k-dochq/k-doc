@@ -20,7 +20,7 @@ interface UsePrefetchHospitalReviewsParams {
  */
 export function usePrefetchHospitalReviews({
   hospitalId,
-  sort = REVIEW_SORT_OPTIONS.LATEST,
+  sort = REVIEW_SORT_OPTIONS.POPULAR,
   limit = 10,
   enabled = true,
 }: UsePrefetchHospitalReviewsParams) {

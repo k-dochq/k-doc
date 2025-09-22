@@ -136,8 +136,8 @@
       "hairTransplant": "모발이식"
     },
     "sort": {
-      "latest": "최신순",
-      "popular": "인기순"
+      "popular": "인기순",
+      "recommended": "추천순"
     }
   },
   "reviewDetail": {

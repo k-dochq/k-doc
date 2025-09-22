@@ -12,7 +12,7 @@ export async function getAllReviews({
   page = 1,
   limit = 10,
   category,
-  sort = 'latest',
+  sort = 'popular',
   offset,
   hospitalId,
   likedOnly = false,
@@ -75,11 +75,20 @@ export async function getAllReviews({
           return [
             { viewCount: 'desc' as const },
             { likeCount: 'desc' as const },
-            { createdAt: 'asc' as const },
+            { createdAt: 'desc' as const },
           ];
-        case 'latest':
+        case 'recommended':
+          return [
+            { likeCount: 'desc' as const },
+            { viewCount: 'desc' as const },
+            { createdAt: 'desc' as const },
+          ];
         default:
-          return [{ createdAt: 'desc' as const }];
+          return [
+            { viewCount: 'desc' as const },
+            { likeCount: 'desc' as const },
+            { createdAt: 'desc' as const },
+          ];
       }
     })();
 
