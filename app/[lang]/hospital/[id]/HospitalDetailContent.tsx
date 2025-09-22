@@ -26,7 +26,7 @@ export async function HospitalDetailContent({
     const { hospital } = await getHospitalDetail({ id: hospitalId });
 
     return (
-      <div className='bg-gradient-to-b from-[#FE906C] to-[#FF6CA5] text-white'>
+      <div className='text-white'>
         {/* 헤더 */}
         <HospitalDetailHeader
           lang={lang}
