@@ -13,6 +13,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from 'shared/ui/carousel';
+import { CarouselProgressBar } from './ui/CarouselProgressBar';
 
 interface ReviewCarouselProps {
   items: ReviewCardData[];
@@ -21,6 +22,7 @@ interface ReviewCarouselProps {
   className?: string;
   itemClassName?: string;
   showNavigation?: boolean;
+  showProgressBar?: boolean;
   loop?: boolean;
   autoPlay?: boolean;
   autoPlayInterval?: number; // milliseconds
@@ -38,6 +40,7 @@ export function ReviewCarousel({
   className = '',
   itemClassName = '',
   showNavigation = false,
+  showProgressBar = false,
   loop = true,
   autoPlay = false,
   autoPlayInterval = 3000,
@@ -110,6 +113,10 @@ export function ReviewCarousel({
           </>
         )}
       </Carousel>
+
+      {showProgressBar && (
+        <CarouselProgressBar totalPages={items.length} currentPage={currentSlide} />
+      )}
     </div>
   );
 }
