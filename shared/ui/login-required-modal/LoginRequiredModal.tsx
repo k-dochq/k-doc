@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
@@ -39,6 +40,16 @@ export function LoginRequiredModal({
     router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
   };
 
+  // 언어별 배경 이미지 경로 생성
+  const getBackgroundImagePath = (locale: Locale): string => {
+    const localeMap = {
+      ko: 'ko',
+      en: 'en',
+      th: 'th',
+    };
+    return `/images/shared/login_required_bg_${localeMap[locale]}.png`;
+  };
+
   return (
     <div className='relative'>
       {/* X 버튼 */}
@@ -46,25 +57,39 @@ export function LoginRequiredModal({
         <CloseIcon />
       </button>
 
-      <div
-        className='flex min-h-[361px] flex-col justify-end rounded-xl bg-cover bg-center bg-no-repeat px-4 py-6'
-        style={{
-          backgroundImage: 'url(/images/shared/login_required_bg.png)',
-        }}
-      >
-        <div className='flex flex-col items-center space-y-4'>
-          <button
-            onClick={handleLogin}
-            className='bg-primary hover:bg-primary/80 w-full rounded-xl px-8 py-4 text-center font-medium text-white transition-colors'
-          >
-            {dict.auth.login.loginButton}
-          </button>
-          <button
-            onClick={closeModal}
-            className='text-sm font-normal text-neutral-500 transition-colors hover:text-neutral-700'
-          >
-            {dict.auth.login.laterButton}
-          </button>
+      <div className='relative flex min-h-[361px] flex-col justify-end overflow-hidden rounded-xl'>
+        {/* 배경 이미지 */}
+        <Image
+          src={getBackgroundImagePath(lang)}
+          alt='Login required background'
+          fill
+          className='object-cover'
+          priority
+          placeholder='blur'
+          blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRjNGNEY2Ii8+Cjwvc3ZnPgo='
+        />
+
+        {/* 컨텐츠 오버레이 */}
+        <div className='relative z-10 px-4 py-6'>
+          {/* <div className='mb-6 flex w-full justify-center'>
+            <h2 className='text-center text-xl font-bold whitespace-pre-line text-white'>
+              {dict.auth.login.requiredMessage}
+            </h2>
+          </div> */}
+          <div className='flex flex-col items-center space-y-4'>
+            <button
+              onClick={handleLogin}
+              className='bg-primary hover:bg-primary/80 w-full rounded-xl px-8 py-4 text-center font-medium text-white transition-colors'
+            >
+              {dict.auth.login.loginButton}
+            </button>
+            <button
+              onClick={closeModal}
+              className='text-sm font-normal text-neutral-500 transition-colors hover:text-neutral-700'
+            >
+              {dict.auth.login.laterButton}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -164,6 +164,7 @@
       "password": "รหัสผ่าน",
       "loginButton": "เข้าสู่ระบบ",
       "laterButton": "ทำทีหลัง",
+      "requiredMessage": "กรุณาเข้าสู่ระบบเพื่อใช้งานบริการ",
       "socialLogin": "เข้าสู่ระบบด้วยโซเชียล",
       "googleLogin": "เข้าสู่ระบบด้วย Google",
       "kakaoLogin": "เข้าสู่ระบบด้วย Kakao",
