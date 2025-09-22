@@ -2,7 +2,6 @@ import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { type CategoryButtonData } from './CategoryButton';
-import { categoryButtonStyles } from './styles';
 
 interface LocalizedCategoryButtonProps {
   category: CategoryButtonData;
@@ -26,9 +25,17 @@ export function LocalizedCategoryButton({
   };
 
   return (
-    <LocaleLink href={href} className={`${categoryButtonStyles.wrapper} ${className}`}>
-      <div className={`${categoryButtonStyles.container} ${iconClassName}`}>{category.icon()}</div>
-      <span className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</span>
+    <LocaleLink href={href} className={`flex min-w-0 flex-col items-center gap-1 ${className}`}>
+      <div
+        className={`flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-white bg-gradient-to-b from-white to-[#FFD9F9] shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] transition-all duration-200 ease-out hover:scale-105 hover:shadow-[2px_2px_16px_0_rgba(76,25,168,0.2)] active:scale-95 active:shadow-[0px_0px_8px_0_rgba(76,25,168,0.15)] ${iconClassName}`}
+      >
+        {category.icon()}
+      </div>
+      <span
+        className={`line-clamp-2 w-full min-w-0 text-center text-xs leading-4 font-medium break-words text-neutral-900 ${labelClassName}`}
+      >
+        {getLabel()}
+      </span>
     </LocaleLink>
   );
 }
