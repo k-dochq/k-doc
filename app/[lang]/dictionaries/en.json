@@ -472,15 +472,15 @@
         "title": "Daily limousine usage fees are as follows.",
         "details": [
           "- Supercar Lamborghini Urus: 1,080 USD per day",
-          "- Staria: 495 USD per day",
           "- Includes driver's fee, driver's meal, toll gate fees, and taxes",
           "- Based on 8 hours of use from 8:30 AM to 5:30 PM",
-          "- Additional charges for extra hours: Supercar 150 USD/hour, Staria 80 USD/hour (on-site card payment)",
+          "- Additional charges for extra hours: Supercar 150 USD/hour (on-site card payment)",
           "- Fuel costs settled later (on-site card payment)",
           "- Additional charges for driving outside Seoul (on-site card payment)"
         ]
       },
-      "Payment is only possible based on 8 hours per day. If short-term travel is needed, it is convenient to use international taxis or local taxi apps after arriving in Korea."
+      "Payment is only possible based on 8 hours per day.",
+      "If short-term travel is needed, it is convenient to use international taxis or local taxi apps after arriving in Korea."
     ]
   },
   "footer": {
