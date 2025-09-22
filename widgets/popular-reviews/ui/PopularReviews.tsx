@@ -73,7 +73,7 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
       </div>
 
       {/* 후기 리스트 표시 */}
-      <div className='px-5'>
+      <div className=''>
         {isLoading ? (
           <PopularReviewsSkeleton />
         ) : error ? (

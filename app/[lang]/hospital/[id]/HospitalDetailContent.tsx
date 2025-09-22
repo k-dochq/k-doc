@@ -54,7 +54,7 @@ export async function HospitalDetailContent({
           <HospitalDetailTabs hospital={hospital} hospitalId={hospitalId} lang={lang} dict={dict} />
 
           {/* 리뷰 후기 섹션 */}
-          <div className='px-5 pt-8'>
+          <div className='pt-8'>
             <HospitalDetailReviews hospitalId={hospitalId} lang={lang} dict={dict} />
           </div>
 

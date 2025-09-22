@@ -81,8 +81,6 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
           {/* 여섯 번째 섹션: 조회수만 표시 (좋아요는 헤더에 있음) */}
           <ReviewStatsSection review={review} lang={lang} user={null} showLikeButton={false} />
         </div>
-
-        {/* 일곱 번째 섹션: 같은 병원의 다른 시술후기 */}
       </div>
 
       {/* 별 이미지 섹션 */}
@@ -90,7 +88,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
         <StarBackground />
       </div>
 
-      <div className='mt-2 p-5'>
+      <div className='mt-2 py-5'>
         <HospitalDetailReviews
           hospitalId={review.hospital.id}
           lang={lang}
