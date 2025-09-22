@@ -4,7 +4,6 @@ import { type Dictionary } from 'shared/model/types';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
 import { PageHeader } from 'shared/ui/page-header';
-import Image from 'next/image';
 import { HeaderLogo } from '@/widgets/header/ui/HeaderLogo';
 
 interface LoginContentProps {
@@ -14,42 +13,29 @@ interface LoginContentProps {
 }
 
 export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
+  // th인 경우 en으로 처리
+  const imageLang = lang === 'th' ? 'en' : lang;
+
   return (
-    <div className='relative w-full overflow-hidden px-5'>
+    <div
+      className='flex h-screen w-full flex-col'
+      style={{
+        backgroundImage: `url(/images/splash/splash_${imageLang}.png)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       {/* PageHeader */}
       <PageHeader
         lang={lang}
         title=''
         fallbackUrl={`/${lang}`}
         variant='dark'
-        bgClassName='bg-white/5'
+        bgClassName='bg-white/0'
       />
-
-      {/* 배경 이미지 */}
-      <div className='absolute inset-0'>
-        <Image
-          src='/images/shared/splash-compressed.png'
-          alt='Background'
-          fill
-          className='object-cover'
-          priority
-        />
-      </div>
-
-      {/* 컨텐츠 */}
-      <div className='relative z-10 flex min-h-screen flex-col'>
-        {/* 하단 로그인 버튼 영역 */}
-        <div className='mt-auto pb-5'>
-          <div className='space-y-3'>
-            {/* <GoogleSignInButton locale={lang} dict={dict} redirectTo={redirectTo} /> */}
-            {/* <KakaoSignInButton locale={lang} dict={dict} /> */}
-            <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
-            {/* 하단 로고 */}
-            <div className='flex w-full justify-center text-white'>
-              <HeaderLogo />
-            </div>
-          </div>
-        </div>
+      <div className='mt-auto p-5'>
+        <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
       </div>
     </div>
   );

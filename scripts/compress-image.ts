@@ -2,22 +2,17 @@ import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs';
 
-// 압구정 미라클 이미지 압축 설정
+// Splash 이미지 압축 설정
 const images = [
   {
-    input: './miracle_detail_kr.png',
-    output: './public/images/hospital-detail/miracle_detail_kr.png',
-    name: '한국어',
+    input: './splash_ko.png',
+    output: './public/images/splash/splash_ko.png',
+    name: '한국어 스플래시',
   },
   {
-    input: './miracle_detail_en.png',
-    output: './public/images/hospital-detail/miracle_detail_en.png',
-    name: '영어',
-  },
-  {
-    input: './miracle_detail_th.png',
-    output: './public/images/hospital-detail/miracle_detail_th.png',
-    name: '태국어',
+    input: './splash_en.png',
+    output: './public/images/splash/splash_en.png',
+    name: '영어 스플래시',
   },
 ];
 
@@ -43,14 +38,14 @@ async function compressImage(inputPath: string, outputPath: string, imageName: s
     // 이미지 압축 실행
     await sharp(inputPath)
       .resize({
-        width: 1200, // 더 큰 크기로 설정
-        height: 800,
+        width: 1080, // 스플래시 이미지에 적합한 크기
+        height: 1920,
         fit: 'inside', // 비율 유지하면서 크기 조정
         withoutEnlargement: true, // 원본보다 크게 만들지 않음
       })
       .png({
-        quality: 85, // PNG 품질 (0-100)
-        compressionLevel: 9, // PNG 압축 레벨 (0-9, 높을수록 더 압축)
+        quality: 90, // PNG 품질 (0-100)
+        compressionLevel: 8, // PNG 압축 레벨 (0-9, 높을수록 더 압축)
         progressive: true, // 점진적 로딩
       })
       .toFile(outputPath);
@@ -71,7 +66,7 @@ async function compressImage(inputPath: string, outputPath: string, imageName: s
 }
 
 async function compressAllImages() {
-  console.log('🚀 압구정 미라클 이미지 압축 시작...\n');
+  console.log('🚀 Splash 이미지 압축 시작...\n');
 
   for (const image of images) {
     await compressImage(image.input, image.output, image.name);
