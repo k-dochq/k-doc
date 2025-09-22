@@ -56,9 +56,20 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
           align: 'start',
           skipSnaps: false,
           dragFree: false,
+          // 드래그와 스와이핑 완전 비활성화
+          watchDrag: false,
+          watchResize: false,
+          watchSlides: false,
         }}
       >
-        <CarouselContent className='ml-0'>
+        <CarouselContent
+          className='ml-0'
+          onMouseDown={(e) => e.preventDefault()}
+          onTouchStart={(e) => e.preventDefault()}
+          onTouchMove={(e) => e.preventDefault()}
+          onTouchEnd={(e) => e.preventDefault()}
+          onDragStart={(e) => e.preventDefault()}
+        >
           {/* 병원소개 탭 */}
           <CarouselItem className='basis-full pl-0'>
             <div className='px-5 py-4'>
