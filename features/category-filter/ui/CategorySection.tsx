@@ -53,8 +53,18 @@ export function CategorySection({
     });
 
     if (activeIndex !== -1) {
-      // 활성 카테고리 버튼을 중앙으로 스크롤
-      api.scrollTo(activeIndex);
+      // slideNodes를 사용하여 활성 카테고리 버튼을 중앙으로 스크롤
+      const slideNodes = api.slideNodes();
+      const activeSlide = slideNodes[activeIndex];
+
+      if (activeSlide) {
+        // 활성 슬라이드를 중앙으로 스크롤
+        activeSlide.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'center',
+        });
+      }
     }
   }, [api, currentCategory, categoryButtons, isLoading, error]);
 
@@ -67,7 +77,7 @@ export function CategorySection({
   }
 
   return (
-    <div className='w-full px-5 py-4'>
+    <div className='w-full py-4'>
       <Carousel
         setApi={setApi}
         opts={{
@@ -77,7 +87,7 @@ export function CategorySection({
         }}
         className='w-full'
       >
-        <CarouselContent className='-ml-3'>
+        <CarouselContent className='-ml-3 pr-5 pl-5'>
           {categoryButtons.map((categoryButton) => {
             const isActive =
               categoryButton.type === 'all'

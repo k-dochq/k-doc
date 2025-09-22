@@ -37,27 +37,24 @@ export function CategoryButton({
     return getLocalizedTextByLocale(category.labels, lang);
   };
 
-  const buttonContent = isActive ? (
+  const buttonContent = (
     <>
       <div
-        className='h-[50px] w-[50px] rounded-xl border-none p-0.5'
-        style={{
-          background: 'linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
-        }}
-      >
-        <div className='flex h-full w-full items-center justify-center rounded-xl bg-gradient-to-b from-white to-[#FFD9F9]'>
-          {category.icon()}
-        </div>
-      </div>
-      <div className={`${categoryButtonStyles.label} ${labelClassName}`}>{getLabel()}</div>
-    </>
-  ) : (
-    <>
-      <div
-        className='flex h-[50px] w-[50px] items-center justify-center rounded-xl border border-white'
-        style={{
-          background: 'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%)',
-        }}
+        className={`flex h-[50px] w-[50px] items-center justify-center rounded-xl ${
+          isActive ? 'border-2 border-transparent' : 'border border-white'
+        }`}
+        style={
+          isActive
+            ? {
+                backgroundImage:
+                  'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%), linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
+                backgroundOrigin: 'border-box',
+                backgroundClip: 'content-box, border-box',
+              }
+            : {
+                background: 'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%)',
+              }
+        }
       >
         {category.icon()}
       </div>
