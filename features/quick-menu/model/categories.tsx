@@ -13,6 +13,7 @@ import {
 } from '../ui/icons';
 
 export const CATEGORIES: CategoryItem[] = [
+  // 첫째줄: 눈 > 코 > 리프팅 > 안면윤곽 > 가슴
   {
     id: '3df0bd71-16cb-40c6-b372-ddfde9327aad', // EYES
     type: 'EYES',
@@ -28,6 +29,13 @@ export const CATEGORIES: CategoryItem[] = [
     labels: { ko_KR: '코', en_US: 'Nose', th_TH: 'จมูก' },
   },
   {
+    id: 'bc0effa1-af1a-4048-8b57-45130bd74820', // LIFTING
+    type: 'LIFTING',
+    icon: () => <LiftingIcon />,
+    iconSmall: () => <LiftingIcon variant='small' />,
+    labels: { ko_KR: '리프팅', en_US: 'Lifting', th_TH: 'ยกกระชับ' },
+  },
+  {
     id: '41144648-d60e-4b8a-8cde-cd5e5af62169', // FACIAL_CONTOURING
     type: 'FACIAL_CONTOURING',
     icon: () => <FacialContouringIcon />,
@@ -41,13 +49,7 @@ export const CATEGORIES: CategoryItem[] = [
     iconSmall: () => <BreastIcon variant='small' />,
     labels: { ko_KR: '가슴', en_US: 'Breast', th_TH: 'หน้าอก' },
   },
-  {
-    id: '255d42f9-a589-48f7-b8bc-ec046ff16f29', // STEM_CELL
-    type: 'STEM_CELL',
-    icon: () => <StemCellIcon />,
-    iconSmall: () => <StemCellIcon variant='small' />,
-    labels: { ko_KR: '줄기세포', en_US: 'Stem Cell', th_TH: 'เซลล์ต้นกำเนิด' },
-  },
+  // 둘째줄: 지방성형 > 모발이식 > 줄기세포 > 피부과 > 전체
   {
     id: '56739781-11f0-412b-8cd9-ef63024f80c2', // LIPOSUCTION
     type: 'LIPOSUCTION',
@@ -56,18 +58,18 @@ export const CATEGORIES: CategoryItem[] = [
     labels: { ko_KR: '지방성형', en_US: 'Liposuction', th_TH: 'ศัลยกรรมดูดไขมัน' },
   },
   {
-    id: 'bc0effa1-af1a-4048-8b57-45130bd74820', // LIFTING
-    type: 'LIFTING',
-    icon: () => <LiftingIcon />,
-    iconSmall: () => <LiftingIcon variant='small' />,
-    labels: { ko_KR: '리프팅', en_US: 'Lifting', th_TH: 'ยกกระชับ' },
-  },
-  {
     id: 'af44669d-002b-45fc-bf4a-b8fe3175e7ae', // HAIR_TRANSPLANT
     type: 'HAIR_TRANSPLANT',
     icon: () => <HairTransplantIcon />,
     iconSmall: () => <HairTransplantIcon variant='small' />,
     labels: { ko_KR: '모발이식', en_US: 'Hair Transplant', th_TH: 'ปลูกผม' },
+  },
+  {
+    id: '255d42f9-a589-48f7-b8bc-ec046ff16f29', // STEM_CELL
+    type: 'STEM_CELL',
+    icon: () => <StemCellIcon />,
+    iconSmall: () => <StemCellIcon variant='small' />,
+    labels: { ko_KR: '줄기세포', en_US: 'Stem Cell', th_TH: 'เซลล์ต้นกำเนิด' },
   },
   {
     id: '24bbf6a7-f34d-4352-af31-90296e8720c0', // DERMATOLOGY
