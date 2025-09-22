@@ -29,7 +29,7 @@ export function PopularReviewsList({
       autoPlay={true}
       autoPlayInterval={4000}
       align='start'
-      showProgressBar={true}
+      // showProgressBar={true}
     />
   );
 }
