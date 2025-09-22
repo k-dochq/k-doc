@@ -97,7 +97,12 @@
     "introduction": "Hospital Info",
     "procedures": "Procedures",
     "proceduresComingSoon": "Procedure details are coming soon.",
-    "comingSoonSubtext": "Updates coming soon..."
+    "comingSoonSubtext": "Updates coming soon...",
+    "apgujeongMiracle": {
+      "videoTitle": "Procedure Video",
+      "imageAlt": "Apgujeong Miracle Clinic Procedure Details",
+      "videoDescription": "FOX TV in the U.S. broadcast Dr. Woo Jung Ho of Apgujeong Miracle"
+    }
   },
   "hospitalDetailDoctors": {
     "viewAll": "View All"
