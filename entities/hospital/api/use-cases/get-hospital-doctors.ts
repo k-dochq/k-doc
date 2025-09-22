@@ -50,7 +50,6 @@ export async function getHospitalDoctors(
     const doctorsData = await prisma.doctor.findMany({
       where: {
         hospitalId,
-        approvalStatusType: 'APPROVED', // 승인된 의사만 조회
         stop: false, // 활성 상태인 의사만 조회
       },
       include: {
