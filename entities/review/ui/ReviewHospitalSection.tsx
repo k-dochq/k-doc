@@ -25,7 +25,7 @@ export function ReviewHospitalSection({
       <h3 className='mt-4 mb-4 text-sm font-semibold text-neutral-900'>
         {dict.reviewDetail.hospital}
       </h3>
-      <div className='rounded-xl border border-neutral-200'>
+      <div className='rounded-xl'>
         <LocaleLink href={`/hospital/${review.hospital.id}`}>
           <HospitalCard
             hospital={convertReviewHospitalToHospitalCard(review)}
