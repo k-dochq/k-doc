@@ -97,10 +97,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
       <body className={currentFont.className}>
         <QueryProvider>
           <MaxWidthLayout>
-            <div
-              className='h-full'
-              style={{ background: 'linear-gradient(180deg, #FFDBF9 0.19%, #C7A8FF 99.82%)' }}
-            >
+            <div className='min-h-screen [background:linear-gradient(180deg,#FFDBF9_0.19%,#BD9AFF_99.82%)_top/100%_100vh_no-repeat,_#BD9AFF] supports-[height:100dvh]:[background:linear-gradient(180deg,#FFDBF9_0.19%,#BD9AFF_99.82%)_top/100%_100dvh_no-repeat,_#BD9AFF]'>
               {children}
             </div>
           </MaxWidthLayout>
