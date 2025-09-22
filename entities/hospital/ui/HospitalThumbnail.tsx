@@ -28,7 +28,7 @@ export function HospitalThumbnail({
         <img
           src='/images/shared/default_thumbnail.jpg'
           alt=''
-          className='absolute inset-0 h-full w-full object-cover blur-lg'
+          className='absolute inset-0 h-full w-full rounded-l-xl object-cover blur-lg'
         />
 
         {/* 실제 이미지 또는 디폴트 이미지 오버레이 */}
@@ -36,20 +36,20 @@ export function HospitalThumbnail({
           <img
             src='/images/shared/default_image_square.png'
             alt={alt}
-            className='relative z-10 h-full w-full object-cover'
+            className='relative z-10 h-full w-full rounded-l-xl object-cover'
           />
         ) : (
           <img
             src={imageUrl}
             alt={alt}
-            className='relative z-10 h-full w-full object-cover'
+            className='relative z-10 h-full w-full rounded-l-xl object-cover'
             onError={handleImageError}
           />
         )}
       </div>
 
       {/* HotLabel - overflow-hidden 컨테이너 밖에 위치 */}
-      <div className='absolute top-[-5px] left-[-5px] z-20'>
+      <div className='absolute top-[-5px] left-[-6px] z-20'>
         <HotLabel />
       </div>
     </div>
