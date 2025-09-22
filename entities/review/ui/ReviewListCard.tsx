@@ -46,7 +46,7 @@ export function ReviewListCard({
       <LocaleLink
         href={`/review/${review.id}`}
         locale={lang}
-        className={`block w-full overflow-hidden rounded-t-lg border border-white bg-white/50 px-5 pt-5 pb-4 ${className}`}
+        className={`block w-full overflow-hidden rounded-t-xl border border-white bg-white/50 px-5 pt-5 pb-4 ${className}`}
       >
         {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
         <ReviewListCardHeader review={review} lang={lang} />
