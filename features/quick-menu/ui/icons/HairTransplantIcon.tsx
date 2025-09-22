@@ -1,6 +1,20 @@
-export function HairTransplantIcon() {
+interface HairTransplantIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function HairTransplantIcon({ variant = 'default' }: HairTransplantIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 41 * scale;
+  const height = 38 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='41' height='38' viewBox='0 0 41 38' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 41 38'
+      fill='none'
+    >
       <path
         d='M22.2996 27.4481C20.4707 24.8107 20.7939 22.0632 20.7939 22.0632C20.1474 16.1281 25.9605 12.8306 25.9605 12.8306C16.4225 14.7187 18.2107 23.2734 15.84 27.6563C15.0624 29.1073 15.2575 30.9568 16.4603 32.1849C17.9223 33.6776 20.293 33.6776 21.755 32.1849C23.0132 30.9003 23.1821 28.926 22.2705 27.4511H22.2996V27.4481Z'
         fill='#DA47EF'

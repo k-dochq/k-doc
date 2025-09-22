@@ -1,6 +1,20 @@
-export function BreastIcon() {
+interface BreastIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function BreastIcon({ variant = 'default' }: BreastIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 44 * scale;
+  const height = 38 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='44' height='38' viewBox='0 0 44 38' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 44 38'
+      fill='none'
+    >
       <g clipPath='url(#clip0_941_3319)'>
         <path
           d='M22.2897 20.7273C22.2897 24.0698 18.2616 26.5599 14.9068 26.3689C12.0898 26.2085 9.75629 23.9609 9.47898 21.13C9.35724 19.8885 9.62102 18.7186 10.1621 17.7227C10.7167 16.7029 10.8588 15.5058 10.5037 14.4007L10.0302 12.9341'

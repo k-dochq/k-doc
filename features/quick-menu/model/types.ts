@@ -5,6 +5,7 @@ export interface CategoryItem {
   id: string;
   type: string;
   icon: () => React.ReactNode;
+  iconSmall: () => React.ReactNode;
   labels: LocalizedText;
 }
 

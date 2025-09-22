@@ -1,6 +1,20 @@
-export function EyesIcon() {
+interface EyesIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function EyesIcon({ variant = 'default' }: EyesIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 40 * scale;
+  const height = 26 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='40' height='26' viewBox='0 0 40 26' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 40 26'
+      fill='none'
+    >
       <path
         d='M17.022 6.00366C10.12 6.00366 4.08027 9.78154 0.769775 15.4267C4.08027 21.0718 10.12 24.8497 17.022 24.8497C23.924 24.8497 29.9638 21.0718 33.2743 15.4267C29.9638 9.78154 23.924 6.00366 17.022 6.00366Z'
         stroke='#404040'

@@ -1,6 +1,20 @@
-export function LiposuctionIcon() {
+interface LiposuctionIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function LiposuctionIcon({ variant = 'default' }: LiposuctionIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 46 * scale;
+  const height = 32 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='46' height='32' viewBox='0 0 46 32' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 46 32'
+      fill='none'
+    >
       <g clipPath='url(#clip0_941_3360)'>
         <path
           d='M12.7516 1.64404C12.7516 1.64404 12.9714 8.15882 10.7804 12.2139C8.58949 16.2689 7.2778 22.0317 8.5931 30.3561'

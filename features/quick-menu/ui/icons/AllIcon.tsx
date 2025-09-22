@@ -1,6 +1,20 @@
-export function AllIcon() {
+interface AllIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function AllIcon({ variant = 'default' }: AllIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 30 * scale;
+  const height = 30 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 30 30'
+      fill='none'
+    >
       <path
         d='M10.8182 1H2.63636C1.73262 1 1 1.73262 1 2.63636V10.8182C1 11.7219 1.73262 12.4545 2.63636 12.4545H10.8182C11.7219 12.4545 12.4545 11.7219 12.4545 10.8182V2.63636C12.4545 1.73262 11.7219 1 10.8182 1Z'
         stroke='#404040'
