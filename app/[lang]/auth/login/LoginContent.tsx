@@ -4,7 +4,6 @@ import { type Dictionary } from 'shared/model/types';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
 import { PageHeader } from 'shared/ui/page-header';
-import { HeaderLogo } from '@/widgets/header/ui/HeaderLogo';
 
 interface LoginContentProps {
   lang: Locale;
