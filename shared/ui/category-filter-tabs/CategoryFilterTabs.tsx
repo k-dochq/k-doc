@@ -63,7 +63,7 @@ export function CategoryFilterTabs({
         }}
         className='w-full'
       >
-        <CarouselContent className='-ml-2'>
+        <CarouselContent className='-ml-2 pl-5'>
           {allCategories.map((category) => {
             const isSelected = selectedCategory === category.id;
 

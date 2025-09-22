@@ -62,7 +62,7 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
         </div>
       </div>
 
-      <div className='mb-4 px-5'>
+      <div className='mb-4'>
         <CategoryFilterTabs
           lang={lang}
           dict={dict}
