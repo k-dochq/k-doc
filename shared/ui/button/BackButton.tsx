@@ -43,7 +43,7 @@ export function BackButton({ className = '', fallbackUrl, variant = 'dark' }: Ba
       onClick={handleBack}
       className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors ${styles.button} ${className}`}
     >
-      <ArrowLeftIcon className={styles.icon} width={20} height={20} />
+      <ArrowLeftIcon className={styles.icon} width={24} height={24} />
     </button>
   );
 }
