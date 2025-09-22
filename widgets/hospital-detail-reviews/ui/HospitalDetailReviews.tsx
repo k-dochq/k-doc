@@ -60,12 +60,11 @@ export function HospitalDetailReviews({
   }
 
   const reviews = reviewsData?.data?.reviews || [];
-  const reviewCount = reviews.length || 0;
 
   return (
     <div className=''>
       {/* 섹션 헤더 */}
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-between px-5'>
         <div className='flex items-center gap-1'>
           <h2 className='text-base leading-6 font-semibold'>
             {title || dict.hospitalDetailReviews.title}
@@ -93,7 +92,7 @@ export function HospitalDetailReviews({
           dict={dict}
           emptyMessage={dict.hospitalDetailReviews.emptyMessage}
           loop={true}
-          align='start'
+          align='center'
           basis='basis-[280px] md:basis-[320px]'
           itemClassName='pl-2 md:pl-4'
           noBorder={true}

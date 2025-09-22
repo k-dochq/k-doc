@@ -28,7 +28,7 @@ export function PopularReviewsList({
       loop={true}
       autoPlay={true}
       autoPlayInterval={4000}
-      align='start'
+      align='center'
       // showProgressBar={true}
     />
   );

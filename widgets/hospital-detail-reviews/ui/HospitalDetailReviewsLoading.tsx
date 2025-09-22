@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
 import { PopularReviewsSkeleton } from 'widgets/popular-reviews/ui/PopularReviewsSkeleton';
 
 /**
@@ -7,19 +6,16 @@ import { PopularReviewsSkeleton } from 'widgets/popular-reviews/ui/PopularReview
 export function HospitalDetailReviewsLoading() {
   return (
     <div className=''>
-      {/* 섹션 헤더 */}
-      <div className='flex items-center justify-between'>
+      {/* 섹션 헤더 스켈레톤 */}
+      <div className='flex items-center justify-between px-5'>
         <div className='flex items-center gap-1'>
-          <h2 className='text-base leading-6 font-bold text-white'>시술후기</h2>
-          <span className='text-sm leading-[18px] font-semibold text-white'>(0)</span>
+          <div className='h-6 w-20 animate-pulse rounded bg-white/50'></div>
         </div>
 
-        <button className='flex items-center gap-0.5'>
-          <span className='text-sm leading-[18px] font-medium text-white'>전체보기</span>
-          <div className='flex items-center justify-center'>
-            <ArrowRightIcon className='text-white' />
-          </div>
-        </button>
+        <div className='flex items-center gap-0.5'>
+          <div className='h-[18px] w-16 animate-pulse rounded bg-white/50'></div>
+          <div className='h-4 w-4 animate-pulse rounded bg-white/50'></div>
+        </div>
       </div>
 
       {/* 로딩 상태 - PopularReviewsSkeleton 재활용 */}
