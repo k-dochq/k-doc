@@ -9,6 +9,7 @@ import { HospitalDetailConsultationFloating } from 'widgets/hospital-detail-cons
 import { HospitalDetailTabs } from 'widgets/hospital-detail-tabs';
 import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { GradientBackground } from '@/shared/ui/gradient-background';
 
 interface HospitalDetailContentProps {
   hospitalId: string;
@@ -26,37 +27,44 @@ export async function HospitalDetailContent({
     const { hospital } = await getHospitalDetail({ id: hospitalId });
 
     return (
-      <div className='text-white'>
-        {/* 헤더 */}
-        <HospitalDetailHeader
-          lang={lang}
-          dict={dict}
-          hospitalId={hospitalId}
-          hospitalName={extractLocalizedText(hospital.name, lang)}
-        />
+      <GradientBackground
+        gradientColors={{
+          start: '#FE906C',
+          end: '#FF6CA5',
+        }}
+      >
+        <div className='text-white'>
+          {/* 헤더 */}
+          <HospitalDetailHeader
+            lang={lang}
+            dict={dict}
+            hospitalId={hospitalId}
+            hospitalName={extractLocalizedText(hospital.name, lang)}
+          />
 
-        {/* 병원 사진 섹션 */}
-        <HospitalDetailPhotos hospital={hospital} lang={lang} dict={dict} />
+          {/* 병원 사진 섹션 */}
+          <HospitalDetailPhotos hospital={hospital} lang={lang} dict={dict} />
 
-        {/* 병원 정보 섹션 */}
-        <div className='p-5'>
-          <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
+          {/* 병원 정보 섹션 */}
+          <div className='p-5'>
+            <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
+          </div>
+
+          {/* 탭 기반 컨텐츠 */}
+          <HospitalDetailTabs hospital={hospital} hospitalId={hospitalId} lang={lang} dict={dict} />
+
+          {/* 리뷰 후기 섹션 */}
+          <div className='px-5 pt-8'>
+            <HospitalDetailReviews hospitalId={hospitalId} lang={lang} dict={dict} />
+          </div>
+
+          {/* 하단 고정 버튼을 위한 여백 */}
+          <div className='h-24' />
+
+          {/* 하단 고정 상담신청 버튼 */}
+          <HospitalDetailConsultationFloating hospitalId={hospitalId} lang={lang} dict={dict} />
         </div>
-
-        {/* 탭 기반 컨텐츠 */}
-        <HospitalDetailTabs hospital={hospital} hospitalId={hospitalId} lang={lang} dict={dict} />
-
-        {/* 리뷰 후기 섹션 */}
-        <div className='px-5 pt-8'>
-          <HospitalDetailReviews hospitalId={hospitalId} lang={lang} dict={dict} />
-        </div>
-
-        {/* 하단 고정 버튼을 위한 여백 */}
-        <div className='h-24' />
-
-        {/* 하단 고정 상담신청 버튼 */}
-        <HospitalDetailConsultationFloating hospitalId={hospitalId} lang={lang} dict={dict} />
-      </div>
+      </GradientBackground>
     );
   } catch (error) {
     console.error('Error loading hospital detail content:', error);
