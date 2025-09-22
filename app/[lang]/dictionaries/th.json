@@ -97,7 +97,12 @@
     "introduction": "ข้อมูลโรงพยาบาล",
     "procedures": "รายละเอียดการรักษา",
     "proceduresComingSoon": "รายละเอียดการรักษากำลังเตรียมการ",
-    "comingSoonSubtext": "อัปเดตเร็วๆ นี้..."
+    "comingSoonSubtext": "อัปเดตเร็วๆ นี้...",
+    "apgujeongMiracle": {
+      "videoTitle": "วิดีโอการผ่าตัด",
+      "imageAlt": "รายละเอียดการผ่าตัดคลินิกอับกูจองมิราเคิล",
+      "videoDescription": "Dr. Woo Jung Ho of Apgujeong Miracle ออกอากาศในรายการข่าว FOX TV in the U.S."
+    }
   },
   "hospitalDetailDoctors": {
     "viewAll": "ดูทั้งหมด"

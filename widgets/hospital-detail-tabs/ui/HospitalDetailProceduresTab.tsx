@@ -1,8 +1,13 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { ApgujeongMiracleProcedures } from 'features/hospital-detail-procedures';
+import { type Hospital } from '@prisma/client';
+
+// 압구정 미라클 의원 ID 상수
+const APGUJEONG_MIRACLE_HOSPITAL_ID = 'ffda0620-c254-44db-8b13-ef4ef5d368e5';
 
 interface HospitalDetailProceduresTabProps {
-  hospital: any; // TODO: 정확한 타입 정의 필요
+  hospital: Hospital;
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;
@@ -10,7 +15,7 @@ interface HospitalDetailProceduresTabProps {
 
 /**
  * 시술상세 탭 컨텐츠 컴포넌트
- * TODO: 시술상세 관련 컨텐츠 구현 필요
+ * 압구정 미라클 의원의 경우 특별한 시술상세 컨텐츠를 보여줍니다.
  */
 export function HospitalDetailProceduresTab({
   hospital,
@@ -18,6 +23,14 @@ export function HospitalDetailProceduresTab({
   lang,
   dict,
 }: HospitalDetailProceduresTabProps) {
+  // 압구정 미라클 의원인지 확인
+  const isApgujeongMiracle = hospitalId === APGUJEONG_MIRACLE_HOSPITAL_ID;
+
+  if (isApgujeongMiracle) {
+    return <ApgujeongMiracleProcedures hospital={hospital} lang={lang} dict={dict} />;
+  }
+
+  // 일반 병원의 경우 기본 메시지
   return (
     <div className='flex flex-col items-center justify-center text-center'>
       <div className='text-base text-white/70'>{dict.hospitalDetailTabs.proceduresComingSoon}</div>

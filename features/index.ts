@@ -8,3 +8,4 @@ export * from './kakao-auth';
 export * from './email-auth';
 export * from './favorites-tabs';
 export * from './review-comments';
+export * from './hospital-detail-procedures';
