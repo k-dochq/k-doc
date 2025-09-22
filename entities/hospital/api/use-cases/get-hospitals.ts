@@ -42,6 +42,7 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
     _count: {
       select: {
         HospitalLike: true;
+        Review: true;
       };
     };
   };
@@ -261,6 +262,7 @@ export async function getHospitals(
         _count: {
           select: {
             HospitalLike: true,
+            Review: true,
           },
         },
       },
@@ -278,7 +280,7 @@ export async function getHospitals(
         name: hospital.name,
         address: hospital.address,
         rating: hospital.rating,
-        reviewCount: hospital.reviewCount,
+        reviewCount: hospital._count.Review, // 실제 리뷰 개수 사용
         bookmarkCount: hospital.bookmarkCount,
         viewCount: hospital.viewCount,
         likeCount: hospital._count.HospitalLike,
