@@ -22,7 +22,7 @@ export default async function MainPage({ params }: MainPageProps) {
 
   return (
     <>
-      <div className=''>
+      <div className='overflow-x-hidden'>
         <div className='mt-2 px-5'>
           <SearchBar lang={lang} dict={dict} />
         </div>
