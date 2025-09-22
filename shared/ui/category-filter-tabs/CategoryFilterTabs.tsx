@@ -7,6 +7,9 @@ import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { type LocalizedText, extractLocalizedText } from 'shared/lib/localized-text';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
+import { useDeviceDetection } from './lib/useDeviceDetection';
+import { useCarouselNavigation } from './lib/useCarouselNavigation';
+import { DesktopNavigation } from './ui/DesktopNavigation';
 
 interface CategoryFilterTabsProps {
   lang: Locale;
@@ -23,6 +26,8 @@ export function CategoryFilterTabs({
   onCategoryChange,
 }: CategoryFilterTabsProps) {
   const [api, setApi] = useState<CarouselApi>();
+  const { isDesktop } = useDeviceDetection();
+  const { canScrollPrev, canScrollNext, scrollPrev, scrollNext } = useCarouselNavigation(api);
 
   // 전체 카테고리 + 의료 전문 분야 카테고리 조합
   const allCategories = [
@@ -38,7 +43,17 @@ export function CategoryFilterTabs({
   };
 
   return (
-    <div className='w-full'>
+    <div className='relative w-full'>
+      {/* PC 환경에서만 네비게이션 버튼 표시 */}
+      {isDesktop && (
+        <DesktopNavigation
+          canScrollPrev={canScrollPrev}
+          canScrollNext={canScrollNext}
+          onScrollPrev={scrollPrev}
+          onScrollNext={scrollNext}
+        />
+      )}
+
       <Carousel
         setApi={setApi}
         opts={{

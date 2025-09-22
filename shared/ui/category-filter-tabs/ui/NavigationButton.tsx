@@ -1,0 +1,17 @@
+interface NavigationButtonProps {
+  direction: 'left' | 'right';
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+export function NavigationButton({ direction, onClick, children }: NavigationButtonProps) {
+  return (
+    <button
+      type='button'
+      onClick={onClick}
+      className={`absolute top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg ${direction === 'left' ? '-left-4' : '-right-4'} `}
+    >
+      {children}
+    </button>
+  );
+}
