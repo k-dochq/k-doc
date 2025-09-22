@@ -17,7 +17,7 @@ export interface HospitalReviewsInfiniteQueryParams extends Record<string, unkno
  */
 export function createHospitalReviewsInfiniteQueryParams(
   hospitalId: string,
-  sort: ReviewSortOption = REVIEW_SORT_OPTIONS.LATEST,
+  sort: ReviewSortOption = REVIEW_SORT_OPTIONS.POPULAR,
   limit: number = 10,
 ): HospitalReviewsInfiniteQueryParams {
   return {

@@ -24,7 +24,7 @@ export function FavoritesReviewsTab({ lang, dict }: FavoritesReviewsTabProps) {
   // 타입 안전한 파라미터 구성 - likedOnly: true로 설정
   const queryParams = {
     limit: 10,
-    sort: REVIEW_SORT_OPTIONS.LATEST as ReviewSortOption,
+    sort: REVIEW_SORT_OPTIONS.POPULAR as ReviewSortOption,
     likedOnly: true, // 좋아요한 리뷰만 조회
   };
 

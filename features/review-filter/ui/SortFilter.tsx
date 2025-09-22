@@ -4,21 +4,21 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
 interface SortFilterProps {
-  sortBy: 'latest' | 'popular';
-  onSortChange: (sortBy: 'latest' | 'popular') => void;
+  sortBy: 'popular' | 'recommended';
+  onSortChange: (sortBy: 'popular' | 'recommended') => void;
   lang: Locale;
   dict: Dictionary;
 }
 
 export function SortFilter({ sortBy, onSortChange, lang, dict }: SortFilterProps) {
-  const sortOptions: Array<{ value: 'latest' | 'popular'; label: string }> = [
-    {
-      value: 'latest',
-      label: dict.allReviews?.sort?.latest || '최신순',
-    },
+  const sortOptions: Array<{ value: 'popular' | 'recommended'; label: string }> = [
     {
       value: 'popular',
       label: dict.allReviews?.sort?.popular || '인기순',
+    },
+    {
+      value: 'recommended',
+      label: dict.allReviews?.sort?.recommended || '추천순',
     },
   ];
 

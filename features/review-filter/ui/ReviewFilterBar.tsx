@@ -13,13 +13,13 @@ interface ReviewFilterBarProps {
 export function ReviewFilterBar({ lang, dict }: ReviewFilterBarProps) {
   const filterOptions: FilterOption<ReviewSortOption>[] = [
     {
-      value: REVIEW_SORT_OPTIONS.LATEST,
-      label: dict.allReviews.sort.latest,
-    },
-    {
       value: REVIEW_SORT_OPTIONS.POPULAR,
       label: dict.allReviews.sort.popular,
       isDefault: true,
+    },
+    {
+      value: REVIEW_SORT_OPTIONS.RECOMMENDED,
+      label: dict.allReviews.sort.recommended,
     },
   ];
 
