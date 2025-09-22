@@ -1,6 +1,20 @@
-export function NoseIcon() {
+interface NoseIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function NoseIcon({ variant = 'default' }: NoseIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 33 * scale;
+  const height = 39 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='33' height='39' viewBox='0 0 33 39' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 33 39'
+      fill='none'
+    >
       <path
         d='M26.2577 1.875C26.2577 1.875 27.7136 3.81132 26.5832 7.09434C25.4493 10.3774 17.8163 18.6176 17.8163 18.6176C13.8929 22.9413 11.8005 24.8236 12.7501 26.956C14.2899 30.4137 19.3912 32.0846 22.1315 32.5104'
         stroke='#404040'

@@ -1,6 +1,20 @@
-export function LiftingIcon() {
+interface LiftingIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function LiftingIcon({ variant = 'default' }: LiftingIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 37 * scale;
+  const height = 44 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='37' height='44' viewBox='0 0 37 44' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 37 44'
+      fill='none'
+    >
       <path
         d='M16.3111 41.8656V36.3871C16.3111 36.3871 10.8065 35.9746 6.40043 34.1964C1.99435 32.4143 3.78495 25.8385 3.78495 25.8385L4.88748 21.0448L2.96007 18.714C1.99837 17.2082 3.51133 16.1109 3.51133 16.1109L8.46868 14.7412C13.2852 13.6439 9.84482 8.98636 15.0758 4.19264C15.0758 4.19264 17.5545 2.27435 20.858 2.13818'
         stroke='#404040'

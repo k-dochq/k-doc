@@ -1,6 +1,20 @@
-export function DermatologyIcon() {
+interface DermatologyIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function DermatologyIcon({ variant = 'default' }: DermatologyIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 37 * scale;
+  const height = 43 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='37' height='43' viewBox='0 0 37 43' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 37 43'
+      fill='none'
+    >
       <path
         d='M11.4952 1.9541C11.4952 1.9541 5.328 5.67744 6.67786 13.6826C6.67786 13.6826 7.64204 16.1028 5.90651 18.3368L2.62829 21.8739C2.62829 21.8739 1.47127 22.8048 3.2068 24.1079L5.13517 25.2249C5.13517 25.2249 4.55666 26.7143 5.52084 28.2036C5.52084 28.2036 4.12303 29.0882 5.71367 30.6238C7.66704 32.5096 5.13516 36.5811 9.37757 37.3258C13.62 38.0705 21.3334 36.395 25.1866 30.9961'
         stroke='#404040'

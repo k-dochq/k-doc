@@ -1,6 +1,20 @@
-export function StemCellIcon() {
+interface StemCellIconProps {
+  variant?: 'default' | 'small';
+}
+
+export function StemCellIcon({ variant = 'default' }: StemCellIconProps) {
+  const scale = variant === 'small' ? 0.87 : 1;
+  const width = 41 * scale;
+  const height = 41 * scale;
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='41' height='41' viewBox='0 0 41 41' fill='none'>
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={width}
+      height={height}
+      viewBox='0 0 41 41'
+      fill='none'
+    >
       <path
         d='M17.0665 20.03L10.5298 26.7303'
         stroke='#DA47EF'

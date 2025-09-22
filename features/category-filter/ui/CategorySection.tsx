@@ -34,7 +34,7 @@ export function CategorySection({
   const categoryButtons: CategoryButtonData[] = CATEGORIES.map((category) => ({
     type: category.type,
     labels: category.labels,
-    icon: category.icon,
+    icon: category.iconSmall,
   })).sort((a, b) => {
     // 'all' 타입을 첫 번째로 정렬
     if (a.type === 'all') return -1;
