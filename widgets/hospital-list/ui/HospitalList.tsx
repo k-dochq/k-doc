@@ -91,7 +91,7 @@ export function HospitalList({ medicalSpecialties, lang, dict, initialData }: Ho
         </div>
       </div>
 
-      <div className='mb-4 px-5'>
+      <div className='mb-4'>
         <CategoryFilterTabs
           lang={lang}
           dict={dict}
