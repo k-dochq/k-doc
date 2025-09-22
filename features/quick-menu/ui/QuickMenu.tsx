@@ -7,7 +7,7 @@ import { QuickMenuButton } from './QuickMenuButton';
 export function QuickMenu({ lang }: QuickMenuProps) {
   return (
     <div className='w-full'>
-      <div className='grid grid-cols-5 items-start justify-items-center gap-3'>
+      <div className='grid grid-cols-5 items-start justify-items-center gap-1'>
         {CATEGORIES.map((category) => (
           <QuickMenuButton key={category.id} category={category} lang={lang} />
         ))}
