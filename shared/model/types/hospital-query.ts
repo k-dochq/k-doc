@@ -21,6 +21,7 @@ export type SortOrderOption = (typeof SORT_ORDER_OPTIONS)[keyof typeof SORT_ORDE
 export const DB_SORT_FIELDS = {
   RATING: 'rating',
   VIEW_COUNT: 'viewCount',
+  LIKE_COUNT: 'likeCount',
   CREATED_AT: 'createdAt',
 } as const;
 
@@ -29,7 +30,7 @@ export type DbSortField = (typeof DB_SORT_FIELDS)[keyof typeof DB_SORT_FIELDS];
 // 프론트엔드 정렬 옵션을 데이터베이스 필드로 매핑하는 타입
 export const SORT_OPTION_TO_DB_FIELD_MAP: Record<HospitalSortOption, DbSortField> = {
   [HOSPITAL_SORT_OPTIONS.POPULAR]: DB_SORT_FIELDS.RATING,
-  [HOSPITAL_SORT_OPTIONS.RECOMMENDED]: DB_SORT_FIELDS.VIEW_COUNT,
+  [HOSPITAL_SORT_OPTIONS.RECOMMENDED]: DB_SORT_FIELDS.LIKE_COUNT,
   [HOSPITAL_SORT_OPTIONS.NEWEST]: DB_SORT_FIELDS.CREATED_AT,
 } as const;
 

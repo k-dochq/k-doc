@@ -76,12 +76,21 @@ export async function getHospitals(
     const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [];
 
     if (sortBy === 'rating') {
-      // 평점순
+      // 인기순 (평점 기준)
       orderBy.push({ rating: sortOrder });
       orderBy.push({ reviewCount: 'desc' }); // 동일 평점일 때 리뷰 수 많은 순
       orderBy.push({ createdAt: 'desc' }); // 최종적으로 최신순
+    } else if (sortBy === 'likeCount') {
+      // 추천순 (좋아요 수 기준)
+      orderBy.push({
+        HospitalLike: {
+          _count: sortOrder,
+        },
+      });
+      orderBy.push({ rating: 'desc' }); // 동일 좋아요 수일 때 평점 높은 순
+      orderBy.push({ createdAt: 'desc' }); // 최종적으로 최신순
     } else if (sortBy === 'viewCount') {
-      // 인기순 (조회수 기준)
+      // 조회순 (조회수 기준)
       orderBy.push({ viewCount: sortOrder });
       orderBy.push({ createdAt: 'desc' }); // 동일 조회수일 때 최신순
     } else if (sortBy === 'createdAt') {
