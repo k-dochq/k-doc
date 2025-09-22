@@ -42,9 +42,19 @@ export function CategorySection({
     return 0;
   });
 
-  // 활성 카테고리가 변경될 때마다 해당 버튼으로 스크롤
+  // 활성 카테고리가 변경될 때마다 해당 버튼으로 스크롤 (뒤로가기 제외)
   useEffect(() => {
     if (!api || isLoading || error) return;
+
+    // 뒤로가기를 통해 페이지에 왔을 경우 자동 스크롤 건너뛰기
+    if (typeof window !== 'undefined') {
+      const navigationType = window.performance?.getEntriesByType(
+        'navigation',
+      )[0] as PerformanceNavigationTiming;
+      if (navigationType?.type === 'back_forward') {
+        return;
+      }
+    }
 
     const activeIndex = categoryButtons.findIndex((categoryButton) => {
       return categoryButton.type === 'all'
@@ -52,19 +62,8 @@ export function CategorySection({
         : currentCategory === categoryButton.type;
     });
 
-    if (activeIndex !== -1) {
-      // slideNodes를 사용하여 활성 카테고리 버튼을 중앙으로 스크롤
-      const slideNodes = api.slideNodes();
-      const activeSlide = slideNodes[activeIndex];
-
-      if (activeSlide) {
-        // 활성 슬라이드를 중앙으로 스크롤
-        activeSlide.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-          inline: 'center',
-        });
-      }
+    if (activeIndex !== -1 && activeIndex >= 5) {
+      api.scrollTo(activeIndex);
     }
   }, [api, currentCategory, categoryButtons, isLoading, error]);
 
