@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
 import { GlobalModal } from 'shared/ui/global-modal';
+import { GradientBackground } from 'shared/ui/gradient-background/GradientBackground';
 
 const pretendard = localFont({
   src: '../../fonts/pretendard/PretendardVariable.woff2',
@@ -97,9 +98,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
       <body className={currentFont.className}>
         <QueryProvider>
           <MaxWidthLayout>
-            <div className='min-h-screen [background:linear-gradient(180deg,#FFDBF9_0.19%,#BD9AFF_99.82%)_top/100%_100vh_no-repeat,_#BD9AFF] supports-[height:100dvh]:[background:linear-gradient(180deg,#FFDBF9_0.19%,#BD9AFF_99.82%)_top/100%_100dvh_no-repeat,_#BD9AFF]'>
-              {children}
-            </div>
+            <GradientBackground>{children}</GradientBackground>
           </MaxWidthLayout>
           <GlobalModal />
         </QueryProvider>

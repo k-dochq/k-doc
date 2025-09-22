@@ -23,3 +23,4 @@ export * from './dialog';
 export * from './global-modal';
 export * from './login-required-modal';
 export * from './close-icon';
+export * from './gradient-background';
