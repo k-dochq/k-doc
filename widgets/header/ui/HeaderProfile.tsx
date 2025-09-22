@@ -32,7 +32,7 @@ export function HeaderProfile({ lang, dict }: HeaderProfileProps) {
     <LocaleLink
       href='/my'
       onClick={handleClick}
-      className='hover:bg-primary-light rounded-lg p-2 text-gray-700 transition-colors hover:text-gray-900'
+      className='hover:bg-primary-light rounded-lg p-2 text-neutral-900 transition-colors hover:text-neutral-900'
       aria-label='프로필'
     >
       <svg

@@ -56,7 +56,7 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className='hover:bg-primary-light hover:text-primary rounded-lg p-2 text-gray-700 transition-colors'
+          className='hover:bg-primary-light hover:text-primary rounded-lg p-2 text-neutral-900 transition-colors'
           aria-label='언어 선택'
           type='button'
         >
@@ -86,7 +86,7 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
               'cursor-pointer px-4 py-2 text-sm transition-colors',
               currentLang === localeKey
                 ? 'bg-primary/10 text-primary font-semibold'
-                : 'hover:bg-primary/5 hover:text-primary text-gray-700',
+                : 'hover:bg-primary/5 hover:text-primary text-neutral-900',
             ].join(' ')}
             onClick={() => handleLanguageChange(localeKey as Locale)}
           >

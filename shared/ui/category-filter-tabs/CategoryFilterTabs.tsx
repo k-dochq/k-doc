@@ -71,7 +71,7 @@ export function CategoryFilterTabs({
               <CarouselItem key={category.id} className='basis-auto pl-2'>
                 <button
                   onClick={() => onCategoryChange(category.id)}
-                  className={`flex min-w-[43px] shrink-0 items-center justify-center rounded-full px-3 py-2 text-xs font-medium whitespace-nowrap transition-colors ${
+                  className={`flex min-w-[43px] shrink-0 items-center justify-center rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
                     isSelected
                       ? 'bg-primary hover:bg-primary/80 text-white'
                       : 'border border-neutral-200 bg-white text-black hover:bg-neutral-100'
