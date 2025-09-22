@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -30,14 +30,6 @@ export function CategorySection({
   const [api, setApi] = useState<CarouselApi>();
   const pathname = usePathname();
 
-  if (isLoading) {
-    return <CategorySectionSkeleton />;
-  }
-
-  if (error) {
-    return <CategorySectionError lang={lang} dict={dict} error={error} onRetry={onRetry} />;
-  }
-
   // 퀵메뉴 카테고리 데이터를 CategoryButtonData 형태로 변환하고 '전체'를 첫 번째로 정렬
   const categoryButtons: CategoryButtonData[] = CATEGORIES.map((category) => ({
     type: category.type,
@@ -49,6 +41,30 @@ export function CategorySection({
     if (b.type === 'all') return 1;
     return 0;
   });
+
+  // 활성 카테고리가 변경될 때마다 해당 버튼으로 스크롤
+  useEffect(() => {
+    if (!api || isLoading || error) return;
+
+    const activeIndex = categoryButtons.findIndex((categoryButton) => {
+      return categoryButton.type === 'all'
+        ? !currentCategory
+        : currentCategory === categoryButton.type;
+    });
+
+    if (activeIndex !== -1) {
+      // 활성 카테고리 버튼을 중앙으로 스크롤
+      api.scrollTo(activeIndex);
+    }
+  }, [api, currentCategory, categoryButtons, isLoading, error]);
+
+  if (isLoading) {
+    return <CategorySectionSkeleton />;
+  }
+
+  if (error) {
+    return <CategorySectionError lang={lang} dict={dict} error={error} onRetry={onRetry} />;
+  }
 
   return (
     <div className='w-full px-5 py-4'>
