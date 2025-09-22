@@ -26,7 +26,7 @@ export function PageHeader({
 
   return (
     <div
-      className={`sticky top-0 z-50 flex w-full items-center justify-between ${bgClassName || ''} py-4 pr-5 pl-1 ${className}`}
+      className={`sticky top-0 z-50 flex w-full items-center justify-between ${bgClassName || ''} h-[58px] pr-5 pl-1 ${className}`}
       style={
         bgClassName
           ? { background: bgClassName }
