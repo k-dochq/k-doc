@@ -41,7 +41,6 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
         id: {
           in: paginatedHospitalIds,
         },
-        approvalStatusType: 'APPROVED',
       },
       select: {
         id: true,

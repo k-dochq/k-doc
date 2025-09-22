@@ -79,7 +79,6 @@ export async function getHospitalDetail(
     const hospitalData = await prisma.hospital.findUnique({
       where: {
         id,
-        approvalStatusType: 'APPROVED', // 승인된 병원만 조회
       },
       select: {
         id: true,
@@ -160,9 +159,7 @@ export async function getHospitalDetail(
 export async function getAllHospitalIds(): Promise<string[]> {
   try {
     const hospitals = await prisma.hospital.findMany({
-      where: {
-        approvalStatusType: 'APPROVED',
-      },
+      where: {},
       select: {
         id: true,
       },
