@@ -6,7 +6,6 @@ import { type ReviewImagesData } from 'entities/review/model/image-navigation';
 
 interface UseReviewImagesCarouselProps {
   imagesData: ReviewImagesData;
-  initialIndex?: number;
 }
 
 interface UseReviewImagesCarouselReturn {
@@ -24,25 +23,12 @@ interface UseReviewImagesCarouselReturn {
  */
 export function useReviewImagesCarousel({
   imagesData,
-  initialIndex = 0,
 }: UseReviewImagesCarouselProps): UseReviewImagesCarouselReturn {
   const [api, setApi] = useState<CarouselApi>();
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // 현재 이미지 ID 계산
   const currentImageId = imagesData.allImages[currentIndex]?.id || null;
-
-  // 초기 인덱스 설정
-  useEffect(() => {
-    if (!api) return;
-
-    // 유효한 인덱스 범위 확인
-    const validIndex = Math.max(0, Math.min(initialIndex, imagesData.allImages.length - 1));
-
-    // 초기 위치로 스크롤 (애니메이션 없이)
-    api.scrollTo(validIndex, false);
-    setCurrentIndex(validIndex);
-  }, [api, initialIndex, imagesData.allImages.length]);
 
   // carousel 선택 이벤트 처리
   useEffect(() => {
