@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { HotLabel } from 'shared/ui/hot-label';
 
 interface HospitalThumbnailProps {
@@ -25,24 +26,30 @@ export function HospitalThumbnail({
       {/* 이미지 컨테이너 - overflow-hidden 적용 */}
       <div className='relative h-full w-full overflow-hidden rounded-l-lg'>
         {/* 기본 썸네일 배경 (blur 효과) - 이미지 로딩 전에만 표시 */}
-        <img
+        <Image
           src='/images/shared/default_thumbnail.jpg'
           alt=''
-          className='absolute inset-0 h-full w-full rounded-l-xl object-cover blur-lg'
+          fill
+          sizes='132px'
+          className='absolute inset-0 rounded-l-xl object-cover blur-lg'
         />
 
         {/* 실제 이미지 또는 디폴트 이미지 오버레이 */}
         {shouldShowDefaultImage ? (
-          <img
+          <Image
             src='/images/shared/default_image_square.png'
             alt={alt}
-            className='relative z-10 h-full w-full rounded-l-xl object-cover'
+            fill
+            sizes='132px'
+            className='relative z-10 rounded-l-xl object-cover'
           />
         ) : (
-          <img
+          <Image
             src={imageUrl}
             alt={alt}
-            className='relative z-10 h-full w-full rounded-l-xl object-cover'
+            fill
+            sizes='132px'
+            className='relative z-10 rounded-l-xl object-cover'
             onError={handleImageError}
           />
         )}
