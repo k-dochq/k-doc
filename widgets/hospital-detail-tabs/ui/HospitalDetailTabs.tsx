@@ -72,7 +72,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
         >
           {/* 병원소개 탭 */}
           <CarouselItem className='basis-full pl-0'>
-            <div className='px-5 py-4'>
+            <div className='max-h-[80vh] overflow-y-auto px-5 py-4'>
               <HospitalDetailIntroductionTab
                 hospital={hospital}
                 hospitalId={hospitalId}
@@ -84,7 +84,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
 
           {/* 시술상세 탭 */}
           <CarouselItem className='basis-full pl-0'>
-            <div className='px-5 py-4'>
+            <div className='max-h-[80vh] overflow-y-auto px-5 py-4'>
               <HospitalDetailProceduresTab
                 hospital={hospital}
                 hospitalId={hospitalId}
