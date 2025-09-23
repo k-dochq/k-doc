@@ -571,5 +571,9 @@
       "hoursAgo": " ชั่วโมงที่แล้ว",
       "daysAgo": " วันที่แล้ว"
     }
+  },
+  "doctor": {
+    "careerAndActivity": "ประวัติและกิจกรรม",
+    "noCareerInfo": "ไม่มีข้อมูลประวัติ"
   }
 }

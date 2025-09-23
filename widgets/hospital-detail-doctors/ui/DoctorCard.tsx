@@ -8,12 +8,13 @@ import { LocaleLink } from 'shared/ui/locale-link';
 interface DoctorCardProps {
   doctor: HospitalDoctor;
   lang: Locale;
+  variant?: 'light' | 'dark';
 }
 
 /**
  * 개별 의료진 카드 컴포넌트
  */
-export function DoctorCard({ doctor, lang }: DoctorCardProps) {
+export function DoctorCard({ doctor, lang, variant = 'light' }: DoctorCardProps) {
   const doctorName = extractLocalizedText(doctor.name, lang) || '이름 없음';
   const position = extractLocalizedText(doctor.position, lang) || '';
   const hospitalName = extractLocalizedText(doctor.hospital.name, lang) || '';
@@ -24,7 +25,7 @@ export function DoctorCard({ doctor, lang }: DoctorCardProps) {
 
   return (
     <LocaleLink href={`/doctor/${doctor.id}`} className='block'>
-      <div className='flex h-full items-center gap-3 rounded-lg transition-opacity hover:opacity-80'>
+      <div className='flex h-full items-center gap-3 rounded-lg transition-opacity'>
         {/* 프로필 이미지 */}
         <div className='relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-xl'>
           <Image
@@ -40,14 +41,24 @@ export function DoctorCard({ doctor, lang }: DoctorCardProps) {
         <div className='mb-auto flex h-full w-full flex-col'>
           {/* 이름과 직책 */}
           <div className='flex items-center'>
-            <h3 className='truncate text-base font-semibold text-white'>
+            <h3
+              className={`truncate text-base font-semibold ${
+                variant === 'dark' ? 'text-neutral-900' : 'text-white'
+              }`}
+            >
               {doctorName} {position}
             </h3>
           </div>
 
           {/* 병원명 */}
           {hospitalName && (
-            <p className='mt-0.5 truncate text-xs font-medium text-white/80'>{hospitalName}</p>
+            <p
+              className={`mt-0.5 truncate text-xs font-medium ${
+                variant === 'dark' ? 'text-neutral-600' : 'text-white/80'
+              }`}
+            >
+              {hospitalName}
+            </p>
           )}
 
           {/* 진료부위 태그 */}
