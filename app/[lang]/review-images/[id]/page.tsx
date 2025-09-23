@@ -7,16 +7,11 @@ interface PageProps {
     lang: Locale;
     id: string;
   }>;
-  searchParams: Promise<{
-    type?: string;
-    index?: string;
-  }>;
 }
 
-export default async function ReviewImagesPage({ params, searchParams }: PageProps) {
+export default async function ReviewImagesPage({ params }: PageProps) {
   const { lang, id } = await params;
-  const { index } = await searchParams;
   const dict = await getDictionary(lang);
 
-  return <ReviewImagesContent reviewId={id} lang={lang} initialIndex={index} dict={dict} />;
+  return <ReviewImagesContent reviewId={id} lang={lang} dict={dict} />;
 }

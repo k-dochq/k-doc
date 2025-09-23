@@ -18,16 +18,10 @@ import {
 interface ReviewImagesContentProps {
   reviewId: string;
   lang: Locale;
-  initialIndex?: string;
   dict: Dictionary;
 }
 
-export function ReviewImagesContent({
-  reviewId,
-  lang,
-  initialIndex,
-  dict,
-}: ReviewImagesContentProps) {
+export function ReviewImagesContent({ reviewId, lang, dict }: ReviewImagesContentProps) {
   // 리뷰 데이터 조회
   const { data: reviewData, isLoading, error } = useReviewDetail({ reviewId });
 
@@ -43,17 +37,9 @@ export function ReviewImagesContent({
     );
   }, [reviewData]);
 
-  // 초기 인덱스 파싱
-  const parsedInitialIndex = useMemo(() => {
-    if (!initialIndex) return 0;
-    const index = parseInt(initialIndex, 10);
-    return isNaN(index) ? 0 : index;
-  }, [initialIndex]);
-
   // carousel 컨트롤러
   const carousel = useReviewImagesCarousel({
     imagesData: imagesData || { allImages: [], beforeImages: [], afterImages: [] },
-    initialIndex: parsedInitialIndex,
   });
 
   // 헤더 텍스트 생성
