@@ -62,6 +62,7 @@ model Doctor {
   hospitalId             String                   @db.Uuid
   createdAt              DateTime                 @default(now())
   updatedAt              DateTime
+  career                 Json?
   Hospital               Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   DoctorImage            DoctorImage[]
   DoctorMedicalSpecialty DoctorMedicalSpecialty[]
@@ -556,6 +557,7 @@ enum SenderType {
 
 enum DoctorImageType {
   PROFILE
+  CAREER
 
   @@schema("public")
 }
