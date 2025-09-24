@@ -537,7 +537,7 @@
     },
     "customerService": {
       "title": "고객센터",
-      "chat": "채팅",
+      "email": "이메일",
       "phone": "전화",
       "phoneNumber": "1588-4591"
     },

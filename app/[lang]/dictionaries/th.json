@@ -538,7 +538,7 @@
     },
     "customerService": {
       "title": "บริการลูกค้า",
-      "chat": "แชท",
+      "email": "อีเมล",
       "phone": "โทรศัพท์",
       "phoneNumber": "1588-4591"
     },
