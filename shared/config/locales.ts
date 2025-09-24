@@ -2,8 +2,8 @@ export const SUPPORTED_LOCALES = ['en', 'ko', 'th'] as const;
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
-// 정적 생성용 언어 (ko, th만)
-export const STATIC_GENERATION_LOCALES = ['ko', 'th'] as const;
+// 정적 생성용 언어
+export const STATIC_GENERATION_LOCALES = ['ko'] as const;
 
 export type StaticGenerationLocale = (typeof STATIC_GENERATION_LOCALES)[number];
 

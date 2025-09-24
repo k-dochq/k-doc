@@ -60,8 +60,8 @@ export function HospitalCard({
             />
           </div>
 
-          {/* 좋아요 버튼 - 로그인한 사용자에게만 표시 */}
-          {showLikeButton && user && hospital.likeCount !== undefined && (
+          {/* 좋아요 버튼 - 항상 표시 */}
+          {showLikeButton && hospital.likeCount !== undefined && (
             <div
               className='mt-auto flex shrink-0'
               onClick={(e) => {
