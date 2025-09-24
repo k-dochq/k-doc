@@ -10,6 +10,12 @@
   --press-alpha: 0.1; /* 눌림 불투명도 */
   --press-scale: 0.98; /* 살짝 줄어드는 압력감(선택) */
   --press-duration: 180ms;
+
+  /* Safe Area 변수 - fallback 값 포함 */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
 }
 
 @layer base {

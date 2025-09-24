@@ -25,9 +25,21 @@ export function ImageModalCarousel({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
-        className={`${MAX_MOBILE_WIDTH_CLASS} bg-gradient-primary min-h-screen rounded-none border-none p-0 shadow-none`}
+        className={`${MAX_MOBILE_WIDTH_CLASS} bg-gradient-primary rounded-none border-none p-0 shadow-none`}
+        style={{
+          minHeight: '100dvh', // 동적 뷰포트 높이 지원
+          height: '100dvh',
+        }}
       >
-        <div className=''>
+        <div
+          className='flex h-full flex-col'
+          style={{
+            paddingTop: 'var(--safe-area-inset-top)',
+            paddingBottom: 'var(--safe-area-inset-bottom)',
+            paddingLeft: 'var(--safe-area-inset-left)',
+            paddingRight: 'var(--safe-area-inset-right)',
+          }}
+        >
           {/* 헤더 */}
           <ImageModalHeader
             currentIndex={currentIndex}
@@ -37,11 +49,13 @@ export function ImageModalCarousel({
           />
 
           {/* 캐러셀 컨텐츠 */}
-          <ImageModalCarouselContent
-            images={images}
-            initialIndex={initialIndex}
-            onIndexChange={handleIndexChange}
-          />
+          <div className='flex-1 overflow-hidden'>
+            <ImageModalCarouselContent
+              images={images}
+              initialIndex={initialIndex}
+              onIndexChange={handleIndexChange}
+            />
+          </div>
         </div>
       </DialogContent>
     </Dialog>

@@ -16,7 +16,14 @@ export function ImageModalHeader({
   onClose,
 }: ImageModalHeaderProps) {
   return (
-    <div className='flex items-center justify-between bg-[#FEDBF9B2] py-4 pr-5 pl-2'>
+    <div
+      className='flex items-center justify-between bg-[#FEDBF9B2] pr-5 pl-2'
+      style={{
+        paddingTop: 'max(1rem, var(--safe-area-inset-top))',
+        paddingBottom: '1rem',
+        minHeight: 'calc(3.5rem + var(--safe-area-inset-top))', // 기본 높이 + Safe Area
+      }}
+    >
       {/* 왼쪽 X 버튼 */}
       <button onClick={onClose} className='rounded-full p-2 hover:bg-white/10' aria-label='닫기'>
         <CloseIcon className='h-6 w-6 text-neutral-500' color='#737373' />
