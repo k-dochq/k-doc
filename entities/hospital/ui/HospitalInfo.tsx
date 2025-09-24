@@ -1,7 +1,14 @@
-import { type LocalizedText, type PriceInfo, getLocalizedTextByLocale } from 'shared/model/types';
+import {
+  type LocalizedText,
+  type PriceInfo,
+  getLocalizedTextByLocale,
+  type MedicalSpecialty,
+} from 'shared/model/types';
 import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
 import { StarIcon } from 'shared/ui/star-icon';
+import { MedicalSpecialtyTags } from 'shared/ui/medical-specialty-tags';
+import { HeartIcon } from 'shared/ui/icons/HeartIcon';
 
 interface HospitalInfoProps {
   name: LocalizedText;
@@ -10,6 +17,8 @@ interface HospitalInfoProps {
   rating: number;
   reviewCount: number;
   discountRate: number | null;
+  medicalSpecialties?: MedicalSpecialty[];
+  likeCount?: number;
   dict: Dictionary;
   lang: Locale;
 }
@@ -21,6 +30,8 @@ export function HospitalInfo({
   rating,
   reviewCount,
   discountRate,
+  medicalSpecialties,
+  likeCount,
   dict,
   lang,
 }: HospitalInfoProps) {
@@ -35,7 +46,7 @@ export function HospitalInfo({
 
       {/* 병원명 */}
       <div className='min-w-0'>
-        <h3 className='truncate text-base font-semibold text-neutral-900'>
+        <h3 className='truncate text-sm font-semibold text-neutral-900'>
           {getLocalizedTextByLocale(name, lang)}
         </h3>
       </div>
@@ -54,12 +65,32 @@ export function HospitalInfo({
         </div>
       )}
 
+      {/* 시술부위 태그 */}
+      {medicalSpecialties && medicalSpecialties.length > 0 && (
+        <MedicalSpecialtyTags
+          specialties={medicalSpecialties}
+          lang={lang}
+          maxDisplay={3}
+          className='mt-1'
+        />
+      )}
+
       {/* 평점 정보 */}
-      <div className='flex min-w-0 gap-0.5'>
-        <StarIcon />
-        <span className='min-w-0 truncate text-xs font-medium text-neutral-900'>
-          {rating.toFixed(1)} <span className='text-neutral-400'>({reviewCount})</span>
-        </span>
+      <div className='mt-1 flex min-w-0 items-center gap-1'>
+        <div className='flex min-w-0 gap-0.5'>
+          <StarIcon width={16} height={16} />
+          <span className='min-w-0 truncate text-xs font-medium text-neutral-900'>
+            {rating.toFixed(1)} <span className='text-neutral-400'>({reviewCount})</span>
+          </span>
+        </div>
+
+        {/* 좋아요 정보 */}
+        {likeCount !== undefined && likeCount > 0 && (
+          <div className='flex items-center gap-0.5'>
+            <HeartIcon width={16} height={16} />
+            <span className='text-xs font-medium text-neutral-900'>{likeCount}</span>
+          </div>
+        )}
       </div>
     </div>
   );

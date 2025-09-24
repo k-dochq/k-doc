@@ -50,6 +50,10 @@
     "pagination": {
       "page": "페이지 {{current}} / {{total}}"
     },
+    "infiniteScroll": {
+      "loading": "더 많은 병원을 불러오는 중...",
+      "end": "모든 병원을 불러왔습니다."
+    },
     "doctors": {
       "title": "소속의료진",
       "specialties": "시술부위",

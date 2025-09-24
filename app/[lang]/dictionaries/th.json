@@ -50,6 +50,10 @@
     "pagination": {
       "page": "หน้า {{current}} / {{total}}"
     },
+    "infiniteScroll": {
+      "loading": "กำลังโหลดโรงพยาบาลเพิ่มเติม...",
+      "end": "โหลดโรงพยาบาลทั้งหมดแล้ว"
+    },
     "doctors": {
       "title": "บุคลากรทางการแพทย์",
       "specialties": "ความเชี่ยวชาญ",

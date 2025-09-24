@@ -4,7 +4,10 @@ import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
-import { HospitalListCard } from 'entities/hospital';
+import { HospitalCard } from 'entities/hospital/ui/HospitalCard';
+import { LocaleLink } from 'shared/ui/locale-link';
+import { type HospitalCardData } from 'shared/model/types';
+import { convertHospitalsToCardData } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
 import { ErrorState } from 'shared/ui/error-state';
@@ -81,24 +84,27 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
     );
   }
 
-  // 데이터 플래튼
+  // 데이터 플래튼 및 타입 변환
   const allHospitals = data?.pages.flatMap((page) => page.hospitals) || [];
+  const convertedHospitals = convertHospitalsToCardData(allHospitals);
 
   return (
     <div>
       {/* 병원 리스트 */}
-      {allHospitals.length > 0 ? (
-        <div className=''>
-          {allHospitals.map((hospital) => (
-            <HospitalListCard
-              key={hospital.id}
-              hospital={hospital}
-              lang={lang}
-              dict={dict}
-              user={user}
-              onToggleLike={handleToggleLike}
-              isLikeLoading={loadingHospitalId === hospital.id}
-            />
+      {convertedHospitals.length > 0 ? (
+        <div className='space-y-6 p-5'>
+          {convertedHospitals.map((hospital) => (
+            <LocaleLink key={hospital.id} href={`/hospital/${hospital.id}`} className='block'>
+              <HospitalCard
+                hospital={hospital}
+                dict={dict}
+                lang={lang}
+                user={user}
+                onToggleLike={handleToggleLike}
+                isLikeLoading={loadingHospitalId === hospital.id}
+                showLikeButton={true}
+              />
+            </LocaleLink>
           ))}
 
           {/* 무한 스크롤 트리거 */}
@@ -106,8 +112,8 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
             onIntersect={fetchNextPage}
             hasNextPage={hasNextPage}
             isFetchingNextPage={isFetchingNextPage}
-            loadingText='더 많은 병원을 불러오는 중...'
-            endText='모든 병원을 불러왔습니다.'
+            loadingText={dict.hospitals.infiniteScroll.loading}
+            endText={dict.hospitals.infiniteScroll.end}
           />
         </div>
       ) : (
