@@ -28,8 +28,8 @@ export function PopularReviewsList({
       loop={true}
       autoPlay={true}
       autoPlayInterval={4000}
-      align='center'
-      // showProgressBar={true}
+      align='start'
+      showProgressBar={true}
     />
   );
 }

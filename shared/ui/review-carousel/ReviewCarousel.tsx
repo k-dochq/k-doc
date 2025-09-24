@@ -26,7 +26,7 @@ interface ReviewCarouselProps {
   loop?: boolean;
   autoPlay?: boolean;
   autoPlayInterval?: number; // milliseconds
-  align?: 'start' | 'center' | 'end';
+  align?: 'start';
   basis?: string; // Tailwind basis class (e.g., 'basis-[280px]')
   emptyMessage?: string;
   noBorder?: boolean;
@@ -99,7 +99,7 @@ export function ReviewCarousel({
         }}
         className='w-full'
       >
-        <CarouselContent className='-ml-2 md:-ml-4'>
+        <CarouselContent className='ml-1'>
           {items.map((item) => (
             <CarouselItem key={item.id} className={`${basis} ${itemClassName}`}>
               <PopularReviewCard review={item} lang={lang} dict={dict} noBorder={noBorder} />
