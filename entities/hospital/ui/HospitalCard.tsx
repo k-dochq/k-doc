@@ -37,7 +37,7 @@ export function HospitalCard({
 
   return (
     <div
-      className='flex min-w-0 gap-3 rounded-xl border border-white shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'
+      className='relative z-10 flex min-w-0 gap-3 rounded-xl border border-white shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'
       style={{
         background: 'rgba(255, 255, 255, 0.50)',
       }}
