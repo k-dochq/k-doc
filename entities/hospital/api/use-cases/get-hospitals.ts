@@ -8,6 +8,8 @@ import {
 } from '../entities/types';
 import { DEFAULT_HOSPITAL_QUERY_PARAMS, type DbSortField } from 'shared/model/types/hospital-query';
 import { getHospitalMainImageUrl } from '../../lib/image-utils';
+import { type HospitalCardData, parseLocalizedText, parsePriceInfo } from 'shared/model/types';
+import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
 
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
@@ -270,33 +272,26 @@ export async function getHospitals(
       take: limit,
     });
 
-    // 데이터 변환
-    const transformedHospitals: Hospital[] = hospitals.map((hospital) => {
+    // 데이터 변환 - HospitalCardData 타입으로 변환
+    const transformedHospitals: HospitalCardData[] = hospitals.map((hospital) => {
       const likedUserIds = hospital.HospitalLike.map((like) => like.userId);
 
       return {
         id: hospital.id,
-        name: hospital.name,
-        address: hospital.address,
+        name: parseLocalizedText(hospital.name),
+        address: parseLocalizedText(hospital.address),
+        prices: parsePriceInfo(hospital.prices),
         rating: hospital.rating,
         reviewCount: hospital._count.Review, // 실제 리뷰 개수 사용
-        bookmarkCount: hospital.bookmarkCount,
-        viewCount: hospital.viewCount,
-        likeCount: hospital._count.HospitalLike,
-        likedUserIds, // 좋아요를 한 사용자 ID들
-        isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
-        approvalStatusType: hospital.approvalStatusType,
-        ranking: hospital.ranking,
-        createdAt: hospital.createdAt,
-        updatedAt: hospital.updatedAt,
-        mainImageUrl: getHospitalMainImageUrl(hospital.HospitalImage),
+        thumbnailImageUrl: getHospitalThumbnailImageUrl(hospital.HospitalImage),
+        discountRate: hospital.discountRate,
         medicalSpecialties:
           hospital.HospitalMedicalSpecialty?.map((hms) => ({
             id: hms.MedicalSpecialty.id,
-            name: hms.MedicalSpecialty.name,
+            name: parseLocalizedText(hms.MedicalSpecialty.name),
             specialtyType: hms.MedicalSpecialty.specialtyType,
           })) || [],
-        displayLocationName: hospital.displayLocationName,
+        displayLocationName: parseLocalizedText(hospital.displayLocationName || '{}'),
         district: hospital.District
           ? {
               id: hospital.District.id,
@@ -308,6 +303,20 @@ export async function getHospitals(
               parentId: hospital.District.parentId,
             }
           : null,
+        // 좋아요 관련 필드 추가
+        likeCount: hospital._count.HospitalLike,
+        likedUserIds,
+        isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
+        // Hospital 타입과의 호환성을 위한 추가 필드들
+        bookmarkCount: hospital.bookmarkCount,
+        viewCount: hospital.viewCount,
+        approvalStatusType: hospital.approvalStatusType,
+        ranking: hospital.ranking,
+        createdAt: hospital.createdAt,
+        updatedAt: hospital.updatedAt,
+        mainImageUrl: getHospitalMainImageUrl(hospital.HospitalImage),
+        latitude: hospital.latitude,
+        longitude: hospital.longitude,
       };
     });
 
@@ -315,7 +324,7 @@ export async function getHospitals(
     const hasNextPage = page < totalPages;
 
     return {
-      hospitals: transformedHospitals,
+      hospitals: transformedHospitals as unknown as Hospital[], // 타입 호환성을 위해 안전한 캐스팅
       totalCount,
       currentPage: page,
       totalPages,

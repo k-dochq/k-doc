@@ -50,6 +50,10 @@
     "pagination": {
       "page": "Page {{current}} / {{total}}"
     },
+    "infiniteScroll": {
+      "loading": "Loading more hospitals...",
+      "end": "All hospitals loaded."
+    },
     "doctors": {
       "title": "Medical Staff",
       "specialties": "Specialties",

@@ -44,6 +44,16 @@ export interface HospitalCardData {
   likeCount?: number;
   isLiked?: boolean;
   likedUserIds?: string[];
+  // Hospital 타입과의 호환성을 위한 추가 필드들
+  bookmarkCount?: number;
+  viewCount?: number;
+  approvalStatusType?: 'PENDING' | 'APPROVED' | 'REJECTED';
+  ranking?: number | null;
+  createdAt?: Date;
+  updatedAt?: Date;
+  mainImageUrl?: string | null;
+  latitude?: number | null;
+  longitude?: number | null;
 }
 
 export interface MedicalSpecialty {
