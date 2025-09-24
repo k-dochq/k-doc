@@ -7,7 +7,7 @@ interface DoctorDetailSkeletonProps {
   dict: Dictionary;
 }
 
-export function DoctorDetailSkeleton({ lang, dict }: DoctorDetailSkeletonProps) {
+export function DoctorDetailSkeleton({ lang, dict: _dict }: DoctorDetailSkeletonProps) {
   return (
     <div>
       <PageHeader lang={lang} title='' variant='light' />

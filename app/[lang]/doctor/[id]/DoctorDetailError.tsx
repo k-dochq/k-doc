@@ -8,7 +8,7 @@ interface DoctorDetailErrorProps {
   error?: Error;
 }
 
-export function DoctorDetailError({ lang, dict, error }: DoctorDetailErrorProps) {
+export function DoctorDetailError({ lang, dict: _dict, error }: DoctorDetailErrorProps) {
   return (
     <div>
       <PageHeader lang={lang} title='' variant='light' />

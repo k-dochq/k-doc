@@ -575,6 +575,8 @@
   "doctor": {
     "careerAndActivity": "경력 및 활동",
     "noCareerInfo": "경력 정보가 없습니다.",
-    "affiliatedHospital": "소속병원"
+    "affiliatedHospital": "소속병원",
+    "reviews": "시술후기",
+    "viewAllReviews": "전체보기"
   }
 }

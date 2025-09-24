@@ -11,9 +11,11 @@ import { DoctorDetailNotFound } from './DoctorDetailNotFound';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { DoctorCard } from '@/widgets/hospital-detail-doctors/ui/DoctorCard';
 import { transformDoctorDetailToHospitalDoctor } from '@/lib/utils/doctor-transform';
-import { DoctorCareerImagesCarousel } from '@/features/doctor-career-images';
+import { DoctorCareer } from '@/features/doctor-career';
 import { HospitalCard } from '@/entities/hospital/ui/HospitalCard';
 import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospital-transform';
+import { transformDoctorReviewsToReviewCardData } from '@/lib/utils/doctor-reviews-transform';
+import { DoctorHospitalReviews } from '@/features/doctor-hospital-reviews';
 
 interface DoctorDetailContentProps {
   doctorId: string;
@@ -55,6 +57,9 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
   // HospitalCard에 맞는 데이터 구조로 변환
   const hospitalCardData = transformDoctorHospitalToHospitalCard(doctor);
 
+  // ReviewCardData에 맞는 데이터 구조로 변환
+  const reviewCardData = transformDoctorReviewsToReviewCardData(doctor);
+
   // 경력 이미지 추출 (CAREER 타입만)
   const careerImages = doctor.doctorImages
     .filter((image) => image.imageType === 'CAREER')
@@ -67,32 +72,14 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
         <div className='px-5'>
           <div className='rounded-xl border border-white bg-white/50 p-3 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
             <DoctorCard doctor={hospitalDoctorData} lang={lang} variant='dark' />
-            {/* 경력 데이터가 있을 때만 섹션 렌더링 */}
-            {doctorCareer && (
-              <div className='mt-4'>
-                {/* 경력 및 활동 제목 */}
-                <h3 className='text-primary text-sm font-semibold'>
-                  {dict.doctor.careerAndActivity}
-                </h3>
 
-                {/* 경력 데이터 */}
-                <div className='mt-1'>
-                  <div
-                    className='text-[13px] text-neutral-900'
-                    dangerouslySetInnerHTML={{
-                      __html: doctorCareer.replace(/\n/g, '<br />'),
-                    }}
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* 경력 이미지 캐러셀 */}
-            {careerImages.length > 0 && (
-              <div className='mt-3'>
-                <DoctorCareerImagesCarousel images={careerImages} lang={lang} />
-              </div>
-            )}
+            {/* 경력 섹션 */}
+            <DoctorCareer
+              career={doctorCareer}
+              careerImages={careerImages}
+              lang={lang}
+              dict={dict}
+            />
           </div>
         </div>
 
@@ -111,6 +98,14 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
             />
           </div>
         </div>
+
+        {/* 시술후기 섹션 */}
+        <DoctorHospitalReviews
+          reviews={reviewCardData}
+          hospitalId={doctor.hospital.id}
+          lang={lang}
+          dict={dict}
+        />
       </div>
     </div>
   );

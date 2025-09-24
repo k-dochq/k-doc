@@ -7,7 +7,7 @@ interface DoctorDetailNotFoundProps {
   dict: Dictionary;
 }
 
-export function DoctorDetailNotFound({ lang, dict }: DoctorDetailNotFoundProps) {
+export function DoctorDetailNotFound({ lang, dict: _dict }: DoctorDetailNotFoundProps) {
   return (
     <div>
       <PageHeader lang={lang} title='' variant='light' />

@@ -56,7 +56,7 @@ export interface DoctorDetail {
       likeCount: number;
       createdAt: Date;
       concerns: string | null;
-      concernsMultilingual: any;
+      concernsMultilingual: Prisma.JsonValue;
       commentCount: number;
       user: {
         id: string;

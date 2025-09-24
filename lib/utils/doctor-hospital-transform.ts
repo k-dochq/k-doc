@@ -1,5 +1,6 @@
 import { type HospitalCardData, parsePriceInfo } from 'shared/model/types';
 import { type DoctorDetail } from '@/lib/queries/doctor';
+import { type Prisma, DistrictCountryCode } from '@prisma/client';
 
 /**
  * DoctorDetail의 hospital 정보를 HospitalCardData 타입으로 변환
@@ -29,9 +30,9 @@ export function transformDoctorHospitalToHospitalCard(doctor: DoctorDetail): Hos
     district: doctor.hospital.district
       ? {
           id: doctor.hospital.district.id,
-          name: doctor.hospital.district.name as any, // LocalizedText를 JsonValue로 캐스팅
-          displayName: doctor.hospital.district.displayName as any,
-          countryCode: doctor.hospital.district.countryCode as any,
+          name: doctor.hospital.district.name as Prisma.JsonValue,
+          displayName: doctor.hospital.district.displayName as Prisma.JsonValue,
+          countryCode: doctor.hospital.district.countryCode as DistrictCountryCode,
           level: doctor.hospital.district.level,
           order: doctor.hospital.district.order,
           parentId: doctor.hospital.district.parentId,

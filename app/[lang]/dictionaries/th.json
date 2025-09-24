@@ -575,6 +575,8 @@
   "doctor": {
     "careerAndActivity": "ประวัติและกิจกรรม",
     "noCareerInfo": "ไม่มีข้อมูลประวัติ",
-    "affiliatedHospital": "โรงพยาบาลที่สังกัด"
+    "affiliatedHospital": "โรงพยาบาลที่สังกัด",
+    "reviews": "รีวิวการรักษา",
+    "viewAllReviews": "ดูทั้งหมด"
   }
 }

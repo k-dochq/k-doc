@@ -575,6 +575,8 @@
   "doctor": {
     "careerAndActivity": "Career & Activities",
     "noCareerInfo": "No career information available.",
-    "affiliatedHospital": "Affiliated Hospital"
+    "affiliatedHospital": "Affiliated Hospital",
+    "reviews": "Procedure Reviews",
+    "viewAllReviews": "View All"
   }
 }
