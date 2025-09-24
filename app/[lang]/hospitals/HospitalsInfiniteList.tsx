@@ -2,11 +2,13 @@
 
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
-import { type Dictionary } from 'shared/model/types';
-import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
+import {
+  type Dictionary,
+  type HospitalSortOption,
+  HOSPITAL_SORT_OPTIONS,
+} from 'shared/model/types';
 import { HospitalCard } from 'entities/hospital/ui/HospitalCard';
 import { LocaleLink } from 'shared/ui/locale-link';
-import { type HospitalCardData } from 'shared/model/types';
 import { convertHospitalsToCardData } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
 import { HospitalsSkeleton } from './HospitalsSkeleton';
