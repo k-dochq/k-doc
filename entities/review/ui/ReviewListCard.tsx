@@ -43,9 +43,7 @@ export function ReviewListCard({
 
   return (
     <div>
-      <LocaleLink
-        href={`/review/${review.id}`}
-        locale={lang}
+      <div
         className={`block w-full overflow-hidden rounded-t-xl border border-white bg-white/50 px-5 pt-5 pb-4 ${className}`}
       >
         {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
@@ -61,14 +59,17 @@ export function ReviewListCard({
           className='mt-3'
         />
 
-        {/* 세 번째 섹션: 해시태그, 시술시기 */}
-        <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />
+        {/* 세 번째 섹션과 네 번째 섹션을 LocaleLink로 감싸기 */}
+        <LocaleLink href={`/review/${review.id}`} locale={lang} className='block'>
+          {/* 세 번째 섹션: 해시태그, 시술시기 */}
+          <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />
 
-        {/* 네 번째 섹션: 리뷰 내용 */}
-        {content && (
-          <ReviewContentSection content={content} lang={lang} dict={dict} className='mt-3' />
-        )}
-      </LocaleLink>
+          {/* 네 번째 섹션: 리뷰 내용 */}
+          {content && (
+            <ReviewContentSection content={content} lang={lang} dict={dict} className='mt-3' />
+          )}
+        </LocaleLink>
+      </div>
       {/* 다섯 번째 섹션: 조회수, 좋아요 */}
       <ReviewStatsSection
         review={review}
