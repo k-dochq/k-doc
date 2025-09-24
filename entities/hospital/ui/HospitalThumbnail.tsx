@@ -22,7 +22,7 @@ export function HospitalThumbnail({
   const shouldShowDefaultImage = !imageUrl || imageError;
 
   return (
-    <div className='relative flex h-[132px] w-[132px] flex-shrink-0 items-stretch'>
+    <div className='relative flex h-[146px] w-[146px] flex-shrink-0 items-stretch'>
       {/* 이미지 컨테이너 - overflow-hidden 적용 */}
       <div className='relative h-full w-full overflow-hidden rounded-l-lg'>
         {/* 기본 썸네일 배경 (blur 효과) - 이미지 로딩 전에만 표시 */}

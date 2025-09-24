@@ -53,6 +53,7 @@ export function HospitalCard({
               rating={hospital.rating}
               reviewCount={hospital.reviewCount}
               discountRate={hospital.discountRate}
+              medicalSpecialties={hospital.medicalSpecialties}
               dict={dict}
               lang={lang}
             />
@@ -78,16 +79,6 @@ export function HospitalCard({
             </div>
           )}
         </div>
-
-        {/* 시술부위 태그 */}
-        {/* {hospital.medicalSpecialties && hospital.medicalSpecialties.length > 0 && (
-          <MedicalSpecialtyTags
-            specialties={hospital.medicalSpecialties}
-            lang={lang}
-            maxDisplay={3}
-            className='mt-1'
-          />
-        )} */}
       </div>
     </div>
   );
