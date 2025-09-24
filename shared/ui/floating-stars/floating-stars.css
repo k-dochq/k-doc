@@ -1,0 +1,412 @@
+/* ===== CSS 기반 별 애니메이션 효과 ===== */
+.star-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-star {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+
+  /* 기본 별 모양 */
+  width: 3px;
+  height: 3px;
+  background-color: var(--star-color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--star-color-primary);
+
+  /* GPU 가속 */
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* 다이아몬드 모양 별 */
+.floating-star.diamond {
+  border-radius: 0;
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px var(--star-color-secondary);
+  background-color: var(--star-color-secondary);
+}
+
+/* CSS로만 생성되는 애니메이션 패턴들 */
+
+/* 별 1-10: 각기 다른 위치와 타이밍 */
+.floating-star.star-1 {
+  left: 5%;
+  animation: floatUp1 12s linear infinite;
+}
+
+.floating-star.star-2 {
+  left: 15%;
+  animation: floatUp2 15s linear infinite 2s;
+}
+
+.floating-star.star-3 {
+  left: 25%;
+  animation: floatDiagonal1 18s linear infinite 1s;
+}
+
+.floating-star.star-4 {
+  left: 35%;
+  animation: twinkle1 4s ease-in-out infinite;
+  top: 20%;
+}
+
+.floating-star.star-5 {
+  left: 45%;
+  animation: floatUp3 14s linear infinite 3s;
+}
+
+.floating-star.star-6 {
+  left: 55%;
+  animation: floatDiagonal2 16s linear infinite 1.5s;
+}
+
+.floating-star.star-7 {
+  left: 65%;
+  animation: floatUp4 13s linear infinite 4s;
+}
+
+.floating-star.star-8 {
+  left: 75%;
+  animation: twinkle2 5s ease-in-out infinite 2s;
+  top: 60%;
+}
+
+.floating-star.star-9 {
+  left: 85%;
+  animation: floatDiagonal3 17s linear infinite 0.5s;
+}
+
+.floating-star.star-10 {
+  left: 95%;
+  animation: floatUp5 11s linear infinite 3.5s;
+}
+
+/* 다양한 애니메이션 패턴들 */
+
+/* 위로 떠오르는 애니메이션들 */
+@keyframes floatUp1 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+    transform: translate3d(-20px, 90vh, 0) rotate(36deg) scale(1);
+  }
+  90% {
+    opacity: 0.6;
+    transform: translate3d(40px, -10vh, 0) rotate(360deg) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(60px, -20vh, 0) rotate(400deg) scale(0);
+  }
+}
+
+@keyframes floatUp2 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+    transform: translate3d(30px, 85vh, 0) rotate(-45deg) scale(1);
+  }
+  85% {
+    opacity: 0.5;
+    transform: translate3d(-50px, -15vh, 0) rotate(-720deg) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-80px, -25vh, 0) rotate(-800deg) scale(0);
+  }
+}
+
+@keyframes floatUp3 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+    transform: translate3d(10px, 88vh, 0) rotate(90deg) scale(0.8);
+  }
+  88% {
+    opacity: 0.4;
+    transform: translate3d(-30px, -12vh, 0) rotate(540deg) scale(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-45px, -22vh, 0) rotate(630deg) scale(0);
+  }
+}
+
+@keyframes floatUp4 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.6;
+    transform: translate3d(-40px, 92vh, 0) rotate(180deg) scale(1.1);
+  }
+  92% {
+    opacity: 0.7;
+    transform: translate3d(70px, -8vh, 0) rotate(900deg) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(90px, -18vh, 0) rotate(1080deg) scale(0);
+  }
+}
+
+@keyframes floatUp5 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+    transform: translate3d(25px, 80vh, 0) rotate(-90deg) scale(1.4);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translate3d(-15px, -20vh, 0) rotate(-450deg) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-35px, -30vh, 0) rotate(-540deg) scale(0);
+  }
+}
+
+/* 대각선 이동 애니메이션들 */
+@keyframes floatDiagonal1 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+    transform: translate3d(-60px, 85vh, 0) rotate(45deg) scale(1);
+  }
+  85% {
+    opacity: 0.4;
+    transform: translate3d(120px, -15vh, 0) rotate(405deg) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(150px, -25vh, 0) rotate(450deg) scale(0);
+  }
+}
+
+@keyframes floatDiagonal2 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+    transform: translate3d(80px, 90vh, 0) rotate(-60deg) scale(0.9);
+  }
+  90% {
+    opacity: 0.5;
+    transform: translate3d(-100px, -10vh, 0) rotate(-600deg) scale(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-130px, -20vh, 0) rotate(-720deg) scale(0);
+  }
+}
+
+@keyframes floatDiagonal3 {
+  0% {
+    transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.8;
+    transform: translate3d(-45px, 88vh, 0) rotate(120deg) scale(1.1);
+  }
+  88% {
+    opacity: 0.6;
+    transform: translate3d(90px, -12vh, 0) rotate(840deg) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(110px, -22vh, 0) rotate(960deg) scale(0);
+  }
+}
+
+/* 반짝이는 애니메이션들 */
+@keyframes twinkle1 {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.6) rotate(0deg);
+  }
+  25% {
+    opacity: 0.9;
+    transform: scale(1.4) rotate(90deg);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1) rotate(180deg);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.6) rotate(270deg);
+  }
+}
+
+@keyframes twinkle2 {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8) rotate(0deg);
+  }
+  33% {
+    opacity: 0.8;
+    transform: scale(1.3) rotate(120deg);
+  }
+  66% {
+    opacity: 0.5;
+    transform: scale(1) rotate(240deg);
+  }
+}
+
+/* 인덱스 기반 동적 스타일링 */
+.floating-star:nth-child(odd) {
+  animation-duration: calc(10s + (var(--star-index) * 0.1s));
+}
+
+.floating-star:nth-child(even) {
+  animation-duration: calc(8s + (var(--star-index) * 0.15s));
+}
+
+.floating-star:nth-child(3n) {
+  animation-delay: calc(var(--star-index) * 0.05s);
+  width: 2px;
+  height: 2px;
+}
+
+.floating-star:nth-child(5n) {
+  animation-delay: calc(var(--star-index) * 0.1s);
+  width: 4px;
+  height: 4px;
+}
+
+.floating-star:nth-child(7n) {
+  animation-delay: calc(var(--star-index) * 0.08s);
+  width: 1.5px;
+  height: 1.5px;
+  opacity: 0.6;
+}
+
+/* 더 많은 위치 변형 */
+.floating-star:nth-child(11n + 1) {
+  left: 8%;
+}
+.floating-star:nth-child(11n + 2) {
+  left: 18%;
+}
+.floating-star:nth-child(11n + 3) {
+  left: 28%;
+}
+.floating-star:nth-child(11n + 4) {
+  left: 38%;
+}
+.floating-star:nth-child(11n + 5) {
+  left: 48%;
+}
+.floating-star:nth-child(11n + 6) {
+  left: 58%;
+}
+.floating-star:nth-child(11n + 7) {
+  left: 68%;
+}
+.floating-star:nth-child(11n + 8) {
+  left: 78%;
+}
+.floating-star:nth-child(11n + 9) {
+  left: 88%;
+}
+.floating-star:nth-child(11n + 10) {
+  left: 98%;
+}
+.floating-star:nth-child(11n) {
+  left: 3%;
+}
+
+/* 애니메이션 타입 분배 */
+.floating-star:nth-child(10n + 1) {
+  animation-name: floatUp1;
+}
+.floating-star:nth-child(10n + 2) {
+  animation-name: floatUp2;
+}
+.floating-star:nth-child(10n + 3) {
+  animation-name: floatDiagonal1;
+}
+.floating-star:nth-child(10n + 4) {
+  animation-name: twinkle1;
+  top: calc(10% + (var(--star-index) * 0.3%));
+}
+.floating-star:nth-child(10n + 5) {
+  animation-name: floatUp3;
+}
+.floating-star:nth-child(10n + 6) {
+  animation-name: floatDiagonal2;
+}
+.floating-star:nth-child(10n + 7) {
+  animation-name: floatUp4;
+}
+.floating-star:nth-child(10n + 8) {
+  animation-name: twinkle2;
+  top: calc(30% + (var(--star-index) * 0.2%));
+}
+.floating-star:nth-child(10n + 9) {
+  animation-name: floatDiagonal3;
+}
+.floating-star:nth-child(10n) {
+  animation-name: floatUp5;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .floating-star {
+    width: 2px;
+    height: 2px;
+  }
+  .floating-star:nth-child(3n) {
+    width: 1.5px;
+    height: 1.5px;
+  }
+  .floating-star:nth-child(5n) {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-star {
+    width: 1.5px;
+    height: 1.5px;
+  }
+  .floating-star:nth-child(3n) {
+    width: 1px;
+    height: 1px;
+  }
+  .floating-star:nth-child(5n) {
+    width: 2px;
+    height: 2px;
+  }
+}

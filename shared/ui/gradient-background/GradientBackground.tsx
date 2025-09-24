@@ -1,3 +1,7 @@
+'use client';
+
+import { FloatingStars } from '../floating-stars';
+
 interface GradientBackgroundProps {
   children: React.ReactNode;
   gradientColors?: {
@@ -5,6 +9,8 @@ interface GradientBackgroundProps {
     end: string;
   };
   className?: string;
+  showStars?: boolean;
+  starCount?: number;
 }
 
 const DEFAULT_GRADIENT = {
@@ -16,6 +22,8 @@ export function GradientBackground({
   children,
   gradientColors = DEFAULT_GRADIENT,
   className = '',
+  showStars = false,
+  starCount = 50,
 }: GradientBackgroundProps) {
   const gradientStyle = {
     backgroundImage: `linear-gradient(136deg, rgba(255, 255, 255, 0.00) 38.7%, rgba(255, 255, 255, 0.60) 49.07%, rgba(255, 255, 255, 0.70) 51.8%, rgba(255, 255, 255, 0.60) 55.74%, rgba(255, 255, 255, 0.00) 64.84%), linear-gradient(180deg, ${gradientColors.start} 0.19%, ${gradientColors.end} 99.82%)`,
@@ -31,6 +39,10 @@ export function GradientBackground({
         className='rounded-inherit pointer-events-none sticky top-0 z-0 -mb-[100vh] h-screen supports-[height:100dvh]:-mb-[100dvh] supports-[height:100dvh]:h-[100dvh]'
         style={gradientStyle}
       />
+
+      {/* 별 애니메이션 */}
+      {showStars && <FloatingStars starCount={starCount} gradientColors={gradientColors} />}
+
       {/* 실제 콘텐츠 */}
       <div className='relative z-10 min-h-screen'>{children}</div>
     </div>
