@@ -18,7 +18,7 @@ export function GradientBackground({
   className = '',
 }: GradientBackgroundProps) {
   const gradientStyle = {
-    background: `linear-gradient(180deg, ${gradientColors.start} 0.19%, ${gradientColors.end} 99.82%)`,
+    backgroundImage: `linear-gradient(136deg, rgba(255, 255, 255, 0.00) 38.7%, rgba(255, 255, 255, 0.60) 49.07%, rgba(255, 255, 255, 0.70) 51.8%, rgba(255, 255, 255, 0.60) 55.74%, rgba(255, 255, 255, 0.00) 64.84%), linear-gradient(180deg, ${gradientColors.start} 0.19%, ${gradientColors.end} 99.82%)`,
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat',
   };
