@@ -44,7 +44,7 @@ export function ReviewListCard({
   return (
     <div>
       <div
-        className={`block w-full overflow-hidden rounded-t-xl border border-white bg-white/50 px-5 pt-5 pb-4 ${className}`}
+        className={`relative z-10 block w-full overflow-hidden rounded-t-xl border border-white bg-white/50 px-5 pt-5 pb-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px] ${className}`}
       >
         {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
         <ReviewListCardHeader review={review} lang={lang} />

@@ -38,7 +38,7 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
     <LocaleLink
       href={`/review/${review.id}`}
       locale={lang}
-      className='flex h-full cursor-pointer flex-col rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md'
+      className='relative z-10 flex h-full cursor-pointer flex-col rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px] transition-shadow hover:shadow-md'
     >
       {/* 헤더 */}
       <div className='mb-3 flex items-start justify-between'>
