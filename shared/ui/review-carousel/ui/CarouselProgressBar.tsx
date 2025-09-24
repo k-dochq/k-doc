@@ -17,7 +17,7 @@ export function CarouselProgressBar({
   const progressPercentage = ((currentPage + 1) / totalPages) * 100;
 
   return (
-    <div className={`mt-6 flex justify-center p-5 ${className}`}>
+    <div className={`mt-6 flex justify-center px-5 ${className}`}>
       <div className='relative w-full'>
         {/* 배경 바 */}
         <div className='h-[3px] overflow-hidden rounded-full bg-[#FCE4FF]'>
