@@ -1,8 +1,9 @@
 interface CloseIconProps {
   className?: string;
+  color?: string;
 }
 
-export function CloseIcon({ className }: CloseIconProps) {
+export function CloseIcon({ className, color = '#A3A3A3' }: CloseIconProps) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -14,7 +15,7 @@ export function CloseIcon({ className }: CloseIconProps) {
     >
       <path
         d='M16 16L8 8M16 16L24 24M16 16L24 8M16 16L8 24'
-        stroke='#A3A3A3'
+        stroke={color}
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

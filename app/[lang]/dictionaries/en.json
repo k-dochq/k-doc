@@ -574,6 +574,7 @@
   },
   "doctor": {
     "careerAndActivity": "Career & Activities",
-    "noCareerInfo": "No career information available."
+    "noCareerInfo": "No career information available.",
+    "affiliatedHospital": "Affiliated Hospital"
   }
 }
