@@ -92,7 +92,7 @@ export function HospitalDetailReviews({
           dict={dict}
           emptyMessage={dict.hospitalDetailReviews.emptyMessage}
           loop={true}
-          align='center'
+          align='start'
           basis='basis-[280px] md:basis-[320px]'
           itemClassName='pl-2 md:pl-4'
           noBorder={true}
