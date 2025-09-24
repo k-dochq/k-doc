@@ -72,6 +72,7 @@ export function PopularReviewCard({
             review.hospital.district.displayName ||
             review.hospital.district.name
           }
+          hospitalName={review.hospital.name}
           lang={lang}
           dict={dict}
         />
