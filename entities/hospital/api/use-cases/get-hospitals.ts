@@ -315,6 +315,7 @@ export async function getHospitals(
         createdAt: hospital.createdAt,
         updatedAt: hospital.updatedAt,
         mainImageUrl: getHospitalMainImageUrl(hospital.HospitalImage),
+        hospitalImages: hospital.HospitalImage,
         latitude: hospital.latitude,
         longitude: hospital.longitude,
       };

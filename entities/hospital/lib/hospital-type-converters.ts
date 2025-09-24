@@ -1,5 +1,6 @@
 import { type Hospital } from '../api/entities/types';
 import { type HospitalCardData, parseLocalizedText } from 'shared/model/types';
+import { getHospitalThumbnailImageUrl } from './image-utils';
 
 /**
  * Hospital 타입을 HospitalCardData 타입으로 변환하는 함수
@@ -13,7 +14,9 @@ export function convertHospitalToCardData(hospital: Hospital): HospitalCardData 
     prices: hospital.prices || null,
     rating: hospital.rating,
     reviewCount: hospital.reviewCount,
-    thumbnailImageUrl: hospital.mainImageUrl || null, // mainImageUrl을 thumbnailImageUrl로 매핑
+    thumbnailImageUrl: hospital.hospitalImages
+      ? getHospitalThumbnailImageUrl(hospital.hospitalImages)
+      : null,
     discountRate: hospital.discountRate || null,
     medicalSpecialties:
       hospital.medicalSpecialties?.map((ms) => ({
@@ -33,7 +36,9 @@ export function convertHospitalToCardData(hospital: Hospital): HospitalCardData 
     ranking: hospital.ranking,
     createdAt: hospital.createdAt,
     updatedAt: hospital.updatedAt,
-    mainImageUrl: hospital.mainImageUrl,
+    mainImageUrl: hospital.hospitalImages
+      ? getHospitalThumbnailImageUrl(hospital.hospitalImages)
+      : null,
     latitude: hospital.latitude,
     longitude: hospital.longitude,
   };
