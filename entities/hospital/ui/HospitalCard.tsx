@@ -54,6 +54,7 @@ export function HospitalCard({
               reviewCount={hospital.reviewCount}
               discountRate={hospital.discountRate}
               medicalSpecialties={hospital.medicalSpecialties}
+              likeCount={hospital.likeCount}
               dict={dict}
               lang={lang}
             />
