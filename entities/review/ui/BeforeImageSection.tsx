@@ -1,10 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
 import { type ReviewImage, type DefaultImage } from '../model/types';
 import { SingleImageDisplay } from './SingleImageDisplay';
 import { DualImageDisplay } from './DualImageDisplay';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type Locale } from 'shared/config';
 import { ReviewImageType } from '@prisma/client';
 
@@ -12,6 +10,7 @@ interface BeforeImageSectionProps {
   beforeImages: ReviewImage[];
   reviewId: string;
   lang: Locale;
+  onImageClick: (index: number) => void;
   className?: string;
 }
 
@@ -19,10 +18,9 @@ export function BeforeImageSection({
   beforeImages,
   reviewId,
   lang,
+  onImageClick,
   className = '',
 }: BeforeImageSectionProps) {
-  const router = useLocalizedRouter();
-
   // 기본 이미지 설정 [[memory:8795787]]
   const defaultImage: DefaultImage = {
     imageUrl: '/images/shared/default_image.png',
@@ -35,18 +33,13 @@ export function BeforeImageSection({
   // 추가 이미지 개수 계산
   const additionalImagesCount = beforeImages.length > 2 ? beforeImages.length - 2 : 0;
 
-  // 페이지 prefetch
-  useEffect(() => {
-    router.prefetch(`/review-images/${reviewId}?index=0`);
-  }, [router, reviewId]);
-
   const handleImageClick = (imageIndex: number) => (e: React.MouseEvent) => {
     // 이벤트 전파를 막아서 상위 LocaleLink가 동작하지 않도록 함
     e.preventDefault();
     e.stopPropagation();
 
-    // Before 이미지의 해당 인덱스로 이동 (전체 이미지 배열에서 인덱스)
-    router.push(`/review-images/${reviewId}?index=${imageIndex}`);
+    // Before 이미지의 해당 인덱스로 상위 컴포넌트에 전달
+    onImageClick(imageIndex);
   };
 
   return (

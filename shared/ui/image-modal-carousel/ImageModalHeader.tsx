@@ -22,9 +22,9 @@ export function ImageModalHeader({
         <CloseIcon className='h-6 w-6 text-neutral-500' color='#737373' />
       </button>
 
-      {/* 오른쪽 페이지 정보 */}
+      {/* 오른쪽 영역: 센터 텍스트 또는 페이지 정보 */}
       <div className='text-lg font-semibold text-neutral-900'>
-        {currentIndex + 1} / {totalCount}
+        {centerText ? centerText : `${currentIndex + 1} / ${totalCount}`}
       </div>
     </div>
   );

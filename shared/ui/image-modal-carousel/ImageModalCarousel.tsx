@@ -13,8 +13,14 @@ export function ImageModalCarousel({
   isOpen,
   onClose,
   centerText,
+  onIndexChange,
 }: ImageModalCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+
+  const handleIndexChange = (index: number) => {
+    setCurrentIndex(index);
+    onIndexChange?.(index);
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -34,7 +40,7 @@ export function ImageModalCarousel({
           <ImageModalCarouselContent
             images={images}
             initialIndex={initialIndex}
-            onIndexChange={setCurrentIndex}
+            onIndexChange={handleIndexChange}
           />
         </div>
       </DialogContent>
