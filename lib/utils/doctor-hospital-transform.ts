@@ -1,17 +1,20 @@
 import { type HospitalCardData, parsePriceInfo } from 'shared/model/types';
 import { type DoctorDetail } from '@/lib/queries/doctor';
-import { type Prisma, DistrictCountryCode } from '@prisma/client';
+import { type Prisma, DistrictCountryCode, type HospitalImageType } from '@prisma/client';
+import { getHospitalThumbnailImageUrl } from 'entities/hospital/lib/image-utils';
 
 /**
  * DoctorDetail의 hospital 정보를 HospitalCardData 타입으로 변환
  * 이제 doctor 데이터에 완전한 hospital 정보가 포함되어 있음
  */
 export function transformDoctorHospitalToHospitalCard(doctor: DoctorDetail): HospitalCardData {
-  // 병원 썸네일 이미지 URL 추출 (MAIN 타입 우선, 없으면 첫 번째 이미지)
-  const thumbnailImageUrl =
-    doctor.hospital.hospitalImages.find((img) => img.imageType === 'MAIN')?.imageUrl ||
-    doctor.hospital.hospitalImages[0]?.imageUrl ||
-    null;
+  // 병원 썸네일 이미지 URL 추출 (THUMBNAIL 타입 우선, 없으면 MAIN, 없으면 첫 번째 이미지)
+  const thumbnailImageUrl = getHospitalThumbnailImageUrl(
+    doctor.hospital.hospitalImages.map((img) => ({
+      imageType: img.imageType as HospitalImageType,
+      imageUrl: img.imageUrl,
+    })),
+  );
 
   return {
     id: doctor.hospital.id,
