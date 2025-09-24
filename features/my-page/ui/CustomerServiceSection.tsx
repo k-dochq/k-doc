@@ -14,6 +14,10 @@ export function CustomerServiceSection({ lang, dict }: CustomerServiceSectionPro
     window.location.href = `tel:${dict.my?.customerService?.phoneNumber || '1588-4591'}`;
   };
 
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:cs@k-doc.kr';
+  };
+
   return (
     <div className='flex w-full flex-col gap-5'>
       <h2 className='text-lg font-semibold text-gray-900'>
@@ -21,7 +25,7 @@ export function CustomerServiceSection({ lang, dict }: CustomerServiceSectionPro
       </h2>
 
       <div className='flex w-full flex-col gap-3'>
-        <MenuItem title={dict.my?.customerService?.chat || '채팅'} href='/consultation' />
+        <MenuItem title={dict.my?.customerService?.email || '이메일'} onClick={handleEmailClick} />
         <MenuItem title={dict.my?.customerService?.phone || '전화'} onClick={handlePhoneClick} />
       </div>
     </div>
