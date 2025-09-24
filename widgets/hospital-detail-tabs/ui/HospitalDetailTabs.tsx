@@ -65,9 +65,6 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
         <CarouselContent
           className='ml-0'
           onMouseDown={(e) => e.preventDefault()}
-          onTouchStart={(e) => e.preventDefault()}
-          onTouchMove={(e) => e.preventDefault()}
-          onTouchEnd={(e) => e.preventDefault()}
           onDragStart={(e) => e.preventDefault()}
         >
           {/* 병원소개 탭 */}
