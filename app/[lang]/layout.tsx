@@ -62,6 +62,13 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
       'Korean beauty clinics',
     ],
     metadataBase: new URL('https://k-doc.kr'),
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 1,
+      userScalable: false,
+      viewportFit: 'cover', // Safe Area를 위한 설정
+    },
     openGraph: {
       type: 'website',
       siteName: 'K-DOC',
