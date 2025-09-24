@@ -13,4 +13,5 @@ export interface ImageModalCarouselProps {
   onClose: () => void;
   centerText?: string;
   backgroundColor?: string;
+  onIndexChange?: (index: number) => void;
 }

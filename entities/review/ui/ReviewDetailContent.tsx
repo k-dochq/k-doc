@@ -58,6 +58,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
               afterImages={review.images.after}
               reviewId={review.id}
               lang={lang}
+              dict={dict}
               className='mt-3'
             />
 

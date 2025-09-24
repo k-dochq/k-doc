@@ -57,6 +57,7 @@ export function ReviewListCard({
           afterImages={review.images.after}
           reviewId={review.id}
           lang={lang}
+          dict={dict}
           className='mt-3'
         />
 
