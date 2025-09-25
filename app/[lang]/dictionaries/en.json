@@ -194,6 +194,7 @@
     "signup": {
       "title": "Sign Up",
       "subtitle": "Create a new account",
+      "required": "Required",
       "email": "Email",
       "password": "Password",
       "confirmPassword": "Confirm Password",

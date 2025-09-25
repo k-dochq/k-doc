@@ -194,6 +194,7 @@
     "signup": {
       "title": "สมัครสมาชิก",
       "subtitle": "สร้างบัญชีใหม่",
+      "required": "จำเป็น",
       "email": "อีเมล",
       "password": "รหัสผ่าน",
       "confirmPassword": "ยืนยันรหัสผ่าน",

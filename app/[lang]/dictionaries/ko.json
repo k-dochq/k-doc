@@ -194,6 +194,7 @@
     "signup": {
       "title": "회원가입",
       "subtitle": "새 계정을 만드세요",
+      "required": "필수",
       "email": "이메일",
       "password": "비밀번호",
       "confirmPassword": "비밀번호 확인",

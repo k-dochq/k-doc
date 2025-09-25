@@ -2,6 +2,7 @@ import { getDictionary } from '../../dictionaries';
 import { type Locale } from 'shared/config';
 import { PageHeader } from 'shared/ui/page-header';
 import { SignupForm } from 'features/email-auth';
+import { AuthLoginLink } from 'features/auth-login-link';
 
 interface SignupPageProps {
   params: Promise<{
@@ -25,6 +26,13 @@ export default async function SignupPage({ params, searchParams }: SignupPagePro
         fallbackUrl='/auth/login'
         variant='light'
       />
+
+      {/* 로그인 링크 */}
+      <div className='px-5 py-4'>
+        <div className='mx-auto max-w-md'>
+          <AuthLoginLink lang={lang} dict={dict} redirectTo={redirectTo} />
+        </div>
+      </div>
 
       <div className='px-5 py-6'>
         <div className='mx-auto max-w-md'>
