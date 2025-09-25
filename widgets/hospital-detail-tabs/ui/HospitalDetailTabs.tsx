@@ -6,9 +6,10 @@ import { type Dictionary } from 'shared/model/types';
 import { HospitalDetailIntroductionTab } from './HospitalDetailIntroductionTab';
 import { HospitalDetailProceduresTab } from './HospitalDetailProceduresTab';
 import { HospitalDetailTabsHeader } from './HospitalDetailTabsHeader';
+import { type Hospital } from 'entities/hospital/api/entities/types';
 
 interface HospitalDetailTabsProps {
-  hospital: any; // TODO: 정확한 타입 정의 필요
+  hospital: Hospital;
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;

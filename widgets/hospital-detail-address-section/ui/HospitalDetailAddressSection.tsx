@@ -5,7 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { useAddressCopy } from 'widgets/hospital-detail-map/model/useAddressCopy';
 
 interface HospitalDetailAddressSectionProps {
-  address: string;
+  directions: string;
   lang: Locale;
   dict: Dictionary;
 }
@@ -15,24 +15,24 @@ interface HospitalDetailAddressSectionProps {
  * 피그마 디자인에 맞춰 위치 핀 아이콘, 주소 텍스트, 복사 버튼을 표시합니다.
  */
 export function HospitalDetailAddressSection({
-  address,
+  directions,
   lang,
   dict,
 }: HospitalDetailAddressSectionProps) {
   const { copyAddress } = useAddressCopy(dict);
 
   const handleCopyAddress = () => {
-    if (address) {
-      copyAddress(address);
+    if (directions) {
+      copyAddress(directions);
     }
   };
 
-  if (!address) return null;
+  if (!directions) return null;
 
   return (
     <div className='mt-3'>
-      <div className='flex items-center justify-between gap-2'>
-        <div className='flex min-w-0 flex-1 items-center gap-1'>
+      <div className='flex items-start justify-between gap-2'>
+        <div className='flex min-w-0 flex-1 items-start gap-1'>
           {/* 위치 핀 아이콘 */}
           <div className='h-5 w-5 flex-shrink-0'>
             <svg
@@ -51,7 +51,7 @@ export function HospitalDetailAddressSection({
             </svg>
           </div>
           {/* 주소 텍스트 */}
-          <p className='truncate text-sm leading-5 font-normal text-[#171717]'>{address}</p>
+          <p className='line-clamp-2 text-sm leading-5 font-normal text-[#171717]'>{directions}</p>
         </div>
 
         {/* 주소복사 버튼 */}

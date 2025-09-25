@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { type Hospital } from '@prisma/client';
+import { type Hospital } from 'entities/hospital/api/entities/types';
 
 interface ApgujeongMiracleProceduresProps {
   hospital: Hospital;

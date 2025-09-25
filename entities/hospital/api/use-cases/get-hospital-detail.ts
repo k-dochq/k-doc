@@ -13,6 +13,7 @@ type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
     id: true;
     name: true;
     address: true;
+    directions: true;
     prices: true;
     rating: true;
     discountRate: true;
@@ -84,6 +85,7 @@ export async function getHospitalDetail(
         id: true,
         name: true,
         address: true,
+        directions: true,
         prices: true,
         rating: true,
         discountRate: true,
@@ -196,6 +198,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     id: data.id,
     name: data.name,
     address: data.address,
+    directions: data.directions,
     rating: data.rating,
     reviewCount: data._count.Review, // 실제 리뷰 개수 사용
     bookmarkCount: data.bookmarkCount,
