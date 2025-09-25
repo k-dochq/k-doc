@@ -113,7 +113,7 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
       <LocaleLink
         href={`/hospital/${hospital.id}/reviews`}
         locale={lang}
-        className='bg-primary fixed top-[78px] right-[20px] z-[60] flex min-h-[66px] min-w-[66px] items-center justify-center rounded-full md:right-[calc(50vw-250px+20px)]'
+        className='fixed top-[78px] right-[20px] z-[60] flex min-h-[66px] min-w-[66px] items-center justify-center rounded-full bg-gradient-to-r from-[#FF60F7] to-[#AE33FB] shadow-[1px_3px_8px_0_rgba(0,0,0,0.15)] md:right-[calc(50vw-250px+20px)]'
       >
         <span className='text-[13px] font-semibold text-white'>
           {dict.hospital?.reviewsButton || '시술후기'}
