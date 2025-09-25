@@ -75,10 +75,24 @@ export function Footer({ lang, dict }: FooterProps) {
           <p className='leading-4'>{dict.footer.companyInfo}</p>
         </div>
         <div>
-          <p className='leading-4'>{dict.footer.termsOfService}</p>
+          <a
+            href='https://hypnotic-dryosaurus-c5c.notion.site/279d3f7f900d80ba9598e70190e516f9?source=copy_link'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='leading-4 text-neutral-500 transition-colors hover:text-neutral-700'
+          >
+            {dict.footer.termsOfService}
+          </a>
         </div>
         <div>
-          <p className='leading-4'>{dict.footer.privacyPolicy}</p>
+          <a
+            href='https://hypnotic-dryosaurus-c5c.notion.site/279d3f7f900d80c8ae1bdf05a68961a4?source=copy_link'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='leading-4 text-neutral-500 transition-colors hover:text-neutral-700'
+          >
+            {dict.footer.privacyPolicy}
+          </a>
         </div>
       </div>
     </footer>
