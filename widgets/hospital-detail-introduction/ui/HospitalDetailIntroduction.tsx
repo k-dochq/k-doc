@@ -22,10 +22,10 @@ export function HospitalDetailIntroduction({
 
   return (
     <div className=''>
-      <h2 className='text-base font-bold text-white'>{dict.hospital.introduction.title}</h2>
-      <p className='mt-4 text-sm leading-relaxed font-normal whitespace-pre-line text-white'>
-        {description}
-      </p>
+      <h2 className='text-base font-bold'>{dict.hospital.introduction.title}</h2>
+      <div className='mt-4 rounded-xl border border-white bg-white/50 p-4'>
+        <p className='text-sm font-normal whitespace-pre-line'>{description}</p>
+      </div>
     </div>
   );
 }

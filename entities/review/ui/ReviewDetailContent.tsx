@@ -75,13 +75,13 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
                 enableExpand={false}
               />
             )}
-
-            {/* 다섯 번째 섹션: 병원 정보 */}
-            <ReviewHospitalSection review={review} lang={lang} dict={dict} />
           </div>
           {/* 여섯 번째 섹션: 조회수만 표시 (좋아요는 헤더에 있음) */}
           <ReviewStatsSection review={review} lang={lang} user={null} showLikeButton={false} />
         </div>
+
+        {/* 시술 병원 섹션 - 리뷰 영역 밖으로 분리 */}
+        <ReviewHospitalSection review={review} lang={lang} dict={dict} />
       </div>
 
       {/* 별 이미지 섹션 */}

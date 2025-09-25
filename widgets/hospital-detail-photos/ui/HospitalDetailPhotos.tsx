@@ -105,7 +105,7 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
       </Carousel>
 
       {/* HotLabelVariant - 왼쪽 위에 위치 */}
-      <div className='absolute top-[-7px] left-[13px] z-[60]'>
+      <div className='absolute top-[-7px] left-[13px] z-[40]'>
         <HotLabelVariant />
       </div>
 

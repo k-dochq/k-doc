@@ -27,13 +27,19 @@ export async function HospitalDetailContent({
     const { hospital } = await getHospitalDetail({ id: hospitalId });
 
     return (
-      <div className=''>
+      <div className='text-neutral-900'>
         {/* 헤더 */}
         <HospitalDetailHeader
           lang={lang}
           dict={dict}
           hospitalId={hospitalId}
           hospitalName={extractLocalizedText(hospital.name, lang)}
+        />
+
+        {/* PageHeader 아래 여백 영역 */}
+        <div
+          className='h-[7px] w-full'
+          style={{ background: 'rgba(254, 219, 249, 0.70)', backdropFilter: 'blur(15px)' }}
         />
 
         {/* 병원 사진 섹션 */}

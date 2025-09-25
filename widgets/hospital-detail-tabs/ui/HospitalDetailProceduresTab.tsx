@@ -33,8 +33,8 @@ export function HospitalDetailProceduresTab({
   // 일반 병원의 경우 기본 메시지
   return (
     <div className='flex flex-col items-center justify-center text-center'>
-      <div className='text-base text-white/70'>{dict.hospitalDetailTabs.proceduresComingSoon}</div>
-      <div className='mt-2 text-sm text-white/50'>{dict.hospitalDetailTabs.comingSoonSubtext}</div>
+      <div className='text-base'>{dict.hospitalDetailTabs.proceduresComingSoon}</div>
+      <div className='mt-2 text-sm'>{dict.hospitalDetailTabs.comingSoonSubtext}</div>
     </div>
   );
 }

@@ -17,8 +17,8 @@ export function HospitalDetailInfoSection({
 }: HospitalDetailInfoSectionProps) {
   return (
     <div className=''>
-      <h2 className='text-base font-bold text-white'>{dict.hospital.info.title}</h2>
-      <div className='mt-4 text-sm leading-relaxed font-normal whitespace-pre-line text-white'>
+      <h2 className='text-base font-bold'>{dict.hospital.info.title}</h2>
+      <div className='mt-4 text-sm leading-relaxed font-normal whitespace-pre-line'>
         {formatOperatingHours(hospital.openingHours, lang)}
       </div>
     </div>
