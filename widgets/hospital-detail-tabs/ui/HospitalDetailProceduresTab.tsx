@@ -2,9 +2,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { ApgujeongMiracleProcedures } from 'features/hospital-detail-procedures';
 import { type Hospital } from 'entities/hospital/api/entities/types';
-
-// 압구정 미라클 의원 ID 상수
-const APGUJEONG_MIRACLE_HOSPITAL_ID = 'ffda0620-c254-44db-8b13-ef4ef5d368e5';
+import { APGUJEONG_MIRACLE_HOSPITAL_ID } from 'shared/config/hospital-constants';
 
 interface HospitalDetailProceduresTabProps {
   hospital: Hospital;
