@@ -305,7 +305,7 @@
       "operatingHours": "Operating Hours"
     },
     "map": {
-      "title": "Location"
+      "title": "Hospital Location"
     },
     "address": {
       "copyButton": "Copy Address",
