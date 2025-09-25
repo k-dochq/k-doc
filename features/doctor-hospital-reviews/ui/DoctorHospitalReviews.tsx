@@ -56,8 +56,8 @@ export function DoctorHospitalReviews({
       </div>
 
       {/* 후기 리스트 */}
-      <div className='mt-4'>
-        <PopularReviewsList reviews={reviews} lang={lang} dict={dict} />
+      <div className='mt-4 pb-16'>
+        <PopularReviewsList reviews={reviews} lang={lang} dict={dict} showProgressBar={false} />
       </div>
     </div>
   );
