@@ -40,7 +40,7 @@ export async function HospitalDetailContent({
         <HospitalDetailPhotos hospital={hospital} lang={lang} dict={dict} />
 
         {/* 병원 정보 섹션 */}
-        <div className='p-5'>
+        <div className='px-5 pb-5'>
           <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
         </div>
 

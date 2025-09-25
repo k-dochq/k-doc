@@ -4,11 +4,9 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type Hospital } from 'entities/hospital/api/entities/types';
 import { HotLabel } from '@/shared/ui/hot-label';
-import { HospitalDetailName } from 'entities/hospital/ui/HospitalDetailName';
-import { HospitalDetailLocation } from 'entities/hospital/ui/HospitalDetailLocation';
-import { HospitalDetailRating } from 'entities/hospital/ui/HospitalDetailRating';
-import { HospitalDetailPrice } from 'entities/hospital/ui/HospitalDetailPrice';
-import { HospitalCardTags } from '@/entities/hospital';
+import { StarIcon } from 'shared/ui/star-icon';
+import { MedicalSpecialtyTags } from 'shared/ui/medical-specialty-tags';
+import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailInfoProps {
   hospital: Hospital;
@@ -17,24 +15,68 @@ interface HospitalDetailInfoProps {
 }
 
 export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoProps) {
+  // hospital.displayLocationName이 있으면 사용하고, 없으면 기존 address 사용
+  const displayAddress = hospital.displayLocationName
+    ? (hospital.displayLocationName as { ko_KR?: string; en_US?: string; th_TH?: string })
+    : hospital.address;
+
+  const hospitalName = extractLocalizedText(hospital.name, lang) || '병원명 없음';
+  const hospitalAddress = extractLocalizedText(displayAddress, lang) || '주소 없음';
+
   return (
-    <div className=''>
-      <HotLabel />
-      <div className='mt-0.5'>
-        <HospitalDetailName hospital={hospital} lang={lang} />
-      </div>
-      <div className='mt-0.5'>
-        <HospitalDetailLocation hospital={hospital} lang={lang} dict={dict} />
+    <div className='relative z-10 -mt-3 rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
+      {/* 병원명 */}
+      <h2 className='text-xl font-bold text-neutral-900'>{hospitalName}</h2>
+
+      <div className='h-0.5' />
+
+      {/* 지역 정보 */}
+      <div className='flex items-center gap-1 text-xs font-medium text-neutral-500'>
+        <span>{dict.hospital?.region || '지역'}</span>
+        <div className='h-[10px] w-px bg-neutral-500'></div>
+        <span>{hospitalAddress}</span>
       </div>
 
+      <div className='h-2' />
+
       {/* 평점과 가격 정보 */}
-      <div className='mt-2 flex items-center gap-2'>
-        <HospitalDetailRating hospital={hospital} />
-        <HospitalDetailPrice hospital={hospital} />
+      <div className='flex items-center gap-2'>
+        {/* 평점 */}
+        <div className='flex items-center'>
+          <StarIcon width={16} height={16} />
+          <span className='text-primary text-sm font-bold'>
+            {(hospital.rating || 0).toFixed(1)}
+          </span>
+          <span className='text-primary text-sm'>({hospital.reviewCount || 0})</span>
+        </div>
+
+        {/* 가격 정보 */}
+        {hospital.prices?.minPrice && (
+          <div className='flex items-center gap-2'>
+            <span className='text-base font-semibold text-neutral-900'>
+              ${hospital.prices.minPrice.toLocaleString()}~
+            </span>
+            {hospital.discountRate && (
+              <div className='flex items-center justify-center rounded-[4px] bg-[#0B99FF] px-2 py-1 text-xs font-semibold text-white'>
+                {hospital.discountRate}% OFF
+              </div>
+            )}
+          </div>
+        )}
       </div>
-      <div className='mt-2'>
-        <HospitalCardTags hospital={hospital} lang={lang} />
-      </div>
+
+      <div className='h-2' />
+
+      {/* 시술부위 태그 */}
+      {hospital.medicalSpecialties && hospital.medicalSpecialties.length > 0 && (
+        <div>
+          <MedicalSpecialtyTags
+            specialties={hospital.medicalSpecialties as any}
+            lang={lang}
+            maxDisplay={3}
+          />
+        </div>
+      )}
     </div>
   );
 }
