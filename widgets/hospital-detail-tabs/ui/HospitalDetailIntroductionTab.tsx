@@ -63,7 +63,7 @@ export function HospitalDetailIntroductionTab({
       {/* 소속 의료진 섹션 (의료진이 있는 경우만) */}
       {hospital.doctors && hospital.doctors.length > 0 && (
         <>
-          <div className='h-8' />
+          <div className='h-9' />
           <HospitalDetailDoctors lang={lang} dict={dict} doctors={hospital.doctors} />
         </>
       )}

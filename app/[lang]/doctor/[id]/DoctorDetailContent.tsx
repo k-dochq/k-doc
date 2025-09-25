@@ -71,7 +71,7 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
       <div className='py-5'>
         <div className='px-5'>
           <div className='rounded-xl border border-white bg-white/50 p-3 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
-            <DoctorCard doctor={hospitalDoctorData} lang={lang} variant='dark' />
+            <DoctorCard doctor={hospitalDoctorData} lang={lang} dict={dict} variant='dark' />
 
             {/* 경력 섹션 */}
             <DoctorCareer
