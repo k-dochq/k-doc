@@ -301,7 +301,8 @@
       "title": "Hospital Introduction"
     },
     "info": {
-      "title": "Hospital Information"
+      "title": "Hospital Information",
+      "operatingHours": "Operating Hours"
     },
     "map": {
       "title": "Location"

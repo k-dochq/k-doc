@@ -6,9 +6,9 @@ import { ScheduleCell } from './ScheduleCell';
 
 export function ScheduleTable({ lang, openingHours }: ScheduleTableProps) {
   return (
-    <div className='overflow-hidden border border-[#F4A8FF]'>
+    <div className='overflow-hidden border-t border-b border-[#F4A8FF]'>
       {/* 요일 헤더 */}
-      <div className='mb-0 grid grid-cols-7 gap-0'>
+      <div className='mb-0 grid min-w-0 grid-cols-7 gap-0'>
         {dayNames[lang].map((day, index) => {
           const schedule = getDaySchedule(openingHours, index);
           const isHoliday = !schedule.isOpen;
@@ -18,7 +18,7 @@ export function ScheduleTable({ lang, openingHours }: ScheduleTableProps) {
       </div>
 
       {/* 운영시간 테이블 */}
-      <div className='grid grid-cols-7 gap-0'>
+      <div className='grid min-w-0 grid-cols-7 gap-0'>
         {dayNames[lang].map((day, index) => {
           const schedule = getDaySchedule(openingHours, index);
 

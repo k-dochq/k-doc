@@ -10,7 +10,7 @@ export function HospitalDetailInfoSection({
 }: HospitalDetailInfoSectionProps & { dict: Dictionary }) {
   return (
     <div className=''>
-      <h2 className='text-base font-bold'>진료시간</h2>
+      <h2 className='text-base font-bold'>{dict.hospital.info.operatingHours}</h2>
 
       <div className='mt-4 rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
         <ScheduleTable lang={lang} openingHours={hospital.openingHours} />
