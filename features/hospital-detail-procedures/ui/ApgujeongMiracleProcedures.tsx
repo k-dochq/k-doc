@@ -49,40 +49,48 @@ export function ApgujeongMiracleProcedures({
   const miracleImagePath = getMiracleDetailImagePath(lang);
 
   return (
-    <div className='space-y-8'>
-      {/* 첫 번째 섹션: 유튜브 영상 */}
-      <section className='w-full'>
-        <div className='mx-auto'>
-          <div className='aspect-video w-full overflow-hidden'>
-            <iframe
-              width='100%'
-              height='100%'
-              src={embedUrl}
-              title='YouTube video player'
-              frameBorder='0'
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-              allowFullScreen
-              className='h-full w-full'
-            />
-          </div>
-          <p className='mt-4 text-center text-base font-semibold text-white'>
-            {dict.hospitalDetailTabs.apgujeongMiracle.videoDescription}
-          </p>
-        </div>
-      </section>
+    <div className='space-y-4'>
+      {/* 시술상세 타이틀 */}
+      <div className=''>
+        <h2 className='text-base font-bold'>{dict.hospitalDetailTabs.procedures}</h2>
+      </div>
 
-      {/* 두 번째 섹션: 이미지 */}
-      <section className='w-full'>
-        <div className='mx-auto'>
-          <div className='flex w-full justify-center'>
-            <img
-              src={miracleImagePath}
-              alt={dict.hospitalDetailTabs.apgujeongMiracle.imageAlt}
-              className='h-auto w-full max-w-[375px] object-contain'
-            />
+      {/* 시술상세 컨텐츠를 감싸는 div */}
+      <div className='rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
+        {/* 첫 번째 섹션: 유튜브 영상 */}
+        <section className='w-full'>
+          <div className='mx-auto'>
+            <div className='aspect-video w-full overflow-hidden'>
+              <iframe
+                width='100%'
+                height='100%'
+                src={embedUrl}
+                title='YouTube video player'
+                frameBorder='0'
+                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                allowFullScreen
+                className='h-full w-full'
+              />
+            </div>
+            <p className='mt-2 text-center text-[16px] font-[600] text-neutral-900'>
+              {dict.hospitalDetailTabs.apgujeongMiracle.videoDescription}
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* 두 번째 섹션: 이미지 */}
+        <section className='mt-8 w-full'>
+          <div className='mx-auto'>
+            <div className='flex w-full justify-center'>
+              <img
+                src={miracleImagePath}
+                alt={dict.hospitalDetailTabs.apgujeongMiracle.imageAlt}
+                className='h-auto w-full max-w-[375px] object-contain'
+              />
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
