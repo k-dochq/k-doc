@@ -34,7 +34,7 @@ export function MedicalSpecialtyTags({
     maxDisplay && specialties.length > maxDisplay ? specialties.length - maxDisplay : 0;
 
   return (
-    <div className={`flex gap-1 ${className}`}>
+    <div className={`flex flex-wrap gap-1 ${className}`}>
       {displaySpecialties.map((specialty) => {
         const specialtyName = extractLocalizedText(specialty.name, lang) || '';
         return (
