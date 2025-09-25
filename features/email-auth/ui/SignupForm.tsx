@@ -4,7 +4,6 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { FormInput } from 'shared/ui/form-input';
 import { FormButton } from 'shared/ui/form-button';
-import { LocaleLink } from 'shared/ui/locale-link';
 import { useSignupForm } from 'features/email-auth/model/useSignupForm';
 import { useEmailSignup } from 'features/email-auth/model/useEmailSignup';
 
@@ -49,7 +48,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
       <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         {/* 이메일 입력 */}
         <FormInput
-          label={dict.auth?.signup?.email || '이메일'}
+          label={`${dict.auth?.signup?.email || '이메일'} (${dict.auth?.signup?.required || '필수'})`}
           type='email'
           value={formData.email}
           onChange={(e) => updateField('email', e.target.value)}
@@ -60,7 +59,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
         {/* 비밀번호 입력 */}
         <FormInput
-          label={dict.auth?.signup?.password || '비밀번호'}
+          label={`${dict.auth?.signup?.password || '비밀번호'} (${dict.auth?.signup?.required || '필수'})`}
           type='password'
           value={formData.password}
           onChange={(e) => updateField('password', e.target.value)}
@@ -71,7 +70,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
         {/* 비밀번호 확인 입력 */}
         <FormInput
-          label={dict.auth?.signup?.confirmPassword || '비밀번호 확인'}
+          label={`${dict.auth?.signup?.confirmPassword || '비밀번호 확인'} (${dict.auth?.signup?.required || '필수'})`}
           type='password'
           value={formData.confirmPassword}
           onChange={(e) => updateField('confirmPassword', e.target.value)}
@@ -84,7 +83,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
         {/* 여권 영문 이름 입력 (필수) */}
         <FormInput
-          label={dict.auth?.signup?.passportName || '여권 영문 이름'}
+          label={`${dict.auth?.signup?.passportName || '여권 영문 이름'} (${dict.auth?.signup?.required || '필수'})`}
           type='text'
           value={formData.passportName}
           onChange={(e) => updateField('passportName', e.target.value)}
@@ -144,26 +143,6 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           {dict.auth?.signup?.signupButton || '회원가입'}
         </FormButton>
       </form>
-
-      {/* 로그인 링크 */}
-      <div className='flex items-center justify-center gap-4'>
-        <span className='text-sm leading-5 text-neutral-500'>
-          {dict.auth?.signup?.alreadyHaveAccount || '이미 회원이신가요?'}
-        </span>
-        <div className='flex h-0 w-0 items-center justify-center'>
-          <div className='h-0 w-2.5 rotate-90 border-t border-neutral-300' />
-        </div>
-        <LocaleLink
-          href={
-            redirectTo
-              ? `/auth/login/email?redirectTo=${encodeURIComponent(redirectTo)}`
-              : '/auth/login/email'
-          }
-          className='text-sm leading-5 text-neutral-500 hover:text-neutral-700'
-        >
-          {dict.auth?.signup?.loginLink || '로그인하기'}
-        </LocaleLink>
-      </div>
     </div>
   );
 }
