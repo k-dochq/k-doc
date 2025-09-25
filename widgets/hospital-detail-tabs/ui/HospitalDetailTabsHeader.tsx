@@ -26,8 +26,9 @@ export function HospitalDetailTabsHeader({
           onClick={() => onTabClick(index)}
           className={cn(
             'flex-1 px-4 py-3 text-center text-sm font-medium transition-colors',
-            'border-b-2 border-transparent',
-            activeTab === index ? 'border-white text-white' : 'text-white/70 hover:text-white/90',
+            activeTab === index
+              ? 'border-primary text-primary border-b-2'
+              : 'border-primary/50 text-primary/50 border-b-1',
           )}
         >
           {tab.label}

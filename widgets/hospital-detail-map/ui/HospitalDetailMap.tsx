@@ -28,7 +28,7 @@ export function HospitalDetailMap({ lang, dict, latitude, longitude }: HospitalD
 
   return (
     <div className=''>
-      <h2 className='text-base font-bold text-white'>{dict.hospital.map.title}</h2>
+      <h2 className='text-base font-bold'>{dict.hospital.map.title}</h2>
 
       <HospitalMap latitude={latitude} longitude={longitude} />
 

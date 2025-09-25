@@ -20,7 +20,7 @@ export function HospitalAddressSection({ address, onCopyAddress }: HospitalAddre
           <MapPinIcon size={20} />
         </div>
         {/* 주소 텍스트 */}
-        <p className='truncate text-sm leading-5 text-white'>{address}</p>
+        <p className='truncate text-sm leading-5'>{address}</p>
       </div>
 
       {/* 주소복사 버튼 */}

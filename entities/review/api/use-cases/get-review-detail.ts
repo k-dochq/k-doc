@@ -2,6 +2,7 @@ import { prisma } from 'shared/lib/prisma';
 import { type ReviewCardData } from '../../model/types';
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
+import { getUserDisplayName } from 'shared/lib';
 
 export interface GetReviewDetailParams {
   reviewId: string;
@@ -140,7 +141,7 @@ export async function getReviewDetail({
       likedUserIds, // 좋아요를 한 사용자 ID들
       isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
       user: {
-        displayName: review.User?.displayName || null,
+        displayName: review.User ? getUserDisplayName(review.User) : null,
         nickName: review.User?.nickName || null,
         name: review.User?.name || null,
       },

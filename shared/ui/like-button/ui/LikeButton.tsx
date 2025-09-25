@@ -1,14 +1,13 @@
 'use client';
 
 import { LoadingIcon } from 'shared/ui/loading-icon';
-import { HeartIcon, DetailHeartIcon } from 'shared/ui/icons';
+import { HeartIcon, HeartOutlineIcon } from 'shared/ui/icons';
 
 interface LikeButtonProps {
   likeCount?: number;
   isLiked?: boolean;
   onLikeToggle?: () => void;
   isLoading?: boolean;
-  variant?: 'default' | 'detail';
 }
 
 export function LikeButton({
@@ -16,7 +15,6 @@ export function LikeButton({
   isLiked = false,
   onLikeToggle,
   isLoading = false,
-  variant = 'default',
 }: LikeButtonProps) {
   return (
     <button
@@ -27,18 +25,18 @@ export function LikeButton({
           onLikeToggle?.();
         }
       }}
-      className={`flex items-center gap-2 ${isLoading ? 'cursor-not-allowed' : ''}`}
+      className={`flex items-center gap-1 ${isLoading ? 'cursor-not-allowed' : ''}`}
       aria-label={isLiked ? '좋아요 취소' : '좋아요'}
       disabled={isLoading}
     >
       {isLoading ? (
-        <LoadingIcon size={20} className='text-white opacity-70' />
-      ) : variant === 'detail' ? (
-        <DetailHeartIcon isLiked={isLiked} />
+        <LoadingIcon size={20} className='text-neutral-900 opacity-70' />
+      ) : isLiked ? (
+        <HeartIcon />
       ) : (
-        <HeartIcon isLiked={isLiked} />
+        <HeartOutlineIcon />
       )}
-      <span className={`text-base font-medium text-white ${isLoading ? 'opacity-70' : ''}`}>
+      <span className={`text-base font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
         {likeCount}
       </span>
     </button>

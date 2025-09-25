@@ -19,7 +19,7 @@ export function HospitalMainImage({ imageUrl, hospitalName }: HospitalMainImageP
   const shouldShowDefaultImage = !imageUrl || imageError;
 
   return (
-    <div className='relative h-full w-full'>
+    <div className='relative h-[242px] w-full'>
       {/* 기본 이미지 배경 (blur 효과) - 이미지 로딩 전에만 표시 */}
       <Image
         src='/images/hospital-detail/default_hospital_detail3.png'

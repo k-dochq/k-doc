@@ -2,6 +2,7 @@ import { type ReviewCardData } from 'entities/review/model/types';
 import { type DoctorDetail } from '@/lib/queries/doctor';
 import { type ReviewImageType } from '@prisma/client';
 import { parsePriceInfo, parseLocalizedText } from 'shared/model/types';
+import { getUserDisplayName } from 'shared/lib';
 
 /**
  * DoctorDetail의 hospital.reviews를 ReviewCardData 타입으로 변환
@@ -23,7 +24,7 @@ export function transformDoctorReviewsToReviewCardData(doctor: DoctorDetail): Re
     likedUserIds: [], // doctor 상세에서는 좋아요 기능 비활성화
     isLiked: false,
     user: {
-      displayName: review.user.name || review.user.nickName || '익명',
+      displayName: getUserDisplayName(review.user),
       nickName: review.user.nickName,
       name: review.user.name,
     },

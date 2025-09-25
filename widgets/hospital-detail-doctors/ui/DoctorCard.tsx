@@ -41,25 +41,13 @@ export function DoctorCard({ doctor, lang, variant = 'light' }: DoctorCardProps)
         <div className='mb-auto flex h-full w-full flex-col'>
           {/* 이름과 직책 */}
           <div className='flex items-center'>
-            <h3
-              className={`truncate text-base font-semibold ${
-                variant === 'dark' ? 'text-neutral-900' : 'text-white'
-              }`}
-            >
+            <h3 className='truncate text-base font-semibold'>
               {doctorName} {position}
             </h3>
           </div>
 
           {/* 병원명 */}
-          {hospitalName && (
-            <p
-              className={`mt-0.5 truncate text-xs font-medium ${
-                variant === 'dark' ? 'text-neutral-600' : 'text-white/80'
-              }`}
-            >
-              {hospitalName}
-            </p>
-          )}
+          {hospitalName && <p className='mt-0.5 truncate text-xs font-medium'>{hospitalName}</p>}
 
           {/* 진료부위 태그 */}
           <div className='mt-2'>
