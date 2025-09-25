@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { ConsultationTabHeader } from './ConsultationTabHeader';
@@ -14,7 +13,6 @@ interface ConsultationTabsProps {
 }
 
 export function ConsultationTabs({ lang, dict }: ConsultationTabsProps) {
-  const [api, setApi] = useState<CarouselApi>();
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
@@ -22,56 +20,38 @@ export function ConsultationTabs({ lang, dict }: ConsultationTabsProps) {
     { id: 1, label: dict.consultation?.appointment || '예약신청' },
   ];
 
-  // Carousel API 연결
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    setActiveTab(api.selectedScrollSnap());
-
-    api.on('select', () => {
-      setActiveTab(api.selectedScrollSnap());
-    });
-  }, [api]);
-
   // 탭 클릭 핸들러
   const handleTabClick = (index: number) => {
-    api?.scrollTo(index);
+    setActiveTab(index);
   };
 
   return (
-    <div className='w-full'>
-      {/* 탭 헤더 */}
-      <ConsultationTabHeader tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} />
+    <div className='flex h-[calc(100vh-122px)] w-full flex-col overflow-hidden'>
+      {/* 탭 헤더 - 고정 */}
+      <div className='flex-shrink-0'>
+        <ConsultationTabHeader tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} />
+      </div>
 
-      {/* Carousel 기반 컨텐츠 */}
-      <Carousel
-        setApi={setApi}
-        className='w-full'
-        opts={{
-          loop: false, // 탭은 무한 루프 비활성화
-          align: 'start',
-          skipSnaps: false,
-          dragFree: false,
-        }}
-      >
-        <CarouselContent className='ml-0'>
-          {/* 상담채팅 탭 */}
-          <CarouselItem className='min-h-[60vh] basis-full pl-0'>
-            <div className=''>
-              <ConsultationChatTab lang={lang} dict={dict} />
-            </div>
-          </CarouselItem>
+      {/* 탭 컨텐츠 - 스크롤 가능 영역 */}
+      <div className='relative flex-1 overflow-hidden'>
+        {/* 상담채팅 탭 */}
+        <div
+          className={`h-full overflow-y-auto transition-opacity duration-300 ${
+            activeTab === 0 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
+          }`}
+        >
+          <ConsultationChatTab lang={lang} dict={dict} />
+        </div>
 
-          {/* 예약신청 탭 */}
-          <CarouselItem className='min-h-[60vh] basis-full pl-0'>
-            <div className=''>
-              <ConsultationAppointmentTab lang={lang} dict={dict} />
-            </div>
-          </CarouselItem>
-        </CarouselContent>
-      </Carousel>
+        {/* 예약신청 탭 */}
+        <div
+          className={`h-full overflow-y-auto transition-opacity duration-300 ${
+            activeTab === 1 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
+          }`}
+        >
+          <ConsultationAppointmentTab lang={lang} dict={dict} />
+        </div>
+      </div>
     </div>
   );
 }
