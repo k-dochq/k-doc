@@ -40,7 +40,7 @@ export function HospitalDetailIntroductionTab({
         <>
           <h2 className='text-base font-bold'>{dict.hospital.map.title}</h2>
 
-          <div className='mt-4 rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
+          <div className='mt-4 rounded-xl border border-white bg-white/50 px-4 pb-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
             <HospitalDetailMap
               lang={lang}
               dict={dict}

@@ -305,7 +305,7 @@
       "operatingHours": "진료시간"
     },
     "map": {
-      "title": "위치"
+      "title": "병원위치"
     },
     "address": {
       "copyButton": "주소복사",
