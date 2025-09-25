@@ -307,6 +307,11 @@
     "map": {
       "title": "위치"
     },
+    "address": {
+      "copyButton": "주소복사",
+      "noAddress": "주소 정보가 없습니다.",
+      "copySuccess": "주소가 복사되었습니다."
+    },
     "like": {
       "like": "찜하기",
       "liked": "찜 완료",

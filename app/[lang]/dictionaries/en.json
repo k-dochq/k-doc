@@ -307,6 +307,11 @@
     "map": {
       "title": "Location"
     },
+    "address": {
+      "copyButton": "Copy Address",
+      "noAddress": "No address information available.",
+      "copySuccess": "Address copied successfully."
+    },
     "like": {
       "like": "Like",
       "liked": "Liked",
