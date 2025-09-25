@@ -51,21 +51,33 @@ export function DoctorCard({ doctor, lang, dict, variant = 'light' }: DoctorCard
       </div>
 
       {/* 의료진 정보 */}
-      <div className='flex h-full w-full flex-col justify-between'>
-        <div className='flex flex-col'>
+      <div className='flex h-full w-full min-w-0 flex-col justify-between'>
+        <div className='flex min-w-0 flex-col'>
           {/* 이름과 직책 */}
-          <div className='flex items-center'>
-            <h3 className='truncate text-base font-semibold'>
-              {doctorName} {position}
-            </h3>
+          <div className='flex min-w-0 items-center'>
+            <h3 className='min-w-0 truncate text-base font-semibold'>{doctorName}</h3>
+            {position && (
+              <>
+                <span className='mx-1 text-base font-semibold'>·</span>
+                <span className='min-w-0 truncate text-base font-semibold'>{position}</span>
+              </>
+            )}
           </div>
 
           {/* 병원명 */}
-          {hospitalName && <p className='mt-0.5 truncate text-xs font-medium'>{hospitalName}</p>}
+          {hospitalName && (
+            <p className='mt-0.5 min-w-0 truncate text-xs font-medium text-gray-600'>
+              {hospitalName}
+            </p>
+          )}
 
           {/* 진료부위 태그 */}
-          <div className='mt-2'>
-            <MedicalSpecialtyTags specialties={doctor.medicalSpecialties || []} lang={lang} />
+          <div className='mt-2 min-w-0'>
+            <MedicalSpecialtyTags
+              specialties={doctor.medicalSpecialties || []}
+              lang={lang}
+              maxDisplay={2}
+            />
           </div>
         </div>
 
