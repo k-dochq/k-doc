@@ -62,7 +62,7 @@ export function HospitalMap({ latitude, longitude }: HospitalMapProps) {
   }, [latitude, longitude]);
 
   return (
-    <div className='mt-4 h-[242px] w-full overflow-hidden rounded-lg'>
+    <div className='mt-4 h-[220px] w-full overflow-hidden rounded-lg'>
       <div ref={mapRef} className='h-full w-full' style={{ width: '100%', height: '100%' }} />
     </div>
   );
