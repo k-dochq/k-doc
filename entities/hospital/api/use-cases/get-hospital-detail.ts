@@ -60,7 +60,7 @@ export interface GetHospitalDetailRequest {
 
 export interface GetHospitalDetailResponse {
   hospital: Hospital & {
-    description?: string;
+    description?: Prisma.JsonValue;
     openingHours?: OpeningHours;
   };
 }
@@ -176,7 +176,7 @@ export async function getAllHospitalIds(): Promise<string[]> {
  * Prisma 데이터를 Hospital 타입으로 변환합니다. (정적 생성용 - 조회수 증가 없음)
  */
 function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospital & {
-  description?: string;
+  description?: Prisma.JsonValue;
   openingHours?: OpeningHours;
 } {
   // 메인 이미지 URL 추출 (MAIN → THUMBNAIL → 첫 번째 이미지 순서)
@@ -220,7 +220,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
       updatedAt: img.updatedAt,
     })),
     medicalSpecialties,
-    description: extractLocalizedText(data.description, 'ko') || undefined,
+    description: data.description,
     openingHours,
     prices: parsePriceInfo(data.prices),
     discountRate: data.discountRate,
@@ -245,7 +245,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
  * Prisma 데이터를 Hospital 타입으로 변환합니다. (동적 조회용 - 조회수 증가 포함)
  */
 function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & {
-  description?: string;
+  description?: Prisma.JsonValue;
   openingHours?: OpeningHours;
 } {
   // 메인 이미지 URL 추출 (MAIN → THUMBNAIL → 첫 번째 이미지 순서)
@@ -289,7 +289,7 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
       updatedAt: img.updatedAt,
     })),
     medicalSpecialties,
-    description: extractLocalizedText(data.description, 'ko') || undefined,
+    description: data.description,
     openingHours,
     latitude: data.latitude,
     longitude: data.longitude,
