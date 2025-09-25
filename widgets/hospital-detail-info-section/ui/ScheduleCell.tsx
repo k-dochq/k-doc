@@ -22,7 +22,7 @@ export function ScheduleCell({ day, dayIndex, schedule, lang }: ScheduleCellProp
         </div>
       ) : (
         <div
-          className={`truncate text-sm font-medium ${isHoliday ? 'text-white' : 'text-gray-500'}`}
+          className={`flex h-full w-full items-center justify-center truncate text-sm font-medium ${isHoliday ? 'text-white' : 'text-gray-500'}`}
         >
           {holidayTexts[lang]}
         </div>
