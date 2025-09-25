@@ -21,7 +21,7 @@ export function HospitalDetailDoctors({ lang, dict, doctors }: HospitalDetailDoc
       {/* 섹션 헤더 */}
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-1'>
-          <h2 className='text-base leading-6 font-bold'>
+          <h2 className='text-base leading-6 font-semibold'>
             {dict.hospitals?.doctors?.title || '소속 의료진'}
           </h2>
           <span className='text-sm leading-[18px] font-semibold'>({doctorCount})</span>
@@ -29,9 +29,9 @@ export function HospitalDetailDoctors({ lang, dict, doctors }: HospitalDetailDoc
       </div>
 
       {/* 의료진 목록 */}
-      <div className='mt-4 space-y-4'>
+      <div className='mt-4 space-y-3'>
         {doctors.map((doctor) => (
-          <DoctorCard key={doctor.id} doctor={doctor} lang={lang} />
+          <DoctorCard key={doctor.id} doctor={doctor} lang={lang} dict={dict} />
         ))}
       </div>
     </div>

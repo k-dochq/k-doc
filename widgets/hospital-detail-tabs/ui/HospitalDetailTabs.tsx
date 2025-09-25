@@ -28,7 +28,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
   };
 
   return (
-    <div className='w-full border border-white/60'>
+    <div className='w-full border-t border-white/60'>
       {/* 탭 헤더 */}
       <HospitalDetailTabsHeader tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} />
 
