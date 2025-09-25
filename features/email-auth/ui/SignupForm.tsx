@@ -1,11 +1,21 @@
 'use client';
 
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { FormInput } from 'shared/ui/form-input';
 import { FormButton } from 'shared/ui/form-button';
 import { useSignupForm } from 'features/email-auth/model/useSignupForm';
 import { useEmailSignup } from 'features/email-auth/model/useEmailSignup';
+import { TermsAgreement } from 'features/terms-agreement';
+
+interface AgreementState {
+  allAgreed: boolean;
+  age14Plus: boolean;
+  termsOfService: boolean;
+  privacyPolicy: boolean;
+  marketingNotifications: boolean;
+}
 
 interface SignupFormProps {
   lang: Locale;
@@ -20,10 +30,22 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
   });
   const { signUpWithEmail, isLoading, error } = useEmailSignup({ locale: lang, dict });
 
+  const [agreements, setAgreements] = useState<AgreementState>({
+    allAgreed: false,
+    age14Plus: false,
+    termsOfService: false,
+    privacyPolicy: false,
+    marketingNotifications: false,
+  });
+
+  // 필수 약관 동의 여부 확인
+  const isRequiredAgreementsValid =
+    agreements.age14Plus && agreements.termsOfService && agreements.privacyPolicy;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
+    if (!validateForm() || !isRequiredAgreementsValid) {
       return;
     }
 
@@ -135,6 +157,18 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
         {error && (
           <div className='rounded-xl border border-red-200 bg-red-50 p-4'>
             <p className='text-sm text-red-600'>{error}</p>
+          </div>
+        )}
+
+        {/* 약관동의 섹션 */}
+        <TermsAgreement lang={lang} dict={dict} onAgreementChange={setAgreements} />
+
+        {/* 약관 동의 에러 메시지 */}
+        {!isRequiredAgreementsValid && (
+          <div className='rounded-xl border border-red-200 bg-red-50 p-4'>
+            <p className='text-sm text-red-600'>
+              {dict.auth?.signup?.termsAgreement?.requiredError || '필수 약관에 동의해주세요.'}
+            </p>
           </div>
         )}
 

@@ -208,6 +208,14 @@
       "passwordMismatch": "Passwords do not match",
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Sign In",
+      "termsAgreement": {
+        "allAgreed": "Agree to all",
+        "age14Plus": "I am 14 years old or older.",
+        "termsOfService": "Terms of Service (Required)",
+        "privacyPolicy": "Privacy Policy Consent (Required)",
+        "marketingNotifications": "Event/Service Benefit Notifications (Optional)",
+        "requiredError": "Please agree to the required terms."
+      },
       "placeholders": {
         "email": "your-email@example.com",
         "password": "6+ characters",
