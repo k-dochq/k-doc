@@ -38,7 +38,7 @@ export function DoctorCard({ doctor, lang, dict, variant = 'light' }: DoctorCard
   };
 
   return (
-    <div className='relative z-10 flex h-full items-center gap-3 rounded-lg border border-white bg-white/50 p-3 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px] transition-opacity active:opacity-80'>
+    <div className='relative z-10 flex h-full items-center gap-3 rounded-xl border border-white bg-white/50 p-3 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px] transition-opacity active:opacity-80'>
       {/* 프로필 이미지 */}
       <div className='relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-xl'>
         <Image
