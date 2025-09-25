@@ -4,6 +4,7 @@ import { type Dictionary } from 'shared/model/types';
 import { HospitalMainImage } from 'entities/hospital/ui/HospitalMainImage';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { HotLabelVariant } from 'shared/ui/hot-label/HotLabelVariant';
 
 interface HospitalDetailPhotosProps {
   hospital: Hospital;
@@ -17,6 +18,11 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
   return (
     <div className='relative h-[242px] w-full'>
       <HospitalMainImage imageUrl={hospital.mainImageUrl} hospitalName={hospitalName} />
+
+      {/* HotLabelVariant - 왼쪽 위에 위치 */}
+      <div className='absolute top-[-7px] left-[13px] z-[60]'>
+        <HotLabelVariant />
+      </div>
 
       <LocaleLink
         href={`/hospital/${hospital.id}/reviews`}

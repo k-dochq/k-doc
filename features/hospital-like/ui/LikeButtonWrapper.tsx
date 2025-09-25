@@ -52,7 +52,6 @@ export function LikeButtonWrapper({ hospitalId, lang, dict }: LikeButtonWrapperP
       isLiked={isLiked}
       onLikeToggle={handleToggleLike}
       isLoading={isToggling}
-      variant='detail'
     />
   );
 }

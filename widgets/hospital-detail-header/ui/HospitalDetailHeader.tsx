@@ -1,7 +1,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { PageHeader } from 'shared/ui/page-header';
-import { LikeButtonWrapper } from 'features/hospital-like';
+import { HospitalDetailHeaderActions } from './HospitalDetailHeaderActions';
 
 interface HospitalDetailHeaderProps {
   lang: Locale;
@@ -21,9 +21,8 @@ export function HospitalDetailHeader({
       lang={lang}
       title={hospitalName || ''}
       fallbackUrl={`/${lang}/hospitals`}
-      variant='dark'
-      bgClassName='bg-white/50'
-      rightContent={<LikeButtonWrapper hospitalId={hospitalId} lang={lang} dict={dict} />}
+      variant='light'
+      rightContent={<HospitalDetailHeaderActions hospitalId={hospitalId} lang={lang} dict={dict} />}
     />
   );
 }

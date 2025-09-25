@@ -13,3 +13,4 @@ export { ReviewIcon } from './ReviewIcon';
 export { FavoriteIcon } from './FavoriteIcon';
 export { ConsultationIcon } from './ConsultationIcon';
 export { DotIcon } from './DotIcon';
+export { ShareIcon } from './ShareIcon';
