@@ -66,6 +66,7 @@ export interface Hospital {
   id: string;
   name: Prisma.JsonValue;
   address?: Prisma.JsonValue;
+  directions?: Prisma.JsonValue; // 병원 길찾기 정보 (다국어 JSON)
   description?: Prisma.JsonValue; // 병원 소개 (다국어 JSON)
   rating: number;
   reviewCount: number;

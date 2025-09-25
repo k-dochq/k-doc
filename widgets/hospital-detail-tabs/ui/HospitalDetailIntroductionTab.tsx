@@ -6,9 +6,10 @@ import { HospitalDetailInfoSection } from 'widgets/hospital-detail-info-section'
 import { HospitalDetailMap } from 'widgets/hospital-detail-map';
 import { HospitalDetailDoctors } from 'widgets/hospital-detail-doctors';
 import { HospitalDetailAddressSection } from 'widgets/hospital-detail-address-section';
+import { type Hospital } from 'entities/hospital/api/entities/types';
 
 interface HospitalDetailIntroductionTabProps {
-  hospital: any; // TODO: 정확한 타입 정의 필요
+  hospital: Hospital;
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;
@@ -50,8 +51,8 @@ export function HospitalDetailIntroductionTab({
 
             {/* 주소 정보 섹션 */}
             <HospitalDetailAddressSection
-              address={
-                extractLocalizedText(hospital.address, lang) || dict.hospital.address.noAddress
+              directions={
+                extractLocalizedText(hospital.directions, lang) || dict.hospital.address.noAddress
               }
               lang={lang}
               dict={dict}
