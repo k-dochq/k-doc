@@ -27,7 +27,7 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
       <LocaleLink
         href={`/hospital/${hospital.id}/reviews`}
         locale={lang}
-        className='bg-primary absolute top-5 right-5 flex min-h-[66px] min-w-[66px] items-center justify-center rounded-full'
+        className='bg-primary fixed top-[78px] right-[20px] z-[60] flex min-h-[66px] min-w-[66px] items-center justify-center rounded-full md:right-[calc(50vw-250px+20px)]'
       >
         <span className='text-[13px] font-semibold text-white'>
           {dict.hospital?.reviewsButton || '시술후기'}
