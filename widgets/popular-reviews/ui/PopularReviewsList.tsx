@@ -10,6 +10,7 @@ interface PopularReviewsListProps {
   lang: Locale;
   dict: Dictionary;
   className?: string;
+  showProgressBar?: boolean;
 }
 
 export function PopularReviewsList({
@@ -17,6 +18,7 @@ export function PopularReviewsList({
   lang,
   dict,
   className = '',
+  showProgressBar = true,
 }: PopularReviewsListProps) {
   return (
     <ReviewCarousel
@@ -29,7 +31,7 @@ export function PopularReviewsList({
       autoPlay={true}
       autoPlayInterval={4000}
       align='start'
-      showProgressBar={true}
+      showProgressBar={showProgressBar}
     />
   );
 }
