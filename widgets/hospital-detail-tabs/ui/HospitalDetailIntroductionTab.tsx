@@ -26,7 +26,7 @@ export function HospitalDetailIntroductionTab({
       {/* 병원 소개 */}
       <HospitalDetailIntroduction hospital={hospital} lang={lang} dict={dict} />
 
-      <div className='h-8' />
+      <div className='h-9' />
 
       {/* 병원 정보 */}
       <HospitalDetailInfoSection hospital={hospital} lang={lang} dict={dict} />
