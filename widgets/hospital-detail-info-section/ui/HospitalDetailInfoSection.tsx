@@ -1,25 +1,20 @@
-import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { type Hospital } from 'entities/hospital/api/entities/types';
-import { type OpeningHours } from 'entities/hospital/api/entities/opening-hours-types';
-import { formatOperatingHours } from 'shared/lib';
-
-interface HospitalDetailInfoSectionProps {
-  hospital: Hospital & { openingHours?: OpeningHours };
-  lang: Locale;
-  dict: Dictionary;
-}
+import { type HospitalDetailInfoSectionProps } from '../lib/types';
+import { ScheduleTable } from './ScheduleTable';
+import { NoticeSection } from './NoticeSection';
 
 export function HospitalDetailInfoSection({
   hospital,
   lang,
   dict,
-}: HospitalDetailInfoSectionProps) {
+}: HospitalDetailInfoSectionProps & { dict: Dictionary }) {
   return (
     <div className=''>
-      <h2 className='text-base font-bold'>{dict.hospital.info.title}</h2>
-      <div className='mt-4 text-sm leading-relaxed font-normal whitespace-pre-line'>
-        {formatOperatingHours(hospital.openingHours, lang)}
+      <h2 className='text-base font-bold'>{dict.hospital.info.operatingHours}</h2>
+
+      <div className='mt-4 rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
+        <ScheduleTable lang={lang} openingHours={hospital.openingHours} />
+        <NoticeSection notice={hospital.openingHoursNotice} />
       </div>
     </div>
   );

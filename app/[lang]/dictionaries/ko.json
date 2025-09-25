@@ -301,7 +301,8 @@
       "title": "병원 소개"
     },
     "info": {
-      "title": "병원정보"
+      "title": "병원정보",
+      "operatingHours": "진료시간"
     },
     "map": {
       "title": "위치"
