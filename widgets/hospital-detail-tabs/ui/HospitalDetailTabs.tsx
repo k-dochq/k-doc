@@ -36,7 +36,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
       <div className='relative'>
         {/* 병원소개 탭 */}
         <div
-          className={`overflow-y-auto px-5 py-6 transition-opacity duration-300 ${
+          className={`px-5 py-6 transition-opacity duration-300 ${
             activeTab === 0 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
           }`}
         >
@@ -50,7 +50,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
 
         {/* 시술상세 탭 */}
         <div
-          className={`overflow-y-auto px-5 py-4 transition-opacity duration-300 ${
+          className={`px-5 py-6 transition-opacity duration-300 ${
             activeTab === 1 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
           }`}
         >
