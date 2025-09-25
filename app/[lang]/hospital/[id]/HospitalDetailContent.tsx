@@ -9,7 +9,6 @@ import { HospitalDetailConsultationFloating } from 'widgets/hospital-detail-cons
 import { HospitalDetailTabs } from 'widgets/hospital-detail-tabs';
 import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
 import { extractLocalizedText } from 'shared/lib/localized-text';
-import { GradientBackground } from '@/shared/ui/gradient-background';
 
 interface HospitalDetailContentProps {
   hospitalId: string;
