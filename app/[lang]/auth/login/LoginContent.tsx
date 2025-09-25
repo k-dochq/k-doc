@@ -33,7 +33,7 @@ export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps
         variant='dark'
         bgClassName='bg-white/0'
       />
-      <div className='mt-auto p-5'>
+      <div className='pt-b mt-auto px-5 pb-20'>
         <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
       </div>
     </div>
