@@ -50,7 +50,7 @@ export async function HospitalDetailContent({
           <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
         </div>
 
-        <div className='h-5' />
+        <div className='h-[33px]' />
 
         {/* 탭 기반 컨텐츠 */}
         <HospitalDetailTabs hospital={hospital} hospitalId={hospitalId} lang={lang} dict={dict} />

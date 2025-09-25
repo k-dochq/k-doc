@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type Comment } from 'entities/comment';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { maskNickname } from 'shared/lib/nickname-mask';
 import { UserAvatar } from 'shared/ui';
 
 interface CommentItemProps {
@@ -13,8 +14,9 @@ interface CommentItemProps {
 }
 
 export function CommentItem({ comment, lang, dict }: CommentItemProps) {
-  const displayName =
+  const rawDisplayName =
     comment.user.nickName || comment.user.displayName || comment.user.name || '익명';
+  const displayName = rawDisplayName === '익명' ? rawDisplayName : maskNickname(rawDisplayName);
   const commentText = extractLocalizedText(comment.content, lang);
 
   // 날짜 포맷팅

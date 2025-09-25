@@ -7,6 +7,7 @@ import {
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
+import { getUserDisplayName } from 'shared/lib';
 
 export async function getAllReviews({
   page = 1,
@@ -194,7 +195,7 @@ export async function getAllReviews({
         isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
         isRecommended: review.isRecommended,
         user: {
-          displayName: review.User.displayName,
+          displayName: getUserDisplayName(review.User),
           nickName: review.User.nickName,
           name: review.User.name,
         },

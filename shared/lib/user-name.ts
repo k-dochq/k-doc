@@ -1,4 +1,5 @@
 import { type User } from '@prisma/client';
+import { maskNickname } from './nickname-mask';
 
 /**
  * 사용자 표시명을 생성하는 유틸리티 함수
@@ -16,5 +17,8 @@ export function getUserDisplayName(
   // user.user 형태인 경우 user 필드 추출
   const userData = 'user' in user ? user.user : user;
 
-  return userData.nickName || userData.displayName || userData.name || '익명';
+  const displayName = userData.nickName || userData.displayName || userData.name || '익명';
+
+  // 익명이 아닌 경우에만 마스킹 적용
+  return displayName === '익명' ? displayName : maskNickname(displayName);
 }

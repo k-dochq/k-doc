@@ -11,4 +11,5 @@ export * from './query-keys';
 export * from './opening-hours-utils';
 export * from './date-utils';
 export * from './user-name';
+export * from './nickname-mask';
 export * from './modal';
