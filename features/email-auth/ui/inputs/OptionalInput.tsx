@@ -33,7 +33,7 @@ export function OptionalInput({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
+        placeholder={type === 'date' ? dict?.auth?.signup?.dateFormat || '연도.월.일' : placeholder}
         disabled={disabled}
         className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
       />

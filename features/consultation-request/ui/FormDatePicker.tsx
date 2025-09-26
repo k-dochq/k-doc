@@ -1,13 +1,15 @@
 'use client';
 
 import { type Locale } from 'shared/config';
-import { DatePicker } from 'shared/ui/date-picker';
+import { type Dictionary } from 'shared/model/types';
+import { DatePicker } from 'shared/ui/simple-date-picker';
 
 interface FormDatePickerProps {
   label: string;
   value?: Date;
   onChange: (date: Date | undefined) => void;
   locale: Locale;
+  dict?: Dictionary;
   placeholder?: string;
   error?: string;
   disabled?: (date: Date) => boolean;
@@ -18,6 +20,7 @@ export function FormDatePicker({
   value,
   onChange,
   locale,
+  dict,
   placeholder,
   error,
   disabled,
@@ -30,16 +33,16 @@ export function FormDatePicker({
   };
 
   return (
-    <div className='flex w-full flex-col gap-2'>
-      <label className='text-sm leading-5 font-medium text-neutral-900'>{label}</label>
-      <DatePicker
-        value={value}
-        onChange={onChange}
-        locale={locale}
-        placeholder={placeholder}
-        disabled={disablePastDates}
-      />
-      {error && <p className='text-sm leading-5 text-red-500'>{error}</p>}
-    </div>
+    <DatePicker
+      label={label}
+      value={value}
+      onChange={onChange}
+      locale={locale}
+      dict={dict}
+      placeholder={placeholder}
+      disabled={disablePastDates}
+      error={error}
+      required={true}
+    />
   );
 }

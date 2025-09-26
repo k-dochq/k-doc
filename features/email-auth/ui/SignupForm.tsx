@@ -14,6 +14,7 @@ import {
   RequiredSelect,
   PhoneNumberInput,
 } from './inputs';
+import { DatePicker } from 'shared/ui/simple-date-picker';
 
 interface AgreementState {
   allAgreed: boolean;
@@ -172,17 +173,19 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
         />
 
         {/* 생년월일 입력 (선택) */}
-        <OptionalInput
+        <DatePicker
           label={dict.auth?.signup?.birthDate || '생년월일'}
-          value={formData.birthDate}
-          onChange={(value) => updateField('birthDate', value)}
+          value={formData.birthDate ? new Date(formData.birthDate) : undefined}
+          onChange={(date) =>
+            updateField('birthDate', date ? date.toISOString().split('T')[0] : '')
+          }
           placeholder={
             dict.auth?.signup?.placeholders?.birthDate || '생년월일을 선택하세요 (선택사항)'
           }
           error={errors.birthDate}
-          disabled={isLoading}
-          type='date'
+          locale={lang}
           dict={dict}
+          required={false}
         />
 
         {/* 에러 메시지 */}

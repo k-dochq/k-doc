@@ -214,6 +214,7 @@
       "countryCode": "รหัสประเทศ",
       "phoneNumberOnly": "หมายเลขโทรศัพท์",
       "birthDate": "วันเกิด",
+      "dateFormat": "ปี.เดือน.วัน",
       "signupButton": "สมัครสมาชิก",
       "loading": "กำลังสมัคร...",
       "signupError": "เกิดข้อผิดพลาดในการสมัครสมาชิก",

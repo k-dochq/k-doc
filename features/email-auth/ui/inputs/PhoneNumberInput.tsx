@@ -29,7 +29,7 @@ export function PhoneNumberInput({
     <div className='flex w-full flex-col gap-2'>
       <label className='text-sm leading-5 font-medium text-neutral-900'>
         <span>
-          <span className='text-neutral-500'>[선택]</span>{' '}
+          <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
           {dict.auth?.signup?.phoneNumber || '휴대폰번호'}
         </span>
       </label>

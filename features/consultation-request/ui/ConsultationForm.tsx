@@ -184,6 +184,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
           updateField('preferredDate', date ? date.toISOString().split('T')[0] : '')
         }
         locale={lang}
+        dict={dict}
         placeholder={
           dict.consultation?.request?.form?.preferredDate?.placeholder || '날짜를 선택해주세요'
         }
