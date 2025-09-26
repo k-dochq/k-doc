@@ -71,7 +71,7 @@ export function ConsultationChatTab({ lang, dict }: ConsultationChatTabProps) {
   return (
     <div className='flex flex-col gap-4 p-5'>
       {chatRooms.map((chatRoom) => (
-        <ChatRoomCard key={chatRoom.hospitalId} chatRoom={chatRoom} lang={lang} />
+        <ChatRoomCard key={chatRoom.hospitalId} chatRoom={chatRoom} lang={lang} dict={dict} />
       ))}
     </div>
   );

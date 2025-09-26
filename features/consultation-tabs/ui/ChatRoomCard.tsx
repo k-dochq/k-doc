@@ -1,6 +1,7 @@
 'use client';
 
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { type ChatRoom } from '@/app/api/consultation/chat-rooms/route';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { LocaleLink } from 'shared/ui/locale-link';
@@ -10,9 +11,10 @@ import { ChatRoomInfo } from './ChatRoomInfo';
 interface ChatRoomCardProps {
   chatRoom: ChatRoom;
   lang: Locale;
+  dict: Dictionary;
 }
 
-export function ChatRoomCard({ chatRoom, lang }: ChatRoomCardProps) {
+export function ChatRoomCard({ chatRoom, lang, dict }: ChatRoomCardProps) {
   const hospitalName = getLocalizedTextByLocale(chatRoom.hospitalName, lang);
 
   return (
@@ -22,7 +24,7 @@ export function ChatRoomCard({ chatRoom, lang }: ChatRoomCardProps) {
           thumbnailUrl={chatRoom.hospitalThumbnailUrl}
           hospitalName={hospitalName}
         />
-        <ChatRoomInfo chatRoom={chatRoom} lang={lang} />
+        <ChatRoomInfo chatRoom={chatRoom} lang={lang} dict={dict} />
       </div>
     </LocaleLink>
   );

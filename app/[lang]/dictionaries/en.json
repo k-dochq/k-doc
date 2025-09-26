@@ -398,6 +398,7 @@
     "title": "Consultation",
     "chat": "Chat",
     "appointment": "Appointment",
+    "region": "Region",
     "loading": "Loading...",
     "error": "An error occurred while loading data.",
     "retry": "Retry",
