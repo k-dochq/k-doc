@@ -195,11 +195,16 @@
       "title": "회원가입",
       "subtitle": "새 계정을 만드세요",
       "required": "필수",
+      "optional": "선택",
       "email": "이메일",
       "password": "비밀번호",
       "confirmPassword": "비밀번호 확인",
       "passportName": "여권 영문 이름",
       "nationality": "국적",
+      "nationalities": {
+        "thailand": "태국",
+        "korea": "한국"
+      },
       "phoneNumber": "휴대폰번호",
       "birthDate": "생년월일",
       "signupButton": "회원가입",
@@ -221,7 +226,7 @@
         "password": "6자 이상의 비밀번호",
         "confirmPassword": "비밀번호를 다시 입력하세요",
         "passportName": "여권에 기재된 영문 이름을 입력하세요",
-        "nationality": "국적을 입력하세요 (선택사항)",
+        "nationality": "국적을 선택하세요 (선택사항)",
         "phoneNumber": "010-0000-0000 (선택사항)",
         "birthDate": "생년월일을 선택하세요 (선택사항)"
       },

@@ -17,8 +17,6 @@ export default async function HospitalsLayout({ children, params }: HospitalsLay
     <>
       <Header currentLang={lang} dict={dict} />
       <main>{children}</main>
-      <Footer lang={lang} dict={dict} />
-      <div className='h-16' />
       <BottomNavigation currentLang={lang} dict={dict} />
     </>
   );

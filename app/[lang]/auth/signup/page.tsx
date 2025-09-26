@@ -3,6 +3,7 @@ import { type Locale } from 'shared/config';
 import { PageHeader } from 'shared/ui/page-header';
 import { SignupForm } from 'features/email-auth';
 import { AuthLoginLink } from 'features/auth-login-link';
+import { HeaderLanguageSwitcher } from 'widgets/header/ui/HeaderLanguageSwitcher';
 
 interface SignupPageProps {
   params: Promise<{
@@ -25,6 +26,7 @@ export default async function SignupPage({ params, searchParams }: SignupPagePro
         title={dict.auth?.signup?.title || '회원가입'}
         fallbackUrl='/auth/login'
         variant='light'
+        rightContent={<HeaderLanguageSwitcher currentLang={lang} />}
       />
 
       {/* 로그인 링크 */}
