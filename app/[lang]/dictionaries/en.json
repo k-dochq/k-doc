@@ -442,7 +442,7 @@
         },
         "phoneNumber": {
           "label": "Phone Number",
-          "placeholder": "010-0000-0000"
+          "placeholder": "Please enter your phone number"
         },
         "preferredContactTime": {
           "label": "Preferred Contact Time",

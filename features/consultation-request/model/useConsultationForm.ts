@@ -9,7 +9,8 @@ const initialFormData: ConsultationFormData = {
   name: '',
   gender: 'MALE',
   ageGroup: '',
-  phoneNumber: '',
+  countryCode: '',
+  phoneNumberOnly: '',
   preferredDate: '',
   content: '',
   agreeToPrivacy: false,
@@ -49,10 +50,14 @@ export function useConsultationForm(lang: Locale, dict: Dictionary) {
       newErrors.ageGroup = getErrorMessage('ageGroup', 'required');
     }
 
-    if (!formData.phoneNumber.trim()) {
-      newErrors.phoneNumber = getErrorMessage('phoneNumber', 'required');
-    } else if (!/^01[0-9]-?[0-9]{4}-?[0-9]{4}$/.test(formData.phoneNumber.replace(/-/g, ''))) {
-      newErrors.phoneNumber = getErrorMessage('phoneNumber', 'invalid');
+    if (!formData.countryCode.trim()) {
+      newErrors.countryCode = getErrorMessage('countryCode', 'required');
+    }
+
+    if (!formData.phoneNumberOnly.trim()) {
+      newErrors.phoneNumberOnly = getErrorMessage('phoneNumberOnly', 'required');
+    } else if (!/^[0-9-+\s()]{7,15}$/.test(formData.phoneNumberOnly.trim())) {
+      newErrors.phoneNumberOnly = getErrorMessage('phoneNumberOnly', 'invalid');
     }
 
     if (!formData.preferredDate) {
@@ -85,7 +90,8 @@ export function useConsultationForm(lang: Locale, dict: Dictionary) {
     return (
       formData.name.trim() &&
       formData.ageGroup &&
-      formData.phoneNumber.trim() &&
+      formData.countryCode.trim() &&
+      formData.phoneNumberOnly.trim() &&
       formData.preferredDate &&
       formData.content.trim() &&
       formData.agreeToPrivacy

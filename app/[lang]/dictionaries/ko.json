@@ -442,7 +442,7 @@
         },
         "phoneNumber": {
           "label": "휴대폰번호",
-          "placeholder": "010-0000-0000"
+          "placeholder": "휴대폰번호를 입력하세요"
         },
         "preferredContactTime": {
           "label": "선호연락시간",
