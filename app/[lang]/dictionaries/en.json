@@ -421,8 +421,8 @@
       "backButton": "Back",
       "form": {
         "name": {
-          "label": "Name",
-          "placeholder": "Please enter your name"
+          "label": "Passport Name",
+          "placeholder": "Please enter your passport name"
         },
         "gender": {
           "label": "Gender",

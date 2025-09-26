@@ -421,8 +421,8 @@
       "backButton": "뒤로가기",
       "form": {
         "name": {
-          "label": "이름",
-          "placeholder": "이름을 입력해주세요"
+          "label": "여권 이름",
+          "placeholder": "여권에 기재된 이름을 입력해주세요"
         },
         "gender": {
           "label": "성별",
