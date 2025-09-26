@@ -1,6 +1,5 @@
 import { Header } from 'widgets/header';
 import { BottomNavigation } from 'widgets/bottom-navigation';
-import { Footer } from 'widgets/footer';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 
