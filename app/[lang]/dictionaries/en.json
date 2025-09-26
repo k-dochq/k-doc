@@ -214,6 +214,7 @@
       "countryCode": "Country Code",
       "phoneNumberOnly": "Phone Number",
       "birthDate": "Date of Birth",
+      "dateFormat": "Year.Month.Day",
       "signupButton": "Sign Up",
       "loading": "Signing up...",
       "signupError": "Sign up error occurred",
