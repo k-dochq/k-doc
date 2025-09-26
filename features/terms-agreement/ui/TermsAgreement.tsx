@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { getTermsOfServiceLink, getPrivacyPolicyLink } from 'shared/config/policy-links';
 
 interface TermsAgreementProps {
   lang: Locale;
@@ -104,7 +105,7 @@ export function TermsAgreement({ lang, dict, onAgreementChange }: TermsAgreement
             {dict.auth?.signup?.termsAgreement?.termsOfService || '서비스 이용 약관 (필수)'}
           </label>
           <a
-            href='https://hypnotic-dryosaurus-c5c.notion.site/279d3f7f900d80ba9598e70190e516f9?source=copy_link'
+            href={getTermsOfServiceLink(lang)}
             target='_blank'
             rel='noopener noreferrer'
             className='text-sm text-neutral-500 transition-colors hover:text-neutral-700'
@@ -126,7 +127,7 @@ export function TermsAgreement({ lang, dict, onAgreementChange }: TermsAgreement
             {dict.auth?.signup?.termsAgreement?.privacyPolicy || '개인정보 수집/이용 동의 (필수)'}
           </label>
           <a
-            href='https://hypnotic-dryosaurus-c5c.notion.site/279d3f7f900d80c8ae1bdf05a68961a4?source=copy_link'
+            href={getPrivacyPolicyLink(lang)}
             target='_blank'
             rel='noopener noreferrer'
             className='text-sm text-neutral-500 transition-colors hover:text-neutral-700'
