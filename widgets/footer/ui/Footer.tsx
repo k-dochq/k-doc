@@ -1,5 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { getTermsOfServiceLink, getPrivacyPolicyLink } from 'shared/config/policy-links';
 
 interface FooterProps {
   lang: Locale;
@@ -76,7 +77,7 @@ export function Footer({ lang, dict }: FooterProps) {
         </div>
         <div>
           <a
-            href='https://hypnotic-dryosaurus-c5c.notion.site/279d3f7f900d80ba9598e70190e516f9?source=copy_link'
+            href={getTermsOfServiceLink(lang)}
             target='_blank'
             rel='noopener noreferrer'
             className='leading-4 text-neutral-500 transition-colors hover:text-neutral-700'
@@ -86,7 +87,7 @@ export function Footer({ lang, dict }: FooterProps) {
         </div>
         <div>
           <a
-            href='https://hypnotic-dryosaurus-c5c.notion.site/279d3f7f900d80c8ae1bdf05a68961a4?source=copy_link'
+            href={getPrivacyPolicyLink(lang)}
             target='_blank'
             rel='noopener noreferrer'
             className='leading-4 text-neutral-500 transition-colors hover:text-neutral-700'
