@@ -2,11 +2,11 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { FormInput } from 'shared/ui/form-input';
 import { FormButton } from 'shared/ui/form-button';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { useEmailLoginForm } from 'features/email-auth/model/useEmailLoginForm';
 import { useEmailLogin } from 'features/email-auth/model/useEmailLogin';
+import { RequiredInput } from './inputs/RequiredInput';
 
 interface EmailLoginFormProps {
   lang: Locale;
@@ -44,25 +44,25 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
     <div className='flex w-full flex-col gap-5'>
       <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         {/* 이메일 입력 */}
-        <FormInput
+        <RequiredInput
           label={dict.auth?.login?.email || '이메일'}
-          type='email'
           value={formData.email}
-          onChange={(e) => updateField('email', e.target.value)}
+          onChange={(value) => updateField('email', value)}
           placeholder={dict.auth?.login?.placeholders?.email || 'your-email@example.com'}
           error={errors.email}
           disabled={isLoading}
+          type='email'
         />
 
         {/* 비밀번호 입력 */}
-        <FormInput
+        <RequiredInput
           label={dict.auth?.login?.password || '비밀번호'}
-          type='password'
           value={formData.password}
-          onChange={(e) => updateField('password', e.target.value)}
+          onChange={(value) => updateField('password', value)}
           placeholder={dict.auth?.login?.placeholders?.password || '비밀번호를 입력하세요'}
           error={errors.password}
           disabled={isLoading}
+          type='password'
         />
 
         {/* 에러 메시지 */}
