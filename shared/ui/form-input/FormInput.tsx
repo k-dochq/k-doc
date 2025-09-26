@@ -4,7 +4,7 @@ import { forwardRef } from 'react';
 import { cn } from 'shared/lib/utils';
 
 interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label: React.ReactNode;
   error?: string;
   showIcon?: boolean;
 }

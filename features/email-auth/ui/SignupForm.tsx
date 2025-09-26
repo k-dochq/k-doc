@@ -70,7 +70,12 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
       <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         {/* 이메일 입력 */}
         <FormInput
-          label={`${dict.auth?.signup?.email || '이메일'} (${dict.auth?.signup?.required || '필수'})`}
+          label={
+            <span>
+              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
+              {dict.auth?.signup?.email || '이메일'}
+            </span>
+          }
           type='email'
           value={formData.email}
           onChange={(e) => updateField('email', e.target.value)}
@@ -81,7 +86,12 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
         {/* 비밀번호 입력 */}
         <FormInput
-          label={`${dict.auth?.signup?.password || '비밀번호'} (${dict.auth?.signup?.required || '필수'})`}
+          label={
+            <span>
+              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
+              {dict.auth?.signup?.password || '비밀번호'}
+            </span>
+          }
           type='password'
           value={formData.password}
           onChange={(e) => updateField('password', e.target.value)}
@@ -92,7 +102,12 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
         {/* 비밀번호 확인 입력 */}
         <FormInput
-          label={`${dict.auth?.signup?.confirmPassword || '비밀번호 확인'} (${dict.auth?.signup?.required || '필수'})`}
+          label={
+            <span>
+              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
+              {dict.auth?.signup?.confirmPassword || '비밀번호 확인'}
+            </span>
+          }
           type='password'
           value={formData.confirmPassword}
           onChange={(e) => updateField('confirmPassword', e.target.value)}
@@ -105,7 +120,12 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
         {/* 여권 영문 이름 입력 (필수) */}
         <FormInput
-          label={`${dict.auth?.signup?.passportName || '여권 영문 이름'} (${dict.auth?.signup?.required || '필수'})`}
+          label={
+            <span>
+              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
+              {dict.auth?.signup?.passportName || '여권 영문 이름'}
+            </span>
+          }
           type='text'
           value={formData.passportName}
           onChange={(e) => updateField('passportName', e.target.value)}
@@ -117,21 +137,45 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
         />
 
         {/* 국적 입력 (선택) */}
-        <FormInput
-          label={dict.auth?.signup?.nationality || '국적'}
-          type='text'
-          value={formData.nationality}
-          onChange={(e) => updateField('nationality', e.target.value)}
-          placeholder={
-            dict.auth?.signup?.placeholders?.nationality || '국적을 입력하세요 (선택사항)'
-          }
-          error={errors.nationality}
-          disabled={isLoading}
-        />
+        <div className='flex w-full flex-col gap-2'>
+          <label className='text-sm leading-5 font-medium text-neutral-900'>
+            <span>
+              <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
+              {dict.auth?.signup?.nationality || '국적'}
+            </span>
+          </label>
+          <select
+            value={formData.nationality}
+            onChange={(e) => updateField('nationality', e.target.value)}
+            disabled={isLoading}
+            className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 pr-8 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+            style={{
+              appearance: 'none',
+              backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M16.25 7.08325L10.4167 12.9166L4.58333 7.08325' stroke='%23A3A3A3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '20px',
+              backgroundPosition: 'right 12px center',
+            }}
+          >
+            <option value=''>
+              {dict.auth?.signup?.placeholders?.nationality || '국적을 선택하세요 (선택사항)'}
+            </option>
+            <option value='thailand'>{dict.auth?.signup?.nationalities?.thailand || '태국'}</option>
+            <option value='korea'>{dict.auth?.signup?.nationalities?.korea || '한국'}</option>
+          </select>
+          {errors.nationality && (
+            <p className='text-sm leading-5 text-red-500'>{errors.nationality}</p>
+          )}
+        </div>
 
         {/* 휴대폰번호 입력 (선택) */}
         <FormInput
-          label={dict.auth?.signup?.phoneNumber || '휴대폰번호'}
+          label={
+            <span>
+              <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
+              {dict.auth?.signup?.phoneNumber || '휴대폰번호'}
+            </span>
+          }
           type='tel'
           value={formData.phoneNumber}
           onChange={(e) => updateField('phoneNumber', e.target.value)}
@@ -142,7 +186,12 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
 
         {/* 생년월일 입력 (선택) */}
         <FormInput
-          label={dict.auth?.signup?.birthDate || '생년월일'}
+          label={
+            <span>
+              <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
+              {dict.auth?.signup?.birthDate || '생년월일'}
+            </span>
+          }
           type='date'
           value={formData.birthDate}
           onChange={(e) => updateField('birthDate', e.target.value)}

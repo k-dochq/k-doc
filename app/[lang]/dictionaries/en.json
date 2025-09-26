@@ -195,11 +195,16 @@
       "title": "Sign Up",
       "subtitle": "Create a new account",
       "required": "Required",
+      "optional": "Optional",
       "email": "Email",
       "password": "Password",
       "confirmPassword": "Confirm Password",
       "passportName": "Passport Name (English)",
       "nationality": "Nationality",
+      "nationalities": {
+        "thailand": "Thailand",
+        "korea": "Korea"
+      },
       "phoneNumber": "Phone Number",
       "birthDate": "Date of Birth",
       "signupButton": "Sign Up",
@@ -221,7 +226,7 @@
         "password": "6+ characters",
         "confirmPassword": "Confirm your password",
         "passportName": "Enter your passport name in English",
-        "nationality": "Enter your nationality (optional)",
+        "nationality": "Select your nationality (optional)",
         "phoneNumber": "010-0000-0000 (optional)",
         "birthDate": "Select your date of birth (optional)"
       },
