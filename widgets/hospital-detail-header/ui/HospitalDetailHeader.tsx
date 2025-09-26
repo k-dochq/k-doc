@@ -22,7 +22,14 @@ export function HospitalDetailHeader({
       title={hospitalName || ''}
       fallbackUrl={`/${lang}/hospitals`}
       variant='light'
-      rightContent={<HospitalDetailHeaderActions hospitalId={hospitalId} lang={lang} dict={dict} />}
+      rightContent={
+        <HospitalDetailHeaderActions
+          hospitalId={hospitalId}
+          lang={lang}
+          dict={dict}
+          hospitalName={hospitalName}
+        />
+      }
     />
   );
 }
