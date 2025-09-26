@@ -18,8 +18,8 @@ export function EmailSignInButton({
   redirectTo,
 }: EmailSignInButtonProps) {
   const href = redirectTo
-    ? `/auth/signup?redirectTo=${encodeURIComponent(redirectTo)}`
-    : '/auth/signup';
+    ? `/auth/login/email?redirectTo=${encodeURIComponent(redirectTo)}`
+    : '/auth/login/email';
 
   return (
     <LocaleLink
@@ -27,7 +27,7 @@ export function EmailSignInButton({
       className={`block w-full rounded-xl bg-[#DA47EF] px-6 py-4 text-center transition-all hover:bg-[#C63DE7] focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:outline-none ${className}`}
     >
       <span className='text-base font-medium text-white'>
-        {dict.auth?.login?.emailLogin || '이메일로 시작'}
+        {dict.auth?.login?.loginButton || '로그인'}
       </span>
     </LocaleLink>
   );
