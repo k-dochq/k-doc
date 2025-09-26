@@ -8,7 +8,8 @@ interface ConsultationRequestData {
   name: string;
   gender: 'MALE' | 'FEMALE';
   ageGroup: string;
-  phoneNumber: string;
+  countryCode: string;
+  phoneNumberOnly: string;
   preferredDate: string;
   content: string;
 }

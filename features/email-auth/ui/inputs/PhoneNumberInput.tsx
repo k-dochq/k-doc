@@ -12,6 +12,7 @@ interface PhoneNumberInputProps {
   disabled?: boolean;
   lang: Locale;
   dict: Dictionary;
+  required?: boolean;
 }
 
 export function PhoneNumberInput({
@@ -24,13 +25,20 @@ export function PhoneNumberInput({
   disabled = false,
   lang,
   dict,
+  required = false,
 }: PhoneNumberInputProps) {
   return (
     <div className='flex w-full flex-col gap-2'>
       <label className='text-sm leading-5 font-medium text-neutral-900'>
         <span>
-          <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
-          {dict.auth?.signup?.phoneNumber || '휴대폰번호'}
+          {required ? (
+            <span className='text-red-500'>*</span>
+          ) : (
+            <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>
+          )}{' '}
+          {dict.consultation?.request?.form?.phoneNumber?.label ||
+            dict.auth?.signup?.phoneNumber ||
+            '휴대폰번호'}
         </span>
       </label>
       <div className='flex gap-2'>
@@ -66,7 +74,11 @@ export function PhoneNumberInput({
             value={phoneNumberOnly}
             onChange={(e) => onPhoneNumberChange(e.target.value)}
             placeholder={
-              dict.auth?.signup?.placeholders?.phoneNumberOnly || '휴대폰번호를 입력하세요'
+              required
+                ? dict.consultation?.request?.form?.phoneNumber?.placeholder ||
+                  dict.auth?.signup?.placeholders?.phoneNumberOnly ||
+                  '휴대폰번호를 입력하세요'
+                : dict.auth?.signup?.placeholders?.phoneNumberOnly || '휴대폰번호를 입력하세요'
             }
             disabled={disabled}
             className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'

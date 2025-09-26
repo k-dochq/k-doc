@@ -2,7 +2,8 @@ export interface ConsultationFormData {
   name: string;
   gender: 'MALE' | 'FEMALE';
   ageGroup: string;
-  phoneNumber: string;
+  countryCode: string;
+  phoneNumberOnly: string;
   preferredDate: string;
   content: string;
   agreeToPrivacy: boolean;
@@ -12,7 +13,8 @@ export interface ConsultationFormErrors {
   name?: string;
   gender?: string;
   ageGroup?: string;
-  phoneNumber?: string;
+  countryCode?: string;
+  phoneNumberOnly?: string;
   preferredDate?: string;
   content?: string;
   agreeToPrivacy?: string;

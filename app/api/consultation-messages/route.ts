@@ -9,7 +9,8 @@ interface ConsultationRequestBody {
   name: string;
   gender: 'MALE' | 'FEMALE';
   ageGroup: string;
-  phoneNumber: string;
+  countryCode: string;
+  phoneNumberOnly: string;
   preferredDate: string;
   content: string;
 }
@@ -146,10 +147,28 @@ async function handleChatMessage(body: ChatMessageBody, userId: string) {
 }
 
 async function handleConsultationRequest(body: ConsultationRequestBody, userId: string) {
-  const { hospitalId, name, gender, ageGroup, phoneNumber, preferredDate, content } = body;
+  const {
+    hospitalId,
+    name,
+    gender,
+    ageGroup,
+    countryCode,
+    phoneNumberOnly,
+    preferredDate,
+    content,
+  } = body;
 
   // 입력 데이터 검증
-  if (!hospitalId || !name || !gender || !ageGroup || !phoneNumber || !preferredDate || !content) {
+  if (
+    !hospitalId ||
+    !name ||
+    !gender ||
+    !ageGroup ||
+    !countryCode ||
+    !phoneNumberOnly ||
+    !preferredDate ||
+    !content
+  ) {
     return NextResponse.json({ success: false, error: 'MISSING_REQUIRED_FIELDS' }, { status: 400 });
   }
 
@@ -217,7 +236,7 @@ ${hospitalName} 시술 상담 신청합니다.
 이름: ${name}
 성별: ${genderMap[gender] || gender}
 나이대: ${ageGroupMap[ageGroup] || ageGroup}
-휴대폰번호: ${phoneNumber}
+휴대폰번호: ${countryCode} ${phoneNumberOnly}
 예약 희망날짜: ${preferredDate}
 
 기타 문의사항:

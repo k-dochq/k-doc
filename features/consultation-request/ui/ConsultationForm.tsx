@@ -13,6 +13,7 @@ import { FormRadioGroup } from './FormRadioGroup';
 import { FormCheckbox } from './FormCheckbox';
 import { SubmitButton } from './SubmitButton';
 import { FormDatePicker } from './FormDatePicker';
+import { PhoneNumberInput } from 'features/email-auth/ui/inputs/PhoneNumberInput';
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -70,7 +71,8 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
           name: formData.name,
           gender: formData.gender,
           ageGroup: formData.ageGroup,
-          phoneNumber: formData.phoneNumber,
+          countryCode: formData.countryCode,
+          phoneNumberOnly: formData.phoneNumberOnly,
           preferredDate: formData.preferredDate,
           content: formData.content,
         },
@@ -167,13 +169,17 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 휴대폰 번호 */}
-      <FormInput
-        label={dict.consultation?.request?.form?.phoneNumber?.label || '휴대폰 번호'}
-        value={formData.phoneNumber}
-        onChange={(e) => updateField('phoneNumber', e.target.value)}
-        placeholder={dict.consultation?.request?.form?.phoneNumber?.placeholder || '010-0000-0000'}
-        error={errors.phoneNumber}
-        icon={<PhoneIcon />}
+      <PhoneNumberInput
+        countryCode={formData.countryCode}
+        phoneNumberOnly={formData.phoneNumberOnly}
+        onCountryCodeChange={(value) => updateField('countryCode', value)}
+        onPhoneNumberChange={(value) => updateField('phoneNumberOnly', value)}
+        countryCodeError={errors.countryCode}
+        phoneNumberError={errors.phoneNumberOnly}
+        disabled={consultationMutation.isPending}
+        lang={lang}
+        dict={dict}
+        required={true}
       />
 
       {/* 예약 희망 날짜 */}
