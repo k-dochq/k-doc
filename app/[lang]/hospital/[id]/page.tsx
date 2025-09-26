@@ -81,15 +81,111 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
     const dict = await getDictionary(lang);
 
     const hospitalName = extractLocalizedText(hospital.name, lang) || '병원';
+    const hospitalDescription =
+      extractLocalizedText(hospital.description, lang) ||
+      `${hospitalName}의 상세 정보를 확인하세요.`;
+
+    // 썸네일 이미지 찾기 (THUMBNAIL > MAIN > 첫 번째 이미지 순서)
+    let ogImage = null;
+    if (hospital.hospitalImages && hospital.hospitalImages.length > 0) {
+      // THUMBNAIL 타입 이미지 우선 선택
+      const thumbnailImage = hospital.hospitalImages.find((img) => img.imageType === 'THUMBNAIL');
+      if (thumbnailImage) {
+        ogImage = thumbnailImage.imageUrl;
+      } else {
+        // THUMBNAIL이 없으면 MAIN 타입 이미지 선택
+        const mainImage = hospital.hospitalImages.find((img) => img.imageType === 'MAIN');
+        if (mainImage) {
+          ogImage = mainImage.imageUrl;
+        } else {
+          // 그것도 없으면 첫 번째 이미지 사용
+          ogImage = hospital.hospitalImages[0].imageUrl;
+        }
+      }
+    }
+
+    const title = `${hospitalName} - ${dict.hospitals.title}`;
+    const description = hospitalDescription;
+
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://k-doc.com';
+    const url = `${baseUrl}/${lang}/hospital/${id}`;
 
     return {
-      title: `${hospitalName} - ${dict.hospitals.title}`,
-      description: hospital.description || `${hospitalName}의 상세 정보를 확인하세요.`,
+      title,
+      description,
+      keywords: [hospitalName, '병원', '의료', '성형외과', '미용외과', 'K-DOC'].join(', '),
+      authors: [{ name: 'K-DOC' }],
+      creator: 'K-DOC',
+      publisher: 'K-DOC',
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      },
+      alternates: {
+        canonical: url,
+        languages: {
+          ko: `${baseUrl}/ko/hospital/${id}`,
+          en: `${baseUrl}/en/hospital/${id}`,
+          th: `${baseUrl}/th/hospital/${id}`,
+        },
+      },
+      openGraph: {
+        title,
+        description,
+        url,
+        type: 'website',
+        locale: lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH',
+        siteName: 'K-DOC',
+        ...(ogImage && {
+          images: [
+            {
+              url: ogImage,
+              width: 1200,
+              height: 630,
+              alt: hospitalName,
+              type: 'image/jpeg',
+            },
+          ],
+        }),
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@kdoc_official',
+        creator: '@kdoc_official',
+        title,
+        description,
+        ...(ogImage && {
+          images: [
+            {
+              url: ogImage,
+              alt: hospitalName,
+            },
+          ],
+        }),
+      },
     };
   } catch (_error) {
     return {
       title: '병원 정보',
       description: '병원 상세 정보',
+      openGraph: {
+        title: '병원 정보',
+        description: '병원 상세 정보',
+        type: 'website',
+        siteName: 'K-DOC',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: '병원 정보',
+        description: '병원 상세 정보',
+      },
     };
   }
 }
