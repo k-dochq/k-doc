@@ -1,5 +1,5 @@
 import { QueryProvider } from '@/shared/ui/providers';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
@@ -62,13 +62,6 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
       'Korean beauty clinics',
     ],
     metadataBase: new URL('https://k-doc.kr'),
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 1,
-      userScalable: false,
-      viewportFit: 'cover', // Safe Area를 위한 설정
-    },
     openGraph: {
       type: 'website',
       siteName: 'K-DOC',
@@ -92,6 +85,15 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     },
   };
 }
+
+// Viewport 설정을 별도로 export
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover', // Safe Area를 위한 설정
+};
 
 export default async function LangLayout({ children, params }: LangLayoutProps) {
   const { lang } = await params;
