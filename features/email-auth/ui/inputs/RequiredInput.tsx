@@ -8,6 +8,7 @@ interface RequiredInputProps {
   error?: string;
   disabled?: boolean;
   type?: 'text' | 'email' | 'password';
+  dict?: Dictionary;
 }
 
 export function RequiredInput({
@@ -18,12 +19,14 @@ export function RequiredInput({
   error,
   disabled = false,
   type = 'text',
+  dict,
 }: RequiredInputProps) {
   return (
     <div className='flex w-full flex-col gap-2'>
       <label className='text-sm leading-5 font-medium text-neutral-900'>
         <span>
-          <span style={{ color: '#AE33FB' }}>[필수]</span> {label}
+          <span style={{ color: '#AE33FB' }}>[{dict?.auth?.signup?.required || '필수'}]</span>{' '}
+          {label}
         </span>
       </label>
       <div

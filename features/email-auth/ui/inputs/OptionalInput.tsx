@@ -8,6 +8,7 @@ interface OptionalInputProps {
   error?: string;
   disabled?: boolean;
   type?: 'text' | 'email' | 'password' | 'tel' | 'date';
+  dict?: Dictionary;
 }
 
 export function OptionalInput({
@@ -18,12 +19,14 @@ export function OptionalInput({
   error,
   disabled = false,
   type = 'text',
+  dict,
 }: OptionalInputProps) {
   return (
     <div className='flex w-full flex-col gap-2'>
       <label className='text-sm leading-5 font-medium text-neutral-900'>
         <span>
-          <span className='text-neutral-500'>[선택]</span> {label}
+          <span className='text-neutral-500'>[{dict?.auth?.signup?.optional || '선택'}]</span>{' '}
+          {label}
         </span>
       </label>
       <input

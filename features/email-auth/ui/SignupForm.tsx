@@ -85,6 +85,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           error={errors.email}
           disabled={isLoading}
           type='email'
+          dict={dict}
         />
 
         {/* 비밀번호 입력 */}
@@ -96,6 +97,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           error={errors.password}
           disabled={isLoading}
           type='password'
+          dict={dict}
         />
 
         {/* 비밀번호 확인 입력 */}
@@ -109,6 +111,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           error={errors.confirmPassword}
           disabled={isLoading}
           type='password'
+          dict={dict}
         />
 
         {/* 여권 영문 이름 입력 (필수) */}
@@ -122,6 +125,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           error={errors.passportName}
           disabled={isLoading}
           type='text'
+          dict={dict}
         />
 
         {/* 국적 입력 (선택) */}
@@ -134,6 +138,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           }
           error={errors.nationality}
           disabled={isLoading}
+          dict={dict}
         >
           <option value='thailand'>{dict.auth?.signup?.nationalities?.thailand || '태국'}</option>
           <option value='korea'>{dict.auth?.signup?.nationalities?.korea || '한국'}</option>
@@ -147,6 +152,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           placeholder={dict.auth?.signup?.placeholders?.gender || '성별을 선택하세요'}
           error={errors.gender}
           disabled={isLoading}
+          dict={dict}
         >
           <option value='female'>{dict.auth?.signup?.genders?.female || '여성'}</option>
           <option value='male'>{dict.auth?.signup?.genders?.male || '남성'}</option>
@@ -176,6 +182,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           error={errors.birthDate}
           disabled={isLoading}
           type='date'
+          dict={dict}
         />
 
         {/* 에러 메시지 */}

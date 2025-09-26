@@ -8,6 +8,7 @@ interface OptionalSelectProps {
   error?: string;
   disabled?: boolean;
   children: React.ReactNode;
+  dict?: Dictionary;
 }
 
 export function OptionalSelect({
@@ -18,12 +19,14 @@ export function OptionalSelect({
   error,
   disabled = false,
   children,
+  dict,
 }: OptionalSelectProps) {
   return (
     <div className='flex w-full flex-col gap-2'>
       <label className='text-sm leading-5 font-medium text-neutral-900'>
         <span>
-          <span className='text-neutral-500'>[선택]</span> {label}
+          <span className='text-neutral-500'>[{dict?.auth?.signup?.optional || '선택'}]</span>{' '}
+          {label}
         </span>
       </label>
       <select

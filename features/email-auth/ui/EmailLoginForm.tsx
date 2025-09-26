@@ -52,6 +52,7 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
           error={errors.email}
           disabled={isLoading}
           type='email'
+          dict={dict}
         />
 
         {/* 비밀번호 입력 */}
@@ -63,6 +64,7 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
           error={errors.password}
           disabled={isLoading}
           type='password'
+          dict={dict}
         />
 
         {/* 에러 메시지 */}
