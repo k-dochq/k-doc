@@ -3,11 +3,17 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { FormInput } from 'shared/ui/form-input';
 import { FormButton } from 'shared/ui/form-button';
 import { useSignupForm } from 'features/email-auth/model/useSignupForm';
 import { useEmailSignup } from 'features/email-auth/model/useEmailSignup';
 import { TermsAgreement } from 'features/terms-agreement';
+import {
+  RequiredInput,
+  OptionalInput,
+  OptionalSelect,
+  RequiredSelect,
+  PhoneNumberInput,
+} from './inputs';
 
 interface AgreementState {
   allAgreed: boolean;
@@ -54,7 +60,9 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
       password: formData.password,
       passportName: formData.passportName,
       nationality: formData.nationality,
-      phoneNumber: formData.phoneNumber,
+      gender: formData.gender,
+      countryCode: formData.countryCode,
+      phoneNumberOnly: formData.phoneNumberOnly,
       birthDate: formData.birthDate,
     });
 
@@ -69,137 +77,105 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
     <div className='flex w-full flex-col gap-5'>
       <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         {/* 이메일 입력 */}
-        <FormInput
-          label={
-            <span>
-              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
-              {dict.auth?.signup?.email || '이메일'}
-            </span>
-          }
-          type='email'
+        <RequiredInput
+          label={dict.auth?.signup?.email || '이메일'}
           value={formData.email}
-          onChange={(e) => updateField('email', e.target.value)}
+          onChange={(value) => updateField('email', value)}
           placeholder={dict.auth?.signup?.placeholders?.email || 'your-email@example.com'}
           error={errors.email}
           disabled={isLoading}
+          type='email'
         />
 
         {/* 비밀번호 입력 */}
-        <FormInput
-          label={
-            <span>
-              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
-              {dict.auth?.signup?.password || '비밀번호'}
-            </span>
-          }
-          type='password'
+        <RequiredInput
+          label={dict.auth?.signup?.password || '비밀번호'}
           value={formData.password}
-          onChange={(e) => updateField('password', e.target.value)}
+          onChange={(value) => updateField('password', value)}
           placeholder={dict.auth?.signup?.placeholders?.password || '6자 이상의 비밀번호'}
           error={errors.password}
           disabled={isLoading}
+          type='password'
         />
 
         {/* 비밀번호 확인 입력 */}
-        <FormInput
-          label={
-            <span>
-              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
-              {dict.auth?.signup?.confirmPassword || '비밀번호 확인'}
-            </span>
-          }
-          type='password'
+        <RequiredInput
+          label={dict.auth?.signup?.confirmPassword || '비밀번호 확인'}
           value={formData.confirmPassword}
-          onChange={(e) => updateField('confirmPassword', e.target.value)}
+          onChange={(value) => updateField('confirmPassword', value)}
           placeholder={
             dict.auth?.signup?.placeholders?.confirmPassword || '비밀번호를 다시 입력하세요'
           }
           error={errors.confirmPassword}
           disabled={isLoading}
+          type='password'
         />
 
         {/* 여권 영문 이름 입력 (필수) */}
-        <FormInput
-          label={
-            <span>
-              <span style={{ color: '#AE33FB' }}>[{dict.auth?.signup?.required || '필수'}]</span>{' '}
-              {dict.auth?.signup?.passportName || '여권 영문 이름'}
-            </span>
-          }
-          type='text'
+        <RequiredInput
+          label={dict.auth?.signup?.passportName || '여권 영문 이름'}
           value={formData.passportName}
-          onChange={(e) => updateField('passportName', e.target.value)}
+          onChange={(value) => updateField('passportName', value)}
           placeholder={
             dict.auth?.signup?.placeholders?.passportName || '여권에 기재된 영문 이름을 입력하세요'
           }
           error={errors.passportName}
           disabled={isLoading}
+          type='text'
         />
 
         {/* 국적 입력 (선택) */}
-        <div className='flex w-full flex-col gap-2'>
-          <label className='text-sm leading-5 font-medium text-neutral-900'>
-            <span>
-              <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
-              {dict.auth?.signup?.nationality || '국적'}
-            </span>
-          </label>
-          <select
-            value={formData.nationality}
-            onChange={(e) => updateField('nationality', e.target.value)}
-            disabled={isLoading}
-            className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 pr-8 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
-            style={{
-              appearance: 'none',
-              backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M16.25 7.08325L10.4167 12.9166L4.58333 7.08325' stroke='%23A3A3A3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: '20px',
-              backgroundPosition: 'right 12px center',
-            }}
-          >
-            <option value=''>
-              {dict.auth?.signup?.placeholders?.nationality || '국적을 선택하세요 (선택사항)'}
-            </option>
-            <option value='thailand'>{dict.auth?.signup?.nationalities?.thailand || '태국'}</option>
-            <option value='korea'>{dict.auth?.signup?.nationalities?.korea || '한국'}</option>
-          </select>
-          {errors.nationality && (
-            <p className='text-sm leading-5 text-red-500'>{errors.nationality}</p>
-          )}
-        </div>
+        <OptionalSelect
+          label={dict.auth?.signup?.nationality || '국적'}
+          value={formData.nationality}
+          onChange={(value) => updateField('nationality', value)}
+          placeholder={
+            dict.auth?.signup?.placeholders?.nationality || '국적을 선택하세요 (선택사항)'
+          }
+          error={errors.nationality}
+          disabled={isLoading}
+        >
+          <option value='thailand'>{dict.auth?.signup?.nationalities?.thailand || '태국'}</option>
+          <option value='korea'>{dict.auth?.signup?.nationalities?.korea || '한국'}</option>
+        </OptionalSelect>
+
+        {/* 성별 입력 (필수) */}
+        <RequiredSelect
+          label={dict.auth?.signup?.gender || '성별'}
+          value={formData.gender}
+          onChange={(value) => updateField('gender', value)}
+          placeholder={dict.auth?.signup?.placeholders?.gender || '성별을 선택하세요'}
+          error={errors.gender}
+          disabled={isLoading}
+        >
+          <option value='female'>{dict.auth?.signup?.genders?.female || '여성'}</option>
+          <option value='male'>{dict.auth?.signup?.genders?.male || '남성'}</option>
+        </RequiredSelect>
 
         {/* 휴대폰번호 입력 (선택) */}
-        <FormInput
-          label={
-            <span>
-              <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
-              {dict.auth?.signup?.phoneNumber || '휴대폰번호'}
-            </span>
-          }
-          type='tel'
-          value={formData.phoneNumber}
-          onChange={(e) => updateField('phoneNumber', e.target.value)}
-          placeholder={dict.auth?.signup?.placeholders?.phoneNumber || '010-0000-0000 (선택사항)'}
-          error={errors.phoneNumber}
+        <PhoneNumberInput
+          countryCode={formData.countryCode}
+          phoneNumberOnly={formData.phoneNumberOnly}
+          onCountryCodeChange={(value) => updateField('countryCode', value)}
+          onPhoneNumberChange={(value) => updateField('phoneNumberOnly', value)}
+          countryCodeError={errors.countryCode}
+          phoneNumberError={errors.phoneNumberOnly}
           disabled={isLoading}
+          lang={lang}
+          dict={dict}
         />
 
         {/* 생년월일 입력 (선택) */}
-        <FormInput
-          label={
-            <span>
-              <span className='text-neutral-500'>[{dict.auth?.signup?.optional || '선택'}]</span>{' '}
-              {dict.auth?.signup?.birthDate || '생년월일'}
-            </span>
-          }
-          type='date'
+        <OptionalInput
+          label={dict.auth?.signup?.birthDate || '생년월일'}
           value={formData.birthDate}
-          onChange={(e) => updateField('birthDate', e.target.value)}
+          onChange={(value) => updateField('birthDate', value)}
           placeholder={
             dict.auth?.signup?.placeholders?.birthDate || '생년월일을 선택하세요 (선택사항)'
           }
           error={errors.birthDate}
           disabled={isLoading}
+          type='date'
         />
 
         {/* 에러 메시지 */}

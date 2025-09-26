@@ -16,7 +16,9 @@ interface SignupData {
   password: string;
   passportName?: string;
   nationality?: string;
-  phoneNumber?: string;
+  gender?: string;
+  countryCode?: string;
+  phoneNumberOnly?: string;
   birthDate?: string;
 }
 
@@ -54,7 +56,9 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
       };
       if (signupData.passportName) metadata.passport_name = signupData.passportName;
       if (signupData.nationality) metadata.nationality = signupData.nationality;
-      if (signupData.phoneNumber) metadata.phone_number = signupData.phoneNumber;
+      if (signupData.gender) metadata.gender = signupData.gender;
+      if (signupData.countryCode) metadata.country_code = signupData.countryCode;
+      if (signupData.phoneNumberOnly) metadata.phone_number = signupData.phoneNumberOnly;
       if (signupData.birthDate) metadata.birth_date = signupData.birthDate;
 
       const { data, error: signUpError } = await supabase.auth.signUp({
