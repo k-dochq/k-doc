@@ -10,7 +10,9 @@ interface SignupFormData {
   confirmPassword: string;
   passportName: string;
   nationality: string;
-  phoneNumber: string;
+  gender: string;
+  countryCode: string;
+  phoneNumberOnly: string;
   birthDate: string;
 }
 
@@ -20,7 +22,9 @@ interface SignupFormErrors {
   confirmPassword?: string;
   passportName?: string;
   nationality?: string;
-  phoneNumber?: string;
+  gender?: string;
+  countryCode?: string;
+  phoneNumberOnly?: string;
   birthDate?: string;
 }
 
@@ -36,7 +40,9 @@ export function useSignupForm({ lang, dict }: UseSignupFormParams) {
     confirmPassword: '',
     passportName: '',
     nationality: '',
-    phoneNumber: '',
+    gender: '',
+    countryCode: '',
+    phoneNumberOnly: '',
     birthDate: '',
   });
   const [errors, setErrors] = useState<SignupFormErrors>({});
@@ -85,6 +91,11 @@ export function useSignupForm({ lang, dict }: UseSignupFormParams) {
         '여권상의 영문 이름을 입력하지 않으면 치료 이용이 제한될 수 있습니다.';
     }
 
+    // 성별 검증 (필수)
+    if (!formData.gender) {
+      newErrors.gender = dict.auth?.signup?.errors?.genderRequired || '성별을 선택해주세요.';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -97,7 +108,8 @@ export function useSignupForm({ lang, dict }: UseSignupFormParams) {
       formData.password === formData.confirmPassword &&
       formData.password.length >= 6 &&
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
-      formData.passportName.trim()
+      formData.passportName.trim() &&
+      formData.gender
     );
   };
 

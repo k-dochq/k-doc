@@ -205,7 +205,14 @@
         "thailand": "태국",
         "korea": "한국"
       },
+      "gender": "성별",
+      "genders": {
+        "female": "여성",
+        "male": "남성"
+      },
       "phoneNumber": "휴대폰번호",
+      "countryCode": "국가번호",
+      "phoneNumberOnly": "휴대폰번호",
       "birthDate": "생년월일",
       "signupButton": "회원가입",
       "loading": "가입 중...",
@@ -227,7 +234,10 @@
         "confirmPassword": "비밀번호를 다시 입력하세요",
         "passportName": "여권에 기재된 영문 이름을 입력하세요",
         "nationality": "국적을 선택하세요 (선택사항)",
+        "gender": "성별을 선택하세요",
         "phoneNumber": "010-0000-0000 (선택사항)",
+        "countryCode": "국가번호를 선택하세요",
+        "phoneNumberOnly": "휴대폰번호를 입력하세요",
         "birthDate": "생년월일을 선택하세요 (선택사항)"
       },
       "errors": {
@@ -238,6 +248,7 @@
         "confirmPasswordRequired": "비밀번호 확인을 입력해주세요.",
         "passwordMismatch": "비밀번호가 일치하지 않습니다.",
         "passportNameRequired": "여권상의 영문 이름을 입력하지 않으면 치료 이용이 제한될 수 있습니다.",
+        "genderRequired": "성별을 선택해주세요.",
         "emailAlreadyRegistered": "이미 등록된 이메일입니다",
         "invalidEmail": "올바른 이메일 주소를 입력해주세요",
         "unexpectedError": "예상치 못한 오류가 발생했습니다",
