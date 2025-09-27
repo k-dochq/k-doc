@@ -1,4 +1,5 @@
 import { type Dictionary } from 'shared/model/types';
+import { LocaleLink } from 'shared/ui/locale-link';
 
 interface FooterAboutButtonProps {
   dict: Dictionary;
@@ -6,7 +7,10 @@ interface FooterAboutButtonProps {
 
 export function FooterAboutButton({ dict }: FooterAboutButtonProps) {
   return (
-    <button className='flex items-center gap-1 rounded-lg border border-[#F4A8FF] px-4 py-2'>
+    <LocaleLink
+      href='/about'
+      className='flex items-center gap-1 rounded-lg border border-[#F4A8FF] px-4 py-2'
+    >
       <span className='text-primary text-sm font-semibold'>{dict.footer.companyInfo}</span>
       <svg xmlns='http://www.w3.org/2000/svg' width='5' height='6' viewBox='0 0 5 6' fill='none'>
         <path
@@ -14,6 +18,6 @@ export function FooterAboutButton({ dict }: FooterAboutButtonProps) {
           fill='#DA47EF'
         />
       </svg>
-    </button>
+    </LocaleLink>
   );
 }

@@ -530,6 +530,32 @@
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy"
   },
+  "about": {
+    "title": "About Us",
+    "subtitle": "People who make K-DOC",
+    "description": {
+      "part1": "K-DOC is a service planned by a team of medical professionals from ",
+      "highlight": "top universities worldwide",
+      "part2": ", led by Dr. Woo Jung-ho, a global authority in thread lifting. Our headquarters, located in a landmark building in Apgujeong, leads global beauty trends, and Dr. Woo, widely known as the 'Master of Thread Lifting' even in Japan, has been featured in prominent international media such as FOX TV News."
+    },
+    "ceoGreeting": {
+      "title": "CEO Message",
+      "name": "President Woo Jung Ho M.D.",
+      "greeting": "สวัสดีครับ",
+      "content": [
+        "Thank you for visiting K-DOC.",
+        "K-DOC is Korea's premier medical beauty platform, created to guide Thai clients in selecting only the top 5% of plastic surgery and dermatology clinics in Korea—clinics you can truly trust—while also offering exclusive discount benefits.",
+        "Our management team includes myself, Dr. Woo Jung Ho, M.D., a world-renowned authority in thread lifting and non-invasive aesthetic procedures, along with Dr. Park Jong Hyeon, M.D., and other distinguished medical professionals educated at some of the world's leading universities. Together, we take great pride in planning and operating this platform. Above all, K-DOC is designed to guide international patients, including those from Thailand, toward safe, verified, and trustworthy medical services in Korea—ensuring that you experience the very best of Korean medical expertise.",
+        "Through this platform, you will have access to reliable information on Korea's most reputable aesthetic clinics, authentic treatment reviews, and comprehensive services—from hospital booking and professional interpretation to post-treatment care—all in one place.",
+        "K-DOC is not merely an information platform. We aspire to be your trusted and convenient partner in your Korean medical beauty journey, providing each and every client with tailored solutions and a safe, satisfying experience.",
+        "We sincerely hope you can experience Korea's advanced aesthetic medical technologies safely, without risk, and with complete peace of mind. K-DOC will be with you every step of the way toward greater beauty, confidence, and health.",
+        "GOD BLESS YOU !!",
+        "Thank you.",
+        "Dr. Woo Jung Ho Chief Executive Officer",
+        "K-DOC Corp."
+      ]
+    }
+  },
   "my": {
     "title": "My Page",
     "description": "Manage your personal information and settings.",
