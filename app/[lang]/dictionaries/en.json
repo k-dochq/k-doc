@@ -564,16 +564,19 @@
       "sections": [
         {
           "image": "image_section1.png",
+          "imagePc": "image_section1_pc.png",
           "title": "2025 Thailand Expansion",
           "description": "K-DOC, a global plastic surgery medical platform for Thai customers!\nK-DOC carefully selects only the top 5% of Korea's leading plastic surgery and dermatology clinics to help Thai customers choose with confidence."
         },
         {
           "image": "image_section2.png",
+          "imagePc": "image_section2_pc.png",
           "title": "Essential Plastic Surgery Platform for Customers",
           "description": "View desired procedures and plastic surgery information in Korea at a glance, compare real reviews and hospital information to make confident decisions. Experience everything from booking to interpretation and post-procedure care conveniently through K-DOC."
         },
         {
           "image": "image_section3.png",
+          "imagePc": "image_section3_pc.png",
           "title": "Introduction to Korea's Famous Hospitals",
           "description": "K-DOC only partners with world-renowned medical professionals and verified leading Korean plastic surgery clinics. Thai and global customers can experience high-quality plastic surgery services through trusted medical professionals and safe systems."
         }

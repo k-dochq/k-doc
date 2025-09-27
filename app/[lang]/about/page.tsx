@@ -109,12 +109,19 @@ export default async function AboutPage({ params }: AboutPageProps) {
             <div key={index}>
               <GlassCard>
                 <div className='space-y-4'>
-                  <div className='relative h-[224px] w-full'>
+                  <div className='relative h-[224px] w-full overflow-hidden rounded-xl md:h-[316px]'>
                     <Image
                       src={`/images/${section.image}`}
                       alt={section.title}
                       fill
-                      className='object-contain'
+                      className='rounded-xl object-contain md:hidden'
+                      priority
+                    />
+                    <Image
+                      src={`/images/${section.imagePc}`}
+                      alt={section.title}
+                      fill
+                      className='hidden rounded-xl object-contain md:block'
                       priority
                     />
                   </div>
