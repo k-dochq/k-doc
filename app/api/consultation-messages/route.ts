@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function handleChatMessage(body: ChatMessageBody, userId: string, locale: Locale) {
+async function handleChatMessage(body: ChatMessageBody, userId: string, _locale: Locale) {
   const { hospitalId, content, senderType = 'USER' } = body;
 
   if (!hospitalId || !content) {
