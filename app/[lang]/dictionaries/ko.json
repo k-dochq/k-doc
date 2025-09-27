@@ -553,6 +553,30 @@
         "Dr. Woo Jung Ho 대표이사",
         "K-DOC Corp."
       ]
+    },
+    "seoulOffice": {
+      "title": "K-DOC 서울 지사",
+      "description": "압구정 랜드마크에 위치한 K-DOC 서울지사입니다."
+    },
+    "vision": {
+      "title": "K-DOC 비전",
+      "sections": [
+        {
+          "image": "image_section1.png",
+          "title": "2025년 태국 진출",
+          "description": "태국 고객을 위한 글로벌 성형 메디컬 플랫폼 K-DOC!\nK-DOC은 한국 상위 5%의 대표 성형외과와 피부과만 엄선하여 태국 고객이 믿고 선택할 수 있도록 돕는 플랫폼입니다."
+        },
+        {
+          "image": "image_section2.png",
+          "title": "고객에게 꼭 필요한 성형 플랫폼",
+          "description": "한국에서 원하는 시술과 성형 정보를 한눈에 확인하고 실제 후기와 병원 정보를 비교해 안심하고 결정하세요. 예약부터 통역, 시술 후 케어까지 K-DOC에서 간편하게 경험할 수 있습니다."
+        },
+        {
+          "image": "image_section3.png",
+          "title": "한국의 유명 병원 소개",
+          "description": "K-DOC은 세계적으로 인정받은 의료진과 검증된 한국 대표 성형외과만 입점합니다. 태국 및 글로벌 고객은 신뢰할 수 있는 의료진과 안전한 시스템을 통해 수준 높은 성형 서비스를 경험할 수 있습니다."
+        }
+      ]
     }
   },
   "my": {

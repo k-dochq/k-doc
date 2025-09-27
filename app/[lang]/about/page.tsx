@@ -80,6 +80,67 @@ export default async function AboutPage({ params }: AboutPageProps) {
           </GlassCard>
         </div>
       </div>
+
+      {/* 서울 지사 섹션 */}
+      <div className='mt-12'>
+        <h2 className='text-primary text-2xl font-bold'>{dict.about.seoulOffice.title}</h2>
+        <div className='mt-2'>
+          <p className='text-sm leading-5 font-normal text-[#525252]'>
+            {dict.about.seoulOffice.description}
+          </p>
+        </div>
+        <div className='mt-6'>
+          <Image
+            src='/images/building.png'
+            alt={dict.about.seoulOffice.title}
+            width={335}
+            height={446}
+            className='w-full object-contain'
+            priority
+          />
+        </div>
+      </div>
+
+      {/* K-DOC 비전 섹션 */}
+      <div className='mt-12'>
+        <h2 className='text-primary text-2xl font-bold'>{dict.about.vision.title}</h2>
+        <div className='mt-6 space-y-6'>
+          {dict.about.vision.sections.map((section, index) => (
+            <div key={index}>
+              <GlassCard>
+                <div className='space-y-4'>
+                  <div className='relative h-[224px] w-full'>
+                    <Image
+                      src={`/images/${section.image}`}
+                      alt={section.title}
+                      fill
+                      className='object-contain'
+                      priority
+                    />
+                  </div>
+                  <div>
+                    <div className='flex items-center gap-3'>
+                      <div className='flex h-5 w-5 flex-col items-center justify-center rounded-full bg-[#DA47EF] px-1.5'>
+                        <span className='text-sm leading-5 font-semibold text-[#FCE4FF]'>
+                          {index + 1}
+                        </span>
+                      </div>
+                      <h3 className='text-lg leading-7 font-semibold text-[#525252]'>
+                        {section.title}
+                      </h3>
+                    </div>
+                    {section.description && (
+                      <p className='mt-1 ml-8 text-sm leading-5 font-normal whitespace-pre-line text-[#525252]'>
+                        {section.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </GlassCard>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
