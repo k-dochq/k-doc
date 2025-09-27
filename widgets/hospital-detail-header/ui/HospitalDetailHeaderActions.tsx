@@ -21,10 +21,14 @@ export function HospitalDetailHeaderActions({
     ? `${hospitalName}의 상세 정보를 확인해보세요`
     : '병원 정보를 확인해보세요';
 
+  // 병원 상세 페이지 URL 생성
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+  const shareUrl = `${baseUrl}/${lang}/hospital/${hospitalId}`;
+
   return (
     <div className='flex items-center gap-1'>
       <div className='md:hidden'>
-        <ShareButton title={shareTitle} text={shareText} />
+        <ShareButton title={shareTitle} text={shareText} url={shareUrl} />
       </div>
       <LikeButtonWrapper hospitalId={hospitalId} lang={lang} dict={dict} />
     </div>
