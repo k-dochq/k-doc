@@ -527,7 +527,8 @@
     "customerEmail": "고객센터 이메일 cs@k-doc.kr",
     "companyInfo": "회사소개",
     "termsOfService": "이용약관",
-    "privacyPolicy": "개인정보 처리방침"
+    "privacyPolicy": "개인정보 처리방침",
+    "contactUs": "문의하기"
   },
   "about": {
     "title": "회사소개",
@@ -580,6 +581,29 @@
           "description": "K-DOC은 세계적으로 인정받은 의료진과 검증된 한국 대표 성형외과만 입점합니다. 태국 및 글로벌 고객은 신뢰할 수 있는 의료진과 안전한 시스템을 통해 수준 높은 성형 서비스를 경험할 수 있습니다."
         }
       ]
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "K-DOC 하남 본사",
+    "description": "K-DOC 하남 본사에 오신 것을 환영합니다. 언제든지 문의해 주세요.",
+    "address": "경기도 하남시 미사강변남로 103, 701-014호",
+    "phone": "031-123-4567",
+    "email": "contact@k-doc.com",
+    "mapTitle": "위치 안내",
+    "copyButton": "주소복사",
+    "seoulOffice": {
+      "subtitle": "K-DOC 서울지사",
+      "address": "서울 강남구 선릉로157길 14 한주빌딩 6층"
+    },
+    "emailInquiry": {
+      "title": "이메일 문의",
+      "description": "서비스 이용 중 불편 사항이 있으실 경우, 아래 이메일로 문의 주시면 감사하겠습니다.",
+      "button": "이메일 문의하기"
+    },
+    "partnershipInquiry": {
+      "title": "K-DOC 입점 신청 상담",
+      "button": "입점 신청하기"
     }
   },
   "my": {

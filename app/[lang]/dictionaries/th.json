@@ -528,7 +528,8 @@
     "customerEmail": "Customer Service Email : CS@k-doc.kr",
     "companyInfo": "About Us",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "contactUs": "ติดต่อเรา"
   },
   "about": {
     "title": "เกี่ยวกับเรา",
@@ -581,6 +582,29 @@
           "description": "K-DOC ร่วมมือเฉพาะกับบุคลากรทางการแพทย์ที่ได้รับการยอมรับในระดับโลกและคลินิกศัลยกรรมพลาสติกชั้นนำของเกาหลีที่ผ่านการรับรองเท่านั้น ลูกค้าชาวไทยและทั่วโลกสามารถรับประสบการณ์บริการศัลยกรรมคุณภาพสูงผ่านบุคลากรทางการแพทย์ที่เชื่อถือได้และระบบที่ปลอดภัย"
         }
       ]
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "สำนักงานใหญ่ K-DOC ฮานัม",
+    "description": "ยินดีต้อนรับสู่สำนักงานใหญ่ K-DOC ฮานัม กรุณาติดต่อเราได้ตลอดเวลา",
+    "address": "103, Misagangbannam-ro, Hanam-si, Gyeonggi-do, 701-014",
+    "phone": "031-123-4567",
+    "email": "contact@k-doc.com",
+    "mapTitle": "คำแนะนำตำแหน่งที่ตั้ง",
+    "copyButton": "คัดลอกที่อยู่",
+    "seoulOffice": {
+      "subtitle": "สำนักงาน K-DOC กรุงโซล",
+      "address": "ชั้น 6 อาคารฮันจู 14 ซอลลึง-โร 157-กิล คังนัม-กู กรุงโซล"
+    },
+    "emailInquiry": {
+      "title": "สอบถามทางอีเมล",
+      "description": "หากคุณพบความไม่สะดวกในการใช้บริการ กรุณาติดต่อเราผ่านอีเมลด้านล่าง",
+      "button": "ส่งคำถามทางอีเมล"
+    },
+    "partnershipInquiry": {
+      "title": "ปรึกษาการสมัครเป็นพาร์ทเนอร์ K-DOC",
+      "button": "สมัครเป็นพาร์ทเนอร์"
     }
   },
   "my": {

@@ -528,7 +528,8 @@
     "customerEmail": "Customer Service Email : CS@k-doc.kr",
     "companyInfo": "About Us",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "contactUs": "Contact Us"
   },
   "about": {
     "title": "About Us",
@@ -581,6 +582,29 @@
           "description": "K-DOC only partners with world-renowned medical professionals and verified leading Korean plastic surgery clinics. Thai and global customers can experience high-quality plastic surgery services through trusted medical professionals and safe systems."
         }
       ]
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "K-DOC Hanam Headquarters",
+    "description": "Welcome to K-DOC Hanam Headquarters. Please feel free to contact us anytime.",
+    "address": "103, Misagangbannam-ro, Hanam-si, Gyeonggi-do, 701-014",
+    "phone": "031-123-4567",
+    "email": "contact@k-doc.com",
+    "mapTitle": "Location Guide",
+    "copyButton": "Copy Address",
+    "seoulOffice": {
+      "subtitle": "K-DOC Seoul Office",
+      "address": "6F, Hanju Building, 14 Seolleung-ro 157-gil, Gangnam-gu, Seoul"
+    },
+    "emailInquiry": {
+      "title": "Email Inquiry",
+      "description": "If you experience any inconvenience while using our service, please contact us via the email below.",
+      "button": "Send Email Inquiry"
+    },
+    "partnershipInquiry": {
+      "title": "K-DOC Partnership Application Consultation",
+      "button": "Apply for Partnership"
     }
   },
   "my": {
