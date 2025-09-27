@@ -20,7 +20,7 @@ export function AboutVision({ dict }: AboutVisionProps) {
                     src={`/images/${section.image}`}
                     alt={section.title}
                     fill
-                    className='rounded-xl object-contain md:hidden'
+                    className='rounded-xl object-cover md:hidden'
                     priority
                   />
                   <Image
