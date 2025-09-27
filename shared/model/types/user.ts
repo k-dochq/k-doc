@@ -4,6 +4,18 @@ export interface UserProfile {
   nickName: string | null;
   displayName: string | null;
   name: string | null;
+  genderType: 'MALE' | 'FEMALE' | null;
+  phoneNumber: string | null;
+  raw_user_meta_data: {
+    passport_name?: string;
+    gender?: string;
+    country_code?: string;
+    phone_number?: string;
+    nationality?: string;
+    birth_date?: string;
+    nickname?: string;
+    [key: string]: any;
+  } | null;
   createdAt: string;
   updatedAt: string;
 }

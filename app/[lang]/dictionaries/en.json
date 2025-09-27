@@ -471,6 +471,9 @@
           "ageGroup": {
             "required": "Please select your age group."
           },
+          "countryCode": {
+            "required": "Please select your country code."
+          },
           "phoneNumber": {
             "required": "Please enter your phone number.",
             "invalid": "Please enter a valid phone number."
@@ -488,6 +491,7 @@
         },
         "required": "Required",
         "submitButton": "Request Consultation",
+        "loading": "Loading...",
         "errorMessages": {
           "UNAUTHORIZED": "Please log in to continue.",
           "MISSING_REQUIRED_FIELDS": "Please fill in all required fields.",
@@ -495,6 +499,31 @@
           "INTERNAL_SERVER_ERROR": "A server error occurred. Please try again later.",
           "NETWORK_ERROR": "A network error occurred. Please check your internet connection.",
           "UNKNOWN_ERROR": "An unknown error occurred."
+        },
+        "chatMessages": {
+          "welcome": "Hello! Welcome.\nFeel free to ask anything about plastic surgery.",
+          "consultationRequest": {
+            "title": "(Auto-generated consultation request)",
+            "subtitle": "Requesting consultation for surgery.",
+            "name": "Name",
+            "gender": "Gender",
+            "ageGroup": "Age Group",
+            "phoneNumber": "Phone Number",
+            "preferredDate": "Preferred Date",
+            "additionalInquiry": "Additional Inquiry"
+          },
+          "ageGroups": {
+            "10s": "10s",
+            "20s": "20s",
+            "30s": "30s",
+            "40s": "40s",
+            "50s": "50s",
+            "60s": "60+"
+          },
+          "genders": {
+            "MALE": "Male",
+            "FEMALE": "Female"
+          }
         }
       }
     }

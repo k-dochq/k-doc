@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { type UserProfile } from 'shared/model/types/user';
 import { type ConsultationFormData, type ConsultationFormErrors } from './types';
 
 const initialFormData: ConsultationFormData = {
@@ -16,9 +17,60 @@ const initialFormData: ConsultationFormData = {
   agreeToPrivacy: false,
 };
 
-export function useConsultationForm(lang: Locale, dict: Dictionary) {
+export function useConsultationForm(
+  lang: Locale,
+  dict: Dictionary,
+  userProfile?: UserProfile | null,
+) {
   const [formData, setFormData] = useState<ConsultationFormData>(initialFormData);
   const [errors, setErrors] = useState<ConsultationFormErrors>({});
+
+  // 사용자 정보로 폼 자동 채우기
+  useEffect(() => {
+    if (userProfile) {
+      const updates: Partial<ConsultationFormData> = {};
+
+      // 여권 영문 이름 -> 이름 필드
+      if (userProfile.raw_user_meta_data?.passport_name) {
+        updates.name = userProfile.raw_user_meta_data.passport_name;
+      }
+
+      // 성별 매핑 (회원가입 시 'male'/'female' -> 상담 시 'MALE'/'FEMALE')
+      if (userProfile.genderType) {
+        updates.gender = userProfile.genderType;
+      } else if (userProfile.raw_user_meta_data?.gender) {
+        updates.gender = userProfile.raw_user_meta_data.gender.toUpperCase() as 'MALE' | 'FEMALE';
+      }
+
+      // 휴대폰번호 (국가번호 + 휴대폰번호)
+      if (userProfile.raw_user_meta_data?.country_code) {
+        updates.countryCode = userProfile.raw_user_meta_data.country_code;
+      }
+      if (userProfile.raw_user_meta_data?.phone_number) {
+        updates.phoneNumberOnly = userProfile.raw_user_meta_data.phone_number;
+      } else if (userProfile.phoneNumber) {
+        // phoneNumber가 국가번호 포함인 경우 분리 시도
+        const phoneMatch = userProfile.phoneNumber.match(/^(\+\d{1,3})?(.+)$/);
+        if (phoneMatch) {
+          if (phoneMatch[1] && !updates.countryCode) {
+            updates.countryCode = phoneMatch[1];
+          }
+          updates.phoneNumberOnly = phoneMatch[2].replace(/^[-\s]/, '');
+        } else {
+          updates.phoneNumberOnly = userProfile.phoneNumber;
+        }
+      }
+
+      // 폼 데이터 업데이트 (기존 값이 없을 때만)
+      setFormData((prev) => ({
+        ...prev,
+        name: prev.name || updates.name || '',
+        gender: prev.gender === 'MALE' ? updates.gender || prev.gender : prev.gender,
+        countryCode: prev.countryCode || updates.countryCode || '',
+        phoneNumberOnly: prev.phoneNumberOnly || updates.phoneNumberOnly || '',
+      }));
+    }
+  }, [userProfile]);
 
   const updateField = <K extends keyof ConsultationFormData>(
     field: K,
