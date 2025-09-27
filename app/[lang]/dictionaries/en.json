@@ -523,12 +523,89 @@
   "footer": {
     "companyName": "FILLMAN Inc.",
     "ceo": "CEO: Woo Jung-ho",
-    "address": "103, Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do",
-    "businessNumber": "Business Registration Number: 474-86-03352",
-    "customerEmail": "Customer Service Email: cs@k-doc.kr",
+    "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, Republic of Korea",
+    "businessNumber": "Business Registration No. 474-86-03352",
+    "customerEmail": "Customer Service Email : CS@k-doc.kr",
     "companyInfo": "About Us",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "contactUs": "Contact Us"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "People who make K-DOC",
+    "description": {
+      "part1": "K-DOC is a service planned by a team of medical professionals from ",
+      "highlight": "top universities worldwide",
+      "part2": ", led by Dr. Woo Jung-ho, a global authority in thread lifting. Our headquarters, located in a landmark building in Apgujeong, leads global beauty trends, and Dr. Woo, widely known as the 'Master of Thread Lifting' even in Japan, has been featured in prominent international media such as FOX TV News."
+    },
+    "ceoGreeting": {
+      "title": "CEO Message",
+      "name": "President Woo Jung Ho M.D.",
+      "greeting": "สวัสดีครับ",
+      "content": [
+        "Thank you for visiting K-DOC.",
+        "K-DOC is Korea's premier medical beauty platform, created to guide Thai clients in selecting only the top 5% of plastic surgery and dermatology clinics in Korea—clinics you can truly trust—while also offering exclusive discount benefits.",
+        "Our management team includes myself, Dr. Woo Jung Ho, M.D., a world-renowned authority in thread lifting and non-invasive aesthetic procedures, along with Dr. Park Jong Hyeon, M.D., and other distinguished medical professionals educated at some of the world's leading universities. Together, we take great pride in planning and operating this platform. Above all, K-DOC is designed to guide international patients, including those from Thailand, toward safe, verified, and trustworthy medical services in Korea—ensuring that you experience the very best of Korean medical expertise.",
+        "Through this platform, you will have access to reliable information on Korea's most reputable aesthetic clinics, authentic treatment reviews, and comprehensive services—from hospital booking and professional interpretation to post-treatment care—all in one place.",
+        "K-DOC is not merely an information platform. We aspire to be your trusted and convenient partner in your Korean medical beauty journey, providing each and every client with tailored solutions and a safe, satisfying experience.",
+        "We sincerely hope you can experience Korea's advanced aesthetic medical technologies safely, without risk, and with complete peace of mind. K-DOC will be with you every step of the way toward greater beauty, confidence, and health.",
+        "GOD BLESS YOU !!",
+        "Thank you.",
+        "Dr. Woo Jung Ho Chief Executive Officer",
+        "K-DOC Corp."
+      ]
+    },
+    "seoulOffice": {
+      "title": "K-DOC Seoul Office",
+      "description": "Located in the landmark building in Apgujeong, this is the K-DOC Seoul office."
+    },
+    "vision": {
+      "title": "K-DOC Vision",
+      "sections": [
+        {
+          "image": "image_section1.png",
+          "imagePc": "image_section1_pc.png",
+          "title": "2025 Thailand Expansion",
+          "description": "K-DOC, a global plastic surgery medical platform for Thai customers!\nK-DOC carefully selects only the top 5% of Korea's leading plastic surgery and dermatology clinics to help Thai customers choose with confidence."
+        },
+        {
+          "image": "image_section2.png",
+          "imagePc": "image_section2_pc.png",
+          "title": "Essential Plastic Surgery Platform for Customers",
+          "description": "View desired procedures and plastic surgery information in Korea at a glance, compare real reviews and hospital information to make confident decisions. Experience everything from booking to interpretation and post-procedure care conveniently through K-DOC."
+        },
+        {
+          "image": "image_section3.png",
+          "imagePc": "image_section3_pc.png",
+          "title": "Introduction to Korea's Famous Hospitals",
+          "description": "K-DOC only partners with world-renowned medical professionals and verified leading Korean plastic surgery clinics. Thai and global customers can experience high-quality plastic surgery services through trusted medical professionals and safe systems."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "K-DOC Hanam Headquarters",
+    "description": "Welcome to K-DOC Hanam Headquarters. Please feel free to contact us anytime.",
+    "address": "103, Misagangbannam-ro, Hanam-si, Gyeonggi-do, 701-014",
+    "phone": "031-123-4567",
+    "email": "contact@k-doc.com",
+    "mapTitle": "Location Guide",
+    "copyButton": "Copy Address",
+    "seoulOffice": {
+      "subtitle": "K-DOC Seoul Office",
+      "address": "6F, Hanju Building, 14 Seolleung-ro 157-gil, Gangnam-gu, Seoul"
+    },
+    "emailInquiry": {
+      "title": "Email Inquiry",
+      "description": "If you experience any inconvenience while using our service, please contact us via the email below.",
+      "button": "Send Email Inquiry"
+    },
+    "partnershipInquiry": {
+      "title": "K-DOC Partnership Application Consultation",
+      "button": "Apply for Partnership"
+    }
   },
   "my": {
     "title": "My Page",
