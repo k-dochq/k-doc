@@ -19,8 +19,8 @@ export function ContactSeoulMapSection({ dict }: ContactSeoulMapSectionProps) {
   const { copyAddress } = useAddressCopy(dict);
 
   // 서울지사 정확한 좌표
-  const latitude = 37.5175;
-  const longitude = 127.0449;
+  const latitude = 37.526145;
+  const longitude = 127.038836;
 
   const handleCopyAddress = () => {
     copyAddress(dict.contact.seoulOffice.address);
