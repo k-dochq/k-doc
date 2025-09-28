@@ -54,14 +54,16 @@ export function DoctorCard({ doctor, lang, dict, variant = 'light' }: DoctorCard
       <div className='flex h-full w-full min-w-0 flex-col justify-between'>
         <div className='flex min-w-0 flex-col'>
           {/* 이름과 직책 */}
-          <div className='flex min-w-0 items-center'>
-            <h3 className='min-w-0 truncate text-base font-semibold'>{doctorName}</h3>
-            {position && (
-              <>
-                <span className='mx-1 text-base font-semibold'>·</span>
-                <span className='min-w-0 truncate text-base font-semibold'>{position}</span>
-              </>
-            )}
+          <div className='min-w-0'>
+            <h3 className='line-clamp-2 text-sm leading-tight font-semibold'>
+              {doctorName}
+              {position && (
+                <>
+                  <span className='mx-1'>·</span>
+                  {position}
+                </>
+              )}
+            </h3>
           </div>
 
           {/* 병원명 */}
@@ -72,7 +74,7 @@ export function DoctorCard({ doctor, lang, dict, variant = 'light' }: DoctorCard
           )}
 
           {/* 진료부위 태그 */}
-          <div className='mt-2 min-w-0'>
+          <div className='mt-0.5 min-w-0'>
             <MedicalSpecialtyTags
               specialties={doctor.medicalSpecialties || []}
               lang={lang}
