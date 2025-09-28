@@ -80,11 +80,12 @@ export async function getHospitals(
 
     if (sortBy === 'rating') {
       // 인기순 (평점 기준)
+      orderBy.push({ ranking: 'asc' }); // 랭킹 우선 (낮을수록 우선)
       orderBy.push({ rating: sortOrder });
-      orderBy.push({ reviewCount: 'desc' }); // 동일 평점일 때 리뷰 수 많은 순
       orderBy.push({ createdAt: 'desc' }); // 최종적으로 최신순
     } else if (sortBy === 'likeCount') {
       // 추천순 (좋아요 수 기준)
+      orderBy.push({ ranking: 'asc' }); // 랭킹 우선 (낮을수록 우선)
       orderBy.push({
         HospitalLike: {
           _count: sortOrder,
@@ -94,15 +95,17 @@ export async function getHospitals(
       orderBy.push({ createdAt: 'desc' }); // 최종적으로 최신순
     } else if (sortBy === 'viewCount') {
       // 조회순 (조회수 기준)
+      orderBy.push({ ranking: 'asc' }); // 랭킹 우선 (낮을수록 우선)
       orderBy.push({ viewCount: sortOrder });
       orderBy.push({ createdAt: 'desc' }); // 동일 조회수일 때 최신순
     } else if (sortBy === 'createdAt') {
       // 최신순
+      orderBy.push({ ranking: 'asc' }); // 랭킹 우선 (낮을수록 우선)
       orderBy.push({ createdAt: sortOrder });
     } else {
       // 기본값: 평점순
+      orderBy.push({ ranking: 'asc' }); // 랭킹 우선 (낮을수록 우선)
       orderBy.push({ rating: 'desc' });
-      orderBy.push({ reviewCount: 'desc' });
       orderBy.push({ createdAt: 'desc' });
     }
 
