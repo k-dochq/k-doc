@@ -11,6 +11,7 @@ import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { ReviewContentSection } from './ReviewContentSection';
 import { ReviewStatsSection } from './ReviewStatsSection';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { decodeHtmlEntities } from 'shared/lib/html-entities';
 import { ReviewHospitalSection } from 'entities/review';
 import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
 import { ReviewCommentsSection } from 'features/review-comments';
@@ -24,7 +25,7 @@ interface ReviewDetailContentProps {
 
 export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentProps) {
   const title = dict.reviewDetail?.title || '시술후기';
-  const content = extractLocalizedText(review.content, lang);
+  const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
 
   return (
     <div className=''>

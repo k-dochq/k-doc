@@ -5,6 +5,7 @@ import { type ReviewCardData } from '../model/types';
 import { type Dictionary } from 'shared/model/types';
 import { type User } from '@supabase/supabase-js';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { decodeHtmlEntities } from 'shared/lib/html-entities';
 import { ReviewListImages } from './ReviewListImages';
 import { UserRatingInfo } from './UserRatingInfo';
 import { ReviewText } from './ReviewText';
@@ -34,11 +35,13 @@ export function ReviewListCard({
   isLikeLoading = false,
   className = '',
 }: ReviewListCardProps) {
-  const title = extractLocalizedText(review.title, lang) || '';
-  const content = extractLocalizedText(review.content, lang) || '';
+  const title = decodeHtmlEntities(extractLocalizedText(review.title, lang) || '');
+  const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
 
   // 해시태그 추출 (concernsMultilingual을 해시태그로 사용)
-  const concerns = extractLocalizedText(review.concernsMultilingual, lang) || '';
+  const concerns = decodeHtmlEntities(
+    extractLocalizedText(review.concernsMultilingual, lang) || '',
+  );
   const hashtags = concerns ? [concerns] : [];
 
   return (
