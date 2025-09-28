@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from '../model/types';
 import { extractLocalizedText, getUserDisplayName } from 'shared/lib';
+import { decodeHtmlEntities } from 'shared/lib/html-entities';
 import { BeforeAfterImages } from './BeforeAfterImages';
 import { UserRatingInfo } from './UserRatingInfo';
 import { ReviewText } from './ReviewText';
@@ -26,8 +27,8 @@ export function PopularReviewCard({
   className = '',
   noBorder = false,
 }: PopularReviewCardProps) {
-  const title = extractLocalizedText(review.title, lang) || '';
-  const content = extractLocalizedText(review.content, lang) || '';
+  const title = decodeHtmlEntities(extractLocalizedText(review.title, lang) || '');
+  const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
 
   // 사용자 표시명
   const userName = getUserDisplayName(review.user);

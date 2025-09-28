@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText, formatDateSimple, getUserDisplayName } from 'shared/lib';
+import { decodeHtmlEntities } from 'shared/lib/html-entities';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar } from 'lucide-react';
 import { LocaleLink } from 'shared/ui/locale-link';
@@ -19,8 +20,8 @@ interface ReviewCardProps {
 export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  const title = extractLocalizedText(review.title, lang) || '';
-  const content = extractLocalizedText(review.content, lang) || '';
+  const title = decodeHtmlEntities(extractLocalizedText(review.title, lang) || '');
+  const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
   const medicalSpecialtyName = extractLocalizedText(review.medicalSpecialty.name, lang) || '';
 
   // Before/After 이미지 분리
