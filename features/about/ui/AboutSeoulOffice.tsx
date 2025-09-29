@@ -20,7 +20,7 @@ export function AboutSeoulOffice({ dict }: AboutSeoulOfficeProps) {
           alt={dict.about.seoulOffice.title}
           width={335}
           height={446}
-          className='w-full object-contain'
+          className='w-full object-contain rounded-xl'
           priority
         />
       </div>
