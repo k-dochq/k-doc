@@ -1,5 +1,7 @@
 import { type HospitalCardData } from 'shared/model/types';
 import { type ReviewCardData } from '../model/types';
+import { extractLocalizedText } from 'shared/lib/localized-text';
+import { type LocalizedText } from 'shared/model/types';
 
 /**
  * ReviewCardData의 hospital 정보를 HospitalCardData 타입으로 변환
@@ -25,6 +27,8 @@ export function convertReviewHospitalToHospitalCard(review: ReviewCardData): Hos
           parentId: null,
         }
       : null,
-    displayLocationName: null, // ReviewCardData에는 displayLocationName이 없으므로 null
+    displayLocationName: review.hospital.displayLocationName
+      ? (review.hospital.displayLocationName as LocalizedText)
+      : null,
   };
 }
