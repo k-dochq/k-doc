@@ -11,18 +11,18 @@ export function ScheduleCell({ day, dayIndex, schedule, lang }: ScheduleCellProp
       }`}
     >
       {schedule.isOpen ? (
-        <div className='text-sm text-black'>
-          <div className='truncate font-medium' title={schedule.hours?.split(' ~ ')[0]}>
+        <div className='text-xs text-black'>
+          <div className='truncate font-normal' title={schedule.hours?.split(' ~ ')[0]}>
             {schedule.hours?.split(' ~ ')[0]}
           </div>
           <div className='text-xs text-gray-500'>~</div>
-          <div className='truncate font-medium' title={schedule.hours?.split(' ~ ')[1]}>
+          <div className='truncate font-normal' title={schedule.hours?.split(' ~ ')[1]}>
             {schedule.hours?.split(' ~ ')[1]}
           </div>
         </div>
       ) : (
         <div
-          className={`flex h-full w-full items-center justify-center truncate text-sm font-medium ${isHoliday ? 'text-white' : 'text-gray-500'}`}
+          className={`flex h-full w-full items-center justify-center truncate text-xs font-normal ${isHoliday ? 'text-white' : 'text-gray-500'}`}
         >
           {holidayTexts[lang]}
         </div>

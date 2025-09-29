@@ -9,7 +9,7 @@ export function DayHeader({ day, dayIndex, isHoliday }: DayHeaderProps) {
         isHoliday ? 'bg-[#FFBCF4]' : 'bg-[#F9D1FF]'
       } ${dayIndex === 6 ? 'text-red-500' : 'text-black'}`}
     >
-      <span className='block truncate text-sm font-medium' title={day}>
+      <span className='block truncate text-xs font-normal' title={day}>
         {day}
       </span>
     </div>
