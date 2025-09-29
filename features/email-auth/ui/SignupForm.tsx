@@ -65,6 +65,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
       countryCode: formData.countryCode,
       phoneNumberOnly: formData.phoneNumberOnly,
       birthDate: formData.birthDate,
+      marketingNotifications: agreements.marketingNotifications,
     });
 
     if (result.success) {

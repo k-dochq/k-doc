@@ -7,6 +7,7 @@ interface UpdateUserRequest {
   nickName?: string;
   displayName?: string;
   name?: string;
+  marketingNotifications?: boolean;
 }
 
 export async function PUT(request: NextRequest): Promise<NextResponse> {
@@ -20,10 +21,10 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
 
     // 요청 본문 파싱
     const body: UpdateUserRequest = await request.json();
-    const { nickName, displayName, name } = body;
+    const { nickName, displayName, name, marketingNotifications } = body;
 
     // 업데이트할 필드가 없는 경우
-    if (!nickName && !displayName && !name) {
+    if (!nickName && !displayName && !name && marketingNotifications === undefined) {
       return NextResponse.json(
         {
           success: false,
@@ -33,11 +34,27 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
       );
     }
 
+    // 기존 사용자 데이터 조회 (raw_user_meta_data 업데이트를 위해)
+    const existingUser = await prisma.user.findUnique({
+      where: { id: user.id },
+      select: { raw_user_meta_data: true },
+    });
+
     // 업데이트할 데이터 준비
-    const updateData: Partial<UpdateUserRequest> = {};
+    const updateData: Record<string, unknown> = {};
+
     if (nickName !== undefined) updateData.nickName = nickName;
     if (displayName !== undefined) updateData.displayName = displayName;
     if (name !== undefined) updateData.name = name;
+
+    // marketing_notifications 처리
+    if (marketingNotifications !== undefined) {
+      const currentMetaData = (existingUser?.raw_user_meta_data as Record<string, unknown>) || {};
+      updateData.raw_user_meta_data = {
+        ...currentMetaData,
+        marketing_notifications: marketingNotifications,
+      };
+    }
 
     // Prisma를 사용하여 User 테이블에서 사용자 정보 업데이트
     const updatedUser = await prisma.user.update({
@@ -51,6 +68,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
         nickName: true,
         displayName: true,
         name: true,
+        raw_user_meta_data: true,
         updatedAt: true,
       },
     });
