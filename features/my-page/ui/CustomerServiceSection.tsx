@@ -11,7 +11,7 @@ interface CustomerServiceSectionProps {
 
 export function CustomerServiceSection({ lang, dict }: CustomerServiceSectionProps) {
   const handlePhoneClick = () => {
-    window.location.href = `tel:${dict.my?.customerService?.phoneNumber || '1588-4591'}`;
+    window.location.href = `tel:${dict.my?.customerService?.phoneNumber || '1588-6930'}`;
   };
 
   const handleEmailClick = () => {
