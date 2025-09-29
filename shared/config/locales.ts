@@ -7,7 +7,7 @@ export const STATIC_GENERATION_LOCALES = [] as const;
 
 export type StaticGenerationLocale = (typeof STATIC_GENERATION_LOCALES)[number];
 
-export const DEFAULT_LOCALE: Locale = 'ko';
+export const DEFAULT_LOCALE: Locale = 'th';
 
 export const LOCALE_LABELS: Record<Locale, string> = {
   en: 'English',
