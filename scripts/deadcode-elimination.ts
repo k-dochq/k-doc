@@ -4,12 +4,13 @@ import * as ts from 'typescript';
 import * as path from 'path';
 
 /**
- * TypeScript Compiler API를 사용한 정확한 미사용 파일 감지
+ * TypeScript Compiler API를 사용한 정확한 미사용 파일 및 export 감지
  *
  * 핵심 아이디어:
  * 1. TypeScript 컴파일러가 직접 파일 의존성을 분석
  * 2. 정확한 module resolution (path mapping, node_modules 등)
  * 3. 타입 정보까지 고려한 완전한 의존성 그래프
+ * 4. index.ts에서 export된 항목 중 실제로 사용되지 않는 항목 감지
  */
 
 class TypeScriptBasedUnusedDetector {
@@ -17,6 +18,8 @@ class TypeScriptBasedUnusedDetector {
   private checker!: ts.TypeChecker;
   private sourceFiles: Map<string, ts.SourceFile> = new Map();
   private referencedFiles: Set<string> = new Set();
+  private exportedSymbols: Map<string, Set<string>> = new Map(); // file -> exported symbols
+  private usedSymbols: Set<string> = new Set(); // globally used symbols
 
   constructor(private configPath: string = 'tsconfig.json') {
     this.initializeProgram();
@@ -77,23 +80,106 @@ class TypeScriptBasedUnusedDetector {
   }
 
   /**
-   * 미사용 파일 분석 실행
+   * 미사용 파일 및 export 분석 실행
    */
   public analyze(): void {
-    console.log('🔍 Analyzing file dependencies with TypeScript compiler...\n');
+    console.log('🔍 Analyzing file dependencies and unused exports with TypeScript compiler...\n');
 
-    // 1. 진입점 파일들 찾기
+    // 1. 모든 export 수집
+    this.collectAllExports();
+
+    // 2. 진입점 파일들 찾기
     const entryPoints = this.findEntryPoints();
     console.log(`📍 Entry points (${entryPoints.length}):`, entryPoints.slice(0, 5));
     if (entryPoints.length > 5) console.log(`    ... and ${entryPoints.length - 5} more`);
 
-    // 2. 각 진입점에서 시작하여 의존성 추적
+    // 3. 각 진입점에서 시작하여 의존성 추적
     for (const entryPoint of entryPoints) {
       this.traceReferences(entryPoint);
     }
 
-    // 3. 결과 분석
+    // 4. 결과 분석
     this.analyzeResults();
+  }
+
+  /**
+   * 모든 파일에서 export된 심볼들 수집
+   */
+  private collectAllExports(): void {
+    console.log('📦 Collecting all exported symbols...');
+
+    for (const [relativePath, sourceFile] of this.sourceFiles) {
+      const exportedSymbols = new Set<string>();
+
+      // export 문들 찾기
+      ts.forEachChild(sourceFile, (node) => {
+        this.collectExportsFromNode(node, sourceFile, exportedSymbols);
+      });
+
+      if (exportedSymbols.size > 0) {
+        this.exportedSymbols.set(relativePath, exportedSymbols);
+      }
+    }
+
+    console.log(`📦 Found exports in ${this.exportedSymbols.size} files`);
+  }
+
+  /**
+   * 노드에서 export된 심볼들 수집
+   */
+  private collectExportsFromNode(
+    node: ts.Node,
+    sourceFile: ts.SourceFile,
+    exportedSymbols: Set<string>,
+  ): void {
+    // named exports
+    if (ts.isExportDeclaration(node)) {
+      if (node.exportClause && ts.isNamedExports(node.exportClause)) {
+        for (const element of node.exportClause.elements) {
+          exportedSymbols.add(element.name.text);
+        }
+      }
+    }
+
+    // export default
+    if (ts.isExportAssignment(node)) {
+      exportedSymbols.add('default');
+    }
+
+    // export function, class, const, let, var
+    if (
+      ts.isFunctionDeclaration(node) &&
+      node.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)
+    ) {
+      if (node.name) {
+        exportedSymbols.add(node.name.text);
+      }
+    }
+
+    if (
+      ts.isClassDeclaration(node) &&
+      node.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)
+    ) {
+      if (node.name) {
+        exportedSymbols.add(node.name.text);
+      }
+    }
+
+    if (
+      ts.isVariableStatement(node) &&
+      node.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)
+    ) {
+      for (const declaration of node.declarationList.declarations) {
+        if (ts.isIdentifier(declaration.name)) {
+          exportedSymbols.add(declaration.name.text);
+        }
+      }
+    }
+
+    // 재귀적으로 자식 노드들 방문
+    ts.forEachChild(node, (child) => {
+      this.collectExportsFromNode(child, sourceFile, exportedSymbols);
+    });
   }
 
   /**
@@ -175,6 +261,50 @@ class TypeScriptBasedUnusedDetector {
     for (const typeRef of typeReferences) {
       this.traceReferences(typeRef);
     }
+
+    // 3. 사용된 심볼들 추적
+    this.traceUsedSymbols(sourceFile);
+  }
+
+  /**
+   * 소스 파일에서 사용된 심볼들 추적
+   */
+  private traceUsedSymbols(sourceFile: ts.SourceFile): void {
+    ts.forEachChild(sourceFile, (node) => {
+      this.visitNodeForUsedSymbols(node, sourceFile);
+    });
+  }
+
+  /**
+   * 노드를 방문하여 사용된 심볼들 추적
+   */
+  private visitNodeForUsedSymbols(node: ts.Node, sourceFile: ts.SourceFile): void {
+    // import 문에서 사용된 심볼들
+    if (ts.isImportDeclaration(node)) {
+      if (node.importClause) {
+        // default import
+        if (node.importClause.name) {
+          this.usedSymbols.add(node.importClause.name.text);
+        }
+
+        // named imports
+        if (node.importClause.namedBindings && ts.isNamedImports(node.importClause.namedBindings)) {
+          for (const element of node.importClause.namedBindings.elements) {
+            this.usedSymbols.add(element.name.text);
+          }
+        }
+      }
+    }
+
+    // 식별자 사용
+    if (ts.isIdentifier(node)) {
+      this.usedSymbols.add(node.text);
+    }
+
+    // 재귀적으로 자식 노드들 방문
+    ts.forEachChild(node, (child) => {
+      this.visitNodeForUsedSymbols(child, sourceFile);
+    });
   }
 
   /**
@@ -310,6 +440,9 @@ class TypeScriptBasedUnusedDetector {
     console.log(`✅ Referenced files: ${this.referencedFiles.size}`);
     console.log(`🗑️  Unused files: ${unusedFiles.length}`);
 
+    // 미사용 export 분석
+    this.analyzeUnusedExports();
+
     if (unusedFiles.length === 0) {
       console.log('\n🎉 No unused files found! Your project is clean.');
       return;
@@ -340,6 +473,67 @@ class TypeScriptBasedUnusedDetector {
     // 상세 정보
     console.log(`\n💡 Analysis completed using TypeScript ${ts.version}`);
     console.log('   This method is much more accurate than regex-based parsing!');
+  }
+
+  /**
+   * 미사용 export 분석
+   */
+  private analyzeUnusedExports(): void {
+    console.log('\n🔍 Analyzing unused exports...');
+
+    const unusedExports: Array<{ file: string; symbol: string }> = [];
+
+    for (const [file, exportedSymbols] of this.exportedSymbols) {
+      for (const symbol of exportedSymbols) {
+        if (!this.usedSymbols.has(symbol)) {
+          unusedExports.push({ file, symbol });
+        }
+      }
+    }
+
+    if (unusedExports.length === 0) {
+      console.log('✅ No unused exports found!');
+      return;
+    }
+
+    console.log(`⚠️  Found ${unusedExports.length} unused exports:`);
+
+    // 파일별로 그룹화
+    const exportsByFile = new Map<string, string[]>();
+    for (const { file, symbol } of unusedExports) {
+      if (!exportsByFile.has(file)) {
+        exportsByFile.set(file, []);
+      }
+      exportsByFile.get(file)!.push(symbol);
+    }
+
+    // index.ts 파일들 우선 표시
+    const indexFiles: Array<[string, string[]]> = [];
+    const otherFiles: Array<[string, string[]]> = [];
+
+    for (const [file, symbols] of exportsByFile) {
+      if (file.endsWith('index.ts') || file.endsWith('index.tsx')) {
+        indexFiles.push([file, symbols]);
+      } else {
+        otherFiles.push([file, symbols]);
+      }
+    }
+
+    if (indexFiles.length > 0) {
+      console.log('\n📦 Unused exports in index.ts files:');
+      for (const [file, symbols] of indexFiles) {
+        console.log(`   ${file}:`);
+        symbols.forEach((symbol) => console.log(`     - ${symbol}`));
+      }
+    }
+
+    if (otherFiles.length > 0) {
+      console.log('\n📄 Unused exports in other files:');
+      for (const [file, symbols] of otherFiles) {
+        console.log(`   ${file}:`);
+        symbols.forEach((symbol) => console.log(`     - ${symbol}`));
+      }
+    }
   }
 
   /**
