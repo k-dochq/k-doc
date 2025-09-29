@@ -13,6 +13,7 @@ interface FormDatePickerProps {
   placeholder?: string;
   error?: string;
   disabled?: (date: Date) => boolean;
+  required?: boolean;
 }
 
 export function FormDatePicker({
@@ -24,6 +25,7 @@ export function FormDatePicker({
   placeholder,
   error,
   disabled,
+  required = true,
 }: FormDatePickerProps) {
   // 과거 날짜 비활성화 (오늘 포함해서 미래만 선택 가능)
   const disablePastDates = (date: Date): boolean => {
@@ -42,7 +44,7 @@ export function FormDatePicker({
       placeholder={placeholder}
       disabled={disablePastDates}
       error={error}
-      required={true}
+      required={required}
     />
   );
 }

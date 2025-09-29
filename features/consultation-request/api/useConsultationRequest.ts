@@ -11,6 +11,7 @@ interface ConsultationRequestData {
   countryCode: string;
   phoneNumberOnly: string;
   preferredDate: string;
+  preferredDate2: string;
   content: string;
 }
 

@@ -456,6 +456,10 @@
           "label": "Preferred Date",
           "placeholder": "Please select a date"
         },
+        "preferredDate2": {
+          "label": "Preferred Date 2",
+          "placeholder": "Please select a date"
+        },
         "content": {
           "label": "Consultation Details",
           "placeholder": "Please describe what you would like to consult about"
@@ -510,6 +514,7 @@
             "ageGroup": "Age Group",
             "phoneNumber": "Phone Number",
             "preferredDate": "Preferred Date",
+            "preferredDate2": "Preferred Date 2",
             "additionalInquiry": "Additional Inquiry"
           },
           "ageGroups": {

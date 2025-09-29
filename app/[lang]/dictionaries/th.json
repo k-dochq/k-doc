@@ -456,6 +456,10 @@
           "label": "วันที่ต้องการนัดหมาย",
           "placeholder": "กรุณาเลือกวันที่"
         },
+        "preferredDate2": {
+          "label": "วันที่ต้องการนัดหมาย2",
+          "placeholder": "กรุณาเลือกวันที่"
+        },
         "content": {
           "label": "รายละเอียดการปรึกษา",
           "placeholder": "กรุณาอธิบายสิ่งที่ต้องการปรึกษา"
@@ -510,6 +514,7 @@
             "ageGroup": "ช่วงอายุ",
             "phoneNumber": "หมายเลขโทรศัพท์",
             "preferredDate": "วันที่ต้องการ",
+            "preferredDate2": "วันที่ต้องการ2",
             "additionalInquiry": "คำถามเพิ่มเติม"
           },
           "ageGroups": {

@@ -5,6 +5,7 @@ export interface ConsultationFormData {
   countryCode: string;
   phoneNumberOnly: string;
   preferredDate: string;
+  preferredDate2: string;
   content: string;
   agreeToPrivacy: boolean;
 }
@@ -16,6 +17,7 @@ export interface ConsultationFormErrors {
   countryCode?: string;
   phoneNumberOnly?: string;
   preferredDate?: string;
+  preferredDate2?: string;
   content?: string;
   agreeToPrivacy?: string;
 }

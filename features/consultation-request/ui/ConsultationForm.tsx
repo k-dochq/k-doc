@@ -137,6 +137,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         countryCode: formData.countryCode,
         phoneNumberOnly: formData.phoneNumberOnly,
         preferredDate: formData.preferredDate,
+        preferredDate2: formData.preferredDate2,
         content: formData.content,
       },
       {
@@ -257,6 +258,22 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
           dict.consultation?.request?.form?.preferredDate?.placeholder || '날짜를 선택해주세요'
         }
         error={errors.preferredDate}
+      />
+
+      {/* 예약 희망 날짜2 */}
+      <FormDatePicker
+        label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
+        value={formData.preferredDate2 ? new Date(formData.preferredDate2) : undefined}
+        onChange={(date) =>
+          updateField('preferredDate2', date ? date.toISOString().split('T')[0] : '')
+        }
+        locale={lang}
+        dict={dict}
+        placeholder={
+          dict.consultation?.request?.form?.preferredDate2?.placeholder || '날짜를 선택해주세요'
+        }
+        error={errors.preferredDate2}
+        required={false}
       />
 
       {/* 내용 */}

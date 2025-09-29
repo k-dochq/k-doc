@@ -456,6 +456,10 @@
           "label": "예약 희망 날짜",
           "placeholder": "날짜를 선택해주세요"
         },
+        "preferredDate2": {
+          "label": "예약 희망 날짜2",
+          "placeholder": "날짜를 선택해주세요"
+        },
         "content": {
           "label": "상담내용",
           "placeholder": "상담받고 싶은 내용을 자세히 적어주세요"
@@ -510,6 +514,7 @@
             "ageGroup": "나이대",
             "phoneNumber": "휴대폰번호",
             "preferredDate": "예약 희망날짜",
+            "preferredDate2": "예약 희망날짜2",
             "additionalInquiry": "기타 문의사항"
           },
           "ageGroups": {

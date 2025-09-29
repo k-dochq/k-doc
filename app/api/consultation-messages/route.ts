@@ -13,6 +13,7 @@ interface ConsultationRequestBody {
   countryCode: string;
   phoneNumberOnly: string;
   preferredDate: string;
+  preferredDate2: string;
   content: string;
 }
 
@@ -191,6 +192,7 @@ async function handleConsultationRequest(
     countryCode,
     phoneNumberOnly,
     preferredDate,
+    preferredDate2,
     content,
   } = body;
 
@@ -260,6 +262,11 @@ ${messages.consultationRequest?.gender || '성별'}: ${messages.genders?.[gender
 ${messages.consultationRequest?.ageGroup || '나이대'}: ${messages.ageGroups?.[ageGroup] || ageGroup}
 ${messages.consultationRequest?.phoneNumber || '휴대폰번호'}: ${countryCode} ${phoneNumberOnly}
 ${messages.consultationRequest?.preferredDate || '예약 희망날짜'}: ${preferredDate}${
+      preferredDate2
+        ? `
+${messages.consultationRequest?.preferredDate2 || '예약 희망날짜2'}: ${preferredDate2}`
+        : ''
+    }${
       content
         ? `
 
