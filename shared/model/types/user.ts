@@ -14,7 +14,8 @@ export interface UserProfile {
     nationality?: string;
     birth_date?: string;
     nickname?: string;
-    [key: string]: any;
+    marketing_notifications?: boolean;
+    [key: string]: unknown;
   } | null;
   createdAt: string;
   updatedAt: string;
@@ -24,6 +25,7 @@ export interface UpdateUserProfileRequest {
   nickName?: string;
   displayName?: string;
   name?: string;
+  marketingNotifications?: boolean;
 }
 
 export interface UpdateUserProfileResponse {
