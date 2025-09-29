@@ -89,7 +89,7 @@ export function ChildDistrictList({
           onClick={isAllSelected ? onDeselectAll : onSelectAll}
           className='text-[13px] leading-[18px] font-normal text-black transition-colors hover:text-neutral-600'
         >
-          {getParentDistrictName()} 전체
+          {getParentDistrictName()} {dict.districtFilter?.selectAll || '전체'}
         </button>
       </div>
 

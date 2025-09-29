@@ -27,7 +27,9 @@ export function HospitalDetailReviewsError({
         </div>
 
         <button className='flex items-center gap-0.5'>
-          <span className='text-sm leading-[18px] font-medium text-white'>전체보기</span>
+          <span className='text-sm leading-[18px] font-medium text-white'>
+            {dict.hospitalDetailReviews?.viewAll || '전체보기'}
+          </span>
           <div className='flex items-center justify-center'>
             <ArrowRightIcon className='text-white' />
           </div>

@@ -106,7 +106,7 @@ export function ReviewCarousel({ reviews, hospitalId, lang, dict }: ReviewCarous
             locale={lang}
             className='text-sm text-blue-600 hover:text-blue-800 hover:underline'
           >
-            {dict.reviewCarousel?.viewAll || '전체보기'}
+            {dict.reviewCarousel?.viewAll || 'View All'}
           </LocaleLink>
         </div>
       </div>
