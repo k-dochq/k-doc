@@ -13,6 +13,7 @@ const initialFormData: ConsultationFormData = {
   countryCode: '',
   phoneNumberOnly: '',
   preferredDate: '',
+  preferredDate2: '',
   content: '',
   agreeToPrivacy: false,
 };
