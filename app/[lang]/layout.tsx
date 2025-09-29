@@ -37,9 +37,9 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   const { lang } = await params;
 
   const titles = {
-    ko: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
-    en: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
-    th: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    ko: 'K-DOC | เค-ด็อค',
+    en: 'K-DOC | เค-ด็อค',
+    th: 'K-DOC | เค-ด็อค',
   };
 
   const descriptions = {
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   return {
     title: {
       default: titles[lang],
-      template: 'K-DOC',
+      template: 'K-DOC | เค-ด็อค',
     },
     description: descriptions[lang],
     keywords: [
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     },
     openGraph: {
       type: 'website',
-      siteName: 'K-DOC',
+      siteName: 'K-DOC | เค-ด็อค',
       title: titles[lang],
       description: descriptions[lang],
       locale: lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH',

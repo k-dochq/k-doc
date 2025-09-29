@@ -4,8 +4,8 @@ import './globals.css';
 // metadata for SEO
 export const metadata: Metadata = {
   title: {
-    default: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
-    template: 'K-DOC',
+    default: 'K-DOC | เค-ด็อค',
+    template: 'K-DOC | เค-ด็อค',
   },
   description:
     'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://k-doc.kr'),
   openGraph: {
     type: 'website',
-    siteName: 'K-DOC',
-    title: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    siteName: 'K-DOC | เค-ด็อค',
+    title: 'K-DOC | เค-ด็อค',
     description:
       'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'K-DOC - Korean Plastic Surgery Booking & Reviews',
+    title: 'K-DOC | เค-ด็อค',
     description: 'Book Korean plastic surgery consultations and read authentic reviews.',
     images: ['/twitter-image.png'],
   },
