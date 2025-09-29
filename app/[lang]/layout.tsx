@@ -5,6 +5,7 @@ import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
 import { GlobalModal } from 'shared/ui/global-modal';
 import { GradientBackground } from 'shared/ui/gradient-background/GradientBackground';
+import { GoogleAnalytics } from 'shared/ui/google-analytics';
 
 const pretendard = localFont({
   src: '../../fonts/pretendard/PretendardVariable.woff2',
@@ -108,6 +109,9 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   return (
     <html lang={lang} className={allFontVariables}>
       <body className={currentFont.className}>
+        {/* Google Analytics */}
+        <GoogleAnalytics gaId='G-8NMENMCDZH' />
+
         <QueryProvider>
           <MaxWidthLayout>
             <GradientBackground>{children}</GradientBackground>
