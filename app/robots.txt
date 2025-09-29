@@ -1,0 +1,128 @@
+# robots.txt for k-doc.kr (Target: Thailand / Google-first SEO)
+
+############################
+# 1) Common: Allow crawling + Block noise parameters
+############################
+User-agent: *
+# Allow essential rendering resources
+Allow: /*.css$
+Allow: /*.js$
+Allow: /images/
+Allow: /fonts/
+Allow: /icons/
+Allow: /static/
+Allow: /_next/static/
+Allow: /_next/image/
+
+# Block internal/private areas, duplicate/parameter pages
+Disallow: /api/
+Disallow: /*/auth/
+Disallow: /*/my/
+Disallow: /*/favorites/
+Disallow: /*/consultation/
+Disallow: /*/profile/
+Disallow: /_next/
+Disallow: /admin/
+
+# Block internal search/filter/sort/paging parameters that cause duplicates
+Disallow: /*?s=
+Disallow: /*?q=
+Disallow: /*?search=
+Disallow: /*?page=
+Disallow: /*?redirect=
+Disallow: /*?redirectTo=
+Disallow: /*?sessionid=
+Disallow: /*?replytocom=
+
+# Block tracking parameters
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+Disallow: /*?mc_cid=
+Disallow: /*?mc_eid=
+
+# Block Next.js system paths
+Disallow: /_next/
+Disallow: /_vercel/
+Disallow: /api/
+
+############################
+# 2) Google-specific: Ensure ad/rendering crawler access
+############################
+User-agent: Googlebot
+Allow: /
+Allow: /ko/
+Allow: /en/
+Allow: /th/
+Disallow: /api/
+Disallow: /*/auth/
+Disallow: /*/my/
+Disallow: /*/favorites/
+Disallow: /*/consultation/
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /public/images/
+Allow: /_next/image/
+Disallow: /*/auth/
+
+# Google Ads (landing page quality assessment) crawler
+User-agent: AdsBot-Google
+Allow: /
+Allow: /ko/
+Allow: /en/
+Allow: /th/
+Disallow: /*/auth/
+Disallow: /api/
+
+############################
+# 3) Excessive crawler mitigation (optional)
+# Note: Google doesn't support Crawl-delay. Only Bing/some bots interpret it.
+############################
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: DotBot
+Crawl-delay: 10
+
+User-agent: PetalBot
+Crawl-delay: 5
+
+User-agent: BingBot
+Crawl-delay: 5
+
+############################
+# 4) AI/generative crawlers (optional, according to policy)
+############################
+# Note: Not blocking doesn't directly benefit SEO. Choose according to policy.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+############################
+# 5) Sitemap (most important)
+# Make sure to verify normal response/index structure before actual deployment
+############################
+Sitemap: https://www.k-doc.kr/sitemap.xml
+Sitemap: https://www.k-doc.kr/sitemap_th.xml
+
+# Multi-language sitemaps (add if needed)
+# Sitemap: https://www.k-doc.kr/sitemap_ko.xml
+# Sitemap: https://www.k-doc.kr/sitemap_en.xml
