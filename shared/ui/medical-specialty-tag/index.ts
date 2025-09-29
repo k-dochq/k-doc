@@ -1,1 +1,0 @@
-export { MedicalSpecialtyTag } from './MedicalSpecialtyTag';
