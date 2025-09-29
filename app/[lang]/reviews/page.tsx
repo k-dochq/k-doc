@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: AllReviewsPageProps) {
   } catch (error) {
     console.error('Error generating metadata for all reviews page:', error);
     return {
-      title: '전체 시술후기',
+      title: 'All Reviews',
       description: '모든 병원의 실제 시술후기를 확인하세요.',
     };
   }

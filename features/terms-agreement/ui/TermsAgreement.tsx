@@ -72,7 +72,7 @@ export function TermsAgreement({ lang, dict, onAgreementChange }: TermsAgreement
           className='h-4 w-4 rounded border-neutral-300 text-purple-600 focus:ring-purple-500'
         />
         <label htmlFor='allAgreed' className='text-sm font-medium text-neutral-900'>
-          {dict.auth?.signup?.termsAgreement?.allAgreed || '전체 동의'}
+          {dict.auth?.signup?.termsAgreement?.allAgreed || 'All Agreed'}
         </label>
       </div>
 
