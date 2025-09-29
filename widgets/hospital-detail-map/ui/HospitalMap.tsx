@@ -11,12 +11,13 @@ declare global {
 interface HospitalMapProps {
   latitude: number;
   longitude: number;
+  hospitalName?: string;
 }
 
 /**
  * 병원 지도 컴포넌트
  */
-export function HospitalMap({ latitude, longitude }: HospitalMapProps) {
+export function HospitalMap({ latitude, longitude, hospitalName }: HospitalMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,6 +46,13 @@ export function HospitalMap({ latitude, longitude }: HospitalMapProps) {
 
       // 마커를 지도에 표시
       marker.setMap(map);
+
+      // 마커 클릭 시 카카오맵 외부링크로 이동
+      window.kakao.maps.event.addListener(marker, 'click', function () {
+        const title = hospitalName ? encodeURIComponent(hospitalName) : '병원';
+        const kakaoMapUrl = `https://map.kakao.com/link/map/${title},${latitude},${longitude}`;
+        window.open(kakaoMapUrl, '_blank', 'noopener,noreferrer');
+      });
     };
 
     // Kakao Maps API 스크립트 로드
@@ -59,7 +67,7 @@ export function HospitalMap({ latitude, longitude }: HospitalMapProps) {
     } else {
       loadKakaoMap();
     }
-  }, [latitude, longitude]);
+  }, [latitude, longitude, hospitalName]);
 
   return (
     <div className='mt-4 h-[220px] w-full overflow-hidden rounded-lg'>

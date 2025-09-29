@@ -47,6 +47,7 @@ export function HospitalDetailIntroductionTab({
               dict={dict}
               latitude={hospital.latitude}
               longitude={hospital.longitude}
+              hospitalName={extractLocalizedText(hospital.name, lang)}
             />
 
             {/* 주소 정보 섹션 */}
