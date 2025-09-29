@@ -1,21 +1,27 @@
-import Image from 'next/image';
+import { BottomNavigation } from '@/widgets/bottom-navigation';
+import { Footer } from '@/widgets/footer';
+import { Header } from '@/widgets/header';
+import { type Locale } from 'shared/config';
+import { MainPageLayout } from 'widgets/main-page-layout';
+import { getDictionary } from './dictionaries';
 
-export default async function HomePage() {
+interface HomePageProps {
+  params: Promise<{ lang: Locale }>;
+}
+
+export default async function HomePage({ params }: HomePageProps) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+
   return (
-    <main className='flex min-h-screen items-center justify-center bg-black text-white'>
-      <div className='w-full text-center'>
-        <div className='mt-8 flex justify-center'>
-          <div className='relative h-16 w-48'>
-            <Image
-              src='/coming_soon.png'
-              alt={'Coming Soon'}
-              fill
-              className='object-contain'
-              priority
-            />
-          </div>
-        </div>
-      </div>
-    </main>
+    <>
+      <Header currentLang={lang} dict={dict} />
+      <main>
+        <MainPageLayout lang={lang} />
+      </main>
+      <Footer lang={lang} dict={dict} />
+      <div className='h-16' />
+      <BottomNavigation currentLang={lang} dict={dict} />
+    </>
   );
 }
