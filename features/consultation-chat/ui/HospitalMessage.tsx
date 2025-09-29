@@ -31,7 +31,7 @@ export function HospitalMessage({
             </div>
           </div>
           <MessageBubble variant='hospital' className='self-stretch'>
-            <div className="relative shrink-0 font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] whitespace-pre-wrap text-neutral-900 not-italic">
+            <div className="relative font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-900 not-italic">
               {message.content}
             </div>
           </MessageBubble>
