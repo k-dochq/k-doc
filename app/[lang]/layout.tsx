@@ -65,6 +65,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     metadataBase: new URL('https://k-doc.kr'),
     other: {
       'content-language': lang,
+      'naver-site-verification': 'bdfe5908db165fdf70b2bd909536cd4ba73998da',
     },
     openGraph: {
       type: 'website',
