@@ -42,7 +42,7 @@ export function HospitalCard({
         background: 'rgba(255, 255, 255, 0.50)',
       }}
     >
-      <HospitalThumbnail imageUrl={hospital.thumbnailImageUrl} />
+      <HospitalThumbnail imageUrl={hospital.thumbnailImageUrl} ranking={hospital.ranking} />
       <div className='flex min-w-0 flex-1 flex-col justify-center gap-1 pr-3'>
         <div className='flex items-start justify-between'>
           <div className='min-w-0 flex-1'>
