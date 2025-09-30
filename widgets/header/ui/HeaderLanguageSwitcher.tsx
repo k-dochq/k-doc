@@ -10,6 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from 'shared/ui/dropdown-menu';
+import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface HeaderLanguageSwitcherProps {
   currentLang?: Locale;
@@ -18,6 +19,7 @@ interface HeaderLanguageSwitcherProps {
 export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const { user } = useAuth();
 
   // 현재 경로에서 locale 부분을 제거하고 나머지 경로만 추출
   const getPathWithoutLocale = (path: string) => {
@@ -31,13 +33,25 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
 
   const pathWithoutLocale = getPathWithoutLocale(pathname || '');
 
-  // 모든 locale에 대해 prefetch 수행
+  // k-doc.kr 도메인 사용자인지 확인
+  const isKdocUser = user?.email?.endsWith('@k-doc.kr') || false;
+
+  // 표시할 언어 옵션 필터링
+  const availableLocales = Object.entries(LOCALE_LABELS).filter(([localeKey]) => {
+    // k-doc.kr 사용자가 아니면 한국어 제외
+    if (!isKdocUser && localeKey === 'ko') {
+      return false;
+    }
+    return true;
+  });
+
+  // 모든 locale에 대해 prefetch 수행 (필터링된 언어만)
   useEffect(() => {
-    Object.keys(LOCALE_LABELS).forEach((locale) => {
+    availableLocales.forEach(([locale]) => {
       const prefetchPath = `/${locale}${pathWithoutLocale}`;
       router.prefetch(prefetchPath);
     });
-  }, [router, pathWithoutLocale]);
+  }, [router, pathWithoutLocale, availableLocales]);
 
   // 언어 선택 시 쿠키에 저장하고 페이지 이동하는 핸들러
   const handleLanguageChange = (locale: Locale) => {
@@ -78,7 +92,7 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='border-primary/20 w-32 border bg-white shadow-lg'>
-        {Object.entries(LOCALE_LABELS).map(([localeKey, label]) => (
+        {availableLocales.map(([localeKey, label]) => (
           <DropdownMenuItem
             key={localeKey}
             // 선택된 언어에 스타일 적용
