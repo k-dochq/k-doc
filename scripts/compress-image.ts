@@ -2,17 +2,12 @@ import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs';
 
-// 이미지 압축 설정 (퀄리티 유지하면서 적당히 압축)
+// 이미지 압축 설정 (퀄리티 유지)
 const images = [
   {
-    input: './public/images/image_section2_edit.png',
-    output: './public/images/image_section2.png',
-    name: 'K-DOC 비전 섹션2 이미지 (모바일)',
-  },
-  {
-    input: './public/images/image_section2_pc_edit.png',
-    output: './public/images/image_section2_pc.png',
-    name: 'K-DOC 비전 섹션2 이미지 (PC)',
+    input: './public/images/shared/login_required_bg_th_edit.png',
+    output: './public/images/shared/login_required_bg_th.png',
+    name: 'Login Required 배경 이미지 (태국어)',
   },
 ];
 
