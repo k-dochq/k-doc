@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageBubble, MessageTail, MessageTime } from 'shared/ui/message-bubble';
+import { MessageBubble, MessageTime } from 'shared/ui/message-bubble';
 import { HospitalHeader } from 'entities/hospital/ui/HospitalHeader';
 import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
@@ -25,11 +25,6 @@ export function HospitalMessage({
       {showHeader && <HospitalHeader hospitalName={hospitalName} imageUrl={hospitalImageUrl} />}
       <div className='relative box-border flex w-full shrink-0 content-stretch items-end justify-start gap-2 py-0 pr-0 pl-[38px]'>
         <div className='relative flex shrink-0 content-stretch items-start justify-start'>
-          <div className='relative flex shrink-0 items-center justify-center'>
-            <div className='flex-none scale-y-[-100%]'>
-              <MessageTail variant='hospital' />
-            </div>
-          </div>
           <MessageBubble variant='hospital' className='self-stretch'>
             <div className="relative font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-900 not-italic">
               {message.content}
