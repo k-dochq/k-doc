@@ -15,6 +15,7 @@ import {
   PhoneNumberInput,
 } from './inputs';
 import { DatePicker } from 'shared/ui/simple-date-picker';
+import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 
 interface AgreementState {
   allAgreed: boolean;
@@ -44,6 +45,22 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
     privacyPolicy: false,
     marketingNotifications: false,
   });
+
+  // 국가 코드를 국적 키로 매핑하는 함수
+  const getNationalityKey = (countryCode: string): string => {
+    const country = COUNTRY_CODES.find((c) => c.code === countryCode);
+    if (!country) return '';
+
+    // 국가명을 snake_case로 변환
+    return country.name.toLowerCase().replace(/\s+/g, '_');
+  };
+
+  // 국적 옵션 생성
+  const nationalityOptions = COUNTRY_CODES.map((country) => ({
+    value: getNationalityKey(country.code),
+    label: getCountryName(country, lang),
+    countryCode: country.code,
+  }));
 
   // 필수 약관 동의 여부 확인
   const isRequiredAgreementsValid =
@@ -142,8 +159,11 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           disabled={isLoading}
           dict={dict}
         >
-          <option value='thailand'>{dict.auth?.signup?.nationalities?.thailand || '태국'}</option>
-          <option value='korea'>{dict.auth?.signup?.nationalities?.korea || '한국'}</option>
+          {nationalityOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </OptionalSelect>
 
         {/* 성별 입력 (필수) */}
