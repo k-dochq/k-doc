@@ -30,17 +30,17 @@ async function compressImage(inputPath: string, outputPath: string, imageName: s
     const originalSize = (originalStats.size / 1024).toFixed(2);
     console.log(`📁 ${imageName} 원본 파일 크기:`, originalSize, 'KB');
 
-    // 이미지 압축 실행
+    // 이미지 압축 실행 (퀄리티 유지하면서 적당히 압축)
     await sharp(inputPath)
       .resize({
-        width: 1080, // 스플래시 이미지에 적합한 크기
+        width: 1080, // 원본 크기 유지
         height: 1920,
         fit: 'inside', // 비율 유지하면서 크기 조정
         withoutEnlargement: true, // 원본보다 크게 만들지 않음
       })
       .png({
-        quality: 90, // PNG 품질 (0-100)
-        compressionLevel: 8, // PNG 압축 레벨 (0-9, 높을수록 더 압축)
+        quality: 85, // PNG 품질을 높게 유지 (90 → 85)
+        compressionLevel: 6, // PNG 압축 레벨을 중간으로 설정 (8 → 6)
         progressive: true, // 점진적 로딩
       })
       .toFile(outputPath);

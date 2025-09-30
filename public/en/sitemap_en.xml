@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.k-doc.kr/en/main</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/login?redirect=%2Fen%2Fmy</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=EYES</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=NOSE</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=LIFTING</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=FACIAL_CONTOURING</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=BREAST</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=LIPOSUCTION</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=HAIR_TRANSPLANT</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=STEM_CELL</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=DERMATOLOGY</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/ffda0620-c254-44db-8b13-ef4ef5d368e5</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/9b853f6b-d56e-43ef-9c0f-fe57ca6aceb9</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/4c9a0fcc-5439-4d61-a8f5-faf79316a1b8</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/6338404f-d00e-454a-8272-05b1cd621c26</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/f5c61a27-1ef9-4710-8253-020ccd12a474</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/about</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/contact</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/reviews</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/login?redirect=%2Fen%2Ffavorites</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/login?redirect=%2Fen%2Fconsultation</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/login/email?redirectTo=%2Fen%2Fmy</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=EYES&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=EYES&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=NOSE&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=NOSE&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=LIFTING&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=LIFTING&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=FACIAL_CONTOURING&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=FACIAL_CONTOURING&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=BREAST&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=BREAST&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=LIPOSUCTION&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=LIPOSUCTION&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=HAIR_TRANSPLANT&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=HAIR_TRANSPLANT&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=STEM_CELL&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=STEM_CELL&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=DERMATOLOGY&amp;sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?category=DERMATOLOGY&amp;sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospitals?sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/ffda0620-c254-44db-8b13-ef4ef5d368e5/reviews</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/doctor/32a77105-b0e4-492d-8473-1b06a010f994</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/doctor/353ec169-447e-4d18-880b-98ad5817a001</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/9b853f6b-d56e-43ef-9c0f-fe57ca6aceb9/reviews</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/4c9a0fcc-5439-4d61-a8f5-faf79316a1b8/reviews</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/6338404f-d00e-454a-8272-05b1cd621c26/reviews</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/hospital/f5c61a27-1ef9-4710-8253-020ccd12a474/reviews</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/reviews?sort=popular</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/reviews?sort=recommended</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/login/email?redirectTo=%2Fen%2Ffavorites</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/login/email?redirectTo=%2Fen%2Fconsultation</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/forgot-password</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/signup?redirectTo=%2Fen%2Fmy</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/signup?redirectTo=%2Fen%2Ffavorites</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/signup?redirectTo=%2Fen%2Fconsultation</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/login/email</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://www.k-doc.kr/en/auth/signup</loc>
+  <lastmod>2025-09-30T05:30:27+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+
+
+</urlset>
