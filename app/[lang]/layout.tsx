@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   return {
     title: {
       default: titles[lang],
-      template: 'K-DOC | เค-ด็อค',
+      template: '%s', // 페이지에서 설정한 title을 그대로 사용
     },
     description: descriptions[lang],
     keywords: [
