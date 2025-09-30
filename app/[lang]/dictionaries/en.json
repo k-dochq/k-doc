@@ -401,6 +401,7 @@
     "appointment": "Appointment",
     "region": "Region",
     "loading": "Loading...",
+    "loadingMessages": "Loading messages...",
     "error": "An error occurred while loading data.",
     "retry": "Retry",
     "input": {

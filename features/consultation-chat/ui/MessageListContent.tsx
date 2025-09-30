@@ -6,17 +6,20 @@ import { HospitalMessage } from './HospitalMessage';
 import { UserMessage } from './UserMessage';
 import { MessageDateSeparator } from './MessageDateSeparator';
 import { formatMessageDate, isSameDay } from '../lib/chat-utils';
+import { type Locale } from 'shared/config';
 
 interface MessageListContentProps {
   messages: ChatMessage[];
   hospitalName: string;
   hospitalImageUrl?: string;
+  lang: Locale;
 }
 
 export function MessageListContent({
   messages,
   hospitalName,
   hospitalImageUrl,
+  lang,
 }: MessageListContentProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +59,7 @@ export function MessageListContent({
             <div key={message.id} className='w-full'>
               {/* 날짜 구분자 */}
               {showDateSeparator && (
-                <MessageDateSeparator date={formatMessageDate(message.timestamp)} />
+                <MessageDateSeparator date={formatMessageDate(message.timestamp, lang)} />
               )}
 
               {/* 메시지 */}

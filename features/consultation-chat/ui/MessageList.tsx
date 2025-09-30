@@ -4,12 +4,16 @@ import { type ChatMessage } from '../api/entities/types';
 import { MessageListLoading } from './MessageListLoading';
 import { MessageListEmpty } from './MessageListEmpty';
 import { MessageListContent } from './MessageListContent';
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 
 interface MessageListProps {
   messages: ChatMessage[];
   hospitalName: string;
   hospitalImageUrl?: string;
   isLoading?: boolean;
+  lang: Locale;
+  dict: Dictionary;
 }
 
 export function MessageList({
@@ -17,10 +21,12 @@ export function MessageList({
   hospitalName,
   hospitalImageUrl,
   isLoading,
+  lang,
+  dict,
 }: MessageListProps) {
   // 로딩 상태
   if (isLoading) {
-    return <MessageListLoading />;
+    return <MessageListLoading lang={lang} dict={dict} />;
   }
 
   // 빈 메시지 상태
@@ -34,6 +40,7 @@ export function MessageList({
       messages={messages}
       hospitalName={hospitalName}
       hospitalImageUrl={hospitalImageUrl}
+      lang={lang}
     />
   );
 }
