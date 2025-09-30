@@ -18,9 +18,7 @@ export function DoctorDetailHeaderActions({
   doctorName,
 }: DoctorDetailHeaderActionsProps) {
   const shareTitle = doctorName ? `${doctorName} - K-DOC` : 'K-DOC';
-  const shareText = doctorName
-    ? `${doctorName}의 상세 정보를 확인해보세요`
-    : '의사 정보를 확인해보세요';
+  const shareText = doctorName ? `${doctorName}${dict.doctor.share.text}` : dict.doctor.share.title;
 
   // 의사 상세 페이지 URL 생성
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';

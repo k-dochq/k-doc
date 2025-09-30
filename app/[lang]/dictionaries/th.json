@@ -725,6 +725,10 @@
     "noCareerInfo": "ไม่มีข้อมูลประวัติ",
     "affiliatedHospital": "โรงพยาบาลที่สังกัด",
     "reviews": "รีวิวการรักษา",
-    "viewAllReviews": "ดูทั้งหมด"
+    "viewAllReviews": "ดูทั้งหมด",
+    "share": {
+      "title": "ดูข้อมูลแพทย์",
+      "text": " ข้อมูลรายละเอียด"
+    }
   }
 }
