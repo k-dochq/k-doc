@@ -4,7 +4,8 @@
  */
 
 import { type ChatMessage } from '../api/entities/types';
-import { formatDateCustom, formatTime } from 'shared/lib/date-utils';
+import { formatDateCustom, formatTime, formatDate } from 'shared/lib/date-utils';
+import { type Locale } from 'shared/config';
 import dayjs from 'dayjs';
 
 /**
@@ -38,11 +39,11 @@ export function formatMessageTime(timestamp: string): string {
 }
 
 /**
- * 메시지 날짜 포맷팅 (YYYY년 M월 D일 형식)
+ * 메시지 날짜 포맷팅 (로케일에 맞는 형식)
  * 공통 유틸리티 재활용
  */
-export function formatMessageDate(timestamp: string): string {
-  return formatDateCustom(timestamp, 'YYYY년 M월 D일');
+export function formatMessageDate(timestamp: string, locale: Locale): string {
+  return formatDate(timestamp, locale);
 }
 
 /**

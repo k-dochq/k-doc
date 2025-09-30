@@ -401,6 +401,7 @@
     "appointment": "예약신청",
     "region": "지역",
     "loading": "로딩 중...",
+    "loadingMessages": "메시지를 불러오는 중...",
     "error": "데이터를 불러오는 중 오류가 발생했습니다.",
     "retry": "다시 시도",
     "input": {

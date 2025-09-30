@@ -21,7 +21,7 @@ export function ConsultationChatLoading({ lang, dict }: ConsultationChatLoadingP
       <div className='flex flex-1 items-center justify-center'>
         <div className='text-center'>
           <div className='mb-4 text-6xl'>💬</div>
-          <p className='text-gray-500'>로딩 중...</p>
+          <p className='text-gray-500'>{dict.consultation?.loading || '로딩 중...'}</p>
         </div>
       </div>
     </div>
