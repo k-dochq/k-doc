@@ -56,6 +56,7 @@ export async function getAllReviews({
           ReviewImage: {
             some: {
               imageType: 'BEFORE',
+              isActive: true,
             },
           },
         },
@@ -63,6 +64,7 @@ export async function getAllReviews({
           ReviewImage: {
             some: {
               imageType: 'AFTER',
+              isActive: true,
             },
           },
         },
@@ -154,6 +156,9 @@ export async function getAllReviews({
             imageUrl: true,
             alt: true,
             order: true,
+          },
+          where: {
+            isActive: true,
           },
           orderBy: {
             order: 'asc',

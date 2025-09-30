@@ -94,6 +94,9 @@ export async function getHospitalReviews({
             alt: true,
             order: true,
           },
+          where: {
+            isActive: true,
+          },
           orderBy: {
             order: 'asc',
           },
