@@ -7,11 +7,13 @@ import { HotLabel } from 'shared/ui/hot-label';
 interface HospitalThumbnailProps {
   imageUrl: string | null;
   alt?: string;
+  ranking?: number | null;
 }
 
 export function HospitalThumbnail({
   imageUrl,
   alt = 'Hospital thumbnail',
+  ranking,
 }: HospitalThumbnailProps) {
   const [imageError, setImageError] = useState(false);
 
@@ -55,10 +57,12 @@ export function HospitalThumbnail({
         )}
       </div>
 
-      {/* HotLabel - overflow-hidden 컨테이너 밖에 위치 */}
-      <div className='absolute top-[-5px] left-[-6px] z-20'>
-        <HotLabel />
-      </div>
+      {/* HotLabel - ranking이 50 이하일 때만 표시 */}
+      {ranking !== null && ranking !== undefined && ranking <= 50 && (
+        <div className='absolute top-[-5px] left-[-6px] z-20'>
+          <HotLabel />
+        </div>
+      )}
     </div>
   );
 }
