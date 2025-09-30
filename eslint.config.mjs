@@ -53,6 +53,8 @@ const eslintConfig = [
         },
       ],
       'no-unused-vars': 'off', // TypeScript 규칙과 충돌 방지
+      // any 타입 사용 금지 (타입 안전성 유지)
+      '@typescript-eslint/no-explicit-any': 'error', // any 타입 사용 금지
       // 필요에 따라 본인 코드 스타일에 맞춘 추가/변경 가능
     },
     settings: {
