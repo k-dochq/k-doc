@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { getAuthPath } from 'shared/lib/auth/route-guard';
+import { AUTH_CONFIG } from 'shared/config';
 import { closeModal } from 'shared/lib/modal';
 import { CloseIcon } from 'shared/ui/close-icon';
 
@@ -38,6 +39,15 @@ export function LoginRequiredModal({
     const currentPath = redirectPath || window.location.pathname;
     const authPath = getAuthPath(lang);
     router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
+  };
+
+  const handleSignup = () => {
+    closeModal();
+
+    // 리다이렉트 경로 설정
+    const currentPath = redirectPath || window.location.pathname;
+    const signupPath = `/${lang}${AUTH_CONFIG.signupPath}`;
+    router.push(`${signupPath}?redirect=${encodeURIComponent(currentPath)}`);
   };
 
   // 언어별 배경 이미지 경로 생성
@@ -84,7 +94,7 @@ export function LoginRequiredModal({
               {dict.auth.login.loginButton}
             </button>
             <button
-              onClick={closeModal}
+              onClick={handleSignup}
               className='text-sm font-normal text-neutral-500 transition-colors hover:text-neutral-700'
             >
               {dict.auth.login.laterButton}
