@@ -1,6 +1,6 @@
 'use client';
 
-import { MessageBubble, MessageTail, MessageTime } from 'shared/ui/message-bubble';
+import { MessageBubble, MessageTime } from 'shared/ui/message-bubble';
 import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
 
@@ -22,7 +22,6 @@ export function UserMessage({ message }: UserMessageProps) {
             </div>
           </MessageBubble>
         </div>
-        <MessageTail variant='user' />
       </div>
     </div>
   );
