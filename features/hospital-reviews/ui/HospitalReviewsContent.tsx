@@ -17,6 +17,7 @@ import { PageHeader } from 'shared/ui/page-header';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { openModal } from 'shared/lib/modal';
 import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { HospitalDetailConsultationFloating } from 'widgets/hospital-detail-consultation-floating';
 
 interface HospitalReviewsContentProps {
   hospitalId: string;
@@ -128,6 +129,12 @@ export function HospitalReviewsContent({
       ) : (
         <EmptyReviewsState dict={dict} />
       )}
+
+      {/* 하단 고정 버튼을 위한 여백 */}
+      <div className='h-24' />
+
+      {/* 하단 고정 상담신청 버튼 */}
+      <HospitalDetailConsultationFloating hospitalId={hospitalId} lang={lang} dict={dict} />
     </div>
   );
 }
