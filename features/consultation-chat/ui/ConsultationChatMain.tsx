@@ -42,6 +42,8 @@ export function ConsultationChatMain({
         hospitalName={hospitalName}
         hospitalImageUrl={hospitalImageUrl}
         isLoading={isLoadingHistory}
+        lang={lang}
+        dict={dict}
       />
 
       <ChatInput
