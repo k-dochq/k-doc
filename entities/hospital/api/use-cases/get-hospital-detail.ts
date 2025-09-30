@@ -5,7 +5,7 @@ import { parsePriceInfo } from 'shared/model/types';
 import { type Hospital } from '../entities/types';
 import { type OpeningHours } from '../entities/opening-hours-types';
 import { getHospitalDoctors } from './get-hospital-doctors';
-import { getHospitalMainImageUrl } from '../../lib/image-utils';
+import { getHospitalMainImageUrl, getHospitalThumbnailImageUrl } from '../../lib/image-utils';
 
 // Prisma 타입 정의
 type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
@@ -63,6 +63,7 @@ export interface GetHospitalDetailResponse {
   hospital: Hospital & {
     description?: Prisma.JsonValue;
     openingHours?: OpeningHours;
+    thumbnailImageUrl?: string | null;
   };
 }
 
@@ -180,9 +181,13 @@ export async function getAllHospitalIds(): Promise<string[]> {
 function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospital & {
   description?: Prisma.JsonValue;
   openingHours?: OpeningHours;
+  thumbnailImageUrl?: string | null;
 } {
   // 메인 이미지 URL 추출 (MAIN → THUMBNAIL → 첫 번째 이미지 순서)
   const mainImageUrl = getHospitalMainImageUrl(data.HospitalImage);
+  
+  // 썸네일 이미지 URL 추출 (THUMBNAIL → MAIN → 첫 번째 이미지 순서)
+  const thumbnailImageUrl = getHospitalThumbnailImageUrl(data.HospitalImage);
 
   // 진료 부위 변환
   const medicalSpecialties = data.HospitalMedicalSpecialty.map((hms) => ({
@@ -211,6 +216,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     createdAt: data.createdAt,
     updatedAt: data.updatedAt,
     mainImageUrl,
+    thumbnailImageUrl,
     hospitalImages: data.HospitalImage.map((img) => ({
       id: img.id,
       hospitalId: img.hospitalId,
