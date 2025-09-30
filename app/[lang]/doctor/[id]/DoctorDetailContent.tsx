@@ -16,6 +16,7 @@ import { HospitalCard } from '@/entities/hospital/ui/HospitalCard';
 import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospital-transform';
 import { transformDoctorReviewsToReviewCardData } from '@/lib/utils/doctor-reviews-transform';
 import { DoctorHospitalReviews } from '@/features/doctor-hospital-reviews';
+import { DoctorDetailHeaderActions } from './DoctorDetailHeaderActions';
 
 interface DoctorDetailContentProps {
   doctorId: string;
@@ -67,7 +68,19 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
 
   return (
     <div>
-      <PageHeader lang={lang} title={doctorTitle} variant='light' />
+      <PageHeader
+        lang={lang}
+        title={doctorTitle}
+        variant='light'
+        rightContent={
+          <DoctorDetailHeaderActions
+            doctorId={doctorId}
+            lang={lang}
+            dict={dict}
+            doctorName={doctorName}
+          />
+        }
+      />
       <div className='py-5'>
         <div className='px-5'>
           <div className='rounded-xl border border-white bg-white/50 p-3 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
