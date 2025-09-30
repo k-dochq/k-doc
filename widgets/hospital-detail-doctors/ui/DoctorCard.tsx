@@ -15,12 +15,23 @@ interface DoctorCardProps {
   lang: Locale;
   dict: Dictionary;
   variant?: 'light' | 'dark';
+  showMoreButton?: boolean;
+  showLikeButton?: boolean;
+  showBackground?: boolean;
 }
 
 /**
  * 개별 의료진 카드 컴포넌트
  */
-export function DoctorCard({ doctor, lang, dict, variant = 'light' }: DoctorCardProps) {
+export function DoctorCard({
+  doctor,
+  lang,
+  dict,
+  variant = 'light',
+  showMoreButton = true,
+  showLikeButton = true,
+  showBackground = true,
+}: DoctorCardProps) {
   const [isLiked, setIsLiked] = useState(false);
 
   const doctorName = extractLocalizedText(doctor.name, lang) || '이름 없음';
@@ -37,8 +48,16 @@ export function DoctorCard({ doctor, lang, dict, variant = 'light' }: DoctorCard
     setIsLiked(!isLiked);
   };
 
+  const backgroundClasses = showBackground
+    ? 'rounded-xl border border-white bg-white/50 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'
+    : '';
+
+  const paddingClasses = showBackground ? 'p-3' : '';
+
   return (
-    <div className='relative z-10 flex h-full items-center gap-3 rounded-xl border border-white bg-white/50 p-3 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px] transition-opacity active:opacity-80'>
+    <div
+      className={`relative z-10 flex h-full items-start gap-3 transition-opacity active:opacity-80 ${backgroundClasses} ${paddingClasses}`}
+    >
       {/* 프로필 이미지 */}
       <div className='relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-xl'>
         <Image
@@ -86,30 +105,34 @@ export function DoctorCard({ doctor, lang, dict, variant = 'light' }: DoctorCard
         {/* 하단 액션 섹션 */}
         <div className='mt-3 flex items-center justify-between'>
           {/* 더보기 버튼 */}
-          <LocaleLink
-            href={`/doctor/${doctor.id}`}
-            className='text-primary flex items-center gap-1 text-xs font-medium transition-colors'
-          >
-            <span>{dict.review?.showMore || '더보기'}</span>
-            <span className='text-xs'>&gt;</span>
-          </LocaleLink>
+          {showMoreButton && (
+            <LocaleLink
+              href={`/doctor/${doctor.id}`}
+              className='text-primary flex items-center gap-1 text-xs font-medium transition-colors'
+            >
+              <span>{dict.review?.showMore || '더보기'}</span>
+              <span className='text-xs'>&gt;</span>
+            </LocaleLink>
+          )}
 
           {/* 좋아요 버튼 */}
-          <button
-            onClick={handleLikeToggle}
-            className='flex items-center justify-center'
-            aria-label={
-              isLiked
-                ? dict.review?.like?.liked || '좋아요 취소'
-                : dict.review?.like?.like || '좋아요'
-            }
-          >
-            {isLiked ? (
-              <HeartIcon className='h-6 w-6 text-purple-600' />
-            ) : (
-              <HeartOutlineIcon className='h-6 w-6 text-purple-600' />
-            )}
-          </button>
+          {showLikeButton && (
+            <button
+              onClick={handleLikeToggle}
+              className='flex items-center justify-center'
+              aria-label={
+                isLiked
+                  ? dict.review?.like?.liked || '좋아요 취소'
+                  : dict.review?.like?.like || '좋아요'
+              }
+            >
+              {isLiked ? (
+                <HeartIcon className='h-6 w-6 text-purple-600' />
+              ) : (
+                <HeartOutlineIcon className='h-6 w-6 text-purple-600' />
+              )}
+            </button>
+          )}
         </div>
       </div>
     </div>
