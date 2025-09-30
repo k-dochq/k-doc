@@ -5,14 +5,14 @@ import fs from 'fs';
 // Splash 이미지 압축 설정
 const images = [
   {
-    input: './splash_ko.png',
+    input: './public/images/splash/splash_ko_edit.png',
     output: './public/images/splash/splash_ko.png',
-    name: '한국어 스플래시',
+    name: '한국어 스플래시 (편집된 버전)',
   },
   {
-    input: './splash_en.png',
+    input: './public/images/splash/splash_en_edit.png',
     output: './public/images/splash/splash_en.png',
-    name: '영어 스플래시',
+    name: '영어 스플래시 (편집된 버전)',
   },
 ];
 
