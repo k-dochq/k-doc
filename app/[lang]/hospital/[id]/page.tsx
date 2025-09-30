@@ -78,7 +78,6 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
 
   try {
     const { hospital } = await getHospitalDetail({ id });
-    const dict = await getDictionary(lang);
 
     const hospitalName = extractLocalizedText(hospital.name, lang) || '병원';
     const hospitalDescription =
@@ -104,14 +103,28 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
       }
     }
 
-    const title = `${hospitalName} - ${dict.hospitals.title}`;
+    // 언어별 title 형식 설정
+    const title = (() => {
+      switch (lang) {
+        case 'ko':
+          return `${hospitalName} - K-DOC | 케이닥`;
+        case 'en':
+          return `${hospitalName} - K-DOC`;
+        case 'th':
+          return `${hospitalName} - K-DOC | เค-ด็อค`;
+        default:
+          return `${hospitalName} - K-DOC | เค-ด็อค`;
+      }
+    })();
     const description = hospitalDescription;
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://k-doc.com';
+    const baseUrl = 'https://k-doc.kr';
     const url = `${baseUrl}/${lang}/hospital/${id}`;
 
+    console.log('title', title);
+
     return {
-      title,
+      title: title,
       description,
       keywords: [hospitalName, '병원', '의료', '성형외과', '미용외과', 'K-DOC'].join(', '),
       authors: [{ name: 'K-DOC' }],
@@ -172,18 +185,32 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
       },
     };
   } catch (_error) {
+    // 에러 시 언어별 기본 title 설정
+    const fallbackTitle = (() => {
+      switch (lang) {
+        case 'ko':
+          return '병원 정보 - K-DOC | 케이닥';
+        case 'en':
+          return 'Hospital Information - K-DOC';
+        case 'th':
+          return 'ข้อมูลโรงพยาบาล - K-DOC | เค-ด็อค';
+        default:
+          return 'Hospital Information - K-DOC | เค-ด็อค';
+      }
+    })();
+
     return {
-      title: '병원 정보',
+      title: fallbackTitle,
       description: '병원 상세 정보',
       openGraph: {
-        title: '병원 정보',
+        title: fallbackTitle,
         description: '병원 상세 정보',
         type: 'website',
         siteName: 'K-DOC',
       },
       twitter: {
         card: 'summary_large_image',
-        title: '병원 정보',
+        title: fallbackTitle,
         description: '병원 상세 정보',
       },
     };
