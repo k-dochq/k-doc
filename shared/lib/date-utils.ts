@@ -2,6 +2,65 @@ import dayjs from 'dayjs';
 import { type Locale } from 'shared/config';
 
 /**
+ * 날짜 문자열(YYYY-MM-DD)을 로컬 시간대 Date 객체로 변환
+ * @param dateString - YYYY-MM-DD 형식의 날짜 문자열
+ * @returns 로컬 시간대 기준 Date 객체
+ *
+ * @example
+ * parseLocalDate('2024-10-08') // Date 객체 (로컬 시간대)
+ */
+export const parseLocalDate = (dateString: string): Date => {
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day);
+};
+
+/**
+ * Date 객체를 YYYY-MM-DD 형식의 문자열로 변환 (로컬 시간대 기준)
+ * @param date - Date 객체
+ * @returns YYYY-MM-DD 형식의 날짜 문자열
+ *
+ * @example
+ * formatDateToString(new Date(2024, 9, 8)) // '2024-10-08'
+ */
+export const formatDateToString = (date: Date): string => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+/**
+ * 두 날짜가 같은 날인지 확인
+ * @param date1 - 첫 번째 Date 객체
+ * @param date2 - 두 번째 Date 객체
+ * @returns 같은 날이면 true, 아니면 false
+ *
+ * @example
+ * isSameDay(new Date(2024, 9, 8), new Date(2024, 9, 8)) // true
+ */
+export const isSameDay = (date1: Date, date2: Date): boolean => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};
+
+/**
+ * 과거 날짜인지 확인 (오늘 제외)
+ * @param date - 확인할 Date 객체
+ * @returns 과거 날짜이면 true, 아니면 false
+ *
+ * @example
+ * isPastDate(new Date(2023, 0, 1)) // true
+ */
+export const isPastDate = (date: Date): boolean => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return date < today;
+};
+
+/**
  * 날짜를 로케일에 맞게 포맷팅하는 유틸리티 함수
  * @param date - 포맷팅할 날짜
  * @param locale - 로케일 (ko, en, th)

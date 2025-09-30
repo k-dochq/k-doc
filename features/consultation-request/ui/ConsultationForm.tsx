@@ -15,6 +15,7 @@ import { FormCheckbox } from './FormCheckbox';
 import { SubmitButton } from './SubmitButton';
 import { FormDatePicker } from './FormDatePicker';
 import { PhoneNumberInput } from 'features/email-auth/ui/inputs/PhoneNumberInput';
+import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -248,10 +249,8 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       {/* 예약 희망 날짜 */}
       <FormDatePicker
         label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
-        value={formData.preferredDate ? new Date(formData.preferredDate) : undefined}
-        onChange={(date) =>
-          updateField('preferredDate', date ? date.toISOString().split('T')[0] : '')
-        }
+        value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
+        onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
         locale={lang}
         dict={dict}
         placeholder={
@@ -263,10 +262,8 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       {/* 예약 희망 날짜2 */}
       <FormDatePicker
         label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
-        value={formData.preferredDate2 ? new Date(formData.preferredDate2) : undefined}
-        onChange={(date) =>
-          updateField('preferredDate2', date ? date.toISOString().split('T')[0] : '')
-        }
+        value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
+        onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
         locale={lang}
         dict={dict}
         placeholder={
