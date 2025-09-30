@@ -725,6 +725,10 @@
     "noCareerInfo": "No career information available.",
     "affiliatedHospital": "Affiliated Hospital",
     "reviews": "Procedure Reviews",
-    "viewAllReviews": "View All"
+    "viewAllReviews": "View All",
+    "share": {
+      "title": "Check out doctor information",
+      "text": "'s detailed information"
+    }
   }
 }

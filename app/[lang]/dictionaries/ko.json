@@ -724,6 +724,10 @@
     "noCareerInfo": "경력 정보가 없습니다.",
     "affiliatedHospital": "소속병원",
     "reviews": "시술후기",
-    "viewAllReviews": "전체보기"
+    "viewAllReviews": "전체보기",
+    "share": {
+      "title": "의사 정보를 확인해보세요",
+      "text": "의 상세 정보를 확인해보세요"
+    }
   }
 }
