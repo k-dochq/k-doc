@@ -43,9 +43,9 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   };
 
   const descriptions = {
-    ko: 'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
-    en: 'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
-    th: 'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
+    ko: '한국 성형 관광 필수 가이드 K-DOC - 의료 플랫폼에서 병원 비교·예약, 실제 시술 후기, 가격 정보, 이벤트/혜택, 시술비 할인',
+    en: 'K-DOC: Your essential guide to Korean cosmetic surgery - compare clinics, book, check prices, events & deals, read real reviews, and get discounts.',
+    th: 'K-DOC ไกด์ศัลยกรรมเกาหลีสำหรับคนไทย เปรียบเทียบคลินิก จองคิว อ่านรีวิวจริง ดูราคา โปรโมชัน/อีเวนต์ และรับส่วนลดค่าศัลยกรรม',
   };
 
   return {
