@@ -7,12 +7,17 @@ import { UserMessage } from './UserMessage';
 import { MessageDateSeparator } from './MessageDateSeparator';
 import { formatMessageDate, isSameDay } from '../lib/chat-utils';
 import { type Locale } from 'shared/config';
+import './ScrollGradientStyles.css';
 
 interface MessageListContentProps {
   messages: ChatMessage[];
   hospitalName: string;
   hospitalImageUrl?: string;
   lang: Locale;
+  /**
+   * 스크롤 기반 그라데이션 효과 활성화
+   */
+  enableScrollGradient?: boolean;
 }
 
 export function MessageListContent({
@@ -20,8 +25,10 @@ export function MessageListContent({
   hospitalName,
   hospitalImageUrl,
   lang,
+  enableScrollGradient = false,
 }: MessageListContentProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -50,7 +57,7 @@ export function MessageListContent({
   };
 
   return (
-    <div className='flex-1 overflow-y-auto'>
+    <div ref={scrollContainerRef} className='flex-1 overflow-y-auto optimized-scroll message-list-container'>
       <div className='flex flex-col content-stretch items-start justify-start gap-2 p-5'>
         {messages.map((message, index) => {
           const showDateSeparator = shouldShowDateSeparator(index);
@@ -71,7 +78,11 @@ export function MessageListContent({
                   showHeader={shouldShowHeader(index)}
                 />
               ) : (
-                <UserMessage message={message} />
+                <UserMessage 
+                  message={message} 
+                  enableScrollGradient={enableScrollGradient}
+                  scrollContainer={scrollContainerRef.current}
+                />
               )}
             </div>
           );

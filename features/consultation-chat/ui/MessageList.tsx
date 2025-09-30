@@ -14,6 +14,10 @@ interface MessageListProps {
   isLoading?: boolean;
   lang: Locale;
   dict: Dictionary;
+  /**
+   * 스크롤 기반 그라데이션 효과 활성화
+   */
+  enableScrollGradient?: boolean;
 }
 
 export function MessageList({
@@ -23,6 +27,7 @@ export function MessageList({
   isLoading,
   lang,
   dict,
+  enableScrollGradient = false,
 }: MessageListProps) {
   // 로딩 상태
   if (isLoading) {
@@ -41,6 +46,7 @@ export function MessageList({
       hospitalName={hospitalName}
       hospitalImageUrl={hospitalImageUrl}
       lang={lang}
+      enableScrollGradient={enableScrollGradient}
     />
   );
 }
