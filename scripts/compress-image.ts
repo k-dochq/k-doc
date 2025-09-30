@@ -2,17 +2,12 @@ import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs';
 
-// Splash 이미지 압축 설정
+// 이미지 압축 설정 (퀄리티 유지)
 const images = [
   {
-    input: './public/images/splash/splash_ko_edit.png',
-    output: './public/images/splash/splash_ko.png',
-    name: '한국어 스플래시 (편집된 버전)',
-  },
-  {
-    input: './public/images/splash/splash_en_edit.png',
-    output: './public/images/splash/splash_en.png',
-    name: '영어 스플래시 (편집된 버전)',
+    input: './public/images/shared/login_required_bg_th_edit.png',
+    output: './public/images/shared/login_required_bg_th.png',
+    name: 'Login Required 배경 이미지 (태국어)',
   },
 ];
 
