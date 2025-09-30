@@ -39,6 +39,7 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
         rating: true,
         discountRate: true,
         displayLocationName: true,
+        ranking: true,
         HospitalImage: {
           where: {
             isActive: true,
@@ -102,6 +103,7 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
       })),
       displayLocationName: parseLocalizedText(hospital.displayLocationName || '{}'),
       district: hospital.District || null, // District 정보 추가
+      ranking: hospital.ranking,
     }));
   } catch (error) {
     throw handleDatabaseError(error, 'getBestHospitals');
