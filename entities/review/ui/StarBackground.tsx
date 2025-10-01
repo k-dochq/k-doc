@@ -3,7 +3,7 @@ interface StarBackgroundProps {
 }
 
 export function StarBackground({
-  className = 'pointer-events-none absolute -top-8 -left-0 z-[-10] h-[154px] w-[132px] animate-float',
+  className = 'pointer-events-none absolute -top-66 -left-0 z-[-10] h-[154px] w-[132px] animate-float',
 }: StarBackgroundProps) {
   return (
     <div
