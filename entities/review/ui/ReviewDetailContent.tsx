@@ -49,7 +49,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
       <div className='p-5'>
         <div className=''>
           {/* 리뷰 컨텐츠 */}
-          <div className='rounded-t-xl border border-white bg-white/50 p-5'>
+          <div className='rounded-t-xl border border-white bg-white/50 p-5 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
             {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
             <ReviewListCardHeader review={review} lang={lang} />
 
