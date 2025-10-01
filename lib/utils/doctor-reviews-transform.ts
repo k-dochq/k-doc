@@ -40,6 +40,7 @@ export function transformDoctorReviewsToReviewCardData(doctor: DoctorDetail): Re
         doctor.hospital.hospitalImages[0]?.imageUrl ||
         null,
       discountRate: doctor.hospital.discountRate,
+      ranking: doctor.hospital.ranking,
       district: doctor.hospital.district
         ? {
             name: doctor.hospital.district.name,
