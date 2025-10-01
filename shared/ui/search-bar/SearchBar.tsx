@@ -74,7 +74,7 @@ export function SearchBar({
           background: 'linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
         }}
       >
-        <div className='flex h-full w-full items-center rounded-full bg-white py-2 pr-2'>
+        <div className='flex h-full w-full items-center rounded-full bg-white py-2 pr-2 pl-4'>
           <div className='flex-1'>
             <input
               type='text'
