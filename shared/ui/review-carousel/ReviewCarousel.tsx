@@ -38,7 +38,7 @@ export function ReviewCarousel({
   lang,
   dict,
   className = '',
-  itemClassName = '',
+  itemClassName = 'pl-2 md:pl-4',
   showNavigation = false,
   showProgressBar = false,
   loop = true,
