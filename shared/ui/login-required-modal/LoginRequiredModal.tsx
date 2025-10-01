@@ -40,6 +40,14 @@ export function LoginRequiredModal({
     router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
   };
 
+  const handleSignup = () => {
+    closeModal();
+
+    // 리다이렉트 경로 설정
+    const currentPath = redirectPath || window.location.pathname;
+    router.push(`/${lang}/auth/signup?redirect=${encodeURIComponent(currentPath)}`);
+  };
+
   // 언어별 배경 이미지 경로 생성
   const getBackgroundImagePath = (locale: Locale): string => {
     const localeMap = {
@@ -84,10 +92,10 @@ export function LoginRequiredModal({
               {dict.auth.login.loginButton}
             </button>
             <button
-              onClick={closeModal}
+              onClick={handleSignup}
               className='text-sm font-normal text-neutral-500 transition-colors hover:text-neutral-700'
             >
-              {dict.auth.login.laterButton}
+              {dict.auth.login.signupButton}
             </button>
           </div>
         </div>
