@@ -30,11 +30,10 @@ export function HospitalDetailProceduresTab({
 
   // 일반 병원의 경우 준비중 메시지
   return (
-    <div className='flex min-h-[200px] flex-col items-center justify-center text-center'>
-      <div className='text-base font-medium text-neutral-700'>
+    <div className='flex min-h-[160px] flex-col items-center justify-center text-center'>
+      <div className='text-base font-medium text-primary'>
         {dict.hospitalDetailTabs.proceduresComingSoon}
       </div>
-      <div className='mt-2 text-sm text-neutral-500'>{dict.hospitalDetailTabs.comingSoonSubtext}</div>
     </div>
   );
 }
