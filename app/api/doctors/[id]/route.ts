@@ -29,6 +29,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
             rating: true,
             prices: true,
             discountRate: true,
+            ranking: true,
             displayLocationName: true,
             District: {
               select: {
@@ -158,6 +159,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
         reviewCount: doctor.Hospital._count.Review, // 실제 리뷰 수
         prices: doctor.Hospital.prices,
         discountRate: doctor.Hospital.discountRate,
+        ranking: doctor.Hospital.ranking,
         displayLocationName: doctor.Hospital.displayLocationName
           ? parseLocalizedText(doctor.Hospital.displayLocationName)
           : null,

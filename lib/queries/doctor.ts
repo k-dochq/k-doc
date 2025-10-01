@@ -24,6 +24,7 @@ export interface DoctorDetail {
     reviewCount: number;
     prices: Prisma.JsonValue;
     discountRate: number | null;
+    ranking: number | null;
     displayLocationName: LocalizedText | null;
     district: {
       id: string;
