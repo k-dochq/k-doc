@@ -25,6 +25,7 @@ export function transformDoctorHospitalToHospitalCard(doctor: DoctorDetail): Hos
     reviewCount: doctor.hospital.reviewCount,
     thumbnailImageUrl,
     discountRate: doctor.hospital.discountRate,
+    ranking: doctor.hospital.ranking,
     medicalSpecialties: doctor.hospital.medicalSpecialties.map((specialty) => ({
       id: specialty.id,
       name: specialty.name,

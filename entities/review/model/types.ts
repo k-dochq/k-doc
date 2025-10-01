@@ -78,6 +78,7 @@ export type ReviewCardData = {
     reviewCount: number;
     thumbnailImageUrl: string | null;
     discountRate: number | null;
+    ranking: number | null;
     district: {
       name: LocalizedText;
       displayName?: LocalizedText | null;
