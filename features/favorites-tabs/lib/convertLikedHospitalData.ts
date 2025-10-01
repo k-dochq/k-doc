@@ -32,6 +32,8 @@ export function convertLikedHospitalToCardData(likedHospital: LikedHospital): Ho
     likeCount: likedHospital.likeCount,
     isLiked: likedHospital.isLiked,
     likedUserIds: likedHospital.likedUserIds,
+    // HOT 태그 표시를 위한 ranking
+    ranking: likedHospital.ranking,
   };
 }
 
