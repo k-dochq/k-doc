@@ -12,7 +12,7 @@ interface HospitalDetailProceduresTabProps {
 }
 
 /**
- * 시술상세 탭 컨텐츠 컴포넌트
+ * 시술상세 탭 컨텐츠 컴포넌트.
  * 압구정 미라클 의원의 경우 특별한 시술상세 컨텐츠를 보여줍니다.
  */
 export function HospitalDetailProceduresTab({
