@@ -31,7 +31,7 @@ export function ReviewStatsSection({
 
   return (
     <div
-      className={`relative z-10 flex items-center justify-between rounded-b-xl border-r border-b border-l border-white bg-white/50 px-5 py-3 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px] ${className}`}
+      className={`relative z-10 flex items-center justify-between rounded-b-xl border-r border-b border-l border-white bg-white/50 px-5 py-3 backdrop-blur-[6px] ${className}`}
     >
       <div className='item-center flex gap-3'>
         <div className='flex items-center gap-1'>
