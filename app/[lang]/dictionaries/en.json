@@ -168,6 +168,7 @@
       "password": "Password",
       "loginButton": "Sign In",
       "laterButton": "Do Later",
+      "signupButton": "Sign Up",
       "requiredMessage": "Please log in\nto use the service.",
       "socialLogin": "Social Login",
       "googleLogin": "Sign in with Google",
