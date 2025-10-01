@@ -113,15 +113,32 @@ export async function getHospitals(
     const searchConditions: Prisma.HospitalWhereInput[] = [];
 
     if (search) {
+      // 영어 검색어에 대해서만 첫 글자 대소문자 변환 처리
+      const isEnglishSearch = /^[a-zA-Z\s]+$/.test(search);
+      const capitalizedSearch =
+        isEnglishSearch && search.length > 0
+          ? search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
+          : search;
+
       // 병원명에서 검색 (다국어 지원)
-      searchConditions.push({
-        OR: [
-          {
-            name: {
-              path: ['ko_KR'],
-              string_contains: search,
-            },
+      const hospitalNameConditions = [
+        {
+          name: {
+            path: ['ko_KR'],
+            string_contains: search,
           },
+        },
+        {
+          name: {
+            path: ['th_TH'],
+            string_contains: search,
+          },
+        },
+      ];
+
+      // 영어 검색어인 경우 원본과 첫 글자 대문자 버전 모두 검색
+      if (isEnglishSearch) {
+        hospitalNameConditions.push(
           {
             name: {
               path: ['en_US'],
@@ -130,39 +147,71 @@ export async function getHospitals(
           },
           {
             name: {
-              path: ['th_TH'],
-              string_contains: search,
+              path: ['en_US'],
+              string_contains: capitalizedSearch,
             },
           },
-        ],
+        );
+      } else {
+        hospitalNameConditions.push({
+          name: {
+            path: ['en_US'],
+            string_contains: search,
+          },
+        });
+      }
+
+      searchConditions.push({
+        OR: hospitalNameConditions,
       });
 
       // 시술부위에서 검색 (다국어 지원)
+      const specialtyConditions = [
+        {
+          name: {
+            path: ['ko_KR'],
+            string_contains: search,
+          },
+        },
+        {
+          name: {
+            path: ['th_TH'],
+            string_contains: search,
+          },
+        },
+      ];
+
+      // 영어 검색어인 경우 원본과 첫 글자 대문자 버전 모두 검색
+      if (isEnglishSearch) {
+        specialtyConditions.push(
+          {
+            name: {
+              path: ['en_US'],
+              string_contains: search,
+            },
+          },
+          {
+            name: {
+              path: ['en_US'],
+              string_contains: capitalizedSearch,
+            },
+          },
+        );
+      } else {
+        specialtyConditions.push({
+          name: {
+            path: ['en_US'],
+            string_contains: search,
+          },
+        });
+      }
+
       searchConditions.push({
         HospitalMedicalSpecialty: {
           some: {
             MedicalSpecialty: {
               isActive: true,
-              OR: [
-                {
-                  name: {
-                    path: ['ko_KR'],
-                    string_contains: search,
-                  },
-                },
-                {
-                  name: {
-                    path: ['en_US'],
-                    string_contains: search,
-                  },
-                },
-                {
-                  name: {
-                    path: ['th_TH'],
-                    string_contains: search,
-                  },
-                },
-              ],
+              OR: specialtyConditions,
             },
           },
         },
