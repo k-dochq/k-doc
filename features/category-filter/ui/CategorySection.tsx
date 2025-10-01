@@ -86,8 +86,8 @@ export function CategorySection({
         }}
         className='w-full'
       >
-        <CarouselContent className='-ml-3 pr-5 pl-5'>
-          {categoryButtons.map((categoryButton) => {
+        <CarouselContent className='pr-5 pl-5'>
+          {categoryButtons.map((categoryButton, index) => {
             const isActive =
               categoryButton.type === 'all'
                 ? !currentCategory
@@ -96,15 +96,24 @@ export function CategorySection({
               categoryButton.type === 'all'
                 ? pathname || undefined
                 : `${pathname || ''}?category=${categoryButton.type}`;
+            const isLast = index === categoryButtons.length - 1;
 
             return (
-              <CarouselItem key={categoryButton.type} className='basis-auto pl-3'>
+              <CarouselItem key={categoryButton.type} className='basis-auto'>
                 <CategoryButton
                   category={categoryButton}
                   lang={lang}
                   href={href}
                   replace={true}
                   isActive={isActive}
+                  className={
+                    categoryButton.type === 'all'
+                      ? '!w-[60px] pr-[10px]'
+                      : isLast
+                        ? 'mr-5 !w-auto'
+                        : ''
+                  }
+                  labelClassName={isLast ? 'whitespace-nowrap' : ''}
                 />
               </CarouselItem>
             );
