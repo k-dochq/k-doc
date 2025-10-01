@@ -100,7 +100,7 @@
   "hospitalDetailTabs": {
     "introduction": "병원소개",
     "procedures": "시술상세",
-    "proceduresComingSoon": "시술상세 컨텐츠가 준비 중입니다.",
+    "proceduresComingSoon": "시술상세 정보는 준비 중입니다.",
     "comingSoonSubtext": "곧 업데이트 예정입니다.",
     "apgujeongMiracle": {
       "videoTitle": "시술 영상",
