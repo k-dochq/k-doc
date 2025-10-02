@@ -80,6 +80,7 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
       if (data.user && !data.user.email_confirmed_at) {
         // 이메일 인증이 필요한 경우
         const confirmationMessage =
+          dict.auth?.signup?.errors?.signupSuccess ||
           '회원가입이 완료되었습니다. 이메일을 확인하여 계정을 활성화해주세요.';
         setError(confirmationMessage);
         return { success: true };
@@ -92,13 +93,20 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
       if (err instanceof Error) {
         // Supabase 에러 메시지 매핑
         if (err.message.includes('User already registered')) {
-          errorMessage = '이미 가입된 이메일입니다.';
+          errorMessage =
+            dict.auth?.signup?.errors?.userAlreadyRegistered ||
+            dict.auth?.signup?.errors?.emailAlreadyRegistered ||
+            '이미 가입된 이메일입니다.';
         } else if (err.message.includes('Password should be at least')) {
-          errorMessage = '비밀번호는 최소 6자 이상이어야 합니다.';
+          errorMessage =
+            dict.auth?.signup?.errors?.passwordTooShortServer ||
+            dict.auth?.signup?.errors?.passwordTooShort ||
+            '비밀번호는 최소 6자 이상이어야 합니다.';
         } else if (err.message.includes('Invalid email')) {
-          errorMessage = '올바른 이메일 주소를 입력해주세요.';
+          errorMessage =
+            dict.auth?.signup?.errors?.invalidEmail || '올바른 이메일 주소를 입력해주세요.';
         } else {
-          errorMessage = err.message;
+          errorMessage = dict.auth?.signup?.errors?.unexpectedError || err.message;
         }
       }
 
