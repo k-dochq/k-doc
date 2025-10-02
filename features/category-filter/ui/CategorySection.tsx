@@ -110,10 +110,10 @@ export function CategorySection({
                     categoryButton.type === 'all'
                       ? '!w-[60px] pr-[10px]'
                       : isLast
-                        ? 'mr-5 !w-auto'
+                        ? 'mr-5 !w-[71px]'
                         : ''
                   }
-                  labelClassName={isLast ? 'whitespace-nowrap' : ''}
+                  labelClassName={isLast ? '' : ''}
                 />
               </CarouselItem>
             );
