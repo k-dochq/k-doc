@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
 import { type Dictionary } from 'shared/model/types';
@@ -9,6 +8,11 @@ import { type HospitalDoctor } from 'entities/hospital/api/entities/types';
 import { MedicalSpecialtyTags } from 'shared/ui/medical-specialty-tags';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { HeartIcon, HeartOutlineIcon } from 'shared/ui/icons';
+import { LoadingIcon } from 'shared/ui/loading-icon';
+import { useDoctorLike } from 'features/doctor-like/model/useDoctorLike';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 
 interface DoctorCardProps {
   doctor: HospitalDoctor;
@@ -32,7 +36,7 @@ export function DoctorCard({
   showLikeButton = true,
   showBackground = true,
 }: DoctorCardProps) {
-  const [isLiked, setIsLiked] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const doctorName = extractLocalizedText(doctor.name, lang) || '이름 없음';
   const position = extractLocalizedText(doctor.position, lang) || '';
@@ -42,10 +46,39 @@ export function DoctorCard({
   const profileImage =
     doctor.doctorImages && doctor.doctorImages.length > 0 ? doctor.doctorImages[0] : null;
 
+  // 의사 좋아요 훅
+  const { isLiked, likeCount, isToggling, error, toggleLike } = useDoctorLike({
+    doctorId: doctor.id,
+    enabled: showLikeButton,
+  });
+
   const handleLikeToggle = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsLiked(!isLiked);
+
+    if (isToggling) return;
+
+    // 로그인 상태 확인
+    if (!isAuthenticated) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
+    // 에러가 401이면 로그인 모달 표시
+    if (error?.status === 401) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
+    toggleLike();
   };
 
   const backgroundClasses = showBackground
@@ -117,21 +150,35 @@ export function DoctorCard({
 
           {/* 좋아요 버튼 */}
           {showLikeButton && (
-            <button
-              onClick={handleLikeToggle}
-              className='flex items-center justify-center'
-              aria-label={
-                isLiked
-                  ? dict.review?.like?.liked || '좋아요 취소'
-                  : dict.review?.like?.like || '좋아요'
-              }
-            >
-              {isLiked ? (
-                <HeartIcon className='h-6 w-6 text-purple-600' />
-              ) : (
-                <HeartOutlineIcon className='h-6 w-6 text-purple-600' />
+            <div className='flex items-center gap-1'>
+              <button
+                onClick={handleLikeToggle}
+                disabled={isToggling}
+                className={`flex items-center justify-center transition-opacity ${
+                  isToggling ? 'cursor-not-allowed opacity-50' : 'hover:opacity-80'
+                }`}
+                aria-label={
+                  isLiked
+                    ? dict.review?.like?.liked || '좋아요 취소'
+                    : dict.review?.like?.like || '좋아요'
+                }
+              >
+                {isToggling ? (
+                  <LoadingIcon size={24} className='text-purple-600' />
+                ) : isLiked ? (
+                  <HeartIcon className='h-6 w-6 text-purple-600' />
+                ) : (
+                  <HeartOutlineIcon className='h-6 w-6 text-purple-600' />
+                )}
+              </button>
+              {likeCount > 0 && (
+                <span
+                  className={`text-xs font-medium text-gray-600 ${isToggling ? 'opacity-70' : ''}`}
+                >
+                  {likeCount}
+                </span>
               )}
-            </button>
+            </div>
           )}
         </div>
       </div>

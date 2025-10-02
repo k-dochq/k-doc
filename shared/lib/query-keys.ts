@@ -26,6 +26,27 @@ export const queryKeys = {
     status: (hospitalId: string) => [...queryKeys.hospitalLike.all, hospitalId] as const,
   },
 
+  // 의사 관련 쿼리
+  doctors: {
+    all: ['doctors'] as const,
+    lists: () => [...queryKeys.doctors.all, 'list'] as const,
+    list: (filters: Record<string, unknown>) => [...queryKeys.doctors.lists(), filters] as const,
+    details: () => [...queryKeys.doctors.all, 'detail'] as const,
+    detail: (id: string) => [...queryKeys.doctors.details(), id] as const,
+    hospital: (hospitalId: string) => [...queryKeys.doctors.all, 'hospital', hospitalId] as const,
+    liked: {
+      all: () => [...queryKeys.doctors.all, 'liked'] as const,
+      list: (params: Record<string, unknown>) =>
+        [...queryKeys.doctors.liked.all(), params] as const,
+    },
+  },
+
+  // 의사 좋아요 관련 쿼리
+  doctorLike: {
+    all: ['doctor-like'] as const,
+    status: (doctorId: string) => [...queryKeys.doctorLike.all, doctorId] as const,
+  },
+
   // 리뷰 관련 쿼리
   reviews: {
     all: ['reviews'] as const,
