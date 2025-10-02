@@ -602,7 +602,8 @@
     "companyInfo": "회사소개",
     "termsOfService": "이용약관",
     "privacyPolicy": "개인정보 처리방침",
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "dataRequest": "정보 수정/삭제 요청"
   },
   "about": {
     "title": "회사소개",

@@ -603,7 +603,8 @@
     "companyInfo": "About Us",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "dataRequest": "Request Edit/Deletion"
   },
   "about": {
     "title": "About Us",
