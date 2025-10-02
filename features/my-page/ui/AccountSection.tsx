@@ -62,19 +62,30 @@ export function AccountSection({ lang, dict }: AccountSectionProps) {
 
   return (
     <div className='flex w-full flex-col gap-5'>
-      <h2 className='text-lg font-semibold text-gray-900'>{dict.my?.account?.title || '계정'}</h2>
+      {/* 계정 타이틀과 회원탈퇴 버튼을 같은 라인에 배치 */}
+      <div className='flex items-center justify-between'>
+        <h2 className='text-lg font-semibold text-gray-900'>{dict.my?.account?.title || '계정'}</h2>
+        
+        {/* 회원탈퇴 - 텍스트만 클릭 가능 */}
+        <div className='flex items-center'>
+          <button
+            type='button'
+            onClick={handleDeleteAccount}
+            disabled={isLoading}
+            className='text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-700 disabled:cursor-not-allowed disabled:opacity-50'
+          >
+            {dict.my?.account?.deleteAccount || '회원탈퇴'}
+          </button>
+          {isLoading && (
+            <div className='ml-2 h-4 w-4 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-600'></div>
+          )}
+        </div>
+      </div>
 
       <div className='flex w-full flex-col gap-3'>
         <MenuItem
           title={dict.my?.account?.logout || '로그아웃'}
           onClick={handleLogout}
-          disabled={isLoading}
-        />
-        <MenuItem
-          title={dict.my?.account?.deleteAccount || '회원탈퇴'}
-          onClick={handleDeleteAccount}
-          isDanger={true}
-          loading={isLoading}
           disabled={isLoading}
         />
       </div>
