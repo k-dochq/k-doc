@@ -286,11 +286,14 @@
         "passwordMismatch": "Passwords do not match.",
         "passportNameRequired": "Treatment access may be limited without passport name in English.",
         "genderRequired": "Please select your gender.",
-        "emailAlreadyRegistered": "This email is already registered",
-        "invalidEmail": "Please enter a valid email address",
-        "unexpectedError": "An unexpected error occurred",
-        "invalidCredentials": "Invalid email or password",
-        "emailNotConfirmed": "Please check your email and confirm your account"
+        "emailAlreadyRegistered": "This email is already registered.",
+        "invalidEmail": "Please enter a valid email address.",
+        "passwordTooShortServer": "Password should be at least 6 characters.",
+        "unexpectedError": "An unexpected error occurred.",
+        "invalidCredentials": "Invalid email or password.",
+        "emailNotConfirmed": "Please check your email and confirm your account.",
+        "signupSuccess": "Sign up completed. Please check your email to activate your account.",
+        "userAlreadyRegistered": "This email is already registered."
       }
     },
     "forgotPassword": {

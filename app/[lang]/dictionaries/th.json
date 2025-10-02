@@ -288,9 +288,12 @@
         "genderRequired": "กรุณาเลือกเพศของคุณ",
         "emailAlreadyRegistered": "อีเมลนี้ได้รับการลงทะเบียนแล้ว",
         "invalidEmail": "กรุณาใส่อีเมลที่ถูกต้อง",
+        "passwordTooShortServer": "รหัสผ่านควรมีอย่างน้อย 6 ตัวอักษร",
         "unexpectedError": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
         "invalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
-        "emailNotConfirmed": "กรุณาตรวจสอบอีเมลและยืนยันบัญชีของคุณ"
+        "emailNotConfirmed": "กรุณาตรวจสอบอีเมลและยืนยันบัญชีของคุณ",
+        "signupSuccess": "การสมัครสมาชิกเสร็จสิ้น กรุณาตรวจสอบอีเมลเพื่อเปิดใช้งานบัญชีของคุณ",
+        "userAlreadyRegistered": "อีเมลนี้ได้รับการลงทะเบียนแล้ว"
       }
     },
     "forgotPassword": {

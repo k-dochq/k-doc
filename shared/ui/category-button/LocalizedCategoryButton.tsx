@@ -25,7 +25,7 @@ export function LocalizedCategoryButton({
   };
 
   return (
-    <LocaleLink href={href} className={`flex min-w-0 flex-col items-center justify-center gap-1 w-[70px] ${className}`}>
+    <LocaleLink href={href} className={`flex min-w-0 flex-col items-center justify-center gap-1 w-[71px] ${className}`}>
       <div
         className={`flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-white bg-gradient-to-b from-white to-[#FFD9F9] shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] transition-all duration-200 ease-out hover:scale-105 hover:shadow-[2px_2px_16px_0_rgba(76,25,168,0.2)] active:scale-95 active:shadow-[0px_0px_8px_0_rgba(76,25,168,0.15)] ${iconClassName}`}
       >
