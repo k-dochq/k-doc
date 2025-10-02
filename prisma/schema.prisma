@@ -65,6 +65,7 @@ model Doctor {
   career                 Json?
   Hospital               Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   DoctorImage            DoctorImage[]
+  DoctorLike             DoctorLike[]
   DoctorMedicalSpecialty DoctorMedicalSpecialty[]
 
   @@index([baseId])
@@ -251,6 +252,7 @@ model User {
   userStatusType              UserStatusType?       @default(ACTIVE)
   Comment                     Comment[]
   ConsultationMessage         ConsultationMessage[]
+  DoctorLike                  DoctorLike[]
   HospitalLike                HospitalLike[]
   Review                      Review[]
   ReviewLike                  ReviewLike[]
@@ -431,6 +433,21 @@ model DoctorImage {
 
   @@index([doctorId])
   @@index([imageType])
+  @@schema("public")
+}
+
+model DoctorLike {
+  id        String   @id @db.Uuid
+  userId    String   @db.Uuid
+  doctorId  String   @db.Uuid
+  createdAt DateTime @default(now())
+  Doctor    Doctor   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, doctorId])
+  @@index([createdAt])
+  @@index([doctorId])
+  @@index([userId])
   @@schema("public")
 }
 
