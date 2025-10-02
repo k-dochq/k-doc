@@ -164,7 +164,7 @@ export function DoctorCard({
                 }
               >
                 {isToggling ? (
-                  <LoadingIcon size={24} className='text-purple-600' />
+                  <LoadingIcon size={20} className='text-purple-600' />
                 ) : isLiked ? (
                   <HeartIcon className='h-6 w-6 text-purple-600' />
                 ) : (
