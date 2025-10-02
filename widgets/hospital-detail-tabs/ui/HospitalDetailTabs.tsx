@@ -7,7 +7,6 @@ import { HospitalDetailIntroductionTab } from './HospitalDetailIntroductionTab';
 import { HospitalDetailProceduresTab } from './HospitalDetailProceduresTab';
 import { HospitalDetailTabsHeader } from './HospitalDetailTabsHeader';
 import { type Hospital } from 'entities/hospital/api/entities/types';
-import { APGUJEONG_MIRACLE_HOSPITAL_ID } from 'shared/config/hospital-constants';
 
 interface HospitalDetailTabsProps {
   hospital: Hospital;
@@ -18,25 +17,6 @@ interface HospitalDetailTabsProps {
 
 export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: HospitalDetailTabsProps) {
   const [activeTab, setActiveTab] = useState(0);
-
-  // 압구정미라클 의원인지 확인
-  const isApgujeongMiracle = hospitalId === APGUJEONG_MIRACLE_HOSPITAL_ID;
-
-  // 압구정미라클 의원일 때만 탭 표시
-  if (!isApgujeongMiracle) {
-    return (
-      <div className='w-full border-t border-white/60'>
-        <div className='px-5 py-6'>
-          <HospitalDetailIntroductionTab
-            hospital={hospital}
-            hospitalId={hospitalId}
-            lang={lang}
-            dict={dict}
-          />
-        </div>
-      </div>
-    );
-  }
 
   const tabs = [
     { id: 0, label: dict.hospitalDetailTabs.introduction },
@@ -71,7 +51,7 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
 
         {/* 시술상세 탭 */}
         <div
-          className={`px-5 py-6 transition-opacity duration-300 ${
+          className={`px-5 pt-6 transition-opacity duration-300 ${
             activeTab === 1 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
           }`}
         >

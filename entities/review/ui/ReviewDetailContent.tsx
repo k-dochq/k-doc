@@ -47,9 +47,9 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
       />
 
       <div className='p-5'>
-        <div className=''>
+        <div className='shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] rounded-xl overflow-hidden'>
           {/* 리뷰 컨텐츠 */}
-          <div className='rounded-t-xl border border-white bg-white/50 p-5'>
+          <div className='rounded-t-xl border border-white bg-white/50 p-5 backdrop-blur-[6px]'>
             {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
             <ReviewListCardHeader review={review} lang={lang} />
 
@@ -80,8 +80,10 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
           {/* 여섯 번째 섹션: 조회수만 표시 (좋아요는 헤더에 있음) */}
           <ReviewStatsSection review={review} lang={lang} user={null} showLikeButton={false} />
         </div>
+      </div>
 
-        {/* 시술 병원 섹션 - 리뷰 영역 밖으로 분리 */}
+      {/* 시술 병원 섹션 - 리뷰 영역 밖으로 분리 */}
+      <div className='px-5 mt-7'>
         <ReviewHospitalSection review={review} lang={lang} dict={dict} />
       </div>
 
@@ -90,7 +92,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
         <StarBackground />
       </div>
 
-      <div className='mt-2 py-5'>
+      <div className='mt-7 py-5'>
         <HospitalDetailReviews
           hospitalId={review.hospital.id}
           lang={lang}

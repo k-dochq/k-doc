@@ -21,10 +21,10 @@ export function CautionSection({ lang, dict }: CautionSectionProps) {
       return (
         <div
           key={index}
-          className='relative flex w-full shrink-0 content-stretch items-center justify-start gap-1'
+          className='relative flex w-full shrink-0 content-stretch items-start justify-start gap-1'
         >
-          <div className='flex flex-row items-center self-stretch'>
-            <div className='relative flex h-full shrink-0 content-stretch items-center justify-start gap-2.5'>
+          <div className='flex flex-row items-start self-stretch'>
+            <div className='relative flex h-full shrink-0 content-stretch items-start justify-start gap-2.5 pt-[7px]'>
               <BulletPoint />
             </div>
           </div>

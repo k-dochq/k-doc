@@ -168,6 +168,7 @@
       "password": "รหัสผ่าน",
       "loginButton": "เข้าสู่ระบบ",
       "laterButton": "ทำทีหลัง",
+      "signupButton": "สมัครสมาชิก",
       "requiredMessage": "กรุณาเข้าสู่ระบบเพื่อใช้งานบริการ",
       "socialLogin": "เข้าสู่ระบบด้วยโซเชียล",
       "googleLogin": "เข้าสู่ระบบด้วย Google",
@@ -357,7 +358,7 @@
   },
   "hospital": {
     "region": "ภูมิภาค",
-    "reviewsButton": "Reviews",
+    "reviewsButton": "รีวิว",
     "introduction": {
       "title": "แนะนำโรงพยาบาล"
     },
@@ -597,8 +598,8 @@
     "businessNumber": "Business Registration No. 474-86-03352",
     "customerEmail": "Customer Service Email : CS@k-doc.kr",
     "companyInfo": "About Us",
-    "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "ข้อกำหนดในการให้บริการ",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
     "contactUs": "ติดต่อเรา"
   },
   "about": {
@@ -628,7 +629,7 @@
     },
     "seoulOffice": {
       "title": "สำนักงาน K-DOC กรุงโซล",
-      "description": "K-DOC Tower แลนด์มาร์คที่ตั้งอยู่บนถนนอับกูจอง โรเดโอ ถนนที่มีชื่อเสียงที่สุดในคังนัม กรุงโซล"
+      "description": "K-DOC แลนด์มาร์คที่ตั้งอยู่บนถนนอับกูจอง โรเดโอ ถนนที่มีชื่อเสียงที่สุดในคังนัม กรุงโซล"
     },
     "vision": {
       "title": "วิสัยทัศน์ K-DOC",

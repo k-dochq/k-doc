@@ -132,6 +132,12 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     setTypingUsers(typingManager.current.getTypingUsers());
   }, []);
 
+  // Window focus 이벤트 핸들러
+  const handleWindowFocus = useCallback(() => {
+    console.log('🔄 Window focused - reloading page');
+    window.location.reload();
+  }, []);
+
   useEffect(() => {
     if (!roomId || !userId || !hospitalId) {
       console.log('❌ useEffect: missing required params', { roomId, userId, hospitalId });
@@ -142,6 +148,9 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
 
     // 1. 먼저 채팅 히스토리 로드
     loadChatHistory();
+
+    // 2. Window focus 이벤트 리스너 등록
+    window.addEventListener('focus', handleWindowFocus);
 
     // 2. 채널 생성 및 구독
     const channelName = createChannelName(roomId);
@@ -202,6 +211,8 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         channelRef.current.unsubscribe();
         channelRef.current = null;
       }
+      // Window focus 이벤트 리스너 제거
+      window.removeEventListener('focus', handleWindowFocus);
       setIsConnected(false);
       typingManager.current.clear();
       setTypingUsers([]);
@@ -215,6 +226,7 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     loadChatHistory,
     updateMessages,
     updateTypingUsers,
+    handleWindowFocus,
   ]);
 
   return {

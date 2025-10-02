@@ -100,7 +100,7 @@
   "hospitalDetailTabs": {
     "introduction": "병원소개",
     "procedures": "시술상세",
-    "proceduresComingSoon": "시술상세 컨텐츠가 준비 중입니다.",
+    "proceduresComingSoon": "시술상세 정보는 준비 중입니다.",
     "comingSoonSubtext": "곧 업데이트 예정입니다.",
     "apgujeongMiracle": {
       "videoTitle": "시술 영상",
@@ -168,6 +168,7 @@
       "password": "비밀번호",
       "loginButton": "로그인",
       "laterButton": "나중에 하기",
+      "signupButton": "회원가입하기",
       "requiredMessage": "서비스 이용을 위해\n로그인을 해주세요",
       "socialLogin": "소셜 로그인",
       "googleLogin": "Google로 로그인",

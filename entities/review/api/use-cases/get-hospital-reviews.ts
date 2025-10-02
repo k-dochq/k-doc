@@ -56,6 +56,7 @@ export async function getHospitalReviews({
             prices: true,
             rating: true,
             discountRate: true,
+            ranking: true,
             displayLocationName: true,
             District: {
               select: {
@@ -152,6 +153,7 @@ export async function getHospitalReviews({
           reviewCount: review.Hospital._count.Review,
           thumbnailImageUrl: review.Hospital.HospitalImage[0]?.imageUrl || null,
           discountRate: review.Hospital.discountRate,
+          ranking: review.Hospital.ranking,
           district: {
             name: review.Hospital.District?.name
               ? parseLocalizedText(review.Hospital.District.name)

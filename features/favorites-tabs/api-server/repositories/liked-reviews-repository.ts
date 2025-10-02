@@ -60,6 +60,7 @@ export class LikedReviewsRepository {
                 prices: true,
                 rating: true,
                 discountRate: true,
+                ranking: true,
                 District: {
                   select: {
                     name: true,
@@ -166,6 +167,7 @@ export class LikedReviewsRepository {
           reviewCount: review.Hospital._count.Review,
           thumbnailImageUrl: review.Hospital.HospitalImage[0]?.imageUrl || null,
           discountRate: review.Hospital.discountRate,
+          ranking: review.Hospital.ranking,
           district: {
             name: review.Hospital.District?.name
               ? parseLocalizedText(review.Hospital.District.name)

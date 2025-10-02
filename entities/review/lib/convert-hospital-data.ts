@@ -16,6 +16,7 @@ export function convertReviewHospitalToHospitalCard(review: ReviewCardData): Hos
     reviewCount: review.hospital.reviewCount,
     thumbnailImageUrl: review.hospital.thumbnailImageUrl,
     discountRate: review.hospital.discountRate,
+    ranking: review.hospital.ranking,
     district: review.hospital.district
       ? {
           id: '', // ReviewCardData에는 id가 없으므로 빈 문자열

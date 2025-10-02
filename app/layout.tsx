@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: 'K-DOC | เค-ด็อค',
   },
   description:
-    'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
+    'K-DOC: Your essential guide to Korean cosmetic surgery - compare clinics, book, check prices, events & deals, read real reviews, and get discounts.',
   keywords: [
     'Korean plastic surgery',
     'plastic surgery Korea',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: 'K-DOC | เค-ด็อค',
     title: 'K-DOC | เค-ด็อค',
     description:
-      'Book Korean plastic surgery consultations and read authentic reviews. Connect with top-rated Korean plastic surgery clinics.',
+      'K-DOC: Your essential guide to Korean cosmetic surgery - compare clinics, book, check prices, events & deals, read real reviews, and get discounts.',
     images: [
       {
         url: '/opengraph-image.png',
@@ -36,7 +36,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'K-DOC | เค-ด็อค',
-    description: 'Book Korean plastic surgery consultations and read authentic reviews.',
+    description:
+      'K-DOC: Your essential guide to Korean cosmetic surgery - compare clinics, book, check prices, events & deals, read real reviews, and get discounts.',
     images: ['/twitter-image.png'],
   },
 };

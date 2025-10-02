@@ -65,7 +65,7 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
   // 메인 채팅 UI
   const hospital = hospitalData?.hospital;
   const hospitalName = hospital ? extractLocalizedText(hospital.name, lang) : '병원';
-  const hospitalImageUrl = hospital?.mainImageUrl || undefined;
+  const hospitalImageUrl = hospital?.thumbnailImageUrl || hospital?.mainImageUrl || undefined;
 
   return (
     <ConsultationChatMain

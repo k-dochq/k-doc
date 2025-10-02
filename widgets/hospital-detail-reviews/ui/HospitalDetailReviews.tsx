@@ -94,7 +94,6 @@ export function HospitalDetailReviews({
           loop={true}
           align='start'
           basis='basis-[280px] md:basis-[320px]'
-          itemClassName='pl-2 md:pl-4'
           noBorder={true}
         />
       </div>
