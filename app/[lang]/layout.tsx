@@ -48,20 +48,29 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     th: 'K-DOC ไกด์ศัลยกรรมเกาหลีสำหรับคนไทย เปรียบเทียบคลินิก จองคิว อ่านรีวิวจริง ดูราคา โปรโมชัน/อีเวนต์ และรับส่วนลดค่าศัลยกรรม',
   };
 
+  // 기본 keywords
+  const baseKeywords = [
+    'Korean plastic surgery',
+    'plastic surgery Korea',
+    'Korean cosmetic surgery',
+    'surgery booking Korea',
+    'plastic surgery reviews',
+    'Korean beauty clinics',
+  ];
+
+  // th 로케일일 때만 특별한 keywords 추가
+  const keywords =
+    lang === 'th'
+      ? 'K-DOC, เค-ด็อค, เคด็อค, K DOC, เค ด็อค, K-Beauty, Korean plastic surgery, ศัลยกรรมเกาหลี, ทำศัลยกรรมที่เกาหลี, เมดิคัลทัวร์, ท่องเที่ยวเชิงการแพทย์, ส่วนลดศัลยกรรม, โปรศัลยกรรม, ราคาศัลยกรรม, รีวิวจริง, จองคลินิกเกาหลี, ล่ามภาษาไทย, ดูแลหลังทำ, โซล, กังนัม, อับกูจอง, คลินิกศัลยกรรมเกาหลี, เสริมจมูก, ศัลยกรรมจมูก, rhinoplasty, ตาสองชั้น, blepharoplasty, ดึงหน้า, facelift, ร้อยไหม, thread lift, V-line, ปรับรูปหน้า, โบท็อกซ์, botox, ฟิลเลอร์, filler, เลเซอร์ผิว, ดูดไขมัน, liposuction, ปลูกผม, hair transplant, เสริมหน้าอก, breast augmentation, ยกกระชับ, skin tightening, เคสรีวิว, ดีลพิเศษ, โปรโมชั่นเกาหลี, โรงพยาบาลศัลยกรรม, ที่ปรึกษาศัลยกรรม, แปลภาษาเกาหลีไทย, รับส่งสนามบิน, ที่พักใกล้คลินิก, 한국성형, 한국 성형 관광, 성형할인, 한국 성형외과, 실리프팅, 쌍꺼풀, 코성형, 지방흡입, 모발이식'
+      : baseKeywords;
+
   return {
     title: {
       default: titles[lang],
       template: '%s', // 페이지에서 설정한 title을 그대로 사용
     },
     description: descriptions[lang],
-    keywords: [
-      'Korean plastic surgery',
-      'plastic surgery Korea',
-      'Korean cosmetic surgery',
-      'surgery booking Korea',
-      'plastic surgery reviews',
-      'Korean beauty clinics',
-    ],
+    keywords: keywords,
     metadataBase: new URL('https://k-doc.kr'),
     other: {
       'content-language': lang,
