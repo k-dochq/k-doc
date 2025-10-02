@@ -34,6 +34,10 @@ export function FormDatePicker({
     return date < today || (disabled ? disabled(date) : false);
   };
 
+  // 현재 연도부터 미래 5년까지만 표시
+  const currentYear = new Date().getFullYear();
+  const yearRange = { from: currentYear, to: currentYear + 5 };
+
   return (
     <DatePicker
       label={label}
@@ -45,6 +49,7 @@ export function FormDatePicker({
       disabled={disablePastDates}
       error={error}
       required={required}
+      yearRange={yearRange}
     />
   );
 }
