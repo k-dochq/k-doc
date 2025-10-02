@@ -17,6 +17,7 @@ interface DatePickerProps {
   required?: boolean;
   label?: string;
   error?: string;
+  yearRange?: { from: number; to: number };
 }
 
 const CalendarIcon = ({ className }: { className?: string }) => (
@@ -47,6 +48,7 @@ export function DatePicker({
   required = false,
   label,
   error,
+  yearRange,
 }: DatePickerProps) {
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -145,6 +147,7 @@ export function DatePicker({
               locale={locale}
               disabled={disabled}
               captionLayout='dropdown'
+              yearRange={yearRange}
             />
           </div>
         )}

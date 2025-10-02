@@ -11,6 +11,7 @@ interface CalendarProps {
   disabled?: (date: Date) => boolean;
   mode?: 'single' | 'multiple' | 'range';
   captionLayout?: 'dropdown' | 'dropdown-buttons';
+  yearRange?: { from: number; to: number };
 }
 
 interface CalendarLocale {
@@ -89,6 +90,7 @@ export function Calendar({
   disabled,
   mode = 'single',
   captionLayout = 'dropdown',
+  yearRange,
 }: CalendarProps) {
   const [currentDate, setCurrentDate] = useState(selected || new Date());
   const [showYearDropdown, setShowYearDropdown] = useState(false);
@@ -159,13 +161,22 @@ export function Calendar({
     setShowMonthDropdown(false);
   };
 
-  // 연도 범위 생성 (현재 연도 기준 ±50년)
+  // 연도 범위 생성 (yearRange prop이 있으면 사용, 없으면 기본값)
   const generateYears = () => {
     const currentYear = today.getFullYear();
     const years = [];
-    for (let year = currentYear - 50; year <= currentYear + 10; year++) {
-      years.push(year);
+
+    if (yearRange) {
+      for (let year = yearRange.from; year <= yearRange.to; year++) {
+        years.push(year);
+      }
+    } else {
+      // 기본값: 현재 연도 기준 ±50년
+      for (let year = currentYear - 50; year <= currentYear + 10; year++) {
+        years.push(year);
+      }
     }
+
     return years;
   };
 

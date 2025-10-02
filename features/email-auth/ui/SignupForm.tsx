@@ -207,6 +207,8 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           locale={lang}
           dict={dict}
           required={false}
+          yearRange={{ from: 1950, to: new Date().getFullYear() }}
+          disabled={(date) => date > new Date()}
         />
 
         {/* 에러 메시지 */}
