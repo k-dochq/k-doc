@@ -14,6 +14,11 @@ export const POLICY_LINKS = {
     en: 'https://hypnotic-dryosaurus-c5c.notion.site/Privacy-Policy-27ad3f7f900d80d38997e64cad05ddc1?source=copy_link',
     th: 'https://hypnotic-dryosaurus-c5c.notion.site/27ad3f7f900d8077b3dad6848a30093c?source=copy_link',
   },
+  dataRequest: {
+    ko: 'https://forms.gle/Vf419Ke2TKBhwEK57',
+    en: 'https://forms.gle/trZV5WsojheuNy5X8',
+    th: 'https://forms.gle/FSY2anBUy8YgKGGz6',
+  },
 } as const;
 
 /**
@@ -32,4 +37,13 @@ export const getTermsOfServiceLink = (locale: Locale): string => {
  */
 export const getPrivacyPolicyLink = (locale: Locale): string => {
   return POLICY_LINKS.privacyPolicy[locale] as string;
+};
+
+/**
+ * 언어에 따른 정보 수정/삭제 요청 링크를 반환합니다.
+ * @param locale 언어 설정
+ * @returns 해당 언어의 정보 수정/삭제 요청 링크
+ */
+export const getDataRequestLink = (locale: Locale): string => {
+  return POLICY_LINKS.dataRequest[locale] as string;
 };

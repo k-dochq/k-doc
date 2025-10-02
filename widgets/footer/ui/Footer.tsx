@@ -12,7 +12,7 @@ interface FooterProps {
 
 export function Footer({ lang, dict }: FooterProps) {
   return (
-    <footer className='bg-gradient-to-t from-[#FCE4FF] to-[#FCE4FF] px-5 pt-5 pb-9'>
+    <footer className='bg-gradient-to-t from-[#FCE4FF] to-[#FCE4FF] px-5 pt-5 pb-16'>
       {/* 상단 섹션: 로고와 회사소개 버튼 */}
       <div className='mb-4 flex items-center justify-between'>
         <FooterLogo />

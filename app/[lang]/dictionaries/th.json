@@ -603,7 +603,8 @@
     "companyInfo": "About Us",
     "termsOfService": "ข้อกำหนดในการให้บริการ",
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
-    "contactUs": "ติดต่อเรา"
+    "contactUs": "ติดต่อเรา",
+    "dataRequest": "ร้องขอแก้ไข/ลบ"
   },
   "about": {
     "title": "เกี่ยวกับเรา",
