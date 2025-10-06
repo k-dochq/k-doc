@@ -10,7 +10,10 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams, origin } = new URL(request.url);
     const code = searchParams.get('code');
-    const redirectTo = searchParams.get('redirect'); // 원래 페이지 URL
+
+    // 쿠키에서 redirectTo 경로 가져오기
+    const cookies = request.cookies;
+    const redirectTo = cookies.get('auth_redirect_path')?.value;
 
     if (code) {
       const supabase = await createClient();
@@ -21,8 +24,17 @@ export async function GET(request: NextRequest) {
         const locale = extractLocaleFromCookie(request);
 
         // redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 리다이렉트
-        const targetUrl = redirectTo ? `${origin}${redirectTo}` : `${origin}/${locale}/main`;
-        return NextResponse.redirect(targetUrl);
+        const targetUrl = redirectTo
+          ? `${origin}${decodeURIComponent(redirectTo)}`
+          : `${origin}/${locale}/main`;
+
+        // 리다이렉트 응답 생성
+        const response = NextResponse.redirect(targetUrl);
+
+        // 사용한 쿠키 삭제
+        response.cookies.delete('auth_redirect_path');
+
+        return response;
       }
     }
 
