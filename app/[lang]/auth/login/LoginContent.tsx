@@ -38,8 +38,8 @@ export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps
         <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
         <div className='h-4' />
         <GoogleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
-        <div className='h-4' />
-        <AppleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
+        {/* <div className='h-4' />
+        <AppleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} /> */}
       </div>
     </div>
   );
