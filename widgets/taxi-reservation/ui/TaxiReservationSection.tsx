@@ -9,10 +9,6 @@ interface TaxiReservationSectionProps {
 }
 
 export function TaxiReservationSection({ lang, dict }: TaxiReservationSectionProps) {
-  const handleTaxiReservation = () => {
-    window.open('https://www.intltaxi.co.kr/', '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <div
       className=''
@@ -28,8 +24,10 @@ export function TaxiReservationSection({ lang, dict }: TaxiReservationSectionPro
         </h2>
 
         {/* 예약 버튼 */}
-        <button
-          onClick={handleTaxiReservation}
+        <a
+          href='https://www.intltaxi.co.kr/'
+          target='_blank'
+          rel='noopener noreferrer'
           className='flex w-full items-center justify-center gap-3 rounded-xl bg-[#DA47EF] px-6 py-4 text-white transition-colors'
         >
           {/* 택시 아이콘 */}
@@ -62,7 +60,7 @@ export function TaxiReservationSection({ lang, dict }: TaxiReservationSectionPro
           <span className='text-base font-medium'>
             {dict.taxiReservation?.buttonText || '택시 예약하기'}
           </span>
-        </button>
+        </a>
       </div>
     </div>
   );
