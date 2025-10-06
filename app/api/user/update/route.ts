@@ -8,6 +8,15 @@ interface UpdateUserRequest {
   displayName?: string;
   name?: string;
   marketingNotifications?: boolean;
+  // 추가정보 입력용 필드
+  passportName?: string;
+  nationality?: string;
+  gender?: string;
+  genderType?: 'MALE' | 'FEMALE';
+  countryCode?: string;
+  phoneNumber?: string;
+  phoneNumberOnly?: string;
+  birthDate?: string;
 }
 
 export async function PUT(request: NextRequest): Promise<NextResponse> {
@@ -21,10 +30,37 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
 
     // 요청 본문 파싱
     const body: UpdateUserRequest = await request.json();
-    const { nickName, displayName, name, marketingNotifications } = body;
+    const {
+      nickName,
+      displayName,
+      name,
+      marketingNotifications,
+      passportName,
+      nationality,
+      gender,
+      genderType,
+      countryCode,
+      phoneNumber,
+      phoneNumberOnly,
+      birthDate,
+    } = body;
 
     // 업데이트할 필드가 없는 경우
-    if (!nickName && !displayName && !name && marketingNotifications === undefined) {
+    const hasFieldsToUpdate =
+      nickName !== undefined ||
+      displayName !== undefined ||
+      name !== undefined ||
+      marketingNotifications !== undefined ||
+      passportName !== undefined ||
+      nationality !== undefined ||
+      gender !== undefined ||
+      genderType !== undefined ||
+      countryCode !== undefined ||
+      phoneNumber !== undefined ||
+      phoneNumberOnly !== undefined ||
+      birthDate !== undefined;
+
+    if (!hasFieldsToUpdate) {
       return NextResponse.json(
         {
           success: false,
@@ -42,18 +78,50 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
 
     // 업데이트할 데이터 준비
     const updateData: Record<string, unknown> = {};
+    const currentMetaData = (existingUser?.raw_user_meta_data as Record<string, unknown>) || {};
+    let metaDataUpdated = false;
 
+    // 직접 컬럼 업데이트
     if (nickName !== undefined) updateData.nickName = nickName;
     if (displayName !== undefined) updateData.displayName = displayName;
     if (name !== undefined) updateData.name = name;
+    if (genderType !== undefined) updateData.genderType = genderType;
+    if (phoneNumber !== undefined) updateData.phoneNumber = phoneNumber;
 
-    // marketing_notifications 처리
+    // raw_user_meta_data 업데이트
+    const newMetaData = { ...currentMetaData };
+
     if (marketingNotifications !== undefined) {
-      const currentMetaData = (existingUser?.raw_user_meta_data as Record<string, unknown>) || {};
-      updateData.raw_user_meta_data = {
-        ...currentMetaData,
-        marketing_notifications: marketingNotifications,
-      };
+      newMetaData.marketing_notifications = marketingNotifications;
+      metaDataUpdated = true;
+    }
+    if (passportName !== undefined) {
+      newMetaData.passport_name = passportName;
+      metaDataUpdated = true;
+    }
+    if (nationality !== undefined) {
+      newMetaData.nationality = nationality;
+      metaDataUpdated = true;
+    }
+    if (gender !== undefined) {
+      newMetaData.gender = gender;
+      metaDataUpdated = true;
+    }
+    if (countryCode !== undefined) {
+      newMetaData.country_code = countryCode;
+      metaDataUpdated = true;
+    }
+    if (phoneNumberOnly !== undefined) {
+      newMetaData.phone_number = phoneNumberOnly;
+      metaDataUpdated = true;
+    }
+    if (birthDate !== undefined) {
+      newMetaData.birth_date = birthDate;
+      metaDataUpdated = true;
+    }
+
+    if (metaDataUpdated) {
+      updateData.raw_user_meta_data = newMetaData;
     }
 
     // Prisma를 사용하여 User 테이블에서 사용자 정보 업데이트

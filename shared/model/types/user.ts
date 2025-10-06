@@ -26,6 +26,15 @@ export interface UpdateUserProfileRequest {
   displayName?: string;
   name?: string;
   marketingNotifications?: boolean;
+  // 추가정보 입력용 필드
+  passportName?: string;
+  nationality?: string;
+  gender?: string;
+  genderType?: 'MALE' | 'FEMALE';
+  countryCode?: string;
+  phoneNumber?: string;
+  phoneNumberOnly?: string;
+  birthDate?: string;
 }
 
 export interface UpdateUserProfileResponse {

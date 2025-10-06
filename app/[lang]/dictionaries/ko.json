@@ -192,6 +192,12 @@
         "emailNotConfirmed": "이메일을 확인하고 계정을 인증해주세요."
       }
     },
+    "additionalInfo": {
+      "title": "추가 정보 입력",
+      "description": "서비스 이용을 위해 추가 정보를 입력해주세요.",
+      "emailReadonly": "소셜 계정의 이메일 주소입니다",
+      "submitButton": "완료"
+    },
     "signup": {
       "title": "회원가입",
       "subtitle": "새 계정을 만드세요",
@@ -285,6 +291,8 @@
         "confirmPasswordRequired": "비밀번호 확인을 입력해주세요.",
         "passwordMismatch": "비밀번호가 일치하지 않습니다.",
         "passportNameRequired": "여권상의 영문 이름을 입력하지 않으면 치료 이용이 제한될 수 있습니다.",
+        "passportNameTooShort": "여권 영문 이름은 최소 2자 이상이어야 합니다.",
+        "passportNameInvalid": "여권 영문 이름은 영문자만 입력 가능합니다.",
         "genderRequired": "성별을 선택해주세요.",
         "emailAlreadyRegistered": "이미 가입된 이메일입니다.",
         "invalidEmail": "올바른 이메일 주소를 입력해주세요.",
@@ -293,7 +301,8 @@
         "invalidCredentials": "이메일 또는 비밀번호가 올바르지 않습니다.",
         "emailNotConfirmed": "이메일을 확인하고 계정을 인증해주세요.",
         "signupSuccess": "회원가입이 완료되었습니다. 이메일을 확인하여 계정을 활성화해주세요.",
-        "userAlreadyRegistered": "이미 가입된 이메일입니다."
+        "userAlreadyRegistered": "이미 가입된 이메일입니다.",
+        "updateProfileError": "정보 저장 중 오류가 발생했습니다."
       }
     },
     "forgotPassword": {
