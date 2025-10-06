@@ -3,6 +3,7 @@ export { ResetIcon } from './ResetIcon';
 export { HeartIcon } from './HeartIcon';
 export { HeartOutlineIcon } from './HeartOutlineIcon';
 export { GoogleIcon } from './GoogleIcon';
+export { AppleIcon } from './AppleIcon';
 export { KakaoIcon } from './KakaoIcon';
 export { DetailHeartIcon } from './DetailHeartIcon';
 export { BackIcon } from './BackIcon';
