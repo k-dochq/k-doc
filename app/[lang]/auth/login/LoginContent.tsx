@@ -1,7 +1,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { GoogleSignInButton } from 'features/google-auth';
-// import { AppleSignInButton } from 'features/apple-auth';
+import { AppleSignInButton } from 'features/apple-auth';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
 import { PageHeader } from 'shared/ui/page-header';
@@ -38,8 +38,8 @@ export async function LoginContent({ lang, dict, redirectTo }: LoginContentProps
         <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
         <div className='h-4' />
         <GoogleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
-        {/* <div className='h-4' />
-        <AppleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} /> */}
+        <div className='h-4' />
+        <AppleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
       </div>
     </div>
   );
