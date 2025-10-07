@@ -35,6 +35,8 @@ export async function GET(req: Request) {
       redirectUrl = `/${locale}/main`;
     }
 
+    console.log('redirectUrl', redirectUrl);
+
     return NextResponse.redirect(new URL(redirectUrl, req.url));
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
