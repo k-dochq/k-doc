@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { createClient } from 'shared/lib/supabase/server';
-import { DEFAULT_LOCALE } from 'shared/config';
 
 export async function GET(req: Request) {
   try {
@@ -25,18 +24,15 @@ export async function GET(req: Request) {
     }
 
     // 성공 시: Supabase가 Set-Cookie로 세션을 설정함
-    // locale과 redirectPath에 따라 적절한 경로로 리다이렉트
+    // redirectPath가 있으면 그대로 사용, 없으면 locale/main으로 이동
     let redirectUrl = '/main';
 
-    if (locale && redirectPath) {
-      // locale과 redirectPath가 모두 있으면 해당 경로로
-      redirectUrl = `/${locale}${redirectPath}`;
+    if (redirectPath) {
+      // redirectPath가 있으면 그대로 사용 (이미 locale 포함)
+      redirectUrl = redirectPath;
     } else if (locale) {
-      // locale만 있으면 해당 locale의 main으로
+      // redirectPath가 없고 locale이 있으면 locale/main으로
       redirectUrl = `/${locale}/main`;
-    } else if (redirectPath) {
-      // redirectPath만 있으면 기본 locale로
-      redirectUrl = `/${DEFAULT_LOCALE}${redirectPath}`;
     }
 
     return NextResponse.redirect(new URL(redirectUrl, req.url));
