@@ -6,6 +6,11 @@ import { authGuard } from 'shared/lib/auth/auth-middleware';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // auth/set-session은 완전히 제외
+  if (pathname === '/auth/set-session') {
+    return NextResponse.next();
+  }
+
   // pathname이 locale로 시작하는지 확인
   const hasLocale = SUPPORTED_LOCALES.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
