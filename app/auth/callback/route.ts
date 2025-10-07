@@ -10,6 +10,9 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams, origin } = new URL(request.url);
     const code = searchParams.get('code');
+    const oauthError = searchParams.get('error');
+    const oauthErrorDescription =
+      searchParams.get('error_description') || searchParams.get('message');
 
     // 쿠키에서 redirectTo 경로 가져오기
     const cookies = request.cookies;
@@ -55,10 +58,31 @@ export async function GET(request: NextRequest) {
 
         return response;
       }
+
+      // 교환 과정에서 실패했다면 Supabase 에러 메시지를 우선 사용
+      if (error) {
+        const requestId = routeErrorLogger.logError({
+          error,
+          endpoint,
+          method,
+          request,
+        });
+
+        const locale = extractLocaleFromCookie(request);
+        return redirectToAuthFailure({
+          request,
+          locale,
+          errorCode: 'AUTH_CODE_ERROR',
+          errorMessage: error.message,
+          requestId,
+        });
+      }
     }
 
-    // 인증 코드가 없거나 인증 실패 시
-    const authError = new Error('Authentication code error or invalid code');
+    // 인증 코드가 없거나, OAuth 단계에서 전달된 에러가 있는 경우
+    const authError = new Error(
+      oauthErrorDescription || oauthError || 'Authentication code error or invalid code',
+    );
     const requestId = routeErrorLogger.logError({
       error: authError,
       endpoint,
