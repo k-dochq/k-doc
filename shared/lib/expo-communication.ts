@@ -24,7 +24,8 @@ export function sendLoginRequestToExpo(
     source: 'kdoc-web',
     type: 'LOGIN_REQUEST',
     provider,
-    redirectPath: redirectPath ?? window.location.pathname + window.location.search,
+    // redirectPath가 undefined이면 전달하지 않음 (로그인 페이지에서 소셜로그인 시)
+    redirectPath: redirectPath || undefined,
     locale: locale ?? window.location.pathname.split('/')[1],
   };
 
