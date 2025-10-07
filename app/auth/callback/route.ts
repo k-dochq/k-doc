@@ -36,23 +36,6 @@ export async function GET(request: NextRequest) {
         const isSocialLogin =
           data.user.app_metadata?.provider && data.user.app_metadata?.provider !== 'email';
 
-        console.log('🔍 사용자 정보:', {
-          id: data.user.id,
-          email: data.user.email,
-          created_at: data.user.created_at,
-          updated_at: data.user.updated_at,
-          last_sign_in_at: data.user.last_sign_in_at,
-          isNewUser: isNewUser,
-          isSocialLogin: isSocialLogin,
-          provider: data.user.app_metadata?.provider,
-          identities: data.user.identities?.map((identity) => ({
-            provider: identity.provider,
-            created_at: identity.created_at,
-            updated_at: identity.updated_at,
-            isNewIdentity: identity.created_at === identity.updated_at,
-          })),
-        });
-
         // 소셜 로그인 신규 가입자는 추가정보 입력 페이지로 리다이렉트
         let targetUrl: string;
         if (isNewUser && isSocialLogin) {
