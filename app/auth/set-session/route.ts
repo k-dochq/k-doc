@@ -4,6 +4,17 @@ import { createClient } from 'shared/lib/supabase/server';
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
+
+    // searchParams 값들 로그 출력
+    console.log('=== /auth/set-session searchParams ===');
+    console.log('Full URL:', req.url);
+    console.log('access_token:', searchParams.get('access_token'));
+    console.log('refresh_token:', searchParams.get('refresh_token'));
+    console.log('locale:', searchParams.get('locale'));
+    console.log('redirectPath:', searchParams.get('redirectPath'));
+    console.log('All searchParams:', Object.fromEntries(searchParams.entries()));
+    console.log('=====================================');
+
     const access_token = searchParams.get('access_token');
     const refresh_token = searchParams.get('refresh_token');
     const locale = searchParams.get('locale');
