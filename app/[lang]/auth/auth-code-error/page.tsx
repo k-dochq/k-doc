@@ -4,14 +4,17 @@ import { LocaleLink } from 'shared/ui/locale-link';
 
 interface AuthCodeErrorPageProps {
   params: Promise<{ lang: Locale }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function AuthCodeErrorPage({ params }: AuthCodeErrorPageProps) {
+export default async function AuthCodeErrorPage({ params, searchParams }: AuthCodeErrorPageProps) {
   const { lang } = await params;
   const _dict = await getDictionary(lang);
+  const resolvedSearchParams = (await searchParams) || {};
+  const entries = Object.entries(resolvedSearchParams);
 
   return (
-    <div className='flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8'>
+    <div className='flex min-h-screen items-center justify-center bg-white px-4 py-12 sm:px-6 lg:px-8'>
       <div className='w-full max-w-md space-y-8'>
         <div className='text-center'>
           <h1 className='text-3xl font-bold text-gray-900'>K-DOC</h1>
@@ -40,6 +43,21 @@ export default async function AuthCodeErrorPage({ params }: AuthCodeErrorPagePro
             </p>
           </div>
         </div>
+
+        {/* Query Parameters */}
+        {entries.length > 0 && (
+          <div className='rounded-md border border-gray-200 bg-white p-4'>
+            <h3 className='mb-2 text-sm font-medium text-gray-900'>Query Parameters</h3>
+            <ul className='space-y-1'>
+              {entries.map(([key, value]) => (
+                <li key={key} className='text-sm break-all text-gray-700'>
+                  <span className='font-semibold'>{key}:</span>{' '}
+                  <span>{Array.isArray(value) ? value.join(', ') : String(value ?? '')}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className='space-y-4'>
           <LocaleLink
