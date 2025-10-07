@@ -33,7 +33,7 @@ export function AppleSignInButton({
         if (redirectTo) {
           setRedirectPathCookie(redirectTo);
         }
-        sendLoginRequestToExpo('apple', redirectTo);
+        sendLoginRequestToExpo('apple', redirectTo, lang);
         return;
       }
 

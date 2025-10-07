@@ -28,7 +28,7 @@ export function GoogleSignInButton({
         if (redirectTo) {
           setRedirectPathCookie(redirectTo);
         }
-        sendLoginRequestToExpo('google', redirectTo);
+        sendLoginRequestToExpo('google', redirectTo, lang);
         return;
       }
 

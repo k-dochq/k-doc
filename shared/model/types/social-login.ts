@@ -12,6 +12,7 @@ export interface ExpoLoginRequest {
   type: 'LOGIN_REQUEST';
   provider: SocialProvider;
   redirectPath?: string;
+  locale?: string;
 }
 
 /**
