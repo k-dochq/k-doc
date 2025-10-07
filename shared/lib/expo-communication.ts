@@ -8,10 +8,12 @@ import type { ExpoLoginRequest, WebViewWindow } from 'shared/model/types/social-
  * Expo 앱으로 로그인 요청 메시지를 전송합니다.
  * @param provider 소셜로그인 제공자
  * @param redirectPath 로그인 후 리다이렉트할 경로
+ * @param locale 현재 로케일
  */
 export function sendLoginRequestToExpo(
   provider: ExpoLoginRequest['provider'],
   redirectPath?: string,
+  locale?: string,
 ): void {
   if (typeof window === 'undefined') {
     console.warn('sendLoginRequestToExpo: window is not available');
@@ -23,6 +25,7 @@ export function sendLoginRequestToExpo(
     type: 'LOGIN_REQUEST',
     provider,
     redirectPath: redirectPath ?? window.location.pathname + window.location.search,
+    locale: locale ?? window.location.pathname.split('/')[1],
   };
 
   try {
