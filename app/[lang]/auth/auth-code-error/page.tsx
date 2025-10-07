@@ -47,7 +47,7 @@ export default async function AuthCodeErrorPage({ params, searchParams }: AuthCo
         {/* Query Parameters */}
         {entries.length > 0 && (
           <div className='rounded-md border border-gray-200 bg-white p-4'>
-            <h3 className='mb-2 text-sm font-medium text-gray-900'>Query Parameters</h3>
+            <h3 className='mb-2 text-sm font-medium text-gray-900'>Detail Information</h3>
             <ul className='space-y-1'>
               {entries.map(([key, value]) => (
                 <li key={key} className='text-sm break-all text-gray-700'>
