@@ -5,6 +5,8 @@ import { type Dictionary } from 'shared/model/types';
 import { AppleIcon } from 'shared/ui/icons';
 import { createClient } from 'shared/lib/supabase/client';
 import { useState } from 'react';
+import { isExpoWebView } from 'shared/lib/webview-detection';
+import { sendLoginRequestToExpo, setRedirectPathCookie } from 'shared/lib/expo-communication';
 
 interface AppleSignInButtonProps {
   lang: Locale;
@@ -25,6 +27,17 @@ export function AppleSignInButton({
   const handleAppleLogin = async () => {
     setIsLoading(true);
     try {
+      // 웹뷰 환경인지 확인
+      if (isExpoWebView()) {
+        // 웹뷰 환경에서는 Expo 앱으로 로그인 요청 전달
+        if (redirectTo) {
+          setRedirectPathCookie(redirectTo);
+        }
+        sendLoginRequestToExpo('apple', redirectTo);
+        return;
+      }
+
+      // 일반 브라우저 환경에서는 기존 Supabase OAuth 진행
       const supabase = createClient();
 
       // redirectTo 정보를 쿠키에 저장

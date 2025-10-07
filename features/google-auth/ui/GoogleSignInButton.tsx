@@ -4,6 +4,8 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { GoogleIcon } from 'shared/ui/icons';
 import { createClient } from 'shared/lib/supabase/client';
+import { isExpoWebView } from 'shared/lib/webview-detection';
+import { sendLoginRequestToExpo, setRedirectPathCookie } from 'shared/lib/expo-communication';
 
 interface GoogleSignInButtonProps {
   lang: Locale;
@@ -20,6 +22,17 @@ export function GoogleSignInButton({
 }: GoogleSignInButtonProps) {
   const handleGoogleSignIn = async () => {
     try {
+      // 웹뷰 환경인지 확인
+      if (isExpoWebView()) {
+        // 웹뷰 환경에서는 Expo 앱으로 로그인 요청 전달
+        if (redirectTo) {
+          setRedirectPathCookie(redirectTo);
+        }
+        sendLoginRequestToExpo('google', redirectTo);
+        return;
+      }
+
+      // 일반 브라우저 환경에서는 기존 Supabase OAuth 진행
       const supabase = createClient();
 
       // redirectTo 정보를 쿠키에 저장
@@ -38,11 +51,11 @@ export function GoogleSignInButton({
 
       if (error) {
         console.error('Google 로그인 에러:', error);
-        // TODO: 에러 처리 UI 추가
+        window.alert('An error occurred during Google login. Please try again.');
       }
     } catch (error) {
       console.error('Google 로그인 중 예외 발생:', error);
-      // TODO: 에러 처리 UI 추가
+      window.alert('An unexpected error occurred during Google login. Please try again.');
     }
   };
 
