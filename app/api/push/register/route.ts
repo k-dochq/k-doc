@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 사용자 정보 업데이트
-    const updatedUser = await prisma.user.update({
+    await prisma.user.update({
       where: { id: user.id },
       data: {
         deviceToken: token,
