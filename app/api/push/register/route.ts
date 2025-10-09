@@ -10,12 +10,21 @@ interface PushTokenRegisterRequest {
 }
 
 export async function POST(request: NextRequest) {
+  console.log('🚀 푸시 토큰 등록 API 요청 시작');
+
   try {
     const body: PushTokenRegisterRequest = await request.json();
     const { token, platform, appVersion } = body;
 
+    console.log('📝 요청 데이터:', {
+      token: token ? token.substring(0, 20) + '...' : '없음',
+      platform,
+      appVersion,
+    });
+
     // 필수 필드 검증
     if (!token) {
+      console.log('❌ 푸시 토큰이 없습니다');
       const response: PushTokenRegisterResponse = {
         success: false,
         error: '푸시 토큰이 필요합니다',
@@ -23,35 +32,42 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(response, { status: 400 });
     }
 
-    // Authorization 헤더에서 토큰 추출
-    const authHeader = request.headers.get('authorization');
-    const accessToken = authHeader?.replace('Bearer ', '');
-
-    if (!accessToken) {
-      const response: PushTokenRegisterResponse = {
-        success: false,
-        error: '인증 토큰이 필요합니다',
-      };
-      return NextResponse.json(response, { status: 401 });
-    }
-
-    // Supabase 클라이언트 생성 (토큰 기반)
+    console.log('🔐 Supabase 클라이언트 생성 중...');
+    // Supabase 클라이언트 생성 (쿠키 기반)
     const supabase = await createClient();
 
-    // 토큰으로 사용자 정보 가져오기
+    console.log('👤 사용자 인증 확인 중...');
+    // 현재 사용자 정보 가져오기 (쿠키에서)
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser(accessToken);
+    } = await supabase.auth.getUser();
 
-    if (authError || !user) {
+    if (authError) {
+      console.error('❌ 사용자 인증 실패:', authError.message);
       const response: PushTokenRegisterResponse = {
         success: false,
-        error: '유효하지 않은 인증 토큰입니다',
+        error: '인증이 필요합니다',
       };
       return NextResponse.json(response, { status: 401 });
     }
 
+    if (!user) {
+      console.log('❌ 로그인된 사용자가 없습니다');
+      const response: PushTokenRegisterResponse = {
+        success: false,
+        error: '인증이 필요합니다',
+      };
+      return NextResponse.json(response, { status: 401 });
+    }
+
+    console.log('✅ 사용자 인증 성공:', {
+      userId: user.id,
+      email: user.email,
+      provider: user.app_metadata?.provider,
+    });
+
+    console.log('💾 데이터베이스 업데이트 시작...');
     // 사용자 정보 업데이트
     await prisma.user.update({
       where: { id: user.id },
@@ -65,7 +81,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    console.log('푸시 토큰 등록 완료:', {
+    console.log('✅ 푸시 토큰 등록 완료:', {
       userId: user.id,
       token: token.substring(0, 20) + '...',
       platform,
@@ -82,15 +98,39 @@ export async function POST(request: NextRequest) {
       },
     };
 
+    console.log('📤 성공 응답 전송:', {
+      success: response.success,
+      message: response.message,
+      userId: response.data?.userId,
+    });
+
     return NextResponse.json(response);
   } catch (error) {
-    console.error('푸시 토큰 등록 실패:', error);
+    console.error('💥 푸시 토큰 등록 중 예외 발생:', error);
+
+    let errorMessage = '푸시 토큰 등록 중 오류가 발생했습니다';
+    let errorDetails = '알 수 없는 오류';
+
+    if (error instanceof Error) {
+      errorDetails = error.message;
+      console.error('📋 에러 상세 정보:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack?.split('\n').slice(0, 3).join('\n'), // 스택 트레이스 일부만
+      });
+    }
 
     const response: PushTokenRegisterResponse = {
       success: false,
-      error: '푸시 토큰 등록 중 오류가 발생했습니다',
-      details: error instanceof Error ? error.message : '알 수 없는 오류',
+      error: errorMessage,
+      details: errorDetails,
     };
+
+    console.log('📤 에러 응답 전송:', {
+      success: response.success,
+      error: response.error,
+      details: response.details,
+    });
 
     return NextResponse.json(response, { status: 500 });
   }
