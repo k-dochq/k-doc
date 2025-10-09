@@ -6,6 +6,7 @@ import { FormButton } from 'shared/ui/form-button';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { useEmailLoginForm } from 'features/email-auth/model/useEmailLoginForm';
 import { useEmailLogin } from 'features/email-auth/model/useEmailLogin';
+import { handleLoginSuccess } from 'shared/lib/auth/handle-login-success';
 import { RequiredInput } from './inputs/RequiredInput';
 
 interface EmailLoginFormProps {
@@ -34,6 +35,9 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
     });
 
     if (result.success) {
+      // 로그인 성공 시 RN으로 토큰 전달
+      await handleLoginSuccess();
+
       // 로그인 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 이동
       const targetUrl = redirectTo || `/${lang}/main`;
       window.location.href = targetUrl;

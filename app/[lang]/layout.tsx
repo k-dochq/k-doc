@@ -6,7 +6,6 @@ import { MaxWidthLayout } from 'widgets/max-width-layout';
 import { GlobalModal } from 'shared/ui/global-modal';
 import { GradientBackground } from 'shared/ui/gradient-background/GradientBackground';
 import { GoogleAnalytics } from 'shared/ui/google-analytics';
-import { PushTokenListener } from 'shared/ui/push-token-listener';
 
 const pretendard = localFont({
   src: '../../fonts/pretendard/PretendardVariable.woff2',
@@ -128,7 +127,6 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
             <GradientBackground>{children}</GradientBackground>
           </MaxWidthLayout>
           <GlobalModal />
-          <PushTokenListener />
         </QueryProvider>
       </body>
     </html>
