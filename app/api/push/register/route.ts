@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('💥 푸시 토큰 등록 중 예외 발생:', error);
 
-    let errorMessage = '푸시 토큰 등록 중 오류가 발생했습니다';
+    const errorMessage = '푸시 토큰 등록 중 오류가 발생했습니다';
     let errorDetails = '알 수 없는 오류';
 
     if (error instanceof Error) {
