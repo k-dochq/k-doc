@@ -23,19 +23,31 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(response, { status: 400 });
     }
 
-    // Supabase 클라이언트 생성
+    // Authorization 헤더에서 토큰 추출
+    const authHeader = request.headers.get('authorization');
+    const accessToken = authHeader?.replace('Bearer ', '');
+
+    if (!accessToken) {
+      const response: PushTokenRegisterResponse = {
+        success: false,
+        error: '인증 토큰이 필요합니다',
+      };
+      return NextResponse.json(response, { status: 401 });
+    }
+
+    // Supabase 클라이언트 생성 (토큰 기반)
     const supabase = await createClient();
 
-    // 현재 사용자 정보 가져오기
+    // 토큰으로 사용자 정보 가져오기
     const {
       data: { user },
       error: authError,
-    } = await supabase.auth.getUser();
+    } = await supabase.auth.getUser(accessToken);
 
     if (authError || !user) {
       const response: PushTokenRegisterResponse = {
         success: false,
-        error: '인증이 필요합니다',
+        error: '유효하지 않은 인증 토큰입니다',
       };
       return NextResponse.json(response, { status: 401 });
     }
