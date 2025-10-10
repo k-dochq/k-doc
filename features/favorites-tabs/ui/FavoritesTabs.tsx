@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { FavoritesTabHeader } from './FavoritesTabHeader';
 import { FavoritesHospitalsTab } from './FavoritesHospitalsTab';
 import { FavoritesReviewsTab } from './FavoritesReviewsTab';
+import { FavoritesDoctorsTab } from './FavoritesDoctorsTab';
 
 interface FavoritesTabsProps {
   lang: Locale;
@@ -18,6 +19,7 @@ export function FavoritesTabs({ lang, dict }: FavoritesTabsProps) {
   const tabs = [
     { id: 0, label: dict.favorites?.hospitals || '병원' },
     { id: 1, label: dict.favorites?.reviews || '시술후기' },
+    { id: 2, label: dict.favorites?.doctors || '의사' },
   ];
 
   // 탭 클릭 핸들러
@@ -50,6 +52,15 @@ export function FavoritesTabs({ lang, dict }: FavoritesTabsProps) {
           }`}
         >
           <FavoritesReviewsTab lang={lang} dict={dict} />
+        </div>
+
+        {/* 의사 탭 */}
+        <div
+          className={`h-full overflow-y-auto transition-opacity duration-300 ${
+            activeTab === 2 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
+          }`}
+        >
+          <FavoritesDoctorsTab lang={lang} dict={dict} />
         </div>
       </div>
     </div>

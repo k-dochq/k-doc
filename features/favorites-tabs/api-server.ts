@@ -9,10 +9,12 @@ export { AuthService } from 'shared/lib/auth/server';
 export type { IAuthService } from 'shared/lib/auth/server';
 export { LikedHospitalsRepository } from './api/infrastructure/repositories/liked-hospitals-repository';
 export type { ILikedHospitalsRepository } from './api/infrastructure/repositories/liked-hospitals-repository';
+export { LikedDoctorsRepository } from './api/infrastructure/repositories/liked-doctors-repository';
 
 // Use Cases
 export { GetLikedHospitalsUseCase } from './api/use-cases/get-liked-hospitals';
 export type { IGetLikedHospitalsUseCase } from './api/use-cases/get-liked-hospitals';
 export { GetLikedReviewsUseCase } from './api-server/use-cases/get-liked-reviews';
 export { LikedReviewsRepository } from './api-server/repositories/liked-reviews-repository';
+export { GetLikedDoctorsUseCase } from './api/use-cases/get-liked-doctors';
 export type * from './api/use-cases/types';

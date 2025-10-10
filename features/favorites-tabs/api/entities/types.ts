@@ -43,3 +43,59 @@ export interface GetLikedReviewsResult {
   };
   error?: string;
 }
+
+// 좋아요한 의사 관련 타입
+export interface LikedDoctorsRequest {
+  page: number;
+  limit: number;
+}
+
+export interface LikedDoctorsResult {
+  success: boolean;
+  doctors: LikedDoctor[];
+  totalCount: number;
+  hasNextPage: boolean;
+  nextPage: number | null;
+  error?: string;
+}
+
+// Prisma 타입을 활용한 Doctor 타입 정의
+import { type Prisma, type MedicalSpecialtyType, type DoctorImageType } from '@prisma/client';
+
+// HospitalDoctor 타입과 호환되는 LikedDoctor 타입 정의
+export interface LikedDoctor {
+  id: string;
+  name: Prisma.JsonValue;
+  position?: Prisma.JsonValue;
+  description?: string;
+  genderType: 'MALE' | 'FEMALE';
+  hospital: {
+    id: string;
+    name: Prisma.JsonValue;
+  };
+  medicalSpecialties: Array<{
+    id: string;
+    name: Prisma.JsonValue;
+    specialtyType: MedicalSpecialtyType;
+    description?: Prisma.JsonValue | null;
+    order?: number | null;
+    isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+  }>;
+  doctorImages?: Array<{
+    id: string;
+    doctorId: string;
+    imageType: 'PROFILE';
+    imageUrl: string;
+    alt: string | null;
+    order: number | null;
+    isActive: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+  }>;
+  order?: number;
+  createdAt: Date;
+  updatedAt: Date;
+  isLiked: boolean;
+}
