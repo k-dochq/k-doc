@@ -9,14 +9,14 @@ export function SelectAllButton({
   isAllSelected,
   isPartiallySelected,
   onClick,
-  className,
+  className = '',
 }: SelectAllButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`flex h-4 w-4 items-center justify-center rounded transition-colors ${
+      className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded transition-colors ${
         isAllSelected || isPartiallySelected ? 'border-0' : 'border border-neutral-300'
-      } ${className || ''}`}
+      } ${className}`}
       style={{
         backgroundColor: isAllSelected
           ? '#da47ef'
