@@ -49,8 +49,6 @@ export function ChildDistrictList({
 
   const isAllSelected =
     childDistricts.length > 0 && selectedChildIds.length === childDistricts.length;
-  const isPartiallySelected =
-    selectedChildIds.length > 0 && selectedChildIds.length < childDistricts.length;
 
   if (!selectedParentId) {
     return (
@@ -82,12 +80,12 @@ export function ChildDistrictList({
       <div className='flex w-full items-center gap-2 px-4 pt-4 pb-3'>
         <SelectAllButton
           isAllSelected={isAllSelected}
-          isPartiallySelected={isPartiallySelected}
+          isPartiallySelected={false}
           onClick={isAllSelected ? onDeselectAll : onSelectAll}
         />
         <button
           onClick={isAllSelected ? onDeselectAll : onSelectAll}
-          className='text-[13px] leading-[18px] font-normal text-black transition-colors hover:text-neutral-600'
+          className='flex-1 text-left text-[13px] leading-[18px] font-normal text-black transition-colors hover:text-neutral-600 break-all'
         >
           {getParentDistrictName()} {dict.districtFilter?.selectAll || '전체'}
         </button>
