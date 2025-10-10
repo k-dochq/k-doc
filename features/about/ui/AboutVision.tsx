@@ -10,11 +10,11 @@ export function AboutVision({ dict }: AboutVisionProps) {
   return (
     <div className='mt-12'>
       <h2 className='text-primary text-2xl font-bold'>{dict.about.vision.title}</h2>
-      <div className='mt-6 space-y-6'>
-        {dict.about.vision.sections.map((section, index) => (
-          <div key={index}>
-            <GlassCard>
-              <div className='space-y-4'>
+      <div className='mt-6'>
+        <GlassCard>
+          <div className='space-y-6'>
+            {dict.about.vision.sections.map((section, index) => (
+              <div key={index} className='space-y-4'>
                 <div className='relative h-[224px] w-full overflow-hidden rounded-xl md:h-[316px]'>
                   <Image
                     src={`/images/${section.image}`}
@@ -49,9 +49,9 @@ export function AboutVision({ dict }: AboutVisionProps) {
                   )}
                 </div>
               </div>
-            </GlassCard>
+            ))}
           </div>
-        ))}
+        </GlassCard>
       </div>
     </div>
   );
