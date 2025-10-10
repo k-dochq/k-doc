@@ -15,3 +15,11 @@ export const likedReviewsRequestSchema = z.object({
 });
 
 export type LikedReviewsRequestSchema = z.infer<typeof likedReviewsRequestSchema>;
+
+// 좋아요한 의사 요청 스키마
+export const likedDoctorsRequestSchema = z.object({
+  page: z.number().int().min(1).default(1),
+  limit: z.number().int().min(1).max(50).default(10),
+});
+
+export type LikedDoctorsRequestSchema = z.infer<typeof likedDoctorsRequestSchema>;

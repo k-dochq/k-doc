@@ -427,6 +427,7 @@
     "title": "즐겨찾기",
     "hospitals": "병원",
     "reviews": "시술후기",
+    "doctors": "의사",
     "loading": "로딩 중...",
     "error": "데이터를 불러오는 중 오류가 발생했습니다.",
     "errorMessage": "네트워크 연결을 확인하고 잠시 후 다시 시도해주세요",
@@ -439,6 +440,10 @@
       "reviews": {
         "title": "찜한 리뷰가 없습니다",
         "description": "마음에 드는 리뷰를 찜해보세요"
+      },
+      "doctors": {
+        "title": "찜한 의사가 없습니다",
+        "description": "마음에 드는 의사를 찜해보세요"
       }
     },
     "loadingMore": "더 많은 데이터를 불러오는 중...",

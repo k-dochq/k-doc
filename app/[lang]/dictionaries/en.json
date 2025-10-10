@@ -427,6 +427,7 @@
     "title": "Favorites",
     "hospitals": "Hospitals",
     "reviews": "Reviews",
+    "doctors": "Doctors",
     "loading": "Loading...",
     "error": "An error occurred while loading data.",
     "errorMessage": "Please check your network connection and try again later",
@@ -439,6 +440,10 @@
       "reviews": {
         "title": "No saved reviews",
         "description": "Save reviews you like"
+      },
+      "doctors": {
+        "title": "No saved doctors",
+        "description": "Save doctors you like"
       }
     },
     "loadingMore": "Loading more data...",
