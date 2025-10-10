@@ -25,7 +25,7 @@ export function ImageModalCarousel({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
-        className={`${MAX_MOBILE_WIDTH_CLASS} bg-gradient-primary rounded-none border-none p-0 shadow-none`}
+        className={`${MAX_MOBILE_WIDTH_CLASS} bg-gradient-primary rounded-none sm:rounded-none border-none p-0 shadow-none`}
         style={{
           minHeight: '100dvh', // 동적 뷰포트 높이 지원
           height: '100dvh',

@@ -42,7 +42,7 @@ export function ImageModalCarouselContent({
   }, [api, initialIndex]);
 
   return (
-    <div className='flex h-full flex-col justify-center px-4'>
+    <div className='flex h-full flex-col justify-center'>
       <Carousel setApi={setApi} className='h-full w-full'>
         <CarouselContent className='h-full'>
           {images.map((imageItem, index) => (
@@ -57,7 +57,7 @@ export function ImageModalCarouselContent({
                 <img
                   src={imageItem.imageUrl}
                   alt={imageItem.alt || `Image ${index + 1}`}
-                  className='max-h-full max-w-full object-contain'
+                  className='h-auto w-full object-contain'
                   style={{
                     maxHeight:
                       'calc(100dvh - 8rem - var(--safe-area-inset-top) - var(--safe-area-inset-bottom))',
