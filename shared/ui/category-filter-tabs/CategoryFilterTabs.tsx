@@ -64,21 +64,24 @@ export function CategoryFilterTabs({
         className='w-full'
       >
         <CarouselContent className='-ml-2 pl-5'>
-          {allCategories.map((category) => {
+          {allCategories.map((category, index) => {
             const isSelected = selectedCategory === category.id;
+            const isLast = index === allCategories.length - 1;
 
             return (
               <CarouselItem key={category.id} className='basis-auto pl-2'>
-                <button
-                  onClick={() => onCategoryChange(category.id)}
-                  className={`flex min-w-[43px] shrink-0 items-center justify-center rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
-                    isSelected
-                      ? 'bg-primary hover:bg-primary/80 text-white'
-                      : 'border border-neutral-200 bg-white text-black hover:bg-neutral-100'
-                  }`}
-                >
-                  <span className='leading-4'>{getLabel(category)}</span>
-                </button>
+                <div className={isLast ? 'pr-5' : ''}>
+                  <button
+                    onClick={() => onCategoryChange(category.id)}
+                    className={`flex min-w-[43px] shrink-0 items-center justify-center rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors align-middle ${
+                      isSelected
+                        ? 'bg-primary hover:bg-primary/80 text-white border border-transparent'
+                        : 'border border-neutral-200 bg-white text-black hover:bg-neutral-100'
+                    }`}
+                  >
+                    <span className='leading-4'>{getLabel(category)}</span>
+                  </button>
+                </div>
               </CarouselItem>
             );
           })}
