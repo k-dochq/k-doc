@@ -56,6 +56,9 @@ export function ConsultationChatTab({ lang, dict }: ConsultationChatTabProps) {
     window.location.reload();
   };
 
+  // 임시: 빈 상태를 보기 위해 강제로 표시
+  return <ChatRoomEmptyState lang={lang} dict={dict} />;
+
   if (isLoading) {
     return <ChatRoomSkeleton count={3} />;
   }

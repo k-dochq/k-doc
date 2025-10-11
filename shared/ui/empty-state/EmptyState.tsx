@@ -20,10 +20,10 @@ export function EmptyState({ icon, title, description, className = '' }: EmptySt
         </div>
 
         {/* 제목 */}
-        <h3 className='mb-3 text-lg font-semibold text-gray-900'>{title}</h3>
+        <h3 className='mb-3 text-lg font-semibold' style={{color: '#EC6BFF'}}>{title}</h3>
 
         {/* 설명 */}
-        {description && <p className='max-w-sm text-sm text-gray-500'>{description}</p>}
+        {description && <p className='max-w-sm text-sm' style={{color: '#EC6BFF'}}>{description}</p>}
       </div>
     </div>
   );
