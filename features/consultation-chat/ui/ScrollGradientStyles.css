@@ -1,0 +1,118 @@
+/* 스크롤 그라데이션 성능 최적화를 위한 CSS */
+
+/* GPU 가속을 위한 하드웨어 가속 설정 */
+.scroll-gradient-container {
+  /* GPU 레이어 생성 */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* 하드웨어 가속 힌트 */
+  will-change: background;
+  
+  /* 부드러운 스크롤 */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 메시지 버블의 그라데이션 최적화 */
+.message-bubble-gradient {
+  /* GPU 가속 */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* 배경 변경 최적화 */
+  will-change: background;
+  
+  /* 부드러운 전환 */
+  transition: background 0.1s ease-out;
+  
+  /* 기본 그라데이션 (fallback) - 180도 Y축 */
+  background: var(--scroll-gradient, linear-gradient(180deg, #ae33fb, #da47ef, #6544fa));
+}
+
+/* 전체 스크롤 기반 메시지 버블 그라데이션 */
+.global-message-bubble-gradient {
+  /* GPU 가속 */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* 배경 변경 최적화 */
+  will-change: background;
+  
+  /* 부드러운 전환 */
+  transition: background 0.1s ease-out;
+  
+  /* 전체 스크롤 기반 그라데이션 (fallback) - 180도 Y축 */
+  background: var(--global-scroll-gradient, linear-gradient(180deg, #ae33fb, #da47ef, #6544fa));
+}
+
+/* 뷰포트 기반 메시지 버블 그라데이션 */
+.viewport-message-bubble-gradient {
+  /* GPU 가속 */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* 배경 변경 최적화 */
+  will-change: background;
+  
+  /* 부드러운 전환 */
+  transition: background 0.1s ease-out;
+  
+  /* 뷰포트 기반 그라데이션 (fallback) - 180도 Y축 */
+  background: linear-gradient(180deg, #ae33fb, #da47ef, #6544fa);
+}
+
+/* 스크롤 성능 최적화 */
+.optimized-scroll {
+  /* 스크롤 성능 향상 */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  
+  /* GPU 가속 */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* 스크롤 영역 최적화 */
+  contain: layout style paint;
+}
+
+/* 메시지 리스트 컨테이너 최적화 */
+.message-list-container {
+  /* 가상 스크롤링을 위한 최적화 */
+  contain: layout style paint;
+  
+  /* GPU 가속 */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  
+  /* 스크롤 성능 */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 반응형 그라데이션 조정 */
+@media (prefers-reduced-motion: reduce) {
+  .message-bubble-gradient {
+    transition: none;
+  }
+  
+  .scroll-gradient-container {
+    scroll-behavior: auto;
+  }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+  .message-bubble-gradient {
+    /* 다크 모드에서 더 부드러운 그라데이션 */
+    filter: brightness(0.9);
+  }
+}
+
+/* 고해상도 디스플레이 최적화 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .message-bubble-gradient {
+    /* 고해상도에서 더 선명한 그라데이션 */
+    image-rendering: -webkit-optimize-contrast;
+  }
+}

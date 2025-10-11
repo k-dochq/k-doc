@@ -44,6 +44,7 @@ export function ConsultationChatMain({
         isLoading={isLoadingHistory}
         lang={lang}
         dict={dict}
+        enableScrollGradient={true}
       />
 
       <ChatInput
