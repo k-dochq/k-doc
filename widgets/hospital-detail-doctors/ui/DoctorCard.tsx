@@ -88,100 +88,114 @@ export function DoctorCard({
   const paddingClasses = showBackground ? 'p-3' : '';
 
   return (
-    <div
-      className={`relative z-10 flex h-full items-start gap-3 transition-opacity active:opacity-80 ${backgroundClasses} ${paddingClasses}`}
-    >
-      {/* 프로필 이미지 */}
-      <div className='relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-xl'>
-        <Image
-          src={profileImage?.imageUrl || '/images/shared/default_image_square.png'}
-          alt={profileImage?.alt || `${doctorName} 의료진 프로필`}
-          fill
-          className='object-cover'
-          sizes='100px'
-        />
-      </div>
-
-      {/* 의료진 정보 */}
-      <div className='flex h-full w-full min-w-0 flex-col justify-between'>
-        <div className='flex min-w-0 flex-col'>
-          {/* 이름과 직책 */}
-          <div className='min-w-0'>
-            <h3 className='line-clamp-2 text-sm leading-tight font-semibold'>
-              {doctorName}
-              {position && (
-                <>
-                  <span className='mx-1'>·</span>
-                  {position}
-                </>
-              )}
-            </h3>
-          </div>
-
-          {/* 병원명 */}
-          {hospitalName && (
-            <p className='mt-0.5 min-w-0 truncate text-xs font-medium text-gray-600'>
-              {hospitalName}
-            </p>
-          )}
-
-          {/* 진료부위 태그 */}
-          <div className='mt-0.5 min-w-0'>
-            <MedicalSpecialtyTags
-              specialties={doctor.medicalSpecialties || []}
-              lang={lang}
-              maxDisplay={2}
-            />
-          </div>
+    <LocaleLink href={`/doctor/${doctor.id}`} className='block'>
+      <div
+        className={`relative z-10 flex items-stretch gap-3 transition-opacity active:opacity-80 ${backgroundClasses} ${paddingClasses} ${showBackground ? 'h-[124px]' : ''}`}
+      >
+        {/* 프로필 이미지 */}
+        <div className='relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-xl'>
+          <Image
+            src={profileImage?.imageUrl || '/images/shared/default_image_square.png'}
+            alt={profileImage?.alt || `${doctorName} 의료진 프로필`}
+            fill
+            className='object-cover'
+            sizes='100px'
+          />
         </div>
 
-        {/* 하단 액션 섹션 */}
-        <div className='mt-3 flex items-center justify-between'>
-          {/* 더보기 버튼 */}
-          {showMoreButton && (
-            <LocaleLink
-              href={`/doctor/${doctor.id}`}
-              className='text-primary flex items-center gap-1 text-xs font-medium transition-colors'
-            >
-              <span>{dict.review?.showMore || '더보기'}</span>
-              <span className='text-xs'>&gt;</span>
-            </LocaleLink>
-          )}
-
-          {/* 좋아요 버튼 */}
-          {showLikeButton && (
-            <div className='flex items-center gap-1'>
-              <button
-                onClick={handleLikeToggle}
-                disabled={isToggling}
-                className={`flex items-center justify-center transition-opacity ${
-                  isToggling ? 'cursor-not-allowed opacity-50' : 'hover:opacity-80'
-                }`}
-                aria-label={
-                  isLiked
-                    ? dict.review?.like?.liked || '좋아요 취소'
-                    : dict.review?.like?.like || '좋아요'
-                }
-              >
-                {isToggling ? (
-                  <LoadingIcon size={20} className='text-purple-600' />
-                ) : isLiked ? (
-                  <HeartIcon className='h-6 w-6 text-purple-600' />
-                ) : (
-                  <HeartOutlineIcon className='h-6 w-6 text-purple-600' />
+        {/* 의료진 정보 */}
+        <div className='flex flex-1 w-full min-w-0 flex-col justify-between'>
+          {/* 상단 정보 섹션 */}
+          <div className='flex min-w-0 flex-col'>
+            {/* 이름과 직책 */}
+            <div className='min-w-0'>
+              <h3 className='line-clamp-2 text-sm leading-tight font-semibold'>
+                {doctorName}
+                {position && (
+                  <>
+                    <span className='mx-1'>·</span>
+                    {position}
+                  </>
                 )}
-              </button>
-              {likeCount > 0 && (
-                <span
-                  className={`text-xs font-medium text-gray-600 ${isToggling ? 'opacity-70' : ''}`}
-                >
-                  {likeCount}
-                </span>
-              )}
+              </h3>
             </div>
-          )}
+
+            {/* 병원명 */}
+            {hospitalName && (
+              <p className='mt-1 min-w-0 truncate text-xs font-medium text-gray-600'>
+                {hospitalName}
+              </p>
+            )}
+
+            {/* 진료부위 태그 */}
+            <div className='mt-1 min-w-0'>
+              <MedicalSpecialtyTags
+                specialties={doctor.medicalSpecialties || []}
+                lang={lang}
+                maxDisplay={2}
+              />
+            </div>
+          </div>
+
+          {/* 하단 액션 섹션 */}
+          <div className='flex items-center justify-between'>
+            {/* 더보기 버튼 */}
+            {showMoreButton && (
+              <div className='text-primary flex items-center text-xs font-medium transition-colors'>
+                <span>{dict.review?.showMore || '더보기'}</span>
+                <svg
+                  width='16'
+                  height='16'
+                  viewBox='0 0 16 16'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    d='M6 12L10 8L6 4'
+                    stroke='currentColor'
+                    strokeWidth='1.5'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                  />
+                </svg>
+              </div>
+            )}
+
+            {/* 좋아요 버튼 */}
+            {showLikeButton && (
+              <div className='flex items-center gap-1'>
+                <button
+                  onClick={handleLikeToggle}
+                  disabled={isToggling}
+                  className={`flex items-center justify-center transition-opacity ${
+                    isToggling ? 'cursor-not-allowed opacity-50' : 'hover:opacity-80'
+                  }`}
+                  aria-label={
+                    isLiked
+                      ? dict.review?.like?.liked || '좋아요 취소'
+                      : dict.review?.like?.like || '좋아요'
+                  }
+                >
+                  {isToggling ? (
+                    <LoadingIcon size={20} className='text-purple-600' />
+                  ) : isLiked ? (
+                    <HeartIcon className='h-6 w-6 text-purple-600' />
+                  ) : (
+                    <HeartOutlineIcon className='h-6 w-6 text-purple-600' />
+                  )}
+                </button>
+                {likeCount > 0 && (
+                  <span
+                    className={`text-xs font-medium text-gray-600 ${isToggling ? 'opacity-70' : ''}`}
+                  >
+                    {likeCount}
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </LocaleLink>
   );
 }
