@@ -38,7 +38,7 @@ export function ReviewCarousel({
   lang,
   dict,
   className = '',
-  itemClassName = 'pl-2 md:pl-4',
+  itemClassName = 'pl-3 md:pl-4',
   showNavigation = false,
   showProgressBar = false,
   loop = true,
@@ -99,7 +99,7 @@ export function ReviewCarousel({
         }}
         className='w-full'
       >
-        <CarouselContent className='ml-1'>
+        <CarouselContent className='ml-3'>
           {items.map((item) => (
             <CarouselItem key={item.id} className={`${basis} ${itemClassName}`}>
               <PopularReviewCard review={item} lang={lang} dict={dict} noBorder={noBorder} />
