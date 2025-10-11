@@ -29,21 +29,19 @@ export function RequiredInput({
           {label}
         </span>
       </label>
-      <div
-        className='rounded-xl p-[2px]'
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        disabled={disabled}
+        className='w-full rounded-xl border border-transparent px-4 py-4 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         style={{
-          background: 'linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
+          backgroundImage: 'linear-gradient(white, white), linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box',
         }}
-      >
-        <input
-          type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          disabled={disabled}
-          className='w-full rounded-xl border-0 bg-white px-4 py-4 text-sm text-neutral-900 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
-        />
-      </div>
+      />
       {error && <p className='text-sm leading-5 text-red-500'>{error}</p>}
     </div>
   );

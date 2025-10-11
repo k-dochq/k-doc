@@ -10,7 +10,6 @@ import { useUserProfile } from 'features/user-profile/model/useUserProfile';
 import { FormInput } from './FormInput';
 import { FormTextarea } from './FormTextarea';
 import { FormSelect } from './FormSelect';
-import { FormRadioGroup } from './FormRadioGroup';
 import { FormCheckbox } from './FormCheckbox';
 import { SubmitButton } from './SubmitButton';
 import { FormDatePicker } from './FormDatePicker';
@@ -73,6 +72,12 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
     if (!formData.name.trim()) {
       validationErrors.push(
         dict.consultation?.request?.form?.errors?.name?.required || '이름을 입력해주세요.',
+      );
+    }
+
+    if (!formData.gender) {
+      validationErrors.push(
+        dict.consultation?.request?.form?.errors?.gender?.required || '성별을 선택해주세요.',
       );
     }
 
@@ -200,10 +205,10 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 성별 */}
-      <FormRadioGroup
+      <FormSelect
         label={dict.consultation?.request?.form?.gender?.label || '성별'}
         value={formData.gender}
-        onChange={(value) => updateField('gender', value as 'MALE' | 'FEMALE')}
+        onChange={(value) => updateField('gender', value as 'MALE' | 'FEMALE' | '')}
         options={GENDER_OPTIONS.map((option) => ({
           value: option.value,
           label:
@@ -211,6 +216,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
               ? dict.consultation?.request?.form?.gender?.male || '남성'
               : dict.consultation?.request?.form?.gender?.female || '여성',
         }))}
+        placeholder={dict.consultation?.request?.form?.gender?.placeholder || 'Select your gender'}
         error={errors.gender}
       />
 
@@ -243,7 +249,8 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         disabled={consultationMutation.isPending}
         lang={lang}
         dict={dict}
-        required={true}
+        required={false}
+        hideRequiredLabel={true}
       />
 
       {/* 예약 희망 날짜 */}

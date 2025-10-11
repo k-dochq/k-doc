@@ -7,12 +7,54 @@ import { LocaleLink } from 'shared/ui/locale-link';
 import { useEmailLoginForm } from 'features/email-auth/model/useEmailLoginForm';
 import { useEmailLogin } from 'features/email-auth/model/useEmailLogin';
 import { handleLoginSuccess } from 'shared/lib/auth/handle-login-success';
-import { RequiredInput } from './inputs/RequiredInput';
 
 interface EmailLoginFormProps {
   lang: Locale;
   dict: Dictionary;
   redirectTo?: string;
+}
+
+// 로그인 페이지 전용 Input 컴포넌트 (필수 표시 제거)
+interface LoginInputProps {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  error?: string;
+  disabled?: boolean;
+  type?: 'text' | 'email' | 'password';
+}
+
+function LoginInput({
+  label,
+  value,
+  onChange,
+  placeholder,
+  error,
+  disabled = false,
+  type = 'text',
+}: LoginInputProps) {
+  return (
+    <div className='flex w-full flex-col gap-2'>
+      <label className='text-sm leading-5 font-medium text-neutral-900'>
+        {label}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        disabled={disabled}
+        className='w-full rounded-xl border border-transparent px-4 py-4 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+        style={{
+          backgroundImage: 'linear-gradient(white, white), linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box',
+        }}
+      />
+      {error && <p className='text-sm leading-5 text-red-500'>{error}</p>}
+    </div>
+  );
 }
 
 export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) {
@@ -48,7 +90,7 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
     <div className='flex w-full flex-col gap-5'>
       <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
         {/* 이메일 입력 */}
-        <RequiredInput
+        <LoginInput
           label={dict.auth?.login?.email || '이메일'}
           value={formData.email}
           onChange={(value) => updateField('email', value)}
@@ -56,11 +98,10 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
           error={errors.email}
           disabled={isLoading}
           type='email'
-          dict={dict}
         />
 
         {/* 비밀번호 입력 */}
-        <RequiredInput
+        <LoginInput
           label={dict.auth?.login?.password || '비밀번호'}
           value={formData.password}
           onChange={(value) => updateField('password', value)}
@@ -68,7 +109,6 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
           error={errors.password}
           disabled={isLoading}
           type='password'
-          dict={dict}
         />
 
         {/* 에러 메시지 */}

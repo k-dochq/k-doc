@@ -1,6 +1,6 @@
 export interface ConsultationFormData {
   name: string;
-  gender: 'MALE' | 'FEMALE';
+  gender: 'MALE' | 'FEMALE' | '';
   ageGroup: string;
   countryCode: string;
   phoneNumberOnly: string;

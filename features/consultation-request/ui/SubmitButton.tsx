@@ -8,7 +8,7 @@ interface SubmitButtonProps {
 
 export function SubmitButton({ onClick, disabled = false, children }: SubmitButtonProps) {
   return (
-    <div className='px-5 pt-4 pb-10'>
+    <div className='pt-4 pb-10'>
       <button
         type='button'
         onClick={onClick}

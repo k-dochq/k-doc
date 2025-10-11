@@ -35,7 +35,13 @@ export function OptionalInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder={type === 'date' ? dict?.auth?.signup?.dateFormat || '연도.월.일' : placeholder}
         disabled={disabled}
-        className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+        className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 text-sm text-neutral-900 focus:border-transparent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+        style={{
+          backgroundImage: 'linear-gradient(white, white), linear-gradient(90deg, rgb(255, 96, 247) 0%, rgb(174, 51, 251) 100%)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box',
+          backgroundSize: '100% 100%, 100% 100%',
+        }}
       />
       {error && <p className='text-sm leading-5 text-red-500'>{error}</p>}
     </div>

@@ -3,8 +3,8 @@
 import { useState } from 'react';
 // ChevronDown 아이콘 SVG 컴포넌트
 const ChevronDownIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+  <svg className={className} width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path d='M16.25 7.08325L10.4167 12.9166L4.58333 7.08325' stroke='#A3A3A3' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
   </svg>
 );
 
@@ -46,7 +46,40 @@ export function FormSelect({
         <button
           type='button'
           onClick={() => setIsOpen(!isOpen)}
-          className={`flex w-full items-center justify-between rounded-xl border bg-white px-4 py-4 text-left text-sm leading-5 focus:border-transparent focus:ring-2 focus:ring-[#da47ef] focus:outline-none ${error ? 'border-red-500' : 'border-neutral-300'} ${!selectedOption ? 'text-neutral-400' : 'text-neutral-900'} `}
+          className={`flex w-full items-center justify-between rounded-xl border px-4 py-4 text-left text-sm leading-5 focus:outline-none ${error ? 'border-red-500' : ''} ${
+            value ? 'border-transparent' : 'border-neutral-300'
+          } ${!selectedOption ? 'text-neutral-400' : 'text-neutral-900'} `}
+          style={{
+            backgroundColor: 'white',
+            backgroundImage: value 
+              ? 'linear-gradient(white, white), linear-gradient(90deg, rgb(255, 96, 247) 0%, rgb(174, 51, 251) 100%)'
+              : 'white',
+            backgroundOrigin: value ? 'border-box' : undefined,
+            backgroundClip: value 
+              ? 'padding-box, border-box'
+              : undefined,
+            backgroundSize: value 
+              ? '100% 100%, 100% 100%'
+              : undefined,
+          }}
+          onFocus={(e) => {
+            if (!value) {
+              e.target.style.backgroundImage = 'linear-gradient(white, white), linear-gradient(90deg, rgb(255, 96, 247) 0%, rgb(174, 51, 251) 100%)';
+              e.target.style.backgroundOrigin = 'border-box';
+              e.target.style.backgroundClip = 'padding-box, border-box';
+              e.target.style.backgroundSize = '100% 100%, 100% 100%';
+              e.target.style.borderColor = 'transparent';
+            }
+          }}
+          onBlur={(e) => {
+            if (!value) {
+              e.target.style.backgroundImage = 'white';
+              e.target.style.backgroundOrigin = 'initial';
+              e.target.style.backgroundClip = 'initial';
+              e.target.style.backgroundSize = 'initial';
+              e.target.style.borderColor = '';
+            }
+          }}
         >
           <span>{selectedOption?.label || placeholder}</span>
           <ChevronDownIcon

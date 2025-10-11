@@ -8,7 +8,7 @@ import { type ConsultationFormData, type ConsultationFormErrors } from './types'
 
 const initialFormData: ConsultationFormData = {
   name: '',
-  gender: 'MALE',
+  gender: '',
   ageGroup: '',
   countryCode: '',
   phoneNumberOnly: '',
@@ -66,7 +66,7 @@ export function useConsultationForm(
       setFormData((prev) => ({
         ...prev,
         name: prev.name || updates.name || '',
-        gender: prev.gender === 'MALE' ? updates.gender || prev.gender : prev.gender,
+        gender: prev.gender || updates.gender || '',
         countryCode: prev.countryCode || updates.countryCode || '',
         phoneNumberOnly: prev.phoneNumberOnly || updates.phoneNumberOnly || '',
       }));
@@ -97,6 +97,10 @@ export function useConsultationForm(
 
     if (!formData.name.trim()) {
       newErrors.name = getErrorMessage('name', 'required');
+    }
+
+    if (!formData.gender) {
+      newErrors.gender = getErrorMessage('gender', 'required');
     }
 
     if (!formData.ageGroup) {
@@ -142,6 +146,7 @@ export function useConsultationForm(
   const isFormValid = () => {
     return (
       formData.name.trim() &&
+      formData.gender &&
       formData.ageGroup &&
       formData.countryCode.trim() &&
       formData.phoneNumberOnly.trim() &&
