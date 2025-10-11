@@ -90,7 +90,7 @@ export function DoctorCard({
   return (
     <LocaleLink href={`/doctor/${doctor.id}`} className='block'>
       <div
-        className={`relative z-10 flex items-stretch gap-3 transition-opacity active:opacity-80 ${backgroundClasses} ${paddingClasses} ${showBackground ? 'h-[124px]' : ''}`}
+        className={`relative z-10 flex items-stretch gap-3 transition-opacity active:opacity-80 ${backgroundClasses} ${paddingClasses} ${showBackground ? 'min-h-[124px]' : ''}`}
       >
         {/* 프로필 이미지 */}
         <div className='relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden rounded-xl'>
