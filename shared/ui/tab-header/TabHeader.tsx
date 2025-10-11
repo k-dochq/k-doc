@@ -16,17 +16,16 @@ interface TabHeaderProps {
 
 export function TabHeader({ tabs, activeTab, onTabClick, className }: TabHeaderProps) {
   return (
-    <div className={cn('flex border-b border-gray-200 bg-white/20', className)}>
+    <div className={cn('flex border-t border-white/60 bg-white/20', className)}>
       {tabs.map((tab, index) => (
         <button
           key={tab.id}
           onClick={() => onTabClick(index)}
           className={cn(
-            'flex-1 px-4 py-3 text-center text-sm font-semibold transition-colors',
-            'border-b-2 border-transparent',
+            'flex-1 px-4 py-3 text-center text-sm font-medium transition-colors',
             activeTab === index
-              ? 'border-primary text-primary'
-              : 'text-primary/50 hover:text-primary/80',
+              ? 'border-primary text-primary border-b-2'
+              : 'border-primary/50 text-primary/50 border-b-1',
           )}
         >
           {tab.label}
