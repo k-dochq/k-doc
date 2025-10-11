@@ -26,7 +26,7 @@ interface ViewportGradientResult {
   /**
    * 요소 참조
    */
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLElement | null>;
 }
 
 /**
@@ -37,13 +37,13 @@ export function useViewportGradient({
   colors,
   scrollContainer,
 }: UseViewportGradientOptions): ViewportGradientResult {
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLElement | null>(null);
   const [state, setState] = useState<{ gradient: string; position: number }>({
     gradient: '',
     position: 0,
   });
 
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   // 색상 보간 함수
   const interpolateColor = useCallback(
@@ -56,12 +56,12 @@ export function useViewportGradient({
     []
   );
 
-  // 그라데이션 문자열 생성
+  // 뷰포트 위치에 따른 단색 생성 함수
   const generateGradient = useCallback(
     (progress: number): string => {
       if (colors.length < 2) return '';
 
-      // 진행률에 따른 색상 인덱스 계산
+      // 뷰포트 위치(progress)에 따라 해당하는 색상 계산
       const scaledProgress = progress * (colors.length - 1);
       const colorIndex = Math.floor(scaledProgress);
       const colorFactor = scaledProgress - colorIndex;
@@ -69,23 +69,26 @@ export function useViewportGradient({
       // 마지막 색상인 경우
       if (colorIndex >= colors.length - 1) {
         const [r, g, b] = colors[colors.length - 1];
-        return `linear-gradient(180deg, rgb(${r}, ${g}, ${b}), rgb(${r}, ${g}, ${b}))`;
+        return `rgb(${r}, ${g}, ${b})`;
       }
 
-      // 두 색상 사이 보간
+      // 두 색상 사이 부드러운 보간
       const color1 = colors[colorIndex];
       const color2 = colors[colorIndex + 1];
-      const interpolatedColor = interpolateColor(color1, color2, colorFactor);
+      
+      // 더 부드러운 7차 함수로 완전히 자연스러운 전환
+      const t = colorFactor;
+      const smoothFactor = t * t * t * t * (t * (t * (t * -20 + 70) - 84) + 35);
+      
+      const interpolatedColor = interpolateColor(color1, color2, smoothFactor);
 
-      const [r1, g1, b1] = color1;
-      const [r2, g2, b2] = interpolatedColor;
-
-      return `linear-gradient(180deg, rgb(${r1}, ${g1}, ${b1}), rgb(${r2}, ${g2}, ${b2}))`;
+      const [r, g, b] = interpolatedColor;
+      return `rgb(${r}, ${g}, ${b})`;
     },
     [colors, interpolateColor]
   );
 
-  // 메시지의 뷰포트 내 위치 계산
+  // 메시지의 전체 채팅 영역 내 위치 계산
   const calculateViewportPosition = useCallback((): number => {
     if (!elementRef.current) return 0;
 
@@ -95,25 +98,30 @@ export function useViewportGradient({
     let viewportTop: number;
     let viewportHeight: number;
     
+    // GNB 높이와 입력창 높이를 제외한 실제 채팅 영역 계산
+    const GNB_HEIGHT = 64; // GNB 높이 (px)
+    const INPUT_AREA_HEIGHT = 160; // 입력창 영역 높이 (px)
+    
     if (container === window) {
-      viewportTop = 0;
-      viewportHeight = window.innerHeight;
+      viewportTop = GNB_HEIGHT;
+      viewportHeight = window.innerHeight - GNB_HEIGHT - INPUT_AREA_HEIGHT;
     } else {
       const containerRect = (container as HTMLElement).getBoundingClientRect();
+      // 컨테이너가 있는 경우, 컨테이너의 위치를 기준으로 조정
       viewportTop = containerRect.top;
       viewportHeight = (container as HTMLElement).clientHeight;
     }
 
     const elementRect = element.getBoundingClientRect();
     
-    // 요소의 중앙점 계산
+    // 요소의 중앙점 기준으로 계산
     const elementCenter = elementRect.top + elementRect.height / 2;
     
-    // 뷰포트 내에서의 상대적 위치 (0-1)
-    // 0 = 뷰포트 상단, 1 = 뷰포트 하단
-    const relativePosition = (elementCenter - viewportTop) / viewportHeight;
+    // GNB와 입력창을 제외한 실제 채팅 영역 기준으로 위치 계산
+    // 0 = 채팅 영역 상단, 1 = 채팅 영역 하단
+    let relativePosition = (elementCenter - viewportTop) / viewportHeight;
     
-    // 0-1 범위로 제한
+    // 0-1 범위로 완전한 뷰포트 사용
     return Math.max(0, Math.min(1, relativePosition));
   }, [scrollContainer]);
 
@@ -144,7 +152,7 @@ export function useViewportGradient({
     // 초기 그라데이션 설정
     updateGradient();
 
-    // Intersection Observer 설정
+    // Intersection Observer 설정 (매우 세밀한 업데이트)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -155,8 +163,8 @@ export function useViewportGradient({
       },
       {
         root: scrollContainer,
-        rootMargin: '50px',
-        threshold: [0, 0.25, 0.5, 0.75, 1.0],
+        rootMargin: '150px', // 더 넓은 범위에서 관찰
+        threshold: Array.from({ length: 21 }, (_, i) => i * 0.05), // 0.05 간격으로 세밀하게 관찰
       }
     );
 
@@ -195,9 +203,15 @@ export function useViewportGradient({
  */
 export const VIEWPORT_GRADIENT_COLORS = {
   purple: [
-    [174, 51, 251], // #ae33fb
-    [218, 71, 239], // #da47ef
-    [101, 68, 250], // #6544fa
+    [174, 51, 251], // #ae33fb - 보라 (0%)
+    [182, 55, 249], // 보라 12.5%
+    [191, 59, 247], // 보라-핑크 25%
+    [199, 63, 244], // 보라-핑크 37.5%
+    [207, 67, 242], // 핑크 50% (중간)
+    [191, 68, 243], // 핑크-파랑 62.5%
+    [175, 69, 243], // 핑크-파랑 75%
+    [138, 69, 246], // 파랑 87.5%
+    [101, 68, 250], // #6544fa - 파랑 (100%)
   ],
   blue: [
     [64, 93, 230], // #405de6

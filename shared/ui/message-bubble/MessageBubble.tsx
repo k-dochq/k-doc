@@ -34,20 +34,18 @@ export function MessageBubble({
     hospital: 'bg-neutral-100',
   };
 
-  // GPU 가속을 위한 will-change 속성 추가
-  const gpuAccelerationStyle = enableScrollGradient && variant === 'user' 
-    ? { willChange: 'background' as const }
-    : {};
-
   // 커스텀 그라데이션이 있으면 인라인 스타일로 적용
   const customStyle = customGradient && enableScrollGradient && variant === 'user'
-    ? { background: customGradient }
+    ? { 
+        background: customGradient,
+        willChange: 'background' as const
+      }
     : {};
 
   return (
     <div 
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
-      style={{ ...gpuAccelerationStyle, ...customStyle }}
+      style={customStyle}
     >
       {children}
     </div>
