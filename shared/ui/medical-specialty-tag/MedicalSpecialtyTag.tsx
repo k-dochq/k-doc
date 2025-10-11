@@ -11,7 +11,7 @@ export function MedicalSpecialtyTag({ name, className = '' }: MedicalSpecialtyTa
     <div
       className={`flex items-center justify-center gap-2.5 rounded bg-gradient-to-r from-[#C853FF] to-[#5667FF] px-1 py-0.5 ${className}`}
     >
-      <span className='max-w-[80px] truncate text-xs font-medium text-white' title={name}>
+      <span className='text-xs font-medium text-white' title={name}>
         {name}
       </span>
     </div>

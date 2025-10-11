@@ -71,12 +71,11 @@ export function HospitalInfo({
           specialties={medicalSpecialties}
           lang={lang}
           maxDisplay={3}
-          className='mt-1'
         />
       )}
 
       {/* 평점 정보 */}
-      <div className='mt-1 flex min-w-0 items-center gap-1'>
+      <div className='flex min-w-0 items-center gap-1'>
         <div className='flex min-w-0 gap-0.5'>
           <StarIcon width={16} height={16} />
           <span className='min-w-0 truncate text-xs font-medium text-neutral-900'>

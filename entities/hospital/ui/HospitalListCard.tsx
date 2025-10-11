@@ -51,11 +51,7 @@ export function HospitalListCard({
 
           <HospitalCardName hospital={hospital} lang={lang} />
 
-          <div className='h-[6px]' />
-
           <HospitalCardTags hospital={hospital} lang={lang} />
-
-          <div className='h-2' />
 
           <HospitalCardRating hospital={hospital} />
         </div>
