@@ -29,28 +29,27 @@ export function RequiredSelect({
           {label}
         </span>
       </label>
-      <div
-        className='rounded-xl p-[2px]'
-        style={{
-          background: 'linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
-        }}
-      >
+      <div className='relative'>
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
-          className='w-full rounded-xl border-0 bg-white px-4 py-4 pr-8 text-sm text-neutral-900 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+          className='w-full rounded-xl border border-transparent px-4 py-4 pr-8 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
           style={{
             appearance: 'none',
-            backgroundImage: `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M16.25 7.08325L10.4167 12.9166L4.58333 7.08325' stroke='%23A3A3A3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '20px',
-            backgroundPosition: 'right 12px center',
+            backgroundImage: `linear-gradient(white, white), linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)`,
+            backgroundOrigin: 'border-box',
+            backgroundClip: 'padding-box, border-box',
           }}
         >
           <option value=''>{placeholder}</option>
           {children}
         </select>
+        <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
+          <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M16.25 7.08325L10.4167 12.9166L4.58333 7.08325' stroke='#A3A3A3' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
+          </svg>
+        </div>
       </div>
       {error && <p className='text-sm leading-5 text-red-500'>{error}</p>}
     </div>
