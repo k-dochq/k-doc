@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from '../model/types';
@@ -26,6 +27,20 @@ interface ReviewDetailContentProps {
 export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentProps) {
   const title = dict.reviewDetail?.title || '시술후기';
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
+
+  // URL 해시에 따라 자동 스크롤
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // 약간의 지연을 두고 스크롤 (DOM이 완전히 로드된 후)
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   return (
     <div className=''>

@@ -22,7 +22,7 @@ export function ReviewHospitalSection({
 }: ReviewHospitalSectionProps) {
   return (
     <div className={className}>
-      <h3 className='mb-4 text-base font-semibold text-neutral-900'>
+      <h3 className='mb-4 text-base font-bold text-neutral-900'>
         {dict.reviewDetail.hospital}
       </h3>
       <div className='rounded-xl'>

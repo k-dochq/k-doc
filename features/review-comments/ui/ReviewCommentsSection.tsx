@@ -19,7 +19,7 @@ export function ReviewCommentsSection({ reviewId, lang, dict }: ReviewCommentsSe
   const totalComments = data?.pages.reduce((total, page) => total + page.comments.length, 0) || 0;
 
   return (
-    <div className='mt-6 bg-white/50 backdrop-blur-[6px]'>
+    <div id='comments' className='mt-6 bg-white/50 backdrop-blur-[6px]'>
       <div className='px-5 pt-5 pb-8'>
         <h3 className='text-base font-bold'>
           {dict.comments?.title || '댓글'} {totalComments > 0 && `${totalComments}개`}

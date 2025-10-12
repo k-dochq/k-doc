@@ -60,7 +60,7 @@ export function CommentForm({ reviewId, lang, dict }: CommentFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='bg-white px-5 pb-7'>
+    <form id='comment-form' onSubmit={handleSubmit} className='bg-white px-5 pb-7'>
       <div className='relative flex items-center justify-between bg-white py-4'>
         <input
           type='text'
