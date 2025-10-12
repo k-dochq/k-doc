@@ -66,7 +66,7 @@ export function HospitalDetailReviews({
       {/* 섹션 헤더 */}
       <div className='flex items-center justify-between px-5'>
         <div className='flex items-center gap-1'>
-          <h2 className='text-base leading-6 font-semibold'>
+          <h2 className='text-base leading-6 font-bold'>
             {title || dict.hospitalDetailReviews.title}
           </h2>
         </div>

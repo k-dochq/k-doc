@@ -60,7 +60,7 @@ export function HospitalDetailConsultationFloating({
 
   return (
     <div
-      className={`fixed right-0 bottom-0 left-0 z-50 mx-auto px-5 py-4 ${MAX_MOBILE_WIDTH_CLASS}`}
+      className={`fixed right-0 bottom-0 left-0 z-50 mx-auto px-5 pt-4 pb-10 ${MAX_MOBILE_WIDTH_CLASS}`}
     >
       <button
         onClick={handleConsultationRequest}

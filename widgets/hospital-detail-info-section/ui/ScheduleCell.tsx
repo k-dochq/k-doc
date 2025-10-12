@@ -6,7 +6,7 @@ export function ScheduleCell({ day, dayIndex, schedule, lang }: ScheduleCellProp
 
   return (
     <div
-      className={`px-1 py-3 text-center ${dayIndex < 6 ? 'border-r border-[#F4A8FF]' : ''} ${
+      className={`py-3 text-center ${dayIndex < 6 ? 'border-r border-[#F4A8FF]' : ''} ${
         isHoliday ? 'bg-gradient-to-b from-[#FFBCF4] to-[#AB7DFF]' : 'bg-white'
       }`}
     >

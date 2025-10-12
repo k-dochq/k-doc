@@ -41,7 +41,7 @@ export function HospitalInfo({
       <div className='flex min-w-0 items-center gap-1 text-xs font-medium text-neutral-500'>
         <span className='shrink-0'>{dict.hospital.region}</span>
         <div className='h-2.5 w-px shrink-0 bg-neutral-500'></div>
-        <span className='min-w-0 truncate'>{getLocalizedTextByLocale(address, lang)}</span>
+        <span className='min-w-0'>{getLocalizedTextByLocale(address, lang)}</span>
       </div>
 
       {/* 병원명 */}
