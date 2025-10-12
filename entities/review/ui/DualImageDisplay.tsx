@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { type DisplayImage } from '../model/types';
 import { ImageTag } from './ImageTag';
+import { SmartImage } from './SmartImage';
 
 interface DualImageDisplayProps {
   images: [DisplayImage, DisplayImage];
@@ -35,14 +35,12 @@ export function DualImageDisplay({
   };
 
   return (
-    <div className={`flex h-full flex-col ${className}`}>
+    <div className={`grid h-full w-full grid-rows-2 gap-[1px] ${className}`}>
       {/* 첫 번째 이미지 (태그 포함) */}
-      <div className='relative flex-1 cursor-pointer overflow-hidden' onClick={onFirstImageClick}>
-        <Image
+      <div className='relative aspect-square cursor-pointer overflow-hidden bg-[#F9D1FF]' onClick={onFirstImageClick}>
+        <SmartImage
           src={firstImageError ? '/images/shared/default_image.png' : firstImage.imageUrl}
           alt={firstImage.alt || `${type === 'before' ? 'Before' : 'After'} 이미지 1`}
-          fill
-          className='object-cover'
           sizes='(max-width: 768px) 50vw, 168px'
           onError={handleFirstImageError}
         />
@@ -51,14 +49,12 @@ export function DualImageDisplay({
 
       {/* 두 번째 이미지 */}
       <div
-        className='relative flex-1 cursor-pointer overflow-hidden border-t border-white'
+        className='relative aspect-square cursor-pointer overflow-hidden bg-[#F9D1FF]'
         onClick={onSecondImageClick}
       >
-        <Image
+        <SmartImage
           src={secondImageError ? '/images/shared/default_image.png' : secondImage.imageUrl}
-          alt={secondImage.alt || `${type === 'before' ? 'Before' : 'After'} 이미지 2`}
-          fill
-          className='object-cover'
+          alt={secondImage.alt || `${type === 'before' ? 'After' : 'After'} 이미지 2`}
           sizes='(max-width: 768px) 50vw, 168px'
           onError={handleSecondImageError}
         />

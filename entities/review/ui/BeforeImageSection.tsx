@@ -12,6 +12,8 @@ interface BeforeImageSectionProps {
   lang: Locale;
   onImageClick: (index: number) => void;
   className?: string;
+  shouldLimitDisplay?: boolean; // Before/After 모두 2개 이상일 때 3개로 제한하는 플래그
+  totalBeforeCount?: number; // 전체 Before 이미지 개수
 }
 
 export function BeforeImageSection({
@@ -20,6 +22,8 @@ export function BeforeImageSection({
   lang,
   onImageClick,
   className = '',
+  shouldLimitDisplay = false,
+  totalBeforeCount = 0,
 }: BeforeImageSectionProps) {
   // 기본 이미지 설정 [[memory:8795787]]
   const defaultImage: DefaultImage = {
@@ -31,7 +35,8 @@ export function BeforeImageSection({
   const displayBeforeImages = beforeImages.length > 0 ? beforeImages.slice(0, 2) : [defaultImage];
 
   // 추가 이미지 개수 계산
-  const additionalImagesCount = beforeImages.length > 2 ? beforeImages.length - 2 : 0;
+  // shouldLimitDisplay가 true이면 Before 영역에서는 추가 이미지 표시 안 함 (After 영역에서 표시)
+  const additionalImagesCount = shouldLimitDisplay ? 0 : (beforeImages.length > 2 ? beforeImages.length - 2 : 0);
 
   const handleImageClick = (imageIndex: number) => (e: React.MouseEvent) => {
     // 이벤트 전파를 막아서 상위 LocaleLink가 동작하지 않도록 함
@@ -43,7 +48,7 @@ export function BeforeImageSection({
   };
 
   return (
-    <div className={`flex h-full flex-1 flex-col ${className}`}>
+    <div className={`flex h-full w-full flex-col ${className}`}>
       {displayBeforeImages.length === 1 ? (
         <SingleImageDisplay
           image={displayBeforeImages[0]}
