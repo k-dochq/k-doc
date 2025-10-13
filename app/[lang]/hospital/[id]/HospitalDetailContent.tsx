@@ -49,18 +49,18 @@ export async function HospitalDetailContent({
           <HospitalDetailInfo hospital={hospital} lang={lang} dict={dict} />
         </div>
 
-        <div className='h-[33px]' />
+        <div className='h-[32px]' />
 
         {/* 탭 기반 컨텐츠 */}
         <HospitalDetailTabs hospital={hospital} hospitalId={hospitalId} lang={lang} dict={dict} />
 
         {/* 리뷰 후기 섹션 */}
-        <div className='pt-8'>
+        <div className='py-12'>
           <HospitalDetailReviews hospitalId={hospitalId} lang={lang} dict={dict} />
         </div>
 
         {/* 하단 고정 버튼을 위한 여백 */}
-        <div className='h-24' />
+        <div className='h-28' />
 
         {/* 하단 고정 상담신청 버튼 */}
         <HospitalDetailConsultationFloating hospitalId={hospitalId} lang={lang} dict={dict} />

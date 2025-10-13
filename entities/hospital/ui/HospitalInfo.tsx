@@ -41,7 +41,7 @@ export function HospitalInfo({
       <div className='flex min-w-0 items-center gap-1 text-xs font-medium text-neutral-500'>
         <span className='shrink-0'>{dict.hospital.region}</span>
         <div className='h-2.5 w-px shrink-0 bg-neutral-500'></div>
-        <span className='min-w-0 truncate'>{getLocalizedTextByLocale(address, lang)}</span>
+        <span className='min-w-0'>{getLocalizedTextByLocale(address, lang)}</span>
       </div>
 
       {/* 병원명 */}
@@ -71,12 +71,11 @@ export function HospitalInfo({
           specialties={medicalSpecialties}
           lang={lang}
           maxDisplay={3}
-          className='mt-1'
         />
       )}
 
       {/* 평점 정보 */}
-      <div className='mt-1 flex min-w-0 items-center gap-1'>
+      <div className='flex min-w-0 items-center gap-1'>
         <div className='flex min-w-0 gap-0.5'>
           <StarIcon width={16} height={16} />
           <span className='min-w-0 truncate text-xs font-medium text-neutral-900'>

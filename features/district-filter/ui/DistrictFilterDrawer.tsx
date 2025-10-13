@@ -9,12 +9,14 @@ import { ChildDistrictList } from './ChildDistrictList';
 import { DistrictFilterButton } from './DistrictFilterButton';
 import { useChildDistricts } from '../model/useDistricts';
 import { type useDistrictFilter } from '../model/useDistrictFilter';
+import type { District } from '../model/types';
 
 interface DistrictFilterDrawerProps {
   lang: Locale;
   dict: Dictionary;
   onClose?: () => void;
   districtFilter: ReturnType<typeof useDistrictFilter>;
+  parentDistricts: District[];
 }
 
 export function DistrictFilterDrawer({
@@ -22,8 +24,12 @@ export function DistrictFilterDrawer({
   dict,
   onClose,
   districtFilter,
+  parentDistricts,
 }: DistrictFilterDrawerProps) {
-  const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
+  // parentDistricts의 첫 번째 값을 기본값으로 설정
+  const [selectedParentId, setSelectedParentId] = useState<string | null>(
+    parentDistricts[0]?.id ?? null
+  );
 
   const { data: childDistricts = [] } = useChildDistricts(selectedParentId);
 

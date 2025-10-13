@@ -42,9 +42,9 @@ export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoP
       {/* 평점과 가격 정보 */}
       <div className='flex items-center gap-2'>
         {/* 평점 */}
-        <div className='flex items-center'>
-          <StarIcon width={16} height={16} />
-          <span className='text-primary text-sm font-bold'>
+        <div className='flex items-center gap-0.5'>
+          <StarIcon width={20} height={20} />
+          <span className='text-primary text-lg font-bold'>
             {(hospital.rating || 0).toFixed(1)}
           </span>
           <span className='text-primary text-sm'>({hospital.reviewCount || 0})</span>
@@ -52,12 +52,12 @@ export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoP
 
         {/* 가격 정보 */}
         {hospital.prices?.minPrice && (
-          <div className='flex items-center gap-2'>
+          <div className='flex items-center gap-1'>
             <span className='text-base font-semibold text-neutral-900'>
               ${hospital.prices.minPrice.toLocaleString()}~
             </span>
             {hospital.discountRate && (
-              <div className='flex items-center justify-center rounded-[4px] bg-[#0B99FF] px-2 py-1 text-xs font-semibold text-white'>
+              <div className='flex items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
                 {hospital.discountRate}% OFF
               </div>
             )}

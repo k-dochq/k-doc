@@ -7,7 +7,7 @@ interface SelectAllButtonProps {
 export function SelectAllButton({
   isAllSelected,
   onClick,
-  className,
+  className = '',
 }: SelectAllButtonProps) {
   return (
     <button

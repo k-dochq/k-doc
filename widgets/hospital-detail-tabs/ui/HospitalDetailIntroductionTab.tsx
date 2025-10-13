@@ -29,12 +29,12 @@ export function HospitalDetailIntroductionTab({
       {/* 병원 소개 */}
       <HospitalDetailIntroduction hospital={hospital} lang={lang} dict={dict} />
 
-      <div className='h-9' />
+      <div className='h-12' />
 
       {/* 병원 정보 */}
       <HospitalDetailInfoSection hospital={hospital} lang={lang} dict={dict} />
 
-      <div className='h-9' />
+      <div className='h-12' />
 
       {/* 위치 (위도/경도가 있는 경우만) */}
       {hospital.latitude && hospital.longitude && (
@@ -65,7 +65,7 @@ export function HospitalDetailIntroductionTab({
       {/* 소속 의료진 섹션 (의료진이 있는 경우만) */}
       {hospital.doctors && hospital.doctors.length > 0 && (
         <>
-          <div className='h-9' />
+          <div className='h-12' />
           <HospitalDetailDoctors lang={lang} dict={dict} doctors={hospital.doctors} />
         </>
       )}

@@ -5,11 +5,12 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
-import { type LocalizedText, extractLocalizedText } from 'shared/lib/localized-text';
+import { type LocalizedText } from 'shared/lib/localized-text';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { useDeviceDetection } from './lib/useDeviceDetection';
 import { useCarouselNavigation } from './lib/useCarouselNavigation';
 import { DesktopNavigation } from './ui/DesktopNavigation';
+import { CategoryFilterButton } from './ui/CategoryFilterButton';
 
 interface CategoryFilterTabsProps {
   lang: Locale;
@@ -38,9 +39,6 @@ export function CategoryFilterTabs({
     })),
   ];
 
-  const getLabel = (category: { name: LocalizedText }): string => {
-    return extractLocalizedText(category.name, lang);
-  };
 
   return (
     <div className='relative w-full'>
@@ -64,21 +62,29 @@ export function CategoryFilterTabs({
         className='w-full'
       >
         <CarouselContent className='-ml-2 pl-5'>
-          {allCategories.map((category) => {
+          {allCategories.map((category, index) => {
             const isSelected = selectedCategory === category.id;
+            const isLast = index === allCategories.length - 1;
 
             return (
               <CarouselItem key={category.id} className='basis-auto pl-2'>
-                <button
-                  onClick={() => onCategoryChange(category.id)}
-                  className={`flex min-w-[43px] shrink-0 items-center justify-center rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
-                    isSelected
-                      ? 'bg-primary hover:bg-primary/80 text-white'
-                      : 'border border-neutral-200 bg-white text-black hover:bg-neutral-100'
-                  }`}
-                >
-                  <span className='leading-4'>{getLabel(category)}</span>
-                </button>
+                {isLast ? (
+                  <div className='pr-5'>
+                    <CategoryFilterButton
+                      category={category}
+                      lang={lang}
+                      isSelected={isSelected}
+                      onClick={onCategoryChange}
+                    />
+                  </div>
+                ) : (
+                  <CategoryFilterButton
+                    category={category}
+                    lang={lang}
+                    isSelected={isSelected}
+                    onClick={onCategoryChange}
+                  />
+                )}
               </CarouselItem>
             );
           })}

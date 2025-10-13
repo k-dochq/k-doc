@@ -37,7 +37,7 @@ export function PageHeader({
         {/* 뒤로가기 버튼 */}
         <BackButton fallbackUrl={fallbackUrl} variant={variant} />
         {/* 제목 */}
-        <h1 className={`text-lg font-semibold ${getTextColor()}`}>{title}</h1>
+        <h1 className={`text-lg font-semibold leading-tight ${getTextColor()}`}>{title}</h1>
       </div>
 
       {/* 오른쪽 컨텐츠 (좋아요 버튼 등) */}
