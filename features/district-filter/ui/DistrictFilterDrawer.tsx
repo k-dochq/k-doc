@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { ResetButton } from 'shared/ui/buttons';
@@ -26,14 +26,11 @@ export function DistrictFilterDrawer({
   const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
 
   const { data: parentDistricts = [] } = useParentDistricts();
-  const { data: childDistricts = [] } = useChildDistricts(selectedParentId);
-
-  // 다이얼로그가 열릴 때 서울(첫 번째 지역)을 자동 선택
-  useEffect(() => {
-    if (parentDistricts.length > 0 && !selectedParentId) {
-      setSelectedParentId(parentDistricts[0].id);
-    }
-  }, [parentDistricts, selectedParentId]);
+  
+  // selectedParentId가 null이면 첫 번째 지역(서울)을 기본값으로 사용
+  const activeParentId = selectedParentId ?? (parentDistricts[0]?.id ?? null);
+  
+  const { data: childDistricts = [] } = useChildDistricts(activeParentId);
 
   const handleParentSelect = (parentId: string) => {
     setSelectedParentId(parentId);
@@ -84,7 +81,7 @@ export function DistrictFilterDrawer({
         {/* 왼쪽: 상위 지역 리스트 */}
         <ParentDistrictList
           lang={lang}
-          selectedParentId={selectedParentId}
+          selectedParentId={activeParentId}
           onParentSelect={handleParentSelect}
         />
 
@@ -92,7 +89,7 @@ export function DistrictFilterDrawer({
         <ChildDistrictList
           lang={lang}
           dict={dict}
-          selectedParentId={selectedParentId}
+          selectedParentId={activeParentId}
           selectedChildIds={districtFilter.selectedDistrictIds}
           onChildToggle={handleChildToggle}
           onSelectAll={handleSelectAll}
