@@ -4,13 +4,13 @@ interface CheckboxButtonProps {
   className?: string;
 }
 
-export function CheckboxButton({ isSelected, onClick, className }: CheckboxButtonProps) {
+export function CheckboxButton({ isSelected, onClick, className = '' }: CheckboxButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`flex h-4 w-4 items-center justify-center rounded transition-colors ${
+      className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded transition-colors ${
         isSelected ? 'border-0' : 'border border-neutral-300'
-      } ${className || ''}`}
+      } ${className}`}
       style={{
         backgroundColor: isSelected ? '#da47ef' : 'transparent',
       }}
