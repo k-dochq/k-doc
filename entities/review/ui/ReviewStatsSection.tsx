@@ -6,6 +6,7 @@ import { type User } from '@supabase/supabase-js';
 import { EyeIcon } from 'shared/ui/icons/EyeIcon';
 import { CommentIcon, MoreIcon } from 'shared/ui';
 import { ReviewLikeDisplay } from './ReviewLikeDisplay';
+import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ReviewStatsSectionProps {
   review: ReviewCardData;
@@ -34,10 +35,18 @@ export function ReviewStatsSection({
       className={`relative z-10 flex items-center justify-between rounded-b-xl border-r border-b border-l border-white bg-white/50 px-5 py-3 backdrop-blur-[6px] ${className}`}
     >
       <div className='item-center flex gap-3'>
-        <div className='flex items-center gap-1'>
+        {/* 댓글 - 클릭 시 리뷰 상세의 댓글 작성 폼으로 이동 */}
+        <LocaleLink
+          href={`/review/${review.id}#comment-form`}
+          locale={lang}
+          className='flex items-center gap-1 cursor-pointer hover:opacity-70 transition-opacity'
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           <CommentIcon size={16} className='text-neutral-400' />
           <span className='text-sm font-medium text-neutral-900'>{review.commentCount}</span>
-        </div>
+        </LocaleLink>
 
         {/* 좋아요 - showLikeButton이 true일 때만 표시 */}
         {showLikeButton && (
