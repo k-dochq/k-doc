@@ -7,14 +7,16 @@ import { ResetButton } from 'shared/ui/buttons';
 import { ParentDistrictList } from './ParentDistrictList';
 import { ChildDistrictList } from './ChildDistrictList';
 import { DistrictFilterButton } from './DistrictFilterButton';
-import { useChildDistricts, useParentDistricts } from '../model/useDistricts';
+import { useChildDistricts } from '../model/useDistricts';
 import { type useDistrictFilter } from '../model/useDistrictFilter';
+import type { District } from '../model/types';
 
 interface DistrictFilterDrawerProps {
   lang: Locale;
   dict: Dictionary;
   onClose?: () => void;
   districtFilter: ReturnType<typeof useDistrictFilter>;
+  parentDistricts: District[];
 }
 
 export function DistrictFilterDrawer({
@@ -22,15 +24,14 @@ export function DistrictFilterDrawer({
   dict,
   onClose,
   districtFilter,
+  parentDistricts,
 }: DistrictFilterDrawerProps) {
-  const [selectedParentId, setSelectedParentId] = useState<string | null>(null);
+  // parentDistricts의 첫 번째 값을 기본값으로 설정
+  const [selectedParentId, setSelectedParentId] = useState<string | null>(
+    parentDistricts[0]?.id ?? null
+  );
 
-  const { data: parentDistricts = [] } = useParentDistricts();
-  
-  // selectedParentId가 null이면 첫 번째 지역(서울)을 기본값으로 사용
-  const activeParentId = selectedParentId ?? (parentDistricts[0]?.id ?? null);
-  
-  const { data: childDistricts = [] } = useChildDistricts(activeParentId);
+  const { data: childDistricts = [] } = useChildDistricts(selectedParentId);
 
   const handleParentSelect = (parentId: string) => {
     setSelectedParentId(parentId);
@@ -81,7 +82,7 @@ export function DistrictFilterDrawer({
         {/* 왼쪽: 상위 지역 리스트 */}
         <ParentDistrictList
           lang={lang}
-          selectedParentId={activeParentId}
+          selectedParentId={selectedParentId}
           onParentSelect={handleParentSelect}
         />
 
@@ -89,7 +90,7 @@ export function DistrictFilterDrawer({
         <ChildDistrictList
           lang={lang}
           dict={dict}
-          selectedParentId={activeParentId}
+          selectedParentId={selectedParentId}
           selectedChildIds={districtFilter.selectedDistrictIds}
           onChildToggle={handleChildToggle}
           onSelectAll={handleSelectAll}
