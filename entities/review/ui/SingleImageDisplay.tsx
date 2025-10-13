@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { type DisplayImage } from '../model/types';
 import { ImageTag } from './ImageTag';
+import { SmartImage } from './SmartImage';
 
 interface SingleImageDisplayProps {
   image: DisplayImage;
@@ -26,14 +26,12 @@ export function SingleImageDisplay({
 
   return (
     <div
-      className={`relative h-full cursor-pointer overflow-hidden ${className}`}
+      className={`relative h-full w-full cursor-pointer overflow-hidden bg-[#F9D1FF] ${className}`}
       onClick={onImageClick}
     >
-      <Image
+      <SmartImage
         src={imageError ? '/images/shared/default_image.png' : image.imageUrl}
         alt={image.alt || `${type === 'before' ? 'Before' : 'After'} 이미지`}
-        fill
-        className='object-cover'
         sizes='(max-width: 768px) 50vw, 168px'
         onError={handleImageError}
       />
