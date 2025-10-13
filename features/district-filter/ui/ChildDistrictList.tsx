@@ -80,7 +80,6 @@ export function ChildDistrictList({
       <div className='flex w-full items-center gap-2 px-4 pt-4 pb-3'>
         <SelectAllButton
           isAllSelected={isAllSelected}
-          isPartiallySelected={false}
           onClick={isAllSelected ? onDeselectAll : onSelectAll}
         />
         <button

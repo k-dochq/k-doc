@@ -1,13 +1,11 @@
 interface SelectAllButtonProps {
   isAllSelected: boolean;
-  isPartiallySelected: boolean;
   onClick: () => void;
   className?: string;
 }
 
 export function SelectAllButton({
   isAllSelected,
-  isPartiallySelected,
   onClick,
   className,
 }: SelectAllButtonProps) {
@@ -15,14 +13,10 @@ export function SelectAllButton({
     <button
       onClick={onClick}
       className={`flex h-4 w-4 items-center justify-center rounded transition-colors ${
-        isAllSelected || isPartiallySelected ? 'border-0' : 'border border-neutral-300'
+        isAllSelected ? 'border-0' : 'border border-neutral-300'
       } ${className || ''}`}
       style={{
-        backgroundColor: isAllSelected
-          ? '#da47ef'
-          : isPartiallySelected
-            ? '#da47ef'
-            : 'transparent',
+        backgroundColor: isAllSelected ? '#da47ef' : 'transparent',
       }}
     >
       {isAllSelected && (
@@ -43,7 +37,6 @@ export function SelectAllButton({
           />
         </svg>
       )}
-      {isPartiallySelected && !isAllSelected && <div className='h-2 w-2 rounded-sm bg-white' />}
     </button>
   );
 }
