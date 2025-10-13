@@ -72,7 +72,11 @@ export function PhoneNumberInput({
           <input
             type='tel'
             value={phoneNumberOnly}
-            onChange={(e) => onPhoneNumberChange(e.target.value)}
+            onChange={(e) => {
+              // 숫자만 입력 가능하도록 필터링
+              const numericValue = e.target.value.replace(/[^0-9]/g, '');
+              onPhoneNumberChange(numericValue);
+            }}
             placeholder={
               required
                 ? dict.consultation?.request?.form?.phoneNumber?.placeholder ||

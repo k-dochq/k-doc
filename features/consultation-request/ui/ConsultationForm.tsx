@@ -94,11 +94,6 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         dict.consultation?.request?.form?.errors?.phoneNumber?.required ||
           '휴대폰번호를 입력해주세요.',
       );
-    } else if (!/^[0-9-+\s()]{7,15}$/.test(formData.phoneNumberOnly.trim())) {
-      validationErrors.push(
-        dict.consultation?.request?.form?.errors?.phoneNumber?.invalid ||
-          '올바른 휴대폰번호를 입력해주세요.',
-      );
     }
 
     if (!formData.preferredDate) {

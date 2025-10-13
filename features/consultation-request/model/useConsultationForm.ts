@@ -109,8 +109,6 @@ export function useConsultationForm(
 
     if (!formData.phoneNumberOnly.trim()) {
       newErrors.phoneNumberOnly = getErrorMessage('phoneNumberOnly', 'required');
-    } else if (!/^[0-9-+\s()]{7,15}$/.test(formData.phoneNumberOnly.trim())) {
-      newErrors.phoneNumberOnly = getErrorMessage('phoneNumberOnly', 'invalid');
     }
 
     if (!formData.preferredDate) {
