@@ -98,7 +98,7 @@ export function ContactMapSection({ dict }: ContactMapSectionProps) {
                 </svg>
               </div>
               {/* 주소 텍스트 */}
-              <p className='line-clamp-2 text-sm leading-5 font-normal text-[#171717]'>
+              <p className='text-sm leading-5 font-normal text-[#171717]'>
                 {dict.contact.address}
               </p>
             </div>

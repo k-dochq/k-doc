@@ -72,7 +72,7 @@ export function ApgujeongMiracleProcedures({
                 className='h-full w-full'
               />
             </div>
-            <p className='mt-2 text-center text-[16px] font-[600] text-neutral-900'>
+            <p className='mt-2 text-left text-[16px] font-[600] text-neutral-900'>
               {dict.hospitalDetailTabs.apgujeongMiracle.videoDescription}
             </p>
           </div>
@@ -85,7 +85,7 @@ export function ApgujeongMiracleProcedures({
               <img
                 src={miracleImagePath}
                 alt={dict.hospitalDetailTabs.apgujeongMiracle.imageAlt}
-                className='h-auto w-full max-w-[375px] object-contain'
+                className='h-auto w-full max-w-[500px] object-contain'
               />
             </div>
           </div>

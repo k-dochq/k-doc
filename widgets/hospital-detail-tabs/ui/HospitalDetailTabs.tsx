@@ -34,34 +34,30 @@ export function HospitalDetailTabs({ hospital, hospitalId, lang, dict }: Hospita
       <HospitalDetailTabsHeader tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} />
 
       {/* 탭 컨텐츠 */}
-      <div className='relative'>
+      <div className=''>
         {/* 병원소개 탭 */}
-        <div
-          className={`px-5 py-6 transition-opacity duration-300 ${
-            activeTab === 0 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
-          }`}
-        >
-          <HospitalDetailIntroductionTab
-            hospital={hospital}
-            hospitalId={hospitalId}
-            lang={lang}
-            dict={dict}
-          />
-        </div>
+        {activeTab === 0 && (
+          <div className='px-5 pt-8'>
+            <HospitalDetailIntroductionTab
+              hospital={hospital}
+              hospitalId={hospitalId}
+              lang={lang}
+              dict={dict}
+            />
+          </div>
+        )}
 
         {/* 시술상세 탭 */}
-        <div
-          className={`px-5 pt-6 transition-opacity duration-300 ${
-            activeTab === 1 ? 'opacity-100' : 'pointer-events-none absolute inset-0 opacity-0'
-          }`}
-        >
-          <HospitalDetailProceduresTab
-            hospital={hospital}
-            hospitalId={hospitalId}
-            lang={lang}
-            dict={dict}
-          />
-        </div>
+        {activeTab === 1 && (
+          <div className='px-5 pt-8'>
+            <HospitalDetailProceduresTab
+              hospital={hospital}
+              hospitalId={hospitalId}
+              lang={lang}
+              dict={dict}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ export function HospitalDetailAddressSection({
             </svg>
           </div>
           {/* 주소 텍스트 */}
-          <p className='line-clamp-2 text-sm leading-5 font-normal text-[#171717]'>{directions}</p>
+          <p className='text-sm leading-5 font-normal text-[#171717]'>{directions}</p>
         </div>
 
         {/* 주소복사 버튼 */}
