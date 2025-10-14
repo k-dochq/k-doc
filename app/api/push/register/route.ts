@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/shared/lib/supabase/server';
 import { prisma } from '@/shared/lib/prisma';
 import type { PushTokenRegisterResponse } from 'shared/types/push-token-api';
 
@@ -7,6 +6,7 @@ interface PushTokenRegisterRequest {
   token: string;
   platform: 'ios' | 'android';
   appVersion: string;
+  userId: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -14,12 +14,13 @@ export async function POST(request: NextRequest) {
 
   try {
     const body: PushTokenRegisterRequest = await request.json();
-    const { token, platform, appVersion } = body;
+    const { token, platform, appVersion, userId } = body;
 
     console.log('📝 요청 데이터:', {
       token: token ? token.substring(0, 20) + '...' : '없음',
       platform,
       appVersion,
+      userId,
     });
 
     // 필수 필드 검증
@@ -32,45 +33,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(response, { status: 400 });
     }
 
-    console.log('🔐 Supabase 클라이언트 생성 중...');
-    // Supabase 클라이언트 생성 (쿠키 기반)
-    const supabase = await createClient();
-
-    console.log('👤 사용자 인증 확인 중...');
-    // 현재 사용자 정보 가져오기 (쿠키에서)
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-
-    if (authError) {
-      console.error('❌ 사용자 인증 실패:', authError.message);
+    if (!userId) {
+      console.log('❌ 사용자 ID가 없습니다');
       const response: PushTokenRegisterResponse = {
         success: false,
-        error: '인증이 필요합니다',
+        error: '사용자 ID가 필요합니다',
       };
-      return NextResponse.json(response, { status: 401 });
+      return NextResponse.json(response, { status: 400 });
     }
 
-    if (!user) {
-      console.log('❌ 로그인된 사용자가 없습니다');
-      const response: PushTokenRegisterResponse = {
-        success: false,
-        error: '인증이 필요합니다',
-      };
-      return NextResponse.json(response, { status: 401 });
-    }
-
-    console.log('✅ 사용자 인증 성공:', {
-      userId: user.id,
-      email: user.email,
-      provider: user.app_metadata?.provider,
-    });
+    console.log('✅ 요청 데이터 검증 완료');
 
     console.log('💾 데이터베이스 업데이트 시작...');
     // 사용자 정보 업데이트
     await prisma.user.update({
-      where: { id: user.id },
+      where: { id: userId },
       data: {
         deviceToken: token,
         deviceInfo: JSON.stringify({
@@ -82,7 +59,7 @@ export async function POST(request: NextRequest) {
     });
 
     console.log('✅ 푸시 토큰 등록 완료:', {
-      userId: user.id,
+      userId,
       token: token.substring(0, 20) + '...',
       platform,
       appVersion,
@@ -92,7 +69,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: '푸시 토큰이 성공적으로 등록되었습니다',
       data: {
-        userId: user.id,
+        userId,
         platform,
         appVersion,
       },
