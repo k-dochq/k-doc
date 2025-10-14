@@ -57,3 +57,31 @@ export function setRedirectPathCookie(redirectPath: string): void {
     console.error('Failed to set redirect path cookie:', error);
   }
 }
+
+/**
+ * Expo 앱으로 공유 요청 메시지를 전송합니다.
+ * @param url 공유할 URL
+ */
+export function sendShareRequestToExpo(url: string): void {
+  if (typeof window === 'undefined') {
+    console.warn('sendShareRequestToExpo: window is not available');
+    return;
+  }
+
+  const payload = {
+    source: 'kdoc-web',
+    type: 'SHARE_REQUEST',
+    url,
+  };
+
+  try {
+    const webViewWindow = window as WebViewWindow;
+    if (webViewWindow.ReactNativeWebView?.postMessage) {
+      webViewWindow.ReactNativeWebView.postMessage(JSON.stringify(payload));
+    } else {
+      console.warn('ReactNativeWebView is not available');
+    }
+  } catch (error) {
+    console.error('Failed to send share request to Expo app:', error);
+  }
+}

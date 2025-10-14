@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { isExpoWebView } from 'shared/lib/webview-detection';
 
 interface ShareData {
   title?: string;
@@ -14,6 +15,35 @@ interface ShareResult {
   error?: string;
 }
 
+const shareViaReactNative = async (data: ShareData): Promise<ShareResult> => {
+  try {
+    if (typeof window === 'undefined') {
+      throw new Error('Window is not available');
+    }
+
+    const webViewWindow = window as any;
+    if (!webViewWindow.ReactNativeWebView?.postMessage) {
+      throw new Error('ReactNativeWebView is not available');
+    }
+
+    const shareRequest = {
+      source: 'kdoc-web',
+      type: 'SHARE_REQUEST',
+      url: typeof window !== 'undefined' ? window.location.href : '',
+    };
+
+    webViewWindow.ReactNativeWebView.postMessage(JSON.stringify(shareRequest));
+
+    return { success: true, method: 'native' };
+  } catch (error) {
+    console.error('React Native 공유 실패:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error occurred',
+    };
+  }
+};
+
 export function useShare() {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,6 +51,11 @@ export function useShare() {
     setIsLoading(true);
 
     try {
+      // React Native WebView 환경인지 확인
+      if (isExpoWebView()) {
+        return await shareViaReactNative(data);
+      }
+
       // HTTPS 체크 (Web Share API는 HTTPS에서만 작동)
       const isSecureContext = typeof window !== 'undefined' && window.isSecureContext;
 
