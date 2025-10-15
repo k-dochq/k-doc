@@ -6,7 +6,7 @@
 // 공통 버전 정보
 export const APP_VERSION = {
   MIN_SUPPORTED_VERSION: '1.5.002',
-  LATEST_VERSION: '1.5.005',
+  LATEST_VERSION: '1.5.004',
 } as const;
 
 // 공통 메시지
