@@ -104,7 +104,7 @@ export function DoctorCard({
         </div>
 
         {/* 의료진 정보 */}
-        <div className='flex flex-1 w-full min-w-0 flex-col justify-between'>
+        <div className='flex w-full min-w-0 flex-1 flex-col justify-between'>
           {/* 상단 정보 섹션 */}
           <div className='flex min-w-0 flex-col'>
             {/* 이름과 직책 */}
