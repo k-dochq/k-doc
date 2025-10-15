@@ -90,17 +90,16 @@ export function FavoritesDoctorsTab({ lang, dict }: FavoritesDoctorsTabProps) {
     <div className='w-full space-y-4 p-5'>
       {/* 의사 리스트 */}
       {allLikedDoctors.map((doctor) => (
-        <LocaleLink key={doctor.id} href={`/doctor/${doctor.id}`} className='block'>
-          <DoctorCard
-            doctor={doctor}
-            lang={lang}
-            dict={dict}
-            variant='light'
-            showMoreButton={true}
-            showLikeButton={true}
-            showBackground={true}
-          />
-        </LocaleLink>
+        <DoctorCard
+          key={doctor.id}
+          doctor={doctor}
+          lang={lang}
+          dict={dict}
+          variant='light'
+          showMoreButton={true}
+          showLikeButton={true}
+          showBackground={true}
+        />
       ))}
 
       {/* 무한 스크롤 트리거 */}
