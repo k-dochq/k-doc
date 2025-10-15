@@ -22,12 +22,12 @@ export default function ErrorTestPage() {
 
       case 'reference':
         // ReferenceError 발생
-        // @ts-ignore
+        // @ts-expect-error - 의도적으로 정의되지 않은 변수 사용
         console.log(undefinedVariable);
 
       case 'type':
         // TypeError 발생
-        // @ts-ignore
+        // @ts-expect-error - 의도적으로 null 메서드 호출
         null.someMethod();
 
       case 'async':
