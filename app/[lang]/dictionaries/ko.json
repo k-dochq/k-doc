@@ -482,6 +482,7 @@
         },
         "gender": {
           "label": "성별",
+          "placeholder": "성별을 선택해주세요",
           "male": "남성",
           "female": "여성"
         },

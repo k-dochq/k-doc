@@ -25,15 +25,15 @@ const CalendarIcon = ({ className }: { className?: string }) => (
     <path
       strokeLinecap='round'
       strokeLinejoin='round'
-      strokeWidth={2}
+      strokeWidth={1.5}
       d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
     />
   </svg>
 );
 
 const ChevronDownIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+  <svg className={className} width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path d='M16.25 7.08325L10.4167 12.9166L4.58333 7.08325' stroke='#A3A3A3' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
   </svg>
 );
 
@@ -123,18 +123,49 @@ export function DatePicker({
           type='button'
           onClick={handleButtonClick}
           className={cn(
-            'flex w-full items-center justify-between rounded-xl border border-neutral-300 bg-white px-4 py-4 text-left text-sm font-normal',
-            'focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none',
-            'disabled:cursor-not-allowed disabled:opacity-50',
-            error && 'border-red-300 focus:ring-red-500',
+            `flex w-full items-center justify-between rounded-xl border px-4 py-4 text-left text-sm font-normal focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${
+              value ? 'border-transparent' : 'border-neutral-300'
+            }`,
+            error && 'border-red-300',
           )}
+          style={{
+            backgroundColor: 'white',
+            backgroundImage: value 
+              ? 'linear-gradient(white, white), linear-gradient(90deg, rgb(255, 96, 247) 0%, rgb(174, 51, 251) 100%)'
+              : 'white',
+            backgroundOrigin: value ? 'border-box' : undefined,
+            backgroundClip: value 
+              ? 'padding-box, border-box'
+              : undefined,
+            backgroundSize: value 
+              ? '100% 100%, 100% 100%'
+              : undefined,
+          }}
+          onFocus={(e) => {
+            if (!value) {
+              e.target.style.backgroundImage = 'linear-gradient(white, white), linear-gradient(90deg, rgb(255, 96, 247) 0%, rgb(174, 51, 251) 100%)';
+              e.target.style.backgroundOrigin = 'border-box';
+              e.target.style.backgroundClip = 'padding-box, border-box';
+              e.target.style.backgroundSize = '100% 100%, 100% 100%';
+              e.target.style.borderColor = 'transparent';
+            }
+          }}
+          onBlur={(e) => {
+            if (!value) {
+              e.target.style.backgroundImage = 'white';
+              e.target.style.backgroundOrigin = 'initial';
+              e.target.style.backgroundClip = 'initial';
+              e.target.style.backgroundSize = 'initial';
+              e.target.style.borderColor = '';
+            }
+          }}
         >
           <span className={value ? 'text-neutral-900' : 'text-neutral-500'}>
             {value ? formatDate(value) : getPlaceholderText()}
           </span>
           <div className='flex items-center gap-2'>
-            <CalendarIcon className='h-4 w-4 text-neutral-400' />
-            <ChevronDownIcon className='h-4 w-4 text-neutral-400' />
+            <CalendarIcon className='h-5 w-5 text-neutral-400' />
+            <ChevronDownIcon className='h-5 w-5 text-neutral-400' />
           </div>
         </button>
 
