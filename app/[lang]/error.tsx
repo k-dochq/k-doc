@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { sendErrorToSlack } from 'shared/lib/error-tracking/send-error-to-slack';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -15,6 +16,17 @@ export default function Error({ error, reset }: ErrorProps) {
       stack: error.stack,
       digest: error.digest,
       timestamp: new Date().toISOString(),
+    });
+
+    // Slack으로 에러 전송
+    sendErrorToSlack({
+      error,
+      errorBoundary: 'page-error',
+      additionalInfo: {
+        digest: error.digest,
+        errorType: 'Page Error',
+        timestamp: new Date().toISOString(),
+      },
     });
   }, [error]);
 
