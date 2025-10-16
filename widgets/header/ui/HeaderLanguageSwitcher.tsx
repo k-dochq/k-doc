@@ -3,7 +3,7 @@
 import { LOCALE_LABELS, type Locale } from 'shared/config';
 import { localeCookies } from 'shared/lib';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { initFlowbite } from 'flowbite';
 import { useAuth } from 'shared/lib/auth/useAuth';
 
@@ -15,6 +15,12 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useAuth();
+  const [isClient, setIsClient] = useState(false);
+
+  // 클라이언트 사이드 렌더링 확인
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // 현재 경로에서 locale 부분을 제거하고 나머지 경로만 추출
   const getPathWithoutLocale = (path: string) => {
@@ -28,11 +34,15 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
 
   const pathWithoutLocale = getPathWithoutLocale(pathname || '');
 
-  // k-doc.kr 도메인 사용자인지 확인
-  const isKdocUser = user?.email?.endsWith('@k-doc.kr') || false;
+  // k-doc.kr 도메인 사용자인지 확인 (클라이언트에서만)
+  const isKdocUser = isClient ? user?.email?.endsWith('@k-doc.kr') || false : false;
 
-  // 표시할 언어 옵션 필터링
+  // 표시할 언어 옵션 필터링 (Hydration-safe)
   const availableLocales = Object.entries(LOCALE_LABELS).filter(([localeKey]) => {
+    // 클라이언트에서만 필터링 적용
+    if (!isClient) {
+      return true; // 서버에서는 모든 언어 표시
+    }
     // k-doc.kr 사용자가 아니면 한국어 제외
     if (!isKdocUser && localeKey === 'ko') {
       return false;
@@ -42,16 +52,20 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
 
   // 모든 locale에 대해 prefetch 수행 (필터링된 언어만)
   useEffect(() => {
-    availableLocales.forEach(([locale]) => {
-      const prefetchPath = `/${locale}${pathWithoutLocale}`;
-      router.prefetch(prefetchPath);
-    });
-  }, [router, pathWithoutLocale, availableLocales]);
+    if (isClient) {
+      availableLocales.forEach(([locale]) => {
+        const prefetchPath = `/${locale}${pathWithoutLocale}`;
+        router.prefetch(prefetchPath);
+      });
+    }
+  }, [router, pathWithoutLocale, availableLocales, isClient]);
 
   // Flowbite 초기화
   useEffect(() => {
-    initFlowbite();
-  }, []);
+    if (isClient) {
+      initFlowbite();
+    }
+  }, [isClient]);
 
   // 언어 선택 시 쿠키에 저장하고 페이지 이동하는 핸들러
   const handleLanguageChange = (locale: Locale) => {
