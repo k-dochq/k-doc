@@ -22,7 +22,6 @@ export function AppleSignInButton({
   className = '',
 }: AppleSignInButtonProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const supabase = createClient();
 
   const handleAppleLogin = async () => {
     setIsLoading(true);
@@ -60,7 +59,6 @@ export function AppleSignInButton({
     } catch (error) {
       console.error('Apple 로그인 중 예외 발생:', error);
       window.alert('An unexpected error occurred during Apple login. Please try again.');
-    } finally {
       setIsLoading(false);
     }
   };
@@ -69,9 +67,13 @@ export function AppleSignInButton({
     <button
       onClick={handleAppleLogin}
       disabled={isLoading}
-      className={`flex w-full items-center justify-center gap-2 rounded-xl border border-neutral-200 bg-white px-6 py-4 transition-all hover:bg-neutral-50 focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:outline-none ${className}`}
+      className={`flex w-full items-center justify-center gap-2 rounded-xl border border-neutral-200 bg-white px-6 py-4 transition-all hover:bg-neutral-50 focus:ring-2 focus:ring-neutral-300 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     >
-      <AppleIcon />
+      {isLoading ? (
+        <div className='h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-700' />
+      ) : (
+        <AppleIcon />
+      )}
       <span className='text-base font-medium text-neutral-700'>
         {dict.auth?.login?.appleLogin || 'Apple로 로그인'}
       </span>
