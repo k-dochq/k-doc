@@ -7,6 +7,17 @@ export async function POST(request: NextRequest) {
 
     console.log('🔍 Received error data:', { error, errorBoundary, additionalInfo });
 
+    // localhost 환경에서는 메시지 전송하지 않음
+    const isLocalhost =
+      process.env.NODE_ENV === 'development' ||
+      request.headers.get('host')?.includes('localhost') ||
+      request.headers.get('host')?.includes('127.0.0.1');
+
+    if (isLocalhost) {
+      console.log('🚫 Localhost 환경이므로 Slack 메시지 전송을 건너뜁니다.');
+      return NextResponse.json({ success: true, message: 'Skipped in localhost environment' });
+    }
+
     // 환경변수 확인
     const slackToken = process.env.NEXT_PUBLIC_SLACK_BOT_TOKEN;
     if (!slackToken) {
