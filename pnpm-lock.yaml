@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@contentsquare/tag-sdk':
+        specifier: ^1.1.0
+        version: 1.1.0
       '@notionhq/client':
         specifier: ^4.0.1
         version: 4.0.2
@@ -168,6 +171,9 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@contentsquare/tag-sdk@1.1.0':
+    resolution: {integrity: sha512-cZibHPHEOmNmVG9MqhSGvXAGbjUK4wpGXzNMNbacjxgSrLxe8QziXLNq2ICwj1xww/6/yADjlbij47zqw4xNRw==}
 
   '@emnapi/core@1.5.0':
     resolution: {integrity: sha512-sbP8GzB1WDzacS8fgNPpHlp6C9VZe+SJP3F90W9rLemaQj2PzIuTEl1qDOYQf58YIpyjViI24y9aPWCjEzY2cg==}
@@ -3081,6 +3087,8 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@contentsquare/tag-sdk@1.1.0': {}
 
   '@emnapi/core@1.5.0':
     dependencies:
