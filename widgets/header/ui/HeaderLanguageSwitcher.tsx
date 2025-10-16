@@ -4,12 +4,7 @@ import { LOCALE_LABELS, type Locale } from 'shared/config';
 import { localeCookies } from 'shared/lib';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from 'shared/ui/dropdown-menu';
+import { initFlowbite } from 'flowbite';
 import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface HeaderLanguageSwitcherProps {
@@ -53,6 +48,11 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
     });
   }, [router, pathWithoutLocale, availableLocales]);
 
+  // Flowbite 초기화
+  useEffect(() => {
+    initFlowbite();
+  }, []);
+
   // 언어 선택 시 쿠키에 저장하고 페이지 이동하는 핸들러
   const handleLanguageChange = (locale: Locale) => {
     localeCookies.set(locale);
@@ -67,47 +67,54 @@ export function HeaderLanguageSwitcher({ currentLang = 'ko' }: HeaderLanguageSwi
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          className='hover:bg-primary-light hover:text-primary rounded-lg p-2 text-neutral-900 transition-colors'
-          aria-label='언어 선택'
-          type='button'
+    <div className='relative'>
+      <button
+        id='languageDropdownButton'
+        data-dropdown-toggle='languageDropdown'
+        className='hover:bg-primary-light hover:text-primary rounded-lg p-2 text-neutral-900 transition-colors'
+        aria-label='언어 선택'
+        type='button'
+      >
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
         >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-          >
-            <path
-              d='M21.25 12C21.25 9.54675 20.2754 7.19397 18.5407 5.45926C16.806 3.72455 14.4533 2.75 12 2.75M21.25 12H2.75M21.25 12C21.25 14.4533 20.2754 16.806 18.5407 18.5407C16.806 20.2754 14.4533 21.25 12 21.25M12 2.75C9.54675 2.75 7.19397 3.72455 5.45926 5.45926C3.72455 7.19397 2.75 9.54675 2.75 12M12 2.75C11.5 2.75 8 6.891 8 12C8 17.109 11.5 21.25 12 21.25M12 2.75C12.5 2.75 16 6.891 16 12C16 17.109 12.5 21.25 12 21.25M2.75 12C2.75 14.4533 3.72455 16.806 5.45926 18.5407C7.19397 20.2754 9.54675 21.25 12 21.25'
-              stroke='currentColor'
-              strokeWidth='1.5'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align='end' className='border-primary/20 w-32 border bg-white shadow-lg'>
-        {availableLocales.map(([localeKey, label]) => (
-          <DropdownMenuItem
-            key={localeKey}
-            // 선택된 언어에 스타일 적용
-            className={[
-              'cursor-pointer px-4 py-2 text-sm transition-colors',
-              currentLang === localeKey
-                ? 'bg-primary/10 text-primary font-semibold'
-                : 'hover:bg-primary/5 hover:text-primary text-neutral-900',
-            ].join(' ')}
-            onClick={() => handleLanguageChange(localeKey as Locale)}
-          >
-            {label}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+          <path
+            d='M21.25 12C21.25 9.54675 20.2754 7.19397 18.5407 5.45926C16.806 3.72455 14.4533 2.75 12 2.75M21.25 12H2.75M21.25 12C21.25 14.4533 20.2754 16.806 18.5407 18.5407C16.806 20.2754 14.4533 21.25 12 21.25M12 2.75C9.54675 2.75 7.19397 3.72455 5.45926 5.45926C3.72455 7.19397 2.75 9.54675 2.75 12M12 2.75C11.5 2.75 8 6.891 8 12C8 17.109 11.5 21.25 12 21.25M12 2.75C12.5 2.75 16 6.891 16 12C16 17.109 12.5 21.25 12 21.25M2.75 12C2.75 14.4533 3.72455 16.806 5.45926 18.5407C7.19397 20.2754 9.54675 21.25 12 21.25'
+            stroke='currentColor'
+            strokeWidth='1.5'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+        </svg>
+      </button>
+
+      <div
+        id='languageDropdown'
+        className='border-primary/20 z-10 hidden w-32 rounded-md border bg-white shadow-lg'
+        style={{ position: 'absolute', right: 0, top: '100%', marginTop: '4px' }}
+      >
+        <ul className='py-1'>
+          {availableLocales.map(([localeKey, label]) => (
+            <li key={localeKey}>
+              <button
+                className={[
+                  'w-full cursor-pointer px-4 py-2 text-left text-sm transition-colors',
+                  currentLang === localeKey
+                    ? 'bg-primary/10 text-primary font-semibold'
+                    : 'hover:bg-primary/5 hover:text-primary text-neutral-900',
+                ].join(' ')}
+                onClick={() => handleLanguageChange(localeKey as Locale)}
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 }
