@@ -5,9 +5,9 @@ import fs from 'fs';
 // 이미지 압축 설정 (퀄리티 유지)
 const images = [
   {
-    input: './public/images/shared/login_required_bg_th_edit.png',
-    output: './public/images/shared/login_required_bg_th.png',
-    name: 'Login Required 배경 이미지 (태국어)',
+    input: './notice.png',
+    output: './public/images/main/notice.png',
+    name: 'Notice 아이콘 이미지',
   },
 ];
 
@@ -33,14 +33,14 @@ async function compressImage(inputPath: string, outputPath: string, imageName: s
     // 이미지 압축 실행 (퀄리티 유지하면서 적당히 압축)
     await sharp(inputPath)
       .resize({
-        width: 1080, // 원본 크기 유지
-        height: 1920,
+        width: 154, // Notice 아이콘 크기 (HeartBackground와 동일)
+        height: 123,
         fit: 'inside', // 비율 유지하면서 크기 조정
         withoutEnlargement: true, // 원본보다 크게 만들지 않음
       })
       .png({
-        quality: 85, // PNG 품질을 높게 유지 (90 → 85)
-        compressionLevel: 6, // PNG 압축 레벨을 중간으로 설정 (8 → 6)
+        quality: 85, // PNG 품질을 높게 유지
+        compressionLevel: 6, // PNG 압축 레벨을 중간으로 설정
         progressive: true, // 점진적 로딩
       })
       .toFile(outputPath);
@@ -61,7 +61,7 @@ async function compressImage(inputPath: string, outputPath: string, imageName: s
 }
 
 async function compressAllImages() {
-  console.log('🚀 Splash 이미지 압축 시작...\n');
+  console.log('🚀 Notice 이미지 압축 시작...\n');
 
   for (const image of images) {
     await compressImage(image.input, image.output, image.name);

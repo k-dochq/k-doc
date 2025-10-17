@@ -3,6 +3,7 @@ import { SearchBar } from 'shared/ui';
 import { QuickMenuWrapper } from 'features/quick-menu/ui/QuickMenuWrapper';
 import { HospitalListWrapper } from 'widgets/hospital-list';
 import { PopularReviewsWrapper } from 'widgets/popular-reviews';
+import { NoticeSection } from 'widgets/notice-section/ui/NoticeSection';
 import { LimousineBanner } from 'widgets/limousine-banner';
 import { CautionSection } from 'widgets/caution-section';
 import { TaxiReservationSection } from 'widgets/taxi-reservation';
@@ -36,6 +37,10 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
 
         <div className='mt-12'>
           <PopularReviewsWrapper lang={lang} dict={dict} />
+        </div>
+
+        <div className='mt-16'>
+          <NoticeSection lang={lang} dict={dict} />
         </div>
 
         <div className='mt-12'>
