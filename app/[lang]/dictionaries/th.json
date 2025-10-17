@@ -97,6 +97,18 @@
     "requestButton": "ขอปรึกษา",
     "checking": "กำลังตรวจสอบ..."
   },
+  "notices": {
+    "title": "ประกาศ",
+    "loading": "กำลังโหลดประกาศ...",
+    "error": "ไม่สามารถโหลดประกาศได้",
+    "empty": "ไม่มีประกาศ",
+    "totalCount": "มีประกาศทั้งหมด {{count}} รายการ",
+    "loadedCount": "โหลดแล้ว {{count}} รายการ",
+    "loadMore": "ดูเพิ่มเติม",
+    "loadingMore": "กำลังโหลด...",
+    "allLoaded": "โหลดประกาศครบทุกรายการแล้ว",
+    "noTitle": "ไม่มีหัวข้อ"
+  },
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",
     "procedures": "รายละเอียดการรักษา",

@@ -97,6 +97,18 @@
     "requestButton": "Request Consultation",
     "checking": "Checking..."
   },
+  "notices": {
+    "title": "Notices",
+    "loading": "Loading notices...",
+    "error": "Failed to load notices.",
+    "empty": "No notices available.",
+    "totalCount": "Total {{count}} notices available.",
+    "loadedCount": "Currently loaded {{count}} notices.",
+    "loadMore": "Load More",
+    "loadingMore": "Loading...",
+    "allLoaded": "All notices loaded.",
+    "noTitle": "No Title"
+  },
   "hospitalDetailTabs": {
     "introduction": "Hospital Info",
     "procedures": "Procedures",
