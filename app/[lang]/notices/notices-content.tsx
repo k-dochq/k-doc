@@ -49,12 +49,6 @@ export function NoticesContent({ lang, dict }: NoticesContentProps) {
           </button>
         </div>
       )}
-
-      {!hasNextPage && allNotices.length > 0 && (
-        <div className='mt-6 text-gray-500'>
-          <p>{dict.notices.allLoaded}</p>
-        </div>
-      )}
     </div>
   );
 }
