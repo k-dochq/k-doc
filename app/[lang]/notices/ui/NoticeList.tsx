@@ -22,8 +22,14 @@ export function NoticeList({ notices, lang, dict }: NoticeListProps) {
 
   return (
     <div className='space-y-4'>
-      {notices.map((notice) => (
-        <NoticeAccordionItem key={notice.id} notice={notice} lang={lang} dict={dict} />
+      {notices.map((notice, index) => (
+        <NoticeAccordionItem
+          key={notice.id}
+          notice={notice}
+          lang={lang}
+          dict={dict}
+          isFirst={index === 0}
+        />
       ))}
     </div>
   );

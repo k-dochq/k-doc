@@ -13,10 +13,16 @@ interface NoticeAccordionItemProps {
   notice: NoticeWithFiles;
   lang: Locale;
   dict: Dictionary;
+  isFirst?: boolean;
 }
 
-export function NoticeAccordionItem({ notice, lang, dict }: NoticeAccordionItemProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+export function NoticeAccordionItem({
+  notice,
+  lang,
+  dict,
+  isFirst = false,
+}: NoticeAccordionItemProps) {
+  const [isExpanded, setIsExpanded] = useState(isFirst);
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);

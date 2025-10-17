@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useInfiniteNotices } from '@/entities/notice';
 import { NoticeList } from './ui/NoticeList';
+import { NoticeListSkeleton } from './ui/NoticeListSkeleton';
 
 interface NoticesContentProps {
   lang: Locale;
@@ -15,11 +16,7 @@ export function NoticesContent({ lang, dict }: NoticesContentProps) {
     useInfiniteNotices({ limit: 5 });
 
   if (isLoading) {
-    return (
-      <div className='text-center'>
-        <p>{dict.notices.loading}</p>
-      </div>
-    );
+    return <NoticeListSkeleton />;
   }
 
   if (isError) {
