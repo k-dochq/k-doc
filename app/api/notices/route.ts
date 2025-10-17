@@ -28,7 +28,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
           },
         },
         orderBy: {
-          createdAt: 'asc', // 오래된 순
+          createdAt: 'desc', // 최신순
         },
         skip,
         take: limit,
