@@ -97,6 +97,18 @@
     "requestButton": "상담신청",
     "checking": "확인 중..."
   },
+  "notices": {
+    "title": "공지사항",
+    "loading": "공지사항을 불러오는 중...",
+    "error": "공지사항을 불러오는데 실패했습니다.",
+    "empty": "공지사항이 없습니다.",
+    "totalCount": "총 {{count}}개의 공지사항이 있습니다.",
+    "loadedCount": "현재 {{count}}개를 불러왔습니다.",
+    "loadMore": "더보기",
+    "loadingMore": "불러오는 중...",
+    "allLoaded": "모든 공지사항을 불러왔습니다.",
+    "noTitle": "제목 없음"
+  },
   "hospitalDetailTabs": {
     "introduction": "병원소개",
     "procedures": "시술상세",

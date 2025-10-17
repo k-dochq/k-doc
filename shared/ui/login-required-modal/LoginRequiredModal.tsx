@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { getAuthPath } from 'shared/lib/auth/route-guard';
+import { trackSignUpClick } from 'shared/lib/analytics';
 import { closeModal } from 'shared/lib/modal';
 import { CloseIcon } from 'shared/ui/close-icon';
 
@@ -41,6 +42,9 @@ export function LoginRequiredModal({
   };
 
   const handleSignup = () => {
+    // GA 이벤트 전송
+    trackSignUpClick('login_modal');
+
     closeModal();
 
     // 리다이렉트 경로 설정

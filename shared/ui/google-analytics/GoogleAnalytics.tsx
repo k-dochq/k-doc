@@ -1,6 +1,4 @@
-'use client';
-
-import Script from 'next/script';
+import { GoogleAnalytics as NextGoogleAnalytics } from '@next/third-parties/google';
 
 interface GoogleAnalyticsProps {
   gaId: string;
@@ -9,31 +7,8 @@ interface GoogleAnalyticsProps {
 /**
  * Google Analytics 4 (GA4) 컴포넌트
  * Next.js 15 App Router에서 GA4를 연동합니다.
+ * @next/third-parties 패키지의 공식 GoogleAnalytics 컴포넌트를 사용합니다.
  */
 export function GoogleAnalytics({ gaId }: GoogleAnalyticsProps) {
-  return (
-    <>
-      {/* Google Analytics 스크립트 로드 */}
-      <Script
-        strategy='afterInteractive'
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-      />
-
-      {/* Google Analytics 초기화 스크립트 */}
-      <Script
-        id='google-analytics'
-        strategy='afterInteractive'
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gaId}', {
-              page_path: window.location.pathname,
-            });
-          `,
-        }}
-      />
-    </>
-  );
+  return <NextGoogleAnalytics gaId={gaId} />;
 }

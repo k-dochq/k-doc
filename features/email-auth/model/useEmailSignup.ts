@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { createClient } from 'shared/lib/supabase/client';
 import { generateNickname } from 'shared/lib/nickname-generator';
+import { trackSignUpComplete } from 'shared/lib/analytics';
 
 interface UseEmailSignupParams {
   locale: Locale;
@@ -83,9 +84,14 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
           dict.auth?.signup?.errors?.signupSuccess ||
           '회원가입이 완료되었습니다. 이메일을 확인하여 계정을 활성화해주세요.';
         setError(confirmationMessage);
+
+        // 회원가입 성공 - GA 이벤트 전송
+        trackSignUpComplete('email');
         return { success: true };
       }
 
+      // 회원가입 성공 - GA 이벤트 전송
+      trackSignUpComplete('email');
       return { success: true };
     } catch (err) {
       let errorMessage = dict.auth?.signup?.signupError || '회원가입 중 오류가 발생했습니다';

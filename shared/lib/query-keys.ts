@@ -94,6 +94,14 @@ export const queryKeys = {
       [...queryKeys.consultationHospitals.all(), 'list', params] as const,
   },
 
+  // 공지사항 관련 쿼리
+  notices: {
+    all: ['notices'] as const,
+    lists: () => [...queryKeys.notices.all, 'list'] as const,
+    infinite: (filters: Record<string, unknown>) =>
+      [...queryKeys.notices.lists(), 'infinite', filters] as const,
+  },
+
   // 카테고리 관련 쿼리
   categories: {
     all: ['categories'] as const,
