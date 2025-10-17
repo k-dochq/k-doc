@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
-import { getDictionary } from '../dictionaries';
 import type { Metadata } from 'next';
+import { NoticesContent } from './notices-content';
 
 interface NoticesPageProps {
   params: Promise<{ lang: Locale }>;
@@ -33,22 +33,10 @@ export async function generateMetadata({ params }: NoticesPageProps): Promise<Me
 
 export default async function NoticesPage({ params }: NoticesPageProps) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
 
   return (
-    <div className='px-5 pt-12 pb-20'>
-      <div className='text-center'>
-        <h1 className='mb-4 text-3xl font-bold'>
-          {lang === 'ko' && '공지사항'}
-          {lang === 'en' && 'Notices'}
-          {lang === 'th' && 'ประกาศ'}
-        </h1>
-        <p className='text-gray-600'>
-          {lang === 'ko' && '공지사항 페이지입니다.'}
-          {lang === 'en' && 'This is the notices page.'}
-          {lang === 'th' && 'นี่คือหน้าประกาศ'}
-        </p>
-      </div>
+    <div className='p-5 pt-12 pb-20'>
+      <NoticesContent lang={lang} />
     </div>
   );
 }
