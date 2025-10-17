@@ -766,6 +766,10 @@
     "title": "Taxi reservation",
     "buttonText": "จองแท็กซี่"
   },
+  "noticeSection": {
+    "title": "ดูข่าวสารใหม่ ๆ ได้ที่นี่!",
+    "buttonText": "ดูประกาศ"
+  },
   "comments": {
     "title": "ความคิดเห็น",
     "form": {

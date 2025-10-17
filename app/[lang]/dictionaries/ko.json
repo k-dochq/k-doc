@@ -765,6 +765,10 @@
     "title": "Taxi reservation",
     "buttonText": "택시 예약하기"
   },
+  "noticeSection": {
+    "title": "새로운 소식을 확인해보세요!",
+    "buttonText": "공지사항 보러가기"
+  },
   "comments": {
     "title": "댓글",
     "form": {
