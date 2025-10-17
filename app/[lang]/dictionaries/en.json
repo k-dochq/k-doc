@@ -766,6 +766,10 @@
     "title": "Taxi reservation",
     "buttonText": "Book a Taxi"
   },
+  "noticeSection": {
+    "title": "Check out the latest updates!",
+    "buttonText": "View Notices"
+  },
   "comments": {
     "title": "Comments",
     "form": {
