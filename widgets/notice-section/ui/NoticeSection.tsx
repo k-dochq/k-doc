@@ -22,7 +22,7 @@ export function NoticeSection({ lang, dict }: NoticeSectionProps) {
                 <div className='flex items-center justify-center rounded bg-[#ae33fb] px-1 py-0.5'>
                   <p className='text-xs leading-4 font-semibold text-white'>NEW</p>
                 </div>
-                <p className='text-center text-lg leading-7 font-bold text-[#da47ef]'>
+                <p className='text-center text-lg leading-7 font-bold text-[#ae33fb]'>
                   {noticeDict?.title || '새로운 소식을 확인해보세요!'}
                 </p>
               </div>
