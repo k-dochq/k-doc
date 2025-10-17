@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@contentsquare/tag-sdk": "^1.1.0",
+    "@next/third-parties": "^15.5.6",
     "@notionhq/client": "^4.0.1",
     "@prisma/client": "6.15.0",
     "@radix-ui/react-dialog": "^1.1.15",
