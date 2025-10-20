@@ -14,16 +14,10 @@ export interface ChatMessage {
   type: ChatMessageType;
 }
 
-export interface TypingEvent {
-  userId: string;
-  userName: string;
-  isTyping: boolean;
-}
-
 export interface BroadcastMessage {
   type: 'broadcast';
-  event: 'message' | 'typing';
-  payload: ChatMessage | TypingEvent;
+  event: 'message';
+  payload: ChatMessage;
 }
 
 // 채팅방 상태
@@ -31,21 +25,15 @@ export interface ChatRoomState {
   isConnected: boolean;
   isLoadingHistory: boolean;
   error: string | null;
-  typingUsers: string[];
 }
 
 // 채팅 액션
 export interface ChatActions {
   sendMessage: (content: string) => Promise<void>;
-  sendTyping: (isTyping: boolean) => Promise<void>;
-  refreshHistory: () => Promise<void>;
-  clearError: () => void;
 }
 
 // 채팅 메타데이터
 export interface ChatMetadata {
-  roomId: string;
-  channelName: string;
   hospitalId: string;
   userId: string;
   userName: string;
