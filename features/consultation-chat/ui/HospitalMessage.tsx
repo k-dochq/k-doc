@@ -2,6 +2,7 @@
 
 import { MessageBubble, MessageTime } from 'shared/ui/message-bubble';
 import { HospitalHeader } from 'entities/hospital/ui/HospitalHeader';
+import { parseTextWithLinks } from 'shared/lib';
 import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
 
@@ -27,7 +28,7 @@ export function HospitalMessage({
         <div className='relative flex shrink-0 content-stretch items-start justify-start'>
           <MessageBubble variant='hospital' className='self-stretch'>
             <div className="relative font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-900 not-italic">
-              {message.content}
+              {parseTextWithLinks(message.content)}
             </div>
           </MessageBubble>
         </div>
