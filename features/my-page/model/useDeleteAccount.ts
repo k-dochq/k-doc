@@ -43,6 +43,11 @@ export function useDeleteAccount({
 
         // 로그아웃 처리 (사용자가 이미 삭제되었으므로 에러가 발생할 수 있지만 무시)
         try {
+          if (!supabase) {
+            console.error('Supabase client 생성 실패');
+            return { success: false, error: 'Supabase client 생성 실패' };
+          }
+
           await supabase.auth.signOut();
         } catch (signOutError) {
           // 사용자가 이미 삭제되었으므로 로그아웃 에러는 무시

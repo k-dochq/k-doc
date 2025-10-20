@@ -10,6 +10,11 @@ import type { LoginSuccessMessage } from 'shared/types/webview-message';
 export async function handleLoginSuccess() {
   try {
     const supabase = createClient();
+    if (!supabase) {
+      console.error('Supabase client 생성 실패');
+      return;
+    }
+
     const {
       data: { session },
       error,

@@ -14,6 +14,9 @@ import {
   TypingManager,
 } from '../lib/chat-utils';
 
+// 훅 외부에서 한 번만 생성
+const supabase = createClient();
+
 interface UseRealtimeChatProps {
   hospitalId: string;
   userId: string;
@@ -28,7 +31,6 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
   const [error, setError] = useState<string | null>(null);
 
   const channelRef = useRef<RealtimeChannel | null>(null);
-  const supabase = createClient();
   const roomId = createRoomId(hospitalId, userId);
   const typingManager = useRef(new TypingManager());
 
@@ -85,13 +87,28 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
 
       try {
         setError(null);
+
+        // ✅ 1. 즉시 UI에 추가 (낙관적 업데이트)
+        setMessages((prev) => {
+          const combined = [...prev, message];
+          const deduplicated = deduplicateMessages(combined);
+          return sortMessagesByTime(deduplicated);
+        });
+
+        // ✅ 2. 서버로 전송 (Broadcast + DB)
         const result = await sendChatMessage(channelRef.current, hospitalId, message);
 
         if (!result.success) {
+          // ✅ 3. 전송 실패 시 UI에서 제거 (롤백)
+          setMessages((prev) => prev.filter((msg) => msg.id !== message.id));
           setError(result.error || '메시지 전송 실패');
         }
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
+        // ✅ 예외 발생 시 UI에서 제거 (롤백)
+        setMessages((prev) => prev.filter((msg) => msg.id !== message.id));
+
         setError(errorMessage);
         console.error('❌ Failed to send message:', error);
       }
@@ -154,6 +171,11 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
 
     // 2. 채널 생성 및 구독
     const channelName = createChannelName(roomId);
+    if (!supabase) {
+      console.error('Supabase client 생성 실패');
+      return;
+    }
+
     const channel = supabase.channel(channelName, {
       config: {
         broadcast: {
@@ -222,7 +244,6 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     userId,
     userName,
     hospitalId,
-    supabase,
     loadChatHistory,
     updateMessages,
     updateTypingUsers,

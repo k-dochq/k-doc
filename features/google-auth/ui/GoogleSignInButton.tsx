@@ -46,6 +46,11 @@ export function GoogleSignInButton({
         document.cookie = `auth_redirect_path=${encodeURIComponent(redirectTo)}; path=/; max-age=600; SameSite=Lax`;
       }
 
+      if (!supabase) {
+        console.error('Supabase client 생성 실패');
+        return;
+      }
+
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
