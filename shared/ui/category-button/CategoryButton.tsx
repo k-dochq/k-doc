@@ -40,9 +40,9 @@ export function CategoryButton({
   const buttonContent = (
     <>
       <div
-        className={`flex h-[50px] w-[50px] items-center justify-center rounded-xl ${
+        className={`flex h-[50px] w-[50px] items-center justify-center rounded-xl transition-all duration-200 ease-out hover:scale-105 active:scale-95 [filter:drop-shadow(1px_1px_12px_rgba(76,25,168,0.12))] hover:[filter:drop-shadow(2px_2px_16px_rgba(76,25,168,0.2))] active:[filter:drop-shadow(0px_0px_8px_rgba(76,25,168,0.15))] ${
           isActive ? 'border-2 border-transparent' : 'border border-white'
-        }`}
+        } ${iconClassName}`}
         style={
           isActive
             ? {
