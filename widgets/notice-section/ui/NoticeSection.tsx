@@ -13,10 +13,10 @@ export function NoticeSection({ lang, dict }: NoticeSectionProps) {
 
   return (
     <div className='w-full'>
-      <div className='relative mb-4'>
+      <div className='relative'>
         <NoticeBackground />
-        <div className='relative z-20 px-5'>
-          <div className='rounded-xl border border-solid border-white bg-[rgba(255,255,255,0.5)] p-8 backdrop-blur-[6px] backdrop-filter'>
+        <div className='relative z-20'>
+          <div className='bg-[rgba(255,255,255,0.5)] px-5 pt-8 pb-6 backdrop-blur-[6px] backdrop-filter'>
             <div className='flex flex-col items-center gap-6'>
               <div className='flex items-center gap-2'>
                 <div className='flex items-center justify-center rounded bg-[#ae33fb] px-1 py-0.5'>
