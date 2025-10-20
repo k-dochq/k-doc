@@ -26,7 +26,7 @@ export default async function NoticesPage({ params }: NoticesPageProps) {
   const dict = await getDictionary(lang);
 
   return (
-    <div className='p-5'>
+    <div className='px-5 pt-5 pb-20'>
       <NoticesContent lang={lang} dict={dict} />
     </div>
   );
