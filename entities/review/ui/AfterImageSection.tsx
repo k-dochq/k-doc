@@ -13,6 +13,8 @@ interface AfterImageSectionProps {
   lang: Locale;
   onImageClick: (index: number) => void;
   className?: string;
+  shouldLimitDisplay?: boolean; // Before/After 모두 2개 이상일 때 3개로 제한하는 플래그
+  totalAfterCount?: number; // 전체 After 이미지 개수
 }
 
 export function AfterImageSection({
@@ -22,6 +24,8 @@ export function AfterImageSection({
   lang,
   onImageClick,
   className = '',
+  shouldLimitDisplay = false,
+  totalAfterCount = 0,
 }: AfterImageSectionProps) {
   // 기본 이미지 설정 [[memory:8795787]]
   const defaultImage: DefaultImage = {
@@ -33,7 +37,11 @@ export function AfterImageSection({
   const displayAfterImages = afterImages.length > 0 ? afterImages.slice(0, 2) : [defaultImage];
 
   // 추가 이미지 개수 계산
-  const additionalImagesCount = afterImages.length > 2 ? afterImages.length - 2 : 0;
+  // shouldLimitDisplay가 true이면 전체 추가 이미지 개수를 표시 (Before + After)
+  // 예: Before 5개, After 3개 → (5 - 1) + (3 - 2) = 5개 추가
+  const additionalImagesCount = shouldLimitDisplay 
+    ? (beforeImagesCount - 1) + (totalAfterCount - 2)
+    : (afterImages.length > 2 ? afterImages.length - 2 : 0);
 
   const handleImageClick = (imageIndex: number) => (e: React.MouseEvent) => {
     // 이벤트 전파를 막아서 상위 LocaleLink가 동작하지 않도록 함
@@ -46,7 +54,7 @@ export function AfterImageSection({
   };
 
   return (
-    <div className={`flex h-full flex-1 flex-col border-l border-white ${className}`}>
+    <div className={`flex h-full w-full flex-col border-l border-white ${className}`}>
       {displayAfterImages.length === 1 ? (
         <SingleImageDisplay
           image={displayAfterImages[0]}
