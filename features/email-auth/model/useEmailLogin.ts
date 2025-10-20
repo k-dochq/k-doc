@@ -34,6 +34,11 @@ export function useEmailLogin({ locale, dict }: UseEmailLoginParams): UseEmailLo
     try {
       const supabase = createClient();
 
+      if (!supabase) {
+        console.error('Supabase client 생성 실패');
+        return { success: false, error: 'Supabase client 생성 실패' };
+      }
+
       const { data, error: signInError } = await supabase.auth.signInWithPassword({
         email: loginData.email,
         password: loginData.password,

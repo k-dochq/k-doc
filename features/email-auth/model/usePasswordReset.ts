@@ -31,6 +31,11 @@ export function usePasswordReset({ locale, dict }: UsePasswordResetParams): UseP
       const supabase = createClient();
 
       // 비밀번호 재설정 이메일 전송
+      if (!supabase) {
+        console.error('Supabase client 생성 실패');
+        return { success: false, error: 'Supabase client 생성 실패' };
+      }
+
       const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/${locale}/auth/reset-password`,
       });

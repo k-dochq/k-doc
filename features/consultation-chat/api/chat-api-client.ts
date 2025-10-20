@@ -131,37 +131,3 @@ export async function sendChatMessage(
     return { success: false, error: errorMessage };
   }
 }
-
-/**
- * 타이핑 상태 전송
- */
-export async function sendTypingStatus(
-  channel: any, // RealtimeChannel
-  userId: string,
-  userName: string,
-  isTyping: boolean,
-): Promise<{ success: boolean; error?: string }> {
-  try {
-    const { error } = await channel.send({
-      type: 'broadcast',
-      event: 'typing',
-      payload: {
-        userId,
-        userName,
-        isTyping,
-      },
-    });
-
-    if (error) {
-      console.error('❌ Failed to send typing status:', error);
-      return { success: false, error: error.message };
-    }
-
-    console.log('📝 Typing status sent:', { userId, userName, isTyping });
-    return { success: true };
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    console.error('❌ Error sending typing status:', error);
-    return { success: false, error: errorMessage };
-  }
-}

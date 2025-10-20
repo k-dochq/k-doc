@@ -20,6 +20,11 @@ export function AccountSection({ lang, dict }: AccountSectionProps) {
   const handleLogout = async () => {
     try {
       const supabase = createClient();
+      if (!supabase) {
+        console.error('Supabase client 생성 실패');
+        return;
+      }
+
       const { error } = await supabase.auth.signOut();
 
       if (error) {
@@ -65,7 +70,7 @@ export function AccountSection({ lang, dict }: AccountSectionProps) {
       {/* 계정 타이틀과 회원탈퇴 버튼을 같은 라인에 배치 */}
       <div className='flex items-center justify-between'>
         <h2 className='text-lg font-semibold text-gray-900'>{dict.my?.account?.title || '계정'}</h2>
-        
+
         {/* 회원탈퇴 - 텍스트만 클릭 가능 */}
         <div className='flex items-center'>
           <button

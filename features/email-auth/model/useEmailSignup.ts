@@ -65,6 +65,11 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
       if (signupData.marketingNotifications !== undefined)
         metadata.marketing_notifications = signupData.marketingNotifications;
 
+      if (!supabase) {
+        console.error('Supabase client 생성 실패');
+        return { success: false, error: 'Supabase client 생성 실패' };
+      }
+
       const { data, error: signUpError } = await supabase.auth.signUp({
         email: signupData.email,
         password: signupData.password,

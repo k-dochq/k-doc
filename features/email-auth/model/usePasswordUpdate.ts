@@ -33,6 +33,11 @@ export function usePasswordUpdate({
       const supabase = createClient();
 
       try {
+        if (!supabase) {
+          console.error('Supabase client 생성 실패');
+          return;
+        }
+
         const { error } = await supabase.auth.verifyOtp({
           token_hash: tokenHash,
           type: 'recovery',
@@ -62,6 +67,11 @@ export function usePasswordUpdate({
       const supabase = createClient();
 
       // 비밀번호 업데이트
+      if (!supabase) {
+        console.error('Supabase client 생성 실패');
+        return { success: false, error: 'Supabase client 생성 실패' };
+      }
+
       const { error: updateError } = await supabase.auth.updateUser({
         password: newPassword,
       });
