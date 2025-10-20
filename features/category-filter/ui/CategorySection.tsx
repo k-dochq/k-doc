@@ -6,9 +6,10 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { CategorySectionSkeleton } from './CategorySectionSkeleton';
 import { CategorySectionError } from './CategorySectionError';
-import { CategoryButton, type CategoryButtonData } from 'shared/ui/category-button';
+import { CategoryItem } from './CategoryItem';
+import { type CategoryButtonData } from 'shared/ui/category-button';
 import { CATEGORIES } from 'features/quick-menu/model/categories';
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
+import { Carousel, CarouselContent, type CarouselApi } from 'shared/ui/carousel';
 
 interface CategorySectionProps {
   lang: Locale;
@@ -76,7 +77,7 @@ export function CategorySection({
   }
 
   return (
-    <div className='w-full py-4'>
+    <div className='w-full overflow-visible'>
       <Carousel
         setApi={setApi}
         opts={{
@@ -86,7 +87,7 @@ export function CategorySection({
         }}
         className='w-full'
       >
-        <CarouselContent className='pr-5 pl-5'>
+        <CarouselContent className='pl-5'>
           {categoryButtons.map((categoryButton, index) => {
             const isActive =
               categoryButton.type === 'all'
@@ -97,25 +98,18 @@ export function CategorySection({
                 ? pathname || undefined
                 : `${pathname || ''}?category=${categoryButton.type}`;
             const isLast = index === categoryButtons.length - 1;
+            const isAll = categoryButton.type === 'all';
 
             return (
-              <CarouselItem key={categoryButton.type} className='basis-auto'>
-                <CategoryButton
-                  category={categoryButton}
-                  lang={lang}
-                  href={href}
-                  replace={true}
-                  isActive={isActive}
-                  className={
-                    categoryButton.type === 'all'
-                      ? '!w-[60px] pr-[10px]'
-                      : isLast
-                        ? 'mr-5 !w-[71px]'
-                        : ''
-                  }
-                  labelClassName={isLast ? '' : ''}
-                />
-              </CarouselItem>
+              <CategoryItem
+                key={categoryButton.type}
+                category={categoryButton}
+                lang={lang}
+                href={href}
+                isActive={isActive}
+                isLast={isLast}
+                isAll={isAll}
+              />
             );
           })}
         </CarouselContent>
