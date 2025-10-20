@@ -1,6 +1,7 @@
 'use client';
 
 import { MessageBubble, MessageTime } from 'shared/ui/message-bubble';
+import { parseTextWithLinks } from 'shared/lib';
 import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
 
@@ -18,7 +19,7 @@ export function UserMessage({ message }: UserMessageProps) {
         <div className='flex flex-row items-end self-stretch'>
           <MessageBubble variant='user' className='h-full items-end justify-start'>
             <div className="relative font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-50 not-italic">
-              {message.content}
+              {parseTextWithLinks(message.content)}
             </div>
           </MessageBubble>
         </div>

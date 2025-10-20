@@ -13,3 +13,4 @@ export * from './date-utils';
 export * from './user-name';
 export * from './nickname-mask';
 export * from './modal';
+export * from './url-parser';
