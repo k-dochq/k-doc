@@ -43,7 +43,7 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
           <NoticeSection lang={lang} dict={dict} />
         </div>
 
-        <div className='mt-12'>
+        <div>
           <LimousineBanner lang={lang} />
         </div>
 
