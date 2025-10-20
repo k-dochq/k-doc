@@ -76,7 +76,7 @@ export function CategorySection({
   }
 
   return (
-    <div className='w-full py-4'>
+    <div className='w-full overflow-visible'>
       <Carousel
         setApi={setApi}
         opts={{
@@ -86,7 +86,7 @@ export function CategorySection({
         }}
         className='w-full'
       >
-        <CarouselContent className='pr-5 pl-5'>
+        <CarouselContent className='py-4 pl-5'>
           {categoryButtons.map((categoryButton, index) => {
             const isActive =
               categoryButton.type === 'all'
@@ -100,21 +100,27 @@ export function CategorySection({
 
             return (
               <CarouselItem key={categoryButton.type} className='basis-auto'>
-                <CategoryButton
-                  category={categoryButton}
-                  lang={lang}
-                  href={href}
-                  replace={true}
-                  isActive={isActive}
-                  className={
-                    categoryButton.type === 'all'
-                      ? '!w-[60px] pr-[10px]'
-                      : isLast
-                        ? 'mr-5 !w-[71px]'
-                        : ''
-                  }
-                  labelClassName={isLast ? '' : ''}
-                />
+                {isLast ? (
+                  <div className='pr-5'>
+                    <CategoryButton
+                      category={categoryButton}
+                      lang={lang}
+                      href={href}
+                      replace={true}
+                      isActive={isActive}
+                      className={categoryButton.type === 'all' ? '!w-[60px] pr-[10px]' : ''}
+                    />
+                  </div>
+                ) : (
+                  <CategoryButton
+                    category={categoryButton}
+                    lang={lang}
+                    href={href}
+                    replace={true}
+                    isActive={isActive}
+                    className={categoryButton.type === 'all' ? '!w-[60px] pr-[10px]' : ''}
+                  />
+                )}
               </CarouselItem>
             );
           })}
