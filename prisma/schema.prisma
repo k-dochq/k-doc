@@ -114,6 +114,7 @@ model Hospital {
   HospitalLike             HospitalLike[]
   HospitalMedicalSpecialty HospitalMedicalSpecialty[]
   Product                  Product[]
+  Reservation              Reservation[]
   Review                   Review[]
 
   @@index([baseId])
@@ -254,6 +255,7 @@ model User {
   ConsultationMessage         ConsultationMessage[]
   DoctorLike                  DoctorLike[]
   HospitalLike                HospitalLike[]
+  Reservation                 Reservation[]
   Review                      Review[]
   ReviewLike                  ReviewLike[]
   InvitationCode              InvitationCode?       @relation(fields: [invitationCodeId], references: [id], onDelete: Restrict)
@@ -487,6 +489,73 @@ model NoticeFile {
   @@schema("public")
 }
 
+model Payment {
+  id                       String        @id @db.Uuid
+  reservationId            String        @db.Uuid
+  airwallexPaymentIntentId String        @unique @db.VarChar(255)
+  amount                   Int
+  currency                 String        @default("USD") @db.VarChar(3)
+  status                   PaymentStatus @default(PENDING)
+  paymentMethod            Json?
+  refundInfo               Json?
+  failureReason            String?
+  metadata                 Json?
+  createdAt                DateTime      @default(now())
+  updatedAt                DateTime
+  Reservation              Reservation   @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+
+  @@index([airwallexPaymentIntentId])
+  @@index([createdAt])
+  @@index([reservationId])
+  @@index([status])
+  @@schema("public")
+}
+
+model Reservation {
+  id                       String                     @id @db.Uuid
+  userId                   String                     @db.Uuid
+  hospitalId               String                     @db.Uuid
+  procedureName            String                     @db.VarChar(255)
+  reservationDate          DateTime                   @db.Date
+  reservationTime          String                     @db.VarChar(10)
+  depositAmount            Int
+  currency                 String                     @default("USD") @db.VarChar(3)
+  paymentDeadline          DateTime                   @db.Timestamptz(6)
+  status                   ReservationStatus          @default(PENDING)
+  createdBy                String?                    @db.Uuid
+  cancelReason             String?
+  metadata                 Json?
+  createdAt                DateTime                   @default(now())
+  updatedAt                DateTime
+  Payment                  Payment[]
+  Hospital                 Hospital                   @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  User                     User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ReservationStatusHistory ReservationStatusHistory[]
+
+  @@index([createdAt])
+  @@index([hospitalId])
+  @@index([reservationDate])
+  @@index([status])
+  @@index([userId])
+  @@schema("public")
+}
+
+model ReservationStatusHistory {
+  id            String             @id @db.Uuid
+  reservationId String             @db.Uuid
+  fromStatus    ReservationStatus?
+  toStatus      ReservationStatus
+  changedBy     String?            @db.Uuid
+  reason        String?
+  metadata      Json?
+  createdAt     DateTime           @default(now())
+  Reservation   Reservation        @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([reservationId])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -618,6 +687,26 @@ enum DoctorImageType {
 enum NoticeFileType {
   IMAGE
   ATTACHMENT
+
+  @@schema("public")
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+
+  @@schema("public")
+}
+
+enum ReservationStatus {
+  PENDING
+  PAYMENT_PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
 
   @@schema("public")
 }
