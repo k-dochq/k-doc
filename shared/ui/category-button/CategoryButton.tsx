@@ -1,5 +1,3 @@
-'use client';
-
 import { type Locale } from 'shared/config';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { type LocalizedText } from 'shared/model/types/common';
@@ -42,9 +40,9 @@ export function CategoryButton({
   const buttonContent = (
     <>
       <div
-        className={`flex h-[50px] w-[50px] items-center justify-center rounded-xl transition-all duration-200 ease-out hover:scale-105 active:scale-95 ${
+        className={`flex h-[50px] w-[50px] items-center justify-center rounded-xl transition-all duration-200 ease-out hover:scale-105 active:scale-95 [filter:drop-shadow(1px_1px_12px_rgba(76,25,168,0.12))] hover:[filter:drop-shadow(2px_2px_16px_rgba(76,25,168,0.2))] active:[filter:drop-shadow(0px_0px_8px_rgba(76,25,168,0.15))] ${
           isActive ? 'border-2 border-transparent' : 'border border-white'
-        }`}
+        } ${iconClassName}`}
         style={
           isActive
             ? {
@@ -52,25 +50,11 @@ export function CategoryButton({
                   'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%), linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
                 backgroundOrigin: 'border-box',
                 backgroundClip: 'content-box, border-box',
-                filter: 'drop-shadow(1px 1px 12px rgba(76,25,168,0.12))',
               }
             : {
                 background: 'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%)',
-                filter: 'drop-shadow(1px 1px 12px rgba(76,25,168,0.12))',
               }
         }
-        onMouseEnter={(e) => {
-          e.currentTarget.style.filter = 'drop-shadow(2px 2px 16px rgba(76,25,168,0.2))';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.filter = 'drop-shadow(1px 1px 12px rgba(76,25,168,0.12))';
-        }}
-        onMouseDown={(e) => {
-          e.currentTarget.style.filter = 'drop-shadow(0px 0px 8px rgba(76,25,168,0.15))';
-        }}
-        onMouseUp={(e) => {
-          e.currentTarget.style.filter = 'drop-shadow(1px 1px 12px rgba(76,25,168,0.12))';
-        }}
       >
         {category.icon()}
       </div>

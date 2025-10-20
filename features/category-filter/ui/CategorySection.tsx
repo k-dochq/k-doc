@@ -6,10 +6,9 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { CategorySectionSkeleton } from './CategorySectionSkeleton';
 import { CategorySectionError } from './CategorySectionError';
-import { CategoryItem } from './CategoryItem';
-import { type CategoryButtonData } from 'shared/ui/category-button';
+import { CategoryButton, type CategoryButtonData } from 'shared/ui/category-button';
 import { CATEGORIES } from 'features/quick-menu/model/categories';
-import { Carousel, CarouselContent, type CarouselApi } from 'shared/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 
 interface CategorySectionProps {
   lang: Locale;
@@ -98,18 +97,31 @@ export function CategorySection({
                 ? pathname || undefined
                 : `${pathname || ''}?category=${categoryButton.type}`;
             const isLast = index === categoryButtons.length - 1;
-            const isAll = categoryButton.type === 'all';
 
             return (
-              <CategoryItem
-                key={categoryButton.type}
-                category={categoryButton}
-                lang={lang}
-                href={href}
-                isActive={isActive}
-                isLast={isLast}
-                isAll={isAll}
-              />
+              <CarouselItem key={categoryButton.type} className='basis-auto'>
+                {isLast ? (
+                  <div className='pr-5'>
+                    <CategoryButton
+                      category={categoryButton}
+                      lang={lang}
+                      href={href}
+                      replace={true}
+                      isActive={isActive}
+                      className={categoryButton.type === 'all' ? '!w-[60px] pr-[10px]' : ''}
+                    />
+                  </div>
+                ) : (
+                  <CategoryButton
+                    category={categoryButton}
+                    lang={lang}
+                    href={href}
+                    replace={true}
+                    isActive={isActive}
+                    className={categoryButton.type === 'all' ? '!w-[60px] pr-[10px]' : ''}
+                  />
+                )}
+              </CarouselItem>
             );
           })}
         </CarouselContent>
