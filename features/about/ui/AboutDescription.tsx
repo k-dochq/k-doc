@@ -7,7 +7,7 @@ interface AboutDescriptionProps {
 
 export function AboutDescription({ dict }: AboutDescriptionProps) {
   return (
-    <div className='-mt-30'>
+    <div className='mt-3'>
       <GlassCard>
         <p className='text-sm leading-5 font-normal text-[#525252]'>
           {dict.about.description.part1}
