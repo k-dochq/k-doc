@@ -28,13 +28,13 @@ export function AboutHero({ lang, dict }: AboutHeroProps) {
       <div className='mt-8'>
         <h2 className='text-primary text-2xl font-bold'>{dict.about.subtitle}</h2>
       </div>
-      <div className='md:mt-8'>
+      <div className='mt-6'>
         <Image
           src={getImageSrc(lang)}
           alt={dict.about.subtitle}
           width={468}
           height={387}
-          className='h-[387px] w-full max-w-[468px] object-contain'
+          className='w-full object-contain'
           priority
         />
       </div>
