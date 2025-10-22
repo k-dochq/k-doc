@@ -107,21 +107,19 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
     const title = (() => {
       switch (lang) {
         case 'ko':
-          return `${hospitalName} - K-DOC | 케이닥`;
+          return `${hospitalName} - K-DOC`;
         case 'en':
           return `${hospitalName} - K-DOC`;
         case 'th':
           return `${hospitalName} - K-DOC | เค-ด็อค`;
         default:
-          return `${hospitalName} - K-DOC | เค-ด็อค`;
+          return `${hospitalName} - K-DOC`;
       }
     })();
     const description = hospitalDescription;
 
     const baseUrl = 'https://k-doc.kr';
     const url = `${baseUrl}/${lang}/hospital/${id}`;
-
-    console.log('title', title);
 
     return {
       title: title,
@@ -195,7 +193,7 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
         case 'th':
           return 'ข้อมูลโรงพยาบาล - K-DOC | เค-ด็อค';
         default:
-          return 'Hospital Information - K-DOC | เค-ด็อค';
+          return 'Hospital Information - K-DOC';
       }
     })();
 
