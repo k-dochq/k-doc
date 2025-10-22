@@ -811,5 +811,102 @@
       "title": "ดูข้อมูลแพทย์",
       "text": " ข้อมูลรายละเอียด"
     }
+  },
+  "package": {
+    "allInOnePackage": {
+      "title": "จองแพ็กเกจออลอินวัน",
+      "subtitle": "จองบริการทั้งหมดรวมถึงรถและล่ามในที่เดียว",
+      "vanSelection": "เลือกประเภทรถ"
+    },
+    "vanReservation": {
+      "title": "จองรถตู้",
+      "subtitle": "สัมผัสประสบการณ์การเดินทางสบายๆ ด้วยบริการรถตู้พรีเมียมของเรา",
+      "vanTypes": {
+        "standard": {
+          "name": "รถตู้มาตรฐาน",
+          "description": "การเดินทางพื้นฐานที่สะดวกสบาย",
+          "capacity": "นั่งได้สูงสุด 7 คน"
+        },
+        "premium": {
+          "name": "รถตู้พรีเมียม",
+          "description": "บริการพรีเมียมที่ดียิ่งขึ้น",
+          "capacity": "นั่งได้สูงสุด 7 คน"
+        },
+        "luxury": {
+          "name": "รถตู้หรู",
+          "description": "ประสบการณ์หรูหราระดับสูงสุด",
+          "capacity": "นั่งได้สูงสุด 7 คน"
+        }
+      },
+      "serviceType": {
+        "label": "ประเภทบริการ",
+        "oneWay": "เที่ยวเดียว",
+        "hourlyCharter": "เช่ารายชั่วโมง (6 ชั่วโมง)"
+      },
+      "picketing": {
+        "label": "บริการป้ายรับ",
+        "description": "รับที่สนามบินพร้อมป้ายชื่อ",
+        "price": "+$4"
+      },
+      "form": {
+        "pickupLocation": {
+          "label": "สถานที่รับ",
+          "placeholder": "กรอกสถานที่รับ"
+        },
+        "dropoffLocation": {
+          "label": "สถานที่ส่ง",
+          "placeholder": "กรอกสถานที่ส่ง"
+        },
+        "pickupDate": {
+          "label": "วันที่รับ",
+          "placeholder": "เลือกวันที่"
+        },
+        "pickupTime": {
+          "label": "เวลารับ",
+          "placeholder": "เลือกเวลา"
+        },
+        "passengerCount": {
+          "label": "จำนวนผู้โดยสาร",
+          "placeholder": "เลือกจำนวน"
+        },
+        "luggage": {
+          "label": "จำนวนกระเป๋า",
+          "placeholder": "เลือกจำนวน"
+        },
+        "contactInfo": {
+          "label": "ข้อมูลติดต่อ",
+          "name": "ชื่อ",
+          "phone": "เบอร์โทรศัพท์",
+          "email": "อีเมล",
+          "namePlaceholder": "กรอกชื่อของคุณ",
+          "phonePlaceholder": "กรอกเบอร์โทรศัพท์",
+          "emailPlaceholder": "กรอกที่อยู่อีเมล"
+        }
+      },
+      "price": {
+        "base": "ค่าโดยสารพื้นฐาน",
+        "picketing": "ป้ายรับ",
+        "total": "ยอดรวมทั้งหมด",
+        "currency": "USD"
+      },
+      "buttons": {
+        "selectVan": "เลือก",
+        "payment": "ดำเนินการชำระเงิน",
+        "paymentComingSoon": "ฟีเจอร์การชำระเงินเร็วๆ นี้"
+      },
+      "validation": {
+        "vanTypeRequired": "กรุณาเลือกประเภทรถตู้",
+        "serviceTypeRequired": "กรุณาเลือกประเภทบริการ",
+        "pickupLocationRequired": "กรุณากรอกสถานที่รับ",
+        "dropoffLocationRequired": "กรุณากรอกสถานที่ส่ง",
+        "pickupDateRequired": "กรุณาเลือกวันที่รับ",
+        "pickupTimeRequired": "กรุณาเลือกเวลารับ",
+        "passengerCountRequired": "กรุณาเลือกจำนวนผู้โดยสาร",
+        "nameRequired": "กรุณากรอกชื่อของคุณ",
+        "phoneRequired": "กรุณากรอกเบอร์โทรศัพท์",
+        "emailRequired": "กรุณากรอกที่อยู่อีเมล",
+        "emailInvalid": "กรุณากรอกที่อยู่อีเมลที่ถูกต้อง"
+      }
+    }
   }
 }
