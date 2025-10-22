@@ -846,7 +846,7 @@
       "picketing": {
         "label": "Picketing Service",
         "description": "Meet and greet with name sign at airport",
-        "price": "+$5"
+        "price": "+$4"
       },
       "form": {
         "pickupLocation": {

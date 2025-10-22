@@ -8,7 +8,6 @@ export interface VanTypeInfo {
   capacityKey: string;
   basePrice: {
     oneWay: number;
-    oneWayWithPicketing: number;
     hourlyCharter: number;
   };
 }
@@ -21,7 +20,6 @@ export const VAN_TYPES: VanTypeInfo[] = [
     capacityKey: 'package.vanReservation.vanTypes.standard.capacity',
     basePrice: {
       oneWay: 70,
-      oneWayWithPicketing: 75,
       hourlyCharter: 150,
     },
   },
@@ -32,7 +30,6 @@ export const VAN_TYPES: VanTypeInfo[] = [
     capacityKey: 'package.vanReservation.vanTypes.premium.capacity',
     basePrice: {
       oneWay: 90,
-      oneWayWithPicketing: 95,
       hourlyCharter: 200,
     },
   },
@@ -43,12 +40,11 @@ export const VAN_TYPES: VanTypeInfo[] = [
     capacityKey: 'package.vanReservation.vanTypes.luxury.capacity',
     basePrice: {
       oneWay: 120,
-      oneWayWithPicketing: 125,
       hourlyCharter: 280,
     },
   },
 ];
 
-export const PICKETING_FEE = 5;
+export const PICKETING_FEE = 4;
 export const MAX_PASSENGERS = 7;
 export const MAX_LUGGAGE = 10;

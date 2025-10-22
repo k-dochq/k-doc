@@ -31,16 +31,16 @@ export function calculatePrice(
   let basePrice = 0;
 
   if (serviceType === 'oneWay') {
-    basePrice = hasPicketing ? vanInfo.basePrice.oneWayWithPicketing : vanInfo.basePrice.oneWay;
+    basePrice = vanInfo.basePrice.oneWay;
   } else if (serviceType === 'hourlyCharter') {
     basePrice = vanInfo.basePrice.hourlyCharter;
   }
 
   const picketingFee = hasPicketing && serviceType === 'oneWay' ? PICKETING_FEE : 0;
-  const totalPrice = basePrice;
+  const totalPrice = basePrice + picketingFee;
 
   return {
-    basePrice: serviceType === 'oneWay' && hasPicketing ? basePrice - picketingFee : basePrice,
+    basePrice,
     picketingFee,
     totalPrice,
   };
