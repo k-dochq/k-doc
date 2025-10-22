@@ -810,5 +810,102 @@
       "title": "의사 정보를 확인해보세요",
       "text": "의 상세 정보를 확인해보세요"
     }
+  },
+  "package": {
+    "allInOnePackage": {
+      "title": "올인원패키지 예약",
+      "subtitle": "차량, 통역 등 모든 서비스를 한 번에 예약하세요",
+      "vanSelection": "차량 선택"
+    },
+    "vanReservation": {
+      "title": "차량 예약",
+      "subtitle": "프리미엄 밴 서비스로 편안한 이동을 경험하세요",
+      "vanTypes": {
+        "standard": {
+          "name": "스탠다드 밴",
+          "description": "기본적이고 편안한 이동",
+          "capacity": "최대 7인승"
+        },
+        "premium": {
+          "name": "프리미엄 밴",
+          "description": "한층 더 편안한 프리미엄 서비스",
+          "capacity": "최대 7인승"
+        },
+        "luxury": {
+          "name": "럭셔리 밴",
+          "description": "최고급 럭셔리 경험",
+          "capacity": "최대 7인승"
+        }
+      },
+      "serviceType": {
+        "label": "서비스 유형",
+        "oneWay": "편도",
+        "hourlyCharter": "시간제 대절 (6시간)"
+      },
+      "picketing": {
+        "label": "피켓팅 서비스",
+        "description": "공항에서 이름표를 들고 마중",
+        "price": "+$5"
+      },
+      "form": {
+        "pickupLocation": {
+          "label": "픽업 장소",
+          "placeholder": "픽업 장소를 입력하세요"
+        },
+        "dropoffLocation": {
+          "label": "도착 장소",
+          "placeholder": "도착 장소를 입력하세요"
+        },
+        "pickupDate": {
+          "label": "픽업 날짜",
+          "placeholder": "날짜를 선택하세요"
+        },
+        "pickupTime": {
+          "label": "픽업 시간",
+          "placeholder": "시간을 선택하세요"
+        },
+        "passengerCount": {
+          "label": "탑승 인원",
+          "placeholder": "인원을 선택하세요"
+        },
+        "luggage": {
+          "label": "수하물 개수",
+          "placeholder": "수하물 개수를 선택하세요"
+        },
+        "contactInfo": {
+          "label": "연락처 정보",
+          "name": "이름",
+          "phone": "전화번호",
+          "email": "이메일",
+          "namePlaceholder": "이름을 입력하세요",
+          "phonePlaceholder": "전화번호를 입력하세요",
+          "emailPlaceholder": "이메일을 입력하세요"
+        }
+      },
+      "price": {
+        "base": "기본 요금",
+        "picketing": "피켓팅",
+        "total": "총 금액",
+        "currency": "USD"
+      },
+      "buttons": {
+        "selectVan": "선택하기",
+        "payment": "결제하기",
+        "paymentComingSoon": "결제 기능은 준비중입니다"
+      },
+      "validation": {
+        "vanTypeRequired": "차량 타입을 선택해주세요",
+        "serviceTypeRequired": "서비스 유형을 선택해주세요",
+        "pickupLocationRequired": "픽업 장소를 입력해주세요",
+        "dropoffLocationRequired": "도착 장소를 입력하세요",
+        "pickupDateRequired": "픽업 날짜를 선택해주세요",
+        "pickupTimeRequired": "픽업 시간을 선택해주세요",
+        "passengerCountRequired": "탑승 인원을 선택해주세요",
+        "nameRequired": "이름을 입력해주세요",
+        "phoneRequired": "전화번호를 입력해주세요",
+        "emailRequired": "이메일을 입력해주세요",
+        "emailInvalid": "유효한 이메일 주소를 입력해주세요"
+      }
+    }
   }
 }

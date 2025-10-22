@@ -811,5 +811,102 @@
       "title": "Check out doctor information",
       "text": "'s detailed information"
     }
+  },
+  "package": {
+    "allInOnePackage": {
+      "title": "All-in-One Package Reservation",
+      "subtitle": "Reserve all services including vehicle and interpretation in one place",
+      "vanSelection": "Select Van Type"
+    },
+    "vanReservation": {
+      "title": "Van Reservation",
+      "subtitle": "Experience comfortable transportation with our premium van service",
+      "vanTypes": {
+        "standard": {
+          "name": "Standard Van",
+          "description": "Basic and comfortable transportation",
+          "capacity": "Up to 7 passengers"
+        },
+        "premium": {
+          "name": "Premium Van",
+          "description": "Enhanced premium service",
+          "capacity": "Up to 7 passengers"
+        },
+        "luxury": {
+          "name": "Luxury Van",
+          "description": "Ultimate luxury experience",
+          "capacity": "Up to 7 passengers"
+        }
+      },
+      "serviceType": {
+        "label": "Service Type",
+        "oneWay": "One-way",
+        "hourlyCharter": "Hourly Charter (6 hours)"
+      },
+      "picketing": {
+        "label": "Picketing Service",
+        "description": "Meet and greet with name sign at airport",
+        "price": "+$5"
+      },
+      "form": {
+        "pickupLocation": {
+          "label": "Pickup Location",
+          "placeholder": "Enter pickup location"
+        },
+        "dropoffLocation": {
+          "label": "Drop-off Location",
+          "placeholder": "Enter drop-off location"
+        },
+        "pickupDate": {
+          "label": "Pickup Date",
+          "placeholder": "Select date"
+        },
+        "pickupTime": {
+          "label": "Pickup Time",
+          "placeholder": "Select time"
+        },
+        "passengerCount": {
+          "label": "Number of Passengers",
+          "placeholder": "Select number"
+        },
+        "luggage": {
+          "label": "Number of Luggage",
+          "placeholder": "Select number"
+        },
+        "contactInfo": {
+          "label": "Contact Information",
+          "name": "Name",
+          "phone": "Phone Number",
+          "email": "Email",
+          "namePlaceholder": "Enter your name",
+          "phonePlaceholder": "Enter phone number",
+          "emailPlaceholder": "Enter email address"
+        }
+      },
+      "price": {
+        "base": "Base Fare",
+        "picketing": "Picketing",
+        "total": "Total Amount",
+        "currency": "USD"
+      },
+      "buttons": {
+        "selectVan": "Select",
+        "payment": "Proceed to Payment",
+        "paymentComingSoon": "Payment feature coming soon"
+      },
+      "validation": {
+        "vanTypeRequired": "Please select a van type",
+        "serviceTypeRequired": "Please select a service type",
+        "pickupLocationRequired": "Please enter pickup location",
+        "dropoffLocationRequired": "Please enter drop-off location",
+        "pickupDateRequired": "Please select pickup date",
+        "pickupTimeRequired": "Please select pickup time",
+        "passengerCountRequired": "Please select number of passengers",
+        "nameRequired": "Please enter your name",
+        "phoneRequired": "Please enter phone number",
+        "emailRequired": "Please enter email address",
+        "emailInvalid": "Please enter a valid email address"
+      }
+    }
   }
 }
