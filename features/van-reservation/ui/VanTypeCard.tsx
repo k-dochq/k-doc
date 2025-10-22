@@ -29,11 +29,12 @@ export function VanTypeCard({ vanInfo, isSelected, onSelect, dict }: VanTypeCard
       type='button'
       onClick={() => onSelect(vanInfo.id)}
       className={cn(
-        'w-full rounded-xl border-2 bg-white p-4 text-left transition-all',
-        isSelected
-          ? 'border-[#DA47EF] shadow-lg'
-          : 'border-neutral-200 hover:border-neutral-300 hover:shadow-md',
+        'w-full rounded-xl border border-white p-4 text-left shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] transition-all',
+        isSelected ? 'border-[#DA47EF] bg-[#fce4ff] shadow-lg' : 'hover:shadow-md',
       )}
+      style={{
+        background: isSelected ? '#fce4ff' : 'rgba(255, 255, 255, 0.50)',
+      }}
     >
       <div className='flex items-start gap-4'>
         {/* Van Icon/Image Placeholder */}

@@ -25,11 +25,15 @@ export function ServiceTypeSelector({ selectedType, onSelect, dict }: ServiceTyp
             type='button'
             onClick={() => onSelect(type)}
             className={cn(
-              'rounded-xl border-2 px-4 py-3 text-center text-sm font-medium transition-all',
+              'rounded-xl border px-4 py-3 text-center text-sm font-medium shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] transition-all',
               selectedType === type
                 ? 'border-[#DA47EF] bg-[#DA47EF]/5 text-[#DA47EF]'
-                : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300',
+                : 'border-white text-neutral-700 hover:shadow-md',
             )}
+            style={{
+              background:
+                selectedType === type ? 'rgba(218, 71, 239, 0.05)' : 'rgba(255, 255, 255, 0.50)',
+            }}
           >
             {type === 'oneWay'
               ? dict.package?.vanReservation?.serviceType?.oneWay

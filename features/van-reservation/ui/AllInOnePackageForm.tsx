@@ -71,7 +71,12 @@ export function AllInOnePackageForm({ lang, dict }: AllInOnePackageFormProps) {
 
       {/* Picketing Service (only for one-way) */}
       {formData.serviceType === 'oneWay' && (
-        <div className='flex items-start gap-3 rounded-xl border border-neutral-200 bg-white p-4'>
+        <div
+          className='flex items-start gap-3 rounded-xl border border-white p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)]'
+          style={{
+            background: 'rgba(255, 255, 255, 0.50)',
+          }}
+        >
           <input
             type='checkbox'
             id='picketing'
