@@ -8,3 +8,4 @@ export { HairTransplantIcon } from './HairTransplantIcon';
 export { StemCellIcon } from './StemCellIcon';
 export { DermatologyIcon } from './DermatologyIcon';
 export { AllIcon } from './AllIcon';
+export { DentalIcon } from './DentalIcon';

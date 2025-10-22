@@ -10,9 +10,11 @@ import {
   StemCellIcon,
   DermatologyIcon,
   AllIcon,
+  DentalIcon,
 } from '../ui/icons';
 
-export const CATEGORIES: CategoryItem[] = [
+// 공통 카테고리 데이터
+const COMMON_CATEGORIES: CategoryItem[] = [
   // 첫째줄: 눈 > 코 > 리프팅 > 안면윤곽 > 가슴
   {
     id: '3df0bd71-16cb-40c6-b372-ddfde9327aad', // EYES
@@ -49,7 +51,7 @@ export const CATEGORIES: CategoryItem[] = [
     iconSmall: () => <BreastIcon variant='small' />,
     labels: { ko_KR: '가슴', en_US: 'Breast', th_TH: 'หน้าอก' },
   },
-  // 둘째줄: 지방성형 > 모발이식 > 줄기세포 > 피부과 > 전체
+  // 둘째줄: 지방성형 > 모발이식 > 줄기세포 > 피부과 > 치과
   {
     id: '56739781-11f0-412b-8cd9-ef63024f80c2', // LIPOSUCTION
     type: 'LIPOSUCTION',
@@ -79,10 +81,25 @@ export const CATEGORIES: CategoryItem[] = [
     labels: { ko_KR: '피부과', en_US: 'Dermatology', th_TH: 'โรคผิวหนัง' },
   },
   {
-    id: 'all',
-    type: 'all',
-    icon: () => <AllIcon />,
-    iconSmall: () => <AllIcon variant='small' />,
-    labels: { ko_KR: '전체', en_US: 'All', th_TH: 'ทั้งหมด' },
+    id: '9cbe9f04-8a8c-4533-b7f3-86f707066bd7', // DENTAL
+    type: 'DENTAL',
+    icon: () => <DentalIcon />,
+    iconSmall: () => <DentalIcon variant='small' />,
+    labels: { ko_KR: '치과', en_US: 'Dental', th_TH: 'ทันตกรรม' },
   },
 ];
+
+// 전체 카테고리
+const ALL_CATEGORY: CategoryItem = {
+  id: 'all',
+  type: 'all',
+  icon: () => <AllIcon />,
+  iconSmall: () => <AllIcon variant='small' />,
+  labels: { ko_KR: '전체', en_US: 'All', th_TH: 'ทั้งหมด' },
+};
+
+// Quick Menu용 카테고리 (전체 제외)
+export const QUICK_MENU_CATEGORIES: CategoryItem[] = COMMON_CATEGORIES;
+
+// 일반용 카테고리 (전체 포함)
+export const CATEGORIES: CategoryItem[] = [...COMMON_CATEGORIES, ALL_CATEGORY];
