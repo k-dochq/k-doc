@@ -635,16 +635,25 @@
   },
   "about": {
     "title": "About Us",
-    "subtitle": "People who make K-DOC",
+    "subtitle": "The People Behind K-DOC",
     "description": {
       "part1": "K-DOC is a service planned by a team of medical professionals from ",
       "highlight": "top universities worldwide",
       "part2": ", led by Dr. Woo Jung-ho, a global authority in the medical field. Our headquarters, located in a landmark building in Apgujeong, leads global beauty trends, and Dr. Woo, widely known as the 'Master of Thread Lifting' even in Japan, has been featured in prominent international media such as FOX TV News."
     },
+    "profiles": {
+      "woo": {
+        "description": "FOX TV News in the U.S. broadcast 'Non-Surgical Thread Lifting Revolution'",
+        "name": "President Woo Jung Ho"
+      },
+      "park": {
+        "name": "Vice President\nPark Jong Hyeon"
+      }
+    },
     "ceoGreeting": {
-      "title": "CEO Message",
+      "title": "CEO Greetings",
       "name": "President Woo Jung Ho M.D.",
-      "greeting": "สวัสดีครับ",
+      "greeting": "Hello,",
       "content": [
         "Thank you for visiting K-DOC.",
         "K-DOC is Korea's premier medical beauty platform, created to guide Thai clients in selecting only the top 5% of plastic surgery and dermatology clinics in Korea—clinics you can truly trust—while also offering exclusive discount benefits.",
