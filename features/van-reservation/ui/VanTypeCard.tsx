@@ -80,7 +80,7 @@ export function VanTypeCard({ vanInfo, isSelected, onSelect, dict }: VanTypeCard
       </div>
 
       {/* Price Preview */}
-      <div className='mt-3 flex items-baseline gap-2 border-t border-neutral-100 pt-3'>
+      <div className='mt-3 flex items-center gap-2 border-t border-neutral-100 pt-3'>
         <span className='text-sm text-neutral-500'>
           {dict.package?.vanReservation?.serviceType?.oneWay}:
         </span>

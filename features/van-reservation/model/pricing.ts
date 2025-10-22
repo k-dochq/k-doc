@@ -36,7 +36,7 @@ export function calculatePrice(
     basePrice = vanInfo.basePrice.hourlyCharter;
   }
 
-  const picketingFee = hasPicketing && serviceType === 'oneWay' ? PICKETING_FEE : 0;
+  const picketingFee = hasPicketing ? PICKETING_FEE : 0;
   const totalPrice = basePrice + picketingFee;
 
   return {

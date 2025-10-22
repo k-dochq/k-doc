@@ -69,52 +69,46 @@ export function AllInOnePackageForm({ lang, dict }: AllInOnePackageFormProps) {
       />
       {errors.serviceType && <p className='text-sm leading-5 text-red-500'>{errors.serviceType}</p>}
 
-      {/* Picketing Service (only for one-way) */}
-      {formData.serviceType === 'oneWay' && (
-        <div
-          className='flex items-start gap-3 rounded-xl border border-white p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)]'
-          style={{
-            background: 'rgba(255, 255, 255, 0.50)',
-          }}
-        >
-          <div className='flex-shrink-0'>
-            <button
-              type='button'
-              onClick={() => updateField('hasPicketing', !formData.hasPicketing)}
-              className='flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-300 transition-all hover:border-[#DA47EF]'
-              style={{
-                backgroundColor: formData.hasPicketing ? '#DA47EF' : 'transparent',
-                borderColor: formData.hasPicketing ? '#DA47EF' : '#D1D5DB',
-              }}
-            >
-              {formData.hasPicketing && (
-                <svg className='h-4 w-4 text-white' fill='currentColor' viewBox='0 0 20 20'>
-                  <path
-                    fillRule='evenodd'
-                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                    clipRule='evenodd'
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-          <div className='flex-1'>
-            <div
-              onClick={() => updateField('hasPicketing', !formData.hasPicketing)}
-              className='cursor-pointer text-sm font-medium text-neutral-900'
-            >
-              {dict.package?.vanReservation?.picketing?.label || '피켓팅 서비스'}
-            </div>
-            <p className='mt-1 text-xs text-neutral-600'>
-              {dict.package?.vanReservation?.picketing?.description ||
-                '공항에서 이름표를 들고 마중'}
-            </p>
-            <p className='mt-1 text-sm font-bold text-[#DA47EF]'>
-              {dict.package?.vanReservation?.picketing?.price || '+$4'}
-            </p>
-          </div>
+      {/* Picketing Service */}
+      <div
+        className='flex items-start gap-3 rounded-xl border border-white p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)]'
+        style={{
+          background: 'rgba(255, 255, 255, 0.50)',
+        }}
+      >
+        <div className='flex-shrink-0'>
+          <button
+            type='button'
+            onClick={() => updateField('hasPicketing', !formData.hasPicketing)}
+            className='flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-300 transition-all hover:border-[#DA47EF]'
+            style={{
+              backgroundColor: formData.hasPicketing ? '#DA47EF' : 'transparent',
+              borderColor: formData.hasPicketing ? '#DA47EF' : '#D1D5DB',
+            }}
+          >
+            {formData.hasPicketing && (
+              <svg className='h-4 w-4 text-white' fill='currentColor' viewBox='0 0 20 20'>
+                <path
+                  fillRule='evenodd'
+                  d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                  clipRule='evenodd'
+                />
+              </svg>
+            )}
+          </button>
         </div>
-      )}
+        <div className='flex-1'>
+          <div
+            onClick={() => updateField('hasPicketing', !formData.hasPicketing)}
+            className='cursor-pointer text-sm font-medium text-neutral-900'
+          >
+            {dict.package?.vanReservation?.picketing?.label || '피켓팅 서비스'}
+          </div>
+          <p className='mt-1 text-sm font-bold text-[#DA47EF]'>
+            {dict.package?.vanReservation?.picketing?.price || '+$4'}
+          </p>
+        </div>
+      </div>
 
       {/* Floating Payment Button */}
       <FloatingPaymentButton
