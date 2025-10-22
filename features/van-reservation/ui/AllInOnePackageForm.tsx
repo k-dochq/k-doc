@@ -77,20 +77,34 @@ export function AllInOnePackageForm({ lang, dict }: AllInOnePackageFormProps) {
             background: 'rgba(255, 255, 255, 0.50)',
           }}
         >
-          <input
-            type='checkbox'
-            id='picketing'
-            checked={formData.hasPicketing}
-            onChange={(e) => updateField('hasPicketing', e.target.checked)}
-            className='mt-1 h-5 w-5 rounded border-neutral-300 text-[#DA47EF] focus:ring-2 focus:ring-[#DA47EF]'
-          />
+          <div className='flex-shrink-0'>
+            <button
+              type='button'
+              onClick={() => updateField('hasPicketing', !formData.hasPicketing)}
+              className='flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-300 transition-all hover:border-[#DA47EF]'
+              style={{
+                backgroundColor: formData.hasPicketing ? '#DA47EF' : 'transparent',
+                borderColor: formData.hasPicketing ? '#DA47EF' : '#D1D5DB',
+              }}
+            >
+              {formData.hasPicketing && (
+                <svg className='h-4 w-4 text-white' fill='currentColor' viewBox='0 0 20 20'>
+                  <path
+                    fillRule='evenodd'
+                    d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
+                    clipRule='evenodd'
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
           <div className='flex-1'>
-            <label
-              htmlFor='picketing'
+            <div
+              onClick={() => updateField('hasPicketing', !formData.hasPicketing)}
               className='cursor-pointer text-sm font-medium text-neutral-900'
             >
               {dict.package?.vanReservation?.picketing?.label || '피켓팅 서비스'}
-            </label>
+            </div>
             <p className='mt-1 text-xs text-neutral-600'>
               {dict.package?.vanReservation?.picketing?.description ||
                 '공항에서 이름표를 들고 마중'}

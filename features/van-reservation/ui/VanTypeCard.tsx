@@ -3,6 +3,7 @@
 import { type VanType, type VanTypeInfo } from '../model/van-types';
 import { type Dictionary } from 'shared/model/types';
 import { cn } from 'shared/lib';
+import { Car, Truck, Bus } from 'lucide-react';
 
 interface VanTypeCardProps {
   vanInfo: VanTypeInfo;
@@ -24,6 +25,19 @@ export function VanTypeCard({ vanInfo, isSelected, onSelect, dict }: VanTypeCard
     return dict.package?.vanReservation?.vanTypes?.[vanInfo.id]?.capacity || '';
   };
 
+  const getVanIcon = () => {
+    switch (vanInfo.id) {
+      case 'standard':
+        return <Car className='h-10 w-10 text-gray-600' />;
+      case 'premium':
+        return <Truck className='h-10 w-10 text-gray-600' />;
+      case 'luxury':
+        return <Bus className='h-10 w-10 text-gray-600' />;
+      default:
+        return <Car className='h-10 w-10 text-gray-600' />;
+    }
+  };
+
   return (
     <button
       type='button'
@@ -38,20 +52,8 @@ export function VanTypeCard({ vanInfo, isSelected, onSelect, dict }: VanTypeCard
     >
       <div className='flex items-start gap-4'>
         {/* Van Icon/Image Placeholder */}
-        <div className='flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-gray-100'>
-          <svg
-            className='h-10 w-10 text-gray-400'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth={2}
-              d='M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4'
-            />
-          </svg>
+        <div className='flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg'>
+          {getVanIcon()}
         </div>
 
         {/* Van Info */}
