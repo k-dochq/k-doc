@@ -38,8 +38,8 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   const { lang } = await params;
 
   const titles = {
-    ko: 'K-DOC | เค-ด็อค',
-    en: 'K-DOC | เค-ด็อค',
+    ko: 'K-DOC',
+    en: 'K-DOC',
     th: 'K-DOC | เค-ด็อค',
   };
 
@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     },
     openGraph: {
       type: 'website',
-      siteName: 'K-DOC | เค-ด็อค',
+      siteName: titles[lang],
       title: titles[lang],
       description: descriptions[lang],
       locale: lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH',
