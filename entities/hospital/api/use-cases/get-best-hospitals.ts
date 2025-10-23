@@ -12,7 +12,7 @@ export interface GetBestHospitalsOptions {
 
 export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
   try {
-    const { category = 'ALL', limit = 5 } = options;
+    const { category = 'ALL', limit = 2 } = options;
 
     // 카테고리별 필터링을 위한 where 조건 구성
     const whereCondition: Prisma.HospitalWhereInput = {};
