@@ -1,25 +1,24 @@
 'use client';
 
-import { ChevronDown } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type NoticeWithFiles } from '@/entities/notice';
 import { extractLocalizedText } from '@/shared/lib/localized-text';
+import { LocaleLink } from 'shared/ui/locale-link';
 
 interface NoticeTitleProps {
   notice: NoticeWithFiles;
   lang: Locale;
   dict: Dictionary;
-  isExpanded: boolean;
-  onToggle: () => void;
 }
 
-export function NoticeTitle({ notice, lang, dict, isExpanded, onToggle }: NoticeTitleProps) {
+export function NoticeTitle({ notice, lang, dict }: NoticeTitleProps) {
   const title = extractLocalizedText(notice.title, lang);
 
   return (
-    <button
-      onClick={onToggle}
+    <LocaleLink
+      href={`/notices/${notice.id}`}
       className='flex w-full items-center gap-4 p-4 text-left transition-colors hover:bg-white/10'
     >
       {/* 제목 */}
@@ -29,12 +28,8 @@ export function NoticeTitle({ notice, lang, dict, isExpanded, onToggle }: Notice
 
       {/* 화살표 아이콘 */}
       <div className='flex shrink-0 items-center justify-center'>
-        <ChevronDown
-          className={`h-6 w-6 text-[#da47ef] transition-transform duration-200 ${
-            isExpanded ? 'rotate-180' : ''
-          }`}
-        />
+        <ChevronRight className='h-6 w-6 text-[#da47ef]' />
       </div>
-    </button>
+    </LocaleLink>
   );
 }

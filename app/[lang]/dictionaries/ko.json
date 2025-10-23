@@ -107,7 +107,8 @@
     "loadMore": "더보기",
     "loadingMore": "불러오는 중...",
     "allLoaded": "모든 공지사항을 불러왔습니다.",
-    "noTitle": "제목 없음"
+    "noTitle": "제목 없음",
+    "backToList": "목록으로"
   },
   "hospitalDetailTabs": {
     "introduction": "병원소개",

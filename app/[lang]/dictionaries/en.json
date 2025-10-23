@@ -107,7 +107,8 @@
     "loadMore": "Load More",
     "loadingMore": "Loading...",
     "allLoaded": "All notices loaded.",
-    "noTitle": "No Title"
+    "noTitle": "No Title",
+    "backToList": "Back to List"
   },
   "hospitalDetailTabs": {
     "introduction": "Hospital Info",
