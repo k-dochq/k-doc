@@ -1,4 +1,4 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { type NoticeWithFiles, type GetNoticeDetailResponse } from './types';
 
 // 단일 공지사항 조회 함수
@@ -20,9 +20,13 @@ async function fetchNoticeDetail(id: string): Promise<NoticeWithFiles> {
 
 // 공지사항 상세 조회 훅
 export function useNoticeDetail(id: string) {
-  return useSuspenseQuery({
+  return useQuery({
     queryKey: ['notice', id],
     queryFn: () => fetchNoticeDetail(id),
     staleTime: 5 * 60 * 1000, // 5분
+    gcTime: 10 * 60 * 1000, // 10분
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    enabled: !!id, // id가 있을 때만 실행
   });
 }
