@@ -107,7 +107,8 @@
     "loadMore": "ดูเพิ่มเติม",
     "loadingMore": "กำลังโหลด...",
     "allLoaded": "โหลดประกาศครบทุกรายการแล้ว",
-    "noTitle": "ไม่มีหัวข้อ"
+    "noTitle": "ไม่มีหัวข้อ",
+    "backToList": "กลับไปรายการ"
   },
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",

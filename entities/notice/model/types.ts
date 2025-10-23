@@ -52,6 +52,13 @@ export interface NoticesApiResponse {
   error?: string;
 }
 
+// 단일 공지사항 조회 응답
+export interface GetNoticeDetailResponse {
+  success: boolean;
+  data: NoticeWithFiles;
+  error?: string;
+}
+
 // 유틸리티 함수들
 export const parseJsonValueToLocalizedText = (value: Prisma.JsonValue): LocalizedText => {
   if (value && typeof value === 'object' && !Array.isArray(value)) {
