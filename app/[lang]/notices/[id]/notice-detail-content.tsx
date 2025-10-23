@@ -1,11 +1,8 @@
 'use client';
 
-import { Suspense } from 'react';
-import { ArrowLeft } from 'lucide-react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useNoticeDetail } from '@/entities/notice';
-import { LocaleLink } from 'shared/ui/locale-link';
 import { extractLocalizedText } from '@/shared/lib/localized-text';
 import { NoticeContentSection } from '../ui/NoticeContentSection';
 import { NoticeImagesSection } from '../ui/NoticeImagesSection';
@@ -19,19 +16,22 @@ interface NoticeDetailContentProps {
 }
 
 function NoticeDetailInner({ noticeId, lang, dict }: NoticeDetailContentProps) {
-  const { data: notice } = useNoticeDetail(noticeId);
+  const { data: notice, isLoading, error } = useNoticeDetail(noticeId);
+
+  if (isLoading) {
+    return <NoticeDetailSkeleton />;
+  }
+
+  if (error || !notice) {
+    return (
+      <div className='py-8 text-center'>
+        <p className='text-red-500'>{dict.notices.error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className='space-y-6'>
-      {/* 뒤로가기 버튼 */}
-      <LocaleLink
-        href='/notices'
-        className='inline-flex items-center gap-2 text-[#da47ef] transition-colors hover:text-[#c73de0]'
-      >
-        <ArrowLeft className='h-5 w-5' />
-        <span className='text-sm font-medium'>{dict.notices.backToList}</span>
-      </LocaleLink>
-
       {/* 공지사항 내용 */}
       <div className='overflow-hidden rounded-xl border border-white bg-white/50 backdrop-blur-[6px]'>
         <div className='space-y-4 px-4 py-4'>
@@ -55,9 +55,5 @@ function NoticeDetailInner({ noticeId, lang, dict }: NoticeDetailContentProps) {
 }
 
 export function NoticeDetailContent({ noticeId, lang, dict }: NoticeDetailContentProps) {
-  return (
-    <Suspense fallback={<NoticeDetailSkeleton />}>
-      <NoticeDetailInner noticeId={noticeId} lang={lang} dict={dict} />
-    </Suspense>
-  );
+  return <NoticeDetailInner noticeId={noticeId} lang={lang} dict={dict} />;
 }
