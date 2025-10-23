@@ -7,16 +7,16 @@ import { useActiveBanners } from 'entities/event-banner/api/queries/get-active-b
 import { EventBannerSkeleton } from './EventBannerSkeleton';
 import { type EventBannerCarouselProps } from '../model/types';
 
-type CarouselApi = UseEmblaCarouselType[1];
-
 export function EventBannerCarousel({ currentLocale, className = '' }: EventBannerCarouselProps) {
   const { data: banners, isLoading, error } = useActiveBanners();
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   // 로딩 중이면 스켈레톤 표시
   if (isLoading) {
-    return <EventBannerSkeleton />;
+    return (
+      <div className='mt-8 px-5'>
+        <EventBannerSkeleton />
+      </div>
+    );
   }
 
   // 에러 또는 데이터 없으면 null 반환
@@ -37,11 +37,13 @@ export function EventBannerCarousel({ currentLocale, className = '' }: EventBann
   }
 
   return (
-    <EventBannerContent
-      banners={validBanners}
-      currentLocale={currentLocale}
-      className={className}
-    />
+    <div className='mt-8 px-5'>
+      <EventBannerContent
+        banners={validBanners}
+        currentLocale={currentLocale}
+        className={className}
+      />
+    </div>
   );
 }
 
