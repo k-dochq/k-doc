@@ -2,9 +2,9 @@ import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 import {
   AboutHero,
-  AboutDescription,
-  AboutCeoGreeting,
-  AboutSeoulOffice,
+  // AboutDescription,
+  // AboutCeoGreeting,
+  // AboutSeoulOffice,
   AboutVision,
 } from 'features/about/ui';
 
@@ -19,9 +19,9 @@ export default async function AboutPage({ params }: AboutPageProps) {
   return (
     <div className='px-5 pt-12 pb-20'>
       <AboutHero lang={lang} dict={dict} />
-      <AboutDescription dict={dict} />
-      <AboutCeoGreeting dict={dict} />
-      <AboutSeoulOffice dict={dict} />
+      {/* <AboutDescription dict={dict} /> */}
+      {/* <AboutCeoGreeting dict={dict} /> */}
+      {/* <AboutSeoulOffice dict={dict} /> */}
       <AboutVision dict={dict} />
     </div>
   );

@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 interface AboutHeroProps {
   lang: Locale;
@@ -11,7 +11,7 @@ export function AboutHero({ lang, dict }: AboutHeroProps) {
   return (
     <>
       <h1 className='text-primary text-5xl font-bold'>{dict.about.title}</h1>
-      <div className='mt-8'>
+      {/* <div className='mt-8'>
         <h2 className='text-primary text-2xl font-bold'>{dict.about.subtitle}</h2>
       </div>
       <div className='mt-6 grid grid-cols-2'>
@@ -44,7 +44,7 @@ export function AboutHero({ lang, dict }: AboutHeroProps) {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
