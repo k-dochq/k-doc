@@ -35,7 +35,7 @@ export function HospitalList({ medicalSpecialties, lang, dict, initialData }: Ho
   } = useBestHospitals(
     {
       category: selectedCategory,
-      limit: 5,
+      limit: 2,
     },
     {
       // 서버에서 prefetch한 데이터를 초기 데이터로 사용 (ALL 카테고리일 때만)

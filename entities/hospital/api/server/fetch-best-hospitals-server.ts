@@ -14,7 +14,7 @@ export async function fetchBestHospitalsServer(): Promise<HospitalCardData[]> {
     const protocol = headersList.get('x-forwarded-proto') || 'http';
     const baseUrl = `${protocol}://${host}`;
 
-    const response = await fetch(`${baseUrl}/api/hospitals/best?category=ALL&limit=5`, {
+    const response = await fetch(`${baseUrl}/api/hospitals/best?category=ALL&limit=2`, {
       next: {
         revalidate: 900, // 15분 캐싱
       },
