@@ -7,6 +7,7 @@ import { NoticeSection } from 'widgets/notice-section/ui/NoticeSection';
 import { LimousineBanner } from 'widgets/limousine-banner';
 import { CautionSection } from 'widgets/caution-section';
 import { TaxiReservationSection } from 'widgets/taxi-reservation';
+import { EventBannerCarousel } from 'widgets/event-banner';
 import { getDictionary } from 'app/[lang]/dictionaries';
 import { fetchBestHospitalsServer } from 'entities/hospital/api/server/fetch-best-hospitals-server';
 
@@ -30,6 +31,10 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
         <div className='mt-4 px-5'>
           <QuickMenuWrapper lang={lang} />
         </div>
+
+        {/* <div className='mt-8 px-5'>
+          <EventBannerCarousel currentLocale={lang} />
+        </div> */}
 
         <div className='mt-12'>
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
