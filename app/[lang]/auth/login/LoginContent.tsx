@@ -2,12 +2,12 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { GoogleSignInButton } from 'features/google-auth';
+// import { GoogleSignInButton } from 'features/google-auth';
 import { AppleSignInButton } from 'features/apple-auth';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
 import { PageHeader } from 'shared/ui/page-header';
-import { isExpoWebViewOnIOS } from 'shared/lib/webview-detection';
+// import { isExpoWebViewOnIOS } from 'shared/lib/webview-detection';
 
 interface LoginContentProps {
   lang: Locale;
@@ -18,7 +18,7 @@ interface LoginContentProps {
 export function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
   // th인 경우 en으로 처리
   const imageLang = lang === 'th' ? 'en' : lang;
-  const isIOSWebView = isExpoWebViewOnIOS();
+  // const isIOSWebView = isExpoWebViewOnIOS();
 
   return (
     <div
