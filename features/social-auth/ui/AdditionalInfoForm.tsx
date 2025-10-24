@@ -163,19 +163,19 @@ export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: Additi
           ))}
         </OptionalSelect>
 
-        {/* 성별 입력 (필수) */}
-        <RequiredSelect
+        {/* 성별 입력 (선택) */}
+        <OptionalSelect
           label={dict.auth?.signup?.gender || 'Gender'}
           value={formData.gender}
           onChange={(value) => updateField('gender', value)}
-          placeholder={dict.auth?.signup?.placeholders?.gender || 'Select your gender'}
+          placeholder={dict.auth?.signup?.placeholders?.gender || 'Select your gender (optional)'}
           error={errors.gender}
           disabled={isLoading}
           dict={dict}
         >
           <option value='female'>{dict.auth?.signup?.genders?.female || 'Female'}</option>
           <option value='male'>{dict.auth?.signup?.genders?.male || 'Male'}</option>
-        </RequiredSelect>
+        </OptionalSelect>
 
         {/* 휴대폰번호 입력 (선택) */}
         <PhoneNumberInput
