@@ -43,12 +43,12 @@ export function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
         <div className='h-4' />
 
         {/* iOS Expo WebView 환경이 아닐 때만 구글 로그인 버튼 표시 */}
-        {!isIOSWebView && (
+        {/* {!isIOSWebView && (
           <>
             <GoogleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
             <div className='h-4' />
           </>
-        )}
+        )} */}
 
         <AppleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
       </div>
