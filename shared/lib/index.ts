@@ -14,3 +14,4 @@ export * from './user-name';
 export * from './nickname-mask';
 export * from './modal';
 export * from './url-parser';
+export * from './webview-detection';

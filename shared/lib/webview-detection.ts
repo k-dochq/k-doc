@@ -24,3 +24,21 @@ export function isBrowser(): boolean {
 
   return !isExpoWebView();
 }
+
+/**
+ * 현재 환경이 iOS인지 확인합니다.
+ * User Agent를 통해 iPhone, iPad, iPod를 감지합니다.
+ */
+export function isIOS(): boolean {
+  if (typeof window === 'undefined') return false;
+
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  return /iphone|ipad|ipod/.test(userAgent);
+}
+
+/**
+ * 현재 환경이 Expo WebView이면서 iOS인지 확인합니다.
+ */
+export function isExpoWebViewOnIOS(): boolean {
+  return isExpoWebView() && isIOS();
+}
