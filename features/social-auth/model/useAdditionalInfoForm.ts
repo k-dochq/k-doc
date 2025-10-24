@@ -67,17 +67,16 @@ export function useAdditionalInfoForm({ lang, dict }: UseAdditionalInfoFormParam
         'Passport name should only contain English letters.';
     }
 
-    // 성별 검증 (필수)
-    if (!formData.gender) {
-      newErrors.gender = dict.auth?.signup?.errors?.genderRequired || 'Please select your gender.';
-    }
+    // 성별 검증 (선택)
+    // Gender는 선택사항이므로 검증하지 않음
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const isFormValid = (): boolean => {
-    return formData.passportName.trim() !== '' && formData.gender !== '';
+    return formData.passportName.trim() !== '';
+    // gender는 선택사항이므로 검증에서 제외
   };
 
   return {
