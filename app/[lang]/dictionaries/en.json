@@ -694,6 +694,12 @@
           "description": "K-DOC only partners with world-renowned medical professionals and verified leading Korean plastic surgery clinics. Thai and global customers can experience high-quality plastic surgery services through trusted medical professionals and safe systems."
         }
       ]
+    },
+    "certification": {
+      "title": "Govt-licensed medical facilitator",
+      "description": "K-DOC is an officially registered foreign patient attraction agency under the Korea Health Industry Development Institute (KHIDI), an organization affiliated with the Ministry of Health and Welfare of the Republic of Korea. We have passed the strict screening and qualification standards set by the national authorities.<br><br>Furthermore, we are a certified corporation enrolled in a KRW 100 million (about USD 70,000) licensing guarantee insurance policy with Seoul Guarantee Insurance (SGI), thereby holding an official government-approved qualification to deliver safe and reliable medical services to international patients.<br><br>Moving forward, we will continue to collaborate with leading Korean medical institutions to deliver professional, transparent, and globally trusted healthcare services.",
+      "certificateLabel": "Certificate of Registration for Foreign Patient Attraction Business",
+      "sgiLabel": "Insured by Seoul Guarantee Insurance (SGI)"
     }
   },
   "contact": {
