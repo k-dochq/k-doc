@@ -44,9 +44,9 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   };
 
   const descriptions = {
-    ko: '한국 성형 관광 필수 가이드 K-DOC - 의료 플랫폼에서 병원 비교·예약, 실제 시술 후기, 가격 정보, 이벤트/혜택, 시술비 할인',
-    en: 'K-DOC: Your essential guide to Korean cosmetic surgery - compare clinics, book, check prices, events & deals, read real reviews, and get discounts.',
-    th: 'K-DOC ไกด์ศัลยกรรมเกาหลีสำหรับคนไทย เปรียบเทียบคลินิก จองคิว อ่านรีวิวจริง ดูราคา โปรโมชัน/อีเวนต์ และรับส่วนลดค่าศัลยกรรม',
+    ko: 'K-DOC은 한국 성형 관광의 필수 플랫폼입니다. 외국인환자유치업체, 검증된 병원 비교·예약, 리얼 후기, 시술 가격, 이벤트·혜택, 회원 전용 시술비 할인까지 모두 제공합니다.',
+    en: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery discounts & beauty tour benefits.',
+    th: 'K-DOC คู่มือศัลยกรรมตกแต่งที่สำคัญของเกาหลี — เปรียบเทียบโรงพยาบาลชั้นนำ อ่านรีวิวจริง จองอย่างปลอดภัย และเพลิดเพลินกับส่วนลดพิเศษด้านศัลยกรรมและประโยชน์ทัวร์ความงาม',
   };
 
   // 기본 keywords
