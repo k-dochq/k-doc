@@ -13,8 +13,8 @@ interface HeaderProps {
 export function Header({ currentLang, dict }: HeaderProps) {
   return (
     <header
-      className='sticky top-0 z-50 w-full'
-      style={{ background: 'rgba(254, 219, 249, 0.70)', backdropFilter: 'blur(15px)' }}
+      className='sticky top-0 z-50 w-full bg-[#FFD9FB]'
+      // style={{ background: 'rgba(254, 219, 249, 0.70)', backdropFilter: 'blur(15px)' }}
     >
       <div className='flex h-[58px] items-center justify-between px-5'>
         <LocaleLink href='/main' className='text-primary'>
