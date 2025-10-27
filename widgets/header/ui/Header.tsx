@@ -1,3 +1,5 @@
+'use client';
+
 import { HeaderLogo } from './HeaderLogo';
 import { HeaderLanguageSwitcher } from './HeaderLanguageSwitcher';
 import { HeaderProfile } from './HeaderProfile';
