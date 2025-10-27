@@ -7,7 +7,6 @@ import { AppleSignInButton } from 'features/apple-auth';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
 import { PageHeader } from 'shared/ui/page-header';
-import { GoogleSignInButton } from '@/features/google-auth';
 // import { isExpoWebViewOnIOS } from 'shared/lib/webview-detection';
 
 interface LoginContentProps {
