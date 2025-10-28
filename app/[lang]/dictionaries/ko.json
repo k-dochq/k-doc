@@ -197,6 +197,7 @@
       "afterImagesLabel": "[선택] 시술 후",
       "submitButton": "시술후기 등록",
       "submitting": "등록 중...",
+      "uploading": "업로드중입니다",
       "characterCount": "{{current}}/500"
     },
     "validation": {

@@ -197,6 +197,7 @@
       "afterImagesLabel": "[ทางเลือก] หลังรักษา",
       "submitButton": "ส่งรีวิว",
       "submitting": "กำลังส่ง...",
+      "uploading": "กำลังอัปโหลด...",
       "characterCount": "{{current}}/500"
     },
     "validation": {
