@@ -157,6 +157,69 @@
       "recommended": "Recommended"
     }
   },
+  "reviewWrite": {
+    "fab": {
+      "ariaLabel": "Write Review",
+      "buttonText": "Write Review"
+    },
+    "selectHospital": {
+      "title": "Select Hospital",
+      "description": "Select a hospital to write a review. You can choose from your booked hospitals.",
+      "pageTitle": "Select Your Booked Hospital",
+      "pageSubtitle": "Select a hospital to write your review",
+      "notificationMessage": "Please select a hospital to write a review",
+      "infiniteScroll": {
+        "loading": "Loading more hospitals...",
+        "end": "All booked hospitals loaded"
+      },
+      "error": {
+        "title": "Unable to load booked hospitals",
+        "message": "Please check your network connection and try again"
+      },
+      "empty": {
+        "title": "No Reservation History",
+        "description": "You need to book a hospital first to write a review.",
+        "subdescription": "Find your desired hospital and make a reservation.",
+        "browseButton": "Browse Hospitals"
+      }
+    },
+    "form": {
+      "title": "Write Review",
+      "hospitalInfo": "Hospital Information",
+      "ratingQuestion": "How was your treatment experience?",
+      "procedureNameLabel": "[Required] Procedure Name",
+      "procedureNamePlaceholder": "What method did you receive the treatment?",
+      "medicalSpecialtyLabel": "[Required] Treatment Area",
+      "medicalSpecialtyPlaceholder": "Please select a category",
+      "contentLabel": "[Required] Review Content",
+      "contentPlaceholder": "Please write at least 10 characters freely about detailed information or your treatment experience",
+      "beforeImagesLabel": "[Optional] Before Treatment",
+      "afterImagesLabel": "[Optional] After Treatment",
+      "submitButton": "Submit Review",
+      "submitting": "Submitting...",
+      "uploading": "Uploading...",
+      "characterCount": "{{current}}/500"
+    },
+    "validation": {
+      "ratingRequired": "Please select a rating",
+      "procedureNameRequired": "Please enter procedure name",
+      "medicalSpecialtyRequired": "Please select treatment area",
+      "contentRequired": "Please enter review content",
+      "contentMaxLength": "Content must be 500 characters or less",
+      "imageMaxCount": "Maximum 10 images allowed",
+      "imageSizeLimit": "Image size must be less than 10MB"
+    },
+    "success": {
+      "title": "Review Submitted Successfully",
+      "message": "Thank you for your valuable feedback",
+      "goToReviews": "View Reviews"
+    },
+    "error": {
+      "title": "Failed to Submit Review",
+      "message": "Please try again later",
+      "retry": "Retry"
+    }
+  },
   "reviewDetail": {
     "title": "Review Detail",
     "content": "Review Content",
@@ -431,6 +494,11 @@
       "countLabel": "",
       "error": "Error occurred"
     },
+    "delete": "Delete",
+    "report": "Report",
+    "deleteConfirm": "Are you sure you want to delete this review?",
+    "deleteSuccess": "Review has been deleted",
+    "deleteError": "Failed to delete review",
     "procedureTiming": "Procedure Date",
     "showMore": "Show More",
     "showLess": "Show Less",
@@ -465,7 +533,7 @@
   "consultation": {
     "title": "Consultation",
     "chat": "Chat",
-    "appointment": "Appointment",
+    "appointment": "Appointment History",
     "region": "Region",
     "loading": "Loading...",
     "loadingMessages": "Loading messages...",

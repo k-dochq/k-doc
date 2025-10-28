@@ -52,6 +52,7 @@ export const queryKeys = {
     all: ['reviews'] as const,
     lists: () => [...queryKeys.reviews.all, 'list'] as const,
     list: (filters: Record<string, unknown>) => [...queryKeys.reviews.lists(), filters] as const,
+    byId: (id: string) => ['reviews', id] as const,
     hospital: (hospitalId: string) => [...queryKeys.reviews.all, 'hospital', hospitalId] as const,
     hospitalInfinite: (hospitalId: string, filters: Record<string, unknown>) =>
       [...queryKeys.reviews.hospital(hospitalId), 'infinite', filters] as const,
@@ -124,5 +125,14 @@ export const queryKeys = {
     review: (reviewId: string) => [...queryKeys.comments.all, 'review', reviewId] as const,
     reviewInfinite: (reviewId: string, filters: Record<string, unknown>) =>
       [...queryKeys.comments.review(reviewId), 'infinite', filters] as const,
+  },
+
+  // 예약 관련 쿼리
+  reservations: {
+    all: ['reservations'] as const,
+    lists: () => [...queryKeys.reservations.all, 'list'] as const,
+    hospitals: () => [...queryKeys.reservations.all, 'hospitals'] as const,
+    hospitalsInfinite: (params: Record<string, unknown>) =>
+      [...queryKeys.reservations.hospitals(), 'infinite', params] as const,
   },
 } as const;

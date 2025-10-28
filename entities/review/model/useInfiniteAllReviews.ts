@@ -7,7 +7,7 @@ import { type GetAllReviewsResponse } from './types';
 interface UseInfiniteAllReviewsParams {
   limit?: number;
   category?: string;
-  sort?: 'popular' | 'recommended';
+  sort?: 'popular' | 'recommended' | 'latest';
   hospitalId?: string;
   likedOnly?: boolean;
   initialData?: GetAllReviewsResponse;

@@ -1,6 +1,7 @@
 import { getDictionary } from '../dictionaries';
 import { type Locale } from 'shared/config';
 import { AllReviewsContent } from './AllReviewsContent';
+import { ReviewWriteFAB } from 'features/review-write-fab';
 
 interface AllReviewsPageProps {
   params: Promise<{
@@ -20,6 +21,7 @@ export default async function AllReviewsPage({ params, searchParams }: AllReview
   return (
     <div className=''>
       <AllReviewsContent lang={lang} dict={dict} searchParams={resolvedSearchParams} />
+      <ReviewWriteFAB lang={lang} dict={dict} />
     </div>
   );
 }

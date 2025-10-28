@@ -50,6 +50,7 @@ export type DisplayImage = ReviewImage | DefaultImage;
 // 리뷰 카드에서 사용할 타입 (Prisma 타입을 기반으로 확장)
 export type ReviewCardData = {
   id: string;
+  userId: string; // 리뷰 작성자 ID
   rating: number;
   title: LocalizedText | null;
   content: LocalizedText | null;
@@ -119,7 +120,7 @@ export interface GetAllReviewsParams {
   limit?: number;
   offset?: number;
   category?: MedicalSpecialtyType | 'ALL';
-  sort?: 'popular' | 'recommended'; // 정렬 옵션
+  sort?: 'popular' | 'recommended' | 'latest'; // 정렬 옵션
   hospitalId?: string; // 특정 병원의 리뷰만 조회
   likedOnly?: boolean; // 좋아요한 리뷰만 조회
   userId?: string; // likedOnly가 true일 때 필요한 사용자 ID

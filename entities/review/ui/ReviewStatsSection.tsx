@@ -7,6 +7,13 @@ import { EyeIcon } from 'shared/ui/icons/EyeIcon';
 import { CommentIcon, MoreIcon } from 'shared/ui';
 import { ReviewLikeDisplay } from './ReviewLikeDisplay';
 import { LocaleLink } from 'shared/ui/locale-link';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from 'shared/ui/dropdown-menu';
+import { type Dictionary } from 'shared/model/types';
 
 interface ReviewStatsSectionProps {
   review: ReviewCardData;
@@ -16,6 +23,8 @@ interface ReviewStatsSectionProps {
   isLikeLoading?: boolean;
   className?: string;
   showLikeButton?: boolean; // 좋아요 버튼 표시 여부 (기본값: true)
+  onDelete?: (reviewId: string) => void;
+  dict: Dictionary;
 }
 
 export function ReviewStatsSection({
@@ -26,9 +35,18 @@ export function ReviewStatsSection({
   isLikeLoading = false,
   className = '',
   showLikeButton = true,
+  onDelete,
+  dict,
 }: ReviewStatsSectionProps) {
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
   const isLiked = user && review.likedUserIds ? review.likedUserIds.includes(user.id) : false;
+
+  // 삭제 핸들러
+  const handleDelete = () => {
+    if (window.confirm(dict.review.deleteConfirm)) {
+      onDelete?.(review.id);
+    }
+  };
 
   return (
     <div
@@ -39,7 +57,7 @@ export function ReviewStatsSection({
         <LocaleLink
           href={`/review/${review.id}#comment-form`}
           locale={lang}
-          className='flex items-center gap-1 cursor-pointer hover:opacity-70 transition-opacity'
+          className='flex cursor-pointer items-center gap-1 transition-opacity hover:opacity-70'
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -65,9 +83,44 @@ export function ReviewStatsSection({
           </div>
         )}
       </div>
-      <div>
-        <MoreIcon />
-      </div>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button
+            className='cursor-pointer transition-opacity hover:opacity-70'
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <MoreIcon />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          align='end'
+          className='rounded-[6px] border border-[rgba(218,71,239,0.2)] bg-white p-1 shadow-md'
+        >
+          {user?.id === review.userId && (
+            <DropdownMenuItem
+              onClick={handleDelete}
+              className='px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-purple-50'
+            >
+              {dict.review.delete}
+            </DropdownMenuItem>
+          )}
+          <DropdownMenuItem asChild>
+            <a
+              href={`mailto:cs@k-doc.kr?subject=Review Report (ID: ${review.id})&body=Reported review link: ${typeof window !== 'undefined' ? window.location.origin : ''}/${lang}/review/${review.id}%0D%0AReporter email: ${user?.email || 'Guest'}`}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = `mailto:cs@k-doc.kr?subject=Review Report (ID: ${review.id})&body=Reported review link: ${window.location.origin}/${lang}/review/${review.id}%0D%0AReporter email: ${user?.email || 'Guest'}`;
+              }}
+              className='block w-full px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-purple-50'
+            >
+              {dict.review.report}
+            </a>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }

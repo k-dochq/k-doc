@@ -1,9 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from '../model/types';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { useDeleteReview } from '../model/useDeleteReview';
 import { ReviewLikeButton } from 'features/review-like/ui/ReviewLikeButton';
 import { PageHeader } from 'shared/ui/page-header';
 import { ReviewListCardHeader } from './ReviewListCardHeader';
@@ -27,6 +30,22 @@ interface ReviewDetailContentProps {
 export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentProps) {
   const title = dict.reviewDetail?.title || '시술후기';
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
+  const { user } = useAuth();
+  const router = useRouter();
+  const deleteReviewMutation = useDeleteReview();
+
+  // 삭제 핸들러
+  const handleDelete = (reviewId: string) => {
+    deleteReviewMutation.mutate(reviewId, {
+      onSuccess: () => {
+        // 삭제 성공 시 리뷰 목록 페이지로 이동
+        router.push(`/${lang}/reviews`);
+      },
+      onError: (error) => {
+        console.error('Failed to delete review:', error);
+      },
+    });
+  };
 
   // URL 해시에 따라 자동 스크롤
   useEffect(() => {
@@ -62,7 +81,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
       />
 
       <div className='p-5'>
-        <div className='shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] rounded-xl overflow-hidden'>
+        <div className='overflow-hidden rounded-xl shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)]'>
           {/* 리뷰 컨텐츠 */}
           <div className='rounded-t-xl border border-white bg-white/50 p-5 backdrop-blur-[6px]'>
             {/* 첫 번째 섹션: 프로필 사진, 닉네임, 작성일자, 평점 */}
@@ -93,12 +112,19 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
             )}
           </div>
           {/* 여섯 번째 섹션: 조회수만 표시 (좋아요는 헤더에 있음) */}
-          <ReviewStatsSection review={review} lang={lang} user={null} showLikeButton={false} />
+          <ReviewStatsSection
+            review={review}
+            lang={lang}
+            user={user}
+            showLikeButton={false}
+            dict={dict}
+            onDelete={handleDelete}
+          />
         </div>
       </div>
 
       {/* 시술 병원 섹션 - 리뷰 영역 밖으로 분리 */}
-      <div className='px-5 mt-7'>
+      <div className='mt-7 px-5'>
         <ReviewHospitalSection review={review} lang={lang} dict={dict} />
       </div>
 

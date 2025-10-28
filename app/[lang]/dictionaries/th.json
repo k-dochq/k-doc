@@ -157,6 +157,69 @@
       "recommended": "แนะนำ"
     }
   },
+  "reviewWrite": {
+    "fab": {
+      "ariaLabel": "เขียนรีวิว",
+      "buttonText": "เขียนรีวิว"
+    },
+    "selectHospital": {
+      "title": "เลือกโรงพยาบาล",
+      "description": "เลือกโรงพยาบาลเพื่อเขียนรีวิว คุณสามารถเลือกจากโรงพยาบาลที่จองไว้",
+      "pageTitle": "เลือกโรงพยาบาลที่จองไว้",
+      "pageSubtitle": "เลือกโรงพยาบาลเพื่อเขียนรีวิวของคุณ",
+      "notificationMessage": "โปรดเลือกโรงพยาบาลเพื่อเขียนรีวิว",
+      "infiniteScroll": {
+        "loading": "กำลังโหลดโรงพยาบาลเพิ่มเติม...",
+        "end": "โหลดโรงพยาบาลที่จองไว้ทั้งหมดแล้ว"
+      },
+      "error": {
+        "title": "ไม่สามารถโหลดข้อมูลโรงพยาบาลที่จองไว้",
+        "message": "กรุณาตรวจสอบการเชื่อมต่อเครือข่ายและลองใหม่"
+      },
+      "empty": {
+        "title": "ไม่มีประวัติการจอง",
+        "description": "คุณต้องจองโรงพยาบาลก่อนเพื่อเขียนรีวิว",
+        "subdescription": "ค้นหาโรงพยาบาลที่ต้องการและทำการจอง",
+        "browseButton": "เรียกดูโรงพยาบาล"
+      }
+    },
+    "form": {
+      "title": "เขียนรีวิว",
+      "hospitalInfo": "ข้อมูลโรงพยาบาล",
+      "ratingQuestion": "ประสบการณ์การรักษาเป็นอย่างไร?",
+      "procedureNameLabel": "[จำเป็น] ชื่อหัตถการ",
+      "procedureNamePlaceholder": "คุณรับการรักษาด้วยวิธีใด",
+      "medicalSpecialtyLabel": "[จำเป็น] บริเวณที่รักษา",
+      "medicalSpecialtyPlaceholder": "กรุณาเลือกหมวดหมู่",
+      "contentLabel": "[จำเป็น] เนื้อหารีวิว",
+      "contentPlaceholder": "กรุณาเขียนอย่างละเอียดหรือประสบการณ์การรักษาอย่างน้อย 10 ตัวอักษรตามอิสระ",
+      "beforeImagesLabel": "[ทางเลือก] ก่อนรักษา",
+      "afterImagesLabel": "[ทางเลือก] หลังรักษา",
+      "submitButton": "ส่งรีวิว",
+      "submitting": "กำลังส่ง...",
+      "uploading": "กำลังอัปโหลด...",
+      "characterCount": "{{current}}/500"
+    },
+    "validation": {
+      "ratingRequired": "โปรดเลือกคะแนน",
+      "procedureNameRequired": "โปรดใส่ชื่อหัตถการ",
+      "medicalSpecialtyRequired": "โปรดเลือกบริเวณที่รักษา",
+      "contentRequired": "โปรดใส่เนื้อหารีวิว",
+      "contentMaxLength": "เนื้อหาต้องไม่เกิน 500 ตัวอักษร",
+      "imageMaxCount": "อัพโหลดได้สูงสุด 10 รูป",
+      "imageSizeLimit": "ขนาดรูปต้องไม่เกิน 10MB"
+    },
+    "success": {
+      "title": "ส่งรีวิวสำเร็จ",
+      "message": "ขอบคุณสำหรับคำติชมที่มีค่า",
+      "goToReviews": "ดูรีวิว"
+    },
+    "error": {
+      "title": "ส่งรีวิวไม่สำเร็จ",
+      "message": "โปรดลองอีกครั้งในภายหลัง",
+      "retry": "ลองอีกครั้ง"
+    }
+  },
   "reviewDetail": {
     "title": "รายละเอียดรีวิวการรักษา",
     "content": "เนื้อหารีวิว",
@@ -431,6 +494,11 @@
       "countLabel": "",
       "error": "เกิดข้อผิดพลาด"
     },
+    "delete": "ลบ",
+    "report": "รายงาน",
+    "deleteConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบรีวิวนี้?",
+    "deleteSuccess": "รีวิวถูกลบแล้ว",
+    "deleteError": "ลบรีวิวไม่สำเร็จ",
     "procedureTiming": "วันที่ทำการรักษา",
     "showMore": "ดูเพิ่มเติม",
     "showLess": "ย่อ",
@@ -465,7 +533,7 @@
   "consultation": {
     "title": "ปรึกษา",
     "chat": "แชทปรึกษา",
-    "appointment": "จองนัดหมาย",
+    "appointment": "ประวัติการจอง",
     "region": "ภูมิภาค",
     "loading": "กำลังโหลด...",
     "loadingMessages": "กำลังโหลดข้อความ...",

@@ -86,6 +86,8 @@ export async function getAllReviews({
             { viewCount: 'desc' as const },
             { createdAt: 'desc' as const },
           ];
+        case 'latest':
+          return [{ createdAt: 'desc' as const }];
         default:
           return [
             { viewCount: 'desc' as const },
@@ -187,6 +189,7 @@ export async function getAllReviews({
 
       return {
         id: review.id,
+        userId: review.userId,
         rating: review.rating,
         title: review.title ? parseLocalizedText(review.title) : null,
         content: review.content ? parseLocalizedText(review.content) : null,
