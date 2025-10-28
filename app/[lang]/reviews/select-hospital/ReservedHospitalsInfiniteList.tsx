@@ -75,9 +75,13 @@ export function ReservedHospitalsInfiniteList({ lang, dict }: ReservedHospitalsI
     <div>
       {/* 병원 리스트 */}
       {convertedHospitals.length > 0 ? (
-        <div className='space-y-6 p-5'>
+        <div className='space-y-3 p-5'>
           {convertedHospitals.map((hospital) => (
-            <LocaleLink key={hospital.id} href={`/hospital/${hospital.id}`} className='block'>
+            <LocaleLink
+              key={hospital.id}
+              href={`/reviews/new?hospitalId=${hospital.id}`}
+              className='block'
+            >
               <HospitalCard
                 hospital={hospital}
                 dict={dict}

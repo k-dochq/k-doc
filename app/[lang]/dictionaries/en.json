@@ -182,6 +182,41 @@
         "subdescription": "Find your desired hospital and make a reservation.",
         "browseButton": "Browse Hospitals"
       }
+    },
+    "form": {
+      "title": "Write Review",
+      "hospitalInfo": "Hospital Information",
+      "ratingQuestion": "How was your treatment experience?",
+      "procedureNameLabel": "[Required] Procedure Name",
+      "procedureNamePlaceholder": "Thread Lift",
+      "medicalSpecialtyLabel": "[Required] Treatment Area",
+      "medicalSpecialtyPlaceholder": "Lifting",
+      "contentLabel": "[Required] Review Content",
+      "contentPlaceholder": "The doctor had excellent skills...",
+      "beforeImagesLabel": "[Optional] Before Treatment",
+      "afterImagesLabel": "[Optional] After Treatment",
+      "submitButton": "Submit Review",
+      "submitting": "Submitting...",
+      "characterCount": "{{current}}/500"
+    },
+    "validation": {
+      "ratingRequired": "Please select a rating",
+      "procedureNameRequired": "Please enter procedure name",
+      "medicalSpecialtyRequired": "Please select treatment area",
+      "contentRequired": "Please enter review content",
+      "contentMaxLength": "Content must be 500 characters or less",
+      "imageMaxCount": "Maximum 10 images allowed",
+      "imageSizeLimit": "Image size must be less than 10MB"
+    },
+    "success": {
+      "title": "Review Submitted Successfully",
+      "message": "Thank you for your valuable feedback",
+      "goToReviews": "View Reviews"
+    },
+    "error": {
+      "title": "Failed to Submit Review",
+      "message": "Please try again later",
+      "retry": "Retry"
     }
   },
   "reviewDetail": {

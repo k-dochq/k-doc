@@ -182,6 +182,41 @@
         "subdescription": "원하는 병원을 찾아 예약을 진행해주세요.",
         "browseButton": "병원 둘러보기"
       }
+    },
+    "form": {
+      "title": "시술후기 작성",
+      "hospitalInfo": "병원 정보",
+      "ratingQuestion": "시술 경험은 어땠나요?",
+      "procedureNameLabel": "[필수] 시술 방법",
+      "procedureNamePlaceholder": "실리프팅",
+      "medicalSpecialtyLabel": "[필수] 시술 부위 선택",
+      "medicalSpecialtyPlaceholder": "리프팅",
+      "contentLabel": "[필수] 후기 내용",
+      "contentPlaceholder": "압구정미라클 원장님은 경력만큼 손기술이 좋네요...",
+      "beforeImagesLabel": "[선택] 시술 전",
+      "afterImagesLabel": "[선택] 시술 후",
+      "submitButton": "시술후기 등록",
+      "submitting": "등록 중...",
+      "characterCount": "{{current}}/500"
+    },
+    "validation": {
+      "ratingRequired": "별점을 선택해주세요",
+      "procedureNameRequired": "시술 방법을 입력해주세요",
+      "medicalSpecialtyRequired": "시술 부위를 선택해주세요",
+      "contentRequired": "후기 내용을 입력해주세요",
+      "contentMaxLength": "500자 이하로 작성해주세요",
+      "imageMaxCount": "이미지는 최대 10개까지 업로드 가능합니다",
+      "imageSizeLimit": "이미지 크기는 10MB 이하여야 합니다"
+    },
+    "success": {
+      "title": "시술후기가 등록되었습니다",
+      "message": "소중한 후기 감사합니다",
+      "goToReviews": "시술후기 보기"
+    },
+    "error": {
+      "title": "후기 등록에 실패했습니다",
+      "message": "잠시 후 다시 시도해주세요",
+      "retry": "다시 시도"
     }
   },
   "reviewDetail": {

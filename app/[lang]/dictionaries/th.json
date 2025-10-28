@@ -182,6 +182,41 @@
         "subdescription": "ค้นหาโรงพยาบาลที่ต้องการและทำการจอง",
         "browseButton": "เรียกดูโรงพยาบาล"
       }
+    },
+    "form": {
+      "title": "เขียนรีวิว",
+      "hospitalInfo": "ข้อมูลโรงพยาบาล",
+      "ratingQuestion": "ประสบการณ์การรักษาเป็นอย่างไร?",
+      "procedureNameLabel": "[จำเป็น] ชื่อหัตถการ",
+      "procedureNamePlaceholder": "Thread Lift",
+      "medicalSpecialtyLabel": "[จำเป็น] บริเวณที่รักษา",
+      "medicalSpecialtyPlaceholder": "Lifting",
+      "contentLabel": "[จำเป็น] เนื้อหารีวิว",
+      "contentPlaceholder": "แพทย์มีฝีมือที่ยอดเยี่ยม...",
+      "beforeImagesLabel": "[ทางเลือก] ก่อนรักษา",
+      "afterImagesLabel": "[ทางเลือก] หลังรักษา",
+      "submitButton": "ส่งรีวิว",
+      "submitting": "กำลังส่ง...",
+      "characterCount": "{{current}}/500"
+    },
+    "validation": {
+      "ratingRequired": "โปรดเลือกคะแนน",
+      "procedureNameRequired": "โปรดใส่ชื่อหัตถการ",
+      "medicalSpecialtyRequired": "โปรดเลือกบริเวณที่รักษา",
+      "contentRequired": "โปรดใส่เนื้อหารีวิว",
+      "contentMaxLength": "เนื้อหาต้องไม่เกิน 500 ตัวอักษร",
+      "imageMaxCount": "อัพโหลดได้สูงสุด 10 รูป",
+      "imageSizeLimit": "ขนาดรูปต้องไม่เกิน 10MB"
+    },
+    "success": {
+      "title": "ส่งรีวิวสำเร็จ",
+      "message": "ขอบคุณสำหรับคำติชมที่มีค่า",
+      "goToReviews": "ดูรีวิว"
+    },
+    "error": {
+      "title": "ส่งรีวิวไม่สำเร็จ",
+      "message": "โปรดลองอีกครั้งในภายหลัง",
+      "retry": "ลองอีกครั้ง"
     }
   },
   "reviewDetail": {
