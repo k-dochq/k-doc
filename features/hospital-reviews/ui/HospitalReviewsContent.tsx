@@ -37,10 +37,10 @@ export function HospitalReviewsContent({
   const { sort } = searchParams;
   const { user } = useAuth();
 
-  // 공통 쿼리 파라미터 생성 함수 사용
+  // 공통 쿼리 파라미터 생성 함수 사용 (병원 리뷰는 기본적으로 최신순)
   const queryParams = createHospitalReviewsInfiniteQueryParams(
     hospitalId,
-    sort || REVIEW_SORT_OPTIONS.POPULAR,
+    sort || REVIEW_SORT_OPTIONS.LATEST,
     10,
   );
 
