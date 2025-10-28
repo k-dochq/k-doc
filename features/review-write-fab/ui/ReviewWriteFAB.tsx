@@ -81,7 +81,7 @@ export function ReviewWriteFAB({ lang, dict }: ReviewWriteFABProps) {
         <button
           onClick={handleClick}
           disabled={isLoading}
-          className='pointer-events-auto mx-auto flex h-14 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-6 text-white shadow-lg transition-all duration-200 hover:from-gray-800 hover:via-gray-700 hover:to-gray-800 hover:shadow-xl active:scale-95 disabled:cursor-not-allowed disabled:opacity-50'
+          className='pointer-events-auto mx-auto flex h-14 items-center justify-center gap-2 rounded-full bg-[#DA47EF] px-6 text-white shadow-lg transition-all duration-200 hover:bg-[#C73AE0] hover:shadow-xl active:scale-95 disabled:cursor-not-allowed disabled:opacity-50'
           aria-label={dict.reviewWrite?.fab?.ariaLabel || '시술후기 작성'}
         >
           <PenSquare size={20} />
