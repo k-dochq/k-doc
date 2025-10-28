@@ -533,7 +533,7 @@
   "consultation": {
     "title": "상담",
     "chat": "상담채팅",
-    "appointment": "예약신청",
+    "appointment": "예약 내역",
     "region": "지역",
     "loading": "로딩 중...",
     "loadingMessages": "메시지를 불러오는 중...",

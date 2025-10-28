@@ -22,9 +22,9 @@ export function ReviewWriteFAB({ lang, dict }: ReviewWriteFABProps) {
   const lastScrollYRef = useRef(0);
   const tickingRef = useRef(false);
 
-  // 리뷰 작성 페이지 미리 로드
+  // 병원 선택 페이지 미리 로드
   useEffect(() => {
-    router.prefetch('/reviews-create');
+    router.prefetch('/reviews/select-hospital');
   }, [router]);
 
   // 스크롤 감지 (requestAnimationFrame으로 성능 최적화)
@@ -67,8 +67,8 @@ export function ReviewWriteFAB({ lang, dict }: ReviewWriteFABProps) {
       return;
     }
 
-    // 리뷰 작성 페이지로 이동 (병원 선택 포함)
-    router.push('/reviews-create');
+    // 병원 선택 페이지로 바로 이동
+    router.push('/reviews/select-hospital');
   };
 
   return (

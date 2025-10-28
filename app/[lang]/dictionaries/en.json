@@ -533,7 +533,7 @@
   "consultation": {
     "title": "Consultation",
     "chat": "Chat",
-    "appointment": "Appointment",
+    "appointment": "Appointment History",
     "region": "Region",
     "loading": "Loading...",
     "loadingMessages": "Loading messages...",

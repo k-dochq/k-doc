@@ -533,7 +533,7 @@
   "consultation": {
     "title": "ปรึกษา",
     "chat": "แชทปรึกษา",
-    "appointment": "จองนัดหมาย",
+    "appointment": "ประวัติการจอง",
     "region": "ภูมิภาค",
     "loading": "กำลังโหลด...",
     "loadingMessages": "กำลังโหลดข้อความ...",
