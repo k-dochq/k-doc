@@ -21,6 +21,7 @@ export class ReviewRepository {
         data: {
           id: reviewId,
           rating: reviewData.rating,
+          title: reviewData.title as Prisma.InputJsonObject,
           content: reviewData.content as Prisma.InputJsonObject,
           concernsMultilingual: reviewData.concernsMultilingual as Prisma.InputJsonObject,
           User: {

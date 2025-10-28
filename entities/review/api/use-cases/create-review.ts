@@ -34,15 +34,37 @@ export class CreateReview {
       th_TH: request.procedureName,
     };
 
+    // 제목 생성 (content의 첫 50자까지)
+    const generateTitle = (text: string): string => {
+      const maxLength = 50;
+      if (text.length <= maxLength) return text;
+
+      // 문장 부호나 공백에서 잘라서 자연스럽게
+      const trimmed = text.substring(0, maxLength);
+      const lastPeriod = trimmed.lastIndexOf('.');
+      const lastComma = trimmed.lastIndexOf(',');
+      const lastSpace = trimmed.lastIndexOf(' ');
+
+      const cutoff = Math.max(lastPeriod, lastComma, lastSpace);
+      return cutoff > 0 ? trimmed.substring(0, cutoff) : trimmed;
+    };
+
+    const multilingualTitle: MultilingualText = {
+      ko_KR: generateTitle(request.content),
+      en_US: generateTitle(request.content),
+      th_TH: generateTitle(request.content),
+    };
+
     // ReviewCreateData 생성
     const reviewData: ReviewCreateData = {
       rating: request.rating,
+      title: multilingualTitle,
       content: multilingualContent,
       concernsMultilingual: multilingualProcedureName,
       userId: request.userId,
       hospitalId: request.hospitalId,
       medicalSpecialtyId: request.medicalSpecialtyId,
-      isRecommended: request.rating >= 4, // 평점 4점 이상이면 추천
+      isRecommended: request.rating >= 3, // 평점 3점 이상이면 추천
     };
 
     // ReviewImage 데이터 생성

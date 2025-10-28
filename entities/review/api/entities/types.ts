@@ -38,6 +38,7 @@ export type MultilingualText = {
 // Prisma Review 생성 데이터 타입
 export type ReviewCreateData = {
   rating: number;
+  title: MultilingualText;
   content: MultilingualText;
   concernsMultilingual: MultilingualText;
   userId: string;
