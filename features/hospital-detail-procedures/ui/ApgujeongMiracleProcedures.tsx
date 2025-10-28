@@ -1,4 +1,4 @@
-import { type Locale } from 'shared/config';
+import { type Locale, MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type Hospital } from 'entities/hospital/api/entities/types';
 
@@ -85,7 +85,7 @@ export function ApgujeongMiracleProcedures({
               <img
                 src={miracleImagePath}
                 alt={dict.hospitalDetailTabs.apgujeongMiracle.imageAlt}
-                className='h-auto w-full max-w-[500px] object-contain'
+                className={`h-auto w-full ${MAX_MOBILE_WIDTH_CLASS} object-contain`}
               />
             </div>
           </div>

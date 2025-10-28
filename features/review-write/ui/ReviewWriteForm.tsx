@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type Locale } from 'shared/config';
+import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useAuth } from 'shared/lib/auth/useAuth';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useReviewWriteForm } from '../model/useReviewWriteForm';
 import { useImageUpload } from '../model/useImageUpload';
+import { useCreateReview } from '../model/useCreateReview';
 import { HospitalInfoCard } from './HospitalInfoCard';
 import { StarRating } from './StarRating';
 import { MedicalSpecialtySelect } from './MedicalSpecialtySelect';
@@ -36,8 +37,6 @@ export function ReviewWriteForm({
 }: ReviewWriteFormProps) {
   const { user } = useAuth();
   const router = useLocalizedRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const { formData, errors, isValid, updateField, validateForm } = useReviewWriteForm(dict);
   const {
@@ -51,6 +50,21 @@ export function ReviewWriteForm({
     removeAfterImage,
   } = useImageUpload(user?.id || '');
 
+  // TanStack Query mutation
+  const {
+    mutate: createReview,
+    isPending: isSubmitting,
+    error: submitError,
+  } = useCreateReview({
+    onSuccess: (reviewId: string, hospitalId: string) => {
+      // 성공 시 해당 병원의 리뷰 목록 페이지로 이동
+      router.push(`/hospital/${hospitalId}/reviews`);
+    },
+    onError: (error: Error) => {
+      console.error('Submit review error:', error);
+    },
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -62,51 +76,23 @@ export function ReviewWriteForm({
       return;
     }
 
-    setIsSubmitting(true);
-    setSubmitError(null);
-
-    try {
-      const response = await fetch('/api/reviews/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          rating: formData.rating,
-          content: formData.content,
-          procedureName: formData.procedureName,
-          medicalSpecialtyId: formData.medicalSpecialtyId,
-          hospitalId: hospital.id,
-          beforeImageUrls: beforeImages.map((img) => img.url),
-          afterImageUrls: afterImages.map((img) => img.url),
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.error || 'Failed to submit review');
-      }
-
-      // 성공 시 리뷰 상세 페이지로 이동
-      router.push(`/reviews/${result.reviewId}`);
-    } catch (error) {
-      console.error('Submit review error:', error);
-      setSubmitError(
-        error instanceof Error
-          ? error.message
-          : dict.reviewWrite?.error?.message || 'An error occurred',
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Mutation 실행
+    createReview({
+      rating: formData.rating,
+      content: formData.content,
+      procedureName: formData.procedureName,
+      medicalSpecialtyId: formData.medicalSpecialtyId,
+      hospitalId: hospital.id,
+      beforeImageUrls: beforeImages.map((img) => img.url),
+      afterImageUrls: afterImages.map((img) => img.url),
+      userId: user.id,
+    });
   };
 
   const formDict = dict.reviewWrite?.form;
-  const validationDict = dict.reviewWrite?.validation;
 
   return (
-    <form onSubmit={handleSubmit} className='space-y-6 px-5 pb-24'>
+    <form onSubmit={handleSubmit} className='space-y-6 pb-24'>
       {/* 병원 정보 카드 */}
       <HospitalInfoCard hospital={hospital} lang={lang} />
 
@@ -191,12 +177,14 @@ export function ReviewWriteForm({
 
       {/* 제출 에러 */}
       {submitError && (
-        <div className='rounded-lg bg-red-50 p-3 text-sm text-red-600'>{submitError}</div>
+        <div className='rounded-lg bg-red-50 p-3 text-sm text-red-600'>
+          {submitError.message || dict.reviewWrite?.error?.message || 'An error occurred'}
+        </div>
       )}
 
       {/* 제출 버튼 (하단 고정) */}
       <div className='fixed right-0 bottom-0 left-0 z-10 bg-white p-5'>
-        <div className='mx-auto max-w-[500px]'>
+        <div className={`mx-auto ${MAX_MOBILE_WIDTH_CLASS}`}>
           <button
             type='submit'
             disabled={!isValid || isSubmitting || isUploading}

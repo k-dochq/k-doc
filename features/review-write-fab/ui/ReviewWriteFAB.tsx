@@ -7,6 +7,7 @@ import { useAuth } from 'shared/lib/auth/useAuth';
 import { openModal } from 'shared/lib/modal';
 import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 import { type Locale } from 'shared/config';
+import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
 interface ReviewWriteFABProps {
@@ -21,9 +22,9 @@ export function ReviewWriteFAB({ lang, dict }: ReviewWriteFABProps) {
   const lastScrollYRef = useRef(0);
   const tickingRef = useRef(false);
 
-  // 병원 선택 페이지 미리 로드
+  // 리뷰 작성 페이지 미리 로드
   useEffect(() => {
-    router.prefetch('/reviews/select-hospital');
+    router.prefetch('/reviews-create');
   }, [router]);
 
   // 스크롤 감지 (requestAnimationFrame으로 성능 최적화)
@@ -66,8 +67,8 @@ export function ReviewWriteFAB({ lang, dict }: ReviewWriteFABProps) {
       return;
     }
 
-    // 병원 선택 페이지로 이동
-    router.push('/reviews/select-hospital');
+    // 리뷰 작성 페이지로 이동 (병원 선택 포함)
+    router.push('/reviews-create');
   };
 
   return (
@@ -76,7 +77,7 @@ export function ReviewWriteFAB({ lang, dict }: ReviewWriteFABProps) {
         isVisible ? 'translate-y-0' : 'translate-y-32'
       }`}
     >
-      <div className='mx-auto max-w-[500px] px-6'>
+      <div className={`mx-auto ${MAX_MOBILE_WIDTH_CLASS} px-6`}>
         <button
           onClick={handleClick}
           disabled={isLoading}

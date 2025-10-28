@@ -5,3 +5,4 @@ export { HospitalInfoCard } from './ui/HospitalInfoCard';
 export { MedicalSpecialtySelect } from './ui/MedicalSpecialtySelect';
 export { useReviewWriteForm } from './model/useReviewWriteForm';
 export { useImageUpload } from './model/useImageUpload';
+export { useCreateReview } from './model/useCreateReview';

@@ -52,6 +52,7 @@ export const queryKeys = {
     all: ['reviews'] as const,
     lists: () => [...queryKeys.reviews.all, 'list'] as const,
     list: (filters: Record<string, unknown>) => [...queryKeys.reviews.lists(), filters] as const,
+    byId: (id: string) => ['reviews', id] as const,
     hospital: (hospitalId: string) => [...queryKeys.reviews.all, 'hospital', hospitalId] as const,
     hospitalInfinite: (hospitalId: string, filters: Record<string, unknown>) =>
       [...queryKeys.reviews.hospital(hospitalId), 'infinite', filters] as const,

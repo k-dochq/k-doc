@@ -47,7 +47,7 @@ export function ReviewWriteContent({ lang, dict, hospitalId }: ReviewWriteConten
           <LoginRequiredModal
             lang={lang}
             dict={dict}
-            redirectPath={`/reviews/new${hospitalId ? `?hospitalId=${hospitalId}` : ''}`}
+            redirectPath={`/reviews-create${hospitalId ? `?hospitalId=${hospitalId}` : ''}`}
           />
         ),
       });
@@ -65,7 +65,7 @@ export function ReviewWriteContent({ lang, dict, hospitalId }: ReviewWriteConten
   // 로딩 중
   if (isLoadingHospital || isLoadingCategories || isAuthLoading) {
     return (
-      <div className='flex min-h-screen items-center justify-center bg-gray-50'>
+      <div className='flex min-h-screen items-center justify-center'>
         <Loader2 size={48} className='animate-spin text-[#DA47EF]' />
       </div>
     );
@@ -74,7 +74,7 @@ export function ReviewWriteContent({ lang, dict, hospitalId }: ReviewWriteConten
   // 에러
   if (error || !hospital) {
     return (
-      <div className='flex min-h-screen flex-col items-center justify-center bg-gray-50 p-5'>
+      <div className='flex min-h-screen flex-col items-center justify-center p-5'>
         <div className='space-y-4 text-center'>
           <h2 className='text-xl font-semibold text-gray-900'>
             {dict.reviewWrite?.error?.title || 'Error'}
@@ -94,22 +94,9 @@ export function ReviewWriteContent({ lang, dict, hospitalId }: ReviewWriteConten
   }
 
   return (
-    <div
-      className='min-h-screen'
-      style={{
-        background:
-          'linear-gradient(106deg, rgba(255, 255, 255, 0.6) 0%, rgba(248, 248, 248, 0.6) 100%), linear-gradient(180deg, #FFDBF9 0%, #BD9AFF 100%)',
-      }}
-    >
-      {/* 헤더 */}
-      <div className='bg-white/50 px-5 py-6 backdrop-blur-sm'>
-        <h1 className='text-2xl font-bold text-gray-900'>
-          {dict.reviewWrite?.form?.title || 'Write Review'}
-        </h1>
-      </div>
-
+    <div>
       {/* 폼 */}
-      <div className='pt-6'>
+      <div className='p-6'>
         <ReviewWriteForm
           lang={lang}
           dict={dict}

@@ -79,7 +79,7 @@ export function ReservedHospitalsInfiniteList({ lang, dict }: ReservedHospitalsI
           {convertedHospitals.map((hospital) => (
             <LocaleLink
               key={hospital.id}
-              href={`/reviews/new?hospitalId=${hospital.id}`}
+              href={`/reviews-create?hospitalId=${hospital.id}`}
               className='block'
             >
               <HospitalCard
