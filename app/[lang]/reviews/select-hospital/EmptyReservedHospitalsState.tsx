@@ -8,7 +8,10 @@ interface EmptyReservedHospitalsStateProps {
   dict: Dictionary;
 }
 
-export function EmptyReservedHospitalsState({ lang, dict }: EmptyReservedHospitalsStateProps) {
+export function EmptyReservedHospitalsState({
+  lang: _lang,
+  dict,
+}: EmptyReservedHospitalsStateProps) {
   return (
     <div className='flex min-h-[400px] flex-col items-center justify-center px-5 py-12'>
       <div className='flex h-20 w-20 items-center justify-center rounded-full bg-gray-100'>
