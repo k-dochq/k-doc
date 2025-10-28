@@ -10,6 +10,7 @@ import { getUserDisplayName } from 'shared/lib';
 export function transformDoctorReviewsToReviewCardData(doctor: DoctorDetail): ReviewCardData[] {
   return doctor.hospital.reviews.map((review) => ({
     id: review.id,
+    userId: review.user?.id || '', // user 객체에서 id 추출
     rating: review.rating,
     title: review.title,
     content: review.content,

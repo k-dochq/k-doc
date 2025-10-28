@@ -50,6 +50,7 @@ export type DisplayImage = ReviewImage | DefaultImage;
 // 리뷰 카드에서 사용할 타입 (Prisma 타입을 기반으로 확장)
 export type ReviewCardData = {
   id: string;
+  userId: string; // 리뷰 작성자 ID
   rating: number;
   title: LocalizedText | null;
   content: LocalizedText | null;

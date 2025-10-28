@@ -57,8 +57,8 @@ export function ReviewWriteForm({
     error: submitError,
   } = useCreateReview({
     onSuccess: (reviewId: string, hospitalId: string) => {
-      // 성공 시 해당 병원의 리뷰 목록 페이지로 이동
-      router.push(`/hospital/${hospitalId}/reviews`);
+      // 성공 시 해당 병원의 리뷰 목록 페이지로 이동 (히스토리 스택에 쌓이지 않게 replace 사용)
+      router.replace(`/hospital/${hospitalId}/reviews`);
     },
     onError: (error: Error) => {
       console.error('Submit review error:', error);

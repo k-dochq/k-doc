@@ -493,6 +493,11 @@
       "countLabel": "",
       "error": "เกิดข้อผิดพลาด"
     },
+    "delete": "ลบ",
+    "report": "รายงาน",
+    "deleteConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบรีวิวนี้?",
+    "deleteSuccess": "รีวิวถูกลบแล้ว",
+    "deleteError": "ลบรีวิวไม่สำเร็จ",
     "procedureTiming": "วันที่ทำการรักษา",
     "showMore": "ดูเพิ่มเติม",
     "showLess": "ย่อ",

@@ -24,6 +24,7 @@ interface ReviewListCardProps {
   onToggleLike?: (reviewId: string) => void;
   isLikeLoading?: boolean;
   className?: string;
+  onDelete?: (reviewId: string) => void;
 }
 
 export function ReviewListCard({
@@ -34,6 +35,7 @@ export function ReviewListCard({
   onToggleLike,
   isLikeLoading = false,
   className = '',
+  onDelete,
 }: ReviewListCardProps) {
   const title = decodeHtmlEntities(extractLocalizedText(review.title, lang) || '');
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
@@ -45,7 +47,7 @@ export function ReviewListCard({
   const hashtags = concerns ? [concerns] : [];
 
   return (
-    <div className="relative z-10 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] rounded-xl overflow-hidden">
+    <div className='relative z-10 overflow-hidden rounded-xl shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)]'>
       <div
         className={`block w-full rounded-t-xl border border-white bg-white/50 px-5 pt-5 pb-4 backdrop-blur-[6px] ${className}`}
       >
@@ -81,6 +83,8 @@ export function ReviewListCard({
         onToggleLike={onToggleLike}
         isLikeLoading={isLikeLoading && isLikeLoading}
         className=''
+        onDelete={onDelete}
+        dict={dict}
       />
     </div>
   );

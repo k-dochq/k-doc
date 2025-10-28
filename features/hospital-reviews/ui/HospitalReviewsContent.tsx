@@ -10,6 +10,7 @@ import {
   createHospitalReviewsInfiniteQueryParams,
 } from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
+import { useDeleteReview } from 'entities/review/model/useDeleteReview';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyReviewsState } from 'shared/ui/empty-state';
@@ -47,6 +48,13 @@ export function HospitalReviewsContent({
   // 좋아요 토글 뮤테이션
   const toggleLikeMutation = useToggleReviewLike({ queryParams });
 
+  // 삭제 뮤테이션
+  const deleteReviewMutation = useDeleteReview({
+    onError: (error: Error) => {
+      alert(dict.review?.deleteError || error.message);
+    },
+  });
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteAllReviews(queryParams);
 
@@ -63,6 +71,11 @@ export function HospitalReviewsContent({
     }
 
     toggleLikeMutation.mutate(reviewId);
+  };
+
+  // 삭제 핸들러
+  const handleDelete = (reviewId: string) => {
+    deleteReviewMutation.mutate(reviewId);
   };
 
   // 현재 로딩 중인 리뷰 ID (TanStack Query의 variables 활용)
@@ -113,6 +126,7 @@ export function HospitalReviewsContent({
                 user={user}
                 onToggleLike={handleToggleLike}
                 isLikeLoading={loadingReviewId === review.id}
+                onDelete={handleDelete}
               />
             </div>
           ))}

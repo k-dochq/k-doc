@@ -140,6 +140,7 @@ export class LikedReviewsRepository {
 
       return {
         id: review.id,
+        userId: review.userId,
         rating: review.rating,
         title: review.title ? parseLocalizedText(review.title) : null,
         content: review.content ? parseLocalizedText(review.content) : null,
