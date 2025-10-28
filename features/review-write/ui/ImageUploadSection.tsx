@@ -38,7 +38,7 @@ export function ImageUploadSection({
 
       <div className='flex gap-2 overflow-x-auto'>
         {images.map((image, index) => (
-          <div key={index} className='relative h-28 w-28 flex-shrink-0 rounded-xl'>
+          <div key={index} className='relative h-28 w-28 flex-shrink-0 overflow-hidden rounded-xl'>
             <Image
               src={image.preview}
               alt={`Upload ${index + 1}`}
@@ -48,7 +48,7 @@ export function ImageUploadSection({
             <button
               type='button'
               onClick={() => onRemove(index)}
-              className='absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-[rgba(23,23,23,0.7)] text-white transition-transform active:scale-90'
+              className='absolute top-2 right-2 flex h-6 w-6 items-center justify-center rounded-full bg-[rgba(23,23,23,0.7)] text-white transition-transform active:scale-90'
             >
               <X size={16} />
             </button>

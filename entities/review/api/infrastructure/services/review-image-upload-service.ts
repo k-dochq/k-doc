@@ -13,7 +13,7 @@ export interface UploadImageResult {
 }
 
 export class ReviewImageUploadService {
-  private readonly bucketName = 'review-images';
+  private readonly bucketName = 'kdoc-storage';
   private readonly maxFileSize = 10 * 1024 * 1024; // 10MB
 
   /**
@@ -42,7 +42,7 @@ export class ReviewImageUploadService {
       const timestamp = Date.now();
       const randomId = crypto.randomUUID();
       const fileName = `${userId}_${timestamp}_${randomId}.${fileExt}`;
-      const filePath = `${type.toLowerCase()}/${fileName}`;
+      const filePath = `review-create/${type.toLowerCase()}/${fileName}`;
 
       // Supabase Storage에 업로드
       const supabase = createClient();
