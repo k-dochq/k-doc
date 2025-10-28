@@ -15,8 +15,11 @@ export class ReviewRepository {
   ): Promise<{ reviewId: string }> {
     const result = await prisma.$transaction(async (tx) => {
       // 1. Review 생성
+      const reviewId = crypto.randomUUID();
+      const now = new Date();
       const review = await tx.review.create({
         data: {
+          id: reviewId,
           rating: reviewData.rating,
           content: reviewData.content as Prisma.InputJsonObject,
           concernsMultilingual: reviewData.concernsMultilingual as Prisma.InputJsonObject,
@@ -33,6 +36,7 @@ export class ReviewRepository {
           viewCount: 0,
           likeCount: 0,
           commentCount: 0,
+          updatedAt: now,
         } as Prisma.ReviewCreateInput,
       });
 
@@ -41,6 +45,7 @@ export class ReviewRepository {
         for (const img of images) {
           await tx.reviewImage.create({
             data: {
+              id: crypto.randomUUID(),
               Review: {
                 connect: { id: review.id },
               },
@@ -49,6 +54,7 @@ export class ReviewRepository {
               order: img.order ?? undefined,
               alt: img.alt ?? undefined,
               isActive: img.isActive,
+              updatedAt: now,
             } as Prisma.ReviewImageCreateInput,
           });
         }
