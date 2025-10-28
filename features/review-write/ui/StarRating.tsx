@@ -1,6 +1,6 @@
 'use client';
 
-import { Star } from 'lucide-react';
+import { CustomStar } from './CustomStar';
 
 interface StarRatingProps {
   rating: number;
@@ -11,9 +11,9 @@ interface StarRatingProps {
 
 export function StarRating({ rating, onRatingChange, label, error }: StarRatingProps) {
   return (
-    <div className='space-y-2'>
-      <label className='text-sm font-medium text-gray-900'>{label}</label>
-      <div className='flex gap-3'>
+    <div className='flex flex-col items-center gap-0.5'>
+      <label className='text-lg leading-[28px] font-semibold text-[#da47ef]'>{label}</label>
+      <div className='flex gap-0.5'>
         {[1, 2, 3, 4, 5].map((star) => (
           <button
             key={star}
@@ -21,12 +21,7 @@ export function StarRating({ rating, onRatingChange, label, error }: StarRatingP
             onClick={() => onRatingChange(star)}
             className='transition-transform duration-200 active:scale-90'
           >
-            <Star
-              size={48}
-              fill={star <= rating ? '#DA47EF' : 'none'}
-              stroke={star <= rating ? '#DA47EF' : '#E5E7EB'}
-              strokeWidth={1.5}
-            />
+            <CustomStar filled={star <= rating} size={40} />
           </button>
         ))}
       </div>
