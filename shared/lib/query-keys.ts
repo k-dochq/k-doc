@@ -125,4 +125,13 @@ export const queryKeys = {
     reviewInfinite: (reviewId: string, filters: Record<string, unknown>) =>
       [...queryKeys.comments.review(reviewId), 'infinite', filters] as const,
   },
+
+  // 예약 관련 쿼리
+  reservations: {
+    all: ['reservations'] as const,
+    lists: () => [...queryKeys.reservations.all, 'list'] as const,
+    hospitals: () => [...queryKeys.reservations.all, 'hospitals'] as const,
+    hospitalsInfinite: (params: Record<string, unknown>) =>
+      [...queryKeys.reservations.hospitals(), 'infinite', params] as const,
+  },
 } as const;

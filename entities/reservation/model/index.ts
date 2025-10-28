@@ -1,0 +1,1 @@
+export { useInfiniteReservedHospitals } from './useInfiniteReservedHospitals';

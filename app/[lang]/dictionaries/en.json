@@ -157,6 +157,33 @@
       "recommended": "Recommended"
     }
   },
+  "reviewWrite": {
+    "fab": {
+      "ariaLabel": "Write Review",
+      "buttonText": "Write Review"
+    },
+    "selectHospital": {
+      "title": "Select Hospital",
+      "description": "Select a hospital to write a review. You can choose from your booked hospitals.",
+      "pageTitle": "Select Your Booked Hospital",
+      "pageSubtitle": "Select a hospital to write your review",
+      "notificationMessage": "Please select a hospital to write a review",
+      "infiniteScroll": {
+        "loading": "Loading more hospitals...",
+        "end": "All booked hospitals loaded"
+      },
+      "error": {
+        "title": "Unable to load booked hospitals",
+        "message": "Please check your network connection and try again"
+      },
+      "empty": {
+        "title": "No Reservation History",
+        "description": "You need to book a hospital first to write a review.",
+        "subdescription": "Find your desired hospital and make a reservation.",
+        "browseButton": "Browse Hospitals"
+      }
+    }
+  },
   "reviewDetail": {
     "title": "Review Detail",
     "content": "Review Content",
