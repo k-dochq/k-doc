@@ -14,7 +14,9 @@ export function EmptyReservedHospitalsState({
 }: EmptyReservedHospitalsStateProps) {
   return (
     <div className='flex min-h-[500px] flex-col items-center justify-center px-5 py-16'>
-      <Calendar size={40} className='text-[#EC6BFF]' />
+      <div className='flex items-center justify-center'>
+        <Calendar size={40} className='text-[#EC6BFF]' />
+      </div>
 
       <h3 className='mt-6 text-lg font-semibold text-[#EC6BFF]'>
         {dict.reviewWrite?.selectHospital?.empty?.title || 'No Reservation History'}
