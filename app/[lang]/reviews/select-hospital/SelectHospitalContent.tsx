@@ -35,13 +35,6 @@ export function SelectHospitalContent({ lang, dict }: SelectHospitalContentProps
 
   return (
     <div className=''>
-      {/* 안내 메시지 */}
-      <div className='px-5 py-3'>
-        <p className='text-center text-sm'>
-          {dict.reviewWrite?.selectHospital?.notificationMessage ||
-            'Please select a hospital to write a review'}
-        </p>
-      </div>
 
       {/* 병원 리스트 */}
       <ReservedHospitalsInfiniteList lang={lang} dict={dict} />

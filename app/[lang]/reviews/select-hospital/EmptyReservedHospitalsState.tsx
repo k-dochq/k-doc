@@ -13,16 +13,14 @@ export function EmptyReservedHospitalsState({
   dict,
 }: EmptyReservedHospitalsStateProps) {
   return (
-    <div className='flex min-h-[400px] flex-col items-center justify-center px-5 py-12'>
-      <div className='flex h-20 w-20 items-center justify-center rounded-full bg-gray-100'>
-        <Calendar size={40} className='text-gray-400' />
-      </div>
+    <div className='flex min-h-[500px] flex-col items-center justify-center px-5 py-16'>
+      <Calendar size={40} className='text-[#EC6BFF]' />
 
-      <h3 className='mt-6 text-lg font-semibold text-gray-900'>
+      <h3 className='mt-6 text-lg font-semibold text-[#EC6BFF]'>
         {dict.reviewWrite?.selectHospital?.empty?.title || 'No Reservation History'}
       </h3>
 
-      <p className='mt-2 text-center text-sm text-gray-600'>
+      <p className='mt-2 text-center text-sm text-[#EC6BFF]'>
         {dict.reviewWrite?.selectHospital?.empty?.description ||
           'You need to book a hospital first.'}
         <br />
@@ -32,7 +30,7 @@ export function EmptyReservedHospitalsState({
 
       <LocaleLink
         href='/hospitals'
-        className='mt-6 rounded-lg bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800'
+        className='mt-6 rounded-lg bg-[#DA47EF] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#C73AE0]'
       >
         {dict.reviewWrite?.selectHospital?.empty?.browseButton || 'Browse Hospitals'}
       </LocaleLink>
