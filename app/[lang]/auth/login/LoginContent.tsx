@@ -7,6 +7,7 @@ import { AppleSignInButton } from 'features/apple-auth';
 // import { KakaoSignInButton } from 'features/kakao-auth/ui/KakaoSignInButton';
 import { EmailSignInButton } from 'features/email-auth';
 import { PageHeader } from 'shared/ui/page-header';
+import { GoogleSignInButton } from '@/features/google-auth';
 // import { isExpoWebViewOnIOS } from 'shared/lib/webview-detection';
 
 interface LoginContentProps {
@@ -42,8 +43,8 @@ export function LoginContent({ lang, dict, redirectTo }: LoginContentProps) {
         <EmailSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
         <div className='h-4' />
 
-        {/* <GoogleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
-        <div className='h-4' /> */}
+        <GoogleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
+        <div className='h-4' />
 
         <AppleSignInButton lang={lang} dict={dict} redirectTo={redirectTo} />
       </div>
