@@ -42,8 +42,11 @@ export function HospitalDetailConsultationFloating({
       {
         onSuccess: (data) => {
           if (data.hasHistory) {
-            // 기존 상담 내역이 있으면 채팅 페이지로 이동
-            router.push(`/chat/${hospitalId}`);
+            // 기존 상담 내역이 있으면 채팅 페이지로 이동 (하드 내비게이션)
+            const href = `/${lang}/chat/${hospitalId}`;
+            if (typeof window !== 'undefined') {
+              window.location.href = href;
+            }
           } else {
             // 상담 내역이 없으면 상담신청 폼 페이지로 이동
             router.push(`/hospital/${hospitalId}/consultation`);
