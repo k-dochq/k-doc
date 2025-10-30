@@ -63,26 +63,37 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
     const hospitalId = searchParams.get('hospitalId');
-    const userId = searchParams.get('userId');
+    const limitParam = searchParams.get('limit');
+    const cursor = searchParams.get('cursor'); // ISO string of createdAt
 
-    if (!hospitalId || !userId) {
+    if (!hospitalId) {
       return NextResponse.json(
         { success: false, error: 'MISSING_REQUIRED_PARAMS' },
         { status: 400 },
       );
     }
 
-    // 현재 로그인한 사용자가 요청한 userId와 일치하는지 확인
-    if (session.user.id !== userId) {
-      return NextResponse.json({ success: false, error: 'FORBIDDEN' }, { status: 403 });
-    }
+    // 페이지네이션: 최신순으로 limit+1 조회 후 hasMore 판정, 응답은 ASC로 반환
+    const limit = (() => {
+      const n = parseInt(limitParam || '50', 10);
+      if (Number.isNaN(n)) return 50;
+      return Math.min(Math.max(n, 1), 100);
+    })();
 
-    // 해당 사용자와 병원 간의 메시지 조회
-    const messages = await prisma.consultationMessage.findMany({
-      where: {
-        userId: userId,
-        hospitalId: hospitalId,
-      },
+    const baseWhere = {
+      userId: session.user.id,
+      hospitalId: hospitalId,
+      ...(cursor
+        ? {
+            createdAt: {
+              lt: new Date(cursor),
+            },
+          }
+        : {}),
+    } as const;
+
+    const items = await prisma.consultationMessage.findMany({
+      where: baseWhere,
       include: {
         User: {
           select: {
@@ -92,13 +103,23 @@ export async function GET(request: NextRequest) {
         },
       },
       orderBy: {
-        createdAt: 'asc',
+        createdAt: 'desc',
       },
+      take: limit + 1, // hasMore 판단을 위해 한 개 더 요청
     });
+
+    const hasMore = items.length > limit;
+    const sliced = hasMore ? items.slice(0, -1) : items;
+    // 화면 렌더 편의상 오래된→최신 순으로 반환
+    const messages = sliced.reverse();
+    const nextCursor = hasMore ? messages[0]?.createdAt?.toISOString() : null;
 
     return NextResponse.json({
       success: true,
-      messages: messages,
+      messages,
+      hasMore,
+      nextCursor,
+      limit,
     });
   } catch (error) {
     console.error('Get consultation messages error:', error);

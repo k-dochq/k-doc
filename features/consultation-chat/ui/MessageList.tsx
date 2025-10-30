@@ -14,6 +14,8 @@ interface MessageListProps {
   isLoading?: boolean;
   lang: Locale;
   dict: Dictionary;
+  hasMore?: boolean;
+  onLoadMore?: () => void;
 }
 
 export function MessageList({
@@ -23,6 +25,8 @@ export function MessageList({
   isLoading,
   lang,
   dict,
+  hasMore,
+  onLoadMore,
 }: MessageListProps) {
   // 로딩 상태
   if (isLoading) {
@@ -36,11 +40,24 @@ export function MessageList({
 
   // 메시지 리스트 표시
   return (
-    <MessageListContent
-      messages={messages}
-      hospitalName={hospitalName}
-      hospitalImageUrl={hospitalImageUrl}
-      lang={lang}
-    />
+    <div className='flex-1 overflow-y-auto'>
+      {hasMore && (
+        <div className='flex w-full justify-center p-2'>
+          <button
+            type='button'
+            className='text-sm text-gray-500 underline-offset-4'
+            onClick={onLoadMore}
+          >
+            {dict.comments?.list?.loadMore || 'Load previous messages'}
+          </button>
+        </div>
+      )}
+      <MessageListContent
+        messages={messages}
+        hospitalName={hospitalName}
+        hospitalImageUrl={hospitalImageUrl}
+        lang={lang}
+      />
+    </div>
   );
 }

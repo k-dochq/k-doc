@@ -16,6 +16,8 @@ interface ConsultationChatMainProps {
   isLoadingHistory: boolean;
   isConnected: boolean;
   onSendMessage: (content: string) => void;
+  hasMore?: boolean;
+  onLoadMore?: () => void;
 }
 
 export function ConsultationChatMain({
@@ -27,6 +29,8 @@ export function ConsultationChatMain({
   isLoadingHistory,
   isConnected,
   onSendMessage,
+  hasMore,
+  onLoadMore,
 }: ConsultationChatMainProps) {
   return (
     <div className='flex h-screen flex-col'>
@@ -44,6 +48,8 @@ export function ConsultationChatMain({
         isLoading={isLoadingHistory}
         lang={lang}
         dict={dict}
+        hasMore={hasMore}
+        onLoadMore={onLoadMore}
       />
 
       <ChatInput
