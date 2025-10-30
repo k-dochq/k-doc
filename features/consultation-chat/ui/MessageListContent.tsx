@@ -7,12 +7,17 @@ import { UserMessage } from './UserMessage';
 import { MessageDateSeparator } from './MessageDateSeparator';
 import { formatMessageDate, isSameDay } from '../lib/chat-utils';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
+import { LoadOlderButton } from './LoadOlderButton';
 
 interface MessageListContentProps {
   messages: ChatMessage[];
   hospitalName: string;
   hospitalImageUrl?: string;
   lang: Locale;
+  hasMore?: boolean;
+  onLoadMore?: () => Promise<void> | void;
+  dict?: Dictionary;
 }
 
 export function MessageListContent({
@@ -20,16 +25,41 @@ export function MessageListContent({
   hospitalName,
   hospitalImageUrl,
   lang,
+  hasMore,
+  onLoadMore,
+  dict,
 }: MessageListContentProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isPrependingRef = useRef(false);
+  const initialScrolledRef = useRef(false);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
   };
 
   useEffect(() => {
-    scrollToBottom();
+    if (isPrependingRef.current) return;
+    if (!initialScrolledRef.current) {
+      scrollToBottom();
+      initialScrolledRef.current = true;
+    }
   }, [messages]);
+
+  const handleLoadMoreClick = async () => {
+    if (!onLoadMore || !containerRef.current) {
+      return;
+    }
+    const el = containerRef.current;
+    const prevScrollHeight = el.scrollHeight;
+    const prevScrollTop = el.scrollTop;
+    isPrependingRef.current = true;
+    await onLoadMore();
+    // 메시지 추가 후 높이 차이만큼 보정하여 같은 위치 유지
+    const newScrollHeight = el.scrollHeight;
+    el.scrollTop = prevScrollTop + (newScrollHeight - prevScrollHeight);
+    isPrependingRef.current = false;
+  };
 
   // 연속된 같은 발신자의 메시지인지 확인
   const shouldShowHeader = (currentIndex: number): boolean => {
@@ -50,7 +80,8 @@ export function MessageListContent({
   };
 
   return (
-    <div className='flex-1 overflow-y-auto'>
+    <div ref={containerRef} className='flex-1 overflow-y-auto'>
+      <LoadOlderButton hasMore={hasMore} onClick={handleLoadMoreClick} dict={dict} />
       <div className='flex flex-col content-stretch items-start justify-start gap-2 p-5'>
         {messages.map((message, index) => {
           const showDateSeparator = shouldShowDateSeparator(index);
