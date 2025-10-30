@@ -39,6 +39,8 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
     isLoadingHistory,
     error: chatError,
     sendMessage,
+    hasMore,
+    loadMoreHistory,
   } = useRealtimeChat({
     hospitalId,
     userId: user?.id || '',
@@ -76,6 +78,8 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
       isLoadingHistory={isLoadingHistory}
       isConnected={isConnected}
       onSendMessage={sendMessage}
+      hasMore={hasMore}
+      onLoadMore={loadMoreHistory}
     />
   );
 }

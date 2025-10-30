@@ -8,24 +8,30 @@ import { type ChatMessage } from './entities/types';
 /**
  * 채팅 히스토리 조회
  */
-export async function fetchChatHistory(hospitalId: string, userId: string): Promise<ChatMessage[]> {
+export async function fetchChatHistory(
+  hospitalId: string,
+  options?: { limit?: number; cursor?: string | null },
+): Promise<{ messages: ChatMessage[]; hasMore: boolean; nextCursor: string | null }> {
   try {
-    console.log('📚 Fetching chat history for:', { hospitalId, userId });
+    console.log('📚 Fetching chat history for:', { hospitalId });
 
-    const response = await fetch(
-      `/api/consultation-messages?hospitalId=${hospitalId}&userId=${userId}`,
-    );
+    const params = new URLSearchParams();
+    params.set('hospitalId', hospitalId);
+    if (options?.limit) params.set('limit', String(options.limit));
+    if (options?.cursor) params.set('cursor', options.cursor);
+
+    const response = await fetch(`/api/consultation-messages?${params.toString()}`);
 
     if (!response.ok) {
       console.log('📚 No chat history found or error loading:', response.status);
-      return [];
+      return { messages: [], hasMore: false, nextCursor: null };
     }
 
     const data = await response.json();
 
     if (!data.success || !data.messages) {
       console.log('📚 No messages in response');
-      return [];
+      return { messages: [], hasMore: false, nextCursor: null };
     }
 
     const historyMessages: ChatMessage[] = data.messages.map((msg: any) => ({
@@ -38,10 +44,14 @@ export async function fetchChatHistory(hospitalId: string, userId: string): Prom
     }));
 
     console.log('📚 Chat history loaded:', historyMessages.length, 'messages');
-    return historyMessages;
+    return {
+      messages: historyMessages,
+      hasMore: !!data.hasMore,
+      nextCursor: data.nextCursor || null,
+    };
   } catch (error) {
     console.error('❌ Failed to fetch chat history:', error);
-    return [];
+    return { messages: [], hasMore: false, nextCursor: null };
   }
 }
 

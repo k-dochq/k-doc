@@ -14,6 +14,8 @@ interface MessageListProps {
   isLoading?: boolean;
   lang: Locale;
   dict: Dictionary;
+  hasMore?: boolean;
+  onLoadMore?: () => void;
 }
 
 export function MessageList({
@@ -23,6 +25,8 @@ export function MessageList({
   isLoading,
   lang,
   dict,
+  hasMore,
+  onLoadMore,
 }: MessageListProps) {
   // 로딩 상태
   if (isLoading) {
@@ -41,6 +45,9 @@ export function MessageList({
       hospitalName={hospitalName}
       hospitalImageUrl={hospitalImageUrl}
       lang={lang}
+      hasMore={hasMore}
+      onLoadMore={onLoadMore}
+      dict={dict}
     />
   );
 }
