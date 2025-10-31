@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { createClient } from 'shared/lib/supabase/client';
+import { useCheckEmailExists } from './useCheckEmailExists';
 
 interface UsePasswordResetParams {
   locale: Locale;
@@ -18,22 +19,23 @@ interface UsePasswordResetReturn {
 }
 
 export function usePasswordReset({ locale, dict }: UsePasswordResetParams): UsePasswordResetReturn {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const checkEmailMutation = useCheckEmailExists();
+  const mutation = useMutation({
+    mutationFn: async (email: string): Promise<{ success: boolean }> => {
+      // 1) 이메일 존재 여부 사전 검증 (TanStack Query 사용)
+      const checkResult = await checkEmailMutation.mutateAsync({ email });
 
-  const resetPassword = async (email: string): Promise<{ success: boolean; error?: string }> => {
-    setIsLoading(true);
-    setError(null);
-    setIsSuccess(false);
+      if (!checkResult.exists) {
+        const notFoundMsg =
+          dict.auth?.forgotPassword?.errors?.userNotFound ||
+          '해당 이메일로 가입된 계정을 찾을 수 없습니다.';
+        throw new Error(notFoundMsg);
+      }
 
-    try {
+      // 2) 존재하는 경우에만 비밀번호 재설정 메일 전송
       const supabase = createClient();
-
-      // 비밀번호 재설정 이메일 전송
       if (!supabase) {
-        console.error('Supabase client 생성 실패');
-        return { success: false, error: 'Supabase client 생성 실패' };
+        throw new Error('Supabase client 생성 실패');
       }
 
       const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
@@ -41,41 +43,37 @@ export function usePasswordReset({ locale, dict }: UsePasswordResetParams): UseP
       });
 
       if (resetError) {
-        throw resetError;
-      }
-
-      setIsSuccess(true);
-      return { success: true };
-    } catch (err) {
-      let errorMessage =
-        dict.auth?.forgotPassword?.resetError || '비밀번호 재설정 중 오류가 발생했습니다';
-
-      if (err instanceof Error) {
-        // Supabase 에러 메시지 매핑
-        if (err.message.includes('User not found')) {
-          errorMessage =
+        // Supabase 에러 메시지 매핑 후 throw
+        if (resetError.message.includes('User not found')) {
+          throw new Error(
             dict.auth?.forgotPassword?.errors?.userNotFound ||
-            '해당 이메일로 가입된 계정을 찾을 수 없습니다.';
-        } else if (err.message.includes('Email rate limit exceeded')) {
-          errorMessage =
-            dict.auth?.forgotPassword?.errors?.rateLimitExceeded ||
-            '너무 많은 요청이 있었습니다. 잠시 후 다시 시도해주세요.';
-        } else {
-          errorMessage = err.message;
+              '해당 이메일로 가입된 계정을 찾을 수 없습니다.',
+          );
         }
+        if (resetError.message.includes('Email rate limit exceeded')) {
+          throw new Error(
+            dict.auth?.forgotPassword?.errors?.rateLimitExceeded ||
+              '너무 많은 요청이 있었습니다. 잠시 후 다시 시도해주세요.',
+          );
+        }
+        throw new Error(
+          dict.auth?.forgotPassword?.resetError || '비밀번호 재설정 중 오류가 발생했습니다',
+        );
       }
 
-      setError(errorMessage);
-      return { success: false, error: errorMessage };
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      return { success: true };
+    },
+  });
+
+  const resetPassword = (email: string) =>
+    mutation.mutateAsync(email).catch((err: Error) => {
+      return { success: false, error: err.message } as { success: boolean; error?: string };
+    });
 
   return {
     resetPassword,
-    isLoading,
-    error,
-    isSuccess,
+    isLoading: mutation.isPending,
+    error: (mutation.error as Error | null)?.message ?? null,
+    isSuccess: mutation.isSuccess,
   };
 }
