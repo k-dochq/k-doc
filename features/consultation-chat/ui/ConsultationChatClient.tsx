@@ -52,7 +52,7 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
     userName,
   });
 
-  // 페이지 진입 시 알림 권한 확인 (인증된 사용자만 체크)
+  // 페이지 진입 시 알림 권한 확인 (인증된 사용자만 체크, 하루에 한 번만)
   useEffect(() => {
     // 인증된 사용자만 체크
     if (!user) return;
@@ -62,12 +62,23 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
 
     async function checkNotificationPermission() {
       try {
+        // 하루에 한 번만 모달 표시 여부 확인
+        const lastShownDate = localStorage.getItem('notification_modal_last_shown');
+        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD 형식
+
+        // 오늘 이미 모달을 띄웠으면 건너뛰기
+        if (lastShownDate === today) {
+          return;
+        }
+
         const response = await requestNotificationPermission();
 
         if (!response.granted) {
+          // 모달 표시 및 마지막 표시 날짜 저장
           openModal({
             content: <NotificationPermissionModal lang={lang} dict={dict} />,
           });
+          localStorage.setItem('notification_modal_last_shown', today);
         }
       } catch (error) {
         // 에러 발생 시 무시 (조용히 실패)
@@ -75,7 +86,7 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
     }
 
     checkNotificationPermission();
-  }, [user]);
+  }, [user, lang, dict]);
 
   // 로딩 상태
   if (authLoading || hospitalLoading) {
