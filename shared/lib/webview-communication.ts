@@ -3,6 +3,7 @@
  */
 
 import type { NotificationPermissionResponse } from 'shared/model/types/webview-communication';
+import { isExpoWebView } from 'shared/lib/webview-detection';
 
 // 단일 pending promise 관리
 let pendingRequest: {
@@ -73,4 +74,28 @@ export function requestNotificationPermission(): Promise<NotificationPermissionR
 
     webViewWindow.ReactNativeWebView.postMessage(JSON.stringify(request));
   });
+}
+
+/**
+ * React Native 앱의 알림 설정 화면을 엽니다.
+ * @throws 일반 브라우저 환경일 때 에러
+ */
+export function openNotificationSettings(): void {
+  if (typeof window === 'undefined') {
+    console.warn('Window is not available');
+    return;
+  }
+
+  const webViewWindow = window as any;
+  if (!webViewWindow.ReactNativeWebView?.postMessage) {
+    console.warn('Not in React Native WebView environment');
+    return;
+  }
+
+  const request = {
+    source: 'kdoc-web',
+    type: 'OPEN_NOTIFICATION_SETTINGS_REQUEST',
+  };
+
+  webViewWindow.ReactNativeWebView.postMessage(JSON.stringify(request));
 }

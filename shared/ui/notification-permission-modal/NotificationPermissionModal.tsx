@@ -5,6 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { closeModal } from 'shared/lib/modal';
 import { CloseIcon } from 'shared/ui/close-icon';
 import { NotificationIllustration } from './NotificationIllustration';
+import { openNotificationSettings } from 'shared/lib/webview-communication';
 
 interface NotificationPermissionModalProps {
   lang: Locale;
@@ -15,6 +16,14 @@ interface NotificationPermissionModalProps {
  * 알림 권한이 필요할 때 표시하는 모달 컴포넌트
  */
 export function NotificationPermissionModal({ lang, dict }: NotificationPermissionModalProps) {
+  const handleAccept = () => {
+    openNotificationSettings();
+  };
+
+  const handleDecline = () => {
+    closeModal();
+  };
+
   return (
     <div className='relative'>
       {/* X 버튼 */}
@@ -51,14 +60,17 @@ export function NotificationPermissionModal({ lang, dict }: NotificationPermissi
           {/* 버튼 영역 - spacing 6 아래 */}
           <div className='flex w-full flex-col items-start justify-center gap-4'>
             {/* 알림 받기 버튼 */}
-            <button className='flex w-full items-center justify-center gap-2 rounded-xl bg-[#da47ef] px-10 py-4'>
+            <button
+              onClick={handleAccept}
+              className='flex w-full items-center justify-center gap-2 rounded-xl bg-[#da47ef] px-10 py-4'
+            >
               <p className='text-base leading-6 font-medium text-white'>
                 {dict.consultation.notificationPermission.acceptButton}
               </p>
             </button>
 
             {/* 지금은 안 받을래요 버튼 */}
-            <button className='flex w-full items-center justify-center'>
+            <button onClick={handleDecline} className='flex w-full items-center justify-center'>
               <p className='text-sm leading-5 font-normal text-neutral-500'>
                 {dict.consultation.notificationPermission.declineButton}
               </p>

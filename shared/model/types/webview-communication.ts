@@ -15,3 +15,9 @@ export interface NotificationPermissionResponse {
   granted: boolean;
   status: 'granted' | 'denied' | 'undetermined';
 }
+
+// 알림 설정 열기 요청 메시지
+export interface OpenNotificationSettingsRequest {
+  source: 'kdoc-web';
+  type: 'OPEN_NOTIFICATION_SETTINGS_REQUEST';
+}

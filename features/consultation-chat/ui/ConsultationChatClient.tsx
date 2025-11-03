@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { requestNotificationPermission } from 'shared/lib/webview-communication';
+import { isExpoWebView } from 'shared/lib/webview-detection';
 import { openModal } from 'shared/lib/modal';
 import { NotificationPermissionModal } from 'shared/ui/notification-permission-modal';
 import { useRealtimeChat } from '../model/useRealtimeChat';
@@ -56,21 +57,20 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
     // 인증된 사용자만 체크
     if (!user) return;
 
+    // React Native WebView 환경이 아니면 알림 권한 확인하지 않음
+    if (!isExpoWebView()) return;
+
     async function checkNotificationPermission() {
       try {
-        openModal({
-          content: <NotificationPermissionModal lang={lang} dict={dict} />,
-        });
-        // const response = await requestNotificationPermission();
+        const response = await requestNotificationPermission();
 
-        // if (!response.granted) {
-        //   openModal({
-        //     content: <NotificationPermissionModal lang={lang} dict={dict} />,
-        //   });
-        // }
+        if (!response.granted) {
+          openModal({
+            content: <NotificationPermissionModal lang={lang} dict={dict} />,
+          });
+        }
       } catch (error) {
-        // React Native 환경이 아니거나 타임아웃 - 조용히 실패
-        console.log('알림 권한 확인 실패 (일반 브라우저일 수 있음):', error);
+        // 에러 발생 시 무시 (조용히 실패)
       }
     }
 

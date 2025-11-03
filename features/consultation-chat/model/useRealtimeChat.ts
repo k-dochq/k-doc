@@ -156,10 +156,15 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     });
   }, []);
 
-  // Window focus 이벤트 핸들러
-  const handleWindowFocus = useCallback(() => {
+  // visibilitychange 이벤트 핸들러
+  const handleVisibilityChange = useCallback(() => {
+    // visible 상태가 아니면 무시 (포그라운드로 돌아왔을 때만 처리)
+    if (typeof document === 'undefined' || document.visibilityState !== 'visible') {
+      return;
+    }
+
     if (process.env.NODE_ENV === 'development') {
-      console.log('🔄 Window focused - reloading page');
+      console.log('🔄 Page became visible - reloading page');
     }
     window.location.reload();
   }, []);
@@ -181,8 +186,10 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     // 1. 먼저 채팅 히스토리 로드
     loadChatHistory();
 
-    // 2. Window focus 이벤트 리스너 등록
-    window.addEventListener('focus', handleWindowFocus);
+    // 2. visibilitychange 이벤트 리스너 등록
+    if (typeof document !== 'undefined') {
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+    }
 
     // 2. 채널 생성 및 구독
     const channelName = createChannelName(roomId);
@@ -252,11 +259,13 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         channelRef.current.unsubscribe();
         channelRef.current = null;
       }
-      // Window focus 이벤트 리스너 제거
-      window.removeEventListener('focus', handleWindowFocus);
+      // visibilitychange 이벤트 리스너 제거
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+      }
       setIsConnected(false);
     };
-  }, [userId, userName, hospitalId, loadChatHistory, updateMessages, handleWindowFocus]);
+  }, [userId, userName, hospitalId, loadChatHistory, updateMessages, handleVisibilityChange]);
 
   return {
     // 상태
