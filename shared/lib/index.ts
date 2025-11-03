@@ -15,3 +15,4 @@ export * from './nickname-mask';
 export * from './modal';
 export * from './url-parser';
 export * from './webview-detection';
+export * from './webview-communication';

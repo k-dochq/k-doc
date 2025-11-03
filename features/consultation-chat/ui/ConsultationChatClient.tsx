@@ -1,9 +1,11 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { requestNotificationPermission } from 'shared/lib/webview-communication';
 import { useRealtimeChat } from '../model/useRealtimeChat';
 import { createDisplayName } from '../lib/chat-utils';
 import { useHospitalDetail } from 'entities/hospital';
@@ -46,6 +48,31 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
     userId: user?.id || '',
     userName,
   });
+
+  // 페이지 진입 시 알림 권한 확인 (인증된 사용자만 체크)
+  useEffect(() => {
+    // 인증된 사용자만 체크
+    if (!user) return;
+
+    async function checkNotificationPermission() {
+      try {
+        const response = await requestNotificationPermission();
+
+        const statusText = {
+          granted: '허용됨',
+          denied: '거부됨',
+          undetermined: '미설정',
+        }[response.status];
+
+        window.alert(`알림 권한 상태: ${statusText}`);
+      } catch (error) {
+        // React Native 환경이 아니거나 타임아웃 - 조용히 실패
+        console.log('알림 권한 확인 실패 (일반 브라우저일 수 있음):', error);
+      }
+    }
+
+    checkNotificationPermission();
+  }, [user]);
 
   // 로딩 상태
   if (authLoading || hospitalLoading) {
