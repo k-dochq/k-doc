@@ -560,7 +560,7 @@ model ReservationStatusHistory {
 model EventBanner {
   id               String             @id @db.Uuid
   title            Json
-  linkUrl          String             @db.VarChar(500)
+  linkUrl          String?            @db.VarChar(500)
   order            Int                @default(0)
   isActive         Boolean            @default(true)
   startDate        DateTime           @default(now()) @db.Timestamptz(6)
