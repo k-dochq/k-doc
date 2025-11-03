@@ -17,21 +17,20 @@ let isListenerInitialized = false;
 function initResponseListener() {
   if (isListenerInitialized || typeof window === 'undefined') return;
 
-  window.addEventListener('message', (event) => {
-    try {
-      const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+  const webViewWindow = window as any;
 
-      if (data.source === 'kdoc-app' && data.type === 'NOTIFICATION_PERMISSION_RESPONSE') {
-        if (pendingRequest) {
-          clearTimeout(pendingRequest.timeout);
-          pendingRequest.resolve(data);
-          pendingRequest = null;
-        }
+  // React Native WebView에서 injectJavaScript로 호출될 전역 핸들러 등록
+  webViewWindow.__handleNotificationPermissionResponse = (
+    response: NotificationPermissionResponse,
+  ) => {
+    if (response.type === 'NOTIFICATION_PERMISSION_RESPONSE') {
+      if (pendingRequest) {
+        clearTimeout(pendingRequest.timeout);
+        pendingRequest.resolve(response);
+        pendingRequest = null;
       }
-    } catch (error) {
-      console.warn('Failed to parse message:', error);
     }
-  });
+  };
 
   isListenerInitialized = true;
 }
