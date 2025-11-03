@@ -47,7 +47,7 @@ export function EventBannerContent({
       } else {
         emblaApi.scrollTo(0);
       }
-    }, 5000); // 5초 간격
+    }, 2500); // 2.5초 간격
 
     return () => clearInterval(interval);
   }, [emblaApi, banners.length]);
