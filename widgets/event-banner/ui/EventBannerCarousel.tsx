@@ -46,7 +46,7 @@ export function EventBannerCarousel({ currentLocale, className = '' }: EventBann
   }
 
   return (
-    <div className='mt-8 px-5'>
+    <div className='relative z-10 mt-5 px-5'>
       <EventBannerContent
         banners={validBanners}
         currentLocale={currentLocale}
