@@ -667,6 +667,10 @@
           }
         }
       }
+    },
+    "notificationPermission": {
+      "title": "Don't miss the hospital's reply!",
+      "subtitle": "If you turn on push notifications, you can check immediately when a consultation reply arrives."
     }
   },
   "cautionSection": {

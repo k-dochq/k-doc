@@ -21,9 +21,19 @@ export function NotificationPermissionModal({ lang, dict }: NotificationPermissi
         <CloseIcon />
       </button>
 
-      <div className='relative flex flex-col justify-end overflow-hidden rounded-xl'>
-        {/* 컨텐츠 오버레이 */}
-        <div className='relative z-10'>{/* TODO: 모달 내용 추가 */}</div>
+      <div className='relative flex flex-col justify-end overflow-hidden rounded-xl bg-white'>
+        {/* 컨텐츠 */}
+        <div className='relative z-10 flex flex-col items-center gap-6 px-5 py-8'>
+          {/* 텍스트 영역 */}
+          <div className='flex w-full flex-col items-center gap-2 text-center'>
+            <h2 className='w-full text-xl leading-[28px] font-bold text-neutral-900'>
+              {dict.consultation.notificationPermission.title}
+            </h2>
+            <p className='w-full text-base leading-6 font-normal whitespace-pre-line text-neutral-500'>
+              {dict.consultation.notificationPermission.subtitle}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

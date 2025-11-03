@@ -667,6 +667,10 @@
           }
         }
       }
+    },
+    "notificationPermission": {
+      "title": "병원의 답변을 놓치지 마세요!",
+      "subtitle": "푸시 알림을 켜면, 상담 답변이 도착했을 때\n바로 확인하실 수 있습니다."
     }
   },
   "cautionSection": {
