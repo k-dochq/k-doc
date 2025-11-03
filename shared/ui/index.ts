@@ -22,6 +22,7 @@ export * from './user-avatar';
 export * from './dialog';
 export * from './global-modal';
 export * from './login-required-modal';
+export * from './notification-permission-modal';
 export * from './close-icon';
 export * from './gradient-background';
 export * from './floating-stars';

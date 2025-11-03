@@ -1,6 +1,7 @@
 'use client';
 
 import { useModalStore } from 'shared/model/modal';
+import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import {
   Dialog,
   DialogContent,
@@ -20,7 +21,9 @@ export function GlobalModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className='w-[80vw] max-w-[335px] border-none bg-transparent p-0 shadow-none'>
+      <DialogContent
+        className={`w-[calc(100vw-40px)] max-w-[calc(500px-40px)] border-none bg-transparent p-0 shadow-none`}
+      >
         {(title || description) && (
           <DialogHeader className='p-6 pb-0'>
             {title && <DialogTitle>{title}</DialogTitle>}
