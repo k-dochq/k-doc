@@ -47,6 +47,23 @@ export function NotificationPermissionModal({ lang, dict }: NotificationPermissi
               <p>{dict.consultation.notificationPermission.settingsNote}</p>
             </div>
           </div>
+
+          {/* 버튼 영역 - spacing 6 아래 */}
+          <div className='flex w-full flex-col items-start justify-center gap-4'>
+            {/* 알림 받기 버튼 */}
+            <button className='flex w-full items-center justify-center gap-2 rounded-xl bg-[#da47ef] px-10 py-4'>
+              <p className='text-base leading-6 font-medium text-white'>
+                {dict.consultation.notificationPermission.acceptButton}
+              </p>
+            </button>
+
+            {/* 지금은 안 받을래요 버튼 */}
+            <button className='flex w-full items-center justify-center'>
+              <p className='text-sm leading-5 font-normal text-neutral-500'>
+                {dict.consultation.notificationPermission.declineButton}
+              </p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
