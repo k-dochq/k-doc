@@ -670,7 +670,9 @@
     },
     "notificationPermission": {
       "title": "Don't miss the hospital's reply!",
-      "subtitle": "If you turn on push notifications, you can check immediately when a consultation reply arrives."
+      "subtitle": "If you turn on push notifications, you can check immediately when a consultation reply arrives.",
+      "description": "K-DOC sends push notifications when hospital replies arrive. If you agree, please press the [Receive Notifications] button.",
+      "settingsNote": "(Push notification settings change: My Page → Notification Settings → General Notifications ON/OFF)"
     }
   },
   "cautionSection": {

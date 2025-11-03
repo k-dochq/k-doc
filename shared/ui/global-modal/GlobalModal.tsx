@@ -22,7 +22,7 @@ export function GlobalModal() {
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent
-        className={`w-[calc(100vw-40px)] ${MAX_MOBILE_WIDTH_CLASS} border-none bg-transparent p-0 shadow-none`}
+        className={`w-[calc(100vw-40px)] max-w-[calc(500px-40px)] border-none bg-transparent p-0 shadow-none`}
       >
         {(title || description) && (
           <DialogHeader className='p-6 pb-0'>
