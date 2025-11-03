@@ -32,13 +32,13 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
           <QuickMenuWrapper lang={lang} />
         </div>
 
-        {/* <EventBannerCarousel currentLocale={lang} /> */}
+        <EventBannerCarousel currentLocale={lang} />
 
-        <div className='mt-12'>
+        <div className='mt-5'>
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
         </div>
 
-        <div className='mt-12'>
+        <div className='mt-5'>
           <PopularReviewsWrapper lang={lang} dict={dict} />
         </div>
 
