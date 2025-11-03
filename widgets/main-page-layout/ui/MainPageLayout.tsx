@@ -34,7 +34,7 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
 
         <EventBannerCarousel currentLocale={lang} />
 
-        <div className='mt-12'>
+        <div className='mt-8'>
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
         </div>
 

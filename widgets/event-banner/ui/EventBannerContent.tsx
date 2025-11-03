@@ -28,12 +28,24 @@ export function EventBannerContent({
   useEffect(() => {
     if (!emblaApi) return;
 
-    setCurrentPage(Math.floor(emblaApi.selectedScrollSnap() / 2));
+    const updatePage = () => {
+      const slideIndex = emblaApi.selectedScrollSnap();
+      // 슬라이드 인덱스를 페이지 번호로 변환
+      // 슬라이드 0 (아이템 0,1) → 페이지 0
+      // 슬라이드 1 (아이템 1,2) → 페이지 1
+      // 슬라이드 2 (아이템 2만) → 페이지 2 (마지막 아이템이 홀수일 때)
+      const page = Math.min(slideIndex, totalPages - 1);
+      setCurrentPage(page);
+    };
 
-    emblaApi.on('select', () => {
-      setCurrentPage(Math.floor(emblaApi.selectedScrollSnap() / 2));
-    });
-  }, [emblaApi]);
+    updatePage();
+
+    emblaApi.on('select', updatePage);
+
+    return () => {
+      emblaApi.off('select', updatePage);
+    };
+  }, [emblaApi, totalPages]);
 
   // Auto play 기능
   useEffect(() => {
@@ -51,6 +63,15 @@ export function EventBannerContent({
 
     return () => clearInterval(interval);
   }, [emblaApi, banners.length]);
+
+  // 페이지 클릭 핸들러
+  const handlePageClick = (page: number) => {
+    if (!emblaApi) return;
+    // 페이지 번호를 슬라이드 인덱스로 변환
+    // 페이지 0 → 슬라이드 0 (아이템 0, 1)
+    // 페이지 1 → 슬라이드 1 (아이템 1, 2)
+    emblaApi.scrollTo(page);
+  };
 
   return (
     <div className={`w-full ${className}`}>
@@ -73,7 +94,11 @@ export function EventBannerContent({
         </div>
       </div>
 
-      <EventBannerPagination currentPage={currentPage} totalPages={totalPages} />
+      <EventBannerPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageClick={handlePageClick}
+      />
     </div>
   );
 }
