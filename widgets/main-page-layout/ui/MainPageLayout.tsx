@@ -32,7 +32,7 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
           <QuickMenuWrapper lang={lang} />
         </div>
 
-        <EventBannerCarousel currentLocale={lang} />
+        {/* <EventBannerCarousel currentLocale={lang} /> */}
 
         <div className='mt-12'>
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
