@@ -44,6 +44,7 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
         discountRate: true,
         displayLocationName: true,
         ranking: true,
+        createdAt: true,
         HospitalImage: {
           where: {
             isActive: true,
@@ -86,7 +87,8 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
           },
         },
       },
-      orderBy: [{ ranking: 'asc' }, { rating: 'desc' }, { reviewCount: 'desc' }],
+      // 인기순 정렬: ranking(낮을수록 우선) → rating(높을수록 우선) → createdAt(최신순)
+      orderBy: [{ ranking: 'asc' }, { rating: 'desc' }, { createdAt: 'desc' }],
       take: limit, // 지정된 개수만큼 제한
     });
 
