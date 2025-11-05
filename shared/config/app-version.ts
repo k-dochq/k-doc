@@ -5,7 +5,7 @@
 
 // 공통 버전 정보
 export const APP_VERSION = {
-  MIN_SUPPORTED_VERSION: '1.5.6108',
+  MIN_SUPPORTED_VERSION: '1.5.6100',
   LATEST_VERSION: '1.5.6108',
 } as const;
 
