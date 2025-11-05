@@ -35,7 +35,6 @@ export function SelectHospitalContent({ lang, dict }: SelectHospitalContentProps
 
   return (
     <div className=''>
-
       {/* 병원 리스트 */}
       <ReservedHospitalsInfiniteList lang={lang} dict={dict} />
     </div>
