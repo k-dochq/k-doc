@@ -1,13 +1,6 @@
-import { type Locale } from 'shared/config';
 import { PayverseSDKLoader } from 'features/payment';
 
-interface PaymentPageProps {
-  params: Promise<{ lang: Locale }>;
-}
-
-export default async function PaymentPage({ params }: PaymentPageProps) {
-  const { lang } = await params;
-
+export default async function PaymentPage() {
   return (
     <div className='min-h-screen'>
       <PayverseSDKLoader />
