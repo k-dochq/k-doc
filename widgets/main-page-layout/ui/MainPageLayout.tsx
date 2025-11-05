@@ -38,7 +38,7 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
           <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
         </div>
 
-        <div className='mt-5'>
+        <div className='mt-12'>
           <PopularReviewsWrapper lang={lang} dict={dict} />
         </div>
 
