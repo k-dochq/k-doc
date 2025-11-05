@@ -344,7 +344,7 @@
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
-        "privacyPolicy": "Privacy Policy Consent (Required)",
+        "privacyPolicy": "I agree to the collection of my sensitive personal data for consultation and service provision.",
         "marketingNotifications": "Event/Service Benefit Notifications (Optional)",
         "requiredError": "Please agree to the required terms."
       },
