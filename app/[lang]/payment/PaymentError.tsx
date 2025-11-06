@@ -2,7 +2,6 @@
 
 import { type Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { PaymentError as PaymentErrorComponent } from './PaymentErrorClient';
 
 interface PaymentErrorProps {

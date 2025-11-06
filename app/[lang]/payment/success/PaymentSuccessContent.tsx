@@ -15,7 +15,11 @@ interface PaymentSuccessContentProps {
   };
 }
 
-export function PaymentSuccessContent({ lang, dict, queryParams }: PaymentSuccessContentProps) {
+export function PaymentSuccessContent({
+  lang: _lang,
+  dict,
+  queryParams,
+}: PaymentSuccessContentProps) {
   const router = useLocalizedRouter();
 
   const handleGoHome = () => {

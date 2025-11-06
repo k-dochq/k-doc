@@ -2,8 +2,6 @@ import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 import { PayverseSDKLoader } from 'features/payment';
-import { PaymentHandler } from 'features/payment/ui/PaymentHandler';
-import { PAYVERSE_CONFIG } from 'features/payment/config/payverse';
 import { PaymentContent } from './PaymentContent';
 import { PaymentLoading } from './PaymentLoading';
 import { PaymentError } from './PaymentError';

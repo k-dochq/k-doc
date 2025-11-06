@@ -15,7 +15,11 @@ interface PaymentFailureContentProps {
   };
 }
 
-export function PaymentFailureContent({ lang, dict, queryParams }: PaymentFailureContentProps) {
+export function PaymentFailureContent({
+  lang: _lang,
+  dict,
+  queryParams,
+}: PaymentFailureContentProps) {
   const router = useLocalizedRouter();
 
   const handleGoHome = () => {

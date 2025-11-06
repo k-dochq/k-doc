@@ -10,7 +10,7 @@ interface PaymentLoadingProps {
   message?: string;
 }
 
-export function PaymentLoading({ lang, dict, message }: PaymentLoadingProps) {
+export function PaymentLoading({ lang: _lang, dict, message }: PaymentLoadingProps) {
   const displayMessage = message || dict.payment.loading.preparing;
   const [progress, setProgress] = useState(0);
   const [currentTip, setCurrentTip] = useState(0);

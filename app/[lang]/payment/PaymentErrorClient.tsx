@@ -14,7 +14,7 @@ interface PaymentErrorClientProps {
 }
 
 export function PaymentError({
-  lang,
+  lang: _lang,
   dict,
   error,
   errorMessage,
