@@ -991,5 +991,60 @@
         "emailInvalid": "Please enter a valid email address"
       }
     }
+  },
+  "payment": {
+    "title": "Payment",
+    "loading": {
+      "preparing": "Preparing payment...",
+      "processing": "Processing payment...",
+      "sdkLoading": "Loading payment module...",
+      "signGenerating": "Verifying payment information...",
+      "windowOpening": "Opening payment window...",
+      "tips": [
+        "☕️ Please wait a moment. We're preparing a secure payment",
+        "✨ Take a moment to double-check your payment details",
+        "💎 We're keeping your information safe and secure",
+        "🎉 Almost done! Just a few more seconds"
+      ]
+    },
+    "info": {
+      "title": "Payment Information",
+      "productName": "Product Name",
+      "amount": "Amount",
+      "orderId": "Order ID",
+      "currency": "Currency"
+    },
+    "error": {
+      "missingParams": "Payment information is invalid.",
+      "invalidAmount": "Payment amount is invalid.",
+      "invalidCurrency": "Unsupported currency.",
+      "sdkNotLoaded": "An error occurred while loading the payment module.",
+      "sdkTimeout": "Payment module loading timeout. Please refresh the page.",
+      "signGenerationFailed": "Failed to generate payment signature.",
+      "signNetworkError": "Failed to generate signature due to network error. Please check your internet connection.",
+      "signTimeout": "Signature generation timeout. Please try again.",
+      "paymentFailed": "Payment request failed.",
+      "paymentCancelled": "Payment was cancelled.",
+      "unknownError": "An unknown error occurred.",
+      "retry": "Retry",
+      "goHome": "Go Home"
+    },
+    "success": {
+      "title": "Payment Complete",
+      "message": "Payment has been completed successfully.",
+      "orderId": "Order ID",
+      "transactionId": "Transaction ID",
+      "goHome": "Go Home",
+      "missingInfo": "Unable to load order information."
+    },
+    "failure": {
+      "title": "Payment Failed",
+      "message": "An error occurred during payment processing.",
+      "errorCode": "Error Code",
+      "errorMessage": "Error Message",
+      "retry": "Retry",
+      "goHome": "Go Home",
+      "noErrorInfo": "Unable to retrieve error information."
+    }
   }
 }

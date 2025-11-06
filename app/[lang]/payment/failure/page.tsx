@@ -1,4 +1,7 @@
 import { type Locale } from 'shared/config';
+import { getDictionary } from '../../dictionaries';
+import { PageHeader } from 'shared/ui/page-header';
+import { PaymentFailureContent } from './PaymentFailureContent';
 
 interface PaymentFailurePageProps {
   params: Promise<{ lang: Locale }>;
@@ -15,21 +18,12 @@ export default async function PaymentFailurePage({
 }: PaymentFailurePageProps) {
   const { lang } = await params;
   const queryParams = await searchParams;
+  const dict = await getDictionary(lang);
 
   return (
     <div className='min-h-screen'>
-      <div className='container mx-auto px-4 py-8'>
-        <h1 className='mb-4 text-2xl font-bold'>결제 실패</h1>
-        <div className='space-y-2'>
-          {queryParams.resultCode && (
-            <p className='text-gray-600'>에러 코드: {queryParams.resultCode}</p>
-          )}
-          {queryParams.orderId && <p className='text-gray-600'>주문번호: {queryParams.orderId}</p>}
-          {queryParams.resultMessage && (
-            <p className='text-gray-600'>{queryParams.resultMessage}</p>
-          )}
-        </div>
-      </div>
+      <PageHeader lang={lang} title={dict.payment.failure.title} fallbackUrl={`/${lang}`} />
+      <PaymentFailureContent lang={lang} dict={dict} queryParams={queryParams} />
     </div>
   );
 }
