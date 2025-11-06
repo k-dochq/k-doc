@@ -27,17 +27,13 @@ export function PageHeader({
   return (
     <div
       className={`sticky top-0 z-50 flex w-full items-center justify-between ${bgClassName || ''} h-[58px] pr-5 pl-1 ${className}`}
-      style={
-        bgClassName
-          ? { background: bgClassName }
-          : { background: 'rgba(254, 219, 249, 0.70)', backdropFilter: 'blur(15px)' }
-      }
+      style={bgClassName ? { background: bgClassName } : { background: '#FFD9FB' }}
     >
       <div className='flex items-center gap-0'>
         {/* 뒤로가기 버튼 */}
         <BackButton fallbackUrl={fallbackUrl} variant={variant} />
         {/* 제목 */}
-        <h1 className={`text-lg font-semibold leading-tight ${getTextColor()}`}>{title}</h1>
+        <h1 className={`text-lg leading-tight font-semibold ${getTextColor()}`}>{title}</h1>
       </div>
 
       {/* 오른쪽 컨텐츠 (좋아요 버튼 등) */}
