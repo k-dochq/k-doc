@@ -1,6 +1,5 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { PageHeader } from 'shared/ui/page-header';
 import { PaymentSuccessContent } from './PaymentSuccessContent';
 
 interface PaymentSuccessPageProps {
@@ -9,6 +8,7 @@ interface PaymentSuccessPageProps {
     orderId?: string;
     tid?: string;
     resultMessage?: string;
+    redirectUrl?: string;
   }>;
 }
 
@@ -22,7 +22,6 @@ export default async function PaymentSuccessPage({
 
   return (
     <div className='min-h-screen'>
-      <PageHeader lang={lang} title={dict.payment.success.title} fallbackUrl={`/${lang}`} />
       <PaymentSuccessContent lang={lang} dict={dict} queryParams={queryParams} />
     </div>
   );

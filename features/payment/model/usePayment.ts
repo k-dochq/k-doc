@@ -55,9 +55,9 @@ export function usePayment() {
       customerId: string;
       productName: string;
       amount: number;
-      currency?: string;
       returnUrl?: string;
       webhookUrl?: string;
+      redirectUrl?: string;
     }) => {
       // SDK가 로드되었는지 확인
       if (!window.payVerse) {
@@ -72,7 +72,15 @@ export function usePayment() {
       // returnUrl 및 webhookUrl 생성
       const baseUrl = window.location.origin;
       const locale = window.location.pathname.split('/')[1] || 'ko';
-      const returnUrl = orderInfo.returnUrl || `${baseUrl}/${locale}/payment/return`;
+
+      // redirectUrl이 있으면 returnUrl에 쿼리 파라미터로 포함
+      const returnUrlBase = orderInfo.returnUrl || `${baseUrl}/${locale}/payment/return`;
+      const returnUrlObj = new URL(returnUrlBase);
+      if (orderInfo.redirectUrl) {
+        returnUrlObj.searchParams.set('redirectUrl', orderInfo.redirectUrl);
+      }
+      const returnUrl = returnUrlObj.toString();
+
       const webhookUrl = orderInfo.webhookUrl || `${baseUrl}/api/payment/webhook`;
 
       // 서명 생성에 사용할 파라미터
@@ -108,7 +116,7 @@ export function usePayment() {
         orderId: orderInfo.orderId,
         customerId: orderInfo.customerId,
         productName: orderInfo.productName,
-        requestCurrency: orderInfo.currency || PAYVERSE_CONFIG.CURRENCY,
+        requestCurrency: PAYVERSE_CONFIG.CURRENCY,
         requestAmount: String(orderInfo.amount),
         reqDate,
         returnUrl,

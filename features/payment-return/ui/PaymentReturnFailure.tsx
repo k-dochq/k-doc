@@ -2,43 +2,23 @@
 
 import { type Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import type { PaymentReturnQueryParams } from '../model/types';
 
-interface PaymentFailureContentProps {
+interface PaymentReturnFailureProps {
   lang: Locale;
   dict: Dictionary;
-  queryParams: {
-    resultCode?: string;
-    resultMessage?: string;
-    orderId?: string;
-    redirectUrl?: string;
-  };
+  queryParams: PaymentReturnQueryParams;
+  onGoHome: () => void;
+  onRetry: () => void;
 }
 
-export function PaymentFailureContent({ lang, dict, queryParams }: PaymentFailureContentProps) {
-  const router = useLocalizedRouter();
-
-  const handleGoHome = () => {
-    // redirectUrl이 있으면 그곳으로, 없으면 홈으로
-    if (queryParams.redirectUrl) {
-      window.location.href = queryParams.redirectUrl;
-    } else {
-      router.push('/');
-    }
-  };
-
-  const handleRetry = () => {
-    // 이전 페이지로 돌아가서 다시 시도
-    // 쿼리 파라미터가 있으면 다시 결제 페이지로 이동
-    if (queryParams.orderId) {
-      // 실제로는 결제 페이지로 다시 이동해야 하지만, 여기서는 홈으로 이동
-      router.push('/');
-    } else {
-      router.back();
-    }
-  };
-
-  // 에러 메시지 결정
+export function PaymentReturnFailure({
+  lang,
+  dict,
+  queryParams,
+  onGoHome,
+  onRetry,
+}: PaymentReturnFailureProps) {
   const errorMessage = queryParams.resultMessage || dict.payment.failure.message;
 
   return (
@@ -68,7 +48,7 @@ export function PaymentFailureContent({ lang, dict, queryParams }: PaymentFailur
         <p className='mb-8 text-base text-gray-600'>{errorMessage}</p>
 
         {/* 에러 정보 카드 */}
-        {(queryParams.resultCode || queryParams.orderId) && (
+        {(queryParams.resultCode || queryParams.orderId || queryParams.tid) && (
           <div className='mb-8 rounded-xl border border-red-200 bg-red-50 p-6 shadow-sm'>
             <div className='space-y-3 text-left'>
               {queryParams.resultCode && (
@@ -81,6 +61,14 @@ export function PaymentFailureContent({ lang, dict, queryParams }: PaymentFailur
                 <div className='flex justify-between'>
                   <span className='text-sm text-gray-600'>{dict.payment.success.orderId}</span>
                   <span className='text-sm font-medium text-gray-900'>{queryParams.orderId}</span>
+                </div>
+              )}
+              {queryParams.tid && (
+                <div className='flex justify-between'>
+                  <span className='text-sm text-gray-600'>
+                    {dict.payment.success.transactionId}
+                  </span>
+                  <span className='text-sm font-medium text-gray-900'>{queryParams.tid}</span>
                 </div>
               )}
             </div>
@@ -97,13 +85,13 @@ export function PaymentFailureContent({ lang, dict, queryParams }: PaymentFailur
         {/* 버튼 그룹 */}
         <div className='flex flex-col gap-3'>
           <button
-            onClick={handleRetry}
+            onClick={onRetry}
             className='w-full rounded-lg bg-blue-600 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none'
           >
             {dict.payment.failure.retry}
           </button>
           <button
-            onClick={handleGoHome}
+            onClick={onGoHome}
             className='w-full rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-medium text-gray-700 transition-colors hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none'
           >
             {dict.payment.failure.goHome}

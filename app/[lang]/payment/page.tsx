@@ -15,7 +15,7 @@ interface PaymentPageProps {
     customerId?: string;
     productName?: string;
     amount?: string;
-    currency?: string;
+    redirectUrl?: string;
   }>;
 }
 
@@ -25,28 +25,35 @@ export default async function PaymentPage({ params, searchParams }: PaymentPageP
   const dict = await getDictionary(lang);
 
   // 쿼리 파라미터 검증
-  const { orderId, customerId, productName, amountStr, currency, validationError } =
+  const { orderId, customerId, productName, amountStr, validationError } =
     validateParams(queryParams);
 
   // 파라미터 검증 실패 시 에러 표시
   if (validationError) {
     return (
       <div className='min-h-screen'>
-        <PaymentError
-          lang={lang}
-          dict={dict}
-          error={validationError}
-          onGoHome={() => {
-            // 클라이언트에서 처리
-          }}
-        />
+        <PaymentError lang={lang} dict={dict} error={validationError} />
       </div>
     );
   }
 
-  // 파라미터가 유효한 경우
-  const amount = parseFloat(amountStr!);
-  const finalCurrency = currency || PAYVERSE_CONFIG.CURRENCY;
+  // 파라미터가 유효한 경우 (validationError가 null이므로 모든 값이 존재함)
+  if (!orderId || !customerId || !productName || !amountStr) {
+    return (
+      <div className='min-h-screen'>
+        <PaymentError lang={lang} dict={dict} error={new Error('MISSING_REQUIRED_PARAMS')} />
+      </div>
+    );
+  }
+
+  const amount = parseFloat(amountStr);
+  if (isNaN(amount) || !isFinite(amount) || amount <= 0) {
+    return (
+      <div className='min-h-screen'>
+        <PaymentError lang={lang} dict={dict} error={new Error('INVALID_AMOUNT')} />
+      </div>
+    );
+  }
 
   return (
     <div className='min-h-screen'>
@@ -55,11 +62,11 @@ export default async function PaymentPage({ params, searchParams }: PaymentPageP
         <PaymentContent
           lang={lang}
           dict={dict}
-          orderId={orderId!}
-          customerId={customerId!}
-          productName={productName!}
+          orderId={orderId}
+          customerId={customerId}
+          productName={productName}
           amount={amount}
-          currency={finalCurrency}
+          redirectUrl={queryParams.redirectUrl}
         />
       </Suspense>
     </div>
@@ -74,13 +81,11 @@ function validateParams(params: {
   customerId?: string;
   productName?: string;
   amount?: string;
-  currency?: string;
 }): {
   orderId: string | null;
   customerId: string | null;
   productName: string | null;
   amountStr: string | null;
-  currency: string | null;
   validationError: Error | null;
 } {
   // 필수 파라미터 확인
@@ -90,7 +95,6 @@ function validateParams(params: {
       customerId: null,
       productName: null,
       amountStr: null,
-      currency: null,
       validationError: new Error('MISSING_ORDER_ID'),
     };
   }
@@ -101,7 +105,6 @@ function validateParams(params: {
       customerId: null,
       productName: null,
       amountStr: null,
-      currency: null,
       validationError: new Error('MISSING_CUSTOMER_ID'),
     };
   }
@@ -112,7 +115,6 @@ function validateParams(params: {
       customerId: params.customerId,
       productName: null,
       amountStr: null,
-      currency: null,
       validationError: new Error('MISSING_PRODUCT_NAME'),
     };
   }
@@ -123,7 +125,6 @@ function validateParams(params: {
       customerId: params.customerId,
       productName: params.productName,
       amountStr: null,
-      currency: null,
       validationError: new Error('MISSING_AMOUNT'),
     };
   }
@@ -136,7 +137,6 @@ function validateParams(params: {
       customerId: params.customerId,
       productName: params.productName,
       amountStr: params.amount,
-      currency: params.currency || null,
       validationError: new Error('INVALID_AMOUNT'),
     };
   }
@@ -148,24 +148,8 @@ function validateParams(params: {
       customerId: params.customerId,
       productName: params.productName,
       amountStr: params.amount,
-      currency: params.currency || null,
       validationError: new Error('INVALID_AMOUNT'),
     };
-  }
-
-  // currency 검증 (지원되는 통화: USD, KRW, THB)
-  if (params.currency) {
-    const supportedCurrencies = ['USD', 'KRW', 'THB'];
-    if (!supportedCurrencies.includes(params.currency.toUpperCase())) {
-      return {
-        orderId: params.orderId,
-        customerId: params.customerId,
-        productName: params.productName,
-        amountStr: params.amount,
-        currency: params.currency,
-        validationError: new Error('INVALID_CURRENCY'),
-      };
-    }
   }
 
   return {
@@ -173,7 +157,6 @@ function validateParams(params: {
     customerId: params.customerId,
     productName: params.productName,
     amountStr: params.amount,
-    currency: params.currency || null,
     validationError: null,
   };
 }

@@ -4,9 +4,8 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
 import { PaymentHandler } from 'features/payment/ui/PaymentHandler';
-import { PaymentInfoCard } from './PaymentInfoCard';
 import { PaymentLoading } from './PaymentLoading';
-import { PaymentError } from './PaymentError';
+import { PaymentError as PaymentErrorClient } from './PaymentErrorClient';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface PaymentContentProps {
@@ -16,7 +15,7 @@ interface PaymentContentProps {
   customerId: string;
   productName: string;
   amount: number;
-  currency: string;
+  redirectUrl?: string;
 }
 
 export function PaymentContent({
@@ -26,23 +25,15 @@ export function PaymentContent({
   customerId,
   productName,
   amount,
-  currency,
+  redirectUrl,
 }: PaymentContentProps) {
   const router = useLocalizedRouter();
-  const [loading, setLoading] = useState(true);
-  const [loadingMessage, setLoadingMessage] = useState<string | undefined>();
   const [error, setError] = useState<Error | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
-
-  const handleLoading = (isLoading: boolean, message?: string) => {
-    setLoading(isLoading);
-    setLoadingMessage(message);
-  };
 
   const handleError = (err: Error, message?: string) => {
     setError(err);
     setErrorMessage(message);
-    setLoading(false);
   };
 
   const handleGoHome = () => {
@@ -52,7 +43,6 @@ export function PaymentContent({
   const handleRetry = () => {
     setError(null);
     setErrorMessage(undefined);
-    setLoading(true);
     // 페이지 새로고침하여 재시도
     window.location.reload();
   };
@@ -60,7 +50,7 @@ export function PaymentContent({
   // 에러 상태
   if (error) {
     return (
-      <PaymentError
+      <PaymentErrorClient
         lang={lang}
         dict={dict}
         error={error}
@@ -71,34 +61,19 @@ export function PaymentContent({
     );
   }
 
-  // 로딩 상태
-  if (loading) {
-    return <PaymentLoading lang={lang} dict={dict} message={loadingMessage} />;
-  }
-
-  // 정상 상태 (결제 정보 표시)
+  // 기본 UI는 로딩 UI, PaymentHandler는 항상 렌더링하여 결제 프로세스 시작
   return (
-    <div className='container mx-auto px-4 py-8'>
-      <PaymentInfoCard
-        lang={lang}
-        dict={dict}
-        productName={productName}
-        amount={amount}
-        currency={currency}
-        orderId={orderId}
-      />
-
-      {/* PaymentHandler는 자동으로 결제 요청 실행 */}
+    <>
+      <PaymentLoading lang={lang} dict={dict} />
       <PaymentHandler
         orderId={orderId}
         customerId={customerId}
         productName={productName}
         amount={amount}
-        currency={currency}
         dict={dict}
-        onLoading={handleLoading}
+        redirectUrl={redirectUrl}
         onError={handleError}
       />
-    </div>
+    </>
   );
 }

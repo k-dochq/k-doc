@@ -9,9 +9,8 @@ interface PaymentHandlerProps {
   customerId: string;
   productName: string;
   amount: number;
-  currency?: string;
   dict: Dictionary;
-  onLoading?: (loading: boolean, message?: string) => void;
+  redirectUrl?: string;
   onError?: (error: Error, message?: string) => void;
 }
 
@@ -26,9 +25,8 @@ export function PaymentHandler({
   customerId,
   productName,
   amount,
-  currency,
   dict,
-  onLoading,
+  redirectUrl,
   onError,
 }: PaymentHandlerProps) {
   const { requestPayment } = usePayment();
@@ -74,17 +72,13 @@ export function PaymentHandler({
     try {
       // 1. SDK 로드 확인
       setLoadingState('sdk-loading');
-      onLoading?.(true, dict.payment.loading.sdkLoading);
-
       await checkSDKLoaded();
 
       // 2. 서명 생성 단계
       setLoadingState('sign-generating');
-      onLoading?.(true, dict.payment.loading.signGenerating);
 
       // 3. 결제창 호출 단계
       setLoadingState('window-opening');
-      onLoading?.(true, dict.payment.loading.windowOpening);
 
       // 4. 결제 요청 실행
       await requestPayment({
@@ -92,16 +86,14 @@ export function PaymentHandler({
         customerId,
         productName,
         amount,
-        currency,
+        redirectUrl,
       });
 
       setLoadingState('complete');
-      onLoading?.(false);
     } catch (err) {
       const error = err as Error;
       setError(error);
       setLoadingState('idle');
-      onLoading?.(false);
 
       // 에러 메시지 결정
       let errorMessage = dict.payment.error.unknownError;
@@ -125,11 +117,10 @@ export function PaymentHandler({
     customerId,
     productName,
     amount,
-    currency,
+    redirectUrl,
     requestPayment,
     checkSDKLoaded,
     dict,
-    onLoading,
     onError,
   ]);
 

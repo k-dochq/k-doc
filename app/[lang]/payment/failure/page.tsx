@@ -1,6 +1,5 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { PageHeader } from 'shared/ui/page-header';
 import { PaymentFailureContent } from './PaymentFailureContent';
 
 interface PaymentFailurePageProps {
@@ -9,6 +8,7 @@ interface PaymentFailurePageProps {
     resultCode?: string;
     resultMessage?: string;
     orderId?: string;
+    redirectUrl?: string;
   }>;
 }
 
@@ -22,7 +22,6 @@ export default async function PaymentFailurePage({
 
   return (
     <div className='min-h-screen'>
-      <PageHeader lang={lang} title={dict.payment.failure.title} fallbackUrl={`/${lang}`} />
       <PaymentFailureContent lang={lang} dict={dict} queryParams={queryParams} />
     </div>
   );

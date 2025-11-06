@@ -7,19 +7,12 @@ interface PaymentButtonProps {
   customerId: string;
   productName: string;
   amount: number;
-  currency?: string;
 }
 
 /**
  * 결제하기 버튼 컴포넌트
  */
-export function PaymentButton({
-  orderId,
-  customerId,
-  productName,
-  amount,
-  currency,
-}: PaymentButtonProps) {
+export function PaymentButton({ orderId, customerId, productName, amount }: PaymentButtonProps) {
   const { requestPayment } = usePayment();
 
   const handlePayment = async () => {
@@ -29,7 +22,6 @@ export function PaymentButton({
         customerId,
         productName,
         amount,
-        currency,
       });
     } catch (error) {
       console.error('Payment request failed:', error);

@@ -2,31 +2,21 @@
 
 import { type Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
-import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import type { PaymentReturnQueryParams } from '../model/types';
 
-interface PaymentSuccessContentProps {
+interface PaymentReturnSuccessProps {
   lang: Locale;
   dict: Dictionary;
-  queryParams: {
-    orderId?: string;
-    tid?: string;
-    resultMessage?: string;
-    redirectUrl?: string;
-  };
+  queryParams: PaymentReturnQueryParams;
+  onGoHome: () => void;
 }
 
-export function PaymentSuccessContent({ lang, dict, queryParams }: PaymentSuccessContentProps) {
-  const router = useLocalizedRouter();
-
-  const handleGoHome = () => {
-    // redirectUrl이 있으면 그곳으로, 없으면 홈으로
-    if (queryParams.redirectUrl) {
-      window.location.href = queryParams.redirectUrl;
-    } else {
-      router.push('/');
-    }
-  };
-
+export function PaymentReturnSuccess({
+  lang,
+  dict,
+  queryParams,
+  onGoHome,
+}: PaymentReturnSuccessProps) {
   return (
     <div className='container mx-auto px-4 py-12'>
       <div className='mx-auto max-w-md text-center'>
@@ -91,7 +81,7 @@ export function PaymentSuccessContent({ lang, dict, queryParams }: PaymentSucces
 
         {/* 홈으로 가기 버튼 */}
         <button
-          onClick={handleGoHome}
+          onClick={onGoHome}
           className='w-full rounded-lg bg-blue-600 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none'
         >
           {dict.payment.success.goHome}
