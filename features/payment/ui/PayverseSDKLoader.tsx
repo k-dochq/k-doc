@@ -28,13 +28,6 @@ export function PayverseSDKLoader() {
     script.async = true;
     script.onload = () => {
       console.log('Payverse SDK loaded successfully');
-
-      // Payverse SDK가 window.alert를 사용하는 것을 방지하기 위해 오버라이드
-      const originalAlert = window.alert;
-      window.alert = (message?: string) => {
-        console.warn('[Payverse Alert Blocked]', message);
-        // alert를 표시하지 않고 콘솔에만 로그
-      };
     };
     script.onerror = () => {
       console.error('Failed to load Payverse SDK');
