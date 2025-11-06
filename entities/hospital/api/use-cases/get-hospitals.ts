@@ -56,6 +56,22 @@ type HospitalImageData = {
   imageUrl: string;
 };
 
+/**
+ * 검색어를 대소문자 변형으로 변환하는 헬퍼 함수
+ * 원본, 전체 대문자, 전체 소문자, 첫 글자 대문자 변형을 반환
+ */
+function generateSearchVariations(search: string): string[] {
+  const variations = [search]; // 원본 검색어
+  variations.push(search.toUpperCase()); // 전체 대문자
+  variations.push(search.toLowerCase()); // 전체 소문자
+  // 첫 글자 대문자 변형 (예: "windy" → "Windy")
+  if (search.length > 0) {
+    variations.push(search.charAt(0).toUpperCase() + search.slice(1).toLowerCase());
+  }
+  // 중복 제거
+  return Array.from(new Set(variations));
+}
+
 // 메인 이미지 URL 추출 헬퍼 함수
 
 export async function getHospitals(
@@ -113,8 +129,9 @@ export async function getHospitals(
     const searchConditions: Prisma.HospitalWhereInput[] = [];
 
     if (search) {
-      // 영어 검색어에 대해서만 첫 글자 대소문자 변환 처리
+      // 영어 검색어인지 확인
       const isEnglishSearch = /^[a-zA-Z\s]+$/.test(search);
+      // 시술부위 검색에서 사용할 첫 글자 대문자 변형 (병원명 검색에서는 사용하지 않음)
       const capitalizedSearch =
         isEnglishSearch && search.length > 0
           ? search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
@@ -136,23 +153,19 @@ export async function getHospitals(
         },
       ];
 
-      // 영어 검색어인 경우 원본과 첫 글자 대문자 버전 모두 검색
+      // en_US 로케일에만 대소문자 변형 적용
       if (isEnglishSearch) {
-        hospitalNameConditions.push(
-          {
-            name: {
-              path: ['en_US'],
-              string_contains: search,
-            },
+        const searchVariations = generateSearchVariations(search);
+        // 각 변형에 대해 조건 생성
+        const enUSConditions = searchVariations.map((variation) => ({
+          name: {
+            path: ['en_US'],
+            string_contains: variation,
           },
-          {
-            name: {
-              path: ['en_US'],
-              string_contains: capitalizedSearch,
-            },
-          },
-        );
+        }));
+        hospitalNameConditions.push(...enUSConditions);
       } else {
+        // 영어가 아닌 경우 원본만 사용
         hospitalNameConditions.push({
           name: {
             path: ['en_US'],
