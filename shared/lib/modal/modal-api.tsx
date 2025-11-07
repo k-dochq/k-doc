@@ -1,8 +1,10 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { useModalStore } from 'shared/model/modal';
+import { ConfirmDialog } from 'shared/ui/confirm-dialog';
+import { AlertDialog } from 'shared/ui/alert-dialog';
 
 interface ConfirmOptions {
-  title?: string;
+  title: string;
   message?: string | ReactNode;
   confirmText?: string;
   cancelText?: string;
@@ -24,75 +26,16 @@ interface ModalOptions {
 // Promise resolver를 저장할 변수
 let currentResolver: ((value: boolean) => void) | null = null;
 
-// Confirm 다이얼로그 컴포넌트
-function ConfirmDialog({
-  message,
-  confirmText = '확인',
-  cancelText = '취소',
-  showCancel = true,
-  onConfirm,
-  onCancel,
-}: {
-  message: string | ReactNode;
-  confirmText: string;
-  cancelText: string;
-  showCancel: boolean;
-  onConfirm: () => void;
-  onCancel: () => void;
-}) {
-  return (
-    <div className='space-y-4 rounded-lg border bg-white p-6 shadow-lg'>
-      <div className='text-sm'>{typeof message === 'string' ? <p>{message}</p> : message}</div>
-      <div className='flex justify-end space-x-2'>
-        {showCancel && (
-          <button
-            onClick={onCancel}
-            className='rounded-md border px-4 py-2 text-sm hover:bg-gray-50'
-          >
-            {cancelText}
-          </button>
-        )}
-        <button
-          onClick={onConfirm}
-          className='rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700'
-        >
-          {confirmText}
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// Alert 다이얼로그 컴포넌트
-function AlertDialog({
-  message,
-  confirmText = '확인',
-  onConfirm,
-}: {
-  message: string | ReactNode;
-  confirmText: string;
-  onConfirm: () => void;
-}) {
-  return (
-    <div className='space-y-4 rounded-lg border bg-white p-6 shadow-lg'>
-      <div className='text-sm'>{typeof message === 'string' ? <p>{message}</p> : message}</div>
-      <div className='flex justify-end'>
-        <button
-          onClick={onConfirm}
-          className='rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700'
-        >
-          {confirmText}
-        </button>
-      </div>
-    </div>
-  );
-}
-
 // Confirm API
-export function confirm(options: string | ConfirmOptions): Promise<boolean> {
+export function confirm(options: ConfirmOptions): Promise<boolean> {
   return new Promise((resolve) => {
-    const config = typeof options === 'string' ? { message: options } : options;
-    const { title, message, confirmText = '확인', cancelText = '취소', showCancel = true } = config;
+    const {
+      title,
+      message,
+      confirmText = '확인',
+      cancelText = '취소',
+      showCancel = true,
+    } = options;
 
     currentResolver = resolve;
 
@@ -114,10 +57,10 @@ export function confirm(options: string | ConfirmOptions): Promise<boolean> {
     };
 
     useModalStore.getState().openModal({
-      title,
       content: (
         <ConfirmDialog
-          message={message || '계속하시겠습니까?'}
+          title={title}
+          message={message}
           confirmText={confirmText}
           cancelText={cancelText}
           showCancel={showCancel}
