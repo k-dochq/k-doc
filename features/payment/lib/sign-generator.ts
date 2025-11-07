@@ -36,3 +36,32 @@ export function generatePayverseSign(
 
   return hash;
 }
+
+/**
+ * 웹훅 서명 검증 함수
+ *
+ * 서명 검증 규칙:
+ * - 승인: ||secretKey||mid||orderId||requestAmount||approvalDay||
+ * - 취소: ||secretKey||mid||orderId||requestAmount||cancelDay||
+ * - 해시 알고리즘: SHA-512
+ *
+ * @param secretKey - API 연동 시 필요한 Secret Key
+ * @param mid - 상점 ID
+ * @param orderId - 주문 ID
+ * @param requestAmount - 요청 금액
+ * @param day - 승인일 또는 취소일 (YYYYMMDD 형식)
+ * @param receivedSign - 수신한 서명
+ * @returns 서명이 유효한지 여부
+ */
+export function verifyWebhookSign(
+  secretKey: string,
+  mid: string,
+  orderId: string,
+  requestAmount: string,
+  day: string,
+  receivedSign: string,
+): boolean {
+  const plainText = `||${secretKey}||${mid}||${orderId}||${requestAmount}||${day}||`;
+  const expectedSign = crypto.createHash('sha512').update(plainText, 'utf8').digest('hex');
+  return expectedSign === receivedSign;
+}

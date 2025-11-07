@@ -12,6 +12,10 @@ export interface IConsultationMessageRepository {
   create(
     data: Omit<Prisma.ConsultationMessageCreateInput, 'id'>,
   ): Promise<ConsultationMessageWithUser>;
+  createWithTransaction(
+    data: Prisma.ConsultationMessageCreateInput,
+    tx: Prisma.TransactionClient,
+  ): Promise<ConsultationMessageWithUser>;
 }
 
 export class ConsultationMessageRepository implements IConsultationMessageRepository {
@@ -105,5 +109,26 @@ export class ConsultationMessageRepository implements IConsultationMessageReposi
       console.error('Error creating consultation message:', error);
       throw new Error('Failed to create consultation message');
     }
+  }
+
+  /**
+   * ConsultationMessage 생성 (트랜잭션 내부에서 실행)
+   */
+  async createWithTransaction(
+    data: Prisma.ConsultationMessageCreateInput,
+    tx: Prisma.TransactionClient,
+  ): Promise<ConsultationMessageWithUser> {
+    return tx.consultationMessage.create({
+      data,
+      include: {
+        User: {
+          select: {
+            id: true,
+            displayName: true,
+            name: true,
+          },
+        },
+      },
+    });
   }
 }
