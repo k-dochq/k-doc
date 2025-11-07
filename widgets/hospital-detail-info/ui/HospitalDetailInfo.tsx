@@ -56,7 +56,7 @@ export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoP
             <span className='text-base font-semibold text-neutral-900'>
               ${hospital.prices.minPrice.toLocaleString()}~
             </span>
-            {hospital.discountRate && (
+            {hospital.discountRate != null && hospital.discountRate > 0 && (
               <div className='flex items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
                 {hospital.discountRate}% OFF
               </div>
