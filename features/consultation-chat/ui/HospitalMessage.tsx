@@ -1,8 +1,9 @@
 'use client';
 
+import React from 'react';
 import { MessageBubble, MessageTime } from 'shared/ui/message-bubble';
 import { HospitalHeader } from 'entities/hospital/ui/HospitalHeader';
-import { parseTextWithLinks } from 'shared/lib';
+import { parseTextWithPaymentButtons } from 'shared/lib/payment-parser/message-parser';
 import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
 
@@ -27,11 +28,14 @@ export function HospitalMessage({
       <div className='relative box-border flex w-full shrink-0 content-stretch items-end justify-start gap-2 py-0 pr-0 pl-[38px]'>
         <div className='relative flex min-w-0 shrink-0 content-stretch items-start justify-start'>
           <MessageBubble variant='hospital' className='self-stretch'>
-            <div
-              className="relative min-w-0 font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-900 not-italic"
-              style={{ overflowWrap: 'anywhere', wordBreak: 'break-word' }}
-            >
-              {parseTextWithLinks(message.content)}
+            <div className="relative font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-900 not-italic">
+              {parseTextWithPaymentButtons(message.content).map((item, index) => {
+                if (typeof item === 'string') {
+                  return <span key={`text-${index}`}>{item}</span>;
+                }
+                // React 요소는 이미 key가 있으므로 그대로 반환
+                return item;
+              })}
             </div>
           </MessageBubble>
         </div>
