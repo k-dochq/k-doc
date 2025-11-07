@@ -57,7 +57,7 @@ export function HospitalInfo({
           <span className='shrink-0 text-base font-semibold text-neutral-900'>
             ${prices.minPrice.toLocaleString()}~
           </span>
-          {discountRate && (
+          {discountRate != null && discountRate > 0 && (
             <div className='flex shrink-0 items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
               {discountRate}% OFF
             </div>
@@ -67,11 +67,7 @@ export function HospitalInfo({
 
       {/* 시술부위 태그 */}
       {medicalSpecialties && medicalSpecialties.length > 0 && (
-        <MedicalSpecialtyTags
-          specialties={medicalSpecialties}
-          lang={lang}
-          maxDisplay={3}
-        />
+        <MedicalSpecialtyTags specialties={medicalSpecialties} lang={lang} maxDisplay={3} />
       )}
 
       {/* 평점 정보 */}
