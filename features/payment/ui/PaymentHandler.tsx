@@ -14,8 +14,6 @@ interface PaymentHandlerProps {
   onError?: (error: Error, message?: string) => void;
 }
 
-type LoadingState = 'idle' | 'sdk-loading' | 'sign-generating' | 'window-opening' | 'complete';
-
 /**
  * 결제 처리를 자동으로 수행하는 컴포넌트
  * SDK 로드 확인 후 자동으로 결제 요청을 실행합니다.
@@ -30,8 +28,6 @@ export function PaymentHandler({
   onError,
 }: PaymentHandlerProps) {
   const { requestPayment } = usePayment();
-  const [loadingState, setLoadingState] = useState<LoadingState>('idle');
-  const [error, setError] = useState<Error | null>(null);
   const [sdkLoadTimeout, setSdkLoadTimeout] = useState<NodeJS.Timeout | null>(null);
 
   // SDK 로드 확인 및 타임아웃 처리
@@ -71,16 +67,9 @@ export function PaymentHandler({
   const executePayment = useCallback(async () => {
     try {
       // 1. SDK 로드 확인
-      setLoadingState('sdk-loading');
       await checkSDKLoaded();
 
-      // 2. 서명 생성 단계
-      setLoadingState('sign-generating');
-
-      // 3. 결제창 호출 단계
-      setLoadingState('window-opening');
-
-      // 4. 결제 요청 실행
+      // 2. 결제 요청 실행
       await requestPayment({
         orderId,
         customerId,
@@ -88,12 +77,8 @@ export function PaymentHandler({
         amount,
         redirectUrl,
       });
-
-      setLoadingState('complete');
     } catch (err) {
       const error = err as Error;
-      setError(error);
-      setLoadingState('idle');
 
       // 에러 메시지 결정
       let errorMessage = dict.payment.error.unknownError;
@@ -129,7 +114,6 @@ export function PaymentHandler({
     // 오프라인 상태 확인
     if (typeof window !== 'undefined' && !navigator.onLine) {
       const offlineError = new Error('NETWORK_OFFLINE');
-      setError(offlineError);
       onError?.(offlineError, dict.payment.error.signNetworkError);
       return;
     }
