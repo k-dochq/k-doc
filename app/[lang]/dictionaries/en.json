@@ -675,6 +675,12 @@
       "settingsNote": "(Push notification settings change: My Page → Notification Settings → General Notifications ON/OFF)",
       "acceptButton": "Receive Notifications",
       "declineButton": "Not now"
+    },
+    "cancelReservation": {
+      "title": "Do you want to cancel the reservation?",
+      "message": "If you cancel,\nyou will have to start over from the beginning.",
+      "confirmButton": "Yes",
+      "cancelButton": "No"
     }
   },
   "cautionSection": {

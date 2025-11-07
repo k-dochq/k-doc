@@ -2,12 +2,17 @@
 
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type PaymentButtonData } from 'shared/lib/payment-parser/types';
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
+import { confirm } from 'shared/lib/modal';
 
 interface PaymentButtonsProps {
   data: PaymentButtonData;
+  lang: Locale;
+  dict: Dictionary;
 }
 
-export function PaymentButtons({ data }: PaymentButtonsProps) {
+export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
   const router = useLocalizedRouter();
 
   const handlePaymentClick = () => {
@@ -28,6 +33,22 @@ export function PaymentButtons({ data }: PaymentButtonsProps) {
     router.push(`/payment?${params.toString()}`);
   };
 
+  const handleCancelClick = async () => {
+    const result = await confirm({
+      title: dict.consultation?.cancelReservation?.title || '예약 진행을 취소 하시겠습니까?',
+      message:
+        dict.consultation?.cancelReservation?.message ||
+        '취소하게 되면,\n처음부터 다시 진행해야합니다.',
+      confirmText: dict.consultation?.cancelReservation?.confirmButton || '예',
+      cancelText: dict.consultation?.cancelReservation?.cancelButton || '아니요',
+    });
+
+    if (result) {
+      // TODO: 예약 취소 로직 (나중에 구현)
+      console.log('예약 취소 진행', data.orderId);
+    }
+  };
+
   return (
     <div className='flex w-full flex-col gap-[10px] pt-2'>
       {/* 결제 버튼 */}
@@ -40,11 +61,9 @@ export function PaymentButtons({ data }: PaymentButtonsProps) {
         </p>
       </button>
       {/* 취소 버튼 */}
-      <div className='flex w-full items-center justify-center'>
-        <p className="font-['Pretendard:Regular',sans-serif] text-[14px] leading-[20px] text-neutral-500">
-          {data.cancelButtonText}
-        </p>
-      </div>
+      <button onClick={handleCancelClick} className='flex w-full items-center justify-center'>
+        <p className='text-sm text-neutral-500'>{data.cancelButtonText}</p>
+      </button>
     </div>
   );
 }

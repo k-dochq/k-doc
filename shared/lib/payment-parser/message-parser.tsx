@@ -4,13 +4,21 @@ import React from 'react';
 import { extractPaymentFlag, removePaymentFlag } from './payment-parser';
 import { PaymentButtons } from 'shared/ui/payment-buttons';
 import { parseTextWithLinks } from 'shared/lib/url-parser';
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 
 /**
  * 메시지에서 payment flag를 찾아서 버튼으로 변환하고, 나머지 텍스트는 링크로 변환
  * @param message 메시지 내용
+ * @param lang 언어 코드
+ * @param dict 다국어 dictionary
  * @returns React 요소 배열 (텍스트, 링크, 버튼 컴포넌트)
  */
-export function parseTextWithPaymentButtons(message: string): (string | React.ReactElement)[] {
+export function parseTextWithPaymentButtons(
+  message: string,
+  lang: Locale,
+  dict: Dictionary,
+): (string | React.ReactElement)[] {
   if (!message) return [message];
 
   const paymentData = extractPaymentFlag(message);
@@ -44,7 +52,7 @@ export function parseTextWithPaymentButtons(message: string): (string | React.Re
   }
 
   // PaymentButtons 컴포넌트 추가
-  result.push(<PaymentButtons key='payment-buttons' data={paymentData} />);
+  result.push(<PaymentButtons key='payment-buttons' data={paymentData} lang={lang} dict={dict} />);
 
   return result;
 }

@@ -17,7 +17,7 @@ interface MessageListContentProps {
   lang: Locale;
   hasMore?: boolean;
   onLoadMore?: () => Promise<void> | void;
-  dict?: Dictionary;
+  dict: Dictionary;
 }
 
 export function MessageListContent({
@@ -100,6 +100,8 @@ export function MessageListContent({
                   hospitalName={hospitalName}
                   hospitalImageUrl={hospitalImageUrl}
                   showHeader={shouldShowHeader(index)}
+                  lang={lang}
+                  dict={dict}
                 />
               ) : (
                 <UserMessage message={message} />

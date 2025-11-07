@@ -675,6 +675,12 @@
       "settingsNote": "(푸시 알림 설정 변경 : 마이페이지 → 알림 설정 → 일반 알림 ON/OFF)",
       "acceptButton": "알림 받기",
       "declineButton": "지금은 안 받을래요."
+    },
+    "cancelReservation": {
+      "title": "예약 진행을 취소 하시겠습니까?",
+      "message": "취소하게 되면,\n처음부터 다시 진행해야합니다.",
+      "confirmButton": "예",
+      "cancelButton": "아니요"
     }
   },
   "cautionSection": {
