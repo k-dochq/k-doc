@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { type Prisma } from '@prisma/client';
 import { getLocalizedTitle } from '../model/types';
+import { type Locale } from 'shared/config';
 
 export interface EventBannerItemProps {
   id: string;
@@ -12,6 +13,48 @@ export interface EventBannerItemProps {
   imageUrl: string;
   alt: string | null;
   currentLocale: 'ko' | 'en' | 'th';
+}
+
+/**
+ * URL에 locale을 추가하는 유틸리티 함수
+ * 같은 도메인의 전체 URL인 경우 경로에 locale을 추가
+ */
+function addLocaleToUrl(url: string, locale: Locale): string {
+  try {
+    const urlObj = new URL(url);
+    const hostname = urlObj.hostname;
+
+    // 같은 도메인인지 확인 (www.k-doc.kr 또는 k-doc.kr)
+    const isSameDomain =
+      hostname === 'www.k-doc.kr' ||
+      hostname === 'k-doc.kr' ||
+      hostname === 'localhost' ||
+      hostname.includes('localhost');
+
+    if (!isSameDomain) {
+      return url; // 외부 도메인은 그대로 반환
+    }
+
+    const pathname = urlObj.pathname;
+    const supportedLocales: Locale[] = ['en', 'ko', 'th'];
+
+    // 이미 locale이 경로에 포함되어 있는지 확인
+    const pathParts = pathname.split('/').filter(Boolean);
+    const firstPart = pathParts[0];
+
+    if (firstPart && supportedLocales.includes(firstPart as Locale)) {
+      return url; // 이미 locale이 있으면 그대로 반환
+    }
+
+    // locale을 경로 앞에 추가
+    const newPathname = `/${locale}${pathname}`;
+    urlObj.pathname = newPathname;
+
+    return urlObj.toString();
+  } catch {
+    // URL 파싱 실패 시 원본 반환
+    return url;
+  }
 }
 
 export function EventBannerItem({
@@ -28,8 +71,14 @@ export function EventBannerItem({
     'relative aspect-square w-full overflow-hidden rounded-xl border border-white bg-white/30 [box-shadow:1px_1px_12px_0_rgba(76,25,168,0.12),-4px_-4px_12px_1px_rgba(255,255,255,0.60)_inset]';
 
   if (linkUrl) {
+    // 전체 URL인 경우 locale 추가 처리
+    const processedLinkUrl =
+      linkUrl.startsWith('http') || linkUrl.startsWith('https')
+        ? addLocaleToUrl(linkUrl, currentLocale)
+        : linkUrl;
+
     return (
-      <LocaleLink href={linkUrl} className='block'>
+      <LocaleLink href={processedLinkUrl} locale={currentLocale} className='block'>
         <div className={bannerClassName}>
           <Image src={imageUrl} alt={imageAlt} fill className='object-cover' />
         </div>
