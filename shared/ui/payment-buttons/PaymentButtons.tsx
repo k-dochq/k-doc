@@ -16,7 +16,7 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
   const router = useLocalizedRouter();
 
   const handlePaymentClick = () => {
-    // 쿼리 파라미터 생성
+    // 쿼리 파라미터 생성 (redirectUrl 제외)
     const params = new URLSearchParams({
       orderId: data.orderId,
       customerId: data.customerId,
@@ -24,9 +24,9 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
       amount: data.amount,
     });
 
-    // redirectUrl이 있으면 추가
+    // redirectUrl이 있으면 마지막에 추가 (인코딩)
     if (data.redirectUrl) {
-      params.set('redirectUrl', data.redirectUrl);
+      params.set('redirectUrl', encodeURIComponent(data.redirectUrl));
     }
 
     // /payment 페이지로 하드 네비게이션

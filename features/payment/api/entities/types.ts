@@ -15,7 +15,7 @@ export interface PayverseWebhookRequest {
   requestCurrency: string;
   requestAmount: string;
   installmentMonths?: string;
-  resultStatus: 'SUCCESS';
+  resultStatus: 'SUCCESS' | 'DECLINE';
   resultCode: string;
   resultMessage: string;
   approvalNo?: string;
