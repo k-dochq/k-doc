@@ -16,6 +16,18 @@ interface HospitalDetailMapProps {
  * 병원 상세 지도 컴포넌트
  * 지도와 주소 정보를 표시합니다.
  */
-export function HospitalDetailMap({ latitude, longitude, hospitalName }: HospitalDetailMapProps) {
-  return <HospitalMap latitude={latitude} longitude={longitude} hospitalName={hospitalName} />;
+export function HospitalDetailMap({
+  latitude,
+  longitude,
+  hospitalName,
+  dict,
+}: HospitalDetailMapProps) {
+  return (
+    <HospitalMap
+      latitude={latitude}
+      longitude={longitude}
+      hospitalName={hospitalName}
+      dict={dict}
+    />
+  );
 }
