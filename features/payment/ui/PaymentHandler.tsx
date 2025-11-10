@@ -10,7 +10,7 @@ interface PaymentHandlerProps {
   productName: string;
   amount: number;
   dict: Dictionary;
-  redirectUrl?: string;
+  returnUrl?: string;
   onError?: (error: Error, message?: string) => void;
 }
 
@@ -24,7 +24,7 @@ export function PaymentHandler({
   productName,
   amount,
   dict,
-  redirectUrl,
+  returnUrl,
   onError,
 }: PaymentHandlerProps) {
   const { requestPayment } = usePayment();
@@ -75,7 +75,7 @@ export function PaymentHandler({
         customerId,
         productName,
         amount,
-        redirectUrl,
+        returnUrl,
       });
     } catch (err) {
       const error = err as Error;
@@ -102,7 +102,7 @@ export function PaymentHandler({
     customerId,
     productName,
     amount,
-    redirectUrl,
+    returnUrl,
     requestPayment,
     checkSDKLoaded,
     dict,

@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
 import type { PaymentReturnQueryParams } from '../model/types';
@@ -18,23 +17,6 @@ export function PaymentReturnSuccess({
   queryParams,
   onGoHome,
 }: PaymentReturnSuccessProps) {
-  // resultStatus가 SUCCESS이고 redirectUrl이 있으면 1초 후 자동 리다이렉트
-  useEffect(() => {
-    const resultStatus = queryParams.resultStatus?.toUpperCase();
-    const isSuccess = resultStatus === 'SUCCESS';
-    const hasRedirectUrl = !!queryParams.redirectUrl;
-
-    if (isSuccess && hasRedirectUrl) {
-      const timer = setTimeout(() => {
-        window.location.href = queryParams.redirectUrl!;
-      }, 1000); // 1초 후 리다이렉트
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [queryParams.resultStatus, queryParams.redirectUrl]);
-
   return (
     <div className='container mx-auto px-4 py-12'>
       <div className='mx-auto max-w-md text-center'>

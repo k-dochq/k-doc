@@ -28,8 +28,8 @@ export function HospitalMessage({
 }: HospitalMessageProps) {
   const formattedTime = formatMessageTime(message.timestamp);
 
-  // 현재 URL을 redirectUrl로 사용 (프로토콜과 호스트 포함)
-  const redirectUrl = typeof window !== 'undefined' ? window.location.href : undefined;
+  // returnUrl을 현재 URL의 경로로 설정 (pathname만)
+  const returnUrl = typeof window !== 'undefined' ? window.location.pathname : undefined;
 
   return (
     <div className='relative flex w-full shrink-0 flex-col content-stretch items-start justify-start gap-1'>
@@ -42,7 +42,7 @@ export function HospitalMessage({
                 message: message.content,
                 lang,
                 dict,
-                redirectUrl,
+                returnUrl,
               }).map((item, index) => {
                 if (typeof item === 'string') {
                   return <span key={`text-${index}`}>{item}</span>;
