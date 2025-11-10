@@ -3,6 +3,7 @@
 import { useCallback } from 'react';
 import { PAYVERSE_CONFIG } from '../config/payverse';
 import type { PayversePaymentParams } from './types';
+import { truncateCustomerId } from 'shared/lib/payment-utils';
 
 /**
  * Payverse 결제 요청 훅
@@ -73,11 +74,12 @@ export function usePayment() {
       const baseUrl = window.location.origin;
       const locale = window.location.pathname.split('/')[1] || 'ko';
 
-      // redirectUrl이 있으면 returnUrl에 쿼리 파라미터로 포함
+      // redirectUrl이 있으면 returnUrl에 쿼리 파라미터로 포함 (마지막에)
       const returnUrlBase = orderInfo.returnUrl || `${baseUrl}/${locale}/payment/return`;
       const returnUrlObj = new URL(returnUrlBase);
       if (orderInfo.redirectUrl) {
-        returnUrlObj.searchParams.set('redirectUrl', orderInfo.redirectUrl);
+        // redirectUrl을 마지막에 추가하고 인코딩
+        returnUrlObj.searchParams.set('redirectUrl', encodeURIComponent(orderInfo.redirectUrl));
       }
       const returnUrl = returnUrlObj.toString();
 
@@ -108,13 +110,16 @@ export function usePayment() {
 
       console.log('✅ [Payment Debug] 생성된 서명:', sign);
 
+      // customerId를 30자로 제한 (Payverse SDK 요구사항)
+      const truncatedCustomerId = truncateCustomerId(orderInfo.customerId);
+
       // 결제 파라미터 구성
       const paymentParams: PayversePaymentParams = {
         mid: PAYVERSE_CONFIG.MID,
         sign,
         clientKey: PAYVERSE_CONFIG.CLIENT_KEY,
         orderId: orderInfo.orderId,
-        customerId: orderInfo.customerId,
+        customerId: truncatedCustomerId,
         productName: orderInfo.productName,
         requestCurrency: PAYVERSE_CONFIG.CURRENCY,
         requestAmount: String(orderInfo.amount),

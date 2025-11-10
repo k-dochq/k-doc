@@ -7,18 +7,28 @@ import { parseTextWithLinks } from 'shared/lib/url-parser';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
+interface ParseTextWithPaymentButtonsParams {
+  message: string;
+  lang: Locale;
+  dict: Dictionary;
+  redirectUrl?: string;
+}
+
 /**
  * 메시지에서 payment flag를 찾아서 버튼으로 변환하고, 나머지 텍스트는 링크로 변환
- * @param message 메시지 내용
- * @param lang 언어 코드
- * @param dict 다국어 dictionary
+ * @param params 파라미터 객체
+ * @param params.message 메시지 내용
+ * @param params.lang 언어 코드
+ * @param params.dict 다국어 dictionary
+ * @param params.redirectUrl 결제 완료 후 리다이렉트할 URL (선택사항)
  * @returns React 요소 배열 (텍스트, 링크, 버튼 컴포넌트)
  */
-export function parseTextWithPaymentButtons(
-  message: string,
-  lang: Locale,
-  dict: Dictionary,
-): (string | React.ReactElement)[] {
+export function parseTextWithPaymentButtons({
+  message,
+  lang,
+  dict,
+  redirectUrl,
+}: ParseTextWithPaymentButtonsParams): (string | React.ReactElement)[] {
   if (!message) return [message];
 
   const paymentData = extractPaymentFlag(message);
@@ -51,8 +61,11 @@ export function parseTextWithPaymentButtons(
     });
   }
 
-  // PaymentButtons 컴포넌트 추가
-  result.push(<PaymentButtons key='payment-buttons' data={paymentData} lang={lang} dict={dict} />);
+  // PaymentButtons 컴포넌트 추가 (redirectUrl 전달)
+  const paymentDataWithRedirect = redirectUrl ? { ...paymentData, redirectUrl } : paymentData;
+  result.push(
+    <PaymentButtons key='payment-buttons' data={paymentDataWithRedirect} lang={lang} dict={dict} />,
+  );
 
   return result;
 }

@@ -28,6 +28,9 @@ export function HospitalMessage({
 }: HospitalMessageProps) {
   const formattedTime = formatMessageTime(message.timestamp);
 
+  // 현재 URL을 redirectUrl로 사용 (프로토콜과 호스트 포함)
+  const redirectUrl = typeof window !== 'undefined' ? window.location.href : undefined;
+
   return (
     <div className='relative flex w-full shrink-0 flex-col content-stretch items-start justify-start gap-1'>
       {showHeader && <HospitalHeader hospitalName={hospitalName} imageUrl={hospitalImageUrl} />}
@@ -35,7 +38,12 @@ export function HospitalMessage({
         <div className='relative flex min-w-0 shrink-0 content-stretch items-start justify-start'>
           <MessageBubble variant='hospital' className='self-stretch'>
             <div className="relative font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-900 not-italic">
-              {parseTextWithPaymentButtons(message.content, lang, dict).map((item, index) => {
+              {parseTextWithPaymentButtons({
+                message: message.content,
+                lang,
+                dict,
+                redirectUrl,
+              }).map((item, index) => {
                 if (typeof item === 'string') {
                   return <span key={`text-${index}`}>{item}</span>;
                 }
