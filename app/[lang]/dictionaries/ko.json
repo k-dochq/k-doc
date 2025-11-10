@@ -456,7 +456,8 @@
       "operatingHours": "진료시간"
     },
     "map": {
-      "title": "병원위치"
+      "title": "병원위치",
+      "loading": "지도를 불러오는 중..."
     },
     "address": {
       "copyButton": "주소복사",

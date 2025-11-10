@@ -16,3 +16,4 @@ export * from './modal';
 export * from './url-parser';
 export * from './webview-detection';
 export * from './webview-communication';
+export * from './google-maps-utils';
