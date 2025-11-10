@@ -1,72 +1,45 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { type Dictionary } from 'shared/model/types';
+import {
+  defaultMapOptions,
+  getGoogleMapsUrl,
+  GOOGLE_MAPS_API_KEY,
+  googleMapsLibraries,
+} from 'shared/lib';
 import { useAddressCopy } from 'widgets/hospital-detail-map/model/useAddressCopy';
-
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
 
 interface ContactSeoulMapSectionProps {
   dict: Dictionary;
 }
 
 export function ContactSeoulMapSection({ dict }: ContactSeoulMapSectionProps) {
-  const mapRef = useRef<HTMLDivElement>(null);
   const { copyAddress } = useAddressCopy(dict);
 
   // 서울지사 정확한 좌표
   const latitude = 37.526145;
   const longitude = 127.038836;
 
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    libraries: googleMapsLibraries,
+  });
+
+  const center = {
+    lat: latitude,
+    lng: longitude,
+  };
+
+  const handleMarkerClick = () => {
+    const googleMapsUrl = getGoogleMapsUrl(latitude, longitude, dict.contact.seoulOffice.address);
+    window.open(googleMapsUrl, '_blank', 'noopener,noreferrer');
+  };
+
   const handleCopyAddress = () => {
     copyAddress(dict.contact.seoulOffice.address);
   };
-
-  useEffect(() => {
-    const loadKakaoMap = () => {
-      if (!window.kakao || !window.kakao.maps) {
-        console.error('Kakao Maps API가 로드되지 않았습니다.');
-        return;
-      }
-
-      if (!mapRef.current) return;
-
-      // 지도 옵션
-      const options = {
-        center: new window.kakao.maps.LatLng(latitude, longitude),
-        level: 3, // 확대 레벨
-      };
-
-      // 지도 생성
-      const map = new window.kakao.maps.Map(mapRef.current, options);
-
-      // 마커 생성
-      const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
-      const marker = new window.kakao.maps.Marker({
-        position: markerPosition,
-      });
-
-      // 마커를 지도에 표시
-      marker.setMap(map);
-    };
-
-    // Kakao Maps API 스크립트 로드
-    if (!window.kakao) {
-      const script = document.createElement('script');
-      script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=6aee4a708ad4757cc28cc5c546a20586&autoload=false`;
-      script.async = true;
-      script.onload = () => {
-        window.kakao.maps.load(loadKakaoMap);
-      };
-      document.head.appendChild(script);
-    } else {
-      loadKakaoMap();
-    }
-  }, [latitude, longitude]);
 
   return (
     <div className='mt-9'>
@@ -79,7 +52,20 @@ export function ContactSeoulMapSection({ dict }: ContactSeoulMapSectionProps) {
       <div className='mt-6 rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
         {/* 지도 */}
         <div className='h-[220px] w-full overflow-hidden rounded-lg'>
-          <div ref={mapRef} className='h-full w-full' style={{ width: '100%', height: '100%' }} />
+          {!isLoaded ? (
+            <div className='flex h-full w-full items-center justify-center bg-gray-100'>
+              <p className='text-sm text-gray-500'>{dict.hospital.map.loading}</p>
+            </div>
+          ) : (
+            <GoogleMap
+              mapContainerStyle={{ width: '100%', height: '100%' }}
+              center={center}
+              zoom={15}
+              options={defaultMapOptions}
+            >
+              <Marker position={center} onClick={handleMarkerClick} />
+            </GoogleMap>
+          )}
         </div>
 
         {/* 주소 정보 섹션 - 병원상세페이지와 똑같은 스타일 */}
