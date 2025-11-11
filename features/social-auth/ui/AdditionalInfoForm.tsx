@@ -97,6 +97,14 @@ export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: Additi
         ? `${formData.countryCode}${formData.phoneNumberOnly}`
         : formData.phoneNumberOnly;
 
+    // Locale을 UserLocale 형식으로 변환 (en -> en_US, ko -> ko_KR, th -> th_TH)
+    const localeMap: Record<Locale, string> = {
+      en: 'en_US',
+      ko: 'ko_KR',
+      th: 'th_TH',
+    };
+    const userLocale = localeMap[lang] || 'en_US';
+
     updateProfile({
       passportName: formData.passportName,
       nationality: formData.nationality,
@@ -107,6 +115,7 @@ export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: Additi
       phoneNumberOnly: formData.phoneNumberOnly,
       birthDate: formData.birthDate,
       marketingNotifications: agreements.marketingNotifications,
+      locale: userLocale,
     });
   };
 
