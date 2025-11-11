@@ -4,7 +4,7 @@ import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type PaymentButtonData } from 'shared/lib/payment-parser/types';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { confirm, alert } from 'shared/lib/modal';
+import { confirm, alert, closeModal } from 'shared/lib/modal';
 import { useCancelReservation } from 'features/reservation-cancel/model/useCancelReservation';
 
 interface PaymentButtonsProps {
@@ -36,6 +36,8 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
   };
 
   const handleCancelClick = async () => {
+    console.log('[PaymentButtons] 취소 버튼 클릭됨, orderId:', data.orderId);
+
     const result = await confirm({
       title: dict.consultation?.cancelReservation?.title || '예약 진행을 취소 하시겠습니까?',
       message:
@@ -45,9 +47,16 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
       cancelText: dict.consultation?.cancelReservation?.cancelButton || '아니요',
     });
 
+    console.log('[PaymentButtons] Confirm 결과:', result);
+
     if (result) {
+      // Yes를 눌렀을 때: 모달을 명시적으로 닫기
+      closeModal();
+      console.log('[PaymentButtons] 취소 요청 시작, orderId:', data.orderId);
+
       cancelReservation(data.orderId, {
         onSuccess: (response) => {
+          console.log('[PaymentButtons] 취소 성공:', response);
           // 성공 시 메시지는 서버에서 상담 메시지로 추가되므로
           // 페이지를 새로고침하여 최신 메시지를 표시
           if (response.success) {
@@ -57,12 +66,16 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
           }
         },
         onError: (error) => {
+          console.error('[PaymentButtons] 취소 실패:', error);
           // 에러 메시지 표시
           alert({
             message: error.message || '예약 취소 중 오류가 발생했습니다.',
           });
         },
       });
+    } else {
+      console.log('[PaymentButtons] 사용자가 취소를 선택함');
+      // No를 눌렀을 때는 이미 모달이 닫혔음
     }
   };
 

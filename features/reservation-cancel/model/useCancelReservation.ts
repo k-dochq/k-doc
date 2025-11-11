@@ -20,16 +20,25 @@ interface CancelReservationResponse {
 export function useCancelReservation() {
   return useMutation<CancelReservationResponse, Error, string>({
     mutationFn: async (reservationId: string) => {
-      const response = await fetch(`/api/reservations/${reservationId}/cancel`, {
+      console.log('[useCancelReservation] 취소 요청 시작, reservationId:', reservationId);
+
+      const url = `/api/reservations/${reservationId}/cancel`;
+      console.log('[useCancelReservation] 요청 URL:', url);
+
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
+      console.log('[useCancelReservation] 응답 상태:', response.status, response.statusText);
+
       const data: CancelReservationResponse = await response.json();
+      console.log('[useCancelReservation] 응답 데이터:', data);
 
       if (!response.ok) {
+        console.error('[useCancelReservation] 요청 실패:', data);
         throw new Error(data.error || data.message || 'CANCEL_FAILED');
       }
 
