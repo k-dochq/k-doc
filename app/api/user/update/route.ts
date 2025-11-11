@@ -17,6 +17,7 @@ interface UpdateUserRequest {
   phoneNumber?: string;
   phoneNumberOnly?: string;
   birthDate?: string;
+  locale?: string;
 }
 
 export async function PUT(request: NextRequest): Promise<NextResponse> {
@@ -43,6 +44,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
       phoneNumber,
       phoneNumberOnly,
       birthDate,
+      locale,
     } = body;
 
     // 업데이트할 필드가 없는 경우
@@ -58,7 +60,8 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
       countryCode !== undefined ||
       phoneNumber !== undefined ||
       phoneNumberOnly !== undefined ||
-      birthDate !== undefined;
+      birthDate !== undefined ||
+      locale !== undefined;
 
     if (!hasFieldsToUpdate) {
       return NextResponse.json(
@@ -87,6 +90,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
     if (name !== undefined) updateData.name = name;
     if (genderType !== undefined) updateData.genderType = genderType;
     if (phoneNumber !== undefined) updateData.phoneNumber = phoneNumber;
+    if (locale !== undefined) updateData.locale = locale;
 
     // raw_user_meta_data 업데이트
     const newMetaData = { ...currentMetaData };

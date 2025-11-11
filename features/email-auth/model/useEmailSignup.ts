@@ -52,9 +52,18 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
         avoidAmbiguous: true,
       });
 
+      // Locale을 UserLocale 형식으로 변환 (en -> en_US, ko -> ko_KR, th -> th_TH)
+      const localeMap: Record<Locale, string> = {
+        en: 'en_US',
+        ko: 'ko_KR',
+        th: 'th_TH',
+      };
+      const userLocale = localeMap[locale] || 'en_US';
+
       // 메타데이터 준비
       const metadata: Record<string, string | boolean> = {
         nickname: nicknameResult.display, // 생성된 닉네임 추가
+        locale: userLocale, // locale 추가
       };
       if (signupData.passportName) metadata.passport_name = signupData.passportName;
       if (signupData.nationality) metadata.nationality = signupData.nationality;
