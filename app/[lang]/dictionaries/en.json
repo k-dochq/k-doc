@@ -870,7 +870,7 @@
   "taxiReservation": {
     "title": "Taxi reservation",
     "buttonText": "Book a Taxi",
-    "internationalTaxi": "International Taxi",
+    "internationalTaxi": "Int'l Taxi",
     "uberTaxi": "Uber Taxi"
   },
   "noticeSection": {

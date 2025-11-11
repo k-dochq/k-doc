@@ -870,7 +870,7 @@
   "taxiReservation": {
     "title": "Taxi reservation",
     "buttonText": "จองแท็กซี่",
-    "internationalTaxi": "แท็กซี่ระหว่างประเทศ",
+    "internationalTaxi": "แท็กซี่ต่างประเทศ",
     "uberTaxi": "แท็กซี่ Uber"
   },
   "noticeSection": {
