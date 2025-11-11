@@ -682,6 +682,12 @@
       "message": "취소하게 되면,\n처음부터 다시 진행해야합니다.",
       "confirmButton": "예",
       "cancelButton": "아니요"
+    },
+    "cancelMessages": {
+      "processing": "예약 취소가 정상적으로 접수되었습니다.\n\n결제 취소(환불)는 결제사 승인 절차에 따라 순차적으로 처리되며,\n완료 시 별도 알림을 드리겠습니다.",
+      "success": "예약이 정상적으로 취소되었습니다.\n\n환불이 완료되었습니다.",
+      "failed": "환불 처리 중 오류가 발생했습니다.\n\nPG사 오류: {errorMessage}\n\n고객센터로 문의해주시기 바랍니다.",
+      "noCancellation": "결제가 완료되지 않아 예약만 취소되었습니다."
     }
   },
   "cautionSection": {

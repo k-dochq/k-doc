@@ -58,7 +58,6 @@ export function usePayment() {
       amount: number;
       returnUrl?: string;
       webhookUrl?: string;
-      redirectUrl?: string;
     }) => {
       // SDK가 로드되었는지 확인
       if (!window.payVerse) {
@@ -74,16 +73,16 @@ export function usePayment() {
       const baseUrl = window.location.origin;
       const locale = window.location.pathname.split('/')[1] || 'ko';
 
-      // redirectUrl이 있으면 returnUrl에 쿼리 파라미터로 포함 (마지막에)
-      const returnUrlBase = orderInfo.returnUrl || `${baseUrl}/${locale}/payment/return`;
-      const returnUrlObj = new URL(returnUrlBase);
-      if (orderInfo.redirectUrl) {
-        // redirectUrl을 마지막에 추가하고 인코딩
-        returnUrlObj.searchParams.set('redirectUrl', encodeURIComponent(orderInfo.redirectUrl));
-      }
-      const returnUrl = returnUrlObj.toString();
+      // orderInfo.returnUrl이 있으면 사용, 없으면 기본 return 페이지
+      const finalReturnUrl = orderInfo.returnUrl
+        ? `${baseUrl}${orderInfo.returnUrl}` // 상대 경로를 절대 URL로 변환
+        : `${baseUrl}/${locale}/payment/return`;
 
-      const webhookUrl = orderInfo.webhookUrl || `${baseUrl}/api/payment/webhook`;
+      const returnUrl = finalReturnUrl;
+
+      // const webhookUrl = orderInfo.webhookUrl || `${baseUrl}/api/payment/webhook`;
+      const webhookUrl =
+        orderInfo.webhookUrl || `https://5b084e569f63.ngrok-free.app/api/payment/webhook`;
 
       // 서명 생성에 사용할 파라미터
       const signParams = {

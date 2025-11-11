@@ -109,3 +109,36 @@ export type ReservationWithRelations = Prisma.ReservationGetPayload<{
     ReservationStatusHistory: true;
   };
 }>;
+
+/**
+ * Payverse 취소 요청 파라미터
+ * 참고: https://docs.payverseglobal.com/ko/apisdk/v1.0.0/additional-feature-api/additional-feature/
+ */
+export interface PayverseCancelRequest {
+  reqDate: string; // YYYYMMDDHHmmss 형식
+  tid: string; // 승인 거래 시 PayVerse로부터 응답 받은 TID
+  currency: string; // 통화 코드 (승인 요청한 통화와 동일)
+  amount: string; // 취소 요청 금액 (소수점 마지막 자리가 '0'인 경우 제거)
+  bankNm?: string; // 고객이 환불받을 은행명 (PV01 일부 SchemeGroup 필수)
+  accountNo?: string; // 고객이 환불받을 계좌정보 (PV01 일부 SchemeGroup 필수)
+  accountHolder?: string; // 예금주 명칭 (PV01 일부 SchemeGroup 필수)
+  telNo?: string; // 환불받을 고객의 연락처 (PV01 일부 SchemeGroup 필수)
+  email?: string; // 환불받을 고객의 email 정보
+  mallReserved?: string; // 가맹점 정보 필드
+  cancelWorker?: string; // 취소 요청을 진행한 작업자의 정보
+  cancelReason?: string; // 취소 요청에 대한 사유
+  sign: string; // 위변조 검증 데이터
+}
+
+/**
+ * Payverse 취소 응답
+ */
+export interface PayverseCancelResponse {
+  resultStatus: 'SUCCESS' | 'PROCESSING' | 'PENDING' | 'DECLINE' | 'FAILED';
+  resultCode: string;
+  resultMessage: string;
+  cancelTid?: string; // 취소 요청에 대하여 발급하는 TID
+  cancelDay?: string; // resultStatus가 "SUCCESS"인 경우 포함, 취소 처리된 일자
+  cancelTime?: string; // resultStatus가 "SUCCESS"인 경우 포함, 취소 처리된 시간
+  mallReserved?: string; // Request Parameter에서 요청한 정보
+}

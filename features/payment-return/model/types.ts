@@ -4,5 +4,4 @@ export interface PaymentReturnQueryParams {
   resultMessage?: string;
   tid?: string;
   orderId?: string;
-  redirectUrl?: string;
 }

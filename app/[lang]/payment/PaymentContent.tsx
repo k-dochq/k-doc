@@ -15,7 +15,7 @@ interface PaymentContentProps {
   customerId: string;
   productName: string;
   amount: number;
-  redirectUrl?: string;
+  returnUrl?: string;
 }
 
 export function PaymentContent({
@@ -25,7 +25,7 @@ export function PaymentContent({
   customerId,
   productName,
   amount,
-  redirectUrl,
+  returnUrl,
 }: PaymentContentProps) {
   const router = useLocalizedRouter();
   const [error, setError] = useState<Error | null>(null);
@@ -71,7 +71,7 @@ export function PaymentContent({
         productName={productName}
         amount={amount}
         dict={dict}
-        redirectUrl={redirectUrl}
+        returnUrl={returnUrl}
         onError={handleError}
       />
     </>

@@ -11,7 +11,6 @@ interface PaymentReturnPageProps {
     tid?: string;
     orderId?: string;
     mallReserved?: string;
-    redirectUrl?: string;
   }>;
 }
 

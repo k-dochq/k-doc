@@ -682,6 +682,12 @@
       "message": "If you cancel,\nyou will have to start over from the beginning.",
       "confirmButton": "Yes",
       "cancelButton": "No"
+    },
+    "cancelMessages": {
+      "processing": "Your reservation cancellation has been successfully received.\n\nThe payment cancellation (refund) is being processed sequentially according to the payment provider's approval procedure.\nA separate notification will be sent once the process is completed.",
+      "success": "Your reservation has been successfully cancelled.\n\nThe refund has been completed.",
+      "failed": "An error occurred during the refund process.\n\nPayment gateway error: {errorMessage}\n\nPlease contact customer service.",
+      "noCancellation": "Only the reservation was cancelled as payment was not completed."
     }
   },
   "cautionSection": {

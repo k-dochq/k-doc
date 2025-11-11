@@ -8,7 +8,6 @@ interface PaymentSuccessPageProps {
     orderId?: string;
     tid?: string;
     resultMessage?: string;
-    redirectUrl?: string;
   }>;
 }
 

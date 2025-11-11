@@ -8,7 +8,6 @@ interface PaymentFailurePageProps {
     resultCode?: string;
     resultMessage?: string;
     orderId?: string;
-    redirectUrl?: string;
   }>;
 }
 

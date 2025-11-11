@@ -13,7 +13,7 @@ interface PaymentPageProps {
     customerId?: string;
     productName?: string;
     amount?: string;
-    redirectUrl?: string;
+    returnUrl?: string;
   }>;
 }
 
@@ -64,7 +64,7 @@ export default async function PaymentPage({ params, searchParams }: PaymentPageP
           customerId={customerId}
           productName={productName}
           amount={amount}
-          redirectUrl={queryParams.redirectUrl}
+          returnUrl={queryParams.returnUrl}
         />
       </Suspense>
     </div>
