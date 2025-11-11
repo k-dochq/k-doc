@@ -42,6 +42,24 @@ export function EventBannerContent({
     };
   }, [api, totalPages]);
 
+  // 자동재생 기능
+  useEffect(() => {
+    if (!api || banners.length <= 1) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else {
+        // loop가 true이면 처음으로 돌아감
+        api.scrollTo(0);
+      }
+    }, 2500); // 2.5초 간격
+
+    return () => clearInterval(interval);
+  }, [api, banners.length]);
+
   // 페이지 클릭 핸들러
   const handlePageClick = (page: number) => {
     if (!api) return;
