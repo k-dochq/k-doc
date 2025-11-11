@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { EventBannerItem } from './EventBannerItem';
 import { EventBannerPagination } from './EventBannerPagination';
 import { type EventBannerWithImage } from '../model/types';
@@ -17,82 +17,63 @@ export function EventBannerContent({
   currentLocale,
   className = '',
 }: EventBannerContentProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-    slidesToScroll: 2,
-    align: 'start',
-  });
+  const [api, setApi] = useState<CarouselApi>();
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = Math.ceil(banners.length / 2);
+  const totalPages = banners.length;
 
   useEffect(() => {
-    if (!emblaApi) return;
+    if (!api) return;
 
     const updatePage = () => {
-      const slideIndex = emblaApi.selectedScrollSnap();
-      // 슬라이드 인덱스를 페이지 번호로 변환
-      // 슬라이드 0 (아이템 0,1) → 페이지 0
-      // 슬라이드 1 (아이템 1,2) → 페이지 1
-      // 슬라이드 2 (아이템 2만) → 페이지 2 (마지막 아이템이 홀수일 때)
-      const page = Math.min(slideIndex, totalPages - 1);
+      const slideIndex = api.selectedScrollSnap();
+      // 각 슬라이드가 하나의 페이지
+      // 슬라이드 0 → 페이지 0
+      // 슬라이드 1 → 페이지 1
+      // 슬라이드 2 → 페이지 2
+      const page = slideIndex % totalPages;
       setCurrentPage(page);
     };
 
     updatePage();
-
-    emblaApi.on('select', updatePage);
+    api.on('select', updatePage);
 
     return () => {
-      emblaApi.off('select', updatePage);
+      api.off('select', updatePage);
     };
-  }, [emblaApi, totalPages]);
-
-  // Auto play 기능
-  useEffect(() => {
-    if (!emblaApi || banners.length <= 2) {
-      return;
-    }
-
-    const interval = setInterval(() => {
-      if (emblaApi.canScrollNext()) {
-        emblaApi.scrollNext();
-      } else {
-        emblaApi.scrollTo(0);
-      }
-    }, 2500); // 2.5초 간격
-
-    return () => clearInterval(interval);
-  }, [emblaApi, banners.length]);
+  }, [api, totalPages]);
 
   // 페이지 클릭 핸들러
   const handlePageClick = (page: number) => {
-    if (!emblaApi) return;
-    // 페이지 번호를 슬라이드 인덱스로 변환
-    // 페이지 0 → 슬라이드 0 (아이템 0, 1)
-    // 페이지 1 → 슬라이드 1 (아이템 1, 2)
-    emblaApi.scrollTo(page);
+    if (!api) return;
+    // 페이지 번호가 곧 슬라이드 인덱스
+    api.scrollTo(page);
   };
 
   return (
     <div className={`w-full ${className}`}>
-      <div className='relative overflow-hidden rounded-xl'>
-        <div className='overflow-hidden' ref={emblaRef}>
-          <div className='flex gap-[11px]'>
-            {banners.map((banner) => (
-              <div key={banner.id} className='min-w-0 flex-[0_0_calc(50%-5.5px)]'>
-                <EventBannerItem
-                  id={banner.id}
-                  title={banner.title}
-                  linkUrl={banner.linkUrl}
-                  imageUrl={banner.currentImage.imageUrl}
-                  alt={banner.currentImage.alt}
-                  currentLocale={currentLocale}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <Carousel
+        setApi={setApi}
+        opts={{
+          loop: true,
+          align: 'start',
+        }}
+        className='w-full'
+      >
+        <CarouselContent className='-ml-[11px]'>
+          {banners.map((banner) => (
+            <CarouselItem key={banner.id} className='basis-1/2 pl-[11px]'>
+              <EventBannerItem
+                id={banner.id}
+                title={banner.title}
+                linkUrl={banner.linkUrl}
+                imageUrl={banner.currentImage.imageUrl}
+                alt={banner.currentImage.alt}
+                currentLocale={currentLocale}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
       <EventBannerPagination
         currentPage={currentPage}
