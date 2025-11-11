@@ -7,12 +7,14 @@ export interface ModalState {
   title?: string;
   description?: string;
   onClose?: () => void;
+  isLoading?: boolean;
 }
 
 interface ModalActions {
   openModal: (config: Omit<ModalState, 'isOpen'>) => void;
   closeModal: () => void;
   resetModal: () => void;
+  setModalLoading: (isLoading: boolean) => void;
 }
 
 export interface ModalStore extends ModalState, ModalActions {}
@@ -23,6 +25,7 @@ const initialState: ModalState = {
   title: undefined,
   description: undefined,
   onClose: undefined,
+  isLoading: false,
 };
 
 export const useModalStore = create<ModalStore>((set, get) => ({
@@ -38,10 +41,14 @@ export const useModalStore = create<ModalStore>((set, get) => ({
   closeModal: () => {
     const { onClose } = get();
     onClose?.();
-    set({ isOpen: false });
+    set({ isOpen: false, isLoading: false });
   },
 
   resetModal: () => {
     set(initialState);
+  },
+
+  setModalLoading: (isLoading: boolean) => {
+    set({ isLoading });
   },
 }));

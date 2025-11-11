@@ -113,6 +113,7 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
           await this.reservationRepository.updateStatus(
             reservation.id,
             'CONFIRMED' as ReservationStatus,
+            null,
             tx,
           );
           console.log(`[Webhook] Reservation 상태 변경: PAYMENT_PENDING → CONFIRMED`);

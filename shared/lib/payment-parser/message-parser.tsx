@@ -11,7 +11,7 @@ interface ParseTextWithPaymentButtonsParams {
   message: string;
   lang: Locale;
   dict: Dictionary;
-  redirectUrl?: string;
+  returnUrl?: string;
 }
 
 /**
@@ -20,14 +20,14 @@ interface ParseTextWithPaymentButtonsParams {
  * @param params.message 메시지 내용
  * @param params.lang 언어 코드
  * @param params.dict 다국어 dictionary
- * @param params.redirectUrl 결제 완료 후 리다이렉트할 URL (선택사항)
+ * @param params.returnUrl 결제 완료 후 리다이렉트할 URL (선택사항)
  * @returns React 요소 배열 (텍스트, 링크, 버튼 컴포넌트)
  */
 export function parseTextWithPaymentButtons({
   message,
   lang,
   dict,
-  redirectUrl,
+  returnUrl,
 }: ParseTextWithPaymentButtonsParams): (string | React.ReactElement)[] {
   if (!message) return [message];
 
@@ -61,10 +61,15 @@ export function parseTextWithPaymentButtons({
     });
   }
 
-  // PaymentButtons 컴포넌트 추가 (redirectUrl 전달)
-  const paymentDataWithRedirect = redirectUrl ? { ...paymentData, redirectUrl } : paymentData;
+  // PaymentButtons 컴포넌트 추가 (returnUrl 전달)
+  const paymentDataWithReturnUrl = returnUrl ? { ...paymentData, returnUrl } : paymentData;
   result.push(
-    <PaymentButtons key='payment-buttons' data={paymentDataWithRedirect} lang={lang} dict={dict} />,
+    <PaymentButtons
+      key='payment-buttons'
+      data={paymentDataWithReturnUrl}
+      lang={lang}
+      dict={dict}
+    />,
   );
 
   return result;

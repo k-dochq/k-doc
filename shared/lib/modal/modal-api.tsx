@@ -40,20 +40,25 @@ export function confirm(options: ConfirmOptions): Promise<boolean> {
     currentResolver = resolve;
 
     const handleConfirm = () => {
-      useModalStore.getState().closeModal();
+      // Yes 클릭: resolve만 호출하고 모달은 열린 상태 유지 (호출한 쪽에서 닫기)
       resolve(true);
       currentResolver = null;
     };
 
     const handleCancel = () => {
-      useModalStore.getState().closeModal();
+      // No 클릭: resolve 후 모달 닫기
       resolve(false);
       currentResolver = null;
+      useModalStore.getState().closeModal();
     };
 
     const handleClose = () => {
-      resolve(false);
-      currentResolver = null;
+      // 모달 바깥 클릭: resolve 후 모달 닫기
+      if (currentResolver) {
+        resolve(false);
+        currentResolver = null;
+        useModalStore.getState().closeModal();
+      }
     };
 
     useModalStore.getState().openModal({
@@ -69,6 +74,7 @@ export function confirm(options: ConfirmOptions): Promise<boolean> {
         />
       ),
       onClose: handleClose,
+      isLoading: false, // 초기값은 false
     });
   });
 }
@@ -116,4 +122,9 @@ export function openModal(options: ModalOptions): void {
 // Close Modal API
 export function closeModal(): void {
   useModalStore.getState().closeModal();
+}
+
+// Set Modal Loading API
+export function setModalLoading(isLoading: boolean): void {
+  useModalStore.getState().setModalLoading(isLoading);
 }

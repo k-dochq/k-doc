@@ -32,12 +32,8 @@ export function PaymentReturnContent({ lang, dict, queryParams }: PaymentReturnC
     (!!queryParams.resultMessage && resultStatus !== 'SUCCESS');
 
   const handleGoHome = () => {
-    // redirectUrl이 있으면 그곳으로, 없으면 홈으로
-    if (queryParams.redirectUrl) {
-      window.location.href = queryParams.redirectUrl;
-    } else {
-      router.push('/');
-    }
+    // 홈으로 이동
+    router.push('/');
   };
 
   const handleRetry = () => {
