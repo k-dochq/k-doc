@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ProcessPaymentWebhookUseCase } from 'features/payment/api/use-cases/process-payment-webhook';
+import { ProcessRefundWebhookUseCase } from 'features/payment/api/use-cases/process-refund-webhook';
 import { PaymentRepository } from 'features/payment/api/infrastructure/repositories/payment-repository';
 import { ReservationRepository } from 'features/payment/api/infrastructure/repositories/reservation-repository';
 import { ConsultationMessageRepository } from 'features/consultation-message/api/infrastructure/repositories/consultation-message-repository';
@@ -11,7 +12,7 @@ import type {
 
 /**
  * Payverse 결제 웹훅 API 라우트
- * 결제 완료 시 호출되는 엔드포인트
+ * 결제 완료(Sale) 및 환불 완료(Refund) 시 호출되는 엔드포인트
  *
  * 참고: https://docs.payverseglobal.com/ko/apisdk/v1.0.0/additional-feature-api/additional-feature/
  */
@@ -35,10 +36,28 @@ export async function POST(request: NextRequest): Promise<NextResponse<PayverseW
     const reservationRepo = new ReservationRepository();
     const messageRepo = new ConsultationMessageRepository();
 
-    // Use Case 실행
-    const useCase = new ProcessPaymentWebhookUseCase(paymentRepo, reservationRepo, messageRepo);
+    let result;
 
-    const result = await useCase.execute(webhookData);
+    // type에 따른 분기 처리
+    if (webhookData.type === 'Sale') {
+      // 승인 웹훅 처리
+      const saleUseCase = new ProcessPaymentWebhookUseCase(
+        paymentRepo,
+        reservationRepo,
+        messageRepo,
+      );
+      result = await saleUseCase.execute(webhookData);
+    } else if (webhookData.type === 'Refund') {
+      // 환불 웹훅 처리
+      const refundUseCase = new ProcessRefundWebhookUseCase(
+        paymentRepo,
+        reservationRepo,
+        messageRepo,
+      );
+      result = await refundUseCase.execute(webhookData);
+    } else {
+      throw new Error(`Unknown webhook type: ${webhookData.type}`);
+    }
 
     if (result.success) {
       console.log(`[${new Date().toISOString()}] Webhook 처리 성공:`, result.processedTid);

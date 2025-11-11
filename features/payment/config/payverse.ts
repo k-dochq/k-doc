@@ -14,3 +14,14 @@ export const PAYVERSE_CONFIG = {
   /** 기본 통화 */
   CURRENCY: 'USD',
 } as const;
+
+/**
+ * Payverse API 엔드포인트
+ * 환경변수에 따라 개발/프로덕션 URL 분기
+ */
+export const PAYVERSE_API_ENDPOINTS = {
+  cancel:
+    process.env.ENVIRONMENT === 'production'
+      ? 'https://pay.payverseglobal.com/payment/cancel'
+      : 'https://pay-snd.payverseglobal.com/payment/cancel',
+} as const;

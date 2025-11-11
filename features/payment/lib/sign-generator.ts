@@ -38,6 +38,37 @@ export function generatePayverseSign(
 }
 
 /**
+ * Payverse 취소 전용 서명 생성 함수
+ *
+ * 서명 생성 규칙:
+ * - 형식: ||secretKey||mid||amount||reqDate||
+ * - 해시 알고리즘: SHA-512
+ *
+ * 참고 문서:
+ * https://docs.payverseglobal.com/ko/apisdk/v1.0.0/additional-feature-api/additional-feature/
+ *
+ * @param secretKey - API 연동 시 필요한 Secret Key
+ * @param mid - 상점 ID
+ * @param amount - 취소 금액 (문자열)
+ * @param reqDate - 요청 일시 (YYYYMMDDHHmmss 형식)
+ * @returns SHA-512 해시 값 (소문자 hex 문자열)
+ */
+export function generatePayverseCancelSign(
+  secretKey: string,
+  mid: string,
+  amount: string,
+  reqDate: string,
+): string {
+  // 서명 생성 형식: ||secretKey||mid||amount||reqDate||
+  const plainText = `||${secretKey}||${mid}||${amount}||${reqDate}||`;
+
+  // SHA-512 해시 생성
+  const hash = crypto.createHash('sha512').update(plainText, 'utf8').digest('hex');
+
+  return hash;
+}
+
+/**
  * 웹훅 서명 검증 함수
  *
  * 서명 검증 규칙:

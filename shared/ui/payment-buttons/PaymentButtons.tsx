@@ -4,7 +4,8 @@ import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type PaymentButtonData } from 'shared/lib/payment-parser/types';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { confirm } from 'shared/lib/modal';
+import { confirm, alert } from 'shared/lib/modal';
+import { useCancelReservation } from 'features/reservation-cancel/model/useCancelReservation';
 
 interface PaymentButtonsProps {
   data: PaymentButtonData;
@@ -14,6 +15,7 @@ interface PaymentButtonsProps {
 
 export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
   const router = useLocalizedRouter();
+  const { mutate: cancelReservation, isPending } = useCancelReservation();
 
   const handlePaymentClick = () => {
     // 쿼리 파라미터 생성
@@ -44,8 +46,23 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
     });
 
     if (result) {
-      // TODO: 예약 취소 로직 (나중에 구현)
-      console.log('예약 취소 진행', data.orderId);
+      cancelReservation(data.orderId, {
+        onSuccess: (response) => {
+          // 성공 시 메시지는 서버에서 상담 메시지로 추가되므로
+          // 페이지를 새로고침하여 최신 메시지를 표시
+          if (response.success) {
+            // 웹훅을 기다려야 하는 경우는 서버에서 이미 메시지가 추가됨
+            // 페이지 새로고침으로 메시지 리스트 갱신
+            window.location.reload();
+          }
+        },
+        onError: (error) => {
+          // 에러 메시지 표시
+          alert({
+            message: error.message || '예약 취소 중 오류가 발생했습니다.',
+          });
+        },
+      });
     }
   };
 
@@ -61,7 +78,11 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
         </p>
       </button>
       {/* 취소 버튼 */}
-      <button onClick={handleCancelClick} className='flex w-full items-center justify-center'>
+      <button
+        onClick={handleCancelClick}
+        disabled={isPending}
+        className='flex w-full items-center justify-center disabled:cursor-not-allowed disabled:opacity-50'
+      >
         <p className='text-sm text-neutral-500'>{data.cancelButtonText}</p>
       </button>
     </div>

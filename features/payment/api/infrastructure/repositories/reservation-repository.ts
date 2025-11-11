@@ -7,6 +7,7 @@ export interface IReservationRepository {
   updateStatus(
     id: string,
     status: ReservationStatus,
+    cancelReason: string | null,
     tx: Prisma.TransactionClient,
   ): Promise<Reservation>;
 }
@@ -38,12 +39,14 @@ export class ReservationRepository implements IReservationRepository {
   async updateStatus(
     id: string,
     status: ReservationStatus,
+    cancelReason: string | null,
     tx: Prisma.TransactionClient,
   ): Promise<Reservation> {
     return tx.reservation.update({
       where: { id },
       data: {
         status,
+        cancelReason,
         updatedAt: new Date(),
       },
     });
