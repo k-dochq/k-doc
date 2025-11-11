@@ -868,7 +868,9 @@
   },
   "taxiReservation": {
     "title": "Taxi reservation",
-    "buttonText": "택시 예약하기"
+    "buttonText": "택시 예약하기",
+    "internationalTaxi": "국제 택시",
+    "uberTaxi": "우버 택시"
   },
   "noticeSection": {
     "title": "새로운 소식을 확인해보세요!",

@@ -869,7 +869,9 @@
   },
   "taxiReservation": {
     "title": "Taxi reservation",
-    "buttonText": "Book a Taxi"
+    "buttonText": "Book a Taxi",
+    "internationalTaxi": "International Taxi",
+    "uberTaxi": "Uber Taxi"
   },
   "noticeSection": {
     "title": "Check out the latest updates!",
