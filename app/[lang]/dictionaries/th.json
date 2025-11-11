@@ -869,7 +869,9 @@
   },
   "taxiReservation": {
     "title": "Taxi reservation",
-    "buttonText": "จองแท็กซี่"
+    "buttonText": "จองแท็กซี่",
+    "internationalTaxi": "แท็กซี่ระหว่างประเทศ",
+    "uberTaxi": "แท็กซี่ Uber"
   },
   "noticeSection": {
     "title": "ดูข่าวสารใหม่ ๆ ได้ที่นี่!",
