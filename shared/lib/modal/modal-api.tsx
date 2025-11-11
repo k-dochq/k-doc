@@ -74,6 +74,7 @@ export function confirm(options: ConfirmOptions): Promise<boolean> {
         />
       ),
       onClose: handleClose,
+      isLoading: false, // 초기값은 false
     });
   });
 }
@@ -121,4 +122,9 @@ export function openModal(options: ModalOptions): void {
 // Close Modal API
 export function closeModal(): void {
   useModalStore.getState().closeModal();
+}
+
+// Set Modal Loading API
+export function setModalLoading(isLoading: boolean): void {
+  useModalStore.getState().setModalLoading(isLoading);
 }
