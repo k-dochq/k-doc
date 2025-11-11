@@ -35,6 +35,7 @@ export interface UpdateUserProfileRequest {
   phoneNumber?: string;
   phoneNumberOnly?: string;
   birthDate?: string;
+  locale?: string;
 }
 
 export interface UpdateUserProfileResponse {
