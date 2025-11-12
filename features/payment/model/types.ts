@@ -16,6 +16,7 @@ export interface PayversePaymentParams {
   webhookUrl: string;
   billkeyReq: 'Y' | 'N';
   mallReserved?: string;
+  appScheme?: string;
 }
 
 export interface PayverseReturnParams {

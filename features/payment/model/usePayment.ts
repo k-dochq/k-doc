@@ -127,6 +127,7 @@ export function usePayment() {
         webhookUrl,
         billkeyReq: 'N',
         mallReserved: '',
+        appScheme: 'kdoc',
       };
 
       console.log(
