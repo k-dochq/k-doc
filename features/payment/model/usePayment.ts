@@ -80,9 +80,9 @@ export function usePayment() {
 
       const returnUrl = finalReturnUrl;
 
-      // const webhookUrl = orderInfo.webhookUrl || `${baseUrl}/api/payment/webhook`;
-      const webhookUrl =
-        orderInfo.webhookUrl || `https://5b084e569f63.ngrok-free.app/api/payment/webhook`;
+      const webhookUrl = orderInfo.webhookUrl || `${baseUrl}/api/payment/webhook`;
+      // const webhookUrl =
+      //   orderInfo.webhookUrl || `https://5b084e569f63.ngrok-free.app/api/payment/webhook`;
 
       // 서명 생성에 사용할 파라미터
       const signParams = {
