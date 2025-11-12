@@ -17,6 +17,7 @@ export const ImageUploadInput = forwardRef<HTMLInputElement, ImageUploadInputPro
         onChange={onChange}
         className='hidden'
         disabled={disabled}
+        // capture 속성을 명시하지 않아 카메라 촬영 대신 갤러리/파일 선택만 가능하도록 설정
       />
     );
   },
