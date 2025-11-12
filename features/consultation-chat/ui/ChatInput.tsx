@@ -1,36 +1,32 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { SendIcon } from 'shared/ui/icons/SendIcon';
+import { useChatImageUpload } from '../model/useChatImageUpload';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { toast } from 'sonner';
+import { type Dictionary } from 'shared/model/types';
+import { CameraButton } from './CameraButton';
+import { SendButton } from './SendButton';
+import { ChatTextArea } from './ChatTextArea';
+import { ImageUploadInput } from './ImageUploadInput';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
   placeholder?: string;
   disabled?: boolean;
+  dict?: Dictionary;
 }
 
 export function ChatInput({
   onSendMessage,
   placeholder = '무엇이든 물어보세요!',
   disabled = false,
+  dict,
 }: ChatInputProps) {
   const [message, setMessage] = useState('');
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  // 자동 높이 조절
-  const adjustHeight = () => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = 'auto';
-      const scrollHeight = textarea.scrollHeight;
-      const maxHeight = 120; // 최대 높이 (약 6줄)
-      textarea.style.height = `${Math.min(scrollHeight, maxHeight)}px`;
-    }
-  };
-
-  useEffect(() => {
-    adjustHeight();
-  }, [message]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { user } = useAuth();
+  const { isUploading, uploadError, uploadImage, clearError } = useChatImageUpload(user?.id || '');
 
   const handleSend = () => {
     if (message.trim() && !disabled) {
@@ -50,33 +46,64 @@ export function ChatInput({
     setMessage(e.target.value);
   };
 
+  const handleCameraClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // 업로드 실행
+    const url = await uploadImage(file);
+
+    if (url) {
+      // 업로드 성공 시 <picture> 태그로 메시지 전송
+      const pictureMessage = `<picture>${url}</picture>`;
+      onSendMessage(pictureMessage);
+      const successMessage =
+        dict?.consultation?.input?.imageUploadSuccess || '이미지가 전송되었습니다';
+      toast.success(successMessage);
+    }
+
+    // input 초기화
+    e.target.value = '';
+  };
+
+  // 에러 토스트 표시
+  useEffect(() => {
+    if (uploadError) {
+      toast.error(uploadError);
+      clearError();
+    }
+  }, [uploadError, clearError]);
+
   return (
     <div className='relative box-border flex content-stretch items-end justify-between bg-white px-5 pt-4 pb-8'>
       <div className='pointer-events-none absolute inset-0 border-[1px_0px_0px] border-solid border-neutral-200 shadow-[0px_8px_16px_0px_rgba(0,0,0,0.24)]' />
 
-      <div className='flex w-full items-end justify-between'>
-        <div className='relative flex-1 shrink-0'>
-          <textarea
-            ref={textareaRef}
-            value={message}
-            onChange={handleChange}
-            onKeyPress={handleKeyPress}
-            placeholder={placeholder}
-            disabled={disabled}
-            rows={1}
-            className="w-full resize-none overflow-hidden border-none bg-transparent font-['Pretendard:Medium',_sans-serif] text-[14px] leading-[20px] text-neutral-900 outline-none placeholder:text-neutral-400"
-            style={{ minHeight: '20px', maxHeight: '120px' }}
-          />
-        </div>
+      <div className='flex w-full items-end justify-between gap-2'>
+        <CameraButton onClick={handleCameraClick} disabled={disabled} isUploading={isUploading} />
 
-        <button
-          type='button'
+        <ImageUploadInput
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          disabled={disabled || isUploading}
+        />
+
+        <ChatTextArea
+          value={message}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          placeholder={placeholder}
+          disabled={disabled || isUploading}
+        />
+
+        <SendButton
           onClick={handleSend}
-          disabled={!message.trim() || disabled}
-          className='relative ml-4 flex size-[30px] shrink-0 items-center justify-center'
-        >
-          <SendIcon className={message.trim() ? 'opacity-100' : 'opacity-50'} />
-        </button>
+          disabled={!message.trim() || disabled || isUploading}
+          hasMessage={!!message.trim()}
+        />
       </div>
     </div>
   );

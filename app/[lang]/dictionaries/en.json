@@ -541,7 +541,9 @@
     "error": "An error occurred while loading data.",
     "retry": "Retry",
     "input": {
-      "placeholder": "Ask anything!"
+      "placeholder": "Ask anything!",
+      "imageUploadSuccess": "Image sent successfully",
+      "imageLoadError": "Unable to load image"
     },
     "empty": {
       "chat": {

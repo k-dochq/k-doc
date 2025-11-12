@@ -3,7 +3,7 @@
 import React from 'react';
 import { MessageBubble, MessageTime } from 'shared/ui/message-bubble';
 import { HospitalHeader } from 'entities/hospital/ui/HospitalHeader';
-import { parseTextWithPaymentButtons } from 'shared/lib/payment-parser/message-parser';
+import { parseCombinedMessage } from 'shared/lib/message-parser';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ChatMessage } from '../api/entities/types';
@@ -38,7 +38,7 @@ export function HospitalMessage({
         <div className='relative flex min-w-0 shrink-0 content-stretch items-start justify-start'>
           <MessageBubble variant='hospital' className='self-stretch'>
             <div className="relative font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-900 not-italic">
-              {parseTextWithPaymentButtons({
+              {parseCombinedMessage({
                 message: message.content,
                 lang,
                 dict,
