@@ -18,7 +18,7 @@ export function MessageImage({ url, alt = 'Uploaded image', dict }: MessageImage
 
   if (hasError) {
     return (
-      <div className='flex h-[200px] w-full max-w-[280px] items-center justify-center rounded-xl bg-gray-100'>
+      <div className='flex h-[200px] w-full max-w-[280px] items-center justify-center rounded-xl'>
         <p className='text-sm text-gray-500'>{errorMessage}</p>
       </div>
     );
@@ -27,7 +27,7 @@ export function MessageImage({ url, alt = 'Uploaded image', dict }: MessageImage
   return (
     <div className='relative w-full max-w-[280px] overflow-hidden rounded-xl'>
       {isLoading && (
-        <div className='absolute inset-0 flex items-center justify-center bg-gray-100'>
+        <div className='absolute inset-0 flex items-center justify-center'>
           <div className='h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-[#DA47EF]' />
         </div>
       )}

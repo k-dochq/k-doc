@@ -1,6 +1,6 @@
 'use client';
 
-import { Loader2 } from 'lucide-react';
+import { LoadingSpinner } from 'shared/ui/loading-spinner';
 
 interface CameraButtonProps {
   onClick: () => void;
@@ -22,7 +22,7 @@ export function CameraButton({
       aria-label='Upload image'
     >
       {isUploading ? (
-        <Loader2 size={28} className='animate-spin text-[#A3A3A3]' />
+        <LoadingSpinner size={28} className='text-[#A3A3A3]' />
       ) : (
         <svg
           xmlns='http://www.w3.org/2000/svg'

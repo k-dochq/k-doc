@@ -7,6 +7,8 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
+import { analyzeMessageContent } from '../lib/message-content-handler';
+import { PictureMessage } from './PictureMessage';
 
 interface UserMessageProps {
   message: ChatMessage;
@@ -16,7 +18,21 @@ interface UserMessageProps {
 
 export function UserMessage({ message, lang, dict }: UserMessageProps) {
   const formattedTime = formatMessageTime(message.timestamp);
+  const contentAnalysis = analyzeMessageContent(message.content);
 
+  // Picture만 있는 경우: 버블 없이 이미지만 표시
+  if (contentAnalysis.hasOnlyPictures) {
+    return (
+      <div className='relative flex w-full shrink-0 content-stretch items-end justify-end gap-2'>
+        <MessageTime time={formattedTime} />
+        <div className='relative flex shrink-0 content-stretch items-end justify-end'>
+          <PictureMessage pictures={contentAnalysis.pictures} dict={dict} align='end' />
+        </div>
+      </div>
+    );
+  }
+
+  // 텍스트만 있는 경우: 기존처럼 버블로 표시
   return (
     <div className='relative flex w-full shrink-0 content-stretch items-end justify-end gap-2'>
       <MessageTime time={formattedTime} />

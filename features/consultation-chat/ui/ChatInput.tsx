@@ -61,9 +61,6 @@ export function ChatInput({
       // 업로드 성공 시 <picture> 태그로 메시지 전송
       const pictureMessage = `<picture>${url}</picture>`;
       onSendMessage(pictureMessage);
-      const successMessage =
-        dict?.consultation?.input?.imageUploadSuccess || '이미지가 전송되었습니다';
-      toast.success(successMessage);
     }
 
     // input 초기화
