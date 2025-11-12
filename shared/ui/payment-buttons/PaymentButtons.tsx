@@ -32,7 +32,7 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
     }
 
     // /payment 페이지로 하드 네비게이션
-    router.push(`/payment?${params.toString()}`);
+    window.location.href = `/payment?${params.toString()}`;
   };
 
   const handleCancelClick = async () => {

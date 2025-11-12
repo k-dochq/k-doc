@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 import { PAYVERSE_CONFIG } from '../config/payverse';
 import type { PayversePaymentParams } from './types';
 import { truncateCustomerId } from 'shared/lib/payment-utils';
+import { buildReturnUrl } from '../lib/return-url-builder';
 
 /**
  * Payverse 결제 요청 훅
@@ -69,17 +70,17 @@ export function usePayment() {
       const now = new Date();
       const reqDate = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}${String(now.getSeconds()).padStart(2, '0')}`;
 
-      // returnUrl 및 webhookUrl 생성
-      const baseUrl = window.location.origin;
-      const locale = window.location.pathname.split('/')[1] || 'ko';
+      // returnUrl 생성 (React Native Expo 환경에서는 앱 스킴 경로로 생성)
+      const locale =
+        typeof window !== 'undefined' ? window.location.pathname.split('/')[1] || 'ko' : 'ko';
 
-      // orderInfo.returnUrl이 있으면 사용, 없으면 기본 return 페이지
-      const finalReturnUrl = orderInfo.returnUrl
-        ? `${baseUrl}${orderInfo.returnUrl}` // 상대 경로를 절대 URL로 변환
-        : `${baseUrl}/${locale}/payment/return`;
+      const returnUrl = buildReturnUrl({
+        customReturnUrl: orderInfo.returnUrl,
+        locale,
+      });
 
-      const returnUrl = finalReturnUrl;
-
+      // webhookUrl 생성
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
       const webhookUrl = orderInfo.webhookUrl || `${baseUrl}/api/payment/webhook`;
       // const webhookUrl =
       //   orderInfo.webhookUrl || `https://5b084e569f63.ngrok-free.app/api/payment/webhook`;
