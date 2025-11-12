@@ -56,6 +56,7 @@ export function ConsultationChatMain({
         onSendMessage={onSendMessage}
         placeholder={dict.consultation?.input?.placeholder || '무엇이든 물어보세요!'}
         disabled={!isConnected}
+        dict={dict}
       />
     </div>
   );

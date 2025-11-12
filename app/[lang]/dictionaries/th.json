@@ -541,7 +541,9 @@
     "error": "เกิดข้อผิดพลาดขณะโหลดข้อมูล",
     "retry": "ลองใหม่",
     "input": {
-      "placeholder": "ถามอะไรก็ได้!"
+      "placeholder": "ถามอะไรก็ได้!",
+      "imageUploadSuccess": "ส่งรูปภาพสำเร็จ",
+      "imageLoadError": "ไม่สามารถโหลดรูปภาพ"
     },
     "empty": {
       "chat": {

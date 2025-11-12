@@ -1,26 +1,25 @@
 import { createClient } from 'shared/lib/supabase/client';
 import { STORAGE_CONFIG, STORAGE_PATHS } from 'shared/config/storage';
 
-export interface UploadImageParams {
+export interface UploadChatImageParams {
   file: File;
   userId: string;
-  type: 'BEFORE' | 'AFTER';
 }
 
-export interface UploadImageResult {
+export interface UploadChatImageResult {
   success: boolean;
   url?: string;
   error?: string;
 }
 
-export class ReviewImageUploadService {
+export class ChatImageUploadService {
   private readonly bucketName = STORAGE_CONFIG.BUCKET_NAME;
   private readonly maxFileSize = STORAGE_CONFIG.MAX_FILE_SIZE;
 
   /**
-   * 이미지를 Supabase Storage에 업로드
+   * 채팅 이미지를 Supabase Storage에 업로드
    */
-  async uploadImage({ file, userId, type }: UploadImageParams): Promise<UploadImageResult> {
+  async uploadImage({ file, userId }: UploadChatImageParams): Promise<UploadChatImageResult> {
     try {
       // 파일 크기 검증
       if (file.size > this.maxFileSize) {
@@ -43,9 +42,7 @@ export class ReviewImageUploadService {
       const timestamp = Date.now();
       const randomId = crypto.randomUUID();
       const fileName = `${userId}_${timestamp}_${randomId}.${fileExt}`;
-      const storagePath =
-        type === 'BEFORE' ? STORAGE_PATHS.REVIEW_CREATE_BEFORE : STORAGE_PATHS.REVIEW_CREATE_AFTER;
-      const filePath = `${storagePath}/${fileName}`;
+      const filePath = `${STORAGE_PATHS.CHAT_IMAGES}/${fileName}`;
 
       // Supabase Storage에 업로드
       const supabase = createClient();
@@ -72,20 +69,12 @@ export class ReviewImageUploadService {
         url: publicUrl,
       };
     } catch (error) {
-      console.error('Upload image error:', error);
+      console.error('Upload chat image error:', error);
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error',
       };
     }
-  }
-
-  /**
-   * 여러 이미지를 업로드
-   */
-  async uploadMultipleImages(params: UploadImageParams[]): Promise<UploadImageResult[]> {
-    const uploadPromises = params.map((param) => this.uploadImage(param));
-    return Promise.all(uploadPromises);
   }
 
   /**
@@ -106,7 +95,7 @@ export class ReviewImageUploadService {
 
       return { success: true };
     } catch (error) {
-      console.error('Delete image error:', error);
+      console.error('Delete chat image error:', error);
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error',

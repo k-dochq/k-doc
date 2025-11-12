@@ -541,7 +541,9 @@
     "error": "데이터를 불러오는 중 오류가 발생했습니다.",
     "retry": "다시 시도",
     "input": {
-      "placeholder": "무엇이든 물어보세요!"
+      "placeholder": "무엇이든 물어보세요!",
+      "imageUploadSuccess": "이미지가 전송되었습니다",
+      "imageLoadError": "이미지를 불러올 수 없습니다"
     },
     "empty": {
       "chat": {
