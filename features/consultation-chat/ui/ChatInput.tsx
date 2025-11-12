@@ -36,6 +36,16 @@ export function ChatInput({
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
+    // 모바일 디바이스 감지: 터치 포인터가 있는 경우
+    const isMobileDevice =
+      typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
+    // 모바일에서는 Enter 키로 줄바꿈만 허용 (전송하지 않음)
+    if (isMobileDevice) {
+      return; // Enter 키를 눌러도 기본 동작(줄바꿈) 허용
+    }
+
+    // 데스크톱에서는 Enter로 전송, Shift+Enter로 줄바꿈
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
