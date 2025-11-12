@@ -104,7 +104,7 @@ export function MessageListContent({
                   dict={dict}
                 />
               ) : (
-                <UserMessage message={message} />
+                <UserMessage message={message} lang={lang} dict={dict} />
               )}
             </div>
           );
