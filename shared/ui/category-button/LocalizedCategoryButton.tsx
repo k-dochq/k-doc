@@ -2,6 +2,7 @@ import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { type CategoryButtonData } from './CategoryButton';
+import { getCategoryBackgroundSvg } from './utils/getCategoryBackgroundSvg';
 
 interface LocalizedCategoryButtonProps {
   category: CategoryButtonData;
@@ -24,12 +25,23 @@ export function LocalizedCategoryButton({
     return getLocalizedTextByLocale(category.labels, lang);
   };
 
+  const backgroundSvg = getCategoryBackgroundSvg(category.type);
+
   return (
-    <LocaleLink href={href} className={`flex min-w-0 flex-col items-center justify-center gap-1 w-[71px] ${className}`}>
+    <LocaleLink
+      href={href}
+      className={`flex w-[71px] min-w-0 flex-col items-center justify-center gap-1 ${className}`}
+    >
       <div
-        className={`flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-white bg-gradient-to-b from-white to-[#FFD9F9] transition-all duration-200 ease-out hover:scale-105 active:scale-95 [filter:drop-shadow(1px_1px_12px_rgba(76,25,168,0.12))] hover:[filter:drop-shadow(2px_2px_16px_rgba(76,25,168,0.2))] active:[filter:drop-shadow(0px_0px_8px_rgba(76,25,168,0.15))] ${iconClassName}`}
+        className={`relative flex h-[60px] w-[60px] items-center justify-center overflow-hidden rounded-xl transition-all duration-200 ease-out hover:scale-105 active:scale-95 ${iconClassName}`}
+        style={{
+          backgroundImage: `url(${backgroundSvg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
-        {category.icon()}
+        <div className='relative z-10'>{category.icon()}</div>
       </div>
       <span
         className={`line-clamp-2 w-full min-w-0 text-center text-xs leading-4 font-medium break-words text-neutral-900 ${labelClassName}`}
