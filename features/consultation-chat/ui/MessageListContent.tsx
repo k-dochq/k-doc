@@ -15,6 +15,7 @@ interface MessageListContentProps {
   hospitalName: string;
   hospitalImageUrl?: string;
   lang: Locale;
+  isLoading?: boolean;
   hasMore?: boolean;
   onLoadMore?: () => Promise<void> | void;
   dict: Dictionary;
@@ -25,6 +26,7 @@ export function MessageListContent({
   hospitalName,
   hospitalImageUrl,
   lang,
+  isLoading = false,
   hasMore,
   onLoadMore,
   dict,
@@ -35,16 +37,28 @@ export function MessageListContent({
   const initialScrolledRef = useRef(false);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
+    // 로딩 중이면 스크롤하지 않음
+    if (isLoading) return;
+
+    // 이전 메시지 로드 중이면 스크롤하지 않음
     if (isPrependingRef.current) return;
+
+    // 초기 로드 시 한 번만 스크롤
     if (!initialScrolledRef.current) {
       scrollToBottom();
       initialScrolledRef.current = true;
+      return;
     }
-  }, [messages]);
+
+    // 새 메시지가 추가되었을 때 자동 스크롤
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   const handleLoadMoreClick = async () => {
     if (!onLoadMore || !containerRef.current) {

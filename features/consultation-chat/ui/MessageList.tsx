@@ -45,6 +45,7 @@ export function MessageList({
       hospitalName={hospitalName}
       hospitalImageUrl={hospitalImageUrl}
       lang={lang}
+      isLoading={isLoading}
       hasMore={hasMore}
       onLoadMore={onLoadMore}
       dict={dict}
