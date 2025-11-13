@@ -75,8 +75,8 @@ export async function GET(request: NextRequest) {
 
     // 페이지네이션: 최신순으로 limit+1 조회 후 hasMore 판정, 응답은 ASC로 반환
     const limit = (() => {
-      const n = parseInt(limitParam || '50', 10);
-      if (Number.isNaN(n)) return 50;
+      const n = parseInt(limitParam || '20', 10);
+      if (Number.isNaN(n)) return 20;
       return Math.min(Math.max(n, 1), 100);
     })();
 
