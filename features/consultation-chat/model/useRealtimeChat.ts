@@ -48,7 +48,7 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         hasMore,
         nextCursor,
       } = await fetchChatHistory(hospitalId, {
-        limit: 50,
+        limit: 20,
       });
       const sortedMessages = sortMessagesByTime(page);
       setMessages(sortedMessages);
@@ -71,7 +71,7 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         messages: page,
         hasMore: more,
         nextCursor: cursor,
-      } = await fetchChatHistory(hospitalId, { limit: 50, cursor: nextCursor });
+      } = await fetchChatHistory(hospitalId, { limit: 20, cursor: nextCursor });
       setMessages((prev) => sortMessagesByTime([...page, ...prev]));
       setHasMore(more);
       setNextCursor(cursor);
