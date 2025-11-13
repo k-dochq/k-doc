@@ -35,7 +35,7 @@ export function MessageImage({ url, alt = 'Uploaded image', dict }: MessageImage
 
   if (hasError) {
     return (
-      <div className='flex h-[200px] w-full max-w-[280px] items-center justify-center rounded-xl'>
+      <div className='flex h-[200px] w-full max-w-[270px] items-center justify-center rounded-xl'>
         <p className='text-sm text-gray-500'>{errorMessage}</p>
       </div>
     );
@@ -46,7 +46,7 @@ export function MessageImage({ url, alt = 'Uploaded image', dict }: MessageImage
       <button
         type='button'
         onClick={handleImageClick}
-        className='relative w-full max-w-[280px] cursor-pointer overflow-hidden rounded-xl'
+        className='relative w-full max-w-[270px] cursor-pointer overflow-hidden rounded-xl'
         aria-label='이미지 확대보기'
       >
         {isLoading && (
@@ -57,8 +57,8 @@ export function MessageImage({ url, alt = 'Uploaded image', dict }: MessageImage
         <Image
           src={url}
           alt={alt}
-          width={280}
-          height={280}
+          width={270}
+          height={270}
           className='h-auto w-full rounded-xl object-cover'
           onLoad={() => setIsLoading(false)}
           onError={() => {
