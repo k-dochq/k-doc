@@ -90,8 +90,9 @@ export function ConsultationChatClient({ lang, hospitalId, dict }: ConsultationC
 
   // 에러 상태
   if (hospitalError || chatError) {
-    const errorMessage = hospitalError?.message || chatError || '알 수 없는 오류가 발생했습니다.';
-    return <ConsultationChatError lang={lang} dict={dict} error={errorMessage} />;
+    // const errorMessage = hospitalError?.message || chatError || '알 수 없는 오류가 발생했습니다.';
+    // return <ConsultationChatError lang={lang} dict={dict} error={errorMessage} />;
+    return <ConsultationChatLoading lang={lang} dict={dict} />;
   }
 
   // 메인 채팅 UI
