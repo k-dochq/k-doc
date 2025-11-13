@@ -1,19 +1,20 @@
 'use client';
 
 import { forwardRef } from 'react';
+import { getAcceptString } from 'shared/config/file-types';
 
-interface ImageUploadInputProps {
+interface FileUploadInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 }
 
-export const ImageUploadInput = forwardRef<HTMLInputElement, ImageUploadInputProps>(
+export const FileUploadInput = forwardRef<HTMLInputElement, FileUploadInputProps>(
   ({ onChange, disabled = false }, ref) => {
     return (
       <input
         ref={ref}
         type='file'
-        // accept='image/*'
+        accept={getAcceptString()}
         onChange={onChange}
         className='hidden'
         disabled={disabled}
@@ -23,4 +24,4 @@ export const ImageUploadInput = forwardRef<HTMLInputElement, ImageUploadInputPro
   },
 );
 
-ImageUploadInput.displayName = 'ImageUploadInput';
+FileUploadInput.displayName = 'FileUploadInput';
