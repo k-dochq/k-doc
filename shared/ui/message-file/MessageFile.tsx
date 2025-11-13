@@ -29,7 +29,7 @@ export function MessageFile({ url, fileName, fileSize, mimeType, dict }: Message
   };
 
   return (
-    <div className='flex w-full max-w-[280px] flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 shadow-sm'>
+    <div className='flex w-full max-w-[270px] flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 shadow-sm'>
       {/* 파일 정보 */}
       <div className='flex items-start gap-3'>
         {/* 파일 아이콘 */}
