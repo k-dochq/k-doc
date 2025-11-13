@@ -543,7 +543,9 @@
     "input": {
       "placeholder": "ถามอะไรก็ได้!",
       "imageUploadSuccess": "ส่งรูปภาพสำเร็จ",
-      "imageLoadError": "ไม่สามารถโหลดรูปภาพ"
+      "imageLoadError": "ไม่สามารถโหลดรูปภาพ",
+      "fileDownloadError": "ไม่สามารถดาวน์โหลดไฟล์",
+      "downloadButton": "ดาวน์โหลด"
     },
     "empty": {
       "chat": {

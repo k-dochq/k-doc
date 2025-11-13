@@ -13,11 +13,12 @@ export const ImageUploadInput = forwardRef<HTMLInputElement, ImageUploadInputPro
       <input
         ref={ref}
         type='file'
-        accept='image/*'
+        accept='image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt'
         onChange={onChange}
         className='hidden'
         disabled={disabled}
         // capture 속성을 명시하지 않아 카메라 촬영 대신 갤러리/파일 선택만 가능하도록 설정
+        // 이미지와 파일 모두 선택 가능
       />
     );
   },

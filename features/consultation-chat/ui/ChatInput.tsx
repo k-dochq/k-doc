@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useChatImageUpload } from '../model/useChatImageUpload';
+import { useChatFileUpload } from '../model/useChatFileUpload';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { toast } from 'sonner';
 import { type Dictionary } from 'shared/model/types';
@@ -26,7 +27,20 @@ export function ChatInput({
   const [message, setMessage] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { user } = useAuth();
-  const { isUploading, uploadError, uploadImage, clearError } = useChatImageUpload(user?.id || '');
+  const {
+    isUploading: isImageUploading,
+    uploadError: imageUploadError,
+    uploadImage,
+    clearError: clearImageError,
+  } = useChatImageUpload(user?.id || '');
+  const {
+    isUploading: isFileUploading,
+    uploadError: fileUploadError,
+    uploadFile,
+    clearError: clearFileError,
+  } = useChatFileUpload(user?.id || '');
+
+  const isUploading = isImageUploading || isFileUploading;
 
   const handleSend = () => {
     if (message.trim() && !disabled) {
@@ -64,13 +78,23 @@ export function ChatInput({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // 업로드 실행
-    const url = await uploadImage(file);
+    // 파일 타입에 따라 이미지 또는 파일 업로드
+    const isImage = file.type.startsWith('image/');
 
-    if (url) {
-      // 업로드 성공 시 <picture> 태그로 메시지 전송
-      const pictureMessage = `<picture>${url}</picture>`;
-      onSendMessage(pictureMessage);
+    if (isImage) {
+      // 이미지 업로드
+      const url = await uploadImage(file);
+      if (url) {
+        const pictureMessage = `<picture>${url}</picture>`;
+        onSendMessage(pictureMessage);
+      }
+    } else {
+      // 파일 업로드
+      const fileResult = await uploadFile(file);
+      if (fileResult) {
+        const fileMessage = `<file>${fileResult.url}|${fileResult.fileName}|${fileResult.fileSize}</file>`;
+        onSendMessage(fileMessage);
+      }
     }
 
     // input 초기화
@@ -79,11 +103,18 @@ export function ChatInput({
 
   // 에러 토스트 표시
   useEffect(() => {
-    if (uploadError) {
-      toast.error(uploadError);
-      clearError();
+    if (imageUploadError) {
+      toast.error(imageUploadError);
+      clearImageError();
     }
-  }, [uploadError, clearError]);
+  }, [imageUploadError, clearImageError]);
+
+  useEffect(() => {
+    if (fileUploadError) {
+      toast.error(fileUploadError);
+      clearFileError();
+    }
+  }, [fileUploadError, clearFileError]);
 
   return (
     <div className='relative box-border flex content-stretch items-end justify-between bg-white px-5 pt-4 pb-8'>

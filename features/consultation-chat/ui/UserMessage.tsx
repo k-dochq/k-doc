@@ -9,6 +9,7 @@ import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
 import { analyzeMessageContent } from '../lib/message-content-handler';
 import { PictureMessage } from './PictureMessage';
+import { FileMessage } from './FileMessage';
 
 interface UserMessageProps {
   message: ChatMessage;
@@ -27,6 +28,18 @@ export function UserMessage({ message, lang, dict }: UserMessageProps) {
         <MessageTime time={formattedTime} />
         <div className='relative flex shrink-0 content-stretch items-end justify-end'>
           <PictureMessage pictures={contentAnalysis.pictures} dict={dict} align='end' />
+        </div>
+      </div>
+    );
+  }
+
+  // File만 있는 경우: 버블 없이 파일만 표시
+  if (contentAnalysis.hasOnlyFiles) {
+    return (
+      <div className='relative flex w-full shrink-0 content-stretch items-end justify-end gap-2'>
+        <MessageTime time={formattedTime} />
+        <div className='relative flex shrink-0 content-stretch items-end justify-end'>
+          <FileMessage files={contentAnalysis.files} dict={dict} align='end' />
         </div>
       </div>
     );
