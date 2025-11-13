@@ -28,8 +28,8 @@ export function useActiveBanners() {
   return useQuery({
     queryKey: ['active-banners'],
     queryFn: fetchActiveBanners,
-    staleTime: 15 * 60 * 1000, // 15분
-    gcTime: 30 * 60 * 1000, // 30분
+    staleTime: 30 * 60 * 1000, // 30분
+    gcTime: 60 * 60 * 1000, // 60분
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
