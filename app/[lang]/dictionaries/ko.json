@@ -543,7 +543,8 @@
     "input": {
       "placeholder": "무엇이든 물어보세요!",
       "imageUploadSuccess": "이미지가 전송되었습니다",
-      "imageLoadError": "이미지를 불러올 수 없습니다"
+      "imageLoadError": "이미지를 불러올 수 없습니다",
+      "downloadFile": "다운로드"
     },
     "empty": {
       "chat": {

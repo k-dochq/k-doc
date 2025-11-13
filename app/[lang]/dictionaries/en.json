@@ -543,7 +543,8 @@
     "input": {
       "placeholder": "Ask anything!",
       "imageUploadSuccess": "Image sent successfully",
-      "imageLoadError": "Unable to load image"
+      "imageLoadError": "Unable to load image",
+      "downloadFile": "Download"
     },
     "empty": {
       "chat": {

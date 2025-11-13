@@ -156,18 +156,18 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     });
   }, []);
 
-  // visibilitychange 이벤트 핸들러
-  const handleVisibilityChange = useCallback(() => {
-    // visible 상태가 아니면 무시 (포그라운드로 돌아왔을 때만 처리)
-    if (typeof document === 'undefined' || document.visibilityState !== 'visible') {
-      return;
-    }
+  // visibilitychange 이벤트 핸들러 (임시 주석처리 - 파일 업로드 시 새로고침 방지)
+  // const handleVisibilityChange = useCallback(() => {
+  //   // visible 상태가 아니면 무시 (포그라운드로 돌아왔을 때만 처리)
+  //   if (typeof document === 'undefined' || document.visibilityState !== 'visible') {
+  //     return;
+  //   }
 
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🔄 Page became visible - reloading page');
-    }
-    window.location.reload();
-  }, []);
+  //   if (process.env.NODE_ENV === 'development') {
+  //     console.log('🔄 Page became visible - reloading page');
+  //   }
+  //   window.location.reload();
+  // }, []);
 
   useEffect(() => {
     if (!userId || !hospitalId) {
@@ -186,10 +186,10 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     // 1. 먼저 채팅 히스토리 로드
     loadChatHistory();
 
-    // 2. visibilitychange 이벤트 리스너 등록
-    if (typeof document !== 'undefined') {
-      document.addEventListener('visibilitychange', handleVisibilityChange);
-    }
+    // 2. visibilitychange 이벤트 리스너 등록 (임시 주석처리)
+    // if (typeof document !== 'undefined') {
+    //   document.addEventListener('visibilitychange', handleVisibilityChange);
+    // }
 
     // 2. 채널 생성 및 구독
     const channelName = createChannelName(roomId);
@@ -259,13 +259,13 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         channelRef.current.unsubscribe();
         channelRef.current = null;
       }
-      // visibilitychange 이벤트 리스너 제거
-      if (typeof document !== 'undefined') {
-        document.removeEventListener('visibilitychange', handleVisibilityChange);
-      }
+      // visibilitychange 이벤트 리스너 제거 (임시 주석처리)
+      // if (typeof document !== 'undefined') {
+      //   document.removeEventListener('visibilitychange', handleVisibilityChange);
+      // }
       setIsConnected(false);
     };
-  }, [userId, userName, hospitalId, loadChatHistory, updateMessages, handleVisibilityChange]);
+  }, [userId, userName, hospitalId, loadChatHistory, updateMessages]);
 
   return {
     // 상태
