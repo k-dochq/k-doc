@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { sendErrorToSlack } from 'shared/lib/error-tracking/send-error-to-slack';
+import * as Sentry from '@sentry/nextjs';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -18,16 +18,24 @@ export default function Error({ error, reset }: ErrorProps) {
       timestamp: new Date().toISOString(),
     });
 
-    // Slack으로 에러 전송
-    sendErrorToSlack({
-      error,
-      errorBoundary: 'page-error',
-      additionalInfo: {
-        digest: error.digest,
-        errorType: 'Page Error',
-        timestamp: new Date().toISOString(),
-      },
-    });
+    // Sentry로 에러 전송
+    try {
+      const eventId = Sentry.captureException(error, {
+        tags: {
+          errorBoundary: 'page-error',
+        },
+        contexts: {
+          error: {
+            digest: error.digest,
+            errorType: 'Page Error',
+            timestamp: new Date().toISOString(),
+          },
+        },
+      });
+      console.log('✅ Sentry event ID:', eventId);
+    } catch (sentryError) {
+      console.error('❌ Failed to send error to Sentry:', sentryError);
+    }
   }, [error]);
 
   const handleRetry = () => {
