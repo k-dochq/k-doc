@@ -3,6 +3,7 @@ import { type ReviewCardData } from '../../model/types';
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getUserDisplayName } from 'shared/lib';
+import { getHospitalThumbnailImageUrl } from 'entities/hospital/lib/image-utils';
 
 export interface GetReviewDetailParams {
   reviewId: string;
@@ -76,11 +77,14 @@ export async function getReviewDetail({
             },
             HospitalImage: {
               where: {
-                imageType: 'THUMBNAIL',
+                isActive: true,
               },
-              orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
-              take: 1,
+              orderBy: [
+                { imageType: 'asc' }, // MAIN이 먼저 오도록
+                { order: 'asc' },
+              ],
               select: {
+                imageType: true,
                 imageUrl: true,
               },
             },
@@ -154,7 +158,7 @@ export async function getReviewDetail({
         prices: parsePriceInfo(review.Hospital.prices),
         rating: review.Hospital.rating,
         reviewCount: review.Hospital._count.Review,
-        thumbnailImageUrl: review.Hospital.HospitalImage[0]?.imageUrl || null,
+        thumbnailImageUrl: getHospitalThumbnailImageUrl(review.Hospital.HospitalImage),
         discountRate: review.Hospital.discountRate,
         ranking: review.Hospital.ranking,
         district: {
