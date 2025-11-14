@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { sendErrorToSlack } from 'shared/lib/error-tracking/send-error-to-slack';
+import * as Sentry from '@sentry/nextjs';
 
 interface GlobalErrorProps {
   error: Error & { digest?: string };
@@ -10,14 +10,17 @@ interface GlobalErrorProps {
 
 export default function GlobalError({ error, reset }: GlobalErrorProps) {
   useEffect(() => {
-    // 전역 에러를 Slack으로 전송
-    sendErrorToSlack({
-      error,
-      errorBoundary: 'global-error',
-      additionalInfo: {
-        digest: error.digest,
-        errorType: 'Global Error',
-        timestamp: new Date().toISOString(),
+    // 전역 에러를 Sentry로 전송
+    Sentry.captureException(error, {
+      tags: {
+        errorBoundary: 'global-error',
+      },
+      contexts: {
+        error: {
+          digest: error.digest,
+          errorType: 'Global Error',
+          timestamp: new Date().toISOString(),
+        },
       },
     });
   }, [error]);
