@@ -39,9 +39,9 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   const { lang } = await params;
 
   const titles = {
-    ko: 'K-DOC',
-    en: 'K-DOC',
-    th: 'K-DOC | เค-ด็อค',
+    ko: 'K-DOC 10',
+    en: 'K-DOC 10',
+    th: 'K-DOC 10 | เค-ด็อค',
   };
 
   const descriptions = {
