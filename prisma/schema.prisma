@@ -107,6 +107,7 @@ model Hospital {
   latitude                 Float?
   longitude                Float?
   displayLocationName      Json?
+  ConsultationMemo         ConsultationMemo[]
   ConsultationMessage      ConsultationMessage[]
   Doctor                   Doctor[]
   District                 District?                  @relation(fields: [districtId], references: [id], onDelete: Cascade)
@@ -252,6 +253,7 @@ model User {
   termsVersion                String?               @db.VarChar(20)
   userStatusType              UserStatusType?       @default(ACTIVE)
   Comment                     Comment[]
+  ConsultationMemo            ConsultationMemo[]
   ConsultationMessage         ConsultationMessage[]
   DoctorLike                  DoctorLike[]
   HospitalLike                HospitalLike[]
@@ -591,6 +593,26 @@ model EventBannerImage {
   @@unique([bannerId, locale])
   @@index([bannerId])
   @@index([locale])
+  @@schema("public")
+}
+
+model ConsultationMemo {
+  id          String   @id @db.Uuid
+  userId      String   @db.Uuid
+  hospitalId  String   @db.Uuid
+  content     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  createdBy   String?  @db.Uuid
+  isCompleted Boolean?
+  isPinned    Boolean?
+  Hospital    Hospital @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([userId, hospitalId, createdAt])
+  @@index([userId, hospitalId])
+  @@index([userId, hospitalId, isPinned])
   @@schema("public")
 }
 
