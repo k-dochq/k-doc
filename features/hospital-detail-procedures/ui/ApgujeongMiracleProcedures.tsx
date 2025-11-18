@@ -24,7 +24,7 @@ export function ApgujeongMiracleProcedures({
       case 'en':
         return 'SjLkNqmkdNw';
       case 'th':
-        return 'X_5yv14dDTo?si=-tk6l7UmsMOPA2Uz';
+        return 'X_5yv14dDTo';
       default:
         return '234LOgm0GWI'; // 기본값은 한국어
     }
@@ -45,7 +45,7 @@ export function ApgujeongMiracleProcedures({
   };
 
   const videoId = getYouTubeVideoId(lang);
-  const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
   const miracleImagePath = getMiracleDetailImagePath(lang);
 
   return (
