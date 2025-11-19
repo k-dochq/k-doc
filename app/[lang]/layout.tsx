@@ -7,6 +7,8 @@ import { GlobalModal } from 'shared/ui/global-modal';
 import { GradientBackground } from 'shared/ui/gradient-background/GradientBackground';
 import { GoogleAnalytics } from 'shared/ui/google-analytics';
 import { ContentsquareAnalytics } from 'shared/ui/ContentsquareAnalytics';
+import { MetaPixel } from 'shared/ui/meta-pixel';
+import { GoogleTagManager } from 'shared/ui/google-tag-manager';
 import { Toaster } from 'sonner';
 
 const pretendard = localFont({
@@ -121,6 +123,10 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   return (
     <html lang={lang} className={allFontVariables}>
       <body className={currentFont.className}>
+        {/* Google Tag Manager */}
+        <GoogleTagManager containerId='GTM-MBVD4CJR' />
+        {/* Meta Pixel */}
+        <MetaPixel pixelId='1160778096188076' />
         {/* Google Analytics */}
         <GoogleAnalytics gaId='G-8NMENMCDZH' />
         <GoogleAnalytics gaId='G-HB3H04LPPD' />
