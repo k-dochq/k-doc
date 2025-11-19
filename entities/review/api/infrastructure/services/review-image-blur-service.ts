@@ -1,4 +1,4 @@
-import { type ReviewCardData } from '../../../model/types';
+import { type ReviewCardData, type ReviewImage } from '../../../model/types';
 
 /**
  * Blur 이미지 URL 상수
@@ -23,30 +23,71 @@ export class ReviewImageBlurService {
   }
 
   /**
+   * 가슴(BREAST) 카테고리인지 확인
+   */
+  private shouldBlurReview(review: ReviewCardData): boolean {
+    return review.medicalSpecialty.specialtyType === 'BREAST';
+  }
+
+  /**
+   * Blur 이미지 객체 생성
+   */
+  private createBlurImage(reviewId: string, imageType: 'BEFORE' | 'AFTER'): ReviewImage {
+    return {
+      id: `blur-${imageType.toLowerCase()}-${reviewId}`,
+      imageType,
+      imageUrl: this.getRandomBlurImageUrl(),
+      alt: null,
+      order: null,
+    };
+  }
+
+  /**
+   * 이미지 배열 처리: 있으면 blur 이미지로 교체, 없으면 하나 생성
+   */
+  private processImages(
+    images: ReviewImage[],
+    reviewId: string,
+    imageType: 'BEFORE' | 'AFTER',
+  ): ReviewImage[] {
+    if (images.length > 0) {
+      // 이미지가 있으면 blur 이미지로 교체
+      return images.map((img) => ({
+        ...img,
+        imageUrl: this.getRandomBlurImageUrl(),
+      }));
+    }
+
+    // 이미지가 없으면 하나 생성
+    return [this.createBlurImage(reviewId, imageType)];
+  }
+
+  /**
    * 리뷰 데이터의 이미지 URL을 blur 이미지로 교체
    * 가슴(BREAST) 카테고리인 경우에만 처리
+   * before 또는 after에 이미지가 없으면 하나라도 생성하여 blur 이미지 URL 설정
    * @param reviews 리뷰 데이터 배열
    * @returns 이미지 URL이 blur 이미지로 교체된 리뷰 데이터 배열 (가슴 카테고리만)
    */
   replaceReviewImagesWithBlur(reviews: ReviewCardData[]): ReviewCardData[] {
     return reviews.map((review) => {
       // 가슴(BREAST) 카테고리가 아닌 경우 원본 그대로 반환
-      if (review.medicalSpecialty.specialtyType !== 'BREAST') {
+      if (!this.shouldBlurReview(review)) {
         return review;
       }
+
+      // before 이미지 처리
+      const beforeImages = this.processImages(review.images.before, review.id, 'BEFORE');
+
+      // after 이미지 처리
+      const afterImages = this.processImages(review.images.after, review.id, 'AFTER');
 
       // 가슴 카테고리인 경우에만 blur 이미지로 교체
       return {
         ...review,
         images: {
-          before: review.images.before.map((img) => ({
-            ...img,
-            imageUrl: this.getRandomBlurImageUrl(),
-          })),
-          after: review.images.after.map((img) => ({
-            ...img,
-            imageUrl: this.getRandomBlurImageUrl(),
-          })),
+          before: beforeImages,
+          after: afterImages,
         },
       };
     });

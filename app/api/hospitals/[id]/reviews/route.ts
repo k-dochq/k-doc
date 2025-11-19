@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getHospitalReviews } from 'entities/review';
+import { getHospitalReviews, ReviewImageBlurService } from 'entities/review';
+import { AuthService } from 'shared/lib/auth/server';
 
 interface RouteParams {
   params: Promise<{
@@ -26,12 +27,25 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     const excludeReviewId = searchParams.get('excludeReviewId') || undefined;
 
     // 리뷰 데이터 조회
-    const reviewsData = await getHospitalReviews({
+    let reviewsData = await getHospitalReviews({
       hospitalId,
       page,
       limit,
       excludeReviewId,
     });
+
+    // 로그인 상태 확인 (이미지 블러 처리용)
+    const authService = new AuthService();
+    const currentUser = await authService.getCurrentUserOrNull();
+
+    // 로그인이 안되어 있으면 이미지 URL을 blur 이미지로 교체
+    if (!currentUser) {
+      const blurService = new ReviewImageBlurService();
+      reviewsData = {
+        ...reviewsData,
+        reviews: blurService.replaceReviewImagesWithBlur(reviewsData.reviews),
+      };
+    }
 
     const response = NextResponse.json({
       success: true,
