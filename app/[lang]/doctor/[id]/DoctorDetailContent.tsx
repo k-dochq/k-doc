@@ -14,7 +14,6 @@ import { transformDoctorDetailToHospitalDoctor } from '@/lib/utils/doctor-transf
 import { DoctorCareer } from '@/features/doctor-career';
 import { HospitalCard } from '@/entities/hospital/ui/HospitalCard';
 import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospital-transform';
-import { transformDoctorReviewsToReviewCardData } from '@/lib/utils/doctor-reviews-transform';
 import { DoctorHospitalReviews } from '@/features/doctor-hospital-reviews';
 import { DoctorDetailHeaderActions } from './DoctorDetailHeaderActions';
 
@@ -57,9 +56,6 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
 
   // HospitalCard에 맞는 데이터 구조로 변환
   const hospitalCardData = transformDoctorHospitalToHospitalCard(doctor);
-
-  // ReviewCardData에 맞는 데이터 구조로 변환
-  const reviewCardData = transformDoctorReviewsToReviewCardData(doctor);
 
   // 경력 이미지 추출 (CAREER 타입만)
   const careerImages = doctor.doctorImages
@@ -122,7 +118,7 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
 
         {/* 시술후기 섹션 */}
         <DoctorHospitalReviews
-          reviews={reviewCardData}
+          reviews={doctor.hospital.reviews}
           hospitalId={doctor.hospital.id}
           lang={lang}
           dict={dict}

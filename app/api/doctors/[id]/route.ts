@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from 'shared/lib/prisma';
-import { parseLocalizedText } from 'shared/model/types/common';
+import { parseLocalizedText, parsePriceInfo } from 'shared/model/types/common';
+import { getUserDisplayName } from 'shared/lib';
+import { type ReviewCardData } from 'entities/review';
 
 interface RouteParams {
   params: Promise<{
@@ -136,6 +138,77 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       return NextResponse.json({ error: '의사를 찾을 수 없습니다.' }, { status: 404 });
     }
 
+    // 리뷰 데이터를 ReviewCardData 형식으로 변환
+    const reviews: ReviewCardData[] = doctor.Hospital.Review.map((review) => {
+      return {
+        id: review.id,
+        userId: review.User.id,
+        rating: review.rating,
+        title: review.title ? parseLocalizedText(review.title) : null,
+        content: review.content ? parseLocalizedText(review.content) : null,
+        concernsMultilingual: review.concernsMultilingual
+          ? parseLocalizedText(review.concernsMultilingual as any)
+          : null,
+        createdAt: review.createdAt,
+        viewCount: review.viewCount,
+        likeCount: review.likeCount,
+        commentCount: review.commentCount,
+        likedUserIds: [], // ReviewLike 정보가 없으므로 빈 배열
+        isLiked: false, // 기본값으로 false 설정
+        isRecommended: review.isRecommended,
+        user: {
+          displayName: getUserDisplayName(review.User),
+          nickName: review.User.nickName,
+          name: review.User.name,
+        },
+        hospital: {
+          id: doctor.Hospital.id,
+          name: parseLocalizedText(doctor.Hospital.name),
+          address: parseLocalizedText(doctor.Hospital.address),
+          prices: parsePriceInfo(doctor.Hospital.prices),
+          rating: doctor.Hospital.rating,
+          reviewCount: doctor.Hospital._count.Review,
+          thumbnailImageUrl:
+            doctor.Hospital.HospitalImage.find((img) => img.imageType === 'MAIN')?.imageUrl ||
+            doctor.Hospital.HospitalImage[0]?.imageUrl ||
+            null,
+          discountRate: doctor.Hospital.discountRate,
+          ranking: doctor.Hospital.ranking,
+          district: {
+            name: doctor.Hospital.District
+              ? parseLocalizedText(doctor.Hospital.District.name)
+              : { ko_KR: '', en_US: '', th_TH: '' },
+            displayName: doctor.Hospital.District?.displayName
+              ? parseLocalizedText(doctor.Hospital.District.displayName)
+              : null,
+          },
+          displayLocationName: doctor.Hospital.displayLocationName
+            ? parseLocalizedText(doctor.Hospital.displayLocationName)
+            : null,
+        },
+        medicalSpecialty: {
+          name: parseLocalizedText(review.MedicalSpecialty.name),
+          specialtyType: review.MedicalSpecialty.specialtyType,
+        },
+        images: {
+          before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
+            id: img.id,
+            imageType: img.imageType,
+            imageUrl: img.imageUrl,
+            alt: img.alt,
+            order: img.order,
+          })),
+          after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
+            id: img.id,
+            imageType: img.imageType,
+            imageUrl: img.imageUrl,
+            alt: img.alt,
+            order: img.order,
+          })),
+        },
+      };
+    });
+
     // 응답 데이터 구성
     const response = {
       id: doctor.id,
@@ -186,37 +259,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
           name: parseLocalizedText(item.MedicalSpecialty.name),
           specialtyType: item.MedicalSpecialty.specialtyType,
         })),
-        reviews: doctor.Hospital.Review.map((review) => ({
-          id: review.id,
-          rating: review.rating,
-          title: review.title ? parseLocalizedText(review.title) : null,
-          content: review.content ? parseLocalizedText(review.content) : null,
-          isRecommended: review.isRecommended,
-          viewCount: review.viewCount,
-          likeCount: review.likeCount,
-          createdAt: review.createdAt,
-          concerns: review.concerns,
-          concernsMultilingual: review.concernsMultilingual,
-          commentCount: review.commentCount,
-          user: {
-            id: review.User.id,
-            name: review.User.name,
-            nickName: review.User.nickName,
-            profileImgUrl: review.User.profileImgUrl,
-          },
-          medicalSpecialty: {
-            id: review.MedicalSpecialty.id,
-            name: parseLocalizedText(review.MedicalSpecialty.name),
-            specialtyType: review.MedicalSpecialty.specialtyType,
-          },
-          reviewImages: review.ReviewImage.map((image) => ({
-            id: image.id,
-            imageType: image.imageType,
-            imageUrl: image.imageUrl,
-            alt: image.alt,
-            order: image.order,
-          })),
-        })),
+        reviews,
       },
       doctorImages: doctor.DoctorImage.map((image) => ({
         id: image.id,
