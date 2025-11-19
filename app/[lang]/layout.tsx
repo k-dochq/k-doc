@@ -123,6 +123,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
       <body className={currentFont.className}>
         {/* Google Analytics */}
         <GoogleAnalytics gaId='G-8NMENMCDZH' />
+        <GoogleAnalytics gaId='G-HB3H04LPPD' />
         {/* Contentsquare 히트맵 분석 */}
         <ContentsquareAnalytics />
 
