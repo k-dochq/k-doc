@@ -21,6 +21,7 @@ const notoSansThaiLooped = localFont({
   display: 'swap',
   weight: '100 900',
   variable: '--font-noto-thai',
+  preload: false,
 });
 
 interface LangLayoutProps {
