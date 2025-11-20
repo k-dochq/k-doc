@@ -81,7 +81,7 @@ export function PopularReviews({ medicalSpecialties, lang, dict }: PopularReview
         ) : popularReviews && popularReviews.reviews.length > 0 ? (
           <PopularReviewsList reviews={popularReviews.reviews} lang={lang} dict={dict} />
         ) : (
-          <div className='py-8 text-center text-gray-500'>표시할 후기가 없습니다.</div>
+          <div className='py-8 text-center text-gray-500'>{dict.popularReviews.empty.message}</div>
         )}
       </div>
     </div>
