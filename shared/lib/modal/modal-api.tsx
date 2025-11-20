@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import { useModalStore } from 'shared/model/modal';
 import { ConfirmDialog } from 'shared/ui/confirm-dialog';
 import { AlertDialog } from 'shared/ui/alert-dialog';
+import { InfoDialog } from 'shared/ui/info-dialog';
 
 interface ConfirmOptions {
   title: string;
@@ -15,6 +16,12 @@ interface AlertOptions {
   title?: string;
   message?: string | ReactNode;
   confirmText?: string;
+}
+
+interface InfoOptions {
+  message: string | ReactNode;
+  confirmText?: string;
+  onConfirm?: () => void | Promise<void>;
 }
 
 interface ModalOptions {
@@ -103,6 +110,32 @@ export function alert(options: string | AlertOptions): Promise<void> {
           onConfirm={handleConfirm}
         />
       ),
+      onClose: handleClose,
+    });
+  });
+}
+
+// Info API
+export function info(options: InfoOptions): Promise<void> {
+  return new Promise((resolve) => {
+    const { message, confirmText = '확인', onConfirm } = options;
+
+    const handleConfirm = async () => {
+      // 커스텀 액션이 있으면 먼저 실행
+      if (onConfirm) {
+        await onConfirm();
+      }
+      // 모달 닫기
+      useModalStore.getState().closeModal();
+      resolve();
+    };
+
+    const handleClose = () => {
+      resolve();
+    };
+
+    useModalStore.getState().openModal({
+      content: <InfoDialog message={message} confirmText={confirmText} onConfirm={handleConfirm} />,
       onClose: handleClose,
     });
   });

@@ -1,1 +1,1 @@
-export { confirm, alert, openModal, closeModal, setModalLoading } from './modal-api';
+export { confirm, alert, info, openModal, closeModal, setModalLoading } from './modal-api';
