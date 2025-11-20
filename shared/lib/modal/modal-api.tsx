@@ -1,4 +1,6 @@
 import { type ReactNode } from 'react';
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { useModalStore } from 'shared/model/modal';
 import { ConfirmDialog } from 'shared/ui/confirm-dialog';
 import { AlertDialog } from 'shared/ui/alert-dialog';
@@ -21,6 +23,8 @@ interface AlertOptions {
 interface InfoOptions {
   message: string | ReactNode;
   confirmText?: string;
+  lang?: Locale;
+  dict?: Dictionary;
   onConfirm?: () => void | Promise<void>;
 }
 
@@ -118,7 +122,7 @@ export function alert(options: string | AlertOptions): Promise<void> {
 // Info API
 export function info(options: InfoOptions): Promise<void> {
   return new Promise((resolve) => {
-    const { message, confirmText = '확인', onConfirm } = options;
+    const { message, confirmText, lang, dict, onConfirm } = options;
 
     const handleConfirm = async () => {
       // 커스텀 액션이 있으면 먼저 실행
@@ -135,7 +139,15 @@ export function info(options: InfoOptions): Promise<void> {
     };
 
     useModalStore.getState().openModal({
-      content: <InfoDialog message={message} confirmText={confirmText} onConfirm={handleConfirm} />,
+      content: (
+        <InfoDialog
+          message={message}
+          confirmText={confirmText}
+          lang={lang}
+          dict={dict}
+          onConfirm={handleConfirm}
+        />
+      ),
       onClose: handleClose,
     });
   });
