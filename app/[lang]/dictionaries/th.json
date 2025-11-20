@@ -1,4 +1,8 @@
 {
+  "common": {
+    "confirm": "ตกลง",
+    "cancel": "ยกเลิก"
+  },
   "quickMenu": {
     "title": "พื้นที่การรักษายอดนิยม",
     "error": {

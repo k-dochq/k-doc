@@ -1,4 +1,8 @@
 {
+  "common": {
+    "confirm": "OK",
+    "cancel": "Cancel"
+  },
   "quickMenu": {
     "title": "Popular Treatment Areas",
     "error": {

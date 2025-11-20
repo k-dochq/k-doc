@@ -44,6 +44,8 @@ export function ReviewListImages({
       // 로그인 모달 열기
       await info({
         message: dict.reviewImages?.loginRequired || '이미지를 보려면\n로그인을 해주세요.',
+        lang,
+        dict,
         onConfirm: () => {
           // 로그인 페이지로 이동 (현재 경로를 redirect 파라미터로 전달)
           const currentPath = window.location.pathname;

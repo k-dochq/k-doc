@@ -1,4 +1,8 @@
 {
+  "common": {
+    "confirm": "확인",
+    "cancel": "취소"
+  },
   "quickMenu": {
     "title": "인기 시술 부위",
     "error": {
