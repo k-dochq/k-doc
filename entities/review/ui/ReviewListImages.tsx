@@ -15,6 +15,7 @@ interface ReviewListImagesProps {
   lang: Locale;
   dict: Dictionary;
   className?: string;
+  requiresLogin?: boolean; // 로그인이 필요한 리뷰인지 여부
 }
 
 export function ReviewListImages({
@@ -24,6 +25,7 @@ export function ReviewListImages({
   lang,
   dict,
   className = '',
+  requiresLogin = false,
 }: ReviewListImagesProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -34,6 +36,14 @@ export function ReviewListImages({
   }
 
   const handleImageClick = (index: number) => {
+    if (requiresLogin) {
+      // TODO: 로그인 모달 열기 (새로운 모달 컴포넌트 구현 예정)
+      // openModal({ content: <NewLoginModal lang={lang} dict={dict} redirectPath={window.location.pathname} /> });
+      console.log('로그인 필요 - 모달 열기 예정');
+      return;
+    }
+
+    // 기존 이미지 모달 열기
     setSelectedImageIndex(index);
     setIsModalOpen(true);
   };

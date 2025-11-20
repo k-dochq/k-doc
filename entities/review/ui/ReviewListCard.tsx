@@ -62,6 +62,7 @@ export function ReviewListCard({
           lang={lang}
           dict={dict}
           className='mt-3'
+          requiresLogin={review.requiresLogin}
         />
 
         {/* 세 번째 섹션과 네 번째 섹션을 LocaleLink로 감싸기 */}

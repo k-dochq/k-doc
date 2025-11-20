@@ -275,6 +275,7 @@ export function transformReviewToCardData(review: PrismaReviewWithRelations): Re
       before,
       after,
     },
+    requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
   };
 }
 
@@ -318,5 +319,6 @@ export function transformDoctorReviewToCardData(
       before,
       after,
     },
+    requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
   };
 }

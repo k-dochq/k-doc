@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getReviewDetail } from 'entities/review/api/use-cases/get-review-detail';
+import { ReviewImageBlurService } from 'entities/review';
+import { AuthService } from 'shared/lib/auth/server';
 import { routeErrorLogger } from 'shared/lib';
 import { createClient } from 'shared/lib/supabase/server';
 import { prisma } from 'shared/lib/prisma';
@@ -26,7 +28,20 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     console.log(`[${new Date().toISOString()}] API 호출: ${endpoint}${queryString}`);
 
     // 리뷰 상세 정보 조회
-    const reviewData = await getReviewDetail({ reviewId });
+    let reviewData = await getReviewDetail({ reviewId });
+
+    // 로그인 상태 확인 (이미지 블러 처리용)
+    const authService = new AuthService();
+    const currentUser = await authService.getCurrentUserOrNull();
+
+    // 로그인이 안되어 있으면 이미지 URL을 blur 이미지로 교체
+    if (!currentUser) {
+      const blurService = new ReviewImageBlurService();
+      reviewData = {
+        ...reviewData,
+        review: blurService.replaceReviewImagesWithBlur([reviewData.review])[0],
+      };
+    }
 
     return NextResponse.json({
       success: true,

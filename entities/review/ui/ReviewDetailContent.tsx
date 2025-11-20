@@ -20,6 +20,7 @@ import { ReviewHospitalSection } from 'entities/review';
 import { HospitalDetailReviews } from 'widgets/hospital-detail-reviews';
 import { ReviewCommentsSection } from 'features/review-comments';
 import { StarBackground } from './StarBackground';
+import { useReviewImages } from '../model/useReviewImages';
 
 interface ReviewDetailContentProps {
   review: ReviewCardData;
@@ -33,6 +34,11 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
   const { user } = useAuth();
   const router = useRouter();
   const deleteReviewMutation = useDeleteReview();
+  const isBreastReview = review.medicalSpecialty.specialtyType === 'BREAST';
+  const { data: fetchedImages, isLoading: isReviewImagesLoading } = useReviewImages({
+    reviewId: review.id,
+    enabled: isBreastReview,
+  });
 
   // 삭제 핸들러
   const handleDelete = (reviewId: string) => {
@@ -88,14 +94,23 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
             <ReviewListCardHeader review={review} lang={lang} />
 
             {/* 두 번째 섹션: Before/After 이미지 */}
-            <ReviewListImages
-              beforeImages={review.images.before}
-              afterImages={review.images.after}
-              reviewId={review.id}
-              lang={lang}
-              dict={dict}
-              className='mt-3'
-            />
+            {isBreastReview && isReviewImagesLoading ? (
+              <div className='mt-3 h-56 animate-pulse rounded-xl bg-white/30' />
+            ) : (
+              <ReviewListImages
+                beforeImages={
+                  isBreastReview && fetchedImages ? fetchedImages.before : review.images.before
+                }
+                afterImages={
+                  isBreastReview && fetchedImages ? fetchedImages.after : review.images.after
+                }
+                reviewId={review.id}
+                lang={lang}
+                dict={dict}
+                className='mt-3'
+                requiresLogin={review.requiresLogin}
+              />
+            )}
 
             {/* 세 번째 섹션: 해시태그, 시술시기 */}
             <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />

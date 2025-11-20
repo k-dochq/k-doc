@@ -63,6 +63,32 @@ export class ReviewImageBlurService {
   }
 
   /**
+   * 단일 리뷰 이미지에 blur 적용
+   */
+  applyBlurToReviewImages<
+    T extends {
+      reviewId: string;
+      specialtyType: string;
+      images: {
+        before: ReviewImage[];
+        after: ReviewImage[];
+      };
+    },
+  >(payload: T): T['images'] {
+    if (payload.specialtyType !== 'BREAST') {
+      return payload.images;
+    }
+
+    const beforeImages = this.processImages(payload.images.before, payload.reviewId, 'BEFORE');
+    const afterImages = this.processImages(payload.images.after, payload.reviewId, 'AFTER');
+
+    return {
+      before: beforeImages,
+      after: afterImages,
+    };
+  }
+
+  /**
    * 리뷰 데이터의 이미지 URL을 blur 이미지로 교체
    * 가슴(BREAST) 카테고리인 경우에만 처리
    * before 또는 after에 이미지가 없으면 하나라도 생성하여 blur 이미지 URL 설정
@@ -71,24 +97,17 @@ export class ReviewImageBlurService {
    */
   replaceReviewImagesWithBlur(reviews: ReviewCardData[]): ReviewCardData[] {
     return reviews.map((review) => {
-      // 가슴(BREAST) 카테고리가 아닌 경우 원본 그대로 반환
-      if (!this.shouldBlurReview(review)) {
-        return review;
-      }
+      const isBreastReview = review.medicalSpecialty.specialtyType === 'BREAST';
+      const blurredImages = this.applyBlurToReviewImages({
+        reviewId: review.id,
+        specialtyType: review.medicalSpecialty.specialtyType,
+        images: review.images,
+      });
 
-      // before 이미지 처리
-      const beforeImages = this.processImages(review.images.before, review.id, 'BEFORE');
-
-      // after 이미지 처리
-      const afterImages = this.processImages(review.images.after, review.id, 'AFTER');
-
-      // 가슴 카테고리인 경우에만 blur 이미지로 교체
       return {
         ...review,
-        images: {
-          before: beforeImages,
-          after: afterImages,
-        },
+        images: blurredImages,
+        requiresLogin: isBreastReview, // 가슴 카테고리면 로그인 필요
       };
     });
   }
