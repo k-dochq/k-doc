@@ -1,4 +1,8 @@
 {
+  "common": {
+    "confirm": "OK",
+    "cancel": "Cancel"
+  },
   "quickMenu": {
     "title": "Popular Treatment Areas",
     "error": {
@@ -230,7 +234,8 @@
   },
   "reviewImages": {
     "beforePhoto": "Before Photo",
-    "afterPhoto": "After Photo"
+    "afterPhoto": "After Photo",
+    "loginRequired": "Please log in\nto view the image."
   },
   "error": {
     "title": "An unexpected error occurred",

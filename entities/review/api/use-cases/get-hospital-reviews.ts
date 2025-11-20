@@ -187,6 +187,7 @@ export async function getHospitalReviews({
             order: img.order,
           })),
         },
+        requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
       };
     });
 

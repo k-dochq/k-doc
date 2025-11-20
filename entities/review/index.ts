@@ -1,4 +1,5 @@
 export * from './model/types';
+export * from './api';
 export * from './api/use-cases/get-hospital-reviews';
 export * from './api/use-cases/get-review-detail';
 export * from './api/use-cases/get-all-reviews';

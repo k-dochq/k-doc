@@ -94,6 +94,7 @@ export type ReviewCardData = {
     before: ReviewImage[];
     after: ReviewImage[];
   };
+  requiresLogin: boolean; // 로그인이 필요한 리뷰인지 여부 (가슴 카테고리 + 로그인 안됨)
 };
 
 // 병원 리뷰 목록 조회 파라미터

@@ -1,4 +1,8 @@
 {
+  "common": {
+    "confirm": "ตกลง",
+    "cancel": "ยกเลิก"
+  },
   "quickMenu": {
     "title": "พื้นที่การรักษายอดนิยม",
     "error": {
@@ -230,7 +234,8 @@
   },
   "reviewImages": {
     "beforePhoto": "ภาพก่อนการรักษา",
-    "afterPhoto": "ภาพหลังการรักษา"
+    "afterPhoto": "ภาพหลังการรักษา",
+    "loginRequired": "กรุณาเข้าสู่ระบบ\nเพื่อดูภาพ"
   },
   "error": {
     "title": "เกิดข้อผิดพลาดที่ไม่คาดคิด",

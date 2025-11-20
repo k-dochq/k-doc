@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { type LocalizedText } from 'shared/model/types';
 import { type Prisma } from '@prisma/client';
+import { type ReviewCardData } from 'entities/review';
 
 export interface DoctorDetail {
   id: string;
@@ -47,37 +48,7 @@ export interface DoctorDetail {
       name: LocalizedText;
       specialtyType: string;
     }>;
-    reviews: Array<{
-      id: string;
-      rating: number;
-      title: LocalizedText | null;
-      content: LocalizedText | null;
-      isRecommended: boolean;
-      viewCount: number;
-      likeCount: number;
-      createdAt: Date;
-      concerns: string | null;
-      concernsMultilingual: Prisma.JsonValue;
-      commentCount: number;
-      user: {
-        id: string;
-        name: string | null;
-        nickName: string | null;
-        profileImgUrl: string | null;
-      };
-      medicalSpecialty: {
-        id: string;
-        name: LocalizedText;
-        specialtyType: string;
-      };
-      reviewImages: Array<{
-        id: string;
-        imageType: string;
-        imageUrl: string;
-        alt: string | null;
-        order: number | null;
-      }>;
-    }>;
+    reviews: ReviewCardData[];
   };
   doctorImages: Array<{
     id: string;

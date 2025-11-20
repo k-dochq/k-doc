@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllReviews } from 'entities/review';
+import { getAllReviews, ReviewImageBlurService } from 'entities/review';
 import {
   convertToDbReviewQueryParams,
   validateReviewQueryParams,
@@ -33,10 +33,12 @@ export async function GET(request: NextRequest) {
     // 타입 안전한 파라미터 파싱 및 변환
     const parsedParams = validationResult.params!;
 
+    // AuthService 인스턴스 생성 (한 번만 생성)
+    const authService = new AuthService();
+
     // likedOnly가 true인 경우 사용자 인증 확인
     let userId: string | undefined;
     if (parsedParams.likedOnly) {
-      const authService = new AuthService();
       const user = await authService.getCurrentUser();
       if (!user) {
         return NextResponse.json(
@@ -53,7 +55,19 @@ export async function GET(request: NextRequest) {
     const dbParams = convertToDbReviewQueryParams(parsedParams, userId);
 
     // 리뷰 데이터 조회
-    const reviewsData = await getAllReviews(dbParams);
+    let reviewsData = await getAllReviews(dbParams);
+
+    // 로그인 상태 확인 (이미지 블러 처리용)
+    const currentUser = await authService.getCurrentUserOrNull();
+
+    // 로그인이 안되어 있으면 이미지 URL을 blur 이미지로 교체
+    if (!currentUser) {
+      const blurService = new ReviewImageBlurService();
+      reviewsData = {
+        ...reviewsData,
+        reviews: blurService.replaceReviewImagesWithBlur(reviewsData.reviews),
+      };
+    }
 
     const response = NextResponse.json({
       success: true,
