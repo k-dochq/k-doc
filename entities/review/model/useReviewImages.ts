@@ -11,6 +11,7 @@ interface ReviewImagesApiResponse {
       before: ReviewImage[];
       after: ReviewImage[];
     };
+    requiresLogin: boolean;
   };
   error?: string;
 }
@@ -20,7 +21,15 @@ export interface UseReviewImagesParams {
   enabled?: boolean;
 }
 
-async function fetchReviewImages(reviewId: string) {
+export interface ReviewImagesResponse {
+  images: {
+    before: ReviewImage[];
+    after: ReviewImage[];
+  };
+  requiresLogin: boolean;
+}
+
+async function fetchReviewImages(reviewId: string): Promise<ReviewImagesResponse> {
   const response = await fetch(`/api/reviews/${reviewId}/images`, {
     next: { revalidate: 0 },
   });
@@ -35,7 +44,10 @@ async function fetchReviewImages(reviewId: string) {
     throw new Error(result.error || 'Failed to fetch review images');
   }
 
-  return result.data.images;
+  return {
+    images: result.data.images,
+    requiresLogin: result.data.requiresLogin,
+  };
 }
 
 export function useReviewImages({ reviewId, enabled = true }: UseReviewImagesParams) {

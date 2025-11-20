@@ -99,16 +99,22 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
             ) : (
               <ReviewListImages
                 beforeImages={
-                  isBreastReview && fetchedImages ? fetchedImages.before : review.images.before
+                  isBreastReview && fetchedImages
+                    ? fetchedImages.images.before
+                    : review.images.before
                 }
                 afterImages={
-                  isBreastReview && fetchedImages ? fetchedImages.after : review.images.after
+                  isBreastReview && fetchedImages ? fetchedImages.images.after : review.images.after
                 }
                 reviewId={review.id}
                 lang={lang}
                 dict={dict}
                 className='mt-3'
-                requiresLogin={review.requiresLogin}
+                requiresLogin={
+                  isBreastReview && fetchedImages
+                    ? fetchedImages.requiresLogin
+                    : review.requiresLogin
+                }
               />
             )}
 

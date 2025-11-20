@@ -61,6 +61,11 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
     const authService = new AuthService();
     const currentUser = await authService.getCurrentUserOrNull();
 
+    // 가슴 카테고리인지 확인
+    const isBreastReview = review.MedicalSpecialty.specialtyType === 'BREAST';
+    // 로그인이 안되어 있고 가슴 카테고리인 경우 requiresLogin: true
+    const requiresLogin = !currentUser && isBreastReview;
+
     if (!currentUser) {
       const blurService = new ReviewImageBlurService();
       images = blurService.applyBlurToReviewImages({
@@ -75,6 +80,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       data: {
         reviewId,
         images,
+        requiresLogin,
       },
     });
   } catch (error) {
