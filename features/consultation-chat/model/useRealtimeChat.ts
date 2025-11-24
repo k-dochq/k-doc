@@ -84,17 +84,7 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
   // 메시지 전송
   const sendMessage = useCallback(
     async (content: string) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🚀 sendMessage called:', { content, userId, userName, hospitalId });
-      }
-
       if (!channelRef.current || !userId) {
-        if (process.env.NODE_ENV === 'development') {
-          console.log('❌ sendMessage failed: missing requirements', {
-            hasChannel: !!channelRef.current,
-            hasUserId: !!userId,
-          });
-        }
         return;
       }
 
@@ -139,9 +129,6 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         setMessages((prev) => prev.filter((msg) => msg.id !== message.id));
 
         setError(errorMessage);
-        if (process.env.NODE_ENV === 'development') {
-          console.error('❌ Failed to send message:', error);
-        }
       }
     },
     [userId, userName, hospitalId],
@@ -156,32 +143,12 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     });
   }, []);
 
-  // visibilitychange 이벤트 핸들러 (임시 주석처리 - 파일 업로드 시 새로고침 방지)
-  // const handleVisibilityChange = useCallback(() => {
-  //   // visible 상태가 아니면 무시 (포그라운드로 돌아왔을 때만 처리)
-  //   if (typeof document === 'undefined' || document.visibilityState !== 'visible') {
-  //     return;
-  //   }
-
-  //   if (process.env.NODE_ENV === 'development') {
-  //     console.log('🔄 Page became visible - reloading page');
-  //   }
-  //   window.location.reload();
-  // }, []);
-
   useEffect(() => {
     if (!userId || !hospitalId) {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('❌ useEffect: missing required params', { userId, hospitalId });
-      }
       return;
     }
 
     const roomId = createRoomId(hospitalId, userId);
-
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🔌 Setting up Realtime channel:', { roomId, userId, userName, hospitalId });
-    }
 
     // 1. 먼저 채팅 히스토리 로드
     loadChatHistory();
@@ -206,55 +173,31 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
       },
     });
 
-    if (process.env.NODE_ENV === 'development') {
-      console.log('📡 Channel created:', channelName);
-    }
     channelRef.current = channel;
 
     // 메시지 수신
     channel.on('broadcast', { event: 'message' }, ({ payload }: { payload: ChatMessage }) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('📥 Message received via broadcast:', payload);
-      }
       updateMessages([payload]);
     });
 
     // 채널 구독
     channel.subscribe((status) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🔔 Channel subscription status:', status);
-      }
       if (status === 'SUBSCRIBED') {
         setIsConnected(true);
         setError(null);
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`✅ Connected to chat room: ${roomId}`);
-        }
       } else if (status === 'CHANNEL_ERROR') {
         setIsConnected(false);
         setError('채팅방 연결에 실패했습니다.');
-        if (process.env.NODE_ENV === 'development') {
-          console.error(`❌ Failed to connect to chat room: ${roomId}`);
-        }
       } else if (status === 'TIMED_OUT') {
         setIsConnected(false);
         setError('연결 시간이 초과되었습니다.');
-        if (process.env.NODE_ENV === 'development') {
-          console.error(`⏰ Connection timed out for chat room: ${roomId}`);
-        }
       } else if (status === 'CLOSED') {
         setIsConnected(false);
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`🔒 Connection closed for chat room: ${roomId}`);
-        }
       }
     });
 
     // 정리
     return () => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🧹 Cleaning up channel:', channelName);
-      }
       if (channelRef.current) {
         channelRef.current.unsubscribe();
         channelRef.current = null;
