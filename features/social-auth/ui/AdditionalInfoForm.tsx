@@ -16,6 +16,7 @@ import {
 import { DatePicker } from 'shared/ui/simple-date-picker';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
 
 interface AgreementState {
   allAgreed: boolean;
@@ -50,6 +51,9 @@ export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: Additi
 
   const { mutate: updateProfile, isPending: isLoading } = useUpdateUserProfile({
     onSuccess: () => {
+      // 회원가입 성공 - 마케팅 어트리뷰션 LocalStorage 초기화
+      clearFirstTouch();
+
       // 추가정보 입력 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 이동
       const targetUrl = redirectTo || `/${lang}/main`;
       router.push(targetUrl);
@@ -105,6 +109,9 @@ export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: Additi
     };
     const userLocale = localeMap[lang] || 'en_US';
 
+    // LocalStorage에서 마케팅 어트리뷰션 데이터 읽기
+    const marketingAttribution = getFirstTouch();
+
     updateProfile({
       passportName: formData.passportName,
       nationality: formData.nationality,
@@ -116,6 +123,8 @@ export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: Additi
       birthDate: formData.birthDate,
       marketingNotifications: agreements.marketingNotifications,
       locale: userLocale,
+      // 마케팅 어트리뷰션 데이터 추가 (있는 경우에만)
+      ...(marketingAttribution && { marketingAttribution }),
     });
   };
 
