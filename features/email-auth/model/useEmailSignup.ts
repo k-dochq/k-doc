@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { createClient } from 'shared/lib/supabase/client';
 import { generateNickname } from 'shared/lib/nickname-generator';
 import { trackSignUpComplete } from 'shared/lib/analytics';
+import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
 
 interface UseEmailSignupParams {
   locale: Locale;
@@ -60,8 +61,11 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
       };
       const userLocale = localeMap[locale] || 'en_US';
 
+      // LocalStorage에서 마케팅 어트리뷰션 데이터 읽기
+      const marketingAttribution = getFirstTouch();
+
       // 메타데이터 준비
-      const metadata: Record<string, string | boolean> = {
+      const metadata: Record<string, string | boolean | unknown> = {
         nickname: nicknameResult.display, // 생성된 닉네임 추가
         locale: userLocale, // locale 추가
       };
@@ -73,6 +77,10 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
       if (signupData.birthDate) metadata.birth_date = signupData.birthDate;
       if (signupData.marketingNotifications !== undefined)
         metadata.marketing_notifications = signupData.marketingNotifications;
+      // 마케팅 어트리뷰션 데이터 추가 (있는 경우에만)
+      if (marketingAttribution) {
+        metadata.marketing_attribution = marketingAttribution;
+      }
 
       if (!supabase) {
         console.error('Supabase client 생성 실패');
@@ -99,10 +107,16 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
           '회원가입이 완료되었습니다. 이메일을 확인하여 계정을 활성화해주세요.';
         setError(confirmationMessage);
 
+        // 회원가입 성공 - 마케팅 어트리뷰션 LocalStorage 초기화
+        clearFirstTouch();
+
         // 회원가입 성공 - GA 이벤트 전송
         trackSignUpComplete('email');
         return { success: true };
       }
+
+      // 회원가입 성공 - 마케팅 어트리뷰션 LocalStorage 초기화
+      clearFirstTouch();
 
       // 회원가입 성공 - GA 이벤트 전송
       trackSignUpComplete('email');
