@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AuthService } from 'shared/lib/auth/server';
 import { prisma } from 'shared/lib/prisma';
 import { routeErrorLogger } from 'shared/lib';
+import type { MarketingAttribution } from 'shared/lib/marketing-attribution';
 
 interface UpdateUserRequest {
   nickName?: string;
@@ -18,6 +19,8 @@ interface UpdateUserRequest {
   phoneNumberOnly?: string;
   birthDate?: string;
   locale?: string;
+  // 마케팅 어트리뷰션
+  marketingAttribution?: MarketingAttribution;
 }
 
 export async function PUT(request: NextRequest): Promise<NextResponse> {
@@ -45,6 +48,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
       phoneNumberOnly,
       birthDate,
       locale,
+      marketingAttribution,
     } = body;
 
     // 업데이트할 필드가 없는 경우
@@ -61,7 +65,8 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
       phoneNumber !== undefined ||
       phoneNumberOnly !== undefined ||
       birthDate !== undefined ||
-      locale !== undefined;
+      locale !== undefined ||
+      marketingAttribution !== undefined;
 
     if (!hasFieldsToUpdate) {
       return NextResponse.json(
@@ -121,6 +126,10 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
     }
     if (birthDate !== undefined) {
       newMetaData.birth_date = birthDate;
+      metaDataUpdated = true;
+    }
+    if (marketingAttribution !== undefined) {
+      newMetaData.marketing_attribution = marketingAttribution;
       metaDataUpdated = true;
     }
 
