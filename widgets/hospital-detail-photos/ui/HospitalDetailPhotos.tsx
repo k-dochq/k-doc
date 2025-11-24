@@ -122,7 +122,7 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
 
       {/* 인디케이터 - 이미지가 2개 이상일 때만 표시 */}
       {hospitalImages.length > 1 && (
-        <div className='absolute bottom-6 left-1/2 z-[60] flex -translate-x-1/2 gap-2'>
+        <div className='absolute bottom-6 left-1/2 z-40 flex -translate-x-1/2 gap-2'>
           {hospitalImages.map((_, index) => (
             <button
               key={index}
