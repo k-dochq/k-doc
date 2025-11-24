@@ -4,6 +4,7 @@ import {
   type CheckBusinessHoursResponse,
 } from 'features/consultation-chat/api/entities/types';
 import { checkBusinessHoursInKorea } from 'features/consultation-chat/api/lib/business-hours-utils';
+import { detectLanguage } from 'features/consultation-chat/api/lib/language-detection-utils';
 
 /**
  * 비즈니스 시간 체크 API
@@ -31,10 +32,20 @@ export async function POST(
     // 한국 시간 기준 비즈니스 시간 체크
     const { isBusinessHours: result, currentTime: currentTimeString } = checkBusinessHoursInKorea();
 
+    // 언어 감지 (메시지 텍스트가 있는 경우)
+    let detectedLanguage: 'ko' | 'en' | 'th' | undefined = undefined;
+    if (message.content && message.content.trim().length > 0) {
+      const language = await detectLanguage(message.content);
+      if (language) {
+        detectedLanguage = language;
+      }
+    }
+
     return NextResponse.json({
       success: true,
       isBusinessHours: result,
       currentTime: currentTimeString,
+      detectedLanguage,
     });
   } catch (error) {
     console.error('Error in check business hours API:', error);

@@ -19,6 +19,7 @@
     "compress-image": "tsx scripts/compress-image.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^2.0.71",
     "@contentsquare/tag-sdk": "^1.1.0",
     "@next/third-parties": "^15.5.6",
     "@notionhq/client": "^4.0.1",
@@ -32,6 +33,7 @@
     "@supabase/supabase-js": "^2.55.0",
     "@tanstack/react-query": "^5.85.5",
     "@tanstack/react-query-devtools": "^5.85.5",
+    "ai": "^5.0.100",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.18",
@@ -61,9 +63,9 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/lodash": "^4.17.7",
     "@types/node": "^20",
     "@types/react": "^19",
-    "@types/lodash": "^4.17.7",
     "@types/react-dom": "^19",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/parser": "^8.39.1",

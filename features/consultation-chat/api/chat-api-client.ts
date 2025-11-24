@@ -104,7 +104,12 @@ export async function checkBusinessHours(
   hospitalId: string,
   userId: string,
   message: ChatMessage,
-): Promise<{ success: boolean; isBusinessHours?: boolean; error?: string }> {
+): Promise<{
+  success: boolean;
+  isBusinessHours?: boolean;
+  detectedLanguage?: 'ko' | 'en' | 'th';
+  error?: string;
+}> {
   try {
     const response = await fetch('/api/consultation-messages/check-business-hours', {
       method: 'POST',
@@ -133,7 +138,11 @@ export async function checkBusinessHours(
     }
 
     const result = await response.json();
-    return { success: true, isBusinessHours: result.isBusinessHours };
+    return {
+      success: true,
+      isBusinessHours: result.isBusinessHours,
+      detectedLanguage: result.detectedLanguage,
+    };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('❌ Error checking business hours:', error);
