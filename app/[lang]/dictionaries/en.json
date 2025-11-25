@@ -922,7 +922,8 @@
     "allInOnePackage": {
       "title": "All-in-One Package Reservation",
       "subtitle": "Reserve all services including vehicle and interpretation in one place",
-      "vanSelection": "Select Van Type"
+      "vanSelection": "Select Van Type",
+      "exploreClinics": "Explore Clinics"
     },
     "vanReservation": {
       "title": "Van Reservation",
