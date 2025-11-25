@@ -17,6 +17,7 @@ import { DatePicker } from 'shared/ui/simple-date-picker';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
+import { trackSignUpComplete } from 'shared/lib/analytics';
 
 interface AgreementState {
   allAgreed: boolean;
@@ -31,9 +32,16 @@ interface AdditionalInfoFormProps {
   dict: Dictionary;
   userEmail: string;
   redirectTo?: string;
+  provider?: string;
 }
 
-export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: AdditionalInfoFormProps) {
+export function AdditionalInfoForm({
+  lang,
+  dict,
+  userEmail,
+  redirectTo,
+  provider,
+}: AdditionalInfoFormProps) {
   const router = useLocalizedRouter();
   const { formData, errors, updateField, validateForm, isFormValid } = useAdditionalInfoForm({
     lang,
@@ -53,6 +61,9 @@ export function AdditionalInfoForm({ lang, dict, userEmail, redirectTo }: Additi
     onSuccess: () => {
       // 회원가입 성공 - 마케팅 어트리뷰션 LocalStorage 초기화
       clearFirstTouch();
+
+      // 회원가입 성공 - GA 이벤트 전송
+      trackSignUpComplete(provider || 'social');
 
       // 추가정보 입력 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 이동
       const targetUrl = redirectTo || `/${lang}/main`;
