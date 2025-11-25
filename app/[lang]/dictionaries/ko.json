@@ -921,7 +921,8 @@
     "allInOnePackage": {
       "title": "올인원패키지 예약",
       "subtitle": "차량, 통역 등 모든 서비스를 한 번에 예약하세요",
-      "vanSelection": "차량 선택"
+      "vanSelection": "차량 선택",
+      "exploreClinics": "Explore Clinics"
     },
     "vanReservation": {
       "title": "차량 예약",
