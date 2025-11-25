@@ -5,6 +5,6 @@ interface PackageLayoutProps {
   params: Promise<{ lang: Locale }>;
 }
 
-export default async function PackageLayout({ children, params }: PackageLayoutProps) {
+export default async function PackageLayout({ children }: PackageLayoutProps) {
   return children;
 }
