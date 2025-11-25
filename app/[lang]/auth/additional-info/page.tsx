@@ -26,10 +26,12 @@ export default async function AdditionalInfoPage({
   // 사용자 인증 확인
   const authService = new AuthService();
   let userEmail = '';
+  let provider: string | undefined;
 
   try {
     const user = await authService.getCurrentUser();
     userEmail = user.email || '';
+    provider = user.app_metadata?.provider as string | undefined;
 
     // 이메일이 없으면 로그인 페이지로 리다이렉트
     if (!userEmail) {
@@ -65,6 +67,7 @@ export default async function AdditionalInfoPage({
             dict={dict}
             userEmail={userEmail}
             redirectTo={redirectTo}
+            provider={provider}
           />
         </div>
       </div>
