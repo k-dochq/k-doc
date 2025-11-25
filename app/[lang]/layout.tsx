@@ -9,6 +9,7 @@ import { GoogleAnalytics } from 'shared/ui/google-analytics';
 import { ContentsquareAnalytics } from 'shared/ui/ContentsquareAnalytics';
 import { MetaPixel } from 'shared/ui/meta-pixel';
 import { GoogleTagManager } from 'shared/ui/google-tag-manager';
+import { GoogleAdsGTM } from 'shared/ui/google-ads-gtm';
 import { MarketingAttributionTracker } from 'shared/ui/marketing-attribution/MarketingAttributionTracker';
 import { Toaster } from 'sonner';
 
@@ -127,7 +128,8 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
       <body className={currentFont.className}>
         {/* Google Tag Manager */}
         <GoogleTagManager containerId='GTM-MBVD4CJR' />
-        <GoogleTagManager containerId='AW-17609779792' />
+        {/* Google Ads Tag Manager */}
+        <GoogleAdsGTM />
         {/* Meta Pixel */}
         <MetaPixel pixelId='1160778096188076' />
         {/* Google Analytics */}

@@ -1,0 +1,1 @@
+export { GoogleAdsGTM } from './GoogleAdsGTM';
