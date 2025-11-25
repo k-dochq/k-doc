@@ -127,6 +127,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
       <body className={currentFont.className}>
         {/* Google Tag Manager */}
         <GoogleTagManager containerId='GTM-MBVD4CJR' />
+        <GoogleTagManager containerId='AW-17609779792' />
         {/* Meta Pixel */}
         <MetaPixel pixelId='1160778096188076' />
         {/* Google Analytics */}
