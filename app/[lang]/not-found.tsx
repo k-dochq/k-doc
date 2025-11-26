@@ -5,7 +5,7 @@ import { Home } from 'lucide-react';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { HeaderLogo } from 'widgets/header/ui/HeaderLogo';
 import { extractLocaleFromPathname } from 'shared/lib/locale/utils';
-import { DEFAULT_LOCALE, type Locale } from 'shared/config/locales';
+import { DEFAULT_LOCALE } from 'shared/config/locales';
 
 // 다국어 메시지 정의
 const messages = {
