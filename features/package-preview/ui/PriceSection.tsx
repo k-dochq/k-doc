@@ -1,10 +1,13 @@
-import { ImageWithButtonSection } from './ImageWithButtonSection';
+import { PriceImageWithButtonSection } from './PriceImageWithButtonSection';
+import type { StaticImageData } from 'next/image';
+import { type Locale } from 'shared/config';
 
 interface PriceSectionProps {
-  priceImageSrc: string;
+  priceImageSrc: string | StaticImageData;
   priceImageAlt: string;
   buttonText: string;
   bubbleImageSrc: string;
+  locale: Locale;
 }
 
 export function PriceSection({
@@ -12,13 +15,15 @@ export function PriceSection({
   priceImageAlt,
   buttonText,
   bubbleImageSrc,
+  locale,
 }: PriceSectionProps) {
   return (
-    <ImageWithButtonSection
+    <PriceImageWithButtonSection
       imageSrc={priceImageSrc}
       imageAlt={priceImageAlt}
       buttonText={buttonText}
       bubbleImageSrc={bubbleImageSrc}
+      locale={locale}
     />
   );
 }
