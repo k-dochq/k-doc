@@ -20,7 +20,7 @@ export function PriceImageWithButtonSection({
   return (
     <div className='relative'>
       <PricePackageImage src={imageSrc} alt={imageAlt} locale={locale} />
-      <div className='absolute right-[35px] bottom-[90px] left-[35px] md:bottom-[140px]'>
+      <div className='absolute right-[35px] bottom-[120px] left-[35px] md:bottom-[160px]'>
         <ExploreClinicsButton text={buttonText} />
         <BubbleAnimation locale={locale} />
       </div>
