@@ -6,7 +6,7 @@ import {
   PackageImage,
   PriceSection,
   PackageImages,
-  ImageWithButtonSection,
+  TableSection,
   MainPackageImage,
 } from 'features/package-preview';
 import mainKoImage from '../../../images/event/package/main_ko.png';
@@ -73,9 +73,9 @@ export default async function PackagePage({ params }: PackagePageProps) {
         locale={lang}
       />
       <PackageImages images={contentImages} />
-      <ImageWithButtonSection
-        imageSrc={tableImagePath}
-        imageAlt={`${title} - Table`}
+      <TableSection
+        tableImageSrc={tableImagePath}
+        tableImageAlt={`${title} - Table`}
         buttonText={buttonText}
         locale={lang}
       />

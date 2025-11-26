@@ -5,6 +5,7 @@ export { PricePackageImage } from './ui/PricePackageImage';
 export { ExploreClinicsButton } from './ui/ExploreClinicsButton';
 export { BubbleAnimation } from './ui/BubbleAnimation';
 export { PriceSection } from './ui/PriceSection';
-export { ImageWithButtonSection } from './ui/ImageWithButtonSection';
+export { TableSection } from './ui/TableSection';
 export { PriceImageWithButtonSection } from './ui/PriceImageWithButtonSection';
+export { TableImageWithButtonSection } from './ui/TableImageWithButtonSection';
 export { PackageImages } from './ui/PackageImages';
