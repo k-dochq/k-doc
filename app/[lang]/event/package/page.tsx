@@ -7,7 +7,14 @@ import {
   PriceSection,
   PackageImages,
   ImageWithButtonSection,
+  MainPackageImage,
 } from 'features/package-preview';
+import mainKoImage from '../../../images/event/package/main_ko.png';
+import mainEnImage from '../../../images/event/package/main_en.png';
+import mainThImage from '../../../images/event/package/main_th.png';
+import priceKoImage from '../../../images/event/package/price_ko.png';
+import priceEnImage from '../../../images/event/package/price_en.png';
+import priceThImage from '../../../images/event/package/price_th.png';
 
 interface PackagePageProps {
   params: Promise<{ lang: Locale }>;
@@ -20,9 +27,21 @@ export default async function PackagePage({ params }: PackagePageProps) {
   const title = dict.package.allInOnePackage.title;
   const buttonText = dict.package.allInOnePackage.exploreClinics;
 
-  const mainImagePath = getPackageImagePath('main', lang);
-  const priceImagePath = getPackageImagePath('price', lang);
-  const bubbleImagePath = getPackageImagePath('bubble', lang);
+  // Main 이미지는 정적 import로 사용 (blur placeholder 자동 생성)
+  const mainImages: Record<Locale, typeof mainKoImage> = {
+    ko: mainKoImage,
+    en: mainEnImage,
+    th: mainThImage,
+  };
+  const mainImage = mainImages[lang];
+
+  // Price 이미지는 정적 import로 사용 (blur placeholder 자동 생성)
+  const priceImages: Record<Locale, typeof priceKoImage> = {
+    ko: priceKoImage,
+    en: priceEnImage,
+    th: priceThImage,
+  };
+  const priceImage = priceImages[lang];
 
   const contentImages = [
     { src: getPackageImagePath('notice', lang), alt: `${title} - Notice` },
@@ -46,19 +65,19 @@ export default async function PackagePage({ params }: PackagePageProps) {
         fallbackUrl={`/${lang}/main`}
         variant='light'
       />
-      <PackageImage src={mainImagePath} alt={title} />
+      <MainPackageImage src={mainImage} alt={title} />
       <PriceSection
-        priceImageSrc={priceImagePath}
+        priceImageSrc={priceImage}
         priceImageAlt={`${title} - Price`}
         buttonText={buttonText}
-        bubbleImageSrc={bubbleImagePath}
+        locale={lang}
       />
       <PackageImages images={contentImages} />
       <ImageWithButtonSection
         imageSrc={tableImagePath}
         imageAlt={`${title} - Table`}
         buttonText={buttonText}
-        bubbleImageSrc={bubbleImagePath}
+        locale={lang}
       />
       <PackageImage src={notice2ImagePath} alt={`${title} - Notice 2`} />
     </div>
