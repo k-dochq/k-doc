@@ -42,7 +42,6 @@ export default async function PackagePage({ params }: PackagePageProps) {
     th: priceThImage,
   };
   const priceImage = priceImages[lang];
-  const bubbleImagePath = getPackageImagePath('bubble', lang);
 
   const contentImages = [
     { src: getPackageImagePath('notice', lang), alt: `${title} - Notice` },
@@ -71,7 +70,6 @@ export default async function PackagePage({ params }: PackagePageProps) {
         priceImageSrc={priceImage}
         priceImageAlt={`${title} - Price`}
         buttonText={buttonText}
-        bubbleImageSrc={bubbleImagePath}
         locale={lang}
       />
       <PackageImages images={contentImages} />
@@ -79,7 +77,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
         imageSrc={tableImagePath}
         imageAlt={`${title} - Table`}
         buttonText={buttonText}
-        bubbleImageSrc={bubbleImagePath}
+        locale={lang}
       />
       <PackageImage src={notice2ImagePath} alt={`${title} - Notice 2`} />
     </div>
