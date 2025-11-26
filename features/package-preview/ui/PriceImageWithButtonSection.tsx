@@ -1,25 +1,26 @@
-import { PackageImage } from './PackageImage';
+import { PricePackageImage } from './PricePackageImage';
 import { ExploreClinicsButton } from './ExploreClinicsButton';
 import { BubbleAnimation } from './BubbleAnimation';
+import type { StaticImageData } from 'next/image';
 import { type Locale } from 'shared/config';
 
-interface ImageWithButtonSectionProps {
-  imageSrc: string;
+interface PriceImageWithButtonSectionProps {
+  imageSrc: string | StaticImageData;
   imageAlt: string;
   buttonText: string;
   locale: Locale;
 }
 
-export function ImageWithButtonSection({
+export function PriceImageWithButtonSection({
   imageSrc,
   imageAlt,
   buttonText,
   locale,
-}: ImageWithButtonSectionProps) {
+}: PriceImageWithButtonSectionProps) {
   return (
     <div className='relative'>
-      <PackageImage src={imageSrc} alt={imageAlt} />
-      <div className='absolute right-[35px] bottom-[100px] left-[35px] md:bottom-[160px]'>
+      <PricePackageImage src={imageSrc} alt={imageAlt} locale={locale} />
+      <div className='absolute right-[35px] bottom-[90px] left-[35px] md:bottom-[140px]'>
         <ExploreClinicsButton text={buttonText} />
         <BubbleAnimation locale={locale} />
       </div>

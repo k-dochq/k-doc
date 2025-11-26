@@ -1,13 +1,14 @@
+import { BubbleSVG } from './BubbleSVG';
+import { type Locale } from 'shared/config';
+
 interface BubbleAnimationProps {
-  src: string;
+  locale: Locale;
 }
 
-export function BubbleAnimation({ src }: BubbleAnimationProps) {
+export function BubbleAnimation({ locale }: BubbleAnimationProps) {
   return (
-    <img
-      src={src}
-      alt=''
-      className='animate-float pointer-events-none absolute -bottom-4 left-1/2 w-32 -translate-x-1/2 md:-bottom-4 md:w-48'
-    />
+    <div className='animate-float pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 md:-bottom-8'>
+      <BubbleSVG locale={locale} className='h-10' />
+    </div>
   );
 }
