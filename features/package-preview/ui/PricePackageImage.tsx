@@ -9,7 +9,7 @@ interface PricePackageImageProps {
 }
 
 export function PricePackageImage({ src, alt, locale }: PricePackageImageProps) {
-  const aspectRatio = locale === 'th' ? '750/1600' : '750/1576';
+  const aspectRatio = locale === 'th' ? '750/2430' : '750/2420';
 
   return (
     <div className='relative w-full' style={{ aspectRatio }}>
