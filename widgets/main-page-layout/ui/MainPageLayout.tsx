@@ -3,13 +3,11 @@ import { SearchBar } from 'shared/ui';
 import { QuickMenuWrapper } from 'features/quick-menu/ui/QuickMenuWrapper';
 import { HospitalListWrapper } from 'widgets/hospital-list';
 import { PopularReviewsWrapper } from 'widgets/popular-reviews';
-import { NoticeSection } from 'widgets/notice-section/ui/NoticeSection';
 import { LimousineBanner } from 'widgets/limousine-banner';
 import { CautionSection } from 'widgets/caution-section';
 import { TaxiReservationSection } from 'widgets/taxi-reservation';
 import { EventBannerCarousel } from 'widgets/event-banner';
 import { getDictionary } from 'app/[lang]/dictionaries';
-import { fetchBestHospitalsServer } from 'entities/hospital/api/server/fetch-best-hospitals-server';
 
 interface MainPageLayoutProps {
   lang: Locale;
@@ -17,9 +15,6 @@ interface MainPageLayoutProps {
 
 export async function MainPageLayout({ lang }: MainPageLayoutProps) {
   const dict = await getDictionary(lang);
-
-  // 서버에서 Best Hospitals 데이터 미리 가져오기
-  // const initialBestHospitals = await fetchBestHospitalsServer();
 
   return (
     <>
@@ -35,7 +30,6 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
         <EventBannerCarousel currentLocale={lang} />
 
         <div className='mt-5'>
-          {/* <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} /> */}
           <HospitalListWrapper lang={lang} dict={dict} />
         </div>
 
