@@ -36,6 +36,9 @@ export function PriceImageWithButtonSection({
             src={guaranteeSvgPath}
             alt='Fast Reservation Guarantee'
             className='mb-[32px] h-6 w-auto'
+            style={{
+              animation: 'fadePulse 2s ease-in-out infinite',
+            }}
           />
           <ExploreClinicsButton text={buttonText} />
         </div>
