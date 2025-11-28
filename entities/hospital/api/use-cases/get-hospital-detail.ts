@@ -1,3 +1,6 @@
+'use server';
+
+import { cache } from 'react';
 import { type Prisma } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError, extractLocalizedText } from 'shared/lib';
@@ -69,92 +72,93 @@ export interface GetHospitalDetailResponse {
 
 /**
  * 병원 상세 정보를 조회합니다. (정적 생성용 - 조회수 증가 없음)
+ * React cache()를 사용하여 동일한 요청에 대해 자동 메모이제이션됩니다.
  */
-export async function getHospitalDetail(
-  request: GetHospitalDetailRequest,
-): Promise<GetHospitalDetailResponse> {
-  try {
-    const { id } = request;
+export const getHospitalDetail = cache(
+  async (request: GetHospitalDetailRequest): Promise<GetHospitalDetailResponse> => {
+    try {
+      const { id } = request;
 
-    console.log(`[${new Date().toISOString()}] 병원 상세 조회: ${id}`);
+      console.log(`[${new Date().toISOString()}] 병원 상세 조회: ${id}`);
 
-    const hospitalData = await prisma.hospital.findUnique({
-      where: {
-        id,
-      },
-      select: {
-        id: true,
-        name: true,
-        address: true,
-        directions: true,
-        prices: true,
-        rating: true,
-        discountRate: true,
-        reviewCount: true,
-        bookmarkCount: true,
-        viewCount: true,
-        approvalStatusType: true,
-        ranking: true,
-        createdAt: true,
-        updatedAt: true,
-        description: true,
-        openingHours: true,
-        latitude: true,
-        longitude: true,
-        displayLocationName: true,
-        HospitalImage: {
-          where: {
-            isActive: true,
-          },
-          orderBy: [
-            { imageType: 'asc' }, // MAIN이 먼저 오도록
-            { order: 'asc' },
-          ],
+      const hospitalData = await prisma.hospital.findUnique({
+        where: {
+          id,
         },
-        HospitalMedicalSpecialty: {
-          include: {
-            MedicalSpecialty: true,
+        select: {
+          id: true,
+          name: true,
+          address: true,
+          directions: true,
+          prices: true,
+          rating: true,
+          discountRate: true,
+          reviewCount: true,
+          bookmarkCount: true,
+          viewCount: true,
+          approvalStatusType: true,
+          ranking: true,
+          createdAt: true,
+          updatedAt: true,
+          description: true,
+          openingHours: true,
+          latitude: true,
+          longitude: true,
+          displayLocationName: true,
+          HospitalImage: {
+            where: {
+              isActive: true,
+            },
+            orderBy: [
+              { imageType: 'asc' }, // MAIN이 먼저 오도록
+              { order: 'asc' },
+            ],
+          },
+          HospitalMedicalSpecialty: {
+            include: {
+              MedicalSpecialty: true,
+            },
+          },
+          District: {
+            select: {
+              id: true,
+              name: true,
+              displayName: true,
+              countryCode: true,
+              level: true,
+              order: true,
+              parentId: true,
+            },
+          },
+          _count: {
+            select: {
+              HospitalLike: true,
+              Review: true,
+            },
           },
         },
-        District: {
-          select: {
-            id: true,
-            name: true,
-            displayName: true,
-            countryCode: true,
-            level: true,
-            order: true,
-            parentId: true,
-          },
-        },
-        _count: {
-          select: {
-            HospitalLike: true,
-            Review: true,
-          },
-        },
-      },
-    });
+      });
 
-    if (!hospitalData) {
-      throw new Error(`Hospital not found with id: ${id}`);
+      if (!hospitalData) {
+        throw new Error(`Hospital not found with id: ${id}`);
+      }
+
+      // 소속 의사 정보 조회
+      const { doctors } = await getHospitalDoctors({ hospitalId: id });
+
+      // 데이터 변환 (조회수 증가 없음)
+      const hospital = transformHospitalDetailStatic(hospitalData);
+      hospital.doctors = doctors;
+
+      return {
+        hospital,
+      };
+    } catch (error) {
+      console.error('Error fetching hospital detail:', error);
+      throw handleDatabaseError(error, 'getHospitalDetail');
     }
-
-    // 소속 의사 정보 조회
-    const { doctors } = await getHospitalDoctors({ hospitalId: id });
-
-    // 데이터 변환 (조회수 증가 없음)
-    const hospital = transformHospitalDetailStatic(hospitalData);
-    hospital.doctors = doctors;
-
-    return {
-      hospital,
-    };
-  } catch (error) {
-    console.error('Error fetching hospital detail:', error);
-    throw handleDatabaseError(error, 'getHospitalDetail');
-  }
-}
+  },
+);
 
 /**
  * 모든 병원 ID 목록을 조회합니다. (정적 생성용)
@@ -185,7 +189,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
 } {
   // 메인 이미지 URL 추출 (MAIN → THUMBNAIL → 첫 번째 이미지 순서)
   const mainImageUrl = getHospitalMainImageUrl(data.HospitalImage);
-  
+
   // 썸네일 이미지 URL 추출 (THUMBNAIL → MAIN → 첫 번째 이미지 순서)
   const thumbnailImageUrl = getHospitalThumbnailImageUrl(data.HospitalImage);
 
