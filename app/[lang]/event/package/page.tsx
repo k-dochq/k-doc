@@ -26,6 +26,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
 
   const title = dict.package.allInOnePackage.title;
   const buttonText = dict.package.allInOnePackage.exploreClinics;
+  const guaranteeText = dict.package.allInOnePackage.fastReservationGuarantee;
 
   // Main 이미지는 정적 import로 사용 (blur placeholder 자동 생성)
   const mainImages: Record<Locale, typeof mainKoImage> = {
@@ -71,6 +72,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
         priceImageSrc={priceImage}
         priceImageAlt={`${title} - Price`}
         buttonText={buttonText}
+        guaranteeText={guaranteeText}
         locale={lang}
       />
       <PackageImages images={contentImages} />
