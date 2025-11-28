@@ -249,7 +249,7 @@
       "password": "Password",
       "loginButton": "Sign In",
       "laterButton": "Do Later",
-      "signupButton": "Sign Up",
+      "signupButton": "Register",
       "requiredMessage": "Please log in\nto use the service.",
       "socialLogin": "Social Login",
       "googleLogin": "Sign in with Google",
@@ -257,11 +257,11 @@
       "kakaoLogin": "Sign in with Kakao",
       "emailLogin": "Start with Email",
       "forgotPassword": "Forgot your password?",
-      "signUp": "Sign Up",
+      "signUp": "Register",
       "loading": "Loading...",
       "loginError": "Login error occurred",
       "noAccount": "Don't have an account?",
-      "signupLink": "Sign Up",
+      "signupLink": "Register",
       "placeholders": {
         "email": "your-email@example.com",
         "password": "Enter your password"
@@ -281,7 +281,7 @@
       "submitButton": "Complete"
     },
     "signup": {
-      "title": "Sign Up",
+      "title": "Register",
       "subtitle": "Create a new account",
       "required": "Required",
       "optional": "Optional",
@@ -339,9 +339,9 @@
       "phoneNumberOnly": "Phone Number",
       "birthDate": "Date of Birth",
       "dateFormat": "Year.Month.Day",
-      "signupButton": "Sign Up",
+      "signupButton": "Register",
       "loading": "Signing up...",
-      "signupError": "Sign up error occurred",
+      "signupError": "Register error occurred",
       "passwordMismatch": "Passwords do not match",
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Sign In",
@@ -382,7 +382,7 @@
         "unexpectedError": "An unexpected error occurred.",
         "invalidCredentials": "Invalid email or password.",
         "emailNotConfirmed": "Please check your email and confirm your account.",
-        "signupSuccess": "Sign up completed. Please check your email to activate your account.",
+        "signupSuccess": "Register completed. Please check your email to activate your account.",
         "userAlreadyRegistered": "This email is already registered.",
         "updateProfileError": "An error occurred while saving your information."
       }
