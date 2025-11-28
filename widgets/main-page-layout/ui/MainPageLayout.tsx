@@ -19,7 +19,7 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
   const dict = await getDictionary(lang);
 
   // 서버에서 Best Hospitals 데이터 미리 가져오기
-  const initialBestHospitals = await fetchBestHospitalsServer();
+  // const initialBestHospitals = await fetchBestHospitalsServer();
 
   return (
     <>
@@ -35,7 +35,8 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
         <EventBannerCarousel currentLocale={lang} />
 
         <div className='mt-5'>
-          <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} />
+          {/* <HospitalListWrapper lang={lang} dict={dict} initialData={initialBestHospitals} /> */}
+          <HospitalListWrapper lang={lang} dict={dict} />
         </div>
 
         <div className='mt-12'>
