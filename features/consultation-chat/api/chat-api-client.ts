@@ -4,6 +4,7 @@
  */
 
 import { type ChatMessage } from './entities/types';
+import debounce from 'lodash/debounce';
 
 /**
  * 채팅 히스토리 조회
@@ -97,12 +98,106 @@ export async function saveMessageToDatabase(
 }
 
 /**
+ * 비즈니스 시간 체크 API 호출
+ */
+export interface BusinessHoursCheckResult {
+  success: boolean;
+  isBusinessHours?: boolean;
+  detectedLanguage?: 'ko' | 'en' | 'th';
+  autoResponseMessage?: string;
+  error?: string;
+}
+
+export async function checkBusinessHours(
+  hospitalId: string,
+  userId: string,
+  message: ChatMessage,
+): Promise<BusinessHoursCheckResult> {
+  try {
+    const response = await fetch('/api/consultation-messages/check-business-hours', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        hospitalId,
+        userId,
+        message: {
+          id: message.id,
+          content: message.content,
+          userId: message.userId,
+          userName: message.userName,
+          timestamp: message.timestamp,
+          type: message.type,
+        },
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      const errorMessage = errorData.error || `HTTP ${response.status}`;
+      console.error('❌ Failed to check business hours:', response.status, errorData);
+      return { success: false, error: errorMessage };
+    }
+
+    const result = await response.json();
+    return {
+      success: true,
+      isBusinessHours: result.isBusinessHours,
+      detectedLanguage: result.detectedLanguage,
+      autoResponseMessage: result.autoResponseMessage,
+    };
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('❌ Error checking business hours:', error);
+    return { success: false, error: errorMessage };
+  }
+}
+
+/**
+ * 디바운스된 비즈니스 시간 체크 함수
+ * 5초 지연 후 마지막 호출만 실행됩니다.
+ */
+export interface AutoResponseHandlerPayload {
+  message: string;
+  detectedLanguage?: 'ko' | 'en' | 'th';
+}
+
+type AutoResponseHandler = (payload: AutoResponseHandlerPayload) => Promise<void> | void;
+
+interface DebouncedCheckArgs {
+  hospitalId: string;
+  userId: string;
+  message: ChatMessage;
+  onAutoResponse?: AutoResponseHandler;
+}
+
+const debouncedCheckBusinessHours = debounce(
+  async ({ hospitalId, userId, message, onAutoResponse }: DebouncedCheckArgs) => {
+    try {
+      const result = await checkBusinessHours(hospitalId, userId, message);
+      if (result.autoResponseMessage && onAutoResponse) {
+        await onAutoResponse({
+          message: result.autoResponseMessage,
+          detectedLanguage: result.detectedLanguage,
+        });
+      }
+    } catch (error) {
+      console.error('❌ Error in debounced check business hours:', error);
+    }
+  },
+  5000, // 5초
+  { trailing: true, leading: false },
+);
+
+/**
  * 메시지 전송 (Broadcast + Database 저장)
  */
 export async function sendChatMessage(
   channel: any, // RealtimeChannel
   hospitalId: string,
   message: ChatMessage,
+  onAutoResponse?: AutoResponseHandler,
 ): Promise<{ success: boolean; error?: string }> {
   try {
     console.log('📤 Sending message:', message);
@@ -134,6 +229,15 @@ export async function sendChatMessage(
     }
 
     console.log('✅ Message processing completed');
+
+    // 3. 비즈니스 시간 체크 (디바운스)
+    debouncedCheckBusinessHours({
+      hospitalId,
+      userId: message.userId,
+      message,
+      onAutoResponse,
+    });
+
     return { success: true };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
