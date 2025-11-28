@@ -93,5 +93,6 @@ export interface CheckBusinessHoursResponse {
   isBusinessHours: boolean;
   currentTime?: string;
   detectedLanguage?: 'ko' | 'en' | 'th';
+  autoResponseMessage?: string;
   error?: string;
 }

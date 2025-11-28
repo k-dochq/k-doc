@@ -4,7 +4,12 @@
  */
 
 import { generateText } from 'ai';
-import { openai } from '@ai-sdk/openai';
+import { createOpenAI } from '@ai-sdk/openai';
+
+// OpenAI provider instance 생성 (환경변수 OPENAI_API_KEY 자동 사용)
+const openai = createOpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export type DetectedLanguage = 'ko' | 'en' | 'th';
 
@@ -28,7 +33,7 @@ export async function detectLanguage(text: string): Promise<DetectedLanguage | n
 
 Text: "${text.trim()}"`,
       temperature: 0.1, // 낮은 temperature로 일관된 결과
-      maxOutputTokens: 10, // 짧은 응답만 필요
+      maxOutputTokens: 16, // OpenAI Responses API 최소값
     });
 
     // 응답에서 언어 코드 추출 (공백 제거, 소문자 변환)

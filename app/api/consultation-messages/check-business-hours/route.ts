@@ -5,6 +5,13 @@ import {
 } from 'features/consultation-chat/api/entities/types';
 import { checkBusinessHoursInKorea } from 'features/consultation-chat/api/lib/business-hours-utils';
 import { detectLanguage } from 'features/consultation-chat/api/lib/language-detection-utils';
+import {
+  getAutoResponseMessage,
+  shouldSendAutoResponse,
+} from 'features/consultation-chat/api/lib/auto-response-utils';
+
+// 개발 편의를 위한 강제 토글 (true로 설정하면 항상 영업시간 외로 처리)
+const FORCE_OFF_BUSINESS_HOURS = true;
 
 /**
  * 비즈니스 시간 체크 API
@@ -30,9 +37,11 @@ export async function POST(
     }
 
     // 한국 시간 기준 비즈니스 시간 체크
-    const { isBusinessHours: result, currentTime: currentTimeString } = checkBusinessHoursInKorea();
+    const { isBusinessHours: checkedBusinessHours, currentTime: currentTimeString } =
+      checkBusinessHoursInKorea();
+    const result = FORCE_OFF_BUSINESS_HOURS ? false : checkedBusinessHours;
 
-    // 언어 감지 (메시지 텍스트가 있는 경우)
+    // 언어 감지
     let detectedLanguage: 'ko' | 'en' | 'th' | undefined = undefined;
     if (message.content && message.content.trim().length > 0) {
       const language = await detectLanguage(message.content);
@@ -41,11 +50,17 @@ export async function POST(
       }
     }
 
+    // 자동 응답 메시지 생성 (영업시간 외이고 언어가 감지된 경우)
+    const autoResponseMessage = shouldSendAutoResponse(result, detectedLanguage)
+      ? getAutoResponseMessage(detectedLanguage!)
+      : undefined;
+
     return NextResponse.json({
       success: true,
       isBusinessHours: result,
       currentTime: currentTimeString,
       detectedLanguage,
+      autoResponseMessage,
     });
   } catch (error) {
     console.error('Error in check business hours API:', error);
