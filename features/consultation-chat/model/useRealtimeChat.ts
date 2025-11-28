@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { createClient } from 'shared/lib/supabase/client';
 import { type RealtimeChannel } from '@supabase/supabase-js';
 import { type ChatMessage } from '../api/entities/types';
-import { fetchChatHistory, sendChatMessage } from '../api/chat-api-client';
+import { fetchChatHistory, sendChatMessage, saveMessageToDatabase } from '../api/chat-api-client';
 import {
   createRoomId,
   sortMessagesByTime,
@@ -81,6 +81,31 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     }
   }, [hospitalId, userId, hasMore, nextCursor]);
 
+  const handleAutoResponse = useCallback(
+    async ({ message: autoMessage }: { message: string }) => {
+      const adminMessage: ChatMessage = {
+        id: crypto.randomUUID(),
+        content: autoMessage,
+        userId,
+        userName,
+        timestamp: new Date().toISOString(),
+        type: 'admin',
+      };
+
+      setMessages((prev) => {
+        const combined = [...prev, adminMessage];
+        const deduplicated = deduplicateMessages(combined);
+        return sortMessagesByTime(deduplicated);
+      });
+
+      const saveResult = await saveMessageToDatabase(hospitalId, autoMessage, 'ADMIN');
+      if (!saveResult.success) {
+        console.error('❌ Failed to save auto response message:', saveResult.error);
+      }
+    },
+    [userId, userName, hospitalId],
+  );
+
   // 메시지 전송
   const sendMessage = useCallback(
     async (content: string) => {
@@ -115,7 +140,12 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         });
 
         // ✅ 2. 서버로 전송 (Broadcast + DB)
-        const result = await sendChatMessage(channelRef.current, hospitalId, message);
+        const result = await sendChatMessage(
+          channelRef.current,
+          hospitalId,
+          message,
+          handleAutoResponse,
+        );
 
         if (!result.success) {
           // ✅ 3. 전송 실패 시 UI에서 제거 (롤백)
@@ -131,7 +161,7 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         setError(errorMessage);
       }
     },
-    [userId, userName, hospitalId],
+    [userId, userName, hospitalId, handleAutoResponse],
   );
 
   // 메시지 상태 업데이트 (중복 제거 및 정렬)

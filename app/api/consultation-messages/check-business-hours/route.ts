@@ -11,7 +11,7 @@ import {
 } from 'features/consultation-chat/api/lib/auto-response-utils';
 
 // 개발 편의를 위한 강제 토글 (true로 설정하면 항상 영업시간 외로 처리)
-const FORCE_OFF_BUSINESS_HOURS = true;
+const FORCE_OFF_BUSINESS_HOURS = false;
 
 /**
  * 비즈니스 시간 체크 API
