@@ -43,8 +43,8 @@ export async function MainPageLayout({ lang }: MainPageLayoutProps) {
           <LimousineBanner lang={lang} />
         </div>
 
-        <div className='bg-[#FE7A8F]'>
-          <div className='px-5'>
+        <div className='max-h-[420px] overflow-hidden bg-[#FE7A8F]'>
+          <div className='overflow-hidden px-5'>
             <CautionSection lang={lang} dict={dict} />
           </div>
         </div>
