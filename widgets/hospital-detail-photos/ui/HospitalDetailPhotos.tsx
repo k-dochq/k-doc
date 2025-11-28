@@ -81,7 +81,7 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
   }
 
   return (
-    <div className='relative w-full'>
+    <div className='relative max-h-[242px] w-full'>
       <Carousel
         setApi={setApi}
         opts={{
