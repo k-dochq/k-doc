@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { createClient } from 'shared/lib/supabase/client';
 import { type RealtimeChannel } from '@supabase/supabase-js';
 import { type ChatMessage } from '../api/entities/types';
-import { fetchChatHistory, sendChatMessage } from '../api/chat-api-client';
+import { fetchChatHistory, sendChatMessage, saveMessageToDatabase } from '../api/chat-api-client';
 import {
   createRoomId,
   sortMessagesByTime,
@@ -81,20 +81,35 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     }
   }, [hospitalId, userId, hasMore, nextCursor]);
 
+  const handleAutoResponse = useCallback(
+    async ({ message: autoMessage }: { message: string }) => {
+      const adminMessage: ChatMessage = {
+        id: crypto.randomUUID(),
+        content: autoMessage,
+        userId,
+        userName,
+        timestamp: new Date().toISOString(),
+        type: 'admin',
+      };
+
+      setMessages((prev) => {
+        const combined = [...prev, adminMessage];
+        const deduplicated = deduplicateMessages(combined);
+        return sortMessagesByTime(deduplicated);
+      });
+
+      const saveResult = await saveMessageToDatabase(hospitalId, autoMessage, 'ADMIN');
+      if (!saveResult.success) {
+        console.error('❌ Failed to save auto response message:', saveResult.error);
+      }
+    },
+    [userId, userName, hospitalId],
+  );
+
   // 메시지 전송
   const sendMessage = useCallback(
     async (content: string) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🚀 sendMessage called:', { content, userId, userName, hospitalId });
-      }
-
       if (!channelRef.current || !userId) {
-        if (process.env.NODE_ENV === 'development') {
-          console.log('❌ sendMessage failed: missing requirements', {
-            hasChannel: !!channelRef.current,
-            hasUserId: !!userId,
-          });
-        }
         return;
       }
 
@@ -125,7 +140,12 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         });
 
         // ✅ 2. 서버로 전송 (Broadcast + DB)
-        const result = await sendChatMessage(channelRef.current, hospitalId, message);
+        const result = await sendChatMessage(
+          channelRef.current,
+          hospitalId,
+          message,
+          handleAutoResponse,
+        );
 
         if (!result.success) {
           // ✅ 3. 전송 실패 시 UI에서 제거 (롤백)
@@ -139,12 +159,9 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
         setMessages((prev) => prev.filter((msg) => msg.id !== message.id));
 
         setError(errorMessage);
-        if (process.env.NODE_ENV === 'development') {
-          console.error('❌ Failed to send message:', error);
-        }
       }
     },
-    [userId, userName, hospitalId],
+    [userId, userName, hospitalId, handleAutoResponse],
   );
 
   // 메시지 상태 업데이트 (중복 제거 및 정렬)
@@ -156,32 +173,12 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     });
   }, []);
 
-  // visibilitychange 이벤트 핸들러 (임시 주석처리 - 파일 업로드 시 새로고침 방지)
-  // const handleVisibilityChange = useCallback(() => {
-  //   // visible 상태가 아니면 무시 (포그라운드로 돌아왔을 때만 처리)
-  //   if (typeof document === 'undefined' || document.visibilityState !== 'visible') {
-  //     return;
-  //   }
-
-  //   if (process.env.NODE_ENV === 'development') {
-  //     console.log('🔄 Page became visible - reloading page');
-  //   }
-  //   window.location.reload();
-  // }, []);
-
   useEffect(() => {
     if (!userId || !hospitalId) {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('❌ useEffect: missing required params', { userId, hospitalId });
-      }
       return;
     }
 
     const roomId = createRoomId(hospitalId, userId);
-
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🔌 Setting up Realtime channel:', { roomId, userId, userName, hospitalId });
-    }
 
     // 1. 먼저 채팅 히스토리 로드
     loadChatHistory();
@@ -206,55 +203,31 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
       },
     });
 
-    if (process.env.NODE_ENV === 'development') {
-      console.log('📡 Channel created:', channelName);
-    }
     channelRef.current = channel;
 
     // 메시지 수신
     channel.on('broadcast', { event: 'message' }, ({ payload }: { payload: ChatMessage }) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('📥 Message received via broadcast:', payload);
-      }
       updateMessages([payload]);
     });
 
     // 채널 구독
     channel.subscribe((status) => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🔔 Channel subscription status:', status);
-      }
       if (status === 'SUBSCRIBED') {
         setIsConnected(true);
         setError(null);
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`✅ Connected to chat room: ${roomId}`);
-        }
       } else if (status === 'CHANNEL_ERROR') {
         setIsConnected(false);
         setError('채팅방 연결에 실패했습니다.');
-        if (process.env.NODE_ENV === 'development') {
-          console.error(`❌ Failed to connect to chat room: ${roomId}`);
-        }
       } else if (status === 'TIMED_OUT') {
         setIsConnected(false);
         setError('연결 시간이 초과되었습니다.');
-        if (process.env.NODE_ENV === 'development') {
-          console.error(`⏰ Connection timed out for chat room: ${roomId}`);
-        }
       } else if (status === 'CLOSED') {
         setIsConnected(false);
-        if (process.env.NODE_ENV === 'development') {
-          console.log(`🔒 Connection closed for chat room: ${roomId}`);
-        }
       }
     });
 
     // 정리
     return () => {
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🧹 Cleaning up channel:', channelName);
-      }
       if (channelRef.current) {
         channelRef.current.unsubscribe();
         channelRef.current = null;
