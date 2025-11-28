@@ -90,7 +90,7 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
         }}
         className='h-full w-full'
       >
-        <CarouselContent className='ml-0'>
+        <CarouselContent className='ml-0 h-full'>
           {hospitalImages.map((image, index) => (
             <CarouselItem key={image.id} className='h-full pl-0'>
               <div className='h-full w-full'>
