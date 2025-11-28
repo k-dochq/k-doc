@@ -41,6 +41,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     en: priceEnImage,
     th: priceThImage,
   };
+
   const priceImage = priceImages[lang];
 
   const contentImages = [
