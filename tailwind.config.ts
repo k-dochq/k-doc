@@ -18,7 +18,7 @@ const config: Config = {
         sans: ['var(--font-pretendard)', 'var(--font-noto-thai)', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'fade-pulse': 'fadePulse 2.5s ease-in-out infinite',
+        'fade-pulse': 'fadePulse 1.4s ease-in-out infinite',
       },
       keyframes: {
         fadePulse: {
