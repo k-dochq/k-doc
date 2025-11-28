@@ -38,8 +38,8 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
   }
 }
 
-// ISR 설정 - 10분마다 재검증
-export const revalidate = 600;
+// ISR 설정 - 30분마다 재검증
+export const revalidate = 1800;
 
 // 빌드 타임에 생성되지 않은 경로도 동적으로 생성 허용
 export const dynamicParams = true;
