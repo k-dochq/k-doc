@@ -1,3 +1,5 @@
+import type { MarketingAttribution } from 'shared/lib/marketing-attribution';
+
 export interface UserProfile {
   id: string;
   email: string;
@@ -15,6 +17,7 @@ export interface UserProfile {
     birth_date?: string;
     nickname?: string;
     marketing_notifications?: boolean;
+    marketing_attribution?: MarketingAttribution;
     [key: string]: unknown;
   } | null;
   createdAt: string;
@@ -36,6 +39,8 @@ export interface UpdateUserProfileRequest {
   phoneNumberOnly?: string;
   birthDate?: string;
   locale?: string;
+  // 마케팅 어트리뷰션
+  marketingAttribution?: MarketingAttribution;
 }
 
 export interface UpdateUserProfileResponse {

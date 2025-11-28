@@ -48,8 +48,9 @@ export function useBestHospitals(
     queryKey: ['best-hospitals', params.category, params.limit],
     queryFn: () => fetchBestHospitals(params),
     initialData: options?.initialData,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    gcTime: 10 * 60 * 1000, // 10 minutes
+    staleTime: 15 * 60 * 1000, // 15 minutes
+    gcTime: 30 * 60 * 1000, // 30 minutes
+    refetchOnWindowFocus: false, // 창 포커스 시 자동 refetch 방지
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });

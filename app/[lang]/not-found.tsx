@@ -1,6 +1,11 @@
-import Image from 'next/image';
+'use client';
+
+import { usePathname } from 'next/navigation';
 import { Home } from 'lucide-react';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { HeaderLogo } from 'widgets/header/ui/HeaderLogo';
+import { extractLocaleFromPathname } from 'shared/lib/locale/utils';
+import { DEFAULT_LOCALE } from 'shared/config/locales';
 
 // 다국어 메시지 정의
 const messages = {
@@ -8,29 +13,23 @@ const messages = {
     title: '페이지를 찾을 수 없습니다',
     description: '요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.',
     homeButton: '홈으로 돌아가기',
-    logoAlt: 'K-DOC 로고',
   },
   en: {
     title: 'Page Not Found',
-    description: 'The page you requested does not exist or may have been moved.',
-    homeButton: 'Go Home',
-    logoAlt: 'K-DOC Logo',
+    description: "The page you are looking for doesn't exist or may have been moved.",
+    homeButton: 'Go back to Home',
   },
   th: {
-    title: 'ไม่พบหน้าที่ต้องการ',
-    description: 'หน้าที่คุณต้องการไม่มีอยู่หรืออาจถูกย้ายแล้ว',
-    homeButton: 'กลับหน้าแรก',
-    logoAlt: 'โลโก้ K-DOC',
+    title: 'ไม่พบหน้านี้',
+    description: 'ไม่พบหน้าที่คุณกำลังค้นหา หรืออาจถูกย้ายไปแล้วค่ะ',
+    homeButton: 'กลับไปหน้าแรก',
   },
 } as const;
 
-interface NotFoundProps {
-  params?: Promise<{ lang?: 'ko' | 'en' | 'th' }>;
-}
-
-export default async function NotFound({ params }: NotFoundProps) {
-  // params가 없으면 기본값으로 한국어 사용
-  const lang = params ? (await params).lang || 'ko' : 'ko';
+export default function NotFound() {
+  // pathname에서 locale 추출
+  const pathname = usePathname();
+  const lang = pathname ? extractLocaleFromPathname(pathname) : DEFAULT_LOCALE;
   const dict = messages[lang];
 
   return (
@@ -38,14 +37,8 @@ export default async function NotFound({ params }: NotFoundProps) {
       <div className='w-full max-w-md text-center'>
         {/* K-DOC 로고 */}
         <div className='mb-8 flex justify-center'>
-          <div className='relative h-16 w-16'>
-            <Image
-              src='/kdoc_logo.png'
-              alt={dict.logoAlt}
-              fill
-              className='object-contain'
-              priority
-            />
+          <div className='text-primary'>
+            <HeaderLogo />
           </div>
         </div>
 
@@ -60,7 +53,7 @@ export default async function NotFound({ params }: NotFoundProps) {
         <LocaleLink
           href='/'
           locale={lang}
-          className='inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none'
+          className='inline-flex items-center gap-2 rounded-lg bg-[#DA47EF] px-6 py-3 text-white transition-colors hover:bg-[#DA47EF]/90 focus:ring-2 focus:ring-[#DA47EF] focus:ring-offset-2 focus:outline-none'
         >
           <Home className='h-4 w-4' />
           {dict.homeButton}

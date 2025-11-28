@@ -922,7 +922,9 @@
     "allInOnePackage": {
       "title": "จองแพ็กเกจออลอินวัน",
       "subtitle": "จองบริการทั้งหมดรวมถึงรถและล่ามในที่เดียว",
-      "vanSelection": "เลือกประเภทรถ"
+      "vanSelection": "เลือกประเภทรถ",
+      "exploreClinics": "เริ่มค้นหาคลินิกตอนนี้",
+      "fastReservationGuarantee": "สิทธิการจองแบบเร่งด่วน"
     },
     "vanReservation": {
       "title": "จองรถตู้",

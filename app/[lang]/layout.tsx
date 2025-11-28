@@ -9,6 +9,8 @@ import { GoogleAnalytics } from 'shared/ui/google-analytics';
 import { ContentsquareAnalytics } from 'shared/ui/ContentsquareAnalytics';
 import { MetaPixel } from 'shared/ui/meta-pixel';
 import { GoogleTagManager } from 'shared/ui/google-tag-manager';
+import { GoogleAdsGTM } from 'shared/ui/google-ads-gtm';
+import { MarketingAttributionTracker } from 'shared/ui/marketing-attribution/MarketingAttributionTracker';
 import { Toaster } from 'sonner';
 
 const pretendard = localFont({
@@ -126,6 +128,8 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
       <body className={currentFont.className}>
         {/* Google Tag Manager */}
         <GoogleTagManager containerId='GTM-MBVD4CJR' />
+        {/* Google Ads Tag Manager */}
+        <GoogleAdsGTM />
         {/* Meta Pixel */}
         <MetaPixel pixelId='1160778096188076' />
         {/* Google Analytics */}
@@ -133,6 +137,8 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         <GoogleAnalytics gaId='G-HB3H04LPPD' />
         {/* Contentsquare 히트맵 분석 */}
         <ContentsquareAnalytics />
+        {/* 마케팅 어트리뷰션 추적 */}
+        <MarketingAttributionTracker />
 
         <QueryProvider>
           <MaxWidthLayout>

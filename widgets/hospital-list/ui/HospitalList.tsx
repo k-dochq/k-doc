@@ -6,7 +6,6 @@ import { type Dictionary, type HospitalCardData } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { useBestHospitals } from 'entities/hospital/api/queries/get-best-hospitals';
-import { usePrefetchHospitalCategories } from 'features/hospital-list/model';
 import { HospitalListError } from 'features/hospital-list/ui';
 import { HospitalList as HospitalListComponent } from 'entities/hospital/ui/HospitalList';
 import { HospitalListTitle } from './HospitalListTitle';
@@ -42,12 +41,6 @@ export function HospitalList({ medicalSpecialties, lang, dict, initialData }: Ho
       initialData: selectedCategory === 'ALL' ? initialData : undefined,
     },
   );
-
-  // 모든 카테고리의 데이터를 미리 prefetch
-  usePrefetchHospitalCategories({
-    medicalSpecialties,
-    selectedCategory,
-  });
 
   // 페이지 prefetch
   useEffect(() => {

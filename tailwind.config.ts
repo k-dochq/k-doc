@@ -17,6 +17,19 @@ const config: Config = {
         'noto-thai': ['var(--font-noto-thai)'],
         sans: ['var(--font-pretendard)', 'var(--font-noto-thai)', 'system-ui', 'sans-serif'],
       },
+      animation: {
+        'fade-pulse': 'fadePulse 1.4s ease-in-out infinite',
+      },
+      keyframes: {
+        fadePulse: {
+          '0%': { opacity: '0' },
+          '10%': { opacity: '0.5' },
+          '20%': { opacity: '1' },
+          '80%': { opacity: '1' },
+          '90%': { opacity: '0.5' },
+          '100%': { opacity: '0' },
+        },
+      },
     },
   },
   plugins: [],
