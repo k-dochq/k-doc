@@ -72,3 +72,27 @@ export interface ChatHistoryResponse {
     };
   }>;
 }
+
+// 비즈니스 시간 체크 요청 타입
+export interface CheckBusinessHoursRequest {
+  hospitalId: string;
+  userId: string;
+  message: {
+    id: string;
+    content: string;
+    userId: string;
+    userName: string;
+    timestamp: string;
+    type: 'user' | 'admin';
+  };
+}
+
+// 비즈니스 시간 체크 응답 타입
+export interface CheckBusinessHoursResponse {
+  success: boolean;
+  isBusinessHours: boolean;
+  currentTime?: string;
+  detectedLanguage?: 'ko' | 'en' | 'th';
+  autoResponseMessage?: string;
+  error?: string;
+}
