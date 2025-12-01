@@ -1,0 +1,1 @@
+export { StarIconFigma } from './StarIconFigma';
