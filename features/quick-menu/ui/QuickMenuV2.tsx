@@ -29,23 +29,25 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
       <div
         ref={scrollContainerRef}
         onScroll={handleScroll}
-        className='scrollbar-hide overflow-x-auto scroll-smooth px-5'
+        className='scrollbar-hide overflow-x-auto scroll-smooth'
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
           WebkitOverflowScrolling: 'touch',
         }}
       >
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 pl-5'>
           <div className='flex gap-4'>
             {firstRow.map((category) => (
               <QuickMenuButtonV2 key={category.id} category={category} lang={lang} />
             ))}
+            <div className='w-2 shrink-0' />
           </div>
           <div className='flex gap-4'>
             {secondRow.map((category) => (
               <QuickMenuButtonV2 key={category.id} category={category} lang={lang} />
             ))}
+            <div className='w-2 shrink-0' />
           </div>
         </div>
       </div>
