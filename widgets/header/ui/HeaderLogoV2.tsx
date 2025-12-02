@@ -1,4 +1,4 @@
-export function HeaderLogo() {
+export function HeaderLogoV2() {
   return (
     <div className='flex items-center'>
       <svg
