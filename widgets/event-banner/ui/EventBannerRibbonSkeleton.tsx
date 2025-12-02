@@ -7,7 +7,7 @@ export function EventBannerRibbonSkeleton() {
         src='/images/banner_top_3.png'
         alt='Loading banner'
         fill
-        sizes='100vw'
+        sizes='500px'
         className='object-cover blur-xl'
         priority
       />

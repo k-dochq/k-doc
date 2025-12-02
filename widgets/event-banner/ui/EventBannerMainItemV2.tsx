@@ -13,6 +13,7 @@ export interface EventBannerMainItemV2Props {
   imageUrl: string;
   alt: string | null;
   currentLocale: 'ko' | 'en' | 'th';
+  isBlur?: boolean;
 }
 
 /**
@@ -63,6 +64,7 @@ export function EventBannerMainItemV2({
   alt,
   title,
   currentLocale,
+  isBlur = false,
 }: EventBannerMainItemV2Props) {
   const localizedTitle = getLocalizedTitle(title, currentLocale);
   const imageAlt = alt || localizedTitle || 'Event Main Banner';
@@ -70,7 +72,9 @@ export function EventBannerMainItemV2({
   const bannerClassName =
     'relative aspect-[310/336] w-full overflow-hidden rounded-xl shadow-[2px_3px_5px_0_rgba(0,0,0,0.4)]';
 
-  if (linkUrl) {
+  const imageClassName = isBlur ? 'object-cover blur-xl' : 'object-cover';
+
+  if (linkUrl && !isBlur) {
     // 전체 URL인 경우 locale 추가 처리
     const processedLinkUrl =
       linkUrl.startsWith('http') || linkUrl.startsWith('https')
@@ -80,7 +84,7 @@ export function EventBannerMainItemV2({
     return (
       <LocaleLink href={processedLinkUrl} locale={currentLocale} className='block'>
         <div className={bannerClassName}>
-          <Image src={imageUrl} alt={imageAlt} fill sizes='90vw' className='object-cover' />
+          <Image src={imageUrl} alt={imageAlt} fill sizes='414px' className={imageClassName} />
         </div>
       </LocaleLink>
     );
@@ -89,7 +93,7 @@ export function EventBannerMainItemV2({
   return (
     <div className='block'>
       <div className={bannerClassName}>
-        <Image src={imageUrl} alt={imageAlt} fill sizes='90vw' className='object-cover' />
+        <Image src={imageUrl} alt={imageAlt} fill sizes='414px' className={imageClassName} />
       </div>
     </div>
   );

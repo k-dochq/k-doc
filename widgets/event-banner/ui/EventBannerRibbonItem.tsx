@@ -79,7 +79,7 @@ export function EventBannerRibbonItem({
     return (
       <LocaleLink href={processedLinkUrl} locale={currentLocale} className='block'>
         <div className={bannerClassName}>
-          <Image src={imageUrl} alt={imageAlt} fill sizes='100vw' className='object-cover' />
+          <Image src={imageUrl} alt={imageAlt} fill sizes='500px' className='object-cover' />
         </div>
       </LocaleLink>
     );
@@ -88,7 +88,7 @@ export function EventBannerRibbonItem({
   return (
     <div className='block'>
       <div className={bannerClassName}>
-        <Image src={imageUrl} alt={imageAlt} fill sizes='100vw' className='object-cover' />
+        <Image src={imageUrl} alt={imageAlt} fill sizes='500px' className='object-cover' />
       </div>
     </div>
   );

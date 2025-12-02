@@ -3,12 +3,14 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { EventBannerMainItemV2 } from './EventBannerMainItemV2';
+import { EventBannerMainPaginationV2 } from './EventBannerMainPaginationV2';
 import { type EventBannerWithImage } from '../model/types';
 
 export interface EventBannerMainContentV2Props {
   banners: EventBannerWithImage[];
   currentLocale: 'ko' | 'en' | 'th';
   className?: string;
+  isBlur?: boolean;
 }
 
 const TWEEN_FACTOR_BASE = 0.1;
@@ -20,10 +22,13 @@ export function EventBannerMainContentV2({
   banners,
   currentLocale,
   className = '',
+  isBlur = false,
 }: EventBannerMainContentV2Props) {
   const [api, setApi] = useState<CarouselApi>();
+  const [currentPage, setCurrentPage] = useState(0);
   const tweenFactor = useRef(0);
   const tweenNodes = useRef<HTMLElement[]>([]);
+  const totalPages = banners.length;
 
   const setTweenNodes = useCallback((emblaApi: CarouselApi): void => {
     if (!emblaApi) return;
@@ -87,16 +92,24 @@ export function EventBannerMainContentV2({
   useEffect(() => {
     if (!api) return;
 
+    const updatePage = () => {
+      const slideIndex = api.selectedScrollSnap();
+      const page = slideIndex % totalPages;
+      setCurrentPage(page);
+    };
+
     setTweenNodes(api);
     setTweenFactor(api);
     tweenScale(api);
+    updatePage();
 
     api
       .on('reInit', setTweenNodes)
       .on('reInit', setTweenFactor)
       .on('reInit', tweenScale)
       .on('scroll', tweenScale)
-      .on('slideFocus', tweenScale);
+      .on('slideFocus', tweenScale)
+      .on('select', updatePage);
 
     return () => {
       api
@@ -104,9 +117,10 @@ export function EventBannerMainContentV2({
         .off('reInit', setTweenFactor)
         .off('reInit', tweenScale)
         .off('scroll', tweenScale)
-        .off('slideFocus', tweenScale);
+        .off('slideFocus', tweenScale)
+        .off('select', updatePage);
     };
-  }, [api, tweenScale, setTweenNodes, setTweenFactor]);
+  }, [api, tweenScale, setTweenNodes, setTweenFactor, totalPages]);
 
   // 자동재생 기능
   useEffect(() => {
@@ -126,7 +140,7 @@ export function EventBannerMainContentV2({
   }, [api, banners.length]);
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`relative w-full ${className}`}>
       <Carousel
         setApi={setApi}
         opts={{
@@ -147,12 +161,17 @@ export function EventBannerMainContentV2({
                   imageUrl={banner.currentImage.imageUrl}
                   alt={banner.currentImage.alt}
                   currentLocale={currentLocale}
+                  isBlur={isBlur}
                 />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
+
+      {totalPages > 1 && (
+        <EventBannerMainPaginationV2 currentPage={currentPage} totalPages={totalPages} />
+      )}
     </div>
   );
 }
