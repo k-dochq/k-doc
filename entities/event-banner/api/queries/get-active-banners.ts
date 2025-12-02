@@ -45,8 +45,8 @@ export function useActiveBanners(options?: UseActiveBannersOptions) {
   return useQuery({
     queryKey: ['active-banners', options?.type],
     queryFn: () => fetchActiveBanners(options),
-    staleTime: 30 * 60 * 1000, // 30분
-    gcTime: 60 * 60 * 1000, // 60분
+    staleTime: 2 * 60 * 60 * 1000, // 2시간 - 데이터가 오래된 것으로 간주되기 전까지의 시간
+    gcTime: 24 * 60 * 60 * 1000, // 24시간 - 캐시에서 제거되기 전까지의 시간
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
