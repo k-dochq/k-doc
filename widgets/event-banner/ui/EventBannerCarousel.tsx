@@ -6,7 +6,7 @@ import { EventBannerContent } from './EventBannerContent';
 import { type EventBannerCarouselProps, type EventBannerWithImage } from '../model/types';
 
 export function EventBannerCarousel({ currentLocale, className = '' }: EventBannerCarouselProps) {
-  const { data: banners, isLoading, error } = useActiveBanners();
+  const { data: banners, isLoading, error } = useActiveBanners({ type: 'MAIN' });
 
   // 로딩 중이면 스켈레톤 표시
   if (isLoading) {

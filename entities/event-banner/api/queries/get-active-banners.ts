@@ -2,14 +2,27 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { type EventBannerWithImages } from 'widgets/event-banner/model/types';
+import { type EventBannerType } from '@prisma/client';
 
 export interface GetActiveBannersResponse {
   success: boolean;
   data: EventBannerWithImages[];
 }
 
-export async function fetchActiveBanners(): Promise<EventBannerWithImages[]> {
-  const response = await fetch('/api/banners/active');
+export interface FetchActiveBannersOptions {
+  type?: EventBannerType;
+}
+
+export async function fetchActiveBanners(
+  options?: FetchActiveBannersOptions,
+): Promise<EventBannerWithImages[]> {
+  const params = new URLSearchParams();
+  if (options?.type) {
+    params.append('type', options.type);
+  }
+
+  const url = `/api/banners/active${params.toString() ? `?${params.toString()}` : ''}`;
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error('Failed to fetch active banners');
@@ -24,10 +37,14 @@ export async function fetchActiveBanners(): Promise<EventBannerWithImages[]> {
   return result.data;
 }
 
-export function useActiveBanners() {
+export interface UseActiveBannersOptions {
+  type?: EventBannerType;
+}
+
+export function useActiveBanners(options?: UseActiveBannersOptions) {
   return useQuery({
-    queryKey: ['active-banners'],
-    queryFn: fetchActiveBanners,
+    queryKey: ['active-banners', options?.type],
+    queryFn: () => fetchActiveBanners(options),
     staleTime: 30 * 60 * 1000, // 30분
     gcTime: 60 * 60 * 1000, // 60분
     retry: 3,
