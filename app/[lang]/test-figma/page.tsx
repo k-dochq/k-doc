@@ -1,16 +1,9 @@
-import { type Locale } from 'shared/config';
 import { FigmaSearchBar } from './FigmaSearchBar';
 import { QuickMenuIconItem } from './QuickMenuIconItem';
 import { SectionTitle } from './SectionTitle';
 import { HospitalCard } from './HospitalCard';
 
-interface TestFigmaPageProps {
-  params: Promise<{ lang: Locale }>;
-}
-
-export default async function TestFigmaPage({ params }: TestFigmaPageProps) {
-  const { lang } = await params;
-
+export default async function TestFigmaPage() {
   return (
     <div className='min-h-screen bg-white p-8'>
       <div className='mx-auto max-w-2xl'>
