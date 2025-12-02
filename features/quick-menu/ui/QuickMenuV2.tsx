@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { type QuickMenuProps } from '../model/types';
 import { QUICK_MENU_CATEGORIES_V2 } from '../model/categoriesV2';
 import { QuickMenuButtonV2 } from './QuickMenuButtonV2';
@@ -8,27 +8,50 @@ import { QuickMenuIndicatorV2 } from './QuickMenuIndicatorV2';
 
 export function QuickMenuV2({ lang }: QuickMenuProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const indicatorRef = useRef<HTMLDivElement>(null);
 
   // 첫 줄: 눈, 코, 리프팅, 안면윤곽, 가슴, 줄기세포 (6개)
   const firstRow = QUICK_MENU_CATEGORIES_V2.slice(0, 6);
   // 둘째 줄: 지방흡입, 바디, 모발이식, 피부과, 치과, 기타 (6개)
   const secondRow = QUICK_MENU_CATEGORIES_V2.slice(6, 12);
 
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+  useEffect(() => {
+    const element = scrollContainerRef.current;
+    const indicator = indicatorRef.current;
+    if (!element || !indicator) return;
+
+    let ticking = false;
+
+    const updateIndicator = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = element;
       const maxScroll = scrollWidth - clientWidth;
       const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
-      setScrollProgress(progress);
-    }
-  };
+      const offset = progress * 16; // 40px - 24px = 16px
+
+      indicator.style.transform = `translateX(${offset}px)`;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateIndicator();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    element.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      element.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className='flex w-full flex-col gap-4'>
       <div
         ref={scrollContainerRef}
-        onScroll={handleScroll}
         className='scrollbar-hide overflow-x-auto scroll-smooth'
         style={{
           scrollbarWidth: 'none',
@@ -51,7 +74,7 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
           </div>
         </div>
       </div>
-      <QuickMenuIndicatorV2 scrollProgress={scrollProgress} />
+      <QuickMenuIndicatorV2 indicatorRef={indicatorRef} />
     </div>
   );
 }
