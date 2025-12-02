@@ -9,3 +9,5 @@ export { StemCellIcon } from './StemCellIcon';
 export { DermatologyIcon } from './DermatologyIcon';
 export { AllIcon } from './AllIcon';
 export { DentalIcon } from './DentalIcon';
+export { BodyIcon } from './BodyIcon';
+export { OtherIcon } from './OtherIcon';
