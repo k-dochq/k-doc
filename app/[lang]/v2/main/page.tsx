@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { EventBannerRibbonCarousel } from 'widgets/event-banner/ui/EventBannerRibbonCarousel';
 import { SearchBarV2 } from 'shared/ui/search-bar/SearchBarV2';
+import { EventBannerMainCarouselV2 } from 'widgets/event-banner/ui/EventBannerMainCarouselV2';
 import { getDictionary } from '../../dictionaries';
 
 interface V2MainPageProps {
@@ -17,6 +18,7 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
       <div className='px-5 py-5'>
         <SearchBarV2 lang={lang} dict={dict} />
       </div>
+      <EventBannerMainCarouselV2 currentLocale={lang} />
       <div>{/* 빈 페이지 - 향후 컴포넌트 추가 예정 */}</div>
     </div>
   );
