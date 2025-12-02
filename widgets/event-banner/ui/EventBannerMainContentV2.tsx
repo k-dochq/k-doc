@@ -69,12 +69,16 @@ export function EventBannerMainContentV2({
           });
         }
 
-        // const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current);
         const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current);
-        const scale = numberWithinRange(tweenValue, 0, 1);
+
+        // 중앙 아이템인지 확인
+        // const isCenterSlide = Math.abs(diffToTarget) < 0.01;
+
+        const scaleY = numberWithinRange(tweenValue, 0, 1);
+
         const tweenNode = tweenNodes.current[slideIndex];
         if (tweenNode) {
-          tweenNode.style.transform = `scale(${scale})`;
+          tweenNode.style.transform = `scaleY(${scaleY})`;
         }
       });
     });
@@ -116,7 +120,7 @@ export function EventBannerMainContentV2({
       } else {
         api.scrollTo(0);
       }
-    }, 2500); // 2.5초 간격
+    }, 2500);
 
     return () => clearInterval(interval);
   }, [api, banners.length]);
@@ -135,7 +139,7 @@ export function EventBannerMainContentV2({
         <CarouselContent className=''>
           {banners.map((banner) => (
             <CarouselItem key={banner.id} className='shrink-0 basis-[82.67%]'>
-              <div className='embla__slide__item [backface-visibility:hidden]'>
+              <div className='embla__slide__item px-[6px] [backface-visibility:hidden]'>
                 <EventBannerMainItemV2
                   id={banner.id}
                   title={banner.title}

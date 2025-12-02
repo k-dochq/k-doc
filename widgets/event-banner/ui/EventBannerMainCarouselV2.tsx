@@ -14,7 +14,7 @@ export function EventBannerMainCarouselV2({
   // 로딩 중이면 스켈레톤 표시
   if (isLoading) {
     return (
-      <div className='mt-5 px-5'>
+      <div className='px-5'>
         <EventBannerMainSkeletonV2 />
       </div>
     );
@@ -49,7 +49,7 @@ export function EventBannerMainCarouselV2({
   }
 
   return (
-    <div className='relative z-10 mt-5'>
+    <div className='relative z-10'>
       <EventBannerMainContentV2
         banners={validBanners}
         currentLocale={currentLocale}
