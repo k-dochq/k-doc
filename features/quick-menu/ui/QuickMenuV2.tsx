@@ -60,15 +60,25 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
         }}
       >
         <div className='flex flex-col gap-3 pl-5'>
-          <div className='flex gap-4'>
-            {firstRow.map((category) => (
-              <QuickMenuButtonV2 key={category.id} category={category} lang={lang} />
+          <div className='flex'>
+            {firstRow.map((category, index) => (
+              <QuickMenuButtonV2
+                key={category.id}
+                category={category}
+                lang={lang}
+                isFirst={index === 0}
+              />
             ))}
             <div className='w-2 shrink-0' />
           </div>
-          <div className='flex gap-4'>
-            {secondRow.map((category) => (
-              <QuickMenuButtonV2 key={category.id} category={category} lang={lang} />
+          <div className='flex'>
+            {secondRow.map((category, index) => (
+              <QuickMenuButtonV2
+                key={category.id}
+                category={category}
+                lang={lang}
+                isFirst={index === 0}
+              />
             ))}
             <div className='w-2 shrink-0' />
           </div>
