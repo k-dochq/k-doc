@@ -2,6 +2,7 @@ import { type Locale } from 'shared/config';
 import { EventBannerRibbonCarousel } from 'widgets/event-banner/ui/EventBannerRibbonCarousel';
 import { SearchBarV2 } from 'shared/ui/search-bar/SearchBarV2';
 import { EventBannerMainCarouselV2 } from 'widgets/event-banner/ui/EventBannerMainCarouselV2';
+import { QuickMenuV2 } from 'features/quick-menu/ui/QuickMenuV2';
 import { getDictionary } from '../../dictionaries';
 
 interface V2MainPageProps {
@@ -14,11 +15,17 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
 
   return (
     <div className='min-h-screen bg-white'>
-      <EventBannerRibbonCarousel currentLocale={lang} />
-      <div className='px-5 py-5'>
-        <SearchBarV2 lang={lang} dict={dict} />
+      <div className='bg-[#F7F7F7]'>
+        <EventBannerRibbonCarousel currentLocale={lang} />
+        <div className='px-5 py-5'>
+          <SearchBarV2 lang={lang} dict={dict} />
+        </div>
+        <EventBannerMainCarouselV2 currentLocale={lang} />
+        <div className='py-5'>
+          <QuickMenuV2 lang={lang} />
+        </div>
       </div>
-      <EventBannerMainCarouselV2 currentLocale={lang} />
+
       <div>{/* 빈 페이지 - 향후 컴포넌트 추가 예정 */}</div>
     </div>
   );
