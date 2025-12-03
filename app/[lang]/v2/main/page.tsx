@@ -6,6 +6,7 @@ import { QuickMenuV2 } from 'features/quick-menu/ui/QuickMenuV2';
 import { HospitalListTitleV2 } from 'widgets/hospital-list/ui/HospitalListTitleV2';
 import { HospitalListV2Container } from 'widgets/hospital-list/ui/HospitalListV2Container';
 import { LiveReviewV2Container } from 'widgets/live-reviews/ui';
+import { PopularReviewsV2Wrapper } from 'widgets/popular-reviews/ui';
 import { getMainMedicalSpecialties } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { getBestHospitals } from 'entities/hospital/api/use-cases/get-best-hospitals';
 import { getDictionary } from '../../dictionaries';
@@ -49,8 +50,12 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
         />
       </div>
 
-      <div className='bg-[#FEF4FF] px-5 py-12'>
+      <div className='bg-primary-200 px-5 py-12'>
         <LiveReviewV2Container lang={lang} dict={dict} medicalSpecialties={medicalSpecialties} />
+      </div>
+
+      <div className='px-5 py-9'>
+        <PopularReviewsV2Wrapper lang={lang} dict={dict} />
       </div>
     </div>
   );
