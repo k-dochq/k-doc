@@ -48,6 +48,22 @@
       "description": "곧 새로운 후기가 추가될 예정입니다."
     }
   },
+  "youtube": {
+    "title": "YOUTUBE",
+    "filter": {
+      "all": "전체",
+      "popular": "인기 영상",
+      "recommended": "K-DOC 추천"
+    },
+    "error": {
+      "message": "영상 정보를 불러오는 중 오류가 발생했습니다.",
+      "retryButton": "다시 시도"
+    },
+    "empty": {
+      "message": "표시할 영상이 없습니다.",
+      "description": "곧 새로운 영상이 추가될 예정입니다."
+    }
+  },
   "premiumService": {
     "title": "K-DOC 프리미엄 서비스",
     "subtitle": "시술부터 여행까지 모든 것을 지원합니다.",
