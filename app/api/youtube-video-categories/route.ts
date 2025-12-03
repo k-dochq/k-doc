@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from 'shared/lib/prisma';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // 활성 카테고리만 조회
     const categories = await prisma.youtubeVideoCategory.findMany({
