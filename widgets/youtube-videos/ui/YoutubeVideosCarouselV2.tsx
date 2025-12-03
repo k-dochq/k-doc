@@ -49,8 +49,6 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
           ))}
         </CarouselContent>
       </Carousel>
-      <div className='h-6' />
-      <PopularReviewsPageIndicator totalPages={videos.length} currentPage={currentSlide} />
     </div>
   );
 }

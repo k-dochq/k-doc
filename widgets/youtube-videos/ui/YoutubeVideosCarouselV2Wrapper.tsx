@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useYoutubeVideos } from 'entities/youtube-video';
 import { YoutubeVideosCarouselV2 } from './YoutubeVideosCarouselV2';
+import { YoutubeVideosCarouselV2Skeleton } from './YoutubeVideosCarouselV2Skeleton';
 
 interface YoutubeVideosCarouselV2WrapperProps {
   lang: Locale;
@@ -27,7 +28,7 @@ function YoutubeVideosCarouselV2Content({
   });
 
   if (isLoading) {
-    return null; // Skeleton은 다음 작업에서 구현
+    return <YoutubeVideosCarouselV2Skeleton />;
   }
 
   if (error) {
@@ -47,7 +48,7 @@ export function YoutubeVideosCarouselV2Wrapper({
   selectedCategory,
 }: YoutubeVideosCarouselV2WrapperProps) {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<YoutubeVideosCarouselV2Skeleton />}>
       <YoutubeVideosCarouselV2Content lang={lang} dict={dict} selectedCategory={selectedCategory} />
     </Suspense>
   );

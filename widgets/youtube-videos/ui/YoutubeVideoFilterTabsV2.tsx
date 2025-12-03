@@ -1,7 +1,10 @@
 'use client';
 
+import { type Prisma } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { useYoutubeVideoCategories } from 'entities/youtube-video';
+import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface YoutubeVideoFilterTabsV2Props {
   lang: Locale;
@@ -10,29 +13,37 @@ interface YoutubeVideoFilterTabsV2Props {
   onCategoryChange: (categoryId: string | null) => void;
 }
 
-// 카테고리 ID 매핑
-const CATEGORY_IDS = {
-  POPULAR: '3f8d847e-1595-4551-9f1b-f03e8cabb744',
-  RECOMMENDED: 'a075eb19-4c6d-48ff-97c2-52b3cf82e5d7',
-} as const;
-
 export function YoutubeVideoFilterTabsV2({
   lang,
   dict,
   selectedCategory,
   onCategoryChange,
 }: YoutubeVideoFilterTabsV2Props) {
+  const { data: categoriesData, isLoading } = useYoutubeVideoCategories();
+
+  // 로딩 중이면 빈 div 반환 (또는 스켈레톤)
+  if (isLoading) {
+    return <div className='flex w-full items-center gap-1' />;
+  }
+
+  // 카테고리 데이터가 없으면 빈 div 반환
+  if (!categoriesData || categoriesData.categories.length === 0) {
+    return <div className='flex w-full items-center gap-1' />;
+  }
+
+  // "전체" 탭과 DB에서 불러온 카테고리들로 탭 구성
   const tabs = [
-    { id: null, labelKey: 'all' as const },
-    { id: CATEGORY_IDS.POPULAR, labelKey: 'popular' as const },
-    { id: CATEGORY_IDS.RECOMMENDED, labelKey: 'recommended' as const },
+    { id: null, label: dict.youtube.filter.all },
+    ...categoriesData.categories.map((category) => ({
+      id: category.id,
+      label: extractLocalizedText(category.name as Prisma.JsonValue, lang) || '',
+    })),
   ];
 
   return (
     <div className='flex w-full items-center gap-1'>
       {tabs.map((tab) => {
         const isSelected = selectedCategory === tab.id;
-        const label = dict.youtube.filter[tab.labelKey];
 
         return (
           <button
@@ -44,9 +55,7 @@ export function YoutubeVideoFilterTabsV2({
                 : 'text-neutral-400'
             }`}
           >
-            <p className="relative shrink-0 font-['Pretendard:Medium',sans-serif] text-[14px] leading-[20px] not-italic">
-              {label}
-            </p>
+            <p className='relative shrink-0 text-[14px] leading-[20px] not-italic'>{tab.label}</p>
           </button>
         );
       })}
