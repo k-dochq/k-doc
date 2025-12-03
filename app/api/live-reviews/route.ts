@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from 'shared/lib/prisma';
 import { type MedicalSpecialtyType } from '@prisma/client';
-import { handleDatabaseError } from 'shared/lib';
 
 export async function GET(request: NextRequest) {
   try {
