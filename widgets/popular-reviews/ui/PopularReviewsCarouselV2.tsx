@@ -1,10 +1,12 @@
 'use client';
 
-import { Carousel, CarouselContent, CarouselItem } from 'shared/ui/carousel';
+import { useState, useEffect } from 'react';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from 'entities/review/model/types';
 import { PopularReviewCardV2 } from 'entities/review/ui/PopularReviewCardV2';
+import { PopularReviewsPageIndicator } from './PopularReviewsPageIndicator';
 
 interface PopularReviewsCarouselV2Props {
   reviews: ReviewCardData[];
@@ -13,9 +15,26 @@ interface PopularReviewsCarouselV2Props {
 }
 
 export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviewsCarouselV2Props) {
+  const [api, setApi] = useState<CarouselApi>();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrentSlide(api.selectedScrollSnap());
+
+    api.on('select', () => {
+      const newSlide = api.selectedScrollSnap();
+      setCurrentSlide(newSlide);
+    });
+  }, [api]);
+
   return (
     <div className='w-full'>
       <Carousel
+        setApi={setApi}
         opts={{
           align: 'start',
           containScroll: 'trimSnaps',
@@ -33,6 +52,8 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
           })}
         </CarouselContent>
       </Carousel>
+      <div className='h-6' />
+      <PopularReviewsPageIndicator totalPages={reviews.length} currentPage={currentSlide} />
     </div>
   );
 }
