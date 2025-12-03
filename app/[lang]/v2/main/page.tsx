@@ -7,6 +7,7 @@ import { HospitalListTitleV2 } from 'widgets/hospital-list/ui/HospitalListTitleV
 import { HospitalListV2Container } from 'widgets/hospital-list/ui/HospitalListV2Container';
 import { LiveReviewV2Container } from 'widgets/live-reviews/ui';
 import { PopularReviewsV2Wrapper } from 'widgets/popular-reviews/ui';
+import { PremiumServiceV2Container } from 'widgets/premium-service/ui';
 import { getMainMedicalSpecialties } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { getBestHospitals } from 'entities/hospital/api/use-cases/get-best-hospitals';
 import { getDictionary } from '../../dictionaries';
@@ -57,6 +58,8 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
       <div className='px-5 py-9'>
         <PopularReviewsV2Wrapper lang={lang} dict={dict} />
       </div>
+
+      <PremiumServiceV2Container lang={lang} dict={dict} />
     </div>
   );
 }
