@@ -39,7 +39,7 @@ export function HospitalCardV2({ hospital, lang, dict, showHotTag = true }: Hosp
       {showHotTag && <HotRibbonV2 />}
 
       {/* 카드 컨테이너 */}
-      <div className='flex flex-col items-center overflow-clip rounded-xl bg-white shadow-[0px_2px_4px_0px_rgba(0,0,0,0.1)]'>
+      <div className='flex flex-col items-center overflow-clip rounded-xl bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
         {/* 썸네일 이미지 */}
         <HospitalCardV2Thumbnail imageUrl={hospital.thumbnailImageUrl} alt={hospitalName} />
 
