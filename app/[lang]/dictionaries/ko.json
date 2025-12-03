@@ -29,6 +29,13 @@
       "description": "곧 새로운 병원이 추가될 예정입니다."
     }
   },
+  "liveReviews": {
+    "title": "실시간 생생 후기",
+    "empty": {
+      "message": "표시할 생생후기가 없습니다.",
+      "description": "곧 새로운 생생후기가 추가될 예정입니다."
+    }
+  },
   "popularReviews": {
     "title": "많이 본 후기",
     "viewAll": "전체보기",

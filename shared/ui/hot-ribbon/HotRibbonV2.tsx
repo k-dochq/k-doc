@@ -34,8 +34,8 @@ export function HotRibbonV2() {
             y2='20.1326'
             gradientUnits='userSpaceOnUse'
           >
-            <stop offset='0.245192' stop-color='#045A98' />
-            <stop offset='1' stop-color='#3DAEFF' />
+            <stop offset='0.245192' stopColor='#045A98' />
+            <stop offset='1' stopColor='#3DAEFF' />
           </linearGradient>
           <radialGradient
             id='paint1_radial_276_145'
@@ -45,14 +45,14 @@ export function HotRibbonV2() {
             gradientUnits='userSpaceOnUse'
             gradientTransform='translate(4.42645 20.2286) scale(4.55314 12.6137)'
           >
-            <stop stop-color='#131313' />
-            <stop offset='0.15' stop-color='#505050' />
-            <stop offset='0.3' stop-color='#858585' />
-            <stop offset='0.45' stop-color='#B1B1B1' />
-            <stop offset='0.58' stop-color='#D3D3D3' />
-            <stop offset='0.71' stop-color='#EBEBEB' />
-            <stop offset='0.83' stop-color='#F9F9F9' />
-            <stop offset='0.94' stop-color='white' />
+            <stop stopColor='#131313' />
+            <stop offset='0.15' stopColor='#505050' />
+            <stop offset='0.3' stopColor='#858585' />
+            <stop offset='0.45' stopColor='#B1B1B1' />
+            <stop offset='0.58' stopColor='#D3D3D3' />
+            <stop offset='0.71' stopColor='#EBEBEB' />
+            <stop offset='0.83' stopColor='#F9F9F9' />
+            <stop offset='0.94' stopColor='white' />
           </radialGradient>
           <linearGradient
             id='paint2_linear_276_145'
@@ -62,9 +62,9 @@ export function HotRibbonV2() {
             y2='12.9956'
             gradientUnits='userSpaceOnUse'
           >
-            <stop stop-color='#0E84D9' />
-            <stop offset='0.245433' stop-color='#0B99FF' />
-            <stop offset='1' stop-color='#0B99FF' />
+            <stop stopColor='#0E84D9' />
+            <stop offset='0.245433' stopColor='#0B99FF' />
+            <stop offset='1' stopColor='#0B99FF' />
           </linearGradient>
         </defs>
       </svg>
