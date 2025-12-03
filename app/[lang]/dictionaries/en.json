@@ -29,6 +29,13 @@
       "description": "New hospitals will be added soon."
     }
   },
+  "liveReviews": {
+    "title": "Live Reviews",
+    "empty": {
+      "message": "No live reviews available.",
+      "description": "New live reviews will be added soon."
+    }
+  },
   "popularReviews": {
     "title": "Popular Reviews",
     "viewAll": "View All",
