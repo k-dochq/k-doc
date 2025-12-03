@@ -26,10 +26,7 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
           {liveReviews.map((liveReview, index) => {
             const isFirst = index === 0;
             return (
-              <CarouselItem
-                key={liveReview.id}
-                className={`basis-[312px] ${isFirst ? '' : 'pl-4'}`}
-              >
+              <CarouselItem key={liveReview.id} className={`basis-[312px] pr-4`}>
                 <LiveReviewCardV2 liveReview={liveReview} lang={lang} dict={dict} />
               </CarouselItem>
             );

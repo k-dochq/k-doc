@@ -26,7 +26,7 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
           {reviews.map((review, index) => {
             const isFirst = index === 0;
             return (
-              <CarouselItem key={review.id} className={`basis-[286px] ${isFirst ? '' : 'pl-4'}`}>
+              <CarouselItem key={review.id} className={`basis-[286px] pr-4`}>
                 <PopularReviewCardV2 review={review} lang={lang} dict={dict} />
               </CarouselItem>
             );
