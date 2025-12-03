@@ -6,7 +6,7 @@ import { type Dictionary, type HospitalCardData } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { useBestHospitals } from 'entities/hospital/api/queries/get-best-hospitals';
 import { HospitalListCarouselV2 } from './HospitalListCarouselV2';
-import { HospitalListSkeleton } from './HospitalListSkeleton';
+import { HospitalListCarouselV2Skeleton } from './HospitalListCarouselV2Skeleton';
 
 interface HospitalListCarouselV2WrapperProps {
   lang: Locale;
@@ -37,7 +37,7 @@ function HospitalListCarouselV2Content({
   );
 
   if (isLoading) {
-    return <div className='h-[300px]' />; // 로딩 중 스켈레톤 대신 공간만 확보
+    return <HospitalListCarouselV2Skeleton />;
   }
 
   if (error || !bestHospitals || bestHospitals.length === 0) {
@@ -54,7 +54,7 @@ export function HospitalListCarouselV2Wrapper({
   initialData,
 }: HospitalListCarouselV2WrapperProps) {
   return (
-    <Suspense fallback={<div className='h-[300px]' />}>
+    <Suspense fallback={<HospitalListCarouselV2Skeleton />}>
       <HospitalListCarouselV2Content
         lang={lang}
         dict={dict}
