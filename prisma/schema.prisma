@@ -657,6 +657,59 @@ model LiveReviewImage {
   @@schema("public")
 }
 
+model YoutubeVideo {
+  id                    String                  @id @db.Uuid
+  categoryId            String                  @db.Uuid
+  title                 Json
+  description           Json?
+  videoUrl              Json
+  order                 Int?
+  isActive              Boolean                 @default(true)
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime
+  createdBy             String?                 @db.Uuid
+  updatedBy             String?                 @db.Uuid
+  YoutubeVideoCategory  YoutubeVideoCategory    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  YoutubeVideoThumbnail YoutubeVideoThumbnail[]
+
+  @@index([categoryId])
+  @@index([createdAt])
+  @@index([isActive])
+  @@index([order])
+  @@schema("public")
+}
+
+model YoutubeVideoCategory {
+  id           String         @id @db.Uuid
+  name         Json
+  description  Json?
+  order        Int?
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime
+  YoutubeVideo YoutubeVideo[]
+
+  @@index([isActive])
+  @@index([order])
+  @@schema("public")
+}
+
+model YoutubeVideoThumbnail {
+  id           String             @id @db.Uuid
+  videoId      String             @db.Uuid
+  locale       YoutubeVideoLocale
+  imageUrl     String             @db.VarChar(500)
+  alt          String?            @db.VarChar(255)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime
+  YoutubeVideo YoutubeVideo       @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  @@unique([videoId, locale])
+  @@index([locale])
+  @@index([videoId])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -831,6 +884,14 @@ enum EventBannerLocale {
 enum EventBannerType {
   MAIN
   RIBBON
+
+  @@schema("public")
+}
+
+enum YoutubeVideoLocale {
+  ko
+  en
+  th
 
   @@schema("public")
 }
