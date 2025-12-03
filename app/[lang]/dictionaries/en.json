@@ -48,6 +48,22 @@
       "description": "New reviews will be added soon."
     }
   },
+  "youtube": {
+    "title": "YOUTUBE",
+    "filter": {
+      "all": "All",
+      "popular": "Popular videos",
+      "recommended": "K-DOC Recommendations"
+    },
+    "error": {
+      "message": "An error occurred while loading video information.",
+      "retryButton": "Retry"
+    },
+    "empty": {
+      "message": "No videos to display.",
+      "description": "New videos will be added soon."
+    }
+  },
   "premiumService": {
     "title": "K-DOC Premium Service",
     "subtitle": "We support everything from procedures to travel.",

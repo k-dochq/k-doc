@@ -658,19 +658,19 @@ model LiveReviewImage {
 }
 
 model YoutubeVideo {
-  id                    String                  @id @db.Uuid
-  categoryId            String                  @db.Uuid
-  title                 Json
-  description           Json?
-  videoUrl              Json
-  order                 Int?
-  isActive              Boolean                 @default(true)
-  createdAt             DateTime                @default(now())
-  updatedAt             DateTime
-  createdBy             String?                 @db.Uuid
-  updatedBy             String?                 @db.Uuid
-  YoutubeVideoCategory  YoutubeVideoCategory    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  YoutubeVideoThumbnail YoutubeVideoThumbnail[]
+  id          String                  @id @db.Uuid
+  categoryId  String                  @db.Uuid
+  title       Json
+  description Json?
+  videoUrl    Json
+  order       Int?
+  isActive    Boolean                 @default(true)
+  createdAt   DateTime                @default(now())
+  updatedAt   DateTime
+  createdBy   String?                 @db.Uuid
+  updatedBy   String?                 @db.Uuid
+  category    YoutubeVideoCategory    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  thumbnails  YoutubeVideoThumbnail[]
 
   @@index([categoryId])
   @@index([createdAt])

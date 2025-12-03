@@ -20,15 +20,36 @@ export function extractLocalizedText(
   }
 
   const localeKey = locale === 'ko' ? 'ko_KR' : locale === 'en' ? 'en_US' : 'th_TH';
+  const shortLocaleKey = locale; // ko, en, th
 
   if (typeof jsonValue === 'object' && jsonValue !== null && !Array.isArray(jsonValue)) {
-    const localizedText = jsonValue as LocalizedText;
-    if (localizedText[localeKey]) {
-      return localizedText[localeKey];
+    const localizedText = jsonValue as Record<string, unknown>;
+
+    // 먼저 긴 형식 (ko_KR, en_US, th_TH) 확인
+    if (localizedText[localeKey] && typeof localizedText[localeKey] === 'string') {
+      return localizedText[localeKey] as string;
     }
 
-    // fallback: 첫 번째 사용 가능한 값 반환
-    return localizedText.ko_KR || localizedText.en_US || localizedText.th_TH || '';
+    // 짧은 형식 (ko, en, th) 확인
+    if (localizedText[shortLocaleKey] && typeof localizedText[shortLocaleKey] === 'string') {
+      return localizedText[shortLocaleKey] as string;
+    }
+
+    // fallback: 첫 번째 사용 가능한 값 반환 (긴 형식 우선)
+    const fallbackOrder = [
+      'ko_KR',
+      'en_US',
+      'th_TH', // 긴 형식
+      'ko',
+      'en',
+      'th', // 짧은 형식
+    ];
+
+    for (const key of fallbackOrder) {
+      if (localizedText[key] && typeof localizedText[key] === 'string') {
+        return localizedText[key] as string;
+      }
+    }
   }
 
   return String(jsonValue);
