@@ -4,3 +4,4 @@ export type {
   GetYoutubeVideosParams,
   GetYoutubeVideosResponse,
 } from './api/use-cases/get-youtube-videos';
+export { YoutubeVideoCardV2 } from './ui/YoutubeVideoCardV2';

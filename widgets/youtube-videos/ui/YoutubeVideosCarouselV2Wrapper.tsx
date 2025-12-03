@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useYoutubeVideos } from 'entities/youtube-video';
+import { YoutubeVideosCarouselV2 } from './YoutubeVideosCarouselV2';
 
 interface YoutubeVideosCarouselV2WrapperProps {
   lang: Locale;
@@ -37,8 +38,7 @@ function YoutubeVideosCarouselV2Content({
     return <div className='py-8 text-center text-gray-500'>{dict.youtube.empty.message}</div>;
   }
 
-  // 영상 리스트 carousel은 다음 작업에서 구현
-  return null;
+  return <YoutubeVideosCarouselV2 videos={videosData.videos} lang={lang} dict={dict} />;
 }
 
 export function YoutubeVideosCarouselV2Wrapper({
