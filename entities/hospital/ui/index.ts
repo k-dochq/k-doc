@@ -18,3 +18,4 @@ export * from './HospitalCard';
 export * from './HospitalList';
 export * from './HospitalAvatar';
 export * from './HospitalHeader';
+export * from './HospitalCardV2Skeleton';
