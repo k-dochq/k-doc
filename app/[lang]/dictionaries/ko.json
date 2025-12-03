@@ -48,6 +48,20 @@
       "description": "곧 새로운 후기가 추가될 예정입니다."
     }
   },
+  "premiumService": {
+    "title": "K-DOC 프리미엄 서비스",
+    "subtitle": "시술부터 여행까지 모든 것을 지원합니다.",
+    "services": {
+      "interpreter": {
+        "title": "통역 서비스 제공 가능",
+        "description": "전문 통역사가 1:1로 밀착 동행합니다."
+      },
+      "vehicle": {
+        "title": "차량 서비스 제공 가능",
+        "description": "최고급 차량으로 편안하고 안전한 이동을 책임집니다."
+      }
+    }
+  },
   "hospitals": {
     "title": "병원 찾기",
     "totalCount": "총 {{count}}개의 병원",

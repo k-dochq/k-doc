@@ -48,6 +48,20 @@
       "description": "New reviews will be added soon."
     }
   },
+  "premiumService": {
+    "title": "K-DOC Premium Service",
+    "subtitle": "We support everything from procedures to travel.",
+    "services": {
+      "interpreter": {
+        "title": "Interpreter Service Available",
+        "description": "A professional interpreter will accompany you closely 1:1."
+      },
+      "vehicle": {
+        "title": "Vehicle Service Available",
+        "description": "We are responsible for comfortable and safe travel with the highest quality vehicles."
+      }
+    }
+  },
   "hospitals": {
     "title": "Find Hospitals",
     "totalCount": "{{count}} hospitals total",
