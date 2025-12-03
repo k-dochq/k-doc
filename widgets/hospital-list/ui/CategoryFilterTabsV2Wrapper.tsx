@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
@@ -11,27 +10,24 @@ interface CategoryFilterTabsV2WrapperProps {
   lang: Locale;
   dict: Dictionary;
   medicalSpecialties: MedicalSpecialtyWithTranslations[];
+  selectedCategory: MedicalSpecialtyType | 'ALL';
+  onCategoryChange: (category: MedicalSpecialtyType | 'ALL') => void;
 }
 
 export function CategoryFilterTabsV2Wrapper({
   lang,
   dict,
   medicalSpecialties,
+  selectedCategory,
+  onCategoryChange,
 }: CategoryFilterTabsV2WrapperProps) {
-  const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
-
-  const handleCategoryChange = (category: MedicalSpecialtyType | 'ALL') => {
-    setSelectedCategory(category);
-    // TODO: 병원 리스트 필터링 로직 추가 예정
-  };
-
   return (
     <CategoryFilterTabsV2
       lang={lang}
       dict={dict}
       medicalSpecialties={medicalSpecialties}
       selectedCategory={selectedCategory}
-      onCategoryChange={handleCategoryChange}
+      onCategoryChange={onCategoryChange}
     />
   );
 }

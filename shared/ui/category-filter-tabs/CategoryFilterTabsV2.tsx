@@ -60,13 +60,14 @@ export function CategoryFilterTabsV2({
         }}
         className='w-full'
       >
-        <CarouselContent className='-ml-2 pl-5'>
+        <CarouselContent className=''>
           {allCategories.map((category, index) => {
             const isSelected = selectedCategory === category.id;
             const isLast = index === allCategories.length - 1;
+            const isFirst = index === 0;
 
             return (
-              <CarouselItem key={category.id} className='basis-auto pl-2'>
+              <CarouselItem key={category.id} className={`basis-auto ${isFirst ? '' : 'pl-2'}`}>
                 {isLast ? (
                   <div className='pr-5'>
                     <CategoryFilterButtonV2
