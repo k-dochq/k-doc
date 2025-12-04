@@ -23,7 +23,7 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
   // 초기 데이터 prefetch (ALL 카테고리)
   const initialHospitals = await getBestHospitals({
     category: 'ALL',
-    limit: 5,
+    limit: 3,
   });
 
   return (
