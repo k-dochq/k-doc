@@ -8,8 +8,7 @@ import { useHospitalSearch } from 'features/hospital-search';
 import { HospitalsInfiniteList } from '../../hospitals/HospitalsInfiniteList';
 import { CategorySectionV2 } from 'features/category-filter/ui/CategorySectionV2';
 import { useCategories } from 'features/category-filter';
-import { HospitalFilterBar } from 'features/hospital-filter';
-import { useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
+import { FilterBarV2 } from 'features/hospital-filter';
 import { type MedicalSpecialtyType } from '@prisma/client';
 
 interface HospitalsContentV2Props {
@@ -23,9 +22,6 @@ interface HospitalsContentV2Props {
 }
 
 export function HospitalsContentV2({ lang, dict, searchParams }: HospitalsContentV2Props) {
-  // 지역 필터 상태 관리
-  const districtFilter = useDistrictFilter();
-
   // TanStack Query로 카테고리 데이터 가져오기
   const {
     // data: categories = [],
@@ -70,6 +66,9 @@ export function HospitalsContentV2({ lang, dict, searchParams }: HospitalsConten
         isLoading={categoriesLoading}
         error={categoriesError}
       />
+
+      {/* 필터 바 */}
+      <FilterBarV2 lang={lang} dict={dict} />
     </div>
   );
 }

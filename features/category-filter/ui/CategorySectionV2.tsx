@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { CategorySectionSkeleton } from './CategorySectionSkeleton';
+import { CategorySectionSkeletonV2 } from './CategorySectionSkeletonV2';
 import { CategorySectionError } from './CategorySectionError';
 import {
   CategoryButtonV2,
@@ -71,7 +71,7 @@ export function CategorySectionV2({
   }, [api, currentCategory, categoryButtons, isLoading, error]);
 
   if (isLoading) {
-    return <CategorySectionSkeleton />;
+    return <CategorySectionSkeletonV2 />;
   }
 
   if (error) {
