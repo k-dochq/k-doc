@@ -28,6 +28,12 @@ function PopularReviewsCarouselV2Content({
     limit: 5,
   });
 
+  // placeholderData로 인해 isLoading이어도 이전 데이터가 표시될 수 있음
+  // 데이터가 있으면 항상 렌더링하고, 데이터가 없고 로딩 중일 때만 스켈레톤 표시
+  if (popularReviews && popularReviews.reviews.length > 0) {
+    return <PopularReviewsCarouselV2 reviews={popularReviews.reviews} lang={lang} dict={dict} />;
+  }
+
   if (isLoading) {
     return <PopularReviewsCarouselV2Skeleton />;
   }
@@ -42,7 +48,7 @@ function PopularReviewsCarouselV2Content({
     );
   }
 
-  return <PopularReviewsCarouselV2 reviews={popularReviews.reviews} lang={lang} dict={dict} />;
+  return null;
 }
 
 export function PopularReviewsCarouselV2Wrapper({
