@@ -43,18 +43,16 @@ export function YoutubeVideoCardV2({ video, lang, dict, className = '' }: Youtub
   const cardContent = (
     <div className={`relative flex flex-col items-start gap-[12px] ${className}`}>
       {/* 썸네일 이미지 */}
-      <div className='relative h-[169px] w-[300px] shrink-0 overflow-clip rounded-xl shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
-        <div className='absolute top-0 left-0 h-[169px] w-[300px]'>
-          <Image
-            alt={thumbnailAlt}
-            src={imageSrc}
-            fill
-            sizes='300px'
-            className='pointer-events-none absolute inset-0 max-w-none object-cover object-[50%_50%]'
-            onError={handleImageError}
-            quality={100}
-          />
-        </div>
+      <div className='relative h-[169px] w-full shrink-0 overflow-clip rounded-xl shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
+        <Image
+          alt={thumbnailAlt}
+          src={imageSrc}
+          fill
+          sizes='100%'
+          className='pointer-events-none absolute inset-0 max-w-none object-cover object-[50%_50%]'
+          onError={handleImageError}
+          quality={100}
+        />
       </div>
 
       {/* 텍스트 영역 */}
