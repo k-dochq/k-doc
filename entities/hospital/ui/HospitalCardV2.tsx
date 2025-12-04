@@ -1,5 +1,6 @@
 import { type HospitalCardData, type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
+import { type User } from '@supabase/supabase-js';
 import { getLocalizedTextByLocale } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { HotRibbonV2 } from 'shared/ui/hot-ribbon';
@@ -14,9 +15,22 @@ interface HospitalCardV2Props {
   lang: Locale;
   dict: Dictionary;
   showHotTag?: boolean;
+  user?: User | null;
+  onToggleLike?: (hospitalId: string) => void;
+  isLikeLoading?: boolean;
+  showLikeButton?: boolean;
 }
 
-export function HospitalCardV2({ hospital, lang, dict, showHotTag = true }: HospitalCardV2Props) {
+export function HospitalCardV2({
+  hospital,
+  lang,
+  dict,
+  showHotTag = true,
+  user,
+  onToggleLike,
+  isLikeLoading = false,
+  showLikeButton = false,
+}: HospitalCardV2Props) {
   const hospitalName = getLocalizedTextByLocale(hospital.name, lang);
   const displayLocationName = hospital.displayLocationName
     ? getLocalizedTextByLocale(hospital.displayLocationName, lang)
@@ -34,6 +48,14 @@ export function HospitalCardV2({ hospital, lang, dict, showHotTag = true }: Hosp
   // 지역 정보 (displayLocationName이 있으면 사용)
   const location = displayLocationName || address;
 
+  // 클라이언트에서 현재 사용자의 좋아요 상태 계산
+  const isLiked = user && hospital.likedUserIds ? hospital.likedUserIds.includes(user.id) : false;
+
+  // 좋아요 토글 핸들러
+  const handleToggleLike = () => {
+    onToggleLike?.(hospital.id);
+  };
+
   return (
     <LocaleLink href={`/hospital/${hospital.id}`} locale={lang} className='block'>
       <div className='relative'>
@@ -43,7 +65,14 @@ export function HospitalCardV2({ hospital, lang, dict, showHotTag = true }: Hosp
         {/* 카드 컨테이너 */}
         <div className='flex flex-col items-center overflow-clip rounded-xl bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
           {/* 썸네일 이미지 */}
-          <HospitalCardV2Thumbnail imageUrl={hospital.thumbnailImageUrl} alt={hospitalName} />
+          <HospitalCardV2Thumbnail
+            imageUrl={hospital.thumbnailImageUrl}
+            alt={hospitalName}
+            showLikeButton={showLikeButton}
+            isLiked={isLiked}
+            onToggleLike={handleToggleLike}
+            isLikeLoading={isLikeLoading}
+          />
 
           {/* 콘텐츠 영역 */}
           <div className='flex h-[160px] w-full shrink-0 flex-col items-start gap-1 p-3'>

@@ -4,6 +4,8 @@ export { MapIconV2 } from './MapIconV2';
 export { ResetIcon } from './ResetIcon';
 export { HeartIcon } from './HeartIcon';
 export { HeartOutlineIcon } from './HeartOutlineIcon';
+export { HeartIconV2 } from './HeartIconV2';
+export { HeartOutlineIconV2 } from './HeartOutlineIconV2';
 export { GoogleIcon } from './GoogleIcon';
 export { AppleIcon } from './AppleIcon';
 export { KakaoIcon } from './KakaoIcon';

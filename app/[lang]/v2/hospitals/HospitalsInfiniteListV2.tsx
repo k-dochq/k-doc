@@ -10,10 +10,14 @@ import {
 import { HospitalCardV2 } from 'entities/hospital/ui/HospitalCardV2';
 import { convertHospitalsToCardData } from 'entities/hospital';
 import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
+import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospitalLike';
 import { HospitalsSkeletonV2 } from './HospitalsSkeletonV2';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyHospitalsState } from 'shared/ui/empty-state';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { openModal } from 'shared/lib/modal';
+import { LoginRequiredModal } from 'shared/ui/login-required-modal';
 
 interface HospitalsInfiniteListV2Props {
   lang: Locale;
@@ -32,6 +36,7 @@ export function HospitalsInfiniteListV2({
   searchParams,
 }: HospitalsInfiniteListV2Props) {
   const { category, sort, search, districtIds } = searchParams;
+  const { user } = useAuth();
 
   // 타입 안전한 파라미터 구성
   const queryParams = {
@@ -43,8 +48,29 @@ export function HospitalsInfiniteListV2({
     districtIds,
   };
 
+  // 좋아요 토글 뮤테이션
+  const toggleLikeMutation = useToggleHospitalLike({ queryParams });
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteHospitals(queryParams);
+
+  // 좋아요 토글 핸들러
+  const handleToggleLike = (hospitalId: string) => {
+    // 로그인 체크
+    if (!user) {
+      openModal({
+        content: (
+          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
+        ),
+      });
+      return;
+    }
+
+    toggleLikeMutation.mutate(hospitalId);
+  };
+
+  // 현재 로딩 중인 병원 ID (TanStack Query의 variables 활용)
+  const loadingHospitalId = toggleLikeMutation.isPending ? toggleLikeMutation.variables : null;
 
   // 로딩 상태
   if (isLoading) {
@@ -81,6 +107,10 @@ export function HospitalsInfiniteListV2({
                 lang={lang}
                 dict={dict}
                 showHotTag={true}
+                user={user}
+                onToggleLike={handleToggleLike}
+                isLikeLoading={loadingHospitalId === hospital.id}
+                showLikeButton={true}
               />
             ))}
           </div>
