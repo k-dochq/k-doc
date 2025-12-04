@@ -54,6 +54,7 @@ export function useLiveReviews(
     queryKey: ['live-reviews', params.category, params.limit, params.page],
     queryFn: () => fetchLiveReviews(params),
     initialData: options?.initialData,
+    placeholderData: (previousData) => previousData, // 이전 데이터를 placeholder로 유지
     staleTime: 15 * 60 * 1000, // 15 minutes
     gcTime: 30 * 60 * 1000, // 30 minutes
     refetchOnWindowFocus: false, // 창 포커스 시 자동 refetch 방지

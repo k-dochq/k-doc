@@ -30,6 +30,12 @@ function LiveReviewCarouselV2Content({
     page: 1,
   });
 
+  // placeholderData로 인해 isLoading이어도 이전 데이터가 표시될 수 있음
+  // 데이터가 있으면 항상 렌더링하고, 데이터가 없고 로딩 중일 때만 스켈레톤 표시
+  if (liveReviews && liveReviews.length > 0) {
+    return <LiveReviewCarouselV2 liveReviews={liveReviews} lang={lang} dict={dict} />;
+  }
+
   if (isLoading) {
     return <LiveReviewCarouselV2Skeleton />;
   }
@@ -42,7 +48,7 @@ function LiveReviewCarouselV2Content({
     return <EmptyLiveReviewsState dict={dict} className='min-h-0 py-8' />;
   }
 
-  return <LiveReviewCarouselV2 liveReviews={liveReviews} lang={lang} dict={dict} />;
+  return null;
 }
 
 export function LiveReviewCarouselV2Wrapper({
