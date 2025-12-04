@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
-import { type MedicalSpecialtyWithTranslations } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { CategoryFilterTabsV2Wrapper } from 'widgets/hospital-list/ui/CategoryFilterTabsV2Wrapper';
 import { PopularReviewsTitleV2 } from './PopularReviewsTitleV2';
 import { PopularReviewsCarouselV2Wrapper } from './PopularReviewsCarouselV2Wrapper';
@@ -12,14 +11,9 @@ import { PopularReviewsCarouselV2Wrapper } from './PopularReviewsCarouselV2Wrapp
 interface PopularReviewsV2ContainerProps {
   lang: Locale;
   dict: Dictionary;
-  medicalSpecialties: MedicalSpecialtyWithTranslations[];
 }
 
-export function PopularReviewsV2Container({
-  lang,
-  dict,
-  medicalSpecialties,
-}: PopularReviewsV2ContainerProps) {
+export function PopularReviewsV2Container({ lang, dict }: PopularReviewsV2ContainerProps) {
   const [selectedCategory, setSelectedCategory] = useState<MedicalSpecialtyType | 'ALL'>('ALL');
 
   return (
@@ -29,7 +23,6 @@ export function PopularReviewsV2Container({
       <CategoryFilterTabsV2Wrapper
         lang={lang}
         dict={dict}
-        medicalSpecialties={medicalSpecialties}
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
       />

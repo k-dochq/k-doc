@@ -9,7 +9,6 @@ import { LiveReviewV2Container } from 'widgets/live-reviews/ui';
 import { PopularReviewsV2Wrapper } from 'widgets/popular-reviews/ui';
 import { PremiumServiceV2Container } from 'widgets/premium-service/ui';
 import { YoutubeVideosV2Wrapper } from 'widgets/youtube-videos/ui';
-import { getMainMedicalSpecialties } from 'entities/hospital/api/use-cases/get-medical-specialties';
 import { getBestHospitals } from 'entities/hospital/api/use-cases/get-best-hospitals';
 import { getDictionary } from '../../dictionaries';
 
@@ -20,7 +19,6 @@ interface V2MainPageProps {
 export default async function V2MainPage({ params }: V2MainPageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const medicalSpecialties = await getMainMedicalSpecialties();
 
   // 초기 데이터 prefetch (ALL 카테고리)
   const initialHospitals = await getBestHospitals({
@@ -44,16 +42,11 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
       <div className='px-5 pt-[2px] pb-9'>
         <HospitalListTitleV2 lang={lang} dict={dict} />
         <div className='h-4' />
-        <HospitalListV2Container
-          lang={lang}
-          dict={dict}
-          medicalSpecialties={medicalSpecialties}
-          initialData={initialHospitals}
-        />
+        <HospitalListV2Container lang={lang} dict={dict} initialData={initialHospitals} />
       </div>
 
       <div className='bg-primary-200 px-5 py-12'>
-        <LiveReviewV2Container lang={lang} dict={dict} medicalSpecialties={medicalSpecialties} />
+        <LiveReviewV2Container lang={lang} dict={dict} />
       </div>
 
       <div className='px-5 py-9'>
