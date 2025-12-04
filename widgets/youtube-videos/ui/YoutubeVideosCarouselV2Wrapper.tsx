@@ -24,7 +24,7 @@ function YoutubeVideosCarouselV2Content({
     error,
   } = useYoutubeVideos({
     categoryId: selectedCategory || undefined,
-    limit: 10,
+    limit: 3,
   });
 
   if (isLoading) {

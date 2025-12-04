@@ -43,7 +43,7 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
       >
         <CarouselContent className=''>
           {videos.map((video) => (
-            <CarouselItem key={video.id} className='basis-[300px] pr-4'>
+            <CarouselItem key={video.id} className='basis-[316px] pr-4'>
               <YoutubeVideoCardV2 video={video} lang={lang} dict={dict} />
             </CarouselItem>
           ))}
