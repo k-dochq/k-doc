@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from 'shared/lib/prisma';
 import { type EventBannerType } from '@prisma/client';
 
+export const revalidate = 1200; // 20분 (1200초)
+
 export async function GET(request: NextRequest) {
   try {
     const url = new URL(request.url);
