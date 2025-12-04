@@ -6,7 +6,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type YoutubeVideoData } from 'entities/youtube-video';
 import { YoutubeVideoCardV2 } from 'entities/youtube-video/ui/YoutubeVideoCardV2';
-import { PopularReviewsPageIndicator } from 'widgets/popular-reviews/ui/PopularReviewsPageIndicator';
+import { YoutubeVideosPageIndicator } from './YoutubeVideosPageIndicator';
 
 interface YoutubeVideosCarouselV2Props {
   videos: YoutubeVideoData[];
@@ -31,6 +31,13 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
     });
   }, [api]);
 
+  // 페이지 클릭 핸들러
+  const handlePageClick = (page: number) => {
+    if (api) {
+      api.scrollTo(page);
+    }
+  };
+
   return (
     <div className='w-full'>
       <Carousel
@@ -49,6 +56,11 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
           ))}
         </CarouselContent>
       </Carousel>
+      <YoutubeVideosPageIndicator
+        currentPage={currentSlide}
+        totalPages={videos.length}
+        onPageClick={handlePageClick}
+      />
     </div>
   );
 }
