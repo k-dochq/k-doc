@@ -108,7 +108,7 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
 
       <div
         id='languageDropdownV2'
-        className='border-primary/20 z-10 hidden w-32 rounded-md border bg-white shadow-lg'
+        className='border-primary/20 z-20 hidden w-32 rounded-md border bg-white shadow-lg'
         style={{ position: 'absolute', right: 0, top: '100%', marginTop: '4px' }}
       >
         <ul className='py-1'>
