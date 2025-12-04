@@ -29,7 +29,7 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
   });
 
   return (
-    <div className='min-h-screen bg-white'>
+    <div className=''>
       <div className='bg-[#F7F7F7]'>
         <EventBannerRibbonCarousel currentLocale={lang} />
         <div className='px-5 py-5'>
