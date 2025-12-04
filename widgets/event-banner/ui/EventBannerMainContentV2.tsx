@@ -26,6 +26,7 @@ export function EventBannerMainContentV2({
 }: EventBannerMainContentV2Props) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentPage, setCurrentPage] = useState(0);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
   const tweenFactor = useRef(0);
   const tweenNodes = useRef<HTMLElement[]>([]);
   const totalPages = banners.length;
@@ -98,6 +99,14 @@ export function EventBannerMainContentV2({
       setCurrentPage(page);
     };
 
+    const handlePointerDown = () => {
+      setIsUserInteracting(true);
+    };
+
+    const handleSettle = () => {
+      setIsUserInteracting(false);
+    };
+
     setTweenNodes(api);
     setTweenFactor(api);
     tweenScale(api);
@@ -109,7 +118,9 @@ export function EventBannerMainContentV2({
       .on('reInit', tweenScale)
       .on('scroll', tweenScale)
       .on('slideFocus', tweenScale)
-      .on('select', updatePage);
+      .on('select', updatePage)
+      .on('pointerDown', handlePointerDown)
+      .on('settle', handleSettle);
 
     return () => {
       api
@@ -118,13 +129,15 @@ export function EventBannerMainContentV2({
         .off('reInit', tweenScale)
         .off('scroll', tweenScale)
         .off('slideFocus', tweenScale)
-        .off('select', updatePage);
+        .off('select', updatePage)
+        .off('pointerDown', handlePointerDown)
+        .off('settle', handleSettle);
     };
   }, [api, tweenScale, setTweenNodes, setTweenFactor, totalPages]);
 
   // 자동재생 기능
   useEffect(() => {
-    if (!api || banners.length <= 1) {
+    if (!api || banners.length <= 1 || isUserInteracting) {
       return;
     }
 
@@ -137,7 +150,7 @@ export function EventBannerMainContentV2({
     }, 2500);
 
     return () => clearInterval(interval);
-  }, [api, banners.length]);
+  }, [api, banners.length, isUserInteracting]);
 
   return (
     <div className={`relative w-full ${className}`}>

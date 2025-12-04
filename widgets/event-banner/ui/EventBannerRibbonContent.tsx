@@ -19,6 +19,7 @@ export function EventBannerRibbonContent({
 }: EventBannerRibbonContentProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentPage, setCurrentPage] = useState(0);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
   const totalPages = banners.length;
 
   useEffect(() => {
@@ -30,17 +31,29 @@ export function EventBannerRibbonContent({
       setCurrentPage(page);
     };
 
+    const handlePointerDown = () => {
+      setIsUserInteracting(true);
+    };
+
+    const handleSettle = () => {
+      setIsUserInteracting(false);
+    };
+
     updatePage();
     api.on('select', updatePage);
+    api.on('pointerDown', handlePointerDown);
+    api.on('settle', handleSettle);
 
     return () => {
       api.off('select', updatePage);
+      api.off('pointerDown', handlePointerDown);
+      api.off('settle', handleSettle);
     };
   }, [api, totalPages]);
 
   // 자동재생 기능
   useEffect(() => {
-    if (!api || banners.length <= 1) {
+    if (!api || banners.length <= 1 || isUserInteracting) {
       return;
     }
 
@@ -54,7 +67,7 @@ export function EventBannerRibbonContent({
     }, 2000); // 2초 간격
 
     return () => clearInterval(interval);
-  }, [api, banners.length]);
+  }, [api, banners.length, isUserInteracting]);
 
   return (
     <div className={`relative w-full ${className}`}>
