@@ -65,7 +65,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'LIPOSUCTION',
     icon: () => <LiposuctionIcon />,
     iconSmall: () => <LiposuctionIcon variant='small' />,
-    labels: { ko_KR: '지방성형', en_US: 'Liposuction', th_TH: 'ศัลยกรรมดูดไขมัน' },
+    labels: { ko_KR: '지방흡입', en_US: 'Liposuction', th_TH: 'ศัลยกรรมดูดไขมัน' },
   },
   {
     id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // BODY
