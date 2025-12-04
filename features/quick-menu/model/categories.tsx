@@ -11,11 +11,13 @@ import {
   DermatologyIcon,
   AllIcon,
   DentalIcon,
+  BodyIcon,
+  OtherIcon,
 } from '../ui/icons';
 
 // 공통 카테고리 데이터
 const COMMON_CATEGORIES: CategoryItem[] = [
-  // 첫째줄: 눈 > 코 > 리프팅 > 안면윤곽 > 가슴
+  // 순서: 눈, 코, 리프팅, 안면윤곽, 가슴, 줄기세포, 지방흡입, 바디, 모발이식, 피부과, 치과, 기타
   {
     id: '3df0bd71-16cb-40c6-b372-ddfde9327aad', // EYES
     type: 'EYES',
@@ -51,13 +53,26 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     iconSmall: () => <BreastIcon variant='small' />,
     labels: { ko_KR: '가슴', en_US: 'Breast', th_TH: 'หน้าอก' },
   },
-  // 둘째줄: 지방성형 > 모발이식 > 줄기세포 > 피부과 > 치과
+  {
+    id: '255d42f9-a589-48f7-b8bc-ec046ff16f29', // STEM_CELL
+    type: 'STEM_CELL',
+    icon: () => <StemCellIcon />,
+    iconSmall: () => <StemCellIcon variant='small' />,
+    labels: { ko_KR: '줄기세포', en_US: 'Stem Cell', th_TH: 'เซลล์ต้นกำเนิด' },
+  },
   {
     id: '56739781-11f0-412b-8cd9-ef63024f80c2', // LIPOSUCTION
     type: 'LIPOSUCTION',
     icon: () => <LiposuctionIcon />,
     iconSmall: () => <LiposuctionIcon variant='small' />,
-    labels: { ko_KR: '지방성형', en_US: 'Liposuction', th_TH: 'ศัลยกรรมดูดไขมัน' },
+    labels: { ko_KR: '지방흡입', en_US: 'Liposuction', th_TH: 'ศัลยกรรมดูดไขมัน' },
+  },
+  {
+    id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // BODY
+    type: 'BODY',
+    icon: () => <BodyIcon />,
+    iconSmall: () => <BodyIcon variant='small' />,
+    labels: { ko_KR: '바디', en_US: 'Body', th_TH: 'ศัลยกรรมร่างกาย' },
   },
   {
     id: 'af44669d-002b-45fc-bf4a-b8fe3175e7ae', // HAIR_TRANSPLANT
@@ -65,13 +80,6 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     icon: () => <HairTransplantIcon />,
     iconSmall: () => <HairTransplantIcon variant='small' />,
     labels: { ko_KR: '모발이식', en_US: 'Hair Transplant', th_TH: 'ปลูกผม' },
-  },
-  {
-    id: '255d42f9-a589-48f7-b8bc-ec046ff16f29', // STEM_CELL
-    type: 'STEM_CELL',
-    icon: () => <StemCellIcon />,
-    iconSmall: () => <StemCellIcon variant='small' />,
-    labels: { ko_KR: '줄기세포', en_US: 'Stem Cell', th_TH: 'เซลล์ต้นกำเนิด' },
   },
   {
     id: '24bbf6a7-f34d-4352-af31-90296e8720c0', // DERMATOLOGY
@@ -86,6 +94,13 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     icon: () => <DentalIcon />,
     iconSmall: () => <DentalIcon variant='small' />,
     labels: { ko_KR: '치과', en_US: 'Dental', th_TH: 'ทันตกรรม' },
+  },
+  {
+    id: 'b2c3d4e5-f6a7-8901-bcde-f23456789012', // ETC
+    type: 'ETC',
+    icon: () => <OtherIcon />,
+    iconSmall: () => <OtherIcon variant='small' />,
+    labels: { ko_KR: '기타', en_US: 'Etc', th_TH: 'อื่นๆ' },
   },
 ];
 

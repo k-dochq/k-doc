@@ -36,15 +36,21 @@ function HospitalListCarouselV2Content({
     },
   );
 
+  // placeholderData로 인해 isLoading이어도 이전 데이터가 표시될 수 있음
+  // 데이터가 있으면 항상 렌더링하고, 데이터가 없고 로딩 중일 때만 스켈레톤 표시
+  if (bestHospitals && bestHospitals.length > 0) {
+    return <HospitalListCarouselV2 hospitals={bestHospitals} lang={lang} dict={dict} />;
+  }
+
   if (isLoading) {
     return <HospitalListCarouselV2Skeleton />;
   }
 
-  if (error || !bestHospitals || bestHospitals.length === 0) {
+  if (error) {
     return null;
   }
 
-  return <HospitalListCarouselV2 hospitals={bestHospitals} lang={lang} dict={dict} />;
+  return null;
 }
 
 export function HospitalListCarouselV2Wrapper({
