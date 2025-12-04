@@ -10,3 +10,7 @@ export type {
   GetYoutubeVideoCategoriesResponse,
 } from './api/use-cases/get-youtube-video-categories';
 export { YoutubeVideoCardV2 } from './ui/YoutubeVideoCardV2';
+export { YoutubeVideoThumbnail } from './ui/YoutubeVideoThumbnail';
+export { YoutubeVideoEmbedPlayer } from './ui/YoutubeVideoEmbedPlayer';
+export { YoutubeVideoTextContent } from './ui/YoutubeVideoTextContent';
+export { YoutubeVideoMediaContainer } from './ui/YoutubeVideoMediaContainer';
