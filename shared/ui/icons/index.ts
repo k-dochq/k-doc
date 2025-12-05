@@ -1,6 +1,7 @@
 export { LocationIcon } from './LocationIcon';
 export { FilterIconV2 } from './FilterIconV2';
 export { MapIconV2 } from './MapIconV2';
+export { MapIconV2Selected } from './MapIconV2Selected';
 export { ResetIcon } from './ResetIcon';
 export { HeartIcon } from './HeartIcon';
 export { HeartOutlineIcon } from './HeartOutlineIcon';

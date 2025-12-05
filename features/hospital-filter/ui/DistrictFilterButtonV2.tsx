@@ -2,7 +2,7 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { MapIconV2 } from 'shared/ui/icons';
+import { MapIconV2, MapIconV2Selected } from 'shared/ui/icons';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { openDrawer } from 'shared/lib/drawer';
 import { useParentDistricts } from 'features/district-filter/model/useDistricts';
@@ -73,13 +73,15 @@ export function DistrictFilterButtonV2({
     ? 'text-sm leading-5 font-semibold text-[#f15bff]'
     : 'text-sm leading-5 font-semibold text-neutral-700';
 
-  const iconClassName = hasSelectedDistricts
-    ? 'h-[18px] w-[18px] shrink-0 text-[#f15bff]'
-    : 'h-[18px] w-[18px] shrink-0 text-neutral-700';
+  const iconClassName = 'h-[18px] w-[18px] shrink-0';
 
   return (
     <button onClick={handleClick} className={buttonClassName}>
-      <MapIconV2 className={iconClassName} />
+      {hasSelectedDistricts ? (
+        <MapIconV2Selected className={iconClassName} />
+      ) : (
+        <MapIconV2 className={iconClassName} />
+      )}
       <p className={textClassName}>
         {byRegionLabel}
         {hasSelectedDistricts && `(${districtFilter.selectedDistrictCount})`}
