@@ -1,7 +1,7 @@
 'use client';
 
 import { type Locale } from 'shared/config';
-import { type Dictionary } from 'shared/model/types';
+import { type Dictionary, type HospitalCategoryType } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { SearchBar } from 'shared/ui';
 import { useHospitalSearch } from 'features/hospital-search';
@@ -10,7 +10,6 @@ import { CategorySectionV2 } from 'features/category-filter/ui/CategorySectionV2
 import { useCategories } from 'features/category-filter';
 import { FilterBarV2 } from 'features/hospital-filter';
 import { useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
-import { type MedicalSpecialtyType } from '@prisma/client';
 
 interface HospitalsContentV2Props {
   lang: Locale;
@@ -33,8 +32,14 @@ export function HospitalsContentV2({ lang, dict, searchParams }: HospitalsConten
     error: categoriesError,
   } = useCategories();
 
-  // string을 MedicalSpecialtyType으로 안전하게 변환
-  const currentCategory = searchParams.category as MedicalSpecialtyType | undefined;
+  // string을 HospitalCategoryType으로 안전하게 변환
+  // category가 없으면 기본값으로 'RECOMMEND' 사용
+  const categoryParam = searchParams.category;
+  const currentCategory: HospitalCategoryType = categoryParam
+    ? categoryParam === 'RECOMMEND'
+      ? 'RECOMMEND'
+      : (categoryParam as HospitalCategoryType)
+    : 'RECOMMEND'; // 기본값: 추천
 
   // 정렬 파라미터 처리 - 타입 안전하게 변환
   const currentSort: HospitalSortOption =

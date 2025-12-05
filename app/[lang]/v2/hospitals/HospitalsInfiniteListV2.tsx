@@ -1,10 +1,10 @@
 'use client';
 
-import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import {
   type Dictionary,
   type HospitalSortOption,
+  type HospitalCategoryType,
   HOSPITAL_SORT_OPTIONS,
 } from 'shared/model/types';
 import { HospitalCardV2 } from 'entities/hospital/ui/HospitalCardV2';
@@ -23,7 +23,7 @@ interface HospitalsInfiniteListV2Props {
   lang: Locale;
   dict: Dictionary;
   searchParams: {
-    category?: MedicalSpecialtyType;
+    category?: HospitalCategoryType;
     sort?: HospitalSortOption;
     search?: string;
     districtIds?: string[];

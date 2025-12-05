@@ -74,6 +74,9 @@ function generateSearchVariations(search: string): string[] {
 
 // 메인 이미지 URL 추출 헬퍼 함수
 
+// 추천 카테고리 ID (하드코딩)
+const RECOMMENDED_CATEGORY_ID = '893fa5bd-dc1d-48c7-ac46-78e72742d32c';
+
 export async function getHospitalsV2(
   request: GetHospitalsRequest = {},
 ): Promise<GetHospitalsResponse> {
@@ -82,6 +85,7 @@ export async function getHospitalsV2(
       page = DEFAULT_HOSPITAL_QUERY_PARAMS.page,
       limit = DEFAULT_HOSPITAL_QUERY_PARAMS.limit,
       specialtyType,
+      category,
       minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
       search,
       districtIds,
@@ -228,6 +232,18 @@ export async function getHospitalsV2(
               {
                 districtId: {
                   in: districtIds,
+                },
+              },
+            ]
+          : []),
+        // 추천 카테고리 필터링
+        ...(category === 'RECOMMEND'
+          ? [
+              {
+                HospitalCategoryAssignment: {
+                  some: {
+                    categoryId: RECOMMENDED_CATEGORY_ID,
+                  },
                 },
               },
             ]

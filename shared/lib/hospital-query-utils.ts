@@ -6,6 +6,7 @@ import {
   type DbHospitalQueryParams,
   type HospitalSortOption,
   type SortOrderOption,
+  type HospitalCategoryType,
   HOSPITAL_SORT_OPTIONS,
   SORT_ORDER_OPTIONS,
   SORT_OPTION_TO_DB_FIELD_MAP,
@@ -46,10 +47,15 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
       : DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder;
 
   const categoryParam = searchParams.get('category');
-  const category =
-    categoryParam && isValidMedicalSpecialtyType(categoryParam)
-      ? (categoryParam as MedicalSpecialtyType)
-      : undefined;
+  let category: HospitalCategoryType | undefined = undefined;
+
+  if (categoryParam) {
+    if (categoryParam === 'RECOMMEND') {
+      category = 'RECOMMEND';
+    } else if (isValidMedicalSpecialtyType(categoryParam)) {
+      category = categoryParam as MedicalSpecialtyType;
+    }
+  }
 
   const minRating = Math.max(0, Math.min(5, parseFloat(searchParams.get('minRating') || '0'))); // 0-5 범위 제한
 
@@ -80,12 +86,19 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
  * 파싱된 쿼리 파라미터를 데이터베이스 쿼리 파라미터로 변환
  */
 export function convertToDbQueryParams(params: ParsedHospitalQueryParams): DbHospitalQueryParams {
+  // category가 RECOMMEND가 아닌 MedicalSpecialtyType인 경우에만 specialtyType으로 변환
+  const specialtyType =
+    params.category && params.category !== 'RECOMMEND'
+      ? (params.category as MedicalSpecialtyType)
+      : undefined;
+
   return {
     page: params.page,
     limit: params.limit,
     sortBy: SORT_OPTION_TO_DB_FIELD_MAP[params.sort],
     sortOrder: params.sortOrder,
-    specialtyType: params.category,
+    specialtyType,
+    category: params.category,
     minRating: params.minRating,
     search: params.search,
     districtIds: params.districtIds,

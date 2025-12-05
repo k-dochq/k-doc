@@ -7,6 +7,7 @@ import { type GetHospitalsResponse } from '../api/entities/types';
 import {
   type HospitalSortOption,
   type SortOrderOption,
+  type HospitalCategoryType,
   DEFAULT_HOSPITAL_QUERY_PARAMS,
 } from 'shared/model/types/hospital-query';
 import { buildHospitalQueryString } from 'shared/lib/hospital-query-utils';
@@ -15,7 +16,7 @@ interface UseInfiniteHospitalsV2Params extends Record<string, unknown> {
   limit?: number;
   sortBy?: HospitalSortOption;
   sortOrder?: SortOrderOption;
-  category?: MedicalSpecialtyType;
+  category?: HospitalCategoryType;
   search?: string;
   districtIds?: string[];
 }

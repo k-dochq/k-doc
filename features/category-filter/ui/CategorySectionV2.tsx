@@ -93,7 +93,7 @@ export function CategorySectionV2({
           {categoryButtons.map((categoryButton, index) => {
             const isActive =
               categoryButton.type === 'all'
-                ? !currentCategory
+                ? !currentCategory || currentCategory === 'RECOMMEND'
                 : currentCategory === categoryButton.type;
             const href =
               categoryButton.type === 'all'
