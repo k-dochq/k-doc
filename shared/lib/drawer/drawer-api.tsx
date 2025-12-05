@@ -21,7 +21,9 @@ export function openDrawer<T = void>(options: DrawerOptions<T>): Promise<T> {
         currentResolver(undefined as T);
         currentResolver = null;
       }
-      useDrawerStore.getState().closeDrawer();
+      // closeDrawer는 onClose를 호출하므로 여기서는 직접 호출하지 않음
+      // GlobalDrawer의 onOpenChange에서 closeDrawer를 호출하거나
+      // resolveDrawer에서 closeDrawer를 호출함
     };
 
     useDrawerStore.getState().openDrawer({
