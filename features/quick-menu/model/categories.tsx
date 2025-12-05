@@ -100,7 +100,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'ETC',
     icon: () => <OtherIcon />,
     iconSmall: () => <OtherIcon variant='small' />,
-    labels: { ko_KR: '기타', en_US: 'Etc', th_TH: 'อื่นๆ' },
+    labels: { ko_KR: '기타', en_US: 'Others', th_TH: 'อื่นๆ' },
   },
 ];
 
