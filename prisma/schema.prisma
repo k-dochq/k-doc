@@ -74,53 +74,57 @@ model Doctor {
 }
 
 model Hospital {
-  id                       String                     @id @db.Uuid
-  name                     Json
-  address                  Json
-  directions               Json?
-  phoneNumber              String?                    @db.VarChar(20)
-  description              Json?
-  openingHours             Json?
-  reviewCount              Int                        @default(0)
-  productCount             Int                        @default(0)
-  bookmarkCount            Int                        @default(0)
-  viewCount                Int                        @default(0)
-  rating                   Float                      @default(0)
-  point                    Int                        @default(0)
-  email                    String?                    @db.VarChar(255)
-  subPhoneNumbers          Json                       @default("[]")
-  lineId                   String?                    @db.VarChar(255)
-  memo                     String?
-  reviewUrl                String?
-  settings                 Json?
-  enableJp                 Boolean                    @default(false)
-  prices                   Json?
-  ranking                  Int?
-  discountRate             Float?
-  approvalStatusType       HospitalApprovalStatusType @default(APPROVED)
-  rejectReason             String?
-  baseId                   String?                    @db.Uuid
-  hasClone                 Boolean                    @default(false)
-  districtId               String?                    @db.Uuid
-  createdAt                DateTime                   @default(now())
-  updatedAt                DateTime
-  latitude                 Float?
-  longitude                Float?
-  displayLocationName      Json?
-  ConsultationMemo         ConsultationMemo[]
-  ConsultationMessage      ConsultationMessage[]
-  Doctor                   Doctor[]
-  District                 District?                  @relation(fields: [districtId], references: [id], onDelete: Cascade)
-  HospitalImage            HospitalImage[]
-  HospitalLike             HospitalLike[]
-  HospitalMedicalSpecialty HospitalMedicalSpecialty[]
-  LiveReview               LiveReview[]
-  Product                  Product[]
-  Reservation              Reservation[]
-  Review                   Review[]
+  id                         String                       @id @db.Uuid
+  name                       Json
+  address                    Json
+  directions                 Json?
+  phoneNumber                String?                      @db.VarChar(20)
+  description                Json?
+  openingHours               Json?
+  reviewCount                Int                          @default(0)
+  productCount               Int                          @default(0)
+  bookmarkCount              Int                          @default(0)
+  viewCount                  Int                          @default(0)
+  rating                     Float                        @default(0)
+  point                      Int                          @default(0)
+  email                      String?                      @db.VarChar(255)
+  subPhoneNumbers            Json                         @default("[]")
+  lineId                     String?                      @db.VarChar(255)
+  memo                       String?
+  reviewUrl                  String?
+  settings                   Json?
+  enableJp                   Boolean                      @default(false)
+  prices                     Json?
+  ranking                    Int?
+  discountRate               Float?
+  approvalStatusType         HospitalApprovalStatusType   @default(APPROVED)
+  rejectReason               String?
+  baseId                     String?                      @db.Uuid
+  hasClone                   Boolean                      @default(false)
+  districtId                 String?                      @db.Uuid
+  createdAt                  DateTime                     @default(now())
+  updatedAt                  DateTime
+  latitude                   Float?
+  longitude                  Float?
+  displayLocationName        Json?
+  recommendedRanking         Int?
+  badge                      String[]                     @default([])
+  ConsultationMemo           ConsultationMemo[]
+  ConsultationMessage        ConsultationMessage[]
+  Doctor                     Doctor[]
+  District                   District?                    @relation(fields: [districtId], references: [id], onDelete: Cascade)
+  HospitalCategoryAssignment HospitalCategoryAssignment[]
+  HospitalImage              HospitalImage[]
+  HospitalLike               HospitalLike[]
+  HospitalMedicalSpecialty   HospitalMedicalSpecialty[]
+  LiveReview                 LiveReview[]
+  Product                    Product[]
+  Reservation                Reservation[]
+  Review                     Review[]
 
   @@index([baseId])
   @@index([districtId])
+  @@index([recommendedRanking])
   @@schema("public")
 }
 
@@ -707,6 +711,35 @@ model YoutubeVideoThumbnail {
   @@unique([videoId, locale])
   @@index([locale])
   @@index([videoId])
+  @@schema("public")
+}
+
+model HospitalCategory {
+  id                         String                       @id @db.Uuid
+  name                       Json
+  description                Json?
+  order                      Int?
+  isActive                   Boolean                      @default(true)
+  createdAt                  DateTime                     @default(now())
+  updatedAt                  DateTime
+  HospitalCategoryAssignment HospitalCategoryAssignment[]
+
+  @@index([isActive])
+  @@index([order])
+  @@schema("public")
+}
+
+model HospitalCategoryAssignment {
+  id               String           @id @db.Uuid
+  hospitalId       String           @db.Uuid
+  categoryId       String           @db.Uuid
+  createdAt        DateTime         @default(now())
+  HospitalCategory HospitalCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  Hospital         Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+
+  @@unique([hospitalId, categoryId])
+  @@index([categoryId])
+  @@index([hospitalId])
   @@schema("public")
 }
 
