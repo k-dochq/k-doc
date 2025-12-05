@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { resolveDrawer } from 'shared/lib/drawer';
 import { ResetButton } from 'shared/ui/buttons';
 import { ParentDistrictList } from 'features/district-filter/ui/ParentDistrictList';
 import { ChildDistrictList } from 'features/district-filter/ui/ChildDistrictList';
@@ -15,6 +14,7 @@ import type { District } from 'features/district-filter/model/types';
 interface DistrictFilterDrawerV2Props {
   lang: Locale;
   dict: Dictionary;
+  onClose?: () => void;
   districtFilter: ReturnType<typeof useDistrictFilter>;
   parentDistricts: District[];
 }
@@ -22,6 +22,7 @@ interface DistrictFilterDrawerV2Props {
 export function DistrictFilterDrawerV2({
   lang,
   dict,
+  onClose,
   districtFilter,
   parentDistricts,
 }: DistrictFilterDrawerV2Props) {
@@ -61,7 +62,7 @@ export function DistrictFilterDrawerV2({
   };
 
   const handleComplete = () => {
-    resolveDrawer();
+    onClose?.();
   };
 
   return (

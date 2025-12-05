@@ -1,10 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { Drawer, DrawerContent, DrawerTrigger } from 'shared/ui/drawer';
 import { MapIconV2, MapIconV2Selected } from 'shared/ui/icons';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
-import { openDrawer } from 'shared/lib/drawer';
 import { useParentDistricts } from 'features/district-filter/model/useDistricts';
 import { type useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
 import { DistrictFilterDrawerV2 } from './DistrictFilterDrawerV2';
@@ -28,30 +29,17 @@ export function DistrictFilterButtonV2({
   dict,
   districtFilter,
 }: DistrictFilterButtonV2Props) {
+  const [isOpen, setIsOpen] = useState(false);
   const { data: parentDistricts = [], isLoading, error } = useParentDistricts();
 
   const byRegionLabel = getLocalizedTextByLocale(filterLabels.byRegion, lang);
   const hasSelectedDistricts = districtFilter.selectedDistrictCount > 0;
 
-  const handleClick = async () => {
-    // 데이터가 로딩 중이거나 에러가 있으면 drawer를 열지 않음
-    if (isLoading || error || parentDistricts.length === 0) {
-      return;
-    }
-
-    await openDrawer({
-      content: (
-        <DistrictFilterDrawerV2
-          lang={lang}
-          dict={dict}
-          districtFilter={districtFilter}
-          parentDistricts={parentDistricts}
-        />
-      ),
-    });
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
-  // 데이터가 로딩 중이거나 에러가 있으면 비활성화된 버튼 표시
+  // 데이터가 로딩 중이거나 에러가 있으면 모달을 렌더링하지 않음
   if (isLoading || error || parentDistricts.length === 0) {
     return (
       <button
@@ -76,16 +64,29 @@ export function DistrictFilterButtonV2({
   const iconClassName = 'h-[18px] w-[18px] shrink-0';
 
   return (
-    <button onClick={handleClick} className={buttonClassName}>
-      {hasSelectedDistricts ? (
-        <MapIconV2Selected className={iconClassName} />
-      ) : (
-        <MapIconV2 className={iconClassName} />
-      )}
-      <p className={textClassName}>
-        {byRegionLabel}
-        {hasSelectedDistricts && `(${districtFilter.selectedDistrictCount})`}
-      </p>
-    </button>
+    <Drawer open={isOpen} onOpenChange={setIsOpen}>
+      <DrawerTrigger asChild>
+        <button className={buttonClassName}>
+          {hasSelectedDistricts ? (
+            <MapIconV2Selected className={iconClassName} />
+          ) : (
+            <MapIconV2 className={iconClassName} />
+          )}
+          <p className={textClassName}>
+            {byRegionLabel}
+            {hasSelectedDistricts && `(${districtFilter.selectedDistrictCount})`}
+          </p>
+        </button>
+      </DrawerTrigger>
+      <DrawerContent className='w-full bg-white'>
+        <DistrictFilterDrawerV2
+          lang={lang}
+          dict={dict}
+          districtFilter={districtFilter}
+          parentDistricts={parentDistricts}
+          onClose={handleClose}
+        />
+      </DrawerContent>
+    </Drawer>
   );
 }
