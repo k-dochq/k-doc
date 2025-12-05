@@ -44,22 +44,20 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
           <HospitalListTitleV2 lang={lang} dict={dict} />
         </div>
         <div className='h-4' />
-        <div className='pl-5'>
-          <HospitalListV2Container lang={lang} dict={dict} initialData={initialHospitals} />
-        </div>
+        <HospitalListV2Container lang={lang} dict={dict} initialData={initialHospitals} />
       </div>
 
-      <div className='bg-primary-200 px-5 py-12'>
+      <div className='bg-primary-200 py-12'>
         <LiveReviewV2Container lang={lang} dict={dict} />
       </div>
 
-      <div className='px-5 py-9'>
+      <div className='py-9'>
         <PopularReviewsV2Wrapper lang={lang} dict={dict} />
       </div>
 
       <PremiumServiceV2Container lang={lang} dict={dict} />
 
-      <div className='px-5 py-9'>
+      <div className='py-9'>
         <YoutubeVideosV2Wrapper lang={lang} dict={dict} />
       </div>
     </div>

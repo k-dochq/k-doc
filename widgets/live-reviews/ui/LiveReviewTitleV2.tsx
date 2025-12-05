@@ -10,7 +10,7 @@ interface LiveReviewTitleV2Props {
 
 export function LiveReviewTitleV2({ lang, dict }: LiveReviewTitleV2Props) {
   return (
-    <div className='flex w-full items-center justify-between'>
+    <div className='flex w-full items-center justify-between px-5'>
       <h2 className='text-2xl leading-8 font-semibold text-neutral-700'>
         {dict.liveReviews.title}
       </h2>

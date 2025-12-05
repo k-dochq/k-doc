@@ -42,14 +42,15 @@ export function YoutubeVideoFilterTabsV2({
 
   return (
     <div className='flex w-full items-center gap-1'>
-      {tabs.map((tab) => {
+      {tabs.map((tab, index) => {
         const isSelected = selectedCategory === tab.id;
+        const isFirst = index === 0;
 
         return (
           <button
             key={tab.id || 'all'}
             onClick={() => onCategoryChange(tab.id)}
-            className={`relative flex shrink-0 items-center justify-center gap-[10px] px-2 py-[6px] transition-colors ${
+            className={`relative flex shrink-0 items-center justify-center gap-[10px] px-2 py-[6px] transition-colors ${isFirst ? 'pl-5' : ''} ${
               isSelected
                 ? 'border-t-0 border-r-0 border-b border-l-0 border-solid border-[#f15bff] text-[#f15bff]'
                 : 'text-neutral-400'

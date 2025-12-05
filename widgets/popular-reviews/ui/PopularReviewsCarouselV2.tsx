@@ -44,16 +44,29 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
         <CarouselContent className=''>
           {reviews.map((review, index) => {
             const isFirst = index === 0;
+            const isLast = index === reviews.length - 1;
             return (
-              <CarouselItem key={review.id} className={`basis-[286px] pr-4`}>
-                <PopularReviewCardV2 review={review} lang={lang} dict={dict} />
-              </CarouselItem>
+              <>
+                <CarouselItem
+                  key={review.id}
+                  className={`${isFirst ? 'basis-[306px] pl-5' : 'basis-[302px] pl-[16px]'}`}
+                >
+                  <PopularReviewCardV2 review={review} lang={lang} dict={dict} />
+                </CarouselItem>
+                {isLast && (
+                  <CarouselItem key={`spacer-${review.id}`} className='basis-5'>
+                    <div className='w-5' />
+                  </CarouselItem>
+                )}
+              </>
             );
           })}
         </CarouselContent>
       </Carousel>
       <div className='h-6' />
-      <PopularReviewsPageIndicator totalPages={reviews.length} currentPage={currentSlide} />
+      <div className='px-5'>
+        <PopularReviewsPageIndicator totalPages={reviews.length} currentPage={currentSlide} />
+      </div>
     </div>
   );
 }
