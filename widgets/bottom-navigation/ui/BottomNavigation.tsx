@@ -40,8 +40,8 @@ export function BottomNavigation({ currentLang, dict }: BottomNavigationWithDict
   };
 
   return (
-    <nav className='safe-area-pb fixed right-0 bottom-0 left-0 z-50 bg-white'>
-      <div className={`mx-auto ${MAX_MOBILE_WIDTH_CLASS} border-t border-neutral-200`}>
+    <nav className='safe-area-pb fixed right-0 bottom-0 left-0 z-50 bg-[#f5f5f5]'>
+      <div className={`mx-auto ${MAX_MOBILE_WIDTH_CLASS} border-t border-neutral-200 bg-white`}>
         <div className='flex items-center justify-around'>
           {navigationItems.map((item) => {
             const Icon = item.icon;
