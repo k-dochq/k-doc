@@ -126,7 +126,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
 
   return (
     <html lang={lang} className={allFontVariables}>
-      <body className={currentFont.className}>
+      <body className={`${currentFont.className} bg-[#f5f5f5]`}>
         {/* Google Tag Manager */}
         <GoogleTagManager containerId='GTM-MBVD4CJR' />
         {/* Google Ads Tag Manager */}

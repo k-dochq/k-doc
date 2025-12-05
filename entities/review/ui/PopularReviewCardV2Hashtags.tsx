@@ -10,11 +10,11 @@ export function PopularReviewCardV2Hashtags({ hashtags }: PopularReviewCardV2Has
   }
 
   return (
-    <div className='flex items-center gap-1 text-[13px] leading-[19px] font-medium text-[#f15bff]'>
+    <div className='flex max-h-[38px] flex-wrap items-start gap-1 overflow-hidden text-[13px] leading-[19px] font-medium text-[#f15bff]'>
       {hashtags.map((hashtag, index) => (
-        <p key={index} className='shrink-0'>
+        <span key={index} className='inline-block whitespace-normal'>
           {hashtag}
-        </p>
+        </span>
       ))}
     </div>
   );
