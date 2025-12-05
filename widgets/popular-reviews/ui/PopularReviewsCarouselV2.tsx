@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'share
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from 'entities/review/model/types';
+import { useCarouselAutoplay } from 'shared/model/hooks';
 import { PopularReviewCardV2 } from 'entities/review/ui/PopularReviewCardV2';
 import { PopularReviewsPageIndicator } from './PopularReviewsPageIndicator';
 
@@ -17,6 +18,14 @@ interface PopularReviewsCarouselV2Props {
 export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviewsCarouselV2Props) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // 자동재생 기능
+  useCarouselAutoplay({
+    api,
+    itemCount: reviews.length,
+    interval: 2500,
+    enabled: true,
+  });
 
   useEffect(() => {
     if (!api) {
