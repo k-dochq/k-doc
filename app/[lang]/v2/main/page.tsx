@@ -23,7 +23,7 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
   // 초기 데이터 prefetch (ALL 카테고리)
   const initialHospitals = await getBestHospitals({
     category: 'ALL',
-    limit: 3,
+    limit: 5,
   });
 
   return (
@@ -39,23 +39,25 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
         </div>
       </div>
 
-      <div className='px-5 pt-[2px] pb-9'>
-        <HospitalListTitleV2 lang={lang} dict={dict} />
+      <div className='pt-[2px] pb-9'>
+        <div className='px-5'>
+          <HospitalListTitleV2 lang={lang} dict={dict} />
+        </div>
         <div className='h-4' />
         <HospitalListV2Container lang={lang} dict={dict} initialData={initialHospitals} />
       </div>
 
-      <div className='bg-primary-200 px-5 py-12'>
+      <div className='bg-primary-200 py-12'>
         <LiveReviewV2Container lang={lang} dict={dict} />
       </div>
 
-      <div className='px-5 py-9'>
+      <div className='py-9'>
         <PopularReviewsV2Wrapper lang={lang} dict={dict} />
       </div>
 
       <PremiumServiceV2Container lang={lang} dict={dict} />
 
-      <div className='px-5 py-9'>
+      <div className='py-9'>
         <YoutubeVideosV2Wrapper lang={lang} dict={dict} />
       </div>
     </div>

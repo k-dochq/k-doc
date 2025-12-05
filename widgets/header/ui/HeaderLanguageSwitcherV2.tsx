@@ -118,8 +118,8 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
                 className={[
                   'w-full cursor-pointer px-4 py-2 text-left text-sm transition-colors',
                   currentLang === localeKey
-                    ? 'bg-primary/10 text-primary font-semibold'
-                    : 'hover:bg-primary/5 hover:text-primary text-neutral-900',
+                    ? 'bg-primary/10 text-primary-900 font-semibold'
+                    : 'hover:bg-primary/5 hover:text-primary-900 text-neutral-900',
                 ].join(' ')}
                 onClick={() => handleLanguageChange(localeKey as Locale)}
               >

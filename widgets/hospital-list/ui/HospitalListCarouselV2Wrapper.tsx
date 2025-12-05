@@ -28,7 +28,7 @@ function HospitalListCarouselV2Content({
   } = useBestHospitals(
     {
       category: selectedCategory,
-      limit: 3,
+      limit: 5,
     },
     {
       // 서버에서 prefetch한 데이터를 초기 데이터로 사용 (ALL 카테고리일 때만)
