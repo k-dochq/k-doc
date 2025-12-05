@@ -14,7 +14,7 @@ export default async function V2MainLayout({ children, params }: V2MainLayoutPro
   const dict = await getDictionary(lang);
 
   return (
-    <div className='min-h-screen bg-white'>
+    <div className='min-h-screen bg-white shadow-[0_0_8px_0_rgba(0,0,0,0.20)]'>
       <HeaderV2 currentLang={lang} dict={dict} />
       <main>{children}</main>
       <FooterV2 lang={lang} dict={dict} />

@@ -25,13 +25,21 @@ export function HospitalListCarouselV2({ hospitals, lang, dict }: HospitalListCa
         <CarouselContent className=''>
           {hospitals.map((hospital, index) => {
             const isFirst = index === 0;
+            const isLast = index === hospitals.length - 1;
             return (
-              <CarouselItem
-                key={hospital.id}
-                className={`basis-[150px] ${isFirst ? 'pl-[5px]' : 'pl-[16px]'}`}
-              >
-                <HospitalCardV2 hospital={hospital} lang={lang} dict={dict} />
-              </CarouselItem>
+              <>
+                <CarouselItem
+                  key={hospital.id}
+                  className={`${isFirst ? 'basis-[170px] pl-5' : 'basis-[166px] pl-[16px]'}`}
+                >
+                  <HospitalCardV2 hospital={hospital} lang={lang} dict={dict} />
+                </CarouselItem>
+                {isLast && (
+                  <CarouselItem key={`spacer-${hospital.id}`} className='basis-5'>
+                    <div className='w-5' />
+                  </CarouselItem>
+                )}
+              </>
             );
           })}
         </CarouselContent>

@@ -49,11 +49,25 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
         className='w-full'
       >
         <CarouselContent className=''>
-          {videos.map((video) => (
-            <CarouselItem key={video.id} className='basis-[316px] pr-4'>
-              <YoutubeVideoCardV2 video={video} lang={lang} dict={dict} />
-            </CarouselItem>
-          ))}
+          {videos.map((video, index) => {
+            const isFirst = index === 0;
+            const isLast = index === videos.length - 1;
+            return (
+              <>
+                <CarouselItem
+                  key={video.id}
+                  className={`basis-[316px] ${isFirst ? 'pl-5' : 'pl-[16px]'}`}
+                >
+                  <YoutubeVideoCardV2 video={video} lang={lang} dict={dict} />
+                </CarouselItem>
+                {isLast && (
+                  <CarouselItem key={`spacer-${video.id}`} className='basis-5'>
+                    <div className='w-5' />
+                  </CarouselItem>
+                )}
+              </>
+            );
+          })}
         </CarouselContent>
       </Carousel>
       <YoutubeVideosPageIndicator

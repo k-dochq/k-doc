@@ -25,10 +25,21 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
         <CarouselContent className=''>
           {liveReviews.map((liveReview, index) => {
             const isFirst = index === 0;
+            const isLast = index === liveReviews.length - 1;
             return (
-              <CarouselItem key={liveReview.id} className={`basis-[312px] pr-4`}>
-                <LiveReviewCardV2 liveReview={liveReview} lang={lang} dict={dict} />
-              </CarouselItem>
+              <>
+                <CarouselItem
+                  key={liveReview.id}
+                  className={`basis-[312px] ${isFirst ? 'pl-5' : 'pl-[16px]'}`}
+                >
+                  <LiveReviewCardV2 liveReview={liveReview} lang={lang} dict={dict} />
+                </CarouselItem>
+                {isLast && (
+                  <CarouselItem key={`spacer-${liveReview.id}`} className='basis-5'>
+                    <div className='w-5' />
+                  </CarouselItem>
+                )}
+              </>
             );
           })}
         </CarouselContent>
