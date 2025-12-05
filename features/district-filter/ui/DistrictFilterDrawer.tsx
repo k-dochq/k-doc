@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { resolveDrawer } from 'shared/lib/drawer';
 import { ResetButton } from 'shared/ui/buttons';
 import { ParentDistrictList } from './ParentDistrictList';
 import { ChildDistrictList } from './ChildDistrictList';
@@ -28,7 +29,7 @@ export function DistrictFilterDrawer({
 }: DistrictFilterDrawerProps) {
   // parentDistricts의 첫 번째 값을 기본값으로 설정
   const [selectedParentId, setSelectedParentId] = useState<string | null>(
-    parentDistricts[0]?.id ?? null
+    parentDistricts[0]?.id ?? null,
   );
 
   const { data: childDistricts = [] } = useChildDistricts(selectedParentId);
@@ -62,6 +63,7 @@ export function DistrictFilterDrawer({
   };
 
   const handleComplete = () => {
+    resolveDrawer();
     onClose?.();
   };
 

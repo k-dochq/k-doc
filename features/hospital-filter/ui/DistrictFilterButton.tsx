@@ -26,7 +26,10 @@ export function DistrictFilterButton({ lang, dict, districtFilter }: DistrictFil
   // 데이터가 로딩 중이거나 에러가 있으면 모달을 렌더링하지 않음
   if (isLoading || error || parentDistricts.length === 0) {
     return (
-      <button className='text-primary flex items-center gap-0.5 text-[13px] font-medium opacity-50' disabled>
+      <button
+        className='text-primary flex items-center gap-0.5 text-[13px] font-medium opacity-50'
+        disabled
+      >
         <span className='text-neutral-900'>
           {dict.districtFilter.button}
           {districtFilter.selectedDistrictCount > 0 && (
