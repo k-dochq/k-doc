@@ -58,7 +58,10 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
   // 지역 필터 파라미터 파싱
   const districtsParam = searchParams.get('districts');
   const districtIds = districtsParam
-    ? districtsParam.split(',').filter(Boolean).map(id => id.trim())
+    ? districtsParam
+        .split(',')
+        .filter(Boolean)
+        .map((id) => id.trim())
     : undefined;
 
   return {

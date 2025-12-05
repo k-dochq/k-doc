@@ -5,7 +5,7 @@ import { getLocalizedTextByLocale } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { HotRibbonV2 } from 'shared/ui/hot-ribbon';
 import { HospitalCardV2Thumbnail } from './HospitalCardV2Thumbnail';
-import { HospitalCardV2CategoryTag } from './HospitalCardV2CategoryTag';
+import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
 import { HospitalCardV2NameAndLocation } from './HospitalCardV2NameAndLocation';
 import { HospitalCardV2Price } from './HospitalCardV2Price';
 import { HospitalCardV2Rating } from './HospitalCardV2Rating';
@@ -36,11 +36,6 @@ export function HospitalCardV2({
     ? getLocalizedTextByLocale(hospital.displayLocationName, lang)
     : null;
   const address = getLocalizedTextByLocale(hospital.address, lang);
-
-  // 첫 번째 medical specialty를 카테고리 태그로 사용
-  const categoryTag = hospital.medicalSpecialties?.[0]
-    ? getLocalizedTextByLocale(hospital.medicalSpecialties[0].name, lang)
-    : '';
 
   // 가격 포맷팅
   const price = hospital.prices?.minPrice ? `$${hospital.prices.minPrice.toLocaleString()}~` : '';
@@ -79,7 +74,13 @@ export function HospitalCardV2({
             {/* 상단 영역 */}
             <div className='flex w-full shrink-0 flex-col items-start gap-1.5'>
               {/* 카테고리 태그 */}
-              {categoryTag && <HospitalCardV2CategoryTag categoryName={categoryTag} />}
+              {hospital.medicalSpecialties && hospital.medicalSpecialties.length > 0 && (
+                <MedicalSpecialtyTagsV2
+                  specialties={hospital.medicalSpecialties}
+                  lang={lang}
+                  maxDisplay={3}
+                />
+              )}
 
               {/* 제목 및 지역 */}
               <HospitalCardV2NameAndLocation

@@ -9,7 +9,7 @@ import {
 } from 'shared/model/types';
 import { HospitalCardV2 } from 'entities/hospital/ui/HospitalCardV2';
 import { convertHospitalsToCardData } from 'entities/hospital';
-import { useInfiniteHospitals } from 'entities/hospital/model/useInfiniteHospitals';
+import { useInfiniteHospitalsV2 } from 'entities/hospital/model/useInfiniteHospitalsV2';
 import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospitalLike';
 import { HospitalsSkeletonV2 } from './HospitalsSkeletonV2';
 import { ErrorState } from 'shared/ui/error-state';
@@ -52,7 +52,7 @@ export function HospitalsInfiniteListV2({
   const toggleLikeMutation = useToggleHospitalLike({ queryParams });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
-    useInfiniteHospitals(queryParams);
+    useInfiniteHospitalsV2(queryParams);
 
   // 좋아요 토글 핸들러
   const handleToggleLike = (hospitalId: string) => {
@@ -73,7 +73,9 @@ export function HospitalsInfiniteListV2({
   const loadingHospitalId = toggleLikeMutation.isPending ? toggleLikeMutation.variables : null;
 
   // 로딩 상태
-  if (isLoading) {
+  // placeholderData로 인해 isLoading이어도 이전 데이터가 표시될 수 있음
+  // 초기 로딩 시에만 스켈레톤 표시 (데이터가 없을 때만)
+  if (isLoading && !data) {
     return <HospitalsSkeletonV2 />;
   }
 
