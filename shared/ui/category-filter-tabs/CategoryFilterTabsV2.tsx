@@ -67,7 +67,7 @@ export function CategoryFilterTabsV2({
             const isFirst = index === 0;
 
             return (
-              <CarouselItem key={category.id} className={`basis-auto ${isFirst ? '' : 'pl-2'}`}>
+              <CarouselItem key={category.id} className={`basis-auto ${isFirst ? 'pl-5' : 'pl-2'}`}>
                 {isLast ? (
                   <div className='pr-5'>
                     <CategoryFilterButtonV2

@@ -10,7 +10,7 @@ interface YoutubeVideosTitleV2Props {
 
 export function YoutubeVideosTitleV2({ lang, dict }: YoutubeVideosTitleV2Props) {
   return (
-    <div className='flex w-full items-center justify-between'>
+    <div className='flex w-full items-center justify-between px-5'>
       <h2 className='text-2xl leading-8 font-semibold text-neutral-700'>{dict.youtube.title}</h2>
     </div>
   );
