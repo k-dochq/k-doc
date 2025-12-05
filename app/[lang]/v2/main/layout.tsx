@@ -1,7 +1,7 @@
 import { HeaderV2 } from 'widgets/header/ui/HeaderV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { BottomNavigation } from '@/widgets/bottom-navigation';
+import { BottomNavigationV2 } from '@/widgets/bottom-navigation';
 import { FooterV2 } from 'widgets/footer/ui/FooterV2';
 
 interface V2MainLayoutProps {
@@ -19,7 +19,7 @@ export default async function V2MainLayout({ children, params }: V2MainLayoutPro
       <main>{children}</main>
       <FooterV2 lang={lang} dict={dict} />
       <div className='h-16' />
-      <BottomNavigation currentLang={lang} dict={dict} />
+      <BottomNavigationV2 currentLang={lang} dict={dict} />
     </div>
   );
 }
