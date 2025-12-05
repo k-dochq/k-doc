@@ -4,16 +4,19 @@ import { useSearchParams } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
-import { FilterIconV2, MapIconV2 } from 'shared/ui/icons';
+import { FilterIconV2 } from 'shared/ui/icons';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { openDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks';
 import { SortFilterDrawer } from './SortFilterDrawer';
+import { DistrictFilterButtonV2 } from './DistrictFilterButtonV2';
+import { type useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
 
 interface FilterBarV2Props {
   lang: Locale;
   dict: Dictionary;
   currentSort: HospitalSortOption;
+  districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
 const filterLabels = {
@@ -32,14 +35,9 @@ const filterLabels = {
     en_US: 'Newest',
     th_TH: 'ใหม่ล่าสุด',
   },
-  byRegion: {
-    ko_KR: '지역별',
-    en_US: 'By Region',
-    th_TH: 'ตามภูมิภาค',
-  },
 };
 
-export function FilterBarV2({ lang, dict, currentSort }: FilterBarV2Props) {
+export function FilterBarV2({ lang, dict, currentSort, districtFilter }: FilterBarV2Props) {
   const router = useLocalizedRouter();
   const searchParams = useSearchParams();
 
@@ -58,7 +56,6 @@ export function FilterBarV2({ lang, dict, currentSort }: FilterBarV2Props) {
   };
 
   const sortLabel = getSortLabel();
-  const byRegionLabel = getLocalizedTextByLocale(filterLabels.byRegion, lang);
 
   const handleSortClick = async () => {
     await openDrawer({
@@ -95,10 +92,7 @@ export function FilterBarV2({ lang, dict, currentSort }: FilterBarV2Props) {
         </button>
 
         {/* 지역별 버튼 */}
-        <button className='flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'>
-          <MapIconV2 className='h-[18px] w-[18px] shrink-0' />
-          <p className='text-sm leading-5 font-semibold text-neutral-700'>{byRegionLabel}</p>
-        </button>
+        <DistrictFilterButtonV2 lang={lang} dict={dict} districtFilter={districtFilter} />
       </div>
     </div>
   );

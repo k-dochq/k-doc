@@ -72,7 +72,12 @@ export function HospitalsContentV2({ lang, dict, searchParams }: HospitalsConten
       />
 
       {/* 필터 바 */}
-      <FilterBarV2 lang={lang} dict={dict} currentSort={currentSort} />
+      <FilterBarV2
+        lang={lang}
+        dict={dict}
+        currentSort={currentSort}
+        districtFilter={districtFilter}
+      />
 
       {/* 병원 리스트 */}
       <HospitalsInfiniteListV2
