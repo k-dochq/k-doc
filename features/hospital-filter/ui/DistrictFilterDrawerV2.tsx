@@ -70,7 +70,7 @@ export function DistrictFilterDrawerV2({
       {/* 헤더 */}
       <div className='flex items-center justify-between border-b border-neutral-200 px-5 pb-3'>
         <div className='flex items-start gap-0.5'>
-          <h2 className='text-lg leading-7 font-bold text-neutral-900'>
+          <h2 className='text-lg leading-7 font-bold text-neutral-700'>
             {dict.districtFilter.title}
           </h2>
         </div>
