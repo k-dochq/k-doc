@@ -1,7 +1,7 @@
 'use client';
 
 import { UserAvatar } from './UserAvatar';
-import { StarIcon } from './StarIcon';
+import { StarIconV2 } from './StarIconV2';
 
 interface PopularReviewCardV2UserInfoProps {
   userName: string;
@@ -21,9 +21,9 @@ export function PopularReviewCardV2UserInfo({
         <p className='text-sm leading-5 font-medium text-neutral-500'>{userName}</p>
       </div>
       <div className='flex items-center gap-1'>
-        <StarIcon className='size-4 shrink-0' />
+        <StarIconV2 className='size-4 shrink-0' />
         <p className='text-[13px] leading-[19px] font-medium text-neutral-700'>
-          {rating.toFixed(1)}
+          {rating % 1 === 0 ? rating.toString() : rating.toFixed(1)}
         </p>
       </div>
     </div>
