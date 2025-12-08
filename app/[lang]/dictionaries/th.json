@@ -527,7 +527,8 @@
   },
   "hospitalSort": {
     "popular": "ยอดนิยม",
-    "recommended": "แนะนำ"
+    "recommended": "แนะนำ",
+    "newest": "ใหม่ล่าสุด"
   },
   "review": {
     "like": {

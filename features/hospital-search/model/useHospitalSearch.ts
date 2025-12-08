@@ -1,10 +1,10 @@
 'use client';
 
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
-import { type MedicalSpecialtyType } from '@prisma/client';
+import { type HospitalCategoryType } from 'shared/model/types/hospital-query';
 
 interface UseHospitalSearchParams {
-  currentCategory?: MedicalSpecialtyType;
+  currentCategory?: HospitalCategoryType;
   currentSort?: string;
 }
 

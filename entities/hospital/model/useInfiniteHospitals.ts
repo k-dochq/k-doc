@@ -78,6 +78,7 @@ export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
       // 다음 페이지가 있으면 현재 페이지 + 1, 없으면 undefined
       return lastPage.hasNextPage ? lastPage.currentPage + 1 : undefined;
     },
+    placeholderData: (previousData) => previousData, // 이전 데이터를 placeholder로 유지
     staleTime: 5 * 60 * 1000, // 5분
     gcTime: 10 * 60 * 1000, // 10분
   });
