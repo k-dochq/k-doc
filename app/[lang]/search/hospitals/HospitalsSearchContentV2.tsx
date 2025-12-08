@@ -1,0 +1,54 @@
+'use client';
+
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
+import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
+import { SearchBarV2 } from 'shared/ui/search-bar/SearchBarV2';
+import { HospitalsInfiniteListV2 } from '../../v2/hospitals/HospitalsInfiniteListV2';
+
+interface HospitalsSearchContentV2Props {
+  lang: Locale;
+  dict: Dictionary;
+  searchParams: {
+    search?: string;
+    sort?: string;
+  };
+}
+
+export function HospitalsSearchContentV2({
+  lang,
+  dict,
+  searchParams,
+}: HospitalsSearchContentV2Props) {
+  const currentSearch = searchParams.search?.trim() || '';
+  const currentSort: HospitalSortOption =
+    searchParams.sort === HOSPITAL_SORT_OPTIONS.RECOMMENDED ||
+    searchParams.sort === HOSPITAL_SORT_OPTIONS.NEWEST ||
+    searchParams.sort === HOSPITAL_SORT_OPTIONS.POPULAR
+      ? (searchParams.sort as HospitalSortOption)
+      : HOSPITAL_SORT_OPTIONS.POPULAR;
+
+  return (
+    <div>
+      <div className='bg-[#F7F7F7] px-5 py-5'>
+        <SearchBarV2
+          lang={lang}
+          dict={dict}
+          initialValue={currentSearch}
+          searchPath='/search/hospitals'
+        />
+      </div>
+
+      <HospitalsInfiniteListV2
+        lang={lang}
+        dict={dict}
+        searchParams={{
+          sort: currentSort,
+          search: currentSearch || undefined,
+          category: undefined, // 카테고리 필터 없음
+          districtIds: undefined,
+        }}
+      />
+    </div>
+  );
+}
