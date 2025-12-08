@@ -287,16 +287,17 @@ model UserRole {
 }
 
 model HospitalImage {
-  id         String            @id @db.Uuid
-  hospitalId String            @db.Uuid
-  imageType  HospitalImageType
-  imageUrl   String            @db.VarChar(500)
-  alt        String?           @db.VarChar(255)
-  order      Int?
-  isActive   Boolean           @default(true)
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime
-  Hospital   Hospital          @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  id             String            @id @db.Uuid
+  hospitalId     String            @db.Uuid
+  imageType      HospitalImageType
+  imageUrl       String            @db.VarChar(500)
+  alt            String?           @db.VarChar(255)
+  order          Int?
+  isActive       Boolean           @default(true)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime
+  localizedLinks Json?
+  Hospital       Hospital          @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
 
   @@index([hospitalId])
   @@index([imageType])
@@ -828,6 +829,10 @@ enum HospitalImageType {
   PROMOTION
   DETAIL
   INTERIOR
+  LOGO
+  PROCEDURE_DETAIL
+  VIDEO_THUMBNAIL
+  VIDEO
 
   @@schema("public")
 }
