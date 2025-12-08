@@ -20,4 +20,7 @@ export { FavoriteIcon } from './FavoriteIcon';
 export { ConsultationIcon } from './ConsultationIcon';
 export { DotIcon } from './DotIcon';
 export { ShareIcon } from './ShareIcon';
+export { ShareIconV2 } from './ShareIconV2';
+export { HeartIconV2Detail } from './HeartIconV2Detail';
+export { HeartOutlineIconV2Detail } from './HeartOutlineIconV2Detail';
 export { CheckIcon } from './CheckIcon';
