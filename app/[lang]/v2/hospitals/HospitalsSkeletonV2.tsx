@@ -12,7 +12,7 @@ export function HospitalsSkeletonV2() {
             <div className='h-[200px] w-full animate-pulse bg-neutral-200' />
 
             {/* 콘텐츠 영역 스켈레톤 */}
-            <div className='flex h-[160px] w-full shrink-0 flex-col items-start gap-1 p-3'>
+            <div className='flex h-[120px] w-full shrink-0 flex-col items-start gap-1 p-3'>
               {/* 상단 영역 */}
               <div className='flex w-full shrink-0 flex-col items-start gap-1.5'>
                 {/* 카테고리 태그 스켈레톤 */}
