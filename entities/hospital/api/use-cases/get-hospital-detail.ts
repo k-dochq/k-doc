@@ -185,7 +185,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
 } {
   // 메인 이미지 URL 추출 (MAIN → THUMBNAIL → 첫 번째 이미지 순서)
   const mainImageUrl = getHospitalMainImageUrl(data.HospitalImage);
-  
+
   // 썸네일 이미지 URL 추출 (THUMBNAIL → MAIN → 첫 번째 이미지 순서)
   const thumbnailImageUrl = getHospitalThumbnailImageUrl(data.HospitalImage);
 
@@ -227,6 +227,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
       isActive: img.isActive,
       createdAt: img.createdAt,
       updatedAt: img.updatedAt,
+      localizedLinks: img.localizedLinks,
     })),
     medicalSpecialties,
     description: data.description,
@@ -296,6 +297,7 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
       isActive: img.isActive,
       createdAt: img.createdAt,
       updatedAt: img.updatedAt,
+      localizedLinks: img.localizedLinks,
     })),
     medicalSpecialties,
     description: data.description,

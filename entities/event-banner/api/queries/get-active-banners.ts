@@ -51,3 +51,47 @@ export function useActiveBanners(options?: UseActiveBannersOptions) {
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 }
+
+// v2: 전체 배너 조회 (active만이 아닌 모든 배너)
+export interface FetchAllBannersOptions {
+  type?: EventBannerType;
+}
+
+export async function fetchAllBanners(
+  options?: FetchAllBannersOptions,
+): Promise<EventBannerWithImages[]> {
+  const params = new URLSearchParams();
+  if (options?.type) {
+    params.append('type', options.type);
+  }
+
+  const url = `/api/banners${params.toString() ? `?${params.toString()}` : ''}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch banners');
+  }
+
+  const result: GetActiveBannersResponse = await response.json();
+
+  if (!result.success) {
+    throw new Error('Failed to fetch banners');
+  }
+
+  return result.data;
+}
+
+export interface UseAllBannersOptions {
+  type?: EventBannerType;
+}
+
+export function useAllBanners(options?: UseAllBannersOptions) {
+  return useQuery({
+    queryKey: ['banners', options?.type],
+    queryFn: () => fetchAllBanners(options),
+    staleTime: 2 * 60 * 60 * 1000,
+    gcTime: 24 * 60 * 60 * 1000,
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+  });
+}
