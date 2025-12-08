@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getHospitalsV2 } from 'entities/hospital/api/use-cases/get-hospitals-v2';
-import {
-  convertToDbQueryParams,
-  validateHospitalQueryParams,
-} from 'shared/lib/hospital-query-utils';
+import { type GetHospitalsRequestV2 } from 'entities/hospital/api/entities/types';
+import { validateHospitalQueryParams } from 'shared/lib/hospital-query-utils';
 
 export async function GET(request: NextRequest) {
   try {
@@ -31,10 +29,26 @@ export async function GET(request: NextRequest) {
 
     // 타입 안전한 파라미터 파싱 및 변환
     const parsedParams = validationResult.params!;
-    const dbParams = convertToDbQueryParams(parsedParams);
+
+    // GetHospitalsRequestV2로 변환
+    const requestV2: GetHospitalsRequestV2 = {
+      page: parsedParams.page,
+      limit: parsedParams.limit,
+      sortBy: parsedParams.sort,
+      sortOrder: parsedParams.sortOrder,
+      category: parsedParams.category,
+      minRating: parsedParams.minRating,
+      search: parsedParams.search,
+      districtIds: parsedParams.districtIds,
+      // category가 RECOMMEND가 아닌 MedicalSpecialtyType인 경우에만 specialtyType으로 변환
+      specialtyType:
+        parsedParams.category && parsedParams.category !== 'RECOMMEND'
+          ? (parsedParams.category as GetHospitalsRequestV2['specialtyType'])
+          : undefined,
+    };
 
     // 병원 데이터 조회
-    const hospitalsData = await getHospitalsV2(dbParams);
+    const hospitalsData = await getHospitalsV2(requestV2);
 
     const response = NextResponse.json({
       success: true,

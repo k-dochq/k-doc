@@ -1,5 +1,6 @@
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 import { type DbHospitalQueryParams } from 'shared/model/types/hospital-query';
+import { type HospitalSortOption, type SortOrderOption } from 'shared/model/types/hospital-query';
 import { type PriceInfo } from 'shared/model/types';
 
 export interface HospitalImage {
@@ -102,6 +103,18 @@ export interface GetBestHospitalsResponse {
 }
 
 export interface GetHospitalsRequest extends Partial<DbHospitalQueryParams> {}
+
+export interface GetHospitalsRequestV2 {
+  page?: number;
+  limit?: number;
+  sortBy?: HospitalSortOption;
+  sortOrder?: SortOrderOption;
+  specialtyType?: MedicalSpecialtyType;
+  category?: 'RECOMMEND' | MedicalSpecialtyType;
+  minRating?: number;
+  search?: string;
+  districtIds?: string[];
+}
 
 export interface GetHospitalsResponse {
   hospitals: Hospital[];

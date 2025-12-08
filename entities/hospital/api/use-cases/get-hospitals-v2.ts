@@ -3,10 +3,13 @@ import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError, extractLocalizedText } from 'shared/lib';
 import {
   type Hospital,
-  type GetHospitalsRequest,
+  type GetHospitalsRequestV2,
   type GetHospitalsResponse,
 } from '../entities/types';
-import { DEFAULT_HOSPITAL_QUERY_PARAMS } from 'shared/model/types/hospital-query';
+import {
+  DEFAULT_HOSPITAL_QUERY_PARAMS,
+  HOSPITAL_SORT_OPTIONS,
+} from 'shared/model/types/hospital-query';
 import { getHospitalMainImageUrl } from '../../lib/image-utils';
 import { type HospitalCardData, parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
@@ -78,12 +81,14 @@ function generateSearchVariations(search: string): string[] {
 const RECOMMENDED_CATEGORY_ID = '893fa5bd-dc1d-48c7-ac46-78e72742d32c';
 
 export async function getHospitalsV2(
-  request: GetHospitalsRequest = {},
+  request: GetHospitalsRequestV2 = {},
 ): Promise<GetHospitalsResponse> {
   try {
     const {
       page = DEFAULT_HOSPITAL_QUERY_PARAMS.page,
       limit = DEFAULT_HOSPITAL_QUERY_PARAMS.limit,
+      sortBy = DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
+      sortOrder = DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
       specialtyType,
       category,
       minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
@@ -254,9 +259,42 @@ export async function getHospitalsV2(
     // 총 개수 조회
     const totalCount = await prisma.hospital.count({ where });
 
+    // 정렬 로직 구성
+    // 1순위: recommendedRanking ASC (null 값은 맨 뒤 - PostgreSQL 기본 동작)
+    // 2순위: sortBy에 따라 인기순(likeCount) 또는 최신순(createdAt)
+    const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [
+      // recommendedRanking을 최우선 정렬 (PostgreSQL에서 ASC 정렬 시 null은 기본적으로 마지막에 옴)
+      {
+        recommendedRanking: 'asc',
+      },
+    ];
+
+    // 2순위 정렬 추가
+    if (sortBy === HOSPITAL_SORT_OPTIONS.POPULAR) {
+      // 인기순: likeCount (HospitalLike count) DESC
+      orderBy.push({
+        HospitalLike: {
+          _count: sortOrder,
+        },
+      });
+    } else if (sortBy === HOSPITAL_SORT_OPTIONS.NEWEST) {
+      // 최신순: createdAt DESC
+      orderBy.push({
+        createdAt: sortOrder,
+      });
+    } else {
+      // 기본값: 인기순
+      orderBy.push({
+        HospitalLike: {
+          _count: 'desc',
+        },
+      });
+    }
+
     // 병원 데이터 조회
     const hospitals: HospitalWithRelations[] = await prisma.hospital.findMany({
       where,
+      orderBy,
       include: {
         HospitalImage: {
           where: {

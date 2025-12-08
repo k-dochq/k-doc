@@ -80,7 +80,7 @@ export function useInfiniteHospitalsV2(params: UseInfiniteHospitalsV2Params = {}
       return lastPage.hasNextPage ? lastPage.currentPage + 1 : undefined;
     },
     placeholderData: (previousData) => previousData, // 이전 데이터를 placeholder로 유지
-    staleTime: 5 * 60 * 1000, // 5분
-    gcTime: 10 * 60 * 1000, // 10분
+    staleTime: 60 * 60 * 1000, // 1시간
+    gcTime: 2 * 60 * 60 * 1000, // 2시간
   });
 }
