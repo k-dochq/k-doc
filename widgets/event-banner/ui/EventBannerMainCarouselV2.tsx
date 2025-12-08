@@ -1,6 +1,6 @@
 'use client';
 
-import { useActiveBanners } from 'entities/event-banner/api/queries/get-active-banners';
+import { useAllBanners } from 'entities/event-banner/api/queries/get-active-banners';
 import { EventBannerMainContentV2 } from './EventBannerMainContentV2';
 import { type EventBannerCarouselProps, type EventBannerWithImage } from '../model/types';
 
@@ -52,7 +52,7 @@ export function EventBannerMainCarouselV2({
   currentLocale,
   className = '',
 }: EventBannerCarouselProps) {
-  const { data: banners, isLoading, error } = useActiveBanners({ type: 'MAIN' });
+  const { data: banners, isLoading, error } = useAllBanners({ type: 'MAIN' });
 
   // 로딩 중이면 blur 처리된 static 이미지로 EventBannerMainContentV2 표시
   if (isLoading) {
@@ -69,18 +69,40 @@ export function EventBannerMainCarouselV2({
   }
 
   // 에러 또는 데이터 없으면 null 반환
-  if (error || !banners || banners.length === 0) {
+  if (error) {
     return null;
   }
+
+  const validBanners: EventBannerWithImage[] =
+    banners
+      ?.map((banner) => {
+        const image = banner.EventBannerImage.find((img) => img.locale === currentLocale);
+        return image
+          ? {
+              id: banner.id,
+              title: banner.title,
+              linkUrl: banner.linkUrl,
+              currentImage: {
+                imageUrl: image.imageUrl,
+                alt: image.alt,
+                locale: image.locale,
+              },
+            }
+          : null;
+      })
+      .filter((banner): banner is EventBannerWithImage => banner !== null) ?? [];
+
+  // 데이터가 없으면 LOADING_BANNERS fallback
+  const bannersToRender = validBanners.length > 0 ? validBanners : LOADING_BANNERS;
 
   // 임시로 하드코딩된 이미지 사용
   return (
     <div className='relative z-10'>
       <EventBannerMainContentV2
-        banners={LOADING_BANNERS}
+        banners={bannersToRender}
         currentLocale={currentLocale}
         className={className}
-        isBlur={false}
+        isBlur={validBanners.length === 0}
       />
     </div>
   );
