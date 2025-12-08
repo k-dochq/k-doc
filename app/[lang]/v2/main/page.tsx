@@ -31,7 +31,7 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
       <div className='bg-[#F7F7F7]'>
         <EventBannerRibbonCarousel currentLocale={lang} />
         <div className='px-5 py-5'>
-          <SearchBarV2 lang={lang} dict={dict} />
+          <SearchBarV2 lang={lang} dict={dict} searchPath='/search/hospitals' />
         </div>
         <EventBannerMainCarouselV2 currentLocale={lang} />
         <div className='py-5'>
