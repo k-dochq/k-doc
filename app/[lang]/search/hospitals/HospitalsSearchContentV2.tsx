@@ -39,6 +39,14 @@ export function HospitalsSearchContentV2({
         />
       </div>
 
+      {currentSearch && (
+        <div className='px-5 py-4'>
+          <p className='text-base font-semibold text-neutral-900'>
+            ‘{currentSearch}’ {dict.search?.resultTitle || '검색결과'}
+          </p>
+        </div>
+      )}
+
       <HospitalsInfiniteListV2
         lang={lang}
         dict={dict}
