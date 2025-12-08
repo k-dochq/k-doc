@@ -9,7 +9,7 @@ const LOADING_BANNERS: EventBannerWithImage[] = [
   {
     id: 'loading-1',
     title: {},
-    linkUrl: null,
+    linkUrl: '/hospital/c9556a91-9a3d-4cc3-8bd0-9cd763b72a33',
     currentImage: {
       imageUrl: '/images/banner_1.png',
       alt: 'Loading banner 1',
@@ -19,7 +19,7 @@ const LOADING_BANNERS: EventBannerWithImage[] = [
   {
     id: 'loading-2',
     title: {},
-    linkUrl: null,
+    linkUrl: '/event/package',
     currentImage: {
       imageUrl: '/images/banner_main_2.png',
       alt: 'Loading banner 2',
@@ -29,7 +29,7 @@ const LOADING_BANNERS: EventBannerWithImage[] = [
   {
     id: 'loading-3',
     title: {},
-    linkUrl: null,
+    linkUrl: '/hospital/5fcc9f87-40db-49f0-9d91-2d83689d0c5c',
     currentImage: {
       imageUrl: '/images/banner_main_3.png',
       alt: 'Loading banner 3',
@@ -39,7 +39,7 @@ const LOADING_BANNERS: EventBannerWithImage[] = [
   {
     id: 'loading-4',
     title: {},
-    linkUrl: null,
+    linkUrl: '/hospital/ffda0620-c254-44db-8b13-ef4ef5d368e5',
     currentImage: {
       imageUrl: '/images/banner_main_4.png',
       alt: 'Loading banner 4',
