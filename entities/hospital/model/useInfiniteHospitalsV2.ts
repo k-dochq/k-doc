@@ -7,15 +7,16 @@ import { type GetHospitalsResponse } from '../api/entities/types';
 import {
   type HospitalSortOption,
   type SortOrderOption,
+  type HospitalCategoryType,
   DEFAULT_HOSPITAL_QUERY_PARAMS,
 } from 'shared/model/types/hospital-query';
 import { buildHospitalQueryString } from 'shared/lib/hospital-query-utils';
 
-interface UseInfiniteHospitalsParams extends Record<string, unknown> {
+interface UseInfiniteHospitalsV2Params extends Record<string, unknown> {
   limit?: number;
   sortBy?: HospitalSortOption;
   sortOrder?: SortOrderOption;
-  category?: MedicalSpecialtyType;
+  category?: HospitalCategoryType;
   search?: string;
   districtIds?: string[];
 }
@@ -26,7 +27,7 @@ interface HospitalsApiResponse {
   error?: string;
 }
 
-async function fetchHospitals({
+async function fetchHospitalsV2({
   pageParam = 1,
   limit = DEFAULT_HOSPITAL_QUERY_PARAMS.limit,
   sortBy = DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
@@ -36,7 +37,7 @@ async function fetchHospitals({
   districtIds,
 }: {
   pageParam: number;
-} & UseInfiniteHospitalsParams): Promise<GetHospitalsResponse> {
+} & UseInfiniteHospitalsV2Params): Promise<GetHospitalsResponse> {
   // 타입 안전한 쿼리 스트링 생성
   const queryParams = {
     page: pageParam,
@@ -49,7 +50,7 @@ async function fetchHospitals({
   };
 
   const queryString = buildHospitalQueryString(queryParams);
-  const url = `/api/hospitals${queryString ? `?${queryString}` : ''}`;
+  const url = `/api/hospitals/v2${queryString ? `?${queryString}` : ''}`;
 
   const response = await fetch(url, {
     // Next.js 캐싱: 5분간 캐시, 그 후 재검증
@@ -69,17 +70,17 @@ async function fetchHospitals({
   return result.data;
 }
 
-export function useInfiniteHospitals(params: UseInfiniteHospitalsParams = {}) {
+export function useInfiniteHospitalsV2(params: UseInfiniteHospitalsV2Params = {}) {
   return useInfiniteQuery({
-    queryKey: queryKeys.hospitals.infinite(params),
-    queryFn: ({ pageParam }) => fetchHospitals({ pageParam, ...params }),
+    queryKey: ['hospitals', 'v2', 'infinite', params],
+    queryFn: ({ pageParam }) => fetchHospitalsV2({ pageParam, ...params }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       // 다음 페이지가 있으면 현재 페이지 + 1, 없으면 undefined
       return lastPage.hasNextPage ? lastPage.currentPage + 1 : undefined;
     },
     placeholderData: (previousData) => previousData, // 이전 데이터를 placeholder로 유지
-    staleTime: 5 * 60 * 1000, // 5분
-    gcTime: 10 * 60 * 1000, // 10분
+    staleTime: 60 * 60 * 1000, // 1시간
+    gcTime: 2 * 60 * 60 * 1000, // 2시간
   });
 }

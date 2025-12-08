@@ -1,7 +1,12 @@
 export { LocationIcon } from './LocationIcon';
+export { FilterIconV2 } from './FilterIconV2';
+export { MapIconV2 } from './MapIconV2';
+export { MapIconV2Selected } from './MapIconV2Selected';
 export { ResetIcon } from './ResetIcon';
 export { HeartIcon } from './HeartIcon';
 export { HeartOutlineIcon } from './HeartOutlineIcon';
+export { HeartIconV2 } from './HeartIconV2';
+export { HeartOutlineIconV2 } from './HeartOutlineIconV2';
 export { GoogleIcon } from './GoogleIcon';
 export { AppleIcon } from './AppleIcon';
 export { KakaoIcon } from './KakaoIcon';
@@ -15,3 +20,4 @@ export { FavoriteIcon } from './FavoriteIcon';
 export { ConsultationIcon } from './ConsultationIcon';
 export { DotIcon } from './DotIcon';
 export { ShareIcon } from './ShareIcon';
+export { CheckIcon } from './CheckIcon';

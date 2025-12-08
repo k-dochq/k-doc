@@ -54,6 +54,7 @@ export interface HospitalCardData {
   mainImageUrl?: string | null;
   latitude?: number | null;
   longitude?: number | null;
+  badge?: string[] | null; // 뱃지 배열
 }
 
 export interface MedicalSpecialty {

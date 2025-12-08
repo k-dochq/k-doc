@@ -1,5 +1,6 @@
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 import { type DbHospitalQueryParams } from 'shared/model/types/hospital-query';
+import { type HospitalSortOption, type SortOrderOption } from 'shared/model/types/hospital-query';
 import { type PriceInfo } from 'shared/model/types';
 
 export interface HospitalImage {
@@ -89,6 +90,7 @@ export interface Hospital {
   longitude?: number | null; // 경도
   district?: District | null; // 지역 정보
   displayLocationName?: Prisma.JsonValue | null; // 표시 지역명
+  badge?: string[] | null; // 뱃지 배열
 }
 
 export interface GetBestHospitalsRequest {
@@ -102,6 +104,18 @@ export interface GetBestHospitalsResponse {
 }
 
 export interface GetHospitalsRequest extends Partial<DbHospitalQueryParams> {}
+
+export interface GetHospitalsRequestV2 {
+  page?: number;
+  limit?: number;
+  sortBy?: HospitalSortOption;
+  sortOrder?: SortOrderOption;
+  specialtyType?: MedicalSpecialtyType;
+  category?: 'RECOMMEND' | MedicalSpecialtyType;
+  minRating?: number;
+  search?: string;
+  districtIds?: string[];
+}
 
 export interface GetHospitalsResponse {
   hospitals: Hospital[];

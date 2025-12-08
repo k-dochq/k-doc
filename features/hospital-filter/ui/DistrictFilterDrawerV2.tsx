@@ -3,16 +3,15 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { resolveDrawer } from 'shared/lib/drawer';
 import { ResetButton } from 'shared/ui/buttons';
-import { ParentDistrictList } from './ParentDistrictList';
-import { ChildDistrictList } from './ChildDistrictList';
-import { DistrictFilterButton } from './DistrictFilterButton';
-import { useChildDistricts } from '../model/useDistricts';
-import { type useDistrictFilter } from '../model/useDistrictFilter';
-import type { District } from '../model/types';
+import { ParentDistrictList } from 'features/district-filter/ui/ParentDistrictList';
+import { ChildDistrictList } from 'features/district-filter/ui/ChildDistrictList';
+import { DistrictFilterButton } from 'features/district-filter/ui/DistrictFilterButton';
+import { useChildDistricts } from 'features/district-filter/model/useDistricts';
+import { type useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
+import type { District } from 'features/district-filter/model/types';
 
-interface DistrictFilterDrawerProps {
+interface DistrictFilterDrawerV2Props {
   lang: Locale;
   dict: Dictionary;
   onClose?: () => void;
@@ -20,13 +19,13 @@ interface DistrictFilterDrawerProps {
   parentDistricts: District[];
 }
 
-export function DistrictFilterDrawer({
+export function DistrictFilterDrawerV2({
   lang,
   dict,
   onClose,
   districtFilter,
   parentDistricts,
-}: DistrictFilterDrawerProps) {
+}: DistrictFilterDrawerV2Props) {
   // parentDistricts의 첫 번째 값을 기본값으로 설정
   const [selectedParentId, setSelectedParentId] = useState<string | null>(
     parentDistricts[0]?.id ?? null,
@@ -63,7 +62,6 @@ export function DistrictFilterDrawer({
   };
 
   const handleComplete = () => {
-    resolveDrawer();
     onClose?.();
   };
 
@@ -72,7 +70,7 @@ export function DistrictFilterDrawer({
       {/* 헤더 */}
       <div className='flex items-center justify-between border-b border-neutral-200 px-5 pb-3'>
         <div className='flex items-start gap-0.5'>
-          <h2 className='text-lg leading-7 font-bold text-neutral-900'>
+          <h2 className='text-lg leading-7 font-bold text-neutral-700'>
             {dict.districtFilter.title}
           </h2>
         </div>

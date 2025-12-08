@@ -34,13 +34,16 @@ export const SORT_OPTION_TO_DB_FIELD_MAP: Record<HospitalSortOption, DbSortField
   [HOSPITAL_SORT_OPTIONS.NEWEST]: DB_SORT_FIELDS.CREATED_AT,
 } as const;
 
+// 카테고리 타입 정의 (진료부위 또는 추천)
+export type HospitalCategoryType = MedicalSpecialtyType | 'RECOMMEND';
+
 // API 쿼리 파라미터 타입 정의
 export interface HospitalQueryParams {
   page?: string;
   limit?: string;
   sort?: HospitalSortOption;
   sortOrder?: SortOrderOption;
-  category?: MedicalSpecialtyType;
+  category?: HospitalCategoryType;
   minRating?: string;
   search?: string;
   districts?: string; // 쉼표로 구분된 지역 ID 문자열
@@ -52,7 +55,7 @@ export interface ParsedHospitalQueryParams extends Record<string, unknown> {
   limit: number;
   sort: HospitalSortOption;
   sortOrder: SortOrderOption;
-  category?: MedicalSpecialtyType;
+  category?: HospitalCategoryType;
   minRating: number;
   search?: string;
   districtIds?: string[]; // 파싱된 지역 ID 배열
@@ -65,6 +68,7 @@ export interface DbHospitalQueryParams {
   sortBy: DbSortField;
   sortOrder: SortOrderOption;
   specialtyType?: MedicalSpecialtyType;
+  category?: HospitalCategoryType;
   minRating: number;
   search?: string;
   districtIds?: string[]; // 지역 ID 배열
