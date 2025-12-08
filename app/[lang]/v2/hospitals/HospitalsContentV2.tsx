@@ -3,7 +3,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary, type HospitalCategoryType } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
-import { SearchBar } from 'shared/ui';
 import { useHospitalSearch } from 'features/hospital-search';
 import { HospitalsInfiniteListV2 } from './HospitalsInfiniteListV2';
 import { CategorySectionV2 } from 'features/category-filter/ui/CategorySectionV2';
@@ -49,24 +48,11 @@ export function HospitalsContentV2({ lang, dict, searchParams }: HospitalsConten
       ? (searchParams.sort as HospitalSortOption)
       : HOSPITAL_SORT_OPTIONS.POPULAR;
 
-  // 검색어 파라미터 처리
-  const currentSearch = searchParams.search?.trim() || undefined;
-
-  // 병원 검색 훅 사용
-  const { handleSearch } = useHospitalSearch({
-    currentCategory,
-    currentSort: searchParams.sort,
-  });
+  // 검색어 파라미터 처리 (v2 리스트에서는 검색바 사용 안 함)
+  const currentSearch = undefined;
 
   return (
     <div className=''>
-      {/* 검색어가 있을 때 검색바 표시 */}
-      {currentSearch && (
-        <div className='px-5'>
-          <SearchBar lang={lang} dict={dict} initialValue={currentSearch} onSearch={handleSearch} />
-        </div>
-      )}
-
       {/* 카테고리 섹션 */}
       <CategorySectionV2
         lang={lang}
