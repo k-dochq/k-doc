@@ -4,6 +4,7 @@ import { type User } from '@supabase/supabase-js';
 import { getLocalizedTextByLocale } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { HotRibbonV2 } from 'shared/ui/hot-ribbon';
+import { BestRibbonV2 } from 'shared/ui/best-ribbon';
 import { HospitalCardV2Thumbnail } from './HospitalCardV2Thumbnail';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
 import { HospitalCardV2NameAndLocation } from './HospitalCardV2NameAndLocation';
@@ -14,7 +15,6 @@ interface HospitalCardV2Props {
   hospital: HospitalCardData;
   lang: Locale;
   dict: Dictionary;
-  showHotTag?: boolean;
   user?: User | null;
   onToggleLike?: (hospitalId: string) => void;
   isLikeLoading?: boolean;
@@ -25,7 +25,6 @@ export function HospitalCardV2({
   hospital,
   lang,
   dict,
-  showHotTag = true,
   user,
   onToggleLike,
   isLikeLoading = false,
@@ -51,11 +50,15 @@ export function HospitalCardV2({
     onToggleLike?.(hospital.id);
   };
 
+  // 뱃지 로직: badge 배열의 첫 번째 요소 확인
+  const firstBadge = hospital.badge?.[0];
+
   return (
     <LocaleLink href={`/hospital/${hospital.id}`} locale={lang} className='block'>
       <div className='relative'>
-        {/* HOT 태그 */}
-        {showHotTag && <HotRibbonV2 />}
+        {/* 뱃지 표시 */}
+        {firstBadge === 'HOT' && <HotRibbonV2 />}
+        {firstBadge === 'BEST' && <BestRibbonV2 />}
 
         {/* 카드 컨테이너 */}
         <div className='flex flex-col items-center overflow-clip rounded-xl bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>

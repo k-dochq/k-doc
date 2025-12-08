@@ -108,7 +108,6 @@ export function HospitalsInfiniteListV2({
                 hospital={hospital}
                 lang={lang}
                 dict={dict}
-                showHotTag={true}
                 user={user}
                 onToggleLike={handleToggleLike}
                 isLikeLoading={loadingHospitalId === hospital.id}

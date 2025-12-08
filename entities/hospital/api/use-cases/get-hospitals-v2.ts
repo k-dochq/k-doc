@@ -403,6 +403,7 @@ export async function getHospitalsV2(
         hospitalImages: hospital.HospitalImage,
         latitude: hospital.latitude,
         longitude: hospital.longitude,
+        badge: hospital.badge,
       };
     });
 

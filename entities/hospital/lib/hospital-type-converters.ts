@@ -41,6 +41,7 @@ export function convertHospitalToCardData(hospital: Hospital): HospitalCardData 
       : null,
     latitude: hospital.latitude,
     longitude: hospital.longitude,
+    badge: hospital.badge,
   };
 }
 

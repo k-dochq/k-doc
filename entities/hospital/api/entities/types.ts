@@ -90,6 +90,7 @@ export interface Hospital {
   longitude?: number | null; // 경도
   district?: District | null; // 지역 정보
   displayLocationName?: Prisma.JsonValue | null; // 표시 지역명
+  badge?: string[] | null; // 뱃지 배열
 }
 
 export interface GetBestHospitalsRequest {
