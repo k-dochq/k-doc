@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { type Hospital } from 'entities/hospital/api/entities/types';
+import { type Hospital, type HospitalImage } from 'entities/hospital/api/entities/types';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { HospitalMainImage } from 'entities/hospital/ui/HospitalMainImage';
@@ -30,12 +30,7 @@ export function HospitalDetailPhotos({ hospital, lang, dict }: HospitalDetailPho
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // 병원 이미지 배열 생성 (메인 이미지 + 상세 이미지들)
-  const hospitalImages: Array<{
-    id: string;
-    imageUrl: string;
-    imageType: 'MAIN' | 'THUMBNAIL' | 'PROMOTION' | 'DETAIL' | 'INTERIOR';
-    alt: string;
-  }> = [
+  const hospitalImages: Array<Pick<HospitalImage, 'id' | 'imageUrl' | 'imageType' | 'alt'>> = [
     // 메인 이미지가 있으면 첫 번째로 추가
     ...(hospital.mainImageUrl
       ? [

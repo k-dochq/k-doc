@@ -1,19 +1,14 @@
-import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
+import {
+  type Prisma,
+  type MedicalSpecialtyType,
+  type HospitalImage as PrismaHospitalImage,
+} from '@prisma/client';
 import { type DbHospitalQueryParams } from 'shared/model/types/hospital-query';
 import { type HospitalSortOption, type SortOrderOption } from 'shared/model/types/hospital-query';
 import { type PriceInfo } from 'shared/model/types';
 
-export interface HospitalImage {
-  id: string;
-  hospitalId: string;
-  imageType: 'MAIN' | 'THUMBNAIL' | 'PROMOTION' | 'DETAIL' | 'INTERIOR';
-  imageUrl: string;
-  alt: string | null;
-  order: number | null;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
+// Prisma 모델 타입을 그대로 사용해 enum 추가 시 자동 반영되도록 처리
+export type HospitalImage = PrismaHospitalImage;
 
 export interface MedicalSpecialty {
   id: string;
