@@ -6,13 +6,11 @@ import {
   type GetHospitalsRequestV2,
   type GetHospitalsResponse,
 } from '../entities/types';
-import {
-  DEFAULT_HOSPITAL_QUERY_PARAMS,
-  HOSPITAL_SORT_OPTIONS,
-} from 'shared/model/types/hospital-query';
+import { DEFAULT_HOSPITAL_QUERY_PARAMS } from 'shared/model/types/hospital-query';
 import { getHospitalMainImageUrl } from '../../lib/image-utils';
 import { type HospitalCardData, parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
+import { buildHospitalOrderBy } from '../lib/build-hospital-order-by';
 
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
@@ -260,36 +258,7 @@ export async function getHospitalsV2(
     const totalCount = await prisma.hospital.count({ where });
 
     // 정렬 로직 구성
-    // 1순위: recommendedRanking ASC (null 값은 맨 뒤 - PostgreSQL 기본 동작)
-    // 2순위: sortBy에 따라 인기순(likeCount) 또는 최신순(createdAt)
-    const orderBy: Prisma.HospitalOrderByWithRelationInput[] = [
-      // recommendedRanking을 최우선 정렬 (PostgreSQL에서 ASC 정렬 시 null은 기본적으로 마지막에 옴)
-      {
-        recommendedRanking: 'asc',
-      },
-    ];
-
-    // 2순위 정렬 추가
-    if (sortBy === HOSPITAL_SORT_OPTIONS.POPULAR) {
-      // 인기순: likeCount (HospitalLike count) DESC
-      orderBy.push({
-        HospitalLike: {
-          _count: sortOrder,
-        },
-      });
-    } else if (sortBy === HOSPITAL_SORT_OPTIONS.NEWEST) {
-      // 최신순: createdAt DESC
-      orderBy.push({
-        createdAt: sortOrder,
-      });
-    } else {
-      // 기본값: 인기순
-      orderBy.push({
-        HospitalLike: {
-          _count: 'desc',
-        },
-      });
-    }
+    const orderBy = buildHospitalOrderBy(sortBy, sortOrder);
 
     // 병원 데이터 조회
     const hospitals: HospitalWithRelations[] = await prisma.hospital.findMany({
