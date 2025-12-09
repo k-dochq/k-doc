@@ -15,7 +15,10 @@ export function CategoryFilterTabsSkeleton() {
       >
         <CarouselContent className=''>
           {Array.from({ length: 8 }).map((_, index) => (
-            <CarouselItem key={index} className={`basis-auto ${index === 0 ? '' : 'pl-2'}`}>
+            <CarouselItem
+              key={index}
+              className={`basis-auto ${index === 0 ? 'pl-[16px]' : 'pl-2'}`}
+            >
               <div className='h-8 w-20 animate-pulse rounded-full bg-gray-200' />
             </CarouselItem>
           ))}

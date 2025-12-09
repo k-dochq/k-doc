@@ -38,7 +38,7 @@ export function ContactFloatingButton() {
       {/* 배경 오버레이 */}
       {isExpanded && (
         <div
-          className='fixed inset-0 z-400 bg-black/50 transition-opacity duration-300'
+          className='fixed inset-0 z-400 bg-black/70 transition-opacity duration-300'
           onClick={handleOverlayClick}
           aria-hidden='true'
         />
