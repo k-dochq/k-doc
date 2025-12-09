@@ -9,6 +9,7 @@ import { HospitalDetailLocationV2 } from 'widgets/hospital-detail-info-section/u
 import { HospitalDetailDoctorsV2 } from 'widgets/hospital-detail-doctors/ui/HospitalDetailDoctorsV2';
 import { HospitalDetailTabsHeaderV2 } from './HospitalDetailTabsHeaderV2';
 import { type GetHospitalDetailResponse } from 'entities/hospital/api/use-cases/get-hospital-detail';
+import { HospitalDetailProceduresVideoSection } from './HospitalDetailProceduresVideoSection';
 
 interface HospitalDetailTabsV2Props {
   hospital: GetHospitalDetailResponse['hospital'];
@@ -59,7 +60,11 @@ export function HospitalDetailTabsV2({
         )}
 
         {/* 시술상세 탭 */}
-        {activeTab === 1 && <div className='p-5'>{/* 빈 영역 */}</div>}
+        {activeTab === 1 && (
+          <div className='p-5'>
+            <HospitalDetailProceduresVideoSection hospitalId={hospitalId} lang={lang} dict={dict} />
+          </div>
+        )}
       </div>
     </div>
   );
