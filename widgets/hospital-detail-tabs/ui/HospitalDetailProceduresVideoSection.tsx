@@ -37,21 +37,21 @@ export function HospitalDetailProceduresVideoSection({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPlayerLoading, setIsPlayerLoading] = useState(false);
 
-  if (isLoading || error || !data) {
+  if (isLoading) {
     return null;
   }
 
   const thumbnailUrl =
-    getLocalizedValue(data.thumbnail?.localizedLinks ?? null, lang, data.thumbnail?.fallbackUrl) ||
-    null;
+    getLocalizedValue(
+      data?.thumbnail?.localizedLinks ?? null,
+      lang,
+      data?.thumbnail?.fallbackUrl,
+    ) || null;
   const videoUrl =
-    getLocalizedValue(data.video?.localizedLinks ?? null, lang, data.video?.fallbackUrl) || null;
-  const thumbnailAlt = data.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
+    getLocalizedValue(data?.video?.localizedLinks ?? null, lang, data?.video?.fallbackUrl) || null;
+  const thumbnailAlt = data?.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
 
-  // 필수 데이터 누락 시 섹션 미노출
-  if (!thumbnailUrl || !videoUrl) {
-    return null;
-  }
+  const hasVideoData = !!thumbnailUrl && !!videoUrl;
 
   const handlePlay = () => {
     setIsPlayerLoading(true);
@@ -64,35 +64,41 @@ export function HospitalDetailProceduresVideoSection({
         {dict.hospitalDetailTabs.youtube}
       </h2>
 
-      <div className='relative h-[188px] w-full overflow-hidden rounded-xl shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
-        {!isPlaying ? (
-          <button
-            type='button'
-            onClick={handlePlay}
-            className='relative block h-full w-full cursor-pointer'
-            aria-label={dict.hospitalDetailTabs.youtube}
-          >
-            <Image
-              src={thumbnailUrl || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
-              alt={thumbnailAlt || 'youtube thumbnail'}
-              fill
-              sizes='100%'
-              className='absolute inset-0 max-w-none object-cover object-center'
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = DEFAULT_IMAGES.HOSPITAL_DEFAULT;
-              }}
+      {!hasVideoData || error ? (
+        <p className='text-sm leading-5 text-neutral-500'>
+          {dict.hospitalDetailTabs.youtubePreparing}
+        </p>
+      ) : (
+        <div className='relative h-[188px] w-full overflow-hidden rounded-xl shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
+          {!isPlaying ? (
+            <button
+              type='button'
+              onClick={handlePlay}
+              className='relative block h-full w-full cursor-pointer'
+              aria-label={dict.hospitalDetailTabs.youtube}
+            >
+              <Image
+                src={thumbnailUrl || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
+                alt={thumbnailAlt || 'youtube thumbnail'}
+                fill
+                sizes='100%'
+                className='absolute inset-0 max-w-none object-cover object-center'
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = DEFAULT_IMAGES.HOSPITAL_DEFAULT;
+                }}
+              />
+            </button>
+          ) : (
+            <YoutubeVideoEmbedPlayer
+              videoUrl={videoUrl}
+              title={dict.hospitalDetailTabs.youtube}
+              isLoading={isPlayerLoading}
+              onLoad={() => setIsPlayerLoading(false)}
             />
-          </button>
-        ) : (
-          <YoutubeVideoEmbedPlayer
-            videoUrl={videoUrl}
-            title={dict.hospitalDetailTabs.youtube}
-            isLoading={isPlayerLoading}
-            onLoad={() => setIsPlayerLoading(false)}
-          />
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

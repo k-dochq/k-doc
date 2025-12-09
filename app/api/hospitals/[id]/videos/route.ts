@@ -12,9 +12,18 @@ interface HospitalVideoAsset {
   alt: string | null;
 }
 
+interface HospitalProcedureImage {
+  id: string;
+  localizedLinks: Prisma.JsonValue | null;
+  fallbackUrl: string | null;
+  order: number | null;
+  alt: string | null;
+}
+
 interface HospitalVideosResponse {
   thumbnail: HospitalVideoAsset | null;
   video: HospitalVideoAsset | null;
+  procedures: HospitalProcedureImage[];
 }
 
 export async function GET(
@@ -29,7 +38,7 @@ export async function GET(
         hospitalId: id,
         isActive: true,
         imageType: {
-          in: ['VIDEO_THUMBNAIL', 'VIDEO'],
+          in: ['VIDEO_THUMBNAIL', 'VIDEO', 'PROCEDURE_DETAIL'],
         },
       },
       orderBy: [{ imageType: 'asc' }, { order: 'asc' }],
@@ -37,6 +46,7 @@ export async function GET(
 
     const thumbnailImage = images.find((img) => img.imageType === 'VIDEO_THUMBNAIL') || null;
     const videoImage = images.find((img) => img.imageType === 'VIDEO') || null;
+    const procedureImages = images.filter((img) => img.imageType === 'PROCEDURE_DETAIL');
 
     const response: HospitalVideosResponse = {
       thumbnail: thumbnailImage
@@ -53,6 +63,13 @@ export async function GET(
             alt: videoImage.alt ?? null,
           }
         : null,
+      procedures: procedureImages.map((img) => ({
+        id: img.id,
+        localizedLinks: (img.localizedLinks as Prisma.JsonValue | null) ?? null,
+        fallbackUrl: img.imageUrl ?? null,
+        order: img.order ?? null,
+        alt: img.alt ?? null,
+      })),
     };
 
     return NextResponse.json(
