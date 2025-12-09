@@ -515,6 +515,10 @@
       "loading": "กำลังโหลด...",
       "countLabel": "",
       "error": "เกิดข้อผิดพลาด"
+    },
+    "registrationPrompt": {
+      "message": "สิทธิการจองแบบเร่งด่วน!!",
+      "button": "สมัครสมาชิก"
     }
   },
   "districtFilter": {

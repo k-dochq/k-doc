@@ -515,6 +515,10 @@
       "loading": "Loading...",
       "countLabel": "",
       "error": "Error occurred"
+    },
+    "registrationPrompt": {
+      "message": "Fast Reservation Guarantee!",
+      "button": "Register"
     }
   },
   "districtFilter": {

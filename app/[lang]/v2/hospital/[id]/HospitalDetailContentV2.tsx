@@ -6,6 +6,7 @@ import { HospitalDetailHeaderV2 } from 'widgets/hospital-detail-header';
 import { HospitalDetailPhotosV2 } from 'widgets/hospital-detail-photos/ui/HospitalDetailPhotosV2';
 import { HospitalDetailInfoV2 } from 'widgets/hospital-detail-info/ui/HospitalDetailInfoV2';
 import { HospitalDetailHoursAndLocationV2 } from 'widgets/hospital-detail-hours-location/ui/HospitalDetailHoursAndLocationV2';
+import { HospitalDetailRegistrationPromptV2 } from 'widgets/hospital-detail-registration-prompt/ui/HospitalDetailRegistrationPromptV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentV2Props {
@@ -48,6 +49,9 @@ export async function HospitalDetailContentV2({
 
         {/* 병원 운영시간 및 위치 섹션 */}
         <HospitalDetailHoursAndLocationV2 hospital={hospital} lang={lang} dict={dict} />
+
+        {/* 회원가입 유도 버튼 섹션 - 로그인하지 않은 경우에만 표시 */}
+        <HospitalDetailRegistrationPromptV2 lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {

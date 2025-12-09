@@ -515,6 +515,10 @@
       "loading": "로딩 중...",
       "countLabel": "개",
       "error": "오류 발생"
+    },
+    "registrationPrompt": {
+      "message": "Fast Reservation Guarantee!",
+      "button": "Register"
     }
   },
   "districtFilter": {
