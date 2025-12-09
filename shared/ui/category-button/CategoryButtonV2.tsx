@@ -42,7 +42,6 @@ export function CategoryButtonV2({
     return getLocalizedTextByLocale(category.labels, lang);
   };
 
-  const isRecommended = category.type === 'all';
   const label = getLabel();
 
   const buttonContent = (
@@ -54,7 +53,7 @@ export function CategoryButtonV2({
       })}
       <p
         className={`text-center text-xs leading-4 font-medium ${
-          isActive && isRecommended ? 'text-primary-900' : 'text-neutral-700'
+          isActive ? 'text-primary-900' : 'text-neutral-700'
         }`}
       >
         {label}

@@ -14,7 +14,7 @@ export function ResetButton({ onClick, className, dict }: ResetButtonProps) {
       className={`flex items-center gap-1 transition-opacity hover:opacity-70 ${className || ''}`}
     >
       <ResetIcon />
-      <span className='text-[12px] text-neutral-500'>{dict.districtFilter.reset}</span>
+      <span className='text-[12px] font-medium text-neutral-500'>{dict.districtFilter.reset}</span>
     </button>
   );
 }

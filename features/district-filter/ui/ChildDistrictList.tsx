@@ -84,7 +84,7 @@ export function ChildDistrictList({
         />
         <button
           onClick={isAllSelected ? onDeselectAll : onSelectAll}
-          className='flex-1 text-left text-[13px] leading-[18px] font-normal text-black transition-colors hover:text-neutral-600 break-all'
+          className='flex-1 text-left text-[13px] leading-[18px] font-normal break-all text-neutral-700 transition-colors'
         >
           {getParentDistrictName()} {dict.districtFilter?.selectAll || '전체'}
         </button>
@@ -96,13 +96,10 @@ export function ChildDistrictList({
 
         return (
           <div key={district.id} className='flex w-full items-center gap-2 px-5 py-3'>
-            <CheckboxButton
-              isSelected={isSelected}
-              onClick={() => onChildToggle(district.id)}
-            />
+            <CheckboxButton isSelected={isSelected} onClick={() => onChildToggle(district.id)} />
             <button
               onClick={() => onChildToggle(district.id)}
-              className='flex-1 text-left text-[13px] leading-[18px] font-normal text-black transition-colors hover:text-neutral-600 break-all'
+              className='flex-1 text-left text-[13px] leading-[18px] font-normal break-all text-neutral-700 transition-colors'
             >
               {getDistrictName(district)}
             </button>

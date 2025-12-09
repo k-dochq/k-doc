@@ -22,12 +22,12 @@ export function CheckboxButton({ isSelected, onClick, className = '' }: Checkbox
           viewBox='0 0 16 16'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
-          className='h-full w-full'
         >
+          <rect width='16' height='16' rx='4' fill='#F15BFF' />
           <path
-            d='M13 4L6 11L3 8'
+            d='M11.7333 5.43332L6.59993 10.5667L4.2666 8.23332'
             stroke='white'
-            strokeWidth='2'
+            strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />

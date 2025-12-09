@@ -32,7 +32,7 @@ export function GradientBackground({
   };
 
   return (
-    <div className={`relative isolate ${className}`}>
+    <div className={`relative isolate shadow-[0_0_8px_0_rgba(0,0,0,0.20)] ${className}`}>
       {/* sticky 오버레이: 레이아웃 영향 0을 위해 음수 마진 트릭 */}
       <div
         aria-hidden

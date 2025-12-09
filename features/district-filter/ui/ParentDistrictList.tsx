@@ -44,7 +44,7 @@ export function ParentDistrictList({
             onClick={() => onParentSelect(district.id)}
             className={`flex w-full items-start gap-0.5 px-6 py-3 text-left transition-colors ${
               isSelected
-                ? 'bg-primary-300 text-[#da47ef]'
+                ? 'bg-primary-300 text-primary-900'
                 : 'text-neutral-400 hover:bg-neutral-50 hover:text-neutral-600'
             }`}
           >
