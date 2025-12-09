@@ -4,6 +4,7 @@ import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-
 import { HospitalDetailErrorState } from 'shared/ui/error-state';
 import { HospitalDetailHeaderV2 } from 'widgets/hospital-detail-header';
 import { HospitalDetailPhotosV2 } from 'widgets/hospital-detail-photos/ui/HospitalDetailPhotosV2';
+import { HospitalDetailInfoV2 } from 'widgets/hospital-detail-info/ui/HospitalDetailInfoV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentV2Props {
@@ -35,6 +36,9 @@ export async function HospitalDetailContentV2({
           hospitalId={hospitalId}
           hospitalName={extractLocalizedText(hospital.name, lang)}
         />
+
+        {/* 병원 정보 섹션 */}
+        <HospitalDetailInfoV2 hospital={hospital} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {
