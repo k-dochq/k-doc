@@ -8,55 +8,25 @@ export function ContactKIcon({ className }: ContactKIconProps) {
       xmlns='http://www.w3.org/2000/svg'
       width='54'
       height='54'
-      viewBox='0 0 62 62'
+      viewBox='0 0 54 54'
       fill='none'
       className={className}
     >
-      <g filter='url(#filter0_d_119_17293)'>
-        <path
-          d='M4 29C4 14.0883 16.0883 2 31 2C45.9117 2 58 14.0883 58 29V56H31C16.0883 56 4 43.9117 4 29Z'
-          fill='url(#paint0_linear_119_17293)'
-        />
-        <path
-          d='M22 42V16H28.4423V26.2698L35.9564 16H42.8087L34.95 26.0751L44 41.7866H37.1477L31.1793 31.451L28.4423 34.7934V42H22Z'
-          fill='white'
-        />
-      </g>
+      <path
+        d='M0 27C0 12.0883 12.0883 0 27 0C41.9117 0 54 12.0883 54 27V54H27C12.0883 54 0 41.9117 0 27Z'
+        fill='url(#paint0_linear_890_9364)'
+      />
+      <path
+        d='M18 40V14H24.4423V24.2698L31.9564 14H38.8087L30.95 24.0751L40 39.7866H33.1477L27.1793 29.451L24.4423 32.7934V40H18Z'
+        fill='white'
+      />
       <defs>
-        <filter
-          id='filter0_d_119_17293'
-          x='0'
-          y='0'
-          width='62'
-          height='62'
-          filterUnits='userSpaceOnUse'
-          colorInterpolationFilters='sRGB'
-        >
-          <feFlood floodOpacity='0' result='BackgroundImageFix' />
-          <feColorMatrix
-            in='SourceAlpha'
-            type='matrix'
-            values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0'
-            result='hardAlpha'
-          />
-          <feOffset dy='2' />
-          <feGaussianBlur stdDeviation='2' />
-          <feComposite in2='hardAlpha' operator='out' />
-          <feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0' />
-          <feBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_119_17293' />
-          <feBlend
-            mode='normal'
-            in='SourceGraphic'
-            in2='effect1_dropShadow_119_17293'
-            result='shape'
-          />
-        </filter>
         <linearGradient
-          id='paint0_linear_119_17293'
-          x1='13.72'
-          y1='6.32'
-          x2='58'
-          y2='57.62'
+          id='paint0_linear_890_9364'
+          x1='9.72'
+          y1='4.32'
+          x2='54'
+          y2='55.62'
           gradientUnits='userSpaceOnUse'
         >
           <stop offset='0.0155908' stopColor='#DC007A' />
