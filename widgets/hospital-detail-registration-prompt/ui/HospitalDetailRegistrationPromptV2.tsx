@@ -25,7 +25,7 @@ export function HospitalDetailRegistrationPromptV2({
   const buttonText = dict.hospital?.registrationPrompt?.button || 'Register';
 
   return (
-    <div className='px-5 py-1'>
+    <div className='px-5 pt-1 pb-5'>
       <div className='flex items-center justify-between overflow-clip rounded-lg bg-[#636363] p-3 shadow-[1px_2px_4px_0px_rgba(0,0,0,0.4)]'>
         <p className='relative shrink-0 text-[16px] leading-[22px] font-semibold text-[#f15bff] italic'>
           {message}

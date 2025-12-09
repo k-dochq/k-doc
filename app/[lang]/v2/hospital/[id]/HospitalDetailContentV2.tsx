@@ -52,6 +52,9 @@ export async function HospitalDetailContentV2({
 
         {/* 회원가입 유도 버튼 섹션 - 로그인하지 않은 경우에만 표시 */}
         <HospitalDetailRegistrationPromptV2 lang={lang} dict={dict} />
+
+        {/* 구분선 */}
+        <div className='h-[6px] w-full bg-neutral-100' />
       </div>
     );
   } catch (error) {
