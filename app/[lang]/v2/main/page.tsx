@@ -11,6 +11,7 @@ import { PremiumServiceV2Container } from 'widgets/premium-service/ui';
 import { YoutubeVideosV2Wrapper } from 'widgets/youtube-videos/ui';
 import { getBestHospitals } from 'entities/hospital/api/use-cases/get-best-hospitals';
 import { getDictionary } from '../../dictionaries';
+import { ContactFloatingButton } from 'features/contact-floating-button';
 
 interface V2MainPageProps {
   params: Promise<{ lang: Locale }>;
@@ -60,6 +61,8 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
       <div className='py-9'>
         <YoutubeVideosV2Wrapper lang={lang} dict={dict} />
       </div>
+
+      <ContactFloatingButton />
     </div>
   );
 }
