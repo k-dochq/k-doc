@@ -15,7 +15,8 @@
     }
   },
   "search": {
-    "placeholder": "Search hospitals, procedures"
+    "placeholder": "Search hospitals, procedures",
+    "resultTitle": "results"
   },
   "hospitalList": {
     "title": "Popular Hospitals",
@@ -761,8 +762,8 @@
     "companyName": "FILLMAN Inc.",
     "ceo": "CEO: Woo Jung-ho",
     "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, Republic of Korea",
-    "businessNumber": "Business Registration No. 474-86-03352",
-    "customerEmail": "Customer Service Email : CS@k-doc.kr",
+    "businessNumber": "No. 474-86-03352",
+    "customerEmail": "CS@k-doc.kr",
     "companyNameLabel": "Company Name",
     "addressLabel": "Address",
     "businessNumberLabel": "Business Registration Number",

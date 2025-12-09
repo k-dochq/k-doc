@@ -1,7 +1,7 @@
 import { HeaderV2 } from 'widgets/header/ui/HeaderV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { BottomNavigation } from '@/widgets/bottom-navigation';
+import { BottomNavigationV2 } from '@/widgets/bottom-navigation';
 
 interface V2HospitalsLayoutProps {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ export default async function V2HospitalsLayout({ children, params }: V2Hospital
       <HeaderV2 currentLang={lang} dict={dict} />
       <main>{children}</main>
       <div className='h-16' />
-      <BottomNavigation currentLang={lang} dict={dict} />
+      <BottomNavigationV2 currentLang={lang} dict={dict} />
     </div>
   );
 }

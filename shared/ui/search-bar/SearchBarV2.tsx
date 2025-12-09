@@ -13,6 +13,7 @@ interface SearchBarV2Props {
   initialValue?: string;
   placeholder?: string;
   onSearch?: (searchTerm: string) => void;
+  searchPath?: string; // 기본: /hospitals
 }
 
 export function SearchBarV2({
@@ -21,6 +22,7 @@ export function SearchBarV2({
   initialValue = '',
   placeholder,
   onSearch,
+  searchPath = '/hospitals',
 }: SearchBarV2Props) {
   const [searchTerm, setSearchTerm] = useState(initialValue);
   const router = useLocalizedRouter();
@@ -53,7 +55,7 @@ export function SearchBarV2({
     params.set('page', '1');
 
     const queryString = params.toString();
-    router.push(`/hospitals${queryString ? `?${queryString}` : ''}`);
+    router.push(`${searchPath}${queryString ? `?${queryString}` : ''}`);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {

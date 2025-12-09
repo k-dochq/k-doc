@@ -11,6 +11,7 @@ import { PremiumServiceV2Container } from 'widgets/premium-service/ui';
 import { YoutubeVideosV2Wrapper } from 'widgets/youtube-videos/ui';
 import { getBestHospitals } from 'entities/hospital/api/use-cases/get-best-hospitals';
 import { getDictionary } from '../../dictionaries';
+import { ContactFloatingButton } from 'features/contact-floating-button';
 
 interface V2MainPageProps {
   params: Promise<{ lang: Locale }>;
@@ -31,7 +32,7 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
       <div className='bg-[#F7F7F7]'>
         <EventBannerRibbonCarousel currentLocale={lang} />
         <div className='px-5 py-5'>
-          <SearchBarV2 lang={lang} dict={dict} />
+          <SearchBarV2 lang={lang} dict={dict} searchPath='/search/hospitals' />
         </div>
         <EventBannerMainCarouselV2 currentLocale={lang} />
         <div className='py-5'>
@@ -60,6 +61,8 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
       <div className='py-9'>
         <YoutubeVideosV2Wrapper lang={lang} dict={dict} />
       </div>
+
+      {lang === 'th' && <ContactFloatingButton />}
     </div>
   );
 }

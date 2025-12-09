@@ -15,7 +15,8 @@
     }
   },
   "search": {
-    "placeholder": "병원, 시술 부위를 검색해보세요"
+    "placeholder": "병원, 시술 부위를 검색해보세요",
+    "resultTitle": "검색결과"
   },
   "hospitalList": {
     "title": "많이 찾는 병원",

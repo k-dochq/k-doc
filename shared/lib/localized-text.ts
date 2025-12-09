@@ -25,14 +25,30 @@ export function extractLocalizedText(
   if (typeof jsonValue === 'object' && jsonValue !== null && !Array.isArray(jsonValue)) {
     const localizedText = jsonValue as Record<string, unknown>;
 
+    // 모든 값이 빈 문자열인지 확인
+    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'ko', 'en', 'th'];
+    const hasNonEmptyValue = allKeys.some(
+      (key) =>
+        localizedText[key] &&
+        typeof localizedText[key] === 'string' &&
+        (localizedText[key] as string).trim() !== '',
+    );
+
+    // 모든 값이 빈 문자열이면 빈 문자열 반환
+    if (!hasNonEmptyValue) {
+      return '';
+    }
+
     // 먼저 긴 형식 (ko_KR, en_US, th_TH) 확인
     if (localizedText[localeKey] && typeof localizedText[localeKey] === 'string') {
-      return localizedText[localeKey] as string;
+      const value = localizedText[localeKey] as string;
+      return value.trim() !== '' ? value : '';
     }
 
     // 짧은 형식 (ko, en, th) 확인
     if (localizedText[shortLocaleKey] && typeof localizedText[shortLocaleKey] === 'string') {
-      return localizedText[shortLocaleKey] as string;
+      const value = localizedText[shortLocaleKey] as string;
+      return value.trim() !== '' ? value : '';
     }
 
     // fallback: 첫 번째 사용 가능한 값 반환 (긴 형식 우선)
@@ -47,7 +63,10 @@ export function extractLocalizedText(
 
     for (const key of fallbackOrder) {
       if (localizedText[key] && typeof localizedText[key] === 'string') {
-        return localizedText[key] as string;
+        const value = localizedText[key] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
       }
     }
   }

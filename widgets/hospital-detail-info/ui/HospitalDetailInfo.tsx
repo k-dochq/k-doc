@@ -20,8 +20,8 @@ export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoP
     ? (hospital.displayLocationName as { ko_KR?: string; en_US?: string; th_TH?: string })
     : hospital.address;
 
-  const hospitalName = extractLocalizedText(hospital.name, lang) || '병원명 없음';
-  const hospitalAddress = extractLocalizedText(displayAddress, lang) || '주소 없음';
+  const hospitalName = extractLocalizedText(hospital.name, lang) || '';
+  const hospitalAddress = extractLocalizedText(displayAddress, lang) || '';
 
   return (
     <div className='relative z-10 -mt-3 rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px]'>
@@ -32,9 +32,13 @@ export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoP
 
       {/* 지역 정보 */}
       <div className='flex items-center gap-1 text-xs font-medium text-neutral-500'>
-        <span>{dict.hospital?.region || '지역'}</span>
-        <div className='h-[10px] w-px bg-neutral-500'></div>
-        <span>{hospitalAddress}</span>
+        {hospitalAddress !== '' && (
+          <>
+            <span>{dict.hospital?.region || '지역'}</span>
+            <div className='h-[10px] w-px bg-neutral-500'></div>
+            <span>{hospitalAddress}</span>
+          </>
+        )}
       </div>
 
       <div className='h-2' />
