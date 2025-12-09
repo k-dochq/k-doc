@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { HospitalDetailTabsHeaderV2 } from './HospitalDetailTabsHeaderV2';
+import { HospitalDetailIntroductionV2 } from 'widgets/hospital-detail-introduction/ui/HospitalDetailIntroductionV2';
 import { type Hospital } from 'entities/hospital/api/entities/types';
 
 interface HospitalDetailTabsV2Props {
@@ -36,13 +37,17 @@ export function HospitalDetailTabsV2({
       {/* 탭 헤더 */}
       <HospitalDetailTabsHeaderV2 tabs={tabs} activeTab={activeTab} onTabClick={handleTabClick} />
 
-      {/* 탭 컨텐츠 - 일단 빈 영역으로 처리 */}
+      {/* 탭 컨텐츠 */}
       <div className=''>
         {/* 병원소개 탭 */}
-        {activeTab === 0 && <div className='px-5 pt-8'>{/* 빈 영역 */}</div>}
+        {activeTab === 0 && (
+          <div className='p-5'>
+            <HospitalDetailIntroductionV2 hospital={hospital} lang={lang} dict={dict} />
+          </div>
+        )}
 
         {/* 시술상세 탭 */}
-        {activeTab === 1 && <div className='px-5 pt-8'>{/* 빈 영역 */}</div>}
+        {activeTab === 1 && <div className='p-5'>{/* 빈 영역 */}</div>}
       </div>
     </div>
   );
