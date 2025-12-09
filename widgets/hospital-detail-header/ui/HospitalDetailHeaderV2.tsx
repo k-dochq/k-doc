@@ -20,6 +20,7 @@ export function HospitalDetailHeaderV2({
     <PageHeaderV2
       title={hospitalName || ''}
       fallbackUrl={`/${lang}/v2/hospitals`}
+      enableScrollTransparency={true}
       rightContent={
         <HospitalDetailHeaderActionsV2
           hospitalId={hospitalId}

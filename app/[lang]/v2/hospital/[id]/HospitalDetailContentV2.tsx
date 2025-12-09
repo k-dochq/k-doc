@@ -22,17 +22,19 @@ export async function HospitalDetailContentV2({
     const { hospital } = await getHospitalDetail({ id: hospitalId });
 
     return (
-      <div className='text-neutral-900'>
-        {/* 헤더 */}
+      <div className='relative text-neutral-900'>
+        {/* 병원 이미지 섹션 - 여백 없이 최상단에 배치 */}
+        <div className='relative'>
+          <HospitalDetailPhotosV2 hospital={hospital} lang={lang} dict={dict} />
+        </div>
+
+        {/* 헤더 - 이미지 위에 겹쳐서 표시 */}
         <HospitalDetailHeaderV2
           lang={lang}
           dict={dict}
           hospitalId={hospitalId}
           hospitalName={extractLocalizedText(hospital.name, lang)}
         />
-
-        {/* 병원 이미지 섹션 */}
-        <HospitalDetailPhotosV2 hospital={hospital} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {

@@ -1,13 +1,16 @@
 'use client';
 
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeftIconV2 } from 'shared/ui/icon/ArrowLeftIconV2';
+import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 
 interface PageHeaderV2Props {
   title: string;
   fallbackUrl?: string;
   rightContent?: React.ReactNode;
   className?: string;
+  enableScrollTransparency?: boolean;
 }
 
 export function PageHeaderV2({
@@ -15,8 +18,40 @@ export function PageHeaderV2({
   fallbackUrl,
   rightContent,
   className = '',
+  enableScrollTransparency = false,
 }: PageHeaderV2Props) {
   const router = useRouter();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const tickingRef = useRef(false);
+
+  // 스크롤 감지 (requestAnimationFrame으로 성능 최적화)
+  const handleScroll = useCallback(() => {
+    if (!tickingRef.current) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const scrollThreshold = 50;
+
+        setIsScrolled(currentScrollY > scrollThreshold);
+        tickingRef.current = false;
+      });
+
+      tickingRef.current = true;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!enableScrollTransparency) {
+      return;
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // 초기 상태 설정
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll, enableScrollTransparency]);
 
   const handleBack = () => {
     // 브라우저 히스토리가 있으면 뒤로가기, 없으면 fallbackUrl로 이동
@@ -27,24 +62,59 @@ export function PageHeaderV2({
     }
   };
 
+  const getHeaderStyles = () => {
+    if (!enableScrollTransparency) {
+      return {
+        container: 'border-b border-neutral-200 bg-white',
+        text: 'text-neutral-700',
+        button: 'hover:bg-neutral-100',
+        title: 'opacity-100',
+      };
+    }
+
+    if (isScrolled) {
+      return {
+        container: 'border-b border-neutral-200 bg-white',
+        text: 'text-neutral-700',
+        button: 'hover:bg-neutral-100',
+        title: 'opacity-100',
+      };
+    }
+
+    return {
+      container: 'border-b border-transparent bg-transparent',
+      text: 'text-white',
+      button: 'hover:bg-white/20',
+      title: 'opacity-0',
+    };
+  };
+
+  const styles = getHeaderStyles();
+
   return (
     <div
-      className={`sticky top-0 z-50 flex h-[58px] w-full items-center justify-between border-b border-neutral-200 bg-white px-5 ${className}`}
+      className={`fixed top-0 left-1/2 z-50 flex h-[58px] w-full -translate-x-1/2 items-center justify-between px-5 transition-all duration-300 ${MAX_MOBILE_WIDTH_CLASS} ${styles.container} ${className}`}
     >
       <div className='flex items-center gap-1'>
         {/* 뒤로가기 버튼 */}
         <button
           onClick={handleBack}
-          className='flex h-6 w-6 items-center justify-center rounded-full transition-colors hover:bg-neutral-100'
+          className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
         >
-          <ArrowLeftIconV2 className='text-neutral-700' width={24} height={24} />
+          <ArrowLeftIconV2 className={styles.text} width={24} height={24} />
         </button>
         {/* 제목 */}
-        <h1 className='text-lg leading-7 font-semibold text-neutral-700'>{title}</h1>
+        <h1
+          className={`text-lg leading-7 font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
+        >
+          {title}
+        </h1>
       </div>
 
       {/* 오른쪽 컨텐츠 (공유하기, 좋아요 버튼 등) */}
-      {rightContent && <div className='flex items-center gap-3'>{rightContent}</div>}
+      {rightContent && (
+        <div className={`flex items-center gap-3 ${styles.text}`}>{rightContent}</div>
+      )}
     </div>
   );
 }

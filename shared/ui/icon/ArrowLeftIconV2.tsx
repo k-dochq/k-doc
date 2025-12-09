@@ -16,7 +16,7 @@ export function ArrowLeftIconV2({ className, width = 24, height = 24 }: ArrowLef
     >
       <path
         d='M15 5L8 12L15 19'
-        stroke='#404040'
+        stroke='currentColor'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
