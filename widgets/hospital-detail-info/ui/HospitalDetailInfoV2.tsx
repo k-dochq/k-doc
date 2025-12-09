@@ -80,8 +80,8 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
               </svg>
             </div>
             <span className='text-base leading-6 font-semibold text-neutral-700'>
-              {dict.hospital?.reviews || '리뷰'} {hospital.reviewCount || 0}
-              {dict.hospital?.reviewsCountUnit || '개'}
+              {dict.favorites?.reviews || '리뷰'} {hospital.reviewCount || 0}
+              {dict.hospital?.like?.countLabel || '개'}
             </span>
           </div>
         </div>

@@ -5,6 +5,7 @@ import { HospitalDetailErrorState } from 'shared/ui/error-state';
 import { HospitalDetailHeaderV2 } from 'widgets/hospital-detail-header';
 import { HospitalDetailPhotosV2 } from 'widgets/hospital-detail-photos/ui/HospitalDetailPhotosV2';
 import { HospitalDetailInfoV2 } from 'widgets/hospital-detail-info/ui/HospitalDetailInfoV2';
+import { HospitalDetailHoursAndLocationV2 } from 'widgets/hospital-detail-hours-location/ui/HospitalDetailHoursAndLocationV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentV2Props {
@@ -39,6 +40,14 @@ export async function HospitalDetailContentV2({
 
         {/* 병원 정보 섹션 */}
         <HospitalDetailInfoV2 hospital={hospital} lang={lang} dict={dict} />
+
+        {/* 구분선 */}
+        <div className='px-5'>
+          <div className='h-px w-full bg-neutral-200' />
+        </div>
+
+        {/* 병원 운영시간 및 위치 섹션 */}
+        <HospitalDetailHoursAndLocationV2 hospital={hospital} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {

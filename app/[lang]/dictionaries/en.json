@@ -1,7 +1,8 @@
 {
   "common": {
     "confirm": "OK",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "today": "Today"
   },
   "quickMenu": {
     "title": "Popular Treatment Areas",
@@ -496,7 +497,8 @@
     },
     "info": {
       "title": "Hospital Information",
-      "operatingHours": "Operating Hours"
+      "operatingHours": "Operating Hours",
+      "noInformation": "No Information"
     },
     "map": {
       "title": "Hospital Location",

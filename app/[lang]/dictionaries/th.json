@@ -1,7 +1,8 @@
 {
   "common": {
     "confirm": "ตกลง",
-    "cancel": "ยกเลิก"
+    "cancel": "ยกเลิก",
+    "today": "วันนี้"
   },
   "quickMenu": {
     "title": "พื้นที่การรักษายอดนิยม",
@@ -496,7 +497,8 @@
     },
     "info": {
       "title": "ข้อมูลโรงพยาบาล",
-      "operatingHours": "เวลาทำการ"
+      "operatingHours": "เวลาทำการ",
+      "noInformation": "ไม่มีข้อมูล"
     },
     "map": {
       "title": "ที่ตั้งโรงพยาบาล",

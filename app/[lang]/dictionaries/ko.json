@@ -1,7 +1,8 @@
 {
   "common": {
     "confirm": "확인",
-    "cancel": "취소"
+    "cancel": "취소",
+    "today": "오늘"
   },
   "quickMenu": {
     "title": "인기 시술 부위",
@@ -496,7 +497,8 @@
     },
     "info": {
       "title": "병원정보",
-      "operatingHours": "진료시간"
+      "operatingHours": "진료시간",
+      "noInformation": "정보 없음"
     },
     "map": {
       "title": "병원위치",
