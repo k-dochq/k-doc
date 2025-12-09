@@ -89,7 +89,7 @@ export function CategorySectionV2({
         }}
         className='w-full'
       >
-        <CarouselContent className='py-4 pl-5'>
+        <CarouselContent className='py-4 pl-[14px]'>
           {categoryButtons.map((categoryButton, index) => {
             const isActive =
               categoryButton.type === 'all'
