@@ -29,6 +29,7 @@ type HospitalDetailWithRelations = Prisma.HospitalGetPayload<{
     latitude: true;
     longitude: true;
     displayLocationName: true;
+    badge: true;
     HospitalImage: true;
     HospitalMedicalSpecialty: {
       include: {
@@ -102,6 +103,7 @@ export async function getHospitalDetail(
         latitude: true,
         longitude: true,
         displayLocationName: true,
+        badge: true,
         HospitalImage: {
           where: {
             isActive: true,
@@ -237,6 +239,7 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     latitude: data.latitude,
     longitude: data.longitude,
     displayLocationName: data.displayLocationName,
+    badge: data.badge,
     district: data.District
       ? {
           id: data.District.id,

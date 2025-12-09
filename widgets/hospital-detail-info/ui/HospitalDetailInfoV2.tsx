@@ -5,6 +5,8 @@ import { type Dictionary } from 'shared/model/types';
 import { type Hospital } from 'entities/hospital/api/entities/types';
 import { StarIconV2 } from 'shared/ui/icons/StarIconV2';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags/MedicalSpecialtyTagsV2';
+import { HospitalDetailBadgeV2 } from 'widgets/hospital-detail-badge/ui/HospitalDetailBadgeV2';
+import { HospitalDetailLogoV2 } from 'widgets/hospital-detail-logo/ui/HospitalDetailLogoV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailInfoV2Props {
@@ -24,6 +26,14 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
 
   return (
     <div className='relative z-10 -mt-3 rounded-tl-2xl rounded-tr-2xl bg-white px-5 pt-10 pb-4'>
+      {/* 로고 - 병원정보 섹션 기준으로 위치 설정 */}
+      <div className='absolute -top-[28px] left-5 z-20'>
+        <HospitalDetailLogoV2 hospital={hospital} />
+      </div>
+
+      {/* 뱃지 - 병원정보 섹션에 위치, 이미지 섹션 쪽으로 5px 삐져나감 */}
+      <HospitalDetailBadgeV2 hospital={hospital} />
+
       {/* 병원명 */}
       <div className='flex flex-col gap-0.5'>
         <h2 className='text-2xl leading-8 font-semibold text-neutral-700'>{hospitalName}</h2>
