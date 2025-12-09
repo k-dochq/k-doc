@@ -3,6 +3,7 @@ import { type Dictionary } from 'shared/model/types';
 import { getHospitalDetail } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { HospitalDetailErrorState } from 'shared/ui/error-state';
 import { HospitalDetailHeaderV2 } from 'widgets/hospital-detail-header';
+import { HospitalDetailPhotosV2 } from 'widgets/hospital-detail-photos/ui/HospitalDetailPhotosV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentV2Props {
@@ -30,7 +31,8 @@ export async function HospitalDetailContentV2({
           hospitalName={extractLocalizedText(hospital.name, lang)}
         />
 
-        {/* TODO: 병원 상세 컨텐츠 추가 예정 */}
+        {/* 병원 이미지 섹션 */}
+        <HospitalDetailPhotosV2 hospital={hospital} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {
