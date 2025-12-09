@@ -111,12 +111,12 @@ export function HospitalDetailPhotosV2({ hospital, lang, dict }: HospitalDetailP
 
       {/* 인디케이터 - 이미지가 2개 이상일 때만 표시 */}
       {hospitalImages.length > 1 && (
-        <div className='absolute bottom-6 left-1/2 z-40 flex -translate-x-1/2 gap-2'>
+        <div className='absolute bottom-6 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1'>
           {hospitalImages.map((_, index) => (
             <button
               key={index}
-              className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                index === currentSlide ? 'bg-primary' : 'bg-primary-light'
+              className={`size-1.5 shrink-0 rounded-full transition-colors ${
+                index === currentSlide ? 'bg-white' : 'bg-white/50'
               }`}
               onClick={() => api?.scrollTo(index)}
             />
