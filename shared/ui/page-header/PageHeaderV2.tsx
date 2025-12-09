@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { ArrowLeftIcon } from 'shared/ui/icon/ArrowLeftIcon';
+import { ArrowLeftIconV2 } from 'shared/ui/icon/ArrowLeftIconV2';
 
 interface PageHeaderV2Props {
   title: string;
@@ -29,15 +29,15 @@ export function PageHeaderV2({
 
   return (
     <div
-      className={`sticky top-0 z-50 flex w-full items-center justify-between border-b border-neutral-200 bg-white px-5 py-4 ${className}`}
+      className={`sticky top-0 z-50 flex h-[58px] w-full items-center justify-between border-b border-neutral-200 bg-white px-5 ${className}`}
     >
       <div className='flex items-center gap-1'>
         {/* 뒤로가기 버튼 */}
         <button
           onClick={handleBack}
-          className='flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-neutral-100'
+          className='flex h-6 w-6 items-center justify-center rounded-full transition-colors hover:bg-neutral-100'
         >
-          <ArrowLeftIcon className='text-neutral-700' width={24} height={24} />
+          <ArrowLeftIconV2 className='text-neutral-700' width={24} height={24} />
         </button>
         {/* 제목 */}
         <h1 className='text-lg leading-7 font-semibold text-neutral-700'>{title}</h1>
