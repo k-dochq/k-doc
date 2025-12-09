@@ -100,7 +100,8 @@
     "doctors": {
       "title": "Medical Staff",
       "specialties": "Specialties",
-      "empty": "No medical staff registered."
+      "empty": "No medical staff registered.",
+      "viewAll": "See all doctors"
     }
   },
   "reviewCarousel": {

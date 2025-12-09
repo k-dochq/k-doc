@@ -100,7 +100,8 @@
     "doctors": {
       "title": "소속의료진",
       "specialties": "시술부위",
-      "empty": "등록된 의료진이 없습니다."
+      "empty": "등록된 의료진이 없습니다.",
+      "viewAll": "모든 의사 보기"
     }
   },
   "reviewCarousel": {

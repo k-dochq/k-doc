@@ -91,7 +91,7 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
             </div>
             <span className='text-base leading-6 font-semibold text-neutral-700'>
               {dict.favorites?.reviews || '리뷰'} {hospital.reviewCount || 0}
-              {dict.hospital?.like?.countLabel || '개'}
+              {dict.hospital?.like?.countLabel || ''}
             </span>
           </div>
         </div>
