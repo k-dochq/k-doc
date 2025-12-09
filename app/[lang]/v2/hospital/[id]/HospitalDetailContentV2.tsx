@@ -7,6 +7,7 @@ import { HospitalDetailPhotosV2 } from 'widgets/hospital-detail-photos/ui/Hospit
 import { HospitalDetailInfoV2 } from 'widgets/hospital-detail-info/ui/HospitalDetailInfoV2';
 import { HospitalDetailHoursAndLocationV2 } from 'widgets/hospital-detail-hours-location/ui/HospitalDetailHoursAndLocationV2';
 import { HospitalDetailRegistrationPromptV2 } from 'widgets/hospital-detail-registration-prompt/ui/HospitalDetailRegistrationPromptV2';
+import { HospitalDetailTabsV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDetailTabsV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentV2Props {
@@ -55,6 +56,9 @@ export async function HospitalDetailContentV2({
 
         {/* 구분선 */}
         <div className='h-[6px] w-full bg-neutral-100' />
+
+        {/* 탭 섹션 */}
+        <HospitalDetailTabsV2 hospital={hospital} hospitalId={hospitalId} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {
