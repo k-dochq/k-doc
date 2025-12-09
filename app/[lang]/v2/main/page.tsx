@@ -62,7 +62,7 @@ export default async function V2MainPage({ params }: V2MainPageProps) {
         <YoutubeVideosV2Wrapper lang={lang} dict={dict} />
       </div>
 
-      <ContactFloatingButton />
+      {lang === 'th' && <ContactFloatingButton />}
     </div>
   );
 }
