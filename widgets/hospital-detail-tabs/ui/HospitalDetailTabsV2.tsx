@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { HospitalDetailIntroductionV2 } from 'widgets/hospital-detail-introduction/ui/HospitalDetailIntroductionV2';
 import { HospitalDetailOperatingHoursV2 } from 'widgets/hospital-detail-info-section/ui/HospitalDetailOperatingHoursV2';
+import { HospitalDetailLocationV2 } from 'widgets/hospital-detail-info-section/ui/HospitalDetailLocationV2';
 import { HospitalDetailTabsHeaderV2 } from './HospitalDetailTabsHeaderV2';
 import { type GetHospitalDetailResponse } from 'entities/hospital/api/use-cases/get-hospital-detail';
 
@@ -42,13 +43,14 @@ export function HospitalDetailTabsV2({
       <div className=''>
         {/* 병원소개 탭 */}
         {activeTab === 0 && (
-          <div className='space-y-6 p-5'>
+          <div className='space-y-8 p-5'>
             <HospitalDetailIntroductionV2 hospital={hospital} lang={lang} dict={dict} />
             <HospitalDetailOperatingHoursV2
               openingHours={hospital.openingHours}
               lang={lang}
               dict={dict}
             />
+            <HospitalDetailLocationV2 hospital={hospital} lang={lang} dict={dict} />
           </div>
         )}
 

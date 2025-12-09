@@ -5,10 +5,7 @@ interface V2HospitalDetailLayoutProps {
   params: Promise<{ lang: Locale; id: string }>;
 }
 
-export default async function V2HospitalDetailLayout({
-  children,
-  params,
-}: V2HospitalDetailLayoutProps) {
+export default async function V2HospitalDetailLayout({ children }: V2HospitalDetailLayoutProps) {
   return (
     <div className='min-h-screen bg-white'>
       <main>{children}</main>
