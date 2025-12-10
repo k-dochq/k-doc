@@ -4,6 +4,7 @@ import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 
 export interface GetLiveReviewsOptions {
   category?: MedicalSpecialtyType | 'ALL';
+  hospitalId?: string;
   limit?: number;
   page?: number;
 }
@@ -47,16 +48,21 @@ export async function getLiveReviews(
   options: GetLiveReviewsOptions = {},
 ): Promise<GetLiveReviewsResponse> {
   try {
-    const { category = 'ALL', limit = 3, page = 1 } = options;
+    const { category = 'ALL', hospitalId, limit = 3, page = 1 } = options;
     const skip = (page - 1) * limit;
 
-    // 카테고리 필터링 조건
+    // 카테고리 및 병원 필터링 조건
     const whereCondition: {
       isActive: boolean;
+      hospitalId?: string;
       MedicalSpecialty?: { specialtyType: MedicalSpecialtyType };
     } = {
       isActive: true,
     };
+
+    if (hospitalId) {
+      whereCondition.hospitalId = hospitalId;
+    }
 
     if (category !== 'ALL') {
       whereCondition.MedicalSpecialty = {
