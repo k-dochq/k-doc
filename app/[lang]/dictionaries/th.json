@@ -1,7 +1,8 @@
 {
   "common": {
     "confirm": "ตกลง",
-    "cancel": "ยกเลิก"
+    "cancel": "ยกเลิก",
+    "today": "วันนี้"
   },
   "quickMenu": {
     "title": "พื้นที่การรักษายอดนิยม",
@@ -40,6 +41,7 @@
   "popularReviews": {
     "title": "รีวิวยอดนิยม",
     "viewAll": "ดูทั้งหมด",
+    "reviewCount": "{count} รีวิว",
     "error": {
       "message": "เกิดข้อผิดพลาดขณะโหลดข้อมูลรีวิว",
       "retryButton": "ลองใหม่"
@@ -99,7 +101,8 @@
     "doctors": {
       "title": "บุคลากรทางการแพทย์",
       "specialties": "ความเชี่ยวชาญ",
-      "empty": "ไม่มีบุคลากรทางการแพทย์ที่ลงทะเบียน"
+      "empty": "ไม่มีบุคลากรทางการแพทย์ที่ลงทะเบียน",
+      "viewAll": "ดูแพทย์ทั้งหมด"
     }
   },
   "reviewCarousel": {
@@ -155,6 +158,9 @@
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",
     "procedures": "รายละเอียดการรักษา",
+    "youtube": "YouTube",
+    "youtubePreparing": "วิดีโอของโรงพยาบาลกำลังจัดเตรียม",
+    "proceduresDetail": "รายละเอียดการรักษา",
     "proceduresComingSoon": "รายละเอียดการรักษากำลังเตรียมการ",
     "comingSoonSubtext": "อัปเดตเร็วๆ นี้...",
     "apgujeongMiracle": {
@@ -496,7 +502,8 @@
     },
     "info": {
       "title": "ข้อมูลโรงพยาบาล",
-      "operatingHours": "เวลาทำการ"
+      "operatingHours": "เวลาทำการ",
+      "noInformation": "ไม่มีข้อมูล"
     },
     "map": {
       "title": "ที่ตั้งโรงพยาบาล",
@@ -513,6 +520,10 @@
       "loading": "กำลังโหลด...",
       "countLabel": "",
       "error": "เกิดข้อผิดพลาด"
+    },
+    "registrationPrompt": {
+      "message": "สิทธิการจองแบบเร่งด่วน!!",
+      "button": "สมัครสมาชิก"
     }
   },
   "districtFilter": {

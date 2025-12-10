@@ -1,7 +1,8 @@
 {
   "common": {
     "confirm": "확인",
-    "cancel": "취소"
+    "cancel": "취소",
+    "today": "오늘"
   },
   "quickMenu": {
     "title": "인기 시술 부위",
@@ -40,6 +41,7 @@
   "popularReviews": {
     "title": "많이 본 후기",
     "viewAll": "전체보기",
+    "reviewCount": "리뷰 {count}개",
     "error": {
       "message": "후기 정보를 불러오는 중 오류가 발생했습니다.",
       "retryButton": "다시 시도"
@@ -99,7 +101,8 @@
     "doctors": {
       "title": "소속의료진",
       "specialties": "시술부위",
-      "empty": "등록된 의료진이 없습니다."
+      "empty": "등록된 의료진이 없습니다.",
+      "viewAll": "모든 의사 보기"
     }
   },
   "reviewCarousel": {
@@ -155,6 +158,9 @@
   "hospitalDetailTabs": {
     "introduction": "병원소개",
     "procedures": "시술상세",
+    "youtube": "유튜브",
+    "youtubePreparing": "병원 영상 준비 중입니다.",
+    "proceduresDetail": "시술상세",
     "proceduresComingSoon": "시술상세 정보는 준비 중입니다.",
     "comingSoonSubtext": "곧 업데이트 예정입니다.",
     "apgujeongMiracle": {
@@ -496,7 +502,8 @@
     },
     "info": {
       "title": "병원정보",
-      "operatingHours": "진료시간"
+      "operatingHours": "진료시간",
+      "noInformation": "정보 없음"
     },
     "map": {
       "title": "병원위치",
@@ -513,6 +520,10 @@
       "loading": "로딩 중...",
       "countLabel": "개",
       "error": "오류 발생"
+    },
+    "registrationPrompt": {
+      "message": "Fast Reservation Guarantee!",
+      "button": "Register"
     }
   },
   "districtFilter": {

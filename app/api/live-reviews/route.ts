@@ -7,18 +7,24 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
 
     const category = searchParams.get('category') as MedicalSpecialtyType | 'ALL' | null;
+    const hospitalId = searchParams.get('hospitalId');
     const limit = parseInt(searchParams.get('limit') || '3', 10);
     const page = parseInt(searchParams.get('page') || '1', 10);
 
     const skip = (page - 1) * limit;
 
-    // 카테고리 필터링 조건
+    // 카테고리 및 병원 필터링 조건
     const whereCondition: {
       isActive: boolean;
+      hospitalId?: string;
       MedicalSpecialty?: { specialtyType: MedicalSpecialtyType };
     } = {
       isActive: true,
     };
+
+    if (hospitalId) {
+      whereCondition.hospitalId = hospitalId;
+    }
 
     if (category && category !== 'ALL') {
       whereCondition.MedicalSpecialty = {

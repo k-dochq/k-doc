@@ -11,6 +11,7 @@ export const queryKeys = {
     list: (filters: Record<string, unknown>) => [...queryKeys.hospitals.lists(), filters] as const,
     details: () => [...queryKeys.hospitals.all, 'detail'] as const,
     detail: (id: string) => [...queryKeys.hospitals.details(), id] as const,
+    detailVideos: (id: string) => [...queryKeys.hospitals.details(), id, 'videos'] as const,
     liked: {
       all: () => [...queryKeys.hospitals.all, 'liked'] as const,
       list: (params: Record<string, unknown>) =>

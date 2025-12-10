@@ -1,7 +1,8 @@
 {
   "common": {
     "confirm": "OK",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "today": "Today"
   },
   "quickMenu": {
     "title": "Popular Treatment Areas",
@@ -40,6 +41,7 @@
   "popularReviews": {
     "title": "Popular Reviews",
     "viewAll": "View All",
+    "reviewCount": "{count} reviews",
     "error": {
       "message": "An error occurred while loading review information.",
       "retryButton": "Retry"
@@ -99,7 +101,8 @@
     "doctors": {
       "title": "Medical Staff",
       "specialties": "Specialties",
-      "empty": "No medical staff registered."
+      "empty": "No medical staff registered.",
+      "viewAll": "See all doctors"
     }
   },
   "reviewCarousel": {
@@ -155,6 +158,9 @@
   "hospitalDetailTabs": {
     "introduction": "Hospital Info",
     "procedures": "Procedures",
+    "youtube": "YouTube",
+    "youtubePreparing": "Hospital video is being prepared.",
+    "proceduresDetail": "Procedure Details",
     "proceduresComingSoon": "Procedure details are coming soon.",
     "comingSoonSubtext": "Updates coming soon...",
     "apgujeongMiracle": {
@@ -496,7 +502,8 @@
     },
     "info": {
       "title": "Hospital Information",
-      "operatingHours": "Operating Hours"
+      "operatingHours": "Operating Hours",
+      "noInformation": "No Information"
     },
     "map": {
       "title": "Hospital Location",
@@ -513,6 +520,10 @@
       "loading": "Loading...",
       "countLabel": "",
       "error": "Error occurred"
+    },
+    "registrationPrompt": {
+      "message": "Fast Reservation Guarantee!",
+      "button": "Register"
     }
   },
   "districtFilter": {
