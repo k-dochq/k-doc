@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { Prisma } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { extractLocalizedText } from 'shared/lib/localized-text';
@@ -15,18 +14,6 @@ interface HospitalDetailProceduresVideoSectionProps {
   lang: Locale;
   dict: Dictionary;
 }
-
-const getLocalizedValue = (
-  value: Prisma.JsonValue | null,
-  lang: Locale,
-  fallback?: string | null,
-): string | null => {
-  const localized = extractLocalizedText(value, lang);
-  if (localized && localized.trim() !== '') {
-    return localized;
-  }
-  return fallback ?? null;
-};
 
 export function HospitalDetailProceduresVideoSection({
   hospitalId,
@@ -41,14 +28,18 @@ export function HospitalDetailProceduresVideoSection({
     return null;
   }
 
+  // 선택된 언어에 맞는 썸네일 URL 추출
   const thumbnailUrl =
-    getLocalizedValue(
-      data?.thumbnail?.localizedLinks ?? null,
-      lang,
-      data?.thumbnail?.fallbackUrl,
-    ) || null;
+    extractLocalizedText(data?.thumbnail?.localizedLinks ?? null, lang) ||
+    data?.thumbnail?.fallbackUrl ||
+    null;
+
+  // 선택된 언어에 맞는 영상 URL 추출
   const videoUrl =
-    getLocalizedValue(data?.video?.localizedLinks ?? null, lang, data?.video?.fallbackUrl) || null;
+    extractLocalizedText(data?.video?.localizedLinks ?? null, lang) ||
+    data?.video?.fallbackUrl ||
+    null;
+
   const thumbnailAlt = data?.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
 
   const hasVideoData = !!thumbnailUrl && !!videoUrl;
