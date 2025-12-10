@@ -39,7 +39,7 @@ export function ImageModalCarouselV2({
         }}
       >
         <div
-          className='flex h-full flex-col'
+          className='flex h-full flex-col overflow-y-auto'
           style={{
             paddingTop: 'var(--safe-area-inset-top)',
             paddingBottom: 'var(--safe-area-inset-bottom)',
@@ -60,6 +60,7 @@ export function ImageModalCarouselV2({
               images={images}
               initialIndex={initialIndex}
               onIndexChange={handleIndexChange}
+              onSelectIndex={handleIndexChange}
             />
           </div>
         </div>
