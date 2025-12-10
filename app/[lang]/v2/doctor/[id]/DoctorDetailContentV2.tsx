@@ -17,6 +17,7 @@ import { DoctorHospitalReviews } from '@/features/doctor-hospital-reviews';
 import { DoctorDetailHeaderV2 } from 'widgets/doctor-detail-header/ui/DoctorDetailHeaderV2';
 import { DoctorProfileV2 } from 'widgets/doctor-detail-profile/ui/DoctorProfileV2';
 import { DoctorCareerV2 } from 'widgets/doctor-detail-career/ui/DoctorCareerV2';
+import { DoctorCareerAndActivityV2 } from 'widgets/doctor-detail-career/ui/DoctorCareerAndActivityV2';
 
 interface DoctorDetailContentV2Props {
   doctorId: string;
@@ -51,6 +52,8 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
       <DoctorProfileV2 doctor={doctor} lang={lang} dict={dict} />
       {/* 의사 약력 섹션 */}
       <DoctorCareerV2 doctor={doctor} lang={lang} dict={dict} />
+      {/* 경력 및 활동 섹션 */}
+      <DoctorCareerAndActivityV2 doctor={doctor} lang={lang} dict={dict} />
     </div>
   );
 }
