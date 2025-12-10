@@ -12,6 +12,7 @@ export type PrismaDoctorWithRelations = Prisma.DoctorGetPayload<{
         id: true;
         name: true;
         address: true;
+        badge: true;
         phoneNumber: true;
         latitude: true;
         longitude: true;
@@ -152,6 +153,7 @@ export async function getDoctorDetail(
             id: true,
             name: true,
             address: true,
+            badge: true,
             phoneNumber: true,
             latitude: true,
             longitude: true,

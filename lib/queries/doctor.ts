@@ -18,6 +18,7 @@ export interface DoctorDetail {
     id: string;
     name: LocalizedText;
     address: LocalizedText;
+    badge?: string[]; // 병원 뱃지 (HOT/BEST 등)
     phoneNumber: string | null;
     latitude: number | null;
     longitude: number | null;
