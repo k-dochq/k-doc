@@ -1,5 +1,6 @@
 'use client';
 
+import { type KeyboardEvent, type MouseEvent } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { LikeButtonWrapperV2 } from 'features/doctor-like/ui/LikeButtonWrapperV2';
@@ -28,7 +29,7 @@ export function DoctorDetailHeaderActionsV2({
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
   const shareUrl = `${baseUrl}/${lang}/v2/doctor/${doctorId}`;
 
-  const handleShare = async (e: React.MouseEvent) => {
+  const handleShare = async (e: MouseEvent | KeyboardEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -57,11 +58,11 @@ export function DoctorDetailHeaderActionsV2({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     // Enter 또는 Space 키로 공유 실행
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      handleShare(e as any);
+      handleShare(e);
     }
   };
 
