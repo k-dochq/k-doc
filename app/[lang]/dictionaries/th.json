@@ -962,6 +962,7 @@
     }
   },
   "doctor": {
+    "career": "ประวัติ",
     "careerAndActivity": "ประวัติและกิจกรรม",
     "noCareerInfo": "ไม่มีข้อมูลประวัติ",
     "affiliatedHospital": "โรงพยาบาลที่สังกัด",

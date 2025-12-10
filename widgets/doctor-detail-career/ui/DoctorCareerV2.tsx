@@ -24,7 +24,7 @@ export function DoctorCareerV2({ doctor, lang, dict }: DoctorCareerV2Props) {
     <div className='flex flex-col gap-3 bg-white px-5 py-5'>
       {/* 제목 */}
       <h3 className='text-[18px] leading-[28px] font-semibold text-neutral-700'>
-        {dict.doctor.careerAndActivity}
+        {dict.doctor.career}
       </h3>
 
       {/* 경력 텍스트 */}
