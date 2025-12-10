@@ -29,7 +29,7 @@ export function PageHeaderV2({
     if (!tickingRef.current) {
       window.requestAnimationFrame(() => {
         const currentScrollY = window.scrollY;
-        const scrollThreshold = 50;
+        const scrollThreshold = 100;
 
         setIsScrolled(currentScrollY > scrollThreshold);
         tickingRef.current = false;

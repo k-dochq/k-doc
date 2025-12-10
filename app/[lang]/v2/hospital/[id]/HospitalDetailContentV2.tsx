@@ -10,6 +10,7 @@ import { HospitalDetailRegistrationPromptV2 } from 'widgets/hospital-detail-regi
 import { HospitalDetailTabsV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDetailTabsV2';
 import { LiveReviewV2ContainerForHospital } from 'widgets/live-reviews/ui/LiveReviewV2ContainerForHospital';
 import { PopularReviewsV2ContainerForHospital } from 'widgets/popular-reviews/ui/PopularReviewsV2ContainerForHospital';
+import { HospitalDetailConsultationFloatingV2 } from 'widgets/hospital-detail-consultation-floating/ui/HospitalDetailConsultationFloatingV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentV2Props {
@@ -69,6 +70,12 @@ export async function HospitalDetailContentV2({
         <div className='py-9'>
           <PopularReviewsV2ContainerForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
         </div>
+
+        {/* 하단 고정 버튼을 위한 여백 */}
+        <div className='h-24' />
+
+        {/* 하단 고정 상담신청 버튼 */}
+        <HospitalDetailConsultationFloatingV2 hospitalId={hospitalId} lang={lang} dict={dict} />
       </div>
     );
   } catch (error) {
