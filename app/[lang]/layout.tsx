@@ -51,9 +51,9 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
   };
 
   const descriptions = {
-    ko: 'K-DOC은 한국 성형 관광의 필수 플랫폼입니다. 외국인환자유치업체, 검증된 병원 비교·예약, 리얼 후기, 시술 가격, 이벤트·혜택, 회원 전용 시술비 할인까지 모두 제공합니다.',
-    en: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery discounts & beauty tour benefits.',
-    th: 'K-DOC คู่มือศัลยกรรมตกแต่งที่สำคัญของเกาหลี — เปรียบเทียบโรงพยาบาลชั้นนำ อ่านรีวิวจริง จองอย่างปลอดภัย และเพลิดเพลินกับส่วนลดพิเศษด้านศัลยกรรมและประโยชน์ทัวร์ความงาม',
+    ko: 'K-DOC은 한국 성형 관광의 필수 플랫폼입니다. 외국인환자유치업체, 검증된 병원 비교·예약, 리얼 후기, 시술 가격, 이벤트, 회원 전용 혜택까지 모두 제공합니다.',
+    en: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
+    th: 'K-DOC คู่มือศัลยกรรมตกแต่งเกาหลีที่จำเป็น — เปรียบเทียบโรงพยาบาลชั้นนำ อ่านรีวิวจริง จองอย่างปลอดภัย และเพลิดเพลินกับประโยชน์พิเศษด้านศัลยกรรมและทัวร์ความงาม',
   };
 
   // 기본 keywords
