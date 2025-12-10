@@ -20,6 +20,7 @@ export function transformDoctorHospitalToHospitalCard(doctor: DoctorDetail): Hos
     id: doctor.hospital.id,
     name: doctor.hospital.name,
     address: doctor.hospital.address,
+    badge: doctor.hospital.badge ?? [],
     prices: parsePriceInfo(doctor.hospital.prices), // 실제 가격 정보 파싱
     rating: doctor.hospital.rating,
     reviewCount: doctor.hospital.reviewCount,

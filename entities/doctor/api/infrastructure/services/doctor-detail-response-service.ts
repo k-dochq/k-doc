@@ -71,6 +71,7 @@ function transformDoctorHospitalInfo(
     id: hospital.id,
     name: parseLocalizedText(hospital.name),
     address: parseLocalizedText(hospital.address),
+    badge: hospital.badge ?? [],
     phoneNumber: hospital.phoneNumber,
     latitude: hospital.latitude,
     longitude: hospital.longitude,
