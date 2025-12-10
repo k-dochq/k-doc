@@ -18,6 +18,7 @@ import { DoctorDetailHeaderV2 } from 'widgets/doctor-detail-header/ui/DoctorDeta
 import { DoctorProfileV2 } from 'widgets/doctor-detail-profile/ui/DoctorProfileV2';
 import { DoctorCareerV2 } from 'widgets/doctor-detail-career/ui/DoctorCareerV2';
 import { DoctorCareerAndActivityV2 } from 'widgets/doctor-detail-career/ui/DoctorCareerAndActivityV2';
+import { DoctorAffiliatedHospitalSectionV2 } from 'widgets/doctor-affiliated-hospital/ui';
 
 interface DoctorDetailContentV2Props {
   doctorId: string;
@@ -43,6 +44,7 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
   const doctorName = getLocalizedTextByLocale(doctor.name, lang) || '의사';
   const doctorPosition = getLocalizedTextByLocale(doctor.position, lang);
   const doctorTitle = doctorPosition ? `${doctorName} ${doctorPosition}` : doctorName;
+  const affiliatedHospital = transformDoctorHospitalToHospitalCard(doctor);
 
   return (
     <div>
@@ -54,6 +56,10 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
       <DoctorCareerV2 doctor={doctor} lang={lang} dict={dict} />
       {/* 경력 및 활동 섹션 */}
       <DoctorCareerAndActivityV2 doctor={doctor} lang={lang} dict={dict} />
+      {/* 소속 병원 섹션 */}
+      {affiliatedHospital && (
+        <DoctorAffiliatedHospitalSectionV2 doctor={doctor} lang={lang} dict={dict} />
+      )}
     </div>
   );
 }
