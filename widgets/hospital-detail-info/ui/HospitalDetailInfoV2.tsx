@@ -3,10 +3,10 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type Hospital } from 'entities/hospital/api/entities/types';
-import { StarIconV2 } from 'shared/ui/icons/StarIconV2';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags/MedicalSpecialtyTagsV2';
 import { HospitalDetailBadgeV2 } from 'widgets/hospital-detail-badge/ui/HospitalDetailBadgeV2';
 import { HospitalDetailLogoV2 } from 'widgets/hospital-detail-logo/ui/HospitalDetailLogoV2';
+import { HospitalReviewStatsV2 } from 'widgets/popular-reviews/ui/HospitalReviewStatsV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailInfoV2Props {
@@ -72,29 +72,12 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
       {/* 평점과 가격 정보 */}
       <div className='mt-1.5 flex items-center gap-2'>
         {/* 평점 */}
-        <div className='flex items-center gap-1'>
-          <StarIconV2 width={24} height={24} />
-          <div className='flex items-center gap-1.5'>
-            <span className='text-lg leading-7 font-bold text-neutral-700'>
-              {(hospital.rating || 0).toFixed(1)}
-            </span>
-            <div className='relative size-[3px] shrink-0'>
-              <svg
-                width='3'
-                height='3'
-                viewBox='0 0 3 3'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <circle cx='1.5' cy='1.5' r='1.5' fill='#404040' />
-              </svg>
-            </div>
-            <span className='text-base leading-6 font-semibold text-neutral-700'>
-              {dict.favorites?.reviews || '리뷰'} {hospital.reviewCount || 0}
-              {dict.hospital?.like?.countLabel || ''}
-            </span>
-          </div>
-        </div>
+        <HospitalReviewStatsV2
+          hospitalId={hospital.id}
+          lang={lang}
+          dict={dict}
+          showPadding={false}
+        />
 
         {/* 구분선 */}
         <div className='relative flex h-3 w-0 shrink-0 items-center justify-center'>

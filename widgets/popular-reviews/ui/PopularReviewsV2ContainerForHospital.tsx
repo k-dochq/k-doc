@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { usePopularReviewsV2 } from 'entities/review/api/queries/use-popular-reviews-v2';
 import { PopularReviewsTitleV2ForHospital } from './PopularReviewsTitleV2ForHospital';
+import { HospitalReviewStatsV2 } from './HospitalReviewStatsV2';
 import { PopularReviewsCarouselV2 } from './PopularReviewsCarouselV2';
 import { PopularReviewsCarouselV2Skeleton } from './PopularReviewsCarouselV2Skeleton';
 
@@ -41,7 +42,9 @@ function PopularReviewsV2Content({
     return (
       <>
         <PopularReviewsTitleV2ForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
-        <div className='h-4' />
+        <div className='h-3' />
+        <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+        <div className='h-3' />
         <PopularReviewsCarouselV2Skeleton />
       </>
     );
@@ -51,7 +54,9 @@ function PopularReviewsV2Content({
     return (
       <>
         <PopularReviewsTitleV2ForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
-        <div className='h-4' />
+        <div className='h-3' />
+        <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+        <div className='h-3' />
         <PopularReviewsCarouselV2 reviews={popularReviews.reviews} lang={lang} dict={dict} />
       </>
     );

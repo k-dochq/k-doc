@@ -41,6 +41,7 @@
   "popularReviews": {
     "title": "Popular Reviews",
     "viewAll": "View All",
+    "reviewCount": "{count} reviews",
     "error": {
       "message": "An error occurred while loading review information.",
       "retryButton": "Retry"

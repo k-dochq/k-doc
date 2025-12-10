@@ -8,3 +8,4 @@ export { PopularReviewsCarouselV2Skeleton } from './PopularReviewsCarouselV2Skel
 export { PopularReviewsPageIndicator } from './PopularReviewsPageIndicator';
 export { PopularReviewsTitleV2ForHospital } from './PopularReviewsTitleV2ForHospital';
 export { PopularReviewsV2ContainerForHospital } from './PopularReviewsV2ContainerForHospital';
+export { HospitalReviewStatsV2 } from './HospitalReviewStatsV2';
