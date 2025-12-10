@@ -4,9 +4,9 @@ import React from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useDoctorDetail } from '@/lib/queries/doctor';
-import { DoctorDetailSkeleton } from '../../../doctor/[id]/DoctorDetailSkeleton';
-import { DoctorDetailError } from '../../../doctor/[id]/DoctorDetailError';
-import { DoctorDetailNotFound } from '../../../doctor/[id]/DoctorDetailNotFound';
+import { DoctorDetailSkeletonV2 } from './DoctorDetailSkeletonV2';
+import { DoctorDetailErrorV2 } from './DoctorDetailErrorV2';
+import { DoctorDetailNotFoundV2 } from './DoctorDetailNotFoundV2';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospital-transform';
 import { DoctorDetailHeaderV2 } from 'widgets/doctor-detail-header/ui/DoctorDetailHeaderV2';
@@ -26,15 +26,15 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
   const { data: doctor, isLoading, error } = useDoctorDetail(doctorId);
 
   if (isLoading) {
-    return <DoctorDetailSkeleton lang={lang} dict={dict} />;
+    return <DoctorDetailSkeletonV2 lang={lang} dict={dict} />;
   }
 
   if (error) {
-    return <DoctorDetailError lang={lang} dict={dict} error={error} />;
+    return <DoctorDetailErrorV2 lang={lang} dict={dict} error={error} />;
   }
 
   if (!doctor) {
-    return <DoctorDetailNotFound lang={lang} dict={dict} />;
+    return <DoctorDetailNotFoundV2 lang={lang} dict={dict} />;
   }
 
   const doctorName = getLocalizedTextByLocale(doctor.name, lang) || '의사';
