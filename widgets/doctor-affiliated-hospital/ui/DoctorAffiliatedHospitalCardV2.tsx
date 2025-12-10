@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { type HospitalCardData, type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
-import { HospitalLikeButton } from 'features/hospital-like/ui/HospitalLikeButton';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags/MedicalSpecialtyTagsV2';
 import { HospitalCardV2NameAndLocation } from 'entities/hospital/ui/HospitalCardV2NameAndLocation';
 import { HospitalCardV2Rating } from 'entities/hospital/ui/HospitalCardV2Rating';
@@ -40,15 +39,6 @@ export function DoctorAffiliatedHospitalCardV2({
           className='object-cover'
           sizes='104px'
         />
-        <div className='absolute bottom-2 left-2'>
-          <HospitalLikeButton
-            hospitalId={hospital.id}
-            locale={lang}
-            dict={dict}
-            showCount={false}
-            size='sm'
-          />
-        </div>
       </div>
 
       {/* 정보 영역 */}
