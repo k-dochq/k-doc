@@ -6,6 +6,7 @@ import { type LiveReviewData } from '../use-cases/get-live-reviews';
 
 export interface GetLiveReviewsParams {
   category?: MedicalSpecialtyType | 'ALL';
+  hospitalId?: string;
   limit?: number;
   page?: number;
 }
@@ -22,10 +23,13 @@ export interface GetLiveReviewsApiResponse {
 export async function fetchLiveReviews(
   params: GetLiveReviewsParams = {},
 ): Promise<LiveReviewData[]> {
-  const { category = 'ALL', limit = 3, page = 1 } = params;
+  const { category = 'ALL', hospitalId, limit = 3, page = 1 } = params;
 
   const searchParams = new URLSearchParams();
   searchParams.set('category', category);
+  if (hospitalId) {
+    searchParams.set('hospitalId', hospitalId);
+  }
   searchParams.set('limit', limit.toString());
   searchParams.set('page', page.toString());
 
@@ -51,7 +55,7 @@ export function useLiveReviews(
   },
 ) {
   return useQuery({
-    queryKey: ['live-reviews', params.category, params.limit, params.page],
+    queryKey: ['live-reviews', params.category, params.hospitalId, params.limit, params.page],
     queryFn: () => fetchLiveReviews(params),
     initialData: options?.initialData,
     placeholderData: (previousData) => previousData, // 이전 데이터를 placeholder로 유지

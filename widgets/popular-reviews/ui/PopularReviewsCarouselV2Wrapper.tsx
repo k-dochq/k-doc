@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
-import { usePopularReviews } from 'entities/review';
+import { usePopularReviewsV2 } from 'entities/review/api/queries/use-popular-reviews-v2';
 import { PopularReviewsCarouselV2 } from './PopularReviewsCarouselV2';
 import { PopularReviewsCarouselV2Skeleton } from './PopularReviewsCarouselV2Skeleton';
 
@@ -23,7 +23,7 @@ function PopularReviewsCarouselV2Content({
     data: popularReviews,
     isLoading,
     error,
-  } = usePopularReviews({
+  } = usePopularReviewsV2({
     category: selectedCategory,
     limit: 5,
   });

@@ -6,3 +6,6 @@ export { PopularReviewsCarouselV2 } from './PopularReviewsCarouselV2';
 export { PopularReviewsCarouselV2Wrapper } from './PopularReviewsCarouselV2Wrapper';
 export { PopularReviewsCarouselV2Skeleton } from './PopularReviewsCarouselV2Skeleton';
 export { PopularReviewsPageIndicator } from './PopularReviewsPageIndicator';
+export { PopularReviewsTitleV2ForHospital } from './PopularReviewsTitleV2ForHospital';
+export { PopularReviewsV2ContainerForHospital } from './PopularReviewsV2ContainerForHospital';
+export { HospitalReviewStatsV2 } from './HospitalReviewStatsV2';
