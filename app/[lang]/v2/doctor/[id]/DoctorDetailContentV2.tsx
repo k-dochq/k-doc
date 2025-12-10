@@ -16,6 +16,7 @@ import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospit
 import { DoctorHospitalReviews } from '@/features/doctor-hospital-reviews';
 import { DoctorDetailHeaderV2 } from 'widgets/doctor-detail-header/ui/DoctorDetailHeaderV2';
 import { DoctorProfileV2 } from 'widgets/doctor-detail-profile/ui/DoctorProfileV2';
+import { DoctorCareerV2 } from 'widgets/doctor-detail-career/ui/DoctorCareerV2';
 
 interface DoctorDetailContentV2Props {
   doctorId: string;
@@ -48,6 +49,8 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
       <div className='h-[56px]' />
       {/* 의사 프로필 섹션 */}
       <DoctorProfileV2 doctor={doctor} lang={lang} dict={dict} />
+      {/* 의사 약력 섹션 */}
+      <DoctorCareerV2 doctor={doctor} lang={lang} dict={dict} />
     </div>
   );
 }
