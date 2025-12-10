@@ -8,17 +8,13 @@ import { DoctorDetailSkeleton } from '../../../doctor/[id]/DoctorDetailSkeleton'
 import { DoctorDetailError } from '../../../doctor/[id]/DoctorDetailError';
 import { DoctorDetailNotFound } from '../../../doctor/[id]/DoctorDetailNotFound';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
-import { DoctorCard } from '@/widgets/hospital-detail-doctors/ui/DoctorCard';
-import { transformDoctorDetailToHospitalDoctor } from '@/lib/utils/doctor-transform';
-import { DoctorCareer } from '@/features/doctor-career';
-import { HospitalCard } from '@/entities/hospital/ui/HospitalCard';
 import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospital-transform';
-import { DoctorHospitalReviews } from '@/features/doctor-hospital-reviews';
 import { DoctorDetailHeaderV2 } from 'widgets/doctor-detail-header/ui/DoctorDetailHeaderV2';
 import { DoctorProfileV2 } from 'widgets/doctor-detail-profile/ui/DoctorProfileV2';
 import { DoctorCareerV2 } from 'widgets/doctor-detail-career/ui/DoctorCareerV2';
 import { DoctorCareerAndActivityV2 } from 'widgets/doctor-detail-career/ui/DoctorCareerAndActivityV2';
 import { DoctorAffiliatedHospitalSectionV2 } from 'widgets/doctor-affiliated-hospital/ui';
+import { PopularReviewsV2ContainerForHospital } from 'widgets/popular-reviews/ui/PopularReviewsV2ContainerForHospital';
 
 interface DoctorDetailContentV2Props {
   doctorId: string;
@@ -45,6 +41,7 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
   const doctorPosition = getLocalizedTextByLocale(doctor.position, lang);
   const doctorTitle = doctorPosition ? `${doctorName} ${doctorPosition}` : doctorName;
   const affiliatedHospital = transformDoctorHospitalToHospitalCard(doctor);
+  const hospitalId = doctor.hospital?.id;
 
   return (
     <div>
@@ -59,6 +56,12 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
       {/* 소속 병원 섹션 */}
       {affiliatedHospital && (
         <DoctorAffiliatedHospitalSectionV2 doctor={doctor} lang={lang} dict={dict} />
+      )}
+      {/* 시술후기(인기후기) 섹션 */}
+      {hospitalId && (
+        <div className='pt-5 pb-11'>
+          <PopularReviewsV2ContainerForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
+        </div>
       )}
     </div>
   );
