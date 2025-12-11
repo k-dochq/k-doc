@@ -21,9 +21,7 @@ export function TreatmentRelatedReviewsSectionV2({
   sort = REVIEW_SORT_OPTIONS.RECOMMENDED,
 }: TreatmentRelatedReviewsSectionV2Props) {
   const title =
-    dict.reviewDetail?.sameHospitalReviews ||
-    dict.hospitalReviews?.title ||
-    '같은 카테고리 시술후기';
+    dict.reviewDetail?.sameHospitalReviews || dict.hospitalReviews?.title || '같은 병원 시술 후기';
 
   return (
     <div className='pt-5 pb-8'>
