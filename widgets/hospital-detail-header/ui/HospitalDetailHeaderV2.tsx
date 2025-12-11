@@ -8,6 +8,7 @@ interface HospitalDetailHeaderV2Props {
   dict: Dictionary;
   hospitalId: string;
   hospitalName?: string;
+  enableScrollTransparency?: boolean;
 }
 
 export function HospitalDetailHeaderV2({
@@ -15,12 +16,13 @@ export function HospitalDetailHeaderV2({
   dict,
   hospitalId,
   hospitalName,
+  enableScrollTransparency = true,
 }: HospitalDetailHeaderV2Props) {
   return (
     <PageHeaderV2
       title={hospitalName || ''}
       fallbackUrl={`/${lang}/v2/hospitals`}
-      enableScrollTransparency={true}
+      enableScrollTransparency={enableScrollTransparency}
       rightContent={
         <HospitalDetailHeaderActionsV2
           hospitalId={hospitalId}
