@@ -24,3 +24,6 @@ export { ShareIconV2 } from './ShareIconV2';
 export { HeartIconV2Detail } from './HeartIconV2Detail';
 export { HeartOutlineIconV2Detail } from './HeartOutlineIconV2Detail';
 export { CheckIcon } from './CheckIcon';
+export { CommentIconV2 } from './CommentIconV2';
+export { StarIconV2 } from './StarIconV2';
+export { StarIconReviewV2 } from './StarIconReviewV2';
