@@ -73,9 +73,9 @@ export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
         {/* 내용 */}
         <div className='flex min-w-0 flex-1 flex-col gap-2'>
           <div className='flex min-w-0 flex-col gap-1'>
-            <div className='flex min-w-0 items-center gap-1 text-[16px] leading-6 font-semibold text-neutral-700'>
-              <p className='truncate'>{doctorName}</p>
-              {position && <p className='truncate text-neutral-700'>{position}</p>}
+            <div className='line-clamp-2 min-w-0 text-[16px] leading-6 font-semibold text-neutral-700'>
+              {doctorName}
+              {position && ` ${position}`}
             </div>
             {hospitalName && (
               <p className='truncate text-[12px] leading-4 text-neutral-400'>{hospitalName}</p>
@@ -88,7 +88,7 @@ export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
           </div>
 
           <div className='flex items-center gap-1 text-[12px] leading-4 text-neutral-500'>
-            <span>{(dict as any)?.common?.more || '더보기'}</span>
+            <span>{dict.review?.showMore || '더보기'}</span>
             <ArrowRightIcon size={12} className='text-neutral-500' />
           </div>
         </div>

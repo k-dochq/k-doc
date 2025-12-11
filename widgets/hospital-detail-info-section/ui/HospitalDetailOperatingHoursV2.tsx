@@ -57,24 +57,21 @@ export function HospitalDetailOperatingHoursV2({
             const schedule = getDaySchedule(openingHours, index);
             const hours = formatHours(schedule.hours);
             const isSunday = index === 6;
+            const isClosed = !schedule.isOpen || !hours;
 
             return (
               <div
                 key={day}
                 className={`flex items-center justify-center py-2 text-center ${
                   index === 0 ? 'border-l-0' : 'border-l border-neutral-200'
-                } border-b border-neutral-200`}
+                } border-b border-neutral-200 ${isClosed ? 'bg-neutral-100' : ''}`}
               >
                 {schedule.isOpen && hours ? (
                   <p className='text-[13px] leading-[19px] whitespace-pre-line text-neutral-700'>
                     {hours}
                   </p>
                 ) : (
-                  <p
-                    className={`whitespace-pre-line ${
-                      isSunday ? 'bg-neutral-100 text-[#e7000b]' : 'bg-neutral-100 text-[#e7000b]'
-                    } rounded-sm px-1 py-1 text-xs leading-4`}
-                  >
+                  <p className='rounded-sm px-1 py-1 text-xs leading-4 whitespace-pre-line text-[#e7000b]'>
                     {holidayTexts[lang]}
                   </p>
                 )}
