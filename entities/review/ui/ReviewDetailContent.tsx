@@ -160,7 +160,7 @@ export function ReviewDetailContent({ review, lang, dict }: ReviewDetailContentP
           lang={lang}
           dict={dict}
           excludeReviewId={review.id}
-          title={dict.reviewDetail?.sameHospitalReviews || '같은 시술 후기'}
+          title={dict.reviewDetail?.sameHospitalReviews || '같은 병원 시술 후기'}
         />
       </div>
 
