@@ -4,17 +4,19 @@ import { LoadingIcon } from 'shared/ui/loading-icon';
 import { HeartIconV2Detail, HeartOutlineIconV2Detail } from 'shared/ui/icons';
 
 interface LikeButtonV2Props {
-  likeCount?: number;
+  likeCount?: number; // 호환성 유지용 (UI에 표시하지 않음)
   isLiked?: boolean;
   onLikeToggle?: () => void;
   isLoading?: boolean;
+  className?: string;
 }
 
 export function LikeButtonV2({
-  likeCount = 0,
+  likeCount = 0, // 사용하지 않지만 시그니처 호환을 위해 유지
   isLiked = false,
   onLikeToggle,
   isLoading = false,
+  className = '',
 }: LikeButtonV2Props) {
   return (
     <button
@@ -25,7 +27,7 @@ export function LikeButtonV2({
           onLikeToggle?.();
         }
       }}
-      className={`flex items-center justify-center ${isLoading ? 'cursor-not-allowed' : ''}`}
+      className={`flex items-center justify-center ${isLoading ? 'cursor-not-allowed' : ''} ${className}`}
       aria-label={isLiked ? '좋아요 취소' : '좋아요'}
       disabled={isLoading}
     >
