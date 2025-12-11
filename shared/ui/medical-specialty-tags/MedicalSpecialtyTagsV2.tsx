@@ -13,6 +13,7 @@ interface MedicalSpecialtyTagsV2Props {
   maxDisplay?: number;
   className?: string;
   tagClassName?: string;
+  textClassName?: string;
 }
 
 /**
@@ -25,6 +26,7 @@ export function MedicalSpecialtyTagsV2({
   maxDisplay,
   className = '',
   tagClassName = '',
+  textClassName = '',
 }: MedicalSpecialtyTagsV2Props) {
   if (!specialties || specialties.length === 0) {
     return null;
@@ -39,11 +41,20 @@ export function MedicalSpecialtyTagsV2({
       {displaySpecialties.map((specialty) => {
         const specialtyName = extractLocalizedText(specialty.name, lang) || '';
         return (
-          <MedicalSpecialtyTagV2 key={specialty.id} name={specialtyName} className={tagClassName} />
+          <MedicalSpecialtyTagV2
+            key={specialty.id}
+            name={specialtyName}
+            className={tagClassName}
+            textClassName={textClassName}
+          />
         );
       })}
       {remainingCount > 0 && (
-        <MedicalSpecialtyTagV2 name={`+${remainingCount}`} className={tagClassName} />
+        <MedicalSpecialtyTagV2
+          name={`+${remainingCount}`}
+          className={tagClassName}
+          textClassName={textClassName}
+        />
       )}
     </div>
   );
