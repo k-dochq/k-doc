@@ -41,6 +41,7 @@ export default async function V2ReviewDetailPage({ params }: V2ReviewDetailPageP
         user={null as unknown as User | null}
         forceContentExpanded
         disableLink
+        useHorizontalImages
       />
     </div>
   );

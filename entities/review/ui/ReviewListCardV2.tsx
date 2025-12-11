@@ -10,6 +10,7 @@ import { ReviewListImages } from './ReviewListImages';
 import { ReviewListCardHeaderV2 } from './ReviewListCardHeaderV2';
 import { ReviewStatsSectionV2 } from './ReviewStatsSectionV2';
 import { ReviewListCardV2Content } from './ReviewListCardV2Content';
+import { ReviewImagesHorizontalV2 } from './ReviewImagesHorizontalV2';
 import { useState, useRef, useEffect } from 'react';
 
 interface ReviewListCardV2Props {
@@ -22,6 +23,7 @@ interface ReviewListCardV2Props {
   className?: string;
   forceContentExpanded?: boolean;
   disableLink?: boolean;
+  useHorizontalImages?: boolean;
 }
 
 export function ReviewListCardV2({
@@ -34,6 +36,7 @@ export function ReviewListCardV2({
   className = '',
   forceContentExpanded = false,
   disableLink = false,
+  useHorizontalImages = false,
 }: ReviewListCardV2Props) {
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
   const [isExpanded, setIsExpanded] = useState(forceContentExpanded);
@@ -63,16 +66,29 @@ export function ReviewListCardV2({
         </div>
 
         {/* 이미지 섹션: Before/After 이미지 */}
-        <div className='mt-3 px-5'>
-          <ReviewListImages
-            beforeImages={review.images.before}
-            afterImages={review.images.after}
-            reviewId={review.id}
-            lang={lang}
-            dict={dict}
-            requiresLogin={review.requiresLogin}
-            className='h-[220px]'
-          />
+        <div className='mt-3'>
+          {useHorizontalImages ? (
+            <ReviewImagesHorizontalV2
+              beforeImages={review.images.before}
+              afterImages={review.images.after}
+              reviewId={review.id}
+              lang={lang}
+              dict={dict}
+              requiresLogin={review.requiresLogin}
+            />
+          ) : (
+            <div className='px-5'>
+              <ReviewListImages
+                beforeImages={review.images.before}
+                afterImages={review.images.after}
+                reviewId={review.id}
+                lang={lang}
+                dict={dict}
+                requiresLogin={review.requiresLogin}
+                className='h-[220px]'
+              />
+            </div>
+          )}
         </div>
 
         {/* 세 번째 섹션과 네 번째 섹션 */}
