@@ -33,7 +33,7 @@ export function DoctorProfileV2({ doctor, lang, dict }: DoctorProfileV2Props) {
   );
 
   return (
-    <div className='flex items-center gap-3 px-5 pt-5 pb-2'>
+    <div className='flex items-start gap-3 px-5 pt-5 pb-2'>
       {/* 프로필 이미지 */}
       <div className='relative h-[100px] w-[100px] shrink-0 overflow-hidden rounded-full bg-[#cde3ff] shadow-[1px_2px_4px_0px_rgba(0,0,0,0.4)]'>
         <Image
@@ -49,9 +49,9 @@ export function DoctorProfileV2({ doctor, lang, dict }: DoctorProfileV2Props) {
       <div className='flex min-w-0 flex-1 flex-col gap-2'>
         {/* 이름과 직책 */}
         <div className='flex min-w-0 flex-col gap-0.5'>
-          <div className='flex min-w-0 items-center gap-1 text-[18px] leading-[28px] font-semibold text-neutral-700'>
-            <p className='truncate'>{doctorName}</p>
-            {position && <p className='truncate text-neutral-700'>{position}</p>}
+          <div className='line-clamp-2 min-w-0 text-[18px] leading-[28px] font-semibold text-neutral-700'>
+            {doctorName}
+            {position && ` ${position}`}
           </div>
           {hospitalName && (
             <p className='truncate text-[14px] leading-[20px] font-medium text-neutral-400'>
