@@ -13,6 +13,7 @@ export { ReviewStatsSection } from './ReviewStatsSection';
 export { ReviewLikeDisplay } from './ReviewLikeDisplay';
 export { ReviewListImages } from './ReviewListImages';
 export { ImageTag } from './ImageTag';
+export { ReviewsSkeletonV2 } from './ReviewsSkeletonV2';
 export { ReviewHashtagsV2 } from './ReviewHashtagsV2';
 export { SingleImageDisplay } from './SingleImageDisplay';
 export { DualImageDisplay } from './DualImageDisplay';

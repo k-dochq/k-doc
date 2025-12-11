@@ -4,7 +4,8 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
-import { ReviewsSkeleton, useInfiniteAllReviews } from 'entities/review';
+import { ReviewsSkeletonV2 } from 'entities/review/ui/ReviewsSkeletonV2';
+import { useInfiniteAllReviews } from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
@@ -61,7 +62,7 @@ export function HospitalReviewsInfiniteListV2({
 
   // 로딩 상태
   if (isLoading) {
-    return <ReviewsSkeleton count={6} />;
+    return <ReviewsSkeletonV2 count={6} />;
   }
 
   // 에러 상태
