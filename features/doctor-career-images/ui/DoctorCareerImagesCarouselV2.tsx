@@ -71,7 +71,7 @@ export function DoctorCareerImagesCarouselV2({ images, lang }: DoctorCareerImage
             <CarouselItem key={image.id} className='basis-auto pl-2'>
               <button
                 onClick={() => handleImageClick(index)}
-                className='relative h-[100px] w-[100px] overflow-hidden rounded-lg border border-neutral-200 transition-transform hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:outline-none'
+                className='relative h-[100px] w-[100px] overflow-hidden rounded-xl border border-neutral-200 transition-transform hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:outline-none'
               >
                 <Image
                   src={image.imageUrl}
