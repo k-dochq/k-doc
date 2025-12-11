@@ -50,9 +50,6 @@ export async function HospitalReviewsContentV2({
         {/* 리뷰 평점 통계 섹션 */}
         <HospitalReviewRatingStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
 
-        {/* 컨텐츠 영역 - 빈 공간 (나중에 리뷰 리스트 추가 예정) */}
-        <div>{/* 리뷰 리스트가 여기에 추가될 예정 */}</div>
-
         {/* 하단 고정 버튼을 위한 여백 */}
         <div className='h-24' />
 

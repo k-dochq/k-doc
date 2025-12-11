@@ -118,7 +118,7 @@ export function HospitalReviewRatingStatsV2({
         <div className='w-[1px] shrink-0 bg-neutral-200' />
 
         {/* 오른쪽: 1~5점대별 게이지 바 */}
-        <div className='flex flex-1 flex-col gap-2 px-3'>
+        <div className='flex flex-1 flex-col px-3'>
           {[5, 4, 3, 2, 1].map((rating) => {
             const count = ratingDistribution[rating as keyof typeof ratingDistribution];
             const width = getGaugeWidth(count);
