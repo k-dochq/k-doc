@@ -71,14 +71,14 @@ export function DoctorCareerImagesCarouselV2({ images, lang }: DoctorCareerImage
             <CarouselItem key={image.id} className='basis-auto pl-2'>
               <button
                 onClick={() => handleImageClick(index)}
-                className='focus:ring-primary relative h-[90px] w-[90px] overflow-hidden rounded-lg transition-transform hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:outline-none'
+                className='focus:ring-primary relative h-[100px] w-[100px] overflow-hidden rounded-lg transition-transform hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:outline-none'
               >
                 <Image
                   src={image.imageUrl}
                   alt={image.alt || '의사 경력 이미지'}
                   fill
                   className='object-cover'
-                  sizes='90px'
+                  sizes='100px'
                 />
               </button>
             </CarouselItem>

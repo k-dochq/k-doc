@@ -48,7 +48,7 @@ export function DoctorProfileV2({ doctor, lang, dict }: DoctorProfileV2Props) {
       {/* 내용 */}
       <div className='flex min-w-0 flex-1 flex-col gap-2'>
         {/* 이름과 직책 */}
-        <div className='flex min-w-0 flex-col gap-0.5'>
+        <div className='flex min-w-0 flex-col gap-0.5 leading-tight'>
           <div className='line-clamp-2 min-w-0 text-[18px] leading-[28px] font-semibold text-neutral-700'>
             {doctorName}
             {position && ` ${position}`}

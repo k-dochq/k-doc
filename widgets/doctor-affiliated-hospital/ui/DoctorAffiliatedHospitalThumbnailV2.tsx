@@ -32,7 +32,7 @@ export function DoctorAffiliatedHospitalThumbnailV2({
         src={imageUrl || '/images/shared/default_image_square.png'}
         alt={alt || 'hospital thumbnail'}
         fill
-        className='object-cover'
+        className='rounded-l-xl object-cover'
         sizes='104px'
       />
     </div>
