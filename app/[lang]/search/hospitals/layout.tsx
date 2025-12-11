@@ -1,7 +1,7 @@
 import { HeaderV2 } from 'widgets/header/ui/HeaderV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { BottomNavigation, BottomNavigationV2 } from '@/widgets/bottom-navigation';
+import { BottomNavigationV2 } from '@/widgets/bottom-navigation';
 
 interface HospitalsSearchLayoutProps {
   children: React.ReactNode;
