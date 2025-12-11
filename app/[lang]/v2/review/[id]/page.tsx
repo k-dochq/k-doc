@@ -7,6 +7,7 @@ import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
 import { type User } from '@supabase/supabase-js';
 import { TreatmentHospitalSectionV2 } from './TreatmentHospitalSectionV2';
 import { TreatmentRelatedReviewsSectionV2 } from './TreatmentRelatedReviewsSectionV2';
+import { ReviewCommentsSectionV2 } from 'features/review-comments/ui/ReviewCommentsSectionV2';
 import { convertReviewHospitalToHospitalCard } from 'entities/review/lib/convert-hospital-data';
 
 interface V2ReviewDetailPageProps {
@@ -53,6 +54,9 @@ export default async function V2ReviewDetailPage({ params }: V2ReviewDetailPageP
 
       {/* 동일 병원 후기 섹션 */}
       <TreatmentRelatedReviewsSectionV2 hospitalId={review.hospital.id} lang={lang} dict={dict} />
+
+      {/* 댓글 섹션 */}
+      <ReviewCommentsSectionV2 reviewId={review.id} lang={lang} dict={dict} className='bg-white' />
     </div>
   );
 }
