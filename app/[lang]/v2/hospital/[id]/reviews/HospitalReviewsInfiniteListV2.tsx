@@ -25,14 +25,14 @@ export function HospitalReviewsInfiniteListV2({
   hospitalId,
   lang,
   dict,
-  sort = REVIEW_SORT_OPTIONS.POPULAR,
+  sort = REVIEW_SORT_OPTIONS.RECOMMENDED,
 }: HospitalReviewsInfiniteListV2Props) {
   const { user } = useAuth();
 
   // 타입 안전한 파라미터 구성
   const queryParams = {
     limit: 10,
-    sort: sort || REVIEW_SORT_OPTIONS.POPULAR,
+    sort: sort || REVIEW_SORT_OPTIONS.RECOMMENDED,
     hospitalId,
   };
 
