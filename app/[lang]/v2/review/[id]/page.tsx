@@ -9,6 +9,7 @@ import { TreatmentHospitalSectionV2 } from './TreatmentHospitalSectionV2';
 import { TreatmentRelatedReviewsSectionV2 } from './TreatmentRelatedReviewsSectionV2';
 import { ReviewCommentsSectionV2 } from 'features/review-comments/ui/ReviewCommentsSectionV2';
 import { convertReviewHospitalToHospitalCard } from 'entities/review/lib/convert-hospital-data';
+import { ReviewDetailCardV2Shell } from './ReviewDetailCardV2Shell';
 
 interface V2ReviewDetailPageProps {
   params: Promise<{
@@ -39,15 +40,7 @@ export default async function V2ReviewDetailPage({ params }: V2ReviewDetailPageP
       <div className='h-[58px]' />
 
       {/* 리뷰 본문 카드: 내용 기본 펼침, 더보기 버튼 없음 */}
-      <ReviewListCardV2
-        review={review}
-        lang={lang}
-        dict={dict}
-        user={null as unknown as User | null}
-        forceContentExpanded
-        disableLink
-        useHorizontalImages
-      />
+      <ReviewDetailCardV2Shell review={review} lang={lang} dict={dict} />
 
       {/* 시술 병원 섹션 */}
       <TreatmentHospitalSectionV2 hospital={hospitalCard} lang={lang} dict={dict} />
