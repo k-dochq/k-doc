@@ -13,7 +13,7 @@ export function HospitalCardV2NameAndLocation({
 }: HospitalCardV2NameAndLocationProps) {
   return (
     <div className='flex w-full shrink-0 flex-col items-start gap-0.5'>
-      <p className='relative w-full shrink-0 truncate text-sm leading-5 font-semibold text-neutral-700'>
+      <p className='relative line-clamp-2 w-full shrink-0 text-sm leading-5 font-semibold text-neutral-700'>
         {hospitalName}
       </p>
       {location && (

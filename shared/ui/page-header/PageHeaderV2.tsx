@@ -105,7 +105,7 @@ export function PageHeaderV2({
         </button>
         {/* 제목 */}
         <h1
-          className={`text-lg leading-7 font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
+          className={`text-lg leading-tight font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
         >
           {title}
         </h1>
