@@ -13,12 +13,18 @@ interface PopularReviewsV2ContainerForHospitalProps {
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;
+  titleOverride?: string;
+  limit?: number;
+  showStats?: boolean;
 }
 
 function PopularReviewsV2Content({
   hospitalId,
   lang,
   dict,
+  titleOverride,
+  limit = 5,
+  showStats = true,
 }: PopularReviewsV2ContainerForHospitalProps) {
   const {
     data: popularReviews,
@@ -26,7 +32,7 @@ function PopularReviewsV2Content({
     error,
   } = usePopularReviewsV2({
     hospitalId,
-    limit: 5,
+    limit,
     hasBothImages: false,
   });
 
@@ -42,9 +48,18 @@ function PopularReviewsV2Content({
   if (isLoading) {
     return (
       <div className='pl-2'>
-        <PopularReviewsTitleV2ForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
-        <div className='h-3' />
-        <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+        <PopularReviewsTitleV2ForHospital
+          hospitalId={hospitalId}
+          lang={lang}
+          dict={dict}
+          titleOverride={titleOverride}
+        />
+        {showStats && (
+          <>
+            <div className='h-3' />
+            <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+          </>
+        )}
         <div className='h-3' />
         <PopularReviewsCarouselV2Skeleton />
       </div>
@@ -54,9 +69,18 @@ function PopularReviewsV2Content({
   if (popularReviews && popularReviews.reviews.length > 0) {
     return (
       <>
-        <PopularReviewsTitleV2ForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
-        <div className='h-3' />
-        <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+        <PopularReviewsTitleV2ForHospital
+          hospitalId={hospitalId}
+          lang={lang}
+          dict={dict}
+          titleOverride={titleOverride}
+        />
+        {showStats && (
+          <>
+            <div className='h-3' />
+            <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+          </>
+        )}
         <div className='h-3' />
         <PopularReviewsCarouselV2 reviews={popularReviews.reviews} lang={lang} dict={dict} />
       </>
@@ -70,10 +94,20 @@ export function PopularReviewsV2ContainerForHospital({
   hospitalId,
   lang,
   dict,
+  titleOverride,
+  limit,
+  showStats,
 }: PopularReviewsV2ContainerForHospitalProps) {
   return (
     <Suspense fallback={<PopularReviewsCarouselV2Skeleton />}>
-      <PopularReviewsV2Content hospitalId={hospitalId} lang={lang} dict={dict} />
+      <PopularReviewsV2Content
+        hospitalId={hospitalId}
+        lang={lang}
+        dict={dict}
+        titleOverride={titleOverride}
+        limit={limit}
+        showStats={showStats}
+      />
     </Suspense>
   );
 }

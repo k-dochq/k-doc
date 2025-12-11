@@ -9,12 +9,14 @@ interface PopularReviewsTitleV2ForHospitalProps {
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;
+  titleOverride?: string;
 }
 
 export function PopularReviewsTitleV2ForHospital({
   hospitalId,
   lang,
   dict,
+  titleOverride,
 }: PopularReviewsTitleV2ForHospitalProps) {
   const router = useLocalizedRouter();
 
@@ -24,7 +26,9 @@ export function PopularReviewsTitleV2ForHospital({
 
   return (
     <div className='flex w-full items-center justify-between px-5'>
-      <h2 className='text-lg font-semibold text-neutral-700'>{dict.hospitalReviews.title}</h2>
+      <h2 className='text-lg font-semibold text-neutral-700'>
+        {titleOverride || dict.hospitalReviews.title}
+      </h2>
 
       <button
         onClick={handleViewAll}

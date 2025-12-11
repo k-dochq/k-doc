@@ -5,6 +5,9 @@ import { PageHeaderV2 } from 'shared/ui/page-header/PageHeaderV2';
 import { ReviewLikeButtonV2 } from 'features/review-like/ui/ReviewLikeButtonV2';
 import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
 import { type User } from '@supabase/supabase-js';
+import { TreatmentHospitalSectionV2 } from './TreatmentHospitalSectionV2';
+import { TreatmentRelatedReviewsSectionV2 } from './TreatmentRelatedReviewsSectionV2';
+import { convertReviewHospitalToHospitalCard } from 'entities/review/lib/convert-hospital-data';
 
 interface V2ReviewDetailPageProps {
   params: Promise<{
@@ -20,6 +23,7 @@ export default async function V2ReviewDetailPage({ params }: V2ReviewDetailPageP
   // 리뷰 상세 데이터 (헤더용)
   const { review } = await getReviewDetail({ reviewId: id });
   const title = '';
+  const hospitalCard = convertReviewHospitalToHospitalCard(review);
 
   return (
     <div className='min-h-screen bg-white'>
@@ -43,6 +47,12 @@ export default async function V2ReviewDetailPage({ params }: V2ReviewDetailPageP
         disableLink
         useHorizontalImages
       />
+
+      {/* 시술 병원 섹션 */}
+      <TreatmentHospitalSectionV2 hospital={hospitalCard} lang={lang} dict={dict} />
+
+      {/* 동일 병원 후기 섹션 */}
+      <TreatmentRelatedReviewsSectionV2 hospitalId={review.hospital.id} lang={lang} dict={dict} />
     </div>
   );
 }
