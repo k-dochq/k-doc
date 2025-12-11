@@ -24,9 +24,7 @@ export function PopularReviewsTitleV2ForHospital({
 
   return (
     <div className='flex w-full items-center justify-between px-5'>
-      <h2 className='text-2xl leading-8 font-semibold text-neutral-700'>
-        {dict.popularReviews.title}
-      </h2>
+      <h2 className='text-lg font-semibold text-neutral-700'>{dict.hospitalReviews.title}</h2>
 
       <button
         onClick={handleViewAll}
