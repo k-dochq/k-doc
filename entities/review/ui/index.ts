@@ -8,6 +8,7 @@ export { ReviewListCardHeaderV2 } from './ReviewListCardHeaderV2';
 export { ReviewListCardFooter } from './ReviewListCardFooter';
 export { ReviewListCardFooterV2 } from './ReviewListCardFooterV2';
 export { ReviewStatsSectionV2 } from './ReviewStatsSectionV2';
+export { ReviewListCardV2Content } from './ReviewListCardV2Content';
 export { ReviewContentSection } from './ReviewContentSection';
 export { ReviewStatsSection } from './ReviewStatsSection';
 export { ReviewLikeDisplay } from './ReviewLikeDisplay';
