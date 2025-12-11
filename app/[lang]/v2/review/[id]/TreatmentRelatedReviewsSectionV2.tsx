@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
+import { type ReviewSortOption } from 'shared/model/types/review-query';
 import { PopularReviewsV2ContainerForHospital } from 'widgets/popular-reviews/ui/PopularReviewsV2ContainerForHospital';
 
 interface TreatmentRelatedReviewsSectionV2Props {
