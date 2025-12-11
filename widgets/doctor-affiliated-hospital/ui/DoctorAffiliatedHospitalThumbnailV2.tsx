@@ -18,12 +18,12 @@ export function DoctorAffiliatedHospitalThumbnailV2({
   return (
     <div className='relative h-[135px] w-[156px] shrink-0 rounded-l-xl bg-neutral-100'>
       {firstBadge === 'HOT' && (
-        <div className='absolute top-[-3px] left-[-1px]'>
+        <div className='absolute top-[-3px] left-[0px]'>
           <HotRibbonV2 />
         </div>
       )}
       {firstBadge === 'BEST' && (
-        <div className='absolute top-[-3px] left-[-1px]'>
+        <div className='absolute top-[-3px] left-[0px]'>
           <BestRibbonV2 />
         </div>
       )}
