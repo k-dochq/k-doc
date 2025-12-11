@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { type ReviewImage } from '../model/types';
 import { BeforeImageSection } from './BeforeImageSection';
 import { AfterImageSection } from './AfterImageSection';
-import { ReviewImagesModal } from './ReviewImagesModal';
+import { ImageModalCarouselV2 } from 'shared/ui/image-modal-carousel/ImageModalCarouselV2';
+import { type ImageModalItem } from 'shared/ui/image-modal-carousel/types';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { info } from 'shared/lib/modal';
@@ -39,6 +40,16 @@ export function ReviewListImages({
     return null;
   }
 
+  // 모든 이미지를 하나의 배열로 합치기 (before 먼저, after 나중)
+  const allImages: ReviewImage[] = [...beforeImages, ...afterImages];
+
+  // ImageModalItem 형태로 변환
+  const modalImages: ImageModalItem[] = allImages.map((image) => ({
+    id: image.id,
+    imageUrl: image.imageUrl,
+    alt: image.alt || '리뷰 이미지',
+  }));
+
   const handleImageClick = async (index: number) => {
     if (requiresLogin) {
       // 로그인 모달 열기
@@ -56,7 +67,7 @@ export function ReviewListImages({
       return;
     }
 
-    // 기존 이미지 모달 열기
+    // 이미지 모달 열기 (beforeImages와 afterImages를 합친 배열 기준 인덱스)
     setSelectedImageIndex(index);
     setIsModalOpen(true);
   };
@@ -83,14 +94,12 @@ export function ReviewListImages({
         />
       </div>
 
-      {/* 리뷰 이미지 모달 */}
-      <ReviewImagesModal
-        beforeImages={beforeImages}
-        afterImages={afterImages}
+      {/* 리뷰 이미지 모달 V2 */}
+      <ImageModalCarouselV2
+        images={modalImages}
         initialIndex={selectedImageIndex}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        dict={dict}
       />
     </>
   );
