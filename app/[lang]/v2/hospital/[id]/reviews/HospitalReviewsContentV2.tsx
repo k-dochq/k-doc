@@ -7,6 +7,7 @@ import { HospitalDetailHeaderV2 } from 'widgets/hospital-detail-header';
 import { HospitalDetailConsultationFloatingV2 } from 'widgets/hospital-detail-consultation-floating/ui/HospitalDetailConsultationFloatingV2';
 import { HospitalReviewsHeaderV2 } from 'features/hospital-reviews/ui/HospitalReviewsHeaderV2';
 import { HospitalReviewRatingStatsV2 } from 'features/hospital-reviews/ui/HospitalReviewRatingStatsV2';
+import { HospitalReviewsInfiniteListV2 } from './HospitalReviewsInfiniteListV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalReviewsContentV2Props {
@@ -49,6 +50,14 @@ export async function HospitalReviewsContentV2({
 
         {/* 리뷰 평점 통계 섹션 */}
         <HospitalReviewRatingStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+
+        {/* 리뷰 리스트 */}
+        <HospitalReviewsInfiniteListV2
+          hospitalId={hospitalId}
+          lang={lang}
+          dict={dict}
+          sort={sort}
+        />
 
         {/* 하단 고정 버튼을 위한 여백 */}
         <div className='h-24' />
