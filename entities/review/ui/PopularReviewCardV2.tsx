@@ -46,11 +46,6 @@ export function PopularReviewCardV2({
   const beforeImage = review.images.before.length > 0 ? review.images.before[0] : null;
   const afterImage = review.images.after.length > 0 ? review.images.after[0] : null;
 
-  // 이미지가 모두 없으면 null 반환
-  if (!beforeImage && !afterImage) {
-    return null;
-  }
-
   return (
     <LocaleLink
       href={`/review/${review.id}`}

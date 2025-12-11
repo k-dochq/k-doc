@@ -88,7 +88,7 @@ export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
           </div>
 
           <div className='flex items-center gap-1 text-[12px] leading-4 text-neutral-500'>
-            <span>{(dict as any)?.common?.more || '더보기'}</span>
+            <span>{dict.review?.showMore || '더보기'}</span>
             <ArrowRightIcon size={12} className='text-neutral-500' />
           </div>
         </div>

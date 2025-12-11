@@ -27,6 +27,7 @@ function PopularReviewsV2Content({
   } = usePopularReviewsV2({
     hospitalId,
     limit: 5,
+    hasBothImages: false,
   });
 
   // 데이터가 없으면 섹션 전체를 렌더링하지 않음

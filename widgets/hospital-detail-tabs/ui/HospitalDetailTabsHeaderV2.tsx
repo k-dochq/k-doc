@@ -17,7 +17,7 @@ export function HospitalDetailTabsHeaderV2({
   onTabClick,
 }: HospitalDetailTabsHeaderV2Props) {
   return (
-    <div className='flex items-center bg-white'>
+    <div className='sticky top-[58px] z-40 flex items-center bg-white'>
       {tabs.map((tab, index) => (
         <button
           key={tab.id}
