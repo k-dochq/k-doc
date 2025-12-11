@@ -45,6 +45,7 @@ export function PopularReviewCardV2({
   // Before/After 이미지
   const beforeImage = review.images.before.length > 0 ? review.images.before[0] : null;
   const afterImage = review.images.after.length > 0 ? review.images.after[0] : null;
+  const hasImages = beforeImage !== null || afterImage !== null;
 
   return (
     <LocaleLink
@@ -53,10 +54,14 @@ export function PopularReviewCardV2({
       className={`block h-full w-full overflow-hidden rounded-xl bg-white shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)] ${className}`}
     >
       {/* Before/After 이미지 영역 */}
-      <PopularReviewCardV2BeforeAfter beforeImage={beforeImage} afterImage={afterImage} />
+      {hasImages && (
+        <PopularReviewCardV2BeforeAfter beforeImage={beforeImage} afterImage={afterImage} />
+      )}
 
       {/* 텍스트 영역 */}
-      <div className='flex w-full flex-col gap-4 border-t border-neutral-200 p-4'>
+      <div
+        className={`flex w-full flex-col gap-4 p-4 ${hasImages ? 'border-t border-neutral-200' : ''}`}
+      >
         {/* 사용자 정보 및 평점 */}
         <PopularReviewCardV2UserInfo userName={userName} rating={review.rating} />
 
