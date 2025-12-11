@@ -26,7 +26,7 @@ export function HospitalReviewsHeaderV2({
     <div className='flex items-center justify-between px-5 pt-5 pb-0'>
       {/* 타이틀 */}
       <div className='flex items-center gap-1'>
-        <p className='text-lg leading-7 font-semibold text-neutral-700'>
+        <p className='shrink-0 text-lg leading-7 font-semibold text-neutral-700'>
           {dict.hospitalReviews?.title || '시술후기'}
         </p>
         <p className='text-lg leading-7 font-semibold text-[#f15bff]'>{reviewCount}</p>

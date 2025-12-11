@@ -16,7 +16,11 @@ export default async function V2HospitalReviewsPage({
   const resolvedSearchParams = await searchParams;
   const dict = await getDictionary(lang);
 
-  const sort = (resolvedSearchParams.sort as ReviewSortOption) || REVIEW_SORT_OPTIONS.POPULAR;
+  // sort 파라미터 유효성 검사 및 기본값 설정
+  const sortParam = resolvedSearchParams.sort;
+  const isValidSort =
+    sortParam && Object.values(REVIEW_SORT_OPTIONS).includes(sortParam as ReviewSortOption);
+  const sort = (isValidSort ? sortParam : REVIEW_SORT_OPTIONS.POPULAR) as ReviewSortOption;
 
   return <HospitalReviewsContentV2 hospitalId={id} lang={lang} dict={dict} sort={sort} />;
 }
