@@ -6,6 +6,7 @@ import { HospitalDetailErrorState } from 'shared/ui/error-state';
 import { HospitalDetailHeaderV2 } from 'widgets/hospital-detail-header';
 import { HospitalDetailConsultationFloatingV2 } from 'widgets/hospital-detail-consultation-floating/ui/HospitalDetailConsultationFloatingV2';
 import { HospitalReviewsHeaderV2 } from 'features/hospital-reviews/ui/HospitalReviewsHeaderV2';
+import { HospitalReviewRatingStatsV2 } from 'features/hospital-reviews/ui/HospitalReviewRatingStatsV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalReviewsContentV2Props {
@@ -44,8 +45,10 @@ export async function HospitalReviewsContentV2({
           dict={dict}
           currentSort={sort}
           hospitalId={hospitalId}
-          reviewCount={0}
         />
+
+        {/* 리뷰 평점 통계 섹션 */}
+        <HospitalReviewRatingStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
 
         {/* 컨텐츠 영역 - 빈 공간 (나중에 리뷰 리스트 추가 예정) */}
         <div>{/* 리뷰 리스트가 여기에 추가될 예정 */}</div>

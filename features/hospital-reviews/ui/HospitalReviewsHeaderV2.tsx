@@ -1,6 +1,9 @@
+'use client';
+
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption } from 'shared/model/types/review-query';
+import { useHospitalReviewStats } from 'entities/review/api/queries/use-hospital-review-stats';
 import { ReviewFilterBarV2 } from './ReviewFilterBarV2';
 
 interface HospitalReviewsHeaderV2Props {
@@ -8,7 +11,6 @@ interface HospitalReviewsHeaderV2Props {
   dict: Dictionary;
   currentSort: ReviewSortOption;
   hospitalId: string;
-  reviewCount?: number;
 }
 
 export function HospitalReviewsHeaderV2({
@@ -16,8 +18,10 @@ export function HospitalReviewsHeaderV2({
   dict,
   currentSort,
   hospitalId,
-  reviewCount = 0,
 }: HospitalReviewsHeaderV2Props) {
+  const { data: reviewStats, isLoading } = useHospitalReviewStats(hospitalId);
+  const reviewCount = reviewStats?.reviewCount || 0;
+
   return (
     <div className='flex items-center justify-between px-5 pt-5 pb-0'>
       {/* 타이틀 */}
