@@ -21,7 +21,7 @@ export async function HospitalReviewsContentV2({
   hospitalId,
   lang,
   dict,
-  sort = REVIEW_SORT_OPTIONS.POPULAR,
+  sort = REVIEW_SORT_OPTIONS.RECOMMENDED,
 }: HospitalReviewsContentV2Props) {
   try {
     // 병원 상세 데이터 조회 (헤더에 병원 이름 표시용)
