@@ -1,8 +1,8 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type OpeningHours } from 'entities/hospital/api/entities/opening-hours-types';
-import { dayNames, holidayTexts } from '../lib/constants';
-import { getDaySchedule } from '../lib/utils';
+import { OperatingHoursHeaderV2 } from './OperatingHoursHeaderV2';
+import { OperatingHoursBodyV2 } from './OperatingHoursBodyV2';
 
 interface HospitalDetailOperatingHoursV2Props {
   openingHours?: OpeningHours;
@@ -19,13 +19,6 @@ export function HospitalDetailOperatingHoursV2({
     return null;
   }
 
-  const days = dayNames[lang];
-
-  const formatHours = (hours: string | null) => {
-    if (!hours) return null;
-    return hours.replace(' ~ ', '\n~\n');
-  };
-
   return (
     <div className='flex flex-col gap-3'>
       <h2 className='text-lg leading-7 font-semibold text-neutral-700'>
@@ -33,52 +26,8 @@ export function HospitalDetailOperatingHoursV2({
       </h2>
 
       <div className='overflow-hidden'>
-        {/* 헤더 */}
-        <div className='grid min-w-0 grid-cols-7'>
-          {days.map((day, index) => {
-            const schedule = getDaySchedule(openingHours, index);
-            const isSunday = index === 6;
-            return (
-              <div
-                key={day}
-                className={`flex items-center justify-center border-b border-neutral-200 py-2 text-center text-[13px] leading-[19px] ${
-                  isSunday ? 'bg-neutral-100 text-[#e7000b]' : 'bg-[#feefff] text-neutral-700'
-                } ${index === 0 ? 'border-l-0' : 'border-l border-neutral-200'} border-t border-neutral-200`}
-              >
-                <p>{day}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* 바디 */}
-        <div className='grid min-w-0 grid-cols-7'>
-          {days.map((day, index) => {
-            const schedule = getDaySchedule(openingHours, index);
-            const hours = formatHours(schedule.hours);
-            const isSunday = index === 6;
-            const isClosed = !schedule.isOpen || !hours;
-
-            return (
-              <div
-                key={day}
-                className={`flex items-center justify-center py-2 text-center ${
-                  index === 0 ? 'border-l-0' : 'border-l border-neutral-200'
-                } border-b border-neutral-200 ${isClosed ? 'bg-neutral-100' : ''}`}
-              >
-                {schedule.isOpen && hours ? (
-                  <p className='text-[13px] leading-[19px] whitespace-pre-line text-neutral-700'>
-                    {hours}
-                  </p>
-                ) : (
-                  <p className='rounded-sm px-1 py-1 text-xs leading-4 whitespace-pre-line text-[#e7000b]'>
-                    {holidayTexts[lang]}
-                  </p>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <OperatingHoursHeaderV2 openingHours={openingHours} lang={lang} />
+        <OperatingHoursBodyV2 openingHours={openingHours} lang={lang} />
       </div>
     </div>
   );

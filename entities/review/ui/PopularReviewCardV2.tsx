@@ -46,6 +46,7 @@ export function PopularReviewCardV2({
   const beforeImage = review.images.before.length > 0 ? review.images.before[0] : null;
   const afterImage = review.images.after.length > 0 ? review.images.after[0] : null;
   const hasImages = beforeImage !== null || afterImage !== null;
+  const hasNoImages = review.images.before.length === 0 && review.images.after.length === 0;
 
   return (
     <LocaleLink
@@ -80,7 +81,7 @@ export function PopularReviewCardV2({
           />
 
           {/* 리뷰 내용 (한 줄 넘어가면 ellipsis) */}
-          <PopularReviewCardV2Content content={content} />
+          <PopularReviewCardV2Content content={content} maxLines={hasNoImages ? 8 : 3} />
 
           {/* 해시태그 */}
           <PopularReviewCardV2Hashtags hashtags={hashtags} />

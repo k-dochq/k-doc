@@ -67,7 +67,7 @@ export function ImageModalCarouselContentV2({
 
       {/* 썸네일 트랙: 항상 화면에 표시, 하단 여백 8px */}
       {images.length > 0 && (
-        <div className='w-full overflow-x-auto pb-2'>
+        <div className='w-full overflow-x-auto pb-4'>
           <div className='flex w-max gap-2 px-5'>
             {images.map((imageItem, index) => {
               const isActive = currentIndex === index;
@@ -83,7 +83,7 @@ export function ImageModalCarouselContentV2({
                     onSelectIndex?.(index);
                   }}
                   className={`relative h-[54px] w-[54px] overflow-hidden rounded-lg ${
-                    isActive ? 'ring-primary-900 ring-[1.5px] ring-offset-0' : ''
+                    isActive ? 'border-primary-900 border' : ''
                   }`}
                   aria-label={`thumbnail-${index + 1}`}
                 >

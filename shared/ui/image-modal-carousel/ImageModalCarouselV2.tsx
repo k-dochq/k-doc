@@ -32,7 +32,7 @@ export function ImageModalCarouselV2({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
-        className={`${MAX_MOBILE_WIDTH_CLASS} rounded-none border-none bg-black p-0 shadow-none sm:rounded-none`}
+        className={`${MAX_MOBILE_WIDTH_CLASS} rounded-none border-none bg-[#333333] p-0 shadow-none sm:rounded-none`}
         style={{
           minHeight: '100dvh',
           height: '100dvh',

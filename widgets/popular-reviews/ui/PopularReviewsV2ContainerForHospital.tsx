@@ -41,13 +41,13 @@ function PopularReviewsV2Content({
 
   if (isLoading) {
     return (
-      <>
+      <div className='pl-2'>
         <PopularReviewsTitleV2ForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
         <div className='h-3' />
         <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
         <div className='h-3' />
         <PopularReviewsCarouselV2Skeleton />
-      </>
+      </div>
     );
   }
 

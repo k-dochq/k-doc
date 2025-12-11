@@ -114,6 +114,7 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
             specialties={hospital.medicalSpecialties as any}
             lang={lang}
             maxDisplay={3}
+            textClassName='!text-sm !leading-5'
           />
         </div>
       )}
