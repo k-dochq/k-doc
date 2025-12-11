@@ -3,8 +3,6 @@ import { getDictionary } from '../../../dictionaries';
 import { getReviewDetail } from 'entities/review/api/use-cases/get-review-detail';
 import { PageHeaderV2 } from 'shared/ui/page-header/PageHeaderV2';
 import { ReviewLikeButtonV2 } from 'features/review-like/ui/ReviewLikeButtonV2';
-import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
-import { type User } from '@supabase/supabase-js';
 import { TreatmentHospitalSectionV2 } from './TreatmentHospitalSectionV2';
 import { TreatmentRelatedReviewsSectionV2 } from './TreatmentRelatedReviewsSectionV2';
 import { ReviewCommentsSectionV2 } from 'features/review-comments/ui/ReviewCommentsSectionV2';

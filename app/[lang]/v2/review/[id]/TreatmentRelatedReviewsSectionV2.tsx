@@ -18,7 +18,6 @@ export function TreatmentRelatedReviewsSectionV2({
   hospitalId,
   lang,
   dict,
-  sort = REVIEW_SORT_OPTIONS.RECOMMENDED,
 }: TreatmentRelatedReviewsSectionV2Props) {
   const title =
     dict.reviewDetail?.sameHospitalReviews || dict.hospitalReviews?.title || '같은 병원 시술 후기';
