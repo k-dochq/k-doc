@@ -202,7 +202,10 @@
     },
     "sort": {
       "popular": "Popular",
-      "recommended": "Recommended"
+      "recommended": "Recommended",
+      "latest": "Latest",
+      "ratingHigh": "Highest Rating",
+      "ratingLow": "Lowest Rating"
     }
   },
   "reviewWrite": {

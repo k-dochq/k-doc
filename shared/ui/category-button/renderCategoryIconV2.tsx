@@ -1,6 +1,8 @@
 import {
   RecommendedIconActive,
   RecommendedIconInactive,
+  AllIconActive,
+  AllIconInactive,
   EyesIconActive,
   EyesIconInactive,
   NoseIconActive,
@@ -31,16 +33,21 @@ interface RenderCategoryIconV2Props {
   categoryType: string;
   isActive: boolean;
   fallbackIcon?: () => React.ReactNode;
+  variant?: 'recommend' | 'all';
 }
 
 export function renderCategoryIconV2({
   categoryType,
   isActive,
   fallbackIcon,
+  variant = 'recommend',
 }: RenderCategoryIconV2Props): React.ReactNode {
   const isRecommended = categoryType === 'all';
 
   if (isRecommended) {
+    if (variant === 'all') {
+      return isActive ? <AllIconActive /> : <AllIconInactive />;
+    }
     return isActive ? <RecommendedIconActive /> : <RecommendedIconInactive />;
   }
 
