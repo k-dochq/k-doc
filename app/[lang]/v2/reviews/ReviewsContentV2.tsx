@@ -5,6 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { CategorySectionV2 } from 'features/category-filter/ui/CategorySectionV2';
 import { ReviewFilterBarV2 } from 'features/review-filter';
+import { ReviewWriteFABV2 } from 'features/review-write-fab';
 import { ReviewsInfiniteListV2 } from './ReviewsInfiniteListV2';
 import { useCategories } from 'features/category-filter';
 
@@ -50,6 +51,9 @@ export function ReviewsContentV2({ lang, dict, searchParams }: ReviewsContentV2P
         category={currentCategory}
         sort={currentSort}
       />
+
+      {/* 리뷰 쓰기 플로팅 버튼 */}
+      <ReviewWriteFABV2 lang={lang} dict={dict} />
     </div>
   );
 }
