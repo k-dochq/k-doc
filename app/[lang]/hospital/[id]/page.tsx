@@ -8,7 +8,7 @@ import {
   getAllHospitalIds,
 } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { HospitalDetailSkeleton } from './HospitalDetailSkeleton';
-import { HospitalDetailContent } from './HospitalDetailContent';
+// import { HospitalDetailContent } from './HospitalDetailContent';
 import { HospitalDetailContentV2 } from '../../v2/hospital/[id]/HospitalDetailContentV2';
 
 interface HospitalDetailPageProps {
