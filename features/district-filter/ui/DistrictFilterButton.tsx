@@ -37,7 +37,7 @@ export function DistrictFilterButton({
     <div className='flex w-full flex-col items-start gap-2.5 border-t border-neutral-200 px-5 pt-4 pb-8'>
       <button
         onClick={handleComplete}
-        className='flex w-full items-center justify-center gap-2 rounded-xl bg-[#1A2E89] px-10 py-4 transition-opacity hover:opacity-90'
+        className='flex w-full items-center justify-center gap-2 rounded-xl bg-[#7657FF] px-10 py-4 transition-opacity hover:opacity-90'
       >
         <span className='text-base leading-6 font-[500] text-white'>
           {dict.districtFilter.complete}

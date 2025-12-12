@@ -68,7 +68,7 @@ export function HospitalDetailConsultationFloatingV2({
       <button
         onClick={handleConsultationRequest}
         disabled={checkConsultationHistory.isPending}
-        className='h-14 w-full rounded-xl bg-[#1a2e89] text-base leading-6 font-medium text-white transition-colors duration-200 hover:bg-[#1a2e89]/90 disabled:cursor-not-allowed disabled:bg-[#1a2e89]/50'
+        className='h-14 w-full rounded-xl bg-[#7657FF] text-base leading-6 font-medium text-white transition-colors duration-200 hover:bg-[#7657FF]/90 disabled:cursor-not-allowed disabled:bg-[#7657FF]/50'
       >
         {checkConsultationHistory.isPending
           ? dict.hospitalDetailConsultation.checking
