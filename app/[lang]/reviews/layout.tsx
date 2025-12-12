@@ -1,7 +1,7 @@
-import { Header } from 'widgets/header';
-import { BottomNavigation } from 'widgets/bottom-navigation';
+import { BottomNavigation, BottomNavigationV2 } from 'widgets/bottom-navigation';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
+import { HeaderV2 } from '@/widgets/header/ui/HeaderV2';
 
 interface ReviewsLayoutProps {
   children: React.ReactNode;
@@ -13,11 +13,17 @@ export default async function ReviewsLayout({ children, params }: ReviewsLayoutP
   const dict = await getDictionary(lang);
 
   return (
-    <div className='min-h-screen'>
-      <Header currentLang={lang} dict={dict} />
+    // <div className='min-h-screen'>
+    //   <Header currentLang={lang} dict={dict} />
+    //   <main>{children}</main>
+    //   <div className='h-16' />
+    //   <BottomNavigation currentLang={lang} dict={dict} />
+    // </div>
+    <div className='min-h-screen bg-white'>
+      <HeaderV2 currentLang={lang} dict={dict} />
       <main>{children}</main>
       <div className='h-16' />
-      <BottomNavigation currentLang={lang} dict={dict} />
+      <BottomNavigationV2 currentLang={lang} dict={dict} />
     </div>
   );
 }
