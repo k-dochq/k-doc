@@ -14,7 +14,7 @@ export function HeaderV2({ currentLang, dict }: HeaderV2Props) {
   return (
     <header className='sticky top-0 z-50 w-full border-b border-neutral-200 bg-white'>
       <div className='flex h-[58px] items-center justify-between px-5'>
-        <LocaleLink href='/v2/main' className='text-primary'>
+        <LocaleLink href='/main' className='text-primary'>
           <HeaderLogoV2 />
         </LocaleLink>
         <div className='flex items-center gap-3'>
