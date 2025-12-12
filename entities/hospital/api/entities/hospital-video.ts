@@ -17,5 +17,7 @@ export interface HospitalProcedureImage {
 export interface GetHospitalVideosResponse {
   thumbnail: HospitalVideoAsset | null;
   video: HospitalVideoAsset | null;
+  thumbnails: HospitalVideoAsset[]; // 모든 썸네일 이미지 (alt 기반 필터링용)
+  videos: HospitalVideoAsset[]; // 모든 비디오 이미지 (alt 기반 필터링용)
   procedures: HospitalProcedureImage[];
 }

@@ -23,6 +23,8 @@ interface HospitalProcedureImage {
 interface HospitalVideosResponse {
   thumbnail: HospitalVideoAsset | null;
   video: HospitalVideoAsset | null;
+  thumbnails: HospitalVideoAsset[]; // 모든 썸네일 이미지 (alt 기반 필터링용)
+  videos: HospitalVideoAsset[]; // 모든 비디오 이미지 (alt 기반 필터링용)
   procedures: HospitalProcedureImage[];
 }
 
@@ -44,9 +46,14 @@ export async function GET(
       orderBy: [{ imageType: 'asc' }, { order: 'asc' }],
     });
 
-    const thumbnailImage = images.find((img) => img.imageType === 'VIDEO_THUMBNAIL') || null;
-    const videoImage = images.find((img) => img.imageType === 'VIDEO') || null;
+    // alt 기반 필터링을 위해 모든 이미지를 배열로 반환
+    const thumbnailImages = images.filter((img) => img.imageType === 'VIDEO_THUMBNAIL');
+    const videoImages = images.filter((img) => img.imageType === 'VIDEO');
     const procedureImages = images.filter((img) => img.imageType === 'PROCEDURE_DETAIL');
+
+    // 첫 번째 이미지 (하위 호환성 유지)
+    const thumbnailImage = thumbnailImages[0] || null;
+    const videoImage = videoImages[0] || null;
 
     const response: HospitalVideosResponse = {
       thumbnail: thumbnailImage
@@ -63,6 +70,16 @@ export async function GET(
             alt: videoImage.alt ?? null,
           }
         : null,
+      thumbnails: thumbnailImages.map((img) => ({
+        localizedLinks: (img.localizedLinks as Prisma.JsonValue | null) ?? null,
+        fallbackUrl: img.imageUrl ?? null,
+        alt: img.alt ?? null,
+      })),
+      videos: videoImages.map((img) => ({
+        localizedLinks: (img.localizedLinks as Prisma.JsonValue | null) ?? null,
+        fallbackUrl: img.imageUrl ?? null,
+        alt: img.alt ?? null,
+      })),
       procedures: procedureImages.map((img) => ({
         id: img.id,
         localizedLinks: (img.localizedLinks as Prisma.JsonValue | null) ?? null,

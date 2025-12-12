@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { extractLocalizedText } from 'shared/lib/localized-text';
+import { localeToAltValue } from 'shared/lib/localized-text';
 import { YoutubeVideoEmbedPlayer } from 'entities/youtube-video';
 import { useHospitalVideos } from 'entities/hospital/model/useHospitalVideos';
 import { DEFAULT_IMAGES } from 'shared/config/images';
@@ -28,19 +28,26 @@ export function HospitalDetailProceduresVideoSection({
     return null;
   }
 
-  // 선택된 언어에 맞는 썸네일 URL 추출
-  const thumbnailUrl =
-    extractLocalizedText(data?.thumbnail?.localizedLinks ?? null, lang) ||
-    data?.thumbnail?.fallbackUrl ||
-    null;
+  // 현재 선택된 언어에 맞는 alt 값으로 이미지 찾기
+  const targetAltValue = localeToAltValue(lang);
 
-  // 선택된 언어에 맞는 영상 URL 추출
-  const videoUrl =
-    extractLocalizedText(data?.video?.localizedLinks ?? null, lang) ||
-    data?.video?.fallbackUrl ||
-    null;
+  // alt 기반으로 썸네일 이미지 찾기
+  const currentThumbnail =
+    data?.thumbnails && data.thumbnails.length > 0
+      ? data.thumbnails.find((img) => img.alt === targetAltValue) || null
+      : null;
 
-  const thumbnailAlt = data?.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
+  // alt 기반으로 비디오 이미지 찾기
+  const currentVideo =
+    data?.videos && data.videos.length > 0
+      ? data.videos.find((img) => img.alt === targetAltValue) || null
+      : null;
+
+  // 하위 호환성: thumbnails/videos 배열이 없으면 기존 thumbnail/video 사용
+  const thumbnailUrl = currentThumbnail?.fallbackUrl || data?.thumbnail?.fallbackUrl || null;
+  const videoUrl = currentVideo?.fallbackUrl || data?.video?.fallbackUrl || null;
+  const thumbnailAlt =
+    currentThumbnail?.alt || data?.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
 
   const hasVideoData = !!thumbnailUrl && !!videoUrl;
 
