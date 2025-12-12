@@ -18,6 +18,7 @@ interface CategoryButtonV2Props {
   className?: string;
   replace?: boolean;
   isActive?: boolean;
+  variant?: 'recommend' | 'all';
 }
 
 export function CategoryButtonV2({
@@ -28,10 +29,14 @@ export function CategoryButtonV2({
   className = '',
   replace = false,
   isActive = false,
+  variant = 'recommend',
 }: CategoryButtonV2Props) {
   const getLabel = (): string => {
-    // "all" 타입인 경우 "추천"으로 표시
+    // "all" 타입인 경우 variant에 따라 "전체" 또는 "추천"으로 표시
     if (category.type === 'all') {
+      if (variant === 'all') {
+        return getLocalizedTextByLocale(category.labels, lang);
+      }
       const recommendedLabels: LocalizedText = {
         ko_KR: '추천',
         en_US: 'Recommend',
@@ -50,6 +55,7 @@ export function CategoryButtonV2({
         categoryType: category.type,
         isActive,
         fallbackIcon: category.icon,
+        variant,
       })}
       <p
         className={`text-center text-xs leading-4 font-medium ${

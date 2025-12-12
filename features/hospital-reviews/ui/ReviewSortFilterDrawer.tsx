@@ -22,11 +22,19 @@ export function ReviewSortFilterDrawer({
   const sortOptions: Array<{ value: ReviewSortOption; label: string }> = [
     {
       value: REVIEW_SORT_OPTIONS.POPULAR,
-      label: dict.allReviews?.sort?.popular || '인기순',
+      label: dict.allReviews?.sort?.popular ?? '',
     },
     {
-      value: REVIEW_SORT_OPTIONS.RECOMMENDED,
-      label: dict.allReviews?.sort?.recommended || '추천순',
+      value: REVIEW_SORT_OPTIONS.LATEST,
+      label: dict.allReviews?.sort?.latest ?? '',
+    },
+    {
+      value: REVIEW_SORT_OPTIONS.RATING_HIGH,
+      label: dict.allReviews?.sort?.ratingHigh ?? '',
+    },
+    {
+      value: REVIEW_SORT_OPTIONS.RATING_LOW,
+      label: dict.allReviews?.sort?.ratingLow ?? '',
     },
   ];
 
