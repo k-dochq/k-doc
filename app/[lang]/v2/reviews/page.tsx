@@ -1,7 +1,5 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { CategorySectionV2 } from 'features/category-filter/ui/CategorySectionV2';
-import { useCategories } from 'features/category-filter';
 import { ReviewsContentV2 } from './ReviewsContentV2';
 
 interface V2ReviewsPageProps {
