@@ -5,7 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { CategoryFilterTabsV2Wrapper } from 'widgets/hospital-list/ui/CategoryFilterTabsV2Wrapper';
-import { LiveReviewTitleV2 } from './LiveReviewTitleV2';
+import { LiveReviewTitleV2Main } from './LiveReviewTitleV2Main';
 import { LiveReviewCarouselV2Wrapper } from './LiveReviewCarouselV2Wrapper';
 
 interface LiveReviewV2ContainerProps {
@@ -18,7 +18,7 @@ export function LiveReviewV2Container({ lang, dict }: LiveReviewV2ContainerProps
 
   return (
     <>
-      <LiveReviewTitleV2 lang={lang} dict={dict} />
+      <LiveReviewTitleV2Main lang={lang} dict={dict} />
       <div className='h-4' />
       <CategoryFilterTabsV2Wrapper
         lang={lang}
