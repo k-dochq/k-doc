@@ -8,7 +8,8 @@ import {
   getAllHospitalIds,
 } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { HospitalDetailSkeleton } from './HospitalDetailSkeleton';
-import { HospitalDetailContent } from './HospitalDetailContent';
+// import { HospitalDetailContent } from './HospitalDetailContent';
+import { HospitalDetailContentV2 } from '../../v2/hospital/[id]/HospitalDetailContentV2';
 
 interface HospitalDetailPageProps {
   params: Promise<{
@@ -28,7 +29,8 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
       <div className=''>
         {/* 병원 상세 정보 - Suspense로 스트리밍 */}
         <Suspense fallback={<HospitalDetailSkeleton />}>
-          <HospitalDetailContent hospitalId={id} lang={lang} dict={dict} />
+          {/* <HospitalDetailContent hospitalId={id} lang={lang} dict={dict} /> */}
+          <HospitalDetailContentV2 hospitalId={id} lang={lang} dict={dict} />;
         </Suspense>
       </div>
     );
@@ -38,8 +40,8 @@ export default async function HospitalDetailPage({ params }: HospitalDetailPageP
   }
 }
 
-// ISR 설정 - 30분마다 재검증
-export const revalidate = 1800;
+// ISR 설정 - 3시간마다 재검증
+export const revalidate = 10800;
 
 // 빌드 타임에 생성되지 않은 경로도 동적으로 생성 허용
 export const dynamicParams = true;

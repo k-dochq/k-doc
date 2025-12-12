@@ -6,7 +6,14 @@ import { type Dictionary } from 'shared/model/types';
 import { extractLocalizedText } from 'shared/lib';
 import { getReviewDetail, getAllReviewIds } from 'entities/review/api/use-cases/get-review-detail';
 import { ReviewDetailSkeleton } from './ReviewDetailSkeleton';
-import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
+// import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
+import { convertReviewHospitalToHospitalCard } from '@/entities/review';
+import { PageHeaderV2 } from '@/shared/ui';
+import { ReviewLikeButtonV2 } from '@/features/review-like/ui/ReviewLikeButtonV2';
+import { ReviewDetailCardV2Shell } from '../../v2/review/[id]/ReviewDetailCardV2Shell';
+import { TreatmentHospitalSectionV2 } from '../../v2/review/[id]/TreatmentHospitalSectionV2';
+import { ReviewCommentsSectionV2 } from '@/features/review-comments/ui/ReviewCommentsSectionV2';
+import { TreatmentRelatedReviewsSectionV2 } from '../../v2/review/[id]/TreatmentRelatedReviewsSectionV2';
 
 // 리뷰 상세 페이지 프로퍼티
 interface ReviewDetailPageProps {
@@ -49,7 +56,40 @@ async function ReviewDetailContent({ reviewId, lang, dict }: ReviewDetailContent
     // 리뷰 상세 데이터 조회
     const { review } = await getReviewDetail({ reviewId });
 
-    return <ReviewDetailPageComponent review={review} lang={lang} dict={dict} />;
+    const title = '';
+    const hospitalCard = convertReviewHospitalToHospitalCard(review);
+
+    // return <ReviewDetailPageComponent review={review} lang={lang} dict={dict} />;
+    return (
+      <div className='min-h-screen bg-white'>
+        <PageHeaderV2
+          title={title}
+          fallbackUrl={`/${lang}/reviews`}
+          rightContent={<ReviewLikeButtonV2 reviewId={review.id} locale={lang} dict={dict} />}
+          // 투명 처리 옵션 기본 false
+          enableScrollTransparency={false}
+        />
+
+        <div className='h-[58px]' />
+
+        {/* 리뷰 본문 카드: 내용 기본 펼침, 더보기 버튼 없음 */}
+        <ReviewDetailCardV2Shell review={review} lang={lang} dict={dict} />
+
+        {/* 시술 병원 섹션 */}
+        <TreatmentHospitalSectionV2 hospital={hospitalCard} lang={lang} dict={dict} />
+
+        {/* 동일 병원 후기 섹션 */}
+        <TreatmentRelatedReviewsSectionV2 hospitalId={review.hospital.id} lang={lang} dict={dict} />
+
+        {/* 댓글 섹션 */}
+        <ReviewCommentsSectionV2
+          reviewId={review.id}
+          lang={lang}
+          dict={dict}
+          className='bg-white'
+        />
+      </div>
+    );
   } catch (error) {
     console.error('Error loading review detail content:', error);
     notFound();

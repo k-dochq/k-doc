@@ -2,7 +2,8 @@ import { type Locale } from 'shared/config';
 import { getDictionary } from 'app/[lang]/dictionaries';
 import { ErrorBoundary } from 'shared/ui/error-display';
 import { ErrorState } from 'shared/ui/error-state';
-import { HospitalsContent } from './HospitalsContent';
+// import { HospitalsContent } from './HospitalsContent';
+import { HospitalsContentV2 } from '../v2/hospitals/HospitalsContentV2';
 
 interface HospitalsPageProps {
   params: Promise<{ lang: Locale }>;
@@ -30,7 +31,8 @@ export default async function HospitalsPage({ params, searchParams }: HospitalsP
           />
         }
       >
-        <HospitalsContent lang={lang} searchParams={resolvedSearchParams} dict={dict} />
+        {/* <HospitalsContent lang={lang} searchParams={resolvedSearchParams} dict={dict} /> */}
+        <HospitalsContentV2 lang={lang} searchParams={resolvedSearchParams} dict={dict} />
       </ErrorBoundary>
     </div>
   );

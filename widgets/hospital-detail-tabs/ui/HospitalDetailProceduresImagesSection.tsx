@@ -60,7 +60,7 @@ export function HospitalDetailProceduresImagesSection({
           {dict.hospitalDetailTabs.proceduresComingSoon}
         </p>
       ) : (
-        <div className='relative w-full overflow-hidden rounded-xl shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
+        <div className='relative w-full overflow-hidden rounded-xl'>
           <Image
             src={currentLanguageImage.url || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
             alt={currentLanguageImage.alt}
