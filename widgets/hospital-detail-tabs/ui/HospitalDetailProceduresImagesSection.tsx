@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { extractLocalizedText } from 'shared/lib/localized-text';
+import { localeToAltValue } from 'shared/lib/localized-text';
 import { useHospitalVideos } from 'entities/hospital/model/useHospitalVideos';
 import { DEFAULT_IMAGES } from 'shared/config/images';
 
@@ -24,27 +24,14 @@ export function HospitalDetailProceduresImagesSection({
     return null;
   }
 
-  // 현재 선택된 언어에 맞는 이미지 하나만 선택
-  // 여러 이미지가 있으면 order 기준으로 정렬 후 첫 번째 선택
+  // 현재 선택된 언어에 맞는 alt 값으로 이미지 찾기
+  const targetAltValue = localeToAltValue(lang);
+
   const currentLanguageImage =
     data?.procedures && data.procedures.length > 0
       ? data.procedures
-          .map((img) => {
-            // 선택된 언어에 맞는 URL 추출
-            const url = extractLocalizedText(img.localizedLinks, lang) || img.fallbackUrl || null;
-            return url
-              ? {
-                  id: img.id,
-                  url,
-                  alt: img.alt || dict.hospitalDetailTabs.proceduresDetail,
-                  order: img.order ?? 0,
-                }
-              : null;
-          })
-          .filter(
-            (img): img is { id: string; url: string; alt: string; order: number } => img !== null,
-          )
-          .sort((a, b) => a.order - b.order)[0] // order 기준 정렬 후 첫 번째만 선택
+          .filter((img) => img.alt === targetAltValue)
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))[0] // order 기준 정렬 후 첫 번째만 선택
       : null;
 
   const hasImageData = !!currentLanguageImage;
@@ -62,8 +49,8 @@ export function HospitalDetailProceduresImagesSection({
       ) : (
         <div className='relative w-full overflow-hidden rounded-xl'>
           <Image
-            src={currentLanguageImage.url || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
-            alt={currentLanguageImage.alt}
+            src={currentLanguageImage.fallbackUrl || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
+            alt={currentLanguageImage.alt || dict.hospitalDetailTabs.proceduresDetail}
             width={800}
             height={0}
             style={{ height: 'auto', width: '100%' }}

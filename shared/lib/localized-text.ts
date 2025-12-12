@@ -73,3 +73,21 @@ export function extractLocalizedText(
 
   return String(jsonValue);
 }
+
+/**
+ * Locale을 alt 필드 값(ko_KR, en_US, th_TH)으로 변환
+ * @param locale - Locale 값 ('ko', 'en', 'th')
+ * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH')
+ */
+export function localeToAltValue(locale: Locale): 'ko_KR' | 'en_US' | 'th_TH' {
+  switch (locale) {
+    case 'ko':
+      return 'ko_KR';
+    case 'en':
+      return 'en_US';
+    case 'th':
+      return 'th_TH';
+    default:
+      return 'en_US';
+  }
+}
