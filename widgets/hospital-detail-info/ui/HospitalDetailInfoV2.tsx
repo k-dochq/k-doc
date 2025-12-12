@@ -100,7 +100,7 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
         {/* 가격 정보 */}
         {hospital.prices?.minPrice && (
           <div className='flex flex-1 items-center gap-0'>
-            <span className='text-lg leading-7 font-semibold text-[#1a2e89]'>
+            <span className='text-lg leading-7 font-semibold text-[#7657FF]'>
               ${hospital.prices.minPrice.toLocaleString()}~
             </span>
           </div>
