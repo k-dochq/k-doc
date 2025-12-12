@@ -113,6 +113,10 @@ export async function getAllReviews({
           ];
         case 'latest':
           return [{ createdAt: 'desc' as const }];
+        case 'rating_high':
+          return [{ rating: 'desc' as const }];
+        case 'rating_low':
+          return [{ rating: 'asc' as const }];
         default:
           return [
             { viewCount: 'desc' as const },

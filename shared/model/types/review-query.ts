@@ -5,6 +5,8 @@ export const REVIEW_SORT_OPTIONS = {
   POPULAR: 'popular',
   RECOMMENDED: 'recommended',
   LATEST: 'latest',
+  RATING_HIGH: 'rating_high',
+  RATING_LOW: 'rating_low',
 } as const;
 
 export type ReviewSortOption = (typeof REVIEW_SORT_OPTIONS)[keyof typeof REVIEW_SORT_OPTIONS];
@@ -32,6 +34,8 @@ export const SORT_OPTION_TO_DB_FIELD_MAP: Record<ReviewSortOption, DbSortField> 
   [REVIEW_SORT_OPTIONS.POPULAR]: DB_SORT_FIELDS.VIEW_COUNT,
   [REVIEW_SORT_OPTIONS.RECOMMENDED]: DB_SORT_FIELDS.LIKE_COUNT,
   [REVIEW_SORT_OPTIONS.LATEST]: DB_SORT_FIELDS.CREATED_AT,
+  [REVIEW_SORT_OPTIONS.RATING_HIGH]: DB_SORT_FIELDS.RATING,
+  [REVIEW_SORT_OPTIONS.RATING_LOW]: DB_SORT_FIELDS.RATING,
 } as const;
 
 // API 쿼리 파라미터 타입 정의

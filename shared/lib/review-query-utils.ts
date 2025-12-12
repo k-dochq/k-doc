@@ -168,7 +168,9 @@ export function validateReviewQueryParams(
 
     // sort 유효성 검증
     if (!Object.values(REVIEW_SORT_OPTIONS).includes(params.sort)) {
-      errors.push('Invalid sort option. Use "popular" or "recommended"');
+      errors.push(
+        `Invalid sort option. Valid options: ${Object.values(REVIEW_SORT_OPTIONS).join(', ')}`,
+      );
     }
 
     return {

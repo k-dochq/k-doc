@@ -20,6 +20,7 @@ interface CategorySectionV2Props {
   isLoading?: boolean;
   error?: Error | null;
   onRetry?: () => void;
+  variant?: 'recommend' | 'all';
 }
 
 export function CategorySectionV2({
@@ -29,6 +30,7 @@ export function CategorySectionV2({
   isLoading = false,
   error = null,
   onRetry,
+  variant = 'recommend',
 }: CategorySectionV2Props) {
   const [api, setApi] = useState<CarouselApi>();
   const pathname = usePathname();
@@ -93,7 +95,9 @@ export function CategorySectionV2({
           {categoryButtons.map((categoryButton, index) => {
             const isActive =
               categoryButton.type === 'all'
-                ? !currentCategory || currentCategory === 'RECOMMEND'
+                ? variant === 'all'
+                  ? !currentCategory
+                  : !currentCategory || currentCategory === 'RECOMMEND'
                 : currentCategory === categoryButton.type;
             const href =
               categoryButton.type === 'all'
@@ -112,6 +116,7 @@ export function CategorySectionV2({
                       replace={true}
                       isActive={isActive}
                       className='w-[71px]'
+                      variant={variant}
                     />
                   </div>
                 ) : (
@@ -122,6 +127,7 @@ export function CategorySectionV2({
                     replace={true}
                     isActive={isActive}
                     className='w-[71px]'
+                    variant={variant}
                   />
                 )}
               </CarouselItem>

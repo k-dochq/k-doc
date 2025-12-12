@@ -4,10 +4,12 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { queryKeys } from 'shared/lib/query-keys';
 import { type GetAllReviewsResponse } from './types';
 
+import { type ReviewSortOption } from 'shared/model/types/review-query';
+
 interface UseInfiniteAllReviewsParams {
   limit?: number;
   category?: string;
-  sort?: 'popular' | 'recommended' | 'latest';
+  sort?: ReviewSortOption;
   hospitalId?: string;
   likedOnly?: boolean;
   initialData?: GetAllReviewsResponse;

@@ -1,5 +1,6 @@
 import { MedicalSpecialtyType, ReviewImageType, type Prisma } from '@prisma/client';
 import { type LocalizedText } from 'shared/lib/localized-text';
+import { type ReviewSortOption } from 'shared/model/types/review-query';
 
 // 기본 리뷰 타입 (Prisma에서 생성)
 export type Review = Prisma.ReviewGetPayload<{
@@ -121,7 +122,7 @@ export interface GetAllReviewsParams {
   limit?: number;
   offset?: number;
   category?: MedicalSpecialtyType | 'ALL';
-  sort?: 'popular' | 'recommended' | 'latest'; // 정렬 옵션
+  sort?: ReviewSortOption; // 정렬 옵션
   hospitalId?: string; // 특정 병원의 리뷰만 조회
   likedOnly?: boolean; // 좋아요한 리뷰만 조회
   userId?: string; // likedOnly가 true일 때 필요한 사용자 ID

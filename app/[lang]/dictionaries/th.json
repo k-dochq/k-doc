@@ -202,7 +202,10 @@
     },
     "sort": {
       "popular": "ยอดนิยม",
-      "recommended": "แนะนำ"
+      "recommended": "แนะนำ",
+      "latest": "ล่าสุด",
+      "ratingHigh": "คะแนนสูงสุด",
+      "ratingLow": "คะแนนต่ำสุด"
     }
   },
   "reviewWrite": {
