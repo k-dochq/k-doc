@@ -628,7 +628,8 @@
       "form": {
         "name": {
           "label": "Passport Name",
-          "placeholder": "Please enter your passport name"
+          "placeholder": "Please enter your passport name",
+          "passportHelper": "Enter exactly as shown on your passport, including spaces."
         },
         "gender": {
           "label": "Gender",
@@ -659,19 +660,26 @@
         },
         "preferredDate": {
           "label": "Preferred Date",
-          "placeholder": "Please select a date"
+          "placeholder": "Please select a date",
+          "helper": "Please select so the hospital can check their schedule."
         },
         "preferredDate2": {
           "label": "Preferred Date 2",
-          "placeholder": "Please select a date"
+          "placeholder": "Please select a date",
+          "helper": "Used only if the first date is unavailable."
         },
         "content": {
           "label": "Consultation Details",
-          "placeholder": "Please describe what you would like to consult about"
+          "placeholder": "Please describe what you would like to consult about",
+          "helper": "After you submit, a consultation manager will assist you in detail via the K-DOC chat."
         },
         "privacyAgreement": {
           "title": "Sensitive Information Collection Agreement",
           "description": "I have reviewed and agree to the sensitive information collection and usage regulations for writing reviews and app utilization."
+        },
+        "floatingNotice": {
+          "highlight": "Available time",
+          "message": " needs to be coordinated after consultation."
         },
         "errors": {
           "name": {

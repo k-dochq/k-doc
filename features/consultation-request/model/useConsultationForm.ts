@@ -15,7 +15,7 @@ const initialFormData: ConsultationFormData = {
   preferredDate: '',
   preferredDate2: '',
   content: '',
-  agreeToPrivacy: false,
+  agreeToPrivacy: true,
 };
 
 export function useConsultationForm(
@@ -115,14 +115,8 @@ export function useConsultationForm(
       newErrors.preferredDate = getErrorMessage('preferredDate', 'required');
     }
 
-    if (!formData.content.trim()) {
-      newErrors.content = getErrorMessage('content', 'required');
-    } else if (formData.content.length > 500) {
+    if (formData.content && formData.content.length > 500) {
       newErrors.content = getErrorMessage('content', 'maxLength');
-    }
-
-    if (!formData.agreeToPrivacy) {
-      newErrors.agreeToPrivacy = getErrorMessage('agreeToPrivacy', 'required');
     }
 
     setErrors(newErrors);
@@ -143,9 +137,7 @@ export function useConsultationForm(
       formData.ageGroup &&
       formData.countryCode.trim() &&
       formData.phoneNumberOnly.trim() &&
-      formData.preferredDate &&
-      formData.content.trim() &&
-      formData.agreeToPrivacy
+      formData.preferredDate
     );
   };
 

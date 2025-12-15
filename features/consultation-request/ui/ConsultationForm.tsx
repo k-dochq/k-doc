@@ -7,14 +7,16 @@ import { AGE_GROUPS, GENDER_OPTIONS } from '../model/types';
 import { useConsultationRequest } from '../api/useConsultationRequest';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useUserProfile } from 'features/user-profile/model/useUserProfile';
-import { FormInput } from './FormInput';
-import { FormTextarea } from './FormTextarea';
-import { FormSelect } from './FormSelect';
-import { FormRadioGroup } from './FormRadioGroup';
-import { FormCheckbox } from './FormCheckbox';
+import {
+  CheckboxFieldV2,
+  InputFieldV2,
+  PhoneNumberFieldV2,
+  RadioGroupFieldV2,
+  SelectFieldV2,
+  TextareaFieldV2,
+} from './FormFieldsV2';
 import { SubmitButton } from './SubmitButton';
-import { FormDatePicker } from './FormDatePicker';
-import { PhoneNumberInput } from 'features/email-auth/ui/inputs/PhoneNumberInput';
+import { FormDatePickerV2 } from './FormDatePickerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
@@ -185,17 +187,18 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
   return (
     <div className='space-y-6 px-5 py-6'>
       {/* 이름 */}
-      <FormInput
+      <InputFieldV2
         label={dict.consultation?.request?.form?.name?.label || '이름'}
         value={formData.name}
         onChange={(e) => updateField('name', e.target.value)}
         placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
         error={errors.name}
-        icon={<UserIcon />}
+        required
+        rightIcon={<UserIcon />}
       />
 
       {/* 성별 */}
-      <FormRadioGroup
+      <RadioGroupFieldV2
         label={dict.consultation?.request?.form?.gender?.label || '성별'}
         value={formData.gender}
         onChange={(value) => updateField('gender', value as 'MALE' | 'FEMALE')}
@@ -207,10 +210,11 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
               : dict.consultation?.request?.form?.gender?.female || '여성',
         }))}
         error={errors.gender}
+        required
       />
 
       {/* 나이대 */}
-      <FormSelect
+      <SelectFieldV2
         label={dict.consultation?.request?.form?.ageGroup?.label || '나이대'}
         value={formData.ageGroup}
         onChange={(value) => updateField('ageGroup', value)}
@@ -225,14 +229,15 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
           dict.consultation?.request?.form?.ageGroup?.placeholder || '나이대를 선택해주세요'
         }
         error={errors.ageGroup}
+        required
       />
 
       {/* 휴대폰 번호 */}
-      <PhoneNumberInput
+      <PhoneNumberFieldV2
         countryCode={formData.countryCode}
         phoneNumberOnly={formData.phoneNumberOnly}
-        onCountryCodeChange={(value) => updateField('countryCode', value)}
-        onPhoneNumberChange={(value) => updateField('phoneNumberOnly', value)}
+        onCountryCodeChange={(value: string) => updateField('countryCode', value)}
+        onPhoneNumberChange={(value: string) => updateField('phoneNumberOnly', value)}
         countryCodeError={errors.countryCode}
         phoneNumberError={errors.phoneNumberOnly}
         disabled={consultationMutation.isPending}
@@ -242,7 +247,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 예약 희망 날짜 */}
-      <FormDatePicker
+      <FormDatePickerV2
         label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
         value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
         onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
@@ -252,10 +257,11 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
           dict.consultation?.request?.form?.preferredDate?.placeholder || '날짜를 선택해주세요'
         }
         error={errors.preferredDate}
+        required
       />
 
       {/* 예약 희망 날짜2 */}
-      <FormDatePicker
+      <FormDatePickerV2
         label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
         value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
         onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
@@ -269,7 +275,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 내용 */}
-      <FormTextarea
+      <TextareaFieldV2
         label={dict.consultation?.request?.form?.content?.label || '내용'}
         value={formData.content}
         onChange={(e) => updateField('content', e.target.value)}
@@ -283,7 +289,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 개인정보 수집 이용 동의 */}
-      <FormCheckbox
+      <CheckboxFieldV2
         checked={formData.agreeToPrivacy}
         onChange={(checked) => updateField('agreeToPrivacy', checked)}
         title={
