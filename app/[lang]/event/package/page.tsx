@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { PageHeader } from 'shared/ui/page-header';
+import { PageHeaderV2 } from 'shared/ui/page-header';
 import {
   getPackageImagePath,
   PackageImage,
@@ -60,12 +60,8 @@ export default async function PackagePage({ params }: PackagePageProps) {
 
   return (
     <div>
-      <PageHeader
-        lang={lang}
-        title='Premium Medical Package'
-        fallbackUrl={`/${lang}/main`}
-        variant='light'
-      />
+      <PageHeaderV2 title='Premium Medical Package' fallbackUrl={`/${lang}/main`} />
+      <div className='h-[58px]' />
       <MainPackageImage src={mainImage} alt={title} />
       <PriceSection
         priceImageSrc={priceImage}

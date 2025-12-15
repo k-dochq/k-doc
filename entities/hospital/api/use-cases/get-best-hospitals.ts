@@ -88,8 +88,8 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
           },
         },
       },
-      // 인기순 정렬: ranking(낮을수록 우선) → rating(높을수록 우선) → createdAt(최신순)
-      orderBy: [{ ranking: 'asc' }, { rating: 'desc' }, { createdAt: 'desc' }],
+      // 추천순위 우선 정렬: recommendedRanking(낮을수록 우선) → rating(높을수록 우선) → createdAt(최신순)
+      orderBy: [{ recommendedRanking: 'asc' }, { rating: 'desc' }, { createdAt: 'desc' }],
       take: limit, // 지정된 개수만큼 제한
     });
 

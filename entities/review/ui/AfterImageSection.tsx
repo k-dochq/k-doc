@@ -46,7 +46,7 @@ export function AfterImageSection({
   };
 
   return (
-    <div className={`flex h-full flex-1 flex-col border-l border-white ${className}`}>
+    <div className={`flex h-full flex-col border-l border-white ${className}`}>
       {displayAfterImages.length === 1 ? (
         <SingleImageDisplay
           image={displayAfterImages[0]}
