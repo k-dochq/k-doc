@@ -10,6 +10,7 @@ import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyFavoritesState } from 'shared/ui/empty-state';
 import { type HospitalDoctor } from 'entities/hospital/api/entities/types';
+import { FavoritesDoctorsTabV2Skeleton } from './FavoritesDoctorsTabV2Skeleton';
 
 interface FavoritesDoctorsTabV2Props {
   lang: Locale;
@@ -44,15 +45,7 @@ export function FavoritesDoctorsTabV2({ lang, dict, user }: FavoritesDoctorsTabV
 
   // 로딩 상태
   if (isLoading && !data) {
-    return (
-      <div className='p-5'>
-        <div className='space-y-4'>
-          {Array.from({ length: 3 }).map((_, index) => (
-            <div key={index} className='h-[100px] animate-pulse rounded-xl bg-neutral-200' />
-          ))}
-        </div>
-      </div>
-    );
+    return <FavoritesDoctorsTabV2Skeleton />;
   }
 
   // 에러 상태
