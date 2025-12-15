@@ -76,7 +76,7 @@ export function FavoritesHospitalsTabV2({ lang, dict, user }: FavoritesHospitals
     <div>
       {/* 병원 리스트 */}
       {convertedHospitals.length > 0 ? (
-        <div className='px-5 py-[11px]'>
+        <div className='px-5 py-5'>
           {/* 2열 그리드 레이아웃 */}
           <div className='grid grid-cols-2 gap-x-[15px] gap-y-[16px]'>
             {convertedHospitals.map((hospital) => (
