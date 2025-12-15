@@ -18,7 +18,7 @@ interface FavoritesDoctorsTabV2Props {
   user: User | null;
 }
 
-export function FavoritesDoctorsTabV2({ lang, dict, user }: FavoritesDoctorsTabV2Props) {
+export function FavoritesDoctorsTabV2({ lang, dict }: FavoritesDoctorsTabV2Props) {
   // TanStack Query를 사용하여 좋아요한 의사 데이터 페칭
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, refetch } =
     useInfiniteLikedDoctors({ limit: 10 });
