@@ -38,7 +38,7 @@ export function BeforeImageSection({
   };
 
   return (
-    <div className={`flex h-full flex-1 flex-col ${className}`}>
+    <div className={`flex h-full flex-col ${className}`}>
       <SingleImageDisplay image={displayImage} type='before' onImageClick={handleImageClick} />
     </div>
   );
