@@ -11,10 +11,16 @@ interface HospitalDetailDoctorsV2Props {
   doctors: HospitalDoctor[];
   lang: Locale;
   dict: Dictionary;
+  showAllInitially?: boolean;
 }
 
-export function HospitalDetailDoctorsV2({ doctors, lang, dict }: HospitalDetailDoctorsV2Props) {
-  const [showAll, setShowAll] = useState(false);
+export function HospitalDetailDoctorsV2({
+  doctors,
+  lang,
+  dict,
+  showAllInitially = false,
+}: HospitalDetailDoctorsV2Props) {
+  const [showAll, setShowAll] = useState(showAllInitially);
   const doctorCount = doctors.length;
   const displayDoctors = useMemo(
     () => (showAll ? doctors : doctors.slice(0, 3)),
