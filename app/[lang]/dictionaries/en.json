@@ -572,6 +572,13 @@
     "error": "An error occurred while loading data.",
     "errorMessage": "Please check your network connection and try again later",
     "retry": "Retry",
+    "errorHospitals": "Unable to load hospital data",
+    "errorReviews": "Unable to load review data",
+    "errorDoctors": "Unable to load liked doctors",
+    "loadingMoreReviews": "Loading more reviews...",
+    "allLoadedReviews": "All reviews loaded.",
+    "loadingMoreDoctors": "Loading more doctors...",
+    "allLoadedDoctors": "All doctors loaded.",
     "empty": {
       "hospitals": {
         "title": "No saved hospitals",

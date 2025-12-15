@@ -572,6 +572,13 @@
     "error": "데이터를 불러오는 중 오류가 발생했습니다.",
     "errorMessage": "네트워크 연결을 확인하고 잠시 후 다시 시도해주세요",
     "retry": "다시 시도",
+    "errorHospitals": "병원 데이터를 불러올 수 없습니다",
+    "errorReviews": "리뷰 데이터를 불러올 수 없습니다",
+    "errorDoctors": "좋아요한 의사를 불러올 수 없습니다",
+    "loadingMoreReviews": "더 많은 리뷰를 불러오는 중...",
+    "allLoadedReviews": "모든 리뷰를 불러왔습니다.",
+    "loadingMoreDoctors": "더 많은 의사를 불러오는 중...",
+    "allLoadedDoctors": "모든 의사를 불러왔습니다.",
     "empty": {
       "hospitals": {
         "title": "찜한 병원이 없습니다",
