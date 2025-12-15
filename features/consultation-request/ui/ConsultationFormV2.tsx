@@ -13,6 +13,7 @@ import { SelectFieldV2 } from './SelectFieldV2';
 import { TextareaFieldV2 } from './TextareaFieldV2';
 import { FormDatePickerV2 } from './FormDatePickerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
+import { PrivacyAgreementNotice } from './PrivacyAgreementNotice';
 
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
@@ -290,16 +291,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
 
       <div className='h-8' />
 
-      {/* 개인정보 수집 이용 안내 */}
-      <div className='space-y-1 px-5 pb-[173px]'>
-        <p className='text-[13px] font-semibold text-neutral-500'>
-          {dict.consultation?.request?.form?.privacyAgreement?.title || '민감정보 수집 이용 동의'}
-        </p>
-        <p className='text-[13px] font-normal text-neutral-500'>
-          {dict.consultation?.request?.form?.privacyAgreement?.description ||
-            '시술후기 작성 및 앱내 활용을 위한 민감정보 수집, 이용 규정을 확인하였으며 이에 동의합니다.'}
-        </p>
-      </div>
+      <PrivacyAgreementNotice dict={dict} />
 
       {/* 플로팅 CTA */}
       <div
