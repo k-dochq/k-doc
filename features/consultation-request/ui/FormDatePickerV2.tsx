@@ -20,6 +20,8 @@ interface FormDatePickerV2Props {
   disabled?: (date: Date) => boolean;
   required?: boolean;
   yearRange?: { from: number; to: number };
+  hideOptionalText?: boolean;
+  helperText?: string;
 }
 
 export function FormDatePickerV2({
@@ -33,6 +35,8 @@ export function FormDatePickerV2({
   disabled,
   required = true,
   yearRange,
+  hideOptionalText,
+  helperText,
 }: FormDatePickerV2Props) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -82,7 +86,7 @@ export function FormDatePickerV2({
         <FieldLabel
           label={label}
           required={required}
-          optionalText={!required ? optionalText : undefined}
+          optionalText={!required && !hideOptionalText ? optionalText : undefined}
         />
 
         <button type='button' onClick={() => setOpen((prev) => !prev)} className={triggerClasses}>
@@ -112,6 +116,7 @@ export function FormDatePickerV2({
         )}
 
         <FieldError message={error} />
+        {helperText ? <p className='text-xs text-neutral-500'>{helperText}</p> : null}
       </div>
     </div>
   );

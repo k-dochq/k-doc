@@ -628,7 +628,8 @@
       "form": {
         "name": {
           "label": "여권 이름",
-          "placeholder": "여권에 기재된 이름을 입력해주세요"
+          "placeholder": "여권에 기재된 이름을 입력해주세요",
+          "passportHelper": "여권에 적힌 그대로 입력해주세요. 띄어쓰기 포함."
         },
         "gender": {
           "label": "성별",
@@ -659,11 +660,13 @@
         },
         "preferredDate": {
           "label": "예약 희망 날짜",
-          "placeholder": "날짜를 선택해주세요"
+          "placeholder": "날짜를 선택해주세요",
+          "helper": "병원 스케줄 확인을 위해 꼭 선택해주세요"
         },
         "preferredDate2": {
           "label": "예약 희망 날짜2",
-          "placeholder": "날짜를 선택해주세요"
+          "placeholder": "날짜를 선택해주세요",
+          "helper": "첫번째 날짜가 불가능할 경우에만 참고합니다"
         },
         "content": {
           "label": "상담내용",

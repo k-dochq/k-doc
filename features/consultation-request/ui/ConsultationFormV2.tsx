@@ -171,18 +171,16 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
   return (
     <div className='space-y-6 px-5 py-6'>
       {/* 이름 */}
-      <div className='space-y-1'>
-        <InputFieldV2
-          label={dict.consultation?.request?.form?.name?.label || '이름'}
-          value={formData.name}
-          onChange={(e) => updateField('name', e.target.value)}
-          placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
-          error={errors.name}
-          required
-          rightIcon={<UserIcon />}
-        />
-        <p className='text-[13px] font-normal text-neutral-700'>{passportNameHelperText}</p>
-      </div>
+      <InputFieldV2
+        label={dict.consultation?.request?.form?.name?.label || '이름'}
+        value={formData.name}
+        onChange={(e) => updateField('name', e.target.value)}
+        placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
+        error={errors.name}
+        required
+        rightIcon={<UserIcon />}
+        helperText={passportNameHelperText}
+      />
 
       {/* 성별 */}
       <SelectFieldV2
@@ -246,6 +244,10 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
         }
         error={errors.preferredDate}
         required
+        helperText={
+          (dict.consultation?.request?.form?.preferredDate as { helper?: string } | undefined)
+            ?.helper || '병원 스케줄 확인을 위해 꼭 선택해주세요'
+        }
       />
 
       {/* 예약 희망 날짜2 */}
@@ -260,6 +262,11 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
         }
         error={errors.preferredDate2}
         required={false}
+        hideOptionalText
+        helperText={
+          (dict.consultation?.request?.form?.preferredDate2 as { helper?: string } | undefined)
+            ?.helper || '첫번째 날짜가 불가능할 경우에만 참고합니다'
+        }
       />
 
       {/* 내용 */}

@@ -88,7 +88,7 @@ export function PhoneNumberFieldV2({
         optionalText={!required ? optionalText : undefined}
       />
       <div className='flex gap-2'>
-        <div className='w-32'>
+        <div className='w-[82px] max-w-[82px]'>
           <select
             value={countryCode}
             onChange={(e) => onCountryCodeChange(e.target.value)}

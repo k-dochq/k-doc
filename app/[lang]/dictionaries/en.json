@@ -628,7 +628,8 @@
       "form": {
         "name": {
           "label": "Passport Name",
-          "placeholder": "Please enter your passport name"
+          "placeholder": "Please enter your passport name",
+          "passportHelper": "Enter exactly as shown on your passport, including spaces."
         },
         "gender": {
           "label": "Gender",
@@ -659,11 +660,13 @@
         },
         "preferredDate": {
           "label": "Preferred Date",
-          "placeholder": "Please select a date"
+          "placeholder": "Please select a date",
+          "helper": "Please select so the hospital can check their schedule."
         },
         "preferredDate2": {
           "label": "Preferred Date 2",
-          "placeholder": "Please select a date"
+          "placeholder": "Please select a date",
+          "helper": "Used only if the first date is unavailable."
         },
         "content": {
           "label": "Consultation Details",
