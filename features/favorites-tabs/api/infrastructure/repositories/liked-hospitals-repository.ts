@@ -1,5 +1,6 @@
 import { prisma } from 'shared/lib/prisma';
 import type { LikedHospital } from '../../entities/types';
+import { getHospitalMainImageUrl } from 'entities/hospital/lib/image-utils';
 
 export interface ILikedHospitalsRepository {
   getLikedHospitalIds(userId: string): Promise<string[]>;
@@ -58,16 +59,21 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
         createdAt: true,
         updatedAt: true,
         displayLocationName: true,
+        latitude: true,
+        longitude: true,
+        badge: true,
         HospitalImage: {
           where: {
-            imageType: 'THUMBNAIL',
             isActive: true,
           },
+          orderBy: [
+            { imageType: 'asc' }, // MAIN이 먼저 오도록
+            { order: 'asc' },
+          ],
           select: {
+            imageType: true,
             imageUrl: true,
-            alt: true,
           },
-          take: 1,
         },
         HospitalMedicalSpecialty: {
           select: {
@@ -130,7 +136,8 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
           ranking: hospital.ranking,
           createdAt: hospital.createdAt,
           updatedAt: hospital.updatedAt,
-          mainImageUrl: hospital.HospitalImage[0]?.imageUrl || null,
+          mainImageUrl: getHospitalMainImageUrl(hospital.HospitalImage),
+          hospitalImages: hospital.HospitalImage,
           medicalSpecialties: hospital.HospitalMedicalSpecialty.map((hms) => ({
             id: hms.MedicalSpecialty.id,
             name: hms.MedicalSpecialty.name,
@@ -138,6 +145,9 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
           })),
           displayLocationName: hospital.displayLocationName,
           district: hospital.District || null,
+          latitude: hospital.latitude,
+          longitude: hospital.longitude,
+          badge: hospital.badge,
           isLiked: true, // 좋아요한 병원 목록이므로 항상 true
         }) as LikedHospital,
     );

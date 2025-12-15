@@ -1,4 +1,4 @@
-import { FavoritesTabs } from 'features/favorites-tabs';
+import { FavoritesContentV2 } from './FavoritesContentV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 
@@ -10,5 +10,5 @@ export default async function FavoritesPage({ params }: FavoritesPageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  return <FavoritesTabs lang={lang} dict={dict} />;
+  return <FavoritesContentV2 lang={lang} dict={dict} />;
 }

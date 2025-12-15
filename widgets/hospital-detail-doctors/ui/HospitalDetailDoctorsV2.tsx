@@ -11,10 +11,18 @@ interface HospitalDetailDoctorsV2Props {
   doctors: HospitalDoctor[];
   lang: Locale;
   dict: Dictionary;
+  showAllInitially?: boolean;
+  showTitle?: boolean;
 }
 
-export function HospitalDetailDoctorsV2({ doctors, lang, dict }: HospitalDetailDoctorsV2Props) {
-  const [showAll, setShowAll] = useState(false);
+export function HospitalDetailDoctorsV2({
+  doctors,
+  lang,
+  dict,
+  showAllInitially = false,
+  showTitle = true,
+}: HospitalDetailDoctorsV2Props) {
+  const [showAll, setShowAll] = useState(showAllInitially);
   const doctorCount = doctors.length;
   const displayDoctors = useMemo(
     () => (showAll ? doctors : doctors.slice(0, 3)),
@@ -33,12 +41,14 @@ export function HospitalDetailDoctorsV2({ doctors, lang, dict }: HospitalDetailD
 
   return (
     <div className='space-y-4'>
-      <div className='flex items-center gap-1'>
-        <h2 className='text-lg leading-7 font-semibold text-neutral-700'>
-          {dict.hospitals?.doctors?.title || '소속 의료진'}
-        </h2>
-        <span className='text-sm leading-5 font-medium text-neutral-700'>({doctorCount})</span>
-      </div>
+      {showTitle && (
+        <div className='flex items-center gap-1'>
+          <h2 className='text-lg leading-7 font-semibold text-neutral-700'>
+            {dict.hospitals?.doctors?.title || '소속 의료진'}
+          </h2>
+          <span className='text-sm leading-5 font-medium text-neutral-700'>({doctorCount})</span>
+        </div>
+      )}
 
       <div className='space-y-4'>
         {displayDoctors.map((doctor) => (

@@ -103,7 +103,12 @@ export function HospitalDetailHoursAndLocationV2({
   };
 
   return (
-    <div className='bg-white px-5 py-4'>
+    <div
+      className='bg-white px-5 py-4'
+      style={{ touchAction: 'pan-y', overscrollBehavior: 'contain' }}
+      onTouchStart={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+    >
       <div className='flex flex-col gap-3'>
         {/* 운영시간 섹션 */}
         {hospital.openingHours && (
