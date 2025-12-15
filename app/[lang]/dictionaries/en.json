@@ -582,15 +582,15 @@
     "empty": {
       "hospitals": {
         "title": "No saved hospitals",
-        "description": "Save hospitals you like"
+        "description": "Press the heart to save your favorite hospitals"
       },
       "reviews": {
         "title": "No saved reviews",
-        "description": "Save reviews you like"
+        "description": "Press the heart to save your favorite reviews"
       },
       "doctors": {
         "title": "No saved doctors",
-        "description": "Save doctors you like"
+        "description": "Press the heart to save your favorite doctors"
       }
     },
     "loadingMore": "Loading more data...",
