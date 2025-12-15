@@ -1,6 +1,6 @@
 'use client';
 
-import { type Locale } from 'shared/config';
+import { MAX_MOBILE_WIDTH_CLASS, type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useConsultationForm } from '../model/useConsultationForm';
 import { AGE_GROUPS, GENDER_OPTIONS } from '../model/types';
@@ -11,7 +11,6 @@ import { InputFieldV2 } from './InputFieldV2';
 import { PhoneNumberFieldV2 } from './PhoneNumberFieldV2';
 import { SelectFieldV2 } from './SelectFieldV2';
 import { TextareaFieldV2 } from './TextareaFieldV2';
-import { SubmitButton } from './SubmitButton';
 import { FormDatePickerV2 } from './FormDatePickerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 
@@ -168,126 +167,131 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
   };
 
   return (
-    <div className='space-y-6 px-5 py-3'>
-      {/* 이름 */}
-      <InputFieldV2
-        label={dict.consultation?.request?.form?.name?.label || '이름'}
-        value={formData.name}
-        onChange={(e) => updateField('name', e.target.value)}
-        placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
-        error={errors.name}
-        required
-        rightIcon={<UserIcon />}
-        helperText={passportNameHelperText}
-      />
+    <>
+      <div className='space-y-6 px-5 pt-3'>
+        {/* 이름 */}
+        <InputFieldV2
+          label={dict.consultation?.request?.form?.name?.label || '이름'}
+          value={formData.name}
+          onChange={(e) => updateField('name', e.target.value)}
+          placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
+          error={errors.name}
+          required
+          rightIcon={<UserIcon />}
+          helperText={passportNameHelperText}
+        />
 
-      {/* 성별 */}
-      <SelectFieldV2
-        label={dict.consultation?.request?.form?.gender?.label || '성별'}
-        value={formData.gender}
-        onChange={(value) => updateField('gender', value as 'MALE' | 'FEMALE')}
-        options={GENDER_OPTIONS.map((option) => ({
-          value: option.value,
-          label:
-            option.value === 'MALE'
-              ? dict.consultation?.request?.form?.gender?.male || '남성'
-              : dict.consultation?.request?.form?.gender?.female || '여성',
-        }))}
-        placeholder={genderPlaceholder}
-        error={errors.gender}
-        required
-      />
+        {/* 성별 */}
+        <SelectFieldV2
+          label={dict.consultation?.request?.form?.gender?.label || '성별'}
+          value={formData.gender}
+          onChange={(value) => updateField('gender', value as 'MALE' | 'FEMALE')}
+          options={GENDER_OPTIONS.map((option) => ({
+            value: option.value,
+            label:
+              option.value === 'MALE'
+                ? dict.consultation?.request?.form?.gender?.male || '남성'
+                : dict.consultation?.request?.form?.gender?.female || '여성',
+          }))}
+          placeholder={genderPlaceholder}
+          error={errors.gender}
+          required
+        />
 
-      {/* 나이대 */}
-      <SelectFieldV2
-        label={dict.consultation?.request?.form?.ageGroup?.label || '나이대'}
-        value={formData.ageGroup}
-        onChange={(value) => updateField('ageGroup', value)}
-        options={AGE_GROUPS.map((option) => ({
-          value: option.value,
-          label:
-            dict.consultation?.request?.form?.ageGroup?.[
-              option.value as keyof typeof dict.consultation.request.form.ageGroup
-            ] || option.label,
-        }))}
-        placeholder={
-          dict.consultation?.request?.form?.ageGroup?.placeholder || '나이대를 선택해주세요'
-        }
-        error={errors.ageGroup}
-        required
-      />
+        {/* 나이대 */}
+        <SelectFieldV2
+          label={dict.consultation?.request?.form?.ageGroup?.label || '나이대'}
+          value={formData.ageGroup}
+          onChange={(value) => updateField('ageGroup', value)}
+          options={AGE_GROUPS.map((option) => ({
+            value: option.value,
+            label:
+              dict.consultation?.request?.form?.ageGroup?.[
+                option.value as keyof typeof dict.consultation.request.form.ageGroup
+              ] || option.label,
+          }))}
+          placeholder={
+            dict.consultation?.request?.form?.ageGroup?.placeholder || '나이대를 선택해주세요'
+          }
+          error={errors.ageGroup}
+          required
+        />
 
-      {/* 휴대폰 번호 */}
-      <PhoneNumberFieldV2
-        countryCode={formData.countryCode}
-        phoneNumberOnly={formData.phoneNumberOnly}
-        onCountryCodeChange={(value: string) => updateField('countryCode', value)}
-        onPhoneNumberChange={(value: string) => updateField('phoneNumberOnly', value)}
-        countryCodeError={errors.countryCode}
-        phoneNumberError={errors.phoneNumberOnly}
-        disabled={consultationMutation.isPending}
-        lang={lang}
-        dict={dict}
-        required={true}
-      />
+        {/* 휴대폰 번호 */}
+        <PhoneNumberFieldV2
+          countryCode={formData.countryCode}
+          phoneNumberOnly={formData.phoneNumberOnly}
+          onCountryCodeChange={(value: string) => updateField('countryCode', value)}
+          onPhoneNumberChange={(value: string) => updateField('phoneNumberOnly', value)}
+          countryCodeError={errors.countryCode}
+          phoneNumberError={errors.phoneNumberOnly}
+          disabled={consultationMutation.isPending}
+          lang={lang}
+          dict={dict}
+          required={true}
+        />
 
-      {/* 예약 희망 날짜 */}
-      <FormDatePickerV2
-        label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
-        value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
-        onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
-        locale={lang}
-        dict={dict}
-        placeholder={
-          dict.consultation?.request?.form?.preferredDate?.placeholder || '날짜를 선택해주세요'
-        }
-        error={errors.preferredDate}
-        required
-        helperText={
-          (dict.consultation?.request?.form?.preferredDate as { helper?: string } | undefined)
-            ?.helper || '병원 스케줄 확인을 위해 꼭 선택해주세요'
-        }
-      />
+        {/* 예약 희망 날짜 */}
+        <FormDatePickerV2
+          label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
+          value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
+          onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
+          locale={lang}
+          dict={dict}
+          placeholder={
+            dict.consultation?.request?.form?.preferredDate?.placeholder || '날짜를 선택해주세요'
+          }
+          error={errors.preferredDate}
+          required
+          helperText={
+            (dict.consultation?.request?.form?.preferredDate as { helper?: string } | undefined)
+              ?.helper || '병원 스케줄 확인을 위해 꼭 선택해주세요'
+          }
+        />
 
-      {/* 예약 희망 날짜2 */}
-      <FormDatePickerV2
-        label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
-        value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
-        onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
-        locale={lang}
-        dict={dict}
-        placeholder={
-          dict.consultation?.request?.form?.preferredDate2?.placeholder || '날짜를 선택해주세요'
-        }
-        error={errors.preferredDate2}
-        required={false}
-        hideOptionalText
-        helperText={
-          (dict.consultation?.request?.form?.preferredDate2 as { helper?: string } | undefined)
-            ?.helper || '첫번째 날짜가 불가능할 경우에만 참고합니다'
-        }
-      />
+        {/* 예약 희망 날짜2 */}
+        <FormDatePickerV2
+          label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
+          value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
+          onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
+          locale={lang}
+          dict={dict}
+          placeholder={
+            dict.consultation?.request?.form?.preferredDate2?.placeholder || '날짜를 선택해주세요'
+          }
+          error={errors.preferredDate2}
+          required={false}
+          hideOptionalText
+          helperText={
+            (dict.consultation?.request?.form?.preferredDate2 as { helper?: string } | undefined)
+              ?.helper || '첫번째 날짜가 불가능할 경우에만 참고합니다'
+          }
+        />
 
-      {/* 내용 */}
-      <TextareaFieldV2
-        label={dict.consultation?.request?.form?.content?.label || '내용'}
-        value={formData.content}
-        onChange={(e) => updateField('content', e.target.value)}
-        placeholder={
-          dict.consultation?.request?.form?.content?.placeholder ||
-          '상담받고 싶은 내용을 자세히 적어주세요'
-        }
-        maxLength={500}
-        currentLength={formData.content.length}
-        error={errors.content}
-        helperText={
-          (dict.consultation?.request?.form?.content as { helper?: string } | undefined)?.helper ||
-          '상담 신청 후 담당 상담 매니저가 K-DOC 채팅창을 통해 자세한 상담을 도와드립니다.'
-        }
-      />
+        {/* 내용 */}
+        <TextareaFieldV2
+          label={dict.consultation?.request?.form?.content?.label || '내용'}
+          value={formData.content}
+          onChange={(e) => updateField('content', e.target.value)}
+          placeholder={
+            dict.consultation?.request?.form?.content?.placeholder ||
+            '상담받고 싶은 내용을 자세히 적어주세요'
+          }
+          maxLength={500}
+          currentLength={formData.content.length}
+          error={errors.content}
+          helperText={
+            (dict.consultation?.request?.form?.content as { helper?: string } | undefined)
+              ?.helper ||
+            '상담 신청 후 담당 상담 매니저가 K-DOC 채팅창을 통해 자세한 상담을 도와드립니다.'
+          }
+        />
+      </div>
+
+      <div className='h-8' />
 
       {/* 개인정보 수집 이용 안내 */}
-      <div className='space-y-1'>
+      <div className='space-y-1 px-5 pb-[173px]'>
         <p className='text-[13px] font-semibold text-neutral-500'>
           {dict.consultation?.request?.form?.privacyAgreement?.title || '민감정보 수집 이용 동의'}
         </p>
@@ -297,11 +301,27 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
         </p>
       </div>
 
-      <SubmitButton onClick={onSubmit} disabled={consultationMutation.isPending || !isFormValid}>
-        {consultationMutation.isPending
-          ? dict.consultation?.request?.form?.loading || '로딩 중...'
-          : dict.consultation?.request?.form?.submitButton || '상담신청'}
-      </SubmitButton>
-    </div>
+      {/* 플로팅 CTA */}
+      <div
+        className={`fixed right-0 bottom-0 left-0 z-40 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-10 ${MAX_MOBILE_WIDTH_CLASS}`}
+      >
+        <p className='mb-[10px] text-center text-sm leading-5 font-medium text-[#404040]'>
+          <span className='text-[#f15bff]'>
+            {dict.consultation?.request?.form?.floatingNotice?.highlight || '방문 가능 시간'}
+          </span>
+          {dict.consultation?.request?.form?.floatingNotice?.message ||
+            '은 상담 통해서 조율이 필요합니다.'}
+        </p>
+        <button
+          onClick={onSubmit}
+          disabled={consultationMutation.isPending || !isFormValid}
+          className='h-14 w-full rounded-xl bg-[#7657FF] text-base leading-6 font-medium text-white transition-colors duration-200 hover:bg-[#7657FF]/90 disabled:cursor-not-allowed disabled:bg-[#7657FF]/50'
+        >
+          {consultationMutation.isPending
+            ? dict.consultation?.request?.form?.loading || '로딩 중...'
+            : dict.consultation?.request?.form?.submitButton || '상담신청'}
+        </button>
+      </div>
+    </>
   );
 }

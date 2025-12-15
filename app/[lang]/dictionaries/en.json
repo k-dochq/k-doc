@@ -677,6 +677,10 @@
           "title": "Sensitive Information Collection Agreement",
           "description": "I have reviewed and agree to the sensitive information collection and usage regulations for writing reviews and app utilization."
         },
+        "floatingNotice": {
+          "highlight": "Available time",
+          "message": " needs to be coordinated after consultation."
+        },
         "errors": {
           "name": {
             "required": "Please enter your name."
