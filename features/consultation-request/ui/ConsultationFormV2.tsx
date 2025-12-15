@@ -7,17 +7,16 @@ import { AGE_GROUPS, GENDER_OPTIONS } from '../model/types';
 import { useConsultationRequest } from '../api/useConsultationRequest';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useUserProfile } from 'features/user-profile/model/useUserProfile';
-import {
-  CheckboxFieldV2,
-  InputFieldV2,
-  PhoneNumberFieldV2,
-  RadioGroupFieldV2,
-  SelectFieldV2,
-  TextareaFieldV2,
-} from './FormFieldsV2';
+import { CheckboxFieldV2 } from './CheckboxFieldV2';
+import { InputFieldV2 } from './InputFieldV2';
+import { PhoneNumberFieldV2 } from './PhoneNumberFieldV2';
+import { RadioGroupFieldV2 } from './RadioGroupFieldV2';
+import { SelectFieldV2 } from './SelectFieldV2';
+import { TextareaFieldV2 } from './TextareaFieldV2';
 import { SubmitButton } from './SubmitButton';
 import { FormDatePickerV2 } from './FormDatePickerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
+
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -30,36 +29,14 @@ const UserIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const PhoneIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-    <path
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z'
-    />
-  </svg>
-);
-
-const CalendarIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-    <path
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
-    />
-  </svg>
-);
-
-interface ConsultationFormProps {
+export interface ConsultationFormV2Props {
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;
 }
 
-export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormProps) {
-  const { data: userProfile, isLoading: isUserLoading } = useUserProfile();
+export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV2Props) {
+  const { data: userProfile } = useUserProfile();
   const { formData, errors, updateField, handleSubmit, isFormValid } = useConsultationForm(
     lang,
     dict,
@@ -69,7 +46,6 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
   const consultationMutation = useConsultationRequest();
 
   const onSubmit = () => {
-    // 필수값 validation 체크
     const validationErrors: string[] = [];
 
     if (!formData.name.trim()) {
@@ -119,13 +95,11 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       );
     }
 
-    // validation 실패 시 alert로 알림 (첫 번째 에러만)
     if (validationErrors.length > 0) {
       window.alert(validationErrors[0]);
       return;
     }
 
-    // validation 통과 시 API 호출
     consultationMutation.mutate(
       {
         hospitalId,
@@ -140,19 +114,14 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       },
       {
         onSuccess: () => {
-          // 성공 시 상담채팅 페이지로 이동
           router.push(`/chat/${hospitalId}`);
         },
         onError: (error) => {
-          console.error('상담신청 실패:', error);
-
-          // 에러 메시지 매핑
           const errorMessage = error.message;
           let displayMessage =
             dict.consultation?.request?.form?.errorMessages?.UNKNOWN_ERROR ||
             '알 수 없는 오류가 발생했습니다.';
 
-          // 서버에서 반환된 에러 코드에 따른 메시지 매핑
           if (errorMessage.includes('UNAUTHORIZED')) {
             displayMessage =
               dict.consultation?.request?.form?.errorMessages?.UNAUTHORIZED ||
@@ -302,8 +271,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         error={errors.agreeToPrivacy}
       />
 
-      {/* 상담신청 버튼 */}
-      <SubmitButton onClick={onSubmit} disabled={consultationMutation.isPending}>
+      <SubmitButton onClick={onSubmit} disabled={consultationMutation.isPending || !isFormValid}>
         {consultationMutation.isPending
           ? dict.consultation?.request?.form?.loading || '로딩 중...'
           : dict.consultation?.request?.form?.submitButton || '상담신청'}

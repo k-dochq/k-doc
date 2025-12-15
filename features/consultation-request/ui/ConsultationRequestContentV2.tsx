@@ -8,6 +8,7 @@ import { ConsultationRequestError } from './ConsultationRequestError';
 import { convertHospitalToCardData } from '../lib/convert-hospital-to-card-data';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import { DoctorAffiliatedHospitalCardV2 } from 'widgets/doctor-affiliated-hospital/ui/DoctorAffiliatedHospitalCardV2';
+import { ConsultationFormV2 } from './ConsultationFormV2';
 
 interface ConsultationRequestContentV2Props {
   hospitalId: string;
@@ -46,6 +47,9 @@ export function ConsultationRequestContentV2({
       <div className='px-5 py-6'>
         <DoctorAffiliatedHospitalCardV2 hospital={hospitalCard} lang={lang} dict={dict} />
       </div>
+
+      {/* 상담 신청 폼 V2 */}
+      <ConsultationFormV2 hospitalId={hospitalId} lang={lang} dict={dict} />
     </div>
   );
 }
