@@ -525,7 +525,7 @@
       "error": "오류 발생"
     },
     "registrationPrompt": {
-      "message": "Fast Reservation Guarantee!",
+      "message": "Fast Reservation Guarantee !!",
       "button": "Register"
     }
   },

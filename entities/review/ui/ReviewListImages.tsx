@@ -76,6 +76,13 @@ export function ReviewListImages({
     setIsModalOpen(false);
   };
 
+  // 이미지 개수에 따른 flex 비율 결정
+  // 예외: after 이미지가 1개일 경우 50:50
+  // 기본: 왼쪽 2/3, 오른쪽 1/3
+  const isEqualSplit = afterImages.length === 1;
+  const beforeFlexClass = isEqualSplit ? 'flex-1' : 'flex-[2]';
+  const afterFlexClass = 'flex-1';
+
   return (
     <>
       <div className={`flex h-56 overflow-hidden rounded-xl ${className}`}>
@@ -84,6 +91,7 @@ export function ReviewListImages({
           reviewId={reviewId}
           lang={lang}
           onImageClick={handleImageClick}
+          className={beforeFlexClass}
         />
         <AfterImageSection
           afterImages={afterImages}
@@ -91,6 +99,7 @@ export function ReviewListImages({
           reviewId={reviewId}
           lang={lang}
           onImageClick={handleImageClick}
+          className={afterFlexClass}
         />
       </div>
 

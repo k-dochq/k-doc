@@ -31,5 +31,6 @@ export function convertReviewHospitalToHospitalCard(review: ReviewCardData): Hos
     displayLocationName: review.hospital.displayLocationName
       ? (review.hospital.displayLocationName as LocalizedText)
       : null,
+    badge: review.hospital.badge,
   };
 }

@@ -26,6 +26,7 @@ export function HospitalMainImage({ imageUrl, hospitalName }: HospitalMainImageP
         alt=''
         fill
         className='absolute inset-0 object-cover blur-lg'
+        sizes='(max-width: 500px) 100vw, 500px'
         priority
       />
 
@@ -35,6 +36,7 @@ export function HospitalMainImage({ imageUrl, hospitalName }: HospitalMainImageP
         alt={hospitalName}
         fill
         className='relative z-10 object-cover'
+        sizes='(max-width: 500px) 100vw, 500px'
         priority
         onError={handleImageError}
       />
