@@ -86,6 +86,7 @@ export type ReviewCardData = {
       displayName?: LocalizedText | null;
     };
     displayLocationName?: LocalizedText | null;
+    badge?: string[] | null;
   };
   medicalSpecialty: {
     name: LocalizedText;
