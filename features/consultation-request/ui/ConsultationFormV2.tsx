@@ -281,6 +281,10 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
         maxLength={500}
         currentLength={formData.content.length}
         error={errors.content}
+        helperText={
+          (dict.consultation?.request?.form?.content as { helper?: string } | undefined)?.helper ||
+          '상담 신청 후 담당 상담 매니저가 K-DOC 채팅창을 통해 자세한 상담을 도와드립니다.'
+        }
       />
 
       {/* 개인정보 수집 이용 동의 */}

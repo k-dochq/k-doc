@@ -670,7 +670,8 @@
         },
         "content": {
           "label": "Consultation Details",
-          "placeholder": "Please describe what you would like to consult about"
+          "placeholder": "Please describe what you would like to consult about",
+          "helper": "After you submit, a consultation manager will assist you in detail via the K-DOC chat."
         },
         "privacyAgreement": {
           "title": "Sensitive Information Collection Agreement",

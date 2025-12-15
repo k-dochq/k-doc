@@ -11,6 +11,7 @@ type TextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'classNam
   required?: boolean;
   maxLength?: number;
   currentLength?: number;
+  helperText?: string;
 };
 
 export function TextareaFieldV2({
@@ -20,6 +21,7 @@ export function TextareaFieldV2({
   maxLength = 500,
   currentLength = 0,
   disabled,
+  helperText,
   ...props
 }: TextareaProps) {
   const stateClass = buildStateClass(props.value, error);
@@ -40,6 +42,7 @@ export function TextareaFieldV2({
           {currentLength}/{maxLength}
         </div>
       </div>
+      {helperText && !error ? <p className='text-xs text-neutral-500'>{helperText}</p> : null}
       <FieldError message={error} />
     </div>
   );
