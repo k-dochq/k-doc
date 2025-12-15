@@ -10,7 +10,6 @@ import { useUserProfile } from 'features/user-profile/model/useUserProfile';
 import { CheckboxFieldV2 } from './CheckboxFieldV2';
 import { InputFieldV2 } from './InputFieldV2';
 import { PhoneNumberFieldV2 } from './PhoneNumberFieldV2';
-import { RadioGroupFieldV2 } from './RadioGroupFieldV2';
 import { SelectFieldV2 } from './SelectFieldV2';
 import { TextareaFieldV2 } from './TextareaFieldV2';
 import { SubmitButton } from './SubmitButton';
@@ -52,6 +51,14 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
           }
         | undefined
     )?.passportHelper || '여권에 적힌 그대로 입력해주세요. 띄어쓰기 포함.';
+  const genderPlaceholder =
+    (
+      dict.consultation?.request?.form?.gender as
+        | {
+            placeholder?: string;
+          }
+        | undefined
+    )?.placeholder || '성별을 선택해주세요';
 
   const onSubmit = () => {
     const validationErrors: string[] = [];
@@ -178,7 +185,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
       </div>
 
       {/* 성별 */}
-      <RadioGroupFieldV2
+      <SelectFieldV2
         label={dict.consultation?.request?.form?.gender?.label || '성별'}
         value={formData.gender}
         onChange={(value) => updateField('gender', value as 'MALE' | 'FEMALE')}
@@ -189,6 +196,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
               ? dict.consultation?.request?.form?.gender?.male || '남성'
               : dict.consultation?.request?.form?.gender?.female || '여성',
         }))}
+        placeholder={genderPlaceholder}
         error={errors.gender}
         required
       />

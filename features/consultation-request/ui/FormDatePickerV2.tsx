@@ -4,6 +4,10 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { Calendar } from 'shared/ui/calendar';
+import { FieldLabel } from './FieldLabel';
+import { FieldError } from './FieldError';
+import { baseInputClasses, buildStateClass } from './form-field-styles';
+import { CalendarIcon } from './CalendarIcon';
 
 interface FormDatePickerV2Props {
   label: string;
@@ -16,56 +20,6 @@ interface FormDatePickerV2Props {
   disabled?: (date: Date) => boolean;
   required?: boolean;
   yearRange?: { from: number; to: number };
-}
-
-const baseInputClasses =
-  'block w-full rounded-xl border px-4 py-3.5 text-sm leading-6 transition focus:outline-none';
-const normalState =
-  'border-neutral-200 bg-white text-neutral-900 focus:border-[#A854E2] focus:ring-2 focus:ring-[#A854E2]/40';
-const errorState =
-  'border-[#EF4444] bg-white text-neutral-900 focus:border-[#EF4444] focus:ring-2 focus:ring-[#EF4444]/30';
-
-const CalendarIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-    <path
-      strokeLinecap='round'
-      strokeLinejoin='round'
-      strokeWidth={2}
-      d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'
-    />
-  </svg>
-);
-
-const ChevronDownIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
-  </svg>
-);
-
-function FieldLabel({
-  label,
-  required,
-  optionalText,
-}: {
-  label: string;
-  required?: boolean;
-  optionalText?: string;
-}) {
-  return (
-    <label className='text-sm leading-5 font-medium text-neutral-900'>
-      {required ? (
-        <span className='text-[#DA47EF]'>*</span>
-      ) : optionalText ? (
-        <span className='text-neutral-500'>[{optionalText}]</span>
-      ) : null}{' '}
-      {label}
-    </label>
-  );
-}
-
-function FieldError({ message }: { message?: string }) {
-  if (!message) return null;
-  return <p className='text-sm leading-5 text-[#EF4444]'>{message}</p>;
 }
 
 export function FormDatePickerV2({
@@ -118,11 +72,9 @@ export function FormDatePickerV2({
     return 'Select date';
   };
 
-  const triggerClasses = `${baseInputClasses} flex items-center justify-between ${
-    error ? errorState : normalState
-  }`;
-
   const optionalText = dict?.auth?.signup?.optional || '선택';
+  const stateClass = buildStateClass(value, error);
+  const triggerClasses = `${baseInputClasses} h-[52px] p-4 flex items-center justify-between ${stateClass}`;
 
   return (
     <div ref={containerRef} className='relative'>
@@ -137,9 +89,8 @@ export function FormDatePickerV2({
           <span className={value ? 'text-neutral-900' : 'text-neutral-400'}>
             {value ? formatDate(value) : getPlaceholderText()}
           </span>
-          <span className='flex items-center gap-2 text-neutral-400'>
-            <CalendarIcon className='h-4 w-4' />
-            <ChevronDownIcon className='h-4 w-4' />
+          <span className='flex items-center text-neutral-400'>
+            <CalendarIcon className='h-5 w-5' />
           </span>
         </button>
 
