@@ -29,16 +29,16 @@ export function TextareaFieldV2({
   return (
     <div className='flex w-full flex-col gap-2'>
       <FieldLabel label={label} required={required} />
-      <div className='flex flex-col gap-1'>
+      <div className='relative'>
         <textarea
           {...props}
           disabled={disabled}
           maxLength={maxLength}
-          className={`${baseInputClasses} min-h-[120px] resize-none ${stateClass} ${
+          className={`${baseInputClasses} min-h-[120px] resize-none pr-16 pb-10 ${stateClass} ${
             disabled ? disabledState : ''
           }`}
         />
-        <div className='text-right text-[13px] leading-[19px] text-neutral-500'>
+        <div className='pointer-events-none absolute right-4 bottom-3 text-sm text-neutral-400'>
           {currentLength}/{maxLength}
         </div>
       </div>

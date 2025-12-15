@@ -169,7 +169,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
   };
 
   return (
-    <div className='space-y-6 px-5 py-6'>
+    <div className='space-y-6 px-5 py-3'>
       {/* 이름 */}
       <InputFieldV2
         label={dict.consultation?.request?.form?.name?.label || '이름'}
