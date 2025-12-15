@@ -69,7 +69,13 @@ export function FavoritesDoctorsTabV2({ lang, dict }: FavoritesDoctorsTabV2Props
 
   return (
     <div className='p-5'>
-      <HospitalDetailDoctorsV2 doctors={doctors} lang={lang} dict={dict} showAllInitially={true} />
+      <HospitalDetailDoctorsV2
+        doctors={doctors}
+        lang={lang}
+        dict={dict}
+        showAllInitially={true}
+        showTitle={false}
+      />
       {/* 무한 스크롤 트리거 */}
       {hasNextPage && (
         <div className='mt-6'>
