@@ -44,6 +44,14 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
   );
   const router = useLocalizedRouter();
   const consultationMutation = useConsultationRequest();
+  const passportNameHelperText =
+    (
+      dict.consultation?.request?.form?.name as
+        | {
+            passportHelper?: string;
+          }
+        | undefined
+    )?.passportHelper || '여권에 적힌 그대로 입력해주세요. 띄어쓰기 포함.';
 
   const onSubmit = () => {
     const validationErrors: string[] = [];
@@ -156,15 +164,18 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
   return (
     <div className='space-y-6 px-5 py-6'>
       {/* 이름 */}
-      <InputFieldV2
-        label={dict.consultation?.request?.form?.name?.label || '이름'}
-        value={formData.name}
-        onChange={(e) => updateField('name', e.target.value)}
-        placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
-        error={errors.name}
-        required
-        rightIcon={<UserIcon />}
-      />
+      <div className='space-y-1'>
+        <InputFieldV2
+          label={dict.consultation?.request?.form?.name?.label || '이름'}
+          value={formData.name}
+          onChange={(e) => updateField('name', e.target.value)}
+          placeholder={dict.consultation?.request?.form?.name?.placeholder || '이름을 입력해주세요'}
+          error={errors.name}
+          required
+          rightIcon={<UserIcon />}
+        />
+        <p className='text-[13px] font-normal text-neutral-700'>{passportNameHelperText}</p>
+      </div>
 
       {/* 성별 */}
       <RadioGroupFieldV2

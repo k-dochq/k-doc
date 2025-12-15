@@ -31,7 +31,7 @@ export function InputFieldV2({
         <input
           {...props}
           disabled={disabled}
-          className={`${baseInputClasses} ${stateClass} ${disabled ? disabledState : ''} ${
+          className={`${baseInputClasses} h-[52px] ${stateClass} ${disabled ? disabledState : ''} ${
             rightIcon ? 'pr-11' : ''
           }`}
         />

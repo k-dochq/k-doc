@@ -73,10 +73,12 @@ export function PhoneNumberFieldV2({
     ? errorBorder
     : `${phoneHasValue ? filledBorder : emptyBorder} ${focusClass} text-neutral-900`;
 
-  const countryClassName = `${baseInputClasses} appearance-none pr-10 ${countryStateClass} ${
+  const countryClassName = `${baseInputClasses} h-[52px] appearance-none pr-10 ${countryStateClass} ${
     disabled ? disabledState : ''
   }`;
-  const phoneInputClassName = `${baseInputClasses} ${phoneStateClass} ${disabled ? disabledState : ''}`;
+  const phoneInputClassName = `${baseInputClasses} h-[52px] ${phoneStateClass} ${
+    disabled ? disabledState : ''
+  }`;
 
   return (
     <div className='flex w-full flex-col gap-2'>
