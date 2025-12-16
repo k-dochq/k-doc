@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from 'app/[lang]/dictionaries';
-import { ReviewWriteContent } from './ReviewWriteContent';
+import { ReviewWriteContentV2 } from './ReviewWriteContentV2';
 
 interface ReviewWritePageProps {
   params: Promise<{ lang: Locale }>;
@@ -12,7 +12,7 @@ export default async function ReviewWritePage({ params, searchParams }: ReviewWr
   const { hospitalId } = await searchParams;
   const dict = await getDictionary(lang);
 
-  return <ReviewWriteContent lang={lang} dict={dict} hospitalId={hospitalId} />;
+  return <ReviewWriteContentV2 lang={lang} dict={dict} hospitalId={hospitalId} />;
 }
 
 export async function generateMetadata({ params }: ReviewWritePageProps) {
