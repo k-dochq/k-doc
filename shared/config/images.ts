@@ -6,6 +6,7 @@ export const DEFAULT_IMAGES = {
   PRODUCT_PLACEHOLDER: '/images/product-placeholder.svg',
   HOSPITAL_DEFAULT: '/images/shared/default_image.png',
   DEFAULT_IMAGE_SQUARE: '/images/shared/default_image.png',
+  HOSPITAL_LOGO_DEFAULT: '/images/shared/default_logo.png',
 } as const;
 
 /**

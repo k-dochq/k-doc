@@ -12,7 +12,7 @@ interface FooterV2Props {
 
 export function FooterV2({ lang, dict }: FooterV2Props) {
   return (
-    <footer className='bg-[#2D3138] px-5 py-12'>
+    <footer className='bg-[#707781] px-5 py-12'>
       <div className='flex flex-col gap-8'>
         {/* 상단 섹션: 로고와 회사소개/Contact us */}
         <div className='flex items-end justify-between'>

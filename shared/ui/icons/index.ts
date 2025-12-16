@@ -27,3 +27,4 @@ export { CheckIcon } from './CheckIcon';
 export { CommentIconV2 } from './CommentIconV2';
 export { StarIconV2 } from './StarIconV2';
 export { StarIconReviewV2 } from './StarIconReviewV2';
+export { ExclamationIcon } from './ExclamationIcon';

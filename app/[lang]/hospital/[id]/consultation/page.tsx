@@ -1,6 +1,6 @@
 import { getDictionary } from '../../../dictionaries';
 import { type Locale } from 'shared/config';
-import { ConsultationRequestForm } from 'features/consultation-request/ui/ConsultationRequestForm';
+import { ConsultationRequestContentV2 } from 'features/consultation-request/ui/ConsultationRequestContentV2';
 
 interface ConsultationRequestPageProps {
   params: Promise<{
@@ -13,5 +13,5 @@ export default async function ConsultationRequestPage({ params }: ConsultationRe
   const { lang, id } = await params;
   const dict = await getDictionary(lang);
 
-  return <ConsultationRequestForm hospitalId={id} lang={lang} dict={dict} />;
+  return <ConsultationRequestContentV2 hospitalId={id} lang={lang} dict={dict} />;
 }
