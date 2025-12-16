@@ -1,5 +1,5 @@
-import { BottomNavigation } from '@/widgets/bottom-navigation';
-import { Header } from '@/widgets/header';
+import { BottomNavigationV2 } from '@/widgets/bottom-navigation/ui/BottomNavigationV2';
+import { HeaderV2 } from '@/widgets/header/ui/HeaderV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 
@@ -13,11 +13,11 @@ export default async function ConsultationLayout({ children, params }: Consultat
   const dict = await getDictionary(lang);
 
   return (
-    <>
-      <Header currentLang={lang} dict={dict} />
+    <div className='min-h-screen bg-white'>
+      <HeaderV2 currentLang={lang} dict={dict} />
       <main>{children}</main>
       <div className='h-16' />
-      <BottomNavigation currentLang={lang} dict={dict} />
-    </>
+      <BottomNavigationV2 currentLang={lang} dict={dict} />
+    </div>
   );
 }
