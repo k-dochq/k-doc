@@ -12,6 +12,8 @@ import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header/PageHeaderV2';
 import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { Loader2 } from 'lucide-react';
+import { DoctorAffiliatedHospitalCardV2 } from 'widgets/doctor-affiliated-hospital/ui/DoctorAffiliatedHospitalCardV2';
+import { convertHospitalToCardData } from 'entities/hospital/lib/hospital-type-converters';
 
 interface ReviewWriteContentV2Props {
   lang: Locale;
@@ -39,6 +41,9 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
 
   const hospital = hospitalDetailData?.hospital;
   const error = isHospitalError || isCategoriesError ? 'Failed to load data' : null;
+
+  // Hospital 데이터를 HospitalCardData로 변환
+  const hospitalCardData = hospital ? convertHospitalToCardData(hospital) : null;
 
   // 로그인 확인
   useEffect(() => {
@@ -115,8 +120,14 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
 
       {/* 컨텐츠 영역 */}
       <div className='pt-[58px] pb-[120px]'>
-        {/* 빈 영역 (나중에 폼 추가 예정) */}
-        <div className='p-6'></div>
+        {/* 병원 카드 섹션 */}
+        {hospitalCardData && (
+          <div className='p-5'>
+            <DoctorAffiliatedHospitalCardV2 hospital={hospitalCardData} lang={lang} dict={dict} />
+          </div>
+        )}
+
+        {/* 나머지 폼 영역 (나중에 추가 예정) */}
       </div>
 
       {/* 플로팅 버튼 섹션 */}
