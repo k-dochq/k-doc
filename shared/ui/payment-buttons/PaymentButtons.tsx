@@ -89,7 +89,7 @@ export function PaymentButtons({ data, lang, dict }: PaymentButtonsProps) {
       {/* 결제 버튼 */}
       <button
         onClick={handlePaymentClick}
-        className='flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#ff60f7] to-[#ae33fb] px-5 py-3 transition-opacity hover:opacity-90 active:opacity-80'
+        className='bg-sub-900 flex w-full items-center justify-center rounded-xl px-5 py-3 transition-opacity hover:opacity-90 active:opacity-80'
       >
         <p className="font-['Pretendard:Medium',sans-serif] text-[14px] leading-[20px] text-white">
           {data.paymentButtonText}
