@@ -39,7 +39,7 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
         <div className='h-px w-full bg-[#7E848D]' />
 
         {/* COPYRIGHT */}
-        <p className='text-left text-xs leading-[16px] font-normal text-neutral-400'>
+        <p className='text-left text-xs leading-[16px] font-normal text-[#BABEC4]'>
           COPYRIGHT © K-DOC. ALL RIGHT RESERVED
         </p>
       </div>
@@ -50,7 +50,7 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
           href={getDataRequestLink(lang)}
           target='_blank'
           rel='noopener noreferrer'
-          className='text-right text-xs leading-[16px] font-normal text-neutral-400 transition-colors hover:text-neutral-200'
+          className='text-right text-xs leading-[16px] font-normal text-[#BABEC4] transition-colors'
         >
           {dict.footer.dataRequest}
         </a>
