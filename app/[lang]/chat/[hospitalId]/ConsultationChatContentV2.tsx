@@ -14,7 +14,6 @@ import { createDisplayName } from 'features/consultation-chat/lib/chat-utils';
 import { useHospitalDetail } from 'entities/hospital';
 import { ConsultationChatLoading } from 'features/consultation-chat/ui/ConsultationChatLoading';
 import { ConsultationChatUnauthorized } from 'features/consultation-chat/ui/ConsultationChatUnauthorized';
-import { ConsultationChatError } from 'features/consultation-chat/ui/ConsultationChatError';
 import { ConsultationChatMainV2 } from 'features/consultation-chat/ui/ConsultationChatMainV2';
 
 interface ConsultationChatContentV2Props {
@@ -74,7 +73,7 @@ export function ConsultationChatContentV2({
             content: <NotificationPermissionModal lang={lang} dict={dict} />,
           });
         }
-      } catch (error) {
+      } catch (_error) {
         // 에러 발생 시 무시 (조용히 실패)
       }
     }
