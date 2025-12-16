@@ -4,6 +4,7 @@ import {
   type GetUserReservedHospitalsParams,
   type ReservedHospitalData,
   type ReservationWithHospital,
+  type HospitalMedicalSpecialtyWithSpecialty,
 } from '../entities/types';
 
 /**
@@ -28,11 +29,34 @@ function extractUniqueHospitals(reservations: ReservationWithHospital[]): Reserv
       reviewCount: Hospital.reviewCount,
       bookmarkCount: Hospital.bookmarkCount,
       thumbnailUrl: Hospital.HospitalImage[0]?.imageUrl || null,
-      specialties: Hospital.HospitalMedicalSpecialty.map((hms) => ({
-        id: hms.MedicalSpecialty.id,
-        name: hms.MedicalSpecialty.name as Record<string, string>,
-        type: hms.MedicalSpecialty.specialtyType,
+      hospitalImages: Hospital.HospitalImage.map((img) => ({
+        imageType: img.imageType,
+        imageUrl: img.imageUrl,
       })),
+      prices: Hospital.prices,
+      discountRate: Hospital.discountRate,
+      ranking: Hospital.ranking,
+      displayLocationName: Hospital.displayLocationName,
+      badge: Hospital.badge,
+      district: Hospital.District
+        ? {
+            id: Hospital.District.id,
+            name: Hospital.District.name,
+            displayName: Hospital.District.displayName,
+            countryCode: Hospital.District.countryCode,
+            level: Hospital.District.level,
+            order: Hospital.District.order,
+            parentId: Hospital.District.parentId,
+          }
+        : null,
+      specialties: Hospital.HospitalMedicalSpecialty.map((hms) => {
+        const hmsWithSpecialty = hms as HospitalMedicalSpecialtyWithSpecialty;
+        return {
+          id: hmsWithSpecialty.MedicalSpecialty.id,
+          name: hmsWithSpecialty.MedicalSpecialty.name as Record<string, string>,
+          type: hmsWithSpecialty.MedicalSpecialty.specialtyType,
+        };
+      }),
       reservationInfo: {
         reservationId: reservation.id,
         reservationDate: reservation.reservationDate,

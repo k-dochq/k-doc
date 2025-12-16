@@ -28,17 +28,31 @@ export class ReservationRepository {
             include: {
               HospitalImage: {
                 where: {
-                  imageType: 'THUMBNAIL',
                   isActive: true,
                 },
-                orderBy: {
-                  order: 'asc',
+                orderBy: [
+                  { imageType: 'asc' }, // MAIN이 먼저 오도록
+                  { order: 'asc' },
+                ],
+                select: {
+                  imageType: true,
+                  imageUrl: true,
                 },
-                take: 1,
               },
               HospitalMedicalSpecialty: {
                 include: {
                   MedicalSpecialty: true,
+                },
+              },
+              District: {
+                select: {
+                  id: true,
+                  name: true,
+                  displayName: true,
+                  countryCode: true,
+                  level: true,
+                  order: true,
+                  parentId: true,
                 },
               },
             },

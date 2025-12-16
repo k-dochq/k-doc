@@ -12,11 +12,7 @@ export default async function SelectHospitalPage({ params }: SelectHospitalPageP
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  return (
-    <div className=''>
-      <SelectHospitalContent lang={lang} dict={dict} />
-    </div>
-  );
+  return <SelectHospitalContent lang={lang} dict={dict} />;
 }
 
 // 메타데이터 생성

@@ -1,6 +1,15 @@
 import { type Prisma } from '@prisma/client';
 
 /**
+ * HospitalMedicalSpecialty with MedicalSpecialty included
+ */
+export type HospitalMedicalSpecialtyWithSpecialty = Prisma.HospitalMedicalSpecialtyGetPayload<{
+  include: {
+    MedicalSpecialty: true;
+  };
+}>;
+
+/**
  * 예약 정보와 병원 정보를 포함하는 타입
  */
 export type ReservationWithHospital = Prisma.ReservationGetPayload<{
@@ -9,17 +18,27 @@ export type ReservationWithHospital = Prisma.ReservationGetPayload<{
       include: {
         HospitalImage: {
           where: {
-            imageType: 'THUMBNAIL';
             isActive: true;
           };
-          orderBy: {
-            order: 'asc';
+          select: {
+            imageType: true;
+            imageUrl: true;
           };
-          take: 1;
         };
         HospitalMedicalSpecialty: {
           include: {
             MedicalSpecialty: true;
+          };
+        };
+        District: {
+          select: {
+            id: true;
+            name: true;
+            displayName: true;
+            countryCode: true;
+            level: true;
+            order: true;
+            parentId: true;
           };
         };
       };
@@ -38,6 +57,24 @@ export interface ReservedHospitalData {
   reviewCount: number;
   bookmarkCount: number;
   thumbnailUrl: string | null;
+  hospitalImages: Array<{
+    imageType: string;
+    imageUrl: string;
+  }>;
+  prices: Prisma.JsonValue | null;
+  discountRate: number | null;
+  ranking: number | null;
+  displayLocationName: Prisma.JsonValue | null;
+  badge: string[] | null;
+  district: {
+    id: string;
+    name: Prisma.JsonValue;
+    displayName: Prisma.JsonValue | null;
+    countryCode: string;
+    level: number;
+    order: number | null;
+    parentId: string | null;
+  } | null;
   specialties: Array<{
     id: string;
     name: Record<string, string>;
