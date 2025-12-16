@@ -27,7 +27,7 @@ export function HospitalListCarouselV2({ hospitals, lang, dict }: HospitalListCa
             const isFirst = index === 0;
             const isLast = index === hospitals.length - 1;
             return (
-              <>
+              <div key={hospital.id}>
                 <CarouselItem
                   key={hospital.id}
                   className={`${isFirst ? 'basis-[170px] pl-5' : 'basis-[166px] pl-[16px]'}`}
@@ -39,7 +39,7 @@ export function HospitalListCarouselV2({ hospitals, lang, dict }: HospitalListCa
                     <div className='w-5' />
                   </CarouselItem>
                 )}
-              </>
+              </div>
             );
           })}
         </CarouselContent>
