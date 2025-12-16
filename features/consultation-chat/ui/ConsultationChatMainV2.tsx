@@ -36,6 +36,8 @@ export function ConsultationChatMainV2({
     <div className='flex h-screen flex-col bg-white'>
       <PageHeaderV2 title={hospitalName} fallbackUrl={`/${lang}/consultation`} />
 
+      <div className='h-[58px]' />
+
       <MessageList
         messages={messages}
         hospitalName={hospitalName}

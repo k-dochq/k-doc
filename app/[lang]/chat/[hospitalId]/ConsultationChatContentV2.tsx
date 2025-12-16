@@ -102,14 +102,18 @@ export function ConsultationChatContentV2({
   // 메인 채팅 UI
   const hospital = hospitalData?.hospital;
   const hospitalName = hospital ? extractLocalizedText(hospital.name, lang) : '병원';
-  const hospitalImageUrl = hospital?.thumbnailImageUrl || hospital?.mainImageUrl || undefined;
+
+  // 로고 이미지 찾기 (imageType === 'LOGO')
+  const logoImage = hospital?.hospitalImages?.find((img) => img.imageType === 'LOGO');
+  const hospitalLogoUrl =
+    logoImage?.imageUrl || hospital?.thumbnailImageUrl || hospital?.mainImageUrl || undefined;
 
   return (
     <ConsultationChatMainV2
       lang={lang}
       dict={dict}
       hospitalName={hospitalName}
-      hospitalImageUrl={hospitalImageUrl}
+      hospitalImageUrl={hospitalLogoUrl}
       messages={messages}
       isLoadingHistory={isLoadingHistory}
       isConnected={isConnected}
