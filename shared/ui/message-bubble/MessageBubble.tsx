@@ -13,9 +13,20 @@ export function MessageBubble({ children, variant, className = '' }: MessageBubb
     'box-border content-stretch flex flex-col gap-3 items-start justify-start px-3 py-2 relative rounded-[12px] shrink-0 max-w-[260px] break-words overflow-hidden min-w-0';
 
   const variantClasses = {
-    user: 'bg-gradient-to-b from-[#ae33fb] from-[37.132%] to-[#6544fa] to-[291.18%] via-[#da47ef] via-[162.93%]',
+    user: '',
     hospital: 'bg-neutral-100',
   };
 
-  return <div className={`${baseClasses} ${variantClasses[variant]} ${className}`}>{children}</div>;
+  const userGradientStyle = {
+    background: 'linear-gradient(180deg, #AE33FB -251.39%, #DA47EF 226.61%, #6544FA 713.89%)',
+  };
+
+  return (
+    <div
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      style={variant === 'user' ? userGradientStyle : undefined}
+    >
+      {children}
+    </div>
+  );
 }

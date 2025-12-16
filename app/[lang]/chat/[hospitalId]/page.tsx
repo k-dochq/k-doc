@@ -1,5 +1,5 @@
 import { type Locale } from 'shared/config';
-import { ConsultationChatClient } from 'features/consultation-chat';
+import { ConsultationChatContentV2 } from './ConsultationChatContentV2';
 import { getDictionary } from '../../dictionaries';
 
 interface ConsultationChatPageProps {
@@ -13,5 +13,5 @@ export default async function ConsultationChatPage({ params }: ConsultationChatP
   const { lang, hospitalId } = await params;
   const dict = await getDictionary(lang);
 
-  return <ConsultationChatClient lang={lang} hospitalId={hospitalId} dict={dict} />;
+  return <ConsultationChatContentV2 lang={lang} hospitalId={hospitalId} dict={dict} />;
 }
