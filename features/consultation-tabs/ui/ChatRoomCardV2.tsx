@@ -28,12 +28,21 @@ export function ChatRoomCardV2({ chatRoom, lang, dict }: ChatRoomCardV2Props) {
       {/* 로고 영역 */}
       <div className='relative h-[46px] w-[46px] flex-shrink-0 overflow-hidden rounded-full bg-[#001872]'>
         <img
-          src={chatRoom.hospitalLogoUrl || DEFAULT_IMAGES.HOSPITAL_LOGO_DEFAULT}
+          src={
+            chatRoom.hospitalLogoUrl ||
+            chatRoom.hospitalThumbnailUrl ||
+            DEFAULT_IMAGES.HOSPITAL_LOGO_DEFAULT
+          }
           alt={hospitalName}
           className='h-full w-full object-cover'
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.src = DEFAULT_IMAGES.HOSPITAL_LOGO_DEFAULT;
+            // 로고가 실패하면 썸네일 시도, 그것도 실패하면 기본 이미지
+            if (chatRoom.hospitalLogoUrl && target.src !== chatRoom.hospitalThumbnailUrl) {
+              target.src = chatRoom.hospitalThumbnailUrl || DEFAULT_IMAGES.HOSPITAL_LOGO_DEFAULT;
+            } else {
+              target.src = DEFAULT_IMAGES.HOSPITAL_LOGO_DEFAULT;
+            }
           }}
         />
       </div>
