@@ -246,6 +246,7 @@
       "contentPlaceholder": "자세한 정보 혹은 시술 경험에 대해 10자 이상 자유롭게 적어주세요",
       "beforeImagesLabel": "[선택] 시술 전",
       "afterImagesLabel": "[선택] 시술 후",
+      "addPhotoButton": "사진 추가",
       "submitButton": "시술후기 등록",
       "submitting": "등록 중...",
       "uploading": "업로드중입니다",
