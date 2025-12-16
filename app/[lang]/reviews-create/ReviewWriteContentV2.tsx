@@ -16,6 +16,7 @@ import { DoctorAffiliatedHospitalCardV2 } from 'widgets/doctor-affiliated-hospit
 import { convertHospitalToCardData } from 'entities/hospital/lib/hospital-type-converters';
 import { useReviewWriteForm } from 'features/review-write/model/useReviewWriteForm';
 import { useImageUpload } from 'features/review-write/model/useImageUpload';
+import { useCreateReview } from 'features/review-write/model/useCreateReview';
 import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
 import { SelectFieldV2 } from 'features/consultation-request/ui/SelectFieldV2';
 import { TextareaFieldV2 } from 'features/consultation-request/ui/TextareaFieldV2';
@@ -59,7 +60,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
   const hospitalCardData = hospital ? convertHospitalToCardData(hospital) : null;
 
   // 폼 상태 관리
-  const { formData, errors, updateField } = useReviewWriteForm(dict);
+  const { formData, errors, isValid, updateField, validateForm } = useReviewWriteForm(dict);
 
   // 이미지 업로드 관리
   const {
@@ -73,7 +74,46 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
     removeAfterImage,
   } = useImageUpload(user?.id || '');
 
+  // TanStack Query mutation
+  const {
+    mutate: createReview,
+    isPending: isSubmitting,
+    error: submitError,
+  } = useCreateReview({
+    onSuccess: (reviewId: string, hospitalId: string) => {
+      // 성공 시 해당 병원의 리뷰 목록 페이지로 이동 (히스토리 스택에 쌓이지 않게 replace 사용)
+      router.replace(`/hospital/${hospitalId}/reviews`);
+    },
+    onError: (error: Error) => {
+      console.error('Submit review error:', error);
+    },
+  });
+
   const formDict = dict.reviewWrite?.form;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    if (!user || !hospital) {
+      return;
+    }
+
+    // Mutation 실행
+    createReview({
+      rating: formData.rating,
+      content: formData.content,
+      procedureName: formData.procedureName,
+      medicalSpecialtyId: formData.medicalSpecialtyId,
+      hospitalId: hospital.id,
+      beforeImageUrls: beforeImages.map((img) => img.url),
+      afterImageUrls: afterImages.map((img) => img.url),
+      userId: user.id,
+    });
+  };
 
   // 로그인 확인
   useEffect(() => {
@@ -142,7 +182,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
   }
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <PageHeaderV2
         title={dict.reviewWrite?.form?.title || 'Write Review'}
         fallbackUrl={`/${lang}/reviews`}
@@ -244,6 +284,13 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
           {uploadError && (
             <div className='rounded-lg bg-red-50 p-3 text-sm text-red-600'>{uploadError}</div>
           )}
+
+          {/* 제출 에러 */}
+          {submitError && (
+            <div className='rounded-lg bg-red-50 p-3 text-sm text-red-600'>
+              {submitError.message || dict.reviewWrite?.error?.message || 'An error occurred'}
+            </div>
+          )}
         </div>
       </div>
 
@@ -251,10 +298,16 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
       <div
         className={`fixed right-0 bottom-0 left-0 z-50 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS}`}
       >
-        <button className='bg-sub-900 hover:bg-sub-900/90 disabled:bg-sub-900/50 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed'>
-          {dict.reviewWrite?.form?.submitButton || '시술후기 등록'}
+        <button
+          type='submit'
+          disabled={!isValid || isSubmitting || isUploading}
+          className='bg-sub-900 hover:bg-sub-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
+        >
+          {isSubmitting
+            ? formDict?.submitting || 'Submitting...'
+            : formDict?.submitButton || '시술후기 등록'}
         </button>
       </div>
-    </>
+    </form>
   );
 }
