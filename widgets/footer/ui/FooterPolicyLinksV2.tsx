@@ -16,7 +16,7 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col gap-4'>
         {/* 정책 링크 */}
-        <div className='flex items-start gap-6 text-xs leading-[16px] font-normal text-neutral-400'>
+        <div className='flex items-start gap-6 text-xs leading-[16px] font-normal text-[#BABEC4]'>
           <a
             href={getTermsOfServiceLink(lang)}
             target='_blank'
@@ -36,7 +36,7 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
         </div>
 
         {/* 구분선 */}
-        <div className='h-px w-full bg-neutral-600' />
+        <div className='h-px w-full bg-[#7E848D]' />
 
         {/* COPYRIGHT */}
         <p className='text-left text-xs leading-[16px] font-normal text-neutral-400'>
