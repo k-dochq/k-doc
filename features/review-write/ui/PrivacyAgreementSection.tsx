@@ -2,7 +2,7 @@ import { type Dictionary } from 'shared/model/types';
 
 export default function PrivacyAgreementSection({ dict }: { dict: Dictionary }) {
   return (
-    <div className='space-y-1'>
+    <div className='space-y-1 py-5'>
       <p className='text-[13px] font-semibold text-neutral-500'>
         {dict.consultation?.request?.form?.privacyAgreement?.title || '민감정보 수집 이용 동의'}
       </p>

@@ -26,6 +26,7 @@ import { ImageUploadSection } from 'features/review-write/ui/ImageUploadSection'
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { type Prisma } from '@prisma/client';
 import { PrivacyAgreementNotice } from '@/features/consultation-request/ui/PrivacyAgreementNotice';
+import PrivacyAgreementSection from '@/features/review-write/ui/PrivacyAgreementSection';
 
 interface ReviewWriteContentV2Props {
   lang: Locale;
@@ -160,7 +161,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
           {/* 별점 */}
           <div className='flex w-full flex-col gap-2'>
             <div className='flex flex-col items-center gap-0.5'>
-              <FieldLabel label={formDict?.ratingQuestion || 'How was your experience?'} required />
+              <FieldLabel label={formDict?.ratingQuestion || 'How was your experience?'} />
               <div className='flex gap-0.5'>
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
@@ -237,6 +238,8 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
             />
           </div>
 
+          <PrivacyAgreementSection dict={dict} />
+
           {/* 업로드 에러 */}
           {uploadError && (
             <div className='rounded-lg bg-red-50 p-3 text-sm text-red-600'>{uploadError}</div>
@@ -248,10 +251,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
       <div
         className={`fixed right-0 bottom-0 left-0 z-50 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS}`}
       >
-        <button
-          disabled={false}
-          className='bg-sub-900 hover:bg-sub-900/90 disabled:bg-sub-900/50 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed'
-        >
+        <button className='bg-sub-900 hover:bg-sub-900/90 disabled:bg-sub-900/50 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed'>
           {dict.reviewWrite?.form?.submitButton || '시술후기 등록'}
         </button>
       </div>
