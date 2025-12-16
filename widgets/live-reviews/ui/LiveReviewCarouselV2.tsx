@@ -27,7 +27,7 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
             const isFirst = index === 0;
             const isLast = index === liveReviews.length - 1;
             return (
-              <>
+              <div key={liveReview.id}>
                 <CarouselItem
                   key={liveReview.id}
                   className={`basis-[312px] ${isFirst ? 'pl-5' : 'pl-[16px]'}`}
@@ -39,7 +39,7 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
                     <div className='w-5' />
                   </CarouselItem>
                 )}
-              </>
+              </div>
             );
           })}
         </CarouselContent>

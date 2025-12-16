@@ -21,7 +21,7 @@ export function HospitalMessageBubble({ children, className = '' }: HospitalMess
         height='19'
         viewBox='0 0 12 19'
         fill='none'
-        className='pointer-events-none absolute top-[-2px] left-[-5px] z-0'
+        className='pointer-events-none absolute top-0 left-[-5px] z-0'
       >
         <path
           d='M0.111382 0.137075C5.26312 -0.657162 10.3488 2.18006 12 4.00018L5 19.0002V13.0002C5 1.50018 -0.879335 0.736019 0.111382 0.137075Z'
