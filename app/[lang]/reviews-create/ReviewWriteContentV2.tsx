@@ -26,7 +26,6 @@ import { CustomStar } from 'features/review-write/ui/CustomStar';
 import { ImageUploadSection } from 'features/review-write/ui/ImageUploadSection';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { type Prisma } from '@prisma/client';
-import { PrivacyAgreementNotice } from '@/features/consultation-request/ui/PrivacyAgreementNotice';
 import PrivacyAgreementSection from '@/features/review-write/ui/PrivacyAgreementSection';
 
 interface ReviewWriteContentV2Props {
@@ -80,7 +79,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
     isPending: isSubmitting,
     error: submitError,
   } = useCreateReview({
-    onSuccess: (reviewId: string, hospitalId: string) => {
+    onSuccess: (_reviewId: string, hospitalId: string) => {
       // 성공 시 해당 병원의 리뷰 목록 페이지로 이동 (히스토리 스택에 쌓이지 않게 replace 사용)
       router.replace(`/hospital/${hospitalId}/reviews`);
     },
