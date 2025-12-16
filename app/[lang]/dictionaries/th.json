@@ -246,6 +246,7 @@
       "contentPlaceholder": "กรุณาเขียนอย่างละเอียดหรือประสบการณ์การรักษาอย่างน้อย 10 ตัวอักษรตามอิสระ",
       "beforeImagesLabel": "[ทางเลือก] ก่อนรักษา",
       "afterImagesLabel": "[ทางเลือก] หลังรักษา",
+      "addPhotoButton": "เพิ่มรูปภาพ",
       "submitButton": "ส่งรีวิว",
       "submitting": "กำลังส่ง...",
       "uploading": "กำลังอัปโหลด...",

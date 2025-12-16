@@ -14,6 +14,18 @@ import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { Loader2 } from 'lucide-react';
 import { DoctorAffiliatedHospitalCardV2 } from 'widgets/doctor-affiliated-hospital/ui/DoctorAffiliatedHospitalCardV2';
 import { convertHospitalToCardData } from 'entities/hospital/lib/hospital-type-converters';
+import { useReviewWriteForm } from 'features/review-write/model/useReviewWriteForm';
+import { useImageUpload } from 'features/review-write/model/useImageUpload';
+import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
+import { SelectFieldV2 } from 'features/consultation-request/ui/SelectFieldV2';
+import { TextareaFieldV2 } from 'features/consultation-request/ui/TextareaFieldV2';
+import { FieldLabel } from 'features/consultation-request/ui/FieldLabel';
+import { FieldError } from 'features/consultation-request/ui/FieldError';
+import { CustomStar } from 'features/review-write/ui/CustomStar';
+import { ImageUploadSection } from 'features/review-write/ui/ImageUploadSection';
+import { extractLocalizedText } from 'shared/lib/localized-text';
+import { type Prisma } from '@prisma/client';
+import { PrivacyAgreementNotice } from '@/features/consultation-request/ui/PrivacyAgreementNotice';
 
 interface ReviewWriteContentV2Props {
   lang: Locale;
@@ -44,6 +56,23 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
 
   // Hospital 데이터를 HospitalCardData로 변환
   const hospitalCardData = hospital ? convertHospitalToCardData(hospital) : null;
+
+  // 폼 상태 관리
+  const { formData, errors, updateField } = useReviewWriteForm(dict);
+
+  // 이미지 업로드 관리
+  const {
+    beforeImages,
+    afterImages,
+    isUploading,
+    uploadError,
+    addBeforeImage,
+    addAfterImage,
+    removeBeforeImage,
+    removeAfterImage,
+  } = useImageUpload(user?.id || '');
+
+  const formDict = dict.reviewWrite?.form;
 
   // 로그인 확인
   useEffect(() => {
@@ -127,7 +156,92 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
           </div>
         )}
 
-        {/* 나머지 폼 영역 (나중에 추가 예정) */}
+        <div className='space-y-5 px-5 pt-3'>
+          {/* 별점 */}
+          <div className='flex w-full flex-col gap-2'>
+            <div className='flex flex-col items-center gap-0.5'>
+              <FieldLabel label={formDict?.ratingQuestion || 'How was your experience?'} required />
+              <div className='flex gap-0.5'>
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type='button'
+                    onClick={() => updateField('rating', star)}
+                    className='transition-transform duration-200 active:scale-90'
+                  >
+                    <CustomStar filled={star <= formData.rating} size={40} />
+                  </button>
+                ))}
+              </div>
+            </div>
+            <FieldError message={errors.rating} />
+          </div>
+
+          {/* 시술방법 */}
+          <InputFieldV2
+            label={formDict?.procedureNameLabel || 'Procedure Name'}
+            value={formData.procedureName}
+            onChange={(e) => updateField('procedureName', e.target.value)}
+            placeholder={formDict?.procedureNamePlaceholder || ''}
+            error={errors.procedureName}
+            required
+          />
+
+          {/* 시술부위선택 */}
+          <SelectFieldV2
+            label={formDict?.medicalSpecialtyLabel || 'Treatment Area'}
+            value={formData.medicalSpecialtyId}
+            onChange={(value) => updateField('medicalSpecialtyId', value)}
+            options={medicalSpecialties.map((specialty) => ({
+              value: specialty.id,
+              label: extractLocalizedText(specialty.name as Prisma.JsonValue, lang),
+            }))}
+            placeholder={formDict?.medicalSpecialtyPlaceholder || 'Select area'}
+            error={errors.medicalSpecialtyId}
+            required
+          />
+
+          {/* 후기내용 */}
+          <TextareaFieldV2
+            label={formDict?.contentLabel || 'Review Content'}
+            value={formData.content}
+            onChange={(e) => updateField('content', e.target.value)}
+            placeholder={formDict?.contentPlaceholder || ''}
+            maxLength={2000}
+            currentLength={formData.content.length}
+            error={errors.content}
+            required
+          />
+
+          {/* 시술전 이미지 */}
+          <div className='flex w-full flex-col gap-2'>
+            <FieldLabel label={formDict?.beforeImagesLabel || 'Before Images'} />
+            <ImageUploadSection
+              images={beforeImages}
+              onAdd={addBeforeImage}
+              onRemove={removeBeforeImage}
+              isUploading={isUploading}
+              addButtonText={formDict?.addPhotoButton || '사진 추가'}
+            />
+          </div>
+
+          {/* 시술후 이미지 */}
+          <div className='flex w-full flex-col gap-2'>
+            <FieldLabel label={formDict?.afterImagesLabel || 'After Images'} />
+            <ImageUploadSection
+              images={afterImages}
+              onAdd={addAfterImage}
+              onRemove={removeAfterImage}
+              isUploading={isUploading}
+              addButtonText={formDict?.addPhotoButton || '사진 추가'}
+            />
+          </div>
+
+          {/* 업로드 에러 */}
+          {uploadError && (
+            <div className='rounded-lg bg-red-50 p-3 text-sm text-red-600'>{uploadError}</div>
+          )}
+        </div>
       </div>
 
       {/* 플로팅 버튼 섹션 */}
