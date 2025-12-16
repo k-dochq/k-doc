@@ -7,6 +7,7 @@ export interface ChatRoom {
   hospitalId: string;
   hospitalName: LocalizedText;
   hospitalThumbnailUrl?: string;
+  hospitalLogoUrl?: string;
   districtName?: LocalizedText;
   lastMessageContent?: string;
   lastMessageDate?: string;
@@ -41,13 +42,12 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
             District: true,
             HospitalImage: {
               where: {
-                imageType: 'THUMBNAIL',
+                imageType: {
+                  in: ['THUMBNAIL', 'LOGO'],
+                },
                 isActive: true,
               },
-              orderBy: {
-                order: 'asc',
-              },
-              take: 1,
+              orderBy: [{ imageType: 'asc' }, { order: 'asc' }],
             },
           },
         },
@@ -66,12 +66,14 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
       if (!hospitalMap.has(hospitalId)) {
         const hospital = message.Hospital;
         const district = hospital.District;
-        const mainImage = hospital.HospitalImage[0];
+        const thumbnailImage = hospital.HospitalImage.find((img) => img.imageType === 'THUMBNAIL');
+        const logoImage = hospital.HospitalImage.find((img) => img.imageType === 'LOGO');
 
         hospitalMap.set(hospitalId, {
           hospitalId,
           hospitalName: parseLocalizedText(hospital.name),
-          hospitalThumbnailUrl: mainImage?.imageUrl,
+          hospitalThumbnailUrl: thumbnailImage?.imageUrl,
+          hospitalLogoUrl: logoImage?.imageUrl,
           districtName: hospital.displayLocationName
             ? parseLocalizedText(hospital.displayLocationName)
             : district

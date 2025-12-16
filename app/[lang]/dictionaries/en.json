@@ -618,7 +618,7 @@
         "description": "Start a consultation with a hospital"
       },
       "appointment": {
-        "title": "No appointment requests",
+        "title": "No appointment history",
         "description": "Make an appointment request with your preferred hospital"
       }
     },

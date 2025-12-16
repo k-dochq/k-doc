@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { HospitalDetailTabsHeaderV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDetailTabsHeaderV2';
+import { ConsultationChatTabV2 } from 'features/consultation-tabs/ui/ConsultationChatTabV2';
+import { ConsultationAppointmentTabV2 } from 'features/consultation-tabs/ui/ConsultationAppointmentTabV2';
 
 interface ConsultationContentV2Props {
   lang: Locale;
@@ -31,10 +33,10 @@ export function ConsultationContentV2({ lang, dict }: ConsultationContentV2Props
       {/* 탭 컨텐츠 */}
       <div className=''>
         {/* 상담채팅 탭 */}
-        {activeTab === 0 && <div>{/* ConsultationChatTab placeholder */}</div>}
+        {activeTab === 0 && <ConsultationChatTabV2 lang={lang} dict={dict} />}
 
         {/* 예약신청 탭 */}
-        {activeTab === 1 && <div>{/* ConsultationAppointmentTab placeholder */}</div>}
+        {activeTab === 1 && <ConsultationAppointmentTabV2 lang={lang} dict={dict} />}
       </div>
     </div>
   );
