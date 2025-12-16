@@ -10,7 +10,7 @@ const initialFormData: ConsultationFormData = {
   name: '',
   gender: 'MALE',
   ageGroup: '',
-  countryCode: '',
+  countryCode: '+66',
   phoneNumberOnly: '',
   preferredDate: '',
   preferredDate2: '',
@@ -67,7 +67,7 @@ export function useConsultationForm(
         ...prev,
         name: prev.name || updates.name || '',
         gender: prev.gender === 'MALE' ? updates.gender || prev.gender : prev.gender,
-        countryCode: prev.countryCode || updates.countryCode || '',
+        countryCode: prev.countryCode || updates.countryCode || '+66',
         phoneNumberOnly: prev.phoneNumberOnly || updates.phoneNumberOnly || '',
       }));
     }

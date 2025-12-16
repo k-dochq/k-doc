@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { MessageBubble, MessageTime } from 'shared/ui/message-bubble';
+import { UserMessageBubble, MessageTime } from 'shared/ui/message-bubble';
 import { parseCombinedMessage } from 'shared/lib/message-parser';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -51,7 +51,7 @@ export function UserMessage({ message, lang, dict }: UserMessageProps) {
       <MessageTime time={formattedTime} />
       <div className='relative flex shrink-0 content-stretch items-end justify-end'>
         <div className='flex flex-row items-end self-stretch'>
-          <MessageBubble variant='user' className='h-full items-end justify-start'>
+          <UserMessageBubble className='h-full items-end justify-start'>
             <div
               className="relative min-w-0 font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-50 not-italic"
               style={{ overflowWrap: 'anywhere', wordBreak: 'break-word' }}
@@ -68,7 +68,7 @@ export function UserMessage({ message, lang, dict }: UserMessageProps) {
                 return item;
               })}
             </div>
-          </MessageBubble>
+          </UserMessageBubble>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type LiveReviewData } from 'entities/live-review/api/use-cases/get-live-reviews';
 import { LiveReviewCardV2 } from 'entities/live-review/ui/LiveReviewCardV2';
+import React from 'react';
 
 interface LiveReviewCarouselV2Props {
   liveReviews: LiveReviewData[];
@@ -27,7 +28,7 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
             const isFirst = index === 0;
             const isLast = index === liveReviews.length - 1;
             return (
-              <>
+              <React.Fragment key={liveReview.id}>
                 <CarouselItem
                   key={liveReview.id}
                   className={`basis-[312px] ${isFirst ? 'pl-5' : 'pl-[16px]'}`}
@@ -39,7 +40,7 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
                     <div className='w-5' />
                   </CarouselItem>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
         </CarouselContent>
