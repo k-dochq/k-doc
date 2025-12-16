@@ -88,7 +88,7 @@ export function PhoneNumberFieldV2({
         optionalText={!required ? optionalText : undefined}
       />
       <div className='flex gap-2'>
-        <div className='w-[82px] max-w-[82px]'>
+        <div className='w-[128px] max-w-[128px]'>
           <select
             value={countryCode}
             onChange={(e) => onCountryCodeChange(e.target.value)}
@@ -101,9 +101,6 @@ export function PhoneNumberFieldV2({
               backgroundPosition: 'right 12px center',
             }}
           >
-            <option value=''>
-              {dict.auth?.signup?.placeholders?.countryCode || '국가번호를 선택하세요'}
-            </option>
             {countryOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}

@@ -25,7 +25,7 @@ export function UserMessageBubble({ children, className = '' }: UserMessageBubbl
         height='19'
         viewBox='0 0 12 19'
         fill='none'
-        className='pointer-events-none absolute right-[-5px] bottom-[-2px] z-0'
+        className='pointer-events-none absolute right-[-5px] bottom-0 z-0'
         // style={{ transform: 'translate(50%, 50%)' }}
       >
         <path
