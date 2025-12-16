@@ -1,4 +1,4 @@
-import { ConsultationTabs } from 'features/consultation-tabs';
+import { ConsultationContentV2 } from './ConsultationContentV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 
@@ -10,5 +10,5 @@ export default async function ConsultationPage({ params }: ConsultationPageProps
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  return <ConsultationTabs lang={lang} dict={dict} />;
+  return <ConsultationContentV2 lang={lang} dict={dict} />;
 }
