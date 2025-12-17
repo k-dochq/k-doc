@@ -620,6 +620,7 @@
       "paymentInfo": "Payment Information",
       "deposit": "Deposit",
       "transferDate": "Transfer Date/Time",
+      "hospitalInfo": "Hospital Information",
       "cancel": "Cancel Reservation",
       "consultation": "Consultation"
     },

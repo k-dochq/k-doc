@@ -620,6 +620,7 @@
       "paymentInfo": "결제 정보",
       "deposit": "예약금",
       "transferDate": "이체 일시",
+      "hospitalInfo": "병원 정보",
       "cancel": "예약 취소",
       "consultation": "상담 하기"
     },

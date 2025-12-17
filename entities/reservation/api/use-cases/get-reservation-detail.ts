@@ -51,6 +51,7 @@ export async function getReservationDetail(
         longitude: rawReservation.Hospital.longitude,
         thumbnailImageUrl: thumbnailUrl,
         logoImageUrl: logoImageUrl,
+        displayLocationName: rawReservation.Hospital.displayLocationName,
         district: rawReservation.Hospital.District
           ? {
               id: rawReservation.Hospital.District.id,

@@ -620,6 +620,7 @@
       "paymentInfo": "ข้อมูลการชำระเงิน",
       "deposit": "เงินมัดจำ",
       "transferDate": "วันที่โอนเงิน",
+      "hospitalInfo": "ข้อมูลโรงพยาบาล",
       "cancel": "ยกเลิกการจอง",
       "consultation": "ปรึกษา"
     },

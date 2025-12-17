@@ -211,6 +211,7 @@ export interface ReservationDetailData {
     longitude: number | null;
     thumbnailImageUrl: string | null;
     logoImageUrl: string | null;
+    displayLocationName: Prisma.JsonValue | null;
     district: {
       id: string;
       name: Prisma.JsonValue;

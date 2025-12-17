@@ -12,6 +12,8 @@ import { ReservationStatusHeader } from 'features/reservation-detail/ui/Reservat
 import { ReservationInfoCard } from 'features/reservation-detail/ui/ReservationInfoCard';
 import { ReservationProcedureName } from 'features/reservation-detail/ui/ReservationProcedureName';
 import { ReservationPaymentInfo } from 'features/reservation-detail/ui/ReservationPaymentInfo';
+import { ReservationHospitalInfoTitle } from 'features/reservation-detail/ui/ReservationHospitalInfoTitle';
+import { ReservationHospitalInfoCard } from 'features/reservation-detail/ui/ReservationHospitalInfoCard';
 
 interface ReservationDetailContentProps {
   reservationId: string;
@@ -124,6 +126,24 @@ export function ReservationDetailContent({
             depositAmount={reservation.depositAmount}
             currency={reservation.currency}
             paymentDeadline={reservation.paymentDeadline}
+            lang={lang}
+            dict={dict}
+          />
+
+          <div className='h-8' />
+
+          {/* 병원정보 타이틀 */}
+          <ReservationHospitalInfoTitle dict={dict} />
+
+          <div className='h-3' />
+
+          {/* 병원 정보 카드 */}
+          <ReservationHospitalInfoCard
+            hospitalId={reservation.hospital.id}
+            hospitalName={hospitalName}
+            logoImageUrl={reservation.hospital.logoImageUrl}
+            displayLocationName={reservation.hospital.displayLocationName}
+            district={reservation.hospital.district}
             lang={lang}
             dict={dict}
           />
