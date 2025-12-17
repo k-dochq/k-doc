@@ -106,12 +106,12 @@ export function ReservationDetailContent({
             dict={dict}
           />
 
-          <div className='h-8' />
+          <div className='h-10' />
 
           {/* 시술명 섹션 */}
           <ReservationProcedureName procedureName={reservation.procedureName} dict={dict} />
 
-          <div className='h-8' />
+          <div className='h-10' />
 
           {/* 결제정보 섹션 */}
           <ReservationPaymentInfo
@@ -122,7 +122,7 @@ export function ReservationDetailContent({
             dict={dict}
           />
 
-          <div className='h-8' />
+          <div className='h-10' />
 
           {/* 병원정보 타이틀 */}
           <ReservationHospitalInfoTitle dict={dict} />
@@ -143,7 +143,7 @@ export function ReservationDetailContent({
           {/* 병원 위치 섹션 */}
           <HospitalDetailLocationV2 hospital={reservation.hospital} lang={lang} dict={dict} />
 
-          <div className='h-3' />
+          <div className='h-10' />
 
           {/* 예약자 정보 타이틀 */}
           <ReservationUserInfoTitle dict={dict} />
