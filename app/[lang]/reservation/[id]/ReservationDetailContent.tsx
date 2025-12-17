@@ -17,6 +17,7 @@ import { ReservationHospitalInfoCard } from 'features/reservation-detail/ui/Rese
 import { HospitalDetailLocationV2 } from 'widgets/hospital-detail-info-section/ui/HospitalDetailLocationV2';
 import { ReservationUserInfoTitle } from 'features/reservation-detail/ui/ReservationUserInfoTitle';
 import { ReservationUserInfo } from 'features/reservation-detail/ui/ReservationUserInfo';
+import { ReservationDetailSkeleton } from './ReservationDetailSkeleton';
 
 interface ReservationDetailContentProps {
   reservationId: string;
@@ -33,20 +34,7 @@ export function ReservationDetailContent({
 
   // 로딩 상태
   if (isLoading) {
-    return (
-      <div className='min-h-screen bg-white'>
-        <PageHeaderV2
-          title={dict.consultation?.reservationDetail?.title || '예약 상세'}
-          rightContent={
-            <ReservationDetailHeaderActions reservationId={reservationId} lang={lang} dict={dict} />
-          }
-        />
-        <div className='h-[58px]' />
-        <div className='flex min-h-[calc(100vh-58px)] items-center justify-center'>
-          <p className='text-neutral-400'>{dict.consultation?.loading || '로딩 중...'}</p>
-        </div>
-      </div>
-    );
+    return <ReservationDetailSkeleton reservationId={reservationId} lang={lang} dict={dict} />;
   }
 
   // 에러 상태
