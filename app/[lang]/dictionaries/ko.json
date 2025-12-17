@@ -600,7 +600,18 @@
   "consultation": {
     "title": "상담",
     "chat": "상담 채팅",
-    "appointment": "예약 내역",
+    "appointment": {
+      "title": "예약 내역",
+      "reservationDateTime": "예약 일시",
+      "region": "지역",
+      "writeReview": "시술후기 작성하기",
+      "loadingMore": "더 많은 예약 내역을 불러오는 중...",
+      "allLoaded": "모든 예약 내역을 불러왔습니다.",
+      "completed": "시술 완료",
+      "timezone": "KST",
+      "noImage": "이미지 없음"
+    },
+    "reservationDateTime": "예약 일시",
     "region": "지역",
     "loading": "로딩 중...",
     "loadingMessages": "메시지를 불러오는 중...",

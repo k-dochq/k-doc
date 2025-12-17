@@ -47,6 +47,41 @@ export type ReservationWithHospital = Prisma.ReservationGetPayload<{
 }>;
 
 /**
+ * 예약 내역 조회용 타입 (HospitalMedicalSpecialty 제외)
+ */
+export type ReservationWithHospitalForList = Prisma.ReservationGetPayload<{
+  include: {
+    Hospital: {
+      include: {
+        HospitalImage: {
+          where: {
+            isActive: true;
+            imageType: {
+              in: ['THUMBNAIL', 'LOGO'];
+            };
+          };
+          select: {
+            imageType: true;
+            imageUrl: true;
+          };
+        };
+        District: {
+          select: {
+            id: true;
+            name: true;
+            displayName: true;
+            countryCode: true;
+            level: true;
+            order: true;
+            parentId: true;
+          };
+        };
+      };
+    };
+  };
+}>;
+
+/**
  * API 응답용 예약 병원 타입
  */
 export interface ReservedHospitalData {
@@ -102,6 +137,54 @@ export interface GetUserReservedHospitalsResponse {
  * 예약 병원 목록 조회 파라미터
  */
 export interface GetUserReservedHospitalsParams {
+  userId: string;
+  page: number;
+  limit: number;
+}
+
+/**
+ * 개별 예약 정보 타입
+ */
+export interface ReservationData {
+  id: string;
+  reservationDate: Date;
+  reservationTime: string;
+  status: string;
+  procedureName: string;
+  hospital: {
+    id: string;
+    name: Record<string, string>;
+    address: Record<string, string>;
+    directions: Record<string, string> | null;
+    latitude: number | null;
+    longitude: number | null;
+    thumbnailImageUrl: string | null;
+    logoImageUrl: string | null;
+    district: {
+      id: string;
+      name: Prisma.JsonValue;
+      displayName: Prisma.JsonValue | null;
+      countryCode: string;
+    } | null;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/**
+ * 예약 내역 조회 응답 타입
+ */
+export interface GetUserReservationsResponse {
+  reservations: ReservationData[];
+  hasNextPage: boolean;
+  currentPage: number;
+  totalCount: number;
+}
+
+/**
+ * 예약 내역 조회 파라미터
+ */
+export interface GetUserReservationsParams {
   userId: string;
   page: number;
   limit: number;
