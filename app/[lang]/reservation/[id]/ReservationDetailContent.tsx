@@ -14,6 +14,7 @@ import { ReservationProcedureName } from 'features/reservation-detail/ui/Reserva
 import { ReservationPaymentInfo } from 'features/reservation-detail/ui/ReservationPaymentInfo';
 import { ReservationHospitalInfoTitle } from 'features/reservation-detail/ui/ReservationHospitalInfoTitle';
 import { ReservationHospitalInfoCard } from 'features/reservation-detail/ui/ReservationHospitalInfoCard';
+import { HospitalDetailLocationV2 } from 'widgets/hospital-detail-info-section/ui/HospitalDetailLocationV2';
 
 interface ReservationDetailContentProps {
   reservationId: string;
@@ -147,6 +148,9 @@ export function ReservationDetailContent({
             lang={lang}
             dict={dict}
           />
+
+          {/* 병원 위치 섹션 */}
+          <HospitalDetailLocationV2 hospital={reservation.hospital} lang={lang} dict={dict} />
 
           <div className='h-8' />
         </div>

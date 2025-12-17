@@ -510,7 +510,7 @@
       "noInformation": "정보 없음"
     },
     "map": {
-      "title": "병원위치",
+      "title": "지도보기",
       "loading": "지도를 불러오는 중..."
     },
     "address": {
