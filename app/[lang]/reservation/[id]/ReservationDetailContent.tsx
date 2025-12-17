@@ -15,6 +15,8 @@ import { ReservationPaymentInfo } from 'features/reservation-detail/ui/Reservati
 import { ReservationHospitalInfoTitle } from 'features/reservation-detail/ui/ReservationHospitalInfoTitle';
 import { ReservationHospitalInfoCard } from 'features/reservation-detail/ui/ReservationHospitalInfoCard';
 import { HospitalDetailLocationV2 } from 'widgets/hospital-detail-info-section/ui/HospitalDetailLocationV2';
+import { ReservationUserInfoTitle } from 'features/reservation-detail/ui/ReservationUserInfoTitle';
+import { ReservationUserInfo } from 'features/reservation-detail/ui/ReservationUserInfo';
 
 interface ReservationDetailContentProps {
   reservationId: string;
@@ -151,6 +153,23 @@ export function ReservationDetailContent({
 
           {/* 병원 위치 섹션 */}
           <HospitalDetailLocationV2 hospital={reservation.hospital} lang={lang} dict={dict} />
+
+          <div className='h-3' />
+
+          {/* 예약자 정보 타이틀 */}
+          <ReservationUserInfoTitle dict={dict} />
+
+          <div className='h-3' />
+
+          {/* 예약자 정보 */}
+          <ReservationUserInfo
+            passportName={reservation.user.passportName}
+            gender={reservation.user.gender}
+            nationality={reservation.user.nationality}
+            phoneNumber={reservation.user.phoneNumber}
+            lang={lang}
+            dict={dict}
+          />
 
           <div className='h-8' />
         </div>

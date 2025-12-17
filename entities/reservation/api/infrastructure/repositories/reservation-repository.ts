@@ -2,7 +2,7 @@ import { prisma } from 'shared/lib/prisma';
 import {
   type ReservationWithHospital,
   type ReservationWithHospitalForList,
-  type ReservationWithHospitalForList as ReservationDetailRaw,
+  type ReservationWithHospitalAndUser,
 } from '../../entities/types';
 
 /**
@@ -169,7 +169,7 @@ export class ReservationRepository {
   async getReservationById(
     reservationId: string,
     userId: string,
-  ): Promise<ReservationDetailRaw | null> {
+  ): Promise<ReservationWithHospitalAndUser | null> {
     try {
       const reservation = await prisma.reservation.findFirst({
         where: {
@@ -200,6 +200,15 @@ export class ReservationRepository {
                   countryCode: true,
                 },
               },
+            },
+          },
+          User: {
+            select: {
+              id: true,
+              name: true,
+              phoneNumber: true,
+              genderType: true,
+              raw_user_meta_data: true,
             },
           },
         },

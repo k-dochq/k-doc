@@ -82,6 +82,47 @@ export type ReservationWithHospitalForList = Prisma.ReservationGetPayload<{
 }>;
 
 /**
+ * 예약 상세 조회용 타입 (User 포함)
+ */
+export type ReservationWithHospitalAndUser = Prisma.ReservationGetPayload<{
+  include: {
+    Hospital: {
+      include: {
+        HospitalImage: {
+          where: {
+            isActive: true;
+            imageType: {
+              in: ['THUMBNAIL', 'LOGO'];
+            };
+          };
+          select: {
+            imageType: true;
+            imageUrl: true;
+          };
+        };
+        District: {
+          select: {
+            id: true;
+            name: true;
+            displayName: true;
+            countryCode: true;
+          };
+        };
+      };
+    };
+    User: {
+      select: {
+        id: true;
+        name: true;
+        phoneNumber: true;
+        genderType: true;
+        raw_user_meta_data: true;
+      };
+    };
+  };
+}>;
+
+/**
  * API 응답용 예약 병원 타입
  */
 export interface ReservedHospitalData {
@@ -218,6 +259,14 @@ export interface ReservationDetailData {
       displayName: Prisma.JsonValue | null;
       countryCode: string;
     } | null;
+  };
+  user: {
+    id: string;
+    name: string | null;
+    phoneNumber: string | null;
+    passportName: string | null;
+    gender: string | null;
+    nationality: string | null;
   };
   createdAt: Date;
   updatedAt: Date;

@@ -3,7 +3,6 @@ import {
   type GetReservationDetailParams,
   type GetReservationDetailResponse,
   type ReservationDetailData,
-  type ReservationWithHospitalForList,
 } from '../entities/types';
 import { getHospitalImageUrl } from 'shared/config/images';
 
@@ -33,6 +32,21 @@ export async function getReservationDetail(
       rawReservation.Hospital.HospitalImage.find((img) => img.imageType === 'LOGO')?.imageUrl ||
       null;
 
+    // User 데이터 변환
+    const userMetaData = rawReservation.User.raw_user_meta_data as {
+      passport_name?: string;
+      gender?: string;
+      nationality?: string;
+    } | null;
+
+    // 성별 결정: genderType 우선, 없으면 raw_user_meta_data.gender
+    let gender: string | null = null;
+    if (rawReservation.User.genderType) {
+      gender = rawReservation.User.genderType === 'MALE' ? 'MALE' : 'FEMALE';
+    } else if (userMetaData?.gender) {
+      gender = userMetaData.gender;
+    }
+
     const reservation: ReservationDetailData = {
       id: rawReservation.id,
       reservationDate: rawReservation.reservationDate,
@@ -60,6 +74,14 @@ export async function getReservationDetail(
               countryCode: rawReservation.Hospital.District.countryCode,
             }
           : null,
+      },
+      user: {
+        id: rawReservation.User.id,
+        name: rawReservation.User.name,
+        phoneNumber: rawReservation.User.phoneNumber,
+        passportName: userMetaData?.passport_name || null,
+        gender: gender,
+        nationality: userMetaData?.nationality || null,
       },
       createdAt: rawReservation.createdAt,
       updatedAt: rawReservation.updatedAt,

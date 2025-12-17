@@ -622,7 +622,16 @@
       "transferDate": "Transfer Date/Time",
       "hospitalInfo": "Hospital Information",
       "cancel": "Cancel Reservation",
-      "consultation": "Consultation"
+      "consultation": "Consultation",
+      "userInfo": {
+        "title": "Reservation User Information",
+        "passportName": "Passport Name (English)",
+        "gender": "Gender",
+        "nationality": "Nationality",
+        "contactInfo": "Contact Information",
+        "male": "Male",
+        "female": "Female"
+      }
     },
     "reservationDateTime": "Reservation Date/Time",
     "region": "Region",

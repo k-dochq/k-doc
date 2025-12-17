@@ -622,7 +622,16 @@
       "transferDate": "วันที่โอนเงิน",
       "hospitalInfo": "ข้อมูลโรงพยาบาล",
       "cancel": "ยกเลิกการจอง",
-      "consultation": "ปรึกษา"
+      "consultation": "ปรึกษา",
+      "userInfo": {
+        "title": "ข้อมูลผู้จอง",
+        "passportName": "ชื่อในหนังสือเดินทาง (ภาษาอังกฤษ)",
+        "gender": "เพศ",
+        "nationality": "สัญชาติ",
+        "contactInfo": "ข้อมูลการติดต่อ",
+        "male": "ชาย",
+        "female": "หญิง"
+      }
     },
     "reservationDateTime": "วันที่และเวลานัดหมาย",
     "region": "ภูมิภาค",
