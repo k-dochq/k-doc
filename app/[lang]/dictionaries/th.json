@@ -600,7 +600,41 @@
   "consultation": {
     "title": "ปรึกษา",
     "chat": "แชทปรึกษา",
-    "appointment": "ประวัติการจอง",
+    "appointment": {
+      "title": "ประวัติการจอง",
+      "reservationDateTime": "วันที่และเวลานัดหมาย",
+      "region": "ภูมิภาค",
+      "writeReview": "เขียนรีวิว",
+      "loadingMore": "กำลังโหลดการจองเพิ่มเติม...",
+      "allLoaded": "โหลดการจองทั้งหมดแล้ว",
+      "completed": "เสร็จสิ้น",
+      "timezone": "KST",
+      "noImage": "ไม่มีรูปภาพ"
+    },
+    "reservationDetail": {
+      "title": "รายละเอียดการจอง",
+      "requestDate": "วันที่สมัคร",
+      "confirmed": "ยืนยันการจอง",
+      "completed": "เสร็จสิ้น",
+      "cancelled": "ยกเลิกแล้ว",
+      "procedureName": "ชื่อการรักษา",
+      "paymentInfo": "ข้อมูลการชำระเงิน",
+      "deposit": "เงินมัดจำ",
+      "transferDate": "วันที่โอนเงิน",
+      "hospitalInfo": "ข้อมูลโรงพยาบาล",
+      "cancel": "ยกเลิกการจอง",
+      "consultation": "ปรึกษา",
+      "userInfo": {
+        "title": "ข้อมูลผู้จอง",
+        "passportName": "ชื่อในหนังสือเดินทาง (ภาษาอังกฤษ)",
+        "gender": "เพศ",
+        "nationality": "สัญชาติ",
+        "contactInfo": "ข้อมูลการติดต่อ",
+        "male": "ชาย",
+        "female": "หญิง"
+      }
+    },
+    "reservationDateTime": "วันที่และเวลานัดหมาย",
     "region": "ภูมิภาค",
     "loading": "กำลังโหลด...",
     "loadingMessages": "กำลังโหลดข้อความ...",

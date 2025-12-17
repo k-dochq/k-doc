@@ -18,6 +18,7 @@ interface HospitalCardV2Props {
   onToggleLike?: (hospitalId: string) => void;
   isLikeLoading?: boolean;
   showLikeButton?: boolean;
+  href?: string; // 외부에서 링크를 제어할 수 있도록 추가
 }
 
 export function HospitalCardV2({
@@ -28,6 +29,7 @@ export function HospitalCardV2({
   onToggleLike,
   isLikeLoading = false,
   showLikeButton = false,
+  href,
 }: HospitalCardV2Props) {
   const hospitalName = getLocalizedTextByLocale(hospital.name, lang);
   const displayLocationName = hospital.displayLocationName
@@ -52,8 +54,11 @@ export function HospitalCardV2({
   // 뱃지 로직: badge 배열의 첫 번째 요소 확인
   const firstBadge = hospital.badge?.[0];
 
+  // 링크 URL 결정: href prop이 제공되면 사용, 없으면 기본값 사용
+  const linkHref = href || `/${lang}/hospital/${hospital.id}`;
+
   return (
-    <a href={`/${lang}/hospital/${hospital.id}`} className='block'>
+    <a href={linkHref} className='block'>
       <div className='relative'>
         {/* 뱃지 표시 */}
         {firstBadge === 'HOT' && <HotRibbonV2 />}

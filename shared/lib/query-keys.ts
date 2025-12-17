@@ -135,5 +135,9 @@ export const queryKeys = {
     hospitals: () => [...queryKeys.reservations.all, 'hospitals'] as const,
     hospitalsInfinite: (params: Record<string, unknown>) =>
       [...queryKeys.reservations.hospitals(), 'infinite', params] as const,
+    infinite: (params: Record<string, unknown>) =>
+      [...queryKeys.reservations.lists(), 'infinite', params] as const,
+    details: () => [...queryKeys.reservations.all, 'detail'] as const,
+    detail: (id: string) => [...queryKeys.reservations.details(), id] as const,
   },
 } as const;

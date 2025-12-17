@@ -17,7 +17,13 @@ export function ConsultationContentV2({ lang, dict }: ConsultationContentV2Props
 
   const tabs = [
     { id: 0, label: dict.consultation?.chat || '상담채팅' },
-    { id: 1, label: dict.consultation?.appointment || '예약신청' },
+    {
+      id: 1,
+      label:
+        (typeof dict.consultation?.appointment === 'object'
+          ? dict.consultation.appointment.title
+          : dict.consultation?.appointment) || '예약신청',
+    },
   ];
 
   // 탭 클릭 핸들러

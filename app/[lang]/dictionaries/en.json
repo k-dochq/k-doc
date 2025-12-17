@@ -600,7 +600,41 @@
   "consultation": {
     "title": "Consultation",
     "chat": "Chat",
-    "appointment": "Appointment History",
+    "appointment": {
+      "title": "Appointment History",
+      "reservationDateTime": "Reservation Date/Time",
+      "region": "Region",
+      "writeReview": "Write Review",
+      "loadingMore": "Loading more reservations...",
+      "allLoaded": "All reservations loaded.",
+      "completed": "Completed",
+      "timezone": "KST",
+      "noImage": "No Image"
+    },
+    "reservationDetail": {
+      "title": "Reservation Detail",
+      "requestDate": "Request Date",
+      "confirmed": "Reservation Confirmed",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "procedureName": "Procedure Name",
+      "paymentInfo": "Payment Information",
+      "deposit": "Deposit",
+      "transferDate": "Transfer Date/Time",
+      "hospitalInfo": "Hospital Information",
+      "cancel": "Cancel Reservation",
+      "consultation": "Consultation",
+      "userInfo": {
+        "title": "Reservation User Information",
+        "passportName": "Passport Name (English)",
+        "gender": "Gender",
+        "nationality": "Nationality",
+        "contactInfo": "Contact Information",
+        "male": "Male",
+        "female": "Female"
+      }
+    },
+    "reservationDateTime": "Reservation Date/Time",
     "region": "Region",
     "loading": "Loading...",
     "loadingMessages": "Loading messages...",
