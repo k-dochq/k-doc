@@ -31,12 +31,18 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
     reservation.hospital.directions || reservation.hospital.address,
     lang,
   );
-  const districtName = reservation.hospital.district
-    ? extractLocalizedText(
-        reservation.hospital.district.displayName || reservation.hospital.district.name,
-        lang,
-      )
+  // 표시지역명 우선, 없으면 district.displayName, 그 다음 district.name
+  const displayLocationName = reservation.hospital.displayLocationName
+    ? extractLocalizedText(reservation.hospital.displayLocationName, lang)
     : null;
+  const districtName =
+    displayLocationName ||
+    (reservation.hospital.district
+      ? extractLocalizedText(
+          reservation.hospital.district.displayName || reservation.hospital.district.name,
+          lang,
+        )
+      : null);
 
   // 주소복사 핸들러
   const handleCopyAddress = () => {
@@ -74,7 +80,9 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
         <ReservationStatusBadge
           reservationDate={reservation.reservationDate}
           reservationTime={reservation.reservationTime}
+          reservationStatus={reservation.status}
           lang={lang}
+          dict={dict}
         />
         <button
           onClick={handleViewDetail}
@@ -121,7 +129,7 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
       <ReservationHospitalInfo
         hospitalName={hospitalName}
         logoImageUrl={reservation.hospital.logoImageUrl}
-        districtName={districtName}
+        displayLocationName={districtName}
         dict={dict}
       />
 

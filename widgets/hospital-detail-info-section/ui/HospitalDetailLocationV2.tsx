@@ -3,11 +3,20 @@ import { type Dictionary } from 'shared/model/types';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { HospitalDetailMap } from 'widgets/hospital-detail-map';
 import { LocationPinPinkIconV2 } from 'shared/ui/icons/LocationPinPinkIconV2';
-import { type GetHospitalDetailResponse } from 'entities/hospital/api/use-cases/get-hospital-detail';
 import { useAddressCopy } from 'widgets/hospital-detail-map/model/useAddressCopy';
+import { getGoogleMapsUrl } from 'shared/lib/google-maps-utils';
+import { type Prisma } from '@prisma/client';
+
+interface HospitalLocationData {
+  name: Prisma.JsonValue | Record<string, string>;
+  address?: Prisma.JsonValue | Record<string, string> | null;
+  directions?: Prisma.JsonValue | Record<string, string> | null;
+  latitude?: number | null;
+  longitude?: number | null;
+}
 
 interface HospitalDetailLocationV2Props {
-  hospital: GetHospitalDetailResponse['hospital'];
+  hospital: HospitalLocationData;
   lang: Locale;
   dict: Dictionary;
 }
@@ -20,16 +29,24 @@ export function HospitalDetailLocationV2({ hospital, lang, dict }: HospitalDetai
     extractLocalizedText(hospital.address, lang) ||
     '';
 
+  const handleCopyAddress = () => {
+    if (address) {
+      copyAddress(address);
+    }
+  };
+
+  const hospitalName = extractLocalizedText(hospital.name, lang) || '';
+  const googleMapsUrl =
+    hospital.latitude && hospital.longitude
+      ? getGoogleMapsUrl(hospital.latitude, hospital.longitude, hospitalName)
+      : '';
+
   if (!hasCoordinates) {
     return null;
   }
 
   return (
     <div className='space-y-3'>
-      <h2 className='text-lg leading-7 font-semibold text-neutral-700'>
-        {dict.hospital.map.title}
-      </h2>
-
       {/* 지도 영역 */}
       <HospitalDetailMap
         lang={lang}
@@ -48,12 +65,24 @@ export function HospitalDetailLocationV2({ hospital, lang, dict }: HospitalDetai
               {address}
             </p>
           </div>
-          <button
-            onClick={() => copyAddress(address)}
-            className='w-fit rounded-full bg-neutral-100 px-3 py-1.5 text-xs leading-4 text-neutral-500'
-          >
-            {dict.hospital.address.copyButton}
-          </button>
+          <div className='flex items-start gap-1.5'>
+            <button
+              onClick={handleCopyAddress}
+              className='rounded-full bg-neutral-100 px-3 py-1.5 text-xs leading-4 text-neutral-500'
+            >
+              {dict.hospital.address.copyButton}
+            </button>
+            {hospital.latitude && hospital.longitude && googleMapsUrl && (
+              <a
+                href={googleMapsUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='rounded-full bg-neutral-100 px-3 py-1.5 text-xs leading-4 text-neutral-500'
+              >
+                {dict.hospital?.map?.title || '지도보기'}
+              </a>
+            )}
+          </div>
         </div>
       )}
     </div>

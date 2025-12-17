@@ -31,6 +31,7 @@ function transformReservationToData(reservation: ReservationWithHospitalForList)
       longitude: Hospital.longitude,
       thumbnailImageUrl: thumbnailImage?.imageUrl || null,
       logoImageUrl: logoImage?.imageUrl || null,
+      displayLocationName: Hospital.displayLocationName,
       district: Hospital.District
         ? {
             id: Hospital.District.id,

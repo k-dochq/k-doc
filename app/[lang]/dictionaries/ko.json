@@ -510,7 +510,7 @@
       "noInformation": "정보 없음"
     },
     "map": {
-      "title": "병원위치",
+      "title": "지도보기",
       "loading": "지도를 불러오는 중..."
     },
     "address": {
@@ -610,6 +610,29 @@
       "completed": "시술 완료",
       "timezone": "KST",
       "noImage": "이미지 없음"
+    },
+    "reservationDetail": {
+      "title": "예약 상세",
+      "requestDate": "신청 일시",
+      "confirmed": "예약 완료",
+      "completed": "시술 완료",
+      "cancelled": "예약 취소됨",
+      "procedureName": "시술명",
+      "paymentInfo": "결제 정보",
+      "deposit": "예약금",
+      "transferDate": "이체 일시",
+      "hospitalInfo": "병원 정보",
+      "cancel": "예약 취소",
+      "consultation": "상담 하기",
+      "userInfo": {
+        "title": "예약자 정보",
+        "passportName": "여권 영문 이름",
+        "gender": "성별",
+        "nationality": "국적",
+        "contactInfo": "연락처 정보",
+        "male": "남성",
+        "female": "여성"
+      }
     },
     "reservationDateTime": "예약 일시",
     "region": "지역",

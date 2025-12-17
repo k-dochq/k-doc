@@ -82,6 +82,47 @@ export type ReservationWithHospitalForList = Prisma.ReservationGetPayload<{
 }>;
 
 /**
+ * 예약 상세 조회용 타입 (User 포함)
+ */
+export type ReservationWithHospitalAndUser = Prisma.ReservationGetPayload<{
+  include: {
+    Hospital: {
+      include: {
+        HospitalImage: {
+          where: {
+            isActive: true;
+            imageType: {
+              in: ['THUMBNAIL', 'LOGO'];
+            };
+          };
+          select: {
+            imageType: true;
+            imageUrl: true;
+          };
+        };
+        District: {
+          select: {
+            id: true;
+            name: true;
+            displayName: true;
+            countryCode: true;
+          };
+        };
+      };
+    };
+    User: {
+      select: {
+        id: true;
+        name: true;
+        phoneNumber: true;
+        genderType: true;
+        raw_user_meta_data: true;
+      };
+    };
+  };
+}>;
+
+/**
  * API 응답용 예약 병원 타입
  */
 export interface ReservedHospitalData {
@@ -160,6 +201,7 @@ export interface ReservationData {
     longitude: number | null;
     thumbnailImageUrl: string | null;
     logoImageUrl: string | null;
+    displayLocationName: Prisma.JsonValue | null;
     district: {
       id: string;
       name: Prisma.JsonValue;
@@ -188,4 +230,60 @@ export interface GetUserReservationsParams {
   userId: string;
   page: number;
   limit: number;
+}
+
+/**
+ * 예약 상세 정보 타입
+ */
+export interface ReservationDetailData {
+  id: string;
+  reservationDate: Date;
+  reservationTime: string;
+  status: string;
+  procedureName: string;
+  depositAmount: number;
+  currency: string;
+  paymentDeadline: Date;
+  hospital: {
+    id: string;
+    name: Record<string, string>;
+    address: Record<string, string>;
+    directions: Record<string, string> | null;
+    latitude: number | null;
+    longitude: number | null;
+    thumbnailImageUrl: string | null;
+    logoImageUrl: string | null;
+    displayLocationName: Prisma.JsonValue | null;
+    district: {
+      id: string;
+      name: Prisma.JsonValue;
+      displayName: Prisma.JsonValue | null;
+      countryCode: string;
+    } | null;
+  };
+  user: {
+    id: string;
+    name: string | null;
+    phoneNumber: string | null;
+    passportName: string | null;
+    gender: string | null;
+    nationality: string | null;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/**
+ * 예약 상세 조회 파라미터
+ */
+export interface GetReservationDetailParams {
+  reservationId: string;
+  userId: string;
+}
+
+/**
+ * 예약 상세 조회 응답 타입
+ */
+export interface GetReservationDetailResponse {
+  reservation: ReservationDetailData;
 }
