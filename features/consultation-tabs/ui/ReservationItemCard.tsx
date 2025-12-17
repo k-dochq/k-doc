@@ -59,7 +59,7 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
 
   // 시술후기 작성 핸들러
   const handleWriteReview = () => {
-    router.push(`/reviews/select-hospital?hospitalId=${reservation.hospital.id}`);
+    router.push(`/reviews-create?hospitalId=${reservation.hospital.id}`);
   };
 
   // 예약 상세로 이동 핸들러

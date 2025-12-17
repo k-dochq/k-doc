@@ -37,23 +37,7 @@ export function ReservationHospitalInfo({
             <p className='text-xs leading-4 font-medium text-[#a3a3a3]'>
               {dict.consultation?.appointment?.region || '지역'}
             </p>
-            <div className='flex h-2.5 items-center justify-center'>
-              <div className='h-0 w-0 rotate-90'>
-                <div className='h-0 w-2.5'>
-                  <div className='absolute inset-[-1px_0_0_0]'>
-                    <svg
-                      width='10'
-                      height='10'
-                      viewBox='0 0 10 10'
-                      fill='none'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <path d='M5 0L5 10' stroke='#a3a3a3' strokeWidth='1' strokeLinecap='round' />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className='h-[10px] w-px bg-[#A3A3A3]' />
             <p className='pl-0.5 text-xs leading-4 font-medium text-[#a3a3a3]'>{districtName}</p>
           </div>
         )}
