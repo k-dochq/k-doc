@@ -4,8 +4,8 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import { PenSquare } from 'lucide-react';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { type Locale } from 'shared/config';
 import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -56,13 +56,11 @@ export function ReviewWriteFAB({ lang, dict }: ReviewWriteFABProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // 로그인 확인
     if (!user) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

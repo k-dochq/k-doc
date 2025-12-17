@@ -2,9 +2,9 @@
 
 import { usePathname } from 'next/navigation';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { MAX_MOBILE_WIDTH_CLASS, PROTECTED_ROUTES } from 'shared/config';
 import { type BottomNavigationProps } from '../model/types';
 import { navigationItems } from '../model/navigation-items';
@@ -23,18 +23,12 @@ export function BottomNavigation({ currentLang, dict }: BottomNavigationWithDict
     return currentPath === href || (href === '/main' && currentPath === '/');
   };
 
-  const handleNavigationClick = (e: React.MouseEvent, href: string) => {
+  const handleNavigationClick = async (e: React.MouseEvent, href: string) => {
     // 보호된 경로인 경우 로그인 체크
     if (PROTECTED_ROUTES.includes(href as any) && !isAuthenticated) {
       e.preventDefault();
-      openModal({
-        content: (
-          <LoginRequiredModal
-            lang={currentLang}
-            dict={dict}
-            redirectPath={window.location.pathname}
-          />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={currentLang} dict={dict} />,
       });
     }
   };

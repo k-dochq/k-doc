@@ -2,8 +2,8 @@
 
 import { useReviewLike } from '../model/useReviewLike';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { LikeButtonV2 } from 'shared/ui/like-button';
 import type { Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
@@ -36,12 +36,10 @@ export function ReviewLikeButtonV2({
 
   const isDisabled = isLoading || isToggling;
 
-  const handleLikeToggle = () => {
+  const handleLikeToggle = async () => {
     if (!isAuthenticated) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={locale} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={locale} dict={dict} />,
       });
       return;
     }

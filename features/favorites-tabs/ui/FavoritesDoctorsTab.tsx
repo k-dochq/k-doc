@@ -1,8 +1,8 @@
 'use client';
 
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { ErrorState } from 'shared/ui/error-state';
 import { DoctorCard } from 'widgets/hospital-detail-doctors/ui/DoctorCard';
@@ -60,13 +60,11 @@ export function FavoritesDoctorsTab({ lang, dict }: FavoritesDoctorsTabProps) {
   }
 
   // 좋아요 토글 핸들러
-  const handleToggleLike = (doctorId: string) => {
+  const handleToggleLike = async (doctorId: string) => {
     // 로그인 체크
     if (!user) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

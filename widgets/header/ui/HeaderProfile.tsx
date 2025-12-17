@@ -1,9 +1,9 @@
 'use client';
 
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -17,13 +17,11 @@ export function HeaderProfile({ lang, dict }: HeaderProfileProps) {
   const { isAuthenticated } = useAuth();
   const router = useLocalizedRouter();
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = async (e: React.MouseEvent) => {
     if (!isAuthenticated) {
       e.preventDefault();
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
     }
   };

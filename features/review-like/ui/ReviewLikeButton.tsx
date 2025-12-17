@@ -3,8 +3,8 @@
 import { useReviewLike } from '../model/useReviewLike';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import type { Locale } from 'shared/config';
 import type { Dictionary } from 'shared/model/types';
 import { HeartIcon } from 'shared/ui/icons/HeartIcon';
@@ -37,13 +37,11 @@ export function ReviewLikeButton({
       enabled: true, // 모든 사용자가 좋아요 수를 볼 수 있도록 활성화
     });
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // 로그인 상태 확인
     if (!isAuthenticated) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={locale} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={locale} dict={dict} />,
       });
       return;
     }
@@ -53,12 +51,10 @@ export function ReviewLikeButton({
       clearError();
     }
 
-    // 인증 에러인 경우 로그인 모달 표시
+    // 인증 에러인 경우 로그인 드로어 표시
     if (error?.status === 401) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={locale} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={locale} dict={dict} />,
       });
       return;
     }
