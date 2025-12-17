@@ -7,4 +7,7 @@ export type {
   ReservationData,
   GetUserReservationsResponse,
   GetUserReservationsParams,
+  ReservationDetailData,
+  GetReservationDetailParams,
+  GetReservationDetailResponse,
 } from './types';

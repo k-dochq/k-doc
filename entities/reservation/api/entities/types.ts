@@ -189,3 +189,47 @@ export interface GetUserReservationsParams {
   page: number;
   limit: number;
 }
+
+/**
+ * 예약 상세 정보 타입
+ */
+export interface ReservationDetailData {
+  id: string;
+  reservationDate: Date;
+  reservationTime: string;
+  status: string;
+  procedureName: string;
+  hospital: {
+    id: string;
+    name: Record<string, string>;
+    address: Record<string, string>;
+    directions: Record<string, string> | null;
+    latitude: number | null;
+    longitude: number | null;
+    thumbnailImageUrl: string | null;
+    logoImageUrl: string | null;
+    district: {
+      id: string;
+      name: Prisma.JsonValue;
+      displayName: Prisma.JsonValue | null;
+      countryCode: string;
+    } | null;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/**
+ * 예약 상세 조회 파라미터
+ */
+export interface GetReservationDetailParams {
+  reservationId: string;
+  userId: string;
+}
+
+/**
+ * 예약 상세 조회 응답 타입
+ */
+export interface GetReservationDetailResponse {
+  reservation: ReservationDetailData;
+}

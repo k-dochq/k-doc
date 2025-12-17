@@ -1,4 +1,8 @@
-export { useInfiniteReservedHospitals, useInfiniteReservations } from './model';
+export {
+  useInfiniteReservedHospitals,
+  useInfiniteReservations,
+  useReservationDetail,
+} from './model';
 export type {
   ReservationWithHospital,
   ReservedHospitalData,
@@ -7,4 +11,7 @@ export type {
   ReservationData,
   GetUserReservationsResponse,
   GetUserReservationsParams,
+  ReservationDetailData,
+  GetReservationDetailParams,
+  GetReservationDetailResponse,
 } from './api/entities';

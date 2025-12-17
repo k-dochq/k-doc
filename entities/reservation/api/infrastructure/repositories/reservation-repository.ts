@@ -2,6 +2,7 @@ import { prisma } from 'shared/lib/prisma';
 import {
   type ReservationWithHospital,
   type ReservationWithHospitalForList,
+  type ReservationWithHospitalForList as ReservationDetailRaw,
 } from '../../entities/types';
 
 /**
@@ -156,6 +157,58 @@ export class ReservationRepository {
     } catch (error) {
       console.error('Error fetching user reservations:', error);
       throw new Error('예약 내역을 불러오는 중 오류가 발생했습니다.');
+    }
+  }
+
+  /**
+   * 예약 ID로 예약 상세 정보 조회 (병원 정보 포함)
+   * @param reservationId 예약 ID
+   * @param userId 사용자 ID (본인 예약만 조회 가능)
+   * @returns 예약 상세 정보
+   */
+  async getReservationById(
+    reservationId: string,
+    userId: string,
+  ): Promise<ReservationDetailRaw | null> {
+    try {
+      const reservation = await prisma.reservation.findFirst({
+        where: {
+          id: reservationId,
+          userId, // 본인 예약만 조회 가능
+        },
+        include: {
+          Hospital: {
+            include: {
+              HospitalImage: {
+                where: {
+                  isActive: true,
+                  imageType: {
+                    in: ['THUMBNAIL', 'LOGO'],
+                  },
+                },
+                orderBy: [{ imageType: 'asc' }, { order: 'asc' }],
+                select: {
+                  imageType: true,
+                  imageUrl: true,
+                },
+              },
+              District: {
+                select: {
+                  id: true,
+                  name: true,
+                  displayName: true,
+                  countryCode: true,
+                },
+              },
+            },
+          },
+        },
+      });
+
+      return reservation;
+    } catch (error) {
+      console.error('Error fetching reservation by id:', error);
+      throw new Error('예약 상세 정보를 불러오는 중 오류가 발생했습니다.');
     }
   }
 }

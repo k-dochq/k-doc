@@ -611,6 +611,11 @@
       "timezone": "KST",
       "noImage": "No Image"
     },
+    "reservationDetail": {
+      "title": "Reservation Detail",
+      "cancel": "Cancel Reservation",
+      "consultation": "Consultation"
+    },
     "reservationDateTime": "Reservation Date/Time",
     "region": "Region",
     "loading": "Loading...",
