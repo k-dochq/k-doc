@@ -45,11 +45,9 @@ export function ReservationPaymentInfo({
           <p className='font-medium text-[#404040]'>
             {dict.consultation?.reservationDetail?.transferDate || '이체 일시'}
           </p>
-          <div className='flex items-start gap-1 font-normal text-[#737373]'>
-            <p>{formattedDate}</p>
-            <p>{time}</p>
-            <p>({dict.consultation?.appointment?.timezone || 'KST'})</p>
-          </div>
+          <p className='font-normal text-[#737373]'>
+            {formattedDate} {time} ({dict.consultation?.appointment?.timezone || 'KST'})
+          </p>
         </div>
       </div>
     </div>
