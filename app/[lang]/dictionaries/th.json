@@ -600,7 +600,18 @@
   "consultation": {
     "title": "ปรึกษา",
     "chat": "แชทปรึกษา",
-    "appointment": "ประวัติการจอง",
+    "appointment": {
+      "title": "ประวัติการจอง",
+      "reservationDateTime": "วันที่และเวลานัดหมาย",
+      "region": "ภูมิภาค",
+      "writeReview": "เขียนรีวิว",
+      "loadingMore": "กำลังโหลดการจองเพิ่มเติม...",
+      "allLoaded": "โหลดการจองทั้งหมดแล้ว",
+      "completed": "เสร็จสิ้น",
+      "timezone": "KST",
+      "noImage": "ไม่มีรูปภาพ"
+    },
+    "reservationDateTime": "วันที่และเวลานัดหมาย",
     "region": "ภูมิภาค",
     "loading": "กำลังโหลด...",
     "loadingMessages": "กำลังโหลดข้อความ...",

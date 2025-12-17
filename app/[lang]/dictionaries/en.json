@@ -600,7 +600,18 @@
   "consultation": {
     "title": "Consultation",
     "chat": "Chat",
-    "appointment": "Appointment History",
+    "appointment": {
+      "title": "Appointment History",
+      "reservationDateTime": "Reservation Date/Time",
+      "region": "Region",
+      "writeReview": "Write Review",
+      "loadingMore": "Loading more reservations...",
+      "allLoaded": "All reservations loaded.",
+      "completed": "Completed",
+      "timezone": "KST",
+      "noImage": "No Image"
+    },
+    "reservationDateTime": "Reservation Date/Time",
     "region": "Region",
     "loading": "Loading...",
     "loadingMessages": "Loading messages...",
