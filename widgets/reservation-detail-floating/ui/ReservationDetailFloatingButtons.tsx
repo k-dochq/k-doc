@@ -5,9 +5,9 @@ import { type Dictionary } from 'shared/model/types';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useCheckConsultationHistory } from 'features/consultation-request/model/useCheckConsultationHistory';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
 import { useCancelReservation } from 'features/reservation-cancel/model/useCancelReservation';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from 'shared/lib/query-keys';
 
@@ -61,14 +61,8 @@ export function ReservationDetailFloatingButtons({
   const handleConsultationRequest = async () => {
     // 로그인 체크
     if (!isAuthenticated) {
-      openModal({
-        content: (
-          <LoginRequiredModal
-            lang={lang}
-            dict={dict}
-            redirectPath={`/reservation/${reservationId}`}
-          />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} />,
       });
       return;
     }

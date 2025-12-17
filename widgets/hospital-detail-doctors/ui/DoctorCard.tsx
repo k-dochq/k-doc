@@ -11,8 +11,8 @@ import { HeartIcon, HeartOutlineIcon } from 'shared/ui/icons';
 import { LoadingIcon } from 'shared/ui/loading-icon';
 import { useDoctorLike } from 'features/doctor-like/model/useDoctorLike';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 
 interface DoctorCardProps {
   doctor: HospitalDoctor;
@@ -52,7 +52,7 @@ export function DoctorCard({
     enabled: showLikeButton,
   });
 
-  const handleLikeToggle = (e: React.MouseEvent) => {
+  const handleLikeToggle = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -60,20 +60,16 @@ export function DoctorCard({
 
     // 로그인 상태 확인
     if (!isAuthenticated) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} />,
       });
       return;
     }
 
     // 에러가 401이면 로그인 모달 표시
     if (error?.status === 401) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} />,
       });
       return;
     }
@@ -104,7 +100,7 @@ export function DoctorCard({
         </div>
 
         {/* 의료진 정보 */}
-        <div className='flex flex-1 w-full min-w-0 flex-col justify-between'>
+        <div className='flex w-full min-w-0 flex-1 flex-col justify-between'>
           {/* 상단 정보 섹션 */}
           <div className='flex min-w-0 flex-col'>
             {/* 이름과 직책 */}

@@ -12,9 +12,9 @@ import { HeartFilledV2 } from 'shared/ui/icons/HeartFilledV2';
 import { HeartOutlineV2 } from 'shared/ui/icons/HeartOutlineV2';
 import { useDoctorLike } from 'features/doctor-like/model/useDoctorLike';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
 import { ArrowRightIcon } from 'shared/ui/arrow-right-icon';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 
 interface DoctorCardV2Props {
   doctor: HospitalDoctor;
@@ -39,16 +39,14 @@ export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
     [doctor.medicalSpecialties],
   );
 
-  const handleLikeToggle = (e: React.MouseEvent) => {
+  const handleLikeToggle = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (isToggling) return;
 
     if (!isAuthenticated || error?.status === 401) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} />,
       });
       return;
     }
