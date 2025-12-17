@@ -11,8 +11,8 @@ import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/r
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyFavoritesState } from 'shared/ui/empty-state';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 
 interface FavoritesReviewsTabV2Props {
   lang: Locale;
@@ -35,13 +35,11 @@ export function FavoritesReviewsTabV2({ lang, dict, user }: FavoritesReviewsTabV
     useInfiniteAllReviews(queryParams);
 
   // 좋아요 토글 핸들러
-  const handleToggleLike = (reviewId: string) => {
+  const handleToggleLike = async (reviewId: string) => {
     // 로그인 체크
     if (!user) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

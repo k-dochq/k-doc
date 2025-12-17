@@ -3,8 +3,8 @@
 import { useEffect } from 'react';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { useCategories } from 'features/category-filter/model/useCategories';
 import { useHospitalDetail } from 'entities/hospital/model/useHospitalDetail';
 import { type Locale } from 'shared/config';
@@ -42,18 +42,15 @@ export function ReviewWriteContent({ lang, dict, hospitalId }: ReviewWriteConten
   // 로그인 확인
   useEffect(() => {
     if (!isAuthLoading && !user) {
-      openModal({
-        content: (
-          <LoginRequiredModal
-            lang={lang}
-            dict={dict}
-            redirectPath={`/reviews-create${hospitalId ? `?hospitalId=${hospitalId}` : ''}`}
-          />
-        ),
-      });
+      const showLoginDrawer = async () => {
+        await openDrawer({
+          content: <LoginRequiredDrawer lang={lang} dict={dict} />,
+        });
+      };
+      showLoginDrawer();
       router.push('/reviews');
     }
-  }, [user, isAuthLoading, lang, dict, hospitalId, router]);
+  }, [user, isAuthLoading, lang, dict, router]);
 
   // hospitalId 확인
   useEffect(() => {

@@ -7,8 +7,8 @@ import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { useMemo, useState } from 'react';
 
 interface ReviewDetailCardV2ShellProps {
@@ -38,15 +38,13 @@ export function ReviewDetailCardV2Shell({ review, lang, dict }: ReviewDetailCard
   const [isLikedLocal, setIsLikedLocal] = useState(initialIsLiked);
   const [likeCountLocal, setLikeCountLocal] = useState(initialLikeCount);
 
-  const handleToggleLike = (reviewId: string) => {
+  const handleToggleLike = async (reviewId: string) => {
     const nextIsLiked = !isLikedLocal;
     const delta = nextIsLiked ? 1 : -1;
 
     if (!user) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

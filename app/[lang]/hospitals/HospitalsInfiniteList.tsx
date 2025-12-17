@@ -16,8 +16,8 @@ import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospitalLike';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { EmptyHospitalsState } from 'shared/ui/empty-state';
 
 interface HospitalsInfiniteListProps {
@@ -52,13 +52,11 @@ export function HospitalsInfiniteList({ lang, dict, searchParams }: HospitalsInf
     useInfiniteHospitals(queryParams);
 
   // 좋아요 토글 핸들러
-  const handleToggleLike = (hospitalId: string) => {
+  const handleToggleLike = async (hospitalId: string) => {
     // 로그인 체크
     if (!user) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

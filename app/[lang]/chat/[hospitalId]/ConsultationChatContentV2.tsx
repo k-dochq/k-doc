@@ -7,7 +7,7 @@ import { useAuth } from 'shared/lib/auth/useAuth';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { requestNotificationPermission } from 'shared/lib/webview-communication';
 import { isExpoWebView } from 'shared/lib/webview-detection';
-import { openModal } from 'shared/lib/modal';
+import { openDrawer } from 'shared/lib/drawer';
 import { NotificationPermissionModal } from 'shared/ui/notification-permission-modal';
 import { useRealtimeChat } from 'features/consultation-chat/model/useRealtimeChat';
 import { createDisplayName } from 'features/consultation-chat/lib/chat-utils';
@@ -68,8 +68,8 @@ export function ConsultationChatContentV2({
         const response = await requestNotificationPermission();
 
         if (!response.granted) {
-          // 모달 표시
-          openModal({
+          // 드로어 표시
+          await openDrawer({
             content: <NotificationPermissionModal lang={lang} dict={dict} />,
           });
         }
