@@ -19,6 +19,9 @@ export function ReservationDateTime({
 }: ReservationDateTimeProps) {
   const formattedDate = formatReservationDate(reservationDate, lang);
 
+  const timezone = dict.consultation?.appointment?.timezone || 'KST';
+  const dateTimeText = `${formattedDate} ${reservationTime} (${timezone})`;
+
   return (
     <div className='flex flex-col gap-0.5'>
       <p className='text-sm leading-5 font-semibold text-[#404040]'>
@@ -26,11 +29,7 @@ export function ReservationDateTime({
           dict.consultation?.reservationDateTime ||
           '예약 일시'}
       </p>
-      <div className='flex items-start gap-1 text-sm leading-5 text-[#737373]'>
-        <p>{formattedDate}</p>
-        <p>{reservationTime}</p>
-        <p>({dict.consultation?.appointment?.timezone || 'KST'})</p>
-      </div>
+      <p className='text-sm leading-5 text-[#737373]'>{dateTimeText}</p>
     </div>
   );
 }
