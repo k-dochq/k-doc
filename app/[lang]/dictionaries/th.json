@@ -613,6 +613,9 @@
     },
     "reservationDetail": {
       "title": "รายละเอียดการจอง",
+      "requestDate": "วันที่สมัคร",
+      "confirmed": "ยืนยันการจอง",
+      "completed": "เสร็จสิ้น",
       "cancel": "ยกเลิกการจอง",
       "consultation": "ปรึกษา"
     },

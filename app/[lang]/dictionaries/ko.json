@@ -613,6 +613,9 @@
     },
     "reservationDetail": {
       "title": "예약 상세",
+      "requestDate": "신청 일시",
+      "confirmed": "예약 완료",
+      "completed": "시술 완료",
       "cancel": "예약 취소",
       "consultation": "상담 하기"
     },

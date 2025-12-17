@@ -7,6 +7,9 @@ import { ReservationDetailHeaderActions } from 'features/reservation-detail/ui';
 import { ReservationDetailFloatingButtons } from 'widgets/reservation-detail-floating/ui';
 import { useReservationDetail } from 'entities/reservation';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { ReservationRequestDate } from 'features/reservation-detail/ui/ReservationRequestDate';
+import { ReservationStatusHeader } from 'features/reservation-detail/ui/ReservationStatusHeader';
+import { ReservationInfoCard } from 'features/reservation-detail/ui/ReservationInfoCard';
 
 interface ReservationDetailContentProps {
   reservationId: string;
@@ -77,11 +80,35 @@ export function ReservationDetailContent({
       />
       <div className='h-[58px]' />
 
-      {/* 예약 상세 컨텐츠 영역 */}
+      {/* 예약 상세 컨텐츠 */}
       <div className='pb-28'>
-        {/* TODO: 예약 상세 컨텐츠 구현 */}
-        <div className='px-5 py-8'>
-          <p className='text-neutral-400'>예약 상세 컨텐츠는 추후 구현 예정입니다.</p>
+        <div className='flex flex-col p-5'>
+          {/* 신청 일시 */}
+          <ReservationRequestDate createdAt={reservation.createdAt} lang={lang} dict={dict} />
+
+          <div className='h-5' />
+
+          {/* 예약 상태 헤더 */}
+          <ReservationStatusHeader
+            status={reservation.status}
+            reservationDate={reservation.reservationDate}
+            reservationTime={reservation.reservationTime}
+            lang={lang}
+            dict={dict}
+          />
+
+          <div className='h-3' />
+
+          {/* 예약 정보 카드 */}
+          <ReservationInfoCard
+            thumbnailImageUrl={reservation.hospital.thumbnailImageUrl}
+            hospitalName={hospitalName}
+            reservationDate={reservation.reservationDate}
+            reservationTime={reservation.reservationTime}
+            hospitalId={reservation.hospital.id}
+            lang={lang}
+            dict={dict}
+          />
         </div>
       </div>
 

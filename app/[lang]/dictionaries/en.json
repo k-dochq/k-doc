@@ -613,6 +613,9 @@
     },
     "reservationDetail": {
       "title": "Reservation Detail",
+      "requestDate": "Request Date",
+      "confirmed": "Reservation Confirmed",
+      "completed": "Completed",
       "cancel": "Cancel Reservation",
       "consultation": "Consultation"
     },
