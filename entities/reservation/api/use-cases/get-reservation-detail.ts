@@ -39,6 +39,9 @@ export async function getReservationDetail(
       reservationTime: rawReservation.reservationTime,
       status: rawReservation.status,
       procedureName: rawReservation.procedureName,
+      depositAmount: rawReservation.depositAmount,
+      currency: rawReservation.currency,
+      paymentDeadline: rawReservation.paymentDeadline,
       hospital: {
         id: rawReservation.Hospital.id,
         name: rawReservation.Hospital.name as Record<string, string>,

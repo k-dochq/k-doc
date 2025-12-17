@@ -616,6 +616,10 @@
       "requestDate": "วันที่สมัคร",
       "confirmed": "ยืนยันการจอง",
       "completed": "เสร็จสิ้น",
+      "procedureName": "ชื่อการรักษา",
+      "paymentInfo": "ข้อมูลการชำระเงิน",
+      "deposit": "เงินมัดจำ",
+      "transferDate": "วันที่โอนเงิน",
       "cancel": "ยกเลิกการจอง",
       "consultation": "ปรึกษา"
     },

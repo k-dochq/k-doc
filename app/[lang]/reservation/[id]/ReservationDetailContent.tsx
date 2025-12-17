@@ -10,6 +10,8 @@ import { extractLocalizedText } from 'shared/lib/localized-text';
 import { ReservationRequestDate } from 'features/reservation-detail/ui/ReservationRequestDate';
 import { ReservationStatusHeader } from 'features/reservation-detail/ui/ReservationStatusHeader';
 import { ReservationInfoCard } from 'features/reservation-detail/ui/ReservationInfoCard';
+import { ReservationProcedureName } from 'features/reservation-detail/ui/ReservationProcedureName';
+import { ReservationPaymentInfo } from 'features/reservation-detail/ui/ReservationPaymentInfo';
 
 interface ReservationDetailContentProps {
   reservationId: string;
@@ -109,6 +111,24 @@ export function ReservationDetailContent({
             lang={lang}
             dict={dict}
           />
+
+          <div className='h-8' />
+
+          {/* 시술명 섹션 */}
+          <ReservationProcedureName procedureName={reservation.procedureName} dict={dict} />
+
+          <div className='h-8' />
+
+          {/* 결제정보 섹션 */}
+          <ReservationPaymentInfo
+            depositAmount={reservation.depositAmount}
+            currency={reservation.currency}
+            paymentDeadline={reservation.paymentDeadline}
+            lang={lang}
+            dict={dict}
+          />
+
+          <div className='h-8' />
         </div>
       </div>
 

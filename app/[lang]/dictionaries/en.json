@@ -616,6 +616,10 @@
       "requestDate": "Request Date",
       "confirmed": "Reservation Confirmed",
       "completed": "Completed",
+      "procedureName": "Procedure Name",
+      "paymentInfo": "Payment Information",
+      "deposit": "Deposit",
+      "transferDate": "Transfer Date/Time",
       "cancel": "Cancel Reservation",
       "consultation": "Consultation"
     },

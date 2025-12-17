@@ -199,6 +199,9 @@ export interface ReservationDetailData {
   reservationTime: string;
   status: string;
   procedureName: string;
+  depositAmount: number;
+  currency: string;
+  paymentDeadline: Date;
   hospital: {
     id: string;
     name: Record<string, string>;
