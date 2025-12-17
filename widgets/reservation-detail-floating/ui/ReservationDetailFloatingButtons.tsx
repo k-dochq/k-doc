@@ -14,6 +14,7 @@ import { queryKeys } from 'shared/lib/query-keys';
 interface ReservationDetailFloatingButtonsProps {
   hospitalId: string;
   reservationId: string;
+  reservationStatus: string;
   lang: Locale;
   dict: Dictionary;
 }
@@ -24,6 +25,7 @@ interface ReservationDetailFloatingButtonsProps {
 export function ReservationDetailFloatingButtons({
   hospitalId,
   reservationId,
+  reservationStatus,
   lang,
   dict,
 }: ReservationDetailFloatingButtonsProps) {
@@ -32,6 +34,8 @@ export function ReservationDetailFloatingButtons({
   const checkConsultationHistory = useCheckConsultationHistory();
   const cancelReservation = useCancelReservation();
   const queryClient = useQueryClient();
+
+  const isCancelled = reservationStatus === 'CANCELLED';
 
   // 예약 취소 핸들러
   const handleCancelReservation = () => {
@@ -101,7 +105,7 @@ export function ReservationDetailFloatingButtons({
         {/* 예약 취소 버튼 */}
         <button
           onClick={handleCancelReservation}
-          disabled={cancelReservation.isPending}
+          disabled={isCancelled || cancelReservation.isPending}
           className='flex h-14 flex-1 items-center justify-center rounded-xl bg-[#e5e5e5] px-5 py-4 text-base leading-6 font-medium text-[#404040] transition-colors duration-200 hover:bg-[#d5d5d5] disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
         >
           {cancelReservation.isPending

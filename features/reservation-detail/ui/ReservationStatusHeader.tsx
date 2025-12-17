@@ -46,7 +46,9 @@ export function ReservationStatusHeader({
           <ReservationStatusBadge
             reservationDate={reservationDate}
             reservationTime={reservationTime}
+            reservationStatus={status}
             lang={lang}
+            dict={dict}
           />
         )}
       </div>

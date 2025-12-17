@@ -100,6 +100,7 @@ export function ReservationDetailContent({
             hospitalName={hospitalName}
             reservationDate={reservation.reservationDate}
             reservationTime={reservation.reservationTime}
+            reservationStatus={reservation.status}
             hospitalId={reservation.hospital.id}
             lang={lang}
             dict={dict}
@@ -167,6 +168,7 @@ export function ReservationDetailContent({
       <ReservationDetailFloatingButtons
         hospitalId={reservation.hospital.id}
         reservationId={reservationId}
+        reservationStatus={reservation.status}
         lang={lang}
         dict={dict}
       />
