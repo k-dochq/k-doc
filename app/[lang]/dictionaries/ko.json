@@ -616,6 +616,7 @@
       "requestDate": "신청 일시",
       "confirmed": "예약 완료",
       "completed": "시술 완료",
+      "cancelled": "예약 취소됨",
       "procedureName": "시술명",
       "paymentInfo": "결제 정보",
       "deposit": "예약금",

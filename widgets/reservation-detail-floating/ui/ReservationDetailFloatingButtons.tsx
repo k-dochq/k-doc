@@ -7,6 +7,9 @@ import { useCheckConsultationHistory } from 'features/consultation-request/model
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { openModal } from 'shared/lib/modal';
 import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { useCancelReservation } from 'features/reservation-cancel/model/useCancelReservation';
+import { useQueryClient } from '@tanstack/react-query';
+import { queryKeys } from 'shared/lib/query-keys';
 
 interface ReservationDetailFloatingButtonsProps {
   hospitalId: string;
@@ -27,11 +30,27 @@ export function ReservationDetailFloatingButtons({
   const router = useLocalizedRouter();
   const { isAuthenticated } = useAuth();
   const checkConsultationHistory = useCheckConsultationHistory();
+  const cancelReservation = useCancelReservation();
+  const queryClient = useQueryClient();
 
-  // 예약 취소 핸들러 (추후 구현)
+  // 예약 취소 핸들러
   const handleCancelReservation = () => {
-    // TODO: 예약 취소 로직 구현
-    console.log('예약 취소:', reservationId);
+    cancelReservation.mutate(reservationId, {
+      onSuccess: () => {
+        // 예약 상세 데이터 refetch
+        queryClient.invalidateQueries({
+          queryKey: queryKeys.reservations.detail(reservationId),
+        });
+        // 예약 목록도 refetch (상태 변경 반영)
+        queryClient.invalidateQueries({
+          queryKey: queryKeys.reservations.lists(),
+        });
+      },
+      onError: (error) => {
+        console.error('예약 취소 실패:', error);
+        // TODO: 에러 메시지 표시 (토스트 등)
+      },
+    });
   };
 
   // 상담하기 핸들러
@@ -82,9 +101,12 @@ export function ReservationDetailFloatingButtons({
         {/* 예약 취소 버튼 */}
         <button
           onClick={handleCancelReservation}
-          className='flex h-14 flex-1 items-center justify-center rounded-xl bg-[#e5e5e5] px-5 py-4 text-base leading-6 font-medium text-[#404040] transition-colors duration-200 hover:bg-[#d5d5d5]'
+          disabled={cancelReservation.isPending}
+          className='flex h-14 flex-1 items-center justify-center rounded-xl bg-[#e5e5e5] px-5 py-4 text-base leading-6 font-medium text-[#404040] transition-colors duration-200 hover:bg-[#d5d5d5] disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
         >
-          {dict.consultation?.reservationDetail?.cancel || '예약 취소'}
+          {cancelReservation.isPending
+            ? dict.consultation?.loading || '처리 중...'
+            : dict.consultation?.reservationDetail?.cancel || '예약 취소'}
         </button>
 
         {/* 상담하기 버튼 */}

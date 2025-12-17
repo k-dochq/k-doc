@@ -616,6 +616,7 @@
       "requestDate": "Request Date",
       "confirmed": "Reservation Confirmed",
       "completed": "Completed",
+      "cancelled": "Cancelled",
       "procedureName": "Procedure Name",
       "paymentInfo": "Payment Information",
       "deposit": "Deposit",
