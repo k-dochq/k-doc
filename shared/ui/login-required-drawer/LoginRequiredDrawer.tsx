@@ -3,16 +3,22 @@
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { closeDrawer } from 'shared/lib/drawer';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { AUTH_CONFIG } from 'shared/config/auth';
+import { type Dictionary } from 'shared/model/types';
 
 interface LoginRequiredDrawerProps {
   lang: Locale;
+  dict: Dictionary;
 }
 
 /**
  * 로그인 필요 시 표시되는 Drawer 컴포넌트
  * openDrawer의 content로 사용됩니다.
  */
-export function LoginRequiredDrawer({ lang }: LoginRequiredDrawerProps) {
+export function LoginRequiredDrawer({ lang, dict }: LoginRequiredDrawerProps) {
+  const router = useLocalizedRouter();
+
   // 한국어, 영어일 때는 영어 이미지, 태국어일 때는 태국어 이미지
   const imagePath =
     lang === 'th'
@@ -22,6 +28,13 @@ export function LoginRequiredDrawer({ lang }: LoginRequiredDrawerProps) {
   const handleClose = () => {
     closeDrawer();
   };
+
+  const handleLogin = () => {
+    closeDrawer();
+    router.push(AUTH_CONFIG.authPath);
+  };
+
+  const loginButtonText = dict.auth?.login?.loginButton || '로그인하기';
 
   return (
     <div className='relative flex flex-col bg-white'>
@@ -51,6 +64,16 @@ export function LoginRequiredDrawer({ lang }: LoginRequiredDrawerProps) {
       {/* 첫 번째 섹션: 배경 이미지 */}
       <div className='relative w-full' style={{ aspectRatio: '375/272' }}>
         <Image src={imagePath} alt='Login Required' fill className='object-cover' priority />
+      </div>
+
+      {/* 두 번째 섹션: 로그인 버튼 */}
+      <div className='flex flex-col gap-4 px-5 pt-4 pb-10'>
+        <button
+          onClick={handleLogin}
+          className='bg-sub-900 flex h-14 w-full items-center justify-center gap-2 rounded-xl px-5 py-4'
+        >
+          <p className='text-base leading-6 font-medium text-white'>{loginButtonText}</p>
+        </button>
       </div>
     </div>
   );

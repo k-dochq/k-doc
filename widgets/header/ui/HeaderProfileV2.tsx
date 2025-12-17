@@ -21,7 +21,7 @@ export function HeaderProfileV2({ lang, dict }: HeaderProfileV2Props) {
     if (!isAuthenticated) {
       e.preventDefault();
       await openDrawer({
-        content: <LoginRequiredDrawer lang={lang} />,
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
     }
   };

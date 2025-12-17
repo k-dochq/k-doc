@@ -30,7 +30,7 @@ export function HospitalDetailConsultationFloating({
     // 로그인 체크
     if (!isAuthenticated) {
       await openDrawer({
-        content: <LoginRequiredDrawer lang={lang} />,
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

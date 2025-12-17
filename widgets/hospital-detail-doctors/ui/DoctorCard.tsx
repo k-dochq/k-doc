@@ -61,7 +61,7 @@ export function DoctorCard({
     // 로그인 상태 확인
     if (!isAuthenticated) {
       await openDrawer({
-        content: <LoginRequiredDrawer lang={lang} />,
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }
@@ -69,7 +69,7 @@ export function DoctorCard({
     // 에러가 401이면 로그인 모달 표시
     if (error?.status === 401) {
       await openDrawer({
-        content: <LoginRequiredDrawer lang={lang} />,
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

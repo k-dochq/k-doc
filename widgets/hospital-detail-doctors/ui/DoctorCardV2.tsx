@@ -46,7 +46,7 @@ export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
 
     if (!isAuthenticated || error?.status === 401) {
       await openDrawer({
-        content: <LoginRequiredDrawer lang={lang} />,
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

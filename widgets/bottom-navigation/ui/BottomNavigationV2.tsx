@@ -28,7 +28,7 @@ export function BottomNavigationV2({ currentLang, dict }: BottomNavigationV2With
     if (PROTECTED_ROUTES.includes(href as any) && !isAuthenticated) {
       e.preventDefault();
       await openDrawer({
-        content: <LoginRequiredDrawer lang={currentLang} />,
+        content: <LoginRequiredDrawer lang={currentLang} dict={dict} />,
       });
     }
   };
