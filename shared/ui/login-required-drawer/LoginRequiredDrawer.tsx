@@ -4,19 +4,20 @@ import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { closeDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
-import { AUTH_CONFIG } from 'shared/config/auth';
+import { getAuthPath } from 'shared/lib/auth/route-guard';
 import { type Dictionary } from 'shared/model/types';
 
 interface LoginRequiredDrawerProps {
   lang: Locale;
   dict: Dictionary;
+  redirectPath?: string;
 }
 
 /**
  * 로그인 필요 시 표시되는 Drawer 컴포넌트
  * openDrawer의 content로 사용됩니다.
  */
-export function LoginRequiredDrawer({ lang, dict }: LoginRequiredDrawerProps) {
+export function LoginRequiredDrawer({ lang, dict, redirectPath }: LoginRequiredDrawerProps) {
   const router = useLocalizedRouter();
 
   // 한국어, 영어일 때는 영어 이미지, 태국어일 때는 태국어 이미지
@@ -31,7 +32,11 @@ export function LoginRequiredDrawer({ lang, dict }: LoginRequiredDrawerProps) {
 
   const handleLogin = () => {
     closeDrawer();
-    router.push(AUTH_CONFIG.authPath);
+
+    // 리다이렉트 경로 설정
+    const currentPath = redirectPath || window.location.pathname;
+    const authPath = getAuthPath(lang);
+    router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
   };
 
   const loginButtonText = dict.auth?.login?.loginButton || '로그인하기';
