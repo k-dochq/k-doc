@@ -300,6 +300,7 @@
       "signupButton": "Register",
       "requiredMessage": "Please log in\nto use the service.",
       "socialLogin": "Social Login",
+      "startIn3Seconds": "Get started in 3 seconds",
       "googleLogin": "Sign in with Google",
       "appleLogin": "Sign in with Apple",
       "kakaoLogin": "Sign in with Kakao",
