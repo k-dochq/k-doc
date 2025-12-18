@@ -11,6 +11,7 @@ export function usePopularReviewsV2(params: GetPopularReviewsV2Params = {}) {
       params.hospitalId,
       params.limit,
       params.hasBothImages,
+      params.sort,
     ],
     queryFn: () => fetchPopularReviewsV2(params),
     placeholderData: (previousData) => previousData, // 이전 데이터를 placeholder로 유지

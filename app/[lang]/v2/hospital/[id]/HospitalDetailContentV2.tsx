@@ -11,6 +11,7 @@ import { HospitalDetailTabsV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDe
 import { LiveReviewV2ContainerForHospital } from 'widgets/live-reviews/ui/LiveReviewV2ContainerForHospital';
 import { PopularReviewsV2ContainerForHospital } from 'widgets/popular-reviews/ui/PopularReviewsV2ContainerForHospital';
 import { HospitalDetailConsultationFloatingV2 } from 'widgets/hospital-detail-consultation-floating/ui/HospitalDetailConsultationFloatingV2';
+import { REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 
 interface HospitalDetailContentV2Props {
@@ -66,9 +67,14 @@ export async function HospitalDetailContentV2({
         {/* 생생후기 섹션 */}
         <LiveReviewV2ContainerForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
 
-        {/* 시술후기 섹션 */}
+        {/* 시술후기 섹션 - 최신순 */}
         <div className='py-9'>
-          <PopularReviewsV2ContainerForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
+          <PopularReviewsV2ContainerForHospital
+            hospitalId={hospitalId}
+            lang={lang}
+            dict={dict}
+            sort={REVIEW_SORT_OPTIONS.LATEST}
+          />
         </div>
 
         {/* 하단 고정 버튼을 위한 여백 */}
