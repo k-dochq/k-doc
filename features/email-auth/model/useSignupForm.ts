@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
-interface SignupFormData {
+export interface SignupFormData {
   email: string;
   password: string;
   confirmPassword: string;
@@ -16,7 +16,7 @@ interface SignupFormData {
   birthDate: string;
 }
 
-interface SignupFormErrors {
+export interface SignupFormErrors {
   email?: string;
   password?: string;
   confirmPassword?: string;
