@@ -1,8 +1,8 @@
 'use client';
 
 import { useAuth } from 'shared/lib/auth';
-import { openModal } from 'shared/lib/modal/modal-api';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { LikeButtonV2 } from 'shared/ui/like-button';
 import { useHospitalLike } from '../model/useHospitalLike';
 import { type Locale } from 'shared/config/locales';
@@ -21,13 +21,11 @@ export function LikeButtonWrapperV2({ hospitalId, lang, dict }: LikeButtonWrappe
     enabled: !!hospitalId,
   });
 
-  const handleToggleLike = () => {
+  const handleToggleLike = async () => {
     // 로그인 체크
     if (!isAuthenticated) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

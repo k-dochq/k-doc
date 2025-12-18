@@ -11,8 +11,8 @@ import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyReviewsState } from 'shared/ui/empty-state';
 import { useAuth } from 'shared/lib/auth/useAuth';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 
 interface HospitalReviewsInfiniteListV2Props {
   hospitalId: string;
@@ -43,13 +43,11 @@ export function HospitalReviewsInfiniteListV2({
     useInfiniteAllReviews(queryParams);
 
   // 좋아요 토글 핸들러
-  const handleToggleLike = (reviewId: string) => {
+  const handleToggleLike = async (reviewId: string) => {
     // 로그인 체크
     if (!user) {
-      openModal({
-        content: (
-          <LoginRequiredModal lang={lang} dict={dict} redirectPath={window.location.pathname} />
-        ),
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }

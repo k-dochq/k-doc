@@ -6,8 +6,8 @@ import { useAuth } from 'shared/lib/auth/useAuth';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { ReservedHospitalsInfiniteList } from './ReservedHospitalsInfiniteList';
 import { useEffect } from 'react';
-import { openModal } from 'shared/lib/modal';
-import { LoginRequiredModal } from 'shared/ui/login-required-modal';
+import { openDrawer } from 'shared/lib/drawer';
+import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 
 interface SelectHospitalContentProps {
   lang: Locale;
@@ -18,12 +18,15 @@ export function SelectHospitalContent({ lang, dict }: SelectHospitalContentProps
   const { user, isLoading } = useAuth();
   const router = useLocalizedRouter();
 
-  // 로그인하지 않은 사용자는 로그인 모달 표시 후 리뷰 페이지로 리다이렉트
+  // 로그인하지 않은 사용자는 로그인 드로어 표시 후 리뷰 페이지로 리다이렉트
   useEffect(() => {
     if (!isLoading && !user) {
-      openModal({
-        content: <LoginRequiredModal lang={lang} dict={dict} redirectPath='/reviews' />,
-      });
+      const showLoginDrawer = async () => {
+        await openDrawer({
+          content: <LoginRequiredDrawer lang={lang} dict={dict} />,
+        });
+      };
+      showLoginDrawer();
       router.push('/reviews');
     }
   }, [user, isLoading, lang, dict, router]);
