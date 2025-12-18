@@ -3,9 +3,8 @@
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { AppleSignInButton } from 'features/apple-auth';
-import { EmailSignInButton } from 'features/email-auth';
-import { GoogleSignInButton } from '@/features/google-auth';
+import { AppleSignInButtonV2 } from 'features/apple-auth';
+import { GoogleSignInButtonV2 } from 'features/google-auth';
 import { LoginPageHeader } from './LoginPageHeader';
 
 interface LoginContentV2Props {
@@ -37,6 +36,12 @@ export function LoginContentV2({ lang, dict, redirectTo }: LoginContentV2Props) 
       </div>
 
       <div className='h-10' />
+
+      {/* 소셜 로그인 버튼 섹션 */}
+      <div className='flex w-full flex-col gap-3 px-4'>
+        <GoogleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+        <AppleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+      </div>
     </div>
   );
 }
