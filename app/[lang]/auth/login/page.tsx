@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { LoginContent } from './LoginContent';
+import { LoginContentV2 } from './LoginContentV2';
 
 interface LoginPageProps {
   params: Promise<{ lang: Locale }>;
@@ -12,7 +12,7 @@ export default async function LoginPage({ params, searchParams }: LoginPageProps
   const { redirect } = await searchParams;
   const dict = await getDictionary(lang);
 
-  return <LoginContent lang={lang} dict={dict} redirectTo={redirect} />;
+  return <LoginContentV2 lang={lang} dict={dict} redirectTo={redirect} />;
 }
 
 // 메타데이터 생성
