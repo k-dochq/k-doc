@@ -1,6 +1,7 @@
 export { EmailSignInButton } from './ui/EmailSignInButton';
 export { SignupForm } from './ui/SignupForm';
 export { EmailLoginForm } from './ui/EmailLoginForm';
+export { EmailLoginFormV2 } from './ui/EmailLoginFormV2';
 export { ForgotPasswordForm } from './ui/ForgotPasswordForm';
 export { ResetPasswordForm } from './ui/ResetPasswordForm';
 export { useEmailLogin } from './model/useEmailLogin';

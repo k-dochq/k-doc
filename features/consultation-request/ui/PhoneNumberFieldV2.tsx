@@ -50,7 +50,7 @@ export function PhoneNumberFieldV2({
     dict.consultation?.request?.form?.phoneNumber?.placeholder ||
     dict.auth?.signup?.placeholders?.phoneNumberOnly ||
     '휴대폰번호를 입력하세요';
-  const optionalText = dict.auth?.signup?.optional || '선택';
+  const optionalText = '';
 
   const countryOptions = useMemo(
     () =>
@@ -63,6 +63,10 @@ export function PhoneNumberFieldV2({
 
   const countryHasValue = !!countryCode;
   const phoneHasValue = phoneNumberOnly.trim().length > 0;
+  const countryPlaceholder = dict.auth?.signup?.placeholders?.countryCode || 'Select';
+  const selectedCountry = countryOptions.find((option) => option.value === countryCode);
+  const triggerText = countryHasValue ? (selectedCountry?.value ?? '') : countryPlaceholder;
+  const triggerTextClass = countryHasValue ? 'text-neutral-900' : 'text-neutral-400';
 
   const countryStateClass = error
     ? errorBorder
@@ -88,25 +92,33 @@ export function PhoneNumberFieldV2({
         optionalText={!required ? optionalText : undefined}
       />
       <div className='flex gap-2'>
-        <div className='w-[128px] max-w-[128px]'>
-          <select
-            value={countryCode}
-            onChange={(e) => onCountryCodeChange(e.target.value)}
-            disabled={disabled}
-            className={countryClassName}
-            style={{
-              backgroundImage: selectArrowSvg,
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: '20px',
-              backgroundPosition: 'right 12px center',
-            }}
-          >
-            {countryOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+        <div className='w-[94px] max-w-[94px]'>
+          <div className='relative'>
+            <select
+              value={countryCode}
+              onChange={(e) => onCountryCodeChange(e.target.value)}
+              disabled={disabled}
+              className={`${countryClassName} text-transparent`}
+              style={{
+                backgroundImage: selectArrowSvg,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '20px',
+                backgroundPosition: 'right 12px center',
+              }}
+            >
+              <option value=''>{countryPlaceholder}</option>
+              {countryOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            <span
+              className={`pointer-events-none absolute inset-y-0 left-4 flex items-center ${triggerTextClass}`}
+            >
+              {triggerText}
+            </span>
+          </div>
         </div>
         <div className='flex-1'>
           <input

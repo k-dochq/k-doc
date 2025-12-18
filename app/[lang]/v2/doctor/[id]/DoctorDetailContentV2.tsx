@@ -57,7 +57,7 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
       {affiliatedHospital && (
         <DoctorAffiliatedHospitalSectionV2 doctor={doctor} lang={lang} dict={dict} />
       )}
-      {/* 시술후기(인기후기) 섹션 */}
+      {/* 시술후기(인기후기) 섹션 - 기본 인기순 */}
       {hospitalId && (
         <div className='pt-5 pb-11'>
           <PopularReviewsV2ContainerForHospital hospitalId={hospitalId} lang={lang} dict={dict} />
