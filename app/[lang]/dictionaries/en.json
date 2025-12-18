@@ -412,7 +412,7 @@
         "nationality": "Select your nationality",
         "gender": "Select your gender",
         "phoneNumber": "010-0000-0000",
-        "countryCode": "Select country code",
+        "countryCode": "Select",
         "phoneNumberOnly": "Enter phone number",
         "birthDate": "Select your date of birth"
       },
