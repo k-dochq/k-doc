@@ -1,6 +1,5 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { LoginContent } from './LoginContent';
 import { LoginContentV2 } from './LoginContentV2';
 
 interface LoginPageProps {
