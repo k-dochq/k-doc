@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import { MAX_MOBILE_WIDTH_CLASS, type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { LoginSocialSectionV2 } from 'features/auth-login-social';
 import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
 import { SelectFieldV2, PhoneNumberFieldV2 } from 'features/consultation-request/ui/FormFieldsV2';
 import { FormDatePickerV2 } from 'features/consultation-request/ui/FormDatePickerV2';
