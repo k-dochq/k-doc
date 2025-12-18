@@ -244,6 +244,11 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
           }
           error={errors.preferredDate}
           required
+          disabled={(date) => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return date < today;
+          }}
           helperText={
             (dict.consultation?.request?.form?.preferredDate as { helper?: string } | undefined)
               ?.helper || '병원 스케줄 확인을 위해 꼭 선택해주세요'
@@ -263,6 +268,11 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
           error={errors.preferredDate2}
           required={false}
           hideOptionalText
+          disabled={(date) => {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return date < today;
+          }}
           helperText={
             (dict.consultation?.request?.form?.preferredDate2 as { helper?: string } | undefined)
               ?.helper || '첫번째 날짜가 불가능할 경우에만 참고합니다'
