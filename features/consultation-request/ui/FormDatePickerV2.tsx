@@ -17,17 +17,15 @@ interface FormDatePickerV2Props {
   dict?: Dictionary;
   placeholder?: string;
   error?: string;
+  /**
+   * 특정 날짜를 비활성화할지 여부를 결정하는 콜백.
+   * 넘기지 않으면 모든 날짜 선택 가능.
+   */
   disabled?: (date: Date) => boolean;
   required?: boolean;
   yearRange?: { from: number; to: number };
   hideOptionalText?: boolean;
   helperText?: string;
-  /**
-   * 과거 날짜를 비활성화할지 여부.
-   * 기본값은 true (오늘 이전 날짜 선택 불가)
-   * 회원가입 생년월일 등 과거 선택이 필요한 경우 false 로 전달
-   */
-  disablePast?: boolean;
 }
 
 export function FormDatePickerV2({
@@ -43,7 +41,6 @@ export function FormDatePickerV2({
   yearRange,
   hideOptionalText,
   helperText,
-  disablePast,
 }: FormDatePickerV2Props) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,14 +54,6 @@ export function FormDatePickerV2({
     if (open) document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [open]);
-
-  const isDateDisabled = (date: Date): boolean => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const isPast = date < today;
-    const shouldDisablePast = disablePast ?? true;
-    return (shouldDisablePast && isPast) || (disabled ? disabled(date) : false);
-  };
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
   const resolvedYearRange = yearRange ?? { from: currentYear, to: currentYear + 5 };
@@ -117,7 +106,7 @@ export function FormDatePickerV2({
                 setOpen(false);
               }}
               locale={locale}
-              disabled={isDateDisabled}
+              disabled={disabled}
               captionLayout='dropdown'
               yearRange={resolvedYearRange}
             />

@@ -165,7 +165,6 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
           error={errors.birthDate}
           required={false}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
-          disablePast={false}
           disabled={(date) => date > new Date()}
         />
 
