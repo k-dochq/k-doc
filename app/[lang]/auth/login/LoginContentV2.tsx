@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -19,19 +18,6 @@ export function LoginContentV2({ lang, dict, redirectTo }: LoginContentV2Props) 
   const imageSrc = isThai ? '/images/premium/premium_th.png' : '/images/premium/premium_en.png';
   const imageWidth = isThai ? 284 : 312;
   const imageHeight = 269;
-  const [recentMethod, setRecentMethod] = useState<'google' | 'apple' | 'email' | null>(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const stored = window.localStorage.getItem('kdoc_recent_login_method') as
-      | 'google'
-      | 'apple'
-      | 'email'
-      | null;
-    if (stored === 'google' || stored === 'apple' || stored === 'email') {
-      setRecentMethod(stored);
-    }
-  }, []);
 
   return (
     <div className='flex min-h-screen flex-col items-center bg-white'>
@@ -52,9 +38,7 @@ export function LoginContentV2({ lang, dict, redirectTo }: LoginContentV2Props) 
       <LoginSocialSectionV2 lang={lang} dict={dict} redirectTo={redirectTo} />
 
       {/* 이메일로 시작 / 이메일로 가입 링크 영역 */}
-      {recentMethod !== 'email' ? (
-        <LoginEmailLinksV2 lang={lang} dict={dict} redirectTo={redirectTo} />
-      ) : null}
+      <LoginEmailLinksV2 lang={lang} dict={dict} redirectTo={redirectTo} />
     </div>
   );
 }
