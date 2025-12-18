@@ -1,9 +1,11 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { AppleSignInButtonV2 } from 'features/apple-auth';
 import { GoogleSignInButtonV2 } from 'features/google-auth';
+import { RecentLoginBadge } from './RecentLoginBadge';
 
 interface LoginSocialSectionV2Props {
   lang: Locale;
@@ -11,15 +13,32 @@ interface LoginSocialSectionV2Props {
   redirectTo?: string;
 }
 
+type RecentMethod = 'google' | 'apple' | 'email';
+
 export function LoginSocialSectionV2({ lang, dict, redirectTo }: LoginSocialSectionV2Props) {
+  const [recentMethod, setRecentMethod] = useState<RecentMethod | null>(null);
   const startIn3SecondsText = dict.auth?.login?.startIn3Seconds ?? '3초만에 시작하기';
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const stored = window.localStorage.getItem('kdoc_recent_login_method') as RecentMethod | null;
+    if (stored === 'google' || stored === 'apple' || stored === 'email') {
+      setRecentMethod(stored);
+    }
+  }, []);
 
   return (
     <div className='flex w-full flex-col gap-3 px-4'>
-      <GoogleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+      <div className='relative w-full'>
+        {recentMethod === 'google' ? <RecentLoginBadge lang={lang} /> : null}
+        <GoogleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+      </div>
 
       <div className='flex w-full flex-col items-center'>
-        <AppleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+        <div className='relative w-full'>
+          {recentMethod === 'apple' ? <RecentLoginBadge lang={lang} /> : null}
+          <AppleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+        </div>
 
         {/* 3초만에 시작하기 말풍선 */}
         <div className='mt-2 flex justify-center'>

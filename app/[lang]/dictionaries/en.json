@@ -305,6 +305,7 @@
       "appleLogin": "Sign in with Apple",
       "kakaoLogin": "Sign in with Kakao",
       "emailLogin": "Start with Email",
+      "recentLogin": "Recent login",
       "forgotPassword": "Forgot your password?",
       "signUp": "Register",
       "loading": "Loading...",

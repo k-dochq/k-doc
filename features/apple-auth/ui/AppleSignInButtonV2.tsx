@@ -36,6 +36,10 @@ export function AppleSignInButtonV2({
   const handleAppleLogin = async () => {
     setIsLoading(true);
     try {
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('kdoc_recent_login_method', 'apple');
+      }
+
       if (isExpoWebView()) {
         if (redirectTo) {
           setRedirectPathCookie(redirectTo);

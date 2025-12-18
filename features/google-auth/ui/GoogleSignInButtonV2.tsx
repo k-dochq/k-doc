@@ -55,6 +55,10 @@ export function GoogleSignInButtonV2({
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
     try {
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('kdoc_recent_login_method', 'google');
+      }
+
       if (isExpoWebView()) {
         if (redirectTo) {
           setRedirectPathCookie(redirectTo);
