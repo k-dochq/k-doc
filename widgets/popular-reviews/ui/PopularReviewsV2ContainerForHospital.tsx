@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { usePopularReviewsV2 } from 'entities/review/api/queries/use-popular-reviews-v2';
+import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { PopularReviewsTitleV2ForHospital } from './PopularReviewsTitleV2ForHospital';
 import { HospitalReviewStatsV2 } from './HospitalReviewStatsV2';
 import { PopularReviewsCarouselV2 } from './PopularReviewsCarouselV2';
@@ -16,6 +17,7 @@ interface PopularReviewsV2ContainerForHospitalProps {
   titleOverride?: string;
   limit?: number;
   showStats?: boolean;
+  sort?: ReviewSortOption;
 }
 
 function PopularReviewsV2Content({
@@ -25,6 +27,7 @@ function PopularReviewsV2Content({
   titleOverride,
   limit = 5,
   showStats = true,
+  sort = REVIEW_SORT_OPTIONS.LATEST,
 }: PopularReviewsV2ContainerForHospitalProps) {
   const {
     data: popularReviews,
@@ -34,6 +37,7 @@ function PopularReviewsV2Content({
     hospitalId,
     limit,
     hasBothImages: false,
+    sort,
   });
 
   // 데이터가 없으면 섹션 전체를 렌더링하지 않음
@@ -97,6 +101,7 @@ export function PopularReviewsV2ContainerForHospital({
   titleOverride,
   limit,
   showStats,
+  sort = REVIEW_SORT_OPTIONS.LATEST,
 }: PopularReviewsV2ContainerForHospitalProps) {
   return (
     <Suspense fallback={<PopularReviewsCarouselV2Skeleton />}>
@@ -107,6 +112,7 @@ export function PopularReviewsV2ContainerForHospital({
         titleOverride={titleOverride}
         limit={limit}
         showStats={showStats}
+        sort={sort}
       />
     </Suspense>
   );
