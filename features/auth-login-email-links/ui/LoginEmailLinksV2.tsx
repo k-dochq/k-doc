@@ -19,6 +19,11 @@ export function LoginEmailLinksV2({ redirectTo, dict }: LoginEmailLinksV2Props) 
             ? `/auth/login/email?redirectTo=${encodeURIComponent(redirectTo)}`
             : '/auth/login/email'
         }
+        onClick={() => {
+          if (typeof window !== 'undefined') {
+            window.localStorage.setItem('kdoc_recent_login_method', 'email');
+          }
+        }}
         className='text-sm font-medium text-[#737373] underline underline-offset-[3px]'
       >
         {dict.auth?.login?.emailLogin || '이메일로 시작'}

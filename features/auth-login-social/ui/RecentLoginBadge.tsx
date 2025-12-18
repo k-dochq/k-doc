@@ -21,7 +21,7 @@ export function RecentLoginBadge({ lang }: RecentLoginBadgeProps) {
   }
 
   return (
-    <div className='absolute -top-3 -left-2'>
+    <div className='pointer-events-none absolute -top-3 -left-2 z-10'>
       <Icon />
     </div>
   );

@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { AppleSignInButtonV2 } from 'features/apple-auth';
 import { GoogleSignInButtonV2 } from 'features/google-auth';
+import { EmailLastLoginButtonV2 } from 'features/auth-login-email-links';
 import { RecentLoginBadge } from './RecentLoginBadge';
 
 interface LoginSocialSectionV2Props {
@@ -29,10 +30,19 @@ export function LoginSocialSectionV2({ lang, dict, redirectTo }: LoginSocialSect
 
   return (
     <div className='flex w-full flex-col gap-3 px-4'>
-      <div className='relative w-full'>
-        {recentMethod === 'google' ? <RecentLoginBadge lang={lang} /> : null}
-        <GoogleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
-      </div>
+      {recentMethod === 'email' ? (
+        <>
+          <EmailLastLoginButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+          <div className='relative mt-2 w-full'>
+            <GoogleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+          </div>
+        </>
+      ) : (
+        <div className='relative w-full'>
+          {recentMethod === 'google' ? <RecentLoginBadge lang={lang} /> : null}
+          <GoogleSignInButtonV2 lang={lang} dict={dict} redirectTo={redirectTo} />
+        </div>
+      )}
 
       <div className='flex w-full flex-col items-center'>
         <div className='relative w-full'>
