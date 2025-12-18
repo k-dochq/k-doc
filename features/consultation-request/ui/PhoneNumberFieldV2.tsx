@@ -50,7 +50,7 @@ export function PhoneNumberFieldV2({
     dict.consultation?.request?.form?.phoneNumber?.placeholder ||
     dict.auth?.signup?.placeholders?.phoneNumberOnly ||
     '휴대폰번호를 입력하세요';
-  const optionalText = dict.auth?.signup?.optional || '선택';
+  const optionalText = '';
 
   const countryOptions = useMemo(
     () =>

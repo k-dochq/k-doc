@@ -76,7 +76,7 @@ export function FormDatePickerV2({
     return 'Select date';
   };
 
-  const optionalText = dict?.auth?.signup?.optional || '선택';
+  const optionalText = '';
   const stateClass = buildStateClass(value, error);
   const triggerClasses = `${baseInputClasses} h-[52px] p-4 flex items-center justify-between ${stateClass}`;
 

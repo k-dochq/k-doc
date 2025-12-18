@@ -401,7 +401,7 @@
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
         "privacyPolicy": "I agree to the collection of my sensitive personal data for consultation and service provision.",
-        "marketingNotifications": "Event/Service Benefit Notifications (Optional)",
+        "marketingNotifications": "Event/Service Benefit Notifications",
         "requiredError": "Please agree to the required terms."
       },
       "placeholders": {
@@ -409,12 +409,12 @@
         "password": "6+ characters",
         "confirmPassword": "Confirm your password",
         "passportName": "Enter your passport name in English",
-        "nationality": "Select your nationality (optional)",
+        "nationality": "Select your nationality",
         "gender": "Select your gender",
-        "phoneNumber": "010-0000-0000 (optional)",
+        "phoneNumber": "010-0000-0000",
         "countryCode": "Select country code",
         "phoneNumberOnly": "Enter phone number",
-        "birthDate": "Select your date of birth (optional)"
+        "birthDate": "Select your date of birth"
       },
       "errors": {
         "emailRequired": "Please enter your email.",
