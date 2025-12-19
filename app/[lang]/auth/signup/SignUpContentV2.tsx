@@ -33,11 +33,11 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreements, setAgreements] = useState<AgreementState>({
-    allAgreed: false,
-    age14Plus: false,
-    termsOfService: false,
-    privacyPolicy: false,
-    marketingNotifications: false,
+    allAgreed: true,
+    age14Plus: true,
+    termsOfService: true,
+    privacyPolicy: true,
+    marketingNotifications: true,
   });
 
   const isRequiredAgreementsValid =
