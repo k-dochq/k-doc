@@ -959,7 +959,9 @@
           "nameRequired": "이름을 입력해주세요.",
           "nicknameTooShort": "닉네임은 2자 이상이어야 합니다.",
           "nameTooShort": "이름은 2자 이상이어야 합니다."
-        }
+        },
+        "loading": "사용자 정보를 불러오는 중...",
+        "errorTitle": "오류"
       }
     },
     "activity": {

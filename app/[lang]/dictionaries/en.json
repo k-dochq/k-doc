@@ -960,7 +960,9 @@
           "nameRequired": "Please enter your name.",
           "nicknameTooShort": "Nickname must be at least 2 characters.",
           "nameTooShort": "Name must be at least 2 characters."
-        }
+        },
+        "loading": "Loading user information...",
+        "errorTitle": "Error"
       }
     },
     "activity": {
