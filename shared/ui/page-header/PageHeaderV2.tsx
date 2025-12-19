@@ -11,6 +11,7 @@ interface PageHeaderV2Props {
   rightContent?: React.ReactNode;
   className?: string;
   enableScrollTransparency?: boolean;
+  backgroundColor?: string;
 }
 
 export function PageHeaderV2({
@@ -19,6 +20,7 @@ export function PageHeaderV2({
   rightContent,
   className = '',
   enableScrollTransparency = false,
+  backgroundColor = 'bg-white',
 }: PageHeaderV2Props) {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,7 +67,7 @@ export function PageHeaderV2({
   const getHeaderStyles = () => {
     if (!enableScrollTransparency) {
       return {
-        container: 'border-b border-neutral-200 bg-white',
+        container: `border-b border-neutral-200 ${backgroundColor}`,
         text: 'text-neutral-700',
         button: 'hover:bg-neutral-100',
         title: 'opacity-100',
@@ -74,7 +76,7 @@ export function PageHeaderV2({
 
     if (isScrolled) {
       return {
-        container: 'border-b border-neutral-200 bg-white',
+        container: `border-b border-neutral-200 ${backgroundColor}`,
         text: 'text-neutral-700',
         button: 'hover:bg-neutral-100',
         title: 'opacity-100',

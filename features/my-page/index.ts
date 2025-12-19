@@ -1,4 +1,5 @@
 export { MyContent } from './ui/MyContent';
+export { MyContentV2 } from './ui/MyContentV2';
 export { ProfileSection } from './ui/ProfileSection';
 export { ActivitySection } from './ui/ActivitySection';
 export { NotificationSection } from './ui/NotificationSection';
