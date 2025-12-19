@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PageHeaderV2 } from 'shared/ui/page-header';
-import { MAX_MOBILE_WIDTH_CLASS, type Locale } from 'shared/config';
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useSignupForm } from 'features/email-auth/model/useSignupForm';
 import { useEmailSignup } from 'features/email-auth/model/useEmailSignup';
@@ -29,7 +29,7 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
     dict,
   });
   const { signUpWithEmail, isLoading, error } = useEmailSignup({ locale: lang, dict });
-  const [step, setStep] = useState<1 | 2>(1);
+  const [step, setStep] = useState<1 | 2>(2);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreements, setAgreements] = useState<AgreementState>({
@@ -129,11 +129,10 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
           errors={errors}
           isBusy={isBusy}
           onUpdateField={updateField}
+          onNextStep={handleGoToStep2}
           formId='signup-step1-form'
         />
       )}
-
-      <div className='h-[112px]' />
 
       {step === 2 && (
         <SignupStep2V2
@@ -143,38 +142,12 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
           agreements={agreements}
           onAllChange={handleAllAgreementChange}
           onItemChange={handleIndividualAgreementChange}
+          onSignup={handleFinalSignup}
+          isBusy={isBusy}
+          isRequiredAgreementsValid={isRequiredAgreementsValid}
+          agreeAndStartLabel={agreeAndStartLabel}
           error={error ?? undefined}
         />
-      )}
-
-      {step === 1 && (
-        <div
-          className={`fixed right-0 bottom-0 left-0 z-30 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS}`}
-        >
-          <button
-            type='button'
-            onClick={handleGoToStep2}
-            disabled={isBusy}
-            className='bg-sub-900 hover:bg-sub-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
-          >
-            {dict.auth?.signup?.signupButton || '회원가입'}
-          </button>
-        </div>
-      )}
-
-      {step === 2 && (
-        <div
-          className={`fixed right-0 bottom-0 left-0 z-30 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS}`}
-        >
-          <button
-            type='button'
-            onClick={handleFinalSignup}
-            disabled={isBusy || !isRequiredAgreementsValid}
-            className='bg-sub-900 hover:bg-sub-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
-          >
-            {agreeAndStartLabel}
-          </button>
-        </div>
       )}
     </div>
   );

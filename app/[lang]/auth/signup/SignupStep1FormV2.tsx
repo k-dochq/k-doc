@@ -1,6 +1,6 @@
 'use client';
 
-import { type Locale } from 'shared/config';
+import { type Locale, MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
 import { SelectFieldV2, PhoneNumberFieldV2 } from 'features/consultation-request/ui/FormFieldsV2';
@@ -18,6 +18,7 @@ interface SignupStep1FormV2Props {
   errors: SignupFormErrors;
   isBusy: boolean;
   onUpdateField: <K extends keyof SignupFormData>(field: K, value: SignupFormData[K]) => void;
+  onNextStep: () => void;
   formId: string;
 }
 
@@ -28,6 +29,7 @@ export function SignupStep1FormV2({
   errors,
   isBusy,
   onUpdateField,
+  onNextStep,
   formId,
 }: SignupStep1FormV2Props) {
   const getNationalityKey = (countryCode: string): string => {
@@ -47,104 +49,123 @@ export function SignupStep1FormV2({
   ] as const;
 
   return (
-    <form id={formId} className='flex flex-col gap-5 p-5'>
-      <InputFieldV2
-        label={dict.auth?.signup?.email || '이메일'}
-        required
-        type='email'
-        value={formData.email}
-        onChange={(e) => onUpdateField('email', e.target.value)}
-        placeholder={dict.auth?.signup?.placeholders?.email || 'your-email@example.com'}
-        error={errors.email}
-        disabled={isBusy}
-      />
+    <>
+      <form id={formId} className='flex flex-col gap-5 p-5'>
+        <InputFieldV2
+          label={dict.auth?.signup?.email || '이메일'}
+          required
+          type='email'
+          value={formData.email}
+          onChange={(e) => onUpdateField('email', e.target.value)}
+          placeholder={dict.auth?.signup?.placeholders?.email || 'your-email@example.com'}
+          error={errors.email}
+          disabled={isBusy}
+        />
 
-      <InputFieldV2
-        label={dict.auth?.signup?.password || '비밀번호'}
-        required
-        type='password'
-        value={formData.password}
-        onChange={(e) => onUpdateField('password', e.target.value)}
-        placeholder={dict.auth?.signup?.placeholders?.password || '6자 이상의 비밀번호'}
-        error={errors.password}
-        disabled={isBusy}
-      />
+        <InputFieldV2
+          label={dict.auth?.signup?.password || '비밀번호'}
+          required
+          type='password'
+          value={formData.password}
+          onChange={(e) => onUpdateField('password', e.target.value)}
+          placeholder={dict.auth?.signup?.placeholders?.password || '6자 이상의 비밀번호'}
+          error={errors.password}
+          disabled={isBusy}
+        />
 
-      <InputFieldV2
-        label={dict.auth?.signup?.confirmPassword || '비밀번호 확인'}
-        required
-        type='password'
-        value={formData.confirmPassword}
-        onChange={(e) => onUpdateField('confirmPassword', e.target.value)}
-        placeholder={
-          dict.auth?.signup?.placeholders?.confirmPassword || '비밀번호를 다시 입력하세요'
-        }
-        error={errors.confirmPassword}
-        disabled={isBusy}
-      />
+        <InputFieldV2
+          label={dict.auth?.signup?.confirmPassword || '비밀번호 확인'}
+          required
+          type='password'
+          value={formData.confirmPassword}
+          onChange={(e) => onUpdateField('confirmPassword', e.target.value)}
+          placeholder={
+            dict.auth?.signup?.placeholders?.confirmPassword || '비밀번호를 다시 입력하세요'
+          }
+          error={errors.confirmPassword}
+          disabled={isBusy}
+        />
 
-      <InputFieldV2
-        label={dict.auth?.signup?.passportName || '여권 영문 이름'}
-        required
-        type='text'
-        value={formData.passportName}
-        onChange={(e) => onUpdateField('passportName', e.target.value)}
-        placeholder={
-          dict.auth?.signup?.placeholders?.passportName || '여권에 기재된 영문 이름을 입력하세요'
-        }
-        error={errors.passportName}
-        disabled={isBusy}
-      />
+        <InputFieldV2
+          label={dict.auth?.signup?.passportName || '여권 영문 이름'}
+          required
+          type='text'
+          value={formData.passportName}
+          onChange={(e) => onUpdateField('passportName', e.target.value)}
+          placeholder={
+            dict.auth?.signup?.placeholders?.passportName || '여권에 기재된 영문 이름을 입력하세요'
+          }
+          error={errors.passportName}
+          disabled={isBusy}
+        />
 
-      <SelectFieldV2
-        label={dict.auth?.signup?.nationality || '국적'}
-        value={formData.nationality}
-        onChange={(value) => onUpdateField('nationality', value)}
-        options={nationalityOptions}
-        placeholder={dict.auth?.signup?.placeholders?.nationality || '국적을 선택하세요 (선택사항)'}
-        error={errors.nationality}
-        disabled={isBusy}
-      />
+        <SelectFieldV2
+          label={dict.auth?.signup?.nationality || '국적'}
+          value={formData.nationality}
+          onChange={(value) => onUpdateField('nationality', value)}
+          options={nationalityOptions}
+          placeholder={
+            dict.auth?.signup?.placeholders?.nationality || '국적을 선택하세요 (선택사항)'
+          }
+          error={errors.nationality}
+          disabled={isBusy}
+        />
 
-      <SelectFieldV2
-        label={dict.auth?.signup?.gender || '성별'}
-        value={formData.gender}
-        onChange={(value) => onUpdateField('gender', value)}
-        options={genderOptions}
-        placeholder={dict.auth?.signup?.placeholders?.gender || '성별을 선택하세요 (선택사항)'}
-        error={errors.gender}
-        disabled={isBusy}
-      />
+        <SelectFieldV2
+          label={dict.auth?.signup?.gender || '성별'}
+          value={formData.gender}
+          onChange={(value) => onUpdateField('gender', value)}
+          options={genderOptions}
+          placeholder={dict.auth?.signup?.placeholders?.gender || '성별을 선택하세요 (선택사항)'}
+          error={errors.gender}
+          disabled={isBusy}
+        />
 
-      <FormDatePickerV2
-        label={dict.auth?.signup?.birthDate || '생년월일'}
-        value={formData.birthDate ? new Date(formData.birthDate) : undefined}
-        onChange={(date) =>
-          onUpdateField('birthDate', date ? date.toISOString().split('T')[0] : '')
-        }
-        locale={lang}
-        dict={dict}
-        placeholder={
-          dict.auth?.signup?.placeholders?.birthDate || '생년월일을 선택하세요 (선택사항)'
-        }
-        error={errors.birthDate}
-        required={false}
-        yearRange={{ from: 1950, to: new Date().getFullYear() }}
-        disabled={(date) => date > new Date()}
-      />
+        <FormDatePickerV2
+          label={dict.auth?.signup?.birthDate || '생년월일'}
+          value={formData.birthDate ? new Date(formData.birthDate) : undefined}
+          onChange={(date) =>
+            onUpdateField('birthDate', date ? date.toISOString().split('T')[0] : '')
+          }
+          locale={lang}
+          dict={dict}
+          placeholder={
+            dict.auth?.signup?.placeholders?.birthDate || '생년월일을 선택하세요 (선택사항)'
+          }
+          error={errors.birthDate}
+          required={false}
+          yearRange={{ from: 1950, to: new Date().getFullYear() }}
+          disabled={(date) => date > new Date()}
+        />
 
-      <PhoneNumberFieldV2
-        countryCode={formData.countryCode}
-        phoneNumberOnly={formData.phoneNumberOnly}
-        onCountryCodeChange={(value: string) => onUpdateField('countryCode', value)}
-        onPhoneNumberChange={(value: string) => onUpdateField('phoneNumberOnly', value)}
-        countryCodeError={errors.countryCode}
-        phoneNumberError={errors.phoneNumberOnly}
-        disabled={isBusy}
-        lang={lang}
-        dict={dict}
-        required={false}
-      />
-    </form>
+        <PhoneNumberFieldV2
+          countryCode={formData.countryCode}
+          phoneNumberOnly={formData.phoneNumberOnly}
+          onCountryCodeChange={(value: string) => onUpdateField('countryCode', value)}
+          onPhoneNumberChange={(value: string) => onUpdateField('phoneNumberOnly', value)}
+          countryCodeError={errors.countryCode}
+          phoneNumberError={errors.phoneNumberOnly}
+          disabled={isBusy}
+          lang={lang}
+          dict={dict}
+          required={false}
+        />
+      </form>
+
+      <div className='h-[112px]' />
+
+      <div
+        className={`fixed right-0 bottom-0 left-0 z-30 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS}`}
+      >
+        <button
+          type='button'
+          onClick={onNextStep}
+          disabled={isBusy}
+          className='bg-sub-900 hover:bg-sub-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
+        >
+          {dict.auth?.signup?.signupButton || '회원가입'}
+        </button>
+      </div>
+    </>
   );
 }
