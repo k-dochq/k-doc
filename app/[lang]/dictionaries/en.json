@@ -967,6 +967,10 @@
       "title": "Activity",
       "savedList": "My Saved List"
     },
+    "activityStats": {
+      "myPosts": "My Posts",
+      "consultationChatList": "Consultation Chat List"
+    },
     "notification": {
       "title": "Notifications",
       "myPosts": "My Posts",

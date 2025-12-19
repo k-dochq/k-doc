@@ -966,6 +966,10 @@
       "title": "활동",
       "savedList": "내 저장 목록"
     },
+    "activityStats": {
+      "myPosts": "내가 작성한 글",
+      "consultationChatList": "상담 채팅 목록"
+    },
     "notification": {
       "title": "알림",
       "myPosts": "내가 작성한 게시글",
