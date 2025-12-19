@@ -298,7 +298,6 @@
       "loginButton": "Sign In",
       "laterButton": "Do Later",
       "signupButton": "Register with Email",
-      "signupButton": "Register with Email",
       "requiredMessage": "Please log in\nto use the service.",
       "socialLogin": "Social Login",
       "startIn3Seconds": "Get started in 3 seconds",
@@ -397,6 +396,7 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Sign In",
       "termsAgreement": {
+        "title": ["K-DOC", "Please agree to", "use the service"],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",

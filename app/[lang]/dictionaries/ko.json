@@ -396,6 +396,7 @@
       "alreadyHaveAccount": "이미 계정이 있으신가요?",
       "loginLink": "로그인하기",
       "termsAgreement": {
+        "title": ["K-DOC", "서비스 이용에", "동의해주세요"],
         "allAgreed": "전체 동의",
         "age14Plus": "만 14세 이상입니다.",
         "termsOfService": "서비스 이용 약관 (필수)",

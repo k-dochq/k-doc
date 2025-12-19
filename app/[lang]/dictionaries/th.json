@@ -396,6 +396,7 @@
       "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
       "loginLink": "เข้าสู่ระบบ",
       "termsAgreement": {
+        "title": ["K-DOC", "กรุณายอมรับ", "การใช้บริการ"],
         "allAgreed": "ยอมรับทั้งหมด",
         "age14Plus": "ฉันอายุ 14 ปีขึ้นไป",
         "termsOfService": "ข้อกำหนดการใช้งาน (จำเป็น)",

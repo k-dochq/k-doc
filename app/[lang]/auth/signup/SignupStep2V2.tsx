@@ -98,17 +98,22 @@ export function SignupStep2V2({
   agreeAndStartLabel,
   error,
 }: SignupStep2V2Props) {
-  const allTitle =
-    dict.auth?.signup?.termsAgreement?.allAgreed || 'Agree to all terms and conditions';
+  const titleLines = (dict.auth?.signup?.termsAgreement?.title as string[] | undefined) || [
+    'K-DOC',
+    'Please agree to',
+    'use the service',
+  ];
 
-  const age14Text = dict.auth?.signup?.termsAgreement?.age14Plus || 'I am over 14 years old.';
-  const termsText =
-    dict.auth?.signup?.termsAgreement?.termsOfService || 'Terms of Service (required)';
-  const privacyText =
-    dict.auth?.signup?.termsAgreement?.privacyPolicy || 'Privacy Policy (required)';
-  const marketingText =
-    dict.auth?.signup?.termsAgreement?.marketingNotifications ||
-    'Receive event and service benefit notifications (optional)';
-
-  return <div className='p-5'>ㅇㅇㅇ</div>;
+  return (
+    <div className='p-5'>
+      {/* 제목 섹션 */}
+      <div className='mb-8 text-3xl font-semibold'>
+        {titleLines.map((line, index) => (
+          <div key={index} className={index === 0 ? 'text-primary-900' : ''}>
+            {line}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
