@@ -2,6 +2,7 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { MyPostsIcon, ConsultationChatIcon } from './ActivityStatsIcons';
 import { useActivityStats } from '../model/useActivityStats';
 
@@ -37,13 +38,17 @@ export function ActivityStatsSectionV2({ lang, dict }: ActivityStatsSectionV2Pro
       </div>
 
       {/* 상담 채팅 목록 섹션 */}
-      <div className='flex flex-1 flex-col items-center justify-center gap-1'>
+      <LocaleLink
+        href={`/${lang}/consultation`}
+        locale={lang}
+        className='flex flex-1 cursor-pointer flex-col items-center justify-center gap-1 transition-opacity hover:opacity-70'
+      >
         <ConsultationChatIcon />
         <div className='flex items-start gap-0.5 text-sm leading-[20px] text-neutral-700'>
           <p className='font-medium'>{consultationChatListLabel}</p>
           <p className='font-semibold'>{consultationChatCount}</p>
         </div>
-      </div>
+      </LocaleLink>
     </div>
   );
 }
