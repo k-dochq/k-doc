@@ -952,7 +952,8 @@
         "error": "프로필 업데이트 중 오류가 발생했습니다.",
         "placeholders": {
           "nickname": "닉네임을 입력하세요",
-          "name": "이름을 입력하세요"
+          "name": "이름을 입력하세요",
+          "passportNameHelperText": "여권에 적힌 그대로 입력해주세요. 띄어쓰기 포함."
         },
         "errors": {
           "nicknameRequired": "닉네임을 입력해주세요.",

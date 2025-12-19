@@ -230,6 +230,7 @@ export function ProfileEditFormV2({
         placeholder={
           dict.auth?.signup?.placeholders?.passportName || '여권에 기재된 영문 이름을 입력하세요'
         }
+        helperText={dict.my?.profile?.edit?.placeholders?.passportNameHelperText}
         error={errors.passportName}
         disabled={isBusy}
       />

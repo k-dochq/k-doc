@@ -953,7 +953,8 @@
         "error": "An error occurred while updating profile.",
         "placeholders": {
           "nickname": "Enter your nickname",
-          "name": "Enter your name"
+          "name": "Enter your name",
+          "passportNameHelperText": "Enter exactly as shown on your passport, including spaces."
         },
         "errors": {
           "nicknameRequired": "Please enter your nickname.",
