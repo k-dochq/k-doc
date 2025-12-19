@@ -17,7 +17,7 @@ export function ProfileEditFloatingButton({
 }: ProfileEditFloatingButtonProps) {
   return (
     <div
-      className={`fixed right-0 bottom-0 left-0 z-30 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS} ${className}`}
+      className={`fixed right-0 bottom-0 left-0 z-30 mx-auto border-t border-neutral-200 bg-neutral-100 px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS} ${className}`}
     >
       <button
         type='button'

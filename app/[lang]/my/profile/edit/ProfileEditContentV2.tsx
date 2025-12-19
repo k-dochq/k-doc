@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header';
@@ -12,6 +13,7 @@ interface ProfileEditContentV2Props {
 
 export function ProfileEditContentV2({ lang, dict }: ProfileEditContentV2Props) {
   const formId = 'profile-edit-form-v2';
+  const [isFormChanged, setIsFormChanged] = useState(false);
 
   const handleSave = () => {
     // Form submit 트리거
@@ -25,18 +27,22 @@ export function ProfileEditContentV2({ lang, dict }: ProfileEditContentV2Props) 
   const saveButtonLabel = dict.my?.profile?.edit?.saveButton || '저장';
 
   return (
-    <div className='min-h-screen bg-white'>
-      <PageHeaderV2 title={title} fallbackUrl={`/${lang}/my`} backgroundColor='bg-white' />
+    <div className='min-h-screen bg-neutral-100'>
+      <PageHeaderV2 title={title} fallbackUrl={`/${lang}/my`} backgroundColor='bg-neutral-100' />
       <div className='h-[58px]' />
 
       {/* Content area */}
-      <ProfileEditFormV2 lang={lang} dict={dict} formId={formId} />
+      <ProfileEditFormV2 lang={lang} dict={dict} formId={formId} onFormChanged={setIsFormChanged} />
 
       {/* Bottom spacing to prevent content overlap with floating button */}
       <div className='h-[112px]' />
 
       {/* Floating button section */}
-      <ProfileEditFloatingButton label={saveButtonLabel} onClick={handleSave} />
+      <ProfileEditFloatingButton
+        label={saveButtonLabel}
+        onClick={handleSave}
+        disabled={!isFormChanged}
+      />
     </div>
   );
 }

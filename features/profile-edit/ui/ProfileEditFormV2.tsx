@@ -17,6 +17,7 @@ interface ProfileEditFormV2Props {
   onSubmit?: () => void;
   formId?: string;
   onFormSubmit?: () => void;
+  onFormChanged?: (hasChanges: boolean) => void;
 }
 
 interface ProfileEditFormData {
@@ -44,6 +45,7 @@ export function ProfileEditFormV2({
   onSubmit,
   formId,
   onFormSubmit,
+  onFormChanged,
 }: ProfileEditFormV2Props) {
   const router = useRouter();
   const { data: user, isLoading: userLoading, error: userError } = useUserProfile();
@@ -68,6 +70,7 @@ export function ProfileEditFormV2({
     phoneNumberOnly: '',
   });
 
+  const [initialFormData, setInitialFormData] = useState<ProfileEditFormData | null>(null);
   const [errors, setErrors] = useState<ProfileEditFormErrors>({});
 
   // 사용자 정보가 로드되면 폼에 설정
@@ -98,7 +101,7 @@ export function ProfileEditFormV2({
         }
       }
 
-      setFormData({
+      const initialData: ProfileEditFormData = {
         email: user.email || '',
         passportName: user.raw_user_meta_data?.passport_name || '',
         nationality: user.raw_user_meta_data?.nationality || '',
@@ -106,9 +109,30 @@ export function ProfileEditFormV2({
         birthDate: user.raw_user_meta_data?.birth_date || '',
         countryCode,
         phoneNumberOnly,
-      });
+      };
+
+      setFormData(initialData);
+      setInitialFormData(initialData);
     }
   }, [user]);
+
+  // 폼 데이터 변경 감지
+  useEffect(() => {
+    if (!initialFormData) {
+      onFormChanged?.(false);
+      return;
+    }
+
+    const hasChanges =
+      formData.passportName !== initialFormData.passportName ||
+      formData.nationality !== initialFormData.nationality ||
+      formData.gender !== initialFormData.gender ||
+      formData.birthDate !== initialFormData.birthDate ||
+      formData.countryCode !== initialFormData.countryCode ||
+      formData.phoneNumberOnly !== initialFormData.phoneNumberOnly;
+
+    onFormChanged?.(hasChanges);
+  }, [formData, initialFormData, onFormChanged]);
 
   const updateField = <K extends keyof ProfileEditFormData>(
     field: K,

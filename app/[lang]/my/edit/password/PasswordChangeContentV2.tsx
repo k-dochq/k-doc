@@ -27,8 +27,8 @@ export function PasswordChangeContentV2({ lang, dict }: PasswordChangeContentV2P
   const completeButtonLabel = dict.my?.profile?.passwordChange?.completeButton || '완료';
 
   return (
-    <div className='min-h-screen bg-white'>
-      <PageHeaderV2 title={title} fallbackUrl={`/${lang}/my`} backgroundColor='bg-white' />
+    <div className='min-h-screen bg-neutral-100'>
+      <PageHeaderV2 title={title} fallbackUrl={`/${lang}/my`} backgroundColor='bg-neutral-100' />
       <div className='h-[58px]' />
 
       {/* Content area */}
