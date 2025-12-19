@@ -104,16 +104,34 @@ export function SignupStep2V2({
     'use the service',
   ];
 
+  const allTitle =
+    dict.auth?.signup?.termsAgreement?.allAgreed || 'Agree to all terms and conditions';
+
   return (
     <div className='p-5'>
       {/* 제목 섹션 */}
-      <div className='mb-8 text-3xl font-semibold'>
+      <div className='mb-11 text-3xl font-semibold'>
         {titleLines.map((line, index) => (
           <div key={index} className={index === 0 ? 'text-primary-900' : ''}>
             {line}
           </div>
         ))}
       </div>
+
+      {/* 전체 동의 체크박스 */}
+      <button
+        type='button'
+        onClick={() => onAllChange(!agreements.allAgreed)}
+        disabled={isBusy}
+        className={`flex w-full items-center gap-2 rounded-lg p-4 transition-colors ${
+          agreements.allAgreed
+            ? 'border border-[#7657FF] bg-[#f6f4ff]'
+            : 'border border-neutral-200 bg-white'
+        }`}
+      >
+        {agreements.allAgreed ? <AllAgreeCheckedIcon /> : <AllAgreeUncheckedIcon />}
+        <span className='text-base font-semibold text-neutral-700'>{allTitle}</span>
+      </button>
     </div>
   );
 }
