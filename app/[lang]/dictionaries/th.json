@@ -400,9 +400,10 @@
         "allAgreed": "ยอมรับทั้งหมด",
         "age14Plus": "ฉันอายุ 14 ปีขึ้นไป",
         "termsOfService": "ข้อกำหนดการใช้งาน (จำเป็น)",
-        "privacyPolicy": "การยินยอมการเก็บรวบรวม/ใช้ข้อมูลส่วนบุคคล (จำเป็น)",
-        "marketingNotifications": "การแจ้งเตือนกิจกรรม/สิทธิประโยชน์บริการ (ตัวเลือก)",
-        "requiredError": "กรุณายอมรับข้อกำหนดที่จำเป็น"
+        "privacyPolicy": "การยินยอมการใช้ข้อมูลส่วนบุคคล (จำเป็น)",
+        "marketingNotifications": "การแจ้งเตือนกิจกรรม/บริการ (ตัวเลือก)",
+        "requiredError": "กรุณายอมรับข้อกำหนดที่จำเป็น",
+        "agreeAndStart": "ยอมรับทั้งหมดและเริ่มต้น"
       },
       "placeholders": {
         "email": "your-email@example.com",

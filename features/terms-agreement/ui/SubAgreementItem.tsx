@@ -25,24 +25,24 @@ export function SubAgreementItem({
   };
 
   return (
-    <div className='flex w-full items-center justify-between py-2 pr-2 pl-3'>
+    <div className='flex w-full items-center py-2 pr-2 pl-3'>
       <button
         type='button'
         onClick={onToggle}
         disabled={disabled}
-        className='flex flex-1 items-center gap-2 text-left'
+        className='flex min-w-0 flex-1 items-center gap-2 text-left'
       >
         <span className='shrink-0'>
           {checked ? <SubAgreeCheckedIcon /> : <SubAgreeUncheckedIcon />}
         </span>
-        <span className='min-w-0 flex-1 truncate text-sm text-neutral-700'>{label}</span>
+        <span className='min-w-0 truncate text-sm text-neutral-700'>{label}</span>
       </button>
       {link && (
         <button
           type='button'
           onClick={handleArrowClick}
           disabled={disabled}
-          className='shrink-0 pl-2'
+          className='ml-2 shrink-0'
           aria-label='View details'
         >
           <ArrowRightIcon />

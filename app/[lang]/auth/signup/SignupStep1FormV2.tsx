@@ -1,6 +1,6 @@
 'use client';
 
-import { type Locale, MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
 import { SelectFieldV2, PhoneNumberFieldV2 } from 'features/consultation-request/ui/FormFieldsV2';
@@ -9,6 +9,7 @@ import {
   type SignupFormData,
   type SignupFormErrors,
 } from 'features/email-auth/model/useSignupForm';
+import { SignupFloatingButton } from 'features/email-auth';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 
 interface SignupStep1FormV2Props {
@@ -154,18 +155,11 @@ export function SignupStep1FormV2({
 
       <div className='h-[112px]' />
 
-      <div
-        className={`fixed right-0 bottom-0 left-0 z-30 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS}`}
-      >
-        <button
-          type='button'
-          onClick={onNextStep}
-          disabled={isBusy}
-          className='bg-sub-900 hover:bg-sub-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
-        >
-          {dict.auth?.signup?.signupButton || '회원가입'}
-        </button>
-      </div>
+      <SignupFloatingButton
+        label={dict.auth?.signup?.signupButton || '회원가입'}
+        onClick={onNextStep}
+        disabled={isBusy}
+      />
     </>
   );
 }

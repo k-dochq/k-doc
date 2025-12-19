@@ -402,7 +402,8 @@
         "termsOfService": "서비스 이용 약관 (필수)",
         "privacyPolicy": "개인정보 수집/이용 동의 (필수)",
         "marketingNotifications": "이벤트/서비스 혜택 알림 (선택)",
-        "requiredError": "필수 약관에 동의해주세요."
+        "requiredError": "필수 약관에 동의해주세요.",
+        "agreeAndStart": "전체 동의하고 시작하기"
       },
       "placeholders": {
         "email": "your-email@example.com",

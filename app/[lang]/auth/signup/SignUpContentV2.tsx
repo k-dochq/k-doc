@@ -29,7 +29,7 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
     dict,
   });
   const { signUpWithEmail, isLoading, error } = useEmailSignup({ locale: lang, dict });
-  const [step, setStep] = useState<1 | 2>(2);
+  const [step, setStep] = useState<1 | 2>(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreements, setAgreements] = useState<AgreementState>({
@@ -105,13 +105,6 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
     }
   };
 
-  const agreeAndStartLabel =
-    lang === 'en'
-      ? 'Agree to all and start'
-      : lang === 'th'
-        ? 'ยอมรับทั้งหมดและเริ่มต้น'
-        : '전체 동의하고 시작하기';
-
   return (
     <div className='min-h-screen bg-white'>
       <PageHeaderV2
@@ -145,7 +138,6 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
           onSignup={handleFinalSignup}
           isBusy={isBusy}
           isRequiredAgreementsValid={isRequiredAgreementsValid}
-          agreeAndStartLabel={agreeAndStartLabel}
           error={error ?? undefined}
         />
       )}

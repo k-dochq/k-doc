@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type SignupFormData } from 'features/email-auth/model/useSignupForm';
 import { AllAgreementCheckbox, SubAgreementItems, AgreementTitle } from 'features/terms-agreement';
+import { SignupFloatingButton } from 'features/email-auth';
 
 interface SignupStep2V2Props {
   lang: Locale;
@@ -24,7 +25,6 @@ interface SignupStep2V2Props {
   onSignup: () => void;
   isBusy: boolean;
   isRequiredAgreementsValid: boolean;
-  agreeAndStartLabel: string;
   error?: string;
 }
 
@@ -37,7 +37,6 @@ export function SignupStep2V2({
   onSignup,
   isBusy,
   isRequiredAgreementsValid,
-  agreeAndStartLabel,
   error,
 }: SignupStep2V2Props) {
   const titleLines = (dict.auth?.signup?.termsAgreement?.title as string[] | undefined) || [
@@ -49,24 +48,37 @@ export function SignupStep2V2({
   const allTitle =
     dict.auth?.signup?.termsAgreement?.allAgreed || 'Agree to all terms and conditions';
 
+  const agreeAndStartLabel =
+    dict.auth?.signup?.termsAgreement?.agreeAndStart || 'Agree to all and start';
+
   return (
-    <div className='p-5'>
-      <AgreementTitle titleLines={titleLines} />
+    <>
+      <div className='p-5'>
+        <AgreementTitle titleLines={titleLines} />
 
-      <AllAgreementCheckbox
-        checked={agreements.allAgreed}
-        label={allTitle}
-        onToggle={() => onAllChange(!agreements.allAgreed)}
-        disabled={isBusy}
-      />
+        <AllAgreementCheckbox
+          checked={agreements.allAgreed}
+          label={allTitle}
+          onToggle={() => onAllChange(!agreements.allAgreed)}
+          disabled={isBusy}
+        />
 
-      <SubAgreementItems
-        agreements={agreements}
-        onItemChange={onItemChange}
-        dict={dict}
-        lang={lang}
-        disabled={isBusy}
+        <SubAgreementItems
+          agreements={agreements}
+          onItemChange={onItemChange}
+          dict={dict}
+          lang={lang}
+          disabled={isBusy}
+        />
+      </div>
+
+      <div className='h-[112px]' />
+
+      <SignupFloatingButton
+        label={agreeAndStartLabel}
+        onClick={onSignup}
+        disabled={isBusy || !isRequiredAgreementsValid}
       />
-    </div>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 export { EmailSignInButton } from './ui/EmailSignInButton';
 export { SignupForm } from './ui/SignupForm';
+export { SignupFloatingButton } from './ui/SignupFloatingButton';
 export { EmailLoginForm } from './ui/EmailLoginForm';
 export { EmailLoginFormV2 } from './ui/EmailLoginFormV2';
 export { ForgotPasswordForm } from './ui/ForgotPasswordForm';
