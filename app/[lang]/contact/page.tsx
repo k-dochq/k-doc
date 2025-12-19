@@ -1,12 +1,5 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
-import {
-  ContactHero,
-  ContactMapSection,
-  ContactSeoulMapSection,
-  ContactEmailInquiry,
-  ContactPartnershipInquiry,
-} from 'features/contact/ui';
 import { ContactContentV2 } from './ContactContentV2';
 
 interface ContactPageProps {

@@ -3,3 +3,8 @@ export { ContactMapSection } from './ContactMapSection';
 export { ContactSeoulMapSection } from './ContactSeoulMapSection';
 export { ContactEmailInquiry } from './ContactEmailInquiry';
 export { ContactPartnershipInquiry } from './ContactPartnershipInquiry';
+export { ContactTitleSectionV2 } from './ContactTitleSectionV2';
+export { ContactOfficeMapV2 } from './ContactOfficeMapV2';
+export { ContactOfficeInfoV2 } from './ContactOfficeInfoV2';
+export { ContactGradientTextV2 } from './ContactGradientTextV2';
+export { ContactButtonSectionV2 } from './ContactButtonSectionV2';
