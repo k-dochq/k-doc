@@ -967,7 +967,24 @@
       },
       "passwordChange": {
         "title": "Change Password",
-        "completeButton": "Complete"
+        "completeButton": "Complete",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm New Password",
+        "placeholders": {
+          "currentPassword": "Enter your current password",
+          "newPassword": "At least 6 characters",
+          "confirmPassword": "Enter your password again"
+        },
+        "errors": {
+          "currentPasswordRequired": "Please enter your current password.",
+          "currentPasswordInvalid": "Current password is incorrect.",
+          "newPasswordRequired": "Please enter your new password.",
+          "newPasswordTooShort": "Password must be at least 6 characters.",
+          "confirmPasswordRequired": "Please confirm your password.",
+          "passwordMismatch": "Passwords do not match.",
+          "updateFailed": "An error occurred while changing password."
+        }
       }
     },
     "activity": {
