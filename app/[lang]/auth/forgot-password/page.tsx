@@ -1,6 +1,5 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
-import { ForgotPasswordContent } from './ForgotPasswordContent';
 import { ForgotPasswordContentV2 } from './ForgotPasswordContentV2';
 
 interface ForgotPasswordPageProps {

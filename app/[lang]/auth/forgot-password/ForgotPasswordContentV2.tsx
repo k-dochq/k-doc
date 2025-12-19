@@ -6,7 +6,6 @@ import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
 import { usePasswordReset } from 'features/email-auth';
-import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ForgotPasswordContentV2Props {
   lang: Locale;
@@ -14,7 +13,7 @@ interface ForgotPasswordContentV2Props {
   redirectTo?: string;
 }
 
-export function ForgotPasswordContentV2({ lang, dict, redirectTo }: ForgotPasswordContentV2Props) {
+export function ForgotPasswordContentV2({ lang, dict }: ForgotPasswordContentV2Props) {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const { resetPassword, isLoading, error, isSuccess } = usePasswordReset({ locale: lang, dict });
