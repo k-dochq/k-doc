@@ -78,6 +78,12 @@ export const queryKeys = {
     profile: () => [...queryKeys.user.all, 'profile'] as const,
   },
 
+  // 마이페이지 관련 쿼리
+  my: {
+    all: ['my'] as const,
+    activityStats: () => [...queryKeys.my.all, 'activity-stats'] as const,
+  },
+
   // 상담 채팅 관련 쿼리
   consultationMessages: {
     all: ['consultation-messages'] as const,

@@ -10,3 +10,5 @@ export { AccountSection } from './ui/AccountSection';
 export { MenuItem } from './ui/MenuItem';
 export { SwitchMenuItem } from './ui/SwitchMenuItem';
 export { useDeleteAccount } from './model/useDeleteAccount';
+export { useActivityStats } from './model/useActivityStats';
+export type { ActivityStats } from './model/useActivityStats';

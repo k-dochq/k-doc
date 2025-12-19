@@ -3,6 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { MyPostsIcon, ConsultationChatIcon } from './ActivityStatsIcons';
+import { useActivityStats } from '../model/useActivityStats';
 
 interface ActivityStatsSectionV2Props {
   lang: Locale;
@@ -10,9 +11,10 @@ interface ActivityStatsSectionV2Props {
 }
 
 export function ActivityStatsSectionV2({ lang, dict }: ActivityStatsSectionV2Props) {
-  // 하드코딩된 데이터 (나중에 데이터 바인딩으로 교체)
-  const myPostsCount = 2;
-  const consultationChatCount = 3;
+  const { data, isLoading } = useActivityStats();
+
+  const myPostsCount = data?.myPostsCount ?? 0;
+  const consultationChatCount = data?.consultationChatCount ?? 0;
 
   const myPostsLabel = dict.my?.activityStats?.myPosts || '내가 작성한 글';
   const consultationChatListLabel =
