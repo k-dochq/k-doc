@@ -5,6 +5,8 @@ export { ProfileSectionV2 } from './ui/ProfileSectionV2';
 export { ActivityStatsSectionV2 } from './ui/ActivityStatsSectionV2';
 export { NotificationSectionV2 } from './ui/NotificationSectionV2';
 export { SwitchMenuItemV2 } from './ui/SwitchMenuItemV2';
+export { CustomerServiceSectionV2 } from './ui/CustomerServiceSectionV2';
+export { MenuItemV2 } from './ui/MenuItemV2';
 export { ActivitySection } from './ui/ActivitySection';
 export { NotificationSection } from './ui/NotificationSection';
 export { CustomerServiceSection } from './ui/CustomerServiceSection';
