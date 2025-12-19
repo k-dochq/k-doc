@@ -3,6 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header';
+import { ProfileSectionV2 } from './ProfileSectionV2';
 
 interface MyContentV2Props {
   lang: Locale;
@@ -17,7 +18,10 @@ export function MyContentV2({ lang, dict }: MyContentV2Props) {
         fallbackUrl={`/${lang}/main`}
         backgroundColor='bg-neutral-100'
       />
-      <div className='p-5'>{/* Content will be added later */}</div>
+      <div className='h-[58px]' />
+      <div className='p-5'>
+        <ProfileSectionV2 lang={lang} dict={dict} />
+      </div>
     </div>
   );
 }
