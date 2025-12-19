@@ -1,7 +1,6 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
-import { PageHeader } from 'shared/ui/page-header';
-import { MyContent, MyContentV2 } from 'features/my-page';
+import { MyContentV2 } from 'features/my-page';
 
 interface MyPageProps {
   params: Promise<{
