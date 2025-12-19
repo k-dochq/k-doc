@@ -7,6 +7,7 @@ import { ProfileSectionV2 } from './ProfileSectionV2';
 import { ActivityStatsSectionV2 } from './ActivityStatsSectionV2';
 import { NotificationSectionV2 } from './NotificationSectionV2';
 import { CustomerServiceSectionV2 } from './CustomerServiceSectionV2';
+import { AccountSectionV2 } from './AccountSectionV2';
 
 interface MyContentV2Props {
   lang: Locale;
@@ -33,6 +34,10 @@ export function MyContentV2({ lang, dict }: MyContentV2Props) {
         <div className='mt-5'>
           <CustomerServiceSectionV2 lang={lang} dict={dict} />
         </div>
+        <div className='mt-5'>
+          <AccountSectionV2 lang={lang} dict={dict} />
+        </div>
+        <div className='h-8' />
       </div>
     </div>
   );
