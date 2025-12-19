@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
 import { ForgotPasswordContent } from './ForgotPasswordContent';
+import { ForgotPasswordContentV2 } from './ForgotPasswordContentV2';
 
 interface ForgotPasswordPageProps {
   params: Promise<{
@@ -19,5 +20,5 @@ export default async function ForgotPasswordPage({
   const { redirectTo } = await searchParams;
   const dict = await getDictionary(lang);
 
-  return <ForgotPasswordContent lang={lang} dict={dict} redirectTo={redirectTo} />;
+  return <ForgotPasswordContentV2 lang={lang} dict={dict} redirectTo={redirectTo} />;
 }

@@ -442,6 +442,8 @@
     "forgotPassword": {
       "title": "Forgot Password",
       "description": "Enter your email address and we'll send you a password reset link.",
+      "descriptionLine1": "Enter your email address",
+      "descriptionLine2": "and we'll send you a password reset link.",
       "email": "Email",
       "resetButton": "Send Password Reset Link",
       "backToLogin": "Back to Login",
