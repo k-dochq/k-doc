@@ -37,7 +37,7 @@ export function SignupStep2V2({
   onSignup,
   isBusy,
   isRequiredAgreementsValid,
-  error: _error,
+  error,
 }: SignupStep2V2Props) {
   const titleLines = (dict.auth?.signup?.termsAgreement?.title as string[] | undefined) || [
     'K-DOC',
@@ -70,6 +70,12 @@ export function SignupStep2V2({
           lang={lang}
           disabled={isBusy}
         />
+
+        {error && (
+          <div className='mt-4 rounded-lg border border-red-200 bg-red-50 p-3'>
+            <p className='text-sm text-red-600'>{error}</p>
+          </div>
+        )}
       </div>
 
       <div className='h-[112px]' />
