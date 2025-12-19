@@ -41,7 +41,7 @@ export function SelectFieldV2({
     : `${isEmpty ? emptyBorder : filledBorder} ${focusClass} ${
         isEmpty ? 'text-neutral-400' : 'text-neutral-900'
       }`;
-  const className = `${baseInputClasses} h-[52px] pr-10 appearance-none ${stateClass} ${disabled ? disabledState : ''}`;
+  const className = `${baseInputClasses} h-[52px] pr-10 appearance-none ${stateClass} ${disabled ? disabledState : 'bg-white'}`;
 
   return (
     <div className='flex w-full flex-col gap-2'>

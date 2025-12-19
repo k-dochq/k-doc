@@ -76,7 +76,7 @@ export function FormDatePickerV2({
 
   const optionalText = '';
   const stateClass = buildStateClass(value, error);
-  const triggerClasses = `${baseInputClasses} h-[52px] p-4 flex items-center justify-between ${stateClass}`;
+  const triggerClasses = `${baseInputClasses} h-[52px] p-4 flex items-center justify-between bg-white ${stateClass}`;
 
   return (
     <div ref={containerRef} className='relative'>

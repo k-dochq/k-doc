@@ -446,6 +446,7 @@
       "descriptionLine2": "and we'll send you a password reset link.",
       "email": "Email",
       "resetButton": "Send Password Reset Link",
+      "loading": "Sending...",
       "backToLogin": "Back to Login",
       "loginLink": "Sign In",
       "resetError": "An error occurred while resetting password",

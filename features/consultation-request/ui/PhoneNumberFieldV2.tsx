@@ -78,10 +78,10 @@ export function PhoneNumberFieldV2({
     : `${phoneHasValue ? filledBorder : emptyBorder} ${focusClass} text-neutral-900`;
 
   const countryClassName = `${baseInputClasses} h-[52px] appearance-none pr-10 ${countryStateClass} ${
-    disabled ? disabledState : ''
+    disabled ? disabledState : 'bg-white'
   }`;
   const phoneInputClassName = `${baseInputClasses} h-[52px] ${phoneStateClass} ${
-    disabled ? disabledState : ''
+    disabled ? disabledState : 'bg-white'
   }`;
 
   return (
