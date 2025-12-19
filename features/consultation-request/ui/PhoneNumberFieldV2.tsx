@@ -114,7 +114,7 @@ export function PhoneNumberFieldV2({
               ))}
             </select>
             <span
-              className={`pointer-events-none absolute inset-y-0 left-4 flex items-center ${triggerTextClass}`}
+              className={`pointer-events-none absolute inset-y-0 left-4 flex items-center text-sm leading-6 ${triggerTextClass}`}
             >
               {triggerText}
             </span>
