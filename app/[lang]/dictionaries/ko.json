@@ -411,9 +411,9 @@
         "confirmPassword": "비밀번호를 다시 입력하세요",
         "passportName": "여권에 기재된 영문 이름을 입력하세요",
         "nationality": "국적을 선택하세요 (선택사항)",
-        "gender": "성별을 선택하세요",
+        "gender": "성별을 선택하세요 (선택사항)",
         "phoneNumber": "010-0000-0000 (선택사항)",
-        "countryCode": "국가번호를 선택하세요",
+        "countryCode": "선택",
         "phoneNumberOnly": "휴대폰번호를 입력하세요",
         "birthDate": "생년월일을 선택하세요 (선택사항)"
       },
