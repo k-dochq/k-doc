@@ -37,7 +37,7 @@ export function SignupStep2V2({
   onSignup,
   isBusy,
   isRequiredAgreementsValid,
-  error,
+  error: _error,
 }: SignupStep2V2Props) {
   const titleLines = (dict.auth?.signup?.termsAgreement?.title as string[] | undefined) || [
     'K-DOC',
