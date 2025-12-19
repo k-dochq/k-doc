@@ -941,7 +941,6 @@
       "editProfile": "แก้ไขโปรไฟล์",
       "nicknameChange": "เปลี่ยนชื่อเล่น",
       "nameChange": "เปลี่ยนชื่อ",
-      "passwordChange": "เปลี่ยนรหัสผ่าน",
       "edit": {
         "title": "แก้ไขโปรไฟล์",
         "nickname": "ชื่อเล่น",
@@ -963,7 +962,12 @@
           "nameTooShort": "ชื่อต้องมีอย่างน้อย 2 ตัวอักษร"
         },
         "loading": "กำลังโหลดข้อมูลผู้ใช้...",
-        "errorTitle": "ข้อผิดพลาด"
+        "errorTitle": "ข้อผิดพลาด",
+        "changePassword": "เปลี่ยนรหัสผ่าน"
+      },
+      "passwordChange": {
+        "title": "เปลี่ยนรหัสผ่าน",
+        "completeButton": "เสร็จสิ้น"
       }
     },
     "activity": {

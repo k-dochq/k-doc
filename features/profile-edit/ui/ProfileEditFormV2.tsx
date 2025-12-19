@@ -9,6 +9,7 @@ import { SelectFieldV2, PhoneNumberFieldV2 } from 'features/consultation-request
 import { FormDatePickerV2 } from 'features/consultation-request/ui/FormDatePickerV2';
 import { useUserProfile, useUpdateUserProfile } from 'features/user-profile';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
+import { LocaleLink } from 'shared/ui/locale-link';
 
 interface ProfileEditFormV2Props {
   lang: Locale;
@@ -282,6 +283,17 @@ export function ProfileEditFormV2({
         dict={dict}
         required={false}
       />
+
+      {/* 비밀번호 변경 링크 */}
+      <div className='mt-8 flex justify-center'>
+        <LocaleLink
+          href={`/${lang}/my/edit/password`}
+          locale={lang}
+          className='text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-600'
+        >
+          {dict.my?.profile?.edit?.changePassword || '비밀번호 변경하기'}
+        </LocaleLink>
+      </div>
 
       {/* 에러 메시지 */}
       {updateError && (

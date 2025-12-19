@@ -940,7 +940,6 @@
       "editProfile": "프로필 수정",
       "nicknameChange": "닉네임 변경",
       "nameChange": "이름 변경",
-      "passwordChange": "비밀번호 변경",
       "edit": {
         "title": "프로필 수정",
         "nickname": "닉네임",
@@ -962,7 +961,12 @@
           "nameTooShort": "이름은 2자 이상이어야 합니다."
         },
         "loading": "사용자 정보를 불러오는 중...",
-        "errorTitle": "오류"
+        "errorTitle": "오류",
+        "changePassword": "비밀번호 변경하기"
+      },
+      "passwordChange": {
+        "title": "비밀번호 변경",
+        "completeButton": "완료"
       }
     },
     "activity": {

@@ -941,7 +941,6 @@
       "editProfile": "Edit Profile",
       "nicknameChange": "Change Nickname",
       "nameChange": "Change Name",
-      "passwordChange": "Change Password",
       "edit": {
         "title": "Edit Profile",
         "nickname": "Nickname",
@@ -963,7 +962,12 @@
           "nameTooShort": "Name must be at least 2 characters."
         },
         "loading": "Loading user information...",
-        "errorTitle": "Error"
+        "errorTitle": "Error",
+        "changePassword": "Change Password"
+      },
+      "passwordChange": {
+        "title": "Change Password",
+        "completeButton": "Complete"
       }
     },
     "activity": {
