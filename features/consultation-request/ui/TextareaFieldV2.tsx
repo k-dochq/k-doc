@@ -35,7 +35,7 @@ export function TextareaFieldV2({
           disabled={disabled}
           maxLength={maxLength}
           className={`${baseInputClasses} min-h-[120px] resize-none pr-16 pb-10 ${stateClass} ${
-            disabled ? disabledState : ''
+            disabled ? disabledState : 'bg-white'
           }`}
         />
         <div className='pointer-events-none absolute right-4 bottom-3 text-sm text-neutral-400'>

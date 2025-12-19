@@ -1,5 +1,5 @@
 export const baseInputClasses =
-  'block w-full rounded-xl border px-4 py-3.5 text-sm leading-6 transition-colors duration-150 placeholder:text-neutral-400 focus:outline-none bg-white';
+  'block w-full rounded-xl border px-4 py-3.5 text-sm leading-6 transition-colors duration-150 placeholder:text-neutral-400 focus:outline-none';
 
 export const focusClass = 'focus:border-primary-900 focus:ring-0';
 export const emptyBorder = 'border-neutral-400';

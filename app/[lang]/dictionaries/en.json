@@ -442,8 +442,11 @@
     "forgotPassword": {
       "title": "Forgot Password",
       "description": "Enter your email address and we'll send you a password reset link.",
+      "descriptionLine1": "Enter your email address",
+      "descriptionLine2": "and we'll send you a password reset link.",
       "email": "Email",
       "resetButton": "Send Password Reset Link",
+      "loading": "Sending...",
       "backToLogin": "Back to Login",
       "loginLink": "Sign In",
       "resetError": "An error occurred while resetting password",
@@ -452,7 +455,7 @@
       },
       "errors": {
         "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email format.",
+        "emailInvalid": "Please enter in the correct format.",
         "userNotFound": "No account found with this email address.",
         "rateLimitExceeded": "Too many requests. Please try again later."
       },
