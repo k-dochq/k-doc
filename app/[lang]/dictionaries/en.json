@@ -298,7 +298,6 @@
       "loginButton": "Sign In",
       "laterButton": "Do Later",
       "signupButton": "Register with Email",
-      "signupButton": "Register with Email",
       "requiredMessage": "Please log in\nto use the service.",
       "socialLogin": "Social Login",
       "startIn3Seconds": "Get started in 3 seconds",
@@ -397,12 +396,14 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Sign In",
       "termsAgreement": {
+        "title": ["K-DOC", "Please agree to", "use the service"],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
-        "privacyPolicy": "I agree to the collection of my sensitive personal data for consultation and service provision.",
+        "privacyPolicy": "Privacy Policy (Required)",
         "marketingNotifications": "Event/Service Benefit Notifications",
-        "requiredError": "Please agree to the required terms."
+        "requiredError": "Please agree to the required terms.",
+        "agreeAndStart": "Agree to all and start"
       },
       "placeholders": {
         "email": "your-email@example.com",
@@ -441,8 +442,11 @@
     "forgotPassword": {
       "title": "Forgot Password",
       "description": "Enter your email address and we'll send you a password reset link.",
+      "descriptionLine1": "Enter your email address",
+      "descriptionLine2": "and we'll send you a password reset link.",
       "email": "Email",
       "resetButton": "Send Password Reset Link",
+      "loading": "Sending...",
       "backToLogin": "Back to Login",
       "loginLink": "Sign In",
       "resetError": "An error occurred while resetting password",
@@ -451,7 +455,7 @@
       },
       "errors": {
         "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email format.",
+        "emailInvalid": "Please enter in the correct format.",
         "userNotFound": "No account found with this email address.",
         "rateLimitExceeded": "Too many requests. Please try again later."
       },
@@ -940,7 +944,6 @@
       "editProfile": "Edit Profile",
       "nicknameChange": "Change Nickname",
       "nameChange": "Change Name",
-      "passwordChange": "Change Password",
       "edit": {
         "title": "Edit Profile",
         "nickname": "Nickname",
@@ -952,19 +955,48 @@
         "error": "An error occurred while updating profile.",
         "placeholders": {
           "nickname": "Enter your nickname",
-          "name": "Enter your name"
+          "name": "Enter your name",
+          "passportNameHelperText": "Enter exactly as shown on your passport, including spaces."
         },
         "errors": {
           "nicknameRequired": "Please enter your nickname.",
           "nameRequired": "Please enter your name.",
           "nicknameTooShort": "Nickname must be at least 2 characters.",
           "nameTooShort": "Name must be at least 2 characters."
+        },
+        "loading": "Loading user information...",
+        "errorTitle": "Error",
+        "changePassword": "Change Password"
+      },
+      "passwordChange": {
+        "title": "Change Password",
+        "completeButton": "Complete",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm New Password",
+        "placeholders": {
+          "currentPassword": "Enter your current password",
+          "newPassword": "At least 6 characters",
+          "confirmPassword": "Enter your password again"
+        },
+        "errors": {
+          "currentPasswordRequired": "Please enter your current password.",
+          "currentPasswordInvalid": "Current password is incorrect.",
+          "newPasswordRequired": "Please enter your new password.",
+          "newPasswordTooShort": "Password must be at least 6 characters.",
+          "confirmPasswordRequired": "Please confirm your password.",
+          "passwordMismatch": "Passwords do not match.",
+          "updateFailed": "An error occurred while changing password."
         }
       }
     },
     "activity": {
       "title": "Activity",
       "savedList": "My Saved List"
+    },
+    "activityStats": {
+      "myPosts": "My Posts",
+      "consultationChatList": "Consultation Chats"
     },
     "notification": {
       "title": "Notifications",

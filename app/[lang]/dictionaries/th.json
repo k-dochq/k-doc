@@ -396,12 +396,14 @@
       "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
       "loginLink": "เข้าสู่ระบบ",
       "termsAgreement": {
+        "title": ["K-DOC", "กรุณายอมรับ", "การใช้บริการ"],
         "allAgreed": "ยอมรับทั้งหมด",
         "age14Plus": "ฉันอายุ 14 ปีขึ้นไป",
         "termsOfService": "ข้อกำหนดการใช้งาน (จำเป็น)",
-        "privacyPolicy": "ฉันยินยอมให้เก็บรวบรวมข้อมูลส่วนบุคคลที่ละเอียดอ่อนเพื่อการให้คำปรึกษาและการให้บริการ",
-        "marketingNotifications": "การแจ้งเตือนกิจกรรม/สิทธิประโยชน์บริการ (ตัวเลือก)",
-        "requiredError": "กรุณายอมรับข้อกำหนดที่จำเป็น"
+        "privacyPolicy": "การยินยอมการใช้ข้อมูลส่วนบุคคล (จำเป็น)",
+        "marketingNotifications": "การแจ้งเตือนกิจกรรม/บริการ (ตัวเลือก)",
+        "requiredError": "กรุณายอมรับข้อกำหนดที่จำเป็น",
+        "agreeAndStart": "ยอมรับทั้งหมดและเริ่มต้น"
       },
       "placeholders": {
         "email": "your-email@example.com",
@@ -409,9 +411,9 @@
         "confirmPassword": "ยืนยันรหัสผ่านของคุณ",
         "passportName": "ใส่ชื่อในหนังสือเดินทางเป็นภาษาอังกฤษ",
         "nationality": "เลือกสัญชาติของคุณ (ไม่บังคับ)",
-        "gender": "เลือกเพศของคุณ",
+        "gender": "เลือกเพศของคุณ (ไม่บังคับ)",
         "phoneNumber": "010-0000-0000 (ไม่บังคับ)",
-        "countryCode": "เลือกรหัสประเทศ",
+        "countryCode": "เลือก",
         "phoneNumberOnly": "ใส่หมายเลขโทรศัพท์",
         "birthDate": "เลือกวันเกิดของคุณ (ไม่บังคับ)"
       },
@@ -440,8 +442,11 @@
     "forgotPassword": {
       "title": "ลืมรหัสผ่าน",
       "description": "กรอกที่อยู่อีเมลของคุณ แล้วเราจะส่งลิงก์รีเซ็ตรหัสผ่านให้คุณ",
+      "descriptionLine1": "กรอกที่อยู่อีเมลของคุณ",
+      "descriptionLine2": "แล้วเราจะส่งลิงก์รีเซ็ตรหัสผ่านให้คุณ",
       "email": "อีเมล",
       "resetButton": "ส่งลิงก์รีเซ็ตรหัสผ่าน",
+      "loading": "กำลังส่ง...",
       "backToLogin": "กลับไปหน้าเข้าสู่ระบบ",
       "loginLink": "เข้าสู่ระบบ",
       "resetError": "เกิดข้อผิดพลาดขณะรีเซ็ตรหัสผ่าน",
@@ -450,7 +455,7 @@
       },
       "errors": {
         "emailRequired": "กรุณากรอกอีเมลของคุณ",
-        "emailInvalid": "กรุณากรอกรูปแบบอีเมลที่ถูกต้อง",
+        "emailInvalid": "กรุณากรอกในรูปแบบที่ถูกต้อง",
         "userNotFound": "ไม่พบบัญชีที่ใช้อีเมลนี้",
         "rateLimitExceeded": "คำขอมากเกินไป กรุณาลองใหม่ภายหลัง"
       },
@@ -939,7 +944,6 @@
       "editProfile": "แก้ไขโปรไฟล์",
       "nicknameChange": "เปลี่ยนชื่อเล่น",
       "nameChange": "เปลี่ยนชื่อ",
-      "passwordChange": "เปลี่ยนรหัสผ่าน",
       "edit": {
         "title": "แก้ไขโปรไฟล์",
         "nickname": "ชื่อเล่น",
@@ -951,19 +955,48 @@
         "error": "เกิดข้อผิดพลาดขณะอัปเดตโปรไฟล์",
         "placeholders": {
           "nickname": "กรอกชื่อเล่นของคุณ",
-          "name": "กรอกชื่อของคุณ"
+          "name": "กรอกชื่อของคุณ",
+          "passportNameHelperText": "กรุณากรอกตามที่ระบุในหนังสือเดินทาง รวมถึงช่องว่าง"
         },
         "errors": {
           "nicknameRequired": "กรุณากรอกชื่อเล่น",
           "nameRequired": "กรุณากรอกชื่อ",
           "nicknameTooShort": "ชื่อเล่นต้องมีอย่างน้อย 2 ตัวอักษร",
           "nameTooShort": "ชื่อต้องมีอย่างน้อย 2 ตัวอักษร"
+        },
+        "loading": "กำลังโหลดข้อมูลผู้ใช้...",
+        "errorTitle": "ข้อผิดพลาด",
+        "changePassword": "เปลี่ยนรหัสผ่าน"
+      },
+      "passwordChange": {
+        "title": "เปลี่ยนรหัสผ่าน",
+        "completeButton": "เสร็จสิ้น",
+        "currentPassword": "รหัสผ่านปัจจุบัน",
+        "newPassword": "รหัสผ่านใหม่",
+        "confirmPassword": "ยืนยันรหัสผ่านใหม่",
+        "placeholders": {
+          "currentPassword": "กรอกรหัสผ่านปัจจุบันของคุณ",
+          "newPassword": "อย่างน้อย 6 ตัวอักษร",
+          "confirmPassword": "กรอกรหัสผ่านอีกครั้ง"
+        },
+        "errors": {
+          "currentPasswordRequired": "กรุณากรอกรหัสผ่านปัจจุบัน",
+          "currentPasswordInvalid": "รหัสผ่านปัจจุบันไม่ถูกต้อง",
+          "newPasswordRequired": "กรุณากรอกรหัสผ่านใหม่",
+          "newPasswordTooShort": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+          "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
+          "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+          "updateFailed": "เกิดข้อผิดพลาดขณะเปลี่ยนรหัสผ่าน"
         }
       }
     },
     "activity": {
       "title": "กิจกรรม",
       "savedList": "รายการที่บันทึกไว้"
+    },
+    "activityStats": {
+      "myPosts": "โพสต์ของฉัน",
+      "consultationChatList": "รายการแชทปรึกษา"
     },
     "notification": {
       "title": "การแจ้งเตือน",
