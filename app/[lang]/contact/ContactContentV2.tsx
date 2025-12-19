@@ -22,8 +22,12 @@ export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
   const { copyAddress } = useAddressCopy(dict);
 
   // 하남 본사 정확한 좌표
-  const latitude = 37.5609;
-  const longitude = 127.1928;
+  const hanamLatitude = 37.5609;
+  const hanamLongitude = 127.1928;
+
+  // 서울지사 정확한 좌표
+  const seoulLatitude = 37.526145;
+  const seoulLongitude = 127.038836;
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -31,18 +35,36 @@ export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
     libraries: googleMapsLibraries,
   });
 
-  const center = {
-    lat: latitude,
-    lng: longitude,
+  const hanamCenter = {
+    lat: hanamLatitude,
+    lng: hanamLongitude,
   };
 
-  const handleMarkerClick = () => {
-    const googleMapsUrl = getGoogleMapsUrl(latitude, longitude, dict.contact.address);
+  const seoulCenter = {
+    lat: seoulLatitude,
+    lng: seoulLongitude,
+  };
+
+  const handleHanamMarkerClick = () => {
+    const googleMapsUrl = getGoogleMapsUrl(hanamLatitude, hanamLongitude, dict.contact.address);
     window.open(googleMapsUrl, '_blank', 'noopener,noreferrer');
   };
 
-  const handleCopyAddress = () => {
+  const handleSeoulMarkerClick = () => {
+    const googleMapsUrl = getGoogleMapsUrl(
+      seoulLatitude,
+      seoulLongitude,
+      dict.contact.seoulOffice.address,
+    );
+    window.open(googleMapsUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleCopyHanamAddress = () => {
     copyAddress(dict.contact.address);
+  };
+
+  const handleCopySeoulAddress = () => {
+    copyAddress(dict.contact.seoulOffice.address);
   };
 
   return (
@@ -61,11 +83,11 @@ export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
         ) : (
           <GoogleMap
             mapContainerStyle={{ width: '100%', height: '100%' }}
-            center={center}
+            center={hanamCenter}
             zoom={15}
             options={defaultMapOptions}
           >
-            <Marker position={center} onClick={handleMarkerClick} />
+            <Marker position={hanamCenter} onClick={handleHanamMarkerClick} />
           </GoogleMap>
         )}
       </div>
@@ -88,7 +110,51 @@ export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
           </div>
           {/* 주소복사 버튼 */}
           <button
-            onClick={handleCopyAddress}
+            onClick={handleCopyHanamAddress}
+            className='flex w-fit items-center justify-center rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-normal text-neutral-500'
+          >
+            {dict.contact?.copyButton || '주소복사'}
+          </button>
+        </div>
+      </div>
+
+      {/* 서울지사 지도 영역 */}
+      <div className='mt-8 aspect-[375/220] w-full'>
+        {!isLoaded ? (
+          <div className='flex h-full w-full items-center justify-center bg-gray-100'>
+            <p className='text-sm text-gray-500'>{dict.hospital?.map?.loading}</p>
+          </div>
+        ) : (
+          <GoogleMap
+            mapContainerStyle={{ width: '100%', height: '100%' }}
+            center={seoulCenter}
+            zoom={15}
+            options={defaultMapOptions}
+          >
+            <Marker position={seoulCenter} onClick={handleSeoulMarkerClick} />
+          </GoogleMap>
+        )}
+      </div>
+
+      {/* 서울지사 정보 섹션 */}
+      <div className='flex flex-col gap-2 px-5 py-5'>
+        <h2 className='text-2xl font-semibold text-neutral-700'>
+          {dict.contact?.seoulOffice?.subtitle || 'K-DOC 서울 지사'}
+        </h2>
+        <div className='flex flex-col gap-2'>
+          <div className='flex items-start gap-1'>
+            {/* 위치 핀 아이콘 */}
+            <div className='h-5 w-5 shrink-0'>
+              <LocationPinIcon />
+            </div>
+            {/* 주소 텍스트 */}
+            <p className='flex-1 text-sm leading-5 font-normal text-neutral-500'>
+              {dict.contact?.seoulOffice?.address || '서울 강남구 선릉로157길 14 한주빌딩 6층'}
+            </p>
+          </div>
+          {/* 주소복사 버튼 */}
+          <button
+            onClick={handleCopySeoulAddress}
             className='flex w-fit items-center justify-center rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-normal text-neutral-500'
           >
             {dict.contact?.copyButton || '주소복사'}
