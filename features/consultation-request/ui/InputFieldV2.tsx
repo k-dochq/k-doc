@@ -11,6 +11,7 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'className'> & {
   required?: boolean;
   helperText?: string;
   rightIcon?: ReactNode;
+  onRightIconClick?: () => void;
 };
 
 export function InputFieldV2({
@@ -20,6 +21,7 @@ export function InputFieldV2({
   helperText,
   disabled,
   rightIcon,
+  onRightIconClick,
   ...props
 }: InputProps) {
   // disabled일 때는 disabled 스타일이 우선 적용되도록 처리
@@ -47,7 +49,12 @@ export function InputFieldV2({
           }`}
         />
         {rightIcon && (
-          <div className='pointer-events-none absolute inset-y-0 right-4 flex items-center text-neutral-400'>
+          <div
+            className={`absolute inset-y-0 right-4 flex items-center text-neutral-400 ${
+              onRightIconClick ? 'cursor-pointer' : 'pointer-events-none'
+            }`}
+            onClick={onRightIconClick}
+          >
             {rightIcon}
           </div>
         )}

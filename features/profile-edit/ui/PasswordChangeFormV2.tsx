@@ -7,6 +7,7 @@ import { type Dictionary } from 'shared/model/types';
 import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
 import { createClient } from 'shared/lib/supabase/client';
 import { useUserProfile } from 'features/user-profile';
+import { EyeIcon, EyeOffIcon } from './PasswordVisibilityIcons';
 
 interface PasswordChangeFormV2Props {
   lang: Locale;
@@ -47,6 +48,9 @@ export function PasswordChangeFormV2({
   });
 
   const [errors, setErrors] = useState<PasswordChangeFormErrors>({});
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const updateField = <K extends keyof PasswordChangeFormData>(
     field: K,
@@ -204,7 +208,7 @@ export function PasswordChangeFormV2({
     <form id={formId} onSubmit={handleSubmit} className='flex flex-col gap-5 p-5'>
       <InputFieldV2
         label={dict.my?.profile?.passwordChange?.currentPassword || '기존 비밀번호'}
-        type='password'
+        type={showCurrentPassword ? 'text' : 'password'}
         value={formData.currentPassword}
         onChange={(e) => updateField('currentPassword', e.target.value)}
         placeholder={
@@ -213,11 +217,13 @@ export function PasswordChangeFormV2({
         }
         error={errors.currentPassword}
         disabled={isLoading}
+        rightIcon={showCurrentPassword ? <EyeIcon /> : <EyeOffIcon />}
+        onRightIconClick={() => setShowCurrentPassword(!showCurrentPassword)}
       />
 
       <InputFieldV2
         label={dict.my?.profile?.passwordChange?.newPassword || '변경할 비밀번호'}
-        type='password'
+        type={showNewPassword ? 'text' : 'password'}
         value={formData.newPassword}
         onChange={(e) => updateField('newPassword', e.target.value)}
         placeholder={
@@ -225,11 +231,13 @@ export function PasswordChangeFormV2({
         }
         error={errors.newPassword}
         disabled={isLoading}
+        rightIcon={showNewPassword ? <EyeIcon /> : <EyeOffIcon />}
+        onRightIconClick={() => setShowNewPassword(!showNewPassword)}
       />
 
       <InputFieldV2
         label={dict.my?.profile?.passwordChange?.confirmPassword || '변경할 비밀번호 확인'}
-        type='password'
+        type={showConfirmPassword ? 'text' : 'password'}
         value={formData.confirmPassword}
         onChange={(e) => updateField('confirmPassword', e.target.value)}
         placeholder={
@@ -238,6 +246,8 @@ export function PasswordChangeFormV2({
         }
         error={errors.confirmPassword}
         disabled={isLoading}
+        rightIcon={showConfirmPassword ? <EyeIcon /> : <EyeOffIcon />}
+        onRightIconClick={() => setShowConfirmPassword(!showConfirmPassword)}
       />
 
       {/* 에러 메시지 */}
