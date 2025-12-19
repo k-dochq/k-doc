@@ -455,7 +455,7 @@
       },
       "errors": {
         "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email format.",
+        "emailInvalid": "Please enter in the correct format.",
         "userNotFound": "No account found with this email address.",
         "rateLimitExceeded": "Too many requests. Please try again later."
       },

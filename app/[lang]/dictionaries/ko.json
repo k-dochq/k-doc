@@ -455,7 +455,7 @@
       },
       "errors": {
         "emailRequired": "이메일을 입력해주세요.",
-        "emailInvalid": "올바른 이메일 형식을 입력해주세요.",
+        "emailInvalid": "올바른 형식으로 입력해주세요.",
         "userNotFound": "해당 이메일로 가입된 계정을 찾을 수 없습니다.",
         "rateLimitExceeded": "너무 많은 요청이 있었습니다. 잠시 후 다시 시도해주세요."
       },

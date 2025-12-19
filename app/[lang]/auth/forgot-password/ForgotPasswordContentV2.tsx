@@ -26,15 +26,17 @@ export function ForgotPasswordContentV2({ lang, dict, redirectTo }: ForgotPasswo
     dict.auth?.forgotPassword?.descriptionLine2 || '비밀번호 재설정 링크를 보내드립니다.';
 
   const validateEmail = (email: string): boolean => {
-    if (!email) {
-      setEmailError(dict.auth?.forgotPassword?.errors?.emailRequired || '이메일을 입력해주세요.');
+    // 빈 이메일은 버튼 비활성화로 처리하므로 여기서는 검증하지 않음
+    if (!email.trim()) {
+      setEmailError('');
       return false;
     }
 
+    // 이메일 형식 검증
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(email.trim())) {
       setEmailError(
-        dict.auth?.forgotPassword?.errors?.emailInvalid || '올바른 이메일 형식을 입력해주세요.',
+        dict.auth?.forgotPassword?.errors?.emailInvalid || '올바른 형식으로 입력해주세요.',
       );
       return false;
     }
@@ -78,26 +80,6 @@ export function ForgotPasswordContentV2({ lang, dict, redirectTo }: ForgotPasswo
                   '입력하신 이메일 주소로 비밀번호 재설정 링크를 보내드렸습니다. 이메일을 확인해주세요.'}
               </p>
             </div>
-
-            <div className='mt-5 flex items-center justify-center gap-4'>
-              <span className='text-sm leading-5 text-neutral-500'>
-                {dict.auth?.forgotPassword?.backToLogin || '로그인 페이지로 돌아가기'}
-              </span>
-              <div className='flex h-0 w-0 items-center justify-center'>
-                <div className='h-0 w-2.5 rotate-90 border-t border-neutral-300' />
-              </div>
-              <LocaleLink
-                href={
-                  redirectTo
-                    ? `/${lang}/auth/login/email?redirectTo=${encodeURIComponent(redirectTo)}`
-                    : `/${lang}/auth/login/email`
-                }
-                locale={lang}
-                className='text-sm leading-5 text-neutral-500 hover:text-neutral-700'
-              >
-                {dict.auth?.forgotPassword?.loginLink || '로그인하기'}
-              </LocaleLink>
-            </div>
           </div>
         </div>
       </div>
@@ -115,10 +97,10 @@ export function ForgotPasswordContentV2({ lang, dict, redirectTo }: ForgotPasswo
           <br />
           {descriptionLine2}
         </p>
-        <form onSubmit={handleSubmit} className='mt-8 w-full max-w-md'>
+        <form onSubmit={handleSubmit} noValidate className='mt-8 w-full max-w-md'>
           <InputFieldV2
             label={dict.auth?.forgotPassword?.email || '이메일'}
-            type='email'
+            type='text'
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
