@@ -941,7 +941,6 @@
       "editProfile": "Edit Profile",
       "nicknameChange": "Change Nickname",
       "nameChange": "Change Name",
-      "passwordChange": "Change Password",
       "edit": {
         "title": "Edit Profile",
         "nickname": "Nickname",
@@ -953,19 +952,48 @@
         "error": "An error occurred while updating profile.",
         "placeholders": {
           "nickname": "Enter your nickname",
-          "name": "Enter your name"
+          "name": "Enter your name",
+          "passportNameHelperText": "Enter exactly as shown on your passport, including spaces."
         },
         "errors": {
           "nicknameRequired": "Please enter your nickname.",
           "nameRequired": "Please enter your name.",
           "nicknameTooShort": "Nickname must be at least 2 characters.",
           "nameTooShort": "Name must be at least 2 characters."
+        },
+        "loading": "Loading user information...",
+        "errorTitle": "Error",
+        "changePassword": "Change Password"
+      },
+      "passwordChange": {
+        "title": "Change Password",
+        "completeButton": "Complete",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm New Password",
+        "placeholders": {
+          "currentPassword": "Enter your current password",
+          "newPassword": "At least 6 characters",
+          "confirmPassword": "Enter your password again"
+        },
+        "errors": {
+          "currentPasswordRequired": "Please enter your current password.",
+          "currentPasswordInvalid": "Current password is incorrect.",
+          "newPasswordRequired": "Please enter your new password.",
+          "newPasswordTooShort": "Password must be at least 6 characters.",
+          "confirmPasswordRequired": "Please confirm your password.",
+          "passwordMismatch": "Passwords do not match.",
+          "updateFailed": "An error occurred while changing password."
         }
       }
     },
     "activity": {
       "title": "Activity",
       "savedList": "My Saved List"
+    },
+    "activityStats": {
+      "myPosts": "My Posts",
+      "consultationChatList": "Consultation Chat List"
     },
     "notification": {
       "title": "Notifications",
