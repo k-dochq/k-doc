@@ -25,7 +25,7 @@ export function NoticeListItemV2({ notice, lang, dict, isFirst = false }: Notice
 
   return (
     <div
-      className={`flex flex-col gap-2 border-b border-b-neutral-200 py-4 ${isFirst ? 'border-t border-t-neutral-700' : ''}`}
+      className={`flex cursor-pointer flex-col gap-2 border-b border-b-neutral-200 py-4 ${isFirst ? 'border-t border-t-neutral-700' : ''}`}
       onClick={handleClick}
       role='button'
       tabIndex={0}
