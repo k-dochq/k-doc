@@ -40,9 +40,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       // 영어 검색어인지 확인
       const isEnglishSearch = lang === 'en' && /^[a-zA-Z\s]+$/.test(search);
 
-      // 검색 조건 배열
-      const searchConditions: Prisma.NoticeWhereInput[] = [];
-
       if (isEnglishSearch) {
         // 영어인 경우: 대소문자 변형 생성하여 각 변형에 대해 검색
         const searchVariations = generateSearchVariations(search);
