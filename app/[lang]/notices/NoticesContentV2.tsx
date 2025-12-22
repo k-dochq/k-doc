@@ -16,14 +16,29 @@ interface NoticesContentV2Props {
 
 export function NoticesContentV2({ lang, dict }: NoticesContentV2Props) {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useNotices({ page, limit: 3 });
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // 검색어가 비어있으면 undefined로 전달하여 전체 목록 표시
+  const search = searchTerm.trim() || undefined;
+
+  const { data, isLoading, isError } = useNotices({
+    page,
+    limit: 3,
+    search,
+    lang,
+  });
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+    setPage(1); // 검색 시 페이지를 1로 리셋
+  };
 
   if (isLoading) {
     return (
       <div className='px-5 pt-8 pb-20'>
         <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.notices.title}</h1>
         <div className='mb-8'>
-          <SearchBarV2 lang={lang} dict={dict} />
+          <SearchBarV2 lang={lang} dict={dict} onSearch={handleSearch} />
         </div>
         <NoticeListSkeletonV2 />
       </div>
@@ -35,7 +50,7 @@ export function NoticesContentV2({ lang, dict }: NoticesContentV2Props) {
       <div className='px-5 pt-8 pb-20'>
         <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.notices.title}</h1>
         <div className='mb-8'>
-          <SearchBarV2 lang={lang} dict={dict} />
+          <SearchBarV2 lang={lang} dict={dict} onSearch={handleSearch} />
         </div>
         <div className='text-center text-red-500'>
           <p>{dict.notices.error}</p>
@@ -51,7 +66,7 @@ export function NoticesContentV2({ lang, dict }: NoticesContentV2Props) {
     <div className='px-5 pt-8 pb-20'>
       <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.notices.title}</h1>
       <div className='mb-8'>
-        <SearchBarV2 lang={lang} dict={dict} />
+        <SearchBarV2 lang={lang} dict={dict} onSearch={handleSearch} />
       </div>
       <NoticeListV2 notices={notices} lang={lang} dict={dict} />
       {totalPages > 1 && (
