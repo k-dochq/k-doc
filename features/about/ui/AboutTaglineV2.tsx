@@ -7,51 +7,50 @@ export function AboutTaglineV2() {
   const taglines = ['Connecting', 'Global Patients', "to Korea's", 'Top 10% Doctors', '& Clinics'];
 
   useEffect(() => {
-    // 컴포넌트 마운트 후 애니메이션 시작
+    // 비디오 로드 감지를 위한 약간의 지연
     const timer = setTimeout(() => {
       setIsVideoLoaded(true);
-    }, 800);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div
-      className={`flex flex-col gap-3 px-5 py-[83px] transition-all duration-500 ease-in-out ${
-        isVideoLoaded ? 'items-start' : 'items-center'
-      }`}
-    >
-      {taglines.map((tagline, index) => {
-        if (index === 0) {
-          // 첫 번째 문장: Connecting + 비디오
-          return (
-            <div key={index} className='flex items-center gap-3'>
-              <p className='text-4xl font-bold text-neutral-700'>{tagline}</p>
-              <div
-                className={`relative h-[48px] w-[91px] overflow-hidden rounded-xl transition-opacity duration-500 ease-in-out ${
-                  isVideoLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                <video
-                  src='/videos/about-travel.mp4'
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster='/images/about-travel-poster.png'
-                  className='h-full w-full object-cover'
-                />
+    <div className='px-5 py-[83px]'>
+      <div className='flex w-fit flex-col gap-3'>
+        {taglines.map((tagline, index) => {
+          if (index === 0) {
+            return (
+              <div key={index} className='flex items-center gap-3'>
+                <p className='text-4xl font-bold text-neutral-700'>{tagline}</p>
+                <div
+                  className='relative h-[48px] w-[91px] overflow-hidden rounded-xl'
+                  style={{
+                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(-100%)',
+                    opacity: isVideoLoaded ? 1 : 0,
+                    transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+                  }}
+                >
+                  <video
+                    src='/videos/about-travel.mp4'
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster='/images/about-travel-poster.png'
+                    className='h-full w-full object-cover'
+                  />
+                </div>
               </div>
-            </div>
+            );
+          }
+          return (
+            <p key={index} className='text-4xl font-bold text-neutral-700'>
+              {tagline}
+            </p>
           );
-        }
-        // 나머지 문장
-        return (
-          <p key={index} className='text-4xl font-bold text-neutral-700'>
-            {tagline}
-          </p>
-        );
-      })}
+        })}
+      </div>
     </div>
   );
 }
