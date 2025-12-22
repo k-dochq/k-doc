@@ -51,5 +51,6 @@ export function useNotices(params: UseNoticesParams) {
     refetchOnWindowFocus: false,
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    placeholderData: (prev) => prev,
   });
 }
