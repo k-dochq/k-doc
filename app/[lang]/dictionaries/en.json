@@ -918,6 +918,10 @@
       "description": "K-DOC is an officially registered foreign patient attraction agency under the Korea Health Industry Development Institute (KHIDI), an organization affiliated with the Ministry of Health and Welfare of the Republic of Korea. We have passed the strict screening and qualification standards set by the national authorities.<br><br>Furthermore, we are a certified corporation enrolled in a KRW 100 million (about USD 70,000) licensing guarantee insurance policy with Seoul Guarantee Insurance (SGI), thereby holding an official government-approved qualification to deliver safe and reliable medical services to international patients.<br><br>Moving forward, we will continue to collaborate with leading Korean medical institutions to deliver professional, transparent, and globally trusted healthcare services.",
       "certificateLabel": "Certificate of Registration for Foreign Patient Attraction Business",
       "sgiLabel": "Insured by Seoul Guarantee Insurance (SGI)"
+    },
+    "governmentCertified": {
+      "title": "Government Certified\nMedical Tourism\nPlatform",
+      "description": "K-DOC is a foreign patient attraction company officially registered with the Korea Health Industry Development Institute (KHIDI) under the Ministry of Health and Welfare, and is an officially certified platform that has passed the strict screening standards of national institutions.\n\nIn addition, we are enrolled in Seoul Guarantee Insurance (SGI) 100 million won license guarantee insurance to provide safe and reliable medical services to foreign patients."
     }
   },
   "contact": {

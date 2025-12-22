@@ -7,6 +7,7 @@ import {
   // AboutSeoulOffice,
   AboutVision,
   AboutCertification,
+  AboutContentV2,
 } from 'features/about/ui';
 
 interface AboutPageProps {
@@ -18,13 +19,12 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const dict = await getDictionary(lang);
 
   return (
-    <div className='px-5 pt-12 pb-20'>
-      <AboutHero lang={lang} dict={dict} />
-      <AboutCertification dict={dict} />
-      {/* <AboutDescription dict={dict} /> */}
-      {/* <AboutCeoGreeting dict={dict} /> */}
-      {/* <AboutSeoulOffice dict={dict} /> */}
-      <AboutVision dict={dict} />
+    <div className=''>
+      <AboutContentV2 lang={lang} dict={dict} />
+      {/* <div className='px-5'>
+        <AboutCertification dict={dict} />
+        <AboutVision dict={dict} />
+      </div> */}
     </div>
   );
 }
