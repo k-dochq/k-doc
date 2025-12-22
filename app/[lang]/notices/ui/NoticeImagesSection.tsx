@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ZoomIn } from 'lucide-react';
 import { type NoticeWithFiles } from '@/entities/notice';
-import { NoticeImageModal } from './NoticeImageModal';
+import { ImageModalCarouselV2 } from 'shared/ui/image-modal-carousel/ImageModalCarouselV2';
+import { type ImageModalItem } from 'shared/ui/image-modal-carousel/types';
+import { ZoomIcon } from 'shared/ui/icons/ZoomIcon';
 
 interface NoticeImagesSectionProps {
   notice: NoticeWithFiles;
@@ -19,6 +20,13 @@ export function NoticeImagesSection({ notice }: NoticeImagesSectionProps) {
   if (imageFiles.length === 0) {
     return null;
   }
+
+  // 모달용 데이터 변환
+  const modalImages: ImageModalItem[] = imageFiles.map((file) => ({
+    id: file.id,
+    imageUrl: file.fileUrl,
+    alt: file.alt || file.fileName,
+  }));
 
   const handleImageClick = (index: number) => {
     setSelectedImageIndex(index);
@@ -51,9 +59,10 @@ export function NoticeImagesSection({ notice }: NoticeImagesSectionProps) {
               {/* 줌 버튼 */}
               <button
                 onClick={() => handleImageClick(index)}
-                className='absolute right-3 bottom-3 rounded-xl bg-[#f9d1ff] p-2 transition-colors hover:bg-[#f5c7ff]'
+                className='absolute right-3 bottom-3 flex items-center justify-center rounded bg-[rgba(64,64,64,0.5)] p-1 transition-colors hover:bg-[rgba(64,64,64,0.7)]'
+                aria-label={`이미지 ${index + 1} 확대보기`}
               >
-                <ZoomIn className='h-6 w-6 text-[#da47ef]' />
+                <ZoomIcon className='h-6 w-6' />
               </button>
             </div>
           </div>
@@ -61,8 +70,8 @@ export function NoticeImagesSection({ notice }: NoticeImagesSectionProps) {
       </div>
 
       {/* 이미지 모달 */}
-      <NoticeImageModal
-        images={imageFiles}
+      <ImageModalCarouselV2
+        images={modalImages}
         initialIndex={selectedImageIndex}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
