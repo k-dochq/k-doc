@@ -5,7 +5,6 @@ import { type Locale, SUPPORTED_LOCALES } from 'shared/config';
 import { MaxWidthLayout } from 'widgets/max-width-layout';
 import { GlobalModal } from 'shared/ui/global-modal';
 import { GlobalDrawer } from 'shared/ui/global-drawer/GlobalDrawer';
-import { GradientBackground } from 'shared/ui/gradient-background/GradientBackground';
 import { GoogleAnalytics } from 'shared/ui/google-analytics';
 import { ContentsquareAnalytics } from 'shared/ui/ContentsquareAnalytics';
 import { MetaPixel } from 'shared/ui/meta-pixel';
