@@ -5,3 +5,4 @@ export { AboutCeoGreeting } from './AboutCeoGreeting';
 export { AboutSeoulOffice } from './AboutSeoulOffice';
 export { AboutVision } from './AboutVision';
 export { AboutContentV2 } from './AboutContentV2';
+export { AboutCertificationImagesV2 } from './AboutCertificationImagesV2';
