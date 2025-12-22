@@ -16,7 +16,7 @@ export function AboutTaglineV2() {
   }, []);
 
   return (
-    <div className='px-5 py-[83px]'>
+    <div className='px-8 py-[83px]'>
       <div className='flex w-fit flex-col gap-3'>
         {taglines.map((tagline, index) => {
           // 첫 번째 문장: Connecting + travel 비디오
@@ -77,6 +77,33 @@ export function AboutTaglineV2() {
                 >
                   {tagline}
                 </p>
+              </div>
+            );
+          }
+
+          // 다섯 번째 문장: & Clinics + kdoc_introduce 비디오
+          if (index === 4) {
+            return (
+              <div key={index} className='flex items-center gap-3'>
+                <p className='text-4xl font-bold text-neutral-700'>{tagline}</p>
+                <div
+                  className='relative h-[48px] w-[84px] overflow-hidden rounded-xl'
+                  style={{
+                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(-100%)',
+                    opacity: isVideoLoaded ? 1 : 0,
+                    transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+                  }}
+                >
+                  <video
+                    src='/videos/about-kdoc-introduce.mp4'
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster='/images/about-kdoc-introduce-poster.png'
+                    className='h-full w-full object-cover'
+                  />
+                </div>
               </div>
             );
           }
