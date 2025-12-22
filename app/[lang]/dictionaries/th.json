@@ -158,7 +158,8 @@
     "nextPost": "โพสต์ถัดไป",
     "viewList": "ดูรายการ",
     "noPreviousPost": "ไม่มีโพสต์ก่อนหน้า",
-    "noNextPost": "ไม่มีโพสต์ถัดไป"
+    "noNextPost": "ไม่มีโพสต์ถัดไป",
+    "searchPlaceholder": "กรุณากรอกคำค้นหา"
   },
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",
