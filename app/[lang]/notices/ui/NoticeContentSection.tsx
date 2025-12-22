@@ -21,7 +21,7 @@ export function NoticeContentSection({ notice, lang }: NoticeContentSectionProps
 
   return (
     <div
-      className='text-[14px] leading-[20px] text-neutral-600'
+      className='pt-5 pb-8 text-[14px] leading-[20px] text-neutral-600'
       dangerouslySetInnerHTML={{ __html: processedContent }}
     />
   );
