@@ -158,7 +158,8 @@
     "nextPost": "Next Post",
     "viewList": "View List",
     "noPreviousPost": "No previous post",
-    "noNextPost": "No next post"
+    "noNextPost": "No next post",
+    "searchPlaceholder": "Enter search term"
   },
   "hospitalDetailTabs": {
     "introduction": "Hospital Info",

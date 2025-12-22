@@ -38,7 +38,12 @@ export function NoticesContentV2({ lang, dict }: NoticesContentV2Props) {
       <div className='px-5 pt-8 pb-20'>
         <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.notices.title}</h1>
         <div className='mb-8'>
-          <SearchBarV2 lang={lang} dict={dict} onSearch={handleSearch} />
+          <SearchBarV2
+            lang={lang}
+            dict={dict}
+            onSearch={handleSearch}
+            placeholder={dict.notices.searchPlaceholder}
+          />
         </div>
         <NoticeListSkeletonV2 />
       </div>
@@ -50,7 +55,12 @@ export function NoticesContentV2({ lang, dict }: NoticesContentV2Props) {
       <div className='px-5 pt-8 pb-20'>
         <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.notices.title}</h1>
         <div className='mb-8'>
-          <SearchBarV2 lang={lang} dict={dict} onSearch={handleSearch} />
+          <SearchBarV2
+            lang={lang}
+            dict={dict}
+            onSearch={handleSearch}
+            placeholder={dict.notices.searchPlaceholder}
+          />
         </div>
         <div className='text-center text-red-500'>
           <p>{dict.notices.error}</p>
