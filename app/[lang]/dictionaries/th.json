@@ -156,7 +156,9 @@
     "backToList": "กลับไปรายการ",
     "previousPost": "โพสต์ก่อนหน้า",
     "nextPost": "โพสต์ถัดไป",
-    "viewList": "ดูรายการ"
+    "viewList": "ดูรายการ",
+    "noPreviousPost": "ไม่มีโพสต์ก่อนหน้า",
+    "noNextPost": "ไม่มีโพสต์ถัดไป"
   },
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",

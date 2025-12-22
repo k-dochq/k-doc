@@ -156,7 +156,9 @@
     "backToList": "Back to List",
     "previousPost": "Previous Post",
     "nextPost": "Next Post",
-    "viewList": "View List"
+    "viewList": "View List",
+    "noPreviousPost": "No previous post",
+    "noNextPost": "No next post"
   },
   "hospitalDetailTabs": {
     "introduction": "Hospital Info",

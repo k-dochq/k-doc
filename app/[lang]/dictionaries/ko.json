@@ -156,7 +156,9 @@
     "backToList": "목록으로",
     "previousPost": "이전글",
     "nextPost": "다음글",
-    "viewList": "목록보기"
+    "viewList": "목록보기",
+    "noPreviousPost": "이전글이 없습니다",
+    "noNextPost": "다음글이 없습니다"
   },
   "hospitalDetailTabs": {
     "introduction": "병원소개",

@@ -24,7 +24,7 @@ export function NoticeNavigationV2({
       {/* 이전글/다음글 */}
       <div className='flex flex-col gap-[12px]'>
         {/* 이전글 */}
-        {previousNotice && (
+        {previousNotice ? (
           <LocaleLink
             href={`/notices/${previousNotice.id}`}
             className='flex cursor-pointer items-start gap-4'
@@ -34,10 +34,17 @@ export function NoticeNavigationV2({
               {extractLocalizedText(previousNotice.title, lang) || dict.notices.noTitle}
             </p>
           </LocaleLink>
+        ) : (
+          <div className='flex items-start gap-4'>
+            <p className='text-lg font-bold text-neutral-700'>{dict.notices.previousPost}</p>
+            <p className='flex-1 text-lg font-semibold text-neutral-700'>
+              {dict.notices.noPreviousPost}
+            </p>
+          </div>
         )}
 
         {/* 다음글 */}
-        {nextNotice && (
+        {nextNotice ? (
           <LocaleLink
             href={`/notices/${nextNotice.id}`}
             className='flex cursor-pointer items-start gap-4'
@@ -47,6 +54,13 @@ export function NoticeNavigationV2({
               {extractLocalizedText(nextNotice.title, lang) || dict.notices.noTitle}
             </p>
           </LocaleLink>
+        ) : (
+          <div className='flex items-start gap-4'>
+            <p className='text-lg font-bold text-neutral-700'>{dict.notices.nextPost}</p>
+            <p className='flex-1 text-lg font-semibold text-neutral-700'>
+              {dict.notices.noNextPost}
+            </p>
+          </div>
         )}
       </div>
 
