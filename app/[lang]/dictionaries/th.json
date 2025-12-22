@@ -153,7 +153,13 @@
     "loadingMore": "กำลังโหลด...",
     "allLoaded": "โหลดประกาศครบทุกรายการแล้ว",
     "noTitle": "ไม่มีหัวข้อ",
-    "backToList": "กลับไปรายการ"
+    "backToList": "กลับไปรายการ",
+    "previousPost": "โพสต์ก่อนหน้า",
+    "nextPost": "โพสต์ถัดไป",
+    "viewList": "ดูรายการ",
+    "noPreviousPost": "ไม่มีโพสต์ก่อนหน้า",
+    "noNextPost": "ไม่มีโพสต์ถัดไป",
+    "searchPlaceholder": "กรุณากรอกคำค้นหา"
   },
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",
@@ -842,6 +848,7 @@
     "companyInfo": "เกี่ยวกับเรา",
     "termsOfService": "ข้อกำหนดในการให้บริการ",
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "notices": "ประกาศ",
     "contactUs": "ติดต่อเรา",
     "dataRequest": "ร้องขอแก้ไข/ลบ"
   },

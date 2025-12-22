@@ -106,6 +106,7 @@ export const queryKeys = {
   notices: {
     all: ['notices'] as const,
     lists: () => [...queryKeys.notices.all, 'list'] as const,
+    list: (filters: Record<string, unknown>) => [...queryKeys.notices.lists(), filters] as const,
     infinite: (filters: Record<string, unknown>) =>
       [...queryKeys.notices.lists(), 'infinite', filters] as const,
   },

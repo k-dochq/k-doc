@@ -1,7 +1,7 @@
 import { type Locale } from 'shared/config';
 import type { Metadata } from 'next';
 import { getDictionary } from '../dictionaries';
-import { NoticesContent } from './notices-content';
+import { NoticesContentV2 } from './NoticesContentV2';
 
 interface NoticesPageProps {
   params: Promise<{ lang: Locale }>;
@@ -25,9 +25,5 @@ export default async function NoticesPage({ params }: NoticesPageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
 
-  return (
-    <div className='px-5 pt-5 pb-20'>
-      <NoticesContent lang={lang} dict={dict} />
-    </div>
-  );
+  return <NoticesContentV2 lang={lang} dict={dict} />;
 }

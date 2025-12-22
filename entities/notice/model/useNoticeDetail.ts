@@ -1,8 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { type NoticeWithFiles, type GetNoticeDetailResponse } from './types';
 
-// 단일 공지사항 조회 함수
-async function fetchNoticeDetail(id: string): Promise<NoticeWithFiles> {
+// 단일 공지사항 조회 함수 (이전/다음글 포함)
+async function fetchNoticeDetail(id: string): Promise<
+  NoticeWithFiles & {
+    previousNotice: { id: string; title: any } | null;
+    nextNotice: { id: string; title: any } | null;
+  }
+> {
   const response = await fetch(`/api/notices/${id}`);
 
   if (!response.ok) {

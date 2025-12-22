@@ -153,7 +153,13 @@
     "loadingMore": "Loading...",
     "allLoaded": "All notices loaded.",
     "noTitle": "No Title",
-    "backToList": "Back to List"
+    "backToList": "Back to List",
+    "previousPost": "Previous Post",
+    "nextPost": "Next Post",
+    "viewList": "View List",
+    "noPreviousPost": "No previous post",
+    "noNextPost": "No next post",
+    "searchPlaceholder": "Enter search term"
   },
   "hospitalDetailTabs": {
     "introduction": "Hospital Info",
@@ -842,6 +848,7 @@
     "companyInfo": "About us",
     "termsOfService": "Terms of Service",
     "privacyPolicy": "Privacy Policy",
+    "notices": "Notice",
     "contactUs": "Contact Us",
     "dataRequest": "Request Edit/Deletion"
   },
