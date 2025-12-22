@@ -920,7 +920,9 @@
     },
     "governmentCertified": {
       "title": "Government Certified\nMedical Tourism\nPlatform",
-      "description": "K-DOC은 보건복지부 산하 한국보건산업진흥원(KHIDI)에 정식 등록된 외국인 환자 유치 기업으로, 국가기관의 엄격한 심사 기준을 통과한 공식 인증 플랫폼입니다.\n\n또한 서울보증보험(SGI) 1억 원 인·허가 보증보험에 가입되어 외국인 환자에게 안전하고 신뢰할 수 있는 의료 서비스를 제공합니다."
+      "description": "K-DOC은 보건복지부 산하 한국보건산업진흥원(KHIDI)에 정식 등록된 외국인 환자 유치 기업으로, 국가기관의 엄격한 심사 기준을 통과한 공식 인증 플랫폼입니다.\n\n또한 서울보증보험(SGI) 1억 원 인·허가 보증보험에 가입되어 외국인 환자에게 안전하고 신뢰할 수 있는 의료 서비스를 제공합니다.",
+      "certificateLabel": "외국인 환자 유치업 등록증",
+      "sgiLabel": "인·허가보증보험증권(SGI)"
     }
   },
   "contact": {
