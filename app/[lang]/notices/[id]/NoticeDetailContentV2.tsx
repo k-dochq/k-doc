@@ -8,6 +8,7 @@ import { extractLocalizedText } from '@/shared/lib/localized-text';
 import { NoticeContentSection } from '../ui/NoticeContentSection';
 import { NoticeImagesSection } from '../ui/NoticeImagesSection';
 import { NoticeDetailSkeleton } from './ui/NoticeDetailSkeleton';
+import { NoticeNavigationV2 } from './ui/NoticeNavigationV2';
 
 interface NoticeDetailContentV2Props {
   noticeId: string;
@@ -48,12 +49,20 @@ function NoticeDetailInnerV2({ noticeId, lang, dict }: NoticeDetailContentV2Prop
       </div>
 
       {/* 본문 섹션 */}
-      <div className='space-y-6 border-b border-neutral-200'>
+      <div className='space-y-6 border-b border-neutral-200 pb-5'>
         {/* 본문 HTML 콘텐츠 */}
         <NoticeContentSection notice={notice} lang={lang} />
         {/* 이미지 섹션 */}
         <NoticeImagesSection notice={notice} />
       </div>
+
+      {/* 네비게이션 섹션 */}
+      <NoticeNavigationV2
+        previousNotice={notice.previousNotice || null}
+        nextNotice={notice.nextNotice || null}
+        lang={lang}
+        dict={dict}
+      />
     </div>
   );
 }

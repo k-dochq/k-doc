@@ -153,7 +153,10 @@
     "loadingMore": "กำลังโหลด...",
     "allLoaded": "โหลดประกาศครบทุกรายการแล้ว",
     "noTitle": "ไม่มีหัวข้อ",
-    "backToList": "กลับไปรายการ"
+    "backToList": "กลับไปรายการ",
+    "previousPost": "โพสต์ก่อนหน้า",
+    "nextPost": "โพสต์ถัดไป",
+    "viewList": "ดูรายการ"
   },
   "hospitalDetailTabs": {
     "introduction": "ข้อมูลโรงพยาบาล",

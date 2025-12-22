@@ -52,10 +52,19 @@ export interface NoticesApiResponse {
   error?: string;
 }
 
-// 단일 공지사항 조회 응답
+// 이전/다음글 정보 타입
+export interface NoticeNavigationInfo {
+  id: string;
+  title: Prisma.JsonValue;
+}
+
+// 단일 공지사항 조회 응답 (이전/다음글 포함)
 export interface GetNoticeDetailResponse {
   success: boolean;
-  data: NoticeWithFiles;
+  data: NoticeWithFiles & {
+    previousNotice: NoticeNavigationInfo | null;
+    nextNotice: NoticeNavigationInfo | null;
+  };
   error?: string;
 }
 
