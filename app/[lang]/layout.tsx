@@ -142,9 +142,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         <MarketingAttributionTracker />
 
         <QueryProvider>
-          <MaxWidthLayout>
-            <GradientBackground>{children}</GradientBackground>
-          </MaxWidthLayout>
+          <MaxWidthLayout>{children}</MaxWidthLayout>
           <GlobalModal />
           <GlobalDrawer />
           <Toaster position='top-center' richColors />
