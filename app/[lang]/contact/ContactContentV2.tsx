@@ -15,7 +15,7 @@ interface ContactContentV2Props {
   dict: Dictionary;
 }
 
-export function ContactContentV2({ lang: _lang, dict }: ContactContentV2Props) {
+export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
   // 하남 본사 정확한 좌표
   const hanamLatitude = 37.5609;
   const hanamLongitude = 127.1928;
@@ -64,7 +64,7 @@ export function ContactContentV2({ lang: _lang, dict }: ContactContentV2Props) {
       <ContactGradientTextV2 />
 
       {/* 버튼 영역 */}
-      <ContactButtonSectionV2 dict={dict} />
+      <ContactButtonSectionV2 lang={lang} dict={dict} />
 
       <div className='h-[80px]' />
     </div>
