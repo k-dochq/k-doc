@@ -1,7 +1,5 @@
-import { PageHeader } from 'shared/ui/page-header';
-import { HeaderLanguageSwitcher } from 'widgets/header/ui/HeaderLanguageSwitcher';
-import { HeaderProfile } from 'widgets/header/ui/HeaderProfile';
-import { Footer } from 'widgets/footer';
+import { HeaderV2 } from 'widgets/header/ui/HeaderV2';
+import { FooterV2 } from 'widgets/footer/ui/FooterV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 
@@ -16,22 +14,9 @@ export default async function NoticesLayout({ children, params }: NoticesLayoutP
 
   return (
     <>
-      <PageHeader
-        lang={lang}
-        title={dict.notices.title}
-        fallbackUrl={`/${lang}/main`}
-        variant='light'
-        rightContent={
-          <div className='flex items-center'>
-            <HeaderLanguageSwitcher currentLang={lang} />
-            <HeaderProfile lang={lang} dict={dict} />
-          </div>
-        }
-      />
-      <main>
-        <div className='min-h-screen'>{children}</div>
-      </main>
-      <Footer lang={lang} dict={dict} />
+      <HeaderV2 currentLang={lang} dict={dict} />
+      <main className='min-h-screen bg-white'>{children}</main>
+      <FooterV2 lang={lang} dict={dict} />
     </>
   );
 }

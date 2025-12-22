@@ -5,6 +5,7 @@ import {
   getPrivacyPolicyLink,
   getDataRequestLink,
 } from 'shared/config/policy-links';
+import { LocaleLink } from 'shared/ui/locale-link';
 
 interface FooterPolicyLinksV2Props {
   lang: Locale;
@@ -12,11 +13,16 @@ interface FooterPolicyLinksV2Props {
 }
 
 export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
+  // 태국어일 경우에만 spacing 4, 그 외에는 spacing 6
+  const linkGap = lang === 'th' ? 'gap-4' : 'gap-6';
+
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col gap-4'>
         {/* 정책 링크 */}
-        <div className='flex items-start gap-6 text-xs leading-[16px] font-normal text-[#BABEC4]'>
+        <div
+          className={`flex items-start ${linkGap} text-xs leading-[16px] font-normal text-[#BABEC4]`}
+        >
           <a
             href={getTermsOfServiceLink(lang)}
             target='_blank'
@@ -33,6 +39,13 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
           >
             {dict.footer.privacyPolicy}
           </a>
+          <LocaleLink
+            href='/notices'
+            locale={lang}
+            className='shrink-0 transition-colors hover:text-neutral-200'
+          >
+            {dict.footer.notices}
+          </LocaleLink>
         </div>
 
         {/* 구분선 */}
