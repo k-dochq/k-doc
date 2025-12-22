@@ -23,10 +23,6 @@ export default async function AboutPage({ params }: AboutPageProps) {
     <div className=''>
       <AboutContentV2 lang={lang} dict={dict} />
       <AboutVisionV2 lang={lang} dict={dict} />
-      {/* <div className='px-5'>
-        <AboutCertification dict={dict} />
-        <AboutVision dict={dict} />
-      </div> */}
     </div>
   );
 }
