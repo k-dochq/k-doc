@@ -8,6 +8,7 @@ import {
   AboutVision,
   AboutCertification,
   AboutContentV2,
+  AboutVisionV2,
 } from 'features/about/ui';
 
 interface AboutPageProps {
@@ -21,6 +22,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
   return (
     <div className=''>
       <AboutContentV2 lang={lang} dict={dict} />
+      <AboutVisionV2 lang={lang} dict={dict} />
       {/* <div className='px-5'>
         <AboutCertification dict={dict} />
         <AboutVision dict={dict} />

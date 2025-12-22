@@ -41,7 +41,7 @@ export function AboutCertificationImagesV2({ lang, dict }: AboutCertificationIma
 
   return (
     <>
-      <div className='mt-14 flex gap-1'>
+      <div className='mt-14 flex gap-4'>
         {/* 외국인 환자 유치업 등록증 */}
         <div className='flex-1'>
           <button

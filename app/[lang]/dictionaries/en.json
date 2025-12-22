@@ -924,6 +924,23 @@
       "description": "K-DOC is a foreign patient attraction company officially registered with the Korea Health Industry Development Institute (KHIDI) under the Ministry of Health and Welfare, and is an officially certified platform that has passed the strict screening standards of national institutions.\n\nIn addition, we are enrolled in Seoul Guarantee Insurance (SGI) 100 million won license guarantee insurance to provide safe and reliable medical services to foreign patients.",
       "certificateLabel": "Certificate of Registration for Foreign Patient Attraction Business",
       "sgiLabel": "License Guarantee Insurance Certificate (SGI)"
+    },
+    "visionV2": {
+      "subtitle": "Becoming the standard for medical choices\nthat patients worldwide can trust",
+      "sections": [
+        {
+          "title": "Global Medical Platform",
+          "description": "K-DOC carefully selects only the top 10% of plastic surgery and dermatology clinics in Korea to help global customers choose with confidence based on trust."
+        },
+        {
+          "title": "Your Trusted Choice",
+          "description": "We help you easily check desired procedures and hospital information in Korea at a glance, and choose with confidence through real review comparisons. You can conveniently experience all processes in one place, from reservations to interpretation and post-procedure care."
+        },
+        {
+          "title": "Curated Clinics & Hospitals",
+          "description": "Only Korea's leading plastic surgery and dermatology clinics and hospitals that have been carefully selected through strict criteria are part of K-DOC. Global customers can experience high-quality plastic surgery services through a safe system through medical institutions that have undergone K-DOC's verification process."
+        }
+      ]
     }
   },
   "contact": {
