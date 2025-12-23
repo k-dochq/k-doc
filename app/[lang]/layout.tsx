@@ -10,6 +10,7 @@ import { ContentsquareAnalytics } from 'shared/ui/ContentsquareAnalytics';
 import { MetaPixel } from 'shared/ui/meta-pixel';
 import { GoogleTagManager } from 'shared/ui/google-tag-manager';
 import { GoogleAdsGTM } from 'shared/ui/google-ads-gtm';
+import { RedditPixel } from 'shared/ui/reddit-pixel';
 import { MarketingAttributionTracker } from 'shared/ui/marketing-attribution/MarketingAttributionTracker';
 import { Toaster } from 'sonner';
 
@@ -132,6 +133,8 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         <GoogleAdsGTM />
         {/* Meta Pixel */}
         <MetaPixel pixelId='1160778096188076' />
+        {/* Reddit Pixel */}
+        <RedditPixel pixelId='a2_i7a0kzuf0009' />
         {/* Google Analytics */}
         <GoogleAnalytics gaId='G-8NMENMCDZH' />
         <GoogleAnalytics gaId='G-HB3H04LPPD' />
