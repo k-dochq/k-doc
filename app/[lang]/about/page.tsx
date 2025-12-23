@@ -1,13 +1,6 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
-import {
-  AboutHero,
-  // AboutDescription,
-  // AboutCeoGreeting,
-  // AboutSeoulOffice,
-  AboutVision,
-  AboutCertification,
-} from 'features/about/ui';
+import { AboutContentV2, AboutVisionV2, AboutTaglineV2 } from 'features/about/ui';
 
 interface AboutPageProps {
   params: Promise<{ lang: Locale }>;
@@ -18,13 +11,10 @@ export default async function AboutPage({ params }: AboutPageProps) {
   const dict = await getDictionary(lang);
 
   return (
-    <div className='px-5 pt-12 pb-20'>
-      <AboutHero lang={lang} dict={dict} />
-      <AboutCertification dict={dict} />
-      {/* <AboutDescription dict={dict} /> */}
-      {/* <AboutCeoGreeting dict={dict} /> */}
-      {/* <AboutSeoulOffice dict={dict} /> */}
-      <AboutVision dict={dict} />
+    <div className=''>
+      {/* <AboutTaglineV2 /> */}
+      <AboutContentV2 lang={lang} dict={dict} />
+      <AboutVisionV2 lang={lang} dict={dict} />
     </div>
   );
 }
