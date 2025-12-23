@@ -28,7 +28,7 @@ export function ReviewDetailHeaderActions({
 
   const handleMoreClick = async () => {
     await openDrawer({
-      content: <ReviewActionDrawer lang={locale} dict={dict} />,
+      content: <ReviewActionDrawer lang={locale} dict={dict} reviewId={reviewId} />,
     });
   };
 

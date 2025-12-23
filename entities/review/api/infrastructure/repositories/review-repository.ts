@@ -1,6 +1,10 @@
 import { prisma } from 'shared/lib/prisma';
 import { type Prisma } from '@prisma/client';
-import { type ReviewCreateData, type ReviewImageCreateData } from '../../entities/types';
+import {
+  type ReviewCreateData,
+  type ReviewImageCreateData,
+  type ReviewUpdateData,
+} from '../../entities/types';
 
 export class ReviewRepository {
   /**
@@ -75,6 +79,85 @@ export class ReviewRepository {
     });
 
     return result;
+  }
+
+  /**
+   * 리뷰 수정 (트랜잭션)
+   * 1. 기존 ReviewImage 삭제 (isActive = false)
+   * 2. Review 업데이트
+   * 3. 새로운 ReviewImage 생성
+   */
+  async updateReview(
+    reviewId: string,
+    reviewData: ReviewUpdateData,
+    images: Omit<ReviewImageCreateData, 'reviewId'>[],
+  ): Promise<{ reviewId: string }> {
+    const result = await prisma.$transaction(async (tx) => {
+      // 1. 기존 ReviewImage를 isActive = false로 업데이트 (소프트 삭제)
+      await tx.reviewImage.updateMany({
+        where: {
+          reviewId,
+          isActive: true,
+        },
+        data: {
+          isActive: false,
+          updatedAt: new Date(),
+        },
+      });
+
+      // 2. Review 업데이트
+      await tx.review.update({
+        where: { id: reviewId },
+        data: {
+          rating: reviewData.rating,
+          title: reviewData.title as Prisma.InputJsonObject,
+          content: reviewData.content as Prisma.InputJsonObject,
+          concernsMultilingual: reviewData.concernsMultilingual as Prisma.InputJsonObject,
+          MedicalSpecialty: {
+            connect: { id: reviewData.medicalSpecialtyId },
+          },
+          isRecommended: reviewData.isRecommended,
+          updatedAt: new Date(),
+        } as Prisma.ReviewUpdateInput,
+      });
+
+      // 3. 새로운 ReviewImage 생성
+      if (images.length > 0) {
+        const now = new Date();
+        for (const img of images) {
+          await tx.reviewImage.create({
+            data: {
+              id: crypto.randomUUID(),
+              Review: {
+                connect: { id: reviewId },
+              },
+              imageType: img.imageType,
+              imageUrl: img.imageUrl,
+              order: img.order ?? undefined,
+              alt: img.alt ?? undefined,
+              isActive: img.isActive,
+              updatedAt: now,
+            } as Prisma.ReviewImageCreateInput,
+          });
+        }
+      }
+
+      return { reviewId };
+    });
+
+    return result;
+  }
+
+  /**
+   * 리뷰 ID로 리뷰 조회 (hospitalId 포함)
+   */
+  async getReviewById(reviewId: string): Promise<{ hospitalId: string } | null> {
+    const review = await prisma.review.findUnique({
+      where: { id: reviewId },
+      select: { hospitalId: true },
+    });
+
+    return review;
   }
 
   /**

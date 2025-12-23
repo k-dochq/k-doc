@@ -3,19 +3,31 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { resolveDrawer } from 'shared/lib/drawer';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 
 interface ReviewActionDrawerProps {
   lang: Locale;
   dict: Dictionary;
+  reviewId: string;
   onEdit?: () => void;
   onDelete?: () => void;
 }
 
-export function ReviewActionDrawer({ lang, dict, onEdit, onDelete }: ReviewActionDrawerProps) {
+export function ReviewActionDrawer({
+  lang,
+  dict,
+  reviewId,
+  onEdit,
+  onDelete,
+}: ReviewActionDrawerProps) {
+  const router = useLocalizedRouter();
+
   const handleEdit = () => {
-    // 추후 구현 예정
     if (onEdit) {
       onEdit();
+    } else {
+      // 기본 동작: 수정 페이지로 이동
+      router.push(`/reviews-edit/${reviewId}`);
     }
     resolveDrawer();
   };
