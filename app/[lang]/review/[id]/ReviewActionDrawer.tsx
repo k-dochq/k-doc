@@ -16,11 +16,11 @@ interface ReviewActionDrawerProps {
 }
 
 export function ReviewActionDrawer({
-  lang,
+  lang: _lang,
   dict,
   reviewId,
   onEdit,
-  onDelete,
+  onDelete: _onDelete,
 }: ReviewActionDrawerProps) {
   const router = useLocalizedRouter();
 

@@ -1,4 +1,3 @@
-import { FooterV2 } from 'widgets/footer/ui/FooterV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
 import { BottomNavigationV2 } from '@/widgets/bottom-navigation';
