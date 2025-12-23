@@ -56,3 +56,31 @@ export interface ReviewImageCreateData {
   alt?: string;
   isActive: boolean;
 }
+
+// 리뷰 수정 요청 타입
+export interface UpdateReviewRequest {
+  rating: number;
+  content: string;
+  procedureName: string; // concernsMultilingual에 저장됨
+  medicalSpecialtyId: string;
+  beforeImageUrls: string[];
+  afterImageUrls: string[];
+}
+
+// 리뷰 수정 응답 타입
+export interface UpdateReviewResponse {
+  success: boolean;
+  reviewId?: string;
+  error?: string;
+  requestId?: string;
+}
+
+// Prisma Review 업데이트 데이터 타입
+export type ReviewUpdateData = {
+  rating: number;
+  title: MultilingualText;
+  content: MultilingualText;
+  concernsMultilingual: MultilingualText;
+  medicalSpecialtyId: string;
+  isRecommended: boolean;
+};

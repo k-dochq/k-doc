@@ -13,6 +13,7 @@ export { KakaoIcon } from './KakaoIcon';
 export { DetailHeartIcon } from './DetailHeartIcon';
 export { BackIcon } from './BackIcon';
 export { MoreIcon } from './MoreIcon';
+export { MoreVerticalIcon } from './MoreVerticalIcon';
 export { HomeIcon } from './HomeIcon';
 export { HospitalIcon } from './HospitalIcon';
 export { ReviewIcon } from './ReviewIcon';

@@ -9,7 +9,7 @@ import { ReviewDetailSkeleton } from './ReviewDetailSkeleton';
 // import { ReviewDetailPage as ReviewDetailPageComponent } from './ReviewDetailPage';
 import { convertReviewHospitalToHospitalCard } from '@/entities/review';
 import { PageHeaderV2 } from '@/shared/ui';
-import { ReviewLikeButtonV2 } from '@/features/review-like/ui/ReviewLikeButtonV2';
+import { ReviewDetailHeaderActions } from './ReviewDetailHeaderActions';
 import { ReviewDetailCardV2Shell } from '../../v2/review/[id]/ReviewDetailCardV2Shell';
 import { TreatmentHospitalSectionV2 } from '../../v2/review/[id]/TreatmentHospitalSectionV2';
 import { ReviewCommentsSectionV2 } from '@/features/review-comments/ui/ReviewCommentsSectionV2';
@@ -59,13 +59,19 @@ async function ReviewDetailContent({ reviewId, lang, dict }: ReviewDetailContent
     const title = '';
     const hospitalCard = convertReviewHospitalToHospitalCard(review);
 
-    // return <ReviewDetailPageComponent review={review} lang={lang} dict={dict} />;
     return (
       <div className='min-h-screen bg-white'>
         <PageHeaderV2
           title={title}
           fallbackUrl={`/${lang}/reviews`}
-          rightContent={<ReviewLikeButtonV2 reviewId={review.id} locale={lang} dict={dict} />}
+          rightContent={
+            <ReviewDetailHeaderActions
+              reviewId={review.id}
+              reviewUserId={review.userId}
+              locale={lang}
+              dict={dict}
+            />
+          }
           // 투명 처리 옵션 기본 false
           enableScrollTransparency={false}
         />

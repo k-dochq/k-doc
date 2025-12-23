@@ -59,6 +59,8 @@ export const queryKeys = {
       [...queryKeys.reviews.hospital(hospitalId), 'infinite', filters] as const,
     allInfinite: (filters: Record<string, unknown>) =>
       [...queryKeys.reviews.lists(), 'infinite', filters] as const,
+    myInfinite: (filters: Record<string, unknown>) =>
+      [...queryKeys.reviews.all, 'my', 'infinite', filters] as const,
     liked: {
       all: () => [...queryKeys.reviews.all, 'liked'] as const,
       list: (params: Record<string, unknown>) =>

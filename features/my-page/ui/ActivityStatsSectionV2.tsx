@@ -24,13 +24,17 @@ export function ActivityStatsSectionV2({ lang, dict }: ActivityStatsSectionV2Pro
   return (
     <div className='flex items-center justify-between rounded-xl border border-neutral-200 bg-white py-5'>
       {/* 내가 작성한 글 섹션 */}
-      <div className='flex flex-1 flex-col items-center justify-center gap-1'>
+      <LocaleLink
+        href={`/${lang}/my/reviews`}
+        locale={lang}
+        className='flex flex-1 cursor-pointer flex-col items-center justify-center gap-1 transition-opacity hover:opacity-70'
+      >
         <MyPostsIcon />
         <div className='flex items-start gap-0.5 text-sm leading-[20px] text-neutral-700'>
           <p className='font-medium'>{myPostsLabel}</p>
           <p className='font-semibold'>{myPostsCount}</p>
         </div>
-      </div>
+      </LocaleLink>
 
       {/* 세로 구분선 */}
       <div className='flex h-8 items-center justify-center'>
