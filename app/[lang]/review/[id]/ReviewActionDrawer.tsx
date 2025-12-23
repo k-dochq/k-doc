@@ -4,7 +4,8 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { resolveDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
-import { confirm } from 'shared/lib/modal';
+import { confirm, setModalLoading, closeModal, alert } from 'shared/lib/modal';
+import { useDeleteReview } from 'entities/review/model/useDeleteReview';
 
 interface ReviewActionDrawerProps {
   lang: Locale;
@@ -22,6 +23,22 @@ export function ReviewActionDrawer({
   onDelete,
 }: ReviewActionDrawerProps) {
   const router = useLocalizedRouter();
+
+  const { mutate: deleteReview } = useDeleteReview({
+    onSuccess: () => {
+      setModalLoading(false);
+      closeModal();
+      // 삭제 성공 시 리뷰 목록 페이지로 이동
+      router.push('/reviews');
+    },
+    onError: (error: Error) => {
+      setModalLoading(false);
+      // 에러 메시지 표시
+      alert({
+        message: error.message || dict.review?.deleteError || '리뷰 삭제에 실패했습니다.',
+      });
+    },
+  });
 
   const handleEdit = () => {
     if (onEdit) {
@@ -49,11 +66,8 @@ export function ReviewActionDrawer({
 
     if (result) {
       // 사용자가 확인을 클릭한 경우
-      // TODO: 실제 삭제 API 호출 (다음 작업에서 구현)
-      if (onDelete) {
-        onDelete();
-      }
-      console.log('삭제 확인됨 - 추후 구현 예정');
+      setModalLoading(true);
+      deleteReview(reviewId);
     }
     // 취소를 클릭한 경우는 아무 동작도 하지 않음
   };

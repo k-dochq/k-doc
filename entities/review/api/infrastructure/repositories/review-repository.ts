@@ -161,6 +161,55 @@ export class ReviewRepository {
   }
 
   /**
+   * 리뷰 삭제 (트랜잭션)
+   * 1. 리뷰 조회 (hospitalId 포함)
+   * 2. 리뷰 이미지 삭제
+   * 3. 리뷰 삭제
+   * 4. 병원의 reviewCount 감소
+   * 5. 병원의 rating 재계산
+   */
+  async deleteReview(reviewId: string): Promise<{ reviewId: string; hospitalId: string }> {
+    const result = await prisma.$transaction(async (tx) => {
+      // 1. 리뷰 조회 (hospitalId 포함)
+      const review = await tx.review.findUnique({
+        where: { id: reviewId },
+        select: { id: true, hospitalId: true },
+      });
+
+      if (!review) {
+        throw new Error('Review not found');
+      }
+
+      // 2. 리뷰 이미지 삭제
+      await tx.reviewImage.deleteMany({
+        where: { reviewId },
+      });
+
+      // 3. 리뷰 삭제
+      await tx.review.delete({
+        where: { id: reviewId },
+      });
+
+      // 4. 병원의 reviewCount 감소
+      await tx.hospital.update({
+        where: { id: review.hospitalId },
+        data: {
+          reviewCount: {
+            decrement: 1,
+          },
+        },
+      });
+
+      return { reviewId: review.id, hospitalId: review.hospitalId };
+    });
+
+    // 5. 병원의 rating 재계산 (트랜잭션 외부에서 실행)
+    await this.updateHospitalRating(result.hospitalId);
+
+    return result;
+  }
+
+  /**
    * 특정 병원의 평균 평점 계산 및 업데이트
    */
   async updateHospitalRating(hospitalId: string): Promise<void> {

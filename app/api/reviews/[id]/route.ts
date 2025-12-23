@@ -3,8 +3,9 @@ import { getReviewDetail } from 'entities/review/api/use-cases/get-review-detail
 import { ReviewImageBlurService } from 'entities/review';
 import { AuthService } from 'shared/lib/auth/server';
 import { routeErrorLogger } from 'shared/lib';
-import { createClient } from 'shared/lib/supabase/server';
 import { prisma } from 'shared/lib/prisma';
+import { ReviewRepository } from 'entities/review/api/infrastructure/repositories/review-repository';
+import { DeleteReview } from 'entities/review/api/use-cases/delete-review';
 
 interface RouteParams {
   params: Promise<{
@@ -82,36 +83,23 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
  * 작성자 본인만 삭제 가능
  */
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
-  const { id } = await params;
-  const endpoint = `/api/reviews/${id}`;
+  const endpoint = '/api/reviews/[id]';
   const method = 'DELETE';
 
   try {
-    // Supabase 인증 확인
-    const supabase = await createClient();
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
+    const { id: reviewId } = await params;
 
-    if (!session?.user) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Unauthorized',
-        },
-        { status: 401 },
-      );
-    }
+    // 인증 확인
+    const authService = new AuthService();
+    const user = await authService.getCurrentUser();
 
-    // 리뷰 존재 확인
-    const existingReview = await prisma.review.findUnique({
-      where: { id },
-      include: {
-        ReviewImage: true,
-      },
+    // 리뷰 존재 여부 및 작성자 확인
+    const review = await prisma.review.findUnique({
+      where: { id: reviewId },
+      select: { userId: true, hospitalId: true },
     });
 
-    if (!existingReview) {
+    if (!review) {
       return NextResponse.json(
         {
           success: false,
@@ -121,31 +109,31 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
       );
     }
 
-    // 작성자 본인 확인
-    if (existingReview.userId !== session.user.id) {
+    // 작성자 확인 (이중 확인)
+    if (review.userId !== user.id) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Forbidden: Only the review author can delete this review',
+          error: 'Unauthorized: You can only delete your own reviews',
         },
         { status: 403 },
       );
     }
 
-    // 트랜잭션으로 리뷰와 관련 이미지 삭제
-    await prisma.$transaction(async (tx) => {
-      // 리뷰 이미지 삭제 (CASCADE로 자동 삭제되지만 명시적으로 처리)
-      await tx.reviewImage.deleteMany({
-        where: { reviewId: id },
-      });
+    // UseCase 실행
+    const reviewRepository = new ReviewRepository();
+    const deleteReviewUseCase = new DeleteReview(reviewRepository);
 
-      // 리뷰 삭제
-      await tx.review.delete({
-        where: { id },
-      });
-    });
+    const result = await deleteReviewUseCase.execute(reviewId);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json(
+      {
+        success: true,
+        reviewId: result.reviewId,
+        hospitalId: result.hospitalId,
+      },
+      { status: 200 },
+    );
   } catch (error) {
     const requestId = routeErrorLogger.logError({
       error: error as Error,
@@ -154,6 +142,43 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
       request,
     });
 
+    // 인증 에러
+    if (error instanceof Error && error.message.includes('not authenticated')) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Unauthorized',
+          requestId,
+        },
+        { status: 401 },
+      );
+    }
+
+    // 리뷰 없음 에러
+    if (error instanceof Error && error.message.includes('Review not found')) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Review not found',
+          requestId,
+        },
+        { status: 404 },
+      );
+    }
+
+    // 검증 에러
+    if (error instanceof Error && error.message.includes('required')) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: error.message,
+          requestId,
+        },
+        { status: 400 },
+      );
+    }
+
+    // 일반 에러
     return NextResponse.json(
       {
         success: false,
