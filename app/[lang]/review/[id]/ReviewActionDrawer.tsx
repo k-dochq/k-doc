@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { resolveDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { confirm } from 'shared/lib/modal';
 
 interface ReviewActionDrawerProps {
   lang: Locale;
@@ -32,12 +33,29 @@ export function ReviewActionDrawer({
     resolveDrawer();
   };
 
-  const handleDelete = () => {
-    // 추후 구현 예정
-    if (onDelete) {
-      onDelete();
-    }
+  const handleDelete = async () => {
+    // 드로어 먼저 닫기
     resolveDrawer();
+
+    // 확인 모달 표시
+    const result = await confirm({
+      title: dict.review?.deleteConfirmTitle || '후기를 삭제 하시겠습니까?',
+      message:
+        dict.review?.deleteConfirmMessage ||
+        '삭제 후에는 복구할 수 없습니다.\n신중히 선택해주세요.',
+      confirmText: dict.review?.delete || '삭제하기',
+      cancelText: dict.common?.cancel || '취소',
+    });
+
+    if (result) {
+      // 사용자가 확인을 클릭한 경우
+      // TODO: 실제 삭제 API 호출 (다음 작업에서 구현)
+      if (onDelete) {
+        onDelete();
+      }
+      console.log('삭제 확인됨 - 추후 구현 예정');
+    }
+    // 취소를 클릭한 경우는 아무 동작도 하지 않음
   };
 
   const handleCancel = () => {

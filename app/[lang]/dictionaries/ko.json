@@ -571,6 +571,8 @@
     "edit": "수정하기",
     "report": "신고하기",
     "deleteConfirm": "정말 삭제하시겠습니까?",
+    "deleteConfirmTitle": "후기를 삭제 하시겠습니까?",
+    "deleteConfirmMessage": "삭제 후에는 복구할 수 없습니다.\n신중히 선택해주세요.",
     "deleteSuccess": "리뷰가 삭제되었습니다",
     "deleteError": "리뷰 삭제에 실패했습니다",
     "procedureTiming": "시술시기",
