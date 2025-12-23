@@ -15,6 +15,7 @@ export default async function MyReviewsLayout({ children, params }: MyReviewsLay
   return (
     <>
       <div className='min-h-screen bg-white'>{children}</div>
+      <div className='h-16' />
       <BottomNavigationV2 currentLang={lang} dict={dict} />
     </>
   );

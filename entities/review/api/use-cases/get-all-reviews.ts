@@ -49,6 +49,11 @@ export async function getAllReviews({
       };
     }
 
+    // userId가 있고 likedOnly가 false이면 해당 사용자가 작성한 리뷰만 필터링
+    if (userId && !likedOnly) {
+      whereCondition.userId = userId;
+    }
+
     // hasBothImages가 true이면 before/after 이미지가 모두 있는 리뷰만 필터링
     if (hasBothImages) {
       whereCondition.AND = [
