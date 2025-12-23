@@ -9,6 +9,7 @@ import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
 import { HospitalCardV2NameAndLocation } from './HospitalCardV2NameAndLocation';
 import { HospitalCardV2Price } from './HospitalCardV2Price';
 import { HospitalCardV2Rating } from './HospitalCardV2Rating';
+import { addCategoryToHospitalCardData } from '../lib/add-hospital-category';
 
 interface HospitalCardV2Props {
   hospital: HospitalCardData;
@@ -31,31 +32,39 @@ export function HospitalCardV2({
   showLikeButton = false,
   href,
 }: HospitalCardV2Props) {
-  const hospitalName = getLocalizedTextByLocale(hospital.name, lang);
-  const displayLocationName = hospital.displayLocationName
-    ? getLocalizedTextByLocale(hospital.displayLocationName, lang)
+  // 추가 카테고리가 포함된 병원 데이터
+  const hospitalWithCategory = addCategoryToHospitalCardData(hospital);
+
+  const hospitalName = getLocalizedTextByLocale(hospitalWithCategory.name, lang);
+  const displayLocationName = hospitalWithCategory.displayLocationName
+    ? getLocalizedTextByLocale(hospitalWithCategory.displayLocationName, lang)
     : null;
-  const address = getLocalizedTextByLocale(hospital.address, lang);
+  const address = getLocalizedTextByLocale(hospitalWithCategory.address, lang);
 
   // 가격 포맷팅
-  const price = hospital.prices?.minPrice ? `$${hospital.prices.minPrice.toLocaleString()}~` : '';
+  const price = hospitalWithCategory.prices?.minPrice
+    ? `$${hospitalWithCategory.prices.minPrice.toLocaleString()}~`
+    : '';
 
   // 지역 정보 (displayLocationName이 있으면 사용)
   const location = displayLocationName || address;
 
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
-  const isLiked = user && hospital.likedUserIds ? hospital.likedUserIds.includes(user.id) : false;
+  const isLiked =
+    user && hospitalWithCategory.likedUserIds
+      ? hospitalWithCategory.likedUserIds.includes(user.id)
+      : false;
 
   // 좋아요 토글 핸들러
   const handleToggleLike = () => {
-    onToggleLike?.(hospital.id);
+    onToggleLike?.(hospitalWithCategory.id);
   };
 
   // 뱃지 로직: badge 배열의 첫 번째 요소 확인
-  const firstBadge = hospital.badge?.[0];
+  const firstBadge = hospitalWithCategory.badge?.[0];
 
   // 링크 URL 결정: href prop이 제공되면 사용, 없으면 기본값 사용
-  const linkHref = href || `/${lang}/hospital/${hospital.id}`;
+  const linkHref = href || `/${lang}/hospital/${hospitalWithCategory.id}`;
 
   return (
     <a href={linkHref} className='block'>
@@ -68,7 +77,7 @@ export function HospitalCardV2({
         <div className='flex flex-col items-center overflow-clip rounded-xl bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
           {/* 썸네일 이미지 */}
           <HospitalCardV2Thumbnail
-            imageUrl={hospital.thumbnailImageUrl}
+            imageUrl={hospitalWithCategory.thumbnailImageUrl}
             alt={hospitalName}
             showLikeButton={showLikeButton}
             isLiked={isLiked}
@@ -81,13 +90,14 @@ export function HospitalCardV2({
             {/* 상단 영역 */}
             <div className='flex w-full shrink-0 flex-col items-start gap-1.5'>
               {/* 카테고리 태그 */}
-              {hospital.medicalSpecialties && hospital.medicalSpecialties.length > 0 && (
-                <MedicalSpecialtyTagsV2
-                  specialties={hospital.medicalSpecialties}
-                  lang={lang}
-                  maxDisplay={3}
-                />
-              )}
+              {hospitalWithCategory.medicalSpecialties &&
+                hospitalWithCategory.medicalSpecialties.length > 0 && (
+                  <MedicalSpecialtyTagsV2
+                    specialties={hospitalWithCategory.medicalSpecialties}
+                    lang={lang}
+                    maxDisplay={3}
+                  />
+                )}
 
               {/* 제목 및 지역 */}
               <HospitalCardV2NameAndLocation
@@ -103,7 +113,10 @@ export function HospitalCardV2({
               <HospitalCardV2Price price={price} />
 
               {/* 별점 및 리뷰 */}
-              <HospitalCardV2Rating rating={hospital.rating} reviewCount={hospital.reviewCount} />
+              <HospitalCardV2Rating
+                rating={hospitalWithCategory.rating}
+                reviewCount={hospitalWithCategory.reviewCount}
+              />
             </div>
           </div>
         </div>

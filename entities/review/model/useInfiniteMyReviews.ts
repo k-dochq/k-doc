@@ -1,0 +1,77 @@
+'use client';
+
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { queryKeys } from 'shared/lib/query-keys';
+import { type GetAllReviewsResponse } from './types';
+
+interface UseInfiniteMyReviewsParams {
+  limit?: number;
+  initialData?: GetAllReviewsResponse;
+}
+
+interface MyReviewsApiResponse {
+  success: boolean;
+  data: GetAllReviewsResponse;
+  error?: string;
+}
+
+export async function fetchMyReviews({
+  pageParam = 1,
+  limit = 10,
+}: {
+  pageParam: number;
+} & UseInfiniteMyReviewsParams): Promise<GetAllReviewsResponse> {
+  const params = new URLSearchParams({
+    page: pageParam.toString(),
+    limit: limit.toString(),
+  });
+
+  const response = await fetch(`/api/my/reviews?${params.toString()}`, {
+    // Next.js 캐싱: 5분간 캐시, 그 후 재검증
+    next: { revalidate: 300 },
+  });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error('Unauthorized');
+    }
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const result: MyReviewsApiResponse = await response.json();
+
+  if (!result.success) {
+    throw new Error(result.error || 'Failed to fetch my reviews');
+  }
+
+  return result.data;
+}
+
+export function useInfiniteMyReviews({ limit = 10, initialData }: UseInfiniteMyReviewsParams = {}) {
+  const filters = { limit };
+
+  return useInfiniteQuery({
+    queryKey: queryKeys.reviews.myInfinite(filters),
+    queryFn: ({ pageParam }) =>
+      fetchMyReviews({
+        pageParam,
+        limit,
+      }),
+    getNextPageParam: (lastPage) => {
+      return lastPage.hasNextPage ? lastPage.currentPage + 1 : undefined;
+    },
+    initialPageParam: 1,
+    placeholderData: (previousData) => previousData, // 이전 데이터를 placeholder로 유지
+    staleTime: 5 * 60 * 1000, // 5분
+    gcTime: 10 * 60 * 1000, // 10분 (formerly cacheTime)
+    refetchOnWindowFocus: false,
+    retry: 3,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    ...(initialData && {
+      initialData: {
+        pages: [initialData],
+        pageParams: [1],
+      },
+    }),
+  });
+}

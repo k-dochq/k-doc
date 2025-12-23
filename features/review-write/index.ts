@@ -6,3 +6,4 @@ export { MedicalSpecialtySelect } from './ui/MedicalSpecialtySelect';
 export { useReviewWriteForm } from './model/useReviewWriteForm';
 export { useImageUpload } from './model/useImageUpload';
 export { useCreateReview } from './model/useCreateReview';
+export { useUpdateReview } from './model/useUpdateReview';
