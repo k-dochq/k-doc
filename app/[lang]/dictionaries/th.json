@@ -256,7 +256,9 @@
       "submitButton": "ส่งรีวิว",
       "submitting": "กำลังส่ง...",
       "uploading": "กำลังอัปโหลด...",
-      "characterCount": "{{current}}/500"
+      "characterCount": "{{current}}/500",
+      "editTitle": "แก้ไขรีวิว",
+      "editSubmitButton": "แก้ไขรีวิว"
     },
     "validation": {
       "ratingRequired": "โปรดเลือกคะแนน",

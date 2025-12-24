@@ -256,7 +256,9 @@
       "submitButton": "Submit Review",
       "submitting": "Submitting...",
       "uploading": "Uploading...",
-      "characterCount": "{{current}}/500"
+      "characterCount": "{{current}}/500",
+      "editTitle": "Edit Review",
+      "editSubmitButton": "Edit Review"
     },
     "validation": {
       "ratingRequired": "Please select a rating",

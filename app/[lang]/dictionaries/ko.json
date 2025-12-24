@@ -256,7 +256,9 @@
       "submitButton": "시술후기 등록",
       "submitting": "등록 중...",
       "uploading": "업로드중입니다",
-      "characterCount": "{{current}}/500"
+      "characterCount": "{{current}}/500",
+      "editTitle": "시술후기 수정",
+      "editSubmitButton": "시술후기 수정"
     },
     "validation": {
       "ratingRequired": "별점을 선택해주세요",

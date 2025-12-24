@@ -200,7 +200,7 @@ export function ReviewEditContentV2({ lang, dict, reviewId }: ReviewEditContentV
   return (
     <form onSubmit={handleSubmit} className='bg-white'>
       <PageHeaderV2
-        title={dict.reviewWrite?.form?.title || 'Edit Review'}
+        title={dict.reviewWrite?.form?.editTitle || 'Edit Review'}
         fallbackUrl={`/${lang}/review/${reviewId}`}
       />
 
