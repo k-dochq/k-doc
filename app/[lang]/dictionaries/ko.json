@@ -256,7 +256,13 @@
       "submitButton": "시술후기 등록",
       "submitting": "등록 중...",
       "uploading": "업로드중입니다",
-      "characterCount": "{{current}}/500"
+      "characterCount": "{{current}}/500",
+      "editTitle": "시술후기 수정",
+      "editSubmitButton": "시술후기 수정",
+      "cancelConfirmTitle": "후기 작성을 취소하시겠어요?",
+      "cancelConfirmMessage": "작성을 취소할 경우\n입력한 내용이 모두 사라집니다.",
+      "cancelConfirmButton": "작성취소",
+      "cancelContinueButton": "계속작성"
     },
     "validation": {
       "ratingRequired": "별점을 선택해주세요",

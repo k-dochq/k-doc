@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: ReviewEditPageProps) {
   const dict = await getDictionary(lang);
 
   return {
-    title: dict.reviewWrite?.form?.title || 'Edit Review',
+    title: dict.reviewWrite?.form?.editTitle || 'Edit Review',
     description: dict.reviewWrite?.form?.ratingQuestion || 'Edit your review',
   };
 }

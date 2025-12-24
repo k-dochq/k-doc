@@ -29,7 +29,7 @@ export function ReviewEditFloatingButton({
       >
         {isSubmitting
           ? formDict?.submitting || 'Updating...'
-          : formDict?.submitButton || '시술후기 수정'}
+          : formDict?.editSubmitButton || '시술후기 수정'}
       </button>
     </div>
   );
