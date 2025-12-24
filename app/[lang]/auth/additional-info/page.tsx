@@ -1,8 +1,6 @@
 import { getDictionary } from '../../dictionaries';
 import { type Locale } from 'shared/config';
-import { PageHeader } from 'shared/ui/page-header';
-import { AdditionalInfoForm } from 'features/social-auth';
-import { HeaderLanguageSwitcher } from 'widgets/header/ui/HeaderLanguageSwitcher';
+import { AdditionalInfoContentV2 } from './AdditionalInfoContentV2';
 import { AuthService } from 'shared/lib/auth/server';
 import { redirect } from 'next/navigation';
 
@@ -43,34 +41,12 @@ export default async function AdditionalInfoPage({
   }
 
   return (
-    <div className='min-h-screen'>
-      <PageHeader
-        lang={lang}
-        title={dict.auth?.additionalInfo?.title || 'Additional Information'}
-        fallbackUrl={`/${lang}/main`}
-        variant='light'
-        rightContent={<HeaderLanguageSwitcher currentLang={lang} />}
-      />
-
-      <div className='px-5 py-6'>
-        <div className='mx-auto max-w-md'>
-          {/* 안내 메시지 */}
-          <div className='mb-6 rounded-xl border border-blue-200 bg-blue-50 p-4'>
-            <p className='text-sm text-blue-800'>
-              {dict.auth?.additionalInfo?.description ||
-                'Please provide additional information to use our service.'}
-            </p>
-          </div>
-
-          <AdditionalInfoForm
-            lang={lang}
-            dict={dict}
-            userEmail={userEmail}
-            redirectTo={redirectTo}
-            provider={provider}
-          />
-        </div>
-      </div>
-    </div>
+    <AdditionalInfoContentV2
+      lang={lang}
+      dict={dict}
+      userEmail={userEmail}
+      redirectTo={redirectTo}
+      provider={provider}
+    />
   );
 }

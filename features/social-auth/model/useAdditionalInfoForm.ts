@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
-interface AdditionalInfoFormData {
+export interface AdditionalInfoFormData {
   passportName: string;
   nationality: string;
   gender: string;
@@ -13,7 +13,7 @@ interface AdditionalInfoFormData {
   birthDate: string;
 }
 
-interface AdditionalInfoFormErrors {
+export interface AdditionalInfoFormErrors {
   passportName?: string;
   nationality?: string;
   gender?: string;
