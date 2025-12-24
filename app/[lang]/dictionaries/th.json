@@ -258,7 +258,11 @@
       "uploading": "กำลังอัปโหลด...",
       "characterCount": "{{current}}/500",
       "editTitle": "แก้ไขรีวิว",
-      "editSubmitButton": "แก้ไขรีวิว"
+      "editSubmitButton": "แก้ไขรีวิว",
+      "cancelConfirmTitle": "ยกเลิกการเขียนรีวิว?",
+      "cancelConfirmMessage": "หากคุณยกเลิกการเขียน\nเนื้อหาที่ป้อนทั้งหมดจะหายไป",
+      "cancelConfirmButton": "ยกเลิก",
+      "cancelContinueButton": "เขียนต่อ"
     },
     "validation": {
       "ratingRequired": "โปรดเลือกคะแนน",

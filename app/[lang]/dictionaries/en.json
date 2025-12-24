@@ -258,7 +258,11 @@
       "uploading": "Uploading...",
       "characterCount": "{{current}}/500",
       "editTitle": "Edit Review",
-      "editSubmitButton": "Edit Review"
+      "editSubmitButton": "Edit Review",
+      "cancelConfirmTitle": "Cancel writing review?",
+      "cancelConfirmMessage": "If you cancel writing,\nall entered content will be lost.",
+      "cancelConfirmButton": "Cancel",
+      "cancelContinueButton": "Continue Writing"
     },
     "validation": {
       "ratingRequired": "Please select a rating",
