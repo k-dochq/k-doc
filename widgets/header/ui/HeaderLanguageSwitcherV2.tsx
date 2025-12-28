@@ -1,6 +1,6 @@
 'use client';
 
-import { LOCALE_LABELS, type Locale } from 'shared/config';
+import { ALL_LOCALE_LABELS, isComingSoonLocale, type Locale, type AllLocale } from 'shared/config';
 import { localeCookies } from 'shared/lib';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -25,8 +25,8 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
   // 현재 경로에서 locale 부분을 제거하고 나머지 경로만 추출
   const getPathWithoutLocale = (path: string) => {
     const pathSegments = path.split('/');
-    // 첫 번째 세그먼트가 locale인 경우 제거
-    if (pathSegments.length > 1 && Object.keys(LOCALE_LABELS).includes(pathSegments[1])) {
+    // 첫 번째 세그먼트가 locale인 경우 제거 (지원되는 언어 + coming soon 언어 모두 체크)
+    if (pathSegments.length > 1 && Object.keys(ALL_LOCALE_LABELS).includes(pathSegments[1])) {
       return '/' + pathSegments.slice(2).join('/');
     }
     return path;
@@ -38,7 +38,8 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
   const isKdocUser = isClient ? user?.email?.endsWith('@k-doc.kr') || false : false;
 
   // 표시할 언어 옵션 필터링 (Hydration-safe)
-  const availableLocales = Object.entries(LOCALE_LABELS).filter(([localeKey]) => {
+  // 지원되는 언어 + coming soon 언어 모두 표시
+  const availableLocales = Object.entries(ALL_LOCALE_LABELS).filter(([localeKey]) => {
     // 클라이언트에서만 필터링 적용
     if (!isClient) {
       return true; // 서버에서는 모든 언어 표시
@@ -50,12 +51,15 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
     return true;
   });
 
-  // 모든 locale에 대해 prefetch 수행 (필터링된 언어만)
+  // 지원되는 locale에 대해서만 prefetch 수행 (coming soon 언어는 제외)
   useEffect(() => {
     if (isClient) {
       availableLocales.forEach(([locale]) => {
-        const prefetchPath = `/${locale}${pathWithoutLocale}`;
-        router.prefetch(prefetchPath);
+        // 지원되는 언어에 대해서만 prefetch (coming soon 언어는 실제 라우트가 없을 수 있음)
+        if (!isComingSoonLocale(locale)) {
+          const prefetchPath = `/${locale}${pathWithoutLocale}`;
+          router.prefetch(prefetchPath);
+        }
       });
     }
   }, [router, pathWithoutLocale, availableLocales, isClient]);
@@ -68,8 +72,16 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
   }, [isClient]);
 
   // 언어 선택 시 쿠키에 저장하고 페이지 이동하는 핸들러
-  const handleLanguageChange = (locale: Locale) => {
-    localeCookies.set(locale);
+  const handleLanguageChange = (locale: AllLocale) => {
+    // Coming soon 언어인 경우 알림 표시
+    if (isComingSoonLocale(locale)) {
+      const localeLabel = ALL_LOCALE_LABELS[locale];
+      window.alert(`${localeLabel} is coming soon.`);
+      return;
+    }
+
+    // 지원되는 언어인 경우에만 언어 변경
+    localeCookies.set(locale as Locale);
     const newPath = `/${locale}${pathWithoutLocale}`;
 
     // 태국어로 변경하거나 태국어에서 다른 언어로 변경할 때는 새로고침
@@ -112,21 +124,25 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
         style={{ position: 'absolute', right: 0, top: '100%', marginTop: '4px' }}
       >
         <ul className='py-1'>
-          {availableLocales.map(([localeKey, label]) => (
-            <li key={localeKey}>
-              <button
-                className={[
-                  'w-full cursor-pointer px-4 py-2 text-left text-sm transition-colors',
-                  currentLang === localeKey
-                    ? 'bg-primary/10 text-primary-900 font-semibold'
-                    : 'hover:bg-primary/5 hover:text-primary-900 text-neutral-900',
-                ].join(' ')}
-                onClick={() => handleLanguageChange(localeKey as Locale)}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
+          {availableLocales.map(([localeKey, label]) => {
+            const isCurrentLang = currentLang === localeKey;
+
+            return (
+              <li key={localeKey}>
+                <button
+                  className={[
+                    'w-full cursor-pointer px-4 py-2 text-left text-sm transition-colors',
+                    isCurrentLang
+                      ? 'bg-primary/10 text-primary-900 font-semibold'
+                      : 'hover:bg-primary/5 hover:text-primary-900 text-neutral-900',
+                  ].join(' ')}
+                  onClick={() => handleLanguageChange(localeKey as AllLocale)}
+                >
+                  {label}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>
