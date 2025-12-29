@@ -72,7 +72,7 @@ export function FilterBarV2({ lang, dict, currentSort, districtFilter }: FilterB
             // URL 업데이트 (기존 파라미터 유지)
             const params = new URLSearchParams(searchParams?.toString() || '');
             params.set('sort', sort);
-            router.replace(`/v2/hospitals?${params.toString()}`);
+            router.replace(`/hospitals?${params.toString()}`);
           }}
         />
       ),
