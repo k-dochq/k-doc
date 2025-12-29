@@ -41,6 +41,7 @@ export function CategoryButtonV2({
         ko_KR: '추천',
         en_US: 'Recommend',
         th_TH: 'แนะนำ',
+        zh_TW: '推薦',
       };
       return getLocalizedTextByLocale(recommendedLabels, lang);
     }

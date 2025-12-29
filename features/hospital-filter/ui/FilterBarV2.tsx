@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { FilterIconV2 } from 'shared/ui/icons';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
+import { type LocalizedText } from 'shared/lib/localized-text';
 import { openDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks';
 import { SortFilterDrawer } from './SortFilterDrawer';
@@ -19,22 +20,25 @@ interface FilterBarV2Props {
   districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
-const filterLabels = {
+const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> = {
   popular: {
     ko_KR: '인기순',
     en_US: 'Popular',
     th_TH: 'ยอดนิยม',
-  },
+    zh_TW: '熱門',
+  } satisfies LocalizedText,
   recommended: {
     ko_KR: '추천순',
     en_US: 'Recommended',
     th_TH: 'แนะนำ',
-  },
+    zh_TW: '推薦',
+  } satisfies LocalizedText,
   newest: {
     ko_KR: '신규 병원순',
     en_US: 'Newest',
     th_TH: 'ใหม่ล่าสุด',
-  },
+    zh_TW: '最新',
+  } satisfies LocalizedText,
 };
 
 export function FilterBarV2({ lang, dict, currentSort, districtFilter }: FilterBarV2Props) {
