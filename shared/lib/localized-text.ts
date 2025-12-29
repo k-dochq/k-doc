@@ -41,16 +41,33 @@ export function extractLocalizedText(
       return '';
     }
 
-    // 먼저 긴 형식 (ko_KR, en_US, th_TH) 확인
+    // 먼저 긴 형식 (ko_KR, en_US, th_TH, zh_TW) 확인
     if (localizedText[localeKey] && typeof localizedText[localeKey] === 'string') {
       const value = localizedText[localeKey] as string;
       return value.trim() !== '' ? value : '';
     }
 
-    // 짧은 형식 (ko, en, th) 확인
+    // 짧은 형식 (ko, en, th, zh-TW) 확인
     if (localizedText[shortLocaleKey] && typeof localizedText[shortLocaleKey] === 'string') {
       const value = localizedText[shortLocaleKey] as string;
       return value.trim() !== '' ? value : '';
+    }
+
+    // zh-TW locale인데 zh_TW가 없으면 영어로 fallback
+    if (locale === 'zh-TW') {
+      if (localizedText['en_US'] && typeof localizedText['en_US'] === 'string') {
+        const value = localizedText['en_US'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+      // en_US도 없으면 'en' 확인
+      if (localizedText['en'] && typeof localizedText['en'] === 'string') {
+        const value = localizedText['en'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
     }
 
     // fallback: 첫 번째 사용 가능한 값 반환 (긴 형식 우선)
