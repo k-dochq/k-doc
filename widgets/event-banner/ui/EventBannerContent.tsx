@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
+import { type Locale } from 'shared/config';
 import { EventBannerItem } from './EventBannerItem';
 import { EventBannerPagination } from './EventBannerPagination';
 import { type EventBannerWithImage } from '../model/types';
 
 export interface EventBannerContentProps {
   banners: EventBannerWithImage[];
-  currentLocale: 'ko' | 'en' | 'th';
+  currentLocale: Locale;
   className?: string;
 }
 

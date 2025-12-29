@@ -58,6 +58,7 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
         en: 'en_US',
         ko: 'ko_KR',
         th: 'th_TH',
+        'zh-TW': 'zh_TW',
       };
       const userLocale = localeMap[locale] || 'en_US';
 

@@ -1252,6 +1252,10 @@
       "retry": "Retry",
       "goHome": "Go Home",
       "noErrorInfo": "Unable to retrieve error information."
+    },
+    "cancelReservation": {
+      "noPaymentCancel": "Only the reservation was cancelled as payment was not completed.",
+      "processing": "Your reservation cancellation has been successfully received.\n\nThe payment cancellation (refund) is being processed sequentially according to the payment provider's approval procedure.\nA separate notification will be sent once the process is completed."
     }
   }
 }

@@ -8,6 +8,7 @@ import type { IReservationRepository } from '../infrastructure/repositories/rese
 import type { IConsultationMessageRepository } from 'features/consultation-message/api/infrastructure/repositories/consultation-message-repository';
 import type { Locale } from 'shared/config';
 import type { PayverseCancelResponse } from '../entities/types';
+import { getDictionary } from 'app/[lang]/dictionaries';
 
 export interface ICancelReservationUseCase {
   execute(
@@ -117,7 +118,7 @@ export class CancelReservationUseCase implements ICancelReservationUseCase {
       });
 
       // 3. 상담 메시지 생성 (결제 미완료 취소 메시지)
-      const cancelMessage = this.generateNoPaymentCancelMessage(reservation, locale);
+      const cancelMessage = await this.generateNoPaymentCancelMessage(reservation, locale);
       await this.consultationMessageRepository.createWithTransaction(
         {
           id: uuidv4(),
@@ -213,7 +214,7 @@ export class CancelReservationUseCase implements ICancelReservationUseCase {
 
     // 취소 접수 메시지 생성 (트랜잭션)
     await prisma.$transaction(async (tx) => {
-      const processingMessage = this.generateCancelProcessingMessage(reservation, locale);
+      const processingMessage = await this.generateCancelProcessingMessage(reservation, locale);
       await this.consultationMessageRepository.createWithTransaction(
         {
           id: uuidv4(),
@@ -245,41 +246,22 @@ export class CancelReservationUseCase implements ICancelReservationUseCase {
   /**
    * 결제 미완료 취소 메시지 생성 (다국어)
    */
-  private generateNoPaymentCancelMessage(
+  private async generateNoPaymentCancelMessage(
     reservation: Awaited<ReturnType<IReservationRepository['findById']>>,
     locale: Locale,
-  ): string {
-    const messages: Record<Locale, string> = {
-      ko: '결제가 완료되지 않아 예약만 취소되었습니다.',
-      en: 'Only the reservation was cancelled as payment was not completed.',
-      th: 'ยกเลิกเฉพาะการจองเนื่องจากการชำระเงินยังไม่เสร็จสมบูรณ์ค่ะ',
-    };
-
-    return messages[locale] || messages.ko;
+  ): Promise<string> {
+    const dict = await getDictionary(locale);
+    return dict.payment.cancelReservation.noPaymentCancel;
   }
 
   /**
    * 취소 접수 메시지 생성 (다국어)
    */
-  private generateCancelProcessingMessage(
+  private async generateCancelProcessingMessage(
     reservation: Awaited<ReturnType<IReservationRepository['findById']>>,
     locale: Locale,
-  ): string {
-    const messages: Record<Locale, string> = {
-      ko: `예약 취소가 정상적으로 접수되었습니다.
-
-결제 취소(환불)는 결제사 승인 절차에 따라 순차적으로 처리되며,
-완료 시 별도 알림을 드리겠습니다.`,
-      en: `Your reservation cancellation has been successfully received.
-
-The payment cancellation (refund) is being processed sequentially according to the payment provider's approval procedure.
-A separate notification will be sent once the process is completed.`,
-      th: `การยกเลิกการจองของคุณได้รับการดำเนินการเรียบร้อยแล้วค่ะ
-
-การยกเลิกการชำระเงิน (คืนเงิน) จะดำเนินการตามขั้นตอนการอนุมัติของผู้ให้บริการชำระเงิน
-เมื่อดำเนินการเสร็จสิ้นแล้ว ระบบจะแจ้งเตือนให้ทราบอีกครั้งค่ะ`,
-    };
-
-    return messages[locale] || messages.ko;
+  ): Promise<string> {
+    const dict = await getDictionary(locale);
+    return dict.payment.cancelReservation.processing;
   }
 }

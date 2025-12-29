@@ -1,4 +1,4 @@
-export const SUPPORTED_LOCALES = ['en', 'ko', 'th'] as const;
+export const SUPPORTED_LOCALES = ['en', 'ko', 'th', 'zh-TW'] as const;
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
@@ -8,7 +8,7 @@ export const STATIC_GENERATION_LOCALES = [] as const;
 export type StaticGenerationLocale = (typeof STATIC_GENERATION_LOCALES)[number];
 
 // Coming soon 언어 (아직 완전히 지원되지 않는 언어)
-export const COMING_SOON_LOCALES = ['zh-TW', 'ja'] as const;
+export const COMING_SOON_LOCALES = ['ja'] as const;
 
 export type ComingSoonLocale = (typeof COMING_SOON_LOCALES)[number];
 
@@ -22,11 +22,11 @@ export const LOCALE_LABELS: Record<Locale, string> = {
   en: 'English',
   ko: '한국어',
   th: 'ไทย',
+  'zh-TW': '繁體中文',
 };
 
 // Coming soon 언어 라벨
 export const COMING_SOON_LOCALE_LABELS: Record<ComingSoonLocale, string> = {
-  'zh-TW': '繁體中文',
   ja: '日本語',
 };
 

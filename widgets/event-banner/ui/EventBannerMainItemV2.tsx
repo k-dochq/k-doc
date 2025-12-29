@@ -12,7 +12,7 @@ export interface EventBannerMainItemV2Props {
   linkUrl: string | null;
   imageUrl: string;
   alt: string | null;
-  currentLocale: 'ko' | 'en' | 'th';
+  currentLocale: Locale;
   isBlur?: boolean;
 }
 

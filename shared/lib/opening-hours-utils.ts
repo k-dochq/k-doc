@@ -1,10 +1,11 @@
 import { type Locale } from 'shared/config';
 import { type OpeningHours } from 'entities/hospital/api/entities/opening-hours-types';
 
-const DAYS_OF_WEEK = {
+const DAYS_OF_WEEK: Record<Locale, string[]> = {
   ko: ['월', '화', '수', '목', '금', '토', '일'],
   en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   th: ['จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส', 'อา'],
+  'zh-TW': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 };
 
 /**

@@ -5,6 +5,7 @@ export const dayNames: Record<Locale, string[]> = {
   ko: ['월', '화', '수', '목', '금', '토', '일'],
   en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   th: ['จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.', 'อา.'],
+  'zh-TW': ['一', '二', '三', '四', '五', '六', '日'],
 };
 
 // 요일별 영어명 (데이터베이스 키용)
@@ -23,4 +24,5 @@ export const holidayTexts: Record<Locale, string> = {
   ko: '휴진',
   en: 'Closed',
   th: 'งดตรวจ',
+  'zh-TW': '休診',
 };
