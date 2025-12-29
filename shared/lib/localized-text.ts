@@ -6,6 +6,7 @@ export type LocalizedText = {
   ko_KR?: string;
   en_US?: string;
   th_TH?: string;
+  zh_TW?: string;
 };
 
 // LocalizedText에서 문자열 추출 헬퍼 함수
@@ -19,14 +20,15 @@ export function extractLocalizedText(
     return String(jsonValue);
   }
 
-  const localeKey = locale === 'ko' ? 'ko_KR' : locale === 'en' ? 'en_US' : 'th_TH';
-  const shortLocaleKey = locale; // ko, en, th
+  const localeKey =
+    locale === 'ko' ? 'ko_KR' : locale === 'en' ? 'en_US' : locale === 'th' ? 'th_TH' : 'zh_TW';
+  const shortLocaleKey = locale; // ko, en, th, zh-TW
 
   if (typeof jsonValue === 'object' && jsonValue !== null && !Array.isArray(jsonValue)) {
     const localizedText = jsonValue as Record<string, unknown>;
 
     // 모든 값이 빈 문자열인지 확인
-    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'ko', 'en', 'th'];
+    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ko', 'en', 'th', 'zh-TW'];
     const hasNonEmptyValue = allKeys.some(
       (key) =>
         localizedText[key] &&
@@ -55,10 +57,12 @@ export function extractLocalizedText(
     const fallbackOrder = [
       'ko_KR',
       'en_US',
-      'th_TH', // 긴 형식
+      'th_TH',
+      'zh_TW', // 긴 형식
       'ko',
       'en',
-      'th', // 짧은 형식
+      'th',
+      'zh-TW', // 짧은 형식
     ];
 
     for (const key of fallbackOrder) {
@@ -75,11 +79,11 @@ export function extractLocalizedText(
 }
 
 /**
- * Locale을 alt 필드 값(ko_KR, en_US, th_TH)으로 변환
- * @param locale - Locale 값 ('ko', 'en', 'th')
- * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH')
+ * Locale을 alt 필드 값(ko_KR, en_US, th_TH, zh_TW)으로 변환
+ * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-TW')
+ * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH', 'zh_TW')
  */
-export function localeToAltValue(locale: Locale): 'ko_KR' | 'en_US' | 'th_TH' {
+export function localeToAltValue(locale: Locale): 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW' {
   switch (locale) {
     case 'ko':
       return 'ko_KR';
@@ -87,6 +91,8 @@ export function localeToAltValue(locale: Locale): 'ko_KR' | 'en_US' | 'th_TH' {
       return 'en_US';
     case 'th':
       return 'th_TH';
+    case 'zh-TW':
+      return 'zh_TW';
     default:
       return 'en_US';
   }
