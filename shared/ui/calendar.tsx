@@ -62,7 +62,7 @@ const locales: Record<Locale, CalendarLocale> = {
     weekdays: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
     today: 'วันนี้',
   },
-  'zh-TW': {
+  'zh-Hant': {
     months: [
       '一月',
       '二月',

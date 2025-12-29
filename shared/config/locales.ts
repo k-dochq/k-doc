@@ -1,4 +1,4 @@
-export const SUPPORTED_LOCALES = ['en', 'ko', 'th', 'zh-TW'] as const;
+export const SUPPORTED_LOCALES = ['en', 'ko', 'th', 'zh-Hant'] as const;
 
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
@@ -22,7 +22,7 @@ export const LOCALE_LABELS: Record<Locale, string> = {
   en: 'English',
   ko: '한국어',
   th: 'ไทย',
-  'zh-TW': '繁體中文',
+  'zh-Hant': '繁體中文',
 };
 
 // Coming soon 언어 라벨

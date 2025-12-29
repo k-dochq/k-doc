@@ -48,7 +48,7 @@ export function formatReservationDate(reservationDate: Date | string, lang: Loca
     ko: ['일', '월', '화', '수', '목', '금', '토'],
     en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     th: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
-    'zh-TW': ['日', '一', '二', '三', '四', '五', '六'],
+    'zh-Hant': ['日', '一', '二', '三', '四', '五', '六'],
   };
 
   const dayName = dayNames[lang][date.day()];
@@ -77,7 +77,7 @@ export function getReservationStatusBadge(
       ko: '시술 완료',
       en: 'Completed',
       th: 'เสร็จสิ้น',
-      'zh-TW': 'Completed',
+      'zh-Hant': 'Completed',
     };
     return statusTexts[lang];
   }

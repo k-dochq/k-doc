@@ -37,7 +37,7 @@ function addLocaleToUrl(url: string, locale: Locale): string {
     }
 
     const pathname = urlObj.pathname;
-    const supportedLocales: Locale[] = ['en', 'ko', 'th', 'zh-TW'];
+    const supportedLocales: Locale[] = ['en', 'ko', 'th', 'zh-Hant'];
 
     // 이미 locale이 경로에 포함되어 있는지 확인
     const pathParts = pathname.split('/').filter(Boolean);
@@ -66,8 +66,8 @@ export function EventBannerMainItemV2({
   currentLocale,
   isBlur = false,
 }: EventBannerMainItemV2Props) {
-  // zh-TW일 경우 en으로 처리
-  const locale = currentLocale === 'zh-TW' ? 'en' : currentLocale;
+  // zh-Hant일 경우 en으로 처리
+  const locale = currentLocale === 'zh-Hant' ? 'en' : currentLocale;
 
   const localizedTitle = getLocalizedTitle(title, currentLocale);
   const imageAlt = alt || localizedTitle || 'Event Main Banner';

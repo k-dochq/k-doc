@@ -34,8 +34,8 @@ export function getLocalizedTitle(title: Prisma.JsonValue, locale: Locale): stri
     if (typeof text === 'string') {
       return text;
     }
-    // Fallback: ko > en > th > zh-TW 순서로 시도
-    return title.ko || title.en || title.th || title['zh-TW'] || '';
+    // Fallback: ko > en > th > zh-Hant 순서로 시도
+    return title.ko || title.en || title.th || title['zh-Hant'] || '';
   }
   return '';
 }

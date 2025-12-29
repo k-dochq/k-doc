@@ -22,13 +22,13 @@ export function extractLocalizedText(
 
   const localeKey =
     locale === 'ko' ? 'ko_KR' : locale === 'en' ? 'en_US' : locale === 'th' ? 'th_TH' : 'zh_TW';
-  const shortLocaleKey = locale; // ko, en, th, zh-TW
+  const shortLocaleKey = locale; // ko, en, th, zh-Hant
 
   if (typeof jsonValue === 'object' && jsonValue !== null && !Array.isArray(jsonValue)) {
     const localizedText = jsonValue as Record<string, unknown>;
 
     // 모든 값이 빈 문자열인지 확인
-    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ko', 'en', 'th', 'zh-TW'];
+    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ko', 'en', 'th', 'zh-Hant'];
     const hasNonEmptyValue = allKeys.some(
       (key) =>
         localizedText[key] &&
@@ -47,14 +47,14 @@ export function extractLocalizedText(
       return value.trim() !== '' ? value : '';
     }
 
-    // 짧은 형식 (ko, en, th, zh-TW) 확인
+    // 짧은 형식 (ko, en, th, zh-Hant) 확인
     if (localizedText[shortLocaleKey] && typeof localizedText[shortLocaleKey] === 'string') {
       const value = localizedText[shortLocaleKey] as string;
       return value.trim() !== '' ? value : '';
     }
 
-    // zh-TW locale인데 zh_TW가 없으면 영어로 fallback
-    if (locale === 'zh-TW') {
+    // zh-Hant locale인데 zh_TW가 없으면 영어로 fallback
+    if (locale === 'zh-Hant') {
       if (localizedText['en_US'] && typeof localizedText['en_US'] === 'string') {
         const value = localizedText['en_US'] as string;
         if (value.trim() !== '') {
@@ -79,7 +79,7 @@ export function extractLocalizedText(
       'ko',
       'en',
       'th',
-      'zh-TW', // 짧은 형식
+      'zh-Hant', // 짧은 형식
     ];
 
     for (const key of fallbackOrder) {
@@ -97,7 +97,7 @@ export function extractLocalizedText(
 
 /**
  * Locale을 alt 필드 값(ko_KR, en_US, th_TH, zh_TW)으로 변환
- * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-TW')
+ * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-Hant')
  * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH', 'zh_TW')
  */
 export function localeToAltValue(locale: Locale): 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW' {
@@ -108,7 +108,7 @@ export function localeToAltValue(locale: Locale): 'ko_KR' | 'en_US' | 'th_TH' | 
       return 'en_US';
     case 'th':
       return 'th_TH';
-    case 'zh-TW':
+    case 'zh-Hant':
       return 'zh_TW';
     default:
       return 'en_US';
