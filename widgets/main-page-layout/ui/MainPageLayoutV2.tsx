@@ -25,6 +25,7 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
     category: 'ALL',
     limit: 5,
   });
+
   return (
     <div className=''>
       <div className='bg-[#F7F7F7]'>
