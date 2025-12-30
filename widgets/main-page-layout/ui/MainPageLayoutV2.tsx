@@ -25,8 +25,8 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
     category: 'ALL',
     limit: 5,
   });
-  //dev.k-doc.kr/en/notices
-  https: return (
+
+  return (
     <div className=''>
       <div className='bg-[#F7F7F7]'>
         <EventBannerRibbonCarousel currentLocale={lang} />

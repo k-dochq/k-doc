@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { Drawer, DrawerContent, DrawerTrigger } from 'shared/ui/drawer';
 import { MapIconV2, MapIconV2Selected } from 'shared/ui/icons';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
+import { type LocalizedText } from 'shared/lib/localized-text';
 import { useParentDistricts } from 'features/district-filter/model/useDistricts';
 import { type useDistrictFilter } from 'features/district-filter/model/useDistrictFilter';
 import { DistrictFilterDrawerV2 } from './DistrictFilterDrawerV2';
@@ -16,12 +17,13 @@ interface DistrictFilterButtonV2Props {
   districtFilter: ReturnType<typeof useDistrictFilter>;
 }
 
-const filterLabels = {
+const filterLabels: Record<'byRegion', LocalizedText> = {
   byRegion: {
     ko_KR: '지역별',
     en_US: 'By Region',
     th_TH: 'ตามภูมิภาค',
-  },
+    zh_TW: '依地區',
+  } satisfies LocalizedText,
 };
 
 export function DistrictFilterButtonV2({

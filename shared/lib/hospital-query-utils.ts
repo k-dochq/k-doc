@@ -1,5 +1,5 @@
 import { type MedicalSpecialtyType } from '@prisma/client';
-import { isValidMedicalSpecialtyType } from 'shared/config';
+import { isValidMedicalSpecialtyType, isValidLocale, type Locale } from 'shared/config';
 import {
   type HospitalQueryParams,
   type ParsedHospitalQueryParams,
@@ -12,6 +12,7 @@ import {
   SORT_OPTION_TO_DB_FIELD_MAP,
   DEFAULT_HOSPITAL_QUERY_PARAMS,
 } from 'shared/model/types/hospital-query';
+import { localeToAltValue, type DatabaseLocale } from 'shared/lib/localized-text';
 
 /**
  * 문자열이 유효한 HospitalSortOption인지 확인
@@ -70,6 +71,9 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
         .map((id) => id.trim())
     : undefined;
 
+  // Locale 파라미터 파싱
+  const lang = searchParams.get('lang')?.trim() || undefined;
+
   return {
     page,
     limit,
@@ -79,6 +83,7 @@ export function parseHospitalQueryParams(searchParams: URLSearchParams): ParsedH
     minRating,
     search,
     districtIds,
+    lang,
   };
 }
 
@@ -92,6 +97,12 @@ export function convertToDbQueryParams(params: ParsedHospitalQueryParams): DbHos
       ? (params.category as MedicalSpecialtyType)
       : undefined;
 
+  // Locale 변환 (lang 파라미터가 있으면 locale로 변환)
+  let locale: DatabaseLocale | undefined = undefined;
+  if (params.lang && isValidLocale(params.lang)) {
+    locale = localeToAltValue(params.lang as Locale);
+  }
+
   return {
     page: params.page,
     limit: params.limit,
@@ -102,6 +113,7 @@ export function convertToDbQueryParams(params: ParsedHospitalQueryParams): DbHos
     minRating: params.minRating,
     search: params.search,
     districtIds: params.districtIds,
+    locale,
   };
 }
 
@@ -141,6 +153,10 @@ export function buildHospitalQueryString(params: Partial<ParsedHospitalQueryPara
 
   if (params.districtIds && params.districtIds.length > 0) {
     searchParams.set('districts', params.districtIds.join(','));
+  }
+
+  if (params.lang) {
+    searchParams.set('lang', params.lang);
   }
 
   return searchParams.toString();

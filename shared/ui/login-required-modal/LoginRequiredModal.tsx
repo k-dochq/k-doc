@@ -54,10 +54,11 @@ export function LoginRequiredModal({
 
   // 언어별 배경 이미지 경로 생성
   const getBackgroundImagePath = (locale: Locale): string => {
-    const localeMap = {
+    const localeMap: Record<Locale, string> = {
       ko: 'ko',
       en: 'en',
       th: 'th',
+      'zh-Hant': 'en',
     };
     return `/images/shared/login_required_bg_${localeMap[locale]}.png`;
   };

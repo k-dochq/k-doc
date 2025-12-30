@@ -6,6 +6,7 @@ import {
 import { type DbHospitalQueryParams } from 'shared/model/types/hospital-query';
 import { type HospitalSortOption, type SortOrderOption } from 'shared/model/types/hospital-query';
 import { type PriceInfo } from 'shared/model/types';
+import { type DatabaseLocale } from 'shared/lib/localized-text';
 
 // Prisma 모델 타입을 그대로 사용해 enum 추가 시 자동 반영되도록 처리
 export type HospitalImage = PrismaHospitalImage;
@@ -110,6 +111,7 @@ export interface GetHospitalsRequestV2 {
   minRating?: number;
   search?: string;
   districtIds?: string[];
+  locale?: DatabaseLocale;
 }
 
 export interface GetHospitalsResponse {

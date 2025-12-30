@@ -16,6 +16,7 @@ export const navigationItems: NavigationItem[] = [
       ko: '홈',
       en: 'Home',
       th: 'หน้าแรก',
+      'zh-Hant': '首頁',
     },
   },
   {
@@ -26,6 +27,7 @@ export const navigationItems: NavigationItem[] = [
       ko: '병원',
       en: 'Hospitals',
       th: 'โรงพยาบาล',
+      'zh-Hant': '醫院',
     },
   },
   {
@@ -36,6 +38,7 @@ export const navigationItems: NavigationItem[] = [
       ko: '시술후기',
       en: 'Reviews',
       th: 'รีวิว',
+      'zh-Hant': '手術後記',
     },
   },
   {
@@ -46,6 +49,7 @@ export const navigationItems: NavigationItem[] = [
       ko: '찜',
       en: 'Favorites',
       th: 'รายการโปรด',
+      'zh-Hant': '收藏',
     },
   },
   {
@@ -56,6 +60,7 @@ export const navigationItems: NavigationItem[] = [
       ko: '상담',
       en: 'Consultation',
       th: 'ปรึกษา',
+      'zh-Hant': '諮詢',
     },
   },
 ];

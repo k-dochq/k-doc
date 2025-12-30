@@ -11,6 +11,8 @@ import {
   DEFAULT_HOSPITAL_QUERY_PARAMS,
 } from 'shared/model/types/hospital-query';
 import { buildHospitalQueryString } from 'shared/lib/hospital-query-utils';
+import { type Locale } from 'shared/config';
+import { localeToAltValue } from 'shared/lib/localized-text';
 
 interface UseInfiniteHospitalsV2Params extends Record<string, unknown> {
   limit?: number;
@@ -19,6 +21,7 @@ interface UseInfiniteHospitalsV2Params extends Record<string, unknown> {
   category?: HospitalCategoryType;
   search?: string;
   districtIds?: string[];
+  lang?: Locale;
 }
 
 interface HospitalsApiResponse {
@@ -35,6 +38,7 @@ async function fetchHospitalsV2({
   category,
   search,
   districtIds,
+  lang,
 }: {
   pageParam: number;
 } & UseInfiniteHospitalsV2Params): Promise<GetHospitalsResponse> {
@@ -47,6 +51,7 @@ async function fetchHospitalsV2({
     category,
     search,
     districtIds,
+    ...(lang && { lang }),
   };
 
   const queryString = buildHospitalQueryString(queryParams);

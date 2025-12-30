@@ -12,9 +12,11 @@ import {
 import mainKoImage from '../../../images/event/package/main_ko.png';
 import mainEnImage from '../../../images/event/package/main_en.png';
 import mainThImage from '../../../images/event/package/main_th.png';
+import mainZhImage from '../../../images/event/package/main_zh.png';
 import priceKoImage from '../../../images/event/package/price_ko.png';
 import priceEnImage from '../../../images/event/package/price_en.png';
 import priceThImage from '../../../images/event/package/price_th.png';
+import priceZhImage from '../../../images/event/package/price_zh.png';
 
 interface PackagePageProps {
   params: Promise<{ lang: Locale }>;
@@ -32,6 +34,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     ko: mainKoImage,
     en: mainEnImage,
     th: mainThImage,
+    'zh-Hant': mainZhImage,
   };
   const mainImage = mainImages[lang];
 
@@ -40,8 +43,8 @@ export default async function PackagePage({ params }: PackagePageProps) {
     ko: priceKoImage,
     en: priceEnImage,
     th: priceThImage,
+    'zh-Hant': priceZhImage,
   };
-
   const priceImage = priceImages[lang];
 
   const contentImages = [

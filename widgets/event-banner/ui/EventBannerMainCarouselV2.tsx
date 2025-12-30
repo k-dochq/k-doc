@@ -76,7 +76,17 @@ export function EventBannerMainCarouselV2({
   const validBanners: EventBannerWithImage[] =
     banners
       ?.map((banner) => {
-        const image = banner.EventBannerImage.find((img) => img.locale === currentLocale);
+        // zh-Hant를 zh로 매핑 (데이터베이스는 zh를 사용)
+        const dbLocale = currentLocale === 'zh-Hant' ? 'zh' : currentLocale;
+
+        // 먼저 currentLocale에 해당하는 이미지 찾기
+        let image = banner.EventBannerImage.find((img) => img.locale === dbLocale);
+
+        // 없으면 en 이미지를 fallback으로 사용
+        if (!image) {
+          image = banner.EventBannerImage.find((img) => img.locale === 'en');
+        }
+
         return image
           ? {
               id: banner.id,

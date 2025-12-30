@@ -10,6 +10,7 @@ interface PricePackageImageProps {
 
 export function PricePackageImage({ src, alt, locale }: PricePackageImageProps) {
   const aspectRatio = locale === 'th' ? '750/2430' : '750/2420';
+  const isStaticImage = typeof src !== 'string' && 'src' in src;
 
   return (
     <div className='relative w-full' style={{ aspectRatio }}>
@@ -18,7 +19,7 @@ export function PricePackageImage({ src, alt, locale }: PricePackageImageProps) 
         alt={alt}
         fill
         className='object-cover'
-        placeholder='blur'
+        {...(isStaticImage && { placeholder: 'blur' })}
         priority
         sizes='100vw'
         quality={100}

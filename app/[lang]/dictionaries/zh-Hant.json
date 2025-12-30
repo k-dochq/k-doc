@@ -1,0 +1,1260 @@
+{
+  "common": {
+    "confirm": "查看",
+    "cancel": "消除",
+    "today": "今天"
+  },
+  "quickMenu": {
+    "title": "熱門治療區域",
+    "error": {
+      "message": "載入資料時發生錯誤。",
+      "retryButton": "再試一次"
+    },
+    "empty": {
+      "message": "沒有治療區域可供顯示。",
+      "description": "新的治療區域即將開放。"
+    }
+  },
+  "search": {
+    "placeholder": "搜尋醫院和治療區域",
+    "resultTitle": "搜尋結果"
+  },
+  "hospitalList": {
+    "title": "就診次數最多的醫院",
+    "viewAll": "看全部",
+    "error": {
+      "message": "取得醫院資訊時發生錯誤。",
+      "retryButton": "再試一次"
+    },
+    "empty": {
+      "message": "沒有值得推薦的醫院。",
+      "description": "不久將新增多家醫院。"
+    }
+  },
+  "liveReviews": {
+    "title": "即時生動評論",
+    "empty": {
+      "message": "暫無即時評論可供顯示。",
+      "description": "新的即時評論即將上線。"
+    }
+  },
+  "popularReviews": {
+    "title": "瀏覽量最高的評論",
+    "viewAll": "看全部",
+    "reviewCount": "評論數：{count}",
+    "error": {
+      "message": "獲取評論資訊時出錯。",
+      "retryButton": "再試一次"
+    },
+    "empty": {
+      "message": "暫無評論可供顯示。",
+      "description": "新的評論即將上線。"
+    }
+  },
+  "youtube": {
+    "title": "YOUTUBE",
+    "filter": {
+      "all": "全部的",
+      "popular": "熱門視頻",
+      "recommended": "K-DOC 推薦"
+    },
+    "error": {
+      "message": "獲取視訊資訊時發生錯誤。",
+      "retryButton": "再試一次"
+    },
+    "empty": {
+      "message": "沒有影片可播放。",
+      "description": "即將新增新影片。"
+    }
+  },
+  "premiumService": {
+    "title": "K-DOC 高級服務",
+    "subtitle": "我們提供從流程辦理到出行安排的全方位支援。",
+    "services": {
+      "interpreter": {
+        "title": "提供口譯服務",
+        "description": "您將有一名專業口譯員一對一陪同。"
+      },
+      "vehicle": {
+        "title": "車輛服務",
+        "description": "我們保證為您提供舒適安全的旅程，所有車輛均為一流配置。"
+      }
+    }
+  },
+  "hospitals": {
+    "title": "尋找一家醫院",
+    "totalCount": "共有 {{count}} 家醫院",
+    "empty": {
+      "message": "沒有註冊醫院。",
+      "title": "沒有註冊醫院",
+      "description": "不久將新增多家醫院。",
+      "searchTitle": "未找到醫院",
+      "searchDescription": "請嘗試使用不同的搜尋字詞。"
+    },
+    "pagination": {
+      "page": "第 {{current}} 頁 / {{total}} 頁"
+    },
+    "infiniteScroll": {
+      "loading": "正在聯繫更多醫院…",
+      "end": "所有醫院都接到了通知。"
+    },
+    "doctors": {
+      "title": "附屬醫療人員",
+      "specialties": "治療區域",
+      "empty": "沒有註冊醫務人員。",
+      "viewAll": "看所有醫生"
+    }
+  },
+  "reviewCarousel": {
+    "title": "治療後評估",
+    "error": {
+      "message": "載入評論時出錯。",
+      "description": "請稍後再試。",
+      "retry": "再試一次"
+    },
+    "empty": {
+      "message": "目前還沒有註冊評論。",
+      "description": "成為第一個撰寫評論的人。"
+    },
+    "viewAll": "看全部"
+  },
+  "hospitalReviews": {
+    "title": "治療後評估",
+    "subtitle": "治療後評估",
+    "loadingMore": "正在加載更多評論…",
+    "allLoaded": "所有評論已載入完畢。",
+    "retry": "再試一次",
+    "error": {
+      "title": "無法檢索審查數據",
+      "message": "請檢查您的網路連接，稍後再試。"
+    },
+    "empty": {
+      "title": "目前還沒有評論。",
+      "description": "成為第一個撰寫評論的人。"
+    }
+  },
+  "hospitalDetailReviews": {
+    "title": "治療後評估",
+    "viewAll": "看全部",
+    "emptyMessage": "目前還沒有註冊評論。"
+  },
+  "hospitalDetailConsultation": {
+    "requestButton": "諮詢請求",
+    "checking": "檢查..."
+  },
+  "notices": {
+    "title": "公告",
+    "loading": "正在載入通知…",
+    "error": "通知載入失敗。",
+    "empty": "目前沒有公告。",
+    "totalCount": "共有 {{count}} 條通知。",
+    "loadedCount": "目前已載入 {{count}} 個項目。",
+    "loadMore": "看更多",
+    "loadingMore": "載入中...",
+    "allLoaded": "所有公告已載入完畢。",
+    "noTitle": "無標題",
+    "backToList": "添加到列表",
+    "previousPost": "上一篇",
+    "nextPost": "下一篇文章",
+    "viewList": "清單視圖",
+    "noPreviousPost": "之前沒有帖子",
+    "noNextPost": "沒有下一篇文章",
+    "searchPlaceholder": "請輸入您的搜尋字詞"
+  },
+  "hospitalDetailTabs": {
+    "introduction": "醫院簡介",
+    "procedures": "程序詳情",
+    "youtube": "Youtube",
+    "youtubePreparing": "醫院影片正在製作中。",
+    "proceduresDetail": "程序詳情",
+    "proceduresComingSoon": "正在準備有關該流程的詳細資訊。",
+    "comingSoonSubtext": "即將更新。",
+    "apgujeongMiracle": {
+      "videoTitle": "手術影片",
+      "imageAlt": "狎鷗亭奇蹟診所治療詳情",
+      "videoDescription": "曾作客美國福斯電視台的狎鷗亭奇蹟導演禹正浩"
+    }
+  },
+  "hospitalDetailDoctors": {
+    "viewAll": "看全部"
+  },
+  "allReviews": {
+    "title": "全面治療評估",
+    "subtitle": "查看所有醫院的評價。",
+    "loadingMore": "正在加載更多評論…",
+    "allLoaded": "所有評論已載入完畢。",
+    "retry": "再試一次",
+    "empty": {
+      "title": "目前尚無已註冊的評論",
+      "description": "成為第一個撰寫評論的人",
+      "searchTitle": "未找到評論",
+      "searchDescription": "請嘗試使用不同的搜尋字詞。"
+    },
+    "error": {
+      "title": "無法檢索審查數據",
+      "message": "請檢查您的網路連接，稍後再試。"
+    },
+    "filter": {
+      "all": "全部的",
+      "specialty": "部分",
+      "eyes": "眼睛",
+      "nose": "鼻子",
+      "facialContouring": "輪廓",
+      "breast": "胸部",
+      "stemCell": "幹細胞",
+      "liposuction": "抽脂手術",
+      "lifting": "舉重",
+      "hairTransplant": "植髮"
+    },
+    "sort": {
+      "popular": "按受歡迎程度排序",
+      "recommended": "受到推崇的",
+      "latest": "最新的",
+      "ratingHigh": "按評分最高排序",
+      "ratingLow": "按評分最低排序"
+    }
+  },
+  "reviewWrite": {
+    "fab": {
+      "ariaLabel": "手術後請寫一篇評價",
+      "buttonText": "手術後請寫一篇評價"
+    },
+    "selectHospital": {
+      "title": "選擇醫院",
+      "description": "請選擇您要撰寫評價的醫院。您可以從您已預約的醫院清單中選擇。",
+      "pageTitle": "請選擇您預約的醫院。",
+      "pageSubtitle": "選擇您要撰寫評論的醫院。",
+      "notificationMessage": "請選擇您要撰寫評價的醫院。",
+      "infiniteScroll": {
+        "loading": "正在加載更多醫院資訊…",
+        "end": "所有已預約的醫院都已接獲通知。"
+      },
+      "error": {
+        "title": "無法檢索預約醫院數據",
+        "message": "請檢查您的網路連接，稍後再試。"
+      },
+      "empty": {
+        "title": "沒有預訂。",
+        "description": "要撰寫評論，您必須先在醫院預約。",
+        "subdescription": "請找到您想去的醫院並預約。",
+        "browseButton": "參觀醫院"
+      }
+    },
+    "form": {
+      "title": "手術後請寫一篇評價",
+      "hospitalInfo": "醫院資訊",
+      "ratingQuestion": "您對整個手術過程的體驗如何？",
+      "procedureNameLabel": "【必需】程式",
+      "procedureNamePlaceholder": "你是如何完成這個手術的？",
+      "medicalSpecialtyLabel": "[必填] 選擇治療區域",
+      "medicalSpecialtyPlaceholder": "請選擇一個類別",
+      "contentLabel": "[必填] 審核內容",
+      "contentPlaceholder": "請盡可能詳細描述您在使用程式時的詳細資訊或經驗，字數不得超過 10 個字。",
+      "beforeImagesLabel": "【可選】手術前",
+      "afterImagesLabel": "[可選] 手術後",
+      "addPhotoButton": "添加照片",
+      "submitButton": "治療後再檢查登記",
+      "submitting": "註冊...",
+      "uploading": "上傳",
+      "characterCount": "{{current}}/500",
+      "editTitle": "術後複查編輯",
+      "editSubmitButton": "術後複查編輯",
+      "cancelConfirmTitle": "您想取消評價嗎？",
+      "cancelConfirmMessage": "如果您取消訂單，您輸入的所有資訊都將遺失。",
+      "cancelConfirmButton": "取消寫作",
+      "cancelContinueButton": "繼續寫作"
+    },
+    "validation": {
+      "ratingRequired": "請選擇星級評分",
+      "procedureNameRequired": "請輸入操作方法",
+      "medicalSpecialtyRequired": "請選擇治療區域",
+      "contentRequired": "請填寫您的評價詳情",
+      "contentMaxLength": "請用500個字以內作答。",
+      "imageMaxCount": "最多可以上傳10張圖片。",
+      "imageSizeLimit": "圖片大小必須小於10MB"
+    },
+    "success": {
+      "title": "已發布治療後回顧報告",
+      "message": "感謝您寶貴的評價",
+      "goToReviews": "查看治療評價"
+    },
+    "error": {
+      "title": "未能註冊評論",
+      "message": "請稍後再試。",
+      "retry": "再試一次"
+    }
+  },
+  "reviewDetail": {
+    "title": "詳細的術後評估",
+    "content": "審核內容",
+    "backButton": "回去",
+    "hospitalInfo": "進行手術的醫院訊息",
+    "hospital": "進行手術的醫院",
+    "sameHospitalReviews": "對同一家醫院的手術流程進行審查"
+  },
+  "reviewImages": {
+    "beforePhoto": "治療前照片",
+    "afterPhoto": "術後照片",
+    "loginRequired": "請登入查看圖片。"
+  },
+  "error": {
+    "title": "發生意外錯誤",
+    "description": "請刷新頁面或稍後再試。"
+  },
+  "auth": {
+    "login": {
+      "title": "登入",
+      "subtitle": "請登入您的帳戶",
+      "email": "電子郵件",
+      "password": "密碼",
+      "loginButton": "登入",
+      "laterButton": "稍後再做",
+      "signupButton": "透過電子郵件註冊",
+      "requiredMessage": "請登入以使用該服務。",
+      "socialLogin": "社群帳號登入",
+      "startIn3Seconds": "3秒後開始",
+      "googleLogin": "從谷歌開始",
+      "appleLogin": "從蘋果公司開始",
+      "kakaoLogin": "使用 Kakao 登入",
+      "emailLogin": "首先，請透過電子郵件與我聯繫。",
+      "recentLogin": "最近登入",
+      "forgotPassword": "忘記密碼了嗎？",
+      "signUp": "透過電子郵件註冊",
+      "loading": "載入中...",
+      "loginError": "登入時發生錯誤。",
+      "noAccount": "還沒有帳號？",
+      "signupLink": "透過電子郵件註冊",
+      "placeholders": {
+        "email": "您的郵件地址@example.com",
+        "password": "請輸入您的密碼"
+      },
+      "errors": {
+        "emailRequired": "請輸入您的電子郵件地址。",
+        "emailInvalid": "請輸入有效的電子郵件地址。",
+        "passwordRequired": "請輸入您的密碼。",
+        "invalidCredentials": "您的郵箱或密碼錯誤。",
+        "emailNotConfirmed": "請查收您的電子郵件並驗證您的帳戶。"
+      }
+    },
+    "additionalInfo": {
+      "title": "請輸入其他資訊",
+      "description": "請填寫更多資訊以使用此服務。",
+      "emailReadonly": "這是您的社交帳號信箱地址",
+      "submitButton": "完全的"
+    },
+    "signup": {
+      "title": "加入會員",
+      "subtitle": "建立新帳戶",
+      "required": "基本的",
+      "optional": "選擇",
+      "email": "電子郵件",
+      "password": "密碼",
+      "confirmPassword": "驗證密碼",
+      "passportName": "護照上的英文姓名",
+      "nationality": "國籍",
+      "nationalities": {
+        "thailand": "泰國",
+        "korea": "韓國",
+        "united_states": "美國",
+        "united_kingdom": "英國",
+        "germany": "德國",
+        "france": "法國",
+        "japan": "日本",
+        "china": "中國",
+        "india": "印度",
+        "australia": "澳洲",
+        "brazil": "巴西",
+        "russia": "俄羅斯",
+        "spain": "西班牙",
+        "italy": "義大利",
+        "mexico": "墨西哥",
+        "netherlands": "荷蘭",
+        "sweden": "瑞典",
+        "switzerland": "瑞士",
+        "belgium": "比利時",
+        "norway": "挪威",
+        "denmark": "丹麥",
+        "singapore": "新加坡",
+        "new_zealand": "紐西蘭",
+        "malaysia": "馬來西亞",
+        "philippines": "菲律賓",
+        "indonesia": "印尼",
+        "turkey": "土耳其",
+        "south_africa": "南非",
+        "egypt": "埃及",
+        "nigeria": "奈及利亞",
+        "pakistan": "巴基斯坦",
+        "bangladesh": "孟加拉",
+        "sri_lanka": "斯里蘭卡",
+        "iran": "伊朗",
+        "israel": "以色列",
+        "saudi_arabia": "沙烏地阿拉伯",
+        "united_arab_emirates": "阿拉伯聯合大公國"
+      },
+      "gender": "性別",
+      "genders": {
+        "female": "女性",
+        "male": "男性"
+      },
+      "phoneNumber": "電話號碼",
+      "countryCode": "國家代碼",
+      "phoneNumberOnly": "電話號碼",
+      "birthDate": "出生日期",
+      "dateFormat": "年.月.日",
+      "signupButton": "加入會員",
+      "loading": "註冊中…",
+      "signupError": "註冊時發生錯誤。",
+      "passwordMismatch": "密碼不匹配",
+      "alreadyHaveAccount": "已有帳號？",
+      "loginLink": "登入",
+      "termsAgreement": {
+        "title": ["凱迪拉克", "使用該服務", "請同意"],
+        "allAgreed": "完全同意",
+        "age14Plus": "必須年滿14歲。",
+        "termsOfService": "服務條款（必填）",
+        "privacyPolicy": "同意收集/使用個人資料（必填）",
+        "marketingNotifications": "活動/服務權益通知（可選）",
+        "requiredError": "請同意這些條款和條件。",
+        "agreeAndStart": "同意所有條款，然後開始"
+      },
+      "placeholders": {
+        "email": "您的郵件地址@example.com",
+        "password": "密碼長度至少為 6 個字符",
+        "confirmPassword": "請重新輸入您的密碼",
+        "passportName": "請輸入您護照上的英文姓名。",
+        "nationality": "選擇您的國籍（可選）",
+        "gender": "請選擇您的性別（可選）",
+        "phoneNumber": "010-0000-0000（可選）",
+        "countryCode": "選擇",
+        "phoneNumberOnly": "請輸入您的手機號碼",
+        "birthDate": "請選擇您的出生日期（可選）"
+      },
+      "errors": {
+        "emailRequired": "請輸入您的電子郵件地址。",
+        "emailInvalid": "請輸入有效的電子郵件地址。",
+        "passwordRequired": "請輸入您的密碼。",
+        "passwordTooShort": "密碼長度必須至少為 6 個字元。",
+        "confirmPasswordRequired": "請輸入您的密碼進行確認。",
+        "passwordMismatch": "密碼不符。",
+        "passportNameRequired": "如果您輸入的英文姓名與護照上的姓名不符，可能會導致您接受治療受到限制。",
+        "passportNameTooShort": "護照上的英文姓名必須至少包含兩個字元。",
+        "passportNameInvalid": "護照上的英文姓名只能填寫英文字母。",
+        "genderRequired": "請選擇您的性別。",
+        "emailAlreadyRegistered": "此電子郵件地址已註冊。",
+        "invalidEmail": "請輸入有效的電子郵件地址。",
+        "passwordTooShortServer": "密碼長度必須至少為 6 個字元。",
+        "unexpectedError": "發生意外錯誤。",
+        "invalidCredentials": "您的郵箱或密碼錯誤。",
+        "emailNotConfirmed": "請查收您的電子郵件並驗證您的帳戶。",
+        "signupSuccess": "您的註冊已完成。請查看您的電子郵件以啟動您的帳戶。",
+        "userAlreadyRegistered": "此電子郵件地址已註冊。",
+        "updateProfileError": "儲存資訊時發生錯誤。"
+      }
+    },
+    "forgotPassword": {
+      "title": "找到密碼",
+      "description": "請輸入您註冊時使用的郵箱地址，我們將向您發送密碼重設連結。",
+      "descriptionLine1": "請輸入您註冊時使用的電子郵件地址。",
+      "descriptionLine2": "我們將向您發送密碼重設連結。",
+      "email": "電子郵件",
+      "resetButton": "發送密碼重設連結",
+      "loading": "正在傳輸…",
+      "backToLogin": "返回登入頁面",
+      "loginLink": "登入",
+      "resetError": "重置密碼時發生錯誤。",
+      "placeholders": {
+        "email": "您的郵件地址@example.com"
+      },
+      "errors": {
+        "emailRequired": "請輸入您的電子郵件地址。",
+        "emailInvalid": "請按正確格式輸入。",
+        "userNotFound": "我們找不到與該電子郵件地址註冊的帳戶。",
+        "rateLimitExceeded": "請求次數過多，請稍後再試。"
+      },
+      "success": {
+        "title": "您的郵件已發送",
+        "description": "我們已向您提供的郵箱地址發送了密碼重置鏈接，請查收郵件。"
+      }
+    },
+    "resetPassword": {
+      "title": "設定新密碼",
+      "description": "請輸入新密碼。",
+      "newPassword": "新密碼",
+      "confirmPassword": "驗證密碼",
+      "updateButton": "更改密碼",
+      "backToLogin": "返回登入頁面",
+      "loginLink": "登入",
+      "goToLogin": "前往登入頁面",
+      "updateError": "更改密碼時發生錯誤。",
+      "sessionError": "設定會話時發生錯誤。",
+      "placeholders": {
+        "newPassword": "請輸入您的新密碼",
+        "confirmPassword": "請重新輸入您的密碼"
+      },
+      "errors": {
+        "passwordRequired": "請輸入您的密碼。",
+        "passwordTooShort": "密碼長度必須至少為 8 個字元。",
+        "confirmPasswordRequired": "請輸入您的密碼進行確認。",
+        "passwordMismatch": "密碼不符。",
+        "invalidSession": "會話無效，請重試。",
+        "sessionMissing": "沒有建立身份驗證會話。請重試。"
+      },
+      "success": {
+        "title": "您的密碼已更改",
+        "description": "您的密碼已成功變更。請使用新密碼登入。"
+      },
+      "error": {
+        "invalidLink": {
+          "title": "無效連結",
+          "description": "密碼重設連結無效或已過期，請重試。"
+        }
+      }
+    },
+    "error": {
+      "title": "身份驗證錯誤",
+      "description": "身份驗證過程中發生錯誤，請重試。",
+      "tryAgain": "重試",
+      "goHome": "回家"
+    }
+  },
+  "hospital": {
+    "region": "地區",
+    "reviewsButton": "治療後評估",
+    "introduction": {
+      "title": "醫院簡介"
+    },
+    "info": {
+      "title": "醫院資訊",
+      "operatingHours": "診所開放時間",
+      "noInformation": "無訊息"
+    },
+    "map": {
+      "title": "查看地圖",
+      "loading": "正在加載地圖…"
+    },
+    "address": {
+      "copyButton": "複製地址",
+      "noAddress": "沒有地址資訊。",
+      "copySuccess": "地址已複製。"
+    },
+    "like": {
+      "like": "蒸",
+      "liked": "蒸煮完成",
+      "loading": "載入中...",
+      "countLabel": "狗",
+      "error": "發生錯誤"
+    },
+    "registrationPrompt": {
+      "message": "快速預訂保證！ ！",
+      "button": "登記"
+    }
+  },
+  "districtFilter": {
+    "title": "地區",
+    "button": "按地區",
+    "selectAll": "全選",
+    "deselectAll": "完整版",
+    "complete": "完全的",
+    "reset": "重置",
+    "empty": {
+      "message": "未選擇地區。"
+    }
+  },
+  "hospitalSort": {
+    "popular": "按受歡迎程度排序",
+    "recommended": "受到推崇的",
+    "newest": "新醫院命令"
+  },
+  "review": {
+    "like": {
+      "like": "偉大的",
+      "liked": "取消",
+      "loading": "載入中...",
+      "countLabel": "狗",
+      "error": "發生錯誤"
+    },
+    "delete": "刪除",
+    "edit": "編輯",
+    "report": "報告",
+    "deleteConfirm": "你確定要刪除它嗎？",
+    "deleteConfirmTitle": "您確定要刪除此評論嗎？",
+    "deleteConfirmMessage": "一旦刪除，將無法恢復。請謹慎選擇。",
+    "deleteSuccess": "該評論已被刪除",
+    "deleteError": "刪除評論失敗",
+    "procedureTiming": "治療期",
+    "showMore": "看更多",
+    "showLess": "折疊",
+    "view": "查看"
+  },
+  "favorites": {
+    "title": "收藏夾",
+    "hospitals": "醫院",
+    "reviews": "治療後評估",
+    "doctors": "醫生",
+    "loading": "載入中...",
+    "error": "載入資料時發生錯誤。",
+    "errorMessage": "請檢查您的網路連接，稍後再試。",
+    "retry": "再試一次",
+    "errorHospitals": "無法檢索醫院數據",
+    "errorReviews": "無法檢索審查數據",
+    "errorDoctors": "無法聯繫到你喜歡的醫生",
+    "loadingMoreReviews": "正在加載更多評論…",
+    "allLoadedReviews": "所有評論已載入完畢。",
+    "loadingMoreDoctors": "呼籲增派醫生…",
+    "allLoadedDoctors": "我打了電話給所有醫生。",
+    "empty": {
+      "hospitals": {
+        "title": "沒有一家醫院獲救。",
+        "description": "點擊愛心圖示儲存您最喜歡的醫院。"
+      },
+      "reviews": {
+        "title": "暫無已儲存的評論",
+        "description": "點擊愛心即可儲存您喜歡的評論。"
+      },
+      "doctors": {
+        "title": "沒有被拯救的醫生",
+        "description": "點擊愛心圖示儲存你最喜歡的醫生。"
+      }
+    },
+    "loadingMore": "正在加載更多數據…",
+    "allLoaded": "所有數據已加載"
+  },
+  "consultation": {
+    "title": "法律顧問",
+    "chat": "諮詢聊天",
+    "appointment": {
+      "title": "預訂詳情",
+      "reservationDateTime": "預訂日期和時間",
+      "region": "地區",
+      "writeReview": "手術後請寫一篇評價",
+      "loadingMore": "正在加載更多預訂資訊…",
+      "allLoaded": "所有預訂詳情均已取得。",
+      "completed": "手術完成",
+      "timezone": "韓國標準時間",
+      "noImage": "無圖片"
+    },
+    "reservationDetail": {
+      "title": "預訂詳情",
+      "requestDate": "申請日期",
+      "confirmed": "預訂已完成",
+      "completed": "手術完成",
+      "cancelled": "預訂已取消",
+      "procedureName": "過程名稱",
+      "paymentInfo": "付款資訊",
+      "deposit": "訂金",
+      "transferDate": "轉帳日期和時間",
+      "hospitalInfo": "醫院資訊",
+      "cancel": "取消預訂",
+      "consultation": "獲取建議",
+      "userInfo": {
+        "title": "預訂資訊",
+        "passportName": "護照上的英文姓名",
+        "gender": "性別",
+        "nationality": "國籍",
+        "contactInfo": "聯絡資訊",
+        "male": "男性",
+        "female": "女性"
+      }
+    },
+    "reservationDateTime": "預訂日期和時間",
+    "region": "地區",
+    "loading": "載入中...",
+    "loadingMessages": "正在加載訊息...",
+    "error": "載入資料時發生錯誤。",
+    "retry": "再試一次",
+    "input": {
+      "placeholder": "有什麼問題都可以問！",
+      "imageUploadSuccess": "圖片已發送",
+      "imageLoadError": "圖片載入失敗",
+      "downloadFile": "下載"
+    },
+    "empty": {
+      "chat": {
+        "title": "目前沒有正在進行的磋商。",
+        "description": "開始諮詢醫院"
+      },
+      "appointment": {
+        "title": "沒有預訂。",
+        "description": "向你選擇的醫院申請預約。"
+      }
+    },
+    "request": {
+      "title": "諮詢請求",
+      "button": "諮詢請求",
+      "backButton": "回去",
+      "form": {
+        "name": {
+          "label": "護照姓名",
+          "placeholder": "請輸入與護照上一致的姓名。",
+          "passportHelper": "請依照護照上的資料準確填寫，包括空格。"
+        },
+        "gender": {
+          "label": "性別",
+          "male": "男性",
+          "female": "女性"
+        },
+        "ageGroup": {
+          "label": "年齡組",
+          "placeholder": "請選擇您的年齡組",
+          "10s": "青少年",
+          "20s": "20多歲",
+          "30s": "30年代",
+          "40s": "40年代",
+          "50s": "50年代",
+          "60s": "60歲或以上"
+        },
+        "phoneNumber": {
+          "label": "電話號碼",
+          "placeholder": "請輸入您的手機號碼"
+        },
+        "preferredContactTime": {
+          "label": "首選聯繫時間",
+          "placeholder": "請選擇您方便的聯絡時間",
+          "morning": "上午（09:00 - 12:00）",
+          "afternoon": "下午（12:00 - 18:00）",
+          "evening": "晚餐（下午 6:00 - 晚上 9:00）",
+          "anytime": "每當"
+        },
+        "preferredDate": {
+          "label": "首選預訂日期",
+          "placeholder": "請選擇日期",
+          "helper": "請點選查看醫院排班表"
+        },
+        "preferredDate2": {
+          "label": "首選預訂日期 2",
+          "placeholder": "請選擇日期",
+          "helper": "請注意，僅當第一次約會無法成行時才適用。"
+        },
+        "content": {
+          "label": "諮詢內容",
+          "placeholder": "請詳細說明您想諮詢的內容。",
+          "helper": "提出諮詢請求後，負責的諮詢經理將透過 K-DOC 聊天視窗提供詳細諮詢。"
+        },
+        "privacyAgreement": {
+          "title": "同意收集和使用敏感資訊",
+          "description": "我已閱讀並同意收集和使用敏感資訊以撰寫治療評估和使用該應用程式。"
+        },
+        "floatingNotice": {
+          "highlight": "探視時間",
+          "message": "這需要透過協商進行協調。"
+        },
+        "errors": {
+          "name": {
+            "required": "請輸入您的姓名。"
+          },
+          "ageGroup": {
+            "required": "請選擇您的年齡組。"
+          },
+          "countryCode": {
+            "required": "請選擇您的國家代碼。"
+          },
+          "phoneNumber": {
+            "required": "請輸入您的手機號碼。",
+            "invalid": "請輸入有效的手機號碼。"
+          },
+          "preferredDate": {
+            "required": "請選擇您想要預訂的日期。"
+          },
+          "content": {
+            "required": "請填寫您的諮詢詳情。",
+            "maxLength": "請用不超過500個字元輸入您的諮詢內容。"
+          },
+          "agreeToPrivacy": {
+            "required": "請同意收集和使用個人資訊。"
+          }
+        },
+        "required": "基本的",
+        "submitButton": "諮詢請求",
+        "loading": "載入中...",
+        "errorMessages": {
+          "UNAUTHORIZED": "您必須登入。",
+          "MISSING_REQUIRED_FIELDS": "請填寫所有必填項目。",
+          "HOSPITAL_NOT_FOUND": "找不到醫院資訊。",
+          "INTERNAL_SERVER_ERROR": "伺服器出錯，請稍後再試。",
+          "NETWORK_ERROR": "網路出現錯誤。請檢查您的網路連線。",
+          "UNKNOWN_ERROR": "發生未知錯誤。"
+        },
+        "chatMessages": {
+          "welcome": "你好！很高興認識你。關於整形手術，歡迎隨時向我提問。",
+          "consultationRequest": {
+            "title": "（自動產生的預訂申請表）",
+            "subtitle": "我想預約一次治療諮詢。",
+            "name": "姓名",
+            "gender": "性別",
+            "ageGroup": "年齡組",
+            "phoneNumber": "電話號碼",
+            "preferredDate": "首選預訂日期",
+            "preferredDate2": "首選預訂日期 2",
+            "additionalInquiry": "其他查詢"
+          },
+          "ageGroups": {
+            "10s": "青少年",
+            "20s": "20多歲",
+            "30s": "30年代",
+            "40s": "40年代",
+            "50s": "50年代",
+            "60s": "60歲或以上"
+          },
+          "genders": {
+            "MALE": "男性",
+            "FEMALE": "女性"
+          }
+        }
+      }
+    },
+    "notificationPermission": {
+      "title": "千萬別錯過醫院的回應！",
+      "subtitle": "開啟推播通知後，您可以立即查看諮詢回覆何時到達。",
+      "description": "當醫院回覆時，K-DOC 會向您發送推播通知。若要同意接收通知，請點選【接收通知】按鈕。",
+      "settingsNote": "（更改推播通知設定：我的頁面 → 通知設定 → 常規通知 開/關）",
+      "acceptButton": "接收通知",
+      "declineButton": "我現在不想接受。"
+    },
+    "cancelReservation": {
+      "title": "您想取消預訂嗎？",
+      "message": "如果取消，您將不得不從頭開始。",
+      "confirmButton": "是的",
+      "cancelButton": "不"
+    },
+    "cancelMessages": {
+      "processing": "我們已成功收到您的預訂取消申請。付款取消（退款）將根據支付公司的審批流程按順序處理，完成後我們會另行通知您。",
+      "success": "您的預訂已成功取消。您的退款已完成。",
+      "failed": "退款處理過程中發生錯誤。 PG 錯誤：{errorMessage}。請聯絡客服。",
+      "noCancellation": "由於未完成付款，預訂已被取消。"
+    }
+  },
+  "cautionSection": {
+    "title": "筆記",
+    "items": [
+      "豪華轎車服務僅適用於在前往韓國之前已預約的醫院/手術。",
+      "您可以在預約諮詢後，在預訂申請階段選擇豪華轎車選項。",
+      "如果您提前預訂，我們將提供禮賓服務，例如韓國熱門景點和美食餐廳的旅遊行程。",
+      {
+        "title": "每日豪華轎車使用費如下：",
+        "details": [
+          "- 蘭博基尼 Urus 超級跑車：每天 1,080 美元",
+          "價格包含司機費用、司機餐費、過路費和稅金。",
+          "- 基於每天上午 8:30 至下午 5:30 使用 8 小時計算",
+          "- 超跑超長使用時間需額外支付每小時 150 美元（現場可用信用卡付款）。",
+          "- 燃油費用後付（現場刷卡支付）",
+          "- 前往首爾以外地區需額外收費（現場刷卡支付）"
+        ]
+      },
+      "每日僅提供8小時計費時段。對於短途行程，建議您抵達韓國後搭乘國際計程車或使用當地叫車軟體。"
+    ]
+  },
+  "footer": {
+    "companyName": "菲爾曼有限公司",
+    "ceo": "代表：禹正浩",
+    "address": "京畿道河南市美沙江邊南路103",
+    "businessNumber": "商業登記號碼 474-86-03352",
+    "customerEmail": "客戶服務中心信箱 cs@k-doc.kr",
+    "companyNameLabel": "相互的",
+    "addressLabel": "地址",
+    "businessNumberLabel": "商業登記號",
+    "customerEmailLabel": "客戶中心電子郵件",
+    "companyInfo": "公司簡介",
+    "termsOfService": "使用條款",
+    "privacyPolicy": "隱私權政策",
+    "notices": "公告",
+    "contactUs": "聯絡我們",
+    "dataRequest": "請求編輯/刪除訊息"
+  },
+  "about": {
+    "title": "公司簡介",
+    "subtitle": "製作K-DOC的人",
+    "description": {
+      "part1": "K-DOC 的執行長是世界知名的醫學權威 Woo Jung-ho。 ",
+      "highlight": "由世界頂尖大學的醫學專家策劃的服務。",
+      "part2": "公司總部坐落於狎鷗亭地標建築內，引領全球美容潮流。在日本被譽為「線雕大師」的禹醫生，也曾多次登上包括福斯電視台新聞在內的國際知名媒體。"
+    },
+    "profiles": {
+      "woo": {
+        "description": "美國福克斯電視台新聞頻道播出了題為「無切口線雕提升革命」的節目。",
+        "name": "禹正浩總統"
+      },
+      "park": {
+        "name": "副總統樸鐘鉉"
+      }
+    },
+    "ceoGreeting": {
+      "title": "執行長致辭",
+      "name": "總裁禹正浩醫學博士",
+      "greeting": "你好สวัสดีครับ",
+      "content": [
+        "感謝您造訪K-DOC。",
+        "K-DOC 是韓國領先的整形外科醫療平台，旨在幫助泰國人自信地選擇韓國排名前 5% 的整形外科和皮膚科診所，甚至提供折扣。",
+        "K-DOC的管理團隊對其平台服務引以為傲。該平台由包括我本人在內的醫療專業團隊直接規劃和運營，團隊成員包括世界知名的非切口線雕提升專家禹正浩醫生，以及畢業於世界頂尖醫學院的樸鐘鉉醫生。我們的首要任務是為泰國和國際患者提供安全可靠的韓國醫療服務。",
+        "該平台提供韓國最值得信賴的整形醫院資訊、可靠的治療評價，以及從醫院預約到無縫翻譯和術後護理等所有服務——所有服務都集中在一個地方。",
+        "K-DOC 不僅僅是一個資訊平台；我們致力於成為您韓國美容醫療之旅中值得信賴的便捷夥伴。我們力求為每位顧客提供最佳解決方案，以及令人滿意且值得信賴的醫療體驗。",
+        "我們希望您能安全無風險地體驗韓國卓越的醫療整形技術，K-DOC 將陪伴您踏上自信美麗與健康的旅程。",
+        "上帝保佑你！",
+        "謝謝",
+        "禹正浩博士，首席執行官",
+        "K-DOC公司"
+      ]
+    },
+    "seoulOffice": {
+      "title": "K-DOC首爾分部",
+      "description": "K-DOC大廈，位於首爾江南區最著名的街道狎鷗亭羅德奧街，是當地的地標。"
+    },
+    "vision": {
+      "title": "K-DOC 視覺",
+      "sections": [
+        {
+          "image": "image_section1.png",
+          "imagePc": "image_section1_pc.png",
+          "title": "2025年進入泰國市場",
+          "description": "K-DOC，泰國客戶的全球整形外科醫療平台！ K-DOC 精心挑選韓國排名前 5% 的整形外科和皮膚科診所，為泰國客戶提供值得信賴的選擇。"
+        },
+        {
+          "image": "image_section2.png",
+          "imagePc": "image_section2_pc.png",
+          "title": "客戶需要的整形外科平台",
+          "description": "想了解韓國整形手術的各種資訊？ K-DOC 讓您一目了然，輕鬆對比真實評價和醫院訊息，做出明智的選擇。從預約、翻譯到術後護理，K-DOC 為您提供便利的一站式服務。"
+        },
+        {
+          "image": "image_section3.png",
+          "imagePc": "image_section3_pc.png",
+          "title": "韓國著名醫院簡介",
+          "description": "K-DOC 只與全球認可的醫療專業人士和經過認證的韓國頂尖整形外科診所合作。泰國及全球客戶可透過我們值得信賴的醫療團隊及安全的系統，享有高品質的整形外科服務。"
+        }
+      ]
+    },
+    "certification": {
+      "title": "本公司已獲得認證，並持有吸引外國患者業務許可證",
+      "description": "我公司 K-DOC 是一家外國患者吸引公司，已在韓國保健福祉部下屬的韓國保健產業振興院 (KHIDI) 正式註冊，並通過了該政府機構的嚴格篩選和標準。<br><br>此外，作為一家獲得首爾擔保保險公司（SGI）1億韓元營業執照和批准擔保保險的官方認證公司，我們有資格獲得韓國政府的批准，為外國患者提供安全可靠的醫療服務。<br><br>我們將繼續與韓國頂尖醫療機構合作，竭盡全力為全球患者提供專業、透明的醫療服務。",
+      "certificateLabel": "吸引外國病患業務登記證",
+      "sgiLabel": "許可證擔保保險證券（SGI）"
+    },
+    "governmentCertified": {
+      "title": "政府認證的醫療旅遊平台",
+      "description": "K-DOC是一家經韓國保健福祉部下屬的韓國保健產業振興院（KHIDI）正式註冊的國際病患服務企業。它是一個獲得官方認證的平台，通過了政府嚴格的審核標準。此外，K-DOC還獲得了首爾擔保保險公司（SGI）1億韓元的許可和批准擔保，確保為國際患者提供安全可靠的醫療服務。",
+      "certificateLabel": "吸引外國病患業務登記證",
+      "sgiLabel": "許可證擔保保險證券（SGI）"
+    },
+    "visionV2": {
+      "subtitle": "成為全球患者信賴的醫療保健選擇。",
+      "sections": [
+        {
+          "title": "全球醫療平台",
+          "description": "K-DOC 是一個精心挑選韓國排名前 10% 的整形外科和皮膚科診所的平台，幫助世界各地的客戶充滿信心和信任地選擇它們。"
+        },
+        {
+          "title": "您值得信賴的選擇",
+          "description": "我們提供韓國各類醫療項目和醫院的全面信息，並對比真實用戶評價，幫助您做出明智的選擇。從預約、翻譯到術後護理，您都可以在這裡輕鬆完成所有流程。"
+        },
+        {
+          "title": "精選診所和醫院",
+          "description": "K-DOC平台僅收錄韓國頂尖的整形外科診所、皮膚科醫生和醫院，所有合作機構都經過嚴格篩選。全球客戶可通過K-DOC認證的醫療機構，享有安全可靠的高品質整形外科服務。"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "K-DOC 哈南總部",
+    "description": "歡迎來到K-DOC河南總部。如有任何疑問，請隨時與我們聯繫。",
+    "address": "京畿道河南市美沙江邊南路103 701-014",
+    "phone": "031-123-4567",
+    "email": "contact@k-doc.com",
+    "mapTitle": "位置指南",
+    "copyButton": "複製地址",
+    "seoulOffice": {
+      "subtitle": "K-DOC首爾分部",
+      "address": "首爾特別市江南區宣陵路157街14號韓州大樓6樓"
+    },
+    "emailInquiry": {
+      "title": "電子郵件諮詢",
+      "description": "如果您在使用服務過程中遇到任何不便，請透過以下電子郵件地址與我們聯絡。",
+      "button": "請透過電子郵件聯絡我們"
+    },
+    "partnershipInquiry": {
+      "title": "K-DOC商店申請諮詢",
+      "button": "申請店鋪"
+    }
+  },
+  "my": {
+    "title": "我的頁面",
+    "description": "您可以管理您的個人資訊和設定。",
+    "profile": {
+      "title": "我的個人資料",
+      "editProfile": "編輯個人資料",
+      "nicknameChange": "更改暱稱",
+      "nameChange": "更名",
+      "edit": {
+        "title": "編輯個人資料",
+        "nickname": "暱稱",
+        "name": "姓名",
+        "email": "電子郵件",
+        "saveButton": "節省",
+        "cancelButton": "消除",
+        "success": "您的個人資料已成功更新。",
+        "error": "更新個人資料時發生錯誤。",
+        "placeholders": {
+          "nickname": "請輸入您的暱稱",
+          "name": "請輸入您的姓名",
+          "passportNameHelperText": "請依照護照上的資料準確填寫，包括空格。"
+        },
+        "errors": {
+          "nicknameRequired": "請輸入您的暱稱。",
+          "nameRequired": "請輸入您的姓名。",
+          "nicknameTooShort": "暱稱長度至少為 2 個字元。",
+          "nameTooShort": "名稱長度必須至少為兩個字元。"
+        },
+        "loading": "正在檢索使用者資訊…",
+        "errorTitle": "錯誤",
+        "changePassword": "更改密碼"
+      },
+      "passwordChange": {
+        "title": "更改密碼",
+        "completeButton": "完全的",
+        "currentPassword": "現有密碼",
+        "newPassword": "更改密碼",
+        "confirmPassword": "確認密碼以更改",
+        "placeholders": {
+          "currentPassword": "請輸入您現有的密碼",
+          "newPassword": "密碼長度至少為 6 個字符",
+          "confirmPassword": "請重新輸入您的密碼"
+        },
+        "errors": {
+          "currentPasswordRequired": "請輸入您現有的密碼。",
+          "currentPasswordInvalid": "現有密碼錯誤。",
+          "newPasswordRequired": "請輸入您要變更的密碼。",
+          "newPasswordTooShort": "密碼長度必須至少為 6 個字元。",
+          "confirmPasswordRequired": "請輸入您的密碼進行確認。",
+          "passwordMismatch": "密碼不符。",
+          "updateFailed": "更改密碼時發生錯誤。"
+        }
+      }
+    },
+    "activity": {
+      "title": "活動",
+      "savedList": "我的已儲存列表"
+    },
+    "activityStats": {
+      "myPosts": "我寫的文章",
+      "consultationChatList": "諮詢聊天列表"
+    },
+    "notification": {
+      "title": "警報",
+      "myPosts": "我寫的帖子",
+      "eventService": "活動/服務福利通知"
+    },
+    "customerService": {
+      "title": "客戶服務中心",
+      "email": "電子郵件",
+      "phone": "電話",
+      "phoneNumber": "1588-6930"
+    },
+    "account": {
+      "title": "帳戶",
+      "logout": "登出登入",
+      "deleteAccount": "取消會員資格",
+      "deleteAccountConfirm": "您確定要取消會員資格嗎？您的帳號將會停用，您需要聯絡客服重新啟用。",
+      "deleteAccountError": "取消會員資格時出錯，請重試。"
+    }
+  },
+  "taxiReservation": {
+    "title": "計程車預訂",
+    "buttonText": "預訂計程車",
+    "internationalTaxi": "國際計程車",
+    "uberTaxi": "優步計程車"
+  },
+  "noticeSection": {
+    "title": "快來看看最新消息吧！",
+    "buttonText": "去通知"
+  },
+  "comments": {
+    "title": "評論",
+    "form": {
+      "placeholder": "請留下評論。",
+      "submit": "登記",
+      "submitting": "寫作...",
+      "loginRequired": "您必須登入才能發表評論。",
+      "loginButton": "登入"
+    },
+    "list": {
+      "empty": "搶先發表評論！",
+      "error": "載入評論時出錯。",
+      "loading": "載入中...",
+      "loadMore": "看更多"
+    },
+    "time": {
+      "justNow": "現在",
+      "minutesAgo": "幾分鐘前",
+      "hoursAgo": "很久以前",
+      "daysAgo": "一天前"
+    }
+  },
+  "doctor": {
+    "career": "簡史",
+    "careerAndActivity": "職業與活動",
+    "noCareerInfo": "沒有職業資訊。",
+    "affiliatedHospital": "附設醫院",
+    "reviews": "治療後評估",
+    "viewAllReviews": "看全部",
+    "share": {
+      "title": "查看醫生的信息",
+      "text": "看詳情"
+    }
+  },
+  "package": {
+    "allInOnePackage": {
+      "title": "一站式套餐預訂",
+      "subtitle": "一次預訂所有服務，包括車輛和翻譯服務。",
+      "vanSelection": "車輛選擇",
+      "exploreClinics": "探索診所",
+      "fastReservationGuarantee": "快速預訂保證"
+    },
+    "vanReservation": {
+      "title": "車輛預訂",
+      "subtitle": "搭乘我們的高級商務車服務，享受舒適的旅程。",
+      "vanTypes": {
+        "standard": {
+          "name": "標準廂型車",
+          "description": "基本且舒適的動作",
+          "capacity": "最多可容納 7 名乘客"
+        },
+        "premium": {
+          "name": "高級廂型車",
+          "description": "尊享服務，倍感舒適",
+          "capacity": "最多可容納 7 名乘客"
+        },
+        "luxury": {
+          "name": "豪華廂型車",
+          "description": "極致奢華體驗",
+          "capacity": "最多可容納 7 名乘客"
+        }
+      },
+      "serviceType": {
+        "label": "服務類型",
+        "oneWay": "單程",
+        "hourlyCharter": "兼職出租（6小時）"
+      },
+      "picketing": {
+        "label": "糾察服務",
+        "description": "機場接送時請出示姓名牌",
+        "price": "+4美元"
+      },
+      "form": {
+        "pickupLocation": {
+          "label": "取貨地點",
+          "placeholder": "請輸入您的取貨地點"
+        },
+        "dropoffLocation": {
+          "label": "到達地點",
+          "placeholder": "請輸入您的到達地點"
+        },
+        "pickupDate": {
+          "label": "取貨日期",
+          "placeholder": "請選擇日期"
+        },
+        "pickupTime": {
+          "label": "接送時間",
+          "placeholder": "請選擇時間"
+        },
+        "passengerCount": {
+          "label": "乘客人數",
+          "placeholder": "請選擇人數"
+        },
+        "luggage": {
+          "label": "行李件數",
+          "placeholder": "請選擇行李件數"
+        },
+        "contactInfo": {
+          "label": "聯絡資訊",
+          "name": "姓名",
+          "phone": "電話號碼",
+          "email": "電子郵件",
+          "namePlaceholder": "請輸入您的姓名",
+          "phonePlaceholder": "請輸入您的電話號碼",
+          "emailPlaceholder": "請輸入您的電子郵件地址"
+        }
+      },
+      "price": {
+        "base": "基本費率",
+        "picketing": "糾察",
+        "total": "總金額",
+        "currency": "美元"
+      },
+      "buttons": {
+        "selectVan": "選擇",
+        "payment": "付款",
+        "paymentComingSoon": "支付功能正在準備中"
+      },
+      "validation": {
+        "vanTypeRequired": "請選擇您的車輛類型",
+        "serviceTypeRequired": "請選擇服務類型",
+        "pickupLocationRequired": "請輸入您的取貨地點",
+        "dropoffLocationRequired": "請輸入您的到達地點",
+        "pickupDateRequired": "請選擇取貨日期",
+        "pickupTimeRequired": "請選擇取貨時間",
+        "passengerCountRequired": "請選擇乘客人數。",
+        "nameRequired": "請輸入您的姓名",
+        "phoneRequired": "請輸入您的電話號碼",
+        "emailRequired": "請輸入您的電子郵件地址",
+        "emailInvalid": "請輸入有效的電子郵件地址"
+      }
+    }
+  },
+  "payment": {
+    "title": "支付",
+    "loading": {
+      "preparing": "準備付款…",
+      "processing": "付款正在處理中…",
+      "sdkLoading": "正在加載支付模組...",
+      "signGenerating": "正在核實付款資訊…",
+      "windowOpening": "打開支付窗口…",
+      "tips": [
+        "☕️請稍候片刻。我們正在準備安全支付。",
+        "✨ 要不要再檢查您的付款資訊？",
+        "💎 我們將保護您的寶貴資訊安全",
+        "🎉 快完成了！敬請期待！"
+      ]
+    },
+    "info": {
+      "title": "付款資訊",
+      "productName": "產品名稱",
+      "amount": "付款金額",
+      "orderId": "訂單編號",
+      "currency": "稱呼"
+    },
+    "error": {
+      "missingParams": "付款資訊有誤。",
+      "invalidAmount": "付款金額無效。",
+      "invalidCurrency": "不支援此貨幣。",
+      "sdkNotLoaded": "加載支付模組時發生錯誤。",
+      "sdkTimeout": "支付模組載入超時，請重新整理頁面。",
+      "signGenerationFailed": "支付簽名產生失敗。",
+      "signNetworkError": "由於網路錯誤，簽名建立失敗。請檢查您的網路連線。",
+      "signTimeout": "簽章產生超時，請重試。",
+      "paymentFailed": "付款請求失敗。",
+      "paymentCancelled": "您的付款已被取消。",
+      "unknownError": "發生未知錯誤。",
+      "retry": "再試一次",
+      "goHome": "回家"
+    },
+    "success": {
+      "title": "付款已完成",
+      "message": "付款已成功完成。",
+      "orderId": "訂單編號",
+      "transactionId": "交易編號",
+      "goHome": "回家",
+      "missingInfo": "無法取得訂單資訊。"
+    },
+    "failure": {
+      "title": "付款失敗",
+      "message": "處理您的付款時發生錯誤。",
+      "errorCode": "錯誤代碼",
+      "errorMessage": "錯誤訊息",
+      "retry": "再試一次",
+      "goHome": "回家",
+      "noErrorInfo": "無法查看錯誤訊息。"
+    },
+    "cancelReservation": {
+      "noPaymentCancel": "由於付款尚未完成，僅取消預約。",
+      "processing": "您的預約取消申請已成功受理。\n\n付款取消（退款）將根據付款提供商的核准程序依序處理。\n處理完成後，我們將另行通知您。"
+    }
+  }
+}

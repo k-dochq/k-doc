@@ -2,6 +2,7 @@ import { type HospitalCardData, type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
 import { type User } from '@supabase/supabase-js';
 import { getLocalizedTextByLocale } from 'shared/model/types';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { HotRibbonV2 } from 'shared/ui/hot-ribbon';
 import { BestRibbonV2 } from 'shared/ui/best-ribbon';
 import { HospitalCardV2Thumbnail } from './HospitalCardV2Thumbnail';
@@ -63,11 +64,11 @@ export function HospitalCardV2({
   // 뱃지 로직: badge 배열의 첫 번째 요소 확인
   const firstBadge = hospitalWithCategory.badge?.[0];
 
-  // 링크 URL 결정: href prop이 제공되면 사용, 없으면 기본값 사용
-  const linkHref = href || `/${lang}/hospital/${hospitalWithCategory.id}`;
+  // 링크 URL 결정: href prop이 제공되면 사용, 없으면 기본값 사용 (locale prefix 없이 전달)
+  const linkHref = href || `/hospital/${hospitalWithCategory.id}`;
 
   return (
-    <a href={linkHref} className='block'>
+    <LocaleLink href={linkHref} className='block'>
       <div className='relative'>
         {/* 뱃지 표시 */}
         {firstBadge === 'HOT' && <HotRibbonV2 />}
@@ -121,6 +122,6 @@ export function HospitalCardV2({
           </div>
         </div>
       </div>
-    </a>
+    </LocaleLink>
   );
 }

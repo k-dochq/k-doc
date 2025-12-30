@@ -24,6 +24,11 @@ const messages = {
     description: 'ไม่พบหน้าที่คุณกำลังค้นหา หรืออาจถูกย้ายไปแล้วค่ะ',
     homeButton: 'กลับไปหน้าแรก',
   },
+  'zh-Hant': {
+    title: 'Page Not Found',
+    description: "The page you are looking for doesn't exist or may have been moved.",
+    homeButton: 'Go back to Home',
+  },
 } as const;
 
 export default function NotFound() {
