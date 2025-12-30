@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getHospitalsV2 } from 'entities/hospital/api/use-cases/get-hospitals-v2';
 import { type GetHospitalsRequestV2 } from 'entities/hospital/api/entities/types';
 import { validateHospitalQueryParams } from 'shared/lib/hospital-query-utils';
+import { localeToAltValue, type DatabaseLocale } from 'shared/lib/localized-text';
+import { type Locale, isValidLocale } from 'shared/config';
 
 export async function GET(request: NextRequest) {
   try {
@@ -30,6 +32,12 @@ export async function GET(request: NextRequest) {
     // 타입 안전한 파라미터 파싱 및 변환
     const parsedParams = validationResult.params!;
 
+    // Locale 변환 (lang 파라미터가 있으면 locale로 변환)
+    let locale: DatabaseLocale | undefined = undefined;
+    if (parsedParams.lang && isValidLocale(parsedParams.lang)) {
+      locale = localeToAltValue(parsedParams.lang as Locale);
+    }
+
     // GetHospitalsRequestV2로 변환
     const requestV2: GetHospitalsRequestV2 = {
       page: parsedParams.page,
@@ -40,6 +48,7 @@ export async function GET(request: NextRequest) {
       minRating: parsedParams.minRating,
       search: parsedParams.search,
       districtIds: parsedParams.districtIds,
+      locale,
       // category가 RECOMMEND가 아닌 MedicalSpecialtyType인 경우에만 specialtyType으로 변환
       specialtyType:
         parsedParams.category && parsedParams.category !== 'RECOMMEND'

@@ -744,6 +744,48 @@ model HospitalCategoryAssignment {
   @@schema("public")
 }
 
+model Task {
+  id           String        @id @db.Uuid
+  title        String        @db.VarChar(255)
+  description  String?
+  assignee     String        @db.VarChar(100)
+  status       TaskStatus    @default(PENDING)
+  priority     TaskPriority  @default(MEDIUM)
+  categoryId   String?       @db.Uuid
+  startDate    DateTime      @db.Date
+  endDate      DateTime      @db.Date
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime
+  createdBy    String?       @db.Uuid
+  updatedBy    String?       @db.Uuid
+  TaskCategory TaskCategory? @relation(fields: [categoryId], references: [id])
+
+  @@index([assignee])
+  @@index([categoryId])
+  @@index([createdAt])
+  @@index([endDate])
+  @@index([priority])
+  @@index([startDate])
+  @@index([status])
+  @@schema("public")
+}
+
+model TaskCategory {
+  id          String   @id @db.Uuid
+  name        String   @db.VarChar(100)
+  description String?  @db.VarChar(500)
+  color       String?  @db.VarChar(20)
+  order       Int?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  Task        Task[]
+
+  @@index([isActive])
+  @@index([order])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -917,6 +959,7 @@ enum EventBannerLocale {
   ko
   en
   th
+  zh
 
   @@schema("public")
 }
@@ -932,6 +975,24 @@ enum YoutubeVideoLocale {
   ko
   en
   th
+  zh
+
+  @@schema("public")
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+
+  @@schema("public")
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
 
   @@schema("public")
 }

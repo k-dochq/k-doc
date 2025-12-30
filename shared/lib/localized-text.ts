@@ -1,6 +1,9 @@
 import { type Prisma } from '@prisma/client';
 import { type Locale } from 'shared/config';
 
+// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW)
+export type DatabaseLocale = 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW';
+
 // LocalizedText 타입 정의
 export type LocalizedText = {
   ko_KR?: string;
@@ -100,7 +103,7 @@ export function extractLocalizedText(
  * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-Hant')
  * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH', 'zh_TW')
  */
-export function localeToAltValue(locale: Locale): 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW' {
+export function localeToAltValue(locale: Locale): DatabaseLocale {
   switch (locale) {
     case 'ko':
       return 'ko_KR';

@@ -46,6 +46,7 @@ export function HospitalsInfiniteListV2({
     category,
     search,
     districtIds,
+    lang,
   };
 
   // 좋아요 토글 뮤테이션

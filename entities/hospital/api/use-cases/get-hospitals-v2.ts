@@ -92,6 +92,7 @@ export async function getHospitalsV2(
       minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
       search,
       districtIds,
+      locale,
     } = request;
 
     const offset = (page - 1) * limit;
@@ -100,6 +101,9 @@ export async function getHospitalsV2(
     const searchConditions: Prisma.HospitalWhereInput[] = [];
 
     if (search) {
+      // 현재 선택된 locale에 따라 해당 언어만 검색
+      const searchLocale = locale || 'en_US'; // 기본값은 영어
+
       // 영어 검색어인지 확인
       const isEnglishSearch = /^[a-zA-Z\s]+$/.test(search);
       // 시술부위 검색에서 사용할 첫 글자 대문자 변형 (병원명 검색에서는 사용하지 않음)
@@ -108,24 +112,11 @@ export async function getHospitalsV2(
           ? search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
           : search;
 
-      // 병원명에서 검색 (다국어 지원)
-      const hospitalNameConditions = [
-        {
-          name: {
-            path: ['ko_KR'],
-            string_contains: search,
-          },
-        },
-        {
-          name: {
-            path: ['th_TH'],
-            string_contains: search,
-          },
-        },
-      ];
+      // 병원명에서 검색 (현재 locale에 해당하는 언어만)
+      const hospitalNameConditions: Prisma.HospitalWhereInput[] = [];
 
       // en_US 로케일에만 대소문자 변형 적용
-      if (isEnglishSearch) {
+      if (searchLocale === 'en_US' && isEnglishSearch) {
         const searchVariations = generateSearchVariations(search);
         // 각 변형에 대해 조건 생성
         const enUSConditions = searchVariations.map((variation) => ({
@@ -136,10 +127,10 @@ export async function getHospitalsV2(
         }));
         hospitalNameConditions.push(...enUSConditions);
       } else {
-        // 영어가 아닌 경우 원본만 사용
+        // 다른 언어 또는 영어가 아닌 경우 원본만 사용
         hospitalNameConditions.push({
           name: {
-            path: ['en_US'],
+            path: [searchLocale],
             string_contains: search,
           },
         });
@@ -149,24 +140,11 @@ export async function getHospitalsV2(
         OR: hospitalNameConditions,
       });
 
-      // 시술부위에서 검색 (다국어 지원)
-      const specialtyConditions = [
-        {
-          name: {
-            path: ['ko_KR'],
-            string_contains: search,
-          },
-        },
-        {
-          name: {
-            path: ['th_TH'],
-            string_contains: search,
-          },
-        },
-      ];
+      // 시술부위에서 검색 (현재 locale에 해당하는 언어만)
+      const specialtyConditions: Prisma.MedicalSpecialtyWhereInput[] = [];
 
       // 영어 검색어인 경우 원본과 첫 글자 대문자 버전 모두 검색
-      if (isEnglishSearch) {
+      if (searchLocale === 'en_US' && isEnglishSearch) {
         specialtyConditions.push(
           {
             name: {
@@ -184,7 +162,7 @@ export async function getHospitalsV2(
       } else {
         specialtyConditions.push({
           name: {
-            path: ['en_US'],
+            path: [searchLocale],
             string_contains: search,
           },
         });

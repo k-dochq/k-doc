@@ -1,4 +1,5 @@
 import { type MedicalSpecialtyType } from '@prisma/client';
+import { type DatabaseLocale } from 'shared/lib/localized-text';
 
 // 병원 정렬 타입 정의
 export const HOSPITAL_SORT_OPTIONS = {
@@ -59,6 +60,7 @@ export interface ParsedHospitalQueryParams extends Record<string, unknown> {
   minRating: number;
   search?: string;
   districtIds?: string[]; // 파싱된 지역 ID 배열
+  lang?: string; // Locale 값 ('ko', 'en', 'th', 'zh-Hant')
 }
 
 // 데이터베이스 쿼리 파라미터 타입 정의
@@ -72,6 +74,7 @@ export interface DbHospitalQueryParams {
   minRating: number;
   search?: string;
   districtIds?: string[]; // 지역 ID 배열
+  locale?: DatabaseLocale;
 }
 
 // 기본값 정의
