@@ -7,6 +7,8 @@ interface MainPackageImageProps {
 }
 
 export function MainPackageImage({ src, alt }: MainPackageImageProps) {
+  const isStaticImage = typeof src !== 'string' && 'src' in src;
+
   return (
     <div className='relative w-full' style={{ aspectRatio: '750/990' }}>
       <Image
@@ -14,7 +16,7 @@ export function MainPackageImage({ src, alt }: MainPackageImageProps) {
         alt={alt}
         fill
         className='object-contain'
-        placeholder='blur'
+        {...(isStaticImage && { placeholder: 'blur' })}
         priority
         sizes='100vw'
         quality={100}
