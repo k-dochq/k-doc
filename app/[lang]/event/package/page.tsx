@@ -32,6 +32,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     ko: mainKoImage,
     en: mainEnImage,
     th: mainThImage,
+    'zh-Hant': mainEnImage,
   };
   const mainImage = mainImages[lang];
 
@@ -40,6 +41,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     ko: priceKoImage,
     en: priceEnImage,
     th: priceThImage,
+    'zh-Hant': priceEnImage,
   };
 
   const priceImage = priceImages[lang];

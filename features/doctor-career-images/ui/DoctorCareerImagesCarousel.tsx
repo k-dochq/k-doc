@@ -11,11 +11,12 @@ import {
   type CarouselApi,
 } from 'shared/ui/carousel';
 import { ImageModalCarousel, type ImageModalItem } from 'shared/ui/image-modal-carousel';
+import { type Locale } from 'shared/config';
 import { type DoctorCareerImage } from '../model/types';
 
 interface DoctorCareerImagesCarouselProps {
   images: DoctorCareerImage[];
-  lang: 'ko' | 'en' | 'th';
+  lang: Locale;
 }
 
 export function DoctorCareerImagesCarousel({ images, lang }: DoctorCareerImagesCarouselProps) {

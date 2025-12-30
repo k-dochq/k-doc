@@ -22,8 +22,20 @@ export function getLocaleFromRequest(request: NextRequest): Locale {
   const acceptLanguage = request.headers.get('accept-language');
 
   if (acceptLanguage) {
-    // 가장 우선순위 높은 언어 코드 추출 (예: 'ko,en;q=0.9')
-    const primaryLang = acceptLanguage.split(',')[0].split('-')[0];
+    const primaryLangFull = acceptLanguage.split(',')[0].split(';')[0].trim();
+
+    // 먼저 전체 locale 코드 확인 (예: zh-Hant)
+    if (isValidLocale(primaryLangFull)) {
+      return normalizeLocale(primaryLangFull);
+    }
+
+    // 전체 locale 코드가 유효하지 않으면 primary language만 추출
+    const primaryLang = primaryLangFull.split('-')[0];
+
+    // zh인 경우 zh-Hant로 매핑
+    if (primaryLang === 'zh') {
+      return normalizeLocale('zh-Hant');
+    }
 
     // 지원되는 locale인지 확인하고 반환
     if (isValidLocale(primaryLang)) {

@@ -132,6 +132,7 @@ export function AdditionalInfoContentV2({
       en: 'en_US',
       ko: 'ko_KR',
       th: 'th_TH',
+      'zh-Hant': 'zh_TW',
     };
     const userLocale = localeMap[lang] || 'en_US';
 

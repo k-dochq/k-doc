@@ -31,8 +31,19 @@ export function CategoryFilterTabsV2({
   const { canScrollPrev, canScrollNext, scrollPrev, scrollNext } = useCarouselNavigation(api);
 
   // 전체 카테고리 + 의료 전문 분야 카테고리 조합
-  const allCategories = [
-    { id: 'ALL' as const, name: { ko_KR: '전체', en_US: 'All', th_TH: 'ทั้งหมด' } },
+  const allCategories: Array<{
+    id: MedicalSpecialtyType | 'ALL';
+    name: LocalizedText;
+  }> = [
+    {
+      id: 'ALL' as const,
+      name: {
+        ko_KR: '전체',
+        en_US: 'All',
+        th_TH: 'ทั้งหมด',
+        zh_TW: '全部',
+      } satisfies LocalizedText,
+    },
     ...medicalSpecialties.map((specialty) => ({
       id: specialty.specialtyType,
       name: specialty.name as LocalizedText,
