@@ -37,6 +37,11 @@ export function getLocaleFromRequest(request: NextRequest): Locale {
       return normalizeLocale('zh-Hant');
     }
 
+    // ja인 경우 ja로 매핑
+    if (primaryLang === 'ja') {
+      return normalizeLocale('ja');
+    }
+
     // 지원되는 locale인지 확인하고 반환
     if (isValidLocale(primaryLang)) {
       return normalizeLocale(primaryLang);

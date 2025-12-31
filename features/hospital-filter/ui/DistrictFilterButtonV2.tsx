@@ -23,6 +23,7 @@ const filterLabels: Record<'byRegion', LocalizedText> = {
     en_US: 'By Region',
     th_TH: 'ตามภูมิภาค',
     zh_TW: '依地區',
+    ja_JP: '地域別',
   } satisfies LocalizedText,
 };
 

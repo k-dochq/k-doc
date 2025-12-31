@@ -1,8 +1,8 @@
 import { type Prisma } from '@prisma/client';
 import { type Locale } from 'shared/config';
 
-// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW)
-export type DatabaseLocale = 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW';
+// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW, ja_JP)
+export type DatabaseLocale = 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW' | 'ja_JP';
 
 // LocalizedText 타입 정의
 export type LocalizedText = {
@@ -10,6 +10,7 @@ export type LocalizedText = {
   en_US?: string;
   th_TH?: string;
   zh_TW?: string;
+  ja_JP?: string;
 };
 
 // LocalizedText에서 문자열 추출 헬퍼 함수
@@ -24,14 +25,34 @@ export function extractLocalizedText(
   }
 
   const localeKey =
-    locale === 'ko' ? 'ko_KR' : locale === 'en' ? 'en_US' : locale === 'th' ? 'th_TH' : 'zh_TW';
-  const shortLocaleKey = locale; // ko, en, th, zh-Hant
+    locale === 'ko'
+      ? 'ko_KR'
+      : locale === 'en'
+        ? 'en_US'
+        : locale === 'th'
+          ? 'th_TH'
+          : locale === 'zh-Hant'
+            ? 'zh_TW'
+            : 'ja_JP';
+  const shortLocaleKey = locale; // ko, en, th, zh-Hant, ja
 
   if (typeof jsonValue === 'object' && jsonValue !== null && !Array.isArray(jsonValue)) {
     const localizedText = jsonValue as Record<string, unknown>;
 
     // 모든 값이 빈 문자열인지 확인
-    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ko', 'en', 'th', 'zh-Hant', 'zh'];
+    const allKeys = [
+      'ko_KR',
+      'en_US',
+      'th_TH',
+      'zh_TW',
+      'ja_JP',
+      'ko',
+      'en',
+      'th',
+      'zh-Hant',
+      'zh',
+      'ja',
+    ];
     const hasNonEmptyValue = allKeys.some(
       (key) =>
         localizedText[key] &&
@@ -85,12 +106,14 @@ export function extractLocalizedText(
       'ko_KR',
       'en_US',
       'th_TH',
-      'zh_TW', // 긴 형식
+      'zh_TW',
+      'ja_JP', // 긴 형식
       'ko',
       'en',
       'th',
       'zh', // 데이터베이스에서 사용하는 형식
       'zh-Hant', // 짧은 형식
+      'ja', // 짧은 형식
     ];
 
     for (const key of fallbackOrder) {
@@ -107,9 +130,9 @@ export function extractLocalizedText(
 }
 
 /**
- * Locale을 alt 필드 값(ko_KR, en_US, th_TH, zh_TW)으로 변환
- * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-Hant')
- * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH', 'zh_TW')
+ * Locale을 alt 필드 값(ko_KR, en_US, th_TH, zh_TW, ja_JP)으로 변환
+ * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-Hant', 'ja')
+ * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ja_JP')
  */
 export function localeToAltValue(locale: Locale): DatabaseLocale {
   switch (locale) {
@@ -121,6 +144,8 @@ export function localeToAltValue(locale: Locale): DatabaseLocale {
       return 'th_TH';
     case 'zh-Hant':
       return 'zh_TW';
+    case 'ja':
+      return 'ja_JP';
     default:
       return 'en_US';
   }

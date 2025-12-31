@@ -24,14 +24,26 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'EYES',
     icon: () => <EyesIcon />,
     iconSmall: () => <EyesIcon variant='small' />,
-    labels: { ko_KR: '눈', en_US: 'Eyes', th_TH: 'ดวงตา', zh_TW: '眼睛' } satisfies LocalizedText,
+    labels: {
+      ko_KR: '눈',
+      en_US: 'Eyes',
+      th_TH: 'ดวงตา',
+      zh_TW: '眼睛',
+      ja_JP: '目',
+    } satisfies LocalizedText,
   },
   {
     id: '6bbbbde1-4806-4db7-a368-0d73f31fc511', // NOSE
     type: 'NOSE',
     icon: () => <NoseIcon />,
     iconSmall: () => <NoseIcon variant='small' />,
-    labels: { ko_KR: '코', en_US: 'Nose', th_TH: 'จมูก', zh_TW: '鼻子' } satisfies LocalizedText,
+    labels: {
+      ko_KR: '코',
+      en_US: 'Nose',
+      th_TH: 'จมูก',
+      zh_TW: '鼻子',
+      ja_JP: '鼻',
+    } satisfies LocalizedText,
   },
   {
     id: 'bc0effa1-af1a-4048-8b57-45130bd74820', // LIFTING
@@ -43,6 +55,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Lifting',
       th_TH: 'ยกกระชับ',
       zh_TW: '拉提',
+      ja_JP: 'リフティング',
     } satisfies LocalizedText,
   },
   {
@@ -55,6 +68,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Facial Contouring',
       th_TH: 'แก้ไขโครงหน้า',
       zh_TW: '臉部輪廓',
+      ja_JP: '顔面輪郭',
     } satisfies LocalizedText,
   },
   {
@@ -67,6 +81,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Breast',
       th_TH: 'หน้าอก',
       zh_TW: '胸部',
+      ja_JP: '胸',
     } satisfies LocalizedText,
   },
   {
@@ -79,6 +94,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Stem Cell',
       th_TH: 'เซลล์ต้นกำเนิด',
       zh_TW: '幹細胞',
+      ja_JP: '幹細胞',
     } satisfies LocalizedText,
   },
   {
@@ -91,6 +107,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Liposuction',
       th_TH: 'ศัลยกรรมดูดไขมัน',
       zh_TW: '抽脂',
+      ja_JP: '脂肪吸引',
     } satisfies LocalizedText,
   },
   {
@@ -103,6 +120,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Body',
       th_TH: 'ศัลยกรรมร่างกาย',
       zh_TW: '身體',
+      ja_JP: 'ボディ',
     } satisfies LocalizedText,
   },
   {
@@ -115,6 +133,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Hair Transplant',
       th_TH: 'ปลูกผม',
       zh_TW: '植髮',
+      ja_JP: '植毛',
     } satisfies LocalizedText,
   },
   {
@@ -127,6 +146,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Dermatology',
       th_TH: 'โรคผิวหนัง',
       zh_TW: '皮膚科',
+      ja_JP: '皮膚科',
     } satisfies LocalizedText,
   },
   {
@@ -139,6 +159,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Dental',
       th_TH: 'ทันตกรรม',
       zh_TW: '牙科',
+      ja_JP: '歯科',
     } satisfies LocalizedText,
   },
   {
@@ -151,6 +172,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       en_US: 'Others',
       th_TH: 'อื่นๆ',
       zh_TW: '其他',
+      ja_JP: 'その他',
     } satisfies LocalizedText,
   },
 ];
@@ -161,7 +183,13 @@ const ALL_CATEGORY: CategoryItem = {
   type: 'all',
   icon: () => <AllIcon />,
   iconSmall: () => <AllIcon variant='small' />,
-  labels: { ko_KR: '전체', en_US: 'All', th_TH: 'ทั้งหมด', zh_TW: '全部' } satisfies LocalizedText,
+  labels: {
+    ko_KR: '전체',
+    en_US: 'All',
+    th_TH: 'ทั้งหมด',
+    zh_TW: '全部',
+    ja_JP: 'すべて',
+  } satisfies LocalizedText,
 };
 
 // Quick Menu용 카테고리 (전체 제외)

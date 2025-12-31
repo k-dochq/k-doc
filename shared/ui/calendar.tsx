@@ -80,6 +80,11 @@ const locales: Record<Locale, CalendarLocale> = {
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
     today: '今天',
   },
+  ja: {
+    months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+    weekdays: ['日', '月', '火', '水', '木', '金', '土'],
+    today: '今日',
+  },
 };
 
 const ChevronLeftIcon = ({ className }: { className?: string }) => (

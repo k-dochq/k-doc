@@ -113,12 +113,13 @@ export function AdditionalInfoForm({
         ? `${formData.countryCode}${formData.phoneNumberOnly}`
         : formData.phoneNumberOnly;
 
-    // Locale을 UserLocale 형식으로 변환 (en -> en_US, ko -> ko_KR, th -> th_TH)
+    // Locale을 UserLocale 형식으로 변환 (en -> en_US, ko -> ko_KR, th -> th_TH, zh-Hant -> zh_TW, ja -> ja_JP)
     const localeMap: Record<Locale, string> = {
       en: 'en_US',
       ko: 'ko_KR',
       th: 'th_TH',
       'zh-Hant': 'zh_TW',
+      ja: 'ja_JP',
     };
     const userLocale = localeMap[lang] || 'en_US';
 
