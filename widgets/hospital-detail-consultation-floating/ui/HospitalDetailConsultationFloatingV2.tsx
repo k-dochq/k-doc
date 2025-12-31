@@ -7,6 +7,7 @@ import { useCheckConsultationHistory } from 'features/consultation-request/model
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { openDrawer } from 'shared/lib/drawer';
 import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
+import { trackContact, trackMetaPixelContact } from 'shared/lib/analytics';
 
 interface HospitalDetailConsultationFloatingV2Props {
   hospitalId: string;
@@ -27,6 +28,10 @@ export function HospitalDetailConsultationFloatingV2({
   const checkConsultationHistory = useCheckConsultationHistory();
 
   const handleConsultationRequest = async () => {
+    // 이벤트 트래킹
+    trackMetaPixelContact(lang);
+    trackContact(lang);
+
     // 로그인 체크
     if (!isAuthenticated) {
       await openDrawer({

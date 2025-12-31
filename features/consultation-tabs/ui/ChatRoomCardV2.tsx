@@ -7,7 +7,6 @@ import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { formatDateSimple } from 'shared/lib/date-utils';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { DEFAULT_IMAGES } from 'shared/config/images';
-import { trackContact, trackMetaPixelContact } from 'shared/lib/analytics';
 
 interface ChatRoomCardV2Props {
   chatRoom: ChatRoom;
@@ -21,20 +20,10 @@ export function ChatRoomCardV2({ chatRoom, lang, dict }: ChatRoomCardV2Props) {
     ? getLocalizedTextByLocale(chatRoom.districtName, lang)
     : '';
 
-  // 채팅방 클릭 시 이벤트 트래킹
-  const handleChatRoomClick = () => {
-    // Meta Pixel Contact 이벤트
-    trackMetaPixelContact(lang);
-
-    // GA4 contact 이벤트
-    trackContact(lang);
-  };
-
   return (
     <LocaleLink
       href={`/chat/${chatRoom.hospitalId}`}
       className='flex items-center gap-3 border-b border-neutral-200 py-5'
-      onClick={handleChatRoomClick}
     >
       {/* 로고 영역 */}
       <div className='relative h-[46px] w-[46px] flex-shrink-0 overflow-hidden rounded-full bg-[#001872]'>
