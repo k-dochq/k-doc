@@ -3,6 +3,8 @@
  * Facebook Pixel (Meta Pixel) 이벤트를 타입 안전하게 전송합니다.
  */
 
+import { type Locale } from 'shared/config';
+
 // Meta Pixel의 fbq 함수 타입 선언
 declare global {
   interface Window {
@@ -59,5 +61,44 @@ export function trackHospitalViewContent(hospitalId: string, hospitalName: strin
     content_ids: [hospitalId],
     content_type: 'product',
     content_category: 'Hospital',
+  });
+}
+
+/**
+ * 상담 시작 버튼 클릭 Contact 이벤트 전송
+ * @param lang 현재 페이지 언어 코드
+ */
+export function trackContact(lang: Locale): void {
+  trackMetaPixelEvent('Contact', {
+    content_name: 'Chat Consultation',
+    language: lang,
+  });
+}
+
+/**
+ * 상담신청 Lead 이벤트 전송
+ * @param lang 현재 페이지 언어 코드
+ */
+export function trackLead(lang: Locale): void {
+  trackMetaPixelEvent('Lead', {
+    content_name: 'Consulting Request',
+    language: lang,
+  });
+}
+
+/**
+ * 회원가입 완료 CompleteRegistration 이벤트 전송
+ */
+export function trackCompleteRegistration(): void {
+  trackMetaPixelEvent('CompleteRegistration');
+}
+
+/**
+ * 검색 Search 이벤트 전송
+ * @param searchString 사용자가 입력한 검색어
+ */
+export function trackSearch(searchString: string): void {
+  trackMetaPixelEvent('Search', {
+    search_string: searchString,
   });
 }

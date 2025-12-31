@@ -5,7 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { createClient } from 'shared/lib/supabase/client';
 import { generateNickname } from 'shared/lib/nickname-generator';
-import { trackSignUpComplete } from 'shared/lib/analytics';
+import { trackSignUpComplete, trackCompleteRegistration } from 'shared/lib/analytics';
 import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
 
 interface UseEmailSignupParams {
@@ -111,7 +111,8 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
         // 회원가입 성공 - 마케팅 어트리뷰션 LocalStorage 초기화
         clearFirstTouch();
 
-        // 회원가입 성공 - GA 이벤트 전송
+        // 회원가입 성공 - 이벤트 전송
+        trackCompleteRegistration();
         trackSignUpComplete('email');
         return { success: true };
       }
@@ -119,7 +120,8 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
       // 회원가입 성공 - 마케팅 어트리뷰션 LocalStorage 초기화
       clearFirstTouch();
 
-      // 회원가입 성공 - GA 이벤트 전송
+      // 회원가입 성공 - 이벤트 전송
+      trackCompleteRegistration();
       trackSignUpComplete('email');
       return { success: true };
     } catch (err) {

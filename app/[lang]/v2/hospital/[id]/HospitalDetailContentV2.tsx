@@ -29,6 +29,20 @@ export function HospitalDetailContentV2({ hospitalId, lang, dict }: HospitalDeta
   // TanStack Query를 사용하여 병원 상세 데이터 조회
   const { data, isLoading, error } = useHospitalDetail(hospitalId);
 
+  // 병원 상세 페이지 뷰 이벤트 트래킹
+  // 주의: hooks는 항상 같은 순서로 호출되어야 하므로 early return 이전에 배치
+  useEffect(() => {
+    if (data?.hospital && hospitalId) {
+      const hospitalName = extractLocalizedText(data.hospital.name, lang);
+
+      // Meta Pixel ViewContent 이벤트
+      trackHospitalViewContent(hospitalId, hospitalName);
+
+      // GA4 view_item 이벤트
+      trackViewItem(hospitalId, hospitalName, lang);
+    }
+  }, [data?.hospital, hospitalId, lang]);
+
   // 로딩 상태
   if (isLoading) {
     return <HospitalDetailSkeleton />;
@@ -40,19 +54,6 @@ export function HospitalDetailContentV2({ hospitalId, lang, dict }: HospitalDeta
   }
 
   const { hospital } = data;
-
-  // 병원 상세 페이지 뷰 이벤트 트래킹
-  useEffect(() => {
-    if (hospital && hospitalId) {
-      const hospitalName = extractLocalizedText(hospital.name, lang);
-
-      // Meta Pixel ViewContent 이벤트
-      trackHospitalViewContent(hospitalId, hospitalName);
-
-      // GA4 view_item 이벤트
-      trackViewItem(hospitalId, hospitalName, lang);
-    }
-  }, [hospital, hospitalId, lang]);
 
   return (
     <div className='relative text-neutral-900'>

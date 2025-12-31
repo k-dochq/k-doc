@@ -4,7 +4,13 @@ import { type Locale } from 'shared/config';
 /**
  * GA 이벤트 타입 정의
  */
-export type GAEventName = 'sign_up_click' | 'sign_up' | 'view_item';
+export type GAEventName =
+  | 'sign_up_click'
+  | 'sign_up'
+  | 'view_item'
+  | 'contact'
+  | 'generate_lead'
+  | 'search';
 
 /**
  * GA 이벤트 파라미터 타입 정의
@@ -18,6 +24,8 @@ export interface GAEventParams {
   item_name?: string;
   item_category?: string;
   language?: string;
+  lead_type?: string;
+  search_term?: string;
   [key: string]: string | number | boolean | undefined;
 }
 
@@ -47,14 +55,33 @@ export function trackSignUpClick(source: string = 'unknown'): void {
 }
 
 /**
+ * 회원가입 방법을 GA4 형식으로 변환
+ * @param method 원본 회원가입 방법 (예: 'email', 'google', 'apple', 'social')
+ * @returns GA4 형식의 method (예: 'email', 'sns_google', 'sns_apple')
+ */
+function normalizeSignUpMethod(method: string): string {
+  switch (method.toLowerCase()) {
+    case 'google':
+      return 'sns_google';
+    case 'apple':
+      return 'sns_apple';
+    case 'email':
+      return 'email';
+    default:
+      return 'email';
+  }
+}
+
+/**
  * 회원가입 완료 이벤트 전송
  * @param method 회원가입 방법 (예: 'email', 'google', 'apple')
  */
 export function trackSignUpComplete(method: string = 'email'): void {
+  const normalizedMethod = normalizeSignUpMethod(method);
   sendGAEvent('sign_up', {
     event_category: 'conversion',
     event_label: 'Sign Up Completed',
-    method,
+    method: normalizedMethod,
   });
 }
 
@@ -70,5 +97,37 @@ export function trackViewItem(hospitalId: string, hospitalName: string, lang: Lo
     item_name: hospitalName,
     item_category: 'Hospital',
     language: lang,
+  });
+}
+
+/**
+ * 상담 시작 버튼 클릭 contact 이벤트 전송
+ * @param lang 현재 페이지 언어 코드
+ */
+export function trackContact(lang: Locale): void {
+  sendGAEvent('contact', {
+    method: 'chat',
+    language: lang,
+  });
+}
+
+/**
+ * 상담신청 generate_lead 이벤트 전송
+ * @param lang 현재 페이지 언어 코드
+ */
+export function trackGenerateLead(lang: Locale): void {
+  sendGAEvent('generate_lead', {
+    lead_type: 'consultation_request',
+    language: lang,
+  });
+}
+
+/**
+ * 검색 search 이벤트 전송
+ * @param searchTerm 사용자가 입력한 검색어
+ */
+export function trackSearch(searchTerm: string): void {
+  sendGAEvent('search', {
+    search_term: searchTerm,
   });
 }
