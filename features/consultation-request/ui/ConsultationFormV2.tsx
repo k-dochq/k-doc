@@ -14,6 +14,7 @@ import { TextareaFieldV2 } from './TextareaFieldV2';
 import { FormDatePickerV2 } from './FormDatePickerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 import { PrivacyAgreementNotice } from './PrivacyAgreementNotice';
+import { trackLead, trackGenerateLead } from 'shared/lib/analytics';
 
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
@@ -113,6 +114,13 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
       window.alert(validationErrors[0]);
       return;
     }
+
+    // 상담신청 이벤트 트래킹
+    // Meta Pixel Lead 이벤트
+    trackLead(lang);
+
+    // GA4 generate_lead 이벤트
+    trackGenerateLead(lang);
 
     consultationMutation.mutate(
       {

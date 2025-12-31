@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useHospitalDetail } from 'entities/hospital/api/queries/use-hospital-detail';
@@ -16,6 +17,7 @@ import { PopularReviewsV2ContainerForHospital } from 'widgets/popular-reviews/ui
 import { HospitalDetailConsultationFloatingV2 } from 'widgets/hospital-detail-consultation-floating/ui/HospitalDetailConsultationFloatingV2';
 import { REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { trackHospitalViewContent, trackViewItem } from 'shared/lib/analytics';
 
 interface HospitalDetailContentV2Props {
   hospitalId: string;
@@ -26,6 +28,20 @@ interface HospitalDetailContentV2Props {
 export function HospitalDetailContentV2({ hospitalId, lang, dict }: HospitalDetailContentV2Props) {
   // TanStack Query를 사용하여 병원 상세 데이터 조회
   const { data, isLoading, error } = useHospitalDetail(hospitalId);
+
+  // 병원 상세 페이지 뷰 이벤트 트래킹
+  // 주의: hooks는 항상 같은 순서로 호출되어야 하므로 early return 이전에 배치
+  useEffect(() => {
+    if (data?.hospital && hospitalId) {
+      const hospitalName = extractLocalizedText(data.hospital.name, lang);
+
+      // Meta Pixel ViewContent 이벤트
+      trackHospitalViewContent(hospitalId, hospitalName);
+
+      // GA4 view_item 이벤트
+      trackViewItem(hospitalId, hospitalName, lang);
+    }
+  }, [data?.hospital, hospitalId, lang]);
 
   // 로딩 상태
   if (isLoading) {
