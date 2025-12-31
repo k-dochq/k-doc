@@ -43,7 +43,16 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
   const doctorTitle = doctorPosition ? `${doctorName} ${doctorPosition}` : doctorName;
 
   // 직접 접근으로 테스트
-  const localeKey = lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH';
+  const localeKey =
+    lang === 'ko'
+      ? 'ko_KR'
+      : lang === 'en'
+        ? 'en_US'
+        : lang === 'th'
+          ? 'th_TH'
+          : lang === 'zh-Hant'
+            ? 'zh_TW'
+            : 'ja_JP';
   const doctorCareer =
     doctor.career[localeKey] ||
     doctor.career.ko_KR ||

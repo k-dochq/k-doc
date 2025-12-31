@@ -42,6 +42,7 @@ export function CategoryFilterTabsV2({
         en_US: 'All',
         th_TH: 'ทั้งหมด',
         zh_TW: '全部',
+        ja_JP: 'すべて',
       } satisfies LocalizedText,
     },
     ...medicalSpecialties.map((specialty) => ({

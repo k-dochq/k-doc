@@ -39,8 +39,18 @@ export function CommentForm({ reviewId, lang, dict }: CommentFormProps) {
     setIsSubmitting(true);
 
     // 현재 언어로만 댓글 작성 (다국어 지원은 추후 확장 가능)
+    const localeKey =
+      lang === 'ko'
+        ? 'ko_KR'
+        : lang === 'en'
+          ? 'en_US'
+          : lang === 'th'
+            ? 'th_TH'
+            : lang === 'zh-Hant'
+              ? 'zh_TW'
+              : 'ja_JP';
     const localizedContent: LocalizedText = {
-      [lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH']: content.trim(),
+      [localeKey]: content.trim(),
     };
 
     createCommentMutation.mutate(localizedContent);

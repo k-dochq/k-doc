@@ -1,0 +1,1264 @@
+{
+  "common": {
+    "confirm": "確認",
+    "cancel": "キャンセル",
+    "today": "今日"
+  },
+  "quickMenu": {
+    "title": "人気手術部位",
+    "error": {
+      "message": "データの読み込み中にエラーが発生しました。",
+      "retryButton": "再試行"
+    },
+    "empty": {
+      "message": "表示する施術部位がありません。",
+      "description": "まもなく新しい施術部位が追加される予定です。"
+    }
+  },
+  "search": {
+    "placeholder": "病院、手術部位を検索してみてください",
+    "resultTitle": "検索結果"
+  },
+  "hospitalList": {
+    "title": "たくさん探している病院",
+    "viewAll": "全て見る",
+    "error": {
+      "message": "病院情報の読み込み中にエラーが発生しました。",
+      "retryButton": "再試行"
+    },
+    "empty": {
+      "message": "おすすめの病院はありません。",
+      "description": "まもなく新しい病院が追加される予定です。"
+    }
+  },
+  "liveReviews": {
+    "title": "ライブライフレビュー",
+    "empty": {
+      "message": "表示する生後期がありません。",
+      "description": "まもなく新しい生後期が追加される予定です。"
+    }
+  },
+  "popularReviews": {
+    "title": "よく見るレビュー",
+    "viewAll": "全て見る",
+    "reviewCount": "レビュー{count}",
+    "error": {
+      "message": "後期情報の読み込み中にエラーが発生しました。",
+      "retryButton": "再試行"
+    },
+    "empty": {
+      "message": "表示するレビューはありません。",
+      "description": "まもなく新しいレビューが追加される予定です。"
+    }
+  },
+  "youtube": {
+    "title": "YOUTUBE",
+    "filter": {
+      "all": "全体",
+      "popular": "人気ビデオ",
+      "recommended": "K-DOCおすすめ"
+    },
+    "error": {
+      "message": "映像情報の読み込み中にエラーが発生しました。",
+      "retryButton": "再試行"
+    },
+    "empty": {
+      "message": "表示する画像がありません。",
+      "description": "まもなく新しい映像が追加される予定です。"
+    }
+  },
+  "premiumService": {
+    "title": "K-DOCプレミアムサービス",
+    "subtitle": "施術から旅行まですべてをサポートします。",
+    "services": {
+      "interpreter": {
+        "title": "通訳サービス提供可能",
+        "description": "専門の通訳者が1:1で密着同行します。"
+      },
+      "vehicle": {
+        "title": "車両サービス提供可能",
+        "description": "最高級車で快適で安全な移動を担当します。"
+      }
+    }
+  },
+  "hospitals": {
+    "title": "病院を探す",
+    "totalCount": "総{{count}}の病院",
+    "empty": {
+      "message": "登録された病院はありません。",
+      "title": "登録された病院はありません",
+      "description": "まもなく新しい病院が追加される予定です。",
+      "searchTitle": "検索された病院はありません",
+      "searchDescription": "別のクエリでもう一度お試しください"
+    },
+    "pagination": {
+      "page": "ページ{{current}}/{{total}}"
+    },
+    "infiniteScroll": {
+      "loading": "もっと病院を呼んでいます...",
+      "end": "すべての病院を呼びました。"
+    },
+    "doctors": {
+      "title": "所属医療陣",
+      "specialties": "施術部位",
+      "empty": "登録された医療スタッフはありません。",
+      "viewAll": "すべての医者を見る"
+    }
+  },
+  "reviewCarousel": {
+    "title": "施術後期",
+    "error": {
+      "message": "レビューの読み込み中にエラーが発生しました。",
+      "description": "しばらくしてからもう一度お試しください。",
+      "retry": "再試行"
+    },
+    "empty": {
+      "message": "登録されたレビューはありません。",
+      "description": "最初のレビューを書いてください。"
+    },
+    "viewAll": "全て見る"
+  },
+  "hospitalReviews": {
+    "title": "施術後期",
+    "subtitle": "の施術レビュー",
+    "loadingMore": "さらにレビューを読み込んでいます...",
+    "allLoaded": "すべてのレビューを呼んだ。",
+    "retry": "再試行",
+    "error": {
+      "title": "レビューデータを読み込めません",
+      "message": "ネットワーク接続を確認し、しばらくしてからもう一度お試しください"
+    },
+    "empty": {
+      "title": "まだレビューはありません",
+      "description": "最初のレビューを書いてください。"
+    }
+  },
+  "hospitalDetailReviews": {
+    "title": "施術後期",
+    "viewAll": "全て見る",
+    "emptyMessage": "まだ登録されているレビューはありません。"
+  },
+  "hospitalDetailConsultation": {
+    "requestButton": "相談申請",
+    "checking": "確認中..."
+  },
+  "notices": {
+    "title": "お知らせ",
+    "loading": "お知らせを読み込んでいます...",
+    "error": "お知らせの読み込みに失敗しました。",
+    "empty": "お知らせはありません。",
+    "totalCount": "合計{{count}}件のお知らせがあります。",
+    "loadedCount": "現在{{count}}個を呼び出しました。",
+    "loadMore": "もっと見る",
+    "loadingMore": "読み込み中...",
+    "allLoaded": "すべてのお知らせを呼び出しました。",
+    "noTitle": "タイトルなし",
+    "backToList": "リストとして",
+    "previousPost": "前の記事",
+    "nextPost": "次の記事",
+    "viewList": "リストを見る",
+    "noPreviousPost": "前の記事はありません",
+    "noNextPost": "次の記事はありません",
+    "searchPlaceholder": "検索語を入力してください"
+  },
+  "hospitalDetailTabs": {
+    "introduction": "病院紹介",
+    "procedures": "施術詳細",
+    "youtube": "YouTube",
+    "youtubePreparing": "病院映像準備中です。",
+    "proceduresDetail": "施術詳細",
+    "proceduresComingSoon": "施術詳細情報は準備中です。",
+    "comingSoonSubtext": "まもなく更新予定です。",
+    "apgujeongMiracle": {
+      "videoTitle": "手術映像",
+      "imageAlt": "狎鴎亭ミラクル議員施術詳細情報",
+      "videoDescription": "米国FOX TVに放映された狎鴎亭ミラクルウ・ジョンホ院長"
+    }
+  },
+  "hospitalDetailDoctors": {
+    "viewAll": "全て見る"
+  },
+  "allReviews": {
+    "title": "全施術レビュー",
+    "subtitle": "すべての病院の施術レビューを確認してください",
+    "loadingMore": "さらにレビューを読み込んでいます...",
+    "allLoaded": "すべてのレビューを呼んだ。",
+    "retry": "再試行",
+    "empty": {
+      "title": "登録されたレビューはありません",
+      "description": "最初のレビューを書く",
+      "searchTitle": "検索されたレビューはありません",
+      "searchDescription": "別のクエリでもう一度お試しください"
+    },
+    "error": {
+      "title": "レビューデータを読み込めません",
+      "message": "ネットワーク接続を確認し、しばらくしてからもう一度お試しください"
+    },
+    "filter": {
+      "all": "全体",
+      "specialty": "部位別",
+      "eyes": "目",
+      "nose": "鼻",
+      "facialContouring": "輪郭",
+      "breast": "おっぱい",
+      "stemCell": "幹細胞",
+      "liposuction": "脂肪吸引",
+      "lifting": "持ち上がる",
+      "hairTransplant": "髪の移植"
+    },
+    "sort": {
+      "popular": "人気順",
+      "recommended": "推奨順",
+      "latest": "最新順",
+      "ratingHigh": "星の高い順",
+      "ratingLow": "星の低い順"
+    }
+  },
+  "reviewWrite": {
+    "fab": {
+      "ariaLabel": "施術後期作成",
+      "buttonText": "施術レビューを書く"
+    },
+    "selectHospital": {
+      "title": "病院の選択",
+      "description": "施術後期を作成する病院を選択してください。予約した病院のリストから選択できます。",
+      "pageTitle": "予約した病院を選択",
+      "pageSubtitle": "施術後期を作成する病院を選択してください",
+      "notificationMessage": "レビューを書く病院を選択してください",
+      "infiniteScroll": {
+        "loading": "もっと病院に来ています...",
+        "end": "全ての予約病院を呼びました"
+      },
+      "error": {
+        "title": "予約病院データを読み込めません",
+        "message": "ネットワーク接続を確認し、しばらくしてからもう一度お試しください"
+      },
+      "empty": {
+        "title": "予約履歴がありません",
+        "description": "施術後期を作成するには、まず病院の予約が必要です。",
+        "subdescription": "希望の病院を見つけて予約を進めてください。",
+        "browseButton": "病院ツアー"
+      }
+    },
+    "form": {
+      "title": "施術後期作成",
+      "hospitalInfo": "病院情報",
+      "ratingQuestion": "施術経験はどうでしたか？",
+      "procedureNameLabel": "[必須]施術方法",
+      "procedureNamePlaceholder": "どのように手術を受けましたか？",
+      "medicalSpecialtyLabel": "[必須]施術部位の選択",
+      "medicalSpecialtyPlaceholder": "カテゴリを選択してください",
+      "contentLabel": "[必須]レビュー内容",
+      "contentPlaceholder": "詳細情報または施術経験について10文字以上自由に書いてください",
+      "beforeImagesLabel": "[オプション]施術前",
+      "afterImagesLabel": "[選択]施術後",
+      "addPhotoButton": "写真を追加",
+      "submitButton": "施術後期登録",
+      "submitting": "登録中...",
+      "uploading": "アップロード中です",
+      "characterCount": "{{current}}/500",
+      "editTitle": "施術後期修正",
+      "editSubmitButton": "施術後期修正",
+      "cancelConfirmTitle": "レビューをキャンセルしてもよろしいですか？",
+      "cancelConfirmMessage": "作成をキャンセルすると、入力した内容はすべて消えます。",
+      "cancelConfirmButton": "作成キャンセル",
+      "cancelContinueButton": "継続作成"
+    },
+    "validation": {
+      "ratingRequired": "スターポイントを選択してください",
+      "procedureNameRequired": "施術方法を入力してください",
+      "medicalSpecialtyRequired": "施術部位を選択してください",
+      "contentRequired": "レビューの内容を入力してください",
+      "contentMaxLength": "500文字以下で作成してください",
+      "imageMaxCount": "画像は最大10個までアップロード可能です",
+      "imageSizeLimit": "画像サイズは10MB以下でなければなりません"
+    },
+    "success": {
+      "title": "施術後期が登録されました",
+      "message": "大切なレビューありがとうございます",
+      "goToReviews": "施術のレビューを見る"
+    },
+    "error": {
+      "title": "後期登録に失敗しました",
+      "message": "しばらくしてからもう一度お試しください",
+      "retry": "再試行"
+    }
+  },
+  "reviewDetail": {
+    "title": "施術後期詳細",
+    "content": "レビュー内容",
+    "backButton": "戻る",
+    "hospitalInfo": "施術病院情報",
+    "hospital": "施術病院",
+    "sameHospitalReviews": "同じ病院施術のレビュー"
+  },
+  "reviewImages": {
+    "beforePhoto": "施術前の写真",
+    "afterPhoto": "施術後の写真",
+    "loginRequired": "画像を見るにはログインしてください。"
+  },
+  "error": {
+    "title": "予期しないエラーが発生しました",
+    "description": "ページを更新するか、しばらくしてからもう一度お試しください"
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "subtitle": "アカウントにログイン",
+      "email": "Eメール",
+      "password": "パスワード",
+      "loginButton": "ログインする",
+      "laterButton": "後で行う",
+      "signupButton": "電子メールでサインアップ",
+      "requiredMessage": "サービス利用のためにログインしてください",
+      "socialLogin": "ソーシャルログイン",
+      "startIn3Seconds": "3秒で始める",
+      "googleLogin": "Googleで始まる",
+      "appleLogin": "Appleで始まる",
+      "kakaoLogin": "カカオでログイン",
+      "emailLogin": "メールで開始",
+      "recentLogin": "最近ログイン",
+      "forgotPassword": "パスワードを忘れましたか？",
+      "signUp": "電子メールでサインアップ",
+      "loading": "読み込み中...",
+      "loginError": "ログイン中にエラーが発生しました",
+      "noAccount": "アカウントがありませんか？",
+      "signupLink": "電子メールでサインアップ",
+      "placeholders": {
+        "email": "your-email@example.com",
+        "password": "パスワードを入力してください"
+      },
+      "errors": {
+        "emailRequired": "メールを入力してください。",
+        "emailInvalid": "正しいメールアドレスを入力してください。",
+        "passwordRequired": "パスワードを入力してください。",
+        "invalidCredentials": "電子メールまたはパスワードが正しくありません。",
+        "emailNotConfirmed": "メールを確認してアカウントを認証してください。"
+      }
+    },
+    "additionalInfo": {
+      "title": "追加情報の入力",
+      "description": "サービスを利用するための追加情報を入力してください。",
+      "emailReadonly": "ソーシャルアカウントのメールアドレスです",
+      "submitButton": "完了"
+    },
+    "signup": {
+      "title": "会員登録",
+      "subtitle": "新しいアカウントを作成してください",
+      "required": "必須",
+      "optional": "選択",
+      "email": "Eメール",
+      "password": "パスワード",
+      "confirmPassword": "パスワード確認",
+      "passportName": "パスポート英語名",
+      "nationality": "国籍",
+      "nationalities": {
+        "thailand": "タイ",
+        "korea": "韓国",
+        "united_states": "アメリカ",
+        "united_kingdom": "イギリス",
+        "germany": "ドイツ",
+        "france": "フランス",
+        "japan": "日本",
+        "china": "中国",
+        "india": "インド",
+        "australia": "オーストラリア",
+        "brazil": "ブラジル",
+        "russia": "ロシア",
+        "spain": "スペイン",
+        "italy": "イタリア",
+        "mexico": "メキシコ",
+        "netherlands": "オランダ",
+        "sweden": "スウェーデン",
+        "switzerland": "スイス",
+        "belgium": "ベルギー",
+        "norway": "ノルウェー",
+        "denmark": "デンマーク",
+        "singapore": "シンガポール",
+        "new_zealand": "ニュージーランド",
+        "malaysia": "マレーシア",
+        "philippines": "フィリピン",
+        "indonesia": "インドネシア",
+        "turkey": "トルコ",
+        "south_africa": "南アフリカ",
+        "egypt": "エジプト",
+        "nigeria": "ナイジェリア",
+        "pakistan": "パキスタン",
+        "bangladesh": "バングラデシュ",
+        "sri_lanka": "スリランカ",
+        "iran": "イラン",
+        "israel": "イスラエル",
+        "saudi_arabia": "サウジアラビア",
+        "united_arab_emirates": "アラブ首長国連邦"
+      },
+      "gender": "性別",
+      "genders": {
+        "female": "女性",
+        "male": "男性"
+      },
+      "phoneNumber": "携帯電話番号",
+      "countryCode": "国番号",
+      "phoneNumberOnly": "携帯電話番号",
+      "birthDate": "生年月日",
+      "dateFormat": "年、月、日",
+      "signupButton": "会員登録",
+      "loading": "登録中...",
+      "signupError": "会員登録中にエラーが発生しました",
+      "passwordMismatch": "パスワードが一致しません",
+      "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+      "loginLink": "ログインする",
+      "termsAgreement": {
+        "title": [
+          "K-DOC",
+          "サービス利用に",
+          "同意してください"
+        ],
+        "allAgreed": "完全な同意",
+        "age14Plus": "14歳以上です。",
+        "termsOfService": "利用規約（必須）",
+        "privacyPolicy": "個人情報の収集/利用の同意（必須）",
+        "marketingNotifications": "イベント/サービス特典通知（オプション）",
+        "requiredError": "必須条件に同意してください。",
+        "agreeAndStart": "完全に同意して始める"
+      },
+      "placeholders": {
+        "email": "your-email@example.com",
+        "password": "6文字以上のパスワード",
+        "confirmPassword": "パスワードを再入力してください",
+        "passportName": "パスポートに記載されている英語の名前を入力してください",
+        "nationality": "国籍を選択してください（オプション）",
+        "gender": "性別を選択してください（オプション）",
+        "phoneNumber": "010-0000-0000（オプション）",
+        "countryCode": "選択",
+        "phoneNumberOnly": "携帯電話番号を入力してください",
+        "birthDate": "生年月日を選択してください（オプション）"
+      },
+      "errors": {
+        "emailRequired": "メールを入力してください。",
+        "emailInvalid": "正しいメールアドレスを入力してください。",
+        "passwordRequired": "パスワードを入力してください。",
+        "passwordTooShort": "パスワードは6文字以上でなければなりません。",
+        "confirmPasswordRequired": "パスワード確認を入力してください。",
+        "passwordMismatch": "パスワードが一致しません。",
+        "passportNameRequired": "パスポートの英文名を入力しないと、治療の利用が制限されることがあります。",
+        "passportNameTooShort": "パスポートの英文名は少なくとも2文字でなければなりません。",
+        "passportNameInvalid": "パスポート英語名は英字のみ入力できます。",
+        "genderRequired": "性別を選択してください。",
+        "emailAlreadyRegistered": "すでに登録されているメールです。",
+        "invalidEmail": "正しいメールアドレスを入力してください。",
+        "passwordTooShortServer": "パスワードは6文字以上でなければなりません。",
+        "unexpectedError": "予期しないエラーが発生しました。",
+        "invalidCredentials": "電子メールまたはパスワードが正しくありません。",
+        "emailNotConfirmed": "メールを確認してアカウントを認証してください。",
+        "signupSuccess": "会員登録が完了しました。メールを確認してアカウントを有効にしてください。",
+        "userAlreadyRegistered": "すでに登録されているメールです。",
+        "updateProfileError": "情報の保存中にエラーが発生しました。"
+      }
+    },
+    "forgotPassword": {
+      "title": "パスワードを探す",
+      "description": "登録したEメールアドレスを入力すると、パスワードリセットリンクが送信されます。",
+      "descriptionLine1": "登録したメールアドレスを入力してください",
+      "descriptionLine2": "パスワードリセットリンクをお送りします。",
+      "email": "Eメール",
+      "resetButton": "パスワードリセットリンクを送信",
+      "loading": "転送中...",
+      "backToLogin": "ログインページに戻る",
+      "loginLink": "ログインする",
+      "resetError": "パスワードのリセット中にエラーが発生しました",
+      "placeholders": {
+        "email": "your-email@example.com"
+      },
+      "errors": {
+        "emailRequired": "メールを入力してください。",
+        "emailInvalid": "正しい形式で入力してください。",
+        "userNotFound": "そのメールで登録されているアカウントが見つかりません。",
+        "rateLimitExceeded": "あまりにも多くの要求がありました。しばらくしてからもう一度お試しください。"
+      },
+      "success": {
+        "title": "メールが送信されました",
+        "description": "入力したメールアドレスにパスワードリセットリンクを送信しました。メールを確認してください。"
+      }
+    },
+    "resetPassword": {
+      "title": "新しいパスワードの設定",
+      "description": "新しいパスワードを入力してください。",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "パスワード確認",
+      "updateButton": "パスワード変更",
+      "backToLogin": "ログインページに戻る",
+      "loginLink": "ログインする",
+      "goToLogin": "ログインページに移動",
+      "updateError": "パスワードの変更中にエラーが発生しました",
+      "sessionError": "セッションの確立中にエラーが発生しました。",
+      "placeholders": {
+        "newPassword": "新しいパスワードを入力してください",
+        "confirmPassword": "パスワードを再入力してください"
+      },
+      "errors": {
+        "passwordRequired": "パスワードを入力してください。",
+        "passwordTooShort": "パスワードは8文字以上でなければなりません。",
+        "confirmPasswordRequired": "パスワード確認を入力してください。",
+        "passwordMismatch": "パスワードが一致しません。",
+        "invalidSession": "セッションが無効です。もう一度お試しください。",
+        "sessionMissing": "認証セッションがありません。もう一度お試しください。"
+      },
+      "success": {
+        "title": "パスワードが変更されました",
+        "description": "パスワードが正常に変更されました。新しいパスワードでログインしてください。"
+      },
+      "error": {
+        "invalidLink": {
+          "title": "無効なリンク",
+          "description": "パスワードリセットリンクが無効または期限切れです。もう一度お試しください。"
+        }
+      }
+    },
+    "error": {
+      "title": "Authentication Error",
+      "description": "An error occurred during authentication. Please try again.",
+      "tryAgain": "Try Again",
+      "goHome": "Go Home"
+    }
+  },
+  "hospital": {
+    "region": "地域",
+    "reviewsButton": "施術後期",
+    "introduction": {
+      "title": "病院紹介"
+    },
+    "info": {
+      "title": "病院情報",
+      "operatingHours": "診療時間",
+      "noInformation": "情報なし"
+    },
+    "map": {
+      "title": "地図を見る",
+      "loading": "地図を読み込んでいます..."
+    },
+    "address": {
+      "copyButton": "アドレスコピー",
+      "noAddress": "住所情報がありません。",
+      "copySuccess": "住所がコピーされました。"
+    },
+    "like": {
+      "like": "蒸す",
+      "liked": "蒸し完了",
+      "loading": "読み込み中...",
+      "countLabel": "犬",
+      "error": "エラー発生"
+    },
+    "registrationPrompt": {
+      "message": "Fast Reservation Guarantee!!",
+      "button": "Register"
+    }
+  },
+  "districtFilter": {
+    "title": "地域",
+    "button": "地域別",
+    "selectAll": "全選択",
+    "deselectAll": "フルオフ",
+    "complete": "完了",
+    "reset": "初期化",
+    "empty": {
+      "message": "選択した地域はありません。"
+    }
+  },
+  "hospitalSort": {
+    "popular": "人気順",
+    "recommended": "推奨順",
+    "newest": "新規病院順"
+  },
+  "review": {
+    "like": {
+      "like": "いいね",
+      "liked": "いいね、キャンセル",
+      "loading": "読み込み中...",
+      "countLabel": "犬",
+      "error": "エラー発生"
+    },
+    "delete": "削除する",
+    "edit": "修正する",
+    "report": "報告する",
+    "deleteConfirm": "本当に削除しますか？",
+    "deleteConfirmTitle": "レビューを削除してもよろしいですか？",
+    "deleteConfirmMessage": "削除後は復元できません。慎重に選択してください。",
+    "deleteSuccess": "レビューが削除されました",
+    "deleteError": "レビューの削除に失敗しました",
+    "procedureTiming": "施術時期",
+    "showMore": "もっと見る",
+    "showLess": "折りたたみ",
+    "view": "照会"
+  },
+  "favorites": {
+    "title": "お気に入り",
+    "hospitals": "病院",
+    "reviews": "施術後期",
+    "doctors": "医者",
+    "loading": "読み込み中...",
+    "error": "データの読み込み中にエラーが発生しました。",
+    "errorMessage": "ネットワーク接続を確認し、しばらくしてからもう一度お試しください",
+    "retry": "再試行",
+    "errorHospitals": "病院データを読み込めません",
+    "errorReviews": "レビューデータを読み込めません",
+    "errorDoctors": "いい医者を呼ぶことはできません",
+    "loadingMoreReviews": "さらにレビューを読み込み中...",
+    "allLoadedReviews": "すべてのレビューを呼び出しました。",
+    "loadingMoreDoctors": "もっと医者を呼んでいます...",
+    "allLoadedDoctors": "すべての医者を呼んだ。",
+    "empty": {
+      "hospitals": {
+        "title": "保存した病院はありません。",
+        "description": "ハートをタップしてお気に入りの病院を保存してください"
+      },
+      "reviews": {
+        "title": "保存したレビューはありません",
+        "description": "ハートをタップしてお気に入りのレビューを保存します"
+      },
+      "doctors": {
+        "title": "保存した医者はいません。",
+        "description": "ハートをタップしてお気に入りの医者を保存してください"
+      }
+    },
+    "loadingMore": "より多くのデータを読み込んでいます...",
+    "allLoaded": "すべてのデータを呼び出しました"
+  },
+  "consultation": {
+    "title": "相談",
+    "chat": "相談チャット",
+    "appointment": {
+      "title": "予約履歴",
+      "reservationDateTime": "予約日時",
+      "region": "地域",
+      "writeReview": "施術後期を作成する",
+      "loadingMore": "より多くの予約履歴を読み込んでいます...",
+      "allLoaded": "すべての予約履歴を呼び出しました。",
+      "completed": "施術完了",
+      "timezone": "KST",
+      "noImage": "画像なし"
+    },
+    "reservationDetail": {
+      "title": "予約詳細",
+      "requestDate": "申請日時",
+      "confirmed": "予約完了",
+      "completed": "施術完了",
+      "cancelled": "予約をキャンセルしました",
+      "procedureName": "施術名",
+      "paymentInfo": "お支払い情報",
+      "deposit": "予約金",
+      "transferDate": "振替日時",
+      "hospitalInfo": "病院情報",
+      "cancel": "予約をキャンセル",
+      "consultation": "相談する",
+      "userInfo": {
+        "title": "予約者情報",
+        "passportName": "パスポート英語名",
+        "gender": "性別",
+        "nationality": "国籍",
+        "contactInfo": "連絡先情報",
+        "male": "男性",
+        "female": "女性"
+      }
+    },
+    "reservationDateTime": "予約日時",
+    "region": "地域",
+    "loading": "読み込み中...",
+    "loadingMessages": "メッセージを読み込んでいます...",
+    "error": "データの読み込み中にエラーが発生しました。",
+    "retry": "再試行",
+    "input": {
+      "placeholder": "何でも聞いてください！",
+      "imageUploadSuccess": "画像が送信されました",
+      "imageLoadError": "画像を読み込めません",
+      "downloadFile": "ダウンロード"
+    },
+    "empty": {
+      "chat": {
+        "title": "進行中の相談はありません",
+        "description": "病院と相談を始めましょう"
+      },
+      "appointment": {
+        "title": "予約された履歴がありません。",
+        "description": "希望の病院に予約を申請してください"
+      }
+    },
+    "request": {
+      "title": "相談申請",
+      "button": "相談申請",
+      "backButton": "戻る",
+      "form": {
+        "name": {
+          "label": "パスポート名",
+          "placeholder": "パスポートに記載されている名前を入力してください",
+          "passportHelper": "パスポートに書かれたまま入力してください。浮き彫りを含む。"
+        },
+        "gender": {
+          "label": "性別",
+          "male": "男性",
+          "female": "女性"
+        },
+        "ageGroup": {
+          "label": "年齢",
+          "placeholder": "年齢帯を選択してください",
+          "10s": "10代",
+          "20s": "20代",
+          "30s": "30代",
+          "40s": "40代",
+          "50s": "50代",
+          "60s": "60代以上"
+        },
+        "phoneNumber": {
+          "label": "携帯電話番号",
+          "placeholder": "携帯電話番号を入力してください"
+        },
+        "preferredContactTime": {
+          "label": "優先連絡時間",
+          "placeholder": "優先連絡時間を選択してください",
+          "morning": "午前(09:00 - 12:00)",
+          "afternoon": "午後(12:00~18:00)",
+          "evening": "ディナー（18:00 - 21:00）",
+          "anytime": "いつでも"
+        },
+        "preferredDate": {
+          "label": "予約希望日",
+          "placeholder": "日付を選択してください",
+          "helper": "病院のスケジュールを確認するために必ず選択してください"
+        },
+        "preferredDate2": {
+          "label": "予約希望日2",
+          "placeholder": "日付を選択してください",
+          "helper": "最初の日付が不可能な場合にのみ注意してください"
+        },
+        "content": {
+          "label": "相談内容",
+          "placeholder": "相談したい内容を詳しく書いてください",
+          "helper": "相談申請後、担当相談マネージャーがK-DOCチャットウィンドウを通じて詳細な相談をお手伝いします。"
+        },
+        "privacyAgreement": {
+          "title": "機密情報収集利用の同意",
+          "description": "施術後期作成及びアプリ内活用のための機密情報の収集、利用規定を確認し、これに同意します。"
+        },
+        "floatingNotice": {
+          "highlight": "訪問可能時間",
+          "message": "は相談を通して調整が必要です。"
+        },
+        "errors": {
+          "name": {
+            "required": "名前を入力してください。"
+          },
+          "ageGroup": {
+            "required": "年齢帯を選択してください。"
+          },
+          "countryCode": {
+            "required": "国番号を選択してください。"
+          },
+          "phoneNumber": {
+            "required": "携帯電話番号を入力してください。",
+            "invalid": "正しい携帯電話番号を入力してください。"
+          },
+          "preferredDate": {
+            "required": "予約希望日を選択してください。"
+          },
+          "content": {
+            "required": "相談内容を入力してください。",
+            "maxLength": "相談内容は500文字以内で入力してください。"
+          },
+          "agreeToPrivacy": {
+            "required": "個人情報収集利用に同意してください。"
+          }
+        },
+        "required": "必須",
+        "submitButton": "相談申請",
+        "loading": "読み込み中...",
+        "errorMessages": {
+          "UNAUTHORIZED": "ログインが必要です。",
+          "MISSING_REQUIRED_FIELDS": "必須項目をすべて入力してください。",
+          "HOSPITAL_NOT_FOUND": "病院情報が見つかりません。",
+          "INTERNAL_SERVER_ERROR": "サーバーエラーが発生しました。しばらくしてからもう一度お試しください。",
+          "NETWORK_ERROR": "ネットワークエラーが発生しました。インターネット接続を確認してください。",
+          "UNKNOWN_ERROR": "不明なエラーが発生しました。"
+        },
+        "chatMessages": {
+          "welcome": "こんにちは！嬉しいです。成形に関する何でも聞いてください。",
+          "consultationRequest": {
+            "title": "(自動生成予約申込書)",
+            "subtitle": "施術相談申し込みます。",
+            "name": "名前",
+            "gender": "性別",
+            "ageGroup": "年齢",
+            "phoneNumber": "携帯電話番号",
+            "preferredDate": "予約希望日",
+            "preferredDate2": "予約希望日2",
+            "additionalInquiry": "その他のお問い合わせ"
+          },
+          "ageGroups": {
+            "10s": "10代",
+            "20s": "20代",
+            "30s": "30代",
+            "40s": "40代",
+            "50s": "50代",
+            "60s": "60代以上"
+          },
+          "genders": {
+            "MALE": "男性",
+            "FEMALE": "女性"
+          }
+        }
+      }
+    },
+    "notificationPermission": {
+      "title": "病院の答えをお見逃しなく！",
+      "subtitle": "プッシュ通知をオンにすると、相談回答が届いたときにすぐに確認できます。",
+      "description": "K-DOCから病院の回答到着時にプッシュ通知をお送りします。同意したら[通知を受け取る]ボタンを押してください。",
+      "settingsNote": "（プッシュ通知設定変更：マイページ→通知設定→一般通知ON/OFF）",
+      "acceptButton": "通知を受け取る",
+      "declineButton": "今は受けられません。"
+    },
+    "cancelReservation": {
+      "title": "予約の進行をキャンセルしてもよろしいですか？",
+      "message": "キャンセルしたら、最初からやり直す必要があります。",
+      "confirmButton": "はい",
+      "cancelButton": "いいえ"
+    },
+    "cancelMessages": {
+      "processing": "予約キャンセルが正常に受け付けられました。お支払いのキャンセル（払い戻し）は、お支払い会社の承認手続きに従って順次処理され、完了時に別途お知らせいたします。",
+      "success": "予約は正常にキャンセルされました。払い戻しが完了しました。",
+      "failed": "払い戻し処理中にエラーが発生しました。 PG社エラー：{errorMessage}カスタマーセンターにお問い合わせください。",
+      "noCancellation": "お支払いが完了していないため、予約のみキャンセルされました。"
+    }
+  },
+  "cautionSection": {
+    "title": "注意事項",
+    "items": [
+      "リムジンサービスは、韓国訪問前の病院/手術予約時にのみ利用可能です。",
+      "カウンセリング申請後、予約申請段階でリムジンオプションを選択できます。",
+      "事前予約時に韓国のホットプレイス、グルメ観光などコンシェルジュサービスを提供します。",
+      {
+        "title": "リムジンの一日の使用料は次のとおりです。",
+        "details": [
+          "- スーパーカーランボルギーニ・ウルス：1日1,080 USD",
+          "- 記事費用、記事食代、トールゲート費用、税込価格",
+          "- 朝8時30分～夕方5時30分まで1日8時間使用基準",
+          "- 追加時間ご利用の際は、スーパーカー1時間あたり150USDの追加料金（現場カード決済）",
+          "- 油流費後払い決済（現場カード決済）",
+          "- ソウル郊外運行時の追加料金の賦課（現場カード決済）"
+        ]
+      },
+      "1日8時間でのみお支払いいただけます。短時間の移動が必要な場合は、韓国の現地にお越しください。"
+    ]
+  },
+  "footer": {
+    "companyName": "株式会社ピルマン",
+    "ceo": "代表：ウ・ジョンホ",
+    "address": "京畿道河南市ミサガン辺南路103",
+    "businessNumber": "事業者登録番号 474-86-03352",
+    "customerEmail": "カスタマーセンターのメール cs@k-doc.kr",
+    "companyNameLabel": "相互",
+    "addressLabel": "住所",
+    "businessNumberLabel": "事業者登録番号",
+    "customerEmailLabel": "カスタマーセンターEメール",
+    "companyInfo": "会社紹介",
+    "termsOfService": "利用規約",
+    "privacyPolicy": "個人情報処理方針",
+    "notices": "お知らせ",
+    "contactUs": "Contact us",
+    "dataRequest": "情報修正/削除リクエスト"
+  },
+  "about": {
+    "title": "会社紹介",
+    "subtitle": "K-DOCを作る人",
+    "description": {
+      "part1": "K-DOCは医療界の世界的権威者であるウ・ジョンホ代表を主軸に、 ",
+      "highlight": "世界最高学部出身の医療スタッフが集まって企画したサービス",
+      "part2": "です。狎鴎亭のランドマークの建物に位置する本社は、世界的なビューティートレンドをリードし、日本でも「シリフティングの対価」として広く知られているDr. WooはFOX TVニュースなど海外優秀メディアにも紹介されています。"
+    },
+    "profiles": {
+      "woo": {
+        "description": "アメリカFOX TVニュース放送された「非切開糸リフティング革命」",
+        "name": "President ウ・ジョンホ"
+      },
+      "park": {
+        "name": "Vice President パク・ジョンヒョン"
+      }
+    },
+    "ceoGreeting": {
+      "title": "CEOの挨拶",
+      "name": "President Woo Jung Ho MD",
+      "greeting": "こんにちは สวัสดีครับ",
+      "content": [
+        "K-DOCをご覧いただきありがとうございます。",
+        "K-DOCは、タイ人の皆さんが韓国の上位5％の最高の整形外科、皮膚科を信じて選べるようにガイドするだけでなく、割引特典まで受けることができるように作られた韓国最高の整形メディカルプラットフォームです。",
+        "K-DOCの運営陣は、シリフティング非切開成形分野の世界的権威者である私、Woo Jung Ho MDを含むPark Jong Hyeon MDなど世界最高学部出身の医療スタッフが直接企画して運営するプラットフォームサービスとしてその誇りを持っています。最優先的に、韓国の安全で検証された医療サービスだけがタイ、その他の国際患者の方々にご案内して体験できるよう企画されました。",
+        "このプラットフォームにより、韓国の信頼できる美容整形病院情報、信頼できる施術後期、そして病院予約から完璧な通訳、施術後ケアまですべて一箇所で提供することができます。",
+        "K-DOCは単なる情報プラットフォームではなく、皆様の韓国美容医療旅行の信頼されて便利な仲間になりたいと思います。お客様一人一人に最適なソリューションを提供し、安心して満足できる医療経験を提供いたします。",
+        "韓国の優れた医療整形技術をリスクなく安全に経験していただきたいと思います。",
+        "GOD BLESS YOU!!",
+        "ありがとうございます。",
+        "Dr. Woo Jung Ho代表取締役",
+        "K-DOC Corp."
+      ]
+    },
+    "seoulOffice": {
+      "title": "K-DOCソウル支店",
+      "description": "ソウル江南で最も有名な通り、狎鴎亭ロデオ通りからランドマークに位置するK-DOCタワー"
+    },
+    "vision": {
+      "title": "K-DOCビジョン",
+      "sections": [
+        {
+          "image": "image_section1.png",
+          "imagePc": "image_section1_pc.png",
+          "title": "2025年タイ進出",
+          "description": "タイのお客様のためのグローバル成形メディカルプラットフォームK-DOC！ K-DOCは韓国上位5%の代表整形外科と皮膚科のみ厳選し、タイのお客様が信じて選択できるようにするプラットフォームです。"
+        },
+        {
+          "image": "image_section2.png",
+          "imagePc": "image_section2_pc.png",
+          "title": "お客様に必要な成形プラットフォーム",
+          "description": "韓国で希望の施術と整形情報を一目で確認し、実際のレビューと病院情報を比較して安心して決めてください。予約から通訳、手術後のケアまで、K-DOCで手軽に体験できます。"
+        },
+        {
+          "image": "image_section3.png",
+          "imagePc": "image_section3_pc.png",
+          "title": "韓国の有名病院紹介",
+          "description": "K-DOCは世界的に認められた医療スタッフと検証された韓国代表整形外科のみ入店します。タイとグローバルのお客様は、信頼できる医療スタッフと安全なシステムを使用して、高レベルの整形サービスを体験できます。"
+        }
+      ]
+    },
+    "certification": {
+      "title": "外国人患者誘致業許可を取得した認定会社",
+      "description": "私たちK-DOCは保健福祉部傘下の韓国保健産業振興院(KHIDI)に正式登録された外国人患者誘致業者であり、国家機関の厳格な審査と基準を通過しました。<br><br>また、ソウル保証保険（SGI）の1億ウォン人・許可保証保険に加入した公式認証企業として、外国人患者に安全で信頼できる医療サービスを提供できる大韓民国政府公認資格を保有しています。<br><br>今後も韓国の優れた医療機関と協力し、グローバル患者に専門的で透明な医療サービスを提供するために最善を尽くします。",
+      "certificateLabel": "外国人患者誘致業登録証",
+      "sgiLabel": "人・許可保証保険証券（SGI）"
+    },
+    "governmentCertified": {
+      "title": "Government Certified Medical Tourism Platform",
+      "description": "K-DOCは保健福祉部傘下の韓国保健産業振興院(KHIDI)に正式登録された外国人患者誘致企業で、国家機関の厳格な審査基準を通過した公式認証プラットフォームです。また、ソウル保証保険（SGI）1億ウォンの認可・保証保証保険に加入し、外国人患者に安全で信頼できる医療サービスを提供します。",
+      "certificateLabel": "外国人患者誘致業登録証",
+      "sgiLabel": "人・許可保証保険証券（SGI）"
+    },
+    "visionV2": {
+      "subtitle": "世界中の患者が信頼できる医療選択の基準となります",
+      "sections": [
+        {
+          "title": "Global Medical Platform",
+          "description": "K-DOCは韓国上位10％の整形外科・皮膚科のみを厳選し、世界中のお客様が信頼に基づいて安心して選択できるように支援するプラットフォームです。"
+        },
+        {
+          "title": "Your Trusted Choice",
+          "description": "韓国で希望する施術と病院情報を一目で確認し、実際の後期比較を通じて安心して選択できるように支援します。予約から通訳、手術後のケアまで、すべてのコースを1か所で手軽に体験できます。"
+        },
+        {
+          "title": "Curated Clinics &amp; Hospitals",
+          "description": "K-DOCには厳格な基準で選別された韓国の代表整形外科と皮膚科・病院だけが一緒です。グローバル顧客は、K-DOCの検証プロセスを経た医療機関を通じて、安全なシステムでレベルの高い成形サービスを体験できます。"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "K-DOC ハナム本社",
+    "description": "K-DOC ハナム本社へようこそ。いつでもお問い合わせください。",
+    "address": "京畿道河南市ミサガン辺南路103、701-014",
+    "phone": "031-123-4567",
+    "email": "contact@k-doc.com",
+    "mapTitle": "位置情報",
+    "copyButton": "アドレスコピー",
+    "seoulOffice": {
+      "subtitle": "K-DOCソウル支店",
+      "address": "ソウル江南区サン陵路157ギル14ハンジュビル6階"
+    },
+    "emailInquiry": {
+      "title": "メール問い合わせ",
+      "description": "サービスご利用中に不便がある場合は、下記メールにてお問い合わせいただきありがとうございます。",
+      "button": "メールでお問い合わせ"
+    },
+    "partnershipInquiry": {
+      "title": "K-DOC入店申請相談",
+      "button": "入店を申請する"
+    }
+  },
+  "my": {
+    "title": "マイページ",
+    "description": "個人情報と設定を管理できます。",
+    "profile": {
+      "title": "私のプロフィール",
+      "editProfile": "プロフィールを編集",
+      "nicknameChange": "ニックネームの変更",
+      "nameChange": "名前変更",
+      "edit": {
+        "title": "プロフィールを編集",
+        "nickname": "ニックネーム",
+        "name": "名前",
+        "email": "Eメール",
+        "saveButton": "保存",
+        "cancelButton": "キャンセル",
+        "success": "プロフィールが正常に更新されました。",
+        "error": "プロファイルの更新中にエラーが発生しました。",
+        "placeholders": {
+          "nickname": "ニックネームを入力してください",
+          "name": "名前を入力してください",
+          "passportNameHelperText": "パスポートに書かれたまま入力してください。浮き彫りを含む。"
+        },
+        "errors": {
+          "nicknameRequired": "ニックネームを入力してください。",
+          "nameRequired": "名前を入力してください。",
+          "nicknameTooShort": "ニックネームは2文字以上でなければなりません。",
+          "nameTooShort": "名前は2文字以上でなければなりません。"
+        },
+        "loading": "ユーザー情報を読み込み中...",
+        "errorTitle": "エラー",
+        "changePassword": "パスワードを変更する"
+      },
+      "passwordChange": {
+        "title": "パスワード変更",
+        "completeButton": "完了",
+        "currentPassword": "既存のパスワード",
+        "newPassword": "変更するパスワード",
+        "confirmPassword": "変更するパスワードを確認する",
+        "placeholders": {
+          "currentPassword": "既存のパスワードを入力してください",
+          "newPassword": "6文字以上のパスワード",
+          "confirmPassword": "パスワードを再入力してください"
+        },
+        "errors": {
+          "currentPasswordRequired": "既存のパスワードを入力してください。",
+          "currentPasswordInvalid": "既存のパスワードが正しくありません。",
+          "newPasswordRequired": "変更するパスワードを入力してください。",
+          "newPasswordTooShort": "パスワードは6文字以上でなければなりません。",
+          "confirmPasswordRequired": "パスワード確認を入力してください。",
+          "passwordMismatch": "パスワードが一致しません。",
+          "updateFailed": "パスワードの変更中にエラーが発生しました。"
+        }
+      }
+    },
+    "activity": {
+      "title": "活動",
+      "savedList": "マイストアリスト"
+    },
+    "activityStats": {
+      "myPosts": "私が書いた記事",
+      "consultationChatList": "相談チャットリスト"
+    },
+    "notification": {
+      "title": "お知らせ",
+      "myPosts": "私が書いた投稿",
+      "eventService": "イベント/サービス特典のお知らせ"
+    },
+    "customerService": {
+      "title": "顧客センター",
+      "email": "Eメール",
+      "phone": "電話",
+      "phoneNumber": "1588-6930"
+    },
+    "account": {
+      "title": "アカウント",
+      "logout": "ログアウト",
+      "deleteAccount": "会員脱退",
+      "deleteAccountConfirm": "本当に会員脱退をしますか？アカウントは無効になり、再度有効にするにはカスタマーセンターに連絡する必要があります。",
+      "deleteAccountError": "会員脱退中にエラーが発生しました。もう一度お試しください。"
+    }
+  },
+  "taxiReservation": {
+    "title": "Taxi reservation",
+    "buttonText": "タクシーを予約する",
+    "internationalTaxi": "国際タクシー",
+    "uberTaxi": "ウーバータクシー"
+  },
+  "noticeSection": {
+    "title": "新しい投稿をチェックしてください！",
+    "buttonText": "お知らせを見る"
+  },
+  "comments": {
+    "title": "コメント",
+    "form": {
+      "placeholder": "コメントをつけてください。",
+      "submit": "登録",
+      "submitting": "作成中...",
+      "loginRequired": "コメントを作成するにはログインが必要です。",
+      "loginButton": "ログイン"
+    },
+    "list": {
+      "empty": "最初のコメントを書きましょう！",
+      "error": "コメントの読み込み中にエラーが発生しました。",
+      "loading": "読み込み中...",
+      "loadMore": "もっと見る"
+    },
+    "time": {
+      "justNow": "先ほど",
+      "minutesAgo": "分前",
+      "hoursAgo": "時間前",
+      "daysAgo": "仕事前"
+    }
+  },
+  "doctor": {
+    "career": "伝記",
+    "careerAndActivity": "キャリアと活動",
+    "noCareerInfo": "キャリア情報はありません。",
+    "affiliatedHospital": "所属病院",
+    "reviews": "施術後期",
+    "viewAllReviews": "全て見る",
+    "share": {
+      "title": "医師の情報を確認してください",
+      "text": "の詳細情報を確認してください"
+    }
+  },
+  "package": {
+    "allInOnePackage": {
+      "title": "オールインワンパッケージ予約",
+      "subtitle": "車両、通訳など、すべてのサービスを一度に予約する",
+      "vanSelection": "車両選択",
+      "exploreClinics": "Explore Clinics",
+      "fastReservationGuarantee": "Fast Reservation Guarantee"
+    },
+    "vanReservation": {
+      "title": "車両予約",
+      "subtitle": "プレミアムバンサービスで快適な移動を体験",
+      "vanTypes": {
+        "standard": {
+          "name": "スタンダードバン",
+          "description": "基本的で快適な移動",
+          "capacity": "最大7人乗り"
+        },
+        "premium": {
+          "name": "プレミアムバン",
+          "description": "さらに快適なプレミアムサービス",
+          "capacity": "最大7人乗り"
+        },
+        "luxury": {
+          "name": "高級バン",
+          "description": "最高級の高級体験",
+          "capacity": "最大7人乗り"
+        }
+      },
+      "serviceType": {
+        "label": "サービスタイプ",
+        "oneWay": "片道",
+        "hourlyCharter": "時間制貸切（6時間）"
+      },
+      "picketing": {
+        "label": "ピケッティングサービス",
+        "description": "空港で名札を持って出迎え",
+        "price": "+$4"
+      },
+      "form": {
+        "pickupLocation": {
+          "label": "ピックアップ場所",
+          "placeholder": "ピックアップ場所を入力してください"
+        },
+        "dropoffLocation": {
+          "label": "到着場所",
+          "placeholder": "到着場所を入力してください"
+        },
+        "pickupDate": {
+          "label": "ピックアップ日",
+          "placeholder": "日付を選択してください"
+        },
+        "pickupTime": {
+          "label": "ピックアップ時間",
+          "placeholder": "時間を選択してください"
+        },
+        "passengerCount": {
+          "label": "搭乗人数",
+          "placeholder": "人数を選択してください"
+        },
+        "luggage": {
+          "label": "手荷物数",
+          "placeholder": "手荷物の数を選択してください"
+        },
+        "contactInfo": {
+          "label": "連絡先情報",
+          "name": "名前",
+          "phone": "電話番号",
+          "email": "Eメール",
+          "namePlaceholder": "名前を入力してください",
+          "phonePlaceholder": "電話番号を入力してください",
+          "emailPlaceholder": "メールを入力してください"
+        }
+      },
+      "price": {
+        "base": "基本料金",
+        "picketing": "ピケッティング",
+        "total": "総額",
+        "currency": "USD"
+      },
+      "buttons": {
+        "selectVan": "選ぶ",
+        "payment": "お支払い",
+        "paymentComingSoon": "お支払い機能は準備中です"
+      },
+      "validation": {
+        "vanTypeRequired": "車両タイプを選択してください",
+        "serviceTypeRequired": "サービスの種類を選択してください",
+        "pickupLocationRequired": "ピックアップ場所を入力してください",
+        "dropoffLocationRequired": "到着場所を入力してください",
+        "pickupDateRequired": "ピックアップ日を選択してください",
+        "pickupTimeRequired": "ピックアップ時間を選択してください",
+        "passengerCountRequired": "搭乗人数を選択してください",
+        "nameRequired": "名前を入力してください",
+        "phoneRequired": "電話番号を入力してください",
+        "emailRequired": "メールを入力してください",
+        "emailInvalid": "有効なメールアドレスを入力してください"
+      }
+    }
+  },
+  "payment": {
+    "title": "お支払い",
+    "loading": {
+      "preparing": "支払いを準備しています...",
+      "processing": "お支払いを行っています...",
+      "sdkLoading": "お支払いモジュールを読み込んでいます...",
+      "signGenerating": "お支払い情報を確認しています...",
+      "windowOpening": "決済ウィンドウを開いています...",
+      "tips": [
+        "☕️しばらくお待ちください。安全な支払いを準備しています。",
+        "✨お支払い情報をもう一度確認してみてはいかがでしょうか？",
+        "💎あなたの貴重な情報を安全に守っています。",
+        "🎉 ほぼ終わりました！まもなく完了"
+      ]
+    },
+    "info": {
+      "title": "お支払い情報",
+      "productName": "商品名",
+      "amount": "お支払い額",
+      "orderId": "注文番号",
+      "currency": "通貨"
+    },
+    "error": {
+      "missingParams": "お支払い情報が正しくありません。",
+      "invalidAmount": "お支払い金額が無効です。",
+      "invalidCurrency": "サポートしていない通貨です。",
+      "sdkNotLoaded": "お支払いモジュールの読み込み中にエラーが発生しました。",
+      "sdkTimeout": "支払いモジュールのロードがタイムアウトしました。ページを更新してください。",
+      "signGenerationFailed": "お支払い署名の作成に失敗しました。",
+      "signNetworkError": "ネットワークエラーで署名の作成に失敗しました。インターネット接続を確認してください。",
+      "signTimeout": "署名の作成がタイムアウトしました。もう一度お試しください。",
+      "paymentFailed": "お支払いリクエストに失敗しました。",
+      "paymentCancelled": "お支払いがキャンセルされました。",
+      "unknownError": "不明なエラーが発生しました。",
+      "retry": "再試行",
+      "goHome": "ホームに行く"
+    },
+    "success": {
+      "title": "お支払い完了",
+      "message": "お支払いが正常に完了しました。",
+      "orderId": "注文番号",
+      "transactionId": "取引番号",
+      "goHome": "ホームに行く",
+      "missingInfo": "注文情報を読み込めません。"
+    },
+    "failure": {
+      "title": "お支払いに失敗しました",
+      "message": "お支払い処理中にエラーが発生しました。",
+      "errorCode": "エラーコード",
+      "errorMessage": "エラーメッセージ",
+      "retry": "再試行",
+      "goHome": "ホームに行く",
+      "noErrorInfo": "エラー情報を確認できません。"
+    },
+    "cancelReservation": {
+      "noPaymentCancel": "お支払いが完了していないため、予約のみキャンセルされました。",
+      "processing": "予約キャンセルが正常に受け付けられました。お支払いのキャンセル（払い戻し）は、お支払い会社の承認手続きに従って順次処理され、完了時に別途お知らせいたします。"
+    }
+  }
+}

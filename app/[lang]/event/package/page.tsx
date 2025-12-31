@@ -35,6 +35,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     en: mainEnImage,
     th: mainThImage,
     'zh-Hant': mainZhImage,
+    ja: mainEnImage, // 일본어 이미지가 없으면 영어 이미지 사용
   };
   const mainImage = mainImages[lang];
 
@@ -44,6 +45,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     en: priceEnImage,
     th: priceThImage,
     'zh-Hant': priceZhImage,
+    ja: priceEnImage, // 일본어 이미지가 없으면 영어 이미지 사용
   };
   const priceImage = priceImages[lang];
 

@@ -6,6 +6,7 @@ const DAYS_OF_WEEK: Record<Locale, string[]> = {
   en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   th: ['จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส', 'อา'],
   'zh-Hant': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  ja: ['月', '火', '水', '木', '金', '土', '日'],
 };
 
 /**

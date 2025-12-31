@@ -74,11 +74,13 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
   // 언어 선택 시 쿠키에 저장하고 페이지 이동하는 핸들러
   const handleLanguageChange = (locale: AllLocale) => {
     // Coming soon 언어 또는 중국어 번체인 경우 알림 표시
-    if (isComingSoonLocale(locale) || locale === 'zh-Hant') {
+    if (isComingSoonLocale(locale)) {
       const localeLabel = ALL_LOCALE_LABELS[locale];
       window.alert(`${localeLabel} is coming soon.`);
       return;
     }
+
+    // 지원되는 언어인 경우 언어 변경
 
     // 지원되는 언어인 경우에만 언어 변경
     localeCookies.set(locale as Locale);
