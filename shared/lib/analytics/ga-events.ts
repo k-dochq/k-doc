@@ -1,9 +1,10 @@
 import { sendGAEvent as nextSendGAEvent } from '@next/third-parties/google';
+import { type Locale } from 'shared/config';
 
 /**
  * GA 이벤트 타입 정의
  */
-export type GAEventName = 'sign_up_click' | 'sign_up';
+export type GAEventName = 'sign_up_click' | 'sign_up' | 'view_item';
 
 /**
  * GA 이벤트 파라미터 타입 정의
@@ -13,6 +14,10 @@ export interface GAEventParams {
   event_label?: string;
   method?: string;
   value?: number;
+  item_id?: string;
+  item_name?: string;
+  item_category?: string;
+  language?: string;
   [key: string]: string | number | boolean | undefined;
 }
 
@@ -50,5 +55,20 @@ export function trackSignUpComplete(method: string = 'email'): void {
     event_category: 'conversion',
     event_label: 'Sign Up Completed',
     method,
+  });
+}
+
+/**
+ * 병원 상세 페이지 view_item 이벤트 전송
+ * @param hospitalId 병원 UUID
+ * @param hospitalName 병원명 (현재 언어)
+ * @param lang 현재 페이지 언어 코드
+ */
+export function trackViewItem(hospitalId: string, hospitalName: string, lang: Locale): void {
+  sendGAEvent('view_item', {
+    item_id: hospitalId,
+    item_name: hospitalName,
+    item_category: 'Hospital',
+    language: lang,
   });
 }

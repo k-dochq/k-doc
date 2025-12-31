@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useHospitalDetail } from 'entities/hospital/api/queries/use-hospital-detail';
@@ -16,6 +17,7 @@ import { PopularReviewsV2ContainerForHospital } from 'widgets/popular-reviews/ui
 import { HospitalDetailConsultationFloatingV2 } from 'widgets/hospital-detail-consultation-floating/ui/HospitalDetailConsultationFloatingV2';
 import { REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { trackHospitalViewContent, trackViewItem } from 'shared/lib/analytics';
 
 interface HospitalDetailContentV2Props {
   hospitalId: string;
@@ -38,6 +40,19 @@ export function HospitalDetailContentV2({ hospitalId, lang, dict }: HospitalDeta
   }
 
   const { hospital } = data;
+
+  // 병원 상세 페이지 뷰 이벤트 트래킹
+  useEffect(() => {
+    if (hospital && hospitalId) {
+      const hospitalName = extractLocalizedText(hospital.name, lang);
+
+      // Meta Pixel ViewContent 이벤트
+      trackHospitalViewContent(hospitalId, hospitalName);
+
+      // GA4 view_item 이벤트
+      trackViewItem(hospitalId, hospitalName, lang);
+    }
+  }, [hospital, hospitalId, lang]);
 
   return (
     <div className='relative text-neutral-900'>
