@@ -1,10 +1,12 @@
 'use client';
 
+import { useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { SearchBarV2 } from 'shared/ui/search-bar/SearchBarV2';
 import { HospitalsInfiniteListV2 } from '../../v2/hospitals/HospitalsInfiniteListV2';
+import { trackSearch, trackMetaPixelSearch } from 'shared/lib/analytics';
 
 interface HospitalsSearchContentV2Props {
   lang: Locale;
@@ -27,6 +29,17 @@ export function HospitalsSearchContentV2({
     searchParams.sort === HOSPITAL_SORT_OPTIONS.POPULAR
       ? (searchParams.sort as HospitalSortOption)
       : HOSPITAL_SORT_OPTIONS.POPULAR;
+
+  // 검색 이벤트 트래킹
+  useEffect(() => {
+    if (currentSearch) {
+      // Meta Pixel Search 이벤트
+      trackMetaPixelSearch(currentSearch);
+
+      // GA4 search 이벤트
+      trackSearch(currentSearch);
+    }
+  }, [currentSearch]);
 
   return (
     <div>

@@ -8,7 +8,7 @@ import { useAdditionalInfoForm } from 'features/social-auth/model/useAdditionalI
 import { useUpdateUserProfile } from 'features/user-profile/model/useUpdateUserProfile';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
-import { trackSignUpComplete } from 'shared/lib/analytics';
+import { trackSignUpComplete, trackCompleteRegistration } from 'shared/lib/analytics';
 import { AdditionalInfoStep1FormV2 } from 'features/social-auth/ui/AdditionalInfoStep1FormV2';
 import { AdditionalInfoStep2V2 } from 'features/social-auth/ui/AdditionalInfoStep2V2';
 
@@ -63,7 +63,8 @@ export function AdditionalInfoContentV2({
       // 회원가입 성공 - 마케팅 어트리뷰션 LocalStorage 초기화
       clearFirstTouch();
 
-      // 회원가입 성공 - GA 이벤트 전송
+      // 회원가입 성공 - 이벤트 전송
+      trackCompleteRegistration();
       trackSignUpComplete(provider || 'social');
 
       // 추가정보 입력 성공 시 redirectTo가 있으면 해당 페이지로, 없으면 메인 페이지로 이동
