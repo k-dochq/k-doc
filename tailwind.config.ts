@@ -15,7 +15,14 @@ const config: Config = {
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
         'noto-thai': ['var(--font-noto-thai)'],
-        sans: ['var(--font-pretendard)', 'var(--font-noto-thai)', 'system-ui', 'sans-serif'],
+        'noto-tc': ['var(--font-noto-tc)'],
+        sans: [
+          'var(--font-pretendard)',
+          'var(--font-noto-thai)',
+          'var(--font-noto-tc)',
+          'system-ui',
+          'sans-serif',
+        ],
       },
       animation: {
         'fade-pulse': 'fadePulse 0.9s ease-in-out infinite',
