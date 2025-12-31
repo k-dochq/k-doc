@@ -29,6 +29,14 @@ const notoSansThaiLooped = localFont({
   preload: false,
 });
 
+const notoSansTC = localFont({
+  src: '../../fonts/notosanstc/NotoSansTC-VariableFont_wght.ttf',
+  display: 'swap',
+  weight: '100 900',
+  variable: '--font-noto-tc',
+  preload: false,
+});
+
 interface LangLayoutProps {
   children: React.ReactNode;
   params: Promise<{ lang: Locale }>;
@@ -124,8 +132,9 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   const { lang } = await params;
 
   // 언어별 폰트 선택
-  const currentFont = lang === 'th' ? notoSansThaiLooped : pretendard;
-  const allFontVariables = `${pretendard.variable} ${notoSansThaiLooped.variable}`;
+  const currentFont =
+    lang === 'th' ? notoSansThaiLooped : lang === 'zh-Hant' ? notoSansTC : pretendard;
+  const allFontVariables = `${pretendard.variable} ${notoSansThaiLooped.variable} ${notoSansTC.variable}`;
 
   return (
     <html lang={lang} className={allFontVariables}>

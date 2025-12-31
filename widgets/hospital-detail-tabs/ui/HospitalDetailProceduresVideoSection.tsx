@@ -15,6 +15,28 @@ interface HospitalDetailProceduresVideoSectionProps {
   dict: Dictionary;
 }
 
+/**
+ * localizedLinks에서 현재 언어에 맞는 URL을 가져오는 헬퍼 함수
+ */
+function getLocalizedVideoUrl(
+  localizedLinks: Record<string, string> | null,
+  fallbackUrl: string | null,
+  locale: Locale,
+): string | null {
+  const altValue = localeToAltValue(locale);
+
+  if (localizedLinks && typeof localizedLinks === 'object') {
+    // localizedLinks에서 현재 언어에 맞는 URL 찾기
+    const localizedUrl = localizedLinks[altValue];
+    if (localizedUrl && typeof localizedUrl === 'string' && localizedUrl.trim() !== '') {
+      return localizedUrl;
+    }
+  }
+
+  // localizedLinks가 없거나 현재 언어가 없으면 fallback 사용
+  return fallbackUrl;
+}
+
 export function HospitalDetailProceduresVideoSection({
   hospitalId,
   lang,
@@ -28,26 +50,20 @@ export function HospitalDetailProceduresVideoSection({
     return null;
   }
 
-  // 현재 선택된 언어에 맞는 alt 값으로 이미지 찾기
-  const targetAltValue = localeToAltValue(lang);
+  // localizedLinks에서 현재 언어에 맞는 URL 가져오기
+  const thumbnailUrl = getLocalizedVideoUrl(
+    data?.thumbnail?.localizedLinks as Record<string, string> | null,
+    data?.thumbnail?.fallbackUrl || null,
+    lang,
+  );
 
-  // alt 기반으로 썸네일 이미지 찾기
-  const currentThumbnail =
-    data?.thumbnails && data.thumbnails.length > 0
-      ? data.thumbnails.find((img) => img.alt === targetAltValue) || null
-      : null;
+  const videoUrl = getLocalizedVideoUrl(
+    data?.video?.localizedLinks as Record<string, string> | null,
+    data?.video?.fallbackUrl || null,
+    lang,
+  );
 
-  // alt 기반으로 비디오 이미지 찾기
-  const currentVideo =
-    data?.videos && data.videos.length > 0
-      ? data.videos.find((img) => img.alt === targetAltValue) || null
-      : null;
-
-  // 하위 호환성: thumbnails/videos 배열이 없으면 기존 thumbnail/video 사용
-  const thumbnailUrl = currentThumbnail?.fallbackUrl || data?.thumbnail?.fallbackUrl || null;
-  const videoUrl = currentVideo?.fallbackUrl || data?.video?.fallbackUrl || null;
-  const thumbnailAlt =
-    currentThumbnail?.alt || data?.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
+  const thumbnailAlt = data?.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
 
   const hasVideoData = !!thumbnailUrl && !!videoUrl;
 
