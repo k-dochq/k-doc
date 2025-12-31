@@ -31,7 +31,7 @@ export function extractLocalizedText(
     const localizedText = jsonValue as Record<string, unknown>;
 
     // 모든 값이 빈 문자열인지 확인
-    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ko', 'en', 'th', 'zh-Hant'];
+    const allKeys = ['ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ko', 'en', 'th', 'zh-Hant', 'zh'];
     const hasNonEmptyValue = allKeys.some(
       (key) =>
         localizedText[key] &&
@@ -56,8 +56,15 @@ export function extractLocalizedText(
       return value.trim() !== '' ? value : '';
     }
 
-    // zh-Hant locale인데 zh_TW가 없으면 영어로 fallback
+    // zh-Hant locale인데 zh_TW, zh-Hant가 없으면 'zh' 키 확인 (데이터베이스에서 사용하는 형식)
     if (locale === 'zh-Hant') {
+      if (localizedText['zh'] && typeof localizedText['zh'] === 'string') {
+        const value = localizedText['zh'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+      // zh도 없으면 영어로 fallback
       if (localizedText['en_US'] && typeof localizedText['en_US'] === 'string') {
         const value = localizedText['en_US'] as string;
         if (value.trim() !== '') {
@@ -82,6 +89,7 @@ export function extractLocalizedText(
       'ko',
       'en',
       'th',
+      'zh', // 데이터베이스에서 사용하는 형식
       'zh-Hant', // 짧은 형식
     ];
 
