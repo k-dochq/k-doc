@@ -16,8 +16,8 @@ const guaranteeSvgPaths: Record<Locale, string> = {
   ko: '/images/event/package/guarantee_text_en.svg',
   en: '/images/event/package/guarantee_text_en.svg',
   th: '/images/event/package/guarantee_text_th.svg',
-  'zh-Hant': '/images/event/package/guarantee_text_en.svg',
-  ja: '/images/event/package/guarantee_text_en.svg', // 일본어 이미지가 없으면 영어 이미지 사용
+  'zh-Hant': '/images/event/package/guarantee_text_zh.svg',
+  ja: '/images/event/package/guarantee_text_ja.svg',
 };
 
 export function PriceImageWithButtonSection({
