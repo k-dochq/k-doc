@@ -16,7 +16,7 @@ export function HospitalDetailLogoV2({ hospital }: HospitalDetailLogoV2Props) {
   }
 
   return (
-    <div className='size-[56px] overflow-clip rounded-full border border-neutral-200 bg-[#001872] shadow-[1px_2px_4px_0px_rgba(0,0,0,0.4)]'>
+    <div className='size-[56px] overflow-clip rounded-full border border-neutral-200 shadow-[1px_2px_4px_0px_rgba(0,0,0,0.4)]'>
       <img
         src={logoImage.imageUrl}
         alt={logoImage.alt || '병원 로고'}

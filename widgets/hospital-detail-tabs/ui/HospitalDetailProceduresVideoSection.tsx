@@ -83,7 +83,7 @@ export function HospitalDetailProceduresVideoSection({
           {dict.hospitalDetailTabs.youtubePreparing}
         </p>
       ) : (
-        <div className='relative h-[188px] w-full overflow-hidden rounded-xl shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
+        <div className='relative aspect-[335/188] w-full overflow-hidden rounded-xl shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
           {!isPlaying ? (
             <button
               type='button'
