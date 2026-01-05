@@ -8,6 +8,7 @@ interface TableImageWithButtonSectionProps {
   imageAlt: string;
   buttonText: string;
   locale: Locale;
+  bubbleText: string;
 }
 
 export function TableImageWithButtonSection({
@@ -15,13 +16,14 @@ export function TableImageWithButtonSection({
   imageAlt,
   buttonText,
   locale,
+  bubbleText,
 }: TableImageWithButtonSectionProps) {
   return (
     <div className='relative'>
       <PackageImage src={imageSrc} alt={imageAlt} />
       <div className='absolute right-[35px] bottom-[110px] left-[35px] md:bottom-[160px]'>
         <ExploreClinicsButton text={buttonText} />
-        <BubbleAnimation locale={locale} />
+        <BubbleAnimation locale={locale} text={bubbleText} />
       </div>
     </div>
   );

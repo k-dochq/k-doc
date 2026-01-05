@@ -30,6 +30,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
 
   const title = dict.package.allInOnePackage.title;
   const buttonText = dict.package.allInOnePackage.exploreClinics;
+  const bubbleText = dict.package.allInOnePackage.bubbleText;
 
   // Main 이미지는 정적 import로 사용 (blur placeholder 자동 생성)
   const mainImages: Record<Locale, typeof mainKoImage> = {
@@ -75,6 +76,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
         priceImageAlt={`${title} - Price`}
         buttonText={buttonText}
         locale={lang}
+        bubbleText={bubbleText}
       />
       <PackageImages images={contentImages} />
       <TableSection
@@ -82,6 +84,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
         tableImageAlt={`${title} - Table`}
         buttonText={buttonText}
         locale={lang}
+        bubbleText={bubbleText}
       />
       <PackageImage src={notice2ImagePath} alt={`${title} - Notice 2`} />
     </div>

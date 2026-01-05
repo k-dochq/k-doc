@@ -1106,7 +1106,8 @@
       "subtitle": "จองบริการทั้งหมดรวมถึงรถและล่ามในที่เดียว",
       "vanSelection": "เลือกประเภทรถ",
       "exploreClinics": "เริ่มค้นหาคลินิกตอนนี้",
-      "fastReservationGuarantee": "สิทธิการจองแบบเร่งด่วน"
+      "fastReservationGuarantee": "สิทธิการจองแบบเร่งด่วน",
+      "bubbleText": "รับสิทธิพิเศษทันที"
     },
     "vanReservation": {
       "title": "จองรถตู้",

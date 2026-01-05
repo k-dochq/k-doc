@@ -408,11 +408,7 @@
       "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
       "loginLink": "ログインする",
       "termsAgreement": {
-        "title": [
-          "K-DOC",
-          "サービス利用に",
-          "同意してください"
-        ],
+        "title": ["K-DOC", "サービス利用に", "同意してください"],
         "allAgreed": "完全な同意",
         "age14Plus": "14歳以上です。",
         "termsOfService": "利用規約（必須）",
@@ -1108,8 +1104,9 @@
       "title": "オールインワンパッケージ予約",
       "subtitle": "車両、通訳など、すべてのサービスを一度に予約する",
       "vanSelection": "車両選択",
-      "exploreClinics": "Explore Clinics",
-      "fastReservationGuarantee": "Fast Reservation Guarantee"
+      "exploreClinics": "クリニックを探す",
+      "fastReservationGuarantee": "Fast Reservation Guarantee",
+      "bubbleText": "今すぐ特典を受け取る"
     },
     "vanReservation": {
       "title": "車両予約",
