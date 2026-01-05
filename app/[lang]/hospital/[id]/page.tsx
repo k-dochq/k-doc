@@ -154,7 +154,16 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
         description,
         url,
         type: 'website',
-        locale: lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH',
+        locale:
+          lang === 'ko'
+            ? 'ko_KR'
+            : lang === 'en'
+              ? 'en_US'
+              : lang === 'th'
+                ? 'th_TH'
+                : lang === 'zh-Hant'
+                  ? 'zh_TW'
+                  : 'ja_JP',
         siteName: 'K-DOC',
         ...(ogImage && {
           images: [

@@ -29,6 +29,11 @@ const messages = {
     description: "The page you are looking for doesn't exist or may have been moved.",
     homeButton: 'Go back to Home',
   },
+  ja: {
+    title: 'ページが見つかりません',
+    description: 'お探しのページは存在しないか、移動された可能性があります。',
+    homeButton: 'ホームに戻る',
+  },
 } as const;
 
 export default function NotFound() {

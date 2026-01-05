@@ -35,7 +35,16 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     // 검색어가 있고 언어가 지정된 경우, 해당 언어의 title과 content에서 검색
     if (search && lang) {
       // Locale을 JSON 필드 경로로 변환
-      const localeKey = lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : 'th_TH';
+      const localeKey =
+        lang === 'ko'
+          ? 'ko_KR'
+          : lang === 'en'
+            ? 'en_US'
+            : lang === 'th'
+              ? 'th_TH'
+              : lang === 'zh-Hant'
+                ? 'zh_TW'
+                : 'ja_JP';
 
       // 영어 검색어인지 확인
       const isEnglishSearch = lang === 'en' && /^[a-zA-Z\s]+$/.test(search);

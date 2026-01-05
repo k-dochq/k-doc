@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     en: 'K-DOC 10',
     th: 'K-DOC 10 | เค-ด็อค',
     'zh-Hant': 'K-DOC 10',
+    ja: 'K-DOC 10',
   };
 
   const descriptions = {
@@ -65,6 +66,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     th: 'K-DOC คู่มือศัลยกรรมตกแต่งเกาหลีที่จำเป็น — เปรียบเทียบโรงพยาบาลชั้นนำ อ่านรีวิวจริง จองอย่างปลอดภัย และเพลิดเพลินกับประโยชน์พิเศษด้านศัลยกรรมและทัวร์ความงาม',
     'zh-Hant':
       'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
+    ja: 'K-DOC、韓国美容整形の必須ガイド — トップ病院を比較し、実際のレビューを読み、安全に予約し、専用の手術特典と美容ツアー特典をお楽しみください。',
   };
 
   // 기본 keywords
@@ -100,7 +102,16 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
       siteName: titles[lang],
       title: titles[lang],
       description: descriptions[lang],
-      locale: lang === 'ko' ? 'ko_KR' : lang === 'en' ? 'en_US' : lang === 'th' ? 'th_TH' : 'zh_TW',
+      locale:
+        lang === 'ko'
+          ? 'ko_KR'
+          : lang === 'en'
+            ? 'en_US'
+            : lang === 'th'
+              ? 'th_TH'
+              : lang === 'zh-Hant'
+                ? 'zh_TW'
+                : 'ja_JP',
       images: [
         {
           url: '/opengraph-image.png',

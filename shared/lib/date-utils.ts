@@ -80,6 +80,7 @@ export function formatDate(
     en: 'MMMM D, YYYY',
     th: 'D MMMM YYYY',
     'zh-Hant': 'MMMM D, YYYY',
+    ja: 'YYYY年M月D日',
   };
 
   const formatString = localeFormats[locale];
@@ -133,6 +134,14 @@ export function formatRelativeDate(date: Date | string, locale: Locale): string 
       weeksAgo: (weeks: number) => `${weeks} weeks ago`,
       monthsAgo: (months: number) => `${months} months ago`,
       yearsAgo: (years: number) => `${years} years ago`,
+    },
+    ja: {
+      today: '今日',
+      yesterday: '昨日',
+      daysAgo: (days: number) => `${days}日前`,
+      weeksAgo: (weeks: number) => `${weeks}週間前`,
+      monthsAgo: (months: number) => `${months}ヶ月前`,
+      yearsAgo: (years: number) => `${years}年前`,
     },
   };
 
