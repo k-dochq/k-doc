@@ -1106,7 +1106,8 @@
       "subtitle": "Reserve all services including vehicle and interpretation in one place",
       "vanSelection": "Select Van Type",
       "exploreClinics": "Explore Clinics",
-      "fastReservationGuarantee": "Fast Reservation Guarantee"
+      "fastReservationGuarantee": "Fast Reservation Guarantee",
+      "bubbleText": "Get your benefits now"
     },
     "vanReservation": {
       "title": "Van Reservation",

@@ -6,6 +6,7 @@ interface TableSectionProps {
   tableImageAlt: string;
   buttonText: string;
   locale: Locale;
+  bubbleText: string;
 }
 
 export function TableSection({
@@ -13,6 +14,7 @@ export function TableSection({
   tableImageAlt,
   buttonText,
   locale,
+  bubbleText,
 }: TableSectionProps) {
   return (
     <TableImageWithButtonSection
@@ -20,6 +22,7 @@ export function TableSection({
       imageAlt={tableImageAlt}
       buttonText={buttonText}
       locale={locale}
+      bubbleText={bubbleText}
     />
   );
 }

@@ -66,9 +66,6 @@ export function EventBannerMainItemV2({
   currentLocale,
   isBlur = false,
 }: EventBannerMainItemV2Props) {
-  // zh-Hant일 경우 en으로 처리
-  const locale = currentLocale === 'zh-Hant' ? 'en' : currentLocale;
-
   const localizedTitle = getLocalizedTitle(title, currentLocale);
   const imageAlt = alt || localizedTitle || 'Event Main Banner';
 
@@ -81,11 +78,11 @@ export function EventBannerMainItemV2({
     // 전체 URL인 경우 locale 추가 처리
     const processedLinkUrl =
       linkUrl.startsWith('http') || linkUrl.startsWith('https')
-        ? addLocaleToUrl(linkUrl, locale)
+        ? addLocaleToUrl(linkUrl, currentLocale)
         : linkUrl;
 
     return (
-      <LocaleLink href={processedLinkUrl} locale={locale} className='block'>
+      <LocaleLink href={processedLinkUrl} locale={currentLocale} className='block'>
         <div className={bannerClassName}>
           <Image src={imageUrl} alt={imageAlt} fill sizes='414px' className={imageClassName} />
         </div>

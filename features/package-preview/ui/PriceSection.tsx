@@ -7,6 +7,7 @@ interface PriceSectionProps {
   priceImageAlt: string;
   buttonText: string;
   locale: Locale;
+  bubbleText: string;
 }
 
 export function PriceSection({
@@ -14,6 +15,7 @@ export function PriceSection({
   priceImageAlt,
   buttonText,
   locale,
+  bubbleText,
 }: PriceSectionProps) {
   return (
     <PriceImageWithButtonSection
@@ -21,6 +23,7 @@ export function PriceSection({
       imageAlt={priceImageAlt}
       buttonText={buttonText}
       locale={locale}
+      bubbleText={bubbleText}
     />
   );
 }

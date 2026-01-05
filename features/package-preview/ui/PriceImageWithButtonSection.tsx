@@ -9,6 +9,7 @@ interface PriceImageWithButtonSectionProps {
   imageAlt: string;
   buttonText: string;
   locale: Locale;
+  bubbleText: string;
 }
 
 const guaranteeSvgPaths: Record<Locale, string> = {
@@ -24,6 +25,7 @@ export function PriceImageWithButtonSection({
   imageAlt,
   buttonText,
   locale,
+  bubbleText,
 }: PriceImageWithButtonSectionProps) {
   const guaranteeSvgPath = guaranteeSvgPaths[locale];
 
@@ -44,7 +46,7 @@ export function PriceImageWithButtonSection({
           />
           <ExploreClinicsButton text={buttonText} />
         </div>
-        <BubbleAnimation locale={locale} />
+        <BubbleAnimation locale={locale} text={bubbleText} />
       </div>
     </div>
   );

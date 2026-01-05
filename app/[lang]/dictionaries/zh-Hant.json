@@ -1105,7 +1105,8 @@
       "subtitle": "一次預訂所有服務，包括車輛和翻譯服務。",
       "vanSelection": "車輛選擇",
       "exploreClinics": "探索診所",
-      "fastReservationGuarantee": "快速預訂保證"
+      "fastReservationGuarantee": "快速預訂保證",
+      "bubbleText": "立即領取您的專屬禮遇"
     },
     "vanReservation": {
       "title": "車輛預訂",
