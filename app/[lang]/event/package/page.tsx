@@ -13,10 +13,12 @@ import mainKoImage from '../../../images/event/package/main_ko.png';
 import mainEnImage from '../../../images/event/package/main_en.png';
 import mainThImage from '../../../images/event/package/main_th.png';
 import mainZhImage from '../../../images/event/package/main_zh.png';
+import mainJaImage from '../../../images/event/package/main_jp.png';
 import priceKoImage from '../../../images/event/package/price_ko.png';
 import priceEnImage from '../../../images/event/package/price_en.png';
 import priceThImage from '../../../images/event/package/price_th.png';
 import priceZhImage from '../../../images/event/package/price_zh.png';
+import priceJaImage from '../../../images/event/package/price_jp.png';
 
 interface PackagePageProps {
   params: Promise<{ lang: Locale }>;
@@ -35,7 +37,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     en: mainEnImage,
     th: mainThImage,
     'zh-Hant': mainZhImage,
-    ja: mainEnImage, // 일본어 이미지가 없으면 영어 이미지 사용
+    ja: mainJaImage,
   };
   const mainImage = mainImages[lang];
 
@@ -45,7 +47,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     en: priceEnImage,
     th: priceThImage,
     'zh-Hant': priceZhImage,
-    ja: priceEnImage, // 일본어 이미지가 없으면 영어 이미지 사용
+    ja: priceJaImage,
   };
   const priceImage = priceImages[lang];
 
