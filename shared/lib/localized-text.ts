@@ -101,6 +101,24 @@ export function extractLocalizedText(
       }
     }
 
+    // ja locale인데 ja_JP, ja가 없으면 영어로 fallback
+    if (locale === 'ja') {
+      // 영어로 fallback
+      if (localizedText['en_US'] && typeof localizedText['en_US'] === 'string') {
+        const value = localizedText['en_US'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+      // en_US도 없으면 'en' 확인
+      if (localizedText['en'] && typeof localizedText['en'] === 'string') {
+        const value = localizedText['en'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+    }
+
     // fallback: 첫 번째 사용 가능한 값 반환 (긴 형식 우선)
     const fallbackOrder = [
       'ko_KR',

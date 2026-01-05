@@ -10,6 +10,7 @@ interface ContactButtonSectionV2Props {
 
 /**
  * 언어별 입점신청 Google Forms 링크를 반환합니다.
+ * 기본값(default)은 영어 버전 링크입니다.
  */
 function getPartnershipFormLink(lang: Locale): string {
   switch (lang) {
@@ -20,7 +21,7 @@ function getPartnershipFormLink(lang: Locale): string {
     case 'th':
       return 'https://docs.google.com/forms/d/e/1FAIpQLSehKU-3JTge6aOaQZSczUVSUF0dS-fZ9pUAx8n1dCjFF9FkKg/viewform?usp=header';
     default:
-      return 'https://docs.google.com/forms/d/1HxiHa4hVG4lbTTaO7lW78FiAiMmQnTLlGjzPVYb9iZ8/edit';
+      return 'https://docs.google.com/forms/d/e/1FAIpQLSexE6A_k_pUeatu9NAWP2nsFwQ9qI-tiMkdueodCw7bKtk0Qg/viewform?usp=header';
   }
 }
 
