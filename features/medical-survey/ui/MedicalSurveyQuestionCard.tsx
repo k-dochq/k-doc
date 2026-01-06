@@ -49,13 +49,26 @@ export function MedicalSurveyQuestionCard({
             />
           </div>
         ) : (
-          <MedicalSurveyTextarea
-            value={typeof answer === 'string' ? answer : ''}
-            onChange={(e) => onAnswerChange(e.target.value)}
-            placeholder={question.placeholder}
-            maxLength={2000}
-            currentLength={typeof answer === 'string' ? answer.length : 0}
-          />
+          <>
+            <MedicalSurveyTextarea
+              value={typeof answer === 'string' ? answer : ''}
+              onChange={(e) => onAnswerChange(e.target.value)}
+              placeholder={question.placeholder}
+              maxLength={2000}
+              currentLength={typeof answer === 'string' ? answer.length : 0}
+            />
+            {/* 중요 안내 (spacing 5 아래) */}
+            {question.notice && (
+              <div className='mt-5 flex flex-col gap-1'>
+                <p className='text-[13px] font-semibold text-neutral-700'>
+                  {question.notice.title}
+                </p>
+                <p className='text-[13px] font-normal text-neutral-700'>
+                  {question.notice.description}
+                </p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

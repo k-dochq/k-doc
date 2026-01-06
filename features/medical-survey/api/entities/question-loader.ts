@@ -18,6 +18,10 @@ export function loadQuestionsFromDictionary(dict: Dictionary): SurveyQuestion[] 
             noLabel?: string;
             placeholder?: string;
             nextQuestion?: string | { yes?: string; no?: string };
+            notice?: {
+              title?: string;
+              description?: string;
+            };
           }
         >;
       };
@@ -56,12 +60,21 @@ export function loadQuestionsFromDictionary(dict: Dictionary): SurveyQuestion[] 
       const nextQuestion =
         typeof questionData.nextQuestion === 'string' ? questionData.nextQuestion : undefined;
 
+      const notice =
+        questionData.notice?.title && questionData.notice?.description
+          ? {
+              title: questionData.notice.title,
+              description: questionData.notice.description,
+            }
+          : undefined;
+
       questions.push({
         id: questionId,
         type: 'text',
         question: questionData.question,
         placeholder: questionData.placeholder,
         nextQuestion,
+        notice,
       });
     }
   }

@@ -843,7 +843,32 @@
         "q2": {
           "question": "Do you have any allergies to medications or anesthesia?",
           "yesLabel": "Yes, I have",
-          "noLabel": "No, I don't"
+          "noLabel": "No, I don't",
+          "nextQuestion": {
+            "yes": "q2-1",
+            "no": "q3"
+          }
+        },
+        "q2-1": {
+          "question": "Please provide specific details about the type of allergy and symptoms.",
+          "placeholder": "e.g., Lidocaine allergy – hives, difficulty breathing",
+          "nextQuestion": "q3"
+        },
+        "q3": {
+          "question": "Are you currently taking any medications or health supplements?",
+          "yesLabel": "Yes, I am",
+          "noLabel": "No, I'm not",
+          "nextQuestion": {
+            "yes": "q3-1"
+          }
+        },
+        "q3-1": {
+          "question": "Please provide the names and dosages of all medications or health supplements you are taking.",
+          "placeholder": "e.g., No medications. Omega-3 1000mg (once daily)",
+          "notice": {
+            "title": "Important Notice",
+            "description": "If you are currently taking aspirin or blood-thinning medications, please consult with your doctor and discontinue use at least 7 days before the procedure."
+          }
         }
       },
       "nextButton": "Next"

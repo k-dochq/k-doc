@@ -1,7 +1,7 @@
 export type QuestionType = 'yes_no' | 'text';
 
 // 질문 ID 목록 (순서대로)
-export const QUESTION_IDS = ['q1', 'q1-1', 'q2'] as const;
+export const QUESTION_IDS = ['q1', 'q1-1', 'q2', 'q2-1', 'q3', 'q3-1'] as const;
 
 export interface YesNoQuestion {
   id: string;
@@ -22,6 +22,10 @@ export interface TextQuestion {
   question: string; // 질문 텍스트 (dictionary에서 가져옴)
   placeholder?: string; // placeholder 텍스트 (dictionary에서 가져옴)
   nextQuestion?: string; // 다음 질문 ID
+  notice?: {
+    title: string; // 중요 안내 제목
+    description: string; // 중요 안내 설명
+  };
   required?: boolean;
 }
 

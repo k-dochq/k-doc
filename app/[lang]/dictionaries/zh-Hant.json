@@ -843,7 +843,32 @@
         "q2": {
           "question": "您對藥物或麻醉有過敏嗎？",
           "yesLabel": "是的，有",
-          "noLabel": "不，沒有"
+          "noLabel": "不，沒有",
+          "nextQuestion": {
+            "yes": "q2-1",
+            "no": "q3"
+          }
+        },
+        "q2-1": {
+          "question": "請具體填寫過敏種類及症狀。",
+          "placeholder": "例如：利多卡因過敏 – 蕁麻疹、呼吸困難",
+          "nextQuestion": "q3"
+        },
+        "q3": {
+          "question": "您目前是否正在服用任何藥物或健康食品？",
+          "yesLabel": "是的，有",
+          "noLabel": "不，沒有",
+          "nextQuestion": {
+            "yes": "q3-1"
+          }
+        },
+        "q3-1": {
+          "question": "請填寫所有正在服用的藥物或健康食品的名稱和劑量。",
+          "placeholder": "例如：無服用藥物。Omega-3 1000mg（每日一次）",
+          "notice": {
+            "title": "重要通知",
+            "description": "如果您目前正在服用阿司匹林或抗凝血藥物，請與您的醫生諮詢，並在治療前至少7天停止服用。"
+          }
         }
       },
       "nextButton": "下一步"
