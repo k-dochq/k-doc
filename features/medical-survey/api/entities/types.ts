@@ -34,6 +34,7 @@ export type SurveyQuestion = YesNoQuestion | TextQuestion;
 export interface SurveyAnswer {
   questionId: string;
   answer: boolean | string; // yes_no는 boolean, text는 string
+  questionText?: string; // 질문 텍스트 (하위 호환성을 위해 선택적)
 }
 
 export interface SurveyData {
