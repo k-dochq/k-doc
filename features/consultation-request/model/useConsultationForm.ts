@@ -9,7 +9,7 @@ import { type ConsultationFormData, type ConsultationFormErrors } from './types'
 const initialFormData: ConsultationFormData = {
   name: '',
   gender: 'MALE',
-  ageGroup: '',
+  birthDate: '',
   countryCode: '+66',
   phoneNumberOnly: '',
   preferredDate: '',
@@ -43,6 +43,11 @@ export function useConsultationForm(
         updates.gender = userProfile.raw_user_meta_data.gender.toUpperCase() as 'MALE' | 'FEMALE';
       }
 
+      // 생년월일
+      if (userProfile.raw_user_meta_data?.birth_date) {
+        updates.birthDate = userProfile.raw_user_meta_data.birth_date;
+      }
+
       // 휴대폰번호 (국가번호 + 휴대폰번호)
       if (userProfile.raw_user_meta_data?.country_code) {
         updates.countryCode = userProfile.raw_user_meta_data.country_code;
@@ -67,6 +72,7 @@ export function useConsultationForm(
         ...prev,
         name: prev.name || updates.name || '',
         gender: prev.gender === 'MALE' ? updates.gender || prev.gender : prev.gender,
+        birthDate: prev.birthDate || updates.birthDate || '',
         countryCode: prev.countryCode || updates.countryCode || '+66',
         phoneNumberOnly: prev.phoneNumberOnly || updates.phoneNumberOnly || '',
       }));
@@ -99,8 +105,8 @@ export function useConsultationForm(
       newErrors.name = getErrorMessage('name', 'required');
     }
 
-    if (!formData.ageGroup) {
-      newErrors.ageGroup = getErrorMessage('ageGroup', 'required');
+    if (!formData.birthDate) {
+      newErrors.birthDate = getErrorMessage('birthDate', 'required');
     }
 
     if (!formData.countryCode.trim()) {
@@ -134,7 +140,7 @@ export function useConsultationForm(
   const isFormValid = () => {
     return (
       formData.name.trim() &&
-      formData.ageGroup &&
+      formData.birthDate &&
       formData.countryCode.trim() &&
       formData.phoneNumberOnly.trim() &&
       formData.preferredDate

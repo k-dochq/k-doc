@@ -693,15 +693,9 @@
           "male": "Male",
           "female": "Female"
         },
-        "ageGroup": {
-          "label": "Age Group",
-          "placeholder": "Please select your age group",
-          "10s": "10s",
-          "20s": "20s",
-          "30s": "30s",
-          "40s": "40s",
-          "50s": "50s",
-          "60s": "60s+"
+        "birthDate": {
+          "label": "Date of Birth",
+          "placeholder": "Please select your date of birth"
         },
         "phoneNumber": {
           "label": "Phone Number",
@@ -742,8 +736,8 @@
           "name": {
             "required": "Please enter your name."
           },
-          "ageGroup": {
-            "required": "Please select your age group."
+          "birthDate": {
+            "required": "Please select your date of birth."
           },
           "countryCode": {
             "required": "Please select your country code."
@@ -781,19 +775,11 @@
             "subtitle": "Requesting consultation for surgery.",
             "name": "Name",
             "gender": "Gender",
-            "ageGroup": "Age Group",
+            "birthDate": "Date of Birth",
             "phoneNumber": "Phone Number",
             "preferredDate": "Preferred Date",
             "preferredDate2": "Preferred Date 2",
             "additionalInquiry": "Additional Inquiry"
-          },
-          "ageGroups": {
-            "10s": "10s",
-            "20s": "20s",
-            "30s": "30s",
-            "40s": "40s",
-            "50s": "50s",
-            "60s": "60+"
           },
           "genders": {
             "MALE": "Male",
