@@ -79,7 +79,7 @@ export function BubbleSVG({ locale, className = '', text }: BubbleSVGProps) {
           <path d='M22.0769 0V10.6667H6.46154L22.0769 0Z' fill='white' />
         </svg>
         <span
-          className='absolute top-[54%] left-1/2 w-[160px] -translate-x-1/2 -translate-y-1/2 text-center text-[16px] leading-[130%] font-semibold break-words text-[#FF5DCA]'
+          className='absolute top-[60%] left-1/2 w-[160px] -translate-x-1/2 -translate-y-1/2 text-center text-[16px] leading-[130%] font-semibold break-words text-[#FF5DCA]'
           style={{ letterSpacing: '-0.32px' }}
         >
           {text}

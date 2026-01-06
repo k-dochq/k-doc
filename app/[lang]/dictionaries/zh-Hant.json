@@ -821,6 +821,91 @@
       "success": "您的預訂已成功取消。您的退款已完成。",
       "failed": "退款處理過程中發生錯誤。 PG 錯誤：{errorMessage}。請聯絡客服。",
       "noCancellation": "由於未完成付款，預訂已被取消。"
+    },
+    "medicalSurvey": {
+      "title": "填寫醫療問卷",
+      "submitButton": "提交",
+      "nextButton": "下一步",
+      "completionMessage": {
+        "title": "醫療問卷已成功\n完成。",
+        "description": "為了確保您的安全治療，\n我們正在根據您提供的\n信息審查治療可行性。",
+        "note": "這可能需要一些時間，\n審查完成後我們將\n立即為您提供諮詢指導。"
+      },
+      "completePage": {
+        "title": "問卷填寫完成",
+        "message1": "醫院正在根據您提供的信息審查治療可行性。",
+        "message2": "審查完成後，我們將通過聊天為您提供諮詢指導，請稍候。",
+        "notice": {
+          "title": "關於可否施術的說明",
+          "description": [
+            "若符合以下情況，可能限制施術或需額外醫療評估。",
+            "請務必確認。",
+            "- 腦血管疾病（治療或手術後經過 1 年以上者，需評估是否可施術）",
+            "- 心血管疾病（治療或手術後經過 1 年以上者，需評估是否可施術）",
+            "- 心臟支架手術史",
+            "- 腎臟移植手術史或目前透析中的患者",
+            "- 甲狀腺疾病或糖尿病（依狀態及醫師判斷決定可否施術）"
+          ]
+        },
+        "backToChatButton": "返回聊天"
+      },
+      "questions": {
+        "q1": {
+          "question": "您之前是否接受過整形手術或治療？",
+          "yesLabel": "是的，有",
+          "noLabel": "不，沒有",
+          "nextQuestion": {
+            "yes": "q1-1",
+            "no": "q2"
+          }
+        },
+        "q1-1": {
+          "question": "請詳細填寫手術種類 / 手術部位 / 大致時間。",
+          "placeholder": "例如：2022年腹部抽脂 / 2023年臉部線雕",
+          "nextQuestion": "q2"
+        },
+        "q2": {
+          "question": "您對藥物或麻醉有過敏嗎？",
+          "yesLabel": "是的，有",
+          "noLabel": "不，沒有",
+          "nextQuestion": {
+            "yes": "q2-1",
+            "no": "q3"
+          }
+        },
+        "q2-1": {
+          "question": "請具體填寫過敏種類及症狀。",
+          "placeholder": "例如：利多卡因過敏 – 蕁麻疹、呼吸困難",
+          "nextQuestion": "q3"
+        },
+        "q3": {
+          "question": "您目前是否正在服用任何藥物或健康食品？",
+          "yesLabel": "是的，有",
+          "noLabel": "不，沒有",
+          "nextQuestion": {
+            "yes": "q3-1",
+            "no": "q4"
+          }
+        },
+        "q3-1": {
+          "question": "請填寫所有正在服用的藥物或健康食品的名稱和劑量。",
+          "placeholder": "例如：無服用藥物。Omega-3 1000mg（每日一次）",
+          "notice": {
+            "title": "重要通知",
+            "description": "如果您目前正在服用阿司匹林或抗凝血藥物，請與您的醫生諮詢，並在治療前至少7天停止服用。"
+          },
+          "nextQuestion": "q4"
+        },
+        "q4": {
+          "question": "您目前或過去是否有任何疾病，或醫療人員需要參考的病歷資料？",
+          "placeholder": "例如：疾病名稱 / 診斷時間 / 目前治療狀況\n（甲狀腺疾病，2020年診斷，目前服藥中）",
+          "nextQuestion": "q5"
+        },
+        "q5": {
+          "question": "如有其他疑問或擔憂，請自由填寫。",
+          "placeholder": "例如：我想了解恢復期、疼痛程度、疤痕情況。"
+        }
+      }
     }
   },
   "cautionSection": {
