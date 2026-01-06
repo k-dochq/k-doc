@@ -106,20 +106,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ success: false, error: 'HOSPITAL_NOT_FOUND' }, { status: 404 });
     }
 
-    // 1. 관리자 메시지 먼저 저장 (senderType: 'ADMIN')
-    const completionMessage = getCompletionMessage(locale);
-    await prisma.consultationMessage.create({
-      data: {
-        id: uuidv4(),
-        userId: userId,
-        hospitalId: hospitalId,
-        senderType: 'ADMIN',
-        content: completionMessage,
-        createdAt: new Date(),
-      },
-    });
-
-    // 2. 설문 데이터를 사용자 메시지로 저장 (senderType: 'USER')
+    // 1. 설문 데이터를 사용자 메시지로 먼저 저장 (senderType: 'USER')
     const surveyContent = formatSurveyAnswers(answers);
     await prisma.consultationMessage.create({
       data: {
@@ -128,6 +115,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         hospitalId: hospitalId,
         senderType: 'USER',
         content: surveyContent,
+        createdAt: new Date(),
+      },
+    });
+
+    // 2. 관리자 메시지 저장 (senderType: 'ADMIN')
+    const completionMessage = getCompletionMessage(locale);
+    await prisma.consultationMessage.create({
+      data: {
+        id: uuidv4(),
+        userId: userId,
+        hospitalId: hospitalId,
+        senderType: 'ADMIN',
+        content: completionMessage,
         createdAt: new Date(),
       },
     });
