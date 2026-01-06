@@ -688,6 +688,10 @@
           "placeholder": "パスポートに記載されている名前を入力してください",
           "passportHelper": "パスポートに書かれたまま入力してください。浮き彫りを含む。"
         },
+        "nationality": {
+          "label": "国籍",
+          "placeholder": "国籍を選択してください"
+        },
         "gender": {
           "label": "性別",
           "male": "男性",
@@ -736,6 +740,9 @@
           "name": {
             "required": "名前を入力してください。"
           },
+          "nationality": {
+            "required": "国籍を選択してください。"
+          },
           "birthDate": {
             "required": "生年月日を選択してください。"
           },
@@ -774,6 +781,7 @@
             "title": "(自動生成予約申込書)",
             "subtitle": "施術相談申し込みます。",
             "name": "名前",
+            "nationality": "国籍",
             "gender": "性別",
             "birthDate": "生年月日",
             "phoneNumber": "携帯電話番号",

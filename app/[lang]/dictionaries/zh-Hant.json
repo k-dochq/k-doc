@@ -688,6 +688,10 @@
           "placeholder": "請輸入與護照上一致的姓名。",
           "passportHelper": "請依照護照上的資料準確填寫，包括空格。"
         },
+        "nationality": {
+          "label": "國籍",
+          "placeholder": "請選擇您的國籍"
+        },
         "gender": {
           "label": "性別",
           "male": "男性",
@@ -736,6 +740,9 @@
           "name": {
             "required": "請輸入您的姓名。"
           },
+          "nationality": {
+            "required": "請選擇您的國籍。"
+          },
           "birthDate": {
             "required": "請選擇您的出生日期。"
           },
@@ -774,6 +781,7 @@
             "title": "（自動產生的預訂申請表）",
             "subtitle": "我想預約一次治療諮詢。",
             "name": "姓名",
+            "nationality": "國籍",
             "gender": "性別",
             "birthDate": "出生日期",
             "phoneNumber": "電話號碼",

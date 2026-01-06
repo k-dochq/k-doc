@@ -8,6 +8,7 @@ import { type ConsultationFormData, type ConsultationFormErrors } from './types'
 
 const initialFormData: ConsultationFormData = {
   name: '',
+  nationality: '',
   gender: 'MALE',
   birthDate: '',
   countryCode: '+66',
@@ -34,6 +35,11 @@ export function useConsultationForm(
       // 여권 영문 이름 -> 이름 필드
       if (userProfile.raw_user_meta_data?.passport_name) {
         updates.name = userProfile.raw_user_meta_data.passport_name;
+      }
+
+      // 국적
+      if (userProfile.raw_user_meta_data?.nationality) {
+        updates.nationality = userProfile.raw_user_meta_data.nationality;
       }
 
       // 성별 매핑 (회원가입 시 'male'/'female' -> 상담 시 'MALE'/'FEMALE')
@@ -71,6 +77,7 @@ export function useConsultationForm(
       setFormData((prev) => ({
         ...prev,
         name: prev.name || updates.name || '',
+        nationality: prev.nationality || updates.nationality || '',
         gender: prev.gender === 'MALE' ? updates.gender || prev.gender : prev.gender,
         birthDate: prev.birthDate || updates.birthDate || '',
         countryCode: prev.countryCode || updates.countryCode || '+66',
@@ -103,6 +110,10 @@ export function useConsultationForm(
 
     if (!formData.name.trim()) {
       newErrors.name = getErrorMessage('name', 'required');
+    }
+
+    if (!formData.nationality) {
+      newErrors.nationality = getErrorMessage('nationality', 'required');
     }
 
     if (!formData.birthDate) {
@@ -140,6 +151,7 @@ export function useConsultationForm(
   const isFormValid = () => {
     return (
       formData.name.trim() &&
+      formData.nationality &&
       formData.birthDate &&
       formData.countryCode.trim() &&
       formData.phoneNumberOnly.trim() &&

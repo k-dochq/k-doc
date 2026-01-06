@@ -15,6 +15,7 @@ import { FormDatePickerV2 } from './FormDatePickerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 import { PrivacyAgreementNotice } from './PrivacyAgreementNotice';
 import { trackLead, trackGenerateLead } from 'shared/lib/analytics';
+import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
@@ -60,12 +61,31 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
         | undefined
     )?.placeholder || '성별을 선택해주세요';
 
+  // 국적 옵션 생성
+  const getNationalityKey = (countryCode: string): string => {
+    const country = COUNTRY_CODES.find((c) => c.code === countryCode);
+    if (!country) return '';
+    return country.name.toLowerCase().replace(/\s+/g, '_');
+  };
+
+  const nationalityOptions = COUNTRY_CODES.map((country) => ({
+    value: getNationalityKey(country.code),
+    label: getCountryName(country, lang),
+  }));
+
   const onSubmit = () => {
     const validationErrors: string[] = [];
 
     if (!formData.name.trim()) {
       validationErrors.push(
         dict.consultation?.request?.form?.errors?.name?.required || '이름을 입력해주세요.',
+      );
+    }
+
+    if (!formData.nationality) {
+      validationErrors.push(
+        (dict.consultation?.request?.form?.errors as { nationality?: { required?: string } })
+          ?.nationality?.required || '국적을 선택해주세요.',
       );
     }
 
@@ -126,6 +146,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
       {
         hospitalId,
         name: formData.name,
+        nationality: formData.nationality,
         gender: formData.gender,
         birthDate: formData.birthDate,
         countryCode: formData.countryCode,
@@ -188,6 +209,25 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
           required
           rightIcon={<UserIcon />}
           helperText={passportNameHelperText}
+        />
+
+        {/* 국적 */}
+        <SelectFieldV2
+          label={
+            dict.consultation?.request?.form?.nationality?.label ||
+            dict.auth?.signup?.nationality ||
+            '국적'
+          }
+          value={formData.nationality}
+          onChange={(value) => updateField('nationality', value)}
+          options={nationalityOptions}
+          placeholder={
+            dict.consultation?.request?.form?.nationality?.placeholder ||
+            dict.auth?.signup?.placeholders?.nationality ||
+            '국적을 선택해주세요'
+          }
+          error={errors.nationality}
+          required
         />
 
         {/* 성별 */}

@@ -6,6 +6,7 @@ import { type ConsultationFormData } from '../model/types';
 interface ConsultationRequestData {
   hospitalId: string;
   name: string;
+  nationality: string;
   gender: 'MALE' | 'FEMALE';
   birthDate: string;
   countryCode: string;

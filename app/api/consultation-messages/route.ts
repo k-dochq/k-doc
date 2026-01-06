@@ -8,6 +8,7 @@ import { type Locale } from 'shared/config';
 interface ConsultationRequestBody {
   hospitalId: string;
   name: string;
+  nationality: string;
   gender: 'MALE' | 'FEMALE';
   birthDate: string;
   countryCode: string;
@@ -208,6 +209,7 @@ async function handleConsultationRequest(
   const {
     hospitalId,
     name,
+    nationality,
     gender,
     birthDate,
     countryCode,
@@ -221,6 +223,7 @@ async function handleConsultationRequest(
   if (
     !hospitalId ||
     !name ||
+    !nationality ||
     !gender ||
     !birthDate ||
     !countryCode ||
@@ -242,6 +245,7 @@ async function handleConsultationRequest(
 
   // 다국어 메시지 가져오기
   const messages = await getLocalizedMessages(locale);
+  const dict = await import(`../../[lang]/dictionaries/${locale}.json`);
 
   // 해당 사용자와 병원 간의 기존 대화 확인
   const existingMessages = await prisma.consultationMessage.findFirst({
@@ -278,7 +282,12 @@ async function handleConsultationRequest(
     content: `${messages.consultationRequest?.title || '(자동 생성 예약 신청서)'}
 ${hospitalName} ${messages.consultationRequest?.subtitle || '시술 상담 신청합니다.'}
 
-${messages.consultationRequest?.name || '이름'}: ${name}
+${messages.consultationRequest?.name || '이름'}: ${name}${
+      nationality
+        ? `
+${messages.consultationRequest?.nationality || dict.default.auth?.signup?.nationality || '국적'}: ${nationality}`
+        : ''
+    }
 ${messages.consultationRequest?.gender || '성별'}: ${messages.genders?.[gender] || gender}
 ${messages.consultationRequest?.birthDate || '생년월일'}: ${birthDate}
 ${messages.consultationRequest?.phoneNumber || '휴대폰번호'}: ${countryCode} ${phoneNumberOnly}

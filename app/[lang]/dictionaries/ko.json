@@ -688,6 +688,10 @@
           "placeholder": "여권에 기재된 이름을 입력해주세요",
           "passportHelper": "여권에 적힌 그대로 입력해주세요. 띄어쓰기 포함."
         },
+        "nationality": {
+          "label": "국적",
+          "placeholder": "국적을 선택해주세요"
+        },
         "gender": {
           "label": "성별",
           "male": "남성",
@@ -736,6 +740,9 @@
           "name": {
             "required": "이름을 입력해주세요."
           },
+          "nationality": {
+            "required": "국적을 선택해주세요."
+          },
           "birthDate": {
             "required": "생년월일을 선택해주세요."
           },
@@ -774,6 +781,7 @@
             "title": "(자동 생성 예약 신청서)",
             "subtitle": "시술 상담 신청합니다.",
             "name": "이름",
+            "nationality": "국적",
             "gender": "성별",
             "birthDate": "생년월일",
             "phoneNumber": "휴대폰번호",

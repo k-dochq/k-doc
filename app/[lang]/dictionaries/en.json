@@ -688,6 +688,10 @@
           "placeholder": "Please enter your passport name",
           "passportHelper": "Enter exactly as shown on your passport, including spaces."
         },
+        "nationality": {
+          "label": "Nationality",
+          "placeholder": "Please select your nationality"
+        },
         "gender": {
           "label": "Gender",
           "male": "Male",
@@ -736,6 +740,9 @@
           "name": {
             "required": "Please enter your name."
           },
+          "nationality": {
+            "required": "Please select your nationality."
+          },
           "birthDate": {
             "required": "Please select your date of birth."
           },
@@ -774,6 +781,7 @@
             "title": "(Auto-generated consultation request)",
             "subtitle": "Requesting consultation for surgery.",
             "name": "Name",
+            "nationality": "Nationality",
             "gender": "Gender",
             "birthDate": "Date of Birth",
             "phoneNumber": "Phone Number",
