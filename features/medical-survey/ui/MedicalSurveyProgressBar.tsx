@@ -9,12 +9,9 @@ export function MedicalSurveyProgressBar({
   currentQuestionIndex,
   className = '',
 }: MedicalSurveyProgressBarProps) {
-  if (totalQuestions <= 1) {
-    return null;
-  }
-
   // 전체 진행률 계산 (0-100%)
-  const progressPercentage = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+  const progressPercentage =
+    totalQuestions > 0 ? ((currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
 
   return (
     <div className={`flex justify-center ${className}`}>

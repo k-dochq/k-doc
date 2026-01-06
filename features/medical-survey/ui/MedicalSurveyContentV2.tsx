@@ -29,6 +29,8 @@ export function MedicalSurveyContentV2({
     currentQuestionIndex,
     currentQuestion,
     availableQuestions,
+    progressCurrentNumber,
+    progressTotal,
     getAnswer,
     updateAnswer,
     goToNextQuestion,
@@ -69,6 +71,8 @@ export function MedicalSurveyContentV2({
       <div className='flex-1 overflow-y-auto pb-32'>
         <MedicalSurveyQuestions
           questions={availableQuestions}
+          progressCurrentNumber={progressCurrentNumber}
+          progressTotal={progressTotal}
           currentQuestionIndex={currentQuestionIndex}
           currentQuestion={currentQuestion}
           getAnswer={getAnswer}

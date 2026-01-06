@@ -5,6 +5,8 @@ import { MedicalSurveyQuestionCard } from './MedicalSurveyQuestionCard';
 
 interface MedicalSurveyQuestionsProps {
   questions: SurveyQuestion[];
+  progressCurrentNumber: number;
+  progressTotal: number;
   currentQuestionIndex: number;
   currentQuestion: SurveyQuestion | null;
   getAnswer: (questionId: string) => boolean | string | null;
@@ -13,6 +15,8 @@ interface MedicalSurveyQuestionsProps {
 
 export function MedicalSurveyQuestions({
   questions,
+  progressCurrentNumber,
+  progressTotal,
   currentQuestionIndex,
   currentQuestion,
   getAnswer,
@@ -28,8 +32,8 @@ export function MedicalSurveyQuestions({
     <div className='p-5'>
       <MedicalSurveyQuestionCard
         question={currentQuestion}
-        totalQuestions={questions.length}
-        currentQuestionIndex={currentQuestionIndex}
+        totalQuestions={progressTotal}
+        currentQuestionIndex={progressCurrentNumber - 1}
         answer={answer}
         onAnswerChange={(newAnswer) => updateAnswer(currentQuestion.id, newAnswer)}
       />

@@ -1,7 +1,30 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { type SurveyQuestion, type SurveyAnswer } from '../api/entities/types';
+
+// 질문 ID에서 기본 번호 추출 (q1, q1-1 → 1, q2 → 2)
+function extractQuestionNumber(questionId: string): number {
+  const match = questionId.match(/^q(\d+)/);
+  return match ? parseInt(match[1], 10) : 1;
+}
+
+// 질문의 다음 질문 ID 가져오기
+function getNextQuestionId(
+  question: SurveyQuestion,
+  answer: boolean | string | null,
+): string | undefined {
+  if (question.type === 'yes_no') {
+    if (answer === true && question.nextQuestion?.yes) {
+      return question.nextQuestion.yes;
+    } else if (answer === false && question.nextQuestion?.no) {
+      return question.nextQuestion.no;
+    }
+  } else if (question.type === 'text') {
+    return question.nextQuestion;
+  }
+  return undefined;
+}
 
 interface UseMedicalSurveyProps {
   questions: SurveyQuestion[];
@@ -11,6 +34,8 @@ interface UseMedicalSurveyReturn {
   currentQuestionIndex: number;
   currentQuestion: SurveyQuestion | null;
   availableQuestions: SurveyQuestion[];
+  progressCurrentNumber: number; // progress bar 계산용 현재 문항 번호
+  progressTotal: number; // progress bar 계산용 전체 문항 수
   answers: Map<string, boolean | string>;
   updateAnswer: (questionId: string, answer: boolean | string) => void;
   goToNextQuestion: () => void;
@@ -26,56 +51,125 @@ export function useMedicalSurvey({ questions }: UseMedicalSurveyProps): UseMedic
   const [answers, setAnswers] = useState<Map<string, boolean | string>>(new Map());
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  // 조건부 질문 필터링: q1의 답변에 따라 표시할 질문 결정
-  const getAvailableQuestions = useCallback((): SurveyQuestion[] => {
-    const q1Answer = answers.get('q1');
-    const availableQuestions: SurveyQuestion[] = [questions[0]]; // q1은 항상 포함
+  // 질문 맵 생성 (ID로 빠르게 접근)
+  const questionMap = useMemo(() => {
+    const map = new Map<string, SurveyQuestion>();
+    questions.forEach((q) => {
+      map.set(q.id, q);
+    });
+    return map;
+  }, [questions]);
 
-    if (q1Answer === true) {
-      // q1이 "예"면 q1-1 (text) 추가
-      const q1_1 = questions.find((q) => q.id === 'q1-1');
-      if (q1_1) {
-        availableQuestions.push(q1_1);
-      }
-    } else if (q1Answer === false) {
-      // q1이 "아니요"면 q2 (yes_no) 추가
-      const q2 = questions.find((q) => q.id === 'q2');
-      if (q2) {
-        availableQuestions.push(q2);
+  // 조건부 질문 필터링: 질문 데이터의 nextQuestion 정보를 기반으로 동적 계산
+  const getAvailableQuestions = useCallback((): SurveyQuestion[] => {
+    const availableQuestions: SurveyQuestion[] = [];
+    const visited = new Set<string>();
+
+    // 시작 질문 찾기 (첫 번째 질문)
+    const startQuestion = questions[0];
+    if (!startQuestion) {
+      return availableQuestions;
+    }
+
+    // BFS로 질문 경로 탐색
+    const queue: SurveyQuestion[] = [startQuestion];
+    visited.add(startQuestion.id);
+
+    while (queue.length > 0) {
+      const current = queue.shift()!;
+      availableQuestions.push(current);
+
+      // 다음 질문 결정
+      const answer = answers.get(current.id);
+      const nextQuestionId = getNextQuestionId(current, answer ?? null);
+
+      // 다음 질문이 있고 아직 방문하지 않았으면 추가
+      if (nextQuestionId && !visited.has(nextQuestionId)) {
+        const nextQuestion = questionMap.get(nextQuestionId);
+        if (nextQuestion) {
+          queue.push(nextQuestion);
+          visited.add(nextQuestionId);
+        }
       }
     }
 
     return availableQuestions;
-  }, [questions, answers]);
+  }, [questions, answers, questionMap]);
 
   const availableQuestions = getAvailableQuestions();
   const currentQuestion = availableQuestions[currentQuestionIndex] || null;
 
-  const updateAnswer = useCallback((questionId: string, answer: boolean | string) => {
-    setAnswers((prev) => {
-      const newAnswers = new Map(prev);
+  // progress bar 계산용: 질문 데이터 기반으로 동적 계산
+  const getProgressInfo = useCallback((): { currentNumber: number; total: number } => {
+    if (!currentQuestion || questions.length === 0) {
+      return { currentNumber: 1, total: 1 };
+    }
 
-      // q1의 답변이 변경되면 관련 질문의 답변 제거 및 인덱스 리셋
-      if (questionId === 'q1') {
-        const prevQ1Answer = prev.get('q1');
-        if (prevQ1Answer !== answer) {
-          // q1 답변이 변경되면 q1-1 또는 q2의 답변 제거
-          if (prevQ1Answer === true) {
-            // 이전에 "예"였다면 q1-1 답변 제거
-            newAnswers.delete('q1-1');
-          } else if (prevQ1Answer === false) {
-            // 이전에 "아니요"였다면 q2 답변 제거
-            newAnswers.delete('q2');
-          }
-          // q1 답변 변경 시 첫 번째 질문으로 리셋
-          setCurrentQuestionIndex(0);
-        }
-      }
+    const currentNumber = extractQuestionNumber(currentQuestion.id);
 
-      newAnswers.set(questionId, answer);
-      return newAnswers;
+    // 전체 질문 수 계산: 전체 질문 데이터에서 고유한 기본 번호 개수
+    const uniqueNumbers = new Set<number>();
+    questions.forEach((q) => {
+      uniqueNumbers.add(extractQuestionNumber(q.id));
     });
-  }, []);
+
+    return {
+      currentNumber,
+      total: uniqueNumbers.size,
+    };
+  }, [currentQuestion, questions]);
+
+  const progressInfo = getProgressInfo();
+
+  const updateAnswer = useCallback(
+    (questionId: string, answer: boolean | string) => {
+      setAnswers((prev) => {
+        const newAnswers = new Map(prev);
+        const prevAnswer = prev.get(questionId);
+
+        // 답변이 변경된 경우
+        if (prevAnswer !== answer) {
+          const question = questionMap.get(questionId);
+
+          if (question) {
+            // 이 질문의 nextQuestion으로 연결된 질문들의 답변 재귀적으로 제거
+            const removeDependentAnswers = (qId: string) => {
+              const q = questionMap.get(qId);
+              if (!q) return;
+
+              // 이 질문의 답변 제거
+              newAnswers.delete(qId);
+
+              // 이 질문의 모든 nextQuestion 재귀적으로 제거
+              if (q.type === 'yes_no') {
+                if (q.nextQuestion?.yes) removeDependentAnswers(q.nextQuestion.yes);
+                if (q.nextQuestion?.no) removeDependentAnswers(q.nextQuestion.no);
+              } else if (q.type === 'text' && q.nextQuestion) {
+                removeDependentAnswers(q.nextQuestion);
+              }
+            };
+
+            // 현재 질문의 모든 nextQuestion 제거
+            if (question.type === 'yes_no') {
+              if (question.nextQuestion?.yes) removeDependentAnswers(question.nextQuestion.yes);
+              if (question.nextQuestion?.no) removeDependentAnswers(question.nextQuestion.no);
+            } else if (question.type === 'text' && question.nextQuestion) {
+              removeDependentAnswers(question.nextQuestion);
+            }
+
+            // 첫 번째 질문의 답변이 변경되면 첫 번째 질문으로 리셋
+            if (questionId === questions[0]?.id) {
+              setCurrentQuestionIndex(0);
+            }
+          }
+        }
+
+        newAnswers.set(questionId, answer);
+        return newAnswers;
+      });
+    },
+    [questionMap, questions],
+  );
 
   const goToNextQuestion = useCallback(() => {
     setCurrentQuestionIndex((prev) => {
@@ -137,6 +231,8 @@ export function useMedicalSurvey({ questions }: UseMedicalSurveyProps): UseMedic
     currentQuestionIndex,
     currentQuestion,
     availableQuestions,
+    progressCurrentNumber: progressInfo.currentNumber,
+    progressTotal: progressInfo.total,
     answers,
     updateAnswer,
     goToNextQuestion,

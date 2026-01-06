@@ -12,7 +12,13 @@ export function loadQuestionsFromDictionary(dict: Dictionary): SurveyQuestion[] 
       medicalSurvey?: {
         questions?: Record<
           string,
-          { question?: string; yesLabel?: string; noLabel?: string; placeholder?: string }
+          {
+            question?: string;
+            yesLabel?: string;
+            noLabel?: string;
+            placeholder?: string;
+            nextQuestion?: string | { yes?: string; no?: string };
+          }
         >;
       };
     }
@@ -31,21 +37,31 @@ export function loadQuestionsFromDictionary(dict: Dictionary): SurveyQuestion[] 
 
     // yes_no 타입 질문 (yesLabel, noLabel이 있는 경우)
     if (questionData.yesLabel && questionData.noLabel) {
+      const nextQuestion =
+        typeof questionData.nextQuestion === 'object' && questionData.nextQuestion !== null
+          ? questionData.nextQuestion
+          : undefined;
+
       questions.push({
         id: questionId,
         type: 'yes_no',
         question: questionData.question,
         yesLabel: questionData.yesLabel,
         noLabel: questionData.noLabel,
+        nextQuestion,
       });
     }
     // text 타입 질문 (placeholder가 있는 경우)
     else if (questionData.placeholder !== undefined) {
+      const nextQuestion =
+        typeof questionData.nextQuestion === 'string' ? questionData.nextQuestion : undefined;
+
       questions.push({
         id: questionId,
         type: 'text',
         question: questionData.question,
         placeholder: questionData.placeholder,
+        nextQuestion,
       });
     }
   }

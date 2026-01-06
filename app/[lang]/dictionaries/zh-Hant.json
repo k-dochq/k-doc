@@ -829,11 +829,16 @@
         "q1": {
           "question": "您之前是否接受過整形手術或治療？",
           "yesLabel": "是的，有",
-          "noLabel": "不，沒有"
+          "noLabel": "不，沒有",
+          "nextQuestion": {
+            "yes": "q1-1",
+            "no": "q2"
+          }
         },
         "q1-1": {
           "question": "請詳細填寫手術種類 / 手術部位 / 大致時間。",
-          "placeholder": "例如：2022年腹部抽脂 / 2023年臉部線雕"
+          "placeholder": "例如：2022年腹部抽脂 / 2023年臉部線雕",
+          "nextQuestion": "q2"
         },
         "q2": {
           "question": "您對藥物或麻醉有過敏嗎？",

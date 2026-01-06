@@ -9,6 +9,10 @@ export interface YesNoQuestion {
   question: string; // 질문 텍스트 (dictionary에서 가져옴)
   yesLabel: string; // "네, 있어요" (dictionary에서 가져옴)
   noLabel: string; // "아니요, 없어요" (dictionary에서 가져옴)
+  nextQuestion?: {
+    yes?: string; // "예" 선택 시 다음 질문 ID
+    no?: string; // "아니요" 선택 시 다음 질문 ID
+  };
   required?: boolean;
 }
 
@@ -17,6 +21,7 @@ export interface TextQuestion {
   type: 'text';
   question: string; // 질문 텍스트 (dictionary에서 가져옴)
   placeholder?: string; // placeholder 텍스트 (dictionary에서 가져옴)
+  nextQuestion?: string; // 다음 질문 ID
   required?: boolean;
 }
 

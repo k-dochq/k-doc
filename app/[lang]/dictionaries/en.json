@@ -829,11 +829,16 @@
         "q1": {
           "question": "Have you had any plastic surgery or procedures before?",
           "yesLabel": "Yes, I have",
-          "noLabel": "No, I haven't"
+          "noLabel": "No, I haven't",
+          "nextQuestion": {
+            "yes": "q1-1",
+            "no": "q2"
+          }
         },
         "q1-1": {
           "question": "Please provide details about the procedure type, area, and approximate time.",
-          "placeholder": "e.g., 2022 Abdominal Liposuction / 2023 Facial Thread Lifting"
+          "placeholder": "e.g., 2022 Abdominal Liposuction / 2023 Facial Thread Lifting",
+          "nextQuestion": "q2"
         },
         "q2": {
           "question": "Do you have any allergies to medications or anesthesia?",
