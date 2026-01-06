@@ -821,6 +821,10 @@
       "success": "예약이 정상적으로 취소되었습니다.\n\n환불이 완료되었습니다.",
       "failed": "환불 처리 중 오류가 발생했습니다.\n\nPG사 오류: {errorMessage}\n\n고객센터로 문의해주시기 바랍니다.",
       "noCancellation": "결제가 완료되지 않아 예약만 취소되었습니다."
+    },
+    "medicalSurvey": {
+      "title": "의료 설문 작성하기",
+      "submitButton": "제출하기"
     }
   },
   "cautionSection": {

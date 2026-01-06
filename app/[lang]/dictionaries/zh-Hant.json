@@ -821,6 +821,10 @@
       "success": "您的預訂已成功取消。您的退款已完成。",
       "failed": "退款處理過程中發生錯誤。 PG 錯誤：{errorMessage}。請聯絡客服。",
       "noCancellation": "由於未完成付款，預訂已被取消。"
+    },
+    "medicalSurvey": {
+      "title": "填寫醫療問卷",
+      "submitButton": "提交"
     }
   },
   "cautionSection": {

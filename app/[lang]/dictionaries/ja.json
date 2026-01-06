@@ -821,6 +821,10 @@
       "success": "予約は正常にキャンセルされました。払い戻しが完了しました。",
       "failed": "払い戻し処理中にエラーが発生しました。 PG社エラー：{errorMessage}カスタマーセンターにお問い合わせください。",
       "noCancellation": "お支払いが完了していないため、予約のみキャンセルされました。"
+    },
+    "medicalSurvey": {
+      "title": "医療アンケート記入",
+      "submitButton": "送信"
     }
   },
   "cautionSection": {

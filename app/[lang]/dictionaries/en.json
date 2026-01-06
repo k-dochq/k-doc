@@ -821,6 +821,10 @@
       "success": "Your reservation has been successfully cancelled.\n\nThe refund has been completed.",
       "failed": "An error occurred during the refund process.\n\nPayment gateway error: {errorMessage}\n\nPlease contact customer service.",
       "noCancellation": "Only the reservation was cancelled as payment was not completed."
+    },
+    "medicalSurvey": {
+      "title": "Complete Medical Survey",
+      "submitButton": "Submit"
     }
   },
   "cautionSection": {
