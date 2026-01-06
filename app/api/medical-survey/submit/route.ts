@@ -33,10 +33,15 @@ function getCompletionMessage(locale: Locale): string {
 function formatSurveyAnswers(answers: SurveyAnswer[]): string {
   const formattedAnswers = answers.map((answer) => {
     const answerText =
-      typeof answer.answer === 'boolean' ? (answer.answer ? '예' : '아니요') : answer.answer;
+      typeof answer.answer === 'boolean' ? (answer.answer ? 'Yes' : 'No') : answer.answer;
 
     // questionId에서 숫자만 추출 (q1 -> 1, q1-1 -> 1-1)
     const questionNumber = answer.questionId.replace(/^q/i, '');
+
+    // 질문 텍스트가 있으면 "질문번호. 질문내용 -> 답변" 형식, 없으면 기존 형식 유지
+    if (answer.questionText) {
+      return `${questionNumber}. ${answer.questionText} -> ${answerText}`;
+    }
 
     return `${questionNumber}. ${answerText}`;
   });

@@ -204,11 +204,15 @@ export function useMedicalSurvey({ questions }: UseMedicalSurveyProps): UseMedic
   );
 
   const getAllAnswers = useCallback((): SurveyAnswer[] => {
-    return Array.from(answers.entries()).map(([questionId, answer]) => ({
-      questionId,
-      answer,
-    }));
-  }, [answers]);
+    return Array.from(answers.entries()).map(([questionId, answer]) => {
+      const question = questionMap.get(questionId);
+      return {
+        questionId,
+        answer,
+        questionText: question?.question,
+      };
+    });
+  }, [answers, questionMap]);
 
   const isAllAnswered = useCallback((): boolean => {
     const available = getAvailableQuestions();
