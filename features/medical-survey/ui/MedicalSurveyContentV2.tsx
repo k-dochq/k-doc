@@ -8,6 +8,7 @@ import { MedicalSurveyFloatingButton } from './MedicalSurveyFloatingButton';
 import { MedicalSurveyQuestions } from './MedicalSurveyQuestions';
 import { useMedicalSurvey } from '../model/useMedicalSurvey';
 import { loadQuestionsFromDictionary } from '../api/entities/question-loader';
+import { useSubmitMedicalSurvey } from '../model/useSubmitMedicalSurvey';
 
 interface MedicalSurveyContentV2Props {
   lang: Locale;
@@ -40,26 +41,27 @@ export function MedicalSurveyContentV2({
     isLastQuestion,
   } = useMedicalSurvey({ questions });
 
+  const submitMutation = useSubmitMedicalSurvey({
+    consultationId,
+    locale: lang,
+  });
+
   const handleButtonClick = () => {
     if (isLastQuestion()) {
       // 마지막 질문이면 제출
       const answers = getAllAnswers();
-      console.log('Submit medical survey for consultation:', consultationId);
-      console.log('Answers:', answers);
-      // TODO: 설문 제출 로직 구현
+      submitMutation.mutate(answers);
     } else {
       // 다음 질문으로 이동
       goToNextQuestion();
     }
   };
 
-  // 버튼 텍스트 결정
-  const buttonText = isLastQuestion()
-    ? dict.consultation?.medicalSurvey?.submitButton || '제출하기'
-    : dict.consultation?.medicalSurvey?.nextButton || '다음';
+  // 버튼 텍스트 결정 - 마지막 질문에서도 "다음" 표시
+  const buttonText = dict.consultation?.medicalSurvey?.nextButton || '다음';
 
-  // 버튼 활성화 조건: 현재 질문에 답변이 있을 때
-  const isButtonDisabled = !isCurrentQuestionAnswered();
+  // 버튼 활성화 조건: 현재 질문에 답변이 있을 때, 또는 제출 중일 때 비활성화
+  const isButtonDisabled = !isCurrentQuestionAnswered() || submitMutation.isPending;
 
   return (
     <div className='flex h-screen flex-col bg-white'>

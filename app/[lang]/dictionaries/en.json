@@ -825,6 +825,30 @@
     "medicalSurvey": {
       "title": "Complete Medical Survey",
       "submitButton": "Submit",
+      "nextButton": "Next",
+      "completionMessage": {
+        "title": "Medical survey has been\nsuccessfully completed.",
+        "description": "To ensure your safe procedure,\nwe are reviewing the feasibility\nbased on the information you provided.",
+        "note": "This may take some time, and\nwe will guide you through consultation\nas soon as the review is complete."
+      },
+      "completePage": {
+        "title": "Survey Completed",
+        "message1": "The hospital is reviewing the feasibility of the procedure based on the information you provided.",
+        "message2": "We will guide you through consultation via chat as soon as the review is complete. Please wait a moment.",
+        "notice": {
+          "title": "Guidance on Procedure Eligibility",
+          "description": [
+            "If any of the following apply to you, the procedure may be limited or require additional medical review.",
+            "Please be sure to check the details.",
+            "- Cerebrovascular disease (procedure eligibility reviewed if 1 year or more has passed since treatment or surgery)",
+            "- Cardiovascular disease (procedure eligibility reviewed if 1 year or more has passed since treatment or surgery)",
+            "- History of cardiac stent placement",
+            "- History of kidney transplant or patients currently on dialysis",
+            "- Thyroid disease or diabetes (eligibility determined based on condition and medical judgment)"
+          ]
+        },
+        "backToChatButton": "Back to Chat"
+      },
       "questions": {
         "q1": {
           "question": "Have you had any plastic surgery or procedures before?",
