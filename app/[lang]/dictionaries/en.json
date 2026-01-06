@@ -859,7 +859,8 @@
           "yesLabel": "Yes, I am",
           "noLabel": "No, I'm not",
           "nextQuestion": {
-            "yes": "q3-1"
+            "yes": "q3-1",
+            "no": "q4"
           }
         },
         "q3-1": {
@@ -868,7 +869,17 @@
           "notice": {
             "title": "Important Notice",
             "description": "If you are currently taking aspirin or blood-thinning medications, please consult with your doctor and discontinue use at least 7 days before the procedure."
-          }
+          },
+          "nextQuestion": "q4"
+        },
+        "q4": {
+          "question": "Do you have any current or past medical conditions, or medical history that healthcare providers should be aware of?",
+          "placeholder": "e.g., Condition name / Diagnosis date / Current treatment status\n(Thyroid disorder, diagnosed 2020, currently on medication)",
+          "nextQuestion": "q5"
+        },
+        "q5": {
+          "question": "If you have any additional questions or concerns, please feel free to write them here.",
+          "placeholder": "e.g., I'm curious about recovery time, pain level, and scarring."
         }
       },
       "nextButton": "Next"
