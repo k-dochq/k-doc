@@ -38,7 +38,11 @@ function formatSurveyAnswers(answers: SurveyAnswer[]): string {
   const formattedAnswers = answers.map((answer) => {
     const answerText =
       typeof answer.answer === 'boolean' ? (answer.answer ? '예' : '아니요') : answer.answer;
-    return `Q${answer.questionId}: ${answerText}`;
+
+    // questionId에서 숫자만 추출 (q1 -> 1, q1-1 -> 1-1)
+    const questionNumber = answer.questionId.replace(/^q/i, '');
+
+    return `${questionNumber}. ${answerText}`;
   });
 
   return formattedAnswers.join('\n\n');
