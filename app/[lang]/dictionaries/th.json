@@ -824,7 +824,14 @@
     },
     "medicalSurvey": {
       "title": "กรอกแบบสอบถามทางการแพทย์",
-      "submitButton": "ส่ง"
+      "submitButton": "ส่ง",
+      "questions": {
+        "q1": {
+          "question": "คุณเคยทำศัลยกรรมหรือรับการรักษามาก่อนหรือไม่?",
+          "yesLabel": "ใช่ มี",
+          "noLabel": "ไม่ ไม่มี"
+        }
+      }
     }
   },
   "cautionSection": {

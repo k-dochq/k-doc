@@ -824,7 +824,14 @@
     },
     "medicalSurvey": {
       "title": "의료 설문 작성하기",
-      "submitButton": "제출하기"
+      "submitButton": "제출하기",
+      "questions": {
+        "q1": {
+          "question": "이전에 성형수술 또는 시술을 받은 적이 있으신가요?",
+          "yesLabel": "네, 있어요",
+          "noLabel": "아니요, 없어요"
+        }
+      }
     }
   },
   "cautionSection": {

@@ -824,7 +824,14 @@
     },
     "medicalSurvey": {
       "title": "Complete Medical Survey",
-      "submitButton": "Submit"
+      "submitButton": "Submit",
+      "questions": {
+        "q1": {
+          "question": "Have you had any plastic surgery or procedures before?",
+          "yesLabel": "Yes, I have",
+          "noLabel": "No, I haven't"
+        }
+      }
     }
   },
   "cautionSection": {

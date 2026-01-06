@@ -824,7 +824,14 @@
     },
     "medicalSurvey": {
       "title": "医療アンケート記入",
-      "submitButton": "送信"
+      "submitButton": "送信",
+      "questions": {
+        "q1": {
+          "question": "以前に整形手術や施術を受けたことがありますか？",
+          "yesLabel": "はい、あります",
+          "noLabel": "いいえ、ありません"
+        }
+      }
     }
   },
   "cautionSection": {
