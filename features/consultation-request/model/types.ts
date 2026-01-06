@@ -1,5 +1,6 @@
 export interface ConsultationFormData {
   name: string;
+  nationality: string;
   gender: 'MALE' | 'FEMALE';
   birthDate: string;
   countryCode: string;
@@ -12,6 +13,7 @@ export interface ConsultationFormData {
 
 export interface ConsultationFormErrors {
   name?: string;
+  nationality?: string;
   gender?: string;
   birthDate?: string;
   countryCode?: string;

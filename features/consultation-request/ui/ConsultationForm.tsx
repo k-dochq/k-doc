@@ -3,7 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useConsultationForm } from '../model/useConsultationForm';
-import { AGE_GROUPS, GENDER_OPTIONS } from '../model/types';
+import { GENDER_OPTIONS } from '../model/types';
 import { useConsultationRequest } from '../api/useConsultationRequest';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useUserProfile } from 'features/user-profile/model/useUserProfile';
@@ -18,6 +18,7 @@ import {
 import { SubmitButton } from './SubmitButton';
 import { FormDatePickerV2 } from './FormDatePickerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
+import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -68,6 +69,18 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
   const router = useLocalizedRouter();
   const consultationMutation = useConsultationRequest();
 
+  // 국적 옵션 생성
+  const getNationalityKey = (countryCode: string): string => {
+    const country = COUNTRY_CODES.find((c) => c.code === countryCode);
+    if (!country) return '';
+    return country.name.toLowerCase().replace(/\s+/g, '_');
+  };
+
+  const nationalityOptions = COUNTRY_CODES.map((country) => ({
+    value: getNationalityKey(country.code),
+    label: getCountryName(country, lang),
+  }));
+
   const onSubmit = () => {
     // 필수값 validation 체크
     const validationErrors: string[] = [];
@@ -78,9 +91,16 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       );
     }
 
-    if (!formData.ageGroup) {
+    if (!formData.nationality) {
       validationErrors.push(
-        dict.consultation?.request?.form?.errors?.ageGroup?.required || '나이대를 선택해주세요.',
+        (dict.consultation?.request?.form?.errors as { nationality?: { required?: string } })
+          ?.nationality?.required || '국적을 선택해주세요.',
+      );
+    }
+
+    if (!formData.birthDate) {
+      validationErrors.push(
+        dict.consultation?.request?.form?.errors?.birthDate?.required || '생년월일을 선택해주세요.',
       );
     }
 
@@ -130,8 +150,9 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       {
         hospitalId,
         name: formData.name,
+        nationality: formData.nationality,
         gender: formData.gender,
-        ageGroup: formData.ageGroup,
+        birthDate: formData.birthDate,
         countryCode: formData.countryCode,
         phoneNumberOnly: formData.phoneNumberOnly,
         preferredDate: formData.preferredDate,
@@ -197,6 +218,25 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         rightIcon={<UserIcon />}
       />
 
+      {/* 국적 */}
+      <SelectFieldV2
+        label={
+          dict.consultation?.request?.form?.nationality?.label ||
+          dict.auth?.signup?.nationality ||
+          '국적'
+        }
+        value={formData.nationality}
+        onChange={(value) => updateField('nationality', value)}
+        options={nationalityOptions}
+        placeholder={
+          dict.consultation?.request?.form?.nationality?.placeholder ||
+          dict.auth?.signup?.placeholders?.nationality ||
+          '국적을 선택해주세요'
+        }
+        error={errors.nationality}
+        required
+      />
+
       {/* 성별 */}
       <RadioGroupFieldV2
         label={dict.consultation?.request?.form?.gender?.label || '성별'}
@@ -213,23 +253,26 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         required
       />
 
-      {/* 나이대 */}
-      <SelectFieldV2
-        label={dict.consultation?.request?.form?.ageGroup?.label || '나이대'}
-        value={formData.ageGroup}
-        onChange={(value) => updateField('ageGroup', value)}
-        options={AGE_GROUPS.map((option) => ({
-          value: option.value,
-          label:
-            dict.consultation?.request?.form?.ageGroup?.[
-              option.value as keyof typeof dict.consultation.request.form.ageGroup
-            ] || option.label,
-        }))}
-        placeholder={
-          dict.consultation?.request?.form?.ageGroup?.placeholder || '나이대를 선택해주세요'
+      {/* 생년월일 */}
+      <FormDatePickerV2
+        label={
+          dict.consultation?.request?.form?.birthDate?.label ||
+          dict.auth?.signup?.birthDate ||
+          '생년월일'
         }
-        error={errors.ageGroup}
+        value={formData.birthDate ? new Date(formData.birthDate) : undefined}
+        onChange={(date) => updateField('birthDate', date ? date.toISOString().split('T')[0] : '')}
+        locale={lang}
+        dict={dict}
+        placeholder={
+          dict.consultation?.request?.form?.birthDate?.placeholder ||
+          dict.auth?.signup?.placeholders?.birthDate ||
+          '생년월일을 선택해주세요'
+        }
+        error={errors.birthDate}
         required
+        yearRange={{ from: 1950, to: new Date().getFullYear() }}
+        disabled={(date) => date > new Date()}
       />
 
       {/* 휴대폰 번호 */}
