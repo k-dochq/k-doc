@@ -79,18 +79,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     // hospitalId는 처음 36자 (UUID 형식)
     const hospitalId = consultationId.substring(0, 36);
-    // userId는 37번째 문자부터 (하이픈 제거 후)
-    const userId = consultationId.substring(37);
-
-    // 세션의 userId와 consultationId의 userId가 일치하는지 확인
-    if (userId !== session.user.id) {
-      console.error('User ID mismatch:', {
-        extractedUserId: userId,
-        sessionUserId: session.user.id,
-        consultationId,
-      });
-      return NextResponse.json({ success: false, error: 'FORBIDDEN' }, { status: 403 });
-    }
+    // userId는 세션에서 가져옴
+    const userId = session.user.id;
 
     // 병원 존재 여부 확인
     const hospital = await prisma.hospital.findUnique({
