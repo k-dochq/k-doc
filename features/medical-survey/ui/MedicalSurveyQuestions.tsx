@@ -1,14 +1,14 @@
 'use client';
 
-import { type YesNoQuestion } from '../api/entities/types';
+import { type SurveyQuestion } from '../api/entities/types';
 import { MedicalSurveyQuestionCard } from './MedicalSurveyQuestionCard';
 
 interface MedicalSurveyQuestionsProps {
-  questions: YesNoQuestion[];
+  questions: SurveyQuestion[];
   currentQuestionIndex: number;
-  currentQuestion: YesNoQuestion | null;
-  getAnswer: (questionId: string) => boolean | null;
-  updateAnswer: (questionId: string, answer: boolean) => void;
+  currentQuestion: SurveyQuestion | null;
+  getAnswer: (questionId: string) => boolean | string | null;
+  updateAnswer: (questionId: string, answer: boolean | string) => void;
 }
 
 export function MedicalSurveyQuestions({

@@ -1,15 +1,16 @@
 'use client';
 
-import { type YesNoQuestion } from '../api/entities/types';
+import { type SurveyQuestion } from '../api/entities/types';
 import { MedicalSurveyProgressBar } from './MedicalSurveyProgressBar';
 import { MedicalSurveyYesNoButton } from './MedicalSurveyYesNoButton';
+import { MedicalSurveyTextarea } from './MedicalSurveyTextarea';
 
 interface MedicalSurveyQuestionCardProps {
-  question: YesNoQuestion;
+  question: SurveyQuestion;
   totalQuestions: number;
   currentQuestionIndex: number;
-  answer: boolean | null;
-  onAnswerChange: (answer: boolean) => void;
+  answer: boolean | string | null;
+  onAnswerChange: (answer: boolean | string) => void;
 }
 
 export function MedicalSurveyQuestionCard({
@@ -32,18 +33,30 @@ export function MedicalSurveyQuestionCard({
         <h2 className='text-xl font-semibold text-neutral-900'>{question.question}</h2>
       </div>
 
-      {/* 답변 버튼 영역 (spacing 11 아래, gap-2 세로 방향) */}
-      <div className='mt-11 flex flex-col gap-2'>
-        <MedicalSurveyYesNoButton
-          label={question.yesLabel}
-          isSelected={answer === true}
-          onClick={() => onAnswerChange(true)}
-        />
-        <MedicalSurveyYesNoButton
-          label={question.noLabel}
-          isSelected={answer === false}
-          onClick={() => onAnswerChange(false)}
-        />
+      {/* 답변 영역 (spacing 11 아래) */}
+      <div className='mt-11'>
+        {question.type === 'yes_no' ? (
+          <div className='flex flex-col gap-2'>
+            <MedicalSurveyYesNoButton
+              label={question.yesLabel}
+              isSelected={answer === true}
+              onClick={() => onAnswerChange(true)}
+            />
+            <MedicalSurveyYesNoButton
+              label={question.noLabel}
+              isSelected={answer === false}
+              onClick={() => onAnswerChange(false)}
+            />
+          </div>
+        ) : (
+          <MedicalSurveyTextarea
+            value={typeof answer === 'string' ? answer : ''}
+            onChange={(e) => onAnswerChange(e.target.value)}
+            placeholder={question.placeholder}
+            maxLength={2000}
+            currentLength={typeof answer === 'string' ? answer.length : 0}
+          />
+        )}
       </div>
     </div>
   );

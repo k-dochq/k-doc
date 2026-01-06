@@ -28,18 +28,36 @@ export function MedicalSurveyContentV2({
   const {
     currentQuestionIndex,
     currentQuestion,
+    availableQuestions,
     getAnswer,
     updateAnswer,
+    goToNextQuestion,
     isAllAnswered,
     getAllAnswers,
+    isCurrentQuestionAnswered,
+    isLastQuestion,
   } = useMedicalSurvey({ questions });
 
-  const handleSubmit = () => {
-    // TODO: 설문 제출 로직 구현
-    const answers = getAllAnswers();
-    console.log('Submit medical survey for consultation:', consultationId);
-    console.log('Answers:', answers);
+  const handleButtonClick = () => {
+    if (isLastQuestion()) {
+      // 마지막 질문이면 제출
+      const answers = getAllAnswers();
+      console.log('Submit medical survey for consultation:', consultationId);
+      console.log('Answers:', answers);
+      // TODO: 설문 제출 로직 구현
+    } else {
+      // 다음 질문으로 이동
+      goToNextQuestion();
+    }
   };
+
+  // 버튼 텍스트 결정
+  const buttonText = isLastQuestion()
+    ? dict.consultation?.medicalSurvey?.submitButton || '제출하기'
+    : dict.consultation?.medicalSurvey?.nextButton || '다음';
+
+  // 버튼 활성화 조건: 현재 질문에 답변이 있을 때
+  const isButtonDisabled = !isCurrentQuestionAnswered();
 
   return (
     <div className='flex h-screen flex-col bg-white'>
@@ -50,7 +68,7 @@ export function MedicalSurveyContentV2({
       {/* 메인 컨텐츠 영역 */}
       <div className='flex-1 overflow-y-auto pb-32'>
         <MedicalSurveyQuestions
-          questions={questions}
+          questions={availableQuestions}
           currentQuestionIndex={currentQuestionIndex}
           currentQuestion={currentQuestion}
           getAnswer={getAnswer}
@@ -58,7 +76,11 @@ export function MedicalSurveyContentV2({
         />
       </div>
 
-      <MedicalSurveyFloatingButton dict={dict} onClick={handleSubmit} disabled={!isAllAnswered()} />
+      <MedicalSurveyFloatingButton
+        label={buttonText}
+        onClick={handleButtonClick}
+        disabled={isButtonDisabled}
+      />
     </div>
   );
 }
