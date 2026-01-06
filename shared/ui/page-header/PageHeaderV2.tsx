@@ -67,7 +67,7 @@ export function PageHeaderV2({
   const getHeaderStyles = () => {
     if (!enableScrollTransparency) {
       return {
-        container: `border-b border-neutral-200 ${backgroundColor}`,
+        container: `border-neutral-200 ${backgroundColor}`,
         text: 'text-neutral-700',
         button: 'hover:bg-neutral-100',
         title: 'opacity-100',
@@ -76,7 +76,7 @@ export function PageHeaderV2({
 
     if (isScrolled) {
       return {
-        container: `border-b border-neutral-200 ${backgroundColor}`,
+        container: `border-neutral-200 ${backgroundColor}`,
         text: 'text-neutral-700',
         button: 'hover:bg-neutral-100',
         title: 'opacity-100',
@@ -84,7 +84,7 @@ export function PageHeaderV2({
     }
 
     return {
-      container: 'border-b border-transparent bg-transparent',
+      container: 'border-transparent bg-transparent',
       text: 'text-white',
       button: 'hover:bg-white/20',
       title: 'opacity-0',

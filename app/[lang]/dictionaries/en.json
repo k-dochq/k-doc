@@ -821,6 +821,92 @@
       "success": "Your reservation has been successfully cancelled.\n\nThe refund has been completed.",
       "failed": "An error occurred during the refund process.\n\nPayment gateway error: {errorMessage}\n\nPlease contact customer service.",
       "noCancellation": "Only the reservation was cancelled as payment was not completed."
+    },
+    "medicalSurvey": {
+      "title": "Complete Medical Survey",
+      "submitButton": "Submit",
+      "nextButton": "Next",
+      "completionMessage": {
+        "title": "Medical survey has been\nsuccessfully completed.",
+        "description": "To ensure your safe procedure,\nwe are reviewing the feasibility\nbased on the information you provided.",
+        "note": "This may take some time, and\nwe will guide you through consultation\nas soon as the review is complete."
+      },
+      "completePage": {
+        "title": "Survey Completed",
+        "message1": "The hospital is reviewing the feasibility of the procedure based on the information you provided.",
+        "message2": "We will guide you through consultation via chat as soon as the review is complete. Please wait a moment.",
+        "notice": {
+          "title": "Guidance on Procedure Eligibility",
+          "description": [
+            "If any of the following apply to you, the procedure may be limited or require additional medical review.",
+            "Please be sure to check the details.",
+            "- Cerebrovascular disease (procedure eligibility reviewed if 1 year or more has passed since treatment or surgery)",
+            "- Cardiovascular disease (procedure eligibility reviewed if 1 year or more has passed since treatment or surgery)",
+            "- History of cardiac stent placement",
+            "- History of kidney transplant or patients currently on dialysis",
+            "- Thyroid disease or diabetes (eligibility determined based on condition and medical judgment)"
+          ]
+        },
+        "backToChatButton": "Back to Chat"
+      },
+      "questions": {
+        "q1": {
+          "question": "Have you had any plastic surgery or procedures before?",
+          "yesLabel": "Yes, I have",
+          "noLabel": "No, I haven't",
+          "nextQuestion": {
+            "yes": "q1-1",
+            "no": "q2"
+          }
+        },
+        "q1-1": {
+          "question": "Please provide details about the procedure type, area, and approximate time.",
+          "placeholder": "e.g., 2022 Abdominal Liposuction / 2023 Facial Thread Lifting",
+          "nextQuestion": "q2"
+        },
+        "q2": {
+          "question": "Do you have any allergies to medications or anesthesia?",
+          "yesLabel": "Yes, I have",
+          "noLabel": "No, I don't",
+          "nextQuestion": {
+            "yes": "q2-1",
+            "no": "q3"
+          }
+        },
+        "q2-1": {
+          "question": "Please provide specific details about the type of allergy and symptoms.",
+          "placeholder": "e.g., Lidocaine allergy – hives, difficulty breathing",
+          "nextQuestion": "q3"
+        },
+        "q3": {
+          "question": "Are you currently taking any medications or health supplements?",
+          "yesLabel": "Yes, I am",
+          "noLabel": "No, I'm not",
+          "nextQuestion": {
+            "yes": "q3-1",
+            "no": "q4"
+          }
+        },
+        "q3-1": {
+          "question": "Please provide the names and dosages of all medications or health supplements you are taking.",
+          "placeholder": "e.g., No medications. Omega-3 1000mg (once daily)",
+          "notice": {
+            "title": "Important Notice",
+            "description": "If you are currently taking aspirin or blood-thinning medications, please consult with your doctor and discontinue use at least 7 days before the procedure."
+          },
+          "nextQuestion": "q4"
+        },
+        "q4": {
+          "question": "Do you have any current or past medical conditions, or medical history that healthcare providers should be aware of?",
+          "placeholder": "e.g., Condition name / Diagnosis date / Current treatment status\n(Thyroid disorder, diagnosed 2020, currently on medication)",
+          "nextQuestion": "q5"
+        },
+        "q5": {
+          "question": "If you have any additional questions or concerns, please feel free to write them here.",
+          "placeholder": "e.g., I'm curious about recovery time, pain level, and scarring."
+        }
+      },
+      "nextButton": "Next"
     }
   },
   "cautionSection": {
