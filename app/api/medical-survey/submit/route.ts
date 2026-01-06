@@ -3,10 +3,6 @@ import { createClient } from 'shared/lib/supabase/server';
 import { prisma } from 'shared/lib/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { type Locale } from 'shared/config';
-import {
-  extractHospitalIdFromRoomId,
-  extractUserIdFromRoomId,
-} from 'features/consultation-chat/lib/chat-utils';
 import { type SurveyAnswer } from 'features/medical-survey/api/entities/types';
 
 interface SubmitMedicalSurveyRequest {
