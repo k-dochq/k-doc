@@ -3,7 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useConsultationForm } from '../model/useConsultationForm';
-import { AGE_GROUPS, GENDER_OPTIONS } from '../model/types';
+import { GENDER_OPTIONS } from '../model/types';
 import { useConsultationRequest } from '../api/useConsultationRequest';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useUserProfile } from 'features/user-profile/model/useUserProfile';
@@ -78,9 +78,9 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       );
     }
 
-    if (!formData.ageGroup) {
+    if (!formData.birthDate) {
       validationErrors.push(
-        dict.consultation?.request?.form?.errors?.ageGroup?.required || '나이대를 선택해주세요.',
+        dict.consultation?.request?.form?.errors?.birthDate?.required || '생년월일을 선택해주세요.',
       );
     }
 
@@ -131,7 +131,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         hospitalId,
         name: formData.name,
         gender: formData.gender,
-        ageGroup: formData.ageGroup,
+        birthDate: formData.birthDate,
         countryCode: formData.countryCode,
         phoneNumberOnly: formData.phoneNumberOnly,
         preferredDate: formData.preferredDate,
@@ -213,23 +213,26 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         required
       />
 
-      {/* 나이대 */}
-      <SelectFieldV2
-        label={dict.consultation?.request?.form?.ageGroup?.label || '나이대'}
-        value={formData.ageGroup}
-        onChange={(value) => updateField('ageGroup', value)}
-        options={AGE_GROUPS.map((option) => ({
-          value: option.value,
-          label:
-            dict.consultation?.request?.form?.ageGroup?.[
-              option.value as keyof typeof dict.consultation.request.form.ageGroup
-            ] || option.label,
-        }))}
-        placeholder={
-          dict.consultation?.request?.form?.ageGroup?.placeholder || '나이대를 선택해주세요'
+      {/* 생년월일 */}
+      <FormDatePickerV2
+        label={
+          dict.consultation?.request?.form?.birthDate?.label ||
+          dict.auth?.signup?.birthDate ||
+          '생년월일'
         }
-        error={errors.ageGroup}
+        value={formData.birthDate ? new Date(formData.birthDate) : undefined}
+        onChange={(date) => updateField('birthDate', date ? date.toISOString().split('T')[0] : '')}
+        locale={lang}
+        dict={dict}
+        placeholder={
+          dict.consultation?.request?.form?.birthDate?.placeholder ||
+          dict.auth?.signup?.placeholders?.birthDate ||
+          '생년월일을 선택해주세요'
+        }
+        error={errors.birthDate}
         required
+        yearRange={{ from: 1950, to: new Date().getFullYear() }}
+        disabled={(date) => date > new Date()}
       />
 
       {/* 휴대폰 번호 */}
