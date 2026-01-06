@@ -9,7 +9,7 @@ interface ConsultationRequestBody {
   hospitalId: string;
   name: string;
   gender: 'MALE' | 'FEMALE';
-  ageGroup: string;
+  birthDate: string;
   countryCode: string;
   phoneNumberOnly: string;
   preferredDate: string;
@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
     const locale = extractLocaleFromRequest(request);
 
     // 요청 타입 판별: 상담 신청 vs 일반 채팅 메시지
-    const isConsultationRequest = 'name' in body && 'gender' in body && 'ageGroup' in body;
+    const isConsultationRequest = 'name' in body && 'gender' in body && 'birthDate' in body;
 
     if (isConsultationRequest) {
       // 상담 신청 처리
@@ -209,7 +209,7 @@ async function handleConsultationRequest(
     hospitalId,
     name,
     gender,
-    ageGroup,
+    birthDate,
     countryCode,
     phoneNumberOnly,
     preferredDate,
@@ -222,7 +222,7 @@ async function handleConsultationRequest(
     !hospitalId ||
     !name ||
     !gender ||
-    !ageGroup ||
+    !birthDate ||
     !countryCode ||
     !phoneNumberOnly ||
     !preferredDate
@@ -280,7 +280,7 @@ ${hospitalName} ${messages.consultationRequest?.subtitle || '시술 상담 신�
 
 ${messages.consultationRequest?.name || '이름'}: ${name}
 ${messages.consultationRequest?.gender || '성별'}: ${messages.genders?.[gender] || gender}
-${messages.consultationRequest?.ageGroup || '나이대'}: ${messages.ageGroups?.[ageGroup] || ageGroup}
+${messages.consultationRequest?.birthDate || '생년월일'}: ${birthDate}
 ${messages.consultationRequest?.phoneNumber || '휴대폰번호'}: ${countryCode} ${phoneNumberOnly}
 ${messages.consultationRequest?.preferredDate || '예약 희망날짜'}: ${preferredDate}${
       preferredDate2

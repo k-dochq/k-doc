@@ -1,7 +1,7 @@
 export interface ConsultationFormData {
   name: string;
   gender: 'MALE' | 'FEMALE';
-  ageGroup: string;
+  birthDate: string;
   countryCode: string;
   phoneNumberOnly: string;
   preferredDate: string;
@@ -13,7 +13,7 @@ export interface ConsultationFormData {
 export interface ConsultationFormErrors {
   name?: string;
   gender?: string;
-  ageGroup?: string;
+  birthDate?: string;
   countryCode?: string;
   phoneNumberOnly?: string;
   preferredDate?: string;
@@ -21,15 +21,6 @@ export interface ConsultationFormErrors {
   content?: string;
   agreeToPrivacy?: string;
 }
-
-export const AGE_GROUPS = [
-  { value: '10s', label: '10대' },
-  { value: '20s', label: '20대' },
-  { value: '30s', label: '30대' },
-  { value: '40s', label: '40대' },
-  { value: '50s', label: '50대' },
-  { value: '60s', label: '60대 이상' },
-] as const;
 
 export const GENDER_OPTIONS = [
   { value: 'MALE', label: '남성' },

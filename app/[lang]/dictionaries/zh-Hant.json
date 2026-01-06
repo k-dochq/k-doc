@@ -693,15 +693,9 @@
           "male": "男性",
           "female": "女性"
         },
-        "ageGroup": {
-          "label": "年齡組",
-          "placeholder": "請選擇您的年齡組",
-          "10s": "青少年",
-          "20s": "20多歲",
-          "30s": "30年代",
-          "40s": "40年代",
-          "50s": "50年代",
-          "60s": "60歲或以上"
+        "birthDate": {
+          "label": "出生日期",
+          "placeholder": "請選擇您的出生日期"
         },
         "phoneNumber": {
           "label": "電話號碼",
@@ -742,8 +736,8 @@
           "name": {
             "required": "請輸入您的姓名。"
           },
-          "ageGroup": {
-            "required": "請選擇您的年齡組。"
+          "birthDate": {
+            "required": "請選擇您的出生日期。"
           },
           "countryCode": {
             "required": "請選擇您的國家代碼。"
@@ -781,19 +775,11 @@
             "subtitle": "我想預約一次治療諮詢。",
             "name": "姓名",
             "gender": "性別",
-            "ageGroup": "年齡組",
+            "birthDate": "出生日期",
             "phoneNumber": "電話號碼",
             "preferredDate": "首選預訂日期",
             "preferredDate2": "首選預訂日期 2",
             "additionalInquiry": "其他查詢"
-          },
-          "ageGroups": {
-            "10s": "青少年",
-            "20s": "20多歲",
-            "30s": "30年代",
-            "40s": "40年代",
-            "50s": "50年代",
-            "60s": "60歲或以上"
           },
           "genders": {
             "MALE": "男性",

@@ -7,7 +7,7 @@ interface ConsultationRequestData {
   hospitalId: string;
   name: string;
   gender: 'MALE' | 'FEMALE';
-  ageGroup: string;
+  birthDate: string;
   countryCode: string;
   phoneNumberOnly: string;
   preferredDate: string;
