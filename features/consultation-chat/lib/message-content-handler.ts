@@ -15,7 +15,7 @@ export interface MessageContentAnalysis {
  * <editor> 태그 추출
  */
 export function extractEditorTag(content: string): string | null {
-  const editorMatch = content.match(/<editor>(.*?)<\/editor>/s);
+  const editorMatch = content.match(/<editor>([\s\S]*?)<\/editor>/);
   return editorMatch ? editorMatch[1] : null;
 }
 
@@ -23,7 +23,7 @@ export function extractEditorTag(content: string): string | null {
  * <editor> 태그 제거
  */
 export function removeEditorTag(content: string): string {
-  return content.replace(/<editor>.*?<\/editor>/s, '');
+  return content.replace(/<editor>[\s\S]*?<\/editor>/, '');
 }
 
 /**
