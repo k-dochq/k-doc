@@ -32,6 +32,45 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
 
   const channelRef = useRef<RealtimeChannel | null>(null);
 
+  // 메시지 읽음 처리 함수
+  const markMessageAsRead = useCallback(
+    async (messageId: string) => {
+      try {
+        console.log('📖 Marking message as read:', messageId, 'hospitalId:', hospitalId);
+        // 1. DB 업데이트
+        const response = await fetch('/api/chat/mark-as-read', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messageId, hospitalId }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('✅ Message marked as read:', result);
+
+        // 2. Realtime broadcast
+        if (channelRef.current) {
+          await channelRef.current.send({
+            type: 'broadcast',
+            event: 'message:read',
+            payload: {
+              messageId,
+              readAt: new Date().toISOString(),
+              userId,
+            },
+          });
+          console.log('📡 Broadcast sent for message read:', messageId);
+        }
+      } catch (error) {
+        console.error('❌ Failed to mark message as read:', error);
+      }
+    },
+    [hospitalId, userId],
+  );
+
   // 채팅 히스토리 로드
   const loadChatHistory = useCallback(async () => {
     if (!userId || !hospitalId) {
@@ -54,13 +93,24 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
       setMessages(sortedMessages);
       setHasMore(hasMore);
       setNextCursor(nextCursor);
+
+      // 히스토리 로드 후 읽지 않은 관리자 메시지들에 대해 읽음 처리
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        const unreadAdminMessages = sortedMessages.filter(
+          (msg) => msg.type === 'admin' && !msg.isRead,
+        );
+        console.log('📋 Found unread admin messages:', unreadAdminMessages.length);
+        for (const msg of unreadAdminMessages) {
+          await markMessageAsRead(msg.id);
+        }
+      }
     } catch (error) {
       console.error('❌ Failed to load chat history:', error);
       setError('채팅 히스토리를 불러오는데 실패했습니다.');
     } finally {
       setIsLoadingHistory(false);
     }
-  }, [hospitalId, userId]);
+  }, [hospitalId, userId, markMessageAsRead]);
 
   const loadMoreHistory = useCallback(async () => {
     if (!userId || !hospitalId) return;
@@ -206,8 +256,32 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     channelRef.current = channel;
 
     // 메시지 수신
-    channel.on('broadcast', { event: 'message' }, ({ payload }: { payload: ChatMessage }) => {
+    channel.on('broadcast', { event: 'message' }, async ({ payload }: { payload: ChatMessage }) => {
+      console.log(
+        '📨 Received message:',
+        payload.id,
+        'type:',
+        payload.type,
+        'isRead:',
+        payload.isRead,
+      );
       updateMessages([payload]);
+
+      // 관리자 메시지이고 현재 화면이 보이는 상태라면 자동으로 읽음 처리
+      if (
+        payload.type === 'admin' &&
+        typeof document !== 'undefined' &&
+        document.visibilityState === 'visible'
+      ) {
+        console.log('👁️ Processing admin message read:', payload.id);
+        await markMessageAsRead(payload.id);
+      } else {
+        console.log('⏭️ Skipping read processing:', {
+          type: payload.type,
+          isAdmin: payload.type === 'admin',
+          visibilityState: typeof document !== 'undefined' ? document.visibilityState : 'unknown',
+        });
+      }
     });
 
     // 채널 구독
@@ -238,7 +312,7 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
       // }
       setIsConnected(false);
     };
-  }, [userId, userName, hospitalId, loadChatHistory, updateMessages]);
+  }, [userId, userName, hospitalId, loadChatHistory, updateMessages, markMessageAsRead]);
 
   return {
     // 상태

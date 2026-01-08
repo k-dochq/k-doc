@@ -42,6 +42,8 @@ export async function fetchChatHistory(
       userName: msg.User?.name || msg.User?.email || '사용자',
       timestamp: msg.createdAt,
       type: msg.senderType === 'USER' ? 'user' : 'admin',
+      isRead: msg.isRead ?? undefined,
+      readAt: msg.readAt ?? undefined,
     }));
 
     console.log('📚 Chat history loaded:', historyMessages.length, 'messages');
