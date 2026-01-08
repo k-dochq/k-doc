@@ -7,22 +7,43 @@ export interface MessageContentAnalysis {
   text: string;
   hasOnlyPictures: boolean;
   hasOnlyFiles: boolean;
+  hasEditor: boolean;
+  editorContent?: string;
 }
 
 /**
- * 메시지 내용을 분석하여 picture 태그, file 태그와 텍스트를 분리
- * 메시지는 다음 3가지 경우만 존재: 사진만, 파일만, 텍스트만
+ * <editor> 태그 추출
+ */
+export function extractEditorTag(content: string): string | null {
+  const editorMatch = content.match(/<editor>(.*?)<\/editor>/s);
+  return editorMatch ? editorMatch[1] : null;
+}
+
+/**
+ * <editor> 태그 제거
+ */
+export function removeEditorTag(content: string): string {
+  return content.replace(/<editor>.*?<\/editor>/s, '');
+}
+
+/**
+ * 메시지 내용을 분석하여 picture 태그, file 태그, editor 태그와 텍스트를 분리
  */
 export function analyzeMessageContent(content: string): MessageContentAnalysis {
-  // 1. Picture 태그 추출 및 제거
-  const pictures = extractPictureTags(content);
-  const textWithoutPictures = removePictureTags(content);
+  // 1. Editor 태그 추출 및 제거
+  const editorContent = extractEditorTag(content);
+  const hasEditor = editorContent !== null;
+  const contentWithoutEditor = hasEditor ? removeEditorTag(content) : content;
 
-  // 2. File 태그 추출 및 제거
+  // 2. Picture 태그 추출 및 제거
+  const pictures = extractPictureTags(contentWithoutEditor);
+  const textWithoutPictures = removePictureTags(contentWithoutEditor);
+
+  // 3. File 태그 추출 및 제거
   const files = extractFileTags(textWithoutPictures);
   const text = removeFileTags(textWithoutPictures);
 
-  // 3. 플래그 계산 (3가지 경우만 존재)
+  // 4. 플래그 계산
   const hasOnlyPictures = pictures.length > 0 && files.length === 0 && !text.trim();
   const hasOnlyFiles = files.length > 0 && pictures.length === 0 && !text.trim();
 
@@ -32,5 +53,7 @@ export function analyzeMessageContent(content: string): MessageContentAnalysis {
     text,
     hasOnlyPictures,
     hasOnlyFiles,
+    hasEditor,
+    editorContent: editorContent || undefined,
   };
 }
