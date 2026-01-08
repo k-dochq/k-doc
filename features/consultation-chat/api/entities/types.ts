@@ -12,6 +12,8 @@ export interface ChatMessage {
   userName: string;
   timestamp: string;
   type: ChatMessageType;
+  isRead?: boolean;
+  readAt?: string | null;
 }
 
 export interface BroadcastMessage {
