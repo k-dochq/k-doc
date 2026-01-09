@@ -13,13 +13,17 @@ interface ContactPartnershipInquiryProps {
 function getPartnershipFormLink(lang: Locale): string {
   switch (lang) {
     case 'ko':
-      return 'https://docs.google.com/forms/d/1HxiHa4hVG4lbTTaO7lW78FiAiMmQnTLlGjzPVYb9iZ8/edit';
+      return 'https://forms.gle/ZJFDn86aZ2BCWTD57';
     case 'en':
-      return 'https://docs.google.com/forms/d/e/1FAIpQLSexE6A_k_pUeatu9NAWP2nsFwQ9qI-tiMkdueodCw7bKtk0Qg/viewform?usp=header';
+      return 'https://forms.gle/mm882V8DZLyAgtVA6';
     case 'th':
-      return 'https://docs.google.com/forms/d/e/1FAIpQLSehKU-3JTge6aOaQZSczUVSUF0dS-fZ9pUAx8n1dCjFF9FkKg/viewform?usp=header';
+      return 'https://forms.gle/QzSSzxBADm1nnN9u9';
+    case 'zh-Hant':
+      return 'https://forms.gle/g9yPXynG65gQWipt6';
+    case 'ja':
+      return 'https://forms.gle/E7oupAThzbqeqwio7';
     default:
-      return 'https://docs.google.com/forms/d/e/1FAIpQLSexE6A_k_pUeatu9NAWP2nsFwQ9qI-tiMkdueodCw7bKtk0Qg/viewform?usp=header';
+      return 'https://forms.gle/mm882V8DZLyAgtVA6';
   }
 }
 
