@@ -1025,6 +1025,15 @@
         },
         "When a member voluntarily terminates the use agreement pursuant to Paragraph 1 of this Article, or when the use agreement is terminated due to the member's fault pursuant to Paragraph 2, any damages arising therefrom shall be borne by the relevant member whose use agreement has been terminated, and the Company shall not bear any responsibility."
       ]
+    },
+    "article7": {
+      "title": "Article 7 (Member's Obligations Regarding ID and Password)",
+      "items": [
+        "The responsibility for managing ID and password lies with the member. The member is responsible for any damages arising from service use due to negligent management or unauthorized use by third parties, and the Company shall not be liable for such damages.",
+        "The Company may restrict the use of an ID if there is a risk of personal information leakage, if it violates the service policy and operational direction set by the Company, if it is antisocial or violates good morals, or if there is a risk of being mistaken for the Company or the Company's operator.",
+        "If a member becomes aware that their ID and password have been stolen or are being used by a third party, they must immediately notify the Company and follow the Company's guidance.",
+        "The Company shall not be liable for any disadvantages arising from a member's failure to notify the Company of such facts pursuant to Paragraph 3, or from the member's failure to follow the Company's guidance even after notification."
+      ]
     }
   },
   "about": {
