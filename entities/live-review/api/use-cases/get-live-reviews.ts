@@ -52,12 +52,13 @@ export async function getLiveReviews(
     const skip = (page - 1) * limit;
 
     // 카테고리 및 병원 필터링 조건
-    const whereCondition: {
-      isActive: boolean;
-      hospitalId?: string;
-      MedicalSpecialty?: { specialtyType: MedicalSpecialtyType };
-    } = {
+    const whereCondition: Prisma.LiveReviewWhereInput = {
       isActive: true,
+      Hospital: {
+        approvalStatusType: {
+          not: 'REJECTED',
+        },
+      },
     };
 
     if (hospitalId) {

@@ -1,6 +1,7 @@
 import { type Prisma } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError } from 'shared/lib';
+import { validateHospitalApprovalStatus } from 'shared/lib/hospital/approval-status-validator';
 
 /**
  * Prisma Doctor 쿼리 결과 타입
@@ -282,6 +283,9 @@ export async function getDoctorDetail(
     if (!doctor) {
       throw new Error(`Doctor not found with id: ${id}`);
     }
+
+    // 소속 병원 승인 상태 검증 (REJECTED인 경우 에러 throw)
+    await validateHospitalApprovalStatus(doctor.Hospital.id);
 
     return {
       doctor,
