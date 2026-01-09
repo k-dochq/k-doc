@@ -960,6 +960,16 @@
         "Points: Virtual quantified data provided by the \"Company\" to \"Members\" for benefits or convenience in using the Service, which can be used when purchasing \"Procedure Vouchers\", \"Products\", etc. within the Service. The issuance and use of \"Points\" are determined by the Company's operating policy.",
         "Post: Symbols (including URLs), text, voice, sound, video (including moving images), images (including photos), files, etc. posted or registered by \"Members\" on the service provided by the Company."
       ]
+    },
+    "article3": {
+      "title": "Article 3 (Posting and Amendment of Terms)",
+      "items": [
+        "The Company posts the contents of these Terms on the Service or its connected screens so that Members can easily view them.",
+        "The Company may amend these Terms within the scope that does not violate related laws such as the \"Act on the Regulation of Terms and Conditions\" (hereinafter referred to as \"Terms Act\") and the \"Act on Promotion of Information and Communications Network Utilization and Information Protection\" (hereinafter referred to as \"Information and Communications Network Act\").",
+        "When the Company amends the Terms, it shall notify Members of the application date and reason for amendment from 7 days before the application date of the amended Terms until the day before the application date. However, in case of amendments to the Terms that are unfavorable to Members, the Company shall notify 30 days before the application date of the amended Terms or separately notify clearly through electronic means such as email, electronic messages, or consent windows at login within the Service. Notwithstanding such notice or notification, the Company shall not be liable for any damages incurred by Members due to not being aware of information about the changed Terms.",
+        "If a Member continues to use the Company's Service after the Terms have been changed, it shall be deemed that the Member has agreed to the amended Terms. If a Member does not agree to the amended Terms, the Member may request withdrawal (termination) of membership.",
+        "Matters not specified in these Terms and the interpretation of these Terms shall be governed by the \"Act on the Regulation of Terms and Conditions\", the \"Act on Promotion of Information and Communications Network Utilization and Information Protection\", related laws and regulations, or general commercial practices."
+      ]
     }
   },
   "about": {
