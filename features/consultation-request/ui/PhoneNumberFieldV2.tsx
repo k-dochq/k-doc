@@ -56,9 +56,10 @@ export function PhoneNumberFieldV2({
     () =>
       COUNTRY_CODES.map((country) => ({
         value: country.code,
-        label: `${country.code} ${getCountryName(country, lang)}`,
+        label: `${country.code} ${getCountryName(country)}`,
+        key: `${country.code}-${country.name}`, // 고유한 key 생성
       })),
-    [lang],
+    [],
   );
 
   const countryHasValue = !!countryCode;
@@ -108,7 +109,7 @@ export function PhoneNumberFieldV2({
             >
               <option value=''>{countryPlaceholder}</option>
               {countryOptions.map((option) => (
-                <option key={option.value} value={option.value}>
+                <option key={option.key} value={option.value}>
                   {option.label}
                 </option>
               ))}

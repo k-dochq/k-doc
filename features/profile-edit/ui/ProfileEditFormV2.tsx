@@ -201,7 +201,7 @@ export function ProfileEditFormV2({
 
   const nationalityOptions = COUNTRY_CODES.map((country) => ({
     value: getNationalityKey(country.code),
-    label: getCountryName(country, lang),
+    label: getCountryName(country),
   }));
 
   const genderOptions = [
