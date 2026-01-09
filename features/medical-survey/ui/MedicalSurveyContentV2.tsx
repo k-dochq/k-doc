@@ -1,8 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { PageHeaderV2 } from 'shared/ui/page-header/PageHeaderV2';
 import { MedicalSurveyFloatingButton } from './MedicalSurveyFloatingButton';
 import { MedicalSurveyQuestions } from './MedicalSurveyQuestions';
@@ -22,6 +23,62 @@ export function MedicalSurveyContentV2({
   consultationId,
 }: MedicalSurveyContentV2Props) {
   const title = dict.consultation?.medicalSurvey?.title || '의료 설문 작성하기';
+  const router = useLocalizedRouter();
+  const [cooldownDays, setCooldownDays] = useState<number | undefined>(undefined);
+  const [hasCheckedCompletion, setHasCheckedCompletion] = useState(false);
+
+  // consultationId에서 hospitalId 추출 (UUID는 36자)
+  const hospitalId = consultationId.length >= 36 ? consultationId.substring(0, 36) : null;
+
+  // 페이지 진입 시 설문 작성 완료 여부 확인
+  useEffect(() => {
+    if (hasCheckedCompletion) return;
+
+    const storageKey = `medical-survey-${consultationId}`;
+    const stored = localStorage.getItem(storageKey);
+
+    if (stored) {
+      try {
+        const { completedAt } = JSON.parse(stored);
+        // 설문 작성을 이미 했다면 알림 표시 후 상담페이지로 이동
+        if (completedAt) {
+          window.alert('이미 설문 작성을 완료하셨습니다.');
+          if (hospitalId) {
+            router.push(`/chat/${hospitalId}`);
+          } else {
+            router.push(`/consultation`);
+          }
+          setHasCheckedCompletion(true);
+          return;
+        }
+      } catch (error) {
+        console.error('로컬스토리지 데이터 파싱 실패:', error);
+      }
+    }
+
+    setHasCheckedCompletion(true);
+  }, [consultationId, hospitalId, router, hasCheckedCompletion]);
+
+  // 로컬스토리지에서 cooldownDays 추출
+  useEffect(() => {
+    const tempStorageKey = `medical-survey-temp-${consultationId}`;
+    const tempStored = localStorage.getItem(tempStorageKey);
+    if (tempStored) {
+      try {
+        const { cooldownDays: storedCooldownDays } = JSON.parse(tempStored);
+        setCooldownDays(storedCooldownDays);
+        // 사용 후 삭제
+        localStorage.removeItem(tempStorageKey);
+      } catch (error) {
+        console.error('로컬스토리지 데이터 파싱 실패:', error);
+      }
+    }
+  }, [consultationId]);
+
+  // 설문 작성 완료 확인 중이면 아무것도 렌더링하지 않음
+  if (!hasCheckedCompletion) {
+    return null;
+  }
 
   // Dictionary에서 질문 데이터 로드
   const questions = useMemo(() => loadQuestionsFromDictionary(dict), [dict]);
@@ -44,6 +101,7 @@ export function MedicalSurveyContentV2({
   const submitMutation = useSubmitMedicalSurvey({
     consultationId,
     locale: lang,
+    cooldownDays,
   });
 
   const handleButtonClick = () => {

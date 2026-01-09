@@ -43,6 +43,7 @@ async function submitMedicalSurvey(
 interface UseSubmitMedicalSurveyOptions {
   consultationId: string;
   locale: Locale;
+  cooldownDays?: number;
   onSuccess?: (hospitalId: string) => void;
   onError?: (error: Error) => void;
 }
@@ -50,6 +51,7 @@ interface UseSubmitMedicalSurveyOptions {
 export function useSubmitMedicalSurvey({
   consultationId,
   locale,
+  cooldownDays,
   onSuccess,
   onError,
 }: UseSubmitMedicalSurveyOptions) {
@@ -65,6 +67,17 @@ export function useSubmitMedicalSurvey({
     onSuccess: (data) => {
       if (data.success && data.data) {
         const hospitalId = data.data.hospitalId;
+
+        // 로컬스토리지에 설문 완료 정보 저장
+        const storageKey = `medical-survey-${consultationId}`;
+        localStorage.setItem(
+          storageKey,
+          JSON.stringify({
+            completedAt: Date.now(),
+            cooldownDays: cooldownDays || 0,
+          }),
+        );
+
         // 완료 페이지로 이동
         router.push(`/medical-survey/${consultationId}/complete`);
         onSuccess?.(hospitalId);
