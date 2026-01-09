@@ -970,6 +970,33 @@
         "If a Member continues to use the Company's Service after the Terms have been changed, it shall be deemed that the Member has agreed to the amended Terms. If a Member does not agree to the amended Terms, the Member may request withdrawal (termination) of membership.",
         "Matters not specified in these Terms and the interpretation of these Terms shall be governed by the \"Act on the Regulation of Terms and Conditions\", the \"Act on Promotion of Information and Communications Network Utilization and Information Protection\", related laws and regulations, or general commercial practices."
       ]
+    },
+    "article4": {
+      "title": "Article 4 (Supplementary Provisions and Relationship with Related Laws)",
+      "items": [
+        "The Company may establish individual terms or operating principles (hereinafter referred to as \"Service-Specific Guidelines\") for individual items within the Service when necessary, and in case of conflict between the contents of these Terms and the Service-Specific Guidelines, the contents of the Service-Specific Guidelines shall take precedence.",
+        "Matters not specified in these Terms or the Service-Specific Guidelines shall be governed by the provisions of related laws and regulations such as the Telecommunications Business Act, the Basic Act on Electronic Commerce, the Information and Communications Network Act, the Act on Consumer Protection in Electronic Commerce, the Personal Information Protection Act, etc., and general commercial practices."
+      ]
+    },
+    "article5": {
+      "title": "Article 5 (Formation of Use Agreement)",
+      "items": [
+        "The use agreement is concluded when a person who wishes to become a member (hereinafter referred to as \"applicant\") agrees to the contents of these Terms, fills in member information (ID, password, name, contact information, email address, etc.) according to the membership form prescribed by the Company, applies for membership, and the Company approves such application.",
+        {
+          "content": "The Company shall, in principle, approve the use of the Service for applications from applicants. However, the Company may not approve or may terminate the use agreement after the fact for applications that fall under any of the following:",
+          "subItems": [
+            "When the applicant has previously lost membership status under these Terms",
+            "When using another person's name or phone number, or when the phone number or email address is the same as that of an already registered member",
+            "When approval is impossible due to the user's fault, such as entering false information or failing to enter the contents presented by the Company, or when applying in violation of other prescribed matters",
+            "When intending to use this Service for improper purposes or for profit-seeking purposes",
+            "When applying for illegal or improper purposes, such as violating related laws and regulations or these Terms, or potentially disrupting social order or good morals, and the Company reasonably deems it necessary"
+          ]
+        },
+        "In applications pursuant to paragraph 1, the Company may request real-name verification and identity authentication through specialized institutions depending on the type of member.",
+        "The Company may reserve approval when there is no surplus in service-related facilities or when there are technical or business problems.",
+        "When the Company does not approve or reserves approval of a membership application pursuant to paragraphs 2 and 4, the Company shall, in principle, notify the applicant thereof.",
+        "The time of formation of the use agreement is the time when the Company indicates completion of membership in the application procedure."
+      ]
     }
   },
   "about": {
