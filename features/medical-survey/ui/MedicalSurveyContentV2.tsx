@@ -26,6 +26,7 @@ export function MedicalSurveyContentV2({
   const router = useLocalizedRouter();
   const [cooldownDays, setCooldownDays] = useState<number | undefined>(undefined);
   const [hasCheckedCompletion, setHasCheckedCompletion] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   // consultationId에서 hospitalId 추출 (UUID는 36자)
   const hospitalId = consultationId.length >= 36 ? consultationId.substring(0, 36) : null;
@@ -43,11 +44,7 @@ export function MedicalSurveyContentV2({
         // 설문 작성을 이미 했다면 알림 표시 후 상담페이지로 이동
         if (completedAt) {
           window.alert('이미 설문 작성을 완료하셨습니다.');
-          if (hospitalId) {
-            router.push(`/chat/${hospitalId}`);
-          } else {
-            router.push(`/consultation`);
-          }
+          setShouldRedirect(true);
           setHasCheckedCompletion(true);
           return;
         }
@@ -57,7 +54,18 @@ export function MedicalSurveyContentV2({
     }
 
     setHasCheckedCompletion(true);
-  }, [consultationId, hospitalId, router, hasCheckedCompletion]);
+  }, [consultationId, hasCheckedCompletion]);
+
+  // 리다이렉트 처리
+  useEffect(() => {
+    if (shouldRedirect) {
+      if (hospitalId) {
+        router.push(`/chat/${hospitalId}`);
+      } else {
+        router.push(`/consultation`);
+      }
+    }
+  }, [shouldRedirect, hospitalId, router]);
 
   // 로컬스토리지에서 cooldownDays 추출
   useEffect(() => {
@@ -74,11 +82,6 @@ export function MedicalSurveyContentV2({
       }
     }
   }, [consultationId]);
-
-  // 설문 작성 완료 확인 중이면 아무것도 렌더링하지 않음
-  if (!hasCheckedCompletion) {
-    return null;
-  }
 
   // Dictionary에서 질문 데이터 로드
   const questions = useMemo(() => loadQuestionsFromDictionary(dict), [dict]);
@@ -120,6 +123,11 @@ export function MedicalSurveyContentV2({
 
   // 버튼 활성화 조건: 현재 질문에 답변이 있을 때, 또는 제출 중일 때 비활성화
   const isButtonDisabled = !isCurrentQuestionAnswered() || submitMutation.isPending;
+
+  // 설문 작성 완료 확인 중이거나 리다이렉트 중이면 아무것도 렌더링하지 않음
+  if (!hasCheckedCompletion || shouldRedirect) {
+    return null;
+  }
 
   return (
     <div className='flex h-screen flex-col bg-white'>
