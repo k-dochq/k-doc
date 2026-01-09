@@ -142,6 +142,11 @@ export async function getHospitalDetail(
       throw new Error(`Hospital not found with id: ${id}`);
     }
 
+    // 승인 상태 체크 (REJECTED인 경우 에러 throw)
+    if (hospitalData.approvalStatusType === 'REJECTED') {
+      throw new Error(`Hospital is rejected: ${id}`);
+    }
+
     // 소속 의사 정보 조회
     const { doctors } = await getHospitalDoctors({ hospitalId: id });
 

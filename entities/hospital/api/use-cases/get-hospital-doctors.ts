@@ -1,6 +1,7 @@
 import { type Prisma } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError } from 'shared/lib';
+import { validateHospitalApprovalStatus } from 'shared/lib/hospital/approval-status-validator';
 import { type HospitalDoctor } from '../entities/types';
 
 // Prisma 타입 정의
@@ -46,6 +47,9 @@ export async function getHospitalDoctors(
     const { hospitalId } = request;
 
     console.log(`[${new Date().toISOString()}] 병원 소속 의사 조회: ${hospitalId}`);
+
+    // 병원 승인 상태 검증 (REJECTED인 경우 에러 throw)
+    await validateHospitalApprovalStatus(hospitalId);
 
     const doctorsData = await prisma.doctor.findMany({
       where: {
