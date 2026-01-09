@@ -945,6 +945,21 @@
     "article1": {
       "title": "Article 1 (Purpose)",
       "content": "These Terms of Service (hereinafter referred to as \"Terms\") are established to prescribe the rights, obligations, and responsibilities between the Company and Members regarding the use of the K-DOC service (hereinafter referred to as \"Service\") operated by FILLMAN Inc. (hereinafter referred to as \"Company\"), as well as the conditions and procedures for using the Service, and other necessary matters."
+    },
+    "article2": {
+      "title": "Article 2 (Definitions)",
+      "intro": "The definitions of terms used in these Terms are as follows. Terms used in these Terms that are not defined herein shall be interpreted in accordance with relevant laws and regulations and service-specific guidelines, and otherwise in accordance with general practice.",
+      "items": [
+        "Service: All functions and related services that provide information registered by users and participating institutions regarding beauty procedures to \"Members\".",
+        "Member: A person who accesses the \"Service\", agrees to these Terms, provides personal information to the \"Company\", and registers as a \"Member\", and who can continuously use the \"Service\".",
+        "Partner Medical Institution: Medical institutions and related businesses participating in the \"Service\" that receive separate systems from the \"Company\" and register information about hospitals, medical staff, and medical procedures being performed to \"Members\".",
+        "Pre-payment Event: All procedure services sold by \"Partner Medical Institutions\" to \"Members\" through the Service as goods and services.",
+        "Pre-payment (Online Payment): The use or purchase of \"Pre-payment Events\" and products of \"Partner Medical Institutions\" using the purchase service within the \"Service\" provided by the \"Company\".",
+        "Procedure Voucher: A service usage right issued when purchasing \"Pre-payment Events\", \"Products\", etc. in the Service.",
+        "Discount Voucher: A discount benefit that allows \"Members\" to receive discounts on usage fees by the amount or percentage indicated when using the \"Service\". The issuance and use of \"Discount Vouchers\" are determined by the Company's operating policy.",
+        "Points: Virtual quantified data provided by the \"Company\" to \"Members\" for benefits or convenience in using the Service, which can be used when purchasing \"Procedure Vouchers\", \"Products\", etc. within the Service. The issuance and use of \"Points\" are determined by the Company's operating policy.",
+        "Post: Symbols (including URLs), text, voice, sound, video (including moving images), images (including photos), files, etc. posted or registered by \"Members\" on the service provided by the Company."
+      ]
     }
   },
   "about": {
