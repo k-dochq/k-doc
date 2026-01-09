@@ -104,6 +104,66 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
             })}
           </div>
         </div>
+
+        {/* 제6조 (이용 계약의 종료) */}
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold text-neutral-700'>
+            {dict.termsOfService.article6.title}
+          </h2>
+          <div className='flex flex-col gap-2'>
+            {dict.termsOfService.article6.items.map((item, index) => {
+              if (typeof item === 'string') {
+                return (
+                  <p key={index} className='text-base leading-6 font-normal text-neutral-700'>
+                    {index + 1}. {item}
+                  </p>
+                );
+              } else if (item.title && item.subItems) {
+                return (
+                  <div key={index} className='flex flex-col gap-2'>
+                    <p className='text-base leading-6 font-semibold text-neutral-700'>
+                      {item.title}
+                    </p>
+                    <div className='flex flex-col gap-1 pl-4'>
+                      {item.subItems.map((subItem, subIndex) => {
+                        if (typeof subItem === 'string') {
+                          return (
+                            <p
+                              key={subIndex}
+                              className='text-base leading-6 font-normal text-neutral-700'
+                            >
+                              {subIndex + 1}) {subItem}
+                            </p>
+                          );
+                        } else if (subItem.content && subItem.subSubItems) {
+                          return (
+                            <div key={subIndex} className='flex flex-col gap-1'>
+                              <p className='text-base leading-6 font-normal text-neutral-700'>
+                                {subIndex + 1}) {subItem.content}
+                              </p>
+                              <div className='flex flex-col gap-1 pl-4'>
+                                {subItem.subSubItems.map((subSubItem, subSubIndex) => (
+                                  <p
+                                    key={subSubIndex}
+                                    className='text-base leading-6 font-normal text-neutral-700'
+                                  >
+                                    {String.fromCharCode(65 + subSubIndex)}. {subSubItem}
+                                  </p>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        }
+                        return null;
+                      })}
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

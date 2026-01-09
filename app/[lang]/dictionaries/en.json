@@ -997,6 +997,34 @@
         "When the Company does not approve or reserves approval of a membership application pursuant to paragraphs 2 and 4, the Company shall, in principle, notify the applicant thereof.",
         "The time of formation of the use agreement is the time when the Company indicates completion of membership in the application procedure."
       ]
+    },
+    "article6": {
+      "title": "Article 6 (Termination of Use Agreement)",
+      "items": [
+        {
+          "title": "1. Member's Termination",
+          "subItems": [
+            "A member may terminate the use agreement at any time by notifying the Company of their intention to terminate or by terminating the use agreement through the [Settings] menu within the Service.",
+            "The Company shall process the member's termination request pursuant to the preceding paragraph immediately unless there are special circumstances.",
+            "A member may be restricted from re-registering for a period determined by the Company after notifying the Company of their intention to terminate."
+          ]
+        },
+        {
+          "title": "2. Company's Termination",
+          "subItems": [
+            {
+              "content": "The Company may terminate the use agreement when there are reasons falling under any of the following. In such cases, the Company shall notify the member of the intention to terminate by disclosing the reason for termination through email, phone, fax, messages, or other means.",
+              "subSubItems": [
+                "When it is confirmed that there are reasons for refusal of approval of the use agreement as prescribed in Article 5, Paragraph 2",
+                "When a member has engaged in acts that infringe upon the rights, reputation, credit, or other legitimate interests of the Company or other persons",
+                "When a member has engaged in acts that violate these Terms or when reasons for termination as prescribed in these Terms have occurred"
+              ]
+            },
+            "The use agreement is terminated when the Company notifies the member of its intention to terminate."
+          ]
+        },
+        "When a member voluntarily terminates the use agreement pursuant to Paragraph 1 of this Article, or when the use agreement is terminated due to the member's fault pursuant to Paragraph 2, any damages arising therefrom shall be borne by the relevant member whose use agreement has been terminated, and the Company shall not bear any responsibility."
+      ]
     }
   },
   "about": {
