@@ -21,11 +21,11 @@ export const POLICY_LINKS = {
     ja: 'https://hypnotic-dryosaurus-c5c.notion.site/Privacy-Policy-27ad3f7f900d80d38997e64cad05ddc1?source=copy_link',
   },
   dataRequest: {
-    ko: 'https://forms.gle/Vf419Ke2TKBhwEK57',
-    en: 'https://forms.gle/trZV5WsojheuNy5X8',
-    th: 'https://forms.gle/FSY2anBUy8YgKGGz6',
-    'zh-Hant': 'https://forms.gle/trZV5WsojheuNy5X8',
-    ja: 'https://forms.gle/trZV5WsojheuNy5X8',
+    ko: 'https://forms.gle/dWaJwgY6TWKMzQWp8',
+    en: 'https://forms.gle/TPPXupyUATAi1mua6',
+    th: 'https://forms.gle/BiFSk3Uj32HgDfHa8',
+    'zh-Hant': 'https://forms.gle/riR7Xw8yQ4FUiNeV6',
+    ja: 'https://forms.gle/NLW2ptxFG88tPpZB9',
   },
 } as const;
 

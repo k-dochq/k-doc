@@ -937,7 +937,7 @@
     "termsOfService": "利用規約",
     "privacyPolicy": "個人情報処理方針",
     "notices": "お知らせ",
-    "contactUs": "Contact us",
+    "contactUs": "お問い合わせ",
     "dataRequest": "情報修正/削除リクエスト"
   },
   "about": {
@@ -1052,6 +1052,11 @@
     "partnershipInquiry": {
       "title": "K-DOC入店申請相談",
       "button": "入店を申請する"
+    },
+    "gradientText": {
+      "line1": "国際患者を獲得",
+      "line2": "トップクラスの医療",
+      "line3": "観光プラットフォームで"
     }
   },
   "my": {

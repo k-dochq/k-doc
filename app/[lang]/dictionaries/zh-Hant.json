@@ -1051,6 +1051,11 @@
     "partnershipInquiry": {
       "title": "K-DOC商店申請諮詢",
       "button": "申請店鋪"
+    },
+    "gradientText": {
+      "line1": "吸引國際患者",
+      "line2": "與領先的醫療",
+      "line3": "旅遊平台"
     }
   },
   "my": {

@@ -61,7 +61,7 @@ export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
       <ContactOfficeInfoV2 title={seoulTitle} address={seoulAddress} dict={dict} />
 
       {/* 그라데이션 텍스트 섹션 */}
-      <ContactGradientTextV2 />
+      <ContactGradientTextV2 dict={dict} />
 
       {/* 버튼 영역 */}
       <ContactButtonSectionV2 lang={lang} dict={dict} />

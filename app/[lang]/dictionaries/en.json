@@ -1053,6 +1053,11 @@
     "partnershipInquiry": {
       "title": "K-DOC Partnership Application Consultation",
       "button": "Apply for Partnership"
+    },
+    "gradientText": {
+      "line1": "Get international patients",
+      "line2": "with the leading medical",
+      "line3": "tourism platform"
     }
   },
   "my": {
