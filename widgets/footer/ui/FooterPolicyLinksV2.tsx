@@ -1,10 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import {
-  getTermsOfServiceLink,
-  getPrivacyPolicyLink,
-  getDataRequestLink,
-} from 'shared/config/policy-links';
+import { getPrivacyPolicyLink, getDataRequestLink } from 'shared/config/policy-links';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface FooterPolicyLinksV2Props {
@@ -23,14 +19,13 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
         <div
           className={`flex items-start ${linkGap} text-xs leading-[16px] font-normal text-[#BABEC4]`}
         >
-          <a
-            href={getTermsOfServiceLink(lang)}
-            target='_blank'
-            rel='noopener noreferrer'
+          <LocaleLink
+            href='/terms-of-service'
+            locale={lang}
             className='shrink-0 transition-colors hover:text-neutral-200'
           >
             {dict.footer.termsOfService}
-          </a>
+          </LocaleLink>
           <a
             href={getPrivacyPolicyLink(lang)}
             target='_blank'

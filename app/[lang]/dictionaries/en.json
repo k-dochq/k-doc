@@ -941,6 +941,12 @@
     "contactUs": "Contact Us",
     "dataRequest": "Request Edit/Deletion"
   },
+  "termsOfService": {
+    "article1": {
+      "title": "Article 1 (Purpose)",
+      "content": "These Terms of Service (hereinafter referred to as \"Terms\") are established to prescribe the rights, obligations, and responsibilities between the Company and Members regarding the use of the K-DOC service (hereinafter referred to as \"Service\") operated by FILLMAN Inc. (hereinafter referred to as \"Company\"), as well as the conditions and procedures for using the Service, and other necessary matters."
+    }
+  },
   "about": {
     "title": "About Us",
     "subtitle": "The People Behind K-DOC",
