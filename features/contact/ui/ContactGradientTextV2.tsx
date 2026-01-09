@@ -1,6 +1,16 @@
 'use client';
 
-export function ContactGradientTextV2() {
+import { type Dictionary } from 'shared/model/types';
+
+interface ContactGradientTextV2Props {
+  dict: Dictionary;
+}
+
+export function ContactGradientTextV2({ dict }: ContactGradientTextV2Props) {
+  const line1 = dict.contact?.gradientText?.line1 || 'Get international patients';
+  const line2 = dict.contact?.gradientText?.line2 || 'with the leading medical';
+  const line3 = dict.contact?.gradientText?.line3 || 'tourism platform';
+
   return (
     <div className='mt-8 px-5'>
       <p
@@ -12,11 +22,11 @@ export function ContactGradientTextV2() {
           WebkitTextFillColor: 'transparent',
         }}
       >
-        Get international patients
+        {line1}
         <br />
-        with the leading medical
+        {line2}
         <br />
-        tourism platform
+        {line3}
       </p>
     </div>
   );

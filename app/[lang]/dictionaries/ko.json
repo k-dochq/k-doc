@@ -1051,6 +1051,11 @@
     "partnershipInquiry": {
       "title": "K-DOC 입점 신청 상담",
       "button": "입점 신청하기"
+    },
+    "gradientText": {
+      "line1": "국제 환자를 유치하세요",
+      "line2": "선도적인 의료",
+      "line3": "관광 플랫폼과 함께"
     }
   },
   "my": {
