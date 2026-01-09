@@ -60,11 +60,14 @@ export function PhoneNumberInput({
             <option value=''>
               {dict.auth?.signup?.placeholders?.countryCode || '국가번호를 선택하세요'}
             </option>
-            {COUNTRY_CODES.map((country) => (
-              <option key={country.code} value={country.code}>
-                {country.code} {getCountryName(country, lang)}
-              </option>
-            ))}
+            {COUNTRY_CODES.map((country) => {
+              const label = `${country.code} ${getCountryName(country)}`;
+              return (
+                <option key={`${country.code}-${country.name}`} value={country.code}>
+                  {label}
+                </option>
+              );
+            })}
           </select>
         </div>
         {/* 휴대폰번호 입력 */}

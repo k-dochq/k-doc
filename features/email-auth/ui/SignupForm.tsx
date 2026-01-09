@@ -58,7 +58,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
   // 국적 옵션 생성
   const nationalityOptions = COUNTRY_CODES.map((country) => ({
     value: getNationalityKey(country.code),
-    label: getCountryName(country, lang),
+    label: getCountryName(country),
     countryCode: country.code,
   }));
 

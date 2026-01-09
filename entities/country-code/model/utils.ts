@@ -1,22 +1,13 @@
 import { type CountryCode } from './types';
-import { type Locale } from 'shared/config';
 import { COUNTRY_CODES } from './constants';
 
 /**
- * 언어에 따라 국가명을 반환합니다.
+ * 국가명을 반환합니다. (영어만 지원)
  * @param country 국가 코드 객체
- * @param locale 언어 설정
- * @returns 해당 언어의 국가명
+ * @returns 국가명 (영어)
  */
-export function getCountryName(country: CountryCode, locale: Locale): string {
-  switch (locale) {
-    case 'ko':
-      return country.nameKo;
-    case 'th':
-      return country.nameTh;
-    default:
-      return country.name;
-  }
+export function getCountryName(country: CountryCode): string {
+  return country.name;
 }
 
 /**
