@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { getPrivacyPolicyLink, getDataRequestLink } from 'shared/config/policy-links';
+import { getDataRequestLink } from 'shared/config/policy-links';
 import { LocaleLink } from 'shared/ui/locale-link';
 
 interface FooterPolicyLinksV2Props {
@@ -26,14 +26,13 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
           >
             {dict.footer.termsOfService}
           </LocaleLink>
-          <a
-            href={getPrivacyPolicyLink(lang)}
-            target='_blank'
-            rel='noopener noreferrer'
+          <LocaleLink
+            href='/privacy-policy'
+            locale={lang}
             className='shrink-0 transition-colors hover:text-neutral-200'
           >
             {dict.footer.privacyPolicy}
-          </a>
+          </LocaleLink>
           <LocaleLink
             href='/notices'
             locale={lang}
