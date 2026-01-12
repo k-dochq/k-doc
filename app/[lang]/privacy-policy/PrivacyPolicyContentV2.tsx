@@ -909,6 +909,81 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </div>
           </div>
         </div>
+
+        {/* 10. 개인정보 보호책임자 및 담당부서 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.privacyOfficer.title}
+          </h3>
+          <div className='flex flex-col gap-6'>
+            <p className='text-base font-normal text-neutral-700'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.privacyOfficer.content}
+            </p>
+
+            {/* 개인정보 관리담당자 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.privacyOfficer.officer.title}
+              </h4>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.privacyOfficer.officer.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            {/* 기타 개인정보침해 신고/상담 기관 */}
+            <div className='flex flex-col gap-2'>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.privacyOfficer
+                    .otherOrganizations.title
+                }
+              </p>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.privacyOfficer.otherOrganizations.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* 11. 개정 전 고지의무 등 안내 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.revisionNotice.title}
+          </h3>
+          <div className='flex flex-col gap-4'>
+            <ol className='flex list-decimal flex-col gap-2 pl-6'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.revisionNotice.items.map(
+                (item, index) => (
+                  <li key={index} className='text-base font-normal text-neutral-700'>
+                    {item}
+                  </li>
+                ),
+              )}
+            </ol>
+          </div>
+        </div>
+
+        {/* 12. 개정이력 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.revisionHistory.title}
+          </h3>
+          <p className='text-base font-normal text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.revisionHistory.content}
+          </p>
+        </div>
       </div>
     </div>
   );

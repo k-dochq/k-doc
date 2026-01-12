@@ -1806,6 +1806,39 @@
           "position": "CEO",
           "contact": "all@k-doc.kr"
         }
+      },
+      "privacyOfficer": {
+        "title": "10. Personal Information Protection Officer and Responsible Department",
+        "content": "Users can inquire about all matters related to personal information inquiries and complaint handling that occur while using the company's services to the personal information management officer or responsible department. The company strives to provide prompt and sincere responses and processing to user inquiries.",
+        "officer": {
+          "title": "Personal Information Management Officer",
+          "items": [
+            "Responsible Department: Pilman Co., Ltd.",
+            "Personal Information Management Officer: Woo Jung Ho",
+            "Personal Information Management Officer: Woo Jung Ho",
+            "Email Address: all@k-doc.kr"
+          ]
+        },
+        "otherOrganizations": {
+          "title": "If you need to report or consult on other personal information violations, please contact the following organizations.",
+          "items": [
+            "Personal Information Infringement Report Center (privacy.kisa.or.kr / 118 without area code)",
+            "Supreme Prosecutors' Office Cyber Investigation Division (www.spo.go.kr / 1301 without area code)",
+            "National Police Agency Cyber Bureau (ecrm.police.go.kr / 182 without area code)"
+          ]
+        }
+      },
+      "revisionNotice": {
+        "title": "11. Notice Obligation Before Revision, etc.",
+        "items": [
+          "If there are changes to the personal information processing policy, the company will notify users at least 7 days before the effective date of the revised personal information processing policy through the homepage notice or email. However, if there are important changes to users' rights or obligations, notification will be made at least 30 days in advance.",
+          "Even if the company notifies users of changes in accordance with Paragraph 1 and notifies that if no objection is expressed by the effective date of the change, it will be considered as consent, if the user does not explicitly express an objection, it is considered that the user has agreed to the changes.",
+          "Notwithstanding Paragraph 2, if the company collects additional personal information from users or provides it to a third party, it will go through a separate consent procedure from the user themselves."
+        ]
+      },
+      "revisionHistory": {
+        "title": "12. Revision History",
+        "content": "This personal information processing policy takes effect from September 25, 2025."
       }
     }
   },
