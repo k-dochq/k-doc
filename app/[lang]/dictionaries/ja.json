@@ -1588,6 +1588,71 @@
             ]
           }
         }
+      },
+      "destruction": {
+        "title": "4. 個人情報の破棄",
+        "content": "個人情報の収集および利用目的が達成された場合、ピルマンは収集した個人情報を遅滞なく破棄し、手順および方法は以下のとおりです。",
+        "method": {
+          "content": "収集および利用目的の達成または会員脱退など破棄事由が発生した場合、個人情報の形態を考慮して破棄方法を定めます。電子的ファイル形態の場合、復元および再生されないよう安全に削除し、その他の記録物、印刷物書面などの場合、粉砕または焼却して破棄します。"
+        },
+        "internalPolicy": {
+          "title": "内部方針に従い一定期間保管後破棄する情報",
+          "items": [
+            "会員脱退時30日間個人情報保管後破棄",
+            "代理手術安心ゾーン申請情報：安心ゾーン申請撤回まで保管後破棄",
+            "病院出店申請情報：出店申請相談終了後即時破棄",
+            "病院出店契約情報：委託契約終了時即時破棄",
+            "相談申請情報：相談終了後1年間保管後破棄",
+            "アビュージングおよび不正利用記録：3年間保管後破棄"
+          ]
+        },
+        "legalBasis": {
+          "title": "関係法令に 따른 個人情報保管",
+          "table": {
+            "headers": {
+              "retentionItem": "保管項目",
+              "legalBasis": "根拠法令",
+              "retentionPeriod": "保管期間"
+            },
+            "rows": [
+              {
+                "retentionItem": "契約または申し込み撤回 등에 관한 기록",
+                "legalBasis": "電子商取引 등에서의 消費者保護에 관한 法律 国税基本法",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "代金決済および財貨 등의 供給에 관한 기록",
+                "legalBasis": "同上",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "消費者の 不満または 紛争処理에 관한 기록",
+                "legalBasis": "同上",
+                "retentionPeriod": "3年"
+              },
+              {
+                "retentionItem": "表示/広告에 관한 기록",
+                "legalBasis": "同上",
+                "retentionPeriod": "6ヶ月"
+              },
+              {
+                "retentionItem": "税法が 規定する すべての 取引에 관한 帳簿および 証憑書類",
+                "legalBasis": "同上",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "電子金融 取引에 관한 기록",
+                "legalBasis": "電子金融取引法",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "サービス 訪問 기록",
+                "legalBasis": "通信秘密保護法",
+                "retentionPeriod": "3ヶ月"
+              }
+            ]
+          }
+        }
       }
     }
   },

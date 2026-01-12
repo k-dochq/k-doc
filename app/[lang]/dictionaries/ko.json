@@ -1587,6 +1587,71 @@
             ]
           }
         }
+      },
+      "destruction": {
+        "title": "4. 개인정보의 파기",
+        "content": "필만은 개인정보의 수집 및 이용목적이 달성된 경우 수집한 개인정보를 지체없이 파기하며 절차 및 방법은 아래와 같습니다.",
+        "method": {
+          "content": "수집 및 이용 목적의 달성 또는 회원 탈퇴 등 파기 사유가 발생한 경우, 개인정보의 형태를 고려하여 파기 방법을 정합니다. 전자적 파일 형태인 경우 복구 및 재생되지 않도록 안전하게 삭제하고, 그 밖에 기록물, 인쇄물 서면 등의 경우 분쇄하거나 소각하여 파기합니다."
+        },
+        "internalPolicy": {
+          "title": "내부 방침에 따라 일정기간 보관 후 파기하는 정보",
+          "items": [
+            "회원 탈퇴 시 30일간 개인정보 보관 후 파기",
+            "대리수술 안심존 신청 정보 : 안심존 신청 철회 전까지 보관 후 파기",
+            "병원 입점 신청 정보 : 입점 신청 상담 종료 후 즉시 파기",
+            "병원 입점 계약 정보 : 위탁 계약 종료 시 즉시 파기",
+            "상담 신청 정보 : 상담 종료 후 1년간 보관 후 파기",
+            "어뷰징 및 부정 이용 기록 : 3년간 보관 후 파기"
+          ]
+        },
+        "legalBasis": {
+          "title": "관계법령에 따른 개인정보 보관",
+          "table": {
+            "headers": {
+              "retentionItem": "보존 항목",
+              "legalBasis": "근거법령",
+              "retentionPeriod": "보존기간"
+            },
+            "rows": [
+              {
+                "retentionItem": "계약 또는 청약철회 등에 관한 기록",
+                "legalBasis": "전자상거래 등에서의 소비자 보호에 관한 법률 국세기본법",
+                "retentionPeriod": "5년"
+              },
+              {
+                "retentionItem": "대금결제 및 재화 등의 공급에 관한 기록",
+                "legalBasis": "상동",
+                "retentionPeriod": "5년"
+              },
+              {
+                "retentionItem": "소비자의 불만 또는 분쟁처리에 관한 기록",
+                "legalBasis": "상동",
+                "retentionPeriod": "3년"
+              },
+              {
+                "retentionItem": "표시/광고에 관한 기록",
+                "legalBasis": "상동",
+                "retentionPeriod": "6개월"
+              },
+              {
+                "retentionItem": "세법이 규정하는 모든 거래에 관한 장부 및 증빙서류",
+                "legalBasis": "상동",
+                "retentionPeriod": "5년"
+              },
+              {
+                "retentionItem": "전자금융 거래에 관한 기록",
+                "legalBasis": "전자금융거래법",
+                "retentionPeriod": "5년"
+              },
+              {
+                "retentionItem": "서비스 방문 기록",
+                "legalBasis": "통신비밀보호법",
+                "retentionPeriod": "3개월"
+              }
+            ]
+          }
+        }
       }
     }
   },

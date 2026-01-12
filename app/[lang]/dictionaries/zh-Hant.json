@@ -1583,6 +1583,71 @@
             ]
           }
         }
+      },
+      "destruction": {
+        "title": "4. 個人資訊的銷毀",
+        "content": "必滿在個人資訊的收集及使用目的達成時，會立即銷毀所收集的個人資訊，程序及方法如下。",
+        "method": {
+          "content": "當發生收集及使用目的達成或會員退會等銷毀事由時，會考量個人資訊的形態決定銷毀方法。電子檔案形態時，會安全刪除使其無法復原及再生，其他記錄物、印刷物書面等則以粉碎或焚燒方式銷毀。"
+        },
+        "internalPolicy": {
+          "title": "依內部方針於一定期間保管後銷毀的資訊",
+          "items": [
+            "會員退會時：個人資訊保管30天後銷毀",
+            "代理手術安心區申請資訊：保管至安心區申請撤回為止後銷毀",
+            "醫院入駐申請資訊：入駐申請諮詢結束後立即銷毀",
+            "醫院入駐契約資訊：委託契約終止時立即銷毀",
+            "諮詢申請資訊：諮詢結束後保管1年後銷毀",
+            "濫用及不正當使用記錄：保管3年後銷毀"
+          ]
+        },
+        "legalBasis": {
+          "title": "依相關法令的個人資訊保管",
+          "table": {
+            "headers": {
+              "retentionItem": "保管項目",
+              "legalBasis": "依據法令",
+              "retentionPeriod": "保管期間"
+            },
+            "rows": [
+              {
+                "retentionItem": "契約或要約撤回等相關記錄",
+                "legalBasis": "電子商務等消費者保護法、國稅基本法",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "價款結算及商品等供應相關記錄",
+                "legalBasis": "同上",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "消費者不滿或爭議處理相關記錄",
+                "legalBasis": "同上",
+                "retentionPeriod": "3年"
+              },
+              {
+                "retentionItem": "標示/廣告相關記錄",
+                "legalBasis": "同上",
+                "retentionPeriod": "6個月"
+              },
+              {
+                "retentionItem": "稅法規定的所有交易相關帳簿及憑證文件",
+                "legalBasis": "同上",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "電子金融交易相關記錄",
+                "legalBasis": "電子金融交易法",
+                "retentionPeriod": "5年"
+              },
+              {
+                "retentionItem": "服務訪問記錄",
+                "legalBasis": "通訊秘密保護法",
+                "retentionPeriod": "3個月"
+              }
+            ]
+          }
+        }
       }
     }
   },

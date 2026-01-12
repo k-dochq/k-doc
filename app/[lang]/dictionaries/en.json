@@ -1589,6 +1589,71 @@
             ]
           }
         }
+      },
+      "destruction": {
+        "title": "4. Destruction of Personal Information",
+        "content": "When the purpose of collecting and using personal information is achieved, Pilman destroys the collected personal information without delay. The procedures and methods are as follows.",
+        "method": {
+          "content": "When a reason for destruction occurs, such as achievement of the purpose of collection and use or member withdrawal, the destruction method is determined considering the form of personal information. For electronic file forms, they are safely deleted so that they cannot be recovered or reproduced, and for other records, printed materials, written documents, etc., they are destroyed by shredding or incineration."
+        },
+        "internalPolicy": {
+          "title": "Information Retained for a Certain Period and Then Destroyed According to Internal Policy",
+          "items": [
+            "Personal information retained for 30 days after member withdrawal and then destroyed",
+            "Proxy surgery safety zone application information: Retained until withdrawal of safety zone application and then destroyed",
+            "Hospital entry application information: Destroyed immediately after completion of entry application consultation",
+            "Hospital entry contract information: Destroyed immediately upon termination of consignment contract",
+            "Consultation application information: Retained for 1 year after consultation ends and then destroyed",
+            "Abusing and fraudulent use records: Retained for 3 years and then destroyed"
+          ]
+        },
+        "legalBasis": {
+          "title": "Personal Information Retention According to Related Laws",
+          "table": {
+            "headers": {
+              "retentionItem": "Retention Item",
+              "legalBasis": "Legal Basis",
+              "retentionPeriod": "Retention Period"
+            },
+            "rows": [
+              {
+                "retentionItem": "Records related to contracts or withdrawal of offers",
+                "legalBasis": "Act on Consumer Protection in Electronic Commerce, etc., National Tax Basic Act",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Records related to payment and supply of goods, etc.",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Records related to consumer complaints or dispute resolution",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "3 years"
+              },
+              {
+                "retentionItem": "Records related to display/advertisement",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "6 months"
+              },
+              {
+                "retentionItem": "Ledgers and evidentiary documents related to all transactions stipulated by tax law",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Records related to electronic financial transactions",
+                "legalBasis": "Electronic Financial Transactions Act",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Service visit records",
+                "legalBasis": "Protection of Communications Secrets Act",
+                "retentionPeriod": "3 months"
+              }
+            ]
+          }
+        }
       }
     }
   },

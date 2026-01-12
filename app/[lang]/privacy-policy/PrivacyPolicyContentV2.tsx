@@ -415,6 +415,115 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </div>
           </div>
         </div>
+
+        {/* 4. 개인정보의 파기 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.destruction.title}
+          </h3>
+          <div className='flex flex-col gap-4'>
+            <p className='text-base font-normal text-neutral-700'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.destruction.content}
+            </p>
+
+            {/* 파기 방법 */}
+            <ul className='flex list-disc flex-col gap-2 pl-4'>
+              <li className='text-base font-normal text-neutral-700'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.destruction.method.content}
+              </li>
+            </ul>
+
+            {/* 내부 방침에 따라 일정기간 보관 후 파기하는 정보 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.destruction.internalPolicy
+                    .title
+                }
+              </h4>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.destruction.internalPolicy.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            {/* 관계법령에 따른 개인정보 보관 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis.title}
+              </h4>
+              <div className='flex flex-col border-t border-neutral-400'>
+                {/* 테이블 헤더 */}
+                <div className='flex border-b border-neutral-200 bg-neutral-100'>
+                  <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
+                    <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                      {
+                        dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis
+                          .table.headers.retentionItem
+                      }
+                    </p>
+                  </div>
+                  <div className='flex w-0 shrink-0 items-center justify-center'>
+                    <div className='h-full w-px bg-neutral-200' />
+                  </div>
+                  <div className='flex flex-1 items-center px-3 py-4'>
+                    <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                      {
+                        dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis
+                          .table.headers.legalBasis
+                      }
+                    </p>
+                  </div>
+                  <div className='flex w-0 shrink-0 items-center justify-center'>
+                    <div className='h-full w-px bg-neutral-200' />
+                  </div>
+                  <div className='flex w-[70px] shrink-0 items-center px-3 py-4'>
+                    <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                      {
+                        dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis
+                          .table.headers.retentionPeriod
+                      }
+                    </p>
+                  </div>
+                </div>
+
+                {/* 테이블 본문 */}
+                {dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis.table.rows.map(
+                  (row, index) => (
+                    <div key={index} className='flex border-b border-neutral-200'>
+                      <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
+                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                          {row.retentionItem}
+                        </p>
+                      </div>
+                      <div className='flex w-0 shrink-0 items-center justify-center'>
+                        <div className='h-full w-px bg-neutral-200' />
+                      </div>
+                      <div className='flex flex-1 items-center px-3 py-4'>
+                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                          {row.legalBasis}
+                        </p>
+                      </div>
+                      <div className='flex w-0 shrink-0 items-center justify-center'>
+                        <div className='h-full w-px bg-neutral-200' />
+                      </div>
+                      <div className='flex w-[70px] shrink-0 items-center px-3 py-4'>
+                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                          {row.retentionPeriod}
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
