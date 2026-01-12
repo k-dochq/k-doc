@@ -1065,6 +1065,62 @@
           ]
         }
       ]
+    },
+    "article9": {
+      "title": "Article 9 (Company's Obligations)",
+      "items": [
+        "The Company shall not engage in acts prohibited by related laws and these Terms or acts that violate good morals, and shall make its best efforts to provide the Service continuously and stably.",
+        "The Company establishes, discloses, and complies with a personal information handling policy to protect personal information (including credit information) so that members can safely use the Service.",
+        "When opinions or complaints raised by members are objectively recognized as legitimate, the Company must process them immediately through appropriate procedures. However, when immediate processing is difficult, the Company must notify the member of the reason and processing schedule.",
+        "The Company complies with obligations prescribed by related laws and regulations."
+      ]
+    },
+    "article10": {
+      "title": "Article 10 (Protection and Use of Personal Information)",
+      "items": [
+        "The Company complies with the provisions of related laws and regulations such as the Information and Communications Network Act and the Personal Information Protection Act to protect members' personal information.",
+        "The Company establishes and posts a personal information handling policy on the Service's initial screen to protect members' personal information. However, the specific contents of the personal information handling policy can be viewed through connected screens.",
+        "The Company makes efforts to protect members' personal information to the maximum extent in accordance with the personal information handling policy.",
+        "The Company does not collect information necessary for the performance of purchase contracts in advance at the time of membership registration. However, the Company may collect the minimum specific personal information when identity verification is necessary before a purchase contract for the performance of obligations under related laws.",
+        "The Company bears the obligation to protect personal information as a telecommunications sales intermediary regarding personal information entered by members in services such as consultation applications and pre-payments for which the Company intermediates information. For detailed information, please refer to the Company's personal information handling policy. However, the responsibility for confirming the personal information handling policy of partner medical institutions that collect such information in relation to the collection and use of personal information entered in consultation applications, pre-payments, etc., lies with the member, and the Company shall not be liable for any disadvantages arising from failure to confirm such information.",
+        {
+          "content": "The Company may provide members' personal information to third parties within the scope permitted by law in the following cases:",
+          "subItems": [
+            "When requested to provide information by investigative agencies or other government agencies",
+            "When necessary for information protection work such as confirming fraudulent acts including violations of laws or terms by members",
+            "Other cases required by law"
+          ]
+        },
+        "The Company may collect additional personal information in accordance with related laws with the member's consent for purposes such as service improvement and service introduction to members."
+      ]
+    },
+    "article11": {
+      "title": "Article 11 (Approval and Restriction of Use Applications)",
+      "items": [
+        "The Company shall, in principle, approve the use of the Service in order of receipt for use applications pursuant to the provisions of Articles 5 and 6, unless there are business or technical impediments.",
+        {
+          "content": "The Company may reserve approval for cases falling under the following:",
+          "subItems": [
+            "When the use application does not provide genuine information of the applicant",
+            "When applying for the purpose of violating laws or disrupting social peace and order or good morals",
+            "When intending to use this Service for improper purposes",
+            "When intending to use this Service for profit-seeking purposes",
+            "When an applicant is determined to have a certain relationship with a person in a competitive relationship by providing the same or similar services as those provided by the Company",
+            "When an applicant has previously had a use agreement terminated due to violation of laws or terms",
+            "Other cases of applying in violation of all matters prescribed in these Terms"
+          ]
+        },
+        {
+          "content": "The Company may reserve approval for use applications until the reasons for approval restrictions are resolved when the service use application falls under any of the following:",
+          "subItems": [
+            "When the Company has no surplus in facilities",
+            "When there are technical impediments for the Company",
+            "Other cases where approval is difficult due to the Company's fault"
+          ]
+        },
+        "The Company may reserve approval in accordance with service-specific guidelines when an applicant is a minor as prescribed in related laws and regulations.",
+        "The Company may revoke use approval when reasons falling under each subparagraph of Paragraph 2 are discovered after membership registration is completed."
+      ]
     }
   },
   "about": {

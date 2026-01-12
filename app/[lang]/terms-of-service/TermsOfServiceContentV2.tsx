@@ -216,6 +216,96 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
             })}
           </div>
         </div>
+
+        {/* 제9조 (회사의 의무) */}
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold text-neutral-700'>
+            {dict.termsOfService.article9.title}
+          </h2>
+          <div className='flex flex-col gap-2'>
+            {dict.termsOfService.article9.items.map((item, index) => (
+              <p key={index} className='text-base leading-6 font-normal text-neutral-700'>
+                {index + 1}. {item}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        {/* 제10조 (개인정보의 보호 및 사용) */}
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold text-neutral-700'>
+            {dict.termsOfService.article10.title}
+          </h2>
+          <div className='flex flex-col gap-2'>
+            {dict.termsOfService.article10.items.map((item, index) => {
+              if (typeof item === 'string') {
+                return (
+                  <p key={index} className='text-base leading-6 font-normal text-neutral-700'>
+                    {index + 1}. {item}
+                  </p>
+                );
+              } else {
+                return (
+                  <div key={index} className='flex flex-col gap-2'>
+                    <p className='text-base leading-6 font-normal text-neutral-700'>
+                      {index + 1}. {item.content}
+                    </p>
+                    {item.subItems && (
+                      <div className='flex flex-col gap-1 pl-4'>
+                        {item.subItems.map((subItem, subIndex) => (
+                          <p
+                            key={subIndex}
+                            className='text-base leading-6 font-normal text-neutral-700'
+                          >
+                            {subIndex + 1}) {subItem}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </div>
+
+        {/* 제11조 (이용신청의 승낙과 제한) */}
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold text-neutral-700'>
+            {dict.termsOfService.article11.title}
+          </h2>
+          <div className='flex flex-col gap-2'>
+            {dict.termsOfService.article11.items.map((item, index) => {
+              if (typeof item === 'string') {
+                return (
+                  <p key={index} className='text-base leading-6 font-normal text-neutral-700'>
+                    {index + 1}. {item}
+                  </p>
+                );
+              } else {
+                return (
+                  <div key={index} className='flex flex-col gap-2'>
+                    <p className='text-base leading-6 font-normal text-neutral-700'>
+                      {index + 1}. {item.content}
+                    </p>
+                    {item.subItems && (
+                      <div className='flex flex-col gap-1 pl-4'>
+                        {item.subItems.map((subItem, subIndex) => (
+                          <p
+                            key={subIndex}
+                            className='text-base leading-6 font-normal text-neutral-700'
+                          >
+                            {subIndex + 1}) {subItem}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
