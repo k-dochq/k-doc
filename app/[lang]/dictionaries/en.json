@@ -1412,6 +1412,98 @@
       ]
     }
   },
+  "privacyPolicy": {
+    "intro": "Pilman Co., Ltd. (hereinafter referred to as 'Pilman' or 'Company') collects, uses, and provides personal information based on user consent. Pilman provides this Privacy Policy in compliance with domestic laws and regulations, personal information protection regulations, and guidelines that personal information processors must comply with to protect users' rights.",
+    "collectionOfPersonalInformation": {
+      "title": "1. Collection of Personal Information",
+      "content": "Pilman operates as a membership-based service and collects the minimum necessary personal information through websites, application programs, etc., during membership registration or service use to provide services. The personal information collected from users to use Pilman services is as follows.",
+      "tableTitle": "Personal Information Collected by Service",
+      "tableLabels": {
+        "required": "[Required]",
+        "optional": "[Optional]"
+      },
+      "table": {
+        "headers": {
+          "serviceCategory": "Service Category",
+          "collectedItems": "Collected Items"
+        },
+        "rows": [
+          {
+            "serviceCategory": "Individual Membership Registration (Email)",
+            "collectedItems": {
+              "required": "Email Address/Password/Passport English Name",
+              "optional": "Nationality/Gender/Date of Birth/Mobile Phone Number"
+            }
+          },
+          {
+            "serviceCategory": "Partnership/Hospital Entry Inquiry",
+            "collectedItems": {
+              "required": "Company Name/Contact Person Name/Mobile Phone Number/Email"
+            }
+          },
+          {
+            "serviceCategory": "Hospital Entry Contract (Hospital Member)",
+            "collectedItems": {
+              "applicant": {
+                "label": "Applicant",
+                "required": "Contact Person Name/Representative Name/Mobile Phone Number/Email/Address/Representative Number"
+              },
+              "applicationInfo": {
+                "label": "Application Information",
+                "required": "Hospital Name/Contact Person Name/Mobile Phone Number/Email/Administrator ID"
+              }
+            }
+          },
+          {
+            "serviceCategory": "When Using Content",
+            "collectedItems": {
+              "review": {
+                "label": "Procedure Review (Sensitive Information)",
+                "required": "Procedure Information/Post-Procedure Photo",
+                "optional": "Pre-Procedure Photo"
+              }
+            }
+          },
+          {
+            "serviceCategory": "Post Suspension Request Service (Identity Verification Documents)",
+            "collectedItems": {
+              "individual": {
+                "label": "Individual",
+                "required": "Name/Mobile Phone Number/Email/Masked ID Copy/Power of Attorney"
+              },
+              "organization": {
+                "label": "Organization",
+                "required": "Name/Mobile Phone Number/Email/Masked ID Copy/Organization Business Registration Copy/Power of Attorney"
+              }
+            }
+          },
+          {
+            "serviceCategory": "When Using Location-Based Services",
+            "collectedItems": {
+              "simple": "Location Information"
+            }
+          }
+        ]
+      },
+      "collectionMethods": {
+        "title": "Methods of Collecting Personal Information",
+        "content": "When collecting personal information, Pilman notifies users in advance and obtains consent. The collection methods are as follows.",
+        "items": [
+          "Collected when users consent to personal information collection and directly enter information during membership registration and service use.",
+          "May be collected through webpages, email, fax, phone calls, etc., during consultation through CS.",
+          "Personal information may be collected through events, seminars, etc., conducted online/offline.",
+          "Generated information such as device information is automatically generated and collected during PC web, mobile web/app use."
+        ]
+      },
+      "autoCollection": {
+        "title": "Automatically Collected and Generated Information",
+        "content": "Personal information automatically generated and collected from users during service use is as follows.",
+        "items": [
+          "Device information (OS, device ID, phone model, device model name), IP address, cookies, visit date/time, fraudulent use records, service use records, etc., during PC web, mobile web/app use"
+        ]
+      }
+    }
+  },
   "about": {
     "title": "About Us",
     "subtitle": "The People Behind K-DOC",

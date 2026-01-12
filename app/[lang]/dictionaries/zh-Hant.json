@@ -1406,6 +1406,98 @@
       ]
     }
   },
+  "privacyPolicy": {
+    "intro": "株式會社必滿（以下稱「必滿」或「公司」）基於使用者同意收集、使用及提供個人資訊。必滿遵守國內相關法令及個人資訊保護規定、指引，以保障使用者權利，提供本個人資訊處理方針。",
+    "collectionOfPersonalInformation": {
+      "title": "1. 個人資訊的收集",
+      "content": "必滿以會員制服務運營，於會員註冊時或服務使用過程中，透過網站、應用程式等收集提供服務所需之最少個人資訊。為使用必滿服務而向使用者收集的個人資訊如下。",
+      "tableTitle": "依服務類別收集的個人資訊項目",
+      "tableLabels": {
+        "required": "[必填]",
+        "optional": "[選填]"
+      },
+      "table": {
+        "headers": {
+          "serviceCategory": "服務類別",
+          "collectedItems": "收集項目"
+        },
+        "rows": [
+          {
+            "serviceCategory": "（個人）會員註冊（電子郵件）",
+            "collectedItems": {
+              "required": "電子郵件地址/密碼/護照英文姓名",
+              "optional": "國籍/性別/出生日期/行動電話號碼"
+            }
+          },
+          {
+            "serviceCategory": "合作/醫院入駐諮詢",
+            "collectedItems": {
+              "required": "公司名稱/負責人姓名/行動電話號碼/電子郵件"
+            }
+          },
+          {
+            "serviceCategory": "醫院入駐契約（醫院會員）",
+            "collectedItems": {
+              "applicant": {
+                "label": "申請人",
+                "required": "負責人姓名/代表人姓名/行動電話號碼/電子郵件/地址/代表號碼"
+              },
+              "applicationInfo": {
+                "label": "申請資訊",
+                "required": "醫院名稱/負責人姓名/行動電話號碼/電子郵件/管理員ID"
+              }
+            }
+          },
+          {
+            "serviceCategory": "使用內容時",
+            "collectedItems": {
+              "review": {
+                "label": "療程評價（敏感資訊）",
+                "required": "療程資訊/療程後照片",
+                "optional": "療程前照片"
+              }
+            }
+          },
+          {
+            "serviceCategory": "貼文暫停請求服務（身分確認文件）",
+            "collectedItems": {
+              "individual": {
+                "label": "個人",
+                "required": "姓名/行動電話號碼/電子郵件/遮罩身分證副本/委任書"
+              },
+              "organization": {
+                "label": "團體",
+                "required": "姓名/行動電話號碼/電子郵件/遮罩身分證副本/團體營業登記證副本/委任書"
+              }
+            }
+          },
+          {
+            "serviceCategory": "使用位置服務時",
+            "collectedItems": {
+              "simple": "位置資訊"
+            }
+          }
+        ]
+      },
+      "collectionMethods": {
+        "title": "個人資訊的收集方法",
+        "content": "必滿在收集個人資訊時，會事先通知使用者並取得同意，收集方法如下。",
+        "items": [
+          "於會員註冊及服務使用過程中，當使用者同意個人資訊收集並直接輸入資訊時收集。",
+          "可透過CS諮詢過程中的網頁、電子郵件、傳真、電話等方式收集。",
+          "可透過線上/線下進行的活動、研討會等收集個人資訊。",
+          "裝置資訊等生成資訊會在PC網頁、行動網頁/應用程式使用過程中自動生成並收集。"
+        ]
+      },
+      "autoCollection": {
+        "title": "自動收集及生成資訊",
+        "content": "服務使用過程中，從使用者自動生成收集的個人資訊如下。",
+        "items": [
+          "PC網頁、行動網頁/應用程式使用過程中的裝置資訊（作業系統、裝置ID、手機型號、裝置型號名稱）、IP位址、Cookie、訪問日期時間、不正當使用記錄、服務使用記錄等"
+        ]
+      }
+    }
+  },
   "about": {
     "title": "公司簡介",
     "subtitle": "製作K-DOC的人",
