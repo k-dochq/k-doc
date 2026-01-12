@@ -144,6 +144,26 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
         <ArticleSection title={dict.termsOfService.article24.title}>
           <ArticleItems items={dict.termsOfService.article24.items} />
         </ArticleSection>
+
+        {/* 제25조 (정보의 제공 및 광고의 게재) */}
+        <ArticleSection title={dict.termsOfService.article25.title}>
+          <ArticleItems items={dict.termsOfService.article25.items} />
+        </ArticleSection>
+
+        {/* 제26조 (게시물의 관리) */}
+        <ArticleSection title={dict.termsOfService.article26.title}>
+          <ArticleItems items={dict.termsOfService.article26.items} />
+        </ArticleSection>
+
+        {/* 제27조 (게시물의 저작권) */}
+        <ArticleSection title={dict.termsOfService.article27.title}>
+          <ArticleItems items={dict.termsOfService.article27.items} />
+        </ArticleSection>
+
+        {/* 제28조 (서비스 이용제한) */}
+        <ArticleSection title={dict.termsOfService.article28.title}>
+          <ArticleItems items={dict.termsOfService.article28.items} />
+        </ArticleSection>
       </div>
     </div>
   );

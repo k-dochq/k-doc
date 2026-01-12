@@ -1302,6 +1302,91 @@
         "In case of withdrawal of offer, etc., the costs necessary for returning the received \"Pre-payment Service\" are borne by the purchaser. The \"Company\" does not claim penalty or damages from the purchaser on the grounds of withdrawal of offer, etc. However, if withdrawal of offer, etc. is made because the contents of \"Pre-payment Service\" differ from the displayed or advertised contents or are performed differently from the contract contents, the costs necessary for returning \"Pre-payment Service\", etc. are borne by the \"Company\".",
         "If the purchaser bore shipping costs when receiving \"Pre-payment Service\", etc., the \"Company\" clearly indicates who bears such costs in case of withdrawal of offer so that users can easily understand."
       ]
+    },
+    "article25": {
+      "title": "Article 25 (Provision of Information and Posting of Advertisements)",
+      "items": [
+        "The Company may provide members with various information deemed necessary for the use of the Service through methods such as email, mail, postal mail, SMS, phone, mobile application Push notifications, etc.",
+        "The Company may post advertisements on service screens and homepages in relation to the operation of the Service, and with the member's consent, may send advertisements using electronic transmission media such as email, messages, text messages, Push notifications, etc.",
+        "Members do not take measures such as changing, modifying, or restricting posts or other information related to the services provided by the Company."
+      ]
+    },
+    "article26": {
+      "title": "Article 26 (Management of Posts)",
+      "items": [
+        "All responsibility for violations of the Copyright Act and the Information and Communications Network Act, etc. arising from posts written by members lies with the member who posted them.",
+        {
+          "content": "If the Company determines that the content of posts posted or registered by members falls under any of the following cases, the Company may delete or suspend (temporary measures) such posts.",
+          "subItems": [
+            "Content that defames or damages the reputation of other members or third parties",
+            "Content that violates public order and morals",
+            "Content that is deemed to be connected to criminal acts",
+            "Content that infringes on the Company's copyright, third parties' copyrights, or other rights",
+            "Cases where members post obscene materials on the site and bulletin board or link to obscene sites",
+            "Cases where commercial advertisements or promotional content are posted without prior approval from the Company",
+            "Content that is unrelated to the services provided by the Company or is content of services provided by other competing companies",
+            "Content that describes interference with the business of the Company or third parties without justifiable reason",
+            "Cases where false or exaggerated posts are posted for the purpose of promoting one's own business",
+            "Cases that correspond to meaningless characters and symbols",
+            "Cases where reports of rights infringement are received from third parties, etc.",
+            "Cases that are deemed to violate relevant laws and regulations",
+            "Cases that are deemed to have the nature of comparative advertising between medical professionals and domestic medical institutions",
+            "Cases where posts are posted as unauthorized medical practices or promotion for medical practices",
+            "Other cases that violate the posting principles established by the Company or do not match the nature of the bulletin board"
+          ]
+        },
+        {
+          "content": "If a member's post contains content that violates the Copyright Act, the Information and Communications Network Act, or other relevant laws and regulations regarding defamation, the Company must take necessary measures in accordance with relevant laws and regulations as follows.",
+          "subItems": [
+            "Rights holders may request deletion or suspension (temporary measures) of the relevant post in accordance with procedures prescribed by relevant laws and regulations, and the Company that receives such request must take necessary measures such as deletion and suspension (temporary measures) without delay and immediately notify the applicant and the poster.",
+            "Even if there is no request from the rights holder, if there are reasons that recognize infringement of others' rights such as invasion of privacy or defamation, or if it violates other Company policies and relevant laws, the Company may take temporary measures, etc. on the relevant post in accordance with relevant laws and regulations.",
+            "Even if the rights holder requests deletion, if it is difficult to determine whether rights have been infringed or disputes are expected between interested parties, the Company may temporarily block access to the relevant post by suspending (temporary measures), and in this case, the period of suspension (temporary measures) shall be within 30 days.",
+            "When taking measures for deletion and suspension (temporary measures), the Company notifies the poster of the relevant post of the name of the requester and the reason for the request for deletion and suspension (temporary measures).",
+            "Posters who have received notification regarding deletion and suspension (temporary measures) may file an objection to the above measures, and if the objection is accepted, the relevant facts are notified to the requester of suspension, and the requester of suspension may apply for deliberation of the post to the Korea Communications Standards Commission.",
+            "If a decision is made by the Korea Communications Standards Commission during the period of suspension (temporary measures), deletion and restoration are processed according to the decision, and if a deliberation decision is made by the Korea Communications Standards Commission after the post is restored, the status of the post may be changed according to the decision content.",
+            "If it is difficult to accept the deliberation results of the Korea Communications Standards Commission or if there are questions about the deliberation process, please contact the relevant institution directly.",
+            "For posts restored through objection without a request for deliberation from the Korea Communications Standards Commission, repeated requests for suspension (temporary measures) cannot be made, and thereafter, resolution can be made through agreement between the parties or deliberation and judgment by other administrative agencies or court judgment."
+          ]
+        },
+        "Detailed procedures in accordance with this Article follow the suspension request procedures established by the Company within the scope prescribed by the Information and Communications Network Act and the Copyright Act.\n- Suspension request: cs@k-doc.kr"
+      ]
+    },
+    "article27": {
+      "title": "Article 27 (Copyright of Posts)",
+      "items": [
+        {
+          "content": "The copyright of posts posted by members within the Service belongs to the member who posted them. However, the Company may use posts registered by members free of charge within a reasonable range in accordance with fair practices prescribed in the Copyright Act for the purpose of operating, displaying, transmitting, distributing, and promoting the Service without separate permission from members. However, in this case, separate consent from the member is required for the Company to provide the member's personal information in addition to the member's user ID.",
+          "subItems": [
+            "Reproduction, modification, adaptation, display, transmission, distribution of member posts within the Service and creation of derivative works within the scope that does not harm the nature of the work",
+            "Providing, displaying, or promoting the content of member posts to service partnership partners such as media and telecommunications companies"
+          ]
+        },
+        "If the Company intends to use members' posts by methods other than the preceding paragraph, it must obtain prior consent from members through methods such as phone, fax, email, etc.",
+        "If the service contract between the Company and a member is terminated by the member or terminated by the Company for legitimate reasons, the Company has the right to delete posts posted by the relevant member that have not been deleted."
+      ]
+    },
+    "article28": {
+      "title": "Article 28 (Service Use Restrictions)",
+      "items": [
+        "The Company may restrict the use of the Service in stages, such as warnings, temporary suspension, and permanent suspension, if a member violates the obligations under these Terms or interferes with the normal operation of the Service.",
+        "Notwithstanding the preceding paragraph, the Company may immediately suspend use permanently if relevant laws are violated, such as identity theft and payment theft in violation of the \"Resident Registration Act\", phone number theft, provision and operation interference of illegal programs in violation of the \"Copyright Act\" and \"Computer Program Protection Act\", illegal communication and hacking in violation of the \"Information and Communications Network Act\", distribution of malicious programs, and exceeding access authority.",
+        {
+          "content": "The Company may restrict the use of the Service when it discovers acts falling under the following items.",
+          "subItems": [
+            "Acts of registering false information in member information or stealing another person's user ID, password, or other personal information, or trading or providing user IDs to others",
+            "Acts of transmitting, posting, emailing, or otherwise distributing to others information, sentences, graphics, sounds, or videos that are vulgar or obscene content that violates public order and morals, or content that may infringe on another person's reputation or privacy",
+            "Acts of harassing or threatening other users, or continuously causing pain or inconvenience to specific users",
+            "Acts of changing the Company's client program without special authorization from the Company, hacking the Company's server, or arbitrarily changing part or all of the website or posted information",
+            "Acts of reproducing information obtained through the Service for purposes other than using the Service without prior approval from the Company, or using it for publication and broadcasting, or providing it to third parties",
+            "Cases where normal service operation is hindered, such as impersonating the Company's management, employees, or related persons, or intentionally interfering with the service",
+            "Cases where posts are posted that are unrelated to the services provided by the Company or are content of services provided by other competing companies",
+            "Cases where there is a request for correction from related public institutions such as the Korea Communications Standards Commission",
+            "Acts that violate all laws and regulations, such as violating all regulations established by the Company, including these Terms, or being objectively determined to be connected to crimes"
+          ]
+        },
+        "Within the scope of use restrictions under this Article, the conditions and details of restrictions are determined by the Company's use restriction policy.",
+        "Members may file an objection to use restrictions, etc. under this Article in accordance with procedures established by the Company. In this case, if the Company recognizes that the objection is justified, the Company immediately resumes the use of the Service."
+      ]
     }
   },
   "about": {
