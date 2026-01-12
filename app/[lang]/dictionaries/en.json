@@ -1211,6 +1211,21 @@
         "The Company's expression of approval includes information regarding confirmation of the member's purchase application, correction and cancellation of the purchase application, etc.",
         "When a minor enters into a purchase contract, if the legal representative does not consent, the minor or the legal representative may cancel the contract."
       ]
+    },
+    "article17": {
+      "title": "Article 17 (Payment Methods)",
+      "items": [
+        "The Company does not involve itself in any way in payments such as medical fees between partner medical institutions and members.",
+        {
+          "content": "Payment methods for goods purchased through the Service and purchase items of partner medical institutions may be made using available methods among the following. However, the Service and partner medical institutions may not collect any fees of any kind in addition to the price of goods, etc. regarding members' payment methods.",
+          "subItems": [
+            "Various card payments such as debit cards, credit cards, Naver Pay, Kakao Pay, etc.",
+            "Payment through external payment gateway (PG) using points and discount coupons",
+            "Payment by other electronic payment methods, etc."
+          ]
+        },
+        "You may use other payment methods together when using the Service in accordance with the procedures and conditions set by the Company in its operation policy."
+      ]
     }
   },
   "about": {
