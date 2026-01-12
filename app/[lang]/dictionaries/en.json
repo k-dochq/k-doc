@@ -1270,6 +1270,29 @@
         "Members can only use points for their own transactions, and in no case can they sell or transfer points to others, or engage in acts that can be considered substantially the same as selling or transferring.",
         "If a member is found to have violated the Terms or engaged in fraudulent or abusive acts, points cannot be used, and the Company may recover them."
       ]
+    },
+    "article22": {
+      "title": "Article 22 (Refund)",
+      "items": [
+        "When a procedure voucher purchased by a member cannot be used due to reasons such as closure or business suspension of partner medical institutions, the Company shall immediately notify the member who purchased it of such reason, and if payment for the pre-payment service was received in advance, refund the payment or take necessary measures for refund within 3 business days from the date of receipt.",
+        "When a procedure voucher purchased by a member cannot be provided because the sales success conditions (minimum number of participants, etc.) predetermined by partner medical institutions at the time of sale are not met, the Company shall immediately notify the member who purchased it of such reason, and refund the paid amount in accordance with the operating policy set by the Company within 3 business days from the date the reason occurred."
+      ]
+    },
+    "article23": {
+      "title": "Article 23 (Withdrawal of Offer)",
+      "items": [
+        "A purchaser who has entered into a contract for the purchase of \"Pre-payment Service\" with the \"Company\" may withdraw the offer within 365 days from the date of receiving the written document regarding the contract contents in accordance with the 『Act on Consumer Protection in Electronic Commerce, etc.』 (In cases where the supply of \"Pre-payment Service\" is made later than when such written document was received, it refers to the date on which \"Pre-payment Service\" was received or the supply of \"Pre-payment Service\" began.). However, if the Act on Consumer Protection in Electronic Commerce, etc. provides otherwise regarding withdrawal of offer, the provisions of that Act shall apply.",
+        {
+          "content": "If a purchaser has received \"Pre-payment Service\", the purchaser may not return or exchange it in any of the following cases:",
+          "subItems": [
+            "When \"Pre-payment Service\", etc. has been lost or damaged due to reasons attributable to the purchaser",
+            "When the value of \"Pre-payment Service\", etc. has significantly decreased due to the purchaser's use or partial consumption",
+            "When the provision of services has commenced (However, this does not apply to parts that have not commenced provision in the case of contracts consisting of divisible services or divisible digital content.)",
+            "Other cases prescribed as reasons for restricting withdrawal of offer in the Act on Consumer Protection in Electronic Commerce, etc. for the safety of transactions"
+          ]
+        },
+        "Notwithstanding the provisions of Paragraph 1 and Paragraph 2, if the contents of \"Pre-payment Service\" differ from the displayed or advertised contents, or are performed differently from the contract contents, the purchaser may withdraw the offer, etc. within 3 days from the date of receiving such services, etc., or within 30 days from the date on which the purchaser became aware or could have become aware of such fact."
+      ]
     }
   },
   "about": {
