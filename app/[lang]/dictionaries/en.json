@@ -1293,6 +1293,15 @@
         },
         "Notwithstanding the provisions of Paragraph 1 and Paragraph 2, if the contents of \"Pre-payment Service\" differ from the displayed or advertised contents, or are performed differently from the contract contents, the purchaser may withdraw the offer, etc. within 3 days from the date of receiving such services, etc., or within 30 days from the date on which the purchaser became aware or could have become aware of such fact."
       ]
+    },
+    "article24": {
+      "title": "Article 24 (Effects of Withdrawal of Offer, etc.)",
+      "items": [
+        "When the \"Company\" receives the return of \"Pre-payment Service\" from the purchaser, it refunds the payment for \"Pre-payment Service\", etc. that has already been received within 3 business days. In this case, if the \"Company\" delays the refund of \"Pre-payment Service\" to the purchaser, it pays delayed interest calculated by multiplying the delay period by the delayed interest rate prescribed in the Act on Consumer Protection in Electronic Commerce, etc. (However, if the return of \"Pre-payment Service\" is confirmed to be due to reasons attributable to \"Partner Medical Institutions\", the \"Company\" is exempt from liability for damages arising therefrom.)",
+        "When refunding the above payment, if the purchaser paid the price of goods, etc. using payment methods such as credit cards or electronic money, the \"Company\" immediately requests the business that provided such payment method to stop or cancel the claim for payment of \"Pre-payment Service\".",
+        "In case of withdrawal of offer, etc., the costs necessary for returning the received \"Pre-payment Service\" are borne by the purchaser. The \"Company\" does not claim penalty or damages from the purchaser on the grounds of withdrawal of offer, etc. However, if withdrawal of offer, etc. is made because the contents of \"Pre-payment Service\" differ from the displayed or advertised contents or are performed differently from the contract contents, the costs necessary for returning \"Pre-payment Service\", etc. are borne by the \"Company\".",
+        "If the purchaser bore shipping costs when receiving \"Pre-payment Service\", etc., the \"Company\" clearly indicates who bears such costs in case of withdrawal of offer so that users can easily understand."
+      ]
     }
   },
   "about": {

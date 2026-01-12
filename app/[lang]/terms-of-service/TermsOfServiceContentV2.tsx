@@ -139,6 +139,11 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
         <ArticleSection title={dict.termsOfService.article23.title}>
           <ArticleItems items={dict.termsOfService.article23.items} />
         </ArticleSection>
+
+        {/* 제24조 (청약철회 등의 효과) */}
+        <ArticleSection title={dict.termsOfService.article24.title}>
+          <ArticleItems items={dict.termsOfService.article24.items} />
+        </ArticleSection>
       </div>
     </div>
   );
