@@ -1235,6 +1235,14 @@
         "Procedure vouchers cannot be transferred and may only be used by the member who purchased them, and this content is notified to the member who purchased the relevant procedure voucher through the Payment Confirmation Notice under this Article.",
         "The Payment Confirmation Notice under this Article may be made through SNS services linked to the user's contact information, etc., and in such cases, the user may bear data charges, etc. depending on the user's communication environment or fee structure."
       ]
+    },
+    "article19": {
+      "title": "Article 19 (Use of Pre-payment)",
+      "items": [
+        "Products purchased by members through the Service can be used after identity verification procedures at partner medical institutions or locations designated by partner medical institutions.",
+        "Members can receive services from businesses only within the validity period specified in the individual sales conditions of service products in advance. Members who have purchased cannot substitute identity verification procedures with emails, text messages, or other receipts sent for the purpose of confirming service product purchases, and cannot transfer products to others or provide them as collateral without authorization. However, business members may be restricted from purchasing some products.",
+        "Pre-payment services subject to this Article have conditions for use and refund of products determined in accordance with the contents of the Terms, and members who have purchased have the responsibility to check the contents specified on our website and app and individual precautions (terms of use), and can use products according to the specified terms of use."
+      ]
     }
   },
   "about": {
