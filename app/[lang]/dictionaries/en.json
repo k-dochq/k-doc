@@ -1730,6 +1730,82 @@
             }
           ]
         }
+      },
+      "securityMeasures": {
+        "title": "8. Matters Concerning Measures to Ensure Security of Personal Information",
+        "content": "The company implements the following technical and administrative measures to protect users' personal information.",
+        "encryption": {
+          "title": "Personal Information Encryption",
+          "content": "Important information such as user passwords are encrypted and stored and managed, and personal information can only be confirmed and changed by the user themselves."
+        },
+        "hackingPrevention": {
+          "title": "Measures Against Hacking, etc.",
+          "items": [
+            "The company operates an intrusion prevention system 24 hours a day to prevent leakage and damage of users' personal information due to hacking or malicious code, controlling unauthorized access from outside, and installs antivirus programs to prevent the system from being infected with malicious code or viruses.",
+            "In addition, data is backed up regularly to prepare for damage to personal information, and encrypted communication is used to safely transmit personal information over the network.",
+            "Furthermore, the company strives to equip the maximum technical methods for safer personal information processing."
+          ]
+        },
+        "staffMinimization": {
+          "title": "Minimization and Education of Personal Information Processing Staff",
+          "content": "The company manages staff who process personal information to a minimum, and separates external internet networks and internal networks for work PCs of staff who can download personal information from the personal information processing system to reduce the possibility of personal information leakage. In addition, the company recognizes the importance of personal information through regular education for personal information handlers and frequent education for all employees."
+        },
+        "dedicatedPersonnel": {
+          "title": "Operation of Dedicated Personnel for Personal Information Protection",
+          "content": "The company operates dedicated personnel for personal information protection to protect personal information, and checks the implementation of the personal information processing policy and compliance of personal information processors, and strives to immediately correct and fix any problems found."
+        },
+        "userNotice": {
+          "content": "In addition to the above efforts, users themselves should be careful not to expose passwords, etc., to third parties. In particular, please always be careful not to leak passwords, etc., through PCs installed in public places. Users' IDs and passwords should only be used by the user themselves, and it is recommended to frequently change and manage passwords."
+        }
+      },
+      "locationInformation": {
+        "title": "9. Processing of Personal Location Information",
+        "content": "The company protects users' personal location information in compliance with the Act on the Protection and Use of Location Information. Detailed information on personal location information processing can be found in Pilman's Location-Based Service Terms of Use.",
+        "usagePurpose": {
+          "content": "The company uses personal location information for the purpose of providing the following services to personal location information subjects, and destroys personal location information without delay when the purpose of using and providing location-based services under the K-DOC Location-Based Service Terms of Use is achieved.",
+          "items": [
+            "Information search results and content provision or recommendation services using location information",
+            "Content tagging for location-based content classification",
+            "Location-based customized advertisements"
+          ]
+        },
+        "recordRetention": {
+          "content": "The company automatically records confirmation materials of location information use and provision for personal location information subjects in the location information system based on Article 16, Paragraph 2 of the Act on the Protection and Use of Location Information, and retains them for 6 months."
+        },
+        "destructionMethod": {
+          "content": "When it becomes necessary to destroy personal location information after achieving the processing purpose, the company destroys it using the following methods that cannot be recovered or reproduced.",
+          "items": [
+            "Personal information printed on paper: Shredded with a shredder or incinerated",
+            "Personal information stored in electronic file format: Deleted using technical methods that cannot reuse the records"
+          ]
+        },
+        "thirdPartyNotification": {
+          "content": "When the company provides personal location information to a third party designated by the user, it immediately notifies the user through the communication terminal device that collected the personal location information of the recipient, provision date and time, and provision purpose each time. However, in the following cases, notification is made through a communication terminal device or email address, online posting, etc., that the user has previously specified.",
+          "items": [
+            "When the communication terminal device that collected the personal location information does not have a function to receive text, voice, or video",
+            "When the user has previously requested notification through a communication terminal device other than the communication terminal device that collected the user's personal location information, or through an email address, online posting, etc."
+          ]
+        },
+        "guardianRights": {
+          "title": "Rights, Obligations, and Methods of Exercise of Guardians of Children Aged 8 or Under, etc.",
+          "content": "The company considers it as consent of the person concerned when a guardian (hereinafter referred to as \"guardian\") under Article 26, Paragraph 2 of the Act on the Protection and Use of Location Information for persons (hereinafter referred to as \"children aged 8 or under, etc.\") who fall under the following cases consents to the use or provision of personal location information for the protection of the life or body of children aged 8 or under, etc.",
+          "items": [
+            "Children aged 8 or under",
+            "Persons under adult guardianship",
+            "Persons with mental disabilities under Article 2, Paragraph 2, Item 2 of the Welfare of Persons with Disabilities Act who fall under persons with severe disabilities under Article 2, Item 2 of the Act on the Employment Promotion and Vocational Rehabilitation of Persons with Disabilities (only applicable to persons who have registered as persons with disabilities under Article 32 of the Welfare of Persons with Disabilities Act)"
+          ],
+          "additionalContent": [
+            "A guardian who wishes to consent to the use or provision of personal location information for the protection of the life or body of children aged 8 or under, etc., must submit to the company a written consent form with documents proving that they are a guardian attached.",
+            "A guardian who consents to the use or provision of personal location information of children aged 8 or under, etc., can exercise all rights of the personal location information subject."
+          ]
+        },
+        "manager": {
+          "title": "Location Information Management Officer",
+          "content": "The company designates a location information management officer to protect location information and handle complaints related to location information.",
+          "name": "Woo Jung Ho",
+          "position": "CEO",
+          "contact": "all@k-doc.kr"
+        }
       }
     }
   },

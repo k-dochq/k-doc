@@ -677,6 +677,238 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </div>
           </div>
         </div>
+
+        {/* 8. 개인정보의 안전성 확보 조치에 관한 사항 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures.title}
+          </h3>
+          <div className='flex flex-col gap-6'>
+            <p className='text-base font-normal text-neutral-700'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures.content}
+            </p>
+
+            {/* 개인정보 암호화 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures.encryption
+                    .title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures.encryption
+                    .content
+                }
+              </p>
+            </div>
+
+            {/* 해킹 등에 대비한 대책 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures
+                    .hackingPrevention.title
+                }
+              </h4>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures.hackingPrevention.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            {/* 개인정보 처리 직원의 최소화 및 교육 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures
+                    .staffMinimization.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures
+                    .staffMinimization.content
+                }
+              </p>
+            </div>
+
+            {/* 개인정보 보호전담 인력의 운영 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures
+                    .dedicatedPersonnel.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures
+                    .dedicatedPersonnel.content
+                }
+              </p>
+            </div>
+
+            {/* 이용자 안내 */}
+            <p className='text-base font-normal text-neutral-700'>
+              {
+                dict.privacyPolicy.collectionOfPersonalInformation.securityMeasures.userNotice
+                  .content
+              }
+            </p>
+          </div>
+        </div>
+
+        {/* 9. 개인 위치정보의 처리 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.title}
+          </h3>
+          <div className='flex flex-col gap-6'>
+            <p className='text-base font-normal text-neutral-700'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.content}
+            </p>
+
+            {/* 개인위치정보 이용 목적 */}
+            <div className='flex flex-col gap-2'>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.locationInformation
+                    .usagePurpose.content
+                }
+              </p>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.usagePurpose.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            {/* 위치정보 이용·제공사실 확인자료 보관 */}
+            <p className='text-base font-normal text-neutral-700'>
+              {
+                dict.privacyPolicy.collectionOfPersonalInformation.locationInformation
+                  .recordRetention.content
+              }
+            </p>
+
+            {/* 개인위치정보 파기 방법 */}
+            <div className='flex flex-col gap-2'>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.locationInformation
+                    .destructionMethod.content
+                }
+              </p>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.destructionMethod.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            {/* 개인위치정보 제3자 제공 시 통지 */}
+            <div className='flex flex-col gap-2'>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.locationInformation
+                    .thirdPartyNotification.content
+                }
+              </p>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.thirdPartyNotification.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+
+            {/* 8세 이하 아동 등의 보호의무자의 권리·의무 및 그 행사방법 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.locationInformation
+                    .guardianRights.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.locationInformation
+                    .guardianRights.content
+                }
+              </p>
+              <ul className='flex list-disc flex-col gap-2 pl-4'>
+                {dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.guardianRights.items.map(
+                  (item, index) => (
+                    <li key={index} className='text-base font-normal text-neutral-700'>
+                      {item}
+                    </li>
+                  ),
+                )}
+              </ul>
+              {dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.guardianRights.additionalContent.map(
+                (item, index) => (
+                  <p key={index} className='text-base font-normal text-neutral-700'>
+                    {item}
+                  </p>
+                ),
+              )}
+            </div>
+
+            {/* 위치정보 관리책임자 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
+                    .title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
+                    .content
+                }
+              </p>
+              <div className='flex flex-col gap-1 pl-4'>
+                <p className='text-base font-normal text-neutral-700'>
+                  {
+                    dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
+                      .name
+                  }
+                </p>
+                <p className='text-base font-normal text-neutral-700'>
+                  {
+                    dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
+                      .position
+                  }
+                </p>
+                <p className='text-base font-normal text-neutral-700'>
+                  {
+                    dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
+                      .contact
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
