@@ -1,6 +1,7 @@
 'use client';
 
 import { SubAgreeCheckedIcon, SubAgreeUncheckedIcon, ArrowRightIcon } from './AgreementIcons';
+import { LocaleLink } from 'shared/ui/locale-link';
 
 interface SubAgreementItemProps {
   checked: boolean;
@@ -17,9 +18,12 @@ export function SubAgreementItem({
   disabled = false,
   link,
 }: SubAgreementItemProps) {
+  const isExternalLink =
+    link?.startsWith('http') || link?.startsWith('mailto:') || link?.startsWith('tel:');
+
   const handleArrowClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (link) {
+    if (link && isExternalLink) {
       window.open(link, '_blank', 'noopener,noreferrer');
     }
   };
@@ -38,15 +42,23 @@ export function SubAgreementItem({
         <span className='min-w-0 truncate text-sm text-neutral-700'>{label}</span>
       </button>
       {link && (
-        <button
-          type='button'
-          onClick={handleArrowClick}
-          disabled={disabled}
-          className='ml-2 shrink-0'
-          aria-label='View details'
-        >
-          <ArrowRightIcon />
-        </button>
+        <>
+          {isExternalLink ? (
+            <button
+              type='button'
+              onClick={handleArrowClick}
+              disabled={disabled}
+              className='ml-2 shrink-0'
+              aria-label='View details'
+            >
+              <ArrowRightIcon />
+            </button>
+          ) : (
+            <LocaleLink href={link} className='ml-2 shrink-0' aria-label='View details'>
+              <ArrowRightIcon />
+            </LocaleLink>
+          )}
+        </>
       )}
     </div>
   );
