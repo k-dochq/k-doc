@@ -1191,6 +1191,26 @@
         },
         "When the Company needs to provide or entrust purchaser personal information to a third party, it must obtain the user's consent at the time of actual purchase application, and does not obtain comprehensive consent in advance at the time of membership registration. At this time, the Company must specify to users the personal information items provided, recipients, purposes of personal information use by recipients, retention and use periods, etc. However, this shall be in accordance with related laws and regulations, such as cases of personal information processing entrustment under the 「Act on Promotion of Information and Communications Network Utilization and Information Protection, etc.」."
       ]
+    },
+    "article16": {
+      "title": "Article 16 (Formation of Purchase Contract)",
+      "items": [
+        {
+          "content": "The Company may not approve or may cancel purchase applications under Article 15 if they fall under any of the following, or if the Company becomes aware of this afterwards:",
+          "subItems": [
+            "When there are falsehoods, omissions, or errors in the application contents",
+            "When a minor purchases goods or services prohibited under the Youth Protection Act",
+            "When it is a transaction for the purpose of commercial activities (resale), or when it is determined to be a purchase for the purpose of commercial activities (resale) based on transaction circumstances, and objective materials are requested to prove personal consumption purposes but cannot be proven",
+            "When using payment methods such as credit cards, mobile phones, points, etc. to disguise purchases (card fraud, etc.)",
+            "When continuing fraudulent transactions for the purpose of acquiring discount coupons, points, etc.",
+            "Other cases where approving the purchase application is determined to significantly hinder the Company technically",
+            "When the purchase application violates related laws"
+          ]
+        },
+        "The purchase contract is deemed to be formed at the time when the Company's approval reaches the member in the form of a receipt confirmation notice under Article 13, Paragraph 1.",
+        "The Company's expression of approval includes information regarding confirmation of the member's purchase application, correction and cancellation of the purchase application, etc.",
+        "When a minor enters into a purchase contract, if the legal representative does not consent, the minor or the legal representative may cancel the contract."
+      ]
     }
   },
   "about": {
