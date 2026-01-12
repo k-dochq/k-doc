@@ -1514,6 +1514,17 @@
           "New service development and service improvement, building service environment for privacy protection",
           "Statistics on service use records, access frequency, and service use"
         ]
+      },
+      "provisionAndConsignment": {
+        "title": "3. Provision and Consignment of Personal Information",
+        "thirdPartyProvision": {
+          "title": "Third-Party Provision of Personal Information",
+          "content": "Pilman does not provide users' personal information to third parties except when users have separately consented or when required by law."
+        },
+        "processingConsignment": {
+          "title": "Consignment of Personal Information Processing",
+          "content": "Pilman may consign some personal information processing tasks to external parties when necessary to provide services. Pilman manages and supervises whether consigned companies comply with personal information protection laws, including security measures and restrictions on re-consignment."
+        }
       }
     }
   },

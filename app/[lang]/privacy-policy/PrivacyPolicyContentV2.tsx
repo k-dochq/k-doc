@@ -274,6 +274,46 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </ul>
           </div>
         </div>
+
+        {/* 3. 개인정보의 제공 및 위탁 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment.title}
+          </h3>
+          <div className='flex flex-col gap-6'>
+            {/* 개인정보 제3자 제공 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                    .thirdPartyProvision.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                    .thirdPartyProvision.content
+                }
+              </p>
+            </div>
+
+            {/* 개인정보 처리 위탁 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                    .processingConsignment.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                    .processingConsignment.content
+                }
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
