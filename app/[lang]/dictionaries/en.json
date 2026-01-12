@@ -1523,7 +1523,71 @@
         },
         "processingConsignment": {
           "title": "Consignment of Personal Information Processing",
-          "content": "Pilman may consign some personal information processing tasks to external parties when necessary to provide services. Pilman manages and supervises whether consigned companies comply with personal information protection laws, including security measures and restrictions on re-consignment."
+          "content": "Pilman may consign some personal information processing tasks to external parties when necessary to provide services. Pilman manages and supervises whether consigned companies comply with personal information protection laws, including security measures and restrictions on re-consignment.",
+          "koreaStatus": {
+            "title": "Personal Information Processing Consignment Status (Korea)",
+            "table": {
+              "headers": {
+                "consignee": "Consignee",
+                "workDetails": "Details of Consigned Work"
+              },
+              "rows": [
+                {
+                  "consignee": "Amazon Web Service",
+                  "workDetails": "System provision and management"
+                },
+                {
+                  "consignee": "Apple",
+                  "workDetails": "Check SNS subscription status and account information"
+                },
+                {
+                  "consignee": "Google",
+                  "workDetails": "Check SNS subscription status and account information"
+                }
+              ]
+            }
+          },
+          "overseasStatus": {
+            "title": "Personal Information Processing Consignment Status (Countries Other Than Korea)",
+            "table": {
+              "rows": [
+                {
+                  "label": "Consignee",
+                  "value": "Google"
+                },
+                {
+                  "label": "Purpose of Transfer",
+                  "value": "Service usage statistics and analysis"
+                },
+                {
+                  "label": "Entrusted Personal Information Items",
+                  "value": "Gender, region, sign-up date, in-app behavior logs"
+                },
+                {
+                  "label": "Entrustment Date and Method",
+                  "value": "Transfer via network at the time of service use"
+                },
+                {
+                  "label": "Company Location (Country)",
+                  "value": "USA (1600 Amphitheatre Parkway Mountain View, California 94043 USA)"
+                },
+                {
+                  "label": "Contact Information",
+                  "value": "google_da_kr@dagent.co.kr"
+                },
+                {
+                  "label": "Personal Information Usage Period",
+                  "value": "Matches the retention period specified in this personal information processing policy"
+                }
+              ]
+            }
+          },
+          "overseasNotice": {
+            "items": [
+              "Users can refuse the transfer of personal information abroad through the company's personal information protection officer and responsible department.",
+              "If a user refuses the transfer of personal information abroad, the company excludes that user's personal information from overseas transfer targets. In this case, the use of services that necessarily involve the transfer of personal information abroad may be restricted."
+            ]
+          }
         }
       }
     }

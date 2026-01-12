@@ -1517,7 +1517,71 @@
         },
         "processingConsignment": {
           "title": "個人資訊處理委託",
-          "content": "必滿為提供服務所需時，可將個人資訊處理業務中的一部分委託外部處理。必滿管理並監督受託企業是否遵守個人資訊保護相關法令，包括個人資訊安全性確保措施及再委託限制等。"
+          "content": "必滿為提供服務所需時，可將個人資訊處理業務中的一部分委託外部處理。必滿管理並監督受託企業是否遵守個人資訊保護相關法令，包括個人資訊安全性確保措施及再委託限制等。",
+          "koreaStatus": {
+            "title": "個人資訊處理委託現況（韓國）",
+            "table": {
+              "headers": {
+                "consignee": "受託企業",
+                "workDetails": "委託業務內容"
+              },
+              "rows": [
+                {
+                  "consignee": "Amazon Web Service",
+                  "workDetails": "系統提供及管理"
+                },
+                {
+                  "consignee": "Apple",
+                  "workDetails": "SNS註冊與否及帳號資訊確認"
+                },
+                {
+                  "consignee": "Google",
+                  "workDetails": "SNS註冊與否及帳號資訊確認"
+                }
+              ]
+            }
+          },
+          "overseasStatus": {
+            "title": "個人資訊處理委託現況（韓國外國家）",
+            "table": {
+              "rows": [
+                {
+                  "label": "受託企業",
+                  "value": "Google"
+                },
+                {
+                  "label": "移轉目的",
+                  "value": "服務使用統計及分析"
+                },
+                {
+                  "label": "委託個人資訊項目",
+                  "value": "性別、地區、註冊日期、應用程式內行為記錄"
+                },
+                {
+                  "label": "委託時間及方法",
+                  "value": "服務使用時點透過網路傳輸"
+                },
+                {
+                  "label": "企業位置（國家）",
+                  "value": "美國（1600 Amphitheatre Parkway Mountain View, California 94043 USA）"
+                },
+                {
+                  "label": "聯絡方式",
+                  "value": "google_da_kr@dagent.co.kr"
+                },
+                {
+                  "label": "個人資訊使用期間",
+                  "value": "與本個人資訊處理方針所規定之保管期間一致"
+                }
+              ]
+            }
+          },
+          "overseasNotice": {
+            "items": [
+              "使用者可透過公司的個人資訊保護負責人及負責部門拒絕個人資訊的國外移轉。",
+              "使用者拒絕個人資訊的國外移轉時，公司將該使用者的個人資訊排除於國外移轉對象。此情況下，公司服務中個人資訊國外移轉為必要服務的使用可能受到限制。"
+            ]
+          }
         }
       }
     }

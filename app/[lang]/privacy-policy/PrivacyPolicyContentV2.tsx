@@ -298,19 +298,120 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </div>
 
             {/* 개인정보 처리 위탁 */}
-            <div className='flex flex-col gap-2'>
-              <h4 className='text-lg font-semibold text-neutral-700'>
-                {
-                  dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
-                    .processingConsignment.title
-                }
-              </h4>
-              <p className='text-base font-normal text-neutral-700'>
-                {
-                  dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
-                    .processingConsignment.content
-                }
-              </p>
+            <div className='flex flex-col gap-4'>
+              <div className='flex flex-col gap-2'>
+                <h4 className='text-lg font-semibold text-neutral-700'>
+                  {
+                    dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                      .processingConsignment.title
+                  }
+                </h4>
+                <p className='text-base font-normal text-neutral-700'>
+                  {
+                    dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                      .processingConsignment.content
+                  }
+                </p>
+              </div>
+
+              {/* 개인정보 처리 위탁 현황(한국) */}
+              <div className='flex flex-col gap-2'>
+                <h5 className='text-lg font-semibold text-neutral-700'>
+                  {
+                    dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                      .processingConsignment.koreaStatus.title
+                  }
+                </h5>
+                <div className='flex flex-col border-t border-neutral-400'>
+                  {/* 테이블 헤더 */}
+                  <div className='flex border-b border-neutral-200 bg-neutral-100'>
+                    <div className='flex w-[122px] shrink-0 items-center px-3 py-4'>
+                      <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                        {
+                          dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                            .processingConsignment.koreaStatus.table.headers.consignee
+                        }
+                      </p>
+                    </div>
+                    <div className='flex w-0 shrink-0 items-center justify-center'>
+                      <div className='h-full w-px bg-neutral-200' />
+                    </div>
+                    <div className='flex flex-1 items-center px-3 py-4'>
+                      <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                        {
+                          dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                            .processingConsignment.koreaStatus.table.headers.workDetails
+                        }
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* 테이블 본문 */}
+                  {dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment.processingConsignment.koreaStatus.table.rows.map(
+                    (row, index) => (
+                      <div key={index} className='flex border-b border-neutral-200'>
+                        <div className='flex w-[122px] shrink-0 items-center px-3 py-4'>
+                          <p className='text-sm leading-5 font-normal text-neutral-500'>
+                            {row.consignee}
+                          </p>
+                        </div>
+                        <div className='flex w-0 shrink-0 items-center justify-center'>
+                          <div className='h-full w-px bg-neutral-200' />
+                        </div>
+                        <div className='flex flex-1 items-center px-3 py-4'>
+                          <p className='text-sm leading-5 font-normal text-neutral-500'>
+                            {row.workDetails}
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div>
+
+              {/* 개인정보 처리 위탁 현황(한국 외 국가) */}
+              <div className='flex flex-col gap-2'>
+                <h5 className='text-lg font-semibold text-neutral-700'>
+                  {
+                    dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
+                      .processingConsignment.overseasStatus.title
+                  }
+                </h5>
+                <div className='flex flex-col border-t border-neutral-400'>
+                  {dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment.processingConsignment.overseasStatus.table.rows.map(
+                    (row, index) => (
+                      <div key={index} className='flex border-b border-neutral-200'>
+                        <div className='flex w-[106px] shrink-0 items-center border-b border-neutral-200 bg-neutral-100 px-3 py-4'>
+                          <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                            {row.label}
+                          </p>
+                        </div>
+                        <div className='flex w-0 shrink-0 items-center justify-center'>
+                          <div className='h-full w-px bg-neutral-200' />
+                        </div>
+                        <div className='flex flex-1 items-center px-3 py-4'>
+                          <p className='text-sm leading-5 font-normal text-neutral-500'>
+                            {row.value}
+                          </p>
+                        </div>
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div>
+
+              {/* 국외 이전 관련 안내 */}
+              <div className='flex flex-col gap-2'>
+                <ul className='flex list-disc flex-col gap-2 pl-4'>
+                  {dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment.processingConsignment.overseasNotice.items.map(
+                    (item, index) => (
+                      <li key={index} className='text-base font-normal text-neutral-700'>
+                        {item}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
