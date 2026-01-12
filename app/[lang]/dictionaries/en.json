@@ -1664,6 +1664,22 @@
           "The company processes personal information that has been terminated or deleted at the request of users or legal representatives in accordance with the personal information processing policy, and processes it so that it cannot be viewed or used for other purposes.",
           "If a user wishes to delete personal information, they can delete personal information through membership withdrawal."
         ]
+      },
+      "autoCollectionDevice": {
+        "title": "6. Matters Concerning Automatic Collection Devices for Personal Information (Installation, Operation, and Rejection)",
+        "content": "Cookies may be installed and operated to provide web-based services.",
+        "cookieDefinition": {
+          "title": "What are Cookies",
+          "content": "Cookies are text files sent from a website to a user's browser when the user accesses the website, and are stored on the user's PC."
+        },
+        "usagePurpose": {
+          "title": "Purpose of Use",
+          "content": "Cookies are used to store and retrieve user information to provide personalized and customized services. When visiting a website, cookies stored on the user's device are read to maintain the user's settings and provide customized services. Cookies do not automatically or actively collect information that identifies individuals, and users can refuse or delete such cookies at any time. However, if you refuse to store cookies, use of some services may be difficult."
+        },
+        "cookieRejection": {
+          "title": "Cookie Collection Rejection",
+          "content": "Users have the right to choose whether to install cookies, and can allow or reject cookies through cookie settings in the web browser option 'Settings > Privacy > Cookies and other site data'. However, if you refuse to install cookies, web use may become inconvenient, and use of some services that require login may be difficult."
+        }
       }
     }
   },

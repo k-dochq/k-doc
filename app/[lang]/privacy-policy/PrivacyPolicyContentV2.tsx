@@ -545,6 +545,66 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </ol>
           </div>
         </div>
+
+        {/* 6. 개인정보 자동 수집 장치에 관한 사항 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice.title}
+          </h3>
+          <div className='flex flex-col gap-6'>
+            <p className='text-base font-normal text-neutral-700'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice.content}
+            </p>
+
+            {/* 쿠키란 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice
+                    .cookieDefinition.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice
+                    .cookieDefinition.content
+                }
+              </p>
+            </div>
+
+            {/* 사용목적 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice
+                    .usagePurpose.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice
+                    .usagePurpose.content
+                }
+              </p>
+            </div>
+
+            {/* 쿠키 수집 거부 */}
+            <div className='flex flex-col gap-2'>
+              <h4 className='text-lg font-semibold text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice
+                    .cookieRejection.title
+                }
+              </h4>
+              <p className='text-base font-normal text-neutral-700'>
+                {
+                  dict.privacyPolicy.collectionOfPersonalInformation.autoCollectionDevice
+                    .cookieRejection.content
+                }
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
