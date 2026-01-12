@@ -76,35 +76,6 @@ export async function getAllReviews({
       ];
     }
 
-    // 인기순일 경우 최근 60일 이내 작성된 리뷰만 필터링
-    if (sort === 'popular') {
-      const sixtyDaysAgo = new Date();
-      sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
-
-      // 기존 AND 조건이 배열이면 추가하고, 없으면 새로 생성
-      if (whereCondition.AND && Array.isArray(whereCondition.AND)) {
-        whereCondition.AND.push({
-          createdAt: {
-            gte: sixtyDaysAgo,
-          },
-        });
-      } else if (whereCondition.AND) {
-        // AND가 단일 객체인 경우 배열로 변환
-        whereCondition.AND = [
-          whereCondition.AND,
-          {
-            createdAt: {
-              gte: sixtyDaysAgo,
-            },
-          },
-        ];
-      } else {
-        whereCondition.createdAt = {
-          gte: sixtyDaysAgo,
-        };
-      }
-    }
-
     // 정렬 조건 구성
     const orderBy = (() => {
       switch (sort) {
