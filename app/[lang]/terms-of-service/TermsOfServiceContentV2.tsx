@@ -552,6 +552,20 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
             ))}
           </div>
         </div>
+
+        {/* 제21조 (포인트) */}
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold text-neutral-700'>
+            {dict.termsOfService.article21.title}
+          </h2>
+          <div className='flex flex-col gap-2'>
+            {dict.termsOfService.article21.items.map((item, index) => (
+              <p key={index} className='text-base leading-6 font-normal text-neutral-700'>
+                {index + 1}. {item}
+              </p>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
