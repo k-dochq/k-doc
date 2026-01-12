@@ -253,6 +253,27 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </ul>
           </div>
         </div>
+
+        {/* 2. 개인정보의 이용 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.useOfPersonalInformation.title}
+          </h3>
+          <div className='flex flex-col gap-2'>
+            <p className='text-base font-normal text-neutral-700'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.useOfPersonalInformation.content}
+            </p>
+            <ul className='flex list-disc flex-col gap-2 pl-4'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.useOfPersonalInformation.items.map(
+                (item, index) => (
+                  <li key={index} className='text-base font-normal text-neutral-700'>
+                    {item}
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1501,6 +1501,19 @@
         "items": [
           "Device information (OS, device ID, phone model, device model name), IP address, cookies, visit date/time, fraudulent use records, service use records, etc., during PC web, mobile web/app use"
         ]
+      },
+      "useOfPersonalInformation": {
+        "title": "2. Use of Personal Information",
+        "content": "Pilman uses personal information only for the following purposes: member management, service development, provision and improvement, and building a safe internet usage environment for Pilman and all related services (including mobile web/app).",
+        "items": [
+          "Member management such as member identification, membership intention confirmation, identity/age verification, user identification",
+          "Handling inquiries or complaints, delivering notices",
+          "Content transmission or fee settlement when using paid services",
+          "Prevention and sanctions against acts that interfere with the smooth operation of services (including account theft and fraudulent use)",
+          "Utilization in marketing such as customized content recommendations and events, advertisements through estimation of demographic characteristics and user interests, preferences, and tendencies",
+          "New service development and service improvement, building service environment for privacy protection",
+          "Statistics on service use records, access frequency, and service use"
+        ]
       }
     }
   },
