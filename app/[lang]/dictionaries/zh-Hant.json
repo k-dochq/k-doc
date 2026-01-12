@@ -939,6 +939,39 @@
     "contactUs": "聯絡我們",
     "dataRequest": "請求編輯/刪除訊息"
   },
+  "privacyConsent": {
+    "title": "個人資訊收集/使用同意",
+    "table": {
+      "headers": {
+        "purpose": "目的",
+        "items": "項目",
+        "retentionPeriod": "保有及使用期間"
+      },
+      "rows": [
+        {
+          "purpose": "會員註冊、使用者識別等會員管理",
+          "items": {
+            "required": "電子郵件地址/密碼/護照英文姓名",
+            "optional": "國籍/性別/出生日期/手機號碼"
+          },
+          "retentionPeriod": "會員退會時為止"
+        },
+        {
+          "purpose": "使用諮詢服務時",
+          "items": {
+            "required": "護照英文姓名/國籍/性別/出生日期/手機號碼/預約希望日期時間",
+            "optional": "詢問內容"
+          },
+          "retentionPeriod": "會員退會時為止"
+        }
+      ]
+    },
+    "notice": "可拒絕同意如上所述收集/使用個人資訊，若拒絕同意，服務使用可能受到限制。",
+    "tableLabels": {
+      "required": "[必填]",
+      "optional": "[選填]"
+    }
+  },
   "termsOfService": {
     "article1": {
       "title": "第1條（目的）",

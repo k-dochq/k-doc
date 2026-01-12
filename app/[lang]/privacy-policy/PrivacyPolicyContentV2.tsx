@@ -7,7 +7,7 @@ interface PrivacyPolicyContentV2Props {
   dict: Dictionary;
 }
 
-export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Props) {
+export function PrivacyPolicyContentV2({ lang: _lang, dict }: PrivacyPolicyContentV2Props) {
   return (
     <div className='px-5 pt-8 pb-20'>
       <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.footer.privacyPolicy}</h1>

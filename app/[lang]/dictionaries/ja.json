@@ -940,6 +940,39 @@
     "contactUs": "お問い合わせ",
     "dataRequest": "情報修正/削除リクエスト"
   },
+  "privacyConsent": {
+    "title": "個人情報収集/利用同意",
+    "table": {
+      "headers": {
+        "purpose": "目的",
+        "items": "項目",
+        "retentionPeriod": "保有および利用期間"
+      },
+      "rows": [
+        {
+          "purpose": "会員登録、利用者識別など会員管理",
+          "items": {
+            "required": "メールアドレス/パスワード/パスポート英文名",
+            "optional": "国籍/性別/生年月日/携帯電話番号"
+          },
+          "retentionPeriod": "会員脱退時まで"
+        },
+        {
+          "purpose": "相談サービス利用時",
+          "items": {
+            "required": "パスポート英文名/国籍/性別/生年月日/携帯電話番号/予約希望日時",
+            "optional": "問い合わせ内容"
+          },
+          "retentionPeriod": "会員脱退時まで"
+        }
+      ]
+    },
+    "notice": "上記のように個人情報を収集/利用することに同意を拒否することができ、同意を拒否する場合、サービスの利用が制限される場合があります。",
+    "tableLabels": {
+      "required": "[必須]",
+      "optional": "[選択]"
+    }
+  },
   "termsOfService": {
     "article1": {
       "title": "第1条（目的）",

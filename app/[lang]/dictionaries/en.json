@@ -941,6 +941,39 @@
     "contactUs": "Contact Us",
     "dataRequest": "Request Edit/Deletion"
   },
+  "privacyConsent": {
+    "title": "Personal Information Collection/Use Consent",
+    "table": {
+      "headers": {
+        "purpose": "Purpose",
+        "items": "Items",
+        "retentionPeriod": "Retention and Use Period"
+      },
+      "rows": [
+        {
+          "purpose": "Member registration, user identification, etc., for member management",
+          "items": {
+            "required": "Email address/Password/Passport English name",
+            "optional": "Nationality/Gender/Date of birth/Mobile phone number"
+          },
+          "retentionPeriod": "Until member withdrawal"
+        },
+        {
+          "purpose": "When using consultation services",
+          "items": {
+            "required": "Passport English name/Nationality/Gender/Date of birth/Mobile phone number/Desired reservation date and time",
+            "optional": "Inquiry details"
+          },
+          "retentionPeriod": "Until member withdrawal"
+        }
+      ]
+    },
+    "notice": "You can refuse to consent to the collection and use of personal information as described above, and if you refuse to consent, use of the service may be restricted.",
+    "tableLabels": {
+      "required": "[Required]",
+      "optional": "[Optional]"
+    }
+  },
   "termsOfService": {
     "article1": {
       "title": "Article 1 (Purpose)",

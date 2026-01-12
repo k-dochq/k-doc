@@ -1,5 +1,3 @@
-import { type Dictionary } from 'shared/model/types';
-
 interface ArticleSectionProps {
   title: string;
   children: React.ReactNode;

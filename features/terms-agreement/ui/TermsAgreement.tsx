@@ -125,14 +125,12 @@ export function TermsAgreement({ lang, dict, onAgreementChange }: TermsAgreement
           <label htmlFor='privacyPolicy' className='text-sm text-neutral-900'>
             {dict.auth?.signup?.termsAgreement?.privacyPolicy || '개인정보 수집/이용 동의 (필수)'}
           </label>
-          <a
+          <LocaleLink
             href={getPrivacyPolicyLink(lang)}
-            target='_blank'
-            rel='noopener noreferrer'
             className='text-sm text-neutral-500 transition-colors hover:text-neutral-700'
           >
             {'>'}
-          </a>
+          </LocaleLink>
         </div>
 
         {/* 이벤트/서비스 혜택 알림 */}

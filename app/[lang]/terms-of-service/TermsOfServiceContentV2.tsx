@@ -8,7 +8,7 @@ interface TermsOfServiceContentV2Props {
   dict: Dictionary;
 }
 
-export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2Props) {
+export function TermsOfServiceContentV2({ lang: _lang, dict }: TermsOfServiceContentV2Props) {
   return (
     <div className='px-5 pt-8 pb-20'>
       <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.footer.termsOfService}</h1>

@@ -30,14 +30,12 @@ export function FooterPolicyLinks({ lang, dict }: FooterPolicyLinksProps) {
 
       {/* 두 번째 라인: 개인정보 처리방침 | 정보 수정/삭제 요청 */}
       <div className='flex items-center justify-between'>
-        <a
+        <LocaleLink
           href={getPrivacyPolicyLink(lang)}
-          target='_blank'
-          rel='noopener noreferrer'
           className='transition-colors hover:text-neutral-800'
         >
           {dict.footer.privacyPolicy}
-        </a>
+        </LocaleLink>
         <a
           href={getDataRequestLink(lang)}
           target='_blank'

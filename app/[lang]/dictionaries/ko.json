@@ -939,6 +939,39 @@
     "contactUs": "Contact us",
     "dataRequest": "정보 수정/삭제 요청"
   },
+  "privacyConsent": {
+    "title": "개인정보 수집/이용 동의",
+    "table": {
+      "headers": {
+        "purpose": "목적",
+        "items": "항목",
+        "retentionPeriod": "보유 및 이용 기간"
+      },
+      "rows": [
+        {
+          "purpose": "회원 가입, 이용자 식별 등 회원 관리",
+          "items": {
+            "required": "이메일 주소/비밀번호/여권 영문이름",
+            "optional": "국적/성별/생년월일/휴대전화번호"
+          },
+          "retentionPeriod": "회원 탈퇴시 까지"
+        },
+        {
+          "purpose": "상담 서비스 이용시",
+          "items": {
+            "required": "여권 영문이름/국적/성별/생년월일/휴대전화번호/예약희망일시",
+            "optional": "문의내용"
+          },
+          "retentionPeriod": "회원 탈퇴시 까지"
+        }
+      ]
+    },
+    "notice": "위와 같이 개인정보를 수집/이용하는데 동의를 거부할 수 있으며, 동의를 거절하는 경우 서비스 이용이 제한될 수 있습니다.",
+    "tableLabels": {
+      "required": "[필수]",
+      "optional": "[선택]"
+    }
+  },
   "termsOfService": {
     "article1": {
       "title": "제1조 (목적)",
