@@ -1654,6 +1654,16 @@
             ]
           }
         }
+      },
+      "userRights": {
+        "title": "5. Rights of Users and Legal Representatives",
+        "content": "Users or legal representatives can exercise their rights related to personal information protection against the company at any time. If users or legal representatives do not agree to the company's personal information processing, they can request withdrawal of consent or membership withdrawal. However, in this case, use of some or all services may be difficult.",
+        "items": [
+          "To view or modify personal information, use \"Personal Information Change\" (or 'Member Information Modification', etc.), and to withdraw membership, use the \"Membership Withdrawal\" function provided in the app.",
+          "If a user requests correction of errors in personal information, the company will not use or provide the personal information until the correction is completed. Also, if incorrect personal information has already been provided to a third party, the company will notify the third party of the correction processing results without delay so that the correction can be made.",
+          "The company processes personal information that has been terminated or deleted at the request of users or legal representatives in accordance with the personal information processing policy, and processes it so that it cannot be viewed or used for other purposes.",
+          "If a user wishes to delete personal information, they can delete personal information through membership withdrawal."
+        ]
       }
     }
   },
