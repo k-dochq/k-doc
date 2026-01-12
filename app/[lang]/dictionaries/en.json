@@ -1387,6 +1387,29 @@
         "Within the scope of use restrictions under this Article, the conditions and details of restrictions are determined by the Company's use restriction policy.",
         "Members may file an objection to use restrictions, etc. under this Article in accordance with procedures established by the Company. In this case, if the Company recognizes that the objection is justified, the Company immediately resumes the use of the Service."
       ]
+    },
+    "article29": {
+      "title": "Article 29 (Compensation for Damages)",
+      "items": [
+        "If the \"Company\" or \"Member\" violates relevant laws and regulations and these Terms, etc., causing damage to the other party, the party at fault must compensate for such damage."
+      ]
+    },
+    "article30": {
+      "title": "Article 30 (Ownership of Rights)",
+      "items": [
+        "The copyright and intellectual property rights for the Service belong to the Company. That is, the Company owns or has ownership or usage rights to all copyrights and other intellectual property rights related to trademarks, service marks, logos, etc. related to the services provided by the Company, such as the design of the services provided by the Company, texts, scripts, graphics created by the Company, and functions for mutual transmission between members, in accordance with the laws of the Republic of Korea and foreign countries. However, members' posts and works provided in accordance with partnership agreements are excluded.",
+        "Members do not own the Service or hold copyrights to the Service due to these Terms, but are only granted the right to use the Service to use accounts, IDs, content, etc. in accordance with the terms of use from the Company, and members cannot transfer, sell, provide as collateral, or otherwise dispose of these, and can only use them for personal purposes to obtain information.",
+        "Except for explicitly permitted content, members cannot copy or distribute member status information obtained through the Service for commercial purposes, including using, copying, and distributing texts, scripts, and graphics created by the Company, and functions for mutual transmission between members.",
+        "Members must not use information obtained through the use of the Service for commercial purposes or allow third parties to use it through reproduction, transmission, publication, distribution, broadcasting, or other methods without prior approval from the Company."
+      ]
+    },
+    "article31": {
+      "title": "Article 31 (Governing Law and Jurisdiction)",
+      "items": [
+        "The laws of the Republic of Korea apply to the interpretation of these Terms and disputes between the Company and members.",
+        "Lawsuits between members and the Company arising from the use of the Service are filed with the competent court under the Civil Procedure Act.",
+        "These Terms take effect from May 1, 2024."
+      ]
     }
   },
   "about": {

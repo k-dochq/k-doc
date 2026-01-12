@@ -164,6 +164,21 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
         <ArticleSection title={dict.termsOfService.article28.title}>
           <ArticleItems items={dict.termsOfService.article28.items} />
         </ArticleSection>
+
+        {/* 제29조 (손해배상) */}
+        <ArticleSection title={dict.termsOfService.article29.title}>
+          <ArticleItems items={dict.termsOfService.article29.items} />
+        </ArticleSection>
+
+        {/* 제30조 (권리의 귀속) */}
+        <ArticleSection title={dict.termsOfService.article30.title}>
+          <ArticleItems items={dict.termsOfService.article30.items} />
+        </ArticleSection>
+
+        {/* 제31조 (준거법 및 관할법원) */}
+        <ArticleSection title={dict.termsOfService.article31.title}>
+          <ArticleItems items={dict.termsOfService.article31.items} />
+        </ArticleSection>
       </div>
     </div>
   );
