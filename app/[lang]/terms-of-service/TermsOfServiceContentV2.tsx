@@ -306,6 +306,44 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
             })}
           </div>
         </div>
+
+        {/* 제12조 (책임제한) */}
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold text-neutral-700'>
+            {dict.termsOfService.article12.title}
+          </h2>
+          <div className='flex flex-col gap-2'>
+            {dict.termsOfService.article12.items.map((item, index) => {
+              if (typeof item === 'string') {
+                return (
+                  <p key={index} className='text-base leading-6 font-normal text-neutral-700'>
+                    {index + 1}. {item}
+                  </p>
+                );
+              } else {
+                return (
+                  <div key={index} className='flex flex-col gap-2'>
+                    <p className='text-base leading-6 font-normal text-neutral-700'>
+                      {index + 1}. {item.content}
+                    </p>
+                    {item.subItems && (
+                      <div className='flex flex-col gap-1 pl-4'>
+                        {item.subItems.map((subItem, subIndex) => (
+                          <p
+                            key={subIndex}
+                            className='text-base leading-6 font-normal text-neutral-700'
+                          >
+                            {subIndex + 1}) {subItem}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
