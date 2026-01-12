@@ -31,20 +31,20 @@ export const POLICY_LINKS = {
 
 /**
  * 언어에 따른 서비스 이용약관 링크를 반환합니다.
- * @param locale 언어 설정
- * @returns 해당 언어의 서비스 이용약관 링크
+ * @param locale 언어 설정 (LocaleLink 사용 시에는 무시됨)
+ * @returns 서비스 이용약관 내부 페이지 경로
  */
-export const getTermsOfServiceLink = (locale: Locale): string => {
-  return POLICY_LINKS.termsOfService[locale] as string;
+export const getTermsOfServiceLink = (_locale: Locale): string => {
+  return '/terms-of-service';
 };
 
 /**
- * 언어에 따른 개인정보처리방침 링크를 반환합니다.
- * @param locale 언어 설정
- * @returns 해당 언어의 개인정보처리방침 링크
+ * 언어에 따른 개인정보 수집/이용 동의 링크를 반환합니다.
+ * @param locale 언어 설정 (LocaleLink 사용 시에는 무시됨)
+ * @returns 개인정보 수집/이용 동의 내부 페이지 경로
  */
-export const getPrivacyPolicyLink = (locale: Locale): string => {
-  return POLICY_LINKS.privacyPolicy[locale] as string;
+export const getPrivacyPolicyLink = (_locale: Locale): string => {
+  return '/privacy-consent';
 };
 
 /**

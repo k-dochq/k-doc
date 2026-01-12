@@ -941,6 +941,940 @@
     "contactUs": "Contact Us",
     "dataRequest": "Request Edit/Deletion"
   },
+  "privacyConsent": {
+    "title": "Personal Information Collection/Use Consent",
+    "table": {
+      "headers": {
+        "purpose": "Purpose",
+        "items": "Items",
+        "retentionPeriod": "Retention and Use Period"
+      },
+      "rows": [
+        {
+          "purpose": "Member registration, user identification, etc., for member management",
+          "items": {
+            "required": "Email address/Password/Passport English name",
+            "optional": "Nationality/Gender/Date of birth/Mobile phone number"
+          },
+          "retentionPeriod": "Until member withdrawal"
+        },
+        {
+          "purpose": "When using consultation services",
+          "items": {
+            "required": "Passport English name/Nationality/Gender/Date of birth/Mobile phone number/Desired reservation date and time",
+            "optional": "Inquiry details"
+          },
+          "retentionPeriod": "Until member withdrawal"
+        }
+      ]
+    },
+    "notice": "You can refuse to consent to the collection and use of personal information as described above, and if you refuse to consent, use of the service may be restricted.",
+    "tableLabels": {
+      "required": "[Required]",
+      "optional": "[Optional]"
+    }
+  },
+  "termsOfService": {
+    "article1": {
+      "title": "Article 1 (Purpose)",
+      "content": "These Terms of Service (hereinafter referred to as \"Terms\") are established to prescribe the rights, obligations, and responsibilities between the Company and Members regarding the use of the K-DOC service (hereinafter referred to as \"Service\") operated by FILLMAN Inc. (hereinafter referred to as \"Company\"), as well as the conditions and procedures for using the Service, and other necessary matters."
+    },
+    "article2": {
+      "title": "Article 2 (Definitions)",
+      "intro": "The definitions of terms used in these Terms are as follows. Terms used in these Terms that are not defined herein shall be interpreted in accordance with relevant laws and regulations and service-specific guidelines, and otherwise in accordance with general practice.",
+      "items": [
+        "Service: All functions and related services that provide information registered by users and participating institutions regarding beauty procedures to \"Members\".",
+        "Member: A person who accesses the \"Service\", agrees to these Terms, provides personal information to the \"Company\", and registers as a \"Member\", and who can continuously use the \"Service\".",
+        "Partner Medical Institution: Medical institutions and related businesses participating in the \"Service\" that receive separate systems from the \"Company\" and register information about hospitals, medical staff, and medical procedures being performed to \"Members\".",
+        "Pre-payment Event: All procedure services sold by \"Partner Medical Institutions\" to \"Members\" through the Service as goods and services.",
+        "Pre-payment (Online Payment): The use or purchase of \"Pre-payment Events\" and products of \"Partner Medical Institutions\" using the purchase service within the \"Service\" provided by the \"Company\".",
+        "Procedure Voucher: A service usage right issued when purchasing \"Pre-payment Events\", \"Products\", etc. in the Service.",
+        "Discount Voucher: A discount benefit that allows \"Members\" to receive discounts on usage fees by the amount or percentage indicated when using the \"Service\". The issuance and use of \"Discount Vouchers\" are determined by the Company's operating policy.",
+        "Points: Virtual quantified data provided by the \"Company\" to \"Members\" for benefits or convenience in using the Service, which can be used when purchasing \"Procedure Vouchers\", \"Products\", etc. within the Service. The issuance and use of \"Points\" are determined by the Company's operating policy.",
+        "Post: Symbols (including URLs), text, voice, sound, video (including moving images), images (including photos), files, etc. posted or registered by \"Members\" on the service provided by the Company."
+      ]
+    },
+    "article3": {
+      "title": "Article 3 (Posting and Amendment of Terms)",
+      "items": [
+        "The Company posts the contents of these Terms on the Service or its connected screens so that Members can easily view them.",
+        "The Company may amend these Terms within the scope that does not violate related laws such as the \"Act on the Regulation of Terms and Conditions\" (hereinafter referred to as \"Terms Act\") and the \"Act on Promotion of Information and Communications Network Utilization and Information Protection\" (hereinafter referred to as \"Information and Communications Network Act\").",
+        "When the Company amends the Terms, it shall notify Members of the application date and reason for amendment from 7 days before the application date of the amended Terms until the day before the application date. However, in case of amendments to the Terms that are unfavorable to Members, the Company shall notify 30 days before the application date of the amended Terms or separately notify clearly through electronic means such as email, electronic messages, or consent windows at login within the Service. Notwithstanding such notice or notification, the Company shall not be liable for any damages incurred by Members due to not being aware of information about the changed Terms.",
+        "If a Member continues to use the Company's Service after the Terms have been changed, it shall be deemed that the Member has agreed to the amended Terms. If a Member does not agree to the amended Terms, the Member may request withdrawal (termination) of membership.",
+        "Matters not specified in these Terms and the interpretation of these Terms shall be governed by the \"Act on the Regulation of Terms and Conditions\", the \"Act on Promotion of Information and Communications Network Utilization and Information Protection\", related laws and regulations, or general commercial practices."
+      ]
+    },
+    "article4": {
+      "title": "Article 4 (Supplementary Provisions and Relationship with Related Laws)",
+      "items": [
+        "The Company may establish individual terms or operating principles (hereinafter referred to as \"Service-Specific Guidelines\") for individual items within the Service when necessary, and in case of conflict between the contents of these Terms and the Service-Specific Guidelines, the contents of the Service-Specific Guidelines shall take precedence.",
+        "Matters not specified in these Terms or the Service-Specific Guidelines shall be governed by the provisions of related laws and regulations such as the Telecommunications Business Act, the Basic Act on Electronic Commerce, the Information and Communications Network Act, the Act on Consumer Protection in Electronic Commerce, the Personal Information Protection Act, etc., and general commercial practices."
+      ]
+    },
+    "article5": {
+      "title": "Article 5 (Formation of Use Agreement)",
+      "items": [
+        "The use agreement is concluded when a person who wishes to become a member (hereinafter referred to as \"applicant\") agrees to the contents of these Terms, fills in member information (ID, password, name, contact information, email address, etc.) according to the membership form prescribed by the Company, applies for membership, and the Company approves such application.",
+        {
+          "content": "The Company shall, in principle, approve the use of the Service for applications from applicants. However, the Company may not approve or may terminate the use agreement after the fact for applications that fall under any of the following:",
+          "subItems": [
+            "When the applicant has previously lost membership status under these Terms",
+            "When using another person's name or phone number, or when the phone number or email address is the same as that of an already registered member",
+            "When approval is impossible due to the user's fault, such as entering false information or failing to enter the contents presented by the Company, or when applying in violation of other prescribed matters",
+            "When intending to use this Service for improper purposes or for profit-seeking purposes",
+            "When applying for illegal or improper purposes, such as violating related laws and regulations or these Terms, or potentially disrupting social order or good morals, and the Company reasonably deems it necessary"
+          ]
+        },
+        "In applications pursuant to paragraph 1, the Company may request real-name verification and identity authentication through specialized institutions depending on the type of member.",
+        "The Company may reserve approval when there is no surplus in service-related facilities or when there are technical or business problems.",
+        "When the Company does not approve or reserves approval of a membership application pursuant to paragraphs 2 and 4, the Company shall, in principle, notify the applicant thereof.",
+        "The time of formation of the use agreement is the time when the Company indicates completion of membership in the application procedure."
+      ]
+    },
+    "article6": {
+      "title": "Article 6 (Termination of Use Agreement)",
+      "items": [
+        {
+          "title": "1. Member's Termination",
+          "subItems": [
+            "A member may terminate the use agreement at any time by notifying the Company of their intention to terminate or by terminating the use agreement through the [Settings] menu within the Service.",
+            "The Company shall process the member's termination request pursuant to the preceding paragraph immediately unless there are special circumstances.",
+            "A member may be restricted from re-registering for a period determined by the Company after notifying the Company of their intention to terminate."
+          ]
+        },
+        {
+          "title": "2. Company's Termination",
+          "subItems": [
+            {
+              "content": "The Company may terminate the use agreement when there are reasons falling under any of the following. In such cases, the Company shall notify the member of the intention to terminate by disclosing the reason for termination through email, phone, fax, messages, or other means.",
+              "subSubItems": [
+                "When it is confirmed that there are reasons for refusal of approval of the use agreement as prescribed in Article 5, Paragraph 2",
+                "When a member has engaged in acts that infringe upon the rights, reputation, credit, or other legitimate interests of the Company or other persons",
+                "When a member has engaged in acts that violate these Terms or when reasons for termination as prescribed in these Terms have occurred"
+              ]
+            },
+            "The use agreement is terminated when the Company notifies the member of its intention to terminate."
+          ]
+        },
+        "When a member voluntarily terminates the use agreement pursuant to Paragraph 1 of this Article, or when the use agreement is terminated due to the member's fault pursuant to Paragraph 2, any damages arising therefrom shall be borne by the relevant member whose use agreement has been terminated, and the Company shall not bear any responsibility."
+      ]
+    },
+    "article7": {
+      "title": "Article 7 (Member's Obligations Regarding ID and Password)",
+      "items": [
+        "The responsibility for managing ID and password lies with the member. The member is responsible for any damages arising from service use due to negligent management or unauthorized use by third parties, and the Company shall not be liable for such damages.",
+        "The Company may restrict the use of an ID if there is a risk of personal information leakage, if it violates the service policy and operational direction set by the Company, if it is antisocial or violates good morals, or if there is a risk of being mistaken for the Company or the Company's operator.",
+        "If a member becomes aware that their ID and password have been stolen or are being used by a third party, they must immediately notify the Company and follow the Company's guidance.",
+        "The Company shall not be liable for any disadvantages arising from a member's failure to notify the Company of such facts pursuant to Paragraph 3, or from the member's failure to follow the Company's guidance even after notification."
+      ]
+    },
+    "article8": {
+      "title": "Article 8 (Obligations of Members and Users)",
+      "items": [
+        "Members must comply with related laws and regulations, the provisions of these Terms, the Company's policies, usage guidelines, and other matters notified or announced by the Company, and must not engage in any acts that interfere with the Company's business.",
+        {
+          "content": "Members must not engage in any of the following acts in relation to the use of the Service:",
+          "subItems": [
+            "Registration of false information when applying for or changing the Service",
+            "Unauthorized modification of information posted by the Company",
+            "Transmission or posting of information other than that specified by the Company (including computer programs, etc.)",
+            "Infringement of intellectual property rights such as copyrights of the Company or third parties",
+            "Acts that damage the reputation of the Company or third parties or interfere with their business",
+            "Non-fulfillment of debts that members bear in relation to the purchase price of procedure vouchers purchased through the Service and other usage",
+            "Acts of receiving services from partner medical institutions after requesting and receiving a refund for a procedure voucher purchased by the member",
+            "Acts of requesting a refund from the Company claiming that a procedure voucher is unused after receiving services from partner medical institutions",
+            "Acts of arbitrarily manipulating the usage location after purchasing a procedure voucher to reuse it at partner medical institutions or use it at similar businesses",
+            "Acts that may interfere with other members' and partner medical institutions' use of the Service through frequent purchase cancellations and accumulation",
+            "Acts of making abnormal payments such as financing through resale by disguising procedure voucher purchases",
+            "Acts of using the Service for the purpose of reselling products after purchase by applying separate payment methods without genuine purchase intent",
+            "Acts of purchasing procedure vouchers by unauthorized use or theft of others' credit cards, bank accounts, mobile phones, etc.",
+            "Acts of disclosing or posting obscene or violent messages, images, sounds, or other information that violates public order and good morals on the Service",
+            "Acts where customer service consultation content involves profanity, verbal abuse, sexual harassment, etc.",
+            "Acts of transferring or lending one's ID and password to third parties",
+            "Acts of posting content that interferes with the Company's business without justifiable cause",
+            "Acts of reproducing, decomposing, imitating, or otherwise modifying the Service through reverse engineering, decompilation, disassembly, or any other processing",
+            "Acts of using the Service in ways other than normal usage, such as using automatic access programs, to cause load on the Company's servers and interfere with the Company's normal Service",
+            "Other acts deemed to violate related laws and regulations"
+          ]
+        }
+      ]
+    },
+    "article9": {
+      "title": "Article 9 (Company's Obligations)",
+      "items": [
+        "The Company shall not engage in acts prohibited by related laws and these Terms or acts that violate good morals, and shall make its best efforts to provide the Service continuously and stably.",
+        "The Company establishes, discloses, and complies with a personal information handling policy to protect personal information (including credit information) so that members can safely use the Service.",
+        "When opinions or complaints raised by members are objectively recognized as legitimate, the Company must process them immediately through appropriate procedures. However, when immediate processing is difficult, the Company must notify the member of the reason and processing schedule.",
+        "The Company complies with obligations prescribed by related laws and regulations."
+      ]
+    },
+    "article10": {
+      "title": "Article 10 (Protection and Use of Personal Information)",
+      "items": [
+        "The Company complies with the provisions of related laws and regulations such as the Information and Communications Network Act and the Personal Information Protection Act to protect members' personal information.",
+        "The Company establishes and posts a personal information handling policy on the Service's initial screen to protect members' personal information. However, the specific contents of the personal information handling policy can be viewed through connected screens.",
+        "The Company makes efforts to protect members' personal information to the maximum extent in accordance with the personal information handling policy.",
+        "The Company does not collect information necessary for the performance of purchase contracts in advance at the time of membership registration. However, the Company may collect the minimum specific personal information when identity verification is necessary before a purchase contract for the performance of obligations under related laws.",
+        "The Company bears the obligation to protect personal information as a telecommunications sales intermediary regarding personal information entered by members in services such as consultation applications and pre-payments for which the Company intermediates information. For detailed information, please refer to the Company's personal information handling policy. However, the responsibility for confirming the personal information handling policy of partner medical institutions that collect such information in relation to the collection and use of personal information entered in consultation applications, pre-payments, etc., lies with the member, and the Company shall not be liable for any disadvantages arising from failure to confirm such information.",
+        {
+          "content": "The Company may provide members' personal information to third parties within the scope permitted by law in the following cases:",
+          "subItems": [
+            "When requested to provide information by investigative agencies or other government agencies",
+            "When necessary for information protection work such as confirming fraudulent acts including violations of laws or terms by members",
+            "Other cases required by law"
+          ]
+        },
+        "The Company may collect additional personal information in accordance with related laws with the member's consent for purposes such as service improvement and service introduction to members."
+      ]
+    },
+    "article11": {
+      "title": "Article 11 (Approval and Restriction of Use Applications)",
+      "items": [
+        "The Company shall, in principle, approve the use of the Service in order of receipt for use applications pursuant to the provisions of Articles 5 and 6, unless there are business or technical impediments.",
+        {
+          "content": "The Company may reserve approval for cases falling under the following:",
+          "subItems": [
+            "When the use application does not provide genuine information of the applicant",
+            "When applying for the purpose of violating laws or disrupting social peace and order or good morals",
+            "When intending to use this Service for improper purposes",
+            "When intending to use this Service for profit-seeking purposes",
+            "When an applicant is determined to have a certain relationship with a person in a competitive relationship by providing the same or similar services as those provided by the Company",
+            "When an applicant has previously had a use agreement terminated due to violation of laws or terms",
+            "Other cases of applying in violation of all matters prescribed in these Terms"
+          ]
+        },
+        {
+          "content": "The Company may reserve approval for use applications until the reasons for approval restrictions are resolved when the service use application falls under any of the following:",
+          "subItems": [
+            "When the Company has no surplus in facilities",
+            "When there are technical impediments for the Company",
+            "Other cases where approval is difficult due to the Company's fault"
+          ]
+        },
+        "The Company may reserve approval in accordance with service-specific guidelines when an applicant is a minor as prescribed in related laws and regulations.",
+        "The Company may revoke use approval when reasons falling under each subparagraph of Paragraph 2 are discovered after membership registration is completed."
+      ]
+    },
+    "article12": {
+      "title": "Article 12 (Limitation of Liability)",
+      "items": [
+        "The Company only provides platform services that mediate between members and partner medical institutions (introduction of partner medical institutions, location, provision of photos and product information, and telecommunications sales) regarding information provision such as consultation applications and pre-payments among the services provided by the Company, and does not directly provide medical/beauty care services or guarantee the results of medical/beauty care services provided by partner medical institutions. Responsibility arising in the process of members receiving various services including medical/beauty care services from partner medical institutions lies between the member and the partner medical institution.",
+        "The Company has no obligation to intervene in disputes arising from transactions or other acts between members or between members and third parties through the Service, unless otherwise provided in related laws, and is exempt from liability for damages arising therefrom.",
+        "The Company is not responsible for the reliability, accuracy, etc. of various information, data, and facts posted by members on the Service, and does not bear civil or criminal liability when posts posted by members on the Service infringe on others' copyrights, program copyrights, etc., or damage reputation. If the Company receives claims for damages or other objections from others due to a member's copyright infringement or defamation, the member must make efforts to exempt the Company from liability, and if the Company is not exempted, the member must bear all damages incurred by the Company.",
+        "The Company has no obligation to pre-screen members' posts before registration or to constantly check or review the contents of posts, and is not responsible for the results thereof.",
+        "The Company is exempt from liability for service provision when services cannot be provided due to natural disasters or equivalent force majeure.",
+        "The Company is not liable for service use disruptions due to members' fault.",
+        {
+          "content": "The Company, its employees, and agents are not liable for damages arising from the following matters unless there is intent or gross negligence:",
+          "subItems": [
+            "Damages arising from false or inaccurate member status information",
+            "Personal damages arising from access to the Service and the process of using the Service",
+            "Damages arising from all illegal access to servers by third parties or illegal use of servers",
+            "Damages arising from all illegal interference or interruption by third parties regarding transmission to servers or transmission from servers",
+            "Damages caused by all viruses, spyware, and other malicious programs illegally transmitted or distributed by third parties using the Service or caused to be transmitted or distributed",
+            "Damages arising from errors, omissions, missing, destruction, etc. of transmitted data",
+            "Various civil and criminal liabilities arising from defamation and other illegal acts in the process of registering member status information and using the Service between members"
+          ]
+        },
+        "The Company is not liable for lost profits expected by members from using the Service, and is not liable for damages arising from materials obtained through the Service.",
+        "The Company has no obligation to monitor or any other responsibility for the contents of events, hospital information, etc. advertised by third parties through screens within the Service, and third parties are responsible for contents that violate medical laws."
+      ]
+    },
+    "article13": {
+      "title": "Article 13 (Notification to Members)",
+      "items": [
+        "When the Company notifies members, it may do so through messages, text messages, or service announcements within the Service, unless otherwise provided in these Terms.",
+        "The Company may substitute the notification under Paragraph 1 by posting on the Company's bulletin board for 7 days or more in the case of notifications to all members."
+      ]
+    },
+    "article14": {
+      "title": "Article 14 (Provision and Modification of Service)",
+      "items": [
+        {
+          "content": "The contents of services provided by the Company to members are as follows, and the specific contents of services are as specified by the Company in the operation policy. However, this is not limited to currently provided services, and may be added or changed in the future through additional development or partnerships with other companies, and in this process, some services may require identity verification procedures. When providing services to members, the Company may provide other additional services together, including services specified in these Terms.",
+          "subItems": [
+            "Provision of information on goods or services",
+            "Purchase, cancellation, and refund services between partner medical institutions and members",
+            "Other various services determined by the Company and partner medical institutions",
+            "Community-type services for sharing information among members",
+            "All other services provided to general members through additional development by the Company or partnership contracts with other companies"
+          ]
+        },
+        "Services are provided 24 hours a day, 365 days a year, in principle. However, the Company may divide services into certain ranges and separately designate available hours for each range, and in such cases, the contents thereof shall be announced in advance.",
+        "The Company may temporarily suspend the provision of services in cases of maintenance, replacement, or failure of information and communication equipment such as computers, communication interruption, or for substantial operational reasons. In such cases, the Company shall notify members by the method specified in Article 13 (Notification to Members). However, if there are unavoidable reasons that prevent the Company from notifying in advance, it may notify afterwards.",
+        "The Company may conduct regular inspections when necessary for the provision of services, and regular inspection hours shall be as announced on the service provision screen.",
+        "The Company may modify or suspend all or part of the services being provided when there are substantial operational reasons such as service reorganization or when technically necessary.",
+        "When there are changes to the contents, usage methods, or usage hours of services, the reasons for changes, contents of services to be changed, provision dates, etc. must be posted before such changes.",
+        "The Company may modify, suspend, or change part or all of services provided free of charge as necessary for the Company's policy and operation, and shall not provide separate compensation to members unless there are special provisions in related laws."
+      ]
+    },
+    "article15": {
+      "title": "Article 15 (Purchase)",
+      "items": [
+        {
+          "content": "Members apply for purchases through K-DOC services, and the Company must provide the following contents in an easily understandable manner when members apply for purchases:",
+          "subItems": [
+            "Search and selection of goods, products, etc.",
+            "Modification and confirmation of name, mobile phone number, email, address, etc.",
+            "Confirmation of the contents of these Terms, contents related to cases where purchase cancellation or change or right to withdraw an offer is restricted, cancellation fees, and other cost burdens",
+            "Purchase application for goods, products, etc., and confirmation thereof or consent to the Company's confirmation",
+            "Selection of information according to purchase such as payment methods",
+            "Notification of contents under the 「Act on Consumer Protection in Electronic Commerce, etc.」 including the fact that the 'Company' is a telecommunications sales intermediary and not a party to telecommunications sales"
+          ]
+        },
+        "When the Company needs to provide or entrust purchaser personal information to a third party, it must obtain the user's consent at the time of actual purchase application, and does not obtain comprehensive consent in advance at the time of membership registration. At this time, the Company must specify to users the personal information items provided, recipients, purposes of personal information use by recipients, retention and use periods, etc. However, this shall be in accordance with related laws and regulations, such as cases of personal information processing entrustment under the 「Act on Promotion of Information and Communications Network Utilization and Information Protection, etc.」."
+      ]
+    },
+    "article16": {
+      "title": "Article 16 (Formation of Purchase Contract)",
+      "items": [
+        {
+          "content": "The Company may not approve or may cancel purchase applications under Article 15 if they fall under any of the following, or if the Company becomes aware of this afterwards:",
+          "subItems": [
+            "When there are falsehoods, omissions, or errors in the application contents",
+            "When a minor purchases goods or services prohibited under the Youth Protection Act",
+            "When it is a transaction for the purpose of commercial activities (resale), or when it is determined to be a purchase for the purpose of commercial activities (resale) based on transaction circumstances, and objective materials are requested to prove personal consumption purposes but cannot be proven",
+            "When using payment methods such as credit cards, mobile phones, points, etc. to disguise purchases (card fraud, etc.)",
+            "When continuing fraudulent transactions for the purpose of acquiring discount coupons, points, etc.",
+            "Other cases where approving the purchase application is determined to significantly hinder the Company technically",
+            "When the purchase application violates related laws"
+          ]
+        },
+        "The purchase contract is deemed to be formed at the time when the Company's approval reaches the member in the form of a receipt confirmation notice under Article 13, Paragraph 1.",
+        "The Company's expression of approval includes information regarding confirmation of the member's purchase application, correction and cancellation of the purchase application, etc.",
+        "When a minor enters into a purchase contract, if the legal representative does not consent, the minor or the legal representative may cancel the contract."
+      ]
+    },
+    "article17": {
+      "title": "Article 17 (Payment Methods)",
+      "items": [
+        "The Company does not involve itself in any way in payments such as medical fees between partner medical institutions and members.",
+        {
+          "content": "Payment methods for goods purchased through the Service and purchase items of partner medical institutions may be made using available methods among the following. However, the Service and partner medical institutions may not collect any fees of any kind in addition to the price of goods, etc. regarding members' payment methods.",
+          "subItems": [
+            "Various card payments such as debit cards, credit cards, Naver Pay, Kakao Pay, etc.",
+            "Payment through external payment gateway (PG) using points and discount coupons",
+            "Payment by other electronic payment methods, etc."
+          ]
+        },
+        "You may use other payment methods together when using the Service in accordance with the procedures and conditions set by the Company in its operation policy."
+      ]
+    },
+    "article18": {
+      "title": "Article 18 (Purchase Application and Payment Confirmation Notice, etc.)",
+      "items": [
+        "When a member makes a purchase application, the Company provides the member with a purchase application and payment confirmation notice (hereinafter referred to as \"Payment Confirmation Notice\").",
+        "A member who receives a Payment Confirmation Notice may request changes or cancellation of the purchase application immediately after receiving the Payment Confirmation Notice if there is a discrepancy in the expression of intent, etc., and the Company must process such request without delay if the member who made the purchase requests it before the issuance of the procedure voucher. However, if payment has already been made, the provisions regarding withdrawal of offer, etc. under Article 21 shall apply.",
+        "Procedure vouchers cannot be transferred and may only be used by the member who purchased them, and this content is notified to the member who purchased the relevant procedure voucher through the Payment Confirmation Notice under this Article.",
+        "The Payment Confirmation Notice under this Article may be made through SNS services linked to the user's contact information, etc., and in such cases, the user may bear data charges, etc. depending on the user's communication environment or fee structure."
+      ]
+    },
+    "article19": {
+      "title": "Article 19 (Use of Pre-payment)",
+      "items": [
+        "Products purchased by members through the Service can be used after identity verification procedures at partner medical institutions or locations designated by partner medical institutions.",
+        "Members can receive services from businesses only within the validity period specified in the individual sales conditions of service products in advance. Members who have purchased cannot substitute identity verification procedures with emails, text messages, or other receipts sent for the purpose of confirming service product purchases, and cannot transfer products to others or provide them as collateral without authorization. However, business members may be restricted from purchasing some products.",
+        "Pre-payment services subject to this Article have conditions for use and refund of products determined in accordance with the contents of the Terms, and members who have purchased have the responsibility to check the contents specified on our website and app and individual precautions (terms of use), and can use products according to the specified terms of use."
+      ]
+    },
+    "article20": {
+      "title": "Article 20 (Discount Vouchers)",
+      "items": [
+        "The Company may grant discount vouchers to members in accordance with the Company's operating policy when members use the Service.",
+        "Members may use discount vouchers together with other payment methods when making payments through external payment gateways (PG) when using the Service in accordance with the procedures and conditions set by the Company in its operating policy.",
+        "Detailed matters regarding the granting and use of discount vouchers are determined by the Company's operating policy, and the Company notifies members of this through sales channels or services operated by the Company.",
+        "Members cannot use discount vouchers offline by directly visiting medical institutions, and can only use them within the Service provided by the Company.",
+        "Discount vouchers cannot be withdrawn as cash, and expire when the usage period indicated on the discount voucher expires or when the use agreement is terminated. In addition, the Company does not compensate for discount vouchers that have expired in a manner not attributable to the Company.",
+        "In case of withdrawal of offer (purchase cancellation), refunds are made in accordance with the Company's operating policy.",
+        "Members can only use discount vouchers for their own transactions, and in no case can they sell or transfer discount vouchers to others, or engage in acts that can be considered substantially the same as selling or transferring.",
+        "If a member is found to have violated the Terms or engaged in fraudulent or abusive acts, the discount voucher cannot be used, and the Company may recover it."
+      ]
+    },
+    "article21": {
+      "title": "Article 21 (Points)",
+      "items": [
+        "The Company may grant points to members in accordance with the Company's operating policy when members use the Service.",
+        "Members may use points together with other payment methods when making payments through external payment gateways (PG) when using the Service in accordance with the procedures and conditions set by the Company in its operating policy.",
+        "Detailed matters regarding the granting and use of points are determined by the Company's operating policy, and the Company notifies members of this through sales channels or services operated by the Company.",
+        "Members cannot use points offline by directly visiting medical institutions, and can only use them within the Service provided by the Company.",
+        "Points are consumed according to the first-in-first-out method (a method in which points are deducted in the order they were first accumulated).",
+        "Points cannot be withdrawn as cash, and expire when the usage period indicated on the points expires or when the use agreement is terminated. In addition, the Company does not compensate for points that have expired in a manner not attributable to the Company.",
+        "In case of withdrawal of offer (purchase cancellation), refunds are made in accordance with the Company's operating policy.",
+        "Members can only use points for their own transactions, and in no case can they sell or transfer points to others, or engage in acts that can be considered substantially the same as selling or transferring.",
+        "If a member is found to have violated the Terms or engaged in fraudulent or abusive acts, points cannot be used, and the Company may recover them."
+      ]
+    },
+    "article22": {
+      "title": "Article 22 (Refund)",
+      "items": [
+        "When a procedure voucher purchased by a member cannot be used due to reasons such as closure or business suspension of partner medical institutions, the Company shall immediately notify the member who purchased it of such reason, and if payment for the pre-payment service was received in advance, refund the payment or take necessary measures for refund within 3 business days from the date of receipt.",
+        "When a procedure voucher purchased by a member cannot be provided because the sales success conditions (minimum number of participants, etc.) predetermined by partner medical institutions at the time of sale are not met, the Company shall immediately notify the member who purchased it of such reason, and refund the paid amount in accordance with the operating policy set by the Company within 3 business days from the date the reason occurred."
+      ]
+    },
+    "article23": {
+      "title": "Article 23 (Withdrawal of Offer)",
+      "items": [
+        "A purchaser who has entered into a contract for the purchase of \"Pre-payment Service\" with the \"Company\" may withdraw the offer within 365 days from the date of receiving the written document regarding the contract contents in accordance with the 『Act on Consumer Protection in Electronic Commerce, etc.』 (In cases where the supply of \"Pre-payment Service\" is made later than when such written document was received, it refers to the date on which \"Pre-payment Service\" was received or the supply of \"Pre-payment Service\" began.). However, if the Act on Consumer Protection in Electronic Commerce, etc. provides otherwise regarding withdrawal of offer, the provisions of that Act shall apply.",
+        {
+          "content": "If a purchaser has received \"Pre-payment Service\", the purchaser may not return or exchange it in any of the following cases:",
+          "subItems": [
+            "When \"Pre-payment Service\", etc. has been lost or damaged due to reasons attributable to the purchaser",
+            "When the value of \"Pre-payment Service\", etc. has significantly decreased due to the purchaser's use or partial consumption",
+            "When the provision of services has commenced (However, this does not apply to parts that have not commenced provision in the case of contracts consisting of divisible services or divisible digital content.)",
+            "Other cases prescribed as reasons for restricting withdrawal of offer in the Act on Consumer Protection in Electronic Commerce, etc. for the safety of transactions"
+          ]
+        },
+        "Notwithstanding the provisions of Paragraph 1 and Paragraph 2, if the contents of \"Pre-payment Service\" differ from the displayed or advertised contents, or are performed differently from the contract contents, the purchaser may withdraw the offer, etc. within 3 days from the date of receiving such services, etc., or within 30 days from the date on which the purchaser became aware or could have become aware of such fact."
+      ]
+    },
+    "article24": {
+      "title": "Article 24 (Effects of Withdrawal of Offer, etc.)",
+      "items": [
+        "When the \"Company\" receives the return of \"Pre-payment Service\" from the purchaser, it refunds the payment for \"Pre-payment Service\", etc. that has already been received within 3 business days. In this case, if the \"Company\" delays the refund of \"Pre-payment Service\" to the purchaser, it pays delayed interest calculated by multiplying the delay period by the delayed interest rate prescribed in the Act on Consumer Protection in Electronic Commerce, etc. (However, if the return of \"Pre-payment Service\" is confirmed to be due to reasons attributable to \"Partner Medical Institutions\", the \"Company\" is exempt from liability for damages arising therefrom.)",
+        "When refunding the above payment, if the purchaser paid the price of goods, etc. using payment methods such as credit cards or electronic money, the \"Company\" immediately requests the business that provided such payment method to stop or cancel the claim for payment of \"Pre-payment Service\".",
+        "In case of withdrawal of offer, etc., the costs necessary for returning the received \"Pre-payment Service\" are borne by the purchaser. The \"Company\" does not claim penalty or damages from the purchaser on the grounds of withdrawal of offer, etc. However, if withdrawal of offer, etc. is made because the contents of \"Pre-payment Service\" differ from the displayed or advertised contents or are performed differently from the contract contents, the costs necessary for returning \"Pre-payment Service\", etc. are borne by the \"Company\".",
+        "If the purchaser bore shipping costs when receiving \"Pre-payment Service\", etc., the \"Company\" clearly indicates who bears such costs in case of withdrawal of offer so that users can easily understand."
+      ]
+    },
+    "article25": {
+      "title": "Article 25 (Provision of Information and Posting of Advertisements)",
+      "items": [
+        "The Company may provide members with various information deemed necessary for the use of the Service through methods such as email, mail, postal mail, SMS, phone, mobile application Push notifications, etc.",
+        "The Company may post advertisements on service screens and homepages in relation to the operation of the Service, and with the member's consent, may send advertisements using electronic transmission media such as email, messages, text messages, Push notifications, etc.",
+        "Members do not take measures such as changing, modifying, or restricting posts or other information related to the services provided by the Company."
+      ]
+    },
+    "article26": {
+      "title": "Article 26 (Management of Posts)",
+      "items": [
+        "All responsibility for violations of the Copyright Act and the Information and Communications Network Act, etc. arising from posts written by members lies with the member who posted them.",
+        {
+          "content": "If the Company determines that the content of posts posted or registered by members falls under any of the following cases, the Company may delete or suspend (temporary measures) such posts.",
+          "subItems": [
+            "Content that defames or damages the reputation of other members or third parties",
+            "Content that violates public order and morals",
+            "Content that is deemed to be connected to criminal acts",
+            "Content that infringes on the Company's copyright, third parties' copyrights, or other rights",
+            "Cases where members post obscene materials on the site and bulletin board or link to obscene sites",
+            "Cases where commercial advertisements or promotional content are posted without prior approval from the Company",
+            "Content that is unrelated to the services provided by the Company or is content of services provided by other competing companies",
+            "Content that describes interference with the business of the Company or third parties without justifiable reason",
+            "Cases where false or exaggerated posts are posted for the purpose of promoting one's own business",
+            "Cases that correspond to meaningless characters and symbols",
+            "Cases where reports of rights infringement are received from third parties, etc.",
+            "Cases that are deemed to violate relevant laws and regulations",
+            "Cases that are deemed to have the nature of comparative advertising between medical professionals and domestic medical institutions",
+            "Cases where posts are posted as unauthorized medical practices or promotion for medical practices",
+            "Other cases that violate the posting principles established by the Company or do not match the nature of the bulletin board"
+          ]
+        },
+        {
+          "content": "If a member's post contains content that violates the Copyright Act, the Information and Communications Network Act, or other relevant laws and regulations regarding defamation, the Company must take necessary measures in accordance with relevant laws and regulations as follows.",
+          "subItems": [
+            "Rights holders may request deletion or suspension (temporary measures) of the relevant post in accordance with procedures prescribed by relevant laws and regulations, and the Company that receives such request must take necessary measures such as deletion and suspension (temporary measures) without delay and immediately notify the applicant and the poster.",
+            "Even if there is no request from the rights holder, if there are reasons that recognize infringement of others' rights such as invasion of privacy or defamation, or if it violates other Company policies and relevant laws, the Company may take temporary measures, etc. on the relevant post in accordance with relevant laws and regulations.",
+            "Even if the rights holder requests deletion, if it is difficult to determine whether rights have been infringed or disputes are expected between interested parties, the Company may temporarily block access to the relevant post by suspending (temporary measures), and in this case, the period of suspension (temporary measures) shall be within 30 days.",
+            "When taking measures for deletion and suspension (temporary measures), the Company notifies the poster of the relevant post of the name of the requester and the reason for the request for deletion and suspension (temporary measures).",
+            "Posters who have received notification regarding deletion and suspension (temporary measures) may file an objection to the above measures, and if the objection is accepted, the relevant facts are notified to the requester of suspension, and the requester of suspension may apply for deliberation of the post to the Korea Communications Standards Commission.",
+            "If a decision is made by the Korea Communications Standards Commission during the period of suspension (temporary measures), deletion and restoration are processed according to the decision, and if a deliberation decision is made by the Korea Communications Standards Commission after the post is restored, the status of the post may be changed according to the decision content.",
+            "If it is difficult to accept the deliberation results of the Korea Communications Standards Commission or if there are questions about the deliberation process, please contact the relevant institution directly.",
+            "For posts restored through objection without a request for deliberation from the Korea Communications Standards Commission, repeated requests for suspension (temporary measures) cannot be made, and thereafter, resolution can be made through agreement between the parties or deliberation and judgment by other administrative agencies or court judgment."
+          ]
+        },
+        "Detailed procedures in accordance with this Article follow the suspension request procedures established by the Company within the scope prescribed by the Information and Communications Network Act and the Copyright Act.\n- Suspension request: cs@k-doc.kr"
+      ]
+    },
+    "article27": {
+      "title": "Article 27 (Copyright of Posts)",
+      "items": [
+        {
+          "content": "The copyright of posts posted by members within the Service belongs to the member who posted them. However, the Company may use posts registered by members free of charge within a reasonable range in accordance with fair practices prescribed in the Copyright Act for the purpose of operating, displaying, transmitting, distributing, and promoting the Service without separate permission from members. However, in this case, separate consent from the member is required for the Company to provide the member's personal information in addition to the member's user ID.",
+          "subItems": [
+            "Reproduction, modification, adaptation, display, transmission, distribution of member posts within the Service and creation of derivative works within the scope that does not harm the nature of the work",
+            "Providing, displaying, or promoting the content of member posts to service partnership partners such as media and telecommunications companies"
+          ]
+        },
+        "If the Company intends to use members' posts by methods other than the preceding paragraph, it must obtain prior consent from members through methods such as phone, fax, email, etc.",
+        "If the service contract between the Company and a member is terminated by the member or terminated by the Company for legitimate reasons, the Company has the right to delete posts posted by the relevant member that have not been deleted."
+      ]
+    },
+    "article28": {
+      "title": "Article 28 (Service Use Restrictions)",
+      "items": [
+        "The Company may restrict the use of the Service in stages, such as warnings, temporary suspension, and permanent suspension, if a member violates the obligations under these Terms or interferes with the normal operation of the Service.",
+        "Notwithstanding the preceding paragraph, the Company may immediately suspend use permanently if relevant laws are violated, such as identity theft and payment theft in violation of the \"Resident Registration Act\", phone number theft, provision and operation interference of illegal programs in violation of the \"Copyright Act\" and \"Computer Program Protection Act\", illegal communication and hacking in violation of the \"Information and Communications Network Act\", distribution of malicious programs, and exceeding access authority.",
+        {
+          "content": "The Company may restrict the use of the Service when it discovers acts falling under the following items.",
+          "subItems": [
+            "Acts of registering false information in member information or stealing another person's user ID, password, or other personal information, or trading or providing user IDs to others",
+            "Acts of transmitting, posting, emailing, or otherwise distributing to others information, sentences, graphics, sounds, or videos that are vulgar or obscene content that violates public order and morals, or content that may infringe on another person's reputation or privacy",
+            "Acts of harassing or threatening other users, or continuously causing pain or inconvenience to specific users",
+            "Acts of changing the Company's client program without special authorization from the Company, hacking the Company's server, or arbitrarily changing part or all of the website or posted information",
+            "Acts of reproducing information obtained through the Service for purposes other than using the Service without prior approval from the Company, or using it for publication and broadcasting, or providing it to third parties",
+            "Cases where normal service operation is hindered, such as impersonating the Company's management, employees, or related persons, or intentionally interfering with the service",
+            "Cases where posts are posted that are unrelated to the services provided by the Company or are content of services provided by other competing companies",
+            "Cases where there is a request for correction from related public institutions such as the Korea Communications Standards Commission",
+            "Acts that violate all laws and regulations, such as violating all regulations established by the Company, including these Terms, or being objectively determined to be connected to crimes"
+          ]
+        },
+        "Within the scope of use restrictions under this Article, the conditions and details of restrictions are determined by the Company's use restriction policy.",
+        "Members may file an objection to use restrictions, etc. under this Article in accordance with procedures established by the Company. In this case, if the Company recognizes that the objection is justified, the Company immediately resumes the use of the Service."
+      ]
+    },
+    "article29": {
+      "title": "Article 29 (Compensation for Damages)",
+      "items": [
+        "If the \"Company\" or \"Member\" violates relevant laws and regulations and these Terms, etc., causing damage to the other party, the party at fault must compensate for such damage."
+      ]
+    },
+    "article30": {
+      "title": "Article 30 (Ownership of Rights)",
+      "items": [
+        "The copyright and intellectual property rights for the Service belong to the Company. That is, the Company owns or has ownership or usage rights to all copyrights and other intellectual property rights related to trademarks, service marks, logos, etc. related to the services provided by the Company, such as the design of the services provided by the Company, texts, scripts, graphics created by the Company, and functions for mutual transmission between members, in accordance with the laws of the Republic of Korea and foreign countries. However, members' posts and works provided in accordance with partnership agreements are excluded.",
+        "Members do not own the Service or hold copyrights to the Service due to these Terms, but are only granted the right to use the Service to use accounts, IDs, content, etc. in accordance with the terms of use from the Company, and members cannot transfer, sell, provide as collateral, or otherwise dispose of these, and can only use them for personal purposes to obtain information.",
+        "Except for explicitly permitted content, members cannot copy or distribute member status information obtained through the Service for commercial purposes, including using, copying, and distributing texts, scripts, and graphics created by the Company, and functions for mutual transmission between members.",
+        "Members must not use information obtained through the use of the Service for commercial purposes or allow third parties to use it through reproduction, transmission, publication, distribution, broadcasting, or other methods without prior approval from the Company."
+      ]
+    },
+    "article31": {
+      "title": "Article 31 (Governing Law and Jurisdiction)",
+      "items": [
+        "The laws of the Republic of Korea apply to the interpretation of these Terms and disputes between the Company and members.",
+        "Lawsuits between members and the Company arising from the use of the Service are filed with the competent court under the Civil Procedure Act.",
+        "These Terms take effect from May 1, 2024."
+      ]
+    }
+  },
+  "privacyPolicy": {
+    "intro": "Pilman Co., Ltd. (hereinafter referred to as 'Pilman' or 'Company') collects, uses, and provides personal information based on user consent. Pilman provides this Privacy Policy in compliance with domestic laws and regulations, personal information protection regulations, and guidelines that personal information processors must comply with to protect users' rights.",
+    "collectionOfPersonalInformation": {
+      "title": "1. Collection of Personal Information",
+      "content": "Pilman operates as a membership-based service and collects the minimum necessary personal information through websites, application programs, etc., during membership registration or service use to provide services. The personal information collected from users to use Pilman services is as follows.",
+      "tableTitle": "Personal Information Collected by Service",
+      "tableLabels": {
+        "required": "[Required]",
+        "optional": "[Optional]"
+      },
+      "table": {
+        "headers": {
+          "serviceCategory": "Service Category",
+          "collectedItems": "Collected Items"
+        },
+        "rows": [
+          {
+            "serviceCategory": "Individual Membership Registration (Email)",
+            "collectedItems": {
+              "required": "Email Address/Password/Passport English Name",
+              "optional": "Nationality/Gender/Date of Birth/Mobile Phone Number"
+            }
+          },
+          {
+            "serviceCategory": "Partnership/Hospital Entry Inquiry",
+            "collectedItems": {
+              "required": "Company Name/Contact Person Name/Mobile Phone Number/Email"
+            }
+          },
+          {
+            "serviceCategory": "Hospital Entry Contract (Hospital Member)",
+            "collectedItems": {
+              "applicant": {
+                "label": "Applicant",
+                "required": "Contact Person Name/Representative Name/Mobile Phone Number/Email/Address/Representative Number"
+              },
+              "applicationInfo": {
+                "label": "Application Information",
+                "required": "Hospital Name/Contact Person Name/Mobile Phone Number/Email/Administrator ID"
+              }
+            }
+          },
+          {
+            "serviceCategory": "When Using Content",
+            "collectedItems": {
+              "review": {
+                "label": "Procedure Review (Sensitive Information)",
+                "required": "Procedure Information/Post-Procedure Photo",
+                "optional": "Pre-Procedure Photo"
+              }
+            }
+          },
+          {
+            "serviceCategory": "Post Suspension Request Service (Identity Verification Documents)",
+            "collectedItems": {
+              "individual": {
+                "label": "Individual",
+                "required": "Name/Mobile Phone Number/Email/Masked ID Copy/Power of Attorney"
+              },
+              "organization": {
+                "label": "Organization",
+                "required": "Name/Mobile Phone Number/Email/Masked ID Copy/Organization Business Registration Copy/Power of Attorney"
+              }
+            }
+          },
+          {
+            "serviceCategory": "When Using Location-Based Services",
+            "collectedItems": {
+              "simple": "Location Information"
+            }
+          }
+        ]
+      },
+      "collectionMethods": {
+        "title": "Methods of Collecting Personal Information",
+        "content": "When collecting personal information, Pilman notifies users in advance and obtains consent. The collection methods are as follows.",
+        "items": [
+          "Collected when users consent to personal information collection and directly enter information during membership registration and service use.",
+          "May be collected through webpages, email, fax, phone calls, etc., during consultation through CS.",
+          "Personal information may be collected through events, seminars, etc., conducted online/offline.",
+          "Generated information such as device information is automatically generated and collected during PC web, mobile web/app use."
+        ]
+      },
+      "autoCollection": {
+        "title": "Automatically Collected and Generated Information",
+        "content": "Personal information automatically generated and collected from users during service use is as follows.",
+        "items": [
+          "Device information (OS, device ID, phone model, device model name), IP address, cookies, visit date/time, fraudulent use records, service use records, etc., during PC web, mobile web/app use"
+        ]
+      },
+      "useOfPersonalInformation": {
+        "title": "2. Use of Personal Information",
+        "content": "Pilman uses personal information only for the following purposes: member management, service development, provision and improvement, and building a safe internet usage environment for Pilman and all related services (including mobile web/app).",
+        "items": [
+          "Member management such as member identification, membership intention confirmation, identity/age verification, user identification",
+          "Handling inquiries or complaints, delivering notices",
+          "Content transmission or fee settlement when using paid services",
+          "Prevention and sanctions against acts that interfere with the smooth operation of services (including account theft and fraudulent use)",
+          "Utilization in marketing such as customized content recommendations and events, advertisements through estimation of demographic characteristics and user interests, preferences, and tendencies",
+          "New service development and service improvement, building service environment for privacy protection",
+          "Statistics on service use records, access frequency, and service use"
+        ]
+      },
+      "provisionAndConsignment": {
+        "title": "3. Provision and Consignment of Personal Information",
+        "thirdPartyProvision": {
+          "title": "Third-Party Provision of Personal Information",
+          "content": "Pilman does not provide users' personal information to third parties except when users have separately consented or when required by law."
+        },
+        "processingConsignment": {
+          "title": "Consignment of Personal Information Processing",
+          "content": "Pilman may consign some personal information processing tasks to external parties when necessary to provide services. Pilman manages and supervises whether consigned companies comply with personal information protection laws, including security measures and restrictions on re-consignment.",
+          "koreaStatus": {
+            "title": "Personal Information Processing Consignment Status (Korea)",
+            "table": {
+              "headers": {
+                "consignee": "Consignee",
+                "workDetails": "Details of Consigned Work"
+              },
+              "rows": [
+                {
+                  "consignee": "Amazon Web Service",
+                  "workDetails": "System provision and management"
+                },
+                {
+                  "consignee": "Apple",
+                  "workDetails": "Check SNS subscription status and account information"
+                },
+                {
+                  "consignee": "Google",
+                  "workDetails": "Check SNS subscription status and account information"
+                }
+              ]
+            }
+          },
+          "overseasStatus": {
+            "title": "Personal Information Processing Consignment Status (Countries Other Than Korea)",
+            "table": {
+              "rows": [
+                {
+                  "label": "Consignee",
+                  "value": "Google"
+                },
+                {
+                  "label": "Purpose of Transfer",
+                  "value": "Service usage statistics and analysis"
+                },
+                {
+                  "label": "Entrusted Personal Information Items",
+                  "value": "Gender, region, sign-up date, in-app behavior logs"
+                },
+                {
+                  "label": "Entrustment Date and Method",
+                  "value": "Transfer via network at the time of service use"
+                },
+                {
+                  "label": "Company Location (Country)",
+                  "value": "USA (1600 Amphitheatre Parkway Mountain View, California 94043 USA)"
+                },
+                {
+                  "label": "Contact Information",
+                  "value": "google_da_kr@dagent.co.kr"
+                },
+                {
+                  "label": "Personal Information Usage Period",
+                  "value": "Matches the retention period specified in this personal information processing policy"
+                }
+              ]
+            }
+          },
+          "overseasNotice": {
+            "items": [
+              "Users can refuse the transfer of personal information abroad through the company's personal information protection officer and responsible department.",
+              "If a user refuses the transfer of personal information abroad, the company excludes that user's personal information from overseas transfer targets. In this case, the use of services that necessarily involve the transfer of personal information abroad may be restricted."
+            ]
+          }
+        }
+      },
+      "destruction": {
+        "title": "4. Destruction of Personal Information",
+        "content": "When the purpose of collecting and using personal information is achieved, Pilman destroys the collected personal information without delay. The procedures and methods are as follows.",
+        "method": {
+          "content": "When a reason for destruction occurs, such as achievement of the purpose of collection and use or member withdrawal, the destruction method is determined considering the form of personal information. For electronic file forms, they are safely deleted so that they cannot be recovered or reproduced, and for other records, printed materials, written documents, etc., they are destroyed by shredding or incineration."
+        },
+        "internalPolicy": {
+          "title": "Information Retained for a Certain Period and Then Destroyed According to Internal Policy",
+          "items": [
+            "Personal information retained for 30 days after member withdrawal and then destroyed",
+            "Proxy surgery safety zone application information: Retained until withdrawal of safety zone application and then destroyed",
+            "Hospital entry application information: Destroyed immediately after completion of entry application consultation",
+            "Hospital entry contract information: Destroyed immediately upon termination of consignment contract",
+            "Consultation application information: Retained for 1 year after consultation ends and then destroyed",
+            "Abusing and fraudulent use records: Retained for 3 years and then destroyed"
+          ]
+        },
+        "legalBasis": {
+          "title": "Personal Information Retention According to Related Laws",
+          "table": {
+            "headers": {
+              "retentionItem": "Retention Item",
+              "legalBasis": "Legal Basis",
+              "retentionPeriod": "Retention Period"
+            },
+            "rows": [
+              {
+                "retentionItem": "Records related to contracts or withdrawal of offers",
+                "legalBasis": "Act on Consumer Protection in Electronic Commerce, etc., National Tax Basic Act",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Records related to payment and supply of goods, etc.",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Records related to consumer complaints or dispute resolution",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "3 years"
+              },
+              {
+                "retentionItem": "Records related to display/advertisement",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "6 months"
+              },
+              {
+                "retentionItem": "Ledgers and evidentiary documents related to all transactions stipulated by tax law",
+                "legalBasis": "Same as above",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Records related to electronic financial transactions",
+                "legalBasis": "Electronic Financial Transactions Act",
+                "retentionPeriod": "5 years"
+              },
+              {
+                "retentionItem": "Service visit records",
+                "legalBasis": "Protection of Communications Secrets Act",
+                "retentionPeriod": "3 months"
+              }
+            ]
+          }
+        }
+      },
+      "userRights": {
+        "title": "5. Rights of Users and Legal Representatives",
+        "content": "Users or legal representatives can exercise their rights related to personal information protection against the company at any time. If users or legal representatives do not agree to the company's personal information processing, they can request withdrawal of consent or membership withdrawal. However, in this case, use of some or all services may be difficult.",
+        "items": [
+          "To view or modify personal information, use \"Personal Information Change\" (or 'Member Information Modification', etc.), and to withdraw membership, use the \"Membership Withdrawal\" function provided in the app.",
+          "If a user requests correction of errors in personal information, the company will not use or provide the personal information until the correction is completed. Also, if incorrect personal information has already been provided to a third party, the company will notify the third party of the correction processing results without delay so that the correction can be made.",
+          "The company processes personal information that has been terminated or deleted at the request of users or legal representatives in accordance with the personal information processing policy, and processes it so that it cannot be viewed or used for other purposes.",
+          "If a user wishes to delete personal information, they can delete personal information through membership withdrawal."
+        ]
+      },
+      "autoCollectionDevice": {
+        "title": "6. Matters Concerning Automatic Collection Devices for Personal Information (Installation, Operation, and Rejection)",
+        "content": "Cookies may be installed and operated to provide web-based services.",
+        "cookieDefinition": {
+          "title": "What are Cookies",
+          "content": "Cookies are text files sent from a website to a user's browser when the user accesses the website, and are stored on the user's PC."
+        },
+        "usagePurpose": {
+          "title": "Purpose of Use",
+          "content": "Cookies are used to store and retrieve user information to provide personalized and customized services. When visiting a website, cookies stored on the user's device are read to maintain the user's settings and provide customized services. Cookies do not automatically or actively collect information that identifies individuals, and users can refuse or delete such cookies at any time. However, if you refuse to store cookies, use of some services may be difficult."
+        },
+        "cookieRejection": {
+          "title": "Cookie Collection Rejection",
+          "content": "Users have the right to choose whether to install cookies, and can allow or reject cookies through cookie settings in the web browser option 'Settings > Privacy > Cookies and other site data'. However, if you refuse to install cookies, web use may become inconvenient, and use of some services that require login may be difficult."
+        }
+      },
+      "behavioralInformation": {
+        "title": "7. Matters Concerning Collection, Use, and Rejection of Behavioral Information",
+        "content": "Pilman collects, uses, and processes behavioral information as follows.",
+        "table": {
+          "headers": {
+            "category": "Category",
+            "content": "Content"
+          },
+          "rows": [
+            {
+              "category": "Items of Behavioral Information Collected",
+              "content": "User's in-service visit history, activity logs, and search history"
+            },
+            {
+              "category": "Method of Collecting Behavioral Information",
+              "content": [
+                "Installation and operation of cookies that store and frequently retrieve user information",
+                "Automatic collection and transmission of information generated when the user visits a web/app site through collection tools",
+                "Automatic collection and transmission of information generated when the user runs an app through collection tools"
+              ]
+            },
+            {
+              "category": "Purpose of Collecting Behavioral Information",
+              "content": [
+                "Analysis of user behavioral information to be used as a basis for new service development, service improvements, etc.",
+                "Provision of customized advertisements and content based on estimated gender, age group, and interests derived from demographic characteristics"
+              ]
+            },
+            {
+              "category": "Retention Period for Behavioral Information",
+              "content": "Stored for a maximum of 1 year, then completely destroyed in a way that cannot be recovered, or separately stored"
+            },
+            {
+              "category": "Method of Exercising User Control",
+              "content": [
+                "[Web Browser]",
+                "Choose whether to allow personalized ads",
+                "",
+                "[App]",
+                "Android: Home>Settings>Google>Ads>Delete Ad ID",
+                "iOS: Home>Settings>Privacy>Tracking>Allow Apps to Request to Track (OFF)"
+              ]
+            },
+            {
+              "category": "Related Inquiries and Methods for Redress",
+              "content": ["Service department in charge: CS", "Contact: all@k-doc.kr"]
+            }
+          ]
+        }
+      },
+      "securityMeasures": {
+        "title": "8. Matters Concerning Measures to Ensure Security of Personal Information",
+        "content": "The company implements the following technical and administrative measures to protect users' personal information.",
+        "encryption": {
+          "title": "Personal Information Encryption",
+          "content": "Important information such as user passwords are encrypted and stored and managed, and personal information can only be confirmed and changed by the user themselves."
+        },
+        "hackingPrevention": {
+          "title": "Measures Against Hacking, etc.",
+          "items": [
+            "The company operates an intrusion prevention system 24 hours a day to prevent leakage and damage of users' personal information due to hacking or malicious code, controlling unauthorized access from outside, and installs antivirus programs to prevent the system from being infected with malicious code or viruses.",
+            "In addition, data is backed up regularly to prepare for damage to personal information, and encrypted communication is used to safely transmit personal information over the network.",
+            "Furthermore, the company strives to equip the maximum technical methods for safer personal information processing."
+          ]
+        },
+        "staffMinimization": {
+          "title": "Minimization and Education of Personal Information Processing Staff",
+          "content": "The company manages staff who process personal information to a minimum, and separates external internet networks and internal networks for work PCs of staff who can download personal information from the personal information processing system to reduce the possibility of personal information leakage. In addition, the company recognizes the importance of personal information through regular education for personal information handlers and frequent education for all employees."
+        },
+        "dedicatedPersonnel": {
+          "title": "Operation of Dedicated Personnel for Personal Information Protection",
+          "content": "The company operates dedicated personnel for personal information protection to protect personal information, and checks the implementation of the personal information processing policy and compliance of personal information processors, and strives to immediately correct and fix any problems found."
+        },
+        "userNotice": {
+          "content": "In addition to the above efforts, users themselves should be careful not to expose passwords, etc., to third parties. In particular, please always be careful not to leak passwords, etc., through PCs installed in public places. Users' IDs and passwords should only be used by the user themselves, and it is recommended to frequently change and manage passwords."
+        }
+      },
+      "locationInformation": {
+        "title": "9. Processing of Personal Location Information",
+        "content": "The company protects users' personal location information in compliance with the Act on the Protection and Use of Location Information. Detailed information on personal location information processing can be found in Pilman's Location-Based Service Terms of Use.",
+        "usagePurpose": {
+          "content": "The company uses personal location information for the purpose of providing the following services to personal location information subjects, and destroys personal location information without delay when the purpose of using and providing location-based services under the K-DOC Location-Based Service Terms of Use is achieved.",
+          "items": [
+            "Information search results and content provision or recommendation services using location information",
+            "Content tagging for location-based content classification",
+            "Location-based customized advertisements"
+          ]
+        },
+        "recordRetention": {
+          "content": "The company automatically records confirmation materials of location information use and provision for personal location information subjects in the location information system based on Article 16, Paragraph 2 of the Act on the Protection and Use of Location Information, and retains them for 6 months."
+        },
+        "destructionMethod": {
+          "content": "When it becomes necessary to destroy personal location information after achieving the processing purpose, the company destroys it using the following methods that cannot be recovered or reproduced.",
+          "items": [
+            "Personal information printed on paper: Shredded with a shredder or incinerated",
+            "Personal information stored in electronic file format: Deleted using technical methods that cannot reuse the records"
+          ]
+        },
+        "thirdPartyNotification": {
+          "content": "When the company provides personal location information to a third party designated by the user, it immediately notifies the user through the communication terminal device that collected the personal location information of the recipient, provision date and time, and provision purpose each time. However, in the following cases, notification is made through a communication terminal device or email address, online posting, etc., that the user has previously specified.",
+          "items": [
+            "When the communication terminal device that collected the personal location information does not have a function to receive text, voice, or video",
+            "When the user has previously requested notification through a communication terminal device other than the communication terminal device that collected the user's personal location information, or through an email address, online posting, etc."
+          ]
+        },
+        "guardianRights": {
+          "title": "Rights, Obligations, and Methods of Exercise of Guardians of Children Aged 8 or Under, etc.",
+          "content": "The company considers it as consent of the person concerned when a guardian (hereinafter referred to as \"guardian\") under Article 26, Paragraph 2 of the Act on the Protection and Use of Location Information for persons (hereinafter referred to as \"children aged 8 or under, etc.\") who fall under the following cases consents to the use or provision of personal location information for the protection of the life or body of children aged 8 or under, etc.",
+          "items": [
+            "Children aged 8 or under",
+            "Persons under adult guardianship",
+            "Persons with mental disabilities under Article 2, Paragraph 2, Item 2 of the Welfare of Persons with Disabilities Act who fall under persons with severe disabilities under Article 2, Item 2 of the Act on the Employment Promotion and Vocational Rehabilitation of Persons with Disabilities (only applicable to persons who have registered as persons with disabilities under Article 32 of the Welfare of Persons with Disabilities Act)"
+          ],
+          "additionalContent": [
+            "A guardian who wishes to consent to the use or provision of personal location information for the protection of the life or body of children aged 8 or under, etc., must submit to the company a written consent form with documents proving that they are a guardian attached.",
+            "A guardian who consents to the use or provision of personal location information of children aged 8 or under, etc., can exercise all rights of the personal location information subject."
+          ]
+        },
+        "manager": {
+          "title": "Location Information Management Officer",
+          "content": "The company designates a location information management officer to protect location information and handle complaints related to location information.",
+          "name": "Woo Jung Ho",
+          "position": "CEO",
+          "contact": "all@k-doc.kr"
+        }
+      },
+      "privacyOfficer": {
+        "title": "10. Personal Information Protection Officer and Responsible Department",
+        "content": "Users can inquire about all matters related to personal information inquiries and complaint handling that occur while using the company's services to the personal information management officer or responsible department. The company strives to provide prompt and sincere responses and processing to user inquiries.",
+        "officer": {
+          "title": "Personal Information Management Officer",
+          "items": [
+            "Responsible Department: Pilman Co., Ltd.",
+            "Personal Information Management Officer: Woo Jung Ho",
+            "Personal Information Management Officer: Woo Jung Ho",
+            "Email Address: all@k-doc.kr"
+          ]
+        },
+        "otherOrganizations": {
+          "title": "If you need to report or consult on other personal information violations, please contact the following organizations.",
+          "items": [
+            "Personal Information Infringement Report Center (privacy.kisa.or.kr / 118 without area code)",
+            "Supreme Prosecutors' Office Cyber Investigation Division (www.spo.go.kr / 1301 without area code)",
+            "National Police Agency Cyber Bureau (ecrm.police.go.kr / 182 without area code)"
+          ]
+        }
+      },
+      "revisionNotice": {
+        "title": "11. Notice Obligation Before Revision, etc.",
+        "items": [
+          "If there are changes to the personal information processing policy, the company will notify users at least 7 days before the effective date of the revised personal information processing policy through the homepage notice or email. However, if there are important changes to users' rights or obligations, notification will be made at least 30 days in advance.",
+          "Even if the company notifies users of changes in accordance with Paragraph 1 and notifies that if no objection is expressed by the effective date of the change, it will be considered as consent, if the user does not explicitly express an objection, it is considered that the user has agreed to the changes.",
+          "Notwithstanding Paragraph 2, if the company collects additional personal information from users or provides it to a third party, it will go through a separate consent procedure from the user themselves."
+        ]
+      },
+      "revisionHistory": {
+        "title": "12. Revision History",
+        "content": "This personal information processing policy takes effect from September 25, 2025."
+      }
+    }
+  },
   "about": {
     "title": "About Us",
     "subtitle": "The People Behind K-DOC",
