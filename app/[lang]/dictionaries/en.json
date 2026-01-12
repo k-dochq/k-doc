@@ -1153,6 +1153,44 @@
         "When the Company notifies members, it may do so through messages, text messages, or service announcements within the Service, unless otherwise provided in these Terms.",
         "The Company may substitute the notification under Paragraph 1 by posting on the Company's bulletin board for 7 days or more in the case of notifications to all members."
       ]
+    },
+    "article14": {
+      "title": "Article 14 (Provision and Modification of Service)",
+      "items": [
+        {
+          "content": "The contents of services provided by the Company to members are as follows, and the specific contents of services are as specified by the Company in the operation policy. However, this is not limited to currently provided services, and may be added or changed in the future through additional development or partnerships with other companies, and in this process, some services may require identity verification procedures. When providing services to members, the Company may provide other additional services together, including services specified in these Terms.",
+          "subItems": [
+            "Provision of information on goods or services",
+            "Purchase, cancellation, and refund services between partner medical institutions and members",
+            "Other various services determined by the Company and partner medical institutions",
+            "Community-type services for sharing information among members",
+            "All other services provided to general members through additional development by the Company or partnership contracts with other companies"
+          ]
+        },
+        "Services are provided 24 hours a day, 365 days a year, in principle. However, the Company may divide services into certain ranges and separately designate available hours for each range, and in such cases, the contents thereof shall be announced in advance.",
+        "The Company may temporarily suspend the provision of services in cases of maintenance, replacement, or failure of information and communication equipment such as computers, communication interruption, or for substantial operational reasons. In such cases, the Company shall notify members by the method specified in Article 13 (Notification to Members). However, if there are unavoidable reasons that prevent the Company from notifying in advance, it may notify afterwards.",
+        "The Company may conduct regular inspections when necessary for the provision of services, and regular inspection hours shall be as announced on the service provision screen.",
+        "The Company may modify or suspend all or part of the services being provided when there are substantial operational reasons such as service reorganization or when technically necessary.",
+        "When there are changes to the contents, usage methods, or usage hours of services, the reasons for changes, contents of services to be changed, provision dates, etc. must be posted before such changes.",
+        "The Company may modify, suspend, or change part or all of services provided free of charge as necessary for the Company's policy and operation, and shall not provide separate compensation to members unless there are special provisions in related laws."
+      ]
+    },
+    "article15": {
+      "title": "Article 15 (Purchase)",
+      "items": [
+        {
+          "content": "Members apply for purchases through K-DOC services, and the Company must provide the following contents in an easily understandable manner when members apply for purchases:",
+          "subItems": [
+            "Search and selection of goods, products, etc.",
+            "Modification and confirmation of name, mobile phone number, email, address, etc.",
+            "Confirmation of the contents of these Terms, contents related to cases where purchase cancellation or change or right to withdraw an offer is restricted, cancellation fees, and other cost burdens",
+            "Purchase application for goods, products, etc., and confirmation thereof or consent to the Company's confirmation",
+            "Selection of information according to purchase such as payment methods",
+            "Notification of contents under the 「Act on Consumer Protection in Electronic Commerce, etc.」 including the fact that the 'Company' is a telecommunications sales intermediary and not a party to telecommunications sales"
+          ]
+        },
+        "When the Company needs to provide or entrust purchaser personal information to a third party, it must obtain the user's consent at the time of actual purchase application, and does not obtain comprehensive consent in advance at the time of membership registration. At this time, the Company must specify to users the personal information items provided, recipients, purposes of personal information use by recipients, retention and use periods, etc. However, this shall be in accordance with related laws and regulations, such as cases of personal information processing entrustment under the 「Act on Promotion of Information and Communications Network Utilization and Information Protection, etc.」."
+      ]
     }
   },
   "about": {
