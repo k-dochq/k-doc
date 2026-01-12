@@ -1034,6 +1034,37 @@
         "If a member becomes aware that their ID and password have been stolen or are being used by a third party, they must immediately notify the Company and follow the Company's guidance.",
         "The Company shall not be liable for any disadvantages arising from a member's failure to notify the Company of such facts pursuant to Paragraph 3, or from the member's failure to follow the Company's guidance even after notification."
       ]
+    },
+    "article8": {
+      "title": "Article 8 (Obligations of Members and Users)",
+      "items": [
+        "Members must comply with related laws and regulations, the provisions of these Terms, the Company's policies, usage guidelines, and other matters notified or announced by the Company, and must not engage in any acts that interfere with the Company's business.",
+        {
+          "content": "Members must not engage in any of the following acts in relation to the use of the Service:",
+          "subItems": [
+            "Registration of false information when applying for or changing the Service",
+            "Unauthorized modification of information posted by the Company",
+            "Transmission or posting of information other than that specified by the Company (including computer programs, etc.)",
+            "Infringement of intellectual property rights such as copyrights of the Company or third parties",
+            "Acts that damage the reputation of the Company or third parties or interfere with their business",
+            "Non-fulfillment of debts that members bear in relation to the purchase price of procedure vouchers purchased through the Service and other usage",
+            "Acts of receiving services from partner medical institutions after requesting and receiving a refund for a procedure voucher purchased by the member",
+            "Acts of requesting a refund from the Company claiming that a procedure voucher is unused after receiving services from partner medical institutions",
+            "Acts of arbitrarily manipulating the usage location after purchasing a procedure voucher to reuse it at partner medical institutions or use it at similar businesses",
+            "Acts that may interfere with other members' and partner medical institutions' use of the Service through frequent purchase cancellations and accumulation",
+            "Acts of making abnormal payments such as financing through resale by disguising procedure voucher purchases",
+            "Acts of using the Service for the purpose of reselling products after purchase by applying separate payment methods without genuine purchase intent",
+            "Acts of purchasing procedure vouchers by unauthorized use or theft of others' credit cards, bank accounts, mobile phones, etc.",
+            "Acts of disclosing or posting obscene or violent messages, images, sounds, or other information that violates public order and good morals on the Service",
+            "Acts where customer service consultation content involves profanity, verbal abuse, sexual harassment, etc.",
+            "Acts of transferring or lending one's ID and password to third parties",
+            "Acts of posting content that interferes with the Company's business without justifiable cause",
+            "Acts of reproducing, decomposing, imitating, or otherwise modifying the Service through reverse engineering, decompilation, disassembly, or any other processing",
+            "Acts of using the Service in ways other than normal usage, such as using automatic access programs, to cause load on the Company's servers and interfere with the Company's normal Service",
+            "Other acts deemed to violate related laws and regulations"
+          ]
+        }
+      ]
     }
   },
   "about": {
