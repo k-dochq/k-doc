@@ -1226,6 +1226,15 @@
         },
         "You may use other payment methods together when using the Service in accordance with the procedures and conditions set by the Company in its operation policy."
       ]
+    },
+    "article18": {
+      "title": "Article 18 (Purchase Application and Payment Confirmation Notice, etc.)",
+      "items": [
+        "When a member makes a purchase application, the Company provides the member with a purchase application and payment confirmation notice (hereinafter referred to as \"Payment Confirmation Notice\").",
+        "A member who receives a Payment Confirmation Notice may request changes or cancellation of the purchase application immediately after receiving the Payment Confirmation Notice if there is a discrepancy in the expression of intent, etc., and the Company must process such request without delay if the member who made the purchase requests it before the issuance of the procedure voucher. However, if payment has already been made, the provisions regarding withdrawal of offer, etc. under Article 21 shall apply.",
+        "Procedure vouchers cannot be transferred and may only be used by the member who purchased them, and this content is notified to the member who purchased the relevant procedure voucher through the Payment Confirmation Notice under this Article.",
+        "The Payment Confirmation Notice under this Article may be made through SNS services linked to the user's contact information, etc., and in such cases, the user may bear data charges, etc. depending on the user's communication environment or fee structure."
+      ]
     }
   },
   "about": {

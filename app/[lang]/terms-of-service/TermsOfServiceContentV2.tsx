@@ -510,6 +510,20 @@ export function TermsOfServiceContentV2({ lang, dict }: TermsOfServiceContentV2P
             })}
           </div>
         </div>
+
+        {/* 제18조 (구매신청 및 결제확인 통지 등) */}
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-2xl font-semibold text-neutral-700'>
+            {dict.termsOfService.article18.title}
+          </h2>
+          <div className='flex flex-col gap-2'>
+            {dict.termsOfService.article18.items.map((item, index) => (
+              <p key={index} className='text-base leading-6 font-normal text-neutral-700'>
+                {index + 1}. {item}
+              </p>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
