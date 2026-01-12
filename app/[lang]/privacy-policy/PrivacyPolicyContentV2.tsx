@@ -605,6 +605,78 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </div>
           </div>
         </div>
+
+        {/* 7. 행태정보 수집 이용 및 거부 등에 관한 사항 */}
+        <div className='flex flex-col gap-2'>
+          <h3 className='text-2xl font-semibold text-neutral-700'>
+            {dict.privacyPolicy.collectionOfPersonalInformation.behavioralInformation.title}
+          </h3>
+          <div className='flex flex-col gap-4'>
+            <p className='text-base font-normal text-neutral-700'>
+              {dict.privacyPolicy.collectionOfPersonalInformation.behavioralInformation.content}
+            </p>
+
+            {/* 테이블 */}
+            <div className='flex flex-col border-t border-neutral-400'>
+              {/* 테이블 헤더 */}
+              <div className='flex border-b border-neutral-200 bg-neutral-100'>
+                <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
+                  <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                    {
+                      dict.privacyPolicy.collectionOfPersonalInformation.behavioralInformation.table
+                        .headers.category
+                    }
+                  </p>
+                </div>
+                <div className='flex w-0 shrink-0 items-center justify-center'>
+                  <div className='h-full w-px bg-neutral-200' />
+                </div>
+                <div className='flex flex-1 items-center px-3 py-4'>
+                  <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                    {
+                      dict.privacyPolicy.collectionOfPersonalInformation.behavioralInformation.table
+                        .headers.content
+                    }
+                  </p>
+                </div>
+              </div>
+
+              {/* 테이블 본문 */}
+              {dict.privacyPolicy.collectionOfPersonalInformation.behavioralInformation.table.rows.map(
+                (row, index) => (
+                  <div key={index} className='flex border-b border-neutral-200'>
+                    <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
+                      <p className='text-sm leading-5 font-normal text-neutral-500'>
+                        {row.category}
+                      </p>
+                    </div>
+                    <div className='flex w-0 shrink-0 items-center justify-center'>
+                      <div className='h-full w-px bg-neutral-200' />
+                    </div>
+                    <div className='flex flex-1 items-center px-3 py-4'>
+                      {Array.isArray(row.content) ? (
+                        <div className='flex flex-col gap-1'>
+                          {row.content.map((item, itemIndex) => (
+                            <p
+                              key={itemIndex}
+                              className='text-sm leading-5 font-normal text-neutral-500'
+                            >
+                              {item}
+                            </p>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                          {row.content}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ),
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

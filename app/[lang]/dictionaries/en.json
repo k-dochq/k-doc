@@ -1680,6 +1680,56 @@
           "title": "Cookie Collection Rejection",
           "content": "Users have the right to choose whether to install cookies, and can allow or reject cookies through cookie settings in the web browser option 'Settings > Privacy > Cookies and other site data'. However, if you refuse to install cookies, web use may become inconvenient, and use of some services that require login may be difficult."
         }
+      },
+      "behavioralInformation": {
+        "title": "7. Matters Concerning Collection, Use, and Rejection of Behavioral Information",
+        "content": "Pilman collects, uses, and processes behavioral information as follows.",
+        "table": {
+          "headers": {
+            "category": "Category",
+            "content": "Content"
+          },
+          "rows": [
+            {
+              "category": "Items of Behavioral Information Collected",
+              "content": "User's in-service visit history, activity logs, and search history"
+            },
+            {
+              "category": "Method of Collecting Behavioral Information",
+              "content": [
+                "Installation and operation of cookies that store and frequently retrieve user information",
+                "Automatic collection and transmission of information generated when the user visits a web/app site through collection tools",
+                "Automatic collection and transmission of information generated when the user runs an app through collection tools"
+              ]
+            },
+            {
+              "category": "Purpose of Collecting Behavioral Information",
+              "content": [
+                "Analysis of user behavioral information to be used as a basis for new service development, service improvements, etc.",
+                "Provision of customized advertisements and content based on estimated gender, age group, and interests derived from demographic characteristics"
+              ]
+            },
+            {
+              "category": "Retention Period for Behavioral Information",
+              "content": "Stored for a maximum of 1 year, then completely destroyed in a way that cannot be recovered, or separately stored"
+            },
+            {
+              "category": "Method of Exercising User Control",
+              "content": [
+                "[Web Browser]",
+                "Choose whether to allow personalized ads",
+                "",
+                "[App]",
+                "Android: Home>Settings>Google>Ads>Delete Ad ID",
+                "iOS: Home>Settings>Privacy>Tracking>Allow Apps to Request to Track (OFF)"
+              ]
+            },
+            {
+              "category": "Related Inquiries and Methods for Redress",
+              "content": ["Service department in charge: CS", "Contact: all@k-doc.kr"]
+            }
+          ]
+        }
       }
     }
   },
