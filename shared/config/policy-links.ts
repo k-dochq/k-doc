@@ -31,11 +31,11 @@ export const POLICY_LINKS = {
 
 /**
  * 언어에 따른 서비스 이용약관 링크를 반환합니다.
- * @param locale 언어 설정
- * @returns 해당 언어의 서비스 이용약관 링크
+ * @param locale 언어 설정 (LocaleLink 사용 시에는 무시됨)
+ * @returns 서비스 이용약관 내부 페이지 경로
  */
-export const getTermsOfServiceLink = (locale: Locale): string => {
-  return POLICY_LINKS.termsOfService[locale] as string;
+export const getTermsOfServiceLink = (_locale: Locale): string => {
+  return '/terms-of-service';
 };
 
 /**

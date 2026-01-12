@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { getTermsOfServiceLink, getPrivacyPolicyLink } from 'shared/config/policy-links';
+import { LocaleLink } from 'shared/ui/locale-link';
 
 interface TermsAgreementProps {
   lang: Locale;
@@ -104,14 +105,12 @@ export function TermsAgreement({ lang, dict, onAgreementChange }: TermsAgreement
           <label htmlFor='termsOfService' className='text-sm text-neutral-900'>
             {dict.auth?.signup?.termsAgreement?.termsOfService || '서비스 이용 약관 (필수)'}
           </label>
-          <a
+          <LocaleLink
             href={getTermsOfServiceLink(lang)}
-            target='_blank'
-            rel='noopener noreferrer'
             className='text-sm text-neutral-500 transition-colors hover:text-neutral-700'
           >
             {'>'}
-          </a>
+          </LocaleLink>
         </div>
 
         {/* 개인정보 수집/이용 동의 */}

@@ -29,7 +29,7 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
     dict,
   });
   const { signUpWithEmail, isLoading, error } = useEmailSignup({ locale: lang, dict });
-  const [step, setStep] = useState<1 | 2>(1);
+  const [step, setStep] = useState<1 | 2>(2);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreements, setAgreements] = useState<AgreementState>({
