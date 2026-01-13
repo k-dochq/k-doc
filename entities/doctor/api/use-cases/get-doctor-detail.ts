@@ -199,6 +199,10 @@ export async function getDoctorDetail(
               },
             },
             Review: {
+              where: {
+                // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+                isActive: { not: false },
+              },
               select: {
                 id: true,
                 userId: true,

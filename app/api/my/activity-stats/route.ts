@@ -16,6 +16,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const myPostsCount = await prisma.review.count({
       where: {
         userId: user.id,
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
       },
     });
 

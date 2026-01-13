@@ -25,6 +25,8 @@ export async function getHospitalReviews({
     const totalCount = await prisma.review.count({
       where: {
         hospitalId,
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
         ...(excludeReviewId && {
           id: {
             not: excludeReviewId,
@@ -37,6 +39,8 @@ export async function getHospitalReviews({
     const reviews = await prisma.review.findMany({
       where: {
         hospitalId,
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
         ...(excludeReviewId && {
           id: {
             not: excludeReviewId,

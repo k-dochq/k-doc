@@ -25,7 +25,10 @@ export async function getAllReviews({
 
   try {
     // 필터 조건 구성
-    const whereCondition: Prisma.ReviewWhereInput = {};
+    const whereCondition: Prisma.ReviewWhereInput = {
+      // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+      isActive: { not: false },
+    };
 
     // hospitalId가 있으면 해당 병원의 리뷰만 필터링
     if (hospitalId) {

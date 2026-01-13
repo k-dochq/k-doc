@@ -20,6 +20,10 @@ export interface GetReviewDetailResponse {
 export async function getAllReviewIds(): Promise<string[]> {
   try {
     const reviews = await prisma.review.findMany({
+      where: {
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
+      },
       select: {
         id: true,
       },
@@ -42,9 +46,12 @@ export async function getReviewDetail({
 }: GetReviewDetailParams): Promise<GetReviewDetailResponse> {
   try {
     // 리뷰 상세 정보 조회 (이미지 포함)
-    const review = await prisma.review.findUnique({
+    // findFirst를 사용하여 isActive 조건 포함
+    const review = await prisma.review.findFirst({
       where: {
         id: reviewId,
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
       },
       include: {
         User: {
