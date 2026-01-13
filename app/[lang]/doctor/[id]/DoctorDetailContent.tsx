@@ -8,6 +8,7 @@ import { useDoctorDetail } from '@/lib/queries/doctor';
 import { DoctorDetailSkeleton } from './DoctorDetailSkeleton';
 import { DoctorDetailError } from './DoctorDetailError';
 import { DoctorDetailNotFound } from './DoctorDetailNotFound';
+import { getDoctorNameFromLocalizedText } from 'shared/lib/doctor-name';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { DoctorCard } from '@/widgets/hospital-detail-doctors/ui/DoctorCard';
 import { transformDoctorDetailToHospitalDoctor } from '@/lib/utils/doctor-transform';
@@ -38,7 +39,7 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
     return <DoctorDetailNotFound lang={lang} dict={dict} />;
   }
 
-  const doctorName = getLocalizedTextByLocale(doctor.name, lang) || '의사';
+  const doctorName = getDoctorNameFromLocalizedText(doctor.name, lang) || '의사';
   const doctorPosition = getLocalizedTextByLocale(doctor.position, lang);
   const doctorTitle = doctorPosition ? `${doctorName} ${doctorPosition}` : doctorName;
 

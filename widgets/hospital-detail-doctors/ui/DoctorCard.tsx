@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
+import { getDoctorNameFromJsonValue } from 'shared/lib/doctor-name';
 import { extractLocalizedText } from 'shared/lib';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalDoctor } from 'entities/hospital/api/entities/types';
@@ -38,7 +39,7 @@ export function DoctorCard({
 }: DoctorCardProps) {
   const { isAuthenticated } = useAuth();
 
-  const doctorName = extractLocalizedText(doctor.name, lang) || '이름 없음';
+  const doctorName = getDoctorNameFromJsonValue(doctor.name, lang) || '이름 없음';
   const position = extractLocalizedText(doctor.position, lang) || '';
   const hospitalName = extractLocalizedText(doctor.hospital.name, lang) || '';
 
