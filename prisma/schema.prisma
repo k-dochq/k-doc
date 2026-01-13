@@ -189,6 +189,7 @@ model Review {
   medicalSpecialtyId   String           @db.Uuid
   concernsMultilingual Json?
   commentCount         Int              @default(0)
+  isActive             Boolean?         @default(true)
   Comment              Comment[]
   Hospital             Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   MedicalSpecialty     MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
