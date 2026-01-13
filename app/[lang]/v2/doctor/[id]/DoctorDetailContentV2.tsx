@@ -7,6 +7,7 @@ import { useDoctorDetail } from '@/lib/queries/doctor';
 import { DoctorDetailSkeletonV2 } from './DoctorDetailSkeletonV2';
 import { DoctorDetailErrorV2 } from './DoctorDetailErrorV2';
 import { DoctorDetailNotFoundV2 } from './DoctorDetailNotFoundV2';
+import { getDoctorNameFromLocalizedText } from 'shared/lib/doctor-name';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospital-transform';
 import { DoctorDetailHeaderV2 } from 'widgets/doctor-detail-header/ui/DoctorDetailHeaderV2';
@@ -37,7 +38,7 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
     return <DoctorDetailNotFoundV2 lang={lang} dict={dict} />;
   }
 
-  const doctorName = getLocalizedTextByLocale(doctor.name, lang) || '의사';
+  const doctorName = getDoctorNameFromLocalizedText(doctor.name, lang) || '의사';
   const doctorPosition = getLocalizedTextByLocale(doctor.position, lang);
   const doctorTitle = doctorPosition ? `${doctorName} ${doctorPosition}` : doctorName;
   const affiliatedHospital = transformDoctorHospitalToHospitalCard(doctor);

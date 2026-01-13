@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useMemo } from 'react';
 import { type Locale } from 'shared/config';
+import { getDoctorNameFromJsonValue } from 'shared/lib/doctor-name';
 import { extractLocalizedText } from 'shared/lib';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalDoctor } from 'entities/hospital/api/entities/types';
@@ -23,7 +24,7 @@ interface DoctorCardV2Props {
 }
 
 export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
-  const doctorName = extractLocalizedText(doctor.name, lang) || '';
+  const doctorName = getDoctorNameFromJsonValue(doctor.name, lang) || '';
   const position = extractLocalizedText(doctor.position, lang) || '';
   const hospitalName = extractLocalizedText(doctor.hospital?.name, lang) || '';
   const profileImage =

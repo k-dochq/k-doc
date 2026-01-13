@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useMemo } from 'react';
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
+import { getDoctorNameFromLocalizedText } from 'shared/lib/doctor-name';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { type Dictionary } from 'shared/model/types';
 import { type DoctorDetail } from '@/lib/queries/doctor';
@@ -16,7 +17,7 @@ interface DoctorProfileV2Props {
 }
 
 export function DoctorProfileV2({ doctor, lang, dict }: DoctorProfileV2Props) {
-  const doctorName = getLocalizedTextByLocale(doctor.name, lang) || '';
+  const doctorName = getDoctorNameFromLocalizedText(doctor.name, lang) || '';
   const position = getLocalizedTextByLocale(doctor.position, lang) || '';
   const hospitalName = getLocalizedTextByLocale(doctor.hospital.name, lang) || '';
 
