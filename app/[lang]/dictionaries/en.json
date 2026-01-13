@@ -1446,10 +1446,10 @@
     }
   },
   "privacyPolicy": {
-    "intro": "Pilman Co., Ltd. (hereinafter referred to as 'Pilman' or 'Company') collects, uses, and provides personal information based on user consent. Pilman provides this Privacy Policy in compliance with domestic laws and regulations, personal information protection regulations, and guidelines that personal information processors must comply with to protect users' rights.",
+    "intro": "FILLMAN Co., Ltd. (hereinafter referred to as 'FILLMAN' or 'Company') collects, uses, and provides personal information based on user consent. FILLMAN provides this Privacy Policy in compliance with domestic laws and regulations, personal information protection regulations, and guidelines that personal information processors must comply with to protect users' rights.",
     "collectionOfPersonalInformation": {
       "title": "1. Collection of Personal Information",
-      "content": "Pilman operates as a membership-based service and collects the minimum necessary personal information through websites, application programs, etc., during membership registration or service use to provide services. The personal information collected from users to use Pilman services is as follows.",
+      "content": "FILLMAN operates as a membership-based service and collects the minimum necessary personal information through websites, application programs, etc., during membership registration or service use to provide services. The personal information collected from users to use FILLMAN services is as follows.",
       "tableTitle": "Personal Information Collected by Service",
       "tableLabels": {
         "required": "[Required]",
@@ -1520,7 +1520,7 @@
       },
       "collectionMethods": {
         "title": "Methods of Collecting Personal Information",
-        "content": "When collecting personal information, Pilman notifies users in advance and obtains consent. The collection methods are as follows.",
+        "content": "When collecting personal information, FILLMAN notifies users in advance and obtains consent. The collection methods are as follows.",
         "items": [
           "Collected when users consent to personal information collection and directly enter information during membership registration and service use.",
           "May be collected through webpages, email, fax, phone calls, etc., during consultation through CS.",
@@ -1537,7 +1537,7 @@
       },
       "useOfPersonalInformation": {
         "title": "2. Use of Personal Information",
-        "content": "Pilman uses personal information only for the following purposes: member management, service development, provision and improvement, and building a safe internet usage environment for Pilman and all related services (including mobile web/app).",
+        "content": "FILLMAN uses personal information only for the following purposes: member management, service development, provision and improvement, and building a safe internet usage environment for FILLMAN and all related services (including mobile web/app).",
         "items": [
           "Member management such as member identification, membership intention confirmation, identity/age verification, user identification",
           "Handling inquiries or complaints, delivering notices",
@@ -1552,11 +1552,11 @@
         "title": "3. Provision and Consignment of Personal Information",
         "thirdPartyProvision": {
           "title": "Third-Party Provision of Personal Information",
-          "content": "Pilman does not provide users' personal information to third parties except when users have separately consented or when required by law."
+          "content": "FILLMAN does not provide users' personal information to third parties except when users have separately consented or when required by law."
         },
         "processingConsignment": {
           "title": "Consignment of Personal Information Processing",
-          "content": "Pilman may consign some personal information processing tasks to external parties when necessary to provide services. Pilman manages and supervises whether consigned companies comply with personal information protection laws, including security measures and restrictions on re-consignment.",
+          "content": "FILLMAN may consign some personal information processing tasks to external parties when necessary to provide services. FILLMAN manages and supervises whether consigned companies comply with personal information protection laws, including security measures and restrictions on re-consignment.",
           "koreaStatus": {
             "title": "Personal Information Processing Consignment Status (Korea)",
             "table": {
@@ -1625,7 +1625,7 @@
       },
       "destruction": {
         "title": "4. Destruction of Personal Information",
-        "content": "When the purpose of collecting and using personal information is achieved, Pilman destroys the collected personal information without delay. The procedures and methods are as follows.",
+        "content": "When the purpose of collecting and using personal information is achieved, FILLMAN destroys the collected personal information without delay. The procedures and methods are as follows.",
         "method": {
           "content": "When a reason for destruction occurs, such as achievement of the purpose of collection and use or member withdrawal, the destruction method is determined considering the form of personal information. For electronic file forms, they are safely deleted so that they cannot be recovered or reproduced, and for other records, printed materials, written documents, etc., they are destroyed by shredding or incineration."
         },
@@ -1716,7 +1716,7 @@
       },
       "behavioralInformation": {
         "title": "7. Matters Concerning Collection, Use, and Rejection of Behavioral Information",
-        "content": "Pilman collects, uses, and processes behavioral information as follows.",
+        "content": "FILLMAN collects, uses, and processes behavioral information as follows.",
         "table": {
           "headers": {
             "category": "Category",
@@ -1793,7 +1793,7 @@
       },
       "locationInformation": {
         "title": "9. Processing of Personal Location Information",
-        "content": "The company protects users' personal location information in compliance with the Act on the Protection and Use of Location Information. Detailed information on personal location information processing can be found in Pilman's Location-Based Service Terms of Use.",
+        "content": "The company protects users' personal location information in compliance with the Act on the Protection and Use of Location Information. Detailed information on personal location information processing can be found in FILLMAN's Location-Based Service Terms of Use.",
         "usagePurpose": {
           "content": "The company uses personal location information for the purpose of providing the following services to personal location information subjects, and destroys personal location information without delay when the purpose of using and providing location-based services under the K-DOC Location-Based Service Terms of Use is achieved.",
           "items": [
@@ -1846,7 +1846,7 @@
         "officer": {
           "title": "Personal Information Management Officer",
           "items": [
-            "Responsible Department: Pilman Co., Ltd.",
+            "Responsible Department: FILLMAN Co., Ltd.",
             "Personal Information Management Officer: Woo Jung Ho",
             "Personal Information Management Officer: Woo Jung Ho",
             "Email Address: all@k-doc.kr"
