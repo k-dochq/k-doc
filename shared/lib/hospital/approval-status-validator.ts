@@ -17,7 +17,7 @@ export async function validateHospitalApprovalStatus(hospitalId: string): Promis
     throw new Error('Hospital not found');
   }
 
-  // if (hospital.approvalStatusType === 'REJECTED') {
-  //   throw new Error('Hospital is rejected');
-  // }
+  if (hospital.approvalStatusType === 'REJECTED') {
+    throw new Error('Hospital is rejected');
+  }
 }
