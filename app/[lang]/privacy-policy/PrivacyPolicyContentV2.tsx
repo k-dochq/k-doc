@@ -414,7 +414,7 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                   {dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment.processingConsignment.overseasStatus.table.rows.map(
                     (row, index) => (
                       <div key={index} className='flex border-b border-neutral-200'>
-                        <div className='flex w-[106px] shrink-0 items-center border-b border-neutral-200 bg-neutral-100 px-3 py-4'>
+                        <div className='flex w-[106px] shrink-0 items-center bg-neutral-100 px-3 py-4'>
                           <p className='text-sm leading-5 font-semibold text-neutral-700'>
                             {row.label}
                           </p>
@@ -920,14 +920,16 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                 }
               </p>
               <div className='flex flex-col gap-1 pl-4'>
-                <p className='text-base font-normal text-neutral-700'>{ceoName}</p>
+                <p className='text-base font-normal text-neutral-700'>• {ceoName}</p>
                 <p className='text-base font-normal text-neutral-700'>
+                  •{' '}
                   {
                     dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
                       .position
                   }
                 </p>
                 <p className='text-base font-normal text-neutral-700'>
+                  •{' '}
                   {
                     dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
                       .contact
