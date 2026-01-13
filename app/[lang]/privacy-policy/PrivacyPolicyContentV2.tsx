@@ -1,5 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { getCompanyName, getCeoName } from 'shared/lib/company-info';
 import { ArticleSection } from '../terms-of-service/ui/ArticleSection';
 
 interface PrivacyPolicyContentV2Props {
@@ -7,7 +8,9 @@ interface PrivacyPolicyContentV2Props {
   dict: Dictionary;
 }
 
-export function PrivacyPolicyContentV2({ lang: _lang, dict }: PrivacyPolicyContentV2Props) {
+export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Props) {
+  const companyName = getCompanyName(lang);
+  const ceoName = getCeoName(lang);
   return (
     <div className='px-5 pt-8 pb-20'>
       <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.footer.privacyPolicy}</h1>
@@ -15,7 +18,37 @@ export function PrivacyPolicyContentV2({ lang: _lang, dict }: PrivacyPolicyConte
       <div className='flex flex-col gap-10'>
         <div className='rounded-lg bg-neutral-100 p-5'>
           <p className='text-base leading-6 font-normal text-neutral-700'>
-            {dict.privacyPolicy.intro}
+            {(() => {
+              // dict에서 intro 텍스트를 가져오되, 회사명만 언어에 따라 하드코딩으로 교체
+              let introText = dict.privacyPolicy.intro;
+              if (lang === 'ko') {
+                // 한국어일 때는 한국어 회사명으로 교체
+                introText = introText
+                  .replace(/FILLMAN co?\.?,? Ltd\.?/gi, companyName)
+                  .replace(/FILLMAN Inc\.?/gi, companyName)
+                  .replace(/FILLMAN/gi, '필만');
+              } else {
+                // 한국어 외 모든 언어는 영어 회사명으로 교체
+                // 한국어 패턴
+                introText = introText
+                  .replace(/주식회사 필만/gi, companyName)
+                  .replace(/필만/gi, 'FILLMAN');
+                // 중국어 패턴
+                introText = introText
+                  .replace(/必滿股份有限公司/gi, companyName)
+                  .replace(/必滿/gi, 'FILLMAN');
+                // 일본어 패턴
+                introText = introText
+                  .replace(/株式会社ピルマン/gi, companyName)
+                  .replace(/ピルマン/gi, 'FILLMAN');
+                // 이미 영어로 되어 있을 수도 있으므로 영어 패턴도 정규화
+                introText = introText
+                  .replace(/FILLMAN co?\.?,? Ltd\.?/gi, companyName)
+                  .replace(/FILLMAN Inc\.?/gi, companyName)
+                  .replace(/FILLMAN/gi, 'FILLMAN');
+              }
+              return introText;
+            })()}
           </p>
         </div>
 
@@ -887,12 +920,7 @@ export function PrivacyPolicyContentV2({ lang: _lang, dict }: PrivacyPolicyConte
                 }
               </p>
               <div className='flex flex-col gap-1 pl-4'>
-                <p className='text-base font-normal text-neutral-700'>
-                  {
-                    dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
-                      .name
-                  }
-                </p>
+                <p className='text-base font-normal text-neutral-700'>{ceoName}</p>
                 <p className='text-base font-normal text-neutral-700'>
                   {
                     dict.privacyPolicy.collectionOfPersonalInformation.locationInformation.manager
@@ -927,11 +955,45 @@ export function PrivacyPolicyContentV2({ lang: _lang, dict }: PrivacyPolicyConte
               </h4>
               <ul className='flex list-disc flex-col gap-2 pl-4'>
                 {dict.privacyPolicy.collectionOfPersonalInformation.privacyOfficer.officer.items.map(
-                  (item, index) => (
-                    <li key={index} className='text-base font-normal text-neutral-700'>
-                      {item}
-                    </li>
-                  ),
+                  (item, index) => {
+                    // dict에서 텍스트를 가져오되, 회사명과 대표이사 이름만 언어에 따라 하드코딩으로 교체
+                    let processedItem = item;
+                    if (lang === 'ko') {
+                      // 한국어일 때는 한국어 회사명과 대표이사 이름으로 교체
+                      processedItem = item
+                        .replace(/FILLMAN co?\.?,? Ltd\.?/gi, companyName)
+                        .replace(/FILLMAN Inc\.?/gi, companyName)
+                        .replace(/FILLMAN/gi, '필만')
+                        .replace(/Woo Jung Ho/gi, ceoName);
+                    } else {
+                      // 한국어 외 모든 언어는 영어 회사명과 대표이사 이름으로 교체
+                      // 한국어 패턴
+                      processedItem = item
+                        .replace(/주식회사 필만/gi, companyName)
+                        .replace(/필만/gi, 'FILLMAN')
+                        .replace(/우정호/gi, ceoName);
+                      // 중국어 패턴
+                      processedItem = processedItem
+                        .replace(/必滿股份有限公司/gi, companyName)
+                        .replace(/必滿/gi, 'FILLMAN');
+                      // 일본어 패턴
+                      processedItem = processedItem
+                        .replace(/株式会社ピルマン/gi, companyName)
+                        .replace(/ピルマン/gi, 'FILLMAN')
+                        .replace(/ウ・ジョンホ/gi, ceoName);
+                      // 이미 영어로 되어 있을 수도 있으므로 영어 패턴도 정규화
+                      processedItem = processedItem
+                        .replace(/FILLMAN co?\.?,? Ltd\.?/gi, companyName)
+                        .replace(/FILLMAN Inc\.?/gi, companyName)
+                        .replace(/FILLMAN/gi, 'FILLMAN')
+                        .replace(/Woo Jung Ho/gi, ceoName);
+                    }
+                    return (
+                      <li key={index} className='text-base font-normal text-neutral-700'>
+                        {processedItem}
+                      </li>
+                    );
+                  },
                 )}
               </ul>
             </div>
