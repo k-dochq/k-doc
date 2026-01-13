@@ -28,6 +28,8 @@ export async function getHospitalReviewStats(
       prisma.review.aggregate({
         where: {
           hospitalId,
+          // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+          isActive: { not: false },
         },
         _avg: {
           rating: true,
@@ -36,11 +38,15 @@ export async function getHospitalReviewStats(
       prisma.review.count({
         where: {
           hospitalId,
+          // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+          isActive: { not: false },
         },
       }),
       prisma.review.findMany({
         where: {
           hospitalId,
+          // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+          isActive: { not: false },
         },
         select: {
           rating: true,

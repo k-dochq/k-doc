@@ -214,7 +214,11 @@ export class ReviewRepository {
    */
   async updateHospitalRating(hospitalId: string): Promise<void> {
     const reviews = await prisma.review.findMany({
-      where: { hospitalId },
+      where: {
+        hospitalId,
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
+      },
       select: { rating: true },
     });
 

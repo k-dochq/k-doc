@@ -32,6 +32,10 @@ export class LikedReviewsRepository {
     // 커서 기반 페이지네이션을 위한 where 조건
     const whereCondition: Prisma.ReviewLikeWhereInput = {
       userId,
+      // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+      Review: {
+        isActive: { not: false },
+      },
       ...(cursor && {
         createdAt: {
           lt: new Date(cursor),

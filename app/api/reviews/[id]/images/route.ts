@@ -13,8 +13,13 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
   const { id: reviewId } = await params;
 
   try {
-    const review = await prisma.review.findUnique({
-      where: { id: reviewId },
+    // findFirst를 사용하여 isActive 조건 포함
+    const review = await prisma.review.findFirst({
+      where: {
+        id: reviewId,
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
+      },
       select: {
         id: true,
         MedicalSpecialty: {

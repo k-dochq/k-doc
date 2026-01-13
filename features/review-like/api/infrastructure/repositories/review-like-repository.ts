@@ -72,12 +72,13 @@ export class ReviewLikeRepository {
    * 리뷰 존재 여부 확인
    */
   async reviewExists(reviewId: string): Promise<boolean> {
-    const whereInput: Prisma.ReviewWhereUniqueInput = {
-      id: reviewId,
-    };
-
-    const review = await prisma.review.findUnique({
-      where: whereInput,
+    // findFirst를 사용하여 isActive 조건 포함
+    const review = await prisma.review.findFirst({
+      where: {
+        id: reviewId,
+        // isActive가 false인 리뷰는 제외 (null과 true는 포함)
+        isActive: { not: false },
+      },
       select: { id: true }, // 성능 최적화: id만 선택
     });
 
