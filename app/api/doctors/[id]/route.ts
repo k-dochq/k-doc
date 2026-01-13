@@ -20,10 +20,11 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
     // 의사 상세 정보 조회
     const { doctor } = await getDoctorDetail({ id });
 
-    // 리뷰 데이터를 ReviewCardData 형식으로 변환
-    let reviews: ReviewCardData[] = doctor.Hospital.Review.map((review) =>
+    // 리뷰 데이터를 ReviewCardData 형식으로 변환 (닉네임 생성 포함)
+    const reviewPromises = doctor.Hospital.Review.map((review) =>
       transformDoctorReviewToCardData(review, doctor.Hospital),
     );
+    let reviews: ReviewCardData[] = await Promise.all(reviewPromises);
 
     // 로그인 상태 확인 (이미지 블러 처리용)
     const authService = new AuthService();

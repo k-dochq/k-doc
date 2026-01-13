@@ -2,7 +2,7 @@ import { prisma } from 'shared/lib/prisma';
 import { type ReviewCardData } from '../../model/types';
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
-import { getUserDisplayName } from 'shared/lib';
+import { getReviewNickname } from 'shared/lib/review-nickname';
 import { getHospitalThumbnailImageUrl } from 'entities/hospital/lib/image-utils';
 import { validateHospitalApprovalStatus } from 'shared/lib/hospital/approval-status-validator';
 
@@ -139,6 +139,15 @@ export async function getReviewDetail({
     // 병원 승인 상태 검증 (REJECTED인 경우 에러 throw)
     await validateHospitalApprovalStatus(review.hospitalId);
 
+    // 리뷰 작성일자 기준으로 닉네임 결정
+    const { displayName, nickName } = await getReviewNickname(
+      review.id,
+      review.createdAt,
+      review.User?.nickName || null,
+      review.User?.displayName || null,
+      review.User?.name || null,
+    );
+
     // 데이터 변환
     const likedUserIds = review.ReviewLike.map((like) => like.userId);
 
@@ -159,8 +168,8 @@ export async function getReviewDetail({
       likedUserIds, // 좋아요를 한 사용자 ID들
       isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
       user: {
-        displayName: review.User ? getUserDisplayName(review.User) : null,
-        nickName: review.User?.nickName || null,
+        displayName,
+        nickName,
         name: review.User?.name || null,
       },
       hospital: {
