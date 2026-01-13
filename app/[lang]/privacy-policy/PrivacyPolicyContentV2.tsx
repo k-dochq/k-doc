@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { getCompanyName, getCeoName } from 'shared/lib/company-info';
+import { getCeoName } from 'shared/lib/company-info';
 import { ArticleSection } from '../terms-of-service/ui/ArticleSection';
 
 interface PrivacyPolicyContentV2Props {
