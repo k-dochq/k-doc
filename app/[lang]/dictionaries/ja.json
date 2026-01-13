@@ -172,7 +172,7 @@
     "apgujeongMiracle": {
       "videoTitle": "手術映像",
       "imageAlt": "狎鴎亭ミラクル議員施術詳細情報",
-      "videoDescription": "米国FOX TVに放映された狎鴎亭ミラクルウ・ジョンホ院長"
+      "videoDescription": "米国FOX TVに放映された狎鴎亭ミラクルWoo Jung Ho院長"
     }
   },
   "hospitalDetailDoctors": {
@@ -925,7 +925,7 @@
   },
   "footer": {
     "companyName": "FILLMAN co., Ltd.",
-    "ceo": "代表：ウ・ジョンホ",
+    "ceo": "代表：Woo Jung Ho",
     "address": "京畿道河南市ミサガン辺南路103",
     "businessNumber": "事業者登録番号 474-86-03352",
     "customerEmail": "カスタマーセンターのメール cs@k-doc.kr",
@@ -1834,7 +1834,7 @@
         "manager": {
           "title": "位置情報管理責任者",
           "content": "会社は位置情報を保護し、位置情報関連の不満を処理するために位置情報管理責任者を指定しています。",
-          "name": "ウ・ジョンホ",
+          "name": "Woo Jung Ho",
           "position": "代表取締役",
           "contact": "all@k-doc.kr"
         }
@@ -1846,8 +1846,8 @@
           "title": "個人情報管理担当者",
           "items": [
             "担当部門：FILLMAN co., Ltd.",
-            "個人情報管理責任者：ウ・ジョンホ",
-            "個人情報管理担当者：ウ・ジョンホ",
+            "個人情報管理責任者：Woo Jung Ho",
+            "個人情報管理担当者：Woo Jung Ho",
             "メールアドレス：all@k-doc.kr"
           ]
         },
@@ -1878,14 +1878,14 @@
     "title": "会社紹介",
     "subtitle": "K-DOCを作る人",
     "description": {
-      "part1": "K-DOCは医療界の世界的権威者であるウ・ジョンホ代表を主軸に、 ",
+      "part1": "K-DOCは医療界の世界的権威者であるWoo Jung Ho代表を主軸に、 ",
       "highlight": "世界最高学部出身の医療スタッフが集まって企画したサービス",
       "part2": "です。狎鴎亭のランドマークの建物に位置する本社は、世界的なビューティートレンドをリードし、日本でも「シリフティングの対価」として広く知られているDr. WooはFOX TVニュースなど海外優秀メディアにも紹介されています。"
     },
     "profiles": {
       "woo": {
         "description": "アメリカFOX TVニュース放送された「非切開糸リフティング革命」",
-        "name": "President ウ・ジョンホ"
+        "name": "President Woo Jung Ho"
       },
       "park": {
         "name": "Vice President パク・ジョンヒョン"
