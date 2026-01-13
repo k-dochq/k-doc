@@ -4,6 +4,7 @@ import { prisma } from 'shared/lib/prisma';
 import type { ReviewCardData } from 'entities/review/model/types';
 import type { Prisma } from '@prisma/client';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
+import { getReviewNickname } from 'shared/lib/review-nickname';
 
 interface GetLikedReviewsParams {
   userId: string;
@@ -131,8 +132,8 @@ export class LikedReviewsRepository {
     const hasMore = likedReviews.length > limit;
     const reviews = hasMore ? likedReviews.slice(0, -1) : likedReviews;
 
-    // ReviewCardData 형태로 변환
-    const transformedReviews: ReviewCardData[] = reviews.map((likedReview) => {
+    // ReviewCardData 형태로 변환 (닉네임 생성 포함)
+    const transformedReviewsPromises = reviews.map(async (likedReview) => {
       const review = likedReview.Review;
 
       // 이미지를 Before/After로 분류
@@ -141,6 +142,15 @@ export class LikedReviewsRepository {
 
       // 좋아요한 사용자 ID들
       const likedUserIds = review.ReviewLike.map((like) => like.userId);
+
+      // 리뷰 작성일자 기준으로 닉네임 결정
+      const { displayName, nickName } = await getReviewNickname(
+        review.id,
+        review.createdAt,
+        review.User.nickName,
+        review.User.displayName,
+        review.User.name,
+      );
 
       return {
         id: review.id,
@@ -159,8 +169,8 @@ export class LikedReviewsRepository {
           ? parseLocalizedText(review.concernsMultilingual)
           : null,
         user: {
-          displayName: review.User.displayName,
-          nickName: review.User.nickName,
+          displayName,
+          nickName,
           name: review.User.name,
         },
         hospital: {
@@ -190,6 +200,9 @@ export class LikedReviewsRepository {
         requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
       };
     });
+
+    // 모든 닉네임 생성이 완료될 때까지 대기
+    const transformedReviews = await Promise.all(transformedReviewsPromises);
 
     // 다음 커서 설정
     const nextCursor = hasMore ? reviews[reviews.length - 1].createdAt.toISOString() : undefined;

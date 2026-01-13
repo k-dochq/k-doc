@@ -1,6 +1,6 @@
 import { type ReviewCardData, type ReviewImage } from '../../../model/types';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
-import { getUserDisplayName } from 'shared/lib';
+import { getReviewNickname } from 'shared/lib/review-nickname';
 import { type Prisma } from '@prisma/client';
 
 /**
@@ -241,9 +241,20 @@ function transformHospitalData(
 /**
  * Prisma Review를 ReviewCardData로 변환 (Hospital 정보 포함)
  */
-export function transformReviewToCardData(review: PrismaReviewWithRelations): ReviewCardData {
+export async function transformReviewToCardData(
+  review: PrismaReviewWithRelations,
+): Promise<ReviewCardData> {
   const likedUserIds = review.ReviewLike.map((like) => like.userId);
   const { before, after } = separateReviewImages(review.ReviewImage);
+
+  // 리뷰 작성일자 기준으로 닉네임 결정
+  const { displayName, nickName } = await getReviewNickname(
+    review.id,
+    review.createdAt,
+    review.User.nickName,
+    review.User.displayName,
+    review.User.name,
+  );
 
   return {
     id: review.id,
@@ -262,8 +273,8 @@ export function transformReviewToCardData(review: PrismaReviewWithRelations): Re
     isLiked: false,
     isRecommended: review.isRecommended,
     user: {
-      displayName: getUserDisplayName(review.User),
-      nickName: review.User.nickName,
+      displayName,
+      nickName,
       name: review.User.name,
     },
     hospital: transformHospitalData(review.Hospital),
@@ -282,12 +293,21 @@ export function transformReviewToCardData(review: PrismaReviewWithRelations): Re
 /**
  * Doctor route의 Review를 ReviewCardData로 변환 (Hospital 정보 별도 전달)
  */
-export function transformDoctorReviewToCardData(
+export async function transformDoctorReviewToCardData(
   review: DoctorRouteReview,
   hospital: DoctorRouteHospital,
-): ReviewCardData {
+): Promise<ReviewCardData> {
   const likedUserIds = review.ReviewLike.map((like) => like.userId);
   const { before, after } = separateReviewImages(review.ReviewImage);
+
+  // 리뷰 작성일자 기준으로 닉네임 결정
+  const { displayName, nickName } = await getReviewNickname(
+    review.id,
+    review.createdAt,
+    review.User.nickName,
+    review.User.displayName,
+    review.User.name,
+  );
 
   return {
     id: review.id,
@@ -306,8 +326,8 @@ export function transformDoctorReviewToCardData(
     isLiked: false,
     isRecommended: review.isRecommended,
     user: {
-      displayName: getUserDisplayName(review.User),
-      nickName: review.User.nickName,
+      displayName,
+      nickName,
       name: review.User.name,
     },
     hospital: transformHospitalData(hospital),

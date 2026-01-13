@@ -7,7 +7,7 @@ import {
 import { type LocalizedText } from 'shared/lib/localized-text';
 import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
-import { getUserDisplayName } from 'shared/lib';
+import { getReviewNickname } from 'shared/lib/review-nickname';
 
 export async function getAllReviews({
   page = 1,
@@ -198,9 +198,18 @@ export async function getAllReviews({
       skip: calculatedOffset,
     });
 
-    // ReviewCardData 형태로 변환
-    const reviewCardData: ReviewCardData[] = reviews.map((review) => {
+    // ReviewCardData 형태로 변환 (닉네임 생성 포함)
+    const reviewCardDataPromises = reviews.map(async (review) => {
       const likedUserIds = review.ReviewLike.map((like) => like.userId);
+
+      // 리뷰 작성일자 기준으로 닉네임 결정
+      const { displayName, nickName } = await getReviewNickname(
+        review.id,
+        review.createdAt,
+        review.User.nickName,
+        review.User.displayName,
+        review.User.name,
+      );
 
       return {
         id: review.id,
@@ -219,8 +228,8 @@ export async function getAllReviews({
         isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
         isRecommended: review.isRecommended,
         user: {
-          displayName: getUserDisplayName(review.User),
-          nickName: review.User.nickName,
+          displayName,
+          nickName,
           name: review.User.name,
         },
         hospital: {
@@ -269,6 +278,9 @@ export async function getAllReviews({
         requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
       };
     });
+
+    // 모든 닉네임 생성이 완료될 때까지 대기
+    const reviewCardData = await Promise.all(reviewCardDataPromises);
 
     const hasNextPage = calculatedOffset + limit < totalCount;
     const hasMore = hasNextPage; // 기존 호환성을 위해 유지

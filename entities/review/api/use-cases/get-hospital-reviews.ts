@@ -5,7 +5,7 @@ import {
   type ReviewCardData,
 } from '../../model/types';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
-import { getUserDisplayName } from 'shared/lib';
+import { getReviewNickname } from 'shared/lib/review-nickname';
 import { validateHospitalApprovalStatus } from 'shared/lib/hospital/approval-status-validator';
 
 export async function getHospitalReviews({
@@ -127,9 +127,18 @@ export async function getHospitalReviews({
       skip: calculatedOffset,
     });
 
-    // 데이터 변환
-    const reviewCardData: ReviewCardData[] = reviews.map((review) => {
+    // 데이터 변환 (닉네임 생성 포함)
+    const reviewCardDataPromises = reviews.map(async (review) => {
       const likedUserIds = review.ReviewLike.map((like) => like.userId);
+
+      // 리뷰 작성일자 기준으로 닉네임 결정
+      const { displayName, nickName } = await getReviewNickname(
+        review.id,
+        review.createdAt,
+        review.User?.nickName || null,
+        review.User?.displayName || null,
+        review.User?.name || null,
+      );
 
       return {
         id: review.id,
@@ -148,8 +157,8 @@ export async function getHospitalReviews({
         likedUserIds, // 좋아요를 한 사용자 ID들
         isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
         user: {
-          displayName: review.User ? getUserDisplayName(review.User) : null,
-          nickName: review.User?.nickName || null,
+          displayName,
+          nickName,
           name: review.User?.name || null,
         },
         hospital: {
@@ -197,6 +206,9 @@ export async function getHospitalReviews({
         requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
       };
     });
+
+    // 모든 닉네임 생성이 완료될 때까지 대기
+    const reviewCardData = await Promise.all(reviewCardDataPromises);
 
     const hasNextPage = calculatedOffset + limit < totalCount;
     const hasMore = hasNextPage; // 기존 호환성을 위해 유지
