@@ -520,6 +520,7 @@
   "hospital": {
     "region": "地域",
     "reviewsButton": "施術後期",
+    "priceConsultation": "相談後決定",
     "introduction": {
       "title": "病院紹介"
     },

@@ -8,6 +8,7 @@ import { HospitalDetailBadgeV2 } from 'widgets/hospital-detail-badge/ui/Hospital
 import { HospitalDetailLogoV2 } from 'widgets/hospital-detail-logo/ui/HospitalDetailLogoV2';
 import { HospitalReviewStatsV2 } from 'widgets/popular-reviews/ui/HospitalReviewStatsV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { formatHospitalPrice } from 'shared/lib/utils/hospital-price';
 
 interface HospitalDetailInfoV2Props {
   hospital: Hospital;
@@ -98,13 +99,15 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
         </div>
 
         {/* 가격 정보 */}
-        {hospital.prices?.minPrice && (
-          <div className='flex flex-1 items-center gap-0'>
-            <span className='text-lg leading-7 font-semibold text-[#7657FF]'>
-              ${hospital.prices.minPrice.toLocaleString()}~
-            </span>
-          </div>
-        )}
+        <div className='flex flex-1 items-center gap-0'>
+          <span
+            className={`leading-7 font-semibold text-[#7657FF] ${
+              hospital.prices?.minPrice ? 'text-lg' : 'text-sm'
+            }`}
+          >
+            {formatHospitalPrice(hospital.prices, dict)}
+          </span>
+        </div>
       </div>
 
       {/* 시술부위 태그 */}

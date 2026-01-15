@@ -45,3 +45,6 @@ next-env.d.ts
 
 /generated/prisma
 .vscode/
+
+# scripts with hardcoded API keys (보안상 Git에 커밋하지 마세요)
+scripts/transform-review.ts

@@ -7,6 +7,7 @@ import { HospitalCardV2NameAndLocation } from 'entities/hospital/ui/HospitalCard
 import { HospitalCardV2Rating } from 'entities/hospital/ui/HospitalCardV2Rating';
 import { HospitalCardV2Price } from 'entities/hospital/ui/HospitalCardV2Price';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
+import { formatHospitalPrice } from 'shared/lib/utils/hospital-price';
 import { DoctorAffiliatedHospitalThumbnailV2 } from './DoctorAffiliatedHospitalThumbnailV2';
 
 interface DoctorAffiliatedHospitalCardV2Props {
@@ -26,7 +27,7 @@ export function DoctorAffiliatedHospitalCardV2({
     : null;
   const address = getLocalizedTextByLocale(hospital.address, lang);
   const location = displayLocationName || address;
-  const price = hospital.prices?.minPrice ? `$${hospital.prices.minPrice.toLocaleString()}~` : '';
+  const price = formatHospitalPrice(hospital.prices, dict);
   const firstBadge = hospital.badge?.[0];
 
   return (

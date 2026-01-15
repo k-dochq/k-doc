@@ -520,6 +520,7 @@
   "hospital": {
     "region": "地區",
     "reviewsButton": "治療後評估",
+    "priceConsultation": "諮詢後協商",
     "introduction": {
       "title": "醫院簡介"
     },

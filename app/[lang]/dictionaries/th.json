@@ -520,6 +520,7 @@
   "hospital": {
     "region": "ภูมิภาค",
     "reviewsButton": "รีวิว",
+    "priceConsultation": "ตกลงหลังปรึกษา",
     "introduction": {
       "title": "แนะนำโรงพยาบาล"
     },

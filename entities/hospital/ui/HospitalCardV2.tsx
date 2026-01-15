@@ -11,6 +11,7 @@ import { HospitalCardV2NameAndLocation } from './HospitalCardV2NameAndLocation';
 import { HospitalCardV2Price } from './HospitalCardV2Price';
 import { HospitalCardV2Rating } from './HospitalCardV2Rating';
 import { addCategoryToHospitalCardData } from '../lib/add-hospital-category';
+import { formatHospitalPrice } from 'shared/lib/utils/hospital-price';
 
 interface HospitalCardV2Props {
   hospital: HospitalCardData;
@@ -43,9 +44,7 @@ export function HospitalCardV2({
   const address = getLocalizedTextByLocale(hospitalWithCategory.address, lang);
 
   // 가격 포맷팅
-  const price = hospitalWithCategory.prices?.minPrice
-    ? `$${hospitalWithCategory.prices.minPrice.toLocaleString()}~`
-    : '';
+  const price = formatHospitalPrice(hospitalWithCategory.prices, dict);
 
   // 지역 정보 (displayLocationName이 있으면 사용)
   const location = displayLocationName || address;

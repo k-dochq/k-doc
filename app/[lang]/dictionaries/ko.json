@@ -520,6 +520,7 @@
   "hospital": {
     "region": "지역",
     "reviewsButton": "시술후기",
+    "priceConsultation": "상담 후 협의",
     "introduction": {
       "title": "병원 소개"
     },

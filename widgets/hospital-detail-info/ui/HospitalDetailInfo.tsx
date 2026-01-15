@@ -7,6 +7,7 @@ import { HotLabel } from '@/shared/ui/hot-label';
 import { StarIcon } from 'shared/ui/star-icon';
 import { MedicalSpecialtyTags } from 'shared/ui/medical-specialty-tags';
 import { extractLocalizedText } from 'shared/lib/localized-text';
+import { formatHospitalPrice } from 'shared/lib/utils/hospital-price';
 
 interface HospitalDetailInfoProps {
   hospital: Hospital;
@@ -55,18 +56,20 @@ export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoP
         </div>
 
         {/* 가격 정보 */}
-        {hospital.prices?.minPrice && (
-          <div className='flex items-center gap-1'>
-            <span className='text-base font-semibold text-neutral-900'>
-              ${hospital.prices.minPrice.toLocaleString()}~
-            </span>
-            {hospital.discountRate != null && hospital.discountRate > 0 && (
-              <div className='flex items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
-                {hospital.discountRate}% OFF
-              </div>
-            )}
-          </div>
-        )}
+        <div className='flex items-center gap-1'>
+          <span
+            className={`font-semibold text-neutral-900 ${
+              hospital.prices?.minPrice ? 'text-base' : 'text-sm'
+            }`}
+          >
+            {formatHospitalPrice(hospital.prices, dict)}
+          </span>
+          {hospital.discountRate != null && hospital.discountRate > 0 && (
+            <div className='flex items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
+              {hospital.discountRate}% OFF
+            </div>
+          )}
+        </div>
       </div>
 
       <div className='h-2' />
