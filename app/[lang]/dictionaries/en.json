@@ -520,6 +520,7 @@
   "hospital": {
     "region": "Region",
     "reviewsButton": "Reviews",
+    "priceConsultation": "After consultation",
     "introduction": {
       "title": "Hospital Introduction"
     },

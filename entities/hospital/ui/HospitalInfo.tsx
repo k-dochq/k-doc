@@ -9,6 +9,7 @@ import { type Locale } from 'shared/config';
 import { StarIcon } from 'shared/ui/star-icon';
 import { MedicalSpecialtyTags } from 'shared/ui/medical-specialty-tags';
 import { HeartIcon } from 'shared/ui/icons/HeartIcon';
+import { formatHospitalPrice } from 'shared/lib/utils/hospital-price';
 
 interface HospitalInfoProps {
   name: LocalizedText;
@@ -51,19 +52,21 @@ export function HospitalInfo({
         </h3>
       </div>
 
-      {/* 가격 정보 - 가격이 있을 때만 표시 */}
-      {prices?.minPrice && (
-        <div className='flex items-center gap-1'>
-          <span className='shrink-0 text-base font-semibold text-neutral-900'>
-            ${prices.minPrice.toLocaleString()}~
-          </span>
-          {discountRate != null && discountRate > 0 && (
-            <div className='flex shrink-0 items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
-              {discountRate}% OFF
-            </div>
-          )}
-        </div>
-      )}
+      {/* 가격 정보 */}
+      <div className='flex items-center gap-1'>
+        <span
+          className={`shrink-0 font-semibold text-neutral-900 ${
+            prices?.minPrice ? 'text-base' : 'text-sm'
+          }`}
+        >
+          {formatHospitalPrice(prices, dict)}
+        </span>
+        {discountRate != null && discountRate > 0 && (
+          <div className='flex shrink-0 items-center justify-center rounded-[4px] bg-[#0B99FF] px-1 py-0.5 text-xs font-semibold text-white'>
+            {discountRate}% OFF
+          </div>
+        )}
+      </div>
 
       {/* 시술부위 태그 */}
       {medicalSpecialties && medicalSpecialties.length > 0 && (
