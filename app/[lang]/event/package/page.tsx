@@ -14,11 +14,13 @@ import mainEnImage from '../../../images/event/package/main_en.png';
 import mainThImage from '../../../images/event/package/main_th.png';
 import mainZhImage from '../../../images/event/package/main_zh.png';
 import mainJaImage from '../../../images/event/package/main_jp.png';
+import mainHiImage from '../../../images/event/package/main_hi.png';
 import priceKoImage from '../../../images/event/package/price_ko.png';
 import priceEnImage from '../../../images/event/package/price_en.png';
 import priceThImage from '../../../images/event/package/price_th.png';
 import priceZhImage from '../../../images/event/package/price_zh.png';
 import priceJaImage from '../../../images/event/package/price_jp.png';
+import priceHiImage from '../../../images/event/package/price_hi.png';
 
 interface PackagePageProps {
   params: Promise<{ lang: Locale }>;
@@ -39,6 +41,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     th: mainThImage,
     'zh-Hant': mainZhImage,
     ja: mainJaImage,
+    hi: mainHiImage,
   };
   const mainImage = mainImages[lang];
 
@@ -49,6 +52,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     th: priceThImage,
     'zh-Hant': priceZhImage,
     ja: priceJaImage,
+    hi: priceHiImage,
   };
   const priceImage = priceImages[lang];
 

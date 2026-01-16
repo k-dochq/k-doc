@@ -1,8 +1,8 @@
 import { type Prisma } from '@prisma/client';
 import { type Locale } from 'shared/config';
 
-// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW, ja_JP)
-export type DatabaseLocale = 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW' | 'ja_JP';
+// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW, ja_JP, hi_IN)
+export type DatabaseLocale = 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW' | 'ja_JP' | 'hi_IN';
 
 // LocalizedText 타입 정의
 export type LocalizedText = {
@@ -11,6 +11,7 @@ export type LocalizedText = {
   th_TH?: string;
   zh_TW?: string;
   ja_JP?: string;
+  hi_IN?: string;
 };
 
 // LocalizedText에서 문자열 추출 헬퍼 함수
@@ -33,8 +34,10 @@ export function extractLocalizedText(
           ? 'th_TH'
           : locale === 'zh-Hant'
             ? 'zh_TW'
-            : 'ja_JP';
-  const shortLocaleKey = locale; // ko, en, th, zh-Hant, ja
+            : locale === 'ja'
+              ? 'ja_JP'
+              : 'hi_IN';
+  const shortLocaleKey = locale; // ko, en, th, zh-Hant, ja, hi
 
   if (typeof jsonValue === 'object' && jsonValue !== null && !Array.isArray(jsonValue)) {
     const localizedText = jsonValue as Record<string, unknown>;
@@ -46,12 +49,14 @@ export function extractLocalizedText(
       'th_TH',
       'zh_TW',
       'ja_JP',
+      'hi_IN',
       'ko',
       'en',
       'th',
       'zh-Hant',
       'zh',
       'ja',
+      'hi',
     ];
     const hasNonEmptyValue = allKeys.some(
       (key) =>
@@ -119,19 +124,39 @@ export function extractLocalizedText(
       }
     }
 
+    // hi locale인데 hi_IN, hi가 없으면 영어로 fallback
+    if (locale === 'hi') {
+      // 영어로 fallback
+      if (localizedText['en_US'] && typeof localizedText['en_US'] === 'string') {
+        const value = localizedText['en_US'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+      // en_US도 없으면 'en' 확인
+      if (localizedText['en'] && typeof localizedText['en'] === 'string') {
+        const value = localizedText['en'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+    }
+
     // fallback: 첫 번째 사용 가능한 값 반환 (긴 형식 우선)
     const fallbackOrder = [
       'ko_KR',
       'en_US',
       'th_TH',
       'zh_TW',
-      'ja_JP', // 긴 형식
+      'ja_JP',
+      'hi_IN', // 긴 형식
       'ko',
       'en',
       'th',
       'zh', // 데이터베이스에서 사용하는 형식
       'zh-Hant', // 짧은 형식
       'ja', // 짧은 형식
+      'hi', // 짧은 형식
     ];
 
     for (const key of fallbackOrder) {
@@ -148,9 +173,9 @@ export function extractLocalizedText(
 }
 
 /**
- * Locale을 alt 필드 값(ko_KR, en_US, th_TH, zh_TW, ja_JP)으로 변환
- * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-Hant', 'ja')
- * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ja_JP')
+ * Locale을 alt 필드 값(ko_KR, en_US, th_TH, zh_TW, ja_JP, hi_IN)으로 변환
+ * @param locale - Locale 값 ('ko', 'en', 'th', 'zh-Hant', 'ja', 'hi')
+ * @returns alt 필드 값 ('ko_KR', 'en_US', 'th_TH', 'zh_TW', 'ja_JP', 'hi_IN')
  */
 export function localeToAltValue(locale: Locale): DatabaseLocale {
   switch (locale) {
@@ -164,6 +189,8 @@ export function localeToAltValue(locale: Locale): DatabaseLocale {
       return 'zh_TW';
     case 'ja':
       return 'ja_JP';
+    case 'hi':
+      return 'hi_IN';
     default:
       return 'en_US';
   }

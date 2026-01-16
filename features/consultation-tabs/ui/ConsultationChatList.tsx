@@ -83,7 +83,8 @@ export function ConsultationChatList({ lang, dict }: ConsultationChatListProps) 
     <div className='space-y-3'>
       {hospitals.map((hospital) => {
         const hospitalName = extractLocalizedText(hospital.name, lang) || '병원';
-        const hospitalAddress = extractLocalizedText(hospital.address, lang);
+        // 주소는 영어만 표시
+        const hospitalAddress = extractLocalizedText(hospital.address, 'en');
 
         return (
           <LocaleLink

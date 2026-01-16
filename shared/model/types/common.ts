@@ -9,6 +9,7 @@ export interface LocalizedText {
   th_TH?: string;
   zh_TW?: string;
   ja_JP?: string;
+  hi_IN?: string;
 }
 
 // 가격 정보 타입
@@ -85,7 +86,16 @@ export function parsePriceInfo(jsonValue: Prisma.JsonValue | null): PriceInfo | 
 
 // LocalizedText에서 특정 언어의 텍스트를 추출하는 함수
 export function getLocalizedText(text: LocalizedText, locale: DatabaseLocale): string {
-  return text[locale] || text.ko_KR || text.en_US || text.th_TH || text.zh_TW || text.ja_JP || '';
+  return (
+    text[locale] ||
+    text.ko_KR ||
+    text.en_US ||
+    text.th_TH ||
+    text.zh_TW ||
+    text.ja_JP ||
+    text.hi_IN ||
+    ''
+  );
 }
 
 // Locale을 LocalizedText 언어 코드로 변환하는 함수
@@ -99,8 +109,17 @@ export function getLocalizedTextByLocale(text: LocalizedText, locale: Locale): s
           ? 'th_TH'
           : locale === 'zh-Hant'
             ? 'zh_TW'
-            : 'ja_JP';
+            : locale === 'ja'
+              ? 'ja_JP'
+              : 'hi_IN';
   return (
-    text[localeKey] || text.ko_KR || text.en_US || text.th_TH || text.zh_TW || text.ja_JP || ''
+    text[localeKey] ||
+    text.ko_KR ||
+    text.en_US ||
+    text.th_TH ||
+    text.zh_TW ||
+    text.ja_JP ||
+    text.hi_IN ||
+    ''
   );
 }

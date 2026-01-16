@@ -50,6 +50,7 @@ export function formatReservationDate(reservationDate: Date | string, lang: Loca
     th: ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'],
     'zh-Hant': ['日', '一', '二', '三', '四', '五', '六'],
     ja: ['日', '月', '火', '水', '木', '金', '土'],
+    hi: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
   };
 
   const dayName = dayNames[lang][date.day()];
@@ -80,6 +81,7 @@ export function getReservationStatusBadge(
       th: 'เสร็จสิ้น',
       'zh-Hant': 'Completed',
       ja: '完了',
+      hi: 'पूर्ण',
     };
     return statusTexts[lang];
   }

@@ -37,7 +37,7 @@ function addLocaleToUrl(url: string, locale: Locale): string {
     }
 
     const pathname = urlObj.pathname;
-    const supportedLocales: Locale[] = ['en', 'ko', 'th', 'zh-Hant'];
+    const supportedLocales: Locale[] = ['en', 'ko', 'th', 'zh-Hant', 'ja', 'hi'];
 
     // 이미 locale이 경로에 포함되어 있는지 확인
     const pathParts = pathname.split('/').filter(Boolean);

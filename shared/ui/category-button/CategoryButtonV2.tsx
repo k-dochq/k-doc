@@ -43,6 +43,7 @@ export function CategoryButtonV2({
         th_TH: 'แนะนำ',
         zh_TW: '推薦',
         ja_JP: 'おすすめ',
+        hi_IN: 'अनुशंसित',
       };
       return getLocalizedTextByLocale(recommendedLabels, lang);
     }

@@ -4,8 +4,7 @@ import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
 import { UserAvatar } from './UserAvatar';
 import { StarIconReviewV2 } from 'shared/ui/icons/StarIconReviewV2';
-import { getUserDisplayName } from 'shared/lib';
-import dayjs from 'dayjs';
+import { getUserDisplayName, formatDate } from 'shared/lib';
 
 interface ReviewListCardHeaderV2Props {
   review: ReviewCardData;
@@ -31,7 +30,7 @@ export function ReviewListCardHeaderV2({
         <div className='flex items-center gap-1.5'>
           <span className='text-sm leading-5 font-medium text-neutral-500'>{userName}</span>
           <span className='text-[13px] leading-[19px] font-medium text-neutral-400'>
-            {dayjs(review.createdAt).format('YYYY-MM-DD')}
+            {formatDate(review.createdAt, lang)}
           </span>
         </div>
       </div>

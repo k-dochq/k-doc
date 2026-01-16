@@ -19,11 +19,18 @@ interface HospitalDetailInfoV2Props {
 export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInfoV2Props) {
   // hospital.displayLocationName이 있으면 사용하고, 없으면 기존 address 사용
   const displayAddress = hospital.displayLocationName
-    ? (hospital.displayLocationName as { ko_KR?: string; en_US?: string; th_TH?: string })
+    ? (hospital.displayLocationName as {
+        ko_KR?: string;
+        en_US?: string;
+        th_TH?: string;
+        zh_TW?: string;
+        ja_JP?: string;
+        hi_IN?: string;
+      })
     : hospital.address;
 
   const hospitalName = extractLocalizedText(hospital.name, lang) || '';
-  const hospitalAddress = extractLocalizedText(displayAddress, lang) || '';
+  const hospitalAddress = extractLocalizedText(displayAddress, 'en') || '';
 
   return (
     <div className='relative z-10 -mt-3 rounded-tl-2xl rounded-tr-2xl bg-white px-5 pt-10 pb-4'>

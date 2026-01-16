@@ -114,6 +114,12 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
           return `${hospitalName} - K-DOC`;
         case 'th':
           return `${hospitalName} - K-DOC | เค-ด็อค`;
+        case 'zh-Hant':
+          return `${hospitalName} - K-DOC`;
+        case 'ja':
+          return `${hospitalName} - K-DOC`;
+        case 'hi':
+          return `${hospitalName} - K-DOC`;
         default:
           return `${hospitalName} - K-DOC`;
       }
@@ -147,6 +153,9 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
           ko: `${baseUrl}/ko/hospital/${id}`,
           en: `${baseUrl}/en/hospital/${id}`,
           th: `${baseUrl}/th/hospital/${id}`,
+          'zh-Hant': `${baseUrl}/zh-Hant/hospital/${id}`,
+          ja: `${baseUrl}/ja/hospital/${id}`,
+          hi: `${baseUrl}/hi/hospital/${id}`,
         },
       },
       openGraph: {
@@ -163,7 +172,9 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
                 ? 'th_TH'
                 : lang === 'zh-Hant'
                   ? 'zh_TW'
-                  : 'ja_JP',
+                  : lang === 'ja'
+                    ? 'ja_JP'
+                    : 'hi_IN',
         siteName: 'K-DOC',
         ...(ogImage && {
           images: [
@@ -203,6 +214,12 @@ export async function generateMetadata({ params }: HospitalDetailPageProps) {
           return 'Hospital Information - K-DOC';
         case 'th':
           return 'ข้อมูลโรงพยาบาล - K-DOC | เค-ด็อค';
+        case 'zh-Hant':
+          return 'Hospital Information - K-DOC';
+        case 'ja':
+          return 'Hospital Information - K-DOC';
+        case 'hi':
+          return 'Hospital Information - K-DOC';
         default:
           return 'Hospital Information - K-DOC';
       }

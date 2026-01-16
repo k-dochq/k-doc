@@ -10,10 +10,10 @@ interface HospitalCardLocationProps {
 }
 
 export function HospitalCardLocation({ hospital, lang, dict }: HospitalCardLocationProps) {
-  // hospital.displayLocationName이 있으면 사용하고, 없으면 기존 address 사용
+  // hospital.displayLocationName이 있으면 사용하고, 없으면 기존 address 사용 (영어만 표시)
   const displayLocation = hospital.displayLocationName
-    ? extractLocalizedText(hospital.displayLocationName, lang)
-    : extractLocalizedText(hospital.address, lang);
+    ? extractLocalizedText(hospital.displayLocationName, 'en')
+    : extractLocalizedText(hospital.address, 'en');
 
   return (
     <div className='flex items-center gap-1'>

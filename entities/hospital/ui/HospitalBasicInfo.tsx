@@ -10,7 +10,7 @@ interface HospitalBasicInfoProps {
 
 export function HospitalBasicInfo({ hospital, lang }: HospitalBasicInfoProps) {
   const hospitalName = extractLocalizedText(hospital.name, lang) || '병원명 없음';
-  const hospitalAddress = extractLocalizedText(hospital.address, lang) || '주소 정보 없음';
+  const hospitalAddress = extractLocalizedText(hospital.address, 'en') || '주소 정보 없음';
 
   // 평점 표시용 별 배열
   const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(hospital.rating));

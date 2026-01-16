@@ -18,7 +18,14 @@ interface HospitalDetailInfoProps {
 export function HospitalDetailInfo({ hospital, lang, dict }: HospitalDetailInfoProps) {
   // hospital.displayLocationName이 있으면 사용하고, 없으면 기존 address 사용
   const displayAddress = hospital.displayLocationName
-    ? (hospital.displayLocationName as { ko_KR?: string; en_US?: string; th_TH?: string })
+    ? (hospital.displayLocationName as {
+        ko_KR?: string;
+        en_US?: string;
+        th_TH?: string;
+        zh_TW?: string;
+        ja_JP?: string;
+        hi_IN?: string;
+      })
     : hospital.address;
 
   const hospitalName = extractLocalizedText(hospital.name, lang) || '';

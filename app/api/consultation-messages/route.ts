@@ -36,7 +36,7 @@ function extractLocaleFromRequest(request: NextRequest): Locale {
   const referer = request.headers.get('referer') || '';
 
   // Referer URL에서 locale 추출
-  const refererMatch = referer.match(/\/(ko|en|th)\//);
+  const refererMatch = referer.match(/\/(ko|en|th|zh-Hant|ja|hi)\//);
   if (refererMatch) {
     return refererMatch[1] as Locale;
   }

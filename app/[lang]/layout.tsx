@@ -37,6 +37,14 @@ const notoSansTC = localFont({
   preload: false,
 });
 
+const notoSansDevanagari = localFont({
+  src: '../../fonts/notosansdevanagari/NotoSansDevanagari-VariableFont_wdth,wght.ttf',
+  display: 'swap',
+  weight: '100 900',
+  variable: '--font-noto-devanagari',
+  preload: false,
+});
+
 interface LangLayoutProps {
   children: React.ReactNode;
   params: Promise<{ lang: Locale }>;
@@ -58,6 +66,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     th: 'K-DOC 10 | เค-ด็อค',
     'zh-Hant': 'K-DOC 10',
     ja: 'K-DOC 10',
+    hi: 'K-DOC 10',
   };
 
   const descriptions = {
@@ -67,6 +76,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     'zh-Hant':
       'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
     ja: 'K-DOC、韓国美容整形の必須ガイド — トップ病院を比較し、実際のレビューを読み、安全に予約し、専用の手術特典と美容ツアー特典をお楽しみください。',
+    hi: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
   };
 
   // 기본 keywords
@@ -111,7 +121,9 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
               ? 'th_TH'
               : lang === 'zh-Hant'
                 ? 'zh_TW'
-                : 'ja_JP',
+                : lang === 'ja'
+                  ? 'ja_JP'
+                  : 'hi_IN',
       images: [
         {
           url: '/opengraph-image.png',
@@ -142,10 +154,16 @@ export const viewport: Viewport = {
 export default async function LangLayout({ children, params }: LangLayoutProps) {
   const { lang } = await params;
 
-  // 언어별 폰트 선택
+  // 언어별 폰트 선택.
   const currentFont =
-    lang === 'th' ? notoSansThaiLooped : lang === 'zh-Hant' ? notoSansTC : pretendard;
-  const allFontVariables = `${pretendard.variable} ${notoSansThaiLooped.variable} ${notoSansTC.variable}`;
+    lang === 'th'
+      ? notoSansThaiLooped
+      : lang === 'zh-Hant'
+        ? notoSansTC
+        : lang === 'hi'
+          ? notoSansDevanagari
+          : pretendard;
+  const allFontVariables = `${pretendard.variable} ${notoSansThaiLooped.variable} ${notoSansTC.variable} ${notoSansDevanagari.variable}`;
 
   return (
     <html lang={lang} className={allFontVariables}>

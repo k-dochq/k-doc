@@ -25,8 +25,14 @@ export function ApgujeongMiracleProcedures({
         return 'SjLkNqmkdNw';
       case 'th':
         return 'X_5yv14dDTo';
+      case 'zh-Hant':
+        return 'SjLkNqmkdNw'; // 기본값은 영어
+      case 'ja':
+        return 'SjLkNqmkdNw'; // 기본값은 영어
+      case 'hi':
+        return 'SjLkNqmkdNw'; // 기본값은 영어
       default:
-        return '234LOgm0GWI'; // 기본값은 한국어
+        return 'SjLkNqmkdNw'; // 기본값은 영어
     }
   };
 
@@ -39,8 +45,14 @@ export function ApgujeongMiracleProcedures({
         return '/images/hospital-detail/miracle_detail_en.png';
       case 'th':
         return '/images/hospital-detail/miracle_detail_th.png';
+      case 'zh-Hant':
+        return '/images/hospital-detail/miracle_detail_en.png'; // 기본값은 영어
+      case 'ja':
+        return '/images/hospital-detail/miracle_detail_en.png'; // 기본값은 영어
+      case 'hi':
+        return '/images/hospital-detail/miracle_detail_en.png'; // 기본값은 영어
       default:
-        return '/images/hospital-detail/miracle_detail_kr.png'; // 기본값은 한국어
+        return '/images/hospital-detail/miracle_detail_en.png'; // 기본값은 영어
     }
   };
 

@@ -34,7 +34,14 @@ export function CategoryFilterTabs({
   const allCategories = [
     {
       id: 'ALL' as const,
-      name: { ko_KR: '전체', en_US: 'All', th_TH: 'ทั้งหมด', zh_TW: '全部', ja_JP: 'すべて' },
+      name: {
+        ko_KR: '전체',
+        en_US: 'All',
+        th_TH: 'ทั้งหมด',
+        zh_TW: '全部',
+        ja_JP: 'すべて',
+        hi_IN: 'सभी',
+      },
     },
     ...medicalSpecialties.map((specialty) => ({
       id: specialty.specialtyType,

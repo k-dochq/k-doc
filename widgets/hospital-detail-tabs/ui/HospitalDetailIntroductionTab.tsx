@@ -53,7 +53,7 @@ export function HospitalDetailIntroductionTab({
             {/* 주소 정보 섹션 */}
             <HospitalDetailAddressSection
               directions={
-                extractLocalizedText(hospital.directions, lang) || dict.hospital.address.noAddress
+                extractLocalizedText(hospital.directions, 'en') || dict.hospital.address.noAddress
               }
               lang={lang}
               dict={dict}

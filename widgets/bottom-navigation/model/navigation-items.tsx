@@ -18,6 +18,7 @@ export const navigationItems: NavigationItem[] = [
       th: 'หน้าแรก',
       'zh-Hant': '首頁',
       ja: 'ホーム',
+      hi: 'होम',
     },
   },
   {
@@ -30,6 +31,7 @@ export const navigationItems: NavigationItem[] = [
       th: 'โรงพยาบาล',
       'zh-Hant': '醫院',
       ja: '病院',
+      hi: 'अस्पताल',
     },
   },
   {
@@ -42,6 +44,7 @@ export const navigationItems: NavigationItem[] = [
       th: 'รีวิว',
       'zh-Hant': '手術後記',
       ja: '手術レビュー',
+      hi: 'समीक्षाएं',
     },
   },
   {
@@ -54,6 +57,7 @@ export const navigationItems: NavigationItem[] = [
       th: 'รายการโปรด',
       'zh-Hant': '收藏',
       ja: 'お気に入り',
+      hi: 'पसंदीदा',
     },
   },
   {
@@ -66,6 +70,7 @@ export const navigationItems: NavigationItem[] = [
       th: 'ปรึกษา',
       'zh-Hant': '諮詢',
       ja: '相談',
+      hi: 'परामर्श',
     },
   },
 ];

@@ -24,8 +24,8 @@ export function ReviewFilterBarV2({ lang, dict, currentSort }: ReviewFilterBarV2
     switch (currentSort) {
       case REVIEW_SORT_OPTIONS.POPULAR:
         return dict.allReviews?.sort?.popular ?? '';
-      case REVIEW_SORT_OPTIONS.LATEST:
-        return dict.allReviews?.sort?.latest ?? '';
+      case REVIEW_SORT_OPTIONS.RECOMMENDED:
+        return dict.allReviews?.sort?.recommended ?? '';
       case REVIEW_SORT_OPTIONS.RATING_HIGH:
         return dict.allReviews?.sort?.ratingHigh ?? '';
       case REVIEW_SORT_OPTIONS.RATING_LOW:

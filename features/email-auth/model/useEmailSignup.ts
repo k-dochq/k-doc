@@ -60,6 +60,7 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
         th: 'th_TH',
         'zh-Hant': 'zh_TW',
         ja: 'ja_JP',
+        hi: 'hi_IN',
       };
       const userLocale = localeMap[locale] || 'en_US';
 
