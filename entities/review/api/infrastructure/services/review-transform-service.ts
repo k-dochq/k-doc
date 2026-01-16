@@ -229,7 +229,7 @@ function transformHospitalData(
     district: {
       name: district?.name
         ? parseLocalizedText(district.name)
-        : { ko_KR: '', en_US: '', th_TH: '' },
+        : { ko_KR: '', en_US: '', th_TH: '', zh_TW: '', ja_JP: '', hi_IN: '' },
       displayName: district?.displayName ? parseLocalizedText(district.displayName) : null,
     },
     displayLocationName: hospital.displayLocationName

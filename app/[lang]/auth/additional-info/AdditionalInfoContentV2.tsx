@@ -135,6 +135,7 @@ export function AdditionalInfoContentV2({
       th: 'th_TH',
       'zh-Hant': 'zh_TW',
       ja: 'ja_JP',
+      hi: 'hi_IN',
     };
     const userLocale = localeMap[lang] || 'en_US';
 

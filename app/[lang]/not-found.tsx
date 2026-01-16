@@ -34,6 +34,12 @@ const messages = {
     description: 'お探しのページは存在しないか、移動された可能性があります。',
     homeButton: 'ホームに戻る',
   },
+  hi: {
+    title: 'पृष्ठ नहीं मिला',
+    description:
+      'आप जिस पृष्ठ की तलाश कर रहे हैं वह मौजूद नहीं है या स्थानांतरित हो गया हो सकता है।',
+    homeButton: 'होम पर वापस जाएं',
+  },
 } as const;
 
 export default function NotFound() {

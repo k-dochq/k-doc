@@ -22,14 +22,21 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'EYES',
     icon: () => <EyesIconV2 />,
     iconSmall: () => null,
-    labels: { ko_KR: '눈', en_US: 'Eyes', th_TH: 'ดวงตา', zh_TW: '眼睛', ja_JP: '目' },
+    labels: {
+      ko_KR: '눈',
+      en_US: 'Eyes',
+      th_TH: 'ดวงตา',
+      zh_TW: '眼睛',
+      ja_JP: '目',
+      hi_IN: 'आँख',
+    },
   },
   {
     id: '6bbbbde1-4806-4db7-a368-0d73f31fc511', // NOSE
     type: 'NOSE',
     icon: () => <NoseIconV2 />,
     iconSmall: () => null,
-    labels: { ko_KR: '코', en_US: 'Nose', th_TH: 'จมูก', zh_TW: '鼻子', ja_JP: '鼻' },
+    labels: { ko_KR: '코', en_US: 'Nose', th_TH: 'จมูก', zh_TW: '鼻子', ja_JP: '鼻', hi_IN: 'नाक' },
   },
   {
     id: 'bc0effa1-af1a-4048-8b57-45130bd74820', // LIFTING
@@ -42,6 +49,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       th_TH: 'ยกกระชับ',
       zh_TW: '拉提',
       ja_JP: 'リフティング',
+      hi_IN: 'लिफ्टिंग',
     },
   },
   {
@@ -55,6 +63,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       th_TH: 'แก้ไขโครงหน้า',
       zh_TW: '臉部輪廓',
       ja_JP: '顔面輪郭',
+      hi_IN: 'चेहरे की आकृति',
     },
   },
   {
@@ -62,7 +71,14 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'BREAST',
     icon: () => <BreastIconV2 />,
     iconSmall: () => null,
-    labels: { ko_KR: '가슴', en_US: 'Breast', th_TH: 'หน้าอก', zh_TW: '胸部', ja_JP: '胸' },
+    labels: {
+      ko_KR: '가슴',
+      en_US: 'Breast',
+      th_TH: 'หน้าอก',
+      zh_TW: '胸部',
+      ja_JP: '胸',
+      hi_IN: 'स्तन',
+    },
   },
   {
     id: '255d42f9-a589-48f7-b8bc-ec046ff16f29', // STEM_CELL
@@ -75,6 +91,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       th_TH: 'เซลล์ต้นกำเนิด',
       zh_TW: '幹細胞',
       ja_JP: '幹細胞',
+      hi_IN: 'स्टेम सेल',
     },
   },
   // 둘째줄: 지방흡입 > 바디 > 모발이식 > 피부과 > 치과 > 기타 (6개)
@@ -89,6 +106,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       th_TH: 'ศัลยกรรมดูดไขมัน',
       zh_TW: '抽脂',
       ja_JP: '脂肪吸引',
+      hi_IN: 'लिपोसक्शन',
     },
   },
   {
@@ -102,6 +120,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       th_TH: 'ศัลยกรรมร่างกาย',
       zh_TW: '身體',
       ja_JP: 'ボディ',
+      hi_IN: 'बॉडी',
     },
   },
   {
@@ -115,6 +134,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       th_TH: 'ปลูกผม',
       zh_TW: '植髮',
       ja_JP: '植毛',
+      hi_IN: 'बाल प्रत्यारोपण',
     },
   },
   {
@@ -128,6 +148,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       th_TH: 'โรคผิวหนัง',
       zh_TW: '皮膚科',
       ja_JP: '皮膚科',
+      hi_IN: 'त्वचाविज्ञान',
     },
   },
   {
@@ -135,14 +156,28 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'DENTAL',
     icon: () => <DentalIconV2 />,
     iconSmall: () => null,
-    labels: { ko_KR: '치과', en_US: 'Dental', th_TH: 'ทันตกรรม', zh_TW: '牙科', ja_JP: '歯科' },
+    labels: {
+      ko_KR: '치과',
+      en_US: 'Dental',
+      th_TH: 'ทันตกรรม',
+      zh_TW: '牙科',
+      ja_JP: '歯科',
+      hi_IN: 'दंत चिकित्सा',
+    },
   },
   {
     id: 'b2c3d4e5-f6a7-8901-bcde-f23456789012', // OTHER
     type: 'OTHER',
     icon: () => <OtherIconV2 />,
     iconSmall: () => null,
-    labels: { ko_KR: '기타', en_US: 'Others', th_TH: 'แนะนำ', zh_TW: '其他', ja_JP: 'その他' },
+    labels: {
+      ko_KR: '기타',
+      en_US: 'Others',
+      th_TH: 'แนะนำ',
+      zh_TW: '其他',
+      ja_JP: 'その他',
+      hi_IN: 'अन्य',
+    },
   },
 ];
 

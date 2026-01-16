@@ -14,6 +14,12 @@ export function LimousineBanner({ lang }: LimousineBannerProps) {
         return '/images/shared/limousine_en.png';
       case 'th':
         return '/images/shared/limousine_th.png';
+      case 'zh-Hant':
+        return '/images/shared/limousine_ko.png'; // 기본값은 한국어
+      case 'ja':
+        return '/images/shared/limousine_ko.png'; // 기본값은 한국어
+      case 'hi':
+        return '/images/shared/limousine_ko.png'; // 기본값은 한국어
       default:
         return '/images/shared/limousine_ko.png';
     }

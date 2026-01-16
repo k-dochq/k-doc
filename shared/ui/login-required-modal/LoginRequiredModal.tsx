@@ -60,6 +60,7 @@ export function LoginRequiredModal({
       th: 'th',
       'zh-Hant': 'en',
       ja: 'en',
+      hi: 'en',
     };
     return `/images/shared/login_required_bg_${localeMap[locale]}.png`;
   };
