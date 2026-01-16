@@ -154,7 +154,7 @@ export const viewport: Viewport = {
 export default async function LangLayout({ children, params }: LangLayoutProps) {
   const { lang } = await params;
 
-  // 언어별 폰트 선택
+  // 언어별 폰트 선택.
   const currentFont =
     lang === 'th'
       ? notoSansThaiLooped
