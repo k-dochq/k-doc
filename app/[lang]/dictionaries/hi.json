@@ -519,7 +519,7 @@
   },
   "hospital": {
     "region": "क्षेत्र",
-    "reviewsButton": "उपचार के बाद की समीक्षा",
+    "reviewsButton": "समीक्षाएं",
     "priceConsultation": "परामर्श और चर्चा",
     "introduction": {
       "title": "अस्पताल का परिचय"
@@ -590,7 +590,7 @@
   "favorites": {
     "title": "पसंदीदा",
     "hospitals": "अस्पताल",
-    "reviews": "उपचार के बाद की समीक्षा",
+    "reviews": "समीक्षाएं",
     "doctors": "चिकित्सक",
     "loading": "लोड हो रहा है...",
     "error": "डेटा लोड करते समय एक त्रुटि उत्पन्न हुई।",
@@ -2111,7 +2111,7 @@
     "careerAndActivity": "करियर और गतिविधियाँ",
     "noCareerInfo": "यहां करियर संबंधी कोई जानकारी नहीं है।",
     "affiliatedHospital": "संबद्ध अस्पताल",
-    "reviews": "उपचार के बाद की समीक्षा",
+    "reviews": "समीक्षाएं",
     "viewAllReviews": "सभी को देखें",
     "share": {
       "title": "डॉक्टर की जानकारी देखें",
