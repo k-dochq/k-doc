@@ -25,8 +25,8 @@ export function ReviewSortFilterDrawer({
       label: dict.allReviews?.sort?.popular ?? '',
     },
     {
-      value: REVIEW_SORT_OPTIONS.LATEST,
-      label: dict.allReviews?.sort?.latest ?? '',
+      value: REVIEW_SORT_OPTIONS.RECOMMENDED,
+      label: dict.allReviews?.sort?.recommended ?? '',
     },
     {
       value: REVIEW_SORT_OPTIONS.RATING_HIGH,
