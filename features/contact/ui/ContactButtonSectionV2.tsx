@@ -25,7 +25,7 @@ function getPartnershipFormLink(lang: Locale): string {
     case 'ja':
       return 'https://forms.gle/E7oupAThzbqeqwio7';
     case 'hi':
-      return 'https://forms.gle/mm882V8DZLyAgtVA6'; // 힌디어는 영어 링크 사용
+      return 'https://forms.gle/sLV7iFcqgLY9nRYL6';
     default:
       return 'https://forms.gle/mm882V8DZLyAgtVA6';
   }

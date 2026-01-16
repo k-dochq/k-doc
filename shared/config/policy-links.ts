@@ -26,7 +26,7 @@ export const POLICY_LINKS = {
     th: 'https://forms.gle/BiFSk3Uj32HgDfHa8',
     'zh-Hant': 'https://forms.gle/riR7Xw8yQ4FUiNeV6',
     ja: 'https://forms.gle/NLW2ptxFG88tPpZB9',
-    hi: 'https://forms.gle/TPPXupyUATAi1mua6', // 힌디어는 영어 링크 사용
+    hi: 'https://forms.gle/vCf3VoCEWys9sgHYA',
   },
 } as const;
 
