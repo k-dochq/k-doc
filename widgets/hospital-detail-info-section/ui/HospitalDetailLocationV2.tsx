@@ -24,9 +24,10 @@ interface HospitalDetailLocationV2Props {
 export function HospitalDetailLocationV2({ hospital, lang, dict }: HospitalDetailLocationV2Props) {
   const { copyAddress } = useAddressCopy(dict);
   const hasCoordinates = hospital.latitude && hospital.longitude;
+  // 주소는 영어만 표시
   const address =
-    extractLocalizedText(hospital.directions, lang) ||
-    extractLocalizedText(hospital.address, lang) ||
+    extractLocalizedText(hospital.directions, 'en') ||
+    extractLocalizedText(hospital.address, 'en') ||
     '';
 
   const handleCopyAddress = () => {

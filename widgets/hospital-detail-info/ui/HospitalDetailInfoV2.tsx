@@ -30,7 +30,7 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
     : hospital.address;
 
   const hospitalName = extractLocalizedText(hospital.name, lang) || '';
-  const hospitalAddress = extractLocalizedText(displayAddress, lang) || '';
+  const hospitalAddress = extractLocalizedText(displayAddress, 'en') || '';
 
   return (
     <div className='relative z-10 -mt-3 rounded-tl-2xl rounded-tr-2xl bg-white px-5 pt-10 pb-4'>
