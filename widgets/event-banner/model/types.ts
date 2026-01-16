@@ -22,8 +22,13 @@ export function isMultilingualTitle(value: Prisma.JsonValue): value is Multiling
   }
 
   const obj = value as Record<string, unknown>;
-  // 최소한 ko, en, th 중 하나는 있어야 함
-  return typeof obj.ko === 'string' || typeof obj.en === 'string' || typeof obj.th === 'string';
+  // 최소한 ko, en, th, hi 중 하나는 있어야 함
+  return (
+    typeof obj.ko === 'string' ||
+    typeof obj.en === 'string' ||
+    typeof obj.th === 'string' ||
+    typeof obj.hi === 'string'
+  );
 }
 
 // MultilingualTitle에서 특정 locale의 텍스트를 안전하게 추출
@@ -34,8 +39,8 @@ export function getLocalizedTitle(title: Prisma.JsonValue, locale: Locale): stri
     if (typeof text === 'string') {
       return text;
     }
-    // Fallback: ko > en > th > zh-Hant 순서로 시도
-    return title.ko || title.en || title.th || title['zh-Hant'] || '';
+    // Fallback: ko > en > th > zh-Hant > ja > hi 순서로 시도
+    return title.ko || title.en || title.th || title['zh-Hant'] || title.ja || title.hi || '';
   }
   return '';
 }
