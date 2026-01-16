@@ -18,7 +18,7 @@ const guaranteeSvgPaths: Record<Locale, string> = {
   th: '/images/event/package/guarantee_text_th.svg',
   'zh-Hant': '/images/event/package/guarantee_text_zh.svg',
   ja: '/images/event/package/guarantee_text_en.svg',
-  hi: '/images/event/package/guarantee_text_en.svg',
+  hi: '/images/event/package/guarantee_text_hi.svg',
 };
 
 export function PriceImageWithButtonSection({
