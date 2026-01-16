@@ -26,11 +26,11 @@ export function HospitalDetailRegistrationPromptV2({
   const buttonText = dict.hospital?.registrationPrompt?.button || 'Register';
 
   // 언어에 따라 적절한 SVG 컴포넌트 선택
-  const GuaranteeSvg = lang === 'th' ? GuaranteeTh : GuaranteeEn;
+  const GuaranteeSvg = GuaranteeEn;
 
   return (
     <div className='px-2 pt-1 pb-5 min-[371px]:px-5'>
-      <div className='flex items-center justify-between overflow-clip rounded-lg bg-[#8A8A8A] p-3 shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
+      <div className='flex items-center justify-between overflow-clip rounded-lg border-2 border-[#F15BFF] bg-white p-3 shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
         <div
           className='relative'
           style={{
@@ -42,7 +42,7 @@ export function HospitalDetailRegistrationPromptV2({
         <LocaleLink
           href='/auth/login'
           locale={lang}
-          className='flex shrink-0 items-center justify-center gap-0 rounded bg-[#f15bff] px-2 py-1.5 text-[13px] leading-[19px] text-white'
+          className='flex shrink-0 items-center justify-center gap-0 rounded bg-[#F15BFF] px-2 py-1.5 text-[13px] leading-[19px] font-medium text-white'
         >
           {buttonText}
         </LocaleLink>
