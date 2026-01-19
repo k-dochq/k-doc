@@ -80,7 +80,7 @@ export function AppleSignInButton({
         <AppleIcon />
       )}
       <span className='text-base font-medium text-neutral-700'>
-        {dict.auth?.login?.appleLogin || 'Apple로 로그인'}
+        {dict.auth?.login?.appleLogin || 'Apple로 시작'}
       </span>
     </button>
   );

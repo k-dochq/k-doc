@@ -61,7 +61,7 @@ export function GoogleSignInButtonV2({
       ) : (
         <GoogleIconV2 />
       )}
-      <span>{dict.auth?.login?.googleLogin || 'Google로 계속하기'}</span>
+      <span>{dict.auth?.login?.googleLogin || 'Google로 시작'}</span>
     </button>
   );
 }

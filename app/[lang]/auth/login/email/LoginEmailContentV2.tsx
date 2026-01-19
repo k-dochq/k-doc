@@ -17,7 +17,7 @@ export function LoginEmailContentV2({ lang, dict, redirectTo }: LoginEmailConten
   return (
     <div className='min-h-screen bg-white'>
       <PageHeaderV2
-        title={dict.auth?.login?.emailLogin || '이메일로 로그인'}
+        title={dict.auth?.login?.emailLogin || '이메일로 시작'}
         fallbackUrl={`/${lang}/auth/login`}
       />
 

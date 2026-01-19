@@ -20,11 +20,19 @@ interface LoginRequiredDrawerProps {
 export function LoginRequiredDrawer({ lang, dict, redirectPath }: LoginRequiredDrawerProps) {
   const router = useLocalizedRouter();
 
-  // 한국어, 영어일 때는 영어 이미지, 태국어일 때는 태국어 이미지
-  const imagePath =
-    lang === 'th'
-      ? '/images/login-required/login_required_background_th.png'
-      : '/images/login-required/login_required_background_en.png';
+  // 언어별 로그인 필요 배경 이미지 분기
+  // - ko/en: 영어 이미지 사용
+  // - th/zh-Hant/ja/hi: 각 언어별 이미지 사용
+  const imagePathByLocale: Record<Locale, string> = {
+    en: '/images/login-required/login_required_background_en.png',
+    ko: '/images/login-required/login_required_background_en.png',
+    th: '/images/login-required/login_required_background_th.png',
+    'zh-Hant': '/images/login-required/login_required_background_zh.png',
+    ja: '/images/login-required/login_required_background_ja.png',
+    hi: '/images/login-required/login_required_background_hi.png',
+  };
+
+  const imagePath = imagePathByLocale[lang];
 
   const handleClose = () => {
     closeDrawer();
