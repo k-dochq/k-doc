@@ -110,7 +110,7 @@ export function EmailLoginForm({ lang, dict, redirectTo }: EmailLoginFormProps) 
           }
           className='text-sm leading-5 text-neutral-500 hover:text-neutral-700'
         >
-          {dict.auth?.login?.signupLink || '회원가입하기'}
+          {dict.auth?.login?.signupLink || '이메일로 가입'}
         </LocaleLink>
       </div>
     </div>

@@ -77,8 +77,6 @@ export function EventBannerRibbonItem({
         ? addLocaleToUrl(linkUrl, currentLocale)
         : linkUrl;
 
-    console.log('processedLinkUrl', processedLinkUrl);
-
     return (
       <LocaleLink href={processedLinkUrl} locale={currentLocale} className='block'>
         <div className={bannerClassName}>

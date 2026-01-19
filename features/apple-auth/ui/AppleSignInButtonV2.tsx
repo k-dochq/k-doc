@@ -91,7 +91,7 @@ export function AppleSignInButtonV2({
       ) : (
         <AppleIconV2 />
       )}
-      <span>{dict.auth?.login?.appleLogin || 'Apple로 계속하기'}</span>
+      <span>{dict.auth?.login?.appleLogin || 'Apple로 시작'}</span>
     </button>
   );
 }
