@@ -14,21 +14,27 @@ interface LoginContentV2Props {
 }
 
 export function LoginContentV2({ lang, dict, redirectTo }: LoginContentV2Props) {
-  const isThai = lang === 'th';
-  const imageSrc = isThai ? '/images/premium/premium_th.png' : '/images/premium/premium_en.png';
-  const imageWidth = isThai ? 284 : 312;
-  const imageHeight = 269;
+  const imageConfigByLocale: Record<Locale, { src: string; width: number; height: number }> = {
+    en: { src: '/images/premium/premium_en.png', width: 312, height: 269 },
+    ko: { src: '/images/premium/premium_en.png', width: 312, height: 269 },
+    th: { src: '/images/premium/premium_th.png', width: 284, height: 269 },
+    'zh-Hant': { src: '/images/premium/premium_zh.png', width: 312, height: 269 },
+    ja: { src: '/images/premium/premium_ja.png', width: 312, height: 269 },
+    hi: { src: '/images/premium/premium_hi.png', width: 312, height: 269 },
+  };
+
+  const imageConfig = imageConfigByLocale[lang];
 
   return (
     <div className='flex min-h-screen flex-col items-center bg-white'>
       <LoginPageHeader />
       {/* 프리미엄 이미지 영역 */}
-      <div className={isThai ? 'w-[284px]' : 'w-[312px]'}>
+      <div className={lang === 'th' ? 'w-[284px]' : 'w-[312px]'}>
         <Image
-          src={imageSrc}
+          src={imageConfig.src}
           alt='K-DOC Premium'
-          width={imageWidth}
-          height={imageHeight}
+          width={imageConfig.width}
+          height={imageConfig.height}
           priority
           className='h-auto w-full'
         />
