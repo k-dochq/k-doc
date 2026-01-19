@@ -304,10 +304,10 @@
   "auth": {
     "login": {
       "title": "Login",
-      "subtitle": "Sign in to your account",
+      "subtitle": "Login to your account",
       "email": "Email",
       "password": "Password",
-      "loginButton": "Sign In",
+      "loginButton": "Login",
       "laterButton": "Do Later",
       "signupButton": "Register with Email",
       "requiredMessage": "Please log in\nto use the service.",
@@ -315,7 +315,7 @@
       "startIn3Seconds": "Get started in 3 seconds",
       "googleLogin": "Continue with Google",
       "appleLogin": "Continue with Apple",
-      "kakaoLogin": "Sign in with Kakao",
+      "kakaoLogin": "Login with Kakao",
       "emailLogin": "Continue with Email",
       "recentLogin": "Recent login",
       "forgotPassword": "Forgot your password?",
@@ -406,7 +406,7 @@
       "signupError": "Register error occurred",
       "passwordMismatch": "Passwords do not match",
       "alreadyHaveAccount": "Already have an account?",
-      "loginLink": "Sign In",
+      "loginLink": "Login",
       "termsAgreement": {
         "title": ["K-DOC", "Please agree to", "use the service"],
         "allAgreed": "Agree to all",
@@ -460,7 +460,7 @@
       "resetButton": "Send Password Reset Link",
       "loading": "Sending...",
       "backToLogin": "Back to Login",
-      "loginLink": "Sign In",
+      "loginLink": "Login",
       "resetError": "An error occurred while resetting password",
       "placeholders": {
         "email": "your-email@example.com"
@@ -483,7 +483,7 @@
       "confirmPassword": "Confirm Password",
       "updateButton": "Update Password",
       "backToLogin": "Back to Login",
-      "loginLink": "Sign In",
+      "loginLink": "Login",
       "goToLogin": "Go to Login",
       "updateError": "An error occurred while updating password",
       "sessionError": "An error occurred while setting session.",
@@ -501,7 +501,7 @@
       },
       "success": {
         "title": "Password Updated",
-        "description": "Your password has been successfully updated. Please sign in with your new password."
+        "description": "Your password has been successfully updated. Please login with your new password."
       },
       "error": {
         "invalidLink": {
