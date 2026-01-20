@@ -1,20 +1,26 @@
 'use client';
 
-import { ALL_LOCALE_LABELS, isComingSoonLocale, type Locale, type AllLocale } from 'shared/config';
+import {
+  ALL_LOCALE_LABELS,
+  DEFAULT_LOCALE,
+  isComingSoonLocale,
+  type AllLocale,
+  type Locale,
+} from 'shared/config';
 import { localeCookies } from 'shared/lib';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { initFlowbite } from 'flowbite';
-import { useAuth } from 'shared/lib/auth/useAuth';
 
 interface HeaderLanguageSwitcherV2Props {
   currentLang?: Locale;
 }
 
-export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageSwitcherV2Props) {
+export function HeaderLanguageSwitcherV2({
+  currentLang = DEFAULT_LOCALE,
+}: HeaderLanguageSwitcherV2Props) {
   const pathname = usePathname();
   const router = useRouter();
-  const { user } = useAuth();
   const [isClient, setIsClient] = useState(false);
 
   // 클라이언트 사이드 렌더링 확인
@@ -34,22 +40,10 @@ export function HeaderLanguageSwitcherV2({ currentLang = 'ko' }: HeaderLanguageS
 
   const pathWithoutLocale = getPathWithoutLocale(pathname || '');
 
-  // k-doc.kr 도메인 사용자인지 확인 (클라이언트에서만)
-  const isKdocUser = isClient ? user?.email?.endsWith('@k-doc.kr') || false : false;
-
-  // 표시할 언어 옵션 필터링 (Hydration-safe)
-  // 지원되는 언어 + coming soon 언어 모두 표시
-  const availableLocales = Object.entries(ALL_LOCALE_LABELS).filter(([localeKey]) => {
-    // 클라이언트에서만 필터링 적용
-    if (!isClient) {
-      return true; // 서버에서는 모든 언어 표시
-    }
-    // k-doc.kr 사용자가 아니면 한국어 제외
-    if (!isKdocUser && localeKey === 'ko') {
-      return false;
-    }
-    return true;
-  });
+  // 표시할 언어 옵션 (한국어는 언어 선택에서 제외)
+  const availableLocales = Object.entries(ALL_LOCALE_LABELS).filter(
+    ([localeKey]) => localeKey !== 'ko',
+  );
 
   // 지원되는 locale에 대해서만 prefetch 수행 (coming soon 언어는 제외)
   useEffect(() => {
