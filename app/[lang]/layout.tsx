@@ -13,7 +13,6 @@ import { GoogleAdsGTM } from 'shared/ui/google-ads-gtm';
 import { RedditPixel } from 'shared/ui/reddit-pixel';
 import { MarketingAttributionTracker } from 'shared/ui/marketing-attribution/MarketingAttributionTracker';
 import { Toaster } from 'sonner';
-import { UnsupportedKoreaPage } from 'widgets/unsupported-korea';
 
 const pretendard = localFont({
   src: '../../fonts/pretendard/PretendardVariable.woff2',
@@ -165,7 +164,6 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
           ? notoSansDevanagari
           : pretendard;
   const allFontVariables = `${pretendard.variable} ${notoSansThaiLooped.variable} ${notoSansTC.variable} ${notoSansDevanagari.variable}`;
-  const content = lang === 'ko' ? <UnsupportedKoreaPage /> : children;
 
   return (
     <html lang={lang} className={allFontVariables}>
@@ -187,7 +185,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         <MarketingAttributionTracker />
 
         <QueryProvider>
-          <MaxWidthLayout className={lang === 'ko' ? 'bg-white' : ''}>{content}</MaxWidthLayout>
+          <MaxWidthLayout>{children}</MaxWidthLayout>
           <GlobalModal />
           <GlobalDrawer />
           <Toaster position='top-center' richColors />
