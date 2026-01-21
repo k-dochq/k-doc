@@ -6,11 +6,6 @@ import { authGuard } from 'shared/lib/auth/auth-middleware';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // /ko 및 /ko/* 는 한국 버전 미지원 안내 화면만 노출 (인증 가드 우회)
-  if (pathname === '/ko' || pathname.startsWith('/ko/')) {
-    return NextResponse.next();
-  }
-
   // pathname이 locale로 시작하는지 확인
   const hasLocale = SUPPORTED_LOCALES.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,

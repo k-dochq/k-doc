@@ -11,6 +11,8 @@ import { localeCookies } from 'shared/lib';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { initFlowbite } from 'flowbite';
+import { useAuth } from 'shared/lib/auth/useAuth';
+import { isKdocEmployeeEmail } from 'shared/lib/auth/korea-access';
 
 interface HeaderLanguageSwitcherV2Props {
   currentLang?: Locale;
@@ -22,6 +24,7 @@ export function HeaderLanguageSwitcherV2({
   const pathname = usePathname();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
+  const { user, isLoading } = useAuth();
 
   // 클라이언트 사이드 렌더링 확인
   useEffect(() => {
@@ -41,8 +44,9 @@ export function HeaderLanguageSwitcherV2({
   const pathWithoutLocale = getPathWithoutLocale(pathname || '');
 
   // 표시할 언어 옵션 (한국어는 언어 선택에서 제외)
-  const availableLocales = Object.entries(ALL_LOCALE_LABELS).filter(
-    ([localeKey]) => localeKey !== 'ko',
+  const canSelectKo = !isLoading && isKdocEmployeeEmail(user?.email);
+  const availableLocales = Object.entries(ALL_LOCALE_LABELS).filter(([localeKey]) =>
+    canSelectKo ? true : localeKey !== 'ko',
   );
 
   // 지원되는 locale에 대해서만 prefetch 수행 (coming soon 언어는 제외)
