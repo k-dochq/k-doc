@@ -13,6 +13,7 @@ import { GoogleAdsGTM } from 'shared/ui/google-ads-gtm';
 import { RedditPixel } from 'shared/ui/reddit-pixel';
 import { MarketingAttributionTracker } from 'shared/ui/marketing-attribution/MarketingAttributionTracker';
 import { Toaster } from 'sonner';
+import { KoreaGateModal } from 'widgets/korea-gate-modal';
 
 const pretendard = localFont({
   src: '../../fonts/pretendard/PretendardVariable.woff2',
@@ -186,6 +187,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
 
         <QueryProvider>
           <MaxWidthLayout>{children}</MaxWidthLayout>
+          <KoreaGateModal />
           <GlobalModal />
           <GlobalDrawer />
           <Toaster position='top-center' richColors />
