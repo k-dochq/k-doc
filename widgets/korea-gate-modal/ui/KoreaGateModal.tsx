@@ -1,6 +1,5 @@
 'use client';
 
-import { Home } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import { useAuth } from 'shared/lib/auth/useAuth';
@@ -47,7 +46,22 @@ export function KoreaGateModal() {
             onClick={handleGoGlobal}
             className='flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#7657FF] px-5 py-4 text-[16px] leading-6 font-medium text-white'
           >
-            <Home className='h-5 w-5' />
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='18'
+              height='18'
+              viewBox='0 0 18 18'
+              fill='none'
+              aria-hidden='true'
+              focusable='false'
+            >
+              <path
+                d='M16.5833 16.5833V7.08333L8.66667 0.75L0.75 7.08333V16.5833H6.29167V10.25H11.0417V16.5833H16.5833Z'
+                stroke='white'
+                strokeWidth='1.5'
+                strokeLinejoin='round'
+              />
+            </svg>
             글로벌 서비스로 이동
           </button>
         </div>
