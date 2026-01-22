@@ -4,11 +4,15 @@ import { parseLocalizedText } from 'shared/model/types/common';
 
 export async function GET(_request: NextRequest) {
   try {
-    // 상위 지역 목록 조회 (level = 0)
+    // 상위 지역 목록 조회 (level = 0, 활성화된 것만)
     const parentDistricts = await prisma.district.findMany({
       where: {
         level: 0,
         countryCode: 'KR', // 한국 지역만
+        OR: [
+          { isActive: true },
+          { isActive: null }, // 기본값 true로 간주
+        ],
       },
       orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
     });

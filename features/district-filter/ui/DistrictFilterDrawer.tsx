@@ -45,7 +45,13 @@ export function DistrictFilterDrawer({
   };
 
   const handleSelectAll = () => {
-    districtFilter.selectAllDistricts(childDistricts.map((district) => district.id));
+    // 기존 선택된 지역들 중 현재 부모의 하위 지역들은 제거하고, 현재 부모의 모든 하위 지역들을 추가
+    const currentChildIds = childDistricts.map((district) => district.id);
+    const otherSelectedIds = districtFilter.selectedDistrictIds.filter(
+      (id) => !currentChildIds.includes(id),
+    );
+    // 다른 부모의 하위 지역들 + 현재 부모의 d모든 하위 지역들
+    districtFilter.setSelectedDistrictIds([...otherSelectedIds, ...currentChildIds]);
   };
 
   const handleDeselectAll = () => {
