@@ -25,9 +25,16 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
     });
 
+    // 영어 이름 기준으로 알파벳 순서 정렬
+    const sortedDistricts = childDistricts.sort((a, b) => {
+      const nameA = (a.name as { en_US?: string })?.en_US || '';
+      const nameB = (b.name as { en_US?: string })?.en_US || '';
+      return nameA.localeCompare(nameB, 'en', { sensitivity: 'base' });
+    });
+
     return NextResponse.json({
       success: true,
-      data: childDistricts,
+      data: sortedDistricts,
     });
   } catch (error) {
     console.error('Error fetching child districts:', error);
