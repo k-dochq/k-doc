@@ -33,6 +33,7 @@ model District {
   level          Int                 @default(0)
   order          Int?
   parentId       String?             @db.Uuid
+  isActive       Boolean?            @default(true)
   District       District?           @relation("DistrictToDistrict", fields: [parentId], references: [id], onDelete: Cascade)
   other_District District[]          @relation("DistrictToDistrict")
   Hospital       Hospital[]
