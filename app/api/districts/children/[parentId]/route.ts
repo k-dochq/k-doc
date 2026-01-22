@@ -11,12 +11,16 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
   try {
     const { parentId } = await params;
 
-    // 하위 지역 목록 조회 (level = 1, parentId 기준)
+    // 하위 지역 목록 조회 (level = 1, parentId 기준, 활성화된 것만)
     const childDistricts = await prisma.district.findMany({
       where: {
         level: 1,
         parentId: parentId,
         countryCode: 'KR', // 한국 지역만
+        OR: [
+          { isActive: true },
+          { isActive: null }, // 기본값 true로 간주
+        ],
       },
       orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
     });

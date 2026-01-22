@@ -47,8 +47,11 @@ export function ChildDistrictList({
     return parentDistrict ? getDistrictName(parentDistrict) : '';
   };
 
+  // 현재 부모의 하위 지역들만 확인하여 전체 선택 여부 판단
+  const currentChildIds = childDistricts.map((district) => district.id);
+  const selectedCurrentChildIds = selectedChildIds.filter((id) => currentChildIds.includes(id));
   const isAllSelected =
-    childDistricts.length > 0 && selectedChildIds.length === childDistricts.length;
+    childDistricts.length > 0 && selectedCurrentChildIds.length === childDistricts.length;
 
   if (!selectedParentId) {
     return (

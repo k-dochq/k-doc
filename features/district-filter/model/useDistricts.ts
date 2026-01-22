@@ -30,5 +30,6 @@ export function useChildDistricts(parentId: string | null) {
     gcTime: 60 * 60 * 1000, // 1시간
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    placeholderData: (prev) => prev, // 이전 데이터 유지
   });
 }
