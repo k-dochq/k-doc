@@ -553,7 +553,7 @@
   "districtFilter": {
     "title": "地域",
     "button": "地域別",
-    "selectAll": "全選択",
+    "selectAll": "すべて選択",
     "deselectAll": "フルオフ",
     "complete": "完了",
     "reset": "初期化",

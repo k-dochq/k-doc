@@ -553,7 +553,7 @@
   "districtFilter": {
     "title": "क्षेत्र",
     "button": "क्षेत्र के आधार पर",
-    "selectAll": "सबका चयन करें",
+    "selectAll": "Select All",
     "deselectAll": "पूर्ण प्रदर्शन",
     "complete": "पूरा",
     "reset": "रीसेट",
