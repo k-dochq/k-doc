@@ -852,6 +852,7 @@ enum UserLocale {
   zh_TW
   ja_JP
   hi_IN
+  tl_PH
 
   @@schema("public")
 }
@@ -971,6 +972,7 @@ enum EventBannerLocale {
   zh
   ja
   hi
+  tl
 
   @@schema("public")
 }
@@ -989,6 +991,7 @@ enum YoutubeVideoLocale {
   zh
   ja
   hi
+  tl
 
   @@schema("public")
 }
