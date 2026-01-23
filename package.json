@@ -17,7 +17,8 @@
     "clean-unused": "tsx scripts/find-unused-files.ts --delete",
     "analyze-unused": "tsx scripts/find-unused-files.ts --json",
     "compress-image": "tsx scripts/compress-image.ts",
-    "transform-review": "tsx scripts/transform-review.ts"
+    "transform-review": "tsx scripts/transform-review.ts",
+    "update-sitemap-hospitals": "tsx scripts/update-sitemap-hospitals.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.71",
