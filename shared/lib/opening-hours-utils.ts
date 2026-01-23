@@ -8,6 +8,7 @@ const DAYS_OF_WEEK: Record<Locale, string[]> = {
   'zh-Hant': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   ja: ['月', '火', '水', '木', '金', '土', '日'],
   hi: ['सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि', 'रवि'],
+  tl: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 };
 
 /**

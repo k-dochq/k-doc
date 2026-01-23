@@ -27,6 +27,7 @@ export const POLICY_LINKS = {
     'zh-Hant': 'https://forms.gle/riR7Xw8yQ4FUiNeV6',
     ja: 'https://forms.gle/NLW2ptxFG88tPpZB9',
     hi: 'https://forms.gle/vCf3VoCEWys9sgHYA',
+    tl: 'https://forms.gle/TPPXupyUATAi1mua6', // Fallback to English for now
   },
 } as const;
 

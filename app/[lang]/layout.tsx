@@ -14,6 +14,7 @@ import { RedditPixel } from 'shared/ui/reddit-pixel';
 import { MarketingAttributionTracker } from 'shared/ui/marketing-attribution/MarketingAttributionTracker';
 import { Toaster } from 'sonner';
 import { KoreaGateModal } from 'widgets/korea-gate-modal';
+import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
 
 const pretendard = localFont({
   src: '../../fonts/pretendard/PretendardVariable.woff2',
@@ -68,6 +69,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     'zh-Hant': 'K-DOC 10',
     ja: 'K-DOC 10',
     hi: 'K-DOC 10',
+    tl: 'K-DOC 10',
   };
 
   const descriptions = {
@@ -78,6 +80,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
       'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
     ja: 'K-DOC、韓国美容整形の必須ガイド — トップ病院を比較し、実際のレビューを読み、安全に予約し、専用の手術特典と美容ツアー特典をお楽しみください。',
     hi: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
+    tl: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
   };
 
   // 기본 keywords
@@ -113,18 +116,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
       siteName: titles[lang],
       title: titles[lang],
       description: descriptions[lang],
-      locale:
-        lang === 'ko'
-          ? 'ko_KR'
-          : lang === 'en'
-            ? 'en_US'
-            : lang === 'th'
-              ? 'th_TH'
-              : lang === 'zh-Hant'
-                ? 'zh_TW'
-                : lang === 'ja'
-                  ? 'ja_JP'
-                  : 'hi_IN',
+      locale: localeToDatabaseLocale(lang),
       images: [
         {
           url: '/opengraph-image.png',

@@ -25,6 +25,7 @@ const filterLabels: Record<'byRegion', LocalizedText> = {
     zh_TW: '依地區',
     ja_JP: '地域別',
     hi_IN: 'क्षेत्र के अनुसार',
+    tl_PH: 'Ayon sa rehiyon',
   } satisfies LocalizedText,
 };
 

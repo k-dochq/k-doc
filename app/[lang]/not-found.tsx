@@ -40,6 +40,11 @@ const messages = {
       'आप जिस पृष्ठ की तलाश कर रहे हैं वह मौजूद नहीं है या स्थानांतरित हो गया हो सकता है।',
     homeButton: 'होम पर वापस जाएं',
   },
+  tl: {
+    title: 'Page Not Found',
+    description: "The page you are looking for doesn't exist or may have been moved.",
+    homeButton: 'Go back to Home',
+  },
 } as const;
 
 export default function NotFound() {

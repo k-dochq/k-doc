@@ -75,7 +75,7 @@ export interface PaymentMethodData {
  */
 export interface ReservationMetadata {
   category?: string;
-  language: 'ko_KR' | 'en_US' | 'th_TH';
+  language: 'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH';
   customGuideText?: string;
   customDetails?: string;
   customNotice?: string;
