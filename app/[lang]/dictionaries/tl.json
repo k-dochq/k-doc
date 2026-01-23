@@ -106,7 +106,7 @@
     }
   },
   "reviewCarousel": {
-    "title": "Pagsusuri pagkatapos ng paggamot",
+    "title": "Reviews",
     "error": {
       "message": "Nagkaroon ng error habang nilo-load ang mga review.",
       "description": "Pakisubukang muli mamaya.",
@@ -119,8 +119,8 @@
     "viewAll": "Tingnan Lahat"
   },
   "hospitalReviews": {
-    "title": "Pagsusuri pagkatapos ng paggamot",
-    "subtitle": "Pagsusuri pagkatapos ng paggamot",
+    "title": "Reviews",
+    "subtitle": "Reviews",
     "loadingMore": "Naglo-load ng higit pang mga review...",
     "allLoaded": "Na-load na ang lahat ng review.",
     "retry": "Subukan muli",
@@ -134,7 +134,7 @@
     }
   },
   "hospitalDetailReviews": {
-    "title": "Pagsusuri pagkatapos ng paggamot",
+    "title": "Reviews",
     "viewAll": "Tingnan Lahat",
     "emptyMessage": "Wala pang mga rehistradong review."
   },
@@ -162,11 +162,11 @@
     "searchPlaceholder": "Pakilagay ang iyong termino para sa paghahanap"
   },
   "hospitalDetailTabs": {
-    "introduction": "Panimula sa Ospital",
-    "procedures": "Mga detalye ng pamamaraan",
+    "introduction": "Tungkol sa Ospital",
+    "procedures": "Detalye ng Procedure",
     "youtube": "youtube",
     "youtubePreparing": "Inihahanda na ang video ng ospital.",
-    "proceduresDetail": "Mga detalye ng pamamaraan",
+    "proceduresDetail": "Detalye ng Procedure",
     "proceduresComingSoon": "Inihahanda na ang detalyadong impormasyon tungkol sa proseso.",
     "comingSoonSubtext": "Maa-update ito sa lalong madaling panahon.",
     "apgujeongMiracle": {
@@ -519,10 +519,10 @@
   },
   "hospital": {
     "region": "rehiyon",
-    "reviewsButton": "Pagsusuri pagkatapos ng paggamot",
+    "reviewsButton": "Reviews",
     "priceConsultation": "Konsultasyon at talakayan",
     "introduction": {
-      "title": "Panimula sa Ospital"
+      "title": "Tungkol sa Ospital"
     },
     "info": {
       "title": "Impormasyon sa ospital",
@@ -590,7 +590,7 @@
   "favorites": {
     "title": "Mga Paborito",
     "hospitals": "ospital",
-    "reviews": "Pagsusuri pagkatapos ng paggamot",
+    "reviews": "Reviews",
     "doctors": "doktor",
     "loading": "Naglo-load...",
     "error": "Nagkaroon ng error habang naglo-load ng data.",
@@ -2111,7 +2111,7 @@
     "careerAndActivity": "Karera at mga Aktibidad",
     "noCareerInfo": "Walang impormasyon tungkol sa karera.",
     "affiliatedHospital": "Kaakibat na ospital",
-    "reviews": "Pagsusuri pagkatapos ng paggamot",
+    "reviews": "Reviews",
     "viewAllReviews": "Tingnan Lahat",
     "share": {
       "title": "Tingnan ang impormasyon ng doktor",
