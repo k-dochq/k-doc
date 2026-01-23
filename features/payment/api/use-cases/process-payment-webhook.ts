@@ -224,7 +224,7 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
   ): string {
     // Prisma Json 타입을 명시적으로 변환
     const metadata = reservation.metadata as Prisma.JsonObject | null;
-    const language = (metadata?.language as 'ko_KR' | 'en_US' | 'th_TH' | undefined) || 'ko_KR';
+    const language = (metadata?.language as 'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH' | undefined) || 'ko_KR';
 
     // 병원명 추출
     const hospitalName = this.extractHospitalName(reservation.Hospital.name, language);
@@ -257,7 +257,7 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
   ): string {
     // Prisma Json 타입을 명시적으로 변환
     const metadata = reservation.metadata as Prisma.JsonObject | null;
-    const language = (metadata?.language as 'ko_KR' | 'en_US' | 'th_TH' | undefined) || 'ko_KR';
+    const language = (metadata?.language as 'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH' | undefined) || 'ko_KR';
 
     // 병원명 추출
     const hospitalName = this.extractHospitalName(reservation.Hospital.name, language);
@@ -283,7 +283,7 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
   /**
    * 병원명 추출 (JSON에서 언어별로 추출)
    */
-  private extractHospitalName(nameJson: unknown, language: 'ko_KR' | 'en_US' | 'th_TH'): string {
+  private extractHospitalName(nameJson: unknown, language: 'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH'): string {
     if (typeof nameJson === 'string') {
       return nameJson;
     }
@@ -308,6 +308,11 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
             return nameObj.th_TH;
           }
           break;
+        case 'tl_PH':
+          if (typeof nameObj.tl_PH === 'string' && nameObj.tl_PH.trim()) {
+            return nameObj.tl_PH;
+          }
+          break;
       }
 
       // 선택된 언어에 해당하는 값이 없으면 다른 언어로 폴백
@@ -319,6 +324,9 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
       }
       if (typeof nameObj.th_TH === 'string' && nameObj.th_TH.trim()) {
         return nameObj.th_TH;
+      }
+      if (typeof nameObj.tl_PH === 'string' && nameObj.tl_PH.trim()) {
+        return nameObj.tl_PH;
       }
 
       // 다른 문자열 값 찾기
@@ -337,6 +345,8 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
         return 'Hospital';
       case 'th_TH':
         return 'โรงพยาบาล';
+      case 'tl_PH':
+        return 'Hospital';
       default:
         return '병원';
     }
@@ -345,7 +355,7 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
   /**
    * 날짜를 YYYY-MM-DD(요일) 형식으로 포맷팅
    */
-  private formatDateWithDayOfWeek(date: Date, language: 'ko_KR' | 'en_US' | 'th_TH'): string {
+  private formatDateWithDayOfWeek(date: Date, language: 'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH'): string {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
@@ -353,14 +363,14 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
 
     // 요일 계산
     const dayIndex = date.getDay();
-    const dayOfWeekMap: Record<number, { ko_KR: string; en_US: string; th_TH: string }> = {
-      0: { ko_KR: '일요일', en_US: 'Sunday', th_TH: 'อาทิตย์' },
-      1: { ko_KR: '월요일', en_US: 'Monday', th_TH: 'จันทร์' },
-      2: { ko_KR: '화요일', en_US: 'Tuesday', th_TH: 'อังคาร' },
-      3: { ko_KR: '수요일', en_US: 'Wednesday', th_TH: 'พุธ' },
-      4: { ko_KR: '목요일', en_US: 'Thursday', th_TH: 'พฤหัสบดี' },
-      5: { ko_KR: '금요일', en_US: 'Friday', th_TH: 'ศุกร์' },
-      6: { ko_KR: '토요일', en_US: 'Saturday', th_TH: 'เสาร์' },
+    const dayOfWeekMap: Record<number, { ko_KR: string; en_US: string; th_TH: string; tl_PH: string }> = {
+      0: { ko_KR: '일요일', en_US: 'Sunday', th_TH: 'อาทิตย์', tl_PH: 'Linggo' },
+      1: { ko_KR: '월요일', en_US: 'Monday', th_TH: 'จันทร์', tl_PH: 'Lunes' },
+      2: { ko_KR: '화요일', en_US: 'Tuesday', th_TH: 'อังคาร', tl_PH: 'Martes' },
+      3: { ko_KR: '수요일', en_US: 'Wednesday', th_TH: 'พุธ', tl_PH: 'Miyerkules' },
+      4: { ko_KR: '목요일', en_US: 'Thursday', th_TH: 'พฤหัสบดี', tl_PH: 'Huwebes' },
+      5: { ko_KR: '금요일', en_US: 'Friday', th_TH: 'ศุกร์', tl_PH: 'Biyernes' },
+      6: { ko_KR: '토요일', en_US: 'Saturday', th_TH: 'เสาร์', tl_PH: 'Sabado' },
     };
 
     const dayOfWeek = dayOfWeekMap[dayIndex][language];
@@ -380,7 +390,7 @@ export class ProcessPaymentWebhookUseCase implements IProcessPaymentWebhookUseCa
 /**
  * 예약 확정 메시지 템플릿 (언어별)
  */
-const RESERVATION_CONFIRMATION_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH', string> = {
+const RESERVATION_CONFIRMATION_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', string> = {
   ko_KR: `예약 확정
 
 [ 상세 내용 ]
@@ -423,12 +433,26 @@ const RESERVATION_CONFIRMATION_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH', st
 - ค่ามัดจำเป็นค่าธรรมเนียมการยืนยันการจอง
 - ค่าใช้จ่ายในการทำหัตถการจะถูกกำหนดหลังจากการปรึกษาที่สถานที่และการชำระเงินจะทำที่สถานที่
 - ค่ามัดจำไม่สามารถคืนเงินได้ไม่ว่าจะทำหัตถการเสร็จหรือไม่`,
+  tl_PH: `Reservation Confirmed
+
+[ Details ]
+- Hospital: {hospitalName}
+- Procedure: {procedureName}
+- Reservation Date: {date}
+- Reservation Time: {time}
+- Deposit: {amount} USD
+
+[ Important Notes ]
+- Reservation will be automatically cancelled if payment is not received by the deadline.
+- Deposit is a reservation confirmation fee.
+- Procedure cost will be determined after on-site consultation and payment will be made on-site.
+- Deposit is non-refundable regardless of procedure completion.`,
 };
 
 /**
  * 결제 실패 메시지 템플릿 (언어별)
  */
-const PAYMENT_FAILURE_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH', string> = {
+const PAYMENT_FAILURE_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', string> = {
   ko_KR: `결제 실패 안내
 
 [ 상세 내용 ]
@@ -480,4 +504,21 @@ const PAYMENT_FAILURE_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH', string> = {
 - กรุณาดำเนินการชำระเงินอีกครั้งเพื่อรักษาการจองของคุณ
 - กรุณาตรวจสอบเหตุผลที่การชำระเงินล้มเหลวและลองใหม่อีกครั้งหลังจากแก้ไขปัญหา
 - หากคุณมีคำถามกรุณาติดต่อฝ่ายบริการลูกค้า`,
+  tl_PH: `Payment Failed
+
+[ Details ]
+- Hospital: {hospitalName}
+- Procedure: {procedureName}
+- Reservation Date: {date}
+- Reservation Time: {time}
+- Deposit: {amount} USD
+
+[ Payment Failure Reason ]
+{errorMessage}
+
+[ Notice ]
+- Your reservation has not been confirmed due to payment failure.
+- Please proceed with payment again to maintain your reservation.
+- Please check the payment failure reason and retry after resolving the issue.
+- If you have any questions, please contact customer service.`,
 };

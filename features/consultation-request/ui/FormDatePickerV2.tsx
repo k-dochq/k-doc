@@ -64,6 +64,7 @@ export function FormDatePickerV2({
     const day = String(date.getDate()).padStart(2, '0');
     if (locale === 'ko') return `${year}년 ${month}월 ${day}일`;
     if (locale === 'th') return `${day}/${month}/${year}`;
+    if (locale === 'tl') return `${month}/${day}/${year}`;
     return `${month}/${day}/${year}`;
   };
 
@@ -71,6 +72,7 @@ export function FormDatePickerV2({
     if (placeholder) return placeholder;
     if (locale === 'ko') return '날짜를 선택해주세요';
     if (locale === 'th') return 'เลือกวันที่';
+    if (locale === 'tl') return 'Pumili ng petsa';
     return 'Select date';
   };
 

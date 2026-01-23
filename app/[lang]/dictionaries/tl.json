@@ -1,0 +1,2287 @@
+{
+  "common": {
+    "confirm": "tseke",
+    "cancel": "pagkansela",
+    "today": "ngayon"
+  },
+  "quickMenu": {
+    "title": "Mga sikat na lugar ng paggamot",
+    "error": {
+      "message": "Nagkaroon ng error habang naglo-load ng data.",
+      "retryButton": "Subukan muli"
+    },
+    "empty": {
+      "message": "Walang mga lugar na mapagtataguan na maipapakita.",
+      "description": "Malapit nang magdadagdag ng mga bagong lugar ng paggamot."
+    }
+  },
+  "search": {
+    "placeholder": "Maghanap ng mga ospital at mga lugar ng paggamot",
+    "resultTitle": "Mga resulta ng paghahanap"
+  },
+  "hospitalList": {
+    "title": "Ospital na pinakamadalas bisitahin",
+    "viewAll": "Tingnan Lahat",
+    "error": {
+      "message": "Nagkaroon ng error habang kinukuha ang impormasyon ng ospital.",
+      "retryButton": "Subukan muli"
+    },
+    "empty": {
+      "message": "Walang mga ospital na mairerekomenda.",
+      "description": "Malapit nang magdagdag ng mga bagong ospital."
+    }
+  },
+  "liveReviews": {
+    "title": "Mga matingkad na review sa totoong oras",
+    "empty": {
+      "message": "Walang mga live na review na maipapakita.",
+      "description": "May mga bagong live na review na idadagdag sa lalong madaling panahon."
+    }
+  },
+  "popularReviews": {
+    "title": "Mga review na pinakamadalas tingnan",
+    "viewAll": "Tingnan Lahat",
+    "reviewCount": "{count} mga review",
+    "error": {
+      "message": "Nagkaroon ng error habang kinukuha ang impormasyon ng pagsusuri.",
+      "retryButton": "Subukan muli"
+    },
+    "empty": {
+      "message": "Walang mga review na maipapakita.",
+      "description": "May mga bagong review na idadagdag sa lalong madaling panahon."
+    }
+  },
+  "youtube": {
+    "title": "YOUTUBE",
+    "filter": {
+      "all": "buong",
+      "popular": "Mga Sikat na Video",
+      "recommended": "Rekomendasyon ng K-DOC"
+    },
+    "error": {
+      "message": "Nagkaroon ng error habang kinukuha ang impormasyon ng video.",
+      "retryButton": "Subukan muli"
+    },
+    "empty": {
+      "message": "Walang mga video na maipapakita.",
+      "description": "May mga bagong video na idadagdag sa lalong madaling panahon."
+    }
+  },
+  "premiumService": {
+    "title": "Serbisyong Premium ng K-DOC",
+    "subtitle": "Sinusuportahan namin ang lahat mula sa mga pamamaraan hanggang sa paglalakbay.",
+    "services": {
+      "interpreter": {
+        "title": "Mga serbisyong interpretasyon na magagamit",
+        "description": "Sasamahan ka ng isang propesyonal na interpreter sa isang 1:1 na batayan."
+      },
+      "vehicle": {
+        "title": "May serbisyo sa sasakyan",
+        "description": "Ginagarantiya namin ang komportable at ligtas na paglalakbay gamit ang mga de-kalidad na sasakyan."
+      }
+    }
+  },
+  "hospitals": {
+    "title": "Maghanap ng ospital",
+    "totalCount": "Isang kabuuang {{count}} na ospital",
+    "empty": {
+      "message": "Walang mga rehistradong ospital.",
+      "title": "Walang mga rehistradong ospital",
+      "description": "Malapit nang magtayo ng mga bagong ospital",
+      "searchTitle": "Walang natagpuang ospital",
+      "searchDescription": "Pakisubukang muli gamit ang iba&#39;t ibang termino para sa paghahanap"
+    },
+    "pagination": {
+      "page": "Pahina {{kasalukuyang}} / {{total}}"
+    },
+    "infiniteScroll": {
+      "loading": "Tumatawag sa mas maraming ospital...",
+      "end": "Tinawagan na lahat ng ospital."
+    },
+    "doctors": {
+      "title": "Mga kaakibat na kawani ng medikal",
+      "specialties": "Lugar ng paggamot",
+      "empty": "Walang mga rehistradong kawani ng medisina.",
+      "viewAll": "Tingnan ang lahat ng doktor"
+    }
+  },
+  "reviewCarousel": {
+    "title": "Pagsusuri pagkatapos ng paggamot",
+    "error": {
+      "message": "Nagkaroon ng error habang nilo-load ang mga review.",
+      "description": "Pakisubukang muli mamaya.",
+      "retry": "Subukan muli"
+    },
+    "empty": {
+      "message": "Walang mga rehistradong review.",
+      "description": "Maging una na magsulat ng review."
+    },
+    "viewAll": "Tingnan Lahat"
+  },
+  "hospitalReviews": {
+    "title": "Pagsusuri pagkatapos ng paggamot",
+    "subtitle": "Pagsusuri pagkatapos ng paggamot",
+    "loadingMore": "Naglo-load ng higit pang mga review...",
+    "allLoaded": "Na-load na ang lahat ng review.",
+    "retry": "Subukan muli",
+    "error": {
+      "title": "Hindi makuha ang datos ng pagsusuri",
+      "message": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya."
+    },
+    "empty": {
+      "title": "Wala pang mga review",
+      "description": "Maging una na magsulat ng review."
+    }
+  },
+  "hospitalDetailReviews": {
+    "title": "Pagsusuri pagkatapos ng paggamot",
+    "viewAll": "Tingnan Lahat",
+    "emptyMessage": "Wala pang mga rehistradong review."
+  },
+  "hospitalDetailConsultation": {
+    "requestButton": "Kahilingan para sa konsultasyon",
+    "checking": "Sinusuri..."
+  },
+  "notices": {
+    "title": "anunsyo",
+    "loading": "Naglo-load ng mga abiso...",
+    "error": "Nabigong i-load ang abiso.",
+    "empty": "Walang mga anunsyo.",
+    "totalCount": "Mayroong kabuuang {{count}} na mga abiso.",
+    "loadedCount": "May {{count}} na mga aytem na na-load sa ngayon.",
+    "loadMore": "tingnan ang higit pa",
+    "loadingMore": "Naglo-load...",
+    "allLoaded": "Na-load na ang lahat ng anunsyo.",
+    "noTitle": "Walang titulo",
+    "backToList": "Sa listahan",
+    "previousPost": "Nakaraang post",
+    "nextPost": "Susunod na artikulo",
+    "viewList": "Tingnan ang listahan",
+    "noPreviousPost": "Walang mga nakaraang post",
+    "noNextPost": "Wala nang susunod na post",
+    "searchPlaceholder": "Pakilagay ang iyong termino para sa paghahanap"
+  },
+  "hospitalDetailTabs": {
+    "introduction": "Panimula sa Ospital",
+    "procedures": "Mga detalye ng pamamaraan",
+    "youtube": "youtube",
+    "youtubePreparing": "Inihahanda na ang video ng ospital.",
+    "proceduresDetail": "Mga detalye ng pamamaraan",
+    "proceduresComingSoon": "Inihahanda na ang detalyadong impormasyon tungkol sa proseso.",
+    "comingSoonSubtext": "Maa-update ito sa lalong madaling panahon.",
+    "apgujeongMiracle": {
+      "videoTitle": "Video ng pamamaraan",
+      "imageAlt": "Mga Detalye ng Paggamot sa Apgujeong Miracle Clinic",
+      "videoDescription": "Direktor ng Himala ni Apgujeong na si Woo Jung-ho, na lumabas sa FOX TV sa US"
+    }
+  },
+  "hospitalDetailDoctors": {
+    "viewAll": "Tingnan Lahat"
+  },
+  "allReviews": {
+    "title": "Buong pagsusuri ng paggamot",
+    "subtitle": "Tingnan ang mga review mula sa lahat ng ospital",
+    "loadingMore": "Naglo-load ng higit pang mga review...",
+    "allLoaded": "Na-load na ang lahat ng review.",
+    "retry": "Subukan muli",
+    "empty": {
+      "title": "Walang mga rehistradong review",
+      "description": "Maging una na magsulat ng review",
+      "searchTitle": "Walang nakitang mga review",
+      "searchDescription": "Pakisubukang muli gamit ang iba&#39;t ibang termino para sa paghahanap"
+    },
+    "error": {
+      "title": "Hindi makuha ang datos ng pagsusuri",
+      "message": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya."
+    },
+    "filter": {
+      "all": "buong",
+      "specialty": "Sa pamamagitan ng bahagi",
+      "eyes": "mata",
+      "nose": "ilong",
+      "facialContouring": "balangkas",
+      "breast": "dibdib",
+      "stemCell": "mga stem cell",
+      "liposuction": "Liposuction",
+      "lifting": "Pag-angat",
+      "hairTransplant": "paglipat ng buhok"
+    },
+    "sort": {
+      "popular": "Ayusin ayon sa kasikatan",
+      "recommended": "Inirerekomenda",
+      "latest": "Pinakabago",
+      "ratingHigh": "Ayusin ayon sa pinakamataas na rating",
+      "ratingLow": "Ayusin ayon sa pinakamababang rating"
+    }
+  },
+  "reviewWrite": {
+    "fab": {
+      "ariaLabel": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan",
+      "buttonText": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan"
+    },
+    "selectHospital": {
+      "title": "Pagpili ng ospital",
+      "description": "Mangyaring piliin ang ospital kung saan mo gustong magsulat ng review. Maaari kang pumili mula sa listahan ng mga ospital kung saan ka nagpareserba.",
+      "pageTitle": "Piliin ang ospital kung saan ka nagpareserba",
+      "pageSubtitle": "Piliin ang ospital kung saan mo gustong magsulat ng review.",
+      "notificationMessage": "Mangyaring piliin ang ospital kung saan mo gustong magsulat ng review.",
+      "infiniteScroll": {
+        "loading": "Naglo-load ng mas maraming ospital...",
+        "end": "Tinawagan na ang lahat ng ospital na may reserbasyon."
+      },
+      "error": {
+        "title": "Hindi makuha ang datos ng ospital na reserbasyon",
+        "message": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya."
+      },
+      "empty": {
+        "title": "Walang mga reserbasyon",
+        "description": "Para makapagsulat ng review, kailangan mo munang magpa-appointment sa ospital.",
+        "subdescription": "Hanapin ang ospital na gusto mo at magpareserba.",
+        "browseButton": "Maglibot sa ospital"
+      }
+    },
+    "form": {
+      "title": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan",
+      "hospitalInfo": "Impormasyon sa Ospital",
+      "ratingQuestion": "Kumusta ang iyong karanasan sa pamamaraan?",
+      "procedureNameLabel": "[Kinakailangan] Pamamaraan",
+      "procedureNamePlaceholder": "Paano mo naisagawa ang pamamaraan?",
+      "medicalSpecialtyLabel": "[Kinakailangan] Pumili ng lugar na gagamutin",
+      "medicalSpecialtyPlaceholder": "Mangyaring pumili ng kategorya",
+      "contentLabel": "[Kinakailangan] Suriin ang nilalaman",
+      "contentPlaceholder": "Huwag mag-atubiling sumulat ng higit sa 10 karakter tungkol sa iyong detalyadong impormasyon o karanasan sa pamamaraan.",
+      "beforeImagesLabel": "[Opsyonal] Bago ang pamamaraan",
+      "afterImagesLabel": "[Opsyonal] Pagkatapos ng pamamaraan",
+      "addPhotoButton": "Magdagdag ng larawan",
+      "submitButton": "Pagpaparehistro pagkatapos ng pagsusuri ng paggamot",
+      "submitting": "Nagrerehistro...",
+      "uploading": "Nag-a-upload",
+      "characterCount": "{{kasalukuyang}}/500",
+      "editTitle": "Pag-edit pagkatapos ng pagsusuri ng pamamaraan",
+      "editSubmitButton": "Pag-edit pagkatapos ng pagsusuri ng pamamaraan",
+      "cancelConfirmTitle": "Gusto mo bang kanselahin ang iyong pagsusuri?",
+      "cancelConfirmMessage": "Kung kakanselahin mo, mawawala ang lahat ng impormasyong inilagay mo.",
+      "cancelConfirmButton": "Kanselahin ang pagsusulat",
+      "cancelContinueButton": "Ipagpatuloy ang pagsusulat"
+    },
+    "validation": {
+      "ratingRequired": "Pumili ng star rating",
+      "procedureNameRequired": "Pakilagay ang pamamaraan",
+      "medicalSpecialtyRequired": "Mangyaring piliin ang lugar ng paggamot",
+      "contentRequired": "Pakilagay ang mga detalye ng iyong pagsusuri",
+      "contentMaxLength": "Mangyaring sumulat sa loob ng 500 karakter.",
+      "imageMaxCount": "Maaari kang mag-upload ng hanggang 10 larawan.",
+      "imageSizeLimit": "Ang laki ng larawan ay dapat na mas mababa sa 10MB"
+    },
+    "success": {
+      "title": "Nai-post na ang isang pagsusuri pagkatapos ng paggamot",
+      "message": "Salamat sa iyong mahalagang pagsusuri",
+      "goToReviews": "Tingnan ang mga review ng paggamot"
+    },
+    "error": {
+      "title": "Nabigong magparehistro ng pagsusuri",
+      "message": "Pakisubukang muli mamaya",
+      "retry": "Subukan muli"
+    }
+  },
+  "reviewDetail": {
+    "title": "Detalyadong pagsusuri pagkatapos ng pamamaraan",
+    "content": "Suriin ang nilalaman",
+    "backButton": "Bumalik",
+    "hospitalInfo": "Impormasyon tungkol sa ospital kung saan isinagawa ang pamamaraan",
+    "hospital": "Ospital kung saan isinagawa ang pamamaraan",
+    "sameHospitalReviews": "Mga pagsusuri ng mga pamamaraan sa parehong ospital"
+  },
+  "reviewImages": {
+    "beforePhoto": "Larawan bago ang paggamot",
+    "afterPhoto": "Mga larawan pagkatapos ng pamamaraan",
+    "loginRequired": "Mangyaring mag-log in upang tingnan ang mga larawan."
+  },
+  "error": {
+    "title": "Nagkaroon ng hindi inaasahang error",
+    "description": "Paki-refresh ang pahina o subukan muli mamaya."
+  },
+  "auth": {
+    "login": {
+      "title": "mag-log in",
+      "subtitle": "Mangyaring mag-log in sa iyong account",
+      "email": "email",
+      "password": "password",
+      "loginButton": "Mag-log in",
+      "laterButton": "Gawin mo mamaya",
+      "signupButton": "Mag-sign up sa pamamagitan ng email",
+      "requiredMessage": "Mangyaring mag-log in upang magamit ang serbisyo.",
+      "socialLogin": "Pag-login sa social media",
+      "startIn3Seconds": "Magsimula sa loob ng 3 segundo",
+      "googleLogin": "Magsimula sa Google",
+      "appleLogin": "Magsimula sa Apple",
+      "kakaoLogin": "Mag-log in gamit ang Kakao",
+      "emailLogin": "Magsimula sa email",
+      "recentLogin": "Mga Kamakailang Pag-login",
+      "forgotPassword": "Nakalimutan mo ba ang iyong password?",
+      "signUp": "Mag-sign up sa pamamagitan ng email",
+      "loading": "Naglo-load...",
+      "loginError": "Nagkaroon ng error habang nagla-log in",
+      "noAccount": "Wala kang account?",
+      "signupLink": "Mag-sign up sa pamamagitan ng email",
+      "placeholders": {
+        "email": "iyong-email@example.com",
+        "password": "Pakilagay ang iyong password"
+      },
+      "errors": {
+        "emailRequired": "Pakilagay ang iyong email address.",
+        "emailInvalid": "Mangyaring maglagay ng wastong email address.",
+        "passwordRequired": "Pakilagay ang iyong password.",
+        "invalidCredentials": "Mali ang iyong email o password.",
+        "emailNotConfirmed": "Pakitingnan ang iyong email at i-verify ang iyong account."
+      }
+    },
+    "additionalInfo": {
+      "title": "Maglagay ng karagdagang impormasyon",
+      "description": "Mangyaring maglagay ng karagdagang impormasyon upang magamit ang serbisyo.",
+      "emailReadonly": "Ito ang email address ng iyong social account",
+      "submitButton": "kumpleto"
+    },
+    "signup": {
+      "title": "sumali sa pagiging miyembro",
+      "subtitle": "Gumawa ng bagong account",
+      "required": "mahalaga",
+      "optional": "pumili",
+      "email": "email",
+      "password": "password",
+      "confirmPassword": "beripikahin ang password",
+      "passportName": "Pangalang Ingles sa pasaporte",
+      "nationality": "nasyonalidad",
+      "nationalities": {
+        "thailand": "Thailand",
+        "korea": "Korea",
+        "united_states": "Estados Unidos",
+        "united_kingdom": "UK",
+        "germany": "Alemanya",
+        "france": "Pransya",
+        "japan": "Hapon",
+        "china": "Tsina",
+        "india": "India",
+        "australia": "Australya",
+        "brazil": "brasil",
+        "russia": "Rusya",
+        "spain": "Espanya",
+        "italy": "Italya",
+        "mexico": "Mehiko",
+        "netherlands": "Netherlands",
+        "sweden": "Sweden",
+        "switzerland": "Suwiso",
+        "belgium": "Belhika",
+        "norway": "Norwega",
+        "denmark": "Dinamarka",
+        "singapore": "Singgapur",
+        "new_zealand": "Bagong Selanda",
+        "malaysia": "Malaysia",
+        "philippines": "Pilipinas",
+        "indonesia": "Indonesiya",
+        "turkey": "Turkiya",
+        "south_africa": "Timog Aprika",
+        "egypt": "Ehipto",
+        "nigeria": "Nigerya",
+        "pakistan": "Pakistan",
+        "bangladesh": "Bangladesh",
+        "sri_lanka": "Sri Lanka",
+        "iran": "Iran",
+        "israel": "Israel",
+        "saudi_arabia": "Saudi Arabia",
+        "united_arab_emirates": "Mga Nagkakaisang Arabong Emirado"
+      },
+      "gender": "kasarian",
+      "genders": {
+        "female": "babae",
+        "male": "lalaki"
+      },
+      "phoneNumber": "numero ng telepono",
+      "countryCode": "Kodigo ng bansa",
+      "phoneNumberOnly": "numero ng telepono",
+      "birthDate": "petsa ng kapanganakan",
+      "dateFormat": "Taon.Buwan.Araw",
+      "signupButton": "sumali sa pagiging miyembro",
+      "loading": "Nagsa-sign up...",
+      "signupError": "Nagkaroon ng error habang nagrerehistro.",
+      "passwordMismatch": "Hindi tugma ang password",
+      "alreadyHaveAccount": "Mayroon ka nang account?",
+      "loginLink": "Mag-log in",
+      "termsAgreement": {
+        "title": [
+          "K-DOC",
+          "Para magamit ang serbisyo",
+          "Sumang-ayon po kayo"
+        ],
+        "allAgreed": "Buong kasunduan",
+        "age14Plus": "Dapat ay 14 taong gulang o pataas.",
+        "termsOfService": "Mga Tuntunin ng Serbisyo (Kinakailangan)",
+        "privacyPolicy": "Pahintulot sa pangongolekta/paggamit ng personal na impormasyon (kinakailangan)",
+        "marketingNotifications": "Abiso sa Benepisyo ng Kaganapan/Serbisyo (Opsyonal)",
+        "requiredError": "Mangyaring sumang-ayon sa mga tuntunin at kundisyon.",
+        "agreeAndStart": "Sumang-ayon sa lahat at magsimula"
+      },
+      "placeholders": {
+        "email": "iyong-email@example.com",
+        "password": "Password na may 6 na karakter o higit pa",
+        "confirmPassword": "Pakilagay muli ang iyong password",
+        "passportName": "Pakilagay ang iyong pangalan sa Ingles gaya ng nakasaad sa iyong pasaporte.",
+        "nationality": "Piliin ang iyong nasyonalidad (opsyonal)",
+        "gender": "Pakipili ang iyong kasarian (opsyonal)",
+        "phoneNumber": "010-0000-0000 (opsyonal)",
+        "countryCode": "pumili",
+        "phoneNumberOnly": "Pakilagay ang numero ng iyong mobile phone",
+        "birthDate": "Mangyaring piliin ang iyong petsa ng kapanganakan (opsyonal)"
+      },
+      "errors": {
+        "emailRequired": "Pakilagay ang iyong email address.",
+        "emailInvalid": "Mangyaring maglagay ng wastong email address.",
+        "passwordRequired": "Pakilagay ang iyong password.",
+        "passwordTooShort": "Ang password ay dapat na hindi bababa sa 6 na karakter ang haba.",
+        "confirmPasswordRequired": "Pakilagay ang kumpirmasyon ng iyong password.",
+        "passwordMismatch": "Hindi tugma ang password.",
+        "passportNameRequired": "Ang hindi paglalagay ng iyong pangalang Ingles gaya ng nakasaad sa iyong pasaporte ay maaaring magresulta sa mga paghihigpit sa iyong pag-access sa paggamot.",
+        "passportNameTooShort": "Ang pangalan sa Ingles ng iyong pasaporte ay dapat mayroong kahit dalawang karakter.",
+        "passportNameInvalid": "Mga letrang Ingles lamang ang maaaring ilagay para sa pangalang Ingles sa pasaporte.",
+        "genderRequired": "Pakipili ang iyong kasarian.",
+        "emailAlreadyRegistered": "Nakarehistro na ang email address na ito.",
+        "invalidEmail": "Mangyaring maglagay ng wastong email address.",
+        "passwordTooShortServer": "Ang password ay dapat na hindi bababa sa 6 na karakter ang haba.",
+        "unexpectedError": "Isang hindi inaasahang error ang naganap.",
+        "invalidCredentials": "Mali ang iyong email o password.",
+        "emailNotConfirmed": "Pakitingnan ang iyong email at i-verify ang iyong account.",
+        "signupSuccess": "Nakumpleto na ang iyong pagpaparehistro. Pakitingnan ang iyong email upang i-activate ang iyong account.",
+        "userAlreadyRegistered": "Nakarehistro na ang email address na ito.",
+        "updateProfileError": "Nagkaroon ng error habang sine-save ang impormasyon."
+      }
+    },
+    "forgotPassword": {
+      "title": "hanapin ang password",
+      "description": "Pakilagay ang email address na ginamit mo sa pag-sign up at padadalhan ka namin ng link para sa pag-reset ng password.",
+      "descriptionLine1": "Pakilagay ang email address na ginamit mo sa pag-sign up",
+      "descriptionLine2": "Padadalhan ka namin ng link sa pag-reset ng password.",
+      "email": "email",
+      "resetButton": "Ipadala ang link sa pag-reset ng password",
+      "loading": "Nagpapadala...",
+      "backToLogin": "Bumalik sa pahina ng pag-login",
+      "loginLink": "Mag-log in",
+      "resetError": "Nagkaroon ng error habang nire-reset ang iyong password.",
+      "placeholders": {
+        "email": "iyong-email@example.com"
+      },
+      "errors": {
+        "emailRequired": "Pakilagay ang iyong email address.",
+        "emailInvalid": "Pakilagay sa tamang format.",
+        "userNotFound": "Hindi namin mahanap ang account na nakarehistro gamit ang email address na iyon.",
+        "rateLimitExceeded": "Masyadong maraming kahilingan. Pakisubukang muli mamaya."
+      },
+      "success": {
+        "title": "Naipadala na ang iyong email",
+        "description": "Nagpadala na kami ng link para sa pag-reset ng password sa email address na iyong inilagay. Pakitingnan ang iyong email."
+      }
+    },
+    "resetPassword": {
+      "title": "Magtakda ng bagong password",
+      "description": "Mangyaring maglagay ng bagong password.",
+      "newPassword": "Bagong password",
+      "confirmPassword": "beripikahin ang password",
+      "updateButton": "Baguhin ang password",
+      "backToLogin": "Bumalik sa pahina ng pag-login",
+      "loginLink": "Mag-log in",
+      "goToLogin": "Pumunta sa pahina ng pag-login",
+      "updateError": "Nagkaroon ng error habang binabago ang iyong password.",
+      "sessionError": "Nagkaroon ng error habang sine-set up ang session.",
+      "placeholders": {
+        "newPassword": "Pakilagay ang iyong bagong password",
+        "confirmPassword": "Pakilagay muli ang iyong password"
+      },
+      "errors": {
+        "passwordRequired": "Pakilagay ang iyong password.",
+        "passwordTooShort": "Ang password ay dapat na hindi bababa sa 8 karakter ang haba.",
+        "confirmPasswordRequired": "Pakilagay ang kumpirmasyon ng iyong password.",
+        "passwordMismatch": "Hindi tugma ang password.",
+        "invalidSession": "Hindi wasto ang sesyon. Pakisubukang muli.",
+        "sessionMissing": "Walang sesyon ng pagpapatotoo. Pakisubukang muli."
+      },
+      "success": {
+        "title": "Nabago na ang iyong password",
+        "description": "Matagumpay na nabago ang iyong password. Mangyaring mag-log in gamit ang iyong bagong password."
+      },
+      "error": {
+        "invalidLink": {
+          "title": "Hindi wastong link",
+          "description": "Hindi wasto o nag-expire na ang link sa pag-reset ng password. Pakisubukang muli."
+        }
+      }
+    },
+    "error": {
+      "title": "Error sa Pagpapatotoo",
+      "description": "Nagkaroon ng error habang ginagawa ang authentication. Pakisubukang muli.",
+      "tryAgain": "Subukan Muli",
+      "goHome": "Umuwi"
+    }
+  },
+  "hospital": {
+    "region": "rehiyon",
+    "reviewsButton": "Pagsusuri pagkatapos ng paggamot",
+    "priceConsultation": "Konsultasyon at talakayan",
+    "introduction": {
+      "title": "Panimula sa Ospital"
+    },
+    "info": {
+      "title": "Impormasyon sa ospital",
+      "operatingHours": "Mga oras ng klinika",
+      "noInformation": "Walang impormasyon"
+    },
+    "map": {
+      "title": "Tingnan ang Mapa",
+      "loading": "Naglo-load ng mapa..."
+    },
+    "address": {
+      "copyButton": "Kopyahin ang address",
+      "noAddress": "Walang impormasyon sa address.",
+      "copySuccess": "Nakopya na ang address."
+    },
+    "like": {
+      "like": "Pinasingawan",
+      "liked": "Kumpleto na ang pag-steam",
+      "loading": "Naglo-load...",
+      "countLabel": "aso",
+      "error": "Nagkaroon ng error"
+    },
+    "registrationPrompt": {
+      "message": "Garantiya ng Mabilis na Pag-reserve!!",
+      "button": "Magrehistro"
+    }
+  },
+  "districtFilter": {
+    "title": "rehiyon",
+    "button": "Ayon sa rehiyon",
+    "selectAll": "Piliin Lahat",
+    "deselectAll": "Buong paglabas",
+    "complete": "kumpleto",
+    "reset": "i-reset",
+    "empty": {
+      "message": "Walang napiling rehiyon."
+    }
+  },
+  "hospitalSort": {
+    "popular": "Ayusin ayon sa kasikatan",
+    "recommended": "Inirerekomenda",
+    "newest": "Bagong utos ng ospital"
+  },
+  "review": {
+    "like": {
+      "like": "mahusay",
+      "liked": "I-like Kanselahin",
+      "loading": "Naglo-load...",
+      "countLabel": "aso",
+      "error": "Nagkaroon ng error"
+    },
+    "delete": "Burahin",
+    "edit": "I-edit",
+    "report": "Ulat",
+    "deleteConfirm": "Sigurado ka bang gusto mo itong burahin?",
+    "deleteConfirmTitle": "Sigurado ka bang gusto mong burahin ang review na ito?",
+    "deleteConfirmMessage": "Kapag nabura na, hindi na ito mababawi. Mangyaring pumili nang mabuti.",
+    "deleteSuccess": "Nabura na ang review",
+    "deleteError": "Nabigong burahin ang review",
+    "procedureTiming": "Panahon ng paggamot",
+    "showMore": "tingnan ang higit pa",
+    "showLess": "Tupiin",
+    "view": "tseke"
+  },
+  "favorites": {
+    "title": "Mga Paborito",
+    "hospitals": "ospital",
+    "reviews": "Pagsusuri pagkatapos ng paggamot",
+    "doctors": "doktor",
+    "loading": "Naglo-load...",
+    "error": "Nagkaroon ng error habang naglo-load ng data.",
+    "errorMessage": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya.",
+    "retry": "Subukan muli",
+    "errorHospitals": "Hindi makuha ang datos ng ospital",
+    "errorReviews": "Hindi makuha ang datos ng pagsusuri",
+    "errorDoctors": "Hindi mo matawagan ang doktor na gusto mo",
+    "loadingMoreReviews": "Naglo-load ng higit pang mga review...",
+    "allLoadedReviews": "Na-load na ang lahat ng review.",
+    "loadingMoreDoctors": "Nanawagan para sa mas maraming doktor...",
+    "allLoadedDoctors": "Tinawagan ko na lahat ng doktor.",
+    "empty": {
+      "hospitals": {
+        "title": "Walang mga ospital na nailigtas",
+        "description": "Pindutin ang puso para i-save ang iyong mga paboritong ospital."
+      },
+      "reviews": {
+        "title": "Walang naka-save na mga review",
+        "description": "I-click ang puso para i-save ang mga review na gusto mo."
+      },
+      "doctors": {
+        "title": "Walang mga nailigtas na doktor",
+        "description": "Pindutin ang puso para i-save ang paborito mong doktor."
+      }
+    },
+    "loadingMore": "Naglo-load ng mas maraming data...",
+    "allLoaded": "Na-load na ang lahat ng data"
+  },
+  "consultation": {
+    "title": "tagapayo",
+    "chat": "Konsultasyon Chat",
+    "appointment": {
+      "title": "Mga detalye ng reserbasyon",
+      "reservationDateTime": "Petsa at oras ng reserbasyon",
+      "region": "rehiyon",
+      "writeReview": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan",
+      "loadingMore": "Naglo-load ng higit pang mga reserbasyon...",
+      "allLoaded": "Nakuha na ang lahat ng detalye ng reserbasyon.",
+      "completed": "Nakumpleto na ang proseso",
+      "timezone": "KST",
+      "noImage": "Walang larawan"
+    },
+    "reservationDetail": {
+      "title": "Mga Detalye ng Reserbasyon",
+      "requestDate": "Petsa ng aplikasyon",
+      "confirmed": "Nakumpleto na ang reserbasyon",
+      "completed": "Nakumpleto na ang proseso",
+      "cancelled": "Kinansela ang reserbasyon",
+      "procedureName": "Pangalan ng pamamaraan",
+      "paymentInfo": "Impormasyon sa Pagbabayad",
+      "deposit": "Deposito",
+      "transferDate": "Petsa at oras ng paglilipat",
+      "hospitalInfo": "Impormasyon sa Ospital",
+      "cancel": "Kanselahin ang reserbasyon",
+      "consultation": "Humingi ng payo",
+      "userInfo": {
+        "title": "Impormasyon sa reserbasyon",
+        "passportName": "Pangalang Ingles sa pasaporte",
+        "gender": "kasarian",
+        "nationality": "nasyonalidad",
+        "contactInfo": "Impormasyon sa Pakikipag-ugnayan",
+        "male": "lalaki",
+        "female": "babae"
+      }
+    },
+    "reservationDateTime": "Petsa at oras ng reserbasyon",
+    "region": "rehiyon",
+    "loading": "Naglo-load...",
+    "loadingMessages": "Naglo-load ng mensahe...",
+    "error": "Nagkaroon ng error habang naglo-load ng data.",
+    "retry": "Subukan muli",
+    "input": {
+      "placeholder": "Magtanong ng kahit ano!",
+      "imageUploadSuccess": "Naipadala na ang larawan",
+      "imageLoadError": "Hindi ma-load ang larawan",
+      "downloadFile": "I-download"
+    },
+    "empty": {
+      "chat": {
+        "title": "Walang patuloy na konsultasyon",
+        "description": "Magsimulang kumonsulta sa isang ospital"
+      },
+      "appointment": {
+        "title": "Walang mga reserbasyon",
+        "description": "Mag-apply para sa reserbasyon sa ospital na iyong napili"
+      }
+    },
+    "request": {
+      "title": "Kahilingan para sa konsultasyon",
+      "button": "Kahilingan para sa konsultasyon",
+      "backButton": "Bumalik",
+      "form": {
+        "name": {
+          "label": "Pangalan ng pasaporte",
+          "placeholder": "Pakilagay ang pangalan ayon sa nakasulat sa iyong pasaporte.",
+          "passportHelper": "Pakilagay ang impormasyon nang eksakto kung paano ito nakasaad sa iyong pasaporte, kasama ang mga espasyo."
+        },
+        "nationality": {
+          "label": "nasyonalidad",
+          "placeholder": "Mangyaring piliin ang iyong nasyonalidad"
+        },
+        "gender": {
+          "label": "kasarian",
+          "male": "lalaki",
+          "female": "babae"
+        },
+        "birthDate": {
+          "label": "petsa ng kapanganakan",
+          "placeholder": "Mangyaring piliin ang iyong petsa ng kapanganakan"
+        },
+        "phoneNumber": {
+          "label": "numero ng telepono",
+          "placeholder": "Pakilagay ang numero ng iyong mobile phone"
+        },
+        "preferredContactTime": {
+          "label": "Ginustong oras ng pakikipag-ugnayan",
+          "placeholder": "Mangyaring piliin ang iyong gustong oras ng pakikipag-ugnayan",
+          "morning": "Umaga (09:00 - 12:00)",
+          "afternoon": "Hapon (12:00 - 18:00)",
+          "evening": "Hapunan (6:00 PM - 9:00 PM)",
+          "anytime": "kailan man"
+        },
+        "preferredDate": {
+          "label": "Mas gustong petsa ng reserbasyon",
+          "placeholder": "Pumili ng petsa",
+          "helper": "Mangyaring piliin upang tingnan ang iskedyul ng ospital"
+        },
+        "preferredDate2": {
+          "label": "Mas gustong petsa ng reserbasyon 2",
+          "placeholder": "Pumili ng petsa",
+          "helper": "Pakitandaan lamang kung hindi posible ang unang date."
+        },
+        "content": {
+          "label": "Mga nilalaman ng konsultasyon",
+          "placeholder": "Mangyaring isulat nang detalyado kung ano ang nais mong konsultahin.",
+          "helper": "Pagkatapos humiling ng konsultasyon, ang consultation manager na namamahala ay magbibigay ng detalyadong konsultasyon sa pamamagitan ng K-DOC chat window."
+        },
+        "privacyAgreement": {
+          "title": "Pahintulot sa pangongolekta at paggamit ng sensitibong impormasyon",
+          "description": "Nabasa ko na at sumasang-ayon ako sa pangongolekta at paggamit ng sensitibong impormasyon para sa pagsulat ng mga review ng paggamot at paggamit ng app."
+        },
+        "floatingNotice": {
+          "highlight": "Mga oras ng pagbisita",
+          "message": "Nangangailangan ito ng koordinasyon sa pamamagitan ng konsultasyon."
+        },
+        "errors": {
+          "name": {
+            "required": "Pakilagay ang iyong pangalan."
+          },
+          "nationality": {
+            "required": "Mangyaring piliin ang iyong nasyonalidad."
+          },
+          "birthDate": {
+            "required": "Pakipili ang petsa ng iyong kapanganakan."
+          },
+          "countryCode": {
+            "required": "Pakipili ang iyong country code."
+          },
+          "phoneNumber": {
+            "required": "Pakilagay ang numero ng iyong mobile phone.",
+            "invalid": "Mangyaring maglagay ng wastong numero ng mobile phone."
+          },
+          "preferredDate": {
+            "required": "Mangyaring piliin ang petsa na nais mong i-reserve."
+          },
+          "content": {
+            "required": "Pakilagay ang mga detalye ng iyong pagtatanong.",
+            "maxLength": "Pakilagay ang iyong katanungan sa loob ng 500 karakter."
+          },
+          "agreeToPrivacy": {
+            "required": "Mangyaring sumang-ayon sa pangongolekta at paggamit ng personal na impormasyon."
+          }
+        },
+        "required": "mahalaga",
+        "submitButton": "Kahilingan para sa konsultasyon",
+        "loading": "Naglo-load...",
+        "errorMessages": {
+          "UNAUTHORIZED": "Dapat kang mag-log in.",
+          "MISSING_REQUIRED_FIELDS": "Pakilagay ang lahat ng kinakailangang field.",
+          "HOSPITAL_NOT_FOUND": "Hindi mahanap ang impormasyon ng ospital.",
+          "INTERNAL_SERVER_ERROR": "Nagkaroon ng error sa server. Pakisubukang muli mamaya.",
+          "NETWORK_ERROR": "Nagkaroon ng error sa network. Pakisuri ang iyong koneksyon sa Internet.",
+          "UNKNOWN_ERROR": "Isang hindi kilalang error ang naganap."
+        },
+        "chatMessages": {
+          "welcome": "Magandang araw! Ikinagagalak kong makilala ka. Huwag mag-atubiling magtanong tungkol sa plastic surgery.",
+          "consultationRequest": {
+            "title": "(Awtomatikong nabuong form ng aplikasyon para sa reserbasyon)",
+            "subtitle": "Gusto ko po sanang humingi ng konsultasyon para sa paggamot.",
+            "name": "pangalan",
+            "nationality": "nasyonalidad",
+            "gender": "kasarian",
+            "birthDate": "petsa ng kapanganakan",
+            "phoneNumber": "numero ng telepono",
+            "preferredDate": "Mas gustong petsa ng reserbasyon",
+            "preferredDate2": "Mas gustong petsa ng reserbasyon 2",
+            "additionalInquiry": "Iba pang mga katanungan"
+          },
+          "genders": {
+            "MALE": "lalaki",
+            "FEMALE": "babae"
+          }
+        }
+      }
+    },
+    "notificationPermission": {
+      "title": "Huwag palampasin ang tugon ng ospital!",
+      "subtitle": "Kung io-on mo ang mga push notification, maaari mo agad tingnan kung kailan dumating ang tugon sa konsultasyon.",
+      "description": "Magpapadala sa iyo ang K-DOC ng push notification kapag may dumating na tugon mula sa ospital. Para pumayag, pindutin ang buton na [Tumanggap ng mga Abiso].",
+      "settingsNote": "(Baguhin ang mga setting ng push notification: Aking Pahina → Mga Setting ng Abiso → Pangkalahatang mga Abiso ON/OFF)",
+      "acceptButton": "Maabisuhan",
+      "declineButton": "Ayoko munang tanggapin ngayon."
+    },
+    "cancelReservation": {
+      "title": "Gusto mo bang kanselahin ang iyong reserbasyon?",
+      "message": "Kung kakanselahin mo, kakailanganin mong magsimulang muli sa simula.",
+      "confirmButton": "oo",
+      "cancelButton": "hindi"
+    },
+    "cancelMessages": {
+      "processing": "Matagumpay na natanggap ang pagkansela ng iyong reserbasyon. Ang mga pagkansela ng bayad (mga refund) ay ipoproseso nang sunud-sunod ayon sa proseso ng pag-apruba ng kumpanya ng pagbabayad, at aabisuhan ka nang hiwalay pagkatapos makumpleto.",
+      "success": "Matagumpay na nakansela ang iyong reserbasyon. Nakumpleto na ang iyong refund.",
+      "failed": "Nagkaroon ng error habang pinoproseso ang iyong refund. Error sa PG: {errorMessage}. Mangyaring makipag-ugnayan sa serbisyo sa customer.",
+      "noCancellation": "Kinansela ang reserbasyon dahil hindi nakumpleto ang pagbabayad."
+    },
+    "medicalSurvey": {
+      "title": "Kumpletuhin ang medikal na talatanungan",
+      "submitButton": "Isumite",
+      "nextButton": "susunod",
+      "completionMessage": {
+        "title": "Matagumpay na natapos ang medikal na talatanungan.",
+        "description": "Para matiyak ang iyong kaligtasan, sinusuri namin kung maaari ka bang makatanggap ng paggamot batay sa impormasyong iyong ibinigay.",
+        "note": "Maaaring magtagal ito, at bibigyan ka namin ng konsultasyon sa sandaling makumpirma ito."
+      },
+      "completePage": {
+        "title": "Kumpletuhin ang talatanungan",
+        "message1": "Batay sa impormasyong ibinigay mo, sinusuri ng ospital kung posible ang pamamaraan.",
+        "message2": "Mangyaring maghintay sandali dahil makikipag-ugnayan kami sa iyo sa pamamagitan ng chat upang magbigay ng konsultasyon kapag nakumpleto na ang pagsusuri.",
+        "notice": {
+          "title": "Impormasyon kung posible ang pamamaraan",
+          "description": [
+            "Kung alinman sa mga sumusunod ang naaangkop, maaaring limitado ang iyong pamamaraan o mangailangan ng karagdagang medikal na pagsusuri.",
+            "Pakitiyak na suriin ang mga nilalaman.",
+            "- Sakit sa cerebrovascular (kung mahigit 1 taon na ang lumipas mula noong paggamot o operasyon, suriin kung posible ang pamamaraan)",
+            "- Sakit sa puso at ugat (kung mahigit isang taon na ang lumipas mula noong paggamot o operasyon, suriin kung posible ang pamamaraan)",
+            "- Kasaysayan ng cardiac stenting",
+            "- Mga pasyenteng may kasaysayan ng kidney transplantation o kasalukuyang sumasailalim sa dialysis",
+            "- Kung mayroon kang sakit sa thyroid o diabetes (ang posibilidad o hindi ng pamamaraan ay matutukoy batay sa iyong kondisyon at sa pagpapasya ng mga kawani ng medikal)"
+          ]
+        },
+        "backToChatButton": "Balik sa Pakikipag-chat"
+      },
+      "questions": {
+        "q1": {
+          "question": "Nagpa-plastic surgery o procedure ka na ba dati?",
+          "yesLabel": "Oo, meron ako nito",
+          "noLabel": "Hindi, wala",
+          "nextQuestion": {
+            "yes": "q1-1",
+            "no": "q2"
+          }
+        },
+        "q1-1": {
+          "question": "Pakilarawan nang detalyado ang uri ng pamamaraan/lugar ng pamamaraan/tinatayang oras.",
+          "placeholder": "Halimbawa) Abdominal liposuction sa 2022 / Facial thread lifting sa 2023",
+          "nextQuestion": "q2"
+        },
+        "q2": {
+          "question": "Mayroon ka bang anumang allergy sa mga gamot o anesthesia?",
+          "yesLabel": "Oo, meron ako nito",
+          "noLabel": "Hindi, wala",
+          "nextQuestion": {
+            "yes": "q2-1",
+            "no": "q3"
+          }
+        },
+        "q2-1": {
+          "question": "Pakilarawan nang detalyado ang uri ng allergy at ang mga sintomas nito.",
+          "placeholder": "Halimbawa) Allergy sa lidocaine – pantal, hirap sa paghinga",
+          "nextQuestion": "q3"
+        },
+        "q3": {
+          "question": "Kasalukuyan ka bang umiinom ng anumang gamot o health supplement?",
+          "yesLabel": "Oo, meron ako nito",
+          "noLabel": "Hindi, wala",
+          "nextQuestion": {
+            "yes": "q3-1",
+            "no": "q4"
+          }
+        },
+        "q3-1": {
+          "question": "Pakibigay ang pangalan at dosis ng gamot o health functional food.",
+          "placeholder": "Oo) Walang gamot na iniinom sa kasalukuyan. Omega 3 1000mg (isang beses sa isang araw)",
+          "notice": {
+            "title": "Mahalagang Paunawa",
+            "description": "Kung kasalukuyan kang umiinom ng aspirin o gamot na pampanipis ng dugo, dapat kang kumonsulta sa iyong doktor at itigil ang pag-inom ng mga ito nang hindi bababa sa 7 araw bago ang pamamaraan."
+          },
+          "nextQuestion": "q4"
+        },
+        "q4": {
+          "question": "Mayroon ka bang anumang kasalukuyan o nakaraang mga kondisyong medikal o kasaysayan ng medikal na dapat isaalang-alang ng iyong tagapagbigay ng pangangalagang pangkalusugan?",
+          "placeholder": "Halimbawa) Pangalan ng sakit / Petsa ng pagsusuri / Kasalukuyang kalagayan ng paggamot (sakit sa thyroid, nasuri noong 2020, umiinom ng gamot)",
+          "nextQuestion": "q5"
+        },
+        "q5": {
+          "question": "Kung mayroon kang anumang karagdagang mga katanungan o alalahanin, huwag mag-atubiling isulat ang mga ito.",
+          "placeholder": "Halimbawa) Nagtataka ako tungkol sa panahon ng paggaling, antas ng sakit, at kung magkakaroon ng peklat."
+        }
+      }
+    }
+  },
+  "cautionSection": {
+    "title": "Tala",
+    "items": [
+      "Ang serbisyo ng limousine ay magagamit lamang para sa mga reserbasyon sa ospital/procedure bago bumisita sa Korea.",
+      "Maaari mong piliin ang opsyon ng limousine sa yugto ng kahilingan sa reserbasyon pagkatapos humiling ng konsultasyon.",
+      "Kapag nagpareserba ka nang maaga, nagbibigay kami ng mga serbisyo ng concierge tulad ng mga tour sa mga sikat na lugar at masasarap na restaurant sa Korea.",
+      {
+        "title": "Ang pang-araw-araw na bayad sa paggamit ng limousine ay ang mga sumusunod:",
+        "details": [
+          "- Lamborghini Urus supercar: USD 1,080 bawat araw",
+          "- Kasama sa presyo ang bayad sa drayber, bayad sa pagkain ng drayber, bayad sa toll gate, at buwis",
+          "- Batay sa 8 oras na paggamit bawat araw mula 8:30 AM hanggang 5:30 PM",
+          "- May karagdagang bayad na USD 150 kada oras para sa paggamit ng supercar sa karagdagang oras (babayaran gamit ang card on site)",
+          "- Gastos sa gasolina pagkatapos magbayad (pagbabayad gamit ang card sa lugar)",
+          "- May karagdagang bayad para sa paglalakbay sa labas ng Seoul (magbayad gamit ang card on site)"
+        ]
+      },
+      "Ang bayad ay makukuha lamang sa loob ng 8 oras kada araw. Para sa mas maiikling biyahe, mas mainam na makarating sa Korea at gumamit ng internasyonal na taxi o lokal na taxi app."
+    ]
+  },
+  "footer": {
+    "companyName": "FILLMAN co., Ltd.",
+    "ceo": "Kinatawan: Woo Jeong-ho",
+    "address": "103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do",
+    "businessNumber": "Numero ng rehistrasyon ng negosyo 474-86-03352",
+    "customerEmail": "Email sa Sentro ng Kustomer cs@k-doc.kr",
+    "companyNameLabel": "Mutual",
+    "addressLabel": "tirahan",
+    "businessNumberLabel": "Numero ng pagpaparehistro ng negosyo",
+    "customerEmailLabel": "Email ng Sentro ng Kustomer",
+    "companyInfo": "Tungkol sa kompanya",
+    "termsOfService": "Mga Tuntunin ng Paggamit",
+    "privacyPolicy": "patakaran sa privacy",
+    "notices": "anunsyo",
+    "contactUs": "Makipag-ugnayan sa amin",
+    "dataRequest": "Kahilingan na i-edit/burahin ang impormasyon"
+  },
+  "privacyConsent": {
+    "title": "Pahintulot sa pangongolekta/paggamit ng personal na impormasyon",
+    "table": {
+      "headers": {
+        "purpose": "layunin",
+        "items": "bagay",
+        "retentionPeriod": "Panahon ng pagpapanatili at paggamit"
+      },
+      "rows": [
+        {
+          "purpose": "Pamamahala ng miyembro, kabilang ang pagpaparehistro ng pagiging miyembro at pagkakakilanlan ng gumagamit",
+          "items": {
+            "required": "Email address/password/pangalan sa Ingles na nasa pasaporte",
+            "optional": "Nasyonalidad/Kasarian/Petsa ng Kapanganakan/Numero ng Mobile Phone"
+          },
+          "retentionPeriod": "Hanggang sa pag-alis ng pagiging miyembro"
+        },
+        {
+          "purpose": "Kapag ginagamit ang serbisyo ng konsultasyon",
+          "items": {
+            "required": "Pangalang Ingles sa pasaporte/nasyonalidad/kasarian/petsa ng kapanganakan/numero ng mobile phone/petsa at oras ng ginustong reserbasyon",
+            "optional": "Mga detalye ng pagtatanong"
+          },
+          "retentionPeriod": "Hanggang sa pag-alis ng pagiging miyembro"
+        }
+      ]
+    },
+    "notice": "Maaari kang tumanggi na pumayag sa pangongolekta/paggamit ng personal na impormasyon gaya ng inilarawan sa itaas. Gayunpaman, kung gagawin mo ito, maaaring limitahan ang iyong paggamit ng serbisyo.",
+    "tableLabels": {
+      "required": "[mahalaga]",
+      "optional": "[piliin]"
+    }
+  },
+  "termsOfService": {
+    "article1": {
+      "title": "Artikulo 1 (Layunin)",
+      "content": "Ang mga Tuntunin ng Paggamit na ito (mula rito ay tatawaging &quot;Mga Tuntunin&quot;) ay inilaan upang pangasiwaan ang mga karapatan, obligasyon at responsibilidad ng Kompanya at &quot;Mga Miyembro,&quot; ang mga tuntunin at pamamaraan para sa paggamit ng Serbisyo, at iba pang kinakailangang bagay na may kaugnayan sa paggamit ng Serbisyo ng K-DOC (mula rito ay tatawaging &quot;Serbisyo&quot;) na pinapatakbo ng FILLMAN co., Ltd. (mula rito ay tatawaging &quot;Kompanya&quot;)."
+    },
+    "article2": {
+      "title": "Artikulo 2 (Kahulugan)",
+      "intro": "Ang mga kahulugan ng mga terminong ginamit sa Mga Tuntunin at Kundisyong ito ay ang mga sumusunod. Ang mga terminong ginamit sa Mga Tuntunin at Kundisyong ito na hindi binigyang kahulugan sa Artikulo na ito ay pamamahalaan ng mga kaugnay na batas at regulasyon at mga alituntuning partikular sa serbisyo. Para sa lahat ng iba pang mga termino, ang pangkalahatang kasanayan ang ilalapat.",
+      "items": [
+        "Serbisyo: nangangahulugang lahat ng mga tungkulin at serbisyo na nagbibigay ng impormasyong nakarehistro ng mga gumagamit at mga kalahok na institusyon tungkol sa mga kosmetikong pamamaraan sa &quot;Mga Miyembro&quot;.",
+        "Miyembro: Ang isang taong nag-a-access sa &quot;Serbisyo&quot;, sumasang-ayon sa mga Tuntunin at Kundisyong ito, nagbibigay ng personal na impormasyon sa &quot;Kumpanya&quot;, at nagpaparehistro bilang isang &quot;Miyembro&quot; at maaaring patuloy na gamitin ang &quot;Serbisyo.&quot;",
+        "Kaakibat na Ospital: Isang institusyong medikal o kaugnay na negosyo na kalahok sa &quot;Serbisyo&quot; na tumatanggap ng hiwalay na sistema mula sa &quot;Kumpanya&quot; at nagrerehistro ng impormasyon tungkol sa mga ospital at kawani ng medikal, pati na rin ang impormasyon tungkol sa mga medikal na pamamaraan na isinasagawa, para sa &quot;Mga Miyembro.&quot;",
+        "Pangyayari sa Paunang Pagbabayad: Tumutukoy ito sa lahat ng serbisyo sa paggamot bilang mga produkto at serbisyong ibinebenta ng &quot;Mga Kaakibat na Ospital&quot; sa &quot;Mga Miyembro&quot; sa pamamagitan ng Serbisyo.",
+        "Paunang Pagbabayad (online na pagbabayad): Ito ay tumutukoy sa paggamit o pagbili ng mga produkto o pakikilahok sa &quot;Mga Kaganapan sa Paunang Pagbabayad&quot; sa &quot;Mga Kaakibat na Ospital&quot; sa pamamagitan ng paggamit ng serbisyo sa pagbili sa loob ng &quot;Serbisyo&quot; na ibinibigay ng &quot;Kumpanya.&quot;",
+        "Service voucher: Tumutukoy sa isang service voucher na inisyu kapag bumibili ng isang “pre-payment event” o “produkto” mula sa serbisyo.",
+        "Kupon na Diskwento: Ito ay tumutukoy sa isang benepisyo ng diskwento na nagpapahintulot sa isang &quot;Miyembro&quot; na makatanggap ng diskwento ng nakasaad na halaga o porsyento kapag ginagamit ang &quot;Serbisyo.&quot; Ang pag-isyu at paggamit ng &quot;Mga Kupon na Diskwento&quot; ay pinamamahalaan ng patakaran sa pagpapatakbo ng &quot;Kumpanya&quot;.",
+        "Mga Puntos: Ang mga Puntos ay virtual, numerikal na datos na ibinibigay ng &quot;Kumpanya&quot; sa &quot;Mga Miyembro&quot; para sa layunin ng pagbibigay ng mga benepisyo o kaginhawahan sa paggamit ng Serbisyo. Maaari itong gamitin upang bumili ng &quot;mga treatment voucher&quot; at &quot;mga produkto&quot; sa loob ng Serbisyo. Ang pag-isyu at paggamit ng &quot;Mga Puntos&quot; ay tinutukoy ng patakaran sa pagpapatakbo ng Kumpanya.",
+        "Post: tumutukoy sa mga simbolo (kabilang ang mga URL), letra, boses, tunog, imahe (kabilang ang mga video), imahe (kabilang ang mga litrato), mga file, atbp. na pino-post o inirerehistro ng &quot;Mga Miyembro&quot; sa mga serbisyong ibinibigay ng Kumpanya."
+      ]
+    },
+    "article3": {
+      "title": "Artikulo 3 (Pag-post at Pagbabago ng mga Tuntunin at Kundisyon)",
+      "items": [
+        "Ipino-post ng Kompanya ang mga nilalaman ng Mga Tuntunin at Kundisyong ito sa loob ng Serbisyo o sa naka-link na screen nito upang madaling matingnan ng mga miyembro ang mga ito.",
+        "Maaaring baguhin ng Kompanya ang mga Tuntunin at Kundisyong ito hangga&#39;t hindi nito nilalabag ang mga kaugnay na batas, tulad ng Batas sa Regulasyon ng mga Tuntunin at Kundisyon (mula rito ay tatawaging &quot;Batas sa mga Tuntunin at Kundisyon&quot;) at ang Batas sa Pagtataguyod ng Paggamit at Proteksyon ng Impormasyon sa Network ng Impormasyon at Komunikasyon (mula rito ay tatawaging &quot;Batas sa Network ng Impormasyon at Komunikasyon&quot;).",
+        "Kapag binago ng Kompanya ang mga Tuntunin at Kundisyong ito, aabisuhan nito ang mga gumagamit ng mga binagong Tuntunin at Kundisyon, na tinutukoy ang petsa ng pagiging epektibo at ang dahilan ng pagbabago, mula pitong araw bago ang petsa ng pagiging epektibo hanggang sa araw bago ang petsa ng pagiging epektibo. Gayunpaman, kung ang mga binagong Tuntunin at Kundisyon ay hindi nakakapinsala sa mga miyembro, ang Kompanya ay magbibigay ng hiwalay at malinaw na abiso sa pamamagitan ng elektronikong paraan, tulad ng email, mga elektronikong mensahe, o isang form ng pahintulot sa pag-login sa loob ng Serbisyo, nang hindi bababa sa 30 araw bago ang petsa ng pagiging epektibo. Ang Kompanya ay hindi mananagot para sa anumang pinsalang natamo ng mga miyembro dahil sa kanilang kakulangan ng kaalaman sa mga binagong Tuntunin at Kundisyon, sa kabila ng mga naturang abiso o abiso.",
+        "Kung ang isang miyembro ay patuloy na gagamit ng mga serbisyo ng kumpanya pagkatapos mabago ang mga tuntunin at kundisyon, ituturing silang sumang-ayon sa mga binagong tuntunin at kundisyon. Kung hindi sila sumasang-ayon sa mga binagong tuntunin at kundisyon, maaari silang humiling ng pagbawi (pagkansela) ng kanilang pagiging miyembro.",
+        "Ang mga bagay na hindi tinukoy sa Mga Tuntunin at Kundisyong ito at ang interpretasyon ng Mga Tuntunin at Kundisyong ito ay pamamahalaan ng Batas sa Regulasyon ng Mga Tuntunin at Kundisyon, ang Batas sa Pagtataguyod ng Paggamit ng Network ng Impormasyon at Komunikasyon at Proteksyon ng Impormasyon, at iba pang kaugnay na batas at regulasyon o nakagawiang kasanayan."
+      ]
+    },
+    "article4": {
+      "title": "Artikulo 4 (Kaugnayan sa mga Tuntunin at Kundisyon at mga Kaugnay na Batas)",
+      "items": [
+        "Kung kinakailangan, maaaring magtatag ang Kumpanya ng mga indibidwal na tuntunin at kundisyon o mga prinsipyo ng pagpapatakbo (mula rito ay tatawaging &quot;Gabay na Tukoy sa Serbisyo&quot;) para sa mga indibidwal na aytem sa loob ng Serbisyo, at kung sakaling magkaroon ng salungatan sa pagitan ng mga nilalaman ng Mga Tuntunin at Kundisyong ito at ng Gabay na Tukoy sa Serbisyo, ang mga nilalaman ng Gabay na Tukoy sa Serbisyo ang uunahin.",
+        "Ang mga bagay na hindi tinukoy sa Mga Tuntunin at Kundisyong ito o impormasyong partikular sa serbisyo ay pamamahalaan ng mga probisyon ng mga kaugnay na batas at regulasyon, kabilang ang Telecommunications Business Act, ang Electronic Commerce Act, ang Information and Communications Network Act, ang Act on Consumer Protection in E-Commerce, atbp., at ang Personal Information Protection Act, pati na rin ang mga pangkalahatang kaugalian."
+      ]
+    },
+    "article5": {
+      "title": "Artikulo 5 (Kasunduan sa Pagtatatag ng Paggamit)",
+      "items": [
+        "Ang Kasunduan sa Serbisyo ay napagkasunduan kapag ang isang taong nagnanais na maging miyembro (mula rito ay tatawaging &quot;Aplikante&quot;) ay sumasang-ayon sa mga tuntunin at kundisyon, pinupunan ang impormasyon ng pagiging miyembro (ID, password, pangalan, impormasyon sa pakikipag-ugnayan, e-mail address, atbp.) ayon sa form ng pagpaparehistro na ibinigay ng Kompanya, nag-aplay para sa pagiging miyembro, at inaprubahan ng Kompanya ang naturang aplikasyon.",
+        {
+          "content": "Sa prinsipyo, inaaprubahan ng kompanya ang mga aplikasyon para sa paggamit ng serbisyo. Gayunpaman, maaaring hindi aprubahan ng kompanya ang mga aplikasyon na nasa ilalim ng alinman sa mga sumusunod na kategorya o maaaring wakasan ang kasunduan sa serbisyo sa ibang araw.",
+          "subItems": [
+            "Kung ang aplikante ay nawalan na ng pagiging miyembro dahil sa mga Tuntunin at Kundisyong ito",
+            "Kung gagamit ka ng pangalan o numero ng telepono ng ibang tao, o kung ang iyong numero ng telepono o email address ay kapareho ng sa isang umiiral na miyembro.",
+            "Kung ang pag-apruba ay hindi posible dahil sa mga kadahilanang maiuugnay sa gumagamit, tulad ng pagbibigay ng maling impormasyon o hindi pagbibigay ng impormasyong hiniling ng kumpanya, o kung ang aplikasyon ay isinumite nang labag sa iba pang itinakdang probisyon",
+            "Kung balak mong gamitin ang serbisyong ito para sa mga ilegal na layunin o para sa mga layuning naghahanap ng kita.",
+            "Sa mga pagkakataon kung saan ang aplikasyon ay ginawa para sa ilegal o hindi wastong mga layunin, tulad ng paglabag sa iba pang kaugnay na batas o sa mga Tuntunin at Kundisyong ito, o sa mga pagkakataon kung saan ang aplikasyon ay maaaring makagambala sa kaayusan ng publiko o moralidad ng publiko, at itinuturing ito ng Kompanya na kinakailangan batay sa makatwirang paghatol."
+          ]
+        },
+        "Sa mga aplikasyon sa ilalim ng talata 1, maaaring humiling ang kompanya ng beripikasyon ng tunay na pangalan at pagpapatunay ng pagkakakilanlan sa pamamagitan ng isang espesyalisadong ahensya depende sa uri ng miyembro.",
+        "Maaaring pigilin ng Kompanya ang pag-apruba kung walang ekstrang kagamitan na may kaugnayan sa serbisyo o kung may mga teknikal o operasyonal na isyu.",
+        "Kung sakaling hindi naaprubahan ang isang aplikasyon para sa pagiging miyembro o nakalaan alinsunod sa Talata 2 at 4, sa prinsipyo, aabisuhan ng Kompanya ang aplikante tungkol dito.",
+        "Ang oras ng pagtatatag ng kasunduan sa serbisyo ay ang oras kung kailan ipinapahiwatig ng kumpanya ang pagkumpleto ng pagpaparehistro sa proseso ng aplikasyon."
+      ]
+    },
+    "article6": {
+      "title": "Artikulo 6 (Kasunduan sa Pagtatapos ng Paggamit)",
+      "items": [
+        {
+          "title": "1. Pagkansela ng pagiging miyembro",
+          "subItems": [
+            "Maaaring wakasan ng mga miyembro ang kanilang kasunduan sa serbisyo anumang oras sa pamamagitan ng pag-abiso sa kumpanya ng kanilang intensyon na wakasan ito o sa pamamagitan ng menu na [Mga Setting] sa loob ng serbisyo.",
+            "Maliban na lang kung may mga espesyal na pangyayari, agad na ipoproseso ng kompanya ang kahilingan ng isang miyembro para sa pagkansela alinsunod sa naunang talata.",
+            "Matapos ipaalam sa kompanya ang kanilang intensyon na magkansela, maaaring paghigpitan ang mga miyembro sa muling pagpaparehistro sa loob ng panahong itinakda ng kompanya."
+          ]
+        },
+        {
+          "title": "2. Pagtatapos ng kompanya",
+          "subItems": [
+            {
+              "content": "Maaaring wakasan ng Kompanya ang Kasunduan sa Serbisyo para sa alinman sa mga sumusunod na dahilan. Sa ganitong mga kaso, aabisuhan ng Kompanya ang Miyembro ng balak nitong wakasan, na sinasabi ang dahilan ng pagtatapos sa pamamagitan ng email, telepono, fax, sulat, o iba pang paraan.",
+              "subSubItems": [
+                "Kung sakaling makumpirma na may dahilan para sa pagtangging tanggapin ang kontrata ng paggamit gaya ng nakasaad sa Artikulo 5, Talata 2",
+                "Kung ang isang miyembro ay gumawa ng isang kilos na lumalabag sa mga karapatan, reputasyon, kredito, o iba pang lehitimong interes ng kumpanya o iba pang mga ikatlong partido.",
+                "Kung ang ibang miyembro ay gumawa ng isang kilos na lumalabag sa Mga Tuntunin at Kundisyong ito o kung may lumitaw na dahilan para sa pagwawakas na tinukoy sa Mga Tuntunin at Kundisyong ito."
+              ]
+            },
+            "Ang kasunduan sa serbisyo ay wawakasan kapag ipinaalam ng kompanya sa miyembro ang intensyon nitong wakasan ang kontrata."
+          ]
+        },
+        "Kung ang isang miyembro ay arbitraryong nagwakas ng kasunduan sa serbisyo alinsunod sa Artikulo 1 ng mga Tuntunin at Kundisyong ito o ang kasunduan sa serbisyo ay natapos dahil sa isang dahilan na maiuugnay sa miyembro alinsunod sa Artikulo 2, ang miyembro na ang kasunduan sa serbisyo ay tinapos ay mananagot para sa anumang pinsalang natamo, at ang kumpanya ay hindi mananagot sa anumang paraan."
+      ]
+    },
+    "article7": {
+      "title": "Artikulo 7 (Mga Obligasyon sa ID at Password ng Miyembro)",
+      "items": [
+        "Ang mga miyembro ay may pananagutan sa pamamahala ng kanilang ID at password. Anumang pinsala na dulot ng kapabayaan sa pamamahala ng mga ID na ito o hindi awtorisadong paggamit ng mga ikatlong partido ay tanging responsibilidad lamang ng miyembro. Ang kompanya ay hindi mananagot para sa mga naturang pinsala.",
+        "Maaaring paghigpitan ng Kompanya ang paggamit ng ID ng isang miyembro kung may panganib ng pagtagas ng personal na impormasyon, kung ang ID ay lumalabag sa patakaran sa serbisyo o direksyon sa operasyon ng Kompanya, kung ang ID ay labag sa lipunan o labag sa pampublikong moralidad, o kung may panganib na mapagkamalang Kompanya o sa operator nito.",
+        "Kung malaman ng isang miyembro na ang kanyang ID at password ay ninakaw o ginagamit ng ibang tao, dapat niyang agad na ipaalam sa kompanya at sundin ang mga tagubilin ng kompanya.",
+        "Sa kaso ng talata 3, ang kompanya ay hindi mananagot para sa anumang mga disbentaha na maaaring lumitaw kung ang miyembro ay hindi nagpapaalam sa kompanya tungkol sa katotohanan o hindi sumusunod sa mga tagubilin ng kompanya kahit na matapos itong magpaalam sa kompanya."
+      ]
+    },
+    "article8": {
+      "title": "Artikulo 8 (Mga Obligasyon ng mga Miyembro at Gumagamit)",
+      "items": [
+        "Dapat sumunod ang mga Miyembro sa mga kaugnay na batas at regulasyon, sa mga probisyon ng Mga Tuntunin at Kundisyong ito, sa mga patakaran ng Kompanya, mga gabay sa paggamit, at iba pang mga bagay na ipinaalam o inanunsyo ng Kompanya, at hindi dapat makisali sa anumang iba pang mga gawain na nakakasagabal sa negosyo ng Kompanya.",
+        {
+          "content": "Ang mga miyembro ay hindi dapat makisali sa alinman sa mga sumusunod na gawain kaugnay ng paggamit ng serbisyo.",
+          "subItems": [
+            "Pagpaparehistro ng maling impormasyon kapag nag-aaplay o nagpapalit ng serbisyo",
+            "Mga hindi awtorisadong pagbabago sa impormasyong nai-post sa website ng kumpanya",
+            "Pagpapadala o pag-post ng impormasyon (mga programa sa computer, atbp.) maliban sa impormasyong tinukoy ng kumpanya",
+            "Paglabag sa mga karapatan sa intelektwal na ari-arian, tulad ng mga karapatang-ari, ng kumpanya o isang ikatlong partido",
+            "Anumang kilos na nakakasira sa reputasyon ng kumpanya o ng isang ikatlong partido o nakakasagabal sa negosyo nito",
+            "Hindi pagtupad sa mga obligasyong pinapasan ng mga miyembro kaugnay ng pagbabayad ng mga karapatan sa paggamot na binili sa pamamagitan ng serbisyo o iba pang paggamit ng serbisyo",
+            "Isang kilos ng pagtanggap ng mga serbisyo mula sa isang kaakibat na ospital matapos bumili ang isang miyembro ng treatment voucher at humiling at nakatanggap ng refund.",
+            "Isang kilos ng isang miyembro na humihingi ng refund mula sa kumpanya para sa mga hindi nagamit na treatment voucher matapos makatanggap ng mga serbisyo mula sa isang kaakibat na ospital.",
+            "Isang kilos ng isang miyembro na arbitraryong nagmamanipula sa lokasyon ng paggamit pagkatapos bumili ng treatment voucher at muling gamitin ito sa isang kaakibat na ospital o katulad na negosyo",
+            "Anumang gawain na maaaring makagambala sa paggamit ng mga serbisyo ng ibang miyembro at mga kaakibat na ospital, tulad ng madalas na pagkansela at akumulasyon ng mga binili.",
+            "Paggawa ng mga abnormal na pagbabayad, tulad ng pangangalap ng pondo sa pamamagitan ng muling pagbebenta o iba pang mga pamamaraan sa ilalim ng pagkukunwari ng pagbili ng lisensya sa paggamot",
+            "Isang kilos ng paggamit ng serbisyo para sa layunin ng muling pagbebenta ng isang produkto pagkatapos itong bilhin sa pamamagitan ng paglalapat ng isang hiwalay na paraan ng pagbabayad, atbp. nang walang tunay na intensyon na bumili.",
+            "Isang kilos ng pagbili ng treatment voucher sa pamamagitan ng hindi awtorisadong paggamit o pagnanakaw ng credit card, bank account, mobile phone, atbp. ng ibang tao.",
+            "Mga gawa ng pagbubunyag o pag-post sa serbisyo ng malaswa o marahas na mga mensahe, larawan, audio, o iba pang impormasyon na labag sa kaayusan at moralidad ng publiko",
+            "Mga konsultasyon sa customer service center na naglalaman ng mga pagmumura, pasalitang pang-aabuso, sekswal na panliligalig, atbp.",
+            "Mga kilos tulad ng paglilipat o pagpapahiram ng ID o password ng isang tao sa isang ikatlong partido",
+            "Mga gawain ng pag-post ng nilalaman na nakakasagabal sa aming negosyo nang walang makatwirang dahilan",
+            "Anumang kilos ng pagkopya, pag-disassemble, panggagaya, o kung hindi man ay pagbabago ng Serbisyo sa pamamagitan ng reverse engineering, decompilation, disassembly, o anumang iba pang pagproseso.",
+            "Mga gawaing nagdudulot ng load sa server ng kumpanya sa pamamagitan ng paggamit ng serbisyo sa paraang naiiba sa normal na paggamit, tulad ng paggamit ng mga awtomatikong programa sa koneksyon, at sa gayon ay nakakagambala sa normal na serbisyo ng kumpanya.",
+            "Anumang gawain na itinuturing na lumalabag sa iba pang kaugnay na batas at regulasyon"
+          ]
+        }
+      ]
+    },
+    "article9": {
+      "title": "Artikulo 9 (Mga Obligasyon ng Kumpanya)",
+      "items": [
+        "Ang kompanya ay hindi makikibahagi sa anumang mga gawaing ipinagbabawal ng mga kaugnay na batas at ng mga Tuntunin at Kundisyong ito o salungat sa pampublikong moralidad, at gagawin ang lahat ng pagsisikap upang makapagbigay ng tuluy-tuloy at matatag na mga serbisyo.",
+        "Ang kompanya ay nagtatatag, naglalathala, at sumusunod sa isang patakaran sa paghawak ng personal na impormasyon upang protektahan ang personal na impormasyon (kabilang ang impormasyon sa kredito) upang ligtas na magamit ng mga miyembro ang serbisyo.",
+        "Kung obhetibong matutukoy ng kompanya na makatwiran ang opinyon o reklamo ng isang miyembro, dapat itong agad na tugunan sa pamamagitan ng mga naaangkop na pamamaraan. Gayunpaman, kung mahirap ang agarang pagproseso, dapat ipaalam ng kompanya sa miyembro ang dahilan at ang iskedyul ng pagproseso.",
+        "Ang kompanya ay sumusunod sa mga obligasyong itinakda ng mga kaugnay na batas at regulasyon."
+      ]
+    },
+    "article10": {
+      "title": "Artikulo 10 (Proteksyon at Paggamit ng Personal na Impormasyon)",
+      "items": [
+        "Sumusunod ang kompanya sa mga probisyon ng mga kaugnay na batas at regulasyon, kabilang ang Information and Communications Network Act at ang Personal Information Protection Act, upang protektahan ang personal na impormasyon ng mga miyembro.",
+        "Upang protektahan ang personal na impormasyon ng mga miyembro, ang kumpanya ay nagtatag ng isang patakaran sa privacy at pino-post ito sa home screen ng serbisyo. Gayunpaman, ang mga partikular na detalye ng patakaran sa privacy ay maaaring matingnan sa pamamagitan ng link.",
+        "Sinisikap ng kompanya na protektahan ang personal na impormasyon ng mga miyembro sa abot ng kanilang makakaya alinsunod sa patakaran nito sa pagproseso ng personal na impormasyon.",
+        "Ang kompanya ay hindi nangongolekta ng anumang impormasyong kinakailangan para sa pagpapatupad ng isang kasunduan sa pagbili bago ang pagpaparehistro ng pagiging miyembro. Gayunpaman, sa mga kaso kung saan kinakailangan ang beripikasyon ng pagkakakilanlan bago pumasok sa isang kasunduan sa pagbili upang matupad ang mga obligasyon sa ilalim ng mga kaugnay na batas at regulasyon, maaaring mangolekta ang kompanya ng kaunting partikular na personal na impormasyon.",
+        "Bilang isang tagapamagitan sa pagbebenta ng komunikasyon, ang Kumpanya ay may responsibilidad na protektahan ang personal na impormasyong ipinasok ng mga miyembro sa mga serbisyo tulad ng mga kahilingan sa konsultasyon at mga paunang bayad. Para sa karagdagang detalye, mangyaring sumangguni sa patakaran sa privacy ng Kumpanya. Gayunpaman, responsibilidad ng miyembro na suriin ang patakaran sa privacy ng kaakibat na ospital o klinika na nangongolekta ng personal na impormasyong ipinasok sa mga kahilingan sa konsultasyon, mga paunang bayad, atbp. tungkol sa pagkolekta at paggamit ng naturang impormasyon. Ang Kumpanya ay hindi mananagot para sa anumang mga disbentaha na nagmumula sa hindi pagsuri sa patakaran sa privacy.",
+        {
+          "content": "Maaaring magbigay ang Kompanya ng personal na impormasyon ng mga miyembro sa mga ikatlong partido hangga&#39;t pinahihintulutan ng batas sa mga sumusunod na kaso:",
+          "subItems": [
+            "Kapag hiniling na magbigay ng impormasyon ng mga ahensya ng imbestigasyon o iba pang ahensya ng gobyerno",
+            "Kung kinakailangan para sa gawaing pangprotekta ng impormasyon tulad ng pagkumpirma ng maling pag-uugali, kabilang ang paglabag sa mga batas o tuntunin at kundisyon ng miyembro",
+            "Kapag hinihiling ng ibang mga batas"
+          ]
+        },
+        "Maaaring mangolekta ang Kompanya ng karagdagang personal na impormasyon alinsunod sa mga kaugnay na batas at regulasyon nang may pahintulot ng mga miyembro para sa mga layunin tulad ng pagpapabuti ng mga serbisyo at pagpapakilala ng mga serbisyo sa mga miyembro."
+      ]
+    },
+    "article11": {
+      "title": "Artikulo 11 (Pag-apruba at mga Restriksyon sa Aplikasyon para sa Paggamit)",
+      "items": [
+        "Sa prinsipyo, inaprubahan ng Kompanya ang paggamit ng serbisyo ayon sa pagkakasunud-sunod ng aplikasyon, sa kondisyon na walang mga hadlang sa operasyon o teknikal na aplikasyon para sa paggamit alinsunod sa Artikulo 5 at 6.",
+        {
+          "content": "Maaaring pigilin ng kompanya ang pag-apruba sa mga sumusunod na kaso:",
+          "subItems": [
+            "Sa kaso ng aplikasyon para sa paggamit nang hindi nagbibigay ng totoong personal na impormasyon",
+            "Kung ang aplikasyon ay ginawa para sa layuning lumabag sa mga batas o manggulo sa kapayapaan, kaayusan, o moralidad ng publiko.",
+            "Kung balak mong gamitin ang serbisyong ito para sa mga ilegal na layunin",
+            "Kung nais mong gamitin ang serbisyong ito para sa mga layuning naghahanap ng kita",
+            "Kapag ang isang gumagamit na hinuhusgahang mayroong isang tiyak na relasyon sa isang kakumpitensya sa pamamagitan ng pagbibigay ng mga serbisyong magkapareho o katulad ng mga ibinibigay ng kumpanya ay nalalapat",
+            "Kung ang isang user na tinapos ang kanilang kasunduan sa serbisyo dahil sa paglabag sa mga batas o tuntunin at kundisyon ay nalalapat",
+            "Kung mag-aaplay ka nang labag sa anumang iba pang probisyon na nakasaad sa Mga Tuntunin at Kundisyong ito"
+          ]
+        },
+        {
+          "content": "Kung ang isang aplikasyon para sa paggamit ng serbisyo ay mapapasailalim sa alinman sa mga sumusunod na aytem, maaaring pigilin ng kompanya ang pag-apruba hanggang sa malutas ang mga dahilan ng pagpigil sa pag-apruba.",
+          "subItems": [
+            "Kung ang kompanya ay walang sapat na kagamitan",
+            "Kung may teknikal na problema sa kompanya",
+            "Sa mga pagkakataong mahirap aprubahan ang paggamit dahil sa mga kadahilanang maiuugnay sa ibang mga kumpanya"
+          ]
+        },
+        "Maaaring pigilin ng kompanya ang pag-apruba alinsunod sa mga probisyon ng mga alituntuning partikular sa serbisyo kung ang aplikante ay isang menor de edad gaya ng tinukoy ng mga kaugnay na batas.",
+        "Maaaring bawiin ng kompanya ang pag-apruba nito para sa paggamit kung ang alinman sa mga dahilan na nakalista sa bawat sugnay ng talata 2 ay matuklasan pagkatapos makumpleto ang pagpaparehistro ng pagiging miyembro."
+      ]
+    },
+    "article12": {
+      "title": "Artikulo 12 (Limitasyon ng Pananagutan)",
+      "items": [
+        "Ang Kompanya ay nagbibigay lamang ng isang serbisyo sa plataporma (pagkakaloob ng mga kaakibat na ospital, lokasyon, larawan, at impormasyon ng produkto, at mga benta sa pamamagitan ng koreo) na nagsisilbing tagapamagitan sa pagitan ng mga miyembro at mga kaakibat na ospital at klinika patungkol sa mga serbisyo tulad ng mga kahilingan sa konsultasyon at mga paunang bayad. Ang Kompanya ay hindi direktang nagbibigay ng mga serbisyong medikal/pangangalaga sa kagandahan o ginagarantiyahan ang mga resulta ng mga serbisyong medikal/pangangalaga sa kagandahan na ibinibigay ng mga kaakibat na ospital at klinika. Anumang pananagutan na nagmumula sa proseso ng pagtanggap ng mga serbisyong medikal/pangangalaga sa kagandahan o anumang iba pang serbisyo mula sa mga kaakibat na ospital at klinika ay nasa pagitan ng miyembro at ng kaakibat na ospital at klinika.",
+        "Kung may lumitaw na hindi pagkakaunawaan sa pagitan ng mga miyembro o sa pagitan ng isang miyembro at isang ikatlong partido dahil sa isang transaksyon o iba pang kilos na namamagitan sa serbisyo, ang kumpanya ay walang obligasyon na makialam maliban kung may ibang itinadhana sa mga kaugnay na batas at regulasyon, at hindi mananagot para sa anumang mga nagresultang pinsala.",
+        "Ang Kumpanya ay hindi mananagot para sa pagiging maaasahan, katumpakan, o iba pang aspeto ng anumang impormasyon, datos, o katotohanang nai-post ng mga miyembro sa Serbisyo. Ang Kumpanya ay hindi mananagot para sa anumang sibil o kriminal na pananagutan na nagmumula sa mga post na ginawa ng mga miyembro sa loob ng Serbisyo na lumalabag sa mga karapatang-ari o karapatang-ari ng software ng iba o sumisira sa kanilang reputasyon. Kung ang Kumpanya ay makatanggap ng isang paghahabol para sa mga danyos o iba pang pagtutol mula sa isang ikatlong partido dahil sa paglabag sa karapatang-ari o paninirang-puri ng isang miyembro, dapat sikapin ng miyembro na bayaran ang danyos sa Kumpanya. Kung ang Kumpanya ay hindi bayaran ang danyos, ang miyembro ang mananagot para sa lahat ng pagkalugi na natamo ng Kumpanya bilang resulta.",
+        "Ang Kompanya ay walang obligasyon na suriin muna ang mga post ng mga miyembro bago ang pagpaparehistro o regular na suriin o repasuhin ang nilalaman ng mga post, at hindi mananagot para sa mga resulta nito.",
+        "Ang Kompanya ay libre sa pananagutan sa pagbibigay ng mga serbisyo kung hindi ito makapagbigay ng mga serbisyo dahil sa mga natural na sakuna o iba pang katulad na force majeure.",
+        "Ang kompanya ay hindi mananagot para sa anumang pagkaantala ng serbisyo na dulot ng kasalanan ng miyembro.",
+        {
+          "content": "Ang Kompanya ay hindi mananagot para sa anumang pinsalang magmumula sa mga sumusunod na bagay, maliban kung ang mga naturang pinsala ay sanhi ng sadyang maling pag-uugali o matinding kapabayaan ng Kompanya, mga opisyal, empleyado, o ahente nito.",
+          "subItems": [
+            "Mga pinsalang dulot ng mali o hindi tumpak na impormasyon sa katayuan ng miyembro",
+            "Mga personal na pinsala na nagmumula sa pag-access at paggamit ng serbisyo",
+            "Anumang pinsala na nagreresulta mula sa anumang ilegal na pag-access o paggamit ng server ng isang ikatlong partido.",
+            "Pinsala na nagreresulta mula sa anumang labag sa batas na panghihimasok o pagkaantala ng isang ikatlong partido sa pagpapadala papunta o mula sa server.",
+            "Pinsalang dulot ng anumang mga virus, spyware, o iba pang malisyosong programa na ilegal na ipinapadala, ipinamamahagi, o sanhi ng pagpapadala o pamamahagi ng isang ikatlong partido gamit ang serbisyo.",
+            "Pinsalang dulot ng mga pagkakamali, pagkukulang, pagkukulang, o pagkasira ng ipinadalang datos",
+            "Pananagutan sibil at kriminal na nagmumula sa paninirang-puri o iba pang ilegal na gawain na nagaganap sa panahon ng pagpaparehistro ng impormasyon sa katayuan ng miyembro at paggamit ng serbisyo sa pagitan ng mga miyembro"
+          ]
+        },
+        "Ang Kompanya ay hindi mananagot para sa anumang pagkawala ng inaasahang kita na natamo ng mga miyembro sa pamamagitan ng paggamit ng Serbisyo, ni hindi rin ito mananagot para sa anumang pinsala na nagreresulta mula sa impormasyong nakuha sa pamamagitan ng iba pang mga serbisyo.",
+        "Ang Kompanya ay walang anumang obligasyon na subaybayan o akuin ang anumang responsibilidad para sa nilalaman ng mga kaganapan, impormasyon ng ospital, atbp. na inaanunsyo ng mga ikatlong partido sa pamamagitan ng mga screen ng serbisyo. Ang mga ikatlong partido ay responsable para sa anumang nilalaman na lumalabag sa Batas Medikal."
+      ]
+    },
+    "article13": {
+      "title": "Artikulo 13 (Paunawa sa mga Miyembro)",
+      "items": [
+        "Kung aabisuhan ng Kompanya ang mga miyembro nito, maaari nitong gawin ito sa pamamagitan ng mga mensaheng in-service, mga text message, o mga anunsyo ng serbisyo, maliban kung may ibang nakasaad sa Mga Tuntunin at Kundisyong ito.",
+        "Kung sakaling magkaroon ng abiso sa lahat ng miyembro, maaaring palitan ng kompanya ang abiso sa talata 1 sa pamamagitan ng pagpapaskil nito sa bulletin board ng kompanya nang hindi bababa sa 7 araw."
+      ]
+    },
+    "article14": {
+      "title": "Artikulo 14 (Pagbibigay at Pagbabago ng mga Serbisyo)",
+      "items": [
+        {
+          "content": "Ang Kompanya ay nagbibigay ng mga sumusunod na serbisyo sa mga miyembro nito, at ang mga partikular na detalye ng mga serbisyong ito ay tinutukoy ng patakaran sa pagpapatakbo ng Kompanya. Gayunpaman, ang mga serbisyong ito ay hindi limitado sa mga kasalukuyang magagamit na serbisyo at maaaring idagdag o baguhin sa hinaharap sa pamamagitan ng karagdagang pag-unlad o pakikipagsosyo sa ibang mga kumpanya. Sa prosesong ito, ang ilang mga serbisyo ay maaaring mangailangan ng pag-verify ng pagkakakilanlan. Kapag nagbibigay ng mga serbisyo sa mga miyembro, ang Kompanya ay maaari ring magbigay ng mga karagdagang serbisyo, kabilang ang mga nakasaad sa Mga Tuntunin at Kundisyong ito.",
+          "subItems": [
+            "Pagbibigay ng impormasyon tungkol sa mga produkto o serbisyo",
+            "Mga serbisyo sa pagbili, pagkansela, at pag-refund sa pagitan ng mga kaakibat na ospital at mga miyembro",
+            "Iba pang mga serbisyong tinutukoy ng kumpanya at ng mga kaakibat nitong ospital",
+            "Serbisyong pangkomunidad na nagbabahagi ng impormasyon sa mga miyembro",
+            "Anumang serbisyong ibinibigay sa mga pangkalahatang miyembro sa pamamagitan ng karagdagang pagpapaunlad ng ibang mga kumpanya o sa pamamagitan ng mga kasunduan sa pakikipagsosyo sa ibang mga kumpanya."
+          ]
+        },
+        "Sa prinsipyo, ang Serbisyo ay magagamit 24 oras sa isang araw, 365 araw sa isang taon. Gayunpaman, maaaring hatiin ng Kumpanya ang Serbisyo sa ilang partikular na kategorya at magtalaga ng magkakahiwalay na oras ng pagkakaroon para sa bawat kategorya. Sa ganitong mga kaso, magbibigay ang Kumpanya ng paunang abiso tungkol sa naturang pagkakaroon.",
+        "Maaaring pansamantalang suspindihin ng Kompanya ang pagkakaloob ng serbisyo para sa mga kadahilanang tulad ng pagpapanatili, pagpapalit, o pagkasira ng computer o iba pang kagamitan sa impormasyon at komunikasyon, pagkaantala ng komunikasyon, o iba pang mahahalagang dahilan sa operasyon. Sa ganitong mga kaso, aabisuhan ng Kompanya ang mga miyembro gamit ang paraang tinukoy sa Artikulo 13 (Paunawa sa mga Miyembro). Gayunpaman, kung ang Kompanya ay may mga hindi maiiwasang pangyayari na pumipigil dito sa pagbibigay ng paunang abiso, maaari itong magbigay ng abiso pagkatapos ng pangyayari.",
+        "Maaaring magsagawa ang Kompanya ng mga regular na inspeksyon kung kinakailangan upang maibigay ang Serbisyo, at ang regular na oras ng inspeksyon ay ipapaalam sa screen ng pagbibigay ng serbisyo.",
+        "Maaaring baguhin o ihinto ng Kompanya ang lahat o bahagi ng mga serbisyong ibinibigay nito kung may mga mahahalagang dahilan sa operasyon, tulad ng muling pagsasaayos ng serbisyo, o para sa mga teknikal na kadahilanan.",
+        "Kung mayroong anumang mga pagbabago sa nilalaman, paraan ng paggamit, o oras ng paggamit ng serbisyo, ang dahilan ng pagbabago, ang nilalaman ng serbisyong babaguhin, at ang petsa ng pagkakaloob ay dapat na maipaskil bago ang pagbabago.",
+        "Maaaring baguhin, suspindihin, o palitan ng Kompanya ang ilan o lahat ng mga serbisyong ibinibigay nang libre kung kinakailangan para sa mga patakaran at operasyon ng Kompanya, at walang hiwalay na kabayaran ang ibibigay sa mga miyembro para dito maliban kung may ibang itinadhana sa mga kaugnay na batas."
+      ]
+    },
+    "article15": {
+      "title": "Artikulo 15 (Pagbili)",
+      "items": [
+        {
+          "content": "Ang mga miyembro ay nag-aaplay para sa mga pagbili sa pamamagitan ng serbisyong K-DOC, at ang kumpanya ay dapat magbigay ng sumusunod na impormasyon sa paraang madaling maunawaan kapag nag-aaplay para sa mga pagbili ang mga miyembro.",
+          "subItems": [
+            "Maghanap at pumili ng mga produkto, produkto, atbp.",
+            "Pagbabago at pagkumpirma ng pangalan, numero ng mobile phone, email address, address, atbp.",
+            "Pagkumpirma ng mga nilalaman ng Mga Tuntunin at Kundisyong ito, mga detalyeng may kaugnayan sa mga produktong may limitasyon sa karapatang kanselahin o baguhin ang mga pagbili o bawiin ang mga subscription, at mga detalyeng may kaugnayan sa iba pang mga gastos tulad ng mga bayarin sa pagkansela",
+            "Aplikasyon para sa pagbili ng mga produkto, paninda, atbp. at kumpirmasyon nito o pahintulot sa kumpirmasyon nito ng kompanya",
+            "Pumili ng impormasyon para sa pagbili, tulad ng paraan ng pagbabayad",
+            "Ipinapaalam ng Kompanya ang mga nilalaman ng Batas sa Proteksyon ng Mamimili sa Elektronikong Komersyo, atbp., kabilang ang katotohanan na hindi ito partido sa transaksyon ng online na pagbebenta bilang isang tagapamagitan sa pagbebenta gamit ang mail-order."
+          ]
+        },
+        "Kung kailangang ibigay o ipagkatiwala ng kompanya ang personal na impormasyon ng isang mamimili sa isang ikatlong partido, kailangan nitong makuha ang pahintulot ng gumagamit sa oras ng aktwal na kahilingan sa pagbili. Hindi nito hinihingi ang komprehensibong pahintulot nang maaga sa oras ng pagpaparehistro ng pagiging miyembro. Sa ganitong mga kaso, dapat malinaw na sabihin ng kompanya sa gumagamit ang mga personal na impormasyon na ibibigay, ang tatanggap, ang layunin ng tatanggap sa paggamit ng impormasyon, at ang panahon ng pagpapanatili/paggamit. Gayunpaman, kung ang mga kaugnay na batas at regulasyon ay nagtatadhana ng iba, tulad ng mga namamahala sa pagproseso ng personal na impormasyon sa ilalim ng Batas sa Pagtataguyod ng Paggamit ng Network ng Impormasyon at Komunikasyon at Proteksyon ng Impormasyon, atbp., ang mga naturang batas at regulasyon ang ilalapat."
+      ]
+    },
+    "article16": {
+      "title": "Artikulo 16 (Pagtatatag ng Kontrata ng Pagbili)",
+      "items": [
+        {
+          "content": "Maaaring hindi aprubahan ng Kompanya ang isang kahilingan sa pagbili alinsunod sa Artikulo 15 kung alinman sa mga sumusunod ang naaangkop, o maaaring kanselahin ang kahilingan sa pagbili kung malalaman nito ito sa kalaunan.",
+          "subItems": [
+            "Kung mayroong anumang maling impormasyon, kakulangan, o pagkakamali sa aplikasyon",
+            "Kapag ang isang menor de edad ay bumili ng mga produkto o serbisyong ipinagbabawal ng Youth Protection Act",
+            "Kung ang transaksyon ay para sa layunin ng komersyal na aktibidad (muling pagbebenta), o kung ang transaksyon ay hinuhusgahan na para sa layunin ng komersyal na aktibidad (muling pagbebenta) batay sa mga pangyayari sa transaksyon, at hinihiling ang dokumentasyon na nagpapatunay sa layunin ng personal na pagkonsumo, ngunit hindi ito mapapatunayan sa pamamagitan ng obhetibong datos.",
+            "Kapag bumibili sa pamamagitan ng pagpapanggap na gumagamit ng paraan ng pagbabayad tulad ng credit card, mobile phone, o mga puntos (card fraud, atbp.)",
+            "Kung patuloy kang makikibahagi sa mga hindi patas na transaksyon para sa layunin ng pagkuha ng mga kupon ng diskwento, puntos, atbp.",
+            "Kung matukoy ng kompanya na ang pagtanggap ng iba pang mga kahilingan sa pagbili ay makabuluhang humahadlang sa teknolohiya nito.",
+            "Sa kaso ng kahilingan sa pagbili na lumalabag sa mga kaugnay na batas"
+          ]
+        },
+        "Ang kontrata ng pagbili ay ituturing na natapos na kapag ang pag-apruba ng kompanya ay nakarating sa miyembro sa anyo ng kumpirmasyon ng resibo alinsunod sa Artikulo 13, Talata 1.",
+        "Ang pagpapahayag ng layunin ng kompanya na pumayag ay kinabibilangan ng impormasyon tungkol sa kumpirmasyon ng kahilingan sa pagbili ng miyembro, pagwawasto at pagkansela ng kahilingan sa pagbili, atbp.",
+        "Kung ang isang menor de edad ay pumasok sa isang kontrata ng pagbili, maaaring wakasan ng menor de edad o ng kanyang legal na kinatawan ang kontrata nang walang pahintulot ng kanyang legal na kinatawan."
+      ]
+    },
+    "article17": {
+      "title": "Artikulo 17 (Paraan ng Pagbabayad)",
+      "items": [
+        "Ang kompanya ay hindi nakikilahok sa anumang pagbabayad ng mga bayarin sa medikal, atbp. sa pagitan ng mga kaakibat na ospital at mga miyembro.",
+        {
+          "content": "Ang pagbabayad para sa mga produktong binili sa pamamagitan ng Serbisyo at mga bagay na binili sa mga kaakibat na ospital ay maaaring gawin gamit ang alinman sa mga magagamit na pamamaraan na nakalista sa ibaba. Gayunpaman, ang Serbisyo at ang mga kaakibat na ospital ay hindi maaaring maningil ng anumang karagdagang bayarin mula sa mga miyembro para sa mga produktong binili sa pamamagitan ng kanilang paraan ng pagbabayad.",
+          "subItems": [
+            "Pagbabayad gamit ang iba&#39;t ibang card tulad ng debit card, credit card, Naver Pay, at Kakao Pay",
+            "Pagbabayad sa pamamagitan ng isang external payment gateway (PG) gamit ang mga puntos at mga kupon ng diskwento",
+            "Pagbabayad gamit ang iba pang elektronikong paraan ng pagbabayad, atbp."
+          ]
+        },
+        "Maaari mo itong gamitin kasama ng iba pang mga paraan ng pagbabayad kapag ginagamit ang serbisyo, alinsunod sa mga pamamaraan at kundisyon na itinatag ng patakaran sa pagpapatakbo ng kumpanya."
+      ]
+    },
+    "article18": {
+      "title": "Artikulo 18 (Aplikasyon sa pagbili at abiso ng kumpirmasyon ng pagbabayad, atbp.)",
+      "items": [
+        "Kapag nag-apply ang isang miyembro para sa isang pagbili, ang kompanya ay magpapadala sa miyembro ng aplikasyon para sa pagbili at abiso ng kumpirmasyon ng pagbabayad (mula rito ay tatawaging &quot;abiso ng kumpirmasyon ng pagbabayad&quot;).",
+        "Ang mga miyembrong nakatanggap ng kumpirmasyon ng pagbabayad ay maaaring humiling ng mga pagbabago o pagkansela sa kanilang aplikasyon sa pagbili kaagad sa sandaling matanggap ang abiso ng kumpirmasyon ng pagbabayad kung mayroong pagkakaiba sa kanilang layunin, atbp. Dapat agad na iproseso ng Kompanya ang mga naturang kahilingan mula sa mga miyembrong bumili bago pa man mailabas ang treatment voucher. Gayunpaman, kung nagawa na ang pagbabayad, ang mga probisyon tungkol sa pagkansela ng subscription, atbp. sa Artikulo 21 ang ilalapat.",
+        "Ang treatment voucher ay hindi maaaring ilipat at maaari lamang gamitin ng miyembrong bumili nito. Ang mga detalye ay ipapaalam sa miyembrong bumili ng treatment voucher sa pamamagitan ng payment confirmation notice ng sugnay na ito.",
+        "Ang abiso sa kumpirmasyon ng pagbabayad sa ilalim ng sugnay na ito ay maaaring ipadala sa pamamagitan ng mga serbisyo ng social media na naka-link sa impormasyon ng pakikipag-ugnayan ng gumagamit. Sa kasong ito, maaaring magkaroon ng mga singil sa data ang gumagamit, atbp., depende sa kapaligiran ng komunikasyon o istruktura ng singil ng gumagamit."
+      ]
+    },
+    "article19": {
+      "title": "Artikulo 19 (Paggamit ng paunang bayad)",
+      "items": [
+        "Ang mga produktong binili ng mga miyembro sa pamamagitan ng serbisyo ay maaaring gamitin sa mga kaakibat na ospital o sa mga lokasyong itinalaga ng mga kaakibat na ospital pagkatapos makumpleto ang proseso ng beripikasyon ng pagkakakilanlan.",
+        "Maaari lamang makatanggap ang mga miyembro ng mga serbisyo mula sa kumpanya sa loob ng panahon ng bisa na tinukoy sa mga indibidwal na tuntunin at kundisyon ng pagbebenta para sa bawat produktong serbisyo. Ang mga miyembrong bumibili ng produktong serbisyo ay hindi maaaring gumamit ng mga email, text message, o iba pang resibo na ipinadala upang kumpirmahin ang mga pagbili bilang kapalit ng pag-verify ng pagkakakilanlan. Hindi maaaring ilipat o magbigay ng mga produkto bilang kolateral ang mga miyembro sa iba nang walang pahintulot. Gayunpaman, maaaring paghigpitan ang mga miyembro ng negosyo sa pagbili ng ilang partikular na produkto.",
+        "Ang mga tuntunin at kundisyon para sa paggamit at mga refund ng mga produkto para sa mga prepaid na serbisyo na napapailalim sa sugnay na ito ay natutukoy ng mga tuntunin at kundisyon. Ang mga miyembrong bumibili ay responsable sa pagsuri ng mga nilalaman at mga indibidwal na pag-iingat (mga tuntunin ng paggamit) na tinukoy sa aming website at app, at maaaring gamitin ang produkto alinsunod sa tinukoy na mga tuntunin at kundisyon."
+      ]
+    },
+    "article20": {
+      "title": "Artikulo 20 (Kupon ng Diskwento)",
+      "items": [
+        "Maaaring magbigay ang Kompanya ng mga diskwento sa mga miyembro kapag ginamit nila ang Serbisyo alinsunod sa patakaran sa pagpapatakbo ng Kompanya.",
+        "Maaaring gumamit ang mga miyembro ng mga kupon ng diskwento kasabay ng iba pang mga paraan ng pagbabayad kapag nagbabayad sa pamamagitan ng isang external payment gateway (PG) kapag ginagamit ang serbisyo, alinsunod sa mga pamamaraan at kundisyon na itinatag ng patakaran sa pagpapatakbo ng kumpanya.",
+        "Ang mga detalye tungkol sa pagbibigay at paggamit ng mga kupon ng diskwento ay pinamamahalaan ng patakaran sa pagpapatakbo ng kumpanya, at ibinibigay ng kumpanya ang impormasyong ito sa mga miyembro sa pamamagitan ng mga channel ng pagbebenta o mga serbisyong pinapatakbo ng kumpanya.",
+        "Hindi maaaring gamitin ng mga miyembro ang mga kupon ng diskwento sa pamamagitan ng pagbisita nang personal sa ospital o klinika, ngunit maaari lamang itong gamitin sa loob ng mga serbisyong ibinibigay ng kumpanya.",
+        "Ang mga kupon ng diskwento ay hindi maaaring gamitin sa cash at mawawalan ng bisa sa oras na matapos ang panahon ng bisa na nakasaad sa kupon o sa pagtatapos ng kontrata. Bukod pa rito, walang ibibigay na kabayaran para sa mga kupon ng diskwento na nag-expire na kung ang mga ito ay mawawalan ng bisa para sa mga kadahilanang hindi maiuugnay sa Kompanya.",
+        "Kung sakaling makansela ang subscription (pagkansela ng pagbili), ibabalik ang bayad ayon sa patakaran sa pagpapatakbo ng kumpanya.",
+        "Maaari lamang gumamit ang mga Miyembro ng mga kupon ng diskwento para sa kanilang sariling mga transaksyon, at hindi maaaring magbenta o maglipat ng mga kupon ng diskwento sa iba o makisali sa anumang mga aksyon na maaaring ituring na katulad ng pagbebenta o paglilipat ng mga kupon ng diskwento sa anumang pagkakataon.",
+        "Kung ang isang miyembro ay mapatunayang lumalabag sa mga tuntunin at kundisyon o nakikibahagi sa anumang mapanlinlang o mapang-abusong aktibidad, hindi magagamit ng miyembro ang kupon ng diskwento, at maaaring bawiin ito ng kumpanya."
+      ]
+    },
+    "article21": {
+      "title": "Artikulo 21 (Mga Puntos)",
+      "items": [
+        "Maaaring magbigay ang kompanya ng mga puntos sa mga miyembro kapag ginamit nila ang serbisyo, alinsunod sa patakaran sa pagpapatakbo ng kompanya.",
+        "Maaaring gamitin ng mga miyembro ang mga puntos kasama ng iba pang mga paraan ng pagbabayad kapag nagbabayad sa pamamagitan ng isang external payment gateway (PG) kapag ginagamit ang serbisyo, alinsunod sa mga pamamaraan at kundisyon na itinatag ng patakaran sa pagpapatakbo ng kumpanya.",
+        "Ang mga detalye tungkol sa pagbibigay at paggamit ng mga puntos ay pinamamahalaan ng patakaran sa pagpapatakbo ng Kumpanya, at ibinibigay ng Kumpanya ang impormasyong ito sa mga miyembro sa pamamagitan ng mga channel ng pagbebenta o mga serbisyong pinapatakbo ng Kumpanya.",
+        "Hindi maaaring gamitin ng mga miyembro ang mga puntos sa pamamagitan ng pagbisita sa mga ospital o klinika offline, ngunit maaari nilang gamitin ang mga ito sa loob ng mga serbisyong ibinibigay ng kumpanya.",
+        "Ang mga puntos ay ginagamit sa paraang &quot;first-in, first-out&quot; (ang mga puntos na unang naipon ay ibabawas ayon sa pagkakasunud-sunod ng pagkamit ng mga ito).",
+        "Hindi maaaring i-withdraw ang mga puntos para sa cash at mawawalan ng bisa ito sa oras na matapos ang panahong nakasaad sa mga puntos o matapos ang kasunduan sa serbisyo. Bukod pa rito, walang ibibigay na kabayaran para sa mga puntos na mawawalan ng bisa dahil sa mga kadahilanang hindi maiuugnay sa Kumpanya.",
+        "Kung sakaling makansela ang subscription (pagkansela ng pagbili), ibabalik ang bayad ayon sa patakaran sa pagpapatakbo ng kumpanya.",
+        "Maaari lamang gamitin ng mga Miyembro ang mga puntos para sa kanilang sariling mga transaksyon, at hindi maaaring, sa anumang pagkakataon, magbenta o maglipat ng mga puntos sa iba, o makisali sa anumang gawain na maituturing na halos kapareho ng pagbebenta o paglilipat ng mga puntos.",
+        "Kung ang isang miyembro ay mapatunayang lumalabag sa Mga Tuntunin at Kundisyon o nakikibahagi sa anumang mapanlinlang o mapang-abusong aktibidad, ang mga puntos ay hindi maaaring gamitin at maaaring mabawi ng kumpanya ang mga ito."
+      ]
+    },
+    "article22": {
+      "title": "Artikulo 22 (Pagbabalik ng Bayad)",
+      "items": [
+        "Kung hindi magamit ng Kompanya ang treatment voucher na binili ng isang miyembro dahil sa mga kadahilanang tulad ng pagsasara o pagsuspinde ng negosyo ng isang kaakibat na ospital, agad na aabisuhan ng Kompanya ang miyembro ng dahilan, at kung natanggap na nang maaga ang bayad para sa serbisyo ng paunang bayad, ibabalik ng Kompanya ang bayad o gagawa ng mga kinakailangang hakbang para sa refund sa loob ng 3 araw ng negosyo mula sa petsa ng pagtanggap ng bayad.",
+        "Kung ang Kompanya ay hindi makapagbigay ng mga serbisyo dahil ang kaakibat na ospital ay hindi nakakatugon sa mga kundisyon sa pagbebenta (minimum na bilang ng mga tao, atbp.) na itinakda nang maaga para sa treatment voucher na binili ng isang miyembro, agad na aabisuhan ng Kompanya ang miyembrong bumili ng serbisyo ng dahilan at ibabalik ang bayad na ginawa alinsunod sa patakaran sa pagpapatakbo na itinakda ng Kompanya sa loob ng tatlong araw ng negosyo mula sa petsa ng nangyari ang dahilan."
+      ]
+    },
+    "article23": {
+      "title": "Artikulo 23 (Pag-alis ng Suskrisyon)",
+      "items": [
+        "Ang isang mamimili na pumasok sa isang kontrata sa &quot;Kompanya&quot; para sa pagbili ng isang &quot;Serbisyo ng Paunang Pagbabayad&quot; ay maaaring bawiin ang kanyang suskrisyon sa loob ng 365 araw mula sa petsa ng pagtanggap ng nakasulat na mga tuntunin sa kontrata alinsunod sa Batas sa Proteksyon ng Mamimili sa Electronic Commerce, atbp. (kung ang pagkakaloob ng &quot;Serbisyo ng Paunang Pagbabayad&quot; ay ginawa nang mas huli kaysa sa petsa ng pagtanggap ng nakasulat na kontrata, ito ay tumutukoy sa petsa kung kailan ibinigay ang &quot;Serbisyo ng Paunang Pagbabayad&quot; o kung kailan nagsisimula ang pagkakaloob ng &quot;Serbisyo ng Paunang Pagbabayad&quot;). Gayunpaman, kung ang Batas sa Proteksyon ng Mamimili sa Electronic Commerce, atbp. ay nagtatadhana ng iba tungkol sa pagbawi ng suskrisyon, ang mga probisyon ng naturang Batas ang ilalapat.",
+        {
+          "content": "Kung natanggap na ng mamimili ang &quot;Serbisyo ng Paunang Pagbabayad,&quot; hindi na posible ang pagbabalik at pagpapalit ng produkto sa mga sumusunod na kaso:",
+          "subItems": [
+            "Kung ang &quot;Serbisyo sa Paunang Pagbabayad&quot; ay nawala o nasira dahil sa mga kadahilanang maiuugnay sa mamimili",
+            "Kung ang halaga ng &quot;serbisyo sa paunang bayad&quot;, atbp. ay lubhang bumaba dahil sa paggamit o bahagyang pagkonsumo ng mamimili.",
+            "Kapag nagsimula na ang pagkakaloob ng mga serbisyo (gayunpaman, sa kaso ng isang kontrata na binubuo ng mga serbisyong mahahati o digital na nilalamang mahahati, hindi ito nalalapat sa bahaging hindi pa nasisimulan ang pagkakaloob).",
+            "Bukod pa rito, para sa kaligtasan ng mga transaksyon, ang mga kaso kung saan ang pagkansela ng subscription ay pinaghihigpitan gaya ng tinukoy sa Batas sa Proteksyon ng Mamimili sa Electronic Commerce, atbp."
+          ]
+        },
+        "Sa kabila ng mga probisyon ng Talata 1 at 2, kung ang nilalaman ng &quot;Serbisyo sa Paunang Pagbabayad&quot; ay naiiba sa ipinapakita o inaanunsyong nilalaman o naiiba ang pagganap mula sa nilalamang nakasaad sa kontrata, maaaring kanselahin ng mamimili ang subscription, atbp. sa loob ng 3 araw mula sa petsa ng pagtanggap ng nauugnay na serbisyo, atbp., o sa loob ng 30 araw mula sa petsa na nalaman o maaaring nalaman ng mamimili ang katotohanan."
+      ]
+    },
+    "article24": {
+      "title": "Artikulo 24 (Mga epekto ng pagbawi ng suskrisyon, atbp.)",
+      "items": [
+        "Kung ang &quot;Kumpanya&quot; ay makatanggap ng pagbabalik ng &quot;Prepaid Service&quot; mula sa mamimili, ibabalik ng &quot;Kumpanya&quot; ang bayad na naibayad na para sa &quot;Prepaid Service&quot; sa loob ng tatlong araw ng negosyo. Sa kasong ito, kung ipagpaliban ng &quot;Kumpanya&quot; ang pagbabalik ng &quot;Prepaid Service&quot; sa mamimili, babayaran ng &quot;Kumpanya&quot; ang mamimili ng interes sa pagkaantala na kinakalkula sa pamamagitan ng pagpaparami ng rate ng interes sa pagkaantala na nakasaad sa Batas sa Proteksyon ng Mamimili sa E-Commerce, atbp. sa panahon ng pagkaantala. (Gayunpaman, kung ang &quot;Affiliated Hospital&quot; ay mapatunayang responsable para sa pagbabalik ng &quot;Prepaid Service,&quot; ang &quot;Kumpanya&quot; ay hindi mananagot para sa anumang mga pinsalang magreresulta.)",
+        "Kapag nagbabalik ng halagang nabanggit, kung ang bumibili ay nagbayad na para sa mga produkto, atbp. gamit ang paraan ng pagbabayad tulad ng credit card o electronic money, hihilingin ng &quot;Kumpanya&quot; sa operator ng negosyo na nagbigay ng paraan ng pagbabayad na agad na suspindihin o kanselahin ang pagsingil ng &quot;Serbisyo ng Paunang Pagbabayad&quot;.",
+        "Kung sakaling magkaroon ng pagkansela ng subscription, ang mamimili ang mananagot sa mga gastos na kaugnay ng pagbabalik ng ibinigay na &quot;Prepaid Service&quot;. Ang &quot;Kumpanya&quot; ay hindi maniningil ng multa o danyos sa mamimili para sa mga kadahilanang tulad ng pagkansela ng subscription. Gayunpaman, kung ang nilalaman ng &quot;Prepaid Service&quot; ay naiiba sa inanunsiyo o inanunsyo, o kung ang kontrata ay hindi natupad ayon sa napagkasunduan, na nagreresulta sa pagkansela ng subscription, ang &quot;Kumpanya&quot; ang mananagot sa mga gastos na kaugnay ng pagbabalik ng &quot;Prepaid Service.&quot;",
+        "Kung ang mamimili ang magbabayad ng gastos sa pagpapadala kapag natanggap ang &quot;serbisyo ng paunang bayad&quot;, atbp., malinaw na ipinapahiwatig ng &quot;Kumpanya&quot; kung sino ang sasagot sa gastos kapag nakansela ang subscription upang madaling maunawaan ng gumagamit."
+      ]
+    },
+    "article25": {
+      "title": "Artikulo 25 (Pagbibigay ng impormasyon at pag-post ng mga patalastas)",
+      "items": [
+        "Maaaring magbigay ang kompanya sa mga miyembro ng iba&#39;t ibang impormasyong itinuturing na kinakailangan para sa paggamit ng serbisyo sa pamamagitan ng e-mail, sulat, koreo, SMS, telepono, mga push notification sa mobile application, atbp.",
+        "Maaaring magpakita ang Kompanya ng mga patalastas sa mga screen ng serbisyo at mga homepage kaugnay ng pagpapatakbo ng Serbisyo, at maaaring magpadala ng mga patalastas gamit ang mga elektronikong paraan ng paghahatid tulad ng e-mail, mga mensahe, mga text message, at mga push notification kung papayagan ng Miyembro.",
+        "Ang mga Miyembro ay hindi dapat gumawa ng anumang aksyon upang baguhin, baguhin, o paghigpitan ang mga post o iba pang impormasyon na may kaugnayan sa mga serbisyong ibinibigay ng Kumpanya."
+      ]
+    },
+    "article26": {
+      "title": "Artikulo 26 (Pamamahala ng mga Puwesto)",
+      "items": [
+        "Ang lahat ng responsibilidad para sa mga paglabag sa batas ng karapatang-ari at batas sa network ng impormasyon at komunikasyon na nagreresulta mula sa mga post na isinulat ng mga miyembro ay nakasalalay sa miyembrong nag-post ng mga ito.",
+        {
+          "content": "Kung matukoy ng kompanya na ang nilalaman ng isang post na nai-post o nakarehistro ng isang miyembro ay nabibilang sa alinman sa mga sumusunod na aytem, maaaring burahin o suspindihin ng kompanya ang pag-post (pansamantalang gumawa ng aksyon).",
+          "subItems": [
+            "Kung ang nilalaman ay sumisira o nakakasira sa reputasyon ng ibang miyembro o ikatlong partido.",
+            "Kung ang nilalaman ay lumalabag sa kaayusan at moralidad ng publiko",
+            "Kung ito ay kinikilala bilang may kaugnayan sa kriminal na aktibidad",
+            "Kung ang nilalaman ay lumalabag sa copyright ng kumpanya, copyright ng ikatlong partido, o iba pang mga karapatan.",
+            "Kung ang isang miyembro ay mag-post ng malaswang materyal sa site o bulletin board o mga link patungo sa isang malaswang website",
+            "Kung magpo-post ka ng mga komersyal na patalastas o promosyonal na nilalaman nang walang paunang pag-apruba mula sa kumpanya",
+            "Kung ang nilalaman ay walang kaugnayan sa mga serbisyong ibinibigay ng kumpanya o isang serbisyong ibinibigay ng ibang kakumpitensya",
+            "Kung magsusulat ka ng nilalamang nakakasagabal sa negosyo ng kumpanya o ng isang ikatlong partido nang walang makatwirang dahilan",
+            "Kung magpo-post ka ng mali o eksaheradong nilalaman para sa layunin ng pag-promote ng sarili mong negosyo.",
+            "Kung ito ay tumutugma sa mga walang kahulugang karakter at simbolo",
+            "Kapag natanggap ang isang ulat ng paglabag sa mga karapatan mula sa isang ikatlong partido, atbp.",
+            "Kung ito ay napatunayang lumalabag sa mga kaugnay na batas at regulasyon",
+            "Kung huhusgahan itong may katangiang paghahambing na patalastas sa pagitan ng mga propesyonal sa medisina at mga lokal na institusyong medikal.",
+            "Kung magpo-post ka ng nilalaman na nagtataguyod ng mga hindi awtorisadong medikal na kasanayan o mga medikal na pamamaraan.",
+            "Kung ito ay lumalabag sa mga prinsipyo ng pag-post na itinakda ng ibang mga kumpanya o hindi sumusunod sa katangian ng bulletin board."
+          ]
+        },
+        {
+          "content": "Kung ang post ng isang miyembro ay naglalaman ng nilalamang lumalabag sa Copyright Act, Information and Communications Network Act, o iba pang kaugnay na batas tungkol sa paninirang-puri, dapat gawin ng kumpanya ang mga sumusunod na kinakailangang hakbang alinsunod sa mga kaugnay na batas.",
+          "subItems": [
+            "Maaaring humiling ang may-ari ng karapatan ng pagbura o pagsuspinde (pansamantalang hakbang) ng kaugnay na pag-post alinsunod sa mga pamamaraang itinakda ng mga kaugnay na batas at regulasyon, at ang kumpanyang nakatanggap ng naturang kahilingan ay dapat gumawa ng mga kinakailangang hakbang, tulad ng pagbura o pagsuspinde (pansamantalang hakbang), nang walang pagkaantala at agad na ipaalam sa aplikante at nag-post.",
+            "Kahit walang kahilingan mula sa may-ari ng mga karapatan, kung may dahilan upang maniwala na ang post ay lumalabag sa mga karapatan ng iba, tulad ng panghihimasok sa privacy o paninirang-puri, o kung ang post ay lumalabag sa iba pang mga patakaran ng kumpanya o mga kaugnay na batas, ang kumpanya ay maaaring gumawa ng mga pansamantalang hakbang, atbp., ayon sa sarili nitong pagpapasya, alinsunod sa mga kaugnay na batas at regulasyon, patungkol sa post.",
+            "Kung nahihirapan ang kompanya na matukoy kung ang isang karapatan ay nilabag sa kabila ng kahilingan para sa pagbura mula sa may-ari ng mga karapatan o kung may inaasahang hindi pagkakaunawaan sa pagitan ng mga interesadong partido, maaaring pansamantalang harangan ng kompanya ang pag-access sa kaugnay na post sa pamamagitan ng pagsuspinde sa post (pansamantalang hakbang). Sa kasong ito, ang panahon ng suspensyon (pansamantalang hakbang) ay hindi hihigit sa 30 araw.",
+            "Kapag ang kumpanya ay gumawa ng aksyon upang burahin o suspindihin ang pag-post (pansamantalang hakbang), aabisuhan nito ang nag-post ng kaugnay na post ng pangalan ng taong humihiling ng pagbura o suspensyon (pansamantalang hakbang) at ang dahilan ng kahilingan.",
+            "Ang isang nag-post na nakatanggap ng abiso ng pagbura o pagsuspinde ng pag-post (pansamantalang hakbang) ay maaaring maghain ng pagtutol sa hakbang sa itaas. Kung matanggap ang pagtutol, ang taong humihiling ng suspensyon ng pag-post ay aabisuhan ng mga kaugnay na katotohanan, at ang taong humihiling ng suspensyon ng pag-post ay maaaring mag-aplay para sa pagsusuri ng pag-post sa Korea Communications Standards Commission.",
+            "Kung ang desisyon ay ginawa ng Korea Communications Standards Commission sa panahon ng suspensyon ng pag-post (pansamantalang hakbang), ang pagbura at pagpapanumbalik ay ipoproseso ayon sa desisyong iyon. Kung ang desisyon ay ginawa ng Korea Communications Standards Commission pagkatapos maibalik ang pag-post, ang katayuan ng pag-post ay maaaring magbago ayon sa desisyon.",
+            "Kung nahihirapan kang tanggapin ang mga resulta ng deliberasyon ng Korea Communications Standards Commission o mayroon kang anumang mga katanungan tungkol sa proseso ng deliberasyon, mangyaring makipag-ugnayan nang direkta sa kinauukulang ahensya.",
+            "Hindi ka maaaring paulit-ulit na humiling ng suspensyon ng pag-post (pansamantalang hakbang) para sa mga post na naibalik sa pamamagitan ng isang pagtutol nang walang kahilingan para sa deliberasyon ng Korea Communications Standards Commission. Pagkatapos, ang isyu ay maaaring malutas sa pamamagitan ng isang kasunduan sa pagitan ng mga partido, deliberasyon/hatol ng ibang ahensya ng administrasyon, o isang desisyon ng korte."
+          ]
+        },
+        "Ang mga detalyadong pamamaraan sa ilalim ng Artikulong ito ay pamamahalaan ng mga itinatag na pamamaraan ng Kompanya para sa paghiling ng suspensyon ng mga pag-post, sa loob ng saklaw na itinakda ng Information and Communications Network Act at ng Copyright Act. - Kahilingan para sa suspensyon ng pag-post: cs@k-doc.kr"
+      ]
+    },
+    "article27": {
+      "title": "Artikulo 27 (Karapatang-ari ng mga Post)",
+      "items": [
+        {
+          "content": "Ang karapatang-ari para sa mga post na ginawa ng mga miyembro sa loob ng Serbisyo ay pagmamay-ari ng miyembrong nagpo-post. Gayunpaman, maaaring gamitin ng Kumpanya ang mga post na nakarehistro ng mga miyembro nang walang bayad, sa loob ng makatwirang saklaw at alinsunod sa mga patas na kasanayan na itinakda sa Batas sa Karapatang-ari, nang walang hiwalay na pahintulot ng miyembro, para sa mga layunin ng pagpapatakbo, pagpapakita, pagpapadala, pamamahagi, at pagtataguyod ng Serbisyo, tulad ng sumusunod: Gayunpaman, sa kasong ito, hinihiling ng Kumpanya ang hiwalay na pahintulot ng miyembro na magbigay ng personal na impormasyon maliban sa user ID ng miyembro.",
+          "subItems": [
+            "Pagpaparami, pagbabago, pagpapakita, pagpapadala, pamamahagi, at paglikha ng mga na-edit na gawa sa loob ng serbisyo nang hindi nilalabag ang karapatang-ari ng mga post ng miyembro.",
+            "Pagbibigay, pagpapakita, o pag-promote ng nilalaman ng mga post ng mga miyembro sa mga kasosyo sa serbisyo tulad ng media at mga ahensya ng balita"
+          ]
+        },
+        "Kung nais ng kompanya na gamitin ang mga post ng isang miyembro sa paraang iba sa tinukoy sa naunang talata, dapat nitong makuha ang pahintulot ng miyembro nang maaga sa pamamagitan ng telepono, fax, e-mail, o iba pang paraan.",
+        "Kung wawakasan ng isang miyembro ang kasunduan sa serbisyo sa pagitan ng kumpanya at ng mga miyembro nito o kung wawakasan ng kumpanya ang kasunduan para sa mga lehitimong dahilan, may karapatan ang kumpanya na burahin ang anumang mga post na nai-post ng miyembro ngunit hindi binura."
+      ]
+    },
+    "article28": {
+      "title": "Artikulo 28 (Mga Restriksyon sa Paggamit ng Serbisyo)",
+      "items": [
+        "Kung ang isang miyembro ay lumabag sa mga obligasyon ng Mga Tuntuning ito o nakakasagabal sa normal na operasyon ng serbisyo, maaaring paghigpitan ng kumpanya ang paggamit ng miyembro ng serbisyo nang paunti-unti, tulad ng sa pamamagitan ng mga babala, pansamantalang suspensyon, o permanenteng suspensyon.",
+        "Sa kabila ng naunang talata, maaaring agad na suspindihin ng Kompanya ang permanenteng paggamit sa mga kaso ng paglabag sa mga kaugnay na batas, tulad ng pagnanakaw ng pagkakakilanlan, pagnanakaw ng bayad, at pagnanakaw ng numero ng telepono na lumalabag sa Resident Registration Act, pagkakaloob ng mga ilegal na programa at pagharang sa operasyon na lumalabag sa Copyright Act at sa Computer Program Protection Act, ilegal na komunikasyon at pag-hack na lumalabag sa Information and Communications Network Act, pamamahagi ng mga malisyosong programa, at paglampas sa mga karapatan sa pag-access.",
+        {
+          "content": "Maaaring paghigpitan ng kompanya ang paggamit ng serbisyo kung matutuklasan nito ang alinman sa mga sumusunod na aksyon:",
+          "subItems": [
+            "Pagrehistro ng maling impormasyon sa impormasyon ng miyembro, pagnanakaw ng user ID, password, o iba pang personal na impormasyon ng ibang tao, o pakikipagpalitan o pagbibigay ng user ID sa ibang tao.",
+            "Isang gawain ng pagpapadala, pag-post, pag-email, o kung hindi man ay pamamahagi sa iba ng impormasyon, pangungusap, pigura, tunog, o video na bulgar o malaswa at lumalabag sa kaayusan at moralidad ng publiko, o maaaring lumabag sa karangalan o privacy ng iba.",
+            "Panliligalig o pagbabanta sa ibang mga gumagamit o pagdudulot ng patuloy na sakit o kakulangan sa ginhawa sa isang partikular na gumagamit",
+            "Anumang gawain ng pagbabago sa programa ng kliyente ng kumpanya, pag-hack sa server ng kumpanya, o arbitraryong pagbabago sa bahagi o lahat ng website o naka-post na impormasyon nang walang espesyal na pahintulot mula sa kumpanya.",
+            "Pagkopya ng impormasyong nakuha sa pamamagitan ng serbisyo para sa mga layuning iba sa paggamit ng serbisyo, paggamit nito para sa publikasyon o pagsasahimpapawid, o pagbibigay nito sa isang ikatlong partido nang walang paunang pahintulot ng kumpanya.",
+            "Kung magpapanggap kang tagapamahala, empleyado, o kasamahan ng kumpanya, o sadyang guluhin ang serbisyo, o kung hindi man ay makialam sa normal na operasyon ng serbisyo.",
+            "Kung magpo-post ka ng nilalamang walang kaugnayan sa mga serbisyong ibinibigay ng kumpanya o may kaugnayan sa mga serbisyong ibinibigay ng ibang mga kakumpitensya",
+            "Sa kaso ng kahilingan para sa aksyong pagwawasto mula sa isang kaugnay na pampublikong institusyon tulad ng Korea Communications Standards Commission",
+            "Anumang kilos na lumalabag sa anumang regulasyong itinatag ng kompanya, kabilang ang mga tuntunin at kundisyon, o anumang kilos na obhetibong hinuhusgahan na may kaugnayan sa isang krimen, o anumang iba pang kilos na lumalabag sa anumang batas at regulasyon"
+          ]
+        },
+        "Sa loob ng saklaw ng mga paghihigpit sa paggamit ng artikulong ito, ang mga kondisyon at detalye ng mga paghihigpit ay itatakda ng patakaran sa paghihigpit ng paggamit ng kompanya.",
+        "Maaaring maghain ng pagtutol ang mga Miyembro sa anumang mga paghihigpit sa paggamit, atbp., alinsunod sa Artikulong ito, kasunod ng mga pamamaraang itinatag ng Kompanya. Kung matukoy ng Kompanya na makatwiran ang pagtutol, agad na ipagpapatuloy ng Kompanya ang pag-access sa serbisyo."
+      ]
+    },
+    "article29": {
+      "title": "Artikulo 29 (Kompensasyon para sa mga Pinsala)",
+      "items": [
+        "Kung ang &quot;Kumpanya&quot; o &quot;Miyembro&quot; ay lumabag sa mga kaugnay na batas at regulasyon o sa mga Tuntunin at Kundisyong ito, na magdudulot ng pinsala sa kabilang partido, ang partidong may kasalanan ay dapat magbayad para sa pinsala."
+      ]
+    },
+    "article30": {
+      "title": "Artikulo 30 (Pagbibigay ng mga Karapatan)",
+      "items": [
+        "Ang karapatang-ari at mga karapatan sa intelektwal na ari-arian para sa Serbisyo ay pagmamay-ari ng Kumpanya. Nangangahulugan ito na ang lahat ng mga trademark, marka ng serbisyo, logo, at iba pang mga karapatan sa intelektwal na ari-arian na may kaugnayan sa Serbisyo, kabilang ang disenyo ng Serbisyo, tekstong nilikha ng Kumpanya, mga script, graphics, at mga tungkulin sa pagpapadala mula sa miyembro patungo sa miyembro, ay pagmamay-ari ng Kumpanya o may mga karapatan sa pagmamay-ari o paggamit alinsunod sa mga batas ng Republika ng Korea at mga dayuhang bansa. Gayunpaman, hindi kasama rito ang mga pag-post at gawa ng miyembro na ibinigay sa ilalim ng mga kasunduan sa kaakibat.",
+        "Ang mga Tuntunin at Kundisyong ito ay hindi nagbibigay sa mga Miyembro ng pagmamay-ari ng Serbisyo o ng karapatang-ari sa Serbisyo, ngunit nagbibigay lamang sa mga Miyembro ng karapatang gamitin ang Serbisyo, kabilang ang mga account, ID, at nilalaman, alinsunod sa mga Tuntunin at Kundisyon. Ang mga Miyembro ay hindi maaaring maglipat, magbenta, o magbigay ng kolateral para sa mga Serbisyong ito, at ang mga Miyembro ay maaari lamang gumamit ng mga Serbisyong ito para sa personal na layunin upang makakuha ng impormasyon.",
+        "Maliban kung hayagang pinahihintulutan, hindi maaaring gamitin, kopyahin, o mamahagi ng impormasyon sa katayuan ng miyembro na nakuha sa pamamagitan ng serbisyo para sa mga layuning pangkomersyo, kabilang ang pagkopya o pamamahagi ng teksto, mga script, at mga graphics na nilikha ng kumpanya, kabilang ang mga function para sa pagpapadala ng teksto, mga script, at mga graphics sa pagitan ng mga miyembro.",
+        "Hindi maaaring gamitin ng mga Miyembro ang impormasyong nakuha sa pamamagitan ng paggamit ng serbisyo para sa mga layuning pangkomersyo o pahintulutan ang mga ikatlong partido na gamitin ang naturang impormasyon sa pamamagitan ng pagpaparami, pagpapadala, paglalathala, pamamahagi, pagsasahimpapawid, o iba pang mga pamamaraan nang walang paunang pahintulot ng Kumpanya."
+      ]
+    },
+    "article31": {
+      "title": "Artikulo 31 (Namamahalang Batas at Hurisdiksyon)",
+      "items": [
+        "Ang interpretasyon ng mga Tuntunin at Kundisyong ito at anumang mga hindi pagkakaunawaan sa pagitan ng Kompanya at ng mga miyembro nito ay pamamahalaan ng mga batas ng Republika ng Korea.",
+        "Anumang mga kasong magmumula sa pagitan ng isang miyembro at ng kumpanya habang ginagamit ang serbisyo ay dapat isampa sa karampatang hukuman sa ilalim ng Civil Procedure Act.",
+        "Ang mga Tuntuning ito ay magkakabisa simula Mayo 1, 2024."
+      ]
+    }
+  },
+  "privacyPolicy": {
+    "intro": "Ang FILLMAN Co., Ltd. (mula rito ay tatawaging &quot;FILLMAN&quot; o ang &quot;Kumpanya&quot;) ay nangongolekta, gumagamit, at nagbibigay ng personal na impormasyon batay sa pahintulot ng gumagamit. Ang FILLMAN ay nagbibigay ng patakaran sa pagproseso ng personal na impormasyon alinsunod sa mga lokal na batas, mga regulasyon sa proteksyon ng personal na impormasyon, at mga alituntunin na nagpoprotekta sa mga karapatan ng mga gumagamit at dapat sundin ng mga tagaproseso ng personal na impormasyon.",
+    "collectionOfPersonalInformation": {
+      "title": "1. Pangongolekta ng personal na impormasyon",
+      "content": "Ang FILLMAN ay gumagana bilang isang serbisyo ng pagiging miyembro. Sa pagpaparehistro o habang ginagamit ang serbisyo, kinokolekta ng FILLMAN ang pinakamababang dami ng personal na impormasyon na kinakailangan upang maibigay ang serbisyo sa pamamagitan ng website, mga programa ng aplikasyon, at iba pang paraan nito. Ang personal na impormasyong nakolekta mula sa mga gumagamit para sa mga serbisyo ng FILLMAN ay ang mga sumusunod:",
+      "tableTitle": "Personal na impormasyong kinokolekta ng serbisyo",
+      "tableLabels": {
+        "required": "[mahalaga]",
+        "optional": "[piliin]"
+      },
+      "table": {
+        "headers": {
+          "serviceCategory": "Pag-uuri ng serbisyo",
+          "collectedItems": "Mga item sa koleksyon"
+        },
+        "rows": [
+          {
+            "serviceCategory": "(Indibidwal) Pagpaparehistro ng Pagiging Miyembro (Email)",
+            "collectedItems": {
+              "required": "Email address/password/pangalan sa Ingles na nasa pasaporte",
+              "optional": "Nasyonalidad/Kasarian/Petsa ng Kapanganakan/Numero ng Mobile Phone"
+            }
+          },
+          {
+            "serviceCategory": "Pagtatanong sa Pagpasok sa Partnership/Ospital",
+            "collectedItems": {
+              "required": "Pangalan ng kumpanya/pangalan ng taong maaaring kontakin/numero ng mobile phone/email"
+            }
+          },
+          {
+            "serviceCategory": "Kasunduan sa Pagpasok sa Ospital (Miyembro ng Ospital)",
+            "collectedItems": {
+              "applicant": {
+                "label": "tagapagmungkahi",
+                "required": "Pangalan ng kontak/pangalan ng kinatawan/numero ng mobile phone/email/address/pangunahing numero"
+              },
+              "applicationInfo": {
+                "label": "Impormasyon sa Aplikasyon",
+                "required": "Pangalan ng ospital/taong namamahala/numero ng mobile phone/email/ID ng administrator"
+              }
+            }
+          },
+          {
+            "serviceCategory": "Kapag gumagamit ng nilalaman",
+            "collectedItems": {
+              "review": {
+                "label": "Pagsusuri pagkatapos ng pamamaraan (sensitibong impormasyon)",
+                "required": "Impormasyon sa Pamamaraan/Mga Larawan Pagkatapos ng Paggamot",
+                "optional": "Larawan bago ang paggamot"
+              }
+            }
+          },
+          {
+            "serviceCategory": "Serbisyo ng Kahilingan sa Pag-post ng Suspensyon (Mga Dokumento sa Pag-verify ng Pagkakakilanlan)",
+            "collectedItems": {
+              "individual": {
+                "label": "indibidwal",
+                "required": "Pangalan/numero ng mobile phone/email/kopya ng nakamaskarang ID/power of attorney"
+              },
+              "organization": {
+                "label": "organisasyon",
+                "required": "Pangalan/numero ng mobile phone/email/kopya ng nakamaskarang ID/kopya ng sertipiko ng pagpaparehistro ng grupong negosyo/power of attorney"
+              }
+            }
+          },
+          {
+            "serviceCategory": "Kapag gumagamit ng mga serbisyong nakabatay sa lokasyon",
+            "collectedItems": {
+              "simple": "Impormasyon sa lokasyon"
+            }
+          }
+        ]
+      },
+      "collectionMethods": {
+        "title": "Paraan ng pagkolekta ng personal na impormasyon",
+        "content": "Kapag nangongolekta ng personal na impormasyon, inaabisuhan ng FILLMAN ang mga gumagamit nang maaga at hinihingi ang kanilang pahintulot. Ang paraan ng pangongolekta ay ang mga sumusunod.",
+        "items": [
+          "Kinokolekta ang personal na impormasyon kapag pumayag ang gumagamit sa pangongolekta ng personal na impormasyon at direktang inilalagay ang impormasyon sa panahon ng pagpaparehistro ng pagiging miyembro at proseso ng paggamit ng serbisyo.",
+          "Sa proseso ng konsultasyon sa pamamagitan ng CS, maaari itong kolektahin sa pamamagitan ng mga web page, email, fax, landline phone, atbp.",
+          "Maaaring kolektahin ang personal na impormasyon sa pamamagitan ng mga kaganapan, seminar, atbp. na ginaganap online at offline.",
+          "Ang nabuong impormasyon, tulad ng impormasyon ng device, ay awtomatikong nabubuo at kinokolekta habang ginagamit ang PC web at mobile web/app."
+        ]
+      },
+      "autoCollection": {
+        "title": "Awtomatikong kinokolekta at nabuo na impormasyon",
+        "content": "Ang personal na impormasyong awtomatikong nalilikha at kinokolekta mula sa mga gumagamit habang ginagamit ang serbisyo ay ang mga sumusunod.",
+        "items": [
+          "Kapag gumagamit ng PC web, mobile web/app, impormasyon ng terminal (OS, device ID, uri ng telepono, pangalan ng modelo ng terminal), IP address, cookies, petsa at oras ng pagbisita, talaan ng hindi awtorisadong paggamit, talaan ng paggamit ng serbisyo, atbp."
+        ]
+      },
+      "useOfPersonalInformation": {
+        "title": "2. Paggamit ng personal na impormasyon",
+        "content": "Ginagamit lamang namin ang personal na impormasyon para sa mga sumusunod na layunin: pamamahala ng miyembro ng FILLMAN at mga serbisyong may kaugnayan sa FILLMAN (kabilang ang mobile web/app), pagbuo ng serbisyo, pagkakaloob at pagpapabuti, at pagtatatag ng isang ligtas na kapaligiran sa paggamit ng Internet.",
+        "items": [
+          "Pamamahala ng miyembro, kabilang ang pagkakakilanlan ng miyembro at kumpirmasyon ng intensyong sumali, pag-verify ng pagkakakilanlan/edad, at pagkakakilanlan ng user",
+          "Paghawak ng mga katanungan o reklamo, paghahatid ng mga abiso",
+          "Pagpapadala ng nilalaman o pagbabayad kapag gumagamit ng mga bayad na serbisyo",
+          "Pag-iwas at mga parusa laban sa mga kilos na nakakasagabal sa maayos na operasyon ng serbisyo (kabilang ang pagnanakaw ng account at mapanlinlang na paggamit)",
+          "Mga rekomendasyon sa pasadyang nilalaman, mga kaganapan, at mga kampanya sa marketing batay sa mga katangiang demograpiko at mga interes, kagustuhan, at tendensiya ng gumagamit.",
+          "Pagbuo ng mga bagong serbisyo, pagpapabuti ng mga serbisyo, at pagbuo ng isang kapaligiran sa serbisyo upang protektahan ang privacy.",
+          "Kasaysayan ng paggamit ng serbisyo, dalas ng pag-access, at mga istatistika ng paggamit ng serbisyo"
+        ]
+      },
+      "provisionAndConsignment": {
+        "title": "3. Pagbibigay at pagtatalaga ng personal na impormasyon",
+        "thirdPartyProvision": {
+          "title": "Pagbibigay ng personal na impormasyon sa mga ikatlong partido",
+          "content": "Hindi ibinibigay ng FILLMAN ang personal na impormasyon ng mga gumagamit sa mga ikatlong partido maliban kung may hiwalay na pahintulot ng gumagamit o ayon sa itinakda ng batas."
+        },
+        "processingConsignment": {
+          "title": "Pagtitiwala sa pagproseso ng personal na impormasyon",
+          "content": "Maaaring i-outsource ng FILLMAN ang ilan sa mga gawain nito sa pagproseso ng personal na impormasyon sa mga panlabas na partido kung kinakailangan para sa pagbibigay ng serbisyo. Pinamamahalaan at pinangangasiwaan namin ang pagsunod ng mga outsourced na kumpanya sa mga batas sa proteksyon ng personal na impormasyon, kabilang ang mga hakbang upang matiyak ang seguridad ng personal na impormasyon at mga paghihigpit sa re-outsourcing.",
+          "koreaStatus": {
+            "title": "Katayuan ng Pagpapadala ng Personal na Impormasyon (Korea)",
+            "table": {
+              "headers": {
+                "consignee": "Tagapangasiwa",
+                "workDetails": "Mga detalye ng trabaho sa pagpapadala"
+              },
+              "rows": [
+                {
+                  "consignee": "Serbisyo sa Web ng Amazon",
+                  "workDetails": "Paglalaan at pamamahala ng sistema"
+                },
+                {
+                  "consignee": "mansanas",
+                  "workDetails": "Suriin ang katayuan ng subscription sa SNS at impormasyon ng account"
+                },
+                {
+                  "consignee": "google",
+                  "workDetails": "Suriin ang katayuan ng subscription sa SNS at impormasyon ng account"
+                }
+              ]
+            }
+          },
+          "overseasStatus": {
+            "title": "Katayuan ng Pagpapadala ng Personal na Impormasyon (Mga Bansang Maliban sa Korea)",
+            "table": {
+              "rows": [
+                {
+                  "label": "Tagapangasiwa",
+                  "value": "google"
+                },
+                {
+                  "label": "Nakaraang layunin",
+                  "value": "Mga istatistika at pagsusuri ng paggamit ng serbisyo"
+                },
+                {
+                  "label": "Mga ipinagkatiwala na personal na impormasyon",
+                  "value": "Kasarian, rehiyon, petsa ng pag-sign up, talaan ng gawi sa loob ng app"
+                },
+                {
+                  "label": "Petsa at paraan ng pagpapadala",
+                  "value": "Pagpapadala sa pamamagitan ng network sa oras ng paggamit ng serbisyo"
+                },
+                {
+                  "label": "Lokasyon ng kumpanya (bansa)",
+                  "value": "Estados Unidos (1600 Amphitheatre Parkway Mountain View, California 94043 Estados Unidos)"
+                },
+                {
+                  "label": "makipag-ugnayan",
+                  "value": "google_da_kr@dagent.co.kr"
+                },
+                {
+                  "label": "Panahon ng paggamit ng personal na impormasyon",
+                  "value": "Alinsunod sa panahon ng pagpapanatili na nakasaad sa Patakaran sa Pagkapribado na ito"
+                }
+              ]
+            }
+          },
+          "overseasNotice": {
+            "items": [
+              "Maaaring tanggihan ng mga gumagamit ang internasyonal na paglilipat ng personal na impormasyon sa pamamagitan ng opisyal ng proteksyon ng personal na impormasyon ng kumpanya o ng kinauukulang departamento.",
+              "Kung tumangging payagan ng isang user na mailipat ang kanilang personal na impormasyon sa ibang bansa, hindi isasaalang-alang ng kumpanya ang paglilipat ng personal na impormasyon ng user na iyon sa ibang bansa. Sa kasong ito, maaaring paghigpitan ang pag-access sa ilang serbisyo ng kumpanya na nangangailangan ng paglilipat ng personal na impormasyon sa ibang bansa."
+            ]
+          }
+        }
+      },
+      "destruction": {
+        "title": "4. Pagsira ng personal na impormasyon",
+        "content": "Agad na sinisira ng FILLMAN ang nakolektang personal na impormasyon kapag nakamit na ang layunin ng pangongolekta at paggamit ng personal na impormasyon. Ang mga pamamaraan at pamamaraan ay ang mga sumusunod.",
+        "method": {
+          "content": "Kapag may mga dahilan ng pagkasira, tulad ng pagkamit ng layunin ng pangongolekta at paggamit o pag-alis ng pagiging miyembro, ang paraan ng pagkasira ay tinutukoy sa pamamagitan ng pagsasaalang-alang sa uri ng personal na impormasyon. Ang mga elektronikong file ay ligtas na binubura upang maiwasan ang pagbawi o pagpaparami. Ang iba pang mga talaan, mga nakalimbag na materyales, at mga nakasulat na dokumento ay sinisira sa pamamagitan ng paggupit o pagsunog."
+        },
+        "internalPolicy": {
+          "title": "Impormasyong iniimbak sa loob ng isang takdang panahon at pagkatapos ay sinisira ayon sa panloob na patakaran",
+          "items": [
+            "Ang personal na impormasyon ay itatago sa loob ng 30 araw at pagkatapos ay sisirain sa oras na mag-withdraw ng membership.",
+            "Impormasyon sa aplikasyon para sa proxy surgery safety zone: Itinatago hanggang sa bawiin ang aplikasyon para sa safety zone at pagkatapos ay sirain.",
+            "Impormasyon sa aplikasyon sa ospital: Wawasakin kaagad pagkatapos makumpleto ang konsultasyon sa aplikasyon",
+            "Impormasyon sa Kasunduan sa Vendor ng Ospital: Agad na wawakasan sa pagtatapos ng kontrata.",
+            "Impormasyon sa kahilingan sa konsultasyon: Itinatabi nang 1 taon pagkatapos ng konsultasyon at pagkatapos ay sinisira",
+            "Mga rekord ng pang-aabuso at maling paggamit: Iniimbak sa loob ng 3 taon at pagkatapos ay sinisira."
+          ]
+        },
+        "legalBasis": {
+          "title": "Pag-iimbak ng personal na impormasyon alinsunod sa mga kaugnay na batas",
+          "table": {
+            "headers": {
+              "retentionItem": "Mga napreserbang bagay",
+              "legalBasis": "Legal na batayan",
+              "retentionPeriod": "Panahon ng pagpapanatili"
+            },
+            "rows": [
+              {
+                "retentionItem": "Mga rekord ng pagkansela ng kontrata o suskrisyon, atbp.",
+                "legalBasis": "Batas sa Proteksyon ng Mamimili sa E-commerce, atbp. Pambansang Batas sa Pangunahing Buwis",
+                "retentionPeriod": "5 taon"
+              },
+              {
+                "retentionItem": "Mga rekord ng pagbabayad at supply ng mga produkto, atbp.",
+                "legalBasis": "Homolohiya",
+                "retentionPeriod": "5 taon"
+              },
+              {
+                "retentionItem": "Mga talaan ng mga reklamo ng mamimili o resolusyon ng hindi pagkakaunawaan",
+                "legalBasis": "Homolohiya",
+                "retentionPeriod": "3 taon"
+              },
+              {
+                "retentionItem": "Mga rekord tungkol sa mga display/advertisement",
+                "legalBasis": "Homolohiya",
+                "retentionPeriod": "6 na buwan"
+              },
+              {
+                "retentionItem": "Mga libro at mga sumusuportang dokumento para sa lahat ng transaksyong itinakda ng mga batas sa buwis",
+                "legalBasis": "Homolohiya",
+                "retentionPeriod": "5 taon"
+              },
+              {
+                "retentionItem": "Mga talaan ng mga elektronikong transaksyong pinansyal",
+                "legalBasis": "Batas sa mga Elektronikong Transaksyon sa Pananalapi",
+                "retentionPeriod": "5 taon"
+              },
+              {
+                "retentionItem": "Kasaysayan ng pagbisita sa serbisyo",
+                "legalBasis": "Batas sa Proteksyon ng mga Lihim ng Komunikasyon",
+                "retentionPeriod": "3 buwan"
+              }
+            ]
+          }
+        }
+      },
+      "userRights": {
+        "title": "5. Mga Karapatan ng mga Gumagamit at mga Legal na Kinatawan",
+        "content": "Maaaring gamitin ng mga gumagamit o ng kanilang mga legal na kinatawan ang kanilang mga karapatan patungkol sa proteksyon ng personal na impormasyon laban sa Kumpanya anumang oras. Kung ang isang gumagamit o legal na kinatawan ay hindi sumasang-ayon sa pagproseso ng Kumpanya ng kanilang personal na impormasyon, maaari nilang bawiin ang kanilang pahintulot o humiling ng pagkansela ng pagiging miyembro. Gayunpaman, sa kasong ito, maaaring hindi nila magamit ang ilan o lahat ng mga Serbisyo.",
+        "items": [
+          "Para tingnan o i-edit ang iyong personal na impormasyon, i-click ang “Baguhin ang Personal na Impormasyon” (o “I-edit ang Impormasyon ng Miyembro”), at para kanselahin ang iyong membership, gamitin ang function na “Kanselahin ang Membership” na nakalaan sa app.",
+          "Kung ang isang gumagamit ay humiling ng pagwawasto ng mga pagkakamali sa kanilang personal na impormasyon, ang personal na impormasyon ay hindi gagamitin o ibibigay hanggang sa makumpleto ang pagwawasto. Bukod pa rito, kung ang maling personal na impormasyon ay naibigay na sa isang ikatlong partido, agad naming aabisuhan ang ikatlong partido tungkol sa proseso ng pagwawasto upang matiyak na magagawa ang pagwawasto.",
+          "Pinoproseso ng kompanya ang personal na impormasyon na winakasan o binura sa kahilingan ng gumagamit o legal na kinatawan alinsunod sa patakaran sa pagproseso ng personal na impormasyon at pinoproseso ito upang hindi na ito matingnan o magamit para sa anumang ibang layunin.",
+          "Kung nais ng isang gumagamit na burahin ang personal na impormasyon, maaari niya itong gawin sa pamamagitan ng pagkansela ng pagiging miyembro."
+        ]
+      },
+      "autoCollectionDevice": {
+        "title": "6. Mga bagay na may kinalaman sa mga awtomatikong aparato sa pagkolekta ng personal na impormasyon (pag-install, pagpapatakbo, at pagtanggi)",
+        "content": "Maaaring i-install at patakbuhin ang mga cookies upang magbigay ng mga serbisyong nakabase sa web.",
+        "cookieDefinition": {
+          "title": "Kuki",
+          "content": "Kapag ang isang user ay nag-access sa isang website, ang website ay nagpapadala ng text file sa browser ng user at sine-save ito sa PC ng user."
+        },
+        "usagePurpose": {
+          "title": "Layunin ng paggamit",
+          "content": "Gumagamit kami ng cookies upang mag-imbak at pana-panahong kumuha ng impormasyon ng user upang makapagbigay ng mga personalized at customized na serbisyo. Kapag binisita mo ang aming website, binabasa ang mga cookies na nakaimbak sa iyong device upang mapanatili ang iyong mga kagustuhan at magbigay ng mga customized na serbisyo. Hindi awtomatiko o aktibong nangongolekta ng personal na impormasyon ang mga cookies, at maaari mong tanggihan o tanggalin ang mga cookies na ito anumang oras. Gayunpaman, kung tatanggihan mo ang pag-iimbak ng cookie, maaari kang makaranas ng mga kahirapan sa paggamit ng ilang serbisyo."
+        },
+        "cookieRejection": {
+          "title": "Pagtanggi sa pagkolekta ng cookie",
+          "content": "May opsyon ang mga user na tanggapin o tanggihan ang mga cookie. Magagawa nila ito sa pamamagitan ng pag-navigate sa mga setting ng kanilang web browser na &quot;Mga Setting &gt; Privacy &gt; Mga cookie at iba pang datos ng site&quot;. Gayunpaman, ang pagtanggi sa mga cookie ay maaaring magresulta sa abala sa paggamit ng website at kahirapan sa pag-access sa ilang serbisyo na nangangailangan ng pag-login."
+        }
+      },
+      "behavioralInformation": {
+        "title": "7. Mga bagay na may kinalaman sa pangongolekta, paggamit, at pagtanggi sa impormasyon tungkol sa pag-uugali",
+        "content": "Nangongolekta, gumagamit, at nagpoproseso ang FILLMAN ng impormasyon tungkol sa pag-uugali gaya ng sumusunod.",
+        "table": {
+          "headers": {
+            "category": "paghahati",
+            "content": "detalye"
+          },
+          "rows": [
+            {
+              "category": "Mga bagay na nakalap na impormasyon sa pag-uugali",
+              "content": "Kasaysayan ng pagbisita ng gumagamit, talaan ng aktibidad, at kasaysayan ng paghahanap sa loob ng serbisyo"
+            },
+            {
+              "category": "Mga paraan ng pagkolekta ng impormasyon sa pag-uugali",
+              "content": [
+                "Mag-install at magpatakbo ng mga cookies upang mag-imbak at makakuha ng impormasyon ng user paminsan-minsan.",
+                "Awtomatikong kinokolekta at ipinapadala sa pamamagitan ng mga tool sa pagkolekta ng impormasyon, atbp. kapag bumisita ang mga user sa mga web/app site",
+                "Awtomatikong kinokolekta at ipinapadala sa pamamagitan ng mga tool sa pagkolekta ng impormasyon, atbp. kapag pinatakbo ng user ang app"
+              ]
+            },
+            {
+              "category": "Layunin ng pagkolekta ng impormasyon sa pag-uugali",
+              "content": [
+                "Suriin ang impormasyon sa pag-uugali ng gumagamit at gamitin ito bilang sukatan para sa pagbuo ng mga bagong serbisyo, muling pag-oorganisa ng mga serbisyo, atbp.",
+                "Nagbibigay ng personalized na advertising at nilalaman batay sa tinantyang kasarian, edad, at mga interes batay sa mga katangiang demograpiko."
+              ]
+            },
+            {
+              "category": "Panahon ng pagpapanatili ng impormasyon sa pag-uugali",
+              "content": "Pagkatapos maimbak nang hanggang isang taon, ganap na sirain o paghiwalayin ang data sa paraang hindi na ito mababawi."
+            },
+            {
+              "category": "Paano gamitin ang mga karapatan sa pagkontrol ng gumagamit",
+              "content": [
+                "[Web browser]",
+                "Piliin kung papayagan ang personalized na advertising",
+                "",
+                "[App]",
+                "Android: Home &gt; Mga Setting &gt; Google &gt; Mga Ad &gt; Burahin ang ID ng advertising",
+                "iOS: Home &gt; Mga Setting &gt; Privacy &gt; Pagsubaybay &gt; Payagan ang mga app na humiling ng pagsubaybay (OFF)"
+              ]
+            },
+            {
+              "category": "Mga kaugnay na katanungan at mga paraan ng pag-alis ng pinsala",
+              "content": [
+                "Kagawaran ng Serbisyo: CS",
+                "Makipag-ugnayan: all@k-doc.kr"
+              ]
+            }
+          ]
+        }
+      },
+      "securityMeasures": {
+        "title": "8. Mga bagay na may kinalaman sa mga hakbang upang matiyak ang seguridad ng personal na impormasyon",
+        "content": "Ipinapatupad ng kompanya ang mga sumusunod na teknikal at administratibong hakbang upang protektahan ang personal na impormasyon ng mga gumagamit.",
+        "encryption": {
+          "title": "Pag-encrypt ng personal na impormasyon",
+          "content": "Ang mahahalagang impormasyon, tulad ng password ng user, ay naka-encrypt, iniimbak, at pinamamahalaan, at ang personal na impormasyon ay maaari lamang kumpirmahin at baguhin ng user."
+        },
+        "hackingPrevention": {
+          "title": "Mga hakbang laban sa pag-hack, atbp.",
+          "items": [
+            "Upang maiwasan ang pagtagas o pagkasira ng personal na impormasyon ng mga gumagamit dahil sa hacking o malware, ang kumpanya ay nagpapatakbo ng isang intrusion prevention system 24 oras sa isang araw upang kontrolin ang hindi awtorisadong pag-access mula sa labas, at nag-i-install ng mga anti-virus program upang maiwasan ang pagkahawa ng malware o mga virus sa sistema.",
+            "Bukod pa rito, regular naming bina-back up ang data upang maprotektahan laban sa pinsala sa personal na impormasyon, at gumagamit kami ng naka-encrypt na komunikasyon upang matiyak ang ligtas na pagpapadala ng personal na impormasyon sa network.",
+            "Bukod pa rito, nagsusumikap ang kumpanya na makuha ang mga pamamaraang pinakamabisa sa teknolohiya para sa mas ligtas na pagproseso ng personal na impormasyon."
+          ]
+        },
+        "staffMinimization": {
+          "title": "Pagbabawas at pagsasanay sa mga kawani sa pagproseso ng personal na impormasyon",
+          "content": "Binabawasan namin ang bilang ng mga empleyadong humahawak ng personal na impormasyon, at pinaghihiwalay namin ang mga internal at external na internet network para sa mga empleyadong may access sa personal na impormasyon mula sa aming sistema ng pagproseso ng personal na impormasyon. Bukod pa rito, kinikilala namin ang kahalagahan ng personal na impormasyon sa pamamagitan ng regular na pagsasanay para sa mga humahawak ng personal na impormasyon at patuloy na pagsasanay para sa lahat ng empleyado."
+        },
+        "dedicatedPersonnel": {
+          "title": "Operasyon ng mga tauhang nakatuon sa proteksyon ng personal na impormasyon",
+          "content": "Upang protektahan ang personal na impormasyon, nagpapatakbo kami ng isang nakalaang pangkat para sa proteksyon ng personal na impormasyon at nagsusumikap na beripikahin ang pagsunod sa patakaran sa pagproseso ng personal na impormasyon at mga tagaproseso ng personal na impormasyon, at upang agad na itama ang anumang mga isyung matutuklasan."
+        },
+        "userNotice": {
+          "content": "Bukod sa mga nabanggit na pagsisikap, dapat ding mag-ingat ang mga gumagamit upang maiwasan ang pagkalat ng kanilang mga password at iba pang personal na impormasyon sa mga ikatlong partido. Sa partikular, laging maging maingat upang maiwasan ang pagtagas ng mga password at iba pang personal na impormasyon sa pamamagitan ng mga computer na naka-install sa mga pampublikong lugar. Inirerekomenda na gamitin lamang ng mga gumagamit ang kanilang ID at password at palitan at pamahalaan ang kanilang mga password nang madalas."
+        }
+      },
+      "locationInformation": {
+        "title": "9. Pagproseso ng personal na impormasyon sa lokasyon",
+        "content": "Pinoprotektahan ng kompanya ang personal na impormasyon ng lokasyon ng mga gumagamit alinsunod sa Batas sa Proteksyon at Paggamit ng Impormasyon sa Lokasyon. Ang mga detalye tungkol sa pagproseso ng personal na impormasyon ng lokasyon ay matatagpuan sa Mga Tuntunin ng Paggamit ng Serbisyong Batay sa Lokasyon ng FILLMAN.",
+        "usagePurpose": {
+          "content": "Ginagamit ng kompanya ang personal na impormasyon ng lokasyon upang maibigay ang mga sumusunod na serbisyo sa paksa ng personal na impormasyon ng lokasyon, at agad na sinisira ang personal na impormasyon ng lokasyon kapag natupad na ang layunin ng paggamit at pagbibigay ng mga serbisyong nakabatay sa lokasyon alinsunod sa Mga Tuntunin ng Paggamit ng Serbisyong Nakabatay sa Lokasyon ng K-DOC.",
+          "items": [
+            "Mga resulta ng paghahanap ng impormasyon at mga serbisyo sa pagbibigay o rekomendasyon ng nilalaman gamit ang impormasyon ng lokasyon",
+            "Pag-tag ng nilalaman para sa pag-uuri ng nilalaman batay sa lokasyon",
+            "Personalized na advertising na nakabatay sa lokasyon"
+          ]
+        },
+        "recordRetention": {
+          "content": "Alinsunod sa Artikulo 16, Talata 2 ng Batas sa Proteksyon at Paggamit ng Impormasyon sa Lokasyon, awtomatikong itinatala ng Kumpanya ang datos ng kumpirmasyon ng paggamit/pagbibigay ng impormasyon sa lokasyon para sa mga paksa ng personal na impormasyon sa lokasyon sa sistema ng impormasyon ng lokasyon at iniimbak ito sa loob ng anim na buwan."
+        },
+        "destructionMethod": {
+          "content": "Kapag nakamit ng Kumpanya ang layunin ng pagproseso ng personal na impormasyon ng lokasyon at kinakailangan ang pagsira, sinisira ng Kumpanya ang impormasyon sa sumusunod na paraan upang hindi na ito mabawi o makopya pa.",
+          "items": [
+            "Personal na impormasyong nakalimbag sa papel: Gupitin o sunugin.",
+            "Personal na impormasyong nakaimbak sa elektronikong format ng file: Binubura gamit ang mga teknikal na pamamaraan na nagiging dahilan upang hindi na mababawi ang mga rekord."
+          ]
+        },
+        "thirdPartyNotification": {
+          "content": "Kapag nagbigay ang kompanya ng personal na impormasyon sa lokasyon sa isang ikatlong partido na itinalaga ng gumagamit, agad na aabisuhan ng kompanya ang gumagamit tungkol sa tatanggap, petsa at oras ng pagbibigay, at layunin ng pagbibigay sa pamamagitan ng terminal ng komunikasyon na nangolekta ng personal na impormasyon sa lokasyon. Gayunpaman, sa mga sumusunod na kaso, ang abiso ay ibibigay sa pamamagitan ng terminal ng komunikasyon, email address, o online posting na partikular na itinalaga ng gumagamit nang maaga.",
+          "items": [
+            "Kung ang communication terminal device na nangolekta ng personal na impormasyon ng lokasyon ay walang function ng pagtanggap ng text, boses, o video.",
+            "Kung hiniling mo nang maaga na maabisuhan ang iyong personal na impormasyon sa lokasyon sa pamamagitan ng isang terminal ng komunikasyon maliban sa terminal na kumuha nito, o sa pamamagitan ng email address, online posting, atbp."
+          ]
+        },
+        "guardianRights": {
+          "title": "Mga karapatan at obligasyon ng mga tagapag-alaga ng kumpanya ng mga batang wala pang 8 taong gulang at mga pamamaraan ng pagpapatupad ng mga ito",
+          "content": "Itinuturing ng kompanya na ang isang taong naaayon sa Artikulo 26, Talata 2 ng Batas sa Proteksyon at Paggamit ng Impormasyon sa Lokasyon ng isang Bata (mula rito ay tatawaging &quot;Mga Batang Wala pang 8 Taong Gulang, atbp.) na sumasang-ayon sa paggamit o pagkakaloob ng personal na impormasyon sa lokasyon para sa layunin ng pagprotekta sa buhay o katawan ng isang batang wala pang 8 taong gulang, atbp., ay nagbigay ng pahintulot.",
+          "items": [
+            "Mga batang wala pang 8 taong gulang",
+            "tagapag-alaga na nasa hustong gulang",
+            "Isang taong may kapansanan sa pag-iisip gaya ng tinukoy sa Artikulo 2, Talata 2, Subtalata 2 ng Batas sa Kagalingan ng mga Taong may Kapansanan at isang taong may malubhang kapansanan gaya ng tinukoy sa Artikulo 2, Talata 2 ng Batas sa Pagtataguyod ng Pagtatrabaho ng mga Taong may Kapansanan at Rehabilitasyon sa Bokasyon (nalalapat lamang sa mga taong nakarehistro bilang may kapansanan gaya ng tinukoy sa Artikulo 32 ng Batas sa Kagalingan ng mga Taong may Kapansanan)"
+          ],
+          "additionalContent": [
+            "Ang isang tagapag-alaga na nagnanais na pumayag sa paggamit o pagbibigay ng personal na impormasyon sa lokasyon para sa proteksyon ng buhay o katawan ng isang batang wala pang 8 taong gulang ay dapat magsumite ng nakasulat na pormularyo ng pahintulot sa kompanya kasama ang isang dokumentong nagpapatunay na siya ang tagapag-alaga.",
+            "Kung pumayag ang isang tagapag-alaga sa paggamit o pagbibigay ng personal na impormasyon sa lokasyon ng isang batang wala pang 8 taong gulang, maaaring gamitin ng tagapag-alaga ang lahat ng karapatan ng paksa ng personal na impormasyon sa lokasyon."
+          ]
+        },
+        "manager": {
+          "title": "Tagapamahala ng Impormasyon sa Lokasyon",
+          "content": "Ang kompanya ay nagtalaga ng isang tagapamahala ng impormasyon ng lokasyon upang protektahan ang impormasyon ng lokasyon at pangasiwaan ang mga reklamo na may kaugnayan sa impormasyon ng lokasyon.",
+          "name": "Woo Jung-ho",
+          "position": "CEO",
+          "contact": "all@k-doc.kr"
+        }
+      },
+      "privacyOfficer": {
+        "title": "10. Tagapamahala ng Proteksyon ng Personal na Impormasyon at Kagawaran na Namamahala",
+        "content": "Maaaring makipag-ugnayan ang mga gumagamit sa Personal Information Manager o sa responsableng departamento tungkol sa anumang mga katanungan o reklamo tungkol sa personal na impormasyon na lumilitaw habang ginagamit ang mga serbisyo ng kumpanya. Sinisikap ng kumpanya na agad at tapat na tumugon at tugunan ang mga katanungan ng gumagamit.",
+        "officer": {
+          "title": "Tagapamahala ng Personal na Impormasyon",
+          "items": [
+            "Kagawaran na namamahala: FILLMAN co., Ltd.",
+            "Tagapamahala ng Personal na Impormasyon: Woo Jeong-ho",
+            "Tagapamahala ng Personal na Impormasyon: Woo Jeong-ho",
+            "Email address: all@k-doc.kr"
+          ]
+        },
+        "otherOrganizations": {
+          "title": "Kung kailangan mong mag-ulat o magtanong tungkol sa iba pang mga paglabag sa personal na impormasyon, mangyaring makipag-ugnayan sa mga organisasyon sa ibaba.",
+          "items": [
+            "Sentro ng Ulat sa Paglabag sa Personal na Impormasyon (privacy.kisa.or.kr / 118 na walang area code)",
+            "Dibisyon ng Cyber Investigation ng Tanggapan ng Korte Suprema ng mga Tagausig (www.spo.go.kr / 1301 na walang area code)",
+            "Kawanihan ng Imbestigasyon sa Siber ng Pambansang Ahensya ng Pulisya (ecrm.police.go.kr / 182 na walang area code)"
+          ]
+        }
+      },
+      "revisionNotice": {
+        "title": "11. Patnubay sa mga obligasyon sa abiso bago ang rebisyon, atbp.",
+        "items": [
+          "Kung mayroong anumang mga pagbabago sa Patakaran sa Pagkapribado ng Kumpanya, aabisuhan ng Kumpanya ang mga gumagamit nang hindi bababa sa pitong araw bago ang petsa ng pagiging epektibo ng binagong Patakaran sa Pagkapribado sa pamamagitan ng isang abiso sa website o sa pamamagitan ng email. Gayunpaman, kung mayroong anumang mahahalagang pagbabago na nakakaapekto sa mga karapatan o obligasyon ng mga gumagamit, aabisuhan ng Kumpanya ang mga gumagamit nang hindi bababa sa 30 araw nang maaga.",
+          "Kung aabisuhan ng kompanya ang gumagamit tungkol sa mga pagbabago alinsunod sa Talata 1 at aabisuhan na ang hindi pagpapahayag ng pagtanggi sa petsa ng pagiging epektibo ng mga pagbabago ay ituturing na pahintulot, at hindi tahasang ipinahayag ng gumagamit ang pagtanggi, ituturing na sumang-ayon ang gumagamit sa mga pagbabago.",
+          "Sa kabila ng talata 2, kung ang Kumpanya ay mangongolekta ng karagdagang personal na impormasyon mula sa mga gumagamit o ibibigay ito sa mga ikatlong partido, kukuha ito ng hiwalay na pahintulot mula sa mga gumagamit."
+        ]
+      },
+      "revisionHistory": {
+        "title": "12. Kasaysayan ng Rebisyon",
+        "content": "Ang Patakaran sa Pagkapribado na ito ay nalalapat mula Setyembre 25, 2025."
+      }
+    }
+  },
+  "about": {
+    "title": "Tungkol sa kompanya",
+    "subtitle": "Mga taong gumagawa ng K-DOC",
+    "description": {
+      "part1": "Ang K-DOC ay pinamumunuan ng CEO na si Woo Jung-ho, isang kilalang awtoridad sa larangan ng medisina sa buong mundo. ",
+      "highlight": "Isang serbisyong pinlano ng mga medikal na propesyonal mula sa pinakamahusay na mga unibersidad sa mundo.",
+      "part2": "Matatagpuan sa isang makasaysayang gusali sa Apgujeong, ang punong-tanggapan ng kumpanya ay nangunguna sa mga pandaigdigang uso sa kagandahan. Si Dr. Woo, na kilala sa Japan bilang &quot;Master of Thread Lifting,&quot; ay itinampok din sa mga prestihiyosong internasyonal na outlet ng media, kabilang ang FOX TV News."
+    },
+    "profiles": {
+      "woo": {
+        "description": "Ang &quot;Rebolusyon sa Pag-aalis ng Thread na Hindi Tinatanggal sa Pamamagitan ng Paghiwa&quot; ay ipinalabas sa FOX TV News sa US",
+        "name": "Pangulong Woo Jeong-ho"
+      },
+      "park": {
+        "name": "Pangalawang Pangulo Park Jong-hyun"
+      }
+    },
+    "ceoGreeting": {
+      "title": "Mensahe ng CEO",
+      "name": "Pangulong Woo Jung Ho MD",
+      "greeting": "Hello สวัสดีครับ",
+      "content": [
+        "Salamat sa pagbisita sa K-DOC.",
+        "Ang K-DOC ay ang nangungunang platapormang medikal para sa plastic surgery sa Korea, na idinisenyo upang tulungan ang mga Thai na pumili ng nangungunang 5% ng mga klinika para sa plastic surgery at dermatology sa Korea nang may kumpiyansa, at magbigay pa ng mga diskwento.",
+        "Ipinagmamalaki ng pangkat ng pamamahala ng K-DOC ang serbisyo nito sa platform, na direktang pinlano at pinapatakbo ng isang pangkat ng mga propesyonal sa medisina, kabilang ako, si MD Woo Jung Ho, isang kilalang awtoridad sa mundo sa larangan ng non-incisional thread lifting, at si MD Park Jong Hyeon, isang nagtapos sa ilan sa mga nangungunang paaralan ng medisina sa mundo. Ang aming prayoridad ay magbigay sa mga pasyenteng Thai at internasyonal ng access sa ligtas at napatunayang mga serbisyong medikal lamang ng Korea.",
+        "Ang platform na ito ay nagbibigay ng impormasyon tungkol sa mga pinaka-pinagkakatiwalaang ospital ng cosmetic surgery sa Korea, maaasahang mga review ng paggamot, at lahat ng bagay mula sa mga reserbasyon sa ospital hanggang sa walang putol na interpretasyon at pangangalaga pagkatapos ng pamamaraan—lahat sa iisang lugar.",
+        "Ang K-DOC ay hindi lamang isang plataporma ng impormasyon; layunin nitong maging isang mapagkakatiwalaan at maginhawang kasama sa iyong paglalakbay sa medisina para sa kagandahan sa Korea. Sinisikap naming bigyan ang bawat customer ng pinakamainam na solusyon at isang kasiya-siya at mapagkakatiwalaang karanasan sa medisina.",
+        "Umaasa kaming maranasan ninyo ang natatanging teknolohiya ng medical plastic surgery sa Korea nang ligtas at walang panganib, at sasamahan kayo ng K-DOC sa inyong paglalakbay tungo sa may kumpiyansang kagandahan at kalusugan.",
+        "Pagpalain ka ng Diyos!!",
+        "salamat",
+        "Dr. Woo Jung Ho, CEO",
+        "K-DOC Corp."
+      ]
+    },
+    "seoulOffice": {
+      "title": "Sangay ng K-DOC Seoul",
+      "description": "Ang Tore ng K-DOC, isang palatandaan sa Kalye Apgujeong Rodeo, ang pinakasikat na kalye sa Gangnam, Seoul."
+    },
+    "vision": {
+      "title": "Pananaw ng K-DOC",
+      "sections": [
+        {
+          "image": "image_section1.png",
+          "imagePc": "image_section1_pc.png",
+          "title": "Pagpasok sa Thailand sa 2025",
+          "description": "Ang K-DOC, isang pandaigdigang platapormang medikal para sa plastic surgery para sa mga kostumer na Thai! Maingat na pinipili ng K-DOC ang nangungunang 5% lamang ng mga klinika para sa plastic surgery at dermatology sa Korea, na nagbibigay sa mga kostumer na Thai ng mapagkakatiwalaan at maaasahang pagpipilian."
+        },
+        {
+          "image": "image_section2.png",
+          "imagePc": "image_section2_pc.png",
+          "title": "Ang plataporma ng plastic surgery na kailangan ng mga customer",
+          "description": "Tingnan ang lahat ng impormasyon tungkol sa mga pamamaraan at mga opsyon sa plastic surgery na gusto mo sa Korea sa isang sulyap, ihambing ang mga aktwal na review at impormasyon sa ospital, at gumawa ng kumpiyansang desisyon. Mula sa mga reserbasyon hanggang sa interpretasyon at pangangalaga pagkatapos ng pamamaraan, ang K-DOC ay nag-aalok ng isang maginhawang karanasan."
+        },
+        {
+          "image": "image_section3.png",
+          "imagePc": "image_section3_pc.png",
+          "title": "Panimula sa mga sikat na ospital sa Korea",
+          "description": "Tinatanggap lamang ng K-DOC ang mga kinikilalang propesyonal sa medisina sa buong mundo at mga beripikadong nangungunang klinika ng plastic surgery sa Korea. Makakaranas ang mga customer na Thai at pandaigdigan ng mga de-kalidad na serbisyo sa plastic surgery sa pamamagitan ng aming mapagkakatiwalaang medical team at mga ligtas na sistema."
+        }
+      ]
+    },
+    "certification": {
+      "title": "Sertipikadong kumpanya na may lisensya sa negosyo ng pag-akit ng dayuhang pasyente",
+      "description": "Ang aming kompanya, ang K-DOC, ay isang kompanyang pang-akit ng mga dayuhang pasyente na opisyal na nakarehistro sa Korea Health Industry Development Institute (KHIDI) sa ilalim ng Ministry of Health and Welfare, at nakapasa sa mahigpit na pagsusuri at pamantayan ng ahensya ng gobyerno.<br><br> Bukod pa rito, bilang isang opisyal na sertipikadong kumpanya na may KRW 100 milyong lisensya at garantiya ng pag-apruba mula sa Seoul Guarantee Insurance (SGI), kwalipikado kami ng gobyerno ng Korea na magbigay ng ligtas at maaasahang serbisyong medikal sa mga dayuhang pasyente.<br><br> Patuloy naming gagawin ang aming makakaya upang makapagbigay ng propesyonal at transparent na serbisyong medikal sa mga pasyente sa buong mundo sa pamamagitan ng pakikipagtulungan sa mga nangungunang institusyong medikal ng Korea.",
+      "certificateLabel": "Sertipiko ng Pagpaparehistro sa Negosyo ng Pag-akit ng Dayuhang Pasyente",
+      "sgiLabel": "Garantiya ng Lisensya, Mga Seguro, at Seguro (SGI)"
+    },
+    "governmentCertified": {
+      "title": "Plataporma ng Turismo Medikal na Sertipikado ng Gobyerno",
+      "description": "Ang K-DOC ay isang kompanyang opisyal na nakarehistro sa Korea Health Industry Development Institute (KHIDI) sa ilalim ng Ministry of Health and Welfare bilang isang kompanyang umaakit ng mga internasyonal na pasyente. Ito ay isang opisyal na sertipikadong plataporma na nakapasa sa mahigpit na pamantayan ng gobyerno para sa screening. Bukod pa rito, ito ay may seguro sa Seoul Guarantee Insurance (SGI) na nagkakahalaga ng KRW 100 milyon sa mga garantiya sa paglilisensya at pag-apruba, na tinitiyak ang ligtas at maaasahang serbisyong medikal para sa mga internasyonal na pasyente.",
+      "certificateLabel": "Sertipiko ng Pagpaparehistro sa Negosyo ng Pag-akit ng Dayuhang Pasyente",
+      "sgiLabel": "Garantiya ng Lisensya, Mga Seguro, at Seguro (SGI)"
+    },
+    "visionV2": {
+      "subtitle": "Maging isang mapagkakatiwalaang pagpipilian sa pangangalagang pangkalusugan para sa mga pasyente sa buong mundo.",
+      "sections": [
+        {
+          "title": "Pandaigdigang Platapormang Medikal",
+          "description": "Ang K-DOC ay isang plataporma na maingat na pumipili lamang ng nangungunang 10% ng mga klinika ng plastic surgery at dermatology sa Korea, na tumutulong sa mga customer sa buong mundo na piliin ang mga ito nang may kumpiyansa at tiwala."
+        },
+        {
+          "title": "Ang Iyong Mapagkakatiwalaang Pagpipilian",
+          "description": "Tinutulungan ka naming gumawa ng isang kumpiyansang pagpili sa pamamagitan ng pagbibigay ng komprehensibong impormasyon tungkol sa mga ninanais na pamamaraan at mga ospital sa Korea at paghahambing ng mga aktwal na pagsusuri. Mula sa mga reserbasyon hanggang sa interpretasyon at pangangalaga pagkatapos ng pamamaraan, madali mong mararanasan ang buong proseso sa isang lugar."
+        },
+        {
+          "title": "Mga Klinika at Ospital na Pinili",
+          "description": "Tampok lamang ng K-DOC ang mga nangungunang klinika, dermatologist, at ospital ng Korea na pinili ayon sa mahigpit na pamantayan. Maaaring makaranas ang mga pandaigdigang kostumer ng mataas na kalidad na serbisyo ng plastic surgery sa pamamagitan ng isang ligtas na sistema sa mga institusyong medikal na nakapasa sa proseso ng beripikasyon ng K-DOC."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Makipag-ugnayan sa amin",
+    "subtitle": "Punong-himpilan ng K-DOC Hanam",
+    "description": "Maligayang pagdating sa punong tanggapan ng K-DOC sa Hanam. Mangyaring makipag-ugnayan sa amin anumang oras.",
+    "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do",
+    "phone": "031-123-4567",
+    "email": "contact@k-doc.com",
+    "mapTitle": "Gabay sa Lokasyon",
+    "copyButton": "Kopyahin ang address",
+    "seoulOffice": {
+      "subtitle": "Sangay ng K-DOC Seoul",
+      "address": "6th floor, Hanju Building, 14 Seolleung-ro 157-gil, Gangnam-gu, Seoul"
+    },
+    "emailInquiry": {
+      "title": "Pagtatanong sa pamamagitan ng email",
+      "description": "Kung makakaranas kayo ng anumang abala habang ginagamit ang serbisyo, mangyaring makipag-ugnayan sa amin sa pamamagitan ng email address sa ibaba.",
+      "button": "Makipag-ugnayan sa amin sa pamamagitan ng email"
+    },
+    "partnershipInquiry": {
+      "title": "Konsultasyon sa aplikasyon sa tindahan ng K-DOC",
+      "button": "Mag-apply para sa isang tindahan"
+    },
+    "gradientText": {
+      "line1": "Makaakit ng mga internasyonal na pasyente",
+      "line2": "Nangungunang medikal",
+      "line3": "Gamit ang plataporma ng turismo"
+    }
+  },
+  "my": {
+    "title": "Aking Pahina",
+    "description": "Maaari mong pamahalaan ang iyong personal na impormasyon at mga setting.",
+    "profile": {
+      "title": "Aking Profile",
+      "editProfile": "I-edit ang Profile",
+      "nicknameChange": "Baguhin ang palayaw",
+      "nameChange": "Pagbabago ng pangalan",
+      "edit": {
+        "title": "I-edit ang Profile",
+        "nickname": "palayaw",
+        "name": "pangalan",
+        "email": "email",
+        "saveButton": "i-save",
+        "cancelButton": "pagkansela",
+        "success": "Matagumpay na na-update ang iyong profile.",
+        "error": "Nagkaroon ng error habang ina-update ang iyong profile.",
+        "placeholders": {
+          "nickname": "Pakilagay ang iyong palayaw",
+          "name": "Pakilagay ang iyong pangalan",
+          "passportNameHelperText": "Pakilagay ang impormasyon nang eksakto kung paano ito nakasaad sa iyong pasaporte, kasama ang mga espasyo."
+        },
+        "errors": {
+          "nicknameRequired": "Pakilagay ang iyong palayaw.",
+          "nameRequired": "Pakilagay ang iyong pangalan.",
+          "nicknameTooShort": "Ang palayaw ay dapat na hindi bababa sa 2 karakter ang haba.",
+          "nameTooShort": "Ang pangalan ay dapat na hindi bababa sa dalawang karakter ang haba."
+        },
+        "loading": "Kinukuha ang impormasyon ng gumagamit...",
+        "errorTitle": "pagkakamali",
+        "changePassword": "Baguhin ang iyong password"
+      },
+      "passwordChange": {
+        "title": "Baguhin ang password",
+        "completeButton": "kumpleto",
+        "currentPassword": "Umiiral nang password",
+        "newPassword": "Password na babaguhin",
+        "confirmPassword": "Kumpirmahin ang password para baguhin",
+        "placeholders": {
+          "currentPassword": "Pakilagay ang iyong kasalukuyang password",
+          "newPassword": "Password na may 6 na karakter o higit pa",
+          "confirmPassword": "Pakilagay muli ang iyong password"
+        },
+        "errors": {
+          "currentPasswordRequired": "Pakilagay ang iyong kasalukuyang password.",
+          "currentPasswordInvalid": "Mali ang kasalukuyang password.",
+          "newPasswordRequired": "Pakilagay ang password na gusto mong baguhin.",
+          "newPasswordTooShort": "Ang password ay dapat na hindi bababa sa 6 na karakter ang haba.",
+          "confirmPasswordRequired": "Pakilagay ang kumpirmasyon ng iyong password.",
+          "passwordMismatch": "Hindi tugma ang password.",
+          "updateFailed": "Nagkaroon ng error habang binabago ang iyong password."
+        }
+      }
+    },
+    "activity": {
+      "title": "aktibidad",
+      "savedList": "Aking Naka-save na Listahan"
+    },
+    "activityStats": {
+      "myPosts": "Mga artikulong isinulat ko",
+      "consultationChatList": "Listahan ng Chat para sa Pagpapayo"
+    },
+    "notification": {
+      "title": "alarma",
+      "myPosts": "Mga post na isinulat ko",
+      "eventService": "Abiso sa Benepisyo ng Kaganapan/Serbisyo"
+    },
+    "customerService": {
+      "title": "sentro ng serbisyo sa customer",
+      "email": "email",
+      "phone": "tawag sa telepono",
+      "phoneNumber": "1588-6930"
+    },
+    "account": {
+      "title": "kuwenta",
+      "logout": "mag-log out",
+      "deleteAccount": "Kanselahin ang pagiging miyembro",
+      "deleteAccountConfirm": "Sigurado ka bang gusto mong kanselahin ang iyong membership? Made-deactivate ang iyong account at kakailanganin mong makipag-ugnayan sa customer service para muling i-activate ito.",
+      "deleteAccountError": "Nagkaroon ng error habang sinusubukang kanselahin ang iyong membership. Pakisubukang muli."
+    }
+  },
+  "taxiReservation": {
+    "title": "Pagreserba ng taksi",
+    "buttonText": "Mag-book ng taxi",
+    "internationalTaxi": "Internasyonal na Taksi",
+    "uberTaxi": "Uber na taksi"
+  },
+  "noticeSection": {
+    "title": "Tingnan ang mga pinakabagong balita!",
+    "buttonText": "Pumunta sa paunawa"
+  },
+  "comments": {
+    "title": "Mga Komento",
+    "form": {
+      "placeholder": "Mag-iwan po kayo ng komento.",
+      "submit": "pagpaparehistro",
+      "submitting": "Nagsusulat...",
+      "loginRequired": "Kailangan mong mag-log in para makapag-post ng komento.",
+      "loginButton": "mag-log in"
+    },
+    "list": {
+      "empty": "Maging una na magkomento!",
+      "error": "Nagkaroon ng error habang nilo-load ang mga komento.",
+      "loading": "Naglo-load...",
+      "loadMore": "tingnan ang higit pa"
+    },
+    "time": {
+      "justNow": "Ngayon lang",
+      "minutesAgo": "ilang minuto ang nakalipas",
+      "hoursAgo": "matagal na ang nakalipas",
+      "daysAgo": "Isang araw na ang nakalipas"
+    }
+  },
+  "doctor": {
+    "career": "maikling kasaysayan",
+    "careerAndActivity": "Karera at mga Aktibidad",
+    "noCareerInfo": "Walang impormasyon tungkol sa karera.",
+    "affiliatedHospital": "Kaakibat na ospital",
+    "reviews": "Pagsusuri pagkatapos ng paggamot",
+    "viewAllReviews": "Tingnan Lahat",
+    "share": {
+      "title": "Tingnan ang impormasyon ng doktor",
+      "text": "Tingnan ang mga detalye"
+    }
+  },
+  "package": {
+    "allInOnePackage": {
+      "title": "Reserbasyon para sa lahat-sa-isang pakete",
+      "subtitle": "Mag-book ng lahat ng serbisyo nang sabay-sabay, kasama ang mga sasakyan at interpretasyon.",
+      "vanSelection": "Pagpili ng Sasakyan",
+      "exploreClinics": "Galugarin ang mga Klinika",
+      "fastReservationGuarantee": "Garantiya ng Mabilis na Pagrereserba",
+      "bubbleText": "Kunin ang iyong mga benepisyo ngayon"
+    },
+    "vanReservation": {
+      "title": "Pag-reserve ng sasakyan",
+      "subtitle": "Damhin ang komportableng paglalakbay gamit ang aming premium na serbisyo ng van.",
+      "vanTypes": {
+        "standard": {
+          "name": "Karaniwang Van",
+          "description": "Pangunahin at komportableng paggalaw",
+          "capacity": "Hanggang 7 pasahero"
+        },
+        "premium": {
+          "name": "Premium na Van",
+          "description": "Premium na serbisyo para sa mas mataas na kaginhawahan",
+          "capacity": "Hanggang 7 pasahero"
+        },
+        "luxury": {
+          "name": "mamahaling van",
+          "description": "Ang sukdulang karanasan sa luho",
+          "capacity": "Hanggang 7 pasahero"
+        }
+      },
+      "serviceType": {
+        "label": "Uri ng Serbisyo",
+        "oneWay": "isang daan",
+        "hourlyCharter": "Part-time na pagrenta (6 na oras)"
+      },
+      "picketing": {
+        "label": "Serbisyo ng piket",
+        "description": "Susunduin sa airport na may name tag",
+        "price": "+$4"
+      },
+      "form": {
+        "pickupLocation": {
+          "label": "Lokasyon ng pagkuha",
+          "placeholder": "Pakilagay ang lokasyon ng iyong pagkuha"
+        },
+        "dropoffLocation": {
+          "label": "Lokasyon ng pagdating",
+          "placeholder": "Pakilagay ang lokasyon ng iyong pagdating"
+        },
+        "pickupDate": {
+          "label": "Petsa ng pagkuha",
+          "placeholder": "Pumili ng petsa"
+        },
+        "pickupTime": {
+          "label": "Oras ng pagsundo",
+          "placeholder": "Pumili ng oras"
+        },
+        "passengerCount": {
+          "label": "Bilang ng mga pasahero",
+          "placeholder": "Piliin ang bilang ng mga tao"
+        },
+        "luggage": {
+          "label": "Bilang ng mga piraso ng bagahe",
+          "placeholder": "Piliin ang bilang ng mga piraso ng bagahe"
+        },
+        "contactInfo": {
+          "label": "Impormasyon sa Pakikipag-ugnayan",
+          "name": "pangalan",
+          "phone": "numero ng telepono",
+          "email": "email",
+          "namePlaceholder": "Pakilagay ang iyong pangalan",
+          "phonePlaceholder": "Pakilagay ang numero ng iyong telepono",
+          "emailPlaceholder": "Pakilagay ang iyong email address"
+        }
+      },
+      "price": {
+        "base": "Pangunahing rate",
+        "picketing": "Pagpiket",
+        "total": "Kabuuang halaga",
+        "currency": "USD"
+      },
+      "buttons": {
+        "selectVan": "Piliin",
+        "payment": "Magbayad",
+        "paymentComingSoon": "Inihahanda na ang tungkulin sa pagbabayad"
+      },
+      "validation": {
+        "vanTypeRequired": "Mangyaring piliin ang uri ng iyong sasakyan",
+        "serviceTypeRequired": "Mangyaring pumili ng uri ng serbisyo",
+        "pickupLocationRequired": "Pakilagay ang lokasyon ng iyong pagkuha",
+        "dropoffLocationRequired": "Pakilagay ang lokasyon ng iyong pagdating",
+        "pickupDateRequired": "Pumili ng petsa ng pagkuha",
+        "pickupTimeRequired": "Pumili ng oras ng pagkuha",
+        "passengerCountRequired": "Mangyaring piliin ang bilang ng mga pasahero",
+        "nameRequired": "Pakilagay ang iyong pangalan",
+        "phoneRequired": "Pakilagay ang numero ng iyong telepono",
+        "emailRequired": "Pakilagay ang iyong email address",
+        "emailInvalid": "Mangyaring maglagay ng wastong email address"
+      }
+    }
+  },
+  "payment": {
+    "title": "bayad",
+    "loading": {
+      "preparing": "Inihahanda ang bayad...",
+      "processing": "Pinoproseso na ang bayad...",
+      "sdkLoading": "Naglo-load ng modyul ng pagbabayad...",
+      "signGenerating": "Bineberipika ang impormasyon sa pagbabayad...",
+      "windowOpening": "Binubuksan ang palugit ng pagbabayad...",
+      "tips": [
+        "☕️ Mangyaring maghintay sandali. Naghahanda kami ng ligtas na pagbabayad.",
+        "✨ Paano kaya kung tingnan mo ulit ang impormasyon ng iyong pagbabayad?",
+        "💎 Pinapanatili naming ligtas ang iyong mahalagang impormasyon",
+        "🎉 Malapit na matapos! Malapit na!"
+      ]
+    },
+    "info": {
+      "title": "Impormasyon sa Pagbabayad",
+      "productName": "Pangalan ng produkto",
+      "amount": "Halaga ng bayad",
+      "orderId": "Numero ng order",
+      "currency": "tawag"
+    },
+    "error": {
+      "missingParams": "Mali ang impormasyon sa pagbabayad.",
+      "invalidAmount": "Hindi wasto ang halaga ng bayad.",
+      "invalidCurrency": "Hindi sinusuportahan ang perang ito.",
+      "sdkNotLoaded": "Nagkaroon ng error habang nilo-load ang payment module.",
+      "sdkTimeout": "Naubusan ng oras ang pag-load ng payment module. Paki-refresh ang pahina.",
+      "signGenerationFailed": "Nabigong makabuo ng lagda sa pagbabayad.",
+      "signNetworkError": "Nabigo ang paggawa ng lagda dahil sa error sa network. Pakisuri ang iyong koneksyon sa Internet.",
+      "signTimeout": "Naubusan ng oras ang pagbuo ng lagda. Pakisubukang muli.",
+      "paymentFailed": "Nabigo ang kahilingan sa pagbabayad.",
+      "paymentCancelled": "Nakansela na ang iyong bayad.",
+      "unknownError": "Isang hindi kilalang error ang naganap.",
+      "retry": "Subukan muli",
+      "goHome": "Umuwi ka na"
+    },
+    "success": {
+      "title": "Nakumpleto na ang bayad",
+      "message": "Matagumpay na natapos ang pagbabayad.",
+      "orderId": "Numero ng order",
+      "transactionId": "Numero ng transaksyon",
+      "goHome": "Umuwi ka na",
+      "missingInfo": "Hindi makuha ang impormasyon ng order."
+    },
+    "failure": {
+      "title": "Nabigo ang pagbabayad",
+      "message": "Nagkaroon ng error habang pinoproseso ang iyong bayad.",
+      "errorCode": "Kodigo ng error",
+      "errorMessage": "Mensahe ng error",
+      "retry": "Subukan muli",
+      "goHome": "Umuwi ka na",
+      "noErrorInfo": "Hindi masuri ang impormasyon ng error."
+    },
+    "cancelReservation": {
+      "noPaymentCancel": "Kinansela ang reserbasyon dahil hindi nakumpleto ang pagbabayad.",
+      "processing": "Matagumpay na natanggap ang pagkansela ng iyong reserbasyon. Ang mga pagkansela ng bayad (mga refund) ay ipoproseso nang sunud-sunod ayon sa proseso ng pag-apruba ng kumpanya ng pagbabayad, at aabisuhan ka nang hiwalay pagkatapos makumpleto."
+    }
+  }
+}

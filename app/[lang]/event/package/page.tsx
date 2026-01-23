@@ -42,6 +42,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     'zh-Hant': mainZhImage,
     ja: mainJaImage,
     hi: mainHiImage,
+    tl: mainEnImage, // Fallback to English for now
   };
   const mainImage = mainImages[lang];
 
@@ -53,6 +54,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     'zh-Hant': priceZhImage,
     ja: priceJaImage,
     hi: priceHiImage,
+    tl: priceEnImage, // Fallback to English for now
   };
   const priceImage = priceImages[lang];
 

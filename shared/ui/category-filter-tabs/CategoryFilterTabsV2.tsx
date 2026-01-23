@@ -43,6 +43,8 @@ export function CategoryFilterTabsV2({
         th_TH: 'ทั้งหมด',
         zh_TW: '全部',
         ja_JP: 'すべて',
+        hi_IN: 'सभी',
+        tl_PH: 'Lahat',
       } satisfies LocalizedText,
     },
     ...medicalSpecialties.map((specialty) => ({

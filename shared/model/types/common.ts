@@ -1,6 +1,7 @@
 import { Locale } from '@/shared/config';
 import { type Prisma } from '@prisma/client';
 import { type DatabaseLocale } from 'shared/lib/localized-text';
+import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
 
 // 다국어 텍스트 타입
 export interface LocalizedText {
@@ -10,6 +11,7 @@ export interface LocalizedText {
   zh_TW?: string;
   ja_JP?: string;
   hi_IN?: string;
+  tl_PH?: string;
 }
 
 // 가격 정보 타입
@@ -94,24 +96,14 @@ export function getLocalizedText(text: LocalizedText, locale: DatabaseLocale): s
     text.zh_TW ||
     text.ja_JP ||
     text.hi_IN ||
+    text.tl_PH ||
     ''
   );
 }
 
 // Locale을 LocalizedText 언어 코드로 변환하는 함수
 export function getLocalizedTextByLocale(text: LocalizedText, locale: Locale): string {
-  const localeKey =
-    locale === 'ko'
-      ? 'ko_KR'
-      : locale === 'en'
-        ? 'en_US'
-        : locale === 'th'
-          ? 'th_TH'
-          : locale === 'zh-Hant'
-            ? 'zh_TW'
-            : locale === 'ja'
-              ? 'ja_JP'
-              : 'hi_IN';
+  const localeKey = localeToDatabaseLocale(locale);
   return (
     text[localeKey] ||
     text.ko_KR ||
@@ -120,6 +112,7 @@ export function getLocalizedTextByLocale(text: LocalizedText, locale: Locale): s
     text.zh_TW ||
     text.ja_JP ||
     text.hi_IN ||
+    text.tl_PH ||
     ''
   );
 }

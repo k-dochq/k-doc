@@ -7,6 +7,7 @@ import { createClient } from 'shared/lib/supabase/client';
 import { generateNickname } from 'shared/lib/nickname-generator';
 import { trackSignUpComplete, trackCompleteRegistration } from 'shared/lib/analytics';
 import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
+import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
 
 interface UseEmailSignupParams {
   locale: Locale;
@@ -53,16 +54,8 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
         avoidAmbiguous: true,
       });
 
-      // Locale을 UserLocale 형식으로 변환 (en -> en_US, ko -> ko_KR, th -> th_TH, zh-Hant -> zh_TW, ja -> ja_JP)
-      const localeMap: Record<Locale, string> = {
-        en: 'en_US',
-        ko: 'ko_KR',
-        th: 'th_TH',
-        'zh-Hant': 'zh_TW',
-        ja: 'ja_JP',
-        hi: 'hi_IN',
-      };
-      const userLocale = localeMap[locale] || 'en_US';
+      // Locale을 UserLocale 형식으로 변환
+      const userLocale = localeToDatabaseLocale(locale);
 
       // LocalStorage에서 마케팅 어트리뷰션 데이터 읽기
       const marketingAttribution = getFirstTouch();

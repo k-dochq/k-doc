@@ -75,7 +75,7 @@ export function CustomDateInput({
             year = part1;
             month = part2.padStart(2, '0');
             day = part3.padStart(2, '0');
-          } else if (locale === 'en') {
+          } else if (locale === 'en' || locale === 'en-US') {
             // 미국: MM/DD/YYYY
             year = part3;
             month = part1.padStart(2, '0');
@@ -106,6 +106,7 @@ export function CustomDateInput({
   const getLocale = (): string => {
     if (dict?.auth?.signup?.dateFormat?.includes('Year')) return 'en-US';
     if (dict?.auth?.signup?.dateFormat?.includes('ปี')) return 'th-TH';
+    // tl locale은 영어 형식 사용
     return 'ko-KR';
   };
 
@@ -160,6 +161,7 @@ export function CustomDateInput({
     const locale = getLocale();
     if (locale === 'en-US') return 'MM/DD/YYYY';
     if (locale === 'th-TH') return 'DD/MM/YYYY';
+    // tl locale은 영어 형식 사용
     return 'YYYY.MM.DD';
   };
 

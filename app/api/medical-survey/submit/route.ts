@@ -23,6 +23,7 @@ function getCompletionMessage(locale: Locale): string {
     ja: '医療アンケートが正常に\n完了しました。\nお客様の安全な施術のため、\nご入力いただいた情報を基に\n施術の可否を審査中です。\n多少時間がかかる場合があり、\n確認次第、相談をご案内\nいたします。',
     th: 'แบบสอบถามทางการแพทย์\nเสร็จสมบูรณ์แล้ว\nเพื่อความปลอดภัยในการรักษาของคุณ\nเรากำลังตรวจสอบความเป็นไปได้\nตามข้อมูลที่คุณให้มา\nอาจใช้เวลาสักครู่\nและเราจะแนะนำการปรึกษา\nทันทีที่การตรวจสอบเสร็จสิ้น',
     hi: 'चिकित्सा सर्वेक्षण सफलतापूर्वक\nपूरा हो गया है।\nआपकी सुरक्षित प्रक्रिया सुनिश्चित करने के लिए,\nहम आपके द्वारा प्रदान की गई जानकारी के आधार पर\nव्यवहार्यता की समीक्षा कर रहे हैं।\nइसमें कुछ समय लग सकता है, और\nसमीक्षा पूरी होते ही हम आपको\nपरामर्श के माध्यम से मार्गदर्शन करेंगे।',
+    tl: 'Medical survey has been\nsuccessfully completed.\nTo ensure your safe procedure,\nwe are reviewing the feasibility\nbased on the information you provided.\nThis may take some time, and\nwe will guide you through consultation\nas soon as the review is complete.',
   };
 
   return messages[locale] || messages.ko;

@@ -21,6 +21,7 @@ export function LoginContentV2({ lang, dict, redirectTo }: LoginContentV2Props) 
     'zh-Hant': { src: '/images/premium/premium_zh.png', width: 312, height: 269 },
     ja: { src: '/images/premium/premium_ja.png', width: 312, height: 269 },
     hi: { src: '/images/premium/premium_hi.png', width: 312, height: 269 },
+    tl: { src: '/images/premium/premium_en.png', width: 312, height: 269 },
   };
 
   const imageConfig = imageConfigByLocale[lang];

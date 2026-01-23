@@ -89,6 +89,7 @@ export function DatePicker({
 
     if (locale === 'ko') return '날짜를 선택해주세요';
     if (locale === 'th') return 'เลือกวันที่';
+    if (locale === 'tl') return 'Pumili ng petsa';
     return 'Select date';
   };
 

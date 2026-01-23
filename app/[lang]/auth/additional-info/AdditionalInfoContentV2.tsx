@@ -11,6 +11,7 @@ import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution
 import { trackSignUpComplete, trackCompleteRegistration } from 'shared/lib/analytics';
 import { AdditionalInfoStep1FormV2 } from 'features/social-auth/ui/AdditionalInfoStep1FormV2';
 import { AdditionalInfoStep2V2 } from 'features/social-auth/ui/AdditionalInfoStep2V2';
+import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
 
 interface AdditionalInfoContentV2Props {
   lang: Locale;
@@ -128,16 +129,8 @@ export function AdditionalInfoContentV2({
         ? `${formData.countryCode}${formData.phoneNumberOnly}`
         : formData.phoneNumberOnly;
 
-    // Locale을 UserLocale 형식으로 변환 (en -> en_US, ko -> ko_KR, th -> th_TH, zh-Hant -> zh_TW, ja -> ja_JP)
-    const localeMap: Record<Locale, string> = {
-      en: 'en_US',
-      ko: 'ko_KR',
-      th: 'th_TH',
-      'zh-Hant': 'zh_TW',
-      ja: 'ja_JP',
-      hi: 'hi_IN',
-    };
-    const userLocale = localeMap[lang] || 'en_US';
+    // Locale을 UserLocale 형식으로 변환
+    const userLocale = localeToDatabaseLocale(lang);
 
     // LocalStorage에서 마케팅 어트리뷰션 데이터 읽기
     const marketingAttribution = getFirstTouch();

@@ -86,19 +86,21 @@ export function formatDate(
     'zh-Hant': 'zh-tw',
     ja: 'ja',
     hi: 'hi',
+    tl: 'en', // Fallback to English for now
   };
 
   const dayjsLocale = dayjsLocales[locale];
   const dayjsDate = dayjs(date).locale(dayjsLocale);
 
   // 로케일별 포맷 설정
-  const localeFormats = {
+  const localeFormats: Record<Locale, string> = {
     ko: 'YYYY년 M월 D일',
     en: 'MMMM D, YYYY',
     th: 'D MMMM YYYY',
     'zh-Hant': 'MMMM D, YYYY',
     ja: 'YYYY年M月D日',
     hi: 'D MMMM YYYY', // 힌디어: "17 सितंबर 2025"
+    tl: 'MMMM D, YYYY', // Fallback to English format
   };
 
   const formatString = localeFormats[locale];
@@ -168,6 +170,14 @@ export function formatRelativeDate(date: Date | string, locale: Locale): string 
       weeksAgo: (weeks: number) => `${weeks} सप्ताह पहले`,
       monthsAgo: (months: number) => `${months} महीने पहले`,
       yearsAgo: (years: number) => `${years} साल पहले`,
+    },
+    tl: {
+      today: 'Today',
+      yesterday: 'Yesterday',
+      daysAgo: (days: number) => `${days} days ago`,
+      weeksAgo: (weeks: number) => `${weeks} weeks ago`,
+      monthsAgo: (months: number) => `${months} months ago`,
+      yearsAgo: (years: number) => `${years} years ago`,
     },
   };
 

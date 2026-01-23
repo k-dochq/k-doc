@@ -177,9 +177,9 @@ export class ProcessRefundWebhookUseCase implements IProcessRefundWebhookUseCase
    */
   private extractLanguageFromReservation(
     reservation: ReservationWithRelations,
-  ): 'ko_KR' | 'en_US' | 'th_TH' {
+  ): 'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH' {
     const metadata = reservation.metadata as Prisma.JsonObject | null;
-    const language = (metadata?.language as 'ko_KR' | 'en_US' | 'th_TH' | undefined) || 'ko_KR';
+    const language = (metadata?.language as 'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH' | undefined) || 'ko_KR';
     return language;
   }
 
@@ -189,7 +189,7 @@ export class ProcessRefundWebhookUseCase implements IProcessRefundWebhookUseCase
   private generateRefundSuccessMessage(reservation: ReservationWithRelations): string {
     const language = this.extractLanguageFromReservation(reservation);
 
-    const messages: Record<'ko_KR' | 'en_US' | 'th_TH', string> = {
+    const messages: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', string> = {
       ko_KR: `예약이 정상적으로 취소되었습니다.
 
 환불이 완료되었습니다.`,
@@ -199,6 +199,9 @@ The refund has been completed.`,
       th_TH: `การจองของคุณถูกยกเลิกเรียบร้อยแล้วค่ะ
 
 การคืนเงินเสร็จสมบูรณ์แล้วค่ะ`,
+      tl_PH: `Your reservation has been successfully cancelled.
+
+The refund has been completed.`,
     };
 
     return messages[language] || messages.ko_KR;
@@ -213,7 +216,7 @@ The refund has been completed.`,
   ): string {
     const language = this.extractLanguageFromReservation(reservation);
 
-    const messages: Record<'ko_KR' | 'en_US' | 'th_TH', string> = {
+    const messages: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', string> = {
       ko_KR: `환불 처리 중 오류가 발생했습니다.
 
 PG사 오류: ${errorMessage}
@@ -229,6 +232,11 @@ Please contact customer service.`,
 ข้อผิดพลาดจากระบบชำระเงิน: ${errorMessage}
 
 กรุณาติดต่อฝ่ายบริการลูกค้าค่ะ`,
+      tl_PH: `An error occurred during the refund process.
+
+Payment gateway error: ${errorMessage}
+
+Please contact customer service.`,
     };
 
     return messages[language] || messages.ko_KR;

@@ -185,7 +185,7 @@ export async function getReviewDetail({
         district: {
           name: review.Hospital.District?.name
             ? parseLocalizedText(review.Hospital.District.name)
-            : { ko_KR: '', en_US: '', th_TH: '', zh_TW: '', ja_JP: '', hi_IN: '' },
+            : { ko_KR: '', en_US: '', th_TH: '', zh_TW: '', ja_JP: '', hi_IN: '', tl_PH: '' },
           displayName: review.Hospital.District?.displayName
             ? parseLocalizedText(review.Hospital.District.displayName)
             : null,
