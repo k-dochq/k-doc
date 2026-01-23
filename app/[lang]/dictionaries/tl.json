@@ -408,11 +408,7 @@
       "alreadyHaveAccount": "Mayroon ka nang account?",
       "loginLink": "Mag-log in",
       "termsAgreement": {
-        "title": [
-          "K-DOC",
-          "Para magamit ang serbisyo",
-          "Sumang-ayon po kayo"
-        ],
+        "title": ["K-DOC", "Para magamit ang serbisyo", "Sumang-ayon po kayo"],
         "allAgreed": "Buong kasunduan",
         "age14Plus": "Dapat ay 14 taong gulang o pataas.",
         "termsOfService": "Mga Tuntunin ng Serbisyo (Kinakailangan)",
@@ -1762,10 +1758,7 @@
             },
             {
               "category": "Mga kaugnay na katanungan at mga paraan ng pag-alis ng pinsala",
-              "content": [
-                "Kagawaran ng Serbisyo: CS",
-                "Makipag-ugnayan: all@k-doc.kr"
-              ]
+              "content": ["Kagawaran ng Serbisyo: CS", "Makipag-ugnayan: all@k-doc.kr"]
             }
           ]
         }
@@ -2130,9 +2123,9 @@
       "title": "Reserbasyon para sa lahat-sa-isang pakete",
       "subtitle": "Mag-book ng lahat ng serbisyo nang sabay-sabay, kasama ang mga sasakyan at interpretasyon.",
       "vanSelection": "Pagpili ng Sasakyan",
-      "exploreClinics": "Galugarin ang mga Klinika",
+      "exploreClinics": "Explore Clinics",
       "fastReservationGuarantee": "Garantiya ng Mabilis na Pagrereserba",
-      "bubbleText": "Kunin ang iyong mga benepisyo ngayon"
+      "bubbleText": "Get your benefits ngayon"
     },
     "vanReservation": {
       "title": "Pag-reserve ng sasakyan",
