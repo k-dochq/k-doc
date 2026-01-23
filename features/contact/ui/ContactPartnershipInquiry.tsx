@@ -24,6 +24,8 @@ function getPartnershipFormLink(lang: Locale): string {
       return 'https://forms.gle/E7oupAThzbqeqwio7';
     case 'hi':
       return 'https://forms.gle/sLV7iFcqgLY9nRYL6';
+    case 'tl':
+      return 'https://forms.gle/16sX6Se2bsuBUjLo7';
     default:
       return 'https://forms.gle/mm882V8DZLyAgtVA6';
   }
