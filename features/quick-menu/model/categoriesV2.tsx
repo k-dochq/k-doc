@@ -187,7 +187,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '其他',
       ja_JP: 'その他',
       hi_IN: 'अन्य',
-      tl_PH: 'Iba pa',
+      tl_PH: 'Others',
     },
   },
 ];
