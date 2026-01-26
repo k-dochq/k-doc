@@ -31,10 +31,10 @@ export function ReservationPaymentInfo({
         {dict.consultation?.reservationDetail?.paymentInfo || '결제 정보'}
       </p>
       <div className='flex flex-col gap-1'>
-        {/* 예약금 */}
+        {/* Service Charge */}
         <div className='flex gap-2 text-base leading-[24px]'>
           <p className='font-medium text-[#404040]'>
-            {dict.consultation?.reservationDetail?.deposit || '예약금'}
+            {dict.consultation?.reservationDetail?.deposit || 'Service Charge'}
           </p>
           <p className='font-normal text-[#737373]'>
             {depositAmountInCurrency} {currency}

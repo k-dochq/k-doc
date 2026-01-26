@@ -398,13 +398,13 @@ const RESERVATION_CONFIRMATION_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | '
 - 시술명: {procedureName}
 - 시술 예약 날짜: {date}
 - 시술 예약 시간: {time}
-- 예약금: {amount} USD
+- 서비스 요금: {amount} USD
 
 [ 유의사항 ]
 - 입금 기한 내 입금이 확인되지 않는 경우 예약은 자동 취소됩니다.
-- 예약금은 예약 확정 대행 비용입니다.
+- 서비스 요금은 예약 확정 대행 비용입니다.
 - 시술 비용은 현장 상담 후 결정되며 현장에서 결제 진행하셔야 합니다.
-- 시술 진행여부와 관련 없이 예약금은 환불되지 않습니다.`,
+- 시술 진행여부와 관련 없이 서비스 요금은 환불되지 않습니다.`,
   en_US: `Reservation Confirmed
 
 [ Details ]
@@ -412,13 +412,13 @@ const RESERVATION_CONFIRMATION_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | '
 - Procedure: {procedureName}
 - Reservation Date: {date}
 - Reservation Time: {time}
-- Deposit: {amount} USD
+- Service Charge: {amount} USD
 
 [ Important Notes ]
 - Reservation will be automatically cancelled if payment is not received by the deadline.
-- Deposit is a reservation confirmation fee.
+- Service Charge is a reservation confirmation fee.
 - Procedure cost will be determined after on-site consultation and payment will be made on-site.
-- Deposit is non-refundable regardless of procedure completion.`,
+- Service Charge is non-refundable regardless of procedure completion.`,
   th_TH: `ยืนยันการจอง
 
 [ รายละเอียด ]
@@ -426,13 +426,13 @@ const RESERVATION_CONFIRMATION_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | '
 - ขั้นตอน: {procedureName}
 - วันที่จอง: {date}
 - เวลาจอง: {time}
-- ค่ามัดจำ: {amount} USD
+- ค่าบริการ: {amount} USD
 
 [ ข้อควรระวัง ]
 - การจองจะถูกยกเลิกโดยอัตโนมัติหากไม่ได้รับเงินภายในกำหนดเวลา
-- ค่ามัดจำเป็นค่าธรรมเนียมการยืนยันการจอง
+- ค่าบริการเป็นค่าธรรมเนียมการยืนยันการจอง
 - ค่าใช้จ่ายในการทำหัตถการจะถูกกำหนดหลังจากการปรึกษาที่สถานที่และการชำระเงินจะทำที่สถานที่
-- ค่ามัดจำไม่สามารถคืนเงินได้ไม่ว่าจะทำหัตถการเสร็จหรือไม่`,
+- ค่าบริการไม่สามารถคืนเงินได้ไม่ว่าจะทำหัตถการเสร็จหรือไม่`,
   tl_PH: `Reservation Confirmed
 
 [ Details ]
@@ -440,13 +440,13 @@ const RESERVATION_CONFIRMATION_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | '
 - Procedure: {procedureName}
 - Reservation Date: {date}
 - Reservation Time: {time}
-- Deposit: {amount} USD
+- Service Charge: {amount} USD
 
 [ Important Notes ]
 - Reservation will be automatically cancelled if payment is not received by the deadline.
-- Deposit is a reservation confirmation fee.
+- Service Charge is a reservation confirmation fee.
 - Procedure cost will be determined after on-site consultation and payment will be made on-site.
-- Deposit is non-refundable regardless of procedure completion.`,
+- Service Charge is non-refundable regardless of procedure completion.`,
 };
 
 /**
@@ -460,7 +460,7 @@ const PAYMENT_FAILURE_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', s
 - 시술명: {procedureName}
 - 시술 예약 날짜: {date}
 - 시술 예약 시간: {time}
-- 예약금: {amount} USD
+- 서비스 요금: {amount} USD
 
 [ 결제 실패 사유 ]
 {errorMessage}
@@ -477,7 +477,7 @@ const PAYMENT_FAILURE_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', s
 - Procedure: {procedureName}
 - Reservation Date: {date}
 - Reservation Time: {time}
-- Deposit: {amount} USD
+- Service Charge: {amount} USD
 
 [ Payment Failure Reason ]
 {errorMessage}
@@ -494,7 +494,7 @@ const PAYMENT_FAILURE_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', s
 - ขั้นตอน: {procedureName}
 - วันที่จอง: {date}
 - เวลาจอง: {time}
-- ค่ามัดจำ: {amount} USD
+- ค่าบริการ: {amount} USD
 
 [ เหตุผลที่การชำระเงินล้มเหลว ]
 {errorMessage}
@@ -511,7 +511,7 @@ const PAYMENT_FAILURE_TEMPLATES: Record<'ko_KR' | 'en_US' | 'th_TH' | 'tl_PH', s
 - Procedure: {procedureName}
 - Reservation Date: {date}
 - Reservation Time: {time}
-- Deposit: {amount} USD
+- Service Charge: {amount} USD
 
 [ Payment Failure Reason ]
 {errorMessage}

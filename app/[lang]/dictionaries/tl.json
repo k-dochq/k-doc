@@ -1,7 +1,7 @@
 {
   "common": {
     "confirm": "tseke",
-    "cancel": "pagkansela",
+    "cancel": "Cancel",
     "today": "ngayon"
   },
   "quickMenu": {
@@ -16,11 +16,11 @@
     }
   },
   "search": {
-    "placeholder": "Maghanap ng mga ospital at mga lugar ng paggamot",
+    "placeholder": "Maghanap ng ospital at mga procedure",
     "resultTitle": "Mga resulta ng paghahanap"
   },
   "hospitalList": {
-    "title": "Ospital na pinakamadalas bisitahin",
+    "title": "Mga Sikat na Ospital",
     "viewAll": "Tingnan Lahat",
     "error": {
       "message": "Nagkaroon ng error habang kinukuha ang impormasyon ng ospital.",
@@ -32,7 +32,7 @@
     }
   },
   "liveReviews": {
-    "title": "Mga matingkad na review sa totoong oras",
+    "title": "Mga Totoong Review",
     "empty": {
       "message": "Walang mga live na review na maipapakita.",
       "description": "May mga bagong live na review na idadagdag sa lalong madaling panahon."
@@ -41,7 +41,7 @@
   "popularReviews": {
     "title": "Mga review na pinakamadalas tingnan",
     "viewAll": "Tingnan Lahat",
-    "reviewCount": "{count} mga review",
+    "reviewCount": "{count} reviews",
     "error": {
       "message": "Nagkaroon ng error habang kinukuha ang impormasyon ng pagsusuri.",
       "retryButton": "Subukan muli"
@@ -139,7 +139,7 @@
     "emptyMessage": "Wala pang mga rehistradong review."
   },
   "hospitalDetailConsultation": {
-    "requestButton": "Kahilingan para sa konsultasyon",
+    "requestButton": "Request Consultation",
     "checking": "Sinusuri..."
   },
   "notices": {
@@ -207,17 +207,17 @@
       "hairTransplant": "paglipat ng buhok"
     },
     "sort": {
-      "popular": "Ayusin ayon sa kasikatan",
-      "recommended": "Inirerekomenda",
-      "latest": "Pinakabago",
-      "ratingHigh": "Ayusin ayon sa pinakamataas na rating",
-      "ratingLow": "Ayusin ayon sa pinakamababang rating"
+      "popular": "Popular",
+      "recommended": "Recommended",
+      "latest": "Newest",
+      "ratingHigh": "Highest Rating",
+      "ratingLow": "Lowest Rating"
     }
   },
   "reviewWrite": {
     "fab": {
-      "ariaLabel": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan",
-      "buttonText": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan"
+      "ariaLabel": "Write Review",
+      "buttonText": "Write Review"
     },
     "selectHospital": {
       "title": "Pagpili ng ospital",
@@ -241,8 +241,8 @@
       }
     },
     "form": {
-      "title": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan",
-      "hospitalInfo": "Impormasyon sa Ospital",
+      "title": "Write Review",
+      "hospitalInfo": "Hospital Information",
       "ratingQuestion": "Kumusta ang iyong karanasan sa pamamaraan?",
       "procedureNameLabel": "[Kinakailangan] Pamamaraan",
       "procedureNamePlaceholder": "Paano mo naisagawa ang pamamaraan?",
@@ -289,8 +289,8 @@
     "content": "Suriin ang nilalaman",
     "backButton": "Bumalik",
     "hospitalInfo": "Impormasyon tungkol sa ospital kung saan isinagawa ang pamamaraan",
-    "hospital": "Ospital kung saan isinagawa ang pamamaraan",
-    "sameHospitalReviews": "Mga pagsusuri ng mga pamamaraan sa parehong ospital"
+    "hospital": "Ospital para sa Pamamaraan",
+    "sameHospitalReviews": "Mga Review sa Parehong Ospital"
   },
   "reviewImages": {
     "beforePhoto": "Larawan bago ang paggamot",
@@ -562,9 +562,9 @@
     }
   },
   "hospitalSort": {
-    "popular": "Ayusin ayon sa kasikatan",
-    "recommended": "Inirerekomenda",
-    "newest": "Bagong utos ng ospital"
+    "popular": "Popular",
+    "recommended": "Rekomendado",
+    "newest": "Newest"
   },
   "review": {
     "like": {
@@ -622,12 +622,12 @@
   },
   "consultation": {
     "title": "tagapayo",
-    "chat": "Konsultasyon Chat",
+    "chat": "Chat",
     "appointment": {
-      "title": "Mga detalye ng reserbasyon",
-      "reservationDateTime": "Petsa at oras ng reserbasyon",
+      "title": "Appointment History",
+      "reservationDateTime": "Reservation Date/Time",
       "region": "rehiyon",
-      "writeReview": "Sumulat ng isang pagsusuri pagkatapos ng pamamaraan",
+      "writeReview": "Write Review",
       "loadingMore": "Naglo-load ng higit pang mga reserbasyon...",
       "allLoaded": "Nakuha na ang lahat ng detalye ng reserbasyon.",
       "completed": "Nakumpleto na ang proseso",
@@ -641,12 +641,12 @@
       "completed": "Nakumpleto na ang proseso",
       "cancelled": "Kinansela ang reserbasyon",
       "procedureName": "Pangalan ng pamamaraan",
-      "paymentInfo": "Impormasyon sa Pagbabayad",
-      "deposit": "Deposito",
+      "paymentInfo": "Payment Information",
+      "deposit": "Service Charge",
       "transferDate": "Petsa at oras ng paglilipat",
-      "hospitalInfo": "Impormasyon sa Ospital",
-      "cancel": "Kanselahin ang reserbasyon",
-      "consultation": "Humingi ng payo",
+      "hospitalInfo": "Hospital Information",
+      "cancel": "Cancel Reservation",
+      "consultation": "Consultation",
       "userInfo": {
         "title": "Impormasyon sa reserbasyon",
         "passportName": "Pangalang Ingles sa pasaporte",
@@ -657,7 +657,7 @@
         "female": "babae"
       }
     },
-    "reservationDateTime": "Petsa at oras ng reserbasyon",
+    "reservationDateTime": "Reservation Date/Time",
     "region": "rehiyon",
     "loading": "Naglo-load...",
     "loadingMessages": "Naglo-load ng mensahe...",
@@ -680,8 +680,8 @@
       }
     },
     "request": {
-      "title": "Kahilingan para sa konsultasyon",
-      "button": "Kahilingan para sa konsultasyon",
+      "title": "Request Consultation",
+      "button": "Request Consultation",
       "backButton": "Bumalik",
       "form": {
         "name": {
@@ -766,7 +766,7 @@
           }
         },
         "required": "mahalaga",
-        "submitButton": "Kahilingan para sa konsultasyon",
+        "submitButton": "Request Consultation",
         "loading": "Naglo-load...",
         "errorMessages": {
           "UNAUTHORIZED": "Dapat kang mag-log in.",
@@ -2090,7 +2090,7 @@
       "placeholder": "Mag-iwan po kayo ng komento.",
       "submit": "pagpaparehistro",
       "submitting": "Nagsusulat...",
-      "loginRequired": "Kailangan mong mag-log in para makapag-post ng komento.",
+      "loginRequired": "Kailangan mong mag-log in para makapagkomento",
       "loginButton": "mag-log in"
     },
     "list": {
@@ -2234,7 +2234,7 @@
       ]
     },
     "info": {
-      "title": "Impormasyon sa Pagbabayad",
+      "title": "Payment Information",
       "productName": "Pangalan ng produkto",
       "amount": "Halaga ng bayad",
       "orderId": "Numero ng order",

@@ -642,7 +642,7 @@
       "cancelled": "Cancelled",
       "procedureName": "Procedure Name",
       "paymentInfo": "Payment Information",
-      "deposit": "Deposit",
+      "deposit": "Service Charge",
       "transferDate": "Transfer Date/Time",
       "hospitalInfo": "Hospital Information",
       "cancel": "Cancel Reservation",
