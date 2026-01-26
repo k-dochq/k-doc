@@ -6,238 +6,238 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-  <loc>https://www.k-doc.kr/th/main</loc>
+  <loc>https://www.k-doc.kr/hi/main</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=EYES</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=EYES</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=NOSE</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=NOSE</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=LIFTING</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=LIFTING</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=FACIAL_CONTOURING</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=FACIAL_CONTOURING</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=BREAST</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=BREAST</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=LIPOSUCTION</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=LIPOSUCTION</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=HAIR_TRANSPLANT</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=HAIR_TRANSPLANT</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=STEM_CELL</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=STEM_CELL</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospitals?category=DERMATOLOGY</loc>
+  <loc>https://www.k-doc.kr/hi/hospitals?category=DERMATOLOGY</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/reviews</loc>
+  <loc>https://www.k-doc.kr/hi/reviews</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/about</loc>
+  <loc>https://www.k-doc.kr/hi/about</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/contact</loc>
+  <loc>https://www.k-doc.kr/hi/contact</loc>
   <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/035d29cf-be68-48f4-b746-c09f72fbb8ee</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/035d29cf-be68-48f4-b746-c09f72fbb8ee</loc>
   <lastmod>2026-01-23T09:27:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/0a63202b-716e-4c05-ad73-20d03bf65cf8</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/0a63202b-716e-4c05-ad73-20d03bf65cf8</loc>
   <lastmod>2026-01-23T09:28:06+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/20198317-7047-4dbd-b58b-78c8ef1a7373</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/20198317-7047-4dbd-b58b-78c8ef1a7373</loc>
   <lastmod>2026-01-23T09:26:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/2904d7bd-27d8-476e-88e1-8bc59087e724</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/2904d7bd-27d8-476e-88e1-8bc59087e724</loc>
   <lastmod>2026-01-23T09:33:11+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/2ab8c3e5-16b8-4632-bdd0-19afa885ffd4</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/2ab8c3e5-16b8-4632-bdd0-19afa885ffd4</loc>
   <lastmod>2026-01-23T09:33:52+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/2ec5f65d-6d5a-40c0-b21a-0aade964a1de</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/2ec5f65d-6d5a-40c0-b21a-0aade964a1de</loc>
   <lastmod>2026-01-23T09:26:26+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/470a1116-1218-49df-9526-b721030e7874</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/470a1116-1218-49df-9526-b721030e7874</loc>
   <lastmod>2026-01-23T09:28:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/4cc545f4-b0a1-496e-ba97-43f30297200a</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/4cc545f4-b0a1-496e-ba97-43f30297200a</loc>
   <lastmod>2026-01-23T09:28:47+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/51f4c2ff-e0e6-4999-a1e1-9a0a81d4e223</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/51f4c2ff-e0e6-4999-a1e1-9a0a81d4e223</loc>
   <lastmod>2026-01-23T09:27:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/5211865b-9bff-4d98-8ca1-38fae259e3b5</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/5211865b-9bff-4d98-8ca1-38fae259e3b5</loc>
   <lastmod>2026-01-23T09:30:53+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/5c54a03a-2213-422f-bed0-9fdbf794c295</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/5c54a03a-2213-422f-bed0-9fdbf794c295</loc>
   <lastmod>2026-01-23T09:29:21+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/5fcc9f87-40db-49f0-9d91-2d83689d0c5c</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/5fcc9f87-40db-49f0-9d91-2d83689d0c5c</loc>
   <lastmod>2026-01-23T09:26:49+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/694812ff-e2ee-4861-a94e-67c9b64b1f72</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/694812ff-e2ee-4861-a94e-67c9b64b1f72</loc>
   <lastmod>2026-01-23T09:24:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/7770d695-e625-47db-93db-2a94640db959</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/7770d695-e625-47db-93db-2a94640db959</loc>
   <lastmod>2026-01-23T09:25:29+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/78978a8f-57ca-41c2-9208-141b2bcc9ecb</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/78978a8f-57ca-41c2-9208-141b2bcc9ecb</loc>
   <lastmod>2026-01-23T09:25:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/87a12623-0b3e-427a-877b-f5e2678d1ffb</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/87a12623-0b3e-427a-877b-f5e2678d1ffb</loc>
   <lastmod>2026-01-23T09:33:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/92a06dc1-89de-429e-ae80-75802b002697</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/92a06dc1-89de-429e-ae80-75802b002697</loc>
   <lastmod>2026-01-23T09:24:26+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/931403cf-cb53-4284-a8db-94aaaa628e6f</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/931403cf-cb53-4284-a8db-94aaaa628e6f</loc>
   <lastmod>2026-01-23T09:34:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/9e028560-fa2e-4b00-8d25-cd54adbe5482</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/9e028560-fa2e-4b00-8d25-cd54adbe5482</loc>
   <lastmod>2026-01-23T09:23:56+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/a142b116-a880-444e-8a08-b565566feff7</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/a142b116-a880-444e-8a08-b565566feff7</loc>
   <lastmod>2026-01-23T09:25:56+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/accdacfc-8e9c-4cd6-85ad-d46198097ba6</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/accdacfc-8e9c-4cd6-85ad-d46198097ba6</loc>
   <lastmod>2026-01-23T09:27:36+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/b18e6336-51ba-4dc5-ac39-1092947c6861</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/b18e6336-51ba-4dc5-ac39-1092947c6861</loc>
   <lastmod>2026-01-23T09:30:16+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/b753dfd2-d560-433e-94f8-decc471ada73</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/b753dfd2-d560-433e-94f8-decc471ada73</loc>
   <lastmod>2026-01-23T09:27:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/b7eb552c-0855-4aed-965d-f66bcb46b645</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/b7eb552c-0855-4aed-965d-f66bcb46b645</loc>
   <lastmod>2026-01-23T09:29:04+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/c21b9841-a94c-40c7-8ff1-a2943b986136</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/c21b9841-a94c-40c7-8ff1-a2943b986136</loc>
   <lastmod>2026-01-23T09:31:51+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/c9556a91-9a3d-4cc3-8bd0-9cd763b72a33</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/c9556a91-9a3d-4cc3-8bd0-9cd763b72a33</loc>
   <lastmod>2026-01-23T09:31:35+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/e85b8cd8-48ee-456e-99d2-1f56fe39d078</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/e85b8cd8-48ee-456e-99d2-1f56fe39d078</loc>
   <lastmod>2026-01-23T09:28:22+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/ebf96382-f042-4b2e-b1b2-86f5b85b49d0</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/ebf96382-f042-4b2e-b1b2-86f5b85b49d0</loc>
   <lastmod>2026-01-23T09:40:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/eca3cbc9-a2bb-4459-8966-a7091dd0678d</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/eca3cbc9-a2bb-4459-8966-a7091dd0678d</loc>
   <lastmod>2026-01-23T09:25:41+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/ed0225a2-8b62-405a-a264-b2e61a33f99f</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/ed0225a2-8b62-405a-a264-b2e61a33f99f</loc>
   <lastmod>2026-01-23T09:31:21+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/efce9a7a-1485-44b7-8adb-efa769ae7eeb</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/efce9a7a-1485-44b7-8adb-efa769ae7eeb</loc>
   <lastmod>2026-01-23T09:29:59+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/f8f66e2f-3e65-4675-a83a-b2ac24389f49</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/f8f66e2f-3e65-4675-a83a-b2ac24389f49</loc>
   <lastmod>2026-01-23T09:30:37+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.k-doc.kr/th/hospital/ffda0620-c254-44db-8b13-ef4ef5d368e5</loc>
+  <loc>https://www.k-doc.kr/hi/hospital/ffda0620-c254-44db-8b13-ef4ef5d368e5</loc>
   <lastmod>2026-01-23T09:24:38+00:00</lastmod>
   <priority>0.80</priority>
 </url>
