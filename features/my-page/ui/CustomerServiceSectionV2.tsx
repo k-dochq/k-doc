@@ -18,9 +18,9 @@ export function CustomerServiceSectionV2({ lang, dict }: CustomerServiceSectionV
     window.location.href = 'mailto:cs@k-doc.kr';
   };
 
-  const title = dict.my?.customerService?.title || '고객센터';
-  const emailLabel = dict.my?.customerService?.email || '이메일';
-  const phoneLabel = dict.my?.customerService?.phone || '전화';
+  const title = dict.my?.customerService?.title || 'Customer Service';
+  const emailLabel = dict.my?.customerService?.email || 'Email';
+  const phoneLabel = dict.my?.customerService?.phone || 'Phone';
 
   return (
     <div className='flex w-full flex-col'>

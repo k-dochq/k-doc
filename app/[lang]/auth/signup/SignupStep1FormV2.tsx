@@ -45,15 +45,15 @@ export function SignupStep1FormV2({
   }));
 
   const genderOptions = [
-    { value: 'female', label: dict.auth?.signup?.genders?.female || '여성' },
-    { value: 'male', label: dict.auth?.signup?.genders?.male || '남성' },
+    { value: 'female', label: dict.auth?.signup?.genders?.female || 'Female' },
+    { value: 'male', label: dict.auth?.signup?.genders?.male || 'Male' },
   ] as const;
 
   return (
     <>
       <form id={formId} className='flex flex-col gap-5 p-5'>
         <InputFieldV2
-          label={dict.auth?.signup?.email || '이메일'}
+          label={dict.auth?.signup?.email || 'Email'}
           required
           type='email'
           value={formData.email}
@@ -64,66 +64,66 @@ export function SignupStep1FormV2({
         />
 
         <InputFieldV2
-          label={dict.auth?.signup?.password || '비밀번호'}
+          label={dict.auth?.signup?.password || 'Password'}
           required
           type='password'
           value={formData.password}
           onChange={(e) => onUpdateField('password', e.target.value)}
-          placeholder={dict.auth?.signup?.placeholders?.password || '6자 이상의 비밀번호'}
+          placeholder={dict.auth?.signup?.placeholders?.password || '6+ characters'}
           error={errors.password}
           disabled={isBusy}
         />
 
         <InputFieldV2
-          label={dict.auth?.signup?.confirmPassword || '비밀번호 확인'}
+          label={dict.auth?.signup?.confirmPassword || 'Confirm Password'}
           required
           type='password'
           value={formData.confirmPassword}
           onChange={(e) => onUpdateField('confirmPassword', e.target.value)}
           placeholder={
-            dict.auth?.signup?.placeholders?.confirmPassword || '비밀번호를 다시 입력하세요'
+            dict.auth?.signup?.placeholders?.confirmPassword || 'Confirm your password'
           }
           error={errors.confirmPassword}
           disabled={isBusy}
         />
 
         <InputFieldV2
-          label={dict.auth?.signup?.passportName || '여권 영문 이름'}
+          label={dict.auth?.signup?.passportName || 'Passport Name (English)'}
           required
           type='text'
           value={formData.passportName}
           onChange={(e) => onUpdateField('passportName', e.target.value)}
           placeholder={
-            dict.auth?.signup?.placeholders?.passportName || '여권에 기재된 영문 이름을 입력하세요'
+            dict.auth?.signup?.placeholders?.passportName || 'Enter your passport name in English'
           }
           error={errors.passportName}
           disabled={isBusy}
         />
 
         <SelectFieldV2
-          label={dict.auth?.signup?.nationality || '국적'}
+          label={dict.auth?.signup?.nationality || 'Nationality'}
           value={formData.nationality}
           onChange={(value) => onUpdateField('nationality', value)}
           options={nationalityOptions}
           placeholder={
-            dict.auth?.signup?.placeholders?.nationality || '국적을 선택하세요 (선택사항)'
+            dict.auth?.signup?.placeholders?.nationality || 'Select your nationality'
           }
           error={errors.nationality}
           disabled={isBusy}
         />
 
         <SelectFieldV2
-          label={dict.auth?.signup?.gender || '성별'}
+          label={dict.auth?.signup?.gender || 'Gender'}
           value={formData.gender}
           onChange={(value) => onUpdateField('gender', value)}
           options={genderOptions}
-          placeholder={dict.auth?.signup?.placeholders?.gender || '성별을 선택하세요 (선택사항)'}
+          placeholder={dict.auth?.signup?.placeholders?.gender || 'Select your gender'}
           error={errors.gender}
           disabled={isBusy}
         />
 
         <FormDatePickerV2
-          label={dict.auth?.signup?.birthDate || '생년월일'}
+          label={dict.auth?.signup?.birthDate || 'Date of Birth'}
           value={formData.birthDate ? new Date(formData.birthDate) : undefined}
           onChange={(date) =>
             onUpdateField('birthDate', date ? date.toISOString().split('T')[0] : '')
@@ -131,7 +131,7 @@ export function SignupStep1FormV2({
           locale={lang}
           dict={dict}
           placeholder={
-            dict.auth?.signup?.placeholders?.birthDate || '생년월일을 선택하세요 (선택사항)'
+            dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'
           }
           error={errors.birthDate}
           required={false}
@@ -156,7 +156,7 @@ export function SignupStep1FormV2({
       <div className='h-[112px]' />
 
       <SignupFloatingButton
-        label={dict.auth?.signup?.signupButton || '회원가입'}
+        label={dict.auth?.signup?.signupButton || 'Register'}
         onClick={onNextStep}
         disabled={isBusy}
       />

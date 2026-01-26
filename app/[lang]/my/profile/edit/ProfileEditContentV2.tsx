@@ -23,8 +23,8 @@ export function ProfileEditContentV2({ lang, dict }: ProfileEditContentV2Props) 
     }
   };
 
-  const title = dict.my?.profile?.edit?.title || '프로필 수정';
-  const saveButtonLabel = dict.my?.profile?.edit?.saveButton || '저장';
+  const title = dict.my?.profile?.edit?.title || 'Edit Profile';
+  const saveButtonLabel = dict.my?.profile?.edit?.saveButton || 'Save';
 
   return (
     <div className='min-h-screen bg-neutral-100'>

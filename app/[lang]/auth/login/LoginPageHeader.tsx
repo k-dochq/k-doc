@@ -11,13 +11,13 @@ interface LoginPageHeaderProps {
 export function LoginPageHeader({ lang }: LoginPageHeaderProps) {
   return (
     <div className='flex w-full items-center px-5 py-4'>
-      <LocaleLink href='/main' aria-label={lang === 'ko' ? 'K-DOC 홈으로 이동' : 'Go to K-DOC home'}>
+      <LocaleLink href='/main' aria-label='Go to K-DOC home'>
         <HeaderLogoV2 />
       </LocaleLink>
 
       <LocaleLink
         href='/main'
-        aria-label={lang === 'ko' ? '닫기' : 'Close'}
+        aria-label='Close'
         className='ml-auto flex h-6 w-6 items-center justify-center'
       >
         <svg

@@ -23,8 +23,8 @@ export function PasswordChangeContentV2({ lang, dict }: PasswordChangeContentV2P
     }
   };
 
-  const title = dict.my?.profile?.passwordChange?.title || '비밀번호 변경';
-  const completeButtonLabel = dict.my?.profile?.passwordChange?.completeButton || '완료';
+  const title = dict.my?.profile?.passwordChange?.title || 'Change Password';
+  const completeButtonLabel = dict.my?.profile?.passwordChange?.completeButton || 'Complete';
 
   return (
     <div className='min-h-screen bg-neutral-100'>

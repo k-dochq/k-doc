@@ -65,9 +65,9 @@ export function AccountSectionV2({ lang, dict }: AccountSectionV2Props) {
     }
   };
 
-  const title = dict.my?.account?.title || '계정';
-  const logoutLabel = dict.my?.account?.logout || '로그아웃';
-  const deleteAccountLabel = dict.my?.account?.deleteAccount || '회원탈퇴';
+  const title = dict.my?.account?.title || 'Account';
+  const logoutLabel = dict.my?.account?.logout || 'Logout';
+  const deleteAccountLabel = dict.my?.account?.deleteAccount || 'Delete Account';
 
   return (
     <div className='flex w-full flex-col'>

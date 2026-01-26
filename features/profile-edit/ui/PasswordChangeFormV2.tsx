@@ -80,29 +80,29 @@ export function PasswordChangeFormV2({
     if (!formData.currentPassword.trim()) {
       newErrors.currentPassword =
         dict.my?.profile?.passwordChange?.errors?.currentPasswordRequired ||
-        '기존 비밀번호를 입력해주세요.';
+        'Please enter your current password.';
     }
 
     // 새 비밀번호 검증
     if (!formData.newPassword) {
       newErrors.newPassword =
         dict.my?.profile?.passwordChange?.errors?.newPasswordRequired ||
-        '변경할 비밀번호를 입력해주세요.';
+        'Please enter your new password.';
     } else if (formData.newPassword.length < 6) {
       newErrors.newPassword =
         dict.my?.profile?.passwordChange?.errors?.newPasswordTooShort ||
-        '비밀번호는 최소 6자 이상이어야 합니다.';
+        'Password must be at least 6 characters.';
     }
 
     // 비밀번호 확인 검증
     if (!formData.confirmPassword) {
       newErrors.confirmPassword =
         dict.my?.profile?.passwordChange?.errors?.confirmPasswordRequired ||
-        '비밀번호 확인을 입력해주세요.';
+        'Please confirm your password.';
     } else if (formData.newPassword !== formData.confirmPassword) {
       newErrors.confirmPassword =
         dict.my?.profile?.passwordChange?.errors?.passwordMismatch ||
-        '비밀번호가 일치하지 않습니다.';
+        'Passwords do not match.';
     }
 
     setErrors(newErrors);
@@ -130,7 +130,7 @@ export function PasswordChangeFormV2({
     }
 
     if (!user?.email) {
-      setSubmitError('사용자 정보를 불러올 수 없습니다.');
+      setSubmitError('Unable to load user information.');
       return;
     }
 
@@ -154,7 +154,7 @@ export function PasswordChangeFormV2({
           setErrors({
             currentPassword:
               dict.my?.profile?.passwordChange?.errors?.currentPasswordInvalid ||
-              '기존 비밀번호가 올바르지 않습니다.',
+              'Current password is incorrect.',
           });
         } else {
           setSubmitError(signInError.message);
@@ -171,12 +171,12 @@ export function PasswordChangeFormV2({
       if (updateError) {
         let errorMessage =
           dict.my?.profile?.passwordChange?.errors?.updateFailed ||
-          '비밀번호 변경 중 오류가 발생했습니다.';
+          'An error occurred while changing password.';
 
         if (updateError.message.includes('Password should be at least')) {
           errorMessage =
             dict.my?.profile?.passwordChange?.errors?.newPasswordTooShort ||
-            '비밀번호는 최소 6자 이상이어야 합니다.';
+            'Password must be at least 6 characters.';
         }
 
         setSubmitError(errorMessage);
@@ -192,7 +192,7 @@ export function PasswordChangeFormV2({
         err instanceof Error
           ? err.message
           : dict.my?.profile?.passwordChange?.errors?.updateFailed ||
-            '비밀번호 변경 중 오류가 발생했습니다.';
+            'An error occurred while changing password.';
       setSubmitError(errorMessage);
     } finally {
       setIsLoading(false);
@@ -207,13 +207,13 @@ export function PasswordChangeFormV2({
   return (
     <form id={formId} onSubmit={handleSubmit} className='flex flex-col gap-5 p-5'>
       <InputFieldV2
-        label={dict.my?.profile?.passwordChange?.currentPassword || '기존 비밀번호'}
+        label={dict.my?.profile?.passwordChange?.currentPassword || 'Current Password'}
         type={showCurrentPassword ? 'text' : 'password'}
         value={formData.currentPassword}
         onChange={(e) => updateField('currentPassword', e.target.value)}
         placeholder={
           dict.my?.profile?.passwordChange?.placeholders?.currentPassword ||
-          '기존 비밀번호를 입력하세요'
+          'Enter your current password'
         }
         error={errors.currentPassword}
         disabled={isLoading}
@@ -222,12 +222,12 @@ export function PasswordChangeFormV2({
       />
 
       <InputFieldV2
-        label={dict.my?.profile?.passwordChange?.newPassword || '변경할 비밀번호'}
+        label={dict.my?.profile?.passwordChange?.newPassword || 'New Password'}
         type={showNewPassword ? 'text' : 'password'}
         value={formData.newPassword}
         onChange={(e) => updateField('newPassword', e.target.value)}
         placeholder={
-          dict.my?.profile?.passwordChange?.placeholders?.newPassword || '6자 이상의 비밀번호'
+          dict.my?.profile?.passwordChange?.placeholders?.newPassword || 'At least 6 characters'
         }
         error={errors.newPassword}
         disabled={isLoading}
@@ -236,13 +236,13 @@ export function PasswordChangeFormV2({
       />
 
       <InputFieldV2
-        label={dict.my?.profile?.passwordChange?.confirmPassword || '변경할 비밀번호 확인'}
+        label={dict.my?.profile?.passwordChange?.confirmPassword || 'Confirm New Password'}
         type={showConfirmPassword ? 'text' : 'password'}
         value={formData.confirmPassword}
         onChange={(e) => updateField('confirmPassword', e.target.value)}
         placeholder={
           dict.my?.profile?.passwordChange?.placeholders?.confirmPassword ||
-          '비밀번호를 다시 입력하세요'
+          'Enter your password again'
         }
         error={errors.confirmPassword}
         disabled={isLoading}

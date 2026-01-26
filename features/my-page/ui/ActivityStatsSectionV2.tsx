@@ -17,9 +17,9 @@ export function ActivityStatsSectionV2({ lang, dict }: ActivityStatsSectionV2Pro
   const myPostsCount = data?.myPostsCount ?? 0;
   const consultationChatCount = data?.consultationChatCount ?? 0;
 
-  const myPostsLabel = dict.my?.activityStats?.myPosts || '내가 작성한 글';
+  const myPostsLabel = dict.my?.activityStats?.myPosts || 'My Posts';
   const consultationChatListLabel =
-    dict.my?.activityStats?.consultationChatList || '상담 채팅 목록';
+    dict.my?.activityStats?.consultationChatList || 'Consultation Chats';
 
   return (
     <div className='flex items-center justify-between rounded-xl border border-neutral-200 bg-white py-5'>

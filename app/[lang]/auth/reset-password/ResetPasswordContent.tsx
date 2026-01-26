@@ -19,11 +19,11 @@ export function ResetPasswordContent({ lang, dict, tokenHash, type }: ResetPassw
         <div className='w-full max-w-md space-y-8'>
           <div className='rounded-xl border border-red-200 bg-red-50 p-4'>
             <h3 className='mb-2 text-lg font-semibold text-red-800'>
-              {dict.auth?.resetPassword?.error?.invalidLink?.title || '유효하지 않은 링크'}
+              {dict.auth?.resetPassword?.error?.invalidLink?.title || 'Invalid Link'}
             </h3>
             <p className='text-sm text-red-600'>
               {dict.auth?.resetPassword?.error?.invalidLink?.description ||
-                '비밀번호 재설정 링크가 유효하지 않거나 만료되었습니다. 다시 시도해주세요.'}
+                'The password reset link is invalid or has expired. Please try again.'}
             </p>
           </div>
         </div>
@@ -36,10 +36,10 @@ export function ResetPasswordContent({ lang, dict, tokenHash, type }: ResetPassw
       <div className='w-full max-w-md space-y-8'>
         <div>
           <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>
-            {dict.auth?.resetPassword?.title || '새 비밀번호 설정'}
+            {dict.auth?.resetPassword?.title || 'Set New Password'}
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
-            {dict.auth?.resetPassword?.description || '새로운 비밀번호를 입력해주세요.'}
+            {dict.auth?.resetPassword?.description || 'Enter your new password.'}
           </p>
         </div>
         <ResetPasswordForm lang={lang} dict={dict} tokenHash={tokenHash} />

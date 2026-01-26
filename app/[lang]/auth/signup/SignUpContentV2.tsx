@@ -108,7 +108,7 @@ export function SignUpContentV2({ lang, dict, redirectTo }: SignUpContentV2Props
   return (
     <div className='min-h-screen bg-white'>
       <PageHeaderV2
-        title={dict.auth?.signup?.title || '회원가입'}
+        title={dict.auth?.signup?.title || 'Register'}
         fallbackUrl={`/${lang}/auth/login`}
       />
 
