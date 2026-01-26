@@ -45,7 +45,8 @@ export function ProfileSectionV2({ lang, dict }: ProfileSectionV2Props) {
   const { data: user, isLoading, error } = useUserProfile();
 
   // 사용자 정보가 로딩 중이거나 에러가 있을 때 기본값 표시
-  const displayName = user?.nickName || user?.displayName || user?.name || '사용자';
+  const displayName =
+    user?.nickName || user?.displayName || user?.name || (lang === 'ko' ? '사용자' : 'User');
   const displayEmail = user?.email || 'user@example.com';
 
   if (isLoading) {

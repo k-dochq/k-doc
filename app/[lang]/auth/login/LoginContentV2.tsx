@@ -28,7 +28,7 @@ export function LoginContentV2({ lang, dict, redirectTo }: LoginContentV2Props) 
 
   return (
     <div className='flex min-h-screen flex-col items-center bg-white'>
-      <LoginPageHeader />
+      <LoginPageHeader lang={lang} />
       {/* 프리미엄 이미지 영역 */}
       <div className={lang === 'th' ? 'w-[284px]' : 'w-[312px]'}>
         <Image

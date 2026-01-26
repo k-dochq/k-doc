@@ -1,18 +1,23 @@
 'use client';
 
 import { HeaderLogoV2 } from 'widgets/header/ui/HeaderLogoV2';
+import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';
 
-export function LoginPageHeader() {
+interface LoginPageHeaderProps {
+  lang: Locale;
+}
+
+export function LoginPageHeader({ lang }: LoginPageHeaderProps) {
   return (
     <div className='flex w-full items-center px-5 py-4'>
-      <LocaleLink href='/main' aria-label='K-DOC 홈으로 이동'>
+      <LocaleLink href='/main' aria-label={lang === 'ko' ? 'K-DOC 홈으로 이동' : 'Go to K-DOC home'}>
         <HeaderLogoV2 />
       </LocaleLink>
 
       <LocaleLink
         href='/main'
-        aria-label='닫기'
+        aria-label={lang === 'ko' ? '닫기' : 'Close'}
         className='ml-auto flex h-6 w-6 items-center justify-center'
       >
         <svg
