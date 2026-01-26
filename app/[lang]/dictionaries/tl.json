@@ -589,9 +589,9 @@
   },
   "favorites": {
     "title": "Mga Paborito",
-    "hospitals": "ospital",
+    "hospitals": "Ospital",
     "reviews": "Reviews",
-    "doctors": "doktor",
+    "doctors": "Doktor",
     "loading": "Naglo-load...",
     "error": "Nagkaroon ng error habang naglo-load ng data.",
     "errorMessage": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya.",
@@ -1981,16 +1981,16 @@
     "emailInquiry": {
       "title": "Pagtatanong sa pamamagitan ng email",
       "description": "Kung makakaranas kayo ng anumang abala habang ginagamit ang serbisyo, mangyaring makipag-ugnayan sa amin sa pamamagitan ng email address sa ibaba.",
-      "button": "Makipag-ugnayan sa amin sa pamamagitan ng email"
+      "button": "Send Email Inquiry"
     },
     "partnershipInquiry": {
       "title": "Konsultasyon sa aplikasyon sa tindahan ng K-DOC",
-      "button": "Mag-apply para sa isang tindahan"
+      "button": "Apply for Partnership"
     },
     "gradientText": {
-      "line1": "Makaakit ng mga internasyonal na pasyente",
-      "line2": "Nangungunang medikal",
-      "line3": "Gamit ang plataporma ng turismo"
+      "line1": "Get international patients",
+      "line2": "with the leading medical",
+      "line3": "tourism platform"
     }
   },
   "my": {

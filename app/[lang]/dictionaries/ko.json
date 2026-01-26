@@ -1981,16 +1981,16 @@
     "emailInquiry": {
       "title": "이메일 문의",
       "description": "서비스 이용 중 불편 사항이 있으실 경우, 아래 이메일로 문의 주시면 감사하겠습니다.",
-      "button": "이메일 문의하기"
+      "button": "Send Email Inquiry"
     },
     "partnershipInquiry": {
       "title": "K-DOC 입점 신청 상담",
-      "button": "입점 신청하기"
+      "button": "Apply for Partnership"
     },
     "gradientText": {
-      "line1": "국제 환자를 유치하세요",
-      "line2": "선도적인 의료",
-      "line3": "관광 플랫폼과 함께"
+      "line1": "Get international patients",
+      "line2": "with the leading medical",
+      "line3": "tourism platform"
     }
   },
   "my": {
