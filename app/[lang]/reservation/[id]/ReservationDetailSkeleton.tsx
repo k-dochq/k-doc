@@ -91,7 +91,7 @@ export function ReservationDetailSkeleton({
             {/* 타이틀 스켈레톤 */}
             <div className='h-7 w-20 animate-pulse rounded bg-[#e5e5e5]' />
             <div className='flex flex-col gap-1'>
-              {/* 예약금 스켈레톤 */}
+              {/* Service Charge 스켈레톤 */}
               <div className='flex gap-2'>
                 <div className='h-6 w-16 animate-pulse rounded bg-[#e5e5e5]' />
                 <div className='h-6 w-24 animate-pulse rounded bg-[#e5e5e5]' />
