@@ -589,9 +589,9 @@
   },
   "favorites": {
     "title": "Mga Paborito",
-    "hospitals": "ospital",
+    "hospitals": "Ospital",
     "reviews": "Reviews",
-    "doctors": "doktor",
+    "doctors": "Doktor",
     "loading": "Naglo-load...",
     "error": "Nagkaroon ng error habang naglo-load ng data.",
     "errorMessage": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya.",
