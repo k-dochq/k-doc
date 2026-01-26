@@ -1,14 +1,9 @@
 'use client';
 
 import { HeaderLogoV2 } from 'widgets/header/ui/HeaderLogoV2';
-import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';
 
-interface LoginPageHeaderProps {
-  lang: Locale;
-}
-
-export function LoginPageHeader({ lang }: LoginPageHeaderProps) {
+export function LoginPageHeader() {
   return (
     <div className='flex w-full items-center px-5 py-4'>
       <LocaleLink href='/main' aria-label='Go to K-DOC home'>
