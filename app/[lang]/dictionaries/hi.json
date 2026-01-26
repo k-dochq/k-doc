@@ -1981,16 +1981,16 @@
     "emailInquiry": {
       "title": "ईमेल पूछताछ",
       "description": "यदि आपको सेवा का उपयोग करते समय कोई असुविधा होती है, तो कृपया नीचे दिए गए ईमेल पते के माध्यम से हमसे संपर्क करें।",
-      "button": "ईमेल द्वारा हमसे संपर्क करें"
+      "button": "Send Email Inquiry"
     },
     "partnershipInquiry": {
       "title": "के-डॉक स्टोर आवेदन परामर्श",
-      "button": "स्टोर के लिए आवेदन करें"
+      "button": "Apply for Partnership"
     },
     "gradientText": {
-      "line1": "अंतर्राष्ट्रीय रोगियों को आकर्षित करें",
-      "line2": "अग्रणी चिकित्सा",
-      "line3": "पर्यटन मंच के साथ"
+      "line1": "Get international patients",
+      "line2": "with the leading medical",
+      "line3": "tourism platform"
     }
   },
   "my": {

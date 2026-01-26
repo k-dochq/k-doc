@@ -1977,16 +1977,16 @@
     "emailInquiry": {
       "title": "電子郵件諮詢",
       "description": "如果您在使用服務過程中遇到任何不便，請透過以下電子郵件地址與我們聯絡。",
-      "button": "請透過電子郵件聯絡我們"
+      "button": "Send Email Inquiry"
     },
     "partnershipInquiry": {
       "title": "K-DOC商店申請諮詢",
-      "button": "申請店鋪"
+      "button": "Apply for Partnership"
     },
     "gradientText": {
-      "line1": "吸引國際患者",
-      "line2": "與領先的醫療",
-      "line3": "旅遊平台"
+      "line1": "Get international patients",
+      "line2": "with the leading medical",
+      "line3": "tourism platform"
     }
   },
   "my": {

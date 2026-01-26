@@ -1981,16 +1981,16 @@
     "emailInquiry": {
       "title": "メール問い合わせ",
       "description": "サービスご利用中に不便がある場合は、下記メールにてお問い合わせいただきありがとうございます。",
-      "button": "メールでお問い合わせ"
+      "button": "Send Email Inquiry"
     },
     "partnershipInquiry": {
       "title": "K-DOC入店申請相談",
-      "button": "入店を申請する"
+      "button": "Apply for Partnership"
     },
     "gradientText": {
-      "line1": "国際患者を獲得",
-      "line2": "トップクラスの医療",
-      "line3": "観光プラットフォームで"
+      "line1": "Get international patients",
+      "line2": "with the leading medical",
+      "line3": "tourism platform"
     }
   },
   "my": {
