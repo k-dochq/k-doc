@@ -12,40 +12,9 @@ export function LiveReviewCardV2LocationAndHospital({
   dict,
 }: LiveReviewCardV2LocationAndHospitalProps) {
   return (
-    <div className='flex w-full shrink-0 items-center gap-1 overflow-hidden'>
-      <div className='flex min-w-0 shrink items-center gap-1 overflow-hidden'>
-        <p className='relative min-w-0 shrink truncate text-xs leading-4 font-medium text-neutral-400'>
-          {dict.hospital.region}
-        </p>
-        <div className='relative flex h-[10px] w-0 shrink-0 items-center justify-center'>
-          <div className='flex-none rotate-90'>
-            <div className='relative h-0 w-[10px]'>
-              <svg
-                width='10'
-                height='1'
-                viewBox='0 0 10 1'
-                fill='none'
-                xmlns='http://www.w3.org/2000/svg'
-                className='absolute inset-0'
-              >
-                <line y1='0.5' x2='10' y2='0.5' stroke='#A3A3A3' />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div className='relative flex min-w-0 shrink items-center overflow-hidden py-0 pr-0 pl-0.5'>
-          <p className='relative min-w-0 shrink truncate text-xs leading-4 font-medium text-neutral-400'>
-            {location}
-          </p>
-        </div>
-      </div>
-      <div className='relative size-[2px] shrink-0'>
-        <svg width='2' height='2' viewBox='0 0 2 2' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <circle cx='1' cy='1' r='1' fill='#A3A3A3' />
-        </svg>
-      </div>
-      <p className='relative min-w-0 shrink truncate text-xs leading-4 font-medium text-neutral-400'>
-        {hospitalName}
+    <div className='flex w-full min-w-0 shrink-0 items-center overflow-hidden'>
+      <p className='min-w-0 flex-1 truncate text-xs leading-4 font-medium text-neutral-400'>
+        {dict.hospital.region} | {location} · {hospitalName}
       </p>
     </div>
   );
