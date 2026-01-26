@@ -54,6 +54,10 @@ Allow: /
 Allow: /ko/
 Allow: /en/
 Allow: /th/
+Allow: /zh-Hant/
+Allow: /ja/
+Allow: /hi/
+Allow: /tl/
 Disallow: /api/
 Disallow: /*/auth/
 Disallow: /*/my/
@@ -72,6 +76,10 @@ Allow: /
 Allow: /ko/
 Allow: /en/
 Allow: /th/
+Allow: /zh-Hant/
+Allow: /ja/
+Allow: /hi/
+Allow: /tl/
 Disallow: /*/auth/
 Disallow: /api/
 
@@ -121,8 +129,10 @@ Disallow: /
 # Make sure to verify normal response/index structure before actual deployment
 ############################
 Sitemap: https://www.k-doc.kr/sitemap.xml
+Sitemap: https://www.k-doc.kr/sitemap_ko.xml
+Sitemap: https://www.k-doc.kr/sitemap_en.xml
 Sitemap: https://www.k-doc.kr/sitemap_th.xml
-
-# Multi-language sitemaps (add if needed)
-# Sitemap: https://www.k-doc.kr/sitemap_ko.xml
-# Sitemap: https://www.k-doc.kr/sitemap_en.xml
+Sitemap: https://www.k-doc.kr/sitemap_zh-Hant.xml
+Sitemap: https://www.k-doc.kr/sitemap_ja.xml
+Sitemap: https://www.k-doc.kr/sitemap_hi.xml
+Sitemap: https://www.k-doc.kr/sitemap_tl.xml
