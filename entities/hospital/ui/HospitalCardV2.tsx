@@ -86,7 +86,7 @@ export function HospitalCardV2({
           />
 
           {/* 콘텐츠 영역 */}
-          <div className='flex h-[160px] w-full shrink-0 flex-col items-start gap-1 p-3'>
+          <div className='flex h-[187px] w-full shrink-0 flex-col items-start gap-1 p-3'>
             {/* 상단 영역 */}
             <div className='flex w-full shrink-0 flex-col items-start gap-1.5'>
               {/* 카테고리 태그 */}

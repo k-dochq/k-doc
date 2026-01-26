@@ -44,8 +44,8 @@ export function HospitalCardV2Thumbnail({
   };
 
   return (
-    <div className='relative h-[130px] w-full shrink-0 overflow-clip'>
-      <div className='absolute top-[0px] left-0 h-[130px] w-full'>
+    <div className='relative h-[130px] w-full shrink-0 overflow-clip md:h-[156px]'>
+      <div className='absolute top-[0px] left-0 h-[130px] w-full md:h-[156px]'>
         <div className='pointer-events-none relative h-full w-full overflow-hidden'>
           <Image
             alt={alt}

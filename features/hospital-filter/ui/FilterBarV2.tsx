@@ -28,7 +28,7 @@ const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> 
     zh_TW: '熱門',
     ja_JP: '人気順',
     hi_IN: 'लोकप्रिय',
-    tl_PH: 'Ayusin ayon sa kasikatan',
+    tl_PH: 'Popular',
   } satisfies LocalizedText,
   recommended: {
     ko_KR: '추천순',
@@ -37,7 +37,7 @@ const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> 
     zh_TW: '推薦',
     ja_JP: '推奨順',
     hi_IN: 'अनुशंसित',
-    tl_PH: 'Inirerekomenda',
+    tl_PH: 'Recommended',
   } satisfies LocalizedText,
   newest: {
     ko_KR: '신규 병원순',
@@ -46,7 +46,7 @@ const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> 
     zh_TW: '最新',
     ja_JP: '新着',
     hi_IN: 'नवीनतम',
-    tl_PH: 'Bagong utos ng ospital',
+    tl_PH: 'Newest',
   } satisfies LocalizedText,
 };
 
