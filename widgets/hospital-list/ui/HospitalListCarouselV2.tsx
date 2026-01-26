@@ -31,7 +31,7 @@ export function HospitalListCarouselV2({ hospitals, lang, dict }: HospitalListCa
               <React.Fragment key={hospital.id}>
                 <CarouselItem
                   key={hospital.id}
-                  className={`${isFirst ? 'basis-[170px] pl-5' : 'basis-[166px] pl-[16px]'}`}
+                  className={`${isFirst ? 'basis-[170px] pl-5 md:basis-[200px]' : 'basis-[166px] pl-[16px] md:basis-[196px]'}`}
                 >
                   <HospitalCardV2 hospital={hospital} lang={lang} dict={dict} />
                 </CarouselItem>
