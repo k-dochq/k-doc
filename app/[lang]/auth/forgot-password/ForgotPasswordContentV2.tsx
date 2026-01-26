@@ -18,11 +18,11 @@ export function ForgotPasswordContentV2({ lang, dict }: ForgotPasswordContentV2P
   const [emailError, setEmailError] = useState('');
   const { resetPassword, isLoading, error, isSuccess } = usePasswordReset({ locale: lang, dict });
 
-  const title = dict.auth?.forgotPassword?.title || '비밀번호 찾기';
+  const title = dict.auth?.forgotPassword?.title || 'Forgot Password';
   const descriptionLine1 =
-    dict.auth?.forgotPassword?.descriptionLine1 || '가입하신 이메일 주소를 입력하시면';
+    dict.auth?.forgotPassword?.descriptionLine1 || 'Enter your email address';
   const descriptionLine2 =
-    dict.auth?.forgotPassword?.descriptionLine2 || '비밀번호 재설정 링크를 보내드립니다.';
+    dict.auth?.forgotPassword?.descriptionLine2 || "and we'll send you a password reset link.";
 
   const validateEmail = (email: string): boolean => {
     // 빈 이메일은 버튼 비활성화로 처리하므로 여기서는 검증하지 않음
@@ -35,7 +35,7 @@ export function ForgotPasswordContentV2({ lang, dict }: ForgotPasswordContentV2P
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.trim())) {
       setEmailError(
-        dict.auth?.forgotPassword?.errors?.emailInvalid || '올바른 형식으로 입력해주세요.',
+        dict.auth?.forgotPassword?.errors?.emailInvalid || 'Please enter in the correct format.',
       );
       return false;
     }
@@ -72,11 +72,11 @@ export function ForgotPasswordContentV2({ lang, dict }: ForgotPasswordContentV2P
           <div className='mt-8 w-full max-w-md'>
             <div className='rounded-xl border border-green-200 bg-green-50 p-4'>
               <h3 className='mb-2 text-lg font-semibold text-green-800'>
-                {dict.auth?.forgotPassword?.success?.title || '이메일이 전송되었습니다'}
+                {dict.auth?.forgotPassword?.success?.title || 'Email Sent'}
               </h3>
               <p className='text-sm text-green-600'>
                 {dict.auth?.forgotPassword?.success?.description ||
-                  '입력하신 이메일 주소로 비밀번호 재설정 링크를 보내드렸습니다. 이메일을 확인해주세요.'}
+                  "We've sent a password reset link to your email address. Please check your email."}
               </p>
             </div>
           </div>
@@ -98,7 +98,7 @@ export function ForgotPasswordContentV2({ lang, dict }: ForgotPasswordContentV2P
         </p>
         <form onSubmit={handleSubmit} noValidate className='mt-8 w-full max-w-md'>
           <InputFieldV2
-            label={dict.auth?.forgotPassword?.email || '이메일'}
+            label={dict.auth?.forgotPassword?.email || 'Email'}
             type='text'
             value={email}
             onChange={(e) => {
@@ -126,8 +126,8 @@ export function ForgotPasswordContentV2({ lang, dict }: ForgotPasswordContentV2P
             className='bg-sub-900 hover:bg-sub-900/90 mt-5 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
           >
             {isLoading
-              ? dict.auth?.forgotPassword?.loading || '전송 중...'
-              : dict.auth?.forgotPassword?.resetButton || '비밀번호 재설정 링크 보내기'}
+              ? dict.auth?.forgotPassword?.loading || 'Sending...'
+              : dict.auth?.forgotPassword?.resetButton || 'Send Password Reset Link'}
           </button>
         </form>
       </div>

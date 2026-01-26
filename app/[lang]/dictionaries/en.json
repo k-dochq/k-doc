@@ -900,8 +900,7 @@
           "question": "If you have any additional questions or concerns, please feel free to write them here.",
           "placeholder": "e.g., I'm curious about recovery time, pain level, and scarring."
         }
-      },
-      "nextButton": "Next"
+      }
     }
   },
   "cautionSection": {

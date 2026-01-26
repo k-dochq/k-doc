@@ -161,7 +161,7 @@ export function ProfileEditFormV2({
     if (!formData.passportName.trim()) {
       newErrors.passportName =
         dict.auth?.signup?.errors?.passportNameRequired ||
-        '여권상의 영문 이름을 입력하지 않으면 치료 이용이 제한될 수 있습니다.';
+        'Treatment access may be limited without passport name in English.';
     }
 
     setErrors(newErrors);
@@ -240,7 +240,7 @@ export function ProfileEditFormV2({
   return (
     <form id={formId} onSubmit={handleSubmit} className='flex flex-col gap-5 p-5'>
       <InputFieldV2
-        label={dict.auth?.signup?.email || '이메일'}
+        label={dict.auth?.signup?.email || 'Email'}
         type='email'
         value={formData.email}
         disabled={true}
@@ -248,12 +248,12 @@ export function ProfileEditFormV2({
       />
 
       <InputFieldV2
-        label={dict.auth?.signup?.passportName || '여권 영문 이름'}
+        label={dict.auth?.signup?.passportName || 'Passport Name (English)'}
         type='text'
         value={formData.passportName}
         onChange={(e) => updateField('passportName', e.target.value)}
         placeholder={
-          dict.auth?.signup?.placeholders?.passportName || '여권에 기재된 영문 이름을 입력하세요'
+          dict.auth?.signup?.placeholders?.passportName || 'Enter your passport name in English'
         }
         helperText={dict.my?.profile?.edit?.placeholders?.passportNameHelperText}
         error={errors.passportName}
@@ -261,33 +261,33 @@ export function ProfileEditFormV2({
       />
 
       <SelectFieldV2
-        label={dict.auth?.signup?.nationality || '국적'}
+        label={dict.auth?.signup?.nationality || 'Nationality'}
         value={formData.nationality}
         onChange={(value) => updateField('nationality', value)}
         options={nationalityOptions}
-        placeholder={dict.auth?.signup?.placeholders?.nationality || '국적을 선택하세요 (선택사항)'}
+        placeholder={dict.auth?.signup?.placeholders?.nationality || 'Select your nationality'}
         error={errors.nationality}
         disabled={isBusy}
       />
 
       <SelectFieldV2
-        label={dict.auth?.signup?.gender || '성별'}
+        label={dict.auth?.signup?.gender || 'Gender'}
         value={formData.gender}
         onChange={(value) => updateField('gender', value)}
         options={genderOptions}
-        placeholder={dict.auth?.signup?.placeholders?.gender || '성별을 선택하세요 (선택사항)'}
+        placeholder={dict.auth?.signup?.placeholders?.gender || 'Select your gender'}
         error={errors.gender}
         disabled={isBusy}
       />
 
       <FormDatePickerV2
-        label={dict.auth?.signup?.birthDate || '생년월일'}
+        label={dict.auth?.signup?.birthDate || 'Date of Birth'}
         value={formData.birthDate ? new Date(formData.birthDate) : undefined}
         onChange={(date) => updateField('birthDate', date ? date.toISOString().split('T')[0] : '')}
         locale={lang}
         dict={dict}
         placeholder={
-          dict.auth?.signup?.placeholders?.birthDate || '생년월일을 선택하세요 (선택사항)'
+          dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'
         }
         error={errors.birthDate}
         required={false}
@@ -315,7 +315,7 @@ export function ProfileEditFormV2({
           locale={lang}
           className='text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-600'
         >
-          {dict.my?.profile?.edit?.changePassword || '비밀번호 변경하기'}
+          {dict.my?.profile?.edit?.changePassword || 'Change Password'}
         </LocaleLink>
       </div>
 

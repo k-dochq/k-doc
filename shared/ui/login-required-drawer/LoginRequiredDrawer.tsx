@@ -48,7 +48,7 @@ export function LoginRequiredDrawer({ lang, dict, redirectPath }: LoginRequiredD
     router.push(`${authPath}?redirect=${encodeURIComponent(currentPath)}`);
   };
 
-  const loginButtonText = dict.auth?.login?.loginButton || '로그인하기';
+  const loginButtonText = dict.auth?.login?.loginButton || 'Login';
 
   return (
     <div className='relative flex flex-col bg-white'>
@@ -56,7 +56,7 @@ export function LoginRequiredDrawer({ lang, dict, redirectPath }: LoginRequiredD
       <button
         onClick={handleClose}
         className='absolute top-[-50px] right-0 z-10 flex items-center justify-center'
-        aria-label='닫기'
+        aria-label='Close'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'

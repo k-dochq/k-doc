@@ -18,7 +18,7 @@ export function MyContentV2({ lang, dict }: MyContentV2Props) {
   return (
     <div className='min-h-screen bg-neutral-100'>
       <PageHeaderV2
-        title={dict.my?.title || '마이페이지'}
+        title={dict.my?.title || 'My Page'}
         fallbackUrl={`/${lang}/main`}
         backgroundColor='bg-neutral-100'
       />

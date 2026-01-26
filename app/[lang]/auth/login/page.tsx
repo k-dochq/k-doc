@@ -23,14 +23,14 @@ export async function generateMetadata({ params }: LoginPageProps) {
     const dict = await getDictionary(lang);
 
     return {
-      title: `${dict.auth?.login?.title || '로그인'} - K-DOC`,
-      description: dict.auth?.login?.subtitle || '계정에 로그인하세요',
+      title: `${dict.auth?.login?.title || 'Login'} - K-DOC`,
+      description: dict.auth?.login?.subtitle || 'Login to your account',
     };
   } catch (error) {
     console.error('Error generating metadata for login page:', error);
     return {
-      title: '로그인 - K-DOC',
-      description: '계정에 로그인하세요',
+      title: 'Login - K-DOC',
+      description: 'Login to your account',
     };
   }
 }

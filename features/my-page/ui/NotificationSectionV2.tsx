@@ -40,9 +40,9 @@ export function NotificationSectionV2({ lang, dict }: NotificationSectionV2Props
     });
   };
 
-  const title = dict.my?.notification?.title || '알림';
-  const myPostsLabel = dict.my?.notification?.myPosts || '내가 작성한 게시글';
-  const eventServiceLabel = dict.my?.notification?.eventService || '이벤트/서비스 혜택 알림';
+  const title = dict.my?.notification?.title || 'Notifications';
+  const myPostsLabel = dict.my?.notification?.myPosts || 'My Posts';
+  const eventServiceLabel = dict.my?.notification?.eventService || 'Event/Service Benefits';
 
   return (
     <div className='flex w-full flex-col'>
