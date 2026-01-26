@@ -80,9 +80,7 @@ export function SignupStep1FormV2({
           type='password'
           value={formData.confirmPassword}
           onChange={(e) => onUpdateField('confirmPassword', e.target.value)}
-          placeholder={
-            dict.auth?.signup?.placeholders?.confirmPassword || 'Confirm your password'
-          }
+          placeholder={dict.auth?.signup?.placeholders?.confirmPassword || 'Confirm your password'}
           error={errors.confirmPassword}
           disabled={isBusy}
         />
@@ -105,9 +103,7 @@ export function SignupStep1FormV2({
           value={formData.nationality}
           onChange={(value) => onUpdateField('nationality', value)}
           options={nationalityOptions}
-          placeholder={
-            dict.auth?.signup?.placeholders?.nationality || 'Select your nationality'
-          }
+          placeholder={dict.auth?.signup?.placeholders?.nationality || 'Select your nationality'}
           error={errors.nationality}
           disabled={isBusy}
         />
@@ -130,9 +126,7 @@ export function SignupStep1FormV2({
           }
           locale={lang}
           dict={dict}
-          placeholder={
-            dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'
-          }
+          placeholder={dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'}
           error={errors.birthDate}
           required={false}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}

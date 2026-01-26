@@ -140,7 +140,7 @@ export function PasswordChangeFormV2({
     try {
       const supabase = createClient();
       if (!supabase) {
-        throw new Error('Supabase client 생성 실패');
+        throw new Error('Failed to create Supabase client');
       }
 
       // 1. 기존 비밀번호 확인
