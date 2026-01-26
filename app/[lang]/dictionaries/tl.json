@@ -2088,9 +2088,9 @@
     "title": "Mga Komento",
     "form": {
       "placeholder": "Mag-iwan po kayo ng komento.",
-      "submit": "pagpaparehistro",
+      "submit": "Post",
       "submitting": "Nagsusulat...",
-      "loginRequired": "Kailangan mong mag-log in para makapagkomento",
+      "loginRequired": "Please log in to write a comment.",
       "loginButton": "mag-log in"
     },
     "list": {
