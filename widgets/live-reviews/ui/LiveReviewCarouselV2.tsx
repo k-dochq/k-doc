@@ -31,7 +31,7 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
               <React.Fragment key={liveReview.id}>
                 <CarouselItem
                   key={liveReview.id}
-                  className={`basis-[312px] ${isFirst ? 'pl-5' : 'pl-[16px]'}`}
+                  className={`${isFirst ? 'basis-[316px] pl-[20px]' : 'basis-[312px] pl-[16px]'}`}
                 >
                   <LiveReviewCardV2 liveReview={liveReview} lang={lang} dict={dict} />
                 </CarouselItem>
