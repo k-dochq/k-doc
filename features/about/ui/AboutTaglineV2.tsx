@@ -23,21 +23,14 @@ export function AboutTaglineV2() {
           if (index === 0) {
             return (
               <div key={index} className='flex items-center gap-3'>
-                <p
-                  className='text-4xl font-bold text-neutral-700'
-                  style={{
-                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(96px)',
-                    transition: 'transform 500ms ease-in-out',
-                  }}
-                >
-                  {tagline}
-                </p>
+                <p className='text-4xl font-bold text-neutral-700'>{tagline}</p>
                 <div
-                  className='relative h-[48px] w-[84px] overflow-hidden rounded-xl'
+                  className='relative h-[48px] overflow-hidden rounded-xl'
                   style={{
-                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(100%)',
+                    width: isVideoLoaded ? '84px' : '0px',
                     opacity: isVideoLoaded ? 1 : 0,
-                    transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+                    transformOrigin: 'left',
+                    transition: 'width 500ms ease-in-out, opacity 500ms ease-in-out',
                   }}
                 >
                   <video
@@ -59,11 +52,12 @@ export function AboutTaglineV2() {
             return (
               <div key={index} className='flex items-center gap-3'>
                 <div
-                  className='relative h-[48px] w-[84px] overflow-hidden rounded-xl'
+                  className='relative h-[48px] overflow-hidden rounded-xl'
                   style={{
-                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(-100%)',
+                    width: isVideoLoaded ? '84px' : '0px',
                     opacity: isVideoLoaded ? 1 : 0,
-                    transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+                    transformOrigin: 'left',
+                    transition: 'width 500ms ease-in-out, opacity 500ms ease-in-out',
                   }}
                 >
                   <video
@@ -76,13 +70,7 @@ export function AboutTaglineV2() {
                     className='h-full w-full object-cover'
                   />
                 </div>
-                <p
-                  className='text-4xl font-bold text-neutral-700'
-                  style={{
-                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(-96px)',
-                    transition: 'transform 500ms ease-in-out',
-                  }}
-                >
+                <p className='text-4xl font-bold text-neutral-700'>
                   {tagline}
                 </p>
               </div>
@@ -93,21 +81,16 @@ export function AboutTaglineV2() {
           if (index === 4) {
             return (
               <div key={index} className='flex items-center gap-3'>
-                <p
-                  className='text-4xl font-bold text-neutral-700'
-                  style={{
-                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(96px)',
-                    transition: 'transform 500ms ease-in-out',
-                  }}
-                >
+                <p className='text-4xl font-bold text-neutral-700'>
                   {tagline}
                 </p>
                 <div
-                  className='relative h-[48px] w-[84px] overflow-hidden rounded-xl'
+                  className='relative h-[48px] overflow-hidden rounded-xl'
                   style={{
-                    transform: isVideoLoaded ? 'translateX(0)' : 'translateX(100%)',
+                    width: isVideoLoaded ? '84px' : '0px',
                     opacity: isVideoLoaded ? 1 : 0,
-                    transition: 'transform 500ms ease-in-out, opacity 500ms ease-in-out',
+                    transformOrigin: 'left',
+                    transition: 'width 500ms ease-in-out, opacity 500ms ease-in-out',
                   }}
                 >
                   <video

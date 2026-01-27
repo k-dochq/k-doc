@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
-import { AboutContentV2, AboutVisionV2 } from 'features/about/ui';
+import { AboutContentV2, AboutVisionV2, AboutTaglineV2 } from 'features/about/ui';
 
 interface AboutPageProps {
   params: Promise<{ lang: Locale }>;
@@ -12,7 +12,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
   return (
     <div className=''>
-      {/* <AboutTaglineV2 /> */}
+      <AboutTaglineV2 />
       <AboutContentV2 lang={lang} dict={dict} />
       <AboutVisionV2 lang={lang} dict={dict} />
     </div>
