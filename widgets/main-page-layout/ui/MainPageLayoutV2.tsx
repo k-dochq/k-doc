@@ -58,7 +58,7 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
         <YoutubeVideosV2Wrapper lang={lang} dict={dict} />
       </div>
 
-      {lang === 'th' && <ContactFloatingButton />}
+      {(lang === 'th' || lang === 'tl') && <ContactFloatingButton lang={lang} />}
     </div>
   );
 }

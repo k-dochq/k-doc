@@ -1,12 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import { type Locale } from 'shared/config';
 import { ContactKIcon } from 'shared/ui/icons/ContactKIcon';
 import { ContactCloseIcon } from 'shared/ui/icons/ContactCloseIcon';
 import { ContactLineIcon } from 'shared/ui/icons/ContactLineIcon';
 import { ContactWhatsAppIcon } from 'shared/ui/icons/ContactWhatsAppIcon';
+import { ContactMessengerIcon } from 'shared/ui/icons/ContactMessengerIcon';
 
-export function ContactFloatingButton() {
+interface ContactFloatingButtonProps {
+  lang: Locale;
+}
+
+export function ContactFloatingButton({ lang }: ContactFloatingButtonProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -44,63 +50,127 @@ export function ContactFloatingButton() {
       )}
 
       <div className='fixed right-5 bottom-[108px] z-500 flex flex-col items-end gap-2.5 md:right-auto md:left-[calc(50%+100px)]'>
-        {/* LINE 버튼 */}
-        <a
-          href='https://lin.ee/w6gN1s9'
-          target='_blank'
-          rel='noopener noreferrer'
-          className={`flex items-center gap-2 will-change-[transform,opacity] ${
-            isExpanded
-              ? 'pointer-events-auto translate-y-0 opacity-100 transition-[transform,opacity] duration-300 ease-out'
-              : isClosing
-                ? 'pointer-events-none translate-y-0 opacity-0 transition-opacity duration-300 ease-out'
-                : 'pointer-events-none translate-y-4 opacity-0'
-          }`}
-          style={{
-            ...(isExpanded
-              ? {
-                  transitionDelay: '0.1s',
-                }
-              : isClosing
-                ? {
-                    transitionDelay: '0s',
-                  }
-                : {}),
-          }}
-          aria-label='LINE으로 문의하기'
-        >
-          <span className='text-sm font-semibold text-white'>Line</span>
-          <ContactLineIcon />
-        </a>
+        {lang === 'th' ? (
+          <>
+            {/* LINE 버튼 (태국어) */}
+            <a
+              href='https://lin.ee/w6gN1s9'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={`flex items-center gap-2 will-change-[transform,opacity] ${
+                isExpanded
+                  ? 'pointer-events-auto translate-y-0 opacity-100 transition-[transform,opacity] duration-300 ease-out'
+                  : isClosing
+                    ? 'pointer-events-none translate-y-0 opacity-0 transition-opacity duration-300 ease-out'
+                    : 'pointer-events-none translate-y-4 opacity-0'
+              }`}
+              style={{
+                ...(isExpanded
+                  ? {
+                      transitionDelay: '0.1s',
+                    }
+                  : isClosing
+                    ? {
+                        transitionDelay: '0s',
+                      }
+                    : {}),
+              }}
+              aria-label='LINE으로 문의하기'
+            >
+              <span className='text-sm font-semibold text-white'>Line</span>
+              <ContactLineIcon />
+            </a>
 
-        {/* WhatsApp 버튼 */}
-        <a
-          href='https://wa.me/message/LDW7RK4NR5L3H1'
-          target='_blank'
-          rel='noopener noreferrer'
-          className={`flex items-center gap-2 will-change-[transform,opacity] ${
-            isExpanded
-              ? 'pointer-events-auto translate-y-0 opacity-100 transition-[transform,opacity] duration-300 ease-out'
-              : isClosing
-                ? 'pointer-events-none translate-y-0 opacity-0 transition-opacity duration-300 ease-out'
-                : 'pointer-events-none translate-y-4 opacity-0'
-          }`}
-          style={{
-            ...(isExpanded
-              ? {
-                  transitionDelay: '0.05s',
-                }
-              : isClosing
-                ? {
-                    transitionDelay: '0.15s',
-                  }
-                : {}),
-          }}
-          aria-label='WhatsApp으로 문의하기'
-        >
-          <span className='text-sm font-semibold text-white'>WhatsApp</span>
-          <ContactWhatsAppIcon />
-        </a>
+            {/* WhatsApp 버튼 (태국어) */}
+            <a
+              href='https://wa.me/message/LDW7RK4NR5L3H1'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={`flex items-center gap-2 will-change-[transform,opacity] ${
+                isExpanded
+                  ? 'pointer-events-auto translate-y-0 opacity-100 transition-[transform,opacity] duration-300 ease-out'
+                  : isClosing
+                    ? 'pointer-events-none translate-y-0 opacity-0 transition-opacity duration-300 ease-out'
+                    : 'pointer-events-none translate-y-4 opacity-0'
+              }`}
+              style={{
+                ...(isExpanded
+                  ? {
+                      transitionDelay: '0.05s',
+                    }
+                  : isClosing
+                    ? {
+                        transitionDelay: '0.15s',
+                      }
+                    : {}),
+              }}
+              aria-label='WhatsApp으로 문의하기'
+            >
+              <span className='text-sm font-semibold text-white'>WhatsApp</span>
+              <ContactWhatsAppIcon />
+            </a>
+          </>
+        ) : lang === 'tl' ? (
+          <>
+            {/* Messenger 버튼 (필리핀어) */}
+            <a
+              href='https://www.facebook.com/share/1CMJnxhXqa/?mibextid=wwXIfr'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={`flex items-center gap-2 will-change-[transform,opacity] ${
+                isExpanded
+                  ? 'pointer-events-auto translate-y-0 opacity-100 transition-[transform,opacity] duration-300 ease-out'
+                  : isClosing
+                    ? 'pointer-events-none translate-y-0 opacity-0 transition-opacity duration-300 ease-out'
+                    : 'pointer-events-none translate-y-4 opacity-0'
+              }`}
+              style={{
+                ...(isExpanded
+                  ? {
+                      transitionDelay: '0.1s',
+                    }
+                  : isClosing
+                    ? {
+                        transitionDelay: '0s',
+                      }
+                    : {}),
+              }}
+              aria-label='Messenger로 문의하기'
+            >
+              <span className='text-sm font-semibold text-white'>Messenger</span>
+              <ContactMessengerIcon />
+            </a>
+
+            {/* WhatsApp 버튼 (필리핀어) */}
+            <a
+              href='https://wa.me/message/LDW7RK4NR5L3H1'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={`flex items-center gap-2 will-change-[transform,opacity] ${
+                isExpanded
+                  ? 'pointer-events-auto translate-y-0 opacity-100 transition-[transform,opacity] duration-300 ease-out'
+                  : isClosing
+                    ? 'pointer-events-none translate-y-0 opacity-0 transition-opacity duration-300 ease-out'
+                    : 'pointer-events-none translate-y-4 opacity-0'
+              }`}
+              style={{
+                ...(isExpanded
+                  ? {
+                      transitionDelay: '0.05s',
+                    }
+                  : isClosing
+                    ? {
+                        transitionDelay: '0.15s',
+                      }
+                    : {}),
+              }}
+              aria-label='WhatsApp으로 문의하기'
+            >
+              <span className='text-sm font-semibold text-white'>WhatsApp</span>
+              <ContactWhatsAppIcon />
+            </a>
+          </>
+        ) : null}
 
         {/* 메인 버튼 (K 또는 Close) */}
         <button
