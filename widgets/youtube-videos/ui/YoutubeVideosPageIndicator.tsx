@@ -21,8 +21,8 @@ export function YoutubeVideosPageIndicator({
             onClick={() => onPageClick?.(index)}
             className={
               index === currentPage
-                ? 'h-[8px] w-[24px] rounded-full bg-[#f15bff] transition-all'
-                : 'size-[8px] rounded-[4px] bg-[#fcdeff] transition-all hover:bg-[#f15bff]/50'
+                ? 'h-[8px] w-[24px] rounded-full bg-primary-900 transition-all'
+                : 'size-[8px] rounded-[4px] bg-primary-light transition-all hover:bg-primary-900/50'
             }
             aria-label={`페이지 ${index + 1}로 이동`}
           />

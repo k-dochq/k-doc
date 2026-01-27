@@ -63,7 +63,7 @@ export function DistrictFilterButtonV2({
     : 'flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5';
 
   const textClassName = hasSelectedDistricts
-    ? 'text-sm leading-5 font-semibold text-[#f15bff]'
+    ? 'text-sm leading-5 font-semibold text-primary-900'
     : 'text-sm leading-5 font-semibold text-neutral-700';
 
   const iconClassName = 'h-[18px] w-[18px] shrink-0';

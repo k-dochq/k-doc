@@ -33,7 +33,7 @@ export function RecommendedIconActive() {
         <g mask='url(#mask0_466_4945)'>
           <path
             d='M24.653 20.6941L21.6553 21.145L23.8282 23.2563L23.3069 26.2694L26.0001 24.846L28.6933 26.2694L28.172 23.2563L30.3449 21.145L27.3472 20.6941L26.0001 17.9656L24.653 20.6941Z'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -117,7 +117,7 @@ export function RecommendedIconInactive() {
         <g mask='url(#mask0_466_7225)'>
           <path
             d='M23.653 19.694L20.6553 20.145L22.8282 22.2562L22.3069 25.2694L25.0001 23.846L27.6933 25.2694L27.172 22.2562L29.3449 20.145L26.3472 19.694L25.0001 16.9656L23.653 19.694Z'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -207,14 +207,14 @@ export function EyesIconInactive() {
           />
           <path
             d='M10.1289 20.108C10.1289 20.108 24.1343 6.69111 40.1736 22.6128'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M36.4058 23.0297L40.6687 22.7623L40.4075 18.3997'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -283,14 +283,14 @@ export function EyesIconActive() {
           />
           <path
             d='M11.1289 21.108C11.1289 21.108 25.1343 7.69105 41.1736 23.6128'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M37.4058 24.0297L41.6687 23.7623L41.4075 19.3997'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -368,14 +368,14 @@ export function NoseIconInactive() {
         />
         <path
           d='M17.1682 35.1996C13.683 34.0882 11.6782 30.2906 12.6883 26.7183'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M9.86865 27.7461L13.0851 25.5626L15.2701 28.9211'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -441,14 +441,14 @@ export function NoseIconActive() {
         />
         <path
           d='M18.1682 36.1996C14.683 35.0882 12.6782 31.2906 13.6883 27.7183'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M10.8687 28.7461L14.0852 26.5626L16.2702 29.9211'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -525,28 +525,28 @@ export function LiftingIconInactive() {
         />
         <path
           d='M31.0996 25.7993C29.3929 29.8174 25.3959 32.6375 20.7383 32.6375'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M29.2656 25.212L31.9046 24.4611L32.659 27.0875'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M36.6626 28.4554C34.9558 32.4736 30.9588 35.2936 26.3013 35.2936'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M34.8281 27.8682L37.4671 27.1206L38.2182 29.7471'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -612,28 +612,28 @@ export function LiftingIconActive() {
         />
         <path
           d='M32.0996 26.7993C30.3929 30.8174 26.3959 33.6375 21.7383 33.6375'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M30.2656 26.212L32.9046 25.4611L33.659 28.0875'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M37.6626 29.4554C35.9558 33.4736 31.9588 36.2936 27.3013 36.2936'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M35.8281 28.8682L38.4671 28.1206L39.2182 30.7471'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -760,28 +760,28 @@ export function FacialContouringIconInactive() {
           />
           <path
             d='M5.57959 34.5961H11.5552'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M44.4209 34.5961H38.4453'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M9.56348 36.6162L11.5553 34.596L9.56348 32.5758'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M40.4377 36.6162L38.4458 34.596L40.4377 32.5758'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -898,28 +898,28 @@ export function FacialContouringIconActive() {
           />
           <path
             d='M6.57959 35.5961H12.5552'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M45.4209 35.5961H39.4453'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M10.5635 37.6162L12.5553 35.596L10.5635 33.5758'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M41.4377 37.6162L39.4458 35.596L41.4377 33.5758'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -1037,28 +1037,28 @@ export function BreastIconInactive() {
           />
           <path
             d='M35.3452 33.9818C38.4255 33.5896 40.6068 30.7501 40.2179 27.6436'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M41.9422 28.3994L40.0653 26.6287L38.3096 28.5188'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M14.6544 33.9818C11.5741 33.5896 9.39279 30.7501 9.7817 27.6436'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M8.05713 28.3994L9.93122 26.6287L11.687 28.5188'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -1165,28 +1165,28 @@ export function BreastIconActive() {
           />
           <path
             d='M36.3452 34.9819C39.4255 34.5897 41.6068 31.7502 41.2179 28.6437'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M42.9422 29.3995L41.0653 27.6288L39.3096 29.5189'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M15.6544 34.9819C12.5741 34.5897 10.3928 31.7502 10.7817 28.6437'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M9.05713 29.3995L10.9312 27.6288L12.687 29.5189'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -1236,7 +1236,7 @@ export function StemCellIconInactive() {
         />
         <path
           d='M22.1392 24.1917L16.6919 29.7752'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1244,7 +1244,7 @@ export function StemCellIconInactive() {
         />
         <path
           d='M26.0249 14.316L31.7739 20.2087'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1252,7 +1252,7 @@ export function StemCellIconInactive() {
         />
         <path
           d='M32.8159 9.32385C32.8159 11.4911 34.53 13.248 36.6443 13.248'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1260,7 +1260,7 @@ export function StemCellIconInactive() {
         />
         <path
           d='M29.9821 12.7001L20.4551 22.4653L23.8232 25.9177L33.3502 16.1525L29.9821 12.7001Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1268,7 +1268,7 @@ export function StemCellIconInactive() {
         />
         <path
           d='M31.6665 14.4261L33.9371 12.0986'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1351,7 +1351,7 @@ export function StemCellIconActive() {
         />
         <path
           d='M23.1392 25.1917L17.6919 30.7752'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1359,7 +1359,7 @@ export function StemCellIconActive() {
         />
         <path
           d='M27.0249 15.316L32.7739 21.2087'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1367,7 +1367,7 @@ export function StemCellIconActive() {
         />
         <path
           d='M33.8159 10.3239C33.8159 12.4911 35.53 14.248 37.6443 14.248'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1375,7 +1375,7 @@ export function StemCellIconActive() {
         />
         <path
           d='M30.9821 13.7001L21.4551 23.4653L24.8232 26.9177L34.3502 17.1525L30.9821 13.7001Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1383,7 +1383,7 @@ export function StemCellIconActive() {
         />
         <path
           d='M32.6665 15.4261L34.9371 13.0986'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeMiterlimit='10'
           strokeLinecap='round'
@@ -1538,28 +1538,28 @@ export function LiposuctionIconInactive() {
           />
           <path
             d='M6.9292 16.0865H13.0043'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M10.9707 18.0665L13.0047 16.0865L10.9707 14.1031'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M43.0712 16.0864H36.9961'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M39.0301 18.0665L36.9961 16.0865L39.0301 14.1031'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -1647,28 +1647,28 @@ export function LiposuctionIconActive() {
         />
         <path
           d='M7.9292 17.0865H14.0043'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M11.9707 19.0665L14.0047 17.0865L11.9707 15.1031'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M44.0712 17.0864H37.9961'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M40.0301 19.0665L37.9961 17.0865L40.0301 15.1031'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -1729,7 +1729,7 @@ export function BodyIconInactive() {
         <g mask='url(#mask0_466_5291)'>
           <path
             d='M36.6375 22.5994C37.4079 26.0049 35.2577 29.3536 32.8351 29.8668C30.4125 30.3801 28.6343 27.8621 27.8668 24.4538C27.0964 21.0484 27.6296 18.0399 30.0492 17.5295C32.4719 17.0163 35.867 19.1911 36.6345 22.5994H36.6375Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M19.3191 11.3566C19.3191 11.3566 11.7466 22.3499 17.8046 29.6797L18.9412 38.6434'
@@ -1747,7 +1747,7 @@ export function BodyIconInactive() {
           />
           <path
             d='M20.4352 22.4689C20.4352 25.3696 19.612 27.7203 18.5955 27.7203C17.579 27.7203 16.7559 25.3696 16.7559 22.4689C16.7559 19.5682 17.579 17.2175 18.5955 17.2175C19.612 17.2175 20.4352 19.5682 20.4352 22.4689Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M17.8047 29.1134V14.9028'
@@ -1767,42 +1767,42 @@ export function BodyIconInactive() {
           />
           <path
             d='M36.5083 16.5925L40.3735 14.6453'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M39.6527 16.8257L40.3733 14.6452L38.1235 13.9476'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M9.08936 17.748H14.5996'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M12.7549 19.5251L14.5997 17.7481L12.7549 15.968'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M9.08936 28.2759H14.5996'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M12.7549 30.0529L14.5997 28.2759L12.7549 26.4958'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -1853,7 +1853,7 @@ export function BodyIconActive() {
         <g mask='url(#mask0_466_7391)'>
           <path
             d='M37.6375 23.5993C38.4079 27.0048 36.2577 30.3535 33.8351 30.8667C31.4125 31.38 29.6343 28.862 28.8668 25.4537C28.0964 22.0483 28.6296 19.0398 31.0492 18.5294C33.4719 18.0162 36.867 20.191 37.6345 23.5993H37.6375Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M20.3191 12.3566C20.3191 12.3566 12.7466 23.3499 18.8046 30.6797L19.9412 39.6434'
@@ -1871,7 +1871,7 @@ export function BodyIconActive() {
           />
           <path
             d='M21.4352 23.4689C21.4352 26.3696 20.612 28.7203 19.5955 28.7203C18.579 28.7203 17.7559 26.3696 17.7559 23.4689C17.7559 20.5682 18.579 18.2175 19.5955 18.2175C20.612 18.2175 21.4352 20.5682 21.4352 23.4689Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M18.8047 30.1133V15.9027'
@@ -1891,42 +1891,42 @@ export function BodyIconActive() {
           />
           <path
             d='M37.5083 17.5925L41.3735 15.6453'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M40.6527 17.8256L41.3733 15.6451L39.1235 14.9475'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M10.0894 18.7479H15.5996'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M13.7549 20.5251L15.5997 18.7481L13.7549 16.968'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M10.0894 29.2759H15.5996'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M13.7549 31.0528L15.5997 29.2758L13.7549 27.4957'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -1988,7 +1988,7 @@ export function HairTransplantIconInactive() {
         <g mask='url(#mask0_466_5383)'>
           <path
             d='M26.2917 32.04C24.7675 29.8421 25.0369 27.5525 25.0369 27.5525C24.4981 22.6066 29.3424 19.8586 29.3424 19.8586C21.394 21.4321 22.8842 28.561 20.9086 32.2134C20.2606 33.4226 20.4232 34.9639 21.4256 35.9872C22.6439 37.2311 24.6195 37.2311 25.8378 35.9872C26.8863 34.9168 27.0271 33.2715 26.2674 32.0424H26.2917V32.04Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M11.3168 19.2019C8.40451 22.671 9.98202 28.494 15.2 28.494C20.418 28.494 21.9956 22.2993 18.9619 19.2019'
@@ -2010,11 +2010,11 @@ export function HairTransplantIconInactive() {
           />
           <path
             d='M17.8068 21.3503C16.2827 19.1524 16.5496 16.8628 16.5496 16.8628C16.0108 11.9145 20.8575 9.1665 20.8575 9.1665C12.9092 10.74 14.3969 17.8689 12.4213 21.5213C11.7733 22.7305 11.9359 24.2717 12.9383 25.2951C14.1566 26.539 16.1322 26.539 17.3505 25.2951C18.399 24.2247 18.5398 22.5793 17.7801 21.3503H17.8044H17.8068Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M37.5158 24.1132C35.9917 21.9153 36.2586 19.6257 36.2586 19.6257C35.7198 14.6799 40.5641 11.9319 40.5641 11.9319C32.6157 13.5053 34.1059 20.6342 32.1303 24.2867C31.4823 25.4959 31.6449 27.0371 32.6473 28.0605C33.8656 29.3044 35.8412 29.3044 37.0595 28.0605C38.108 26.99 38.2487 25.3447 37.4891 24.1157H37.5134L37.5158 24.1132Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
         </g>
       </g>
@@ -2062,7 +2062,7 @@ export function HairTransplantIconActive() {
         <g mask='url(#mask0_466_7410)'>
           <path
             d='M27.2917 33.04C25.7675 30.8421 26.0369 28.5525 26.0369 28.5525C25.4981 23.6066 30.3424 20.8586 30.3424 20.8586C22.394 22.4321 23.8842 29.561 21.9086 33.2134C21.2606 34.4226 21.4232 35.9639 22.4256 36.9872C23.6439 38.2311 25.6195 38.2311 26.8378 36.9872C27.8863 35.9168 28.0271 34.2715 27.2674 33.0424H27.2917V33.04Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M12.3168 20.2019C9.40452 23.671 10.982 29.494 16.2 29.494C21.418 29.494 22.9956 23.2993 19.9619 20.2019'
@@ -2084,11 +2084,11 @@ export function HairTransplantIconActive() {
           />
           <path
             d='M18.8068 22.3503C17.2827 20.1524 17.5496 17.8628 17.5496 17.8628C17.0108 12.9145 21.8575 10.1665 21.8575 10.1665C13.9092 11.74 15.3969 18.8689 13.4213 22.5213C12.7733 23.7305 12.9359 25.2717 13.9383 26.2951C15.1566 27.539 17.1322 27.539 18.3505 26.2951C19.399 25.2247 19.5398 23.5793 18.7801 22.3503H18.8044H18.8068Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
           <path
             d='M38.5158 25.1132C36.9917 22.9153 37.2586 20.6257 37.2586 20.6257C36.7198 15.6799 41.5641 12.9319 41.5641 12.9319C33.6157 14.5053 35.1059 21.6342 33.1303 25.2867C32.4823 26.4959 32.6449 28.0371 33.6473 29.0605C34.8656 30.3044 36.8412 30.3044 38.0595 29.0605C39.108 27.99 39.2487 26.3447 38.4891 25.1157H38.5134L38.5158 25.1132Z'
-            fill='#F15BFF'
+            fill='var(--color-primary-900)'
           />
         </g>
       </g>
@@ -2163,27 +2163,27 @@ export function DermatologyIconInactive() {
         />
         <path
           d='M18.25 24.6219C18.6642 24.6219 19 24.2916 19 23.8841C19 23.4767 18.6642 23.1464 18.25 23.1464C17.8358 23.1464 17.5 23.4767 17.5 23.8841C17.5 24.2916 17.8358 24.6219 18.25 24.6219Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M21.876 32.6217C22.2902 32.6217 22.626 32.2914 22.626 31.884C22.626 31.4765 22.2902 31.1462 21.876 31.1462C21.4618 31.1462 21.126 31.4765 21.126 31.884C21.126 32.2914 21.4618 32.6217 21.876 32.6217Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M26.1973 29.0014C26.1973 28.5959 25.8635 28.2637 25.4473 28.2637C25.031 28.2637 24.6973 28.592 24.6973 29.0014C24.6973 29.4108 25.031 29.7392 25.4473 29.7392C25.8635 29.7392 26.1973 29.4108 26.1973 29.0014Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M28.6519 22.8971C29.0661 22.8971 29.4019 22.5668 29.4019 22.1594C29.4019 21.7519 29.0661 21.4216 28.6519 21.4216C28.2376 21.4216 27.9019 21.7519 27.9019 22.1594C27.9019 22.5668 28.2376 22.8971 28.6519 22.8971Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M24.6787 24.8979C25.0929 24.8979 25.4287 24.5676 25.4287 24.1601C25.4287 23.7527 25.0929 23.4224 24.6787 23.4224C24.2645 23.4224 23.9287 23.7527 23.9287 24.1601C23.9287 24.5676 24.2645 24.8979 24.6787 24.8979Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M20.7145 28.7991C21.3062 28.7991 21.7859 28.3273 21.7859 27.7452C21.7859 27.1631 21.3062 26.6913 20.7145 26.6913C20.1228 26.6913 19.6431 27.1631 19.6431 27.7452C19.6431 28.3273 20.1228 28.7991 20.7145 28.7991Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
       </g>
       <defs>
@@ -2246,27 +2246,27 @@ export function DermatologyIconActive() {
         />
         <path
           d='M19.25 25.6219C19.6642 25.6219 20 25.2916 20 24.8841C20 24.4767 19.6642 24.1464 19.25 24.1464C18.8358 24.1464 18.5 24.4767 18.5 24.8841C18.5 25.2916 18.8358 25.6219 19.25 25.6219Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M22.876 33.6217C23.2902 33.6217 23.626 33.2914 23.626 32.884C23.626 32.4765 23.2902 32.1462 22.876 32.1462C22.4618 32.1462 22.126 32.4765 22.126 32.884C22.126 33.2914 22.4618 33.6217 22.876 33.6217Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M27.1973 30.0014C27.1973 29.5959 26.8635 29.2637 26.4473 29.2637C26.031 29.2637 25.6973 29.592 25.6973 30.0014C25.6973 30.4108 26.031 30.7392 26.4473 30.7392C26.8635 30.7392 27.1973 30.4108 27.1973 30.0014Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M29.6519 23.8971C30.0661 23.8971 30.4019 23.5668 30.4019 23.1594C30.4019 22.7519 30.0661 22.4216 29.6519 22.4216C29.2376 22.4216 28.9019 22.7519 28.9019 23.1594C28.9019 23.5668 29.2376 23.8971 29.6519 23.8971Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M25.6787 25.8979C26.0929 25.8979 26.4287 25.5676 26.4287 25.1601C26.4287 24.7527 26.0929 24.4224 25.6787 24.4224C25.2645 24.4224 24.9287 24.7527 24.9287 25.1601C24.9287 25.5676 25.2645 25.8979 25.6787 25.8979Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
         <path
           d='M21.7145 29.7991C22.3062 29.7991 22.7859 29.3273 22.7859 28.7452C22.7859 28.1631 22.3062 27.6913 21.7145 27.6913C21.1228 27.6913 20.6431 28.1631 20.6431 28.7452C20.6431 29.3273 21.1228 29.7991 21.7145 29.7991Z'
-          fill='#F15BFF'
+          fill='var(--color-primary-900)'
         />
       </g>
       <defs>
@@ -2326,21 +2326,21 @@ export function DentalIconInactive() {
         />
         <path
           d='M15.9961 14.2259C14.0976 13.5632 13.5573 13.0262 12.8874 11.1362C12.2206 13.0232 11.6804 13.5601 9.77881 14.2259C11.6773 14.8886 12.2176 15.4255 12.8874 17.3155C13.5542 15.4286 14.0945 14.8917 15.9961 14.2259Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M40.2179 25.0907C38.8812 24.6244 38.5015 24.247 38.0323 22.9185C37.5631 24.247 37.1834 24.6244 35.8467 25.0907C37.1834 25.5571 37.5631 25.9345 38.0323 27.263C38.5015 25.9345 38.8812 25.5571 40.2179 25.0907Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M39.6757 14.0452C37.0517 13.1278 36.3046 12.3853 35.3847 9.7804C34.4617 12.3883 33.7146 13.1308 31.0938 14.0452C33.7176 14.9625 34.4648 15.705 35.3847 18.3099C36.3077 15.702 37.0548 14.9595 39.6757 14.0452Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -2392,21 +2392,21 @@ export function DentalIconActive() {
         />
         <path
           d='M16.9961 15.2259C15.0976 14.5632 14.5573 14.0262 13.8874 12.1362C13.2206 14.0232 12.6804 14.5601 10.7788 15.2259C12.6773 15.8886 13.2176 16.4255 13.8874 18.3155C14.5542 16.4286 15.0945 15.8917 16.9961 15.2259Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M41.2179 26.0907C39.8812 25.6244 39.5015 25.247 39.0323 23.9185C38.5631 25.247 38.1834 25.6244 36.8467 26.0907C38.1834 26.5571 38.5631 26.9345 39.0323 28.263C39.5015 26.9345 39.8812 26.5571 41.2179 26.0907Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M40.6757 15.0452C38.0517 14.1278 37.3046 13.3853 36.3847 10.7804C35.4617 13.3883 34.7146 14.1308 32.0938 15.0452C34.7176 15.9625 35.4648 16.705 36.3847 19.3099C37.3077 16.702 38.0548 15.9595 40.6757 15.0452Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -2455,14 +2455,14 @@ export function OtherIconInactive() {
         />
         <path
           d='M34.5847 21.5562C36.505 19.1459 36.9706 15.9615 35.9705 13.1778C32.8766 12.0742 29.2839 12.7578 26.8044 15.2257C25.0549 16.9689 24.2035 19.2694 24.2394 21.5535'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M27.7715 21.3529L32.1714 16.9688'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -2544,14 +2544,14 @@ export function OtherIconActive() {
         <g mask='url(#mask0_466_7476)'>
           <path
             d='M35.5847 22.5562C37.505 20.1459 37.9706 16.9615 36.9705 14.1778C33.8766 13.0742 30.2839 13.7578 27.8044 16.2257C26.0549 17.9689 25.2035 20.2694 25.2394 22.5535'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M28.7715 22.3528L33.1714 17.9688'
-            stroke='#F15BFF'
+            stroke='var(--color-primary-900)'
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -2645,7 +2645,7 @@ export function AllIconActive() {
       />
       <path
         d='M36.8074 13.869H29.6893C28.903 13.869 28.2656 14.5064 28.2656 15.2927V22.4108C28.2656 23.1971 28.903 23.8345 29.6893 23.8345H36.8074C37.5937 23.8345 38.2311 23.1971 38.2311 22.4108V15.2927C38.2311 14.5064 37.5937 13.869 36.8074 13.869Z'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinejoin='round'
       />
@@ -2706,7 +2706,7 @@ export function AllIconInactive() {
       />
       <path
         d='M35.8074 12.869H28.6893C27.903 12.869 27.2656 13.5064 27.2656 14.2927V21.4108C27.2656 22.1971 27.903 22.8345 28.6893 22.8345H35.8074C36.5937 22.8345 37.2311 22.1971 37.2311 21.4108V14.2927C37.2311 13.5064 36.5937 12.869 35.8074 12.869Z'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinejoin='round'
       />

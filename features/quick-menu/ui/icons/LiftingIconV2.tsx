@@ -31,28 +31,28 @@ export function LiftingIconV2() {
       />
       <path
         d='M25.3193 22.959C23.2712 27.7807 18.4748 31.1648 12.8857 31.1648'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M23.1183 22.2541L26.285 21.353L27.1904 24.5048'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M31.9949 26.147C29.9467 30.9687 25.1503 34.3528 19.5612 34.3528'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M29.7938 25.442L32.9606 24.5449L33.8619 27.6967'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

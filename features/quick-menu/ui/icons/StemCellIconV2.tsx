@@ -3,7 +3,7 @@ export function StemCellIconV2() {
     <svg xmlns='http://www.w3.org/2000/svg' width='40' height='41' viewBox='0 0 40 41' fill='none'>
       <path
         d='M16.5666 20.0303L10.0298 26.7305'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -11,7 +11,7 @@ export function StemCellIconV2() {
       />
       <path
         d='M21.2294 8.17969L28.1282 15.2509'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -19,7 +19,7 @@ export function StemCellIconV2() {
       />
       <path
         d='M29.3785 2.18896C29.3785 4.78968 31.4354 6.89793 33.9727 6.89793'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -27,7 +27,7 @@ export function StemCellIconV2() {
       />
       <path
         d='M25.9782 6.24027L14.5458 17.9585L18.5875 22.1013L30.0199 10.3831L25.9782 6.24027Z'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -35,7 +35,7 @@ export function StemCellIconV2() {
       />
       <path
         d='M27.9993 8.3115L30.7241 5.51855'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'

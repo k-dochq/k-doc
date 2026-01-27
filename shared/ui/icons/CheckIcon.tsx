@@ -14,7 +14,7 @@ export function CheckIcon({ className }: CheckIconProps) {
     >
       <path
         d='M1 6L6 11L16 1'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

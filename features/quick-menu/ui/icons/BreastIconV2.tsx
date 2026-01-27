@@ -60,28 +60,28 @@ export function BreastIconV2() {
         />
         <path
           d='M34.4146 29.7782C38.1109 29.3076 40.7284 25.9003 40.2618 22.1724'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M42.3311 23.0795L40.0788 20.9546L37.9719 23.2227'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M9.58561 29.7782C5.88928 29.3076 3.27174 25.9003 3.73844 22.1724'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M1.66901 23.0795L3.91792 20.9546L6.0248 23.2227'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

@@ -42,7 +42,7 @@ export function ReservationStatusBadge({
   if (isConfirmed) {
     const statusBadge = getReservationStatusBadge(reservationDate, reservationTime, lang);
     return (
-      <div className='flex items-center justify-center rounded-full bg-[#f15bff] px-3 py-1'>
+      <div className='flex items-center justify-center rounded-full bg-primary-900 px-3 py-1'>
         <p className='text-sm leading-5 font-semibold text-white'>{statusBadge}</p>
       </div>
     );

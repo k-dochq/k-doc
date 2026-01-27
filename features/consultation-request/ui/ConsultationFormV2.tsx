@@ -361,7 +361,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
         className={`fixed right-0 bottom-0 left-0 z-40 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-10 ${MAX_MOBILE_WIDTH_CLASS}`}
       >
         <p className='mb-[10px] text-center text-sm leading-5 font-medium text-[#404040]'>
-          <span className='text-[#f15bff]'>
+          <span className='text-primary-900'>
             {dict.consultation?.request?.form?.floatingNotice?.highlight || '방문 가능 시간'}
           </span>
           {dict.consultation?.request?.form?.floatingNotice?.message ||
