@@ -128,7 +128,7 @@ export function HospitalReviewRatingStatsV2({
               <div key={rating} className='flex items-center gap-2'>
                 <p
                   className={`shrink-0 text-sm leading-5 ${
-                    isMax ? 'font-semibold text-[#f15bff]' : 'font-normal text-neutral-500'
+                    isMax ? 'font-semibold text-primary-900' : 'font-normal text-neutral-500'
                   }`}
                   style={{ width: '9px' }}
                 >
@@ -137,7 +137,7 @@ export function HospitalReviewRatingStatsV2({
                 <div className='relative h-[5px] flex-1 overflow-hidden rounded-full bg-neutral-200'>
                   {width > 0 && (
                     <div
-                      className='absolute top-0 left-0 h-[5px] rounded-full bg-[#f15bff]'
+                      className='absolute top-0 left-0 h-[5px] rounded-full bg-primary-900'
                       style={{ width: `${width}%` }}
                     />
                   )}

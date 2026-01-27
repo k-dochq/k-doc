@@ -29,7 +29,7 @@ export function HospitalReviewsHeaderV2({
         <p className='shrink-0 text-lg leading-7 font-semibold text-neutral-700'>
           {dict.hospitalReviews?.title || '시술후기'}
         </p>
-        <p className='text-lg leading-7 font-semibold text-[#f15bff]'>{reviewCount}</p>
+        <p className='text-lg leading-7 font-semibold text-primary-900'>{reviewCount}</p>
       </div>
 
       {/* 필터 바 */}

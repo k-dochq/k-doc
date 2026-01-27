@@ -18,21 +18,21 @@ export function DentalIconV2() {
         />
         <path
           d='M9.19509 7.07087C6.91687 6.2756 6.26859 5.63128 5.46473 3.36328C4.66458 5.6276 4.0163 6.27191 1.73438 7.07087C4.0126 7.86614 4.66087 8.51046 5.46473 10.7785C6.26489 8.51414 6.91316 7.86982 9.19509 7.07087Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M38.2611 20.1087C36.6571 19.549 36.2014 19.0962 35.6384 17.502C35.0753 19.0962 34.6196 19.549 33.0156 20.1087C34.6196 20.6683 35.0753 21.1212 35.6384 22.7154C36.2014 21.1212 36.6571 20.6683 38.2611 20.1087Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M37.6108 6.85405C34.462 5.75319 33.5656 4.86219 32.4617 1.73633C31.354 4.86587 30.4576 5.75687 27.3125 6.85405C30.4613 7.95491 31.3577 8.84591 32.4617 11.9718C33.5693 8.84223 34.4657 7.95123 37.6108 6.85405Z'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

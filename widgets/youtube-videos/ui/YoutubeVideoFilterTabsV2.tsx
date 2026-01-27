@@ -50,7 +50,7 @@ export function YoutubeVideoFilterTabsV2({
             key={tab.id || 'all'}
             onClick={() => onCategoryChange(tab.id)}
             className={`relative flex shrink-0 items-center justify-center gap-[10px] border-t-0 border-r-0 border-b-2 border-l-0 border-solid px-2 py-[6px] transition-colors ${
-              isSelected ? 'border-[#f15bff] text-[#f15bff]' : 'border-transparent text-neutral-400'
+              isSelected ? 'border-primary-900 text-primary-900' : 'border-transparent text-neutral-400'
             }`}
           >
             <p className='relative shrink-0 text-base leading-6 font-medium not-italic'>

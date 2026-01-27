@@ -4,14 +4,14 @@ export function OtherIconV2() {
       <g clipPath='url(#clip0_466_7771)'>
         <path
           d='M29.5019 13.8672C31.8063 10.9748 32.365 7.1535 31.1649 3.81313C27.4522 2.48884 23.141 3.30911 20.1655 6.27064C18.0661 8.36249 17.0445 11.1231 17.0875 13.8639'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M21.3259 13.6237L26.6058 8.36279'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

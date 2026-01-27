@@ -45,7 +45,7 @@ export function PopularReviewCardV2BeforeAfter({
           className='object-cover'
           sizes='142px'
         />
-        <div className='absolute bottom-0 left-0 rounded-tr-[6px] bg-[#f15bff] px-[6px] py-1'>
+        <div className='absolute bottom-0 left-0 rounded-tr-[6px] bg-primary-900 px-[6px] py-1'>
           <p className='text-[11px] leading-[14px] font-medium text-white'>After</p>
         </div>
       </div>

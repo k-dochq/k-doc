@@ -31,14 +31,14 @@ export function NoseIconV2() {
       />
       <path
         d='M10.6019 33.2391C6.41976 31.9055 4.01398 27.3483 5.22606 23.0616'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M1.8428 24.2952L5.70252 21.6751L8.3246 25.7052'
-        stroke='#F15BFF'
+        stroke='var(--color-primary-900)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

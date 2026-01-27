@@ -70,28 +70,28 @@ export function FacialContouringIconV2() {
         />
         <path
           d='M1.19513 31.5151H8.36586'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M47.8049 31.5151H40.6341'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M5.97562 33.9393L8.36586 31.5151L5.97562 29.0908'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M43.0244 33.9393L40.6341 31.5151L43.0244 29.0908'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

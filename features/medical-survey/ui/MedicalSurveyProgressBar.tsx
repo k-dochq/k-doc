@@ -20,7 +20,7 @@ export function MedicalSurveyProgressBar({
         <div className='h-[3px] overflow-hidden rounded-full bg-[#FCE4FF]'>
           {/* 진행 바 */}
           <div
-            className='h-full rounded-full bg-[#f15bff] transition-all duration-300 ease-in-out'
+            className='h-full rounded-full bg-primary-900 transition-all duration-300 ease-in-out'
             style={{
               width: `${progressPercentage}%`,
             }}

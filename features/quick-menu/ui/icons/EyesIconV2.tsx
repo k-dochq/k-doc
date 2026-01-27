@@ -22,14 +22,14 @@ export function EyesIconV2() {
         />
         <path
           d='M1.15485 7.12989C1.15485 7.12989 17.9614 -8.97038 37.2085 10.1357'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M32.687 10.6358L37.8026 10.3149L37.489 5.07977'
-          stroke='#F15BFF'
+          stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

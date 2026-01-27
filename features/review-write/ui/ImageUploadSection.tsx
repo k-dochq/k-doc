@@ -107,7 +107,7 @@ export function ImageUploadSection({
                   >
                     <path
                       d='M10.0026 10V3.33337M10.0026 10V16.6667M10.0026 10H16.6693M10.0026 10H3.33594'
-                      stroke='#F15BFF'
+                      stroke='var(--color-primary-900)'
                       strokeWidth='1.5'
                       strokeLinecap='round'
                       strokeLinejoin='round'

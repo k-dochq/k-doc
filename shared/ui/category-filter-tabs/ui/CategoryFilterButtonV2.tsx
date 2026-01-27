@@ -29,7 +29,7 @@ export function CategoryFilterButtonV2({
       onClick={() => onClick(category.id)}
       className={`flex h-[32px] shrink-0 items-center justify-center rounded-full px-4 text-sm leading-5 font-medium whitespace-nowrap transition-colors ${
         isSelected
-          ? 'border border-transparent bg-[#f15bff] text-white'
+          ? 'border border-transparent bg-primary-900 text-white'
           : 'border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50'
       }`}
     >

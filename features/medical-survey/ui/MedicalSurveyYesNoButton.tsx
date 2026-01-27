@@ -16,7 +16,7 @@ export function MedicalSurveyYesNoButton({
       type='button'
       onClick={onClick}
       className={`flex w-full items-center justify-center rounded-xl px-5 py-4 text-base font-medium transition-colors duration-200 ${
-        isSelected ? 'bg-[#fcdeff] text-[#f15bff]' : 'bg-[#e5e5e5] text-[#404040]'
+        isSelected ? 'bg-primary-300 text-primary-900' : 'bg-[#e5e5e5] text-[#404040]'
       }`}
     >
       {label}
