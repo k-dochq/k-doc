@@ -6,6 +6,9 @@ import { useAuth } from 'shared/lib/auth/useAuth';
 import { LocaleLink } from 'shared/ui/locale-link';
 import GuaranteeEn from '../guarantee_en';
 import GuaranteeTh from '../guarantee_th';
+import GuaranteeZhHant from '../guarantee_zh_Hant';
+import GuaranteeJa from '../guarantee_ja';
+import GuaranteeHi from '../guarantee_hi';
 
 interface HospitalDetailRegistrationPromptV2Props {
   lang: Locale;
@@ -26,7 +29,25 @@ export function HospitalDetailRegistrationPromptV2({
   const buttonText = dict.hospital?.registrationPrompt?.button || 'Register';
 
   // 언어에 따라 적절한 SVG 컴포넌트 선택
-  const GuaranteeSvg = GuaranteeEn;
+  const getGuaranteeSvg = (locale: Locale) => {
+    switch (locale) {
+      case 'th':
+        return GuaranteeTh;
+      case 'zh-Hant':
+        return GuaranteeZhHant;
+      case 'ja':
+        return GuaranteeJa;
+      case 'hi':
+        return GuaranteeHi;
+      case 'tl':
+      case 'en':
+      case 'ko':
+      default:
+        return GuaranteeEn; // 필리핀어, 영어, 한국어 및 기본값은 영어 SVG 사용
+    }
+  };
+
+  const GuaranteeSvg = getGuaranteeSvg(lang);
 
   return (
     <div className='px-2 pt-1 pb-5 min-[371px]:px-5'>
