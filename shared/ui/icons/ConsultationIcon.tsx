@@ -16,8 +16,8 @@ export function ConsultationIcon({ className, active = false }: ConsultationIcon
       >
         <path
           d='M22 4.5H2V19.5H5.5V22L10.5 19.5H22V4.5Z'
-          fill='#DA47EF'
-          stroke='#DA47EF'
+          fill='currentColor'
+          stroke='currentColor'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
