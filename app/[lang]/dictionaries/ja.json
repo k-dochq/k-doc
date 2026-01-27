@@ -547,7 +547,7 @@
     },
     "registrationPrompt": {
       "message": "Fast Reservation Guarantee!!",
-      "button": "Register"
+      "button": "新規登録"
     }
   },
   "districtFilter": {
