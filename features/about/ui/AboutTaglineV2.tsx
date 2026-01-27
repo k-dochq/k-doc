@@ -25,7 +25,7 @@ export function AboutTaglineV2() {
   }, []);
 
   const getTextStyle = (isAnimated: boolean) => ({
-    background: 'linear-gradient(to right, #404040 0%, #404040 45%, #e5e5e5 55%, #e5e5e5 100%)',
+    background: 'linear-gradient(to right, #404040 0%, #404040 50%, #e5e5e5 50%, #e5e5e5 100%)',
     backgroundSize: '200% 100%',
     backgroundPosition: isAnimated ? '0% 0%' : '100% 0%',
     backgroundClip: 'text',
@@ -42,7 +42,7 @@ export function AboutTaglineV2() {
           if (index === 0) {
             return (
               <div key={index} className='flex items-center gap-3'>
-                <p className='text-4xl font-bold' style={getTextStyle(isTextAnimated)}>
+                <p className='text-4xl font-bold font-pretendard' style={getTextStyle(isTextAnimated)}>
                   {tagline}
                 </p>
                 <div
@@ -91,7 +91,7 @@ export function AboutTaglineV2() {
                     className='h-full w-full object-cover'
                   />
                 </div>
-                <p className='text-4xl font-bold' style={getTextStyle(isTextAnimated)}>
+                <p className='text-4xl font-bold font-pretendard' style={getTextStyle(isTextAnimated)}>
                   {tagline}
                 </p>
               </div>
@@ -102,7 +102,7 @@ export function AboutTaglineV2() {
           if (index === 4) {
             return (
               <div key={index} className='flex items-center gap-3'>
-                <p className='text-4xl font-bold' style={getTextStyle(isTextAnimated)}>
+                <p className='text-4xl font-bold font-pretendard' style={getTextStyle(isTextAnimated)}>
                   {tagline}
                 </p>
                 <div
@@ -130,7 +130,7 @@ export function AboutTaglineV2() {
 
           // 나머지 문장
           return (
-            <p key={index} className='text-4xl font-bold' style={getTextStyle(isTextAnimated)}>
+            <p key={index} className='text-4xl font-bold font-pretendard' style={getTextStyle(isTextAnimated)}>
               {tagline}
             </p>
           );
