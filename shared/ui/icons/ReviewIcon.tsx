@@ -16,8 +16,8 @@ export function ReviewIcon({ className, active = false }: ReviewIconProps) {
       >
         <path
           d='M19.5 2H5.5C4.94771 2 4.5 2.44771 4.5 3V21C4.5 21.5523 4.94771 22 5.5 22H19.5C20.0523 22 20.5 21.5523 20.5 21V3C20.5 2.44771 20.0523 2 19.5 2Z'
-          fill='#DA47EF'
-          stroke='#DA47EF'
+          fill='currentColor'
+          stroke='currentColor'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
