@@ -10,19 +10,13 @@ export async function GET(request: NextRequest) {
     const typeParam = url.searchParams.get('type');
     const type = typeParam ? (typeParam as EventBannerType) : undefined;
     const isActiveParam = url.searchParams.get('isActive');
-    const isActive =
-      isActiveParam === null
-        ? undefined
-        : isActiveParam.toLowerCase() === 'true'
-          ? true
-          : isActiveParam.toLowerCase() === 'false'
-            ? false
-            : undefined;
+    // isActive 미지정 시 기본값: 활성 배너만 반환 (공개용 일관성). ?isActive=false 로 비활성 포함 조회 가능.
+    const isActive: boolean = isActiveParam?.toLowerCase() !== 'false';
 
     const banners = await prisma.eventBanner.findMany({
       where: {
         ...(type && { type }),
-        ...(isActive !== undefined && { isActive }),
+        isActive,
       },
       include: {
         EventBannerImage: true,
