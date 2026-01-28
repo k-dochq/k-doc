@@ -18,7 +18,8 @@ interface DoctorProfileV2Props {
 
 export function DoctorProfileV2({ doctor, lang, dict }: DoctorProfileV2Props) {
   const doctorName = getDoctorNameFromLocalizedText(doctor.name, lang) || '';
-  const position = getLocalizedTextByLocale(doctor.position, lang) || '';
+  const position =
+    getLocalizedTextByLocale(doctor.position, lang === 'tl' ? 'en' : lang) || '';
   const hospitalName = getLocalizedTextByLocale(doctor.hospital.name, lang) || '';
 
   // 프로필 이미지 추출 (PROFILE 타입 우선, 없으면 첫 번째 이미지)

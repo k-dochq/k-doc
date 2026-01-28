@@ -40,7 +40,8 @@ export function DoctorCard({
   const { isAuthenticated } = useAuth();
 
   const doctorName = getDoctorNameFromJsonValue(doctor.name, lang) || '이름 없음';
-  const position = extractLocalizedText(doctor.position, lang) || '';
+  const position =
+    extractLocalizedText(doctor.position, lang === 'tl' ? 'en' : lang) || '';
   const hospitalName = extractLocalizedText(doctor.hospital.name, lang) || '';
 
   // 의사 이미지 중 첫 번째 이미지를 프로필 이미지로 사용
