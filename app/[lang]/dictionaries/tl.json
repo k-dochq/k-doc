@@ -16,19 +16,19 @@
     }
   },
   "search": {
-    "placeholder": "Maghanap ng ospital at mga procedure",
+    "placeholder": "Maghanap ng hospital at mga procedure",
     "resultTitle": "Mga resulta ng paghahanap"
   },
   "hospitalList": {
-    "title": "Mga Sikat na Ospital",
+    "title": "Mga Sikat na Hospital",
     "viewAll": "Tingnan Lahat",
     "error": {
-      "message": "Nagkaroon ng error habang kinukuha ang impormasyon ng ospital.",
+      "message": "Nagkaroon ng error habang kinukuha ang impormasyon ng hospital.",
       "retryButton": "Subukan muli"
     },
     "empty": {
-      "message": "Walang mga ospital na mairerekomenda.",
-      "description": "Malapit nang magdagdag ng mga bagong ospital."
+      "message": "Walang mga hospital na mairerekomenda.",
+      "description": "Malapit nang magdagdag ng mga bagong hospital."
     }
   },
   "liveReviews": {
@@ -82,21 +82,21 @@
     }
   },
   "hospitals": {
-    "title": "Maghanap ng ospital",
-    "totalCount": "Isang kabuuang {{count}} na ospital",
+    "title": "Maghanap ng hospital",
+    "totalCount": "Isang kabuuang {{count}} na hospital",
     "empty": {
-      "message": "Walang mga rehistradong ospital.",
-      "title": "Walang mga rehistradong ospital",
-      "description": "Malapit nang magtayo ng mga bagong ospital",
-      "searchTitle": "Walang natagpuang ospital",
+      "message": "Walang mga rehistradong hospital.",
+      "title": "Walang mga rehistradong hospital",
+      "description": "Malapit nang magtayo ng mga bagong hospital",
+      "searchTitle": "Walang natagpuang hospital",
       "searchDescription": "Pakisubukang muli gamit ang iba&#39;t ibang termino para sa paghahanap"
     },
     "pagination": {
       "page": "Pahina {{kasalukuyang}} / {{total}}"
     },
     "infiniteScroll": {
-      "loading": "Tumatawag sa mas maraming ospital...",
-      "end": "Tinawagan na lahat ng ospital."
+      "loading": "Tumatawag sa mas maraming hospital...",
+      "end": "Tinawagan na lahat ng hospital."
     },
     "doctors": {
       "title": "Mga kaakibat na kawani ng medikal",
@@ -162,10 +162,10 @@
     "searchPlaceholder": "Pakilagay ang iyong termino para sa paghahanap"
   },
   "hospitalDetailTabs": {
-    "introduction": "Tungkol sa Ospital",
+    "introduction": "Tungkol sa Hospital",
     "procedures": "Detalye ng Procedure",
     "youtube": "youtube",
-    "youtubePreparing": "Inihahanda na ang video ng ospital.",
+    "youtubePreparing": "Inihahanda na ang video ng hospital.",
     "proceduresDetail": "Detalye ng Procedure",
     "proceduresComingSoon": "Inihahanda na ang detalyadong impormasyon tungkol sa proseso.",
     "comingSoonSubtext": "Maa-update ito sa lalong madaling panahon.",
@@ -180,7 +180,7 @@
   },
   "allReviews": {
     "title": "Buong pagsusuri ng paggamot",
-    "subtitle": "Tingnan ang mga review mula sa lahat ng ospital",
+    "subtitle": "Tingnan ang mga review mula sa lahat ng hospital",
     "loadingMore": "Naglo-load ng higit pang mga review...",
     "allLoaded": "Na-load na ang lahat ng review.",
     "retry": "Subukan muli",
@@ -220,24 +220,24 @@
       "buttonText": "Write Review"
     },
     "selectHospital": {
-      "title": "Pagpili ng ospital",
-      "description": "Mangyaring piliin ang ospital kung saan mo gustong magsulat ng review. Maaari kang pumili mula sa listahan ng mga ospital kung saan ka nagpareserba.",
-      "pageTitle": "Piliin ang ospital kung saan ka nagpareserba",
-      "pageSubtitle": "Piliin ang ospital kung saan mo gustong magsulat ng review.",
-      "notificationMessage": "Mangyaring piliin ang ospital kung saan mo gustong magsulat ng review.",
+      "title": "Pagpili ng hospital",
+      "description": "Mangyaring piliin ang hospital kung saan mo gustong magsulat ng review. Maaari kang pumili mula sa listahan ng mga hospital kung saan ka nagpareserba.",
+      "pageTitle": "Piliin ang hospital kung saan ka nagpareserba",
+      "pageSubtitle": "Piliin ang hospital kung saan mo gustong magsulat ng review.",
+      "notificationMessage": "Mangyaring piliin ang hospital kung saan mo gustong magsulat ng review.",
       "infiniteScroll": {
-        "loading": "Naglo-load ng mas maraming ospital...",
-        "end": "Tinawagan na ang lahat ng ospital na may reserbasyon."
+        "loading": "Naglo-load ng mas maraming hospital...",
+        "end": "Tinawagan na ang lahat ng hospital na may reserbasyon."
       },
       "error": {
-        "title": "Hindi makuha ang datos ng ospital na reserbasyon",
+        "title": "Hindi makuha ang datos ng hospital na reserbasyon",
         "message": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya."
       },
       "empty": {
         "title": "Walang mga reserbasyon",
-        "description": "Para makapagsulat ng review, kailangan mo munang magpa-appointment sa ospital.",
-        "subdescription": "Hanapin ang ospital na gusto mo at magpareserba.",
-        "browseButton": "Maglibot sa ospital"
+        "description": "Para makapagsulat ng review, kailangan mo munang magpa-appointment sa hospital.",
+        "subdescription": "Hanapin ang hospital na gusto mo at magpareserba.",
+        "browseButton": "Maglibot sa hospital"
       }
     },
     "form": {
@@ -288,9 +288,9 @@
     "title": "Detalyadong pagsusuri pagkatapos ng pamamaraan",
     "content": "Suriin ang nilalaman",
     "backButton": "Bumalik",
-    "hospitalInfo": "Impormasyon tungkol sa ospital kung saan isinagawa ang pamamaraan",
-    "hospital": "Ospital para sa Pamamaraan",
-    "sameHospitalReviews": "Mga Review sa Parehong Ospital"
+    "hospitalInfo": "Impormasyon tungkol sa hospital kung saan isinagawa ang pamamaraan",
+    "hospital": "Hospital para sa Pamamaraan",
+    "sameHospitalReviews": "Mga Review sa Parehong Hospital"
   },
   "reviewImages": {
     "beforePhoto": "Larawan bago ang paggamot",
@@ -522,10 +522,10 @@
     "reviewsButton": "Reviews",
     "priceConsultation": "After consultation",
     "introduction": {
-      "title": "Tungkol sa Ospital"
+      "title": "Tungkol sa Hospital"
     },
     "info": {
-      "title": "Impormasyon sa ospital",
+      "title": "Impormasyon sa hospital",
       "operatingHours": "Mga oras ng klinika",
       "noInformation": "Walang impormasyon"
     },
@@ -589,14 +589,14 @@
   },
   "favorites": {
     "title": "Mga Paborito",
-    "hospitals": "Ospital",
+    "hospitals": "Hospital",
     "reviews": "Reviews",
     "doctors": "Doktor",
     "loading": "Naglo-load...",
     "error": "Nagkaroon ng error habang naglo-load ng data.",
     "errorMessage": "Pakisuri ang koneksyon ng iyong network at subukan muli mamaya.",
     "retry": "Subukan muli",
-    "errorHospitals": "Hindi makuha ang datos ng ospital",
+    "errorHospitals": "Hindi makuha ang datos ng hospital",
     "errorReviews": "Hindi makuha ang datos ng pagsusuri",
     "errorDoctors": "Hindi mo matawagan ang doktor na gusto mo",
     "loadingMoreReviews": "Naglo-load ng higit pang mga review...",
@@ -605,8 +605,8 @@
     "allLoadedDoctors": "Tinawagan ko na lahat ng doktor.",
     "empty": {
       "hospitals": {
-        "title": "Walang mga ospital na nailigtas",
-        "description": "Pindutin ang puso para i-save ang iyong mga paboritong ospital."
+        "title": "Walang mga hospital na nailigtas",
+        "description": "Pindutin ang puso para i-save ang iyong mga paboritong hospital."
       },
       "reviews": {
         "title": "Walang naka-save na mga review",
@@ -672,11 +672,11 @@
     "empty": {
       "chat": {
         "title": "Walang patuloy na konsultasyon",
-        "description": "Magsimulang kumonsulta sa isang ospital"
+        "description": "Magsimulang kumonsulta sa isang hospital"
       },
       "appointment": {
         "title": "Walang mga reserbasyon",
-        "description": "Mag-apply para sa reserbasyon sa ospital na iyong napili"
+        "description": "Mag-apply para sa reserbasyon sa hospital na iyong napili"
       }
     },
     "request": {
@@ -717,7 +717,7 @@
         "preferredDate": {
           "label": "Mas gustong petsa ng reserbasyon",
           "placeholder": "Pumili ng petsa",
-          "helper": "Mangyaring piliin upang tingnan ang iskedyul ng ospital"
+          "helper": "Mangyaring piliin upang tingnan ang iskedyul ng hospital"
         },
         "preferredDate2": {
           "label": "Mas gustong petsa ng reserbasyon 2",
@@ -771,7 +771,7 @@
         "errorMessages": {
           "UNAUTHORIZED": "Dapat kang mag-log in.",
           "MISSING_REQUIRED_FIELDS": "Pakilagay ang lahat ng kinakailangang field.",
-          "HOSPITAL_NOT_FOUND": "Hindi mahanap ang impormasyon ng ospital.",
+          "HOSPITAL_NOT_FOUND": "Hindi mahanap ang impormasyon ng hospital.",
           "INTERNAL_SERVER_ERROR": "Nagkaroon ng error sa server. Pakisubukang muli mamaya.",
           "NETWORK_ERROR": "Nagkaroon ng error sa network. Pakisuri ang iyong koneksyon sa Internet.",
           "UNKNOWN_ERROR": "Isang hindi kilalang error ang naganap."
@@ -798,9 +798,9 @@
       }
     },
     "notificationPermission": {
-      "title": "Huwag palampasin ang tugon ng ospital!",
+      "title": "Huwag palampasin ang tugon ng hospital!",
       "subtitle": "Kung io-on mo ang mga push notification, maaari mo agad tingnan kung kailan dumating ang tugon sa konsultasyon.",
-      "description": "Magpapadala sa iyo ang K-DOC ng push notification kapag may dumating na tugon mula sa ospital. Para pumayag, pindutin ang buton na [Tumanggap ng mga Abiso].",
+      "description": "Magpapadala sa iyo ang K-DOC ng push notification kapag may dumating na tugon mula sa hospital. Para pumayag, pindutin ang buton na [Tumanggap ng mga Abiso].",
       "settingsNote": "(Baguhin ang mga setting ng push notification: Aking Pahina → Mga Setting ng Abiso → Pangkalahatang mga Abiso ON/OFF)",
       "acceptButton": "Maabisuhan",
       "declineButton": "Ayoko munang tanggapin ngayon."
@@ -828,7 +828,7 @@
       },
       "completePage": {
         "title": "Kumpletuhin ang talatanungan",
-        "message1": "Batay sa impormasyong ibinigay mo, sinusuri ng ospital kung posible ang pamamaraan.",
+        "message1": "Batay sa impormasyong ibinigay mo, sinusuri ng hospital kung posible ang pamamaraan.",
         "message2": "Mangyaring maghintay sandali dahil makikipag-ugnayan kami sa iyo sa pamamagitan ng chat upang magbigay ng konsultasyon kapag nakumpleto na ang pagsusuri.",
         "notice": {
           "title": "Impormasyon kung posible ang pamamaraan",
@@ -906,7 +906,7 @@
   "cautionSection": {
     "title": "Tala",
     "items": [
-      "Ang serbisyo ng limousine ay magagamit lamang para sa mga reserbasyon sa ospital/procedure bago bumisita sa Korea.",
+      "Ang serbisyo ng limousine ay magagamit lamang para sa mga reserbasyon sa hospital/procedure bago bumisita sa Korea.",
       "Maaari mong piliin ang opsyon ng limousine sa yugto ng kahilingan sa reserbasyon pagkatapos humiling ng konsultasyon.",
       "Kapag nagpareserba ka nang maaga, nagbibigay kami ng mga serbisyo ng concierge tulad ng mga tour sa mga sikat na lugar at masasarap na restaurant sa Korea.",
       {
@@ -984,9 +984,9 @@
       "items": [
         "Serbisyo: nangangahulugang lahat ng mga tungkulin at serbisyo na nagbibigay ng impormasyong nakarehistro ng mga gumagamit at mga kalahok na institusyon tungkol sa mga kosmetikong pamamaraan sa &quot;Mga Miyembro&quot;.",
         "Miyembro: Ang isang taong nag-a-access sa &quot;Serbisyo&quot;, sumasang-ayon sa mga Tuntunin at Kundisyong ito, nagbibigay ng personal na impormasyon sa &quot;Kumpanya&quot;, at nagpaparehistro bilang isang &quot;Miyembro&quot; at maaaring patuloy na gamitin ang &quot;Serbisyo.&quot;",
-        "Kaakibat na Ospital: Isang institusyong medikal o kaugnay na negosyo na kalahok sa &quot;Serbisyo&quot; na tumatanggap ng hiwalay na sistema mula sa &quot;Kumpanya&quot; at nagrerehistro ng impormasyon tungkol sa mga ospital at kawani ng medikal, pati na rin ang impormasyon tungkol sa mga medikal na pamamaraan na isinasagawa, para sa &quot;Mga Miyembro.&quot;",
-        "Pangyayari sa Paunang Pagbabayad: Tumutukoy ito sa lahat ng serbisyo sa paggamot bilang mga produkto at serbisyong ibinebenta ng &quot;Mga Kaakibat na Ospital&quot; sa &quot;Mga Miyembro&quot; sa pamamagitan ng Serbisyo.",
-        "Paunang Pagbabayad (online na pagbabayad): Ito ay tumutukoy sa paggamit o pagbili ng mga produkto o pakikilahok sa &quot;Mga Kaganapan sa Paunang Pagbabayad&quot; sa &quot;Mga Kaakibat na Ospital&quot; sa pamamagitan ng paggamit ng serbisyo sa pagbili sa loob ng &quot;Serbisyo&quot; na ibinibigay ng &quot;Kumpanya.&quot;",
+        "Kaakibat na Hospital: Isang institusyong medikal o kaugnay na negosyo na kalahok sa &quot;Serbisyo&quot; na tumatanggap ng hiwalay na sistema mula sa &quot;Kumpanya&quot; at nagrerehistro ng impormasyon tungkol sa mga hospital at kawani ng medikal, pati na rin ang impormasyon tungkol sa mga medikal na pamamaraan na isinasagawa, para sa &quot;Mga Miyembro.&quot;",
+        "Pangyayari sa Paunang Pagbabayad: Tumutukoy ito sa lahat ng serbisyo sa paggamot bilang mga produkto at serbisyong ibinebenta ng &quot;Mga Kaakibat na Hospital&quot; sa &quot;Mga Miyembro&quot; sa pamamagitan ng Serbisyo.",
+        "Paunang Pagbabayad (online na pagbabayad): Ito ay tumutukoy sa paggamit o pagbili ng mga produkto o pakikilahok sa &quot;Mga Kaganapan sa Paunang Pagbabayad&quot; sa &quot;Mga Kaakibat na Hospital&quot; sa pamamagitan ng paggamit ng serbisyo sa pagbili sa loob ng &quot;Serbisyo&quot; na ibinibigay ng &quot;Kumpanya.&quot;",
         "Service voucher: Tumutukoy sa isang service voucher na inisyu kapag bumibili ng isang “pre-payment event” o “produkto” mula sa serbisyo.",
         "Kupon na Diskwento: Ito ay tumutukoy sa isang benepisyo ng diskwento na nagpapahintulot sa isang &quot;Miyembro&quot; na makatanggap ng diskwento ng nakasaad na halaga o porsyento kapag ginagamit ang &quot;Serbisyo.&quot; Ang pag-isyu at paggamit ng &quot;Mga Kupon na Diskwento&quot; ay pinamamahalaan ng patakaran sa pagpapatakbo ng &quot;Kumpanya&quot;.",
         "Mga Puntos: Ang mga Puntos ay virtual, numerikal na datos na ibinibigay ng &quot;Kumpanya&quot; sa &quot;Mga Miyembro&quot; para sa layunin ng pagbibigay ng mga benepisyo o kaginhawahan sa paggamit ng Serbisyo. Maaari itong gamitin upang bumili ng &quot;mga treatment voucher&quot; at &quot;mga produkto&quot; sa loob ng Serbisyo. Ang pag-isyu at paggamit ng &quot;Mga Puntos&quot; ay tinutukoy ng patakaran sa pagpapatakbo ng Kumpanya.",
@@ -1080,10 +1080,10 @@
             "Paglabag sa mga karapatan sa intelektwal na ari-arian, tulad ng mga karapatang-ari, ng kumpanya o isang ikatlong partido",
             "Anumang kilos na nakakasira sa reputasyon ng kumpanya o ng isang ikatlong partido o nakakasagabal sa negosyo nito",
             "Hindi pagtupad sa mga obligasyong pinapasan ng mga miyembro kaugnay ng pagbabayad ng mga karapatan sa paggamot na binili sa pamamagitan ng serbisyo o iba pang paggamit ng serbisyo",
-            "Isang kilos ng pagtanggap ng mga serbisyo mula sa isang kaakibat na ospital matapos bumili ang isang miyembro ng treatment voucher at humiling at nakatanggap ng refund.",
-            "Isang kilos ng isang miyembro na humihingi ng refund mula sa kumpanya para sa mga hindi nagamit na treatment voucher matapos makatanggap ng mga serbisyo mula sa isang kaakibat na ospital.",
-            "Isang kilos ng isang miyembro na arbitraryong nagmamanipula sa lokasyon ng paggamit pagkatapos bumili ng treatment voucher at muling gamitin ito sa isang kaakibat na ospital o katulad na negosyo",
-            "Anumang gawain na maaaring makagambala sa paggamit ng mga serbisyo ng ibang miyembro at mga kaakibat na ospital, tulad ng madalas na pagkansela at akumulasyon ng mga binili.",
+            "Isang kilos ng pagtanggap ng mga serbisyo mula sa isang kaakibat na hospital matapos bumili ang isang miyembro ng treatment voucher at humiling at nakatanggap ng refund.",
+            "Isang kilos ng isang miyembro na humihingi ng refund mula sa kumpanya para sa mga hindi nagamit na treatment voucher matapos makatanggap ng mga serbisyo mula sa isang kaakibat na hospital.",
+            "Isang kilos ng isang miyembro na arbitraryong nagmamanipula sa lokasyon ng paggamit pagkatapos bumili ng treatment voucher at muling gamitin ito sa isang kaakibat na hospital o katulad na negosyo",
+            "Anumang gawain na maaaring makagambala sa paggamit ng mga serbisyo ng ibang miyembro at mga kaakibat na hospital, tulad ng madalas na pagkansela at akumulasyon ng mga binili.",
             "Paggawa ng mga abnormal na pagbabayad, tulad ng pangangalap ng pondo sa pamamagitan ng muling pagbebenta o iba pang mga pamamaraan sa ilalim ng pagkukunwari ng pagbili ng lisensya sa paggamot",
             "Isang kilos ng paggamit ng serbisyo para sa layunin ng muling pagbebenta ng isang produkto pagkatapos itong bilhin sa pamamagitan ng paglalapat ng isang hiwalay na paraan ng pagbabayad, atbp. nang walang tunay na intensyon na bumili.",
             "Isang kilos ng pagbili ng treatment voucher sa pamamagitan ng hindi awtorisadong paggamit o pagnanakaw ng credit card, bank account, mobile phone, atbp. ng ibang tao.",
@@ -1114,7 +1114,7 @@
         "Upang protektahan ang personal na impormasyon ng mga miyembro, ang kumpanya ay nagtatag ng isang patakaran sa privacy at pino-post ito sa home screen ng serbisyo. Gayunpaman, ang mga partikular na detalye ng patakaran sa privacy ay maaaring matingnan sa pamamagitan ng link.",
         "Sinisikap ng kompanya na protektahan ang personal na impormasyon ng mga miyembro sa abot ng kanilang makakaya alinsunod sa patakaran nito sa pagproseso ng personal na impormasyon.",
         "Ang kompanya ay hindi nangongolekta ng anumang impormasyong kinakailangan para sa pagpapatupad ng isang kasunduan sa pagbili bago ang pagpaparehistro ng pagiging miyembro. Gayunpaman, sa mga kaso kung saan kinakailangan ang beripikasyon ng pagkakakilanlan bago pumasok sa isang kasunduan sa pagbili upang matupad ang mga obligasyon sa ilalim ng mga kaugnay na batas at regulasyon, maaaring mangolekta ang kompanya ng kaunting partikular na personal na impormasyon.",
-        "Bilang isang tagapamagitan sa pagbebenta ng komunikasyon, ang Kumpanya ay may responsibilidad na protektahan ang personal na impormasyong ipinasok ng mga miyembro sa mga serbisyo tulad ng mga kahilingan sa konsultasyon at mga paunang bayad. Para sa karagdagang detalye, mangyaring sumangguni sa patakaran sa privacy ng Kumpanya. Gayunpaman, responsibilidad ng miyembro na suriin ang patakaran sa privacy ng kaakibat na ospital o klinika na nangongolekta ng personal na impormasyong ipinasok sa mga kahilingan sa konsultasyon, mga paunang bayad, atbp. tungkol sa pagkolekta at paggamit ng naturang impormasyon. Ang Kumpanya ay hindi mananagot para sa anumang mga disbentaha na nagmumula sa hindi pagsuri sa patakaran sa privacy.",
+        "Bilang isang tagapamagitan sa pagbebenta ng komunikasyon, ang Kumpanya ay may responsibilidad na protektahan ang personal na impormasyong ipinasok ng mga miyembro sa mga serbisyo tulad ng mga kahilingan sa konsultasyon at mga paunang bayad. Para sa karagdagang detalye, mangyaring sumangguni sa patakaran sa privacy ng Kumpanya. Gayunpaman, responsibilidad ng miyembro na suriin ang patakaran sa privacy ng kaakibat na hospital o klinika na nangongolekta ng personal na impormasyong ipinasok sa mga kahilingan sa konsultasyon, mga paunang bayad, atbp. tungkol sa pagkolekta at paggamit ng naturang impormasyon. Ang Kumpanya ay hindi mananagot para sa anumang mga disbentaha na nagmumula sa hindi pagsuri sa patakaran sa privacy.",
         {
           "content": "Maaaring magbigay ang Kompanya ng personal na impormasyon ng mga miyembro sa mga ikatlong partido hangga&#39;t pinahihintulutan ng batas sa mga sumusunod na kaso:",
           "subItems": [
@@ -1157,7 +1157,7 @@
     "article12": {
       "title": "Artikulo 12 (Limitasyon ng Pananagutan)",
       "items": [
-        "Ang Kompanya ay nagbibigay lamang ng isang serbisyo sa plataporma (pagkakaloob ng mga kaakibat na ospital, lokasyon, larawan, at impormasyon ng produkto, at mga benta sa pamamagitan ng koreo) na nagsisilbing tagapamagitan sa pagitan ng mga miyembro at mga kaakibat na ospital at klinika patungkol sa mga serbisyo tulad ng mga kahilingan sa konsultasyon at mga paunang bayad. Ang Kompanya ay hindi direktang nagbibigay ng mga serbisyong medikal/pangangalaga sa kagandahan o ginagarantiyahan ang mga resulta ng mga serbisyong medikal/pangangalaga sa kagandahan na ibinibigay ng mga kaakibat na ospital at klinika. Anumang pananagutan na nagmumula sa proseso ng pagtanggap ng mga serbisyong medikal/pangangalaga sa kagandahan o anumang iba pang serbisyo mula sa mga kaakibat na ospital at klinika ay nasa pagitan ng miyembro at ng kaakibat na ospital at klinika.",
+        "Ang Kompanya ay nagbibigay lamang ng isang serbisyo sa plataporma (pagkakaloob ng mga kaakibat na hospital, lokasyon, larawan, at impormasyon ng produkto, at mga benta sa pamamagitan ng koreo) na nagsisilbing tagapamagitan sa pagitan ng mga miyembro at mga kaakibat na hospital at klinika patungkol sa mga serbisyo tulad ng mga kahilingan sa konsultasyon at mga paunang bayad. Ang Kompanya ay hindi direktang nagbibigay ng mga serbisyong medikal/pangangalaga sa kagandahan o ginagarantiyahan ang mga resulta ng mga serbisyong medikal/pangangalaga sa kagandahan na ibinibigay ng mga kaakibat na hospital at klinika. Anumang pananagutan na nagmumula sa proseso ng pagtanggap ng mga serbisyong medikal/pangangalaga sa kagandahan o anumang iba pang serbisyo mula sa mga kaakibat na hospital at klinika ay nasa pagitan ng miyembro at ng kaakibat na hospital at klinika.",
         "Kung may lumitaw na hindi pagkakaunawaan sa pagitan ng mga miyembro o sa pagitan ng isang miyembro at isang ikatlong partido dahil sa isang transaksyon o iba pang kilos na namamagitan sa serbisyo, ang kumpanya ay walang obligasyon na makialam maliban kung may ibang itinadhana sa mga kaugnay na batas at regulasyon, at hindi mananagot para sa anumang mga nagresultang pinsala.",
         "Ang Kumpanya ay hindi mananagot para sa pagiging maaasahan, katumpakan, o iba pang aspeto ng anumang impormasyon, datos, o katotohanang nai-post ng mga miyembro sa Serbisyo. Ang Kumpanya ay hindi mananagot para sa anumang sibil o kriminal na pananagutan na nagmumula sa mga post na ginawa ng mga miyembro sa loob ng Serbisyo na lumalabag sa mga karapatang-ari o karapatang-ari ng software ng iba o sumisira sa kanilang reputasyon. Kung ang Kumpanya ay makatanggap ng isang paghahabol para sa mga danyos o iba pang pagtutol mula sa isang ikatlong partido dahil sa paglabag sa karapatang-ari o paninirang-puri ng isang miyembro, dapat sikapin ng miyembro na bayaran ang danyos sa Kumpanya. Kung ang Kumpanya ay hindi bayaran ang danyos, ang miyembro ang mananagot para sa lahat ng pagkalugi na natamo ng Kumpanya bilang resulta.",
         "Ang Kompanya ay walang obligasyon na suriin muna ang mga post ng mga miyembro bago ang pagpaparehistro o regular na suriin o repasuhin ang nilalaman ng mga post, at hindi mananagot para sa mga resulta nito.",
@@ -1176,7 +1176,7 @@
           ]
         },
         "Ang Kompanya ay hindi mananagot para sa anumang pagkawala ng inaasahang kita na natamo ng mga miyembro sa pamamagitan ng paggamit ng Serbisyo, ni hindi rin ito mananagot para sa anumang pinsala na nagreresulta mula sa impormasyong nakuha sa pamamagitan ng iba pang mga serbisyo.",
-        "Ang Kompanya ay walang anumang obligasyon na subaybayan o akuin ang anumang responsibilidad para sa nilalaman ng mga kaganapan, impormasyon ng ospital, atbp. na inaanunsyo ng mga ikatlong partido sa pamamagitan ng mga screen ng serbisyo. Ang mga ikatlong partido ay responsable para sa anumang nilalaman na lumalabag sa Batas Medikal."
+        "Ang Kompanya ay walang anumang obligasyon na subaybayan o akuin ang anumang responsibilidad para sa nilalaman ng mga kaganapan, impormasyon ng hospital, atbp. na inaanunsyo ng mga ikatlong partido sa pamamagitan ng mga screen ng serbisyo. Ang mga ikatlong partido ay responsable para sa anumang nilalaman na lumalabag sa Batas Medikal."
       ]
     },
     "article13": {
@@ -1193,8 +1193,8 @@
           "content": "Ang Kompanya ay nagbibigay ng mga sumusunod na serbisyo sa mga miyembro nito, at ang mga partikular na detalye ng mga serbisyong ito ay tinutukoy ng patakaran sa pagpapatakbo ng Kompanya. Gayunpaman, ang mga serbisyong ito ay hindi limitado sa mga kasalukuyang magagamit na serbisyo at maaaring idagdag o baguhin sa hinaharap sa pamamagitan ng karagdagang pag-unlad o pakikipagsosyo sa ibang mga kumpanya. Sa prosesong ito, ang ilang mga serbisyo ay maaaring mangailangan ng pag-verify ng pagkakakilanlan. Kapag nagbibigay ng mga serbisyo sa mga miyembro, ang Kompanya ay maaari ring magbigay ng mga karagdagang serbisyo, kabilang ang mga nakasaad sa Mga Tuntunin at Kundisyong ito.",
           "subItems": [
             "Pagbibigay ng impormasyon tungkol sa mga produkto o serbisyo",
-            "Mga serbisyo sa pagbili, pagkansela, at pag-refund sa pagitan ng mga kaakibat na ospital at mga miyembro",
-            "Iba pang mga serbisyong tinutukoy ng kumpanya at ng mga kaakibat nitong ospital",
+            "Mga serbisyo sa pagbili, pagkansela, at pag-refund sa pagitan ng mga kaakibat na hospital at mga miyembro",
+            "Iba pang mga serbisyong tinutukoy ng kumpanya at ng mga kaakibat nitong hospital",
             "Serbisyong pangkomunidad na nagbabahagi ng impormasyon sa mga miyembro",
             "Anumang serbisyong ibinibigay sa mga pangkalahatang miyembro sa pamamagitan ng karagdagang pagpapaunlad ng ibang mga kumpanya o sa pamamagitan ng mga kasunduan sa pakikipagsosyo sa ibang mga kumpanya."
           ]
@@ -1247,9 +1247,9 @@
     "article17": {
       "title": "Artikulo 17 (Paraan ng Pagbabayad)",
       "items": [
-        "Ang kompanya ay hindi nakikilahok sa anumang pagbabayad ng mga bayarin sa medikal, atbp. sa pagitan ng mga kaakibat na ospital at mga miyembro.",
+        "Ang kompanya ay hindi nakikilahok sa anumang pagbabayad ng mga bayarin sa medikal, atbp. sa pagitan ng mga kaakibat na hospital at mga miyembro.",
         {
-          "content": "Ang pagbabayad para sa mga produktong binili sa pamamagitan ng Serbisyo at mga bagay na binili sa mga kaakibat na ospital ay maaaring gawin gamit ang alinman sa mga magagamit na pamamaraan na nakalista sa ibaba. Gayunpaman, ang Serbisyo at ang mga kaakibat na ospital ay hindi maaaring maningil ng anumang karagdagang bayarin mula sa mga miyembro para sa mga produktong binili sa pamamagitan ng kanilang paraan ng pagbabayad.",
+          "content": "Ang pagbabayad para sa mga produktong binili sa pamamagitan ng Serbisyo at mga bagay na binili sa mga kaakibat na hospital ay maaaring gawin gamit ang alinman sa mga magagamit na pamamaraan na nakalista sa ibaba. Gayunpaman, ang Serbisyo at ang mga kaakibat na hospital ay hindi maaaring maningil ng anumang karagdagang bayarin mula sa mga miyembro para sa mga produktong binili sa pamamagitan ng kanilang paraan ng pagbabayad.",
           "subItems": [
             "Pagbabayad gamit ang iba&#39;t ibang card tulad ng debit card, credit card, Naver Pay, at Kakao Pay",
             "Pagbabayad sa pamamagitan ng isang external payment gateway (PG) gamit ang mga puntos at mga kupon ng diskwento",
@@ -1271,7 +1271,7 @@
     "article19": {
       "title": "Artikulo 19 (Paggamit ng paunang bayad)",
       "items": [
-        "Ang mga produktong binili ng mga miyembro sa pamamagitan ng serbisyo ay maaaring gamitin sa mga kaakibat na ospital o sa mga lokasyong itinalaga ng mga kaakibat na ospital pagkatapos makumpleto ang proseso ng beripikasyon ng pagkakakilanlan.",
+        "Ang mga produktong binili ng mga miyembro sa pamamagitan ng serbisyo ay maaaring gamitin sa mga kaakibat na hospital o sa mga lokasyong itinalaga ng mga kaakibat na hospital pagkatapos makumpleto ang proseso ng beripikasyon ng pagkakakilanlan.",
         "Maaari lamang makatanggap ang mga miyembro ng mga serbisyo mula sa kumpanya sa loob ng panahon ng bisa na tinukoy sa mga indibidwal na tuntunin at kundisyon ng pagbebenta para sa bawat produktong serbisyo. Ang mga miyembrong bumibili ng produktong serbisyo ay hindi maaaring gumamit ng mga email, text message, o iba pang resibo na ipinadala upang kumpirmahin ang mga pagbili bilang kapalit ng pag-verify ng pagkakakilanlan. Hindi maaaring ilipat o magbigay ng mga produkto bilang kolateral ang mga miyembro sa iba nang walang pahintulot. Gayunpaman, maaaring paghigpitan ang mga miyembro ng negosyo sa pagbili ng ilang partikular na produkto.",
         "Ang mga tuntunin at kundisyon para sa paggamit at mga refund ng mga produkto para sa mga prepaid na serbisyo na napapailalim sa sugnay na ito ay natutukoy ng mga tuntunin at kundisyon. Ang mga miyembrong bumibili ay responsable sa pagsuri ng mga nilalaman at mga indibidwal na pag-iingat (mga tuntunin ng paggamit) na tinukoy sa aming website at app, at maaaring gamitin ang produkto alinsunod sa tinukoy na mga tuntunin at kundisyon."
       ]
@@ -1282,7 +1282,7 @@
         "Maaaring magbigay ang Kompanya ng mga diskwento sa mga miyembro kapag ginamit nila ang Serbisyo alinsunod sa patakaran sa pagpapatakbo ng Kompanya.",
         "Maaaring gumamit ang mga miyembro ng mga kupon ng diskwento kasabay ng iba pang mga paraan ng pagbabayad kapag nagbabayad sa pamamagitan ng isang external payment gateway (PG) kapag ginagamit ang serbisyo, alinsunod sa mga pamamaraan at kundisyon na itinatag ng patakaran sa pagpapatakbo ng kumpanya.",
         "Ang mga detalye tungkol sa pagbibigay at paggamit ng mga kupon ng diskwento ay pinamamahalaan ng patakaran sa pagpapatakbo ng kumpanya, at ibinibigay ng kumpanya ang impormasyong ito sa mga miyembro sa pamamagitan ng mga channel ng pagbebenta o mga serbisyong pinapatakbo ng kumpanya.",
-        "Hindi maaaring gamitin ng mga miyembro ang mga kupon ng diskwento sa pamamagitan ng pagbisita nang personal sa ospital o klinika, ngunit maaari lamang itong gamitin sa loob ng mga serbisyong ibinibigay ng kumpanya.",
+        "Hindi maaaring gamitin ng mga miyembro ang mga kupon ng diskwento sa pamamagitan ng pagbisita nang personal sa hospital o klinika, ngunit maaari lamang itong gamitin sa loob ng mga serbisyong ibinibigay ng kumpanya.",
         "Ang mga kupon ng diskwento ay hindi maaaring gamitin sa cash at mawawalan ng bisa sa oras na matapos ang panahon ng bisa na nakasaad sa kupon o sa pagtatapos ng kontrata. Bukod pa rito, walang ibibigay na kabayaran para sa mga kupon ng diskwento na nag-expire na kung ang mga ito ay mawawalan ng bisa para sa mga kadahilanang hindi maiuugnay sa Kompanya.",
         "Kung sakaling makansela ang subscription (pagkansela ng pagbili), ibabalik ang bayad ayon sa patakaran sa pagpapatakbo ng kumpanya.",
         "Maaari lamang gumamit ang mga Miyembro ng mga kupon ng diskwento para sa kanilang sariling mga transaksyon, at hindi maaaring magbenta o maglipat ng mga kupon ng diskwento sa iba o makisali sa anumang mga aksyon na maaaring ituring na katulad ng pagbebenta o paglilipat ng mga kupon ng diskwento sa anumang pagkakataon.",
@@ -1295,7 +1295,7 @@
         "Maaaring magbigay ang kompanya ng mga puntos sa mga miyembro kapag ginamit nila ang serbisyo, alinsunod sa patakaran sa pagpapatakbo ng kompanya.",
         "Maaaring gamitin ng mga miyembro ang mga puntos kasama ng iba pang mga paraan ng pagbabayad kapag nagbabayad sa pamamagitan ng isang external payment gateway (PG) kapag ginagamit ang serbisyo, alinsunod sa mga pamamaraan at kundisyon na itinatag ng patakaran sa pagpapatakbo ng kumpanya.",
         "Ang mga detalye tungkol sa pagbibigay at paggamit ng mga puntos ay pinamamahalaan ng patakaran sa pagpapatakbo ng Kumpanya, at ibinibigay ng Kumpanya ang impormasyong ito sa mga miyembro sa pamamagitan ng mga channel ng pagbebenta o mga serbisyong pinapatakbo ng Kumpanya.",
-        "Hindi maaaring gamitin ng mga miyembro ang mga puntos sa pamamagitan ng pagbisita sa mga ospital o klinika offline, ngunit maaari nilang gamitin ang mga ito sa loob ng mga serbisyong ibinibigay ng kumpanya.",
+        "Hindi maaaring gamitin ng mga miyembro ang mga puntos sa pamamagitan ng pagbisita sa mga hospital o klinika offline, ngunit maaari nilang gamitin ang mga ito sa loob ng mga serbisyong ibinibigay ng kumpanya.",
         "Ang mga puntos ay ginagamit sa paraang &quot;first-in, first-out&quot; (ang mga puntos na unang naipon ay ibabawas ayon sa pagkakasunud-sunod ng pagkamit ng mga ito).",
         "Hindi maaaring i-withdraw ang mga puntos para sa cash at mawawalan ng bisa ito sa oras na matapos ang panahong nakasaad sa mga puntos o matapos ang kasunduan sa serbisyo. Bukod pa rito, walang ibibigay na kabayaran para sa mga puntos na mawawalan ng bisa dahil sa mga kadahilanang hindi maiuugnay sa Kumpanya.",
         "Kung sakaling makansela ang subscription (pagkansela ng pagbili), ibabalik ang bayad ayon sa patakaran sa pagpapatakbo ng kumpanya.",
@@ -1306,8 +1306,8 @@
     "article22": {
       "title": "Artikulo 22 (Pagbabalik ng Bayad)",
       "items": [
-        "Kung hindi magamit ng Kompanya ang treatment voucher na binili ng isang miyembro dahil sa mga kadahilanang tulad ng pagsasara o pagsuspinde ng negosyo ng isang kaakibat na ospital, agad na aabisuhan ng Kompanya ang miyembro ng dahilan, at kung natanggap na nang maaga ang bayad para sa serbisyo ng paunang bayad, ibabalik ng Kompanya ang bayad o gagawa ng mga kinakailangang hakbang para sa refund sa loob ng 3 araw ng negosyo mula sa petsa ng pagtanggap ng bayad.",
-        "Kung ang Kompanya ay hindi makapagbigay ng mga serbisyo dahil ang kaakibat na ospital ay hindi nakakatugon sa mga kundisyon sa pagbebenta (minimum na bilang ng mga tao, atbp.) na itinakda nang maaga para sa treatment voucher na binili ng isang miyembro, agad na aabisuhan ng Kompanya ang miyembrong bumili ng serbisyo ng dahilan at ibabalik ang bayad na ginawa alinsunod sa patakaran sa pagpapatakbo na itinakda ng Kompanya sa loob ng tatlong araw ng negosyo mula sa petsa ng nangyari ang dahilan."
+        "Kung hindi magamit ng Kompanya ang treatment voucher na binili ng isang miyembro dahil sa mga kadahilanang tulad ng pagsasara o pagsuspinde ng negosyo ng isang kaakibat na hospital, agad na aabisuhan ng Kompanya ang miyembro ng dahilan, at kung natanggap na nang maaga ang bayad para sa serbisyo ng paunang bayad, ibabalik ng Kompanya ang bayad o gagawa ng mga kinakailangang hakbang para sa refund sa loob ng 3 araw ng negosyo mula sa petsa ng pagtanggap ng bayad.",
+        "Kung ang Kompanya ay hindi makapagbigay ng mga serbisyo dahil ang kaakibat na hospital ay hindi nakakatugon sa mga kundisyon sa pagbebenta (minimum na bilang ng mga tao, atbp.) na itinakda nang maaga para sa treatment voucher na binili ng isang miyembro, agad na aabisuhan ng Kompanya ang miyembrong bumili ng serbisyo ng dahilan at ibabalik ang bayad na ginawa alinsunod sa patakaran sa pagpapatakbo na itinakda ng Kompanya sa loob ng tatlong araw ng negosyo mula sa petsa ng nangyari ang dahilan."
       ]
     },
     "article23": {
@@ -1468,13 +1468,13 @@
             }
           },
           {
-            "serviceCategory": "Pagtatanong sa Pagpasok sa Partnership/Ospital",
+            "serviceCategory": "Pagtatanong sa Pagpasok sa Partnership/Hospital",
             "collectedItems": {
               "required": "Pangalan ng kumpanya/pangalan ng taong maaaring kontakin/numero ng mobile phone/email"
             }
           },
           {
-            "serviceCategory": "Kasunduan sa Pagpasok sa Ospital (Miyembro ng Ospital)",
+            "serviceCategory": "Kasunduan sa Pagpasok sa Hospital (Miyembro ng Hospital)",
             "collectedItems": {
               "applicant": {
                 "label": "tagapagmungkahi",
@@ -1482,7 +1482,7 @@
               },
               "applicationInfo": {
                 "label": "Impormasyon sa Aplikasyon",
-                "required": "Pangalan ng ospital/taong namamahala/numero ng mobile phone/email/ID ng administrator"
+                "required": "Pangalan ng hospital/taong namamahala/numero ng mobile phone/email/ID ng administrator"
               }
             }
           },
@@ -1633,8 +1633,8 @@
           "items": [
             "Ang personal na impormasyon ay itatago sa loob ng 30 araw at pagkatapos ay sisirain sa oras na mag-withdraw ng membership.",
             "Impormasyon sa aplikasyon para sa proxy surgery safety zone: Itinatago hanggang sa bawiin ang aplikasyon para sa safety zone at pagkatapos ay sirain.",
-            "Impormasyon sa aplikasyon sa ospital: Wawasakin kaagad pagkatapos makumpleto ang konsultasyon sa aplikasyon",
-            "Impormasyon sa Kasunduan sa Vendor ng Ospital: Agad na wawakasan sa pagtatapos ng kontrata.",
+            "Impormasyon sa aplikasyon sa hospital: Wawasakin kaagad pagkatapos makumpleto ang konsultasyon sa aplikasyon",
+            "Impormasyon sa Kasunduan sa Vendor ng Hospital: Agad na wawakasan sa pagtatapos ng kontrata.",
             "Impormasyon sa kahilingan sa konsultasyon: Itinatabi nang 1 taon pagkatapos ng konsultasyon at pagkatapos ay sinisira",
             "Mga rekord ng pang-aabuso at maling paggamit: Iniimbak sa loob ng 3 taon at pagkatapos ay sinisira."
           ]
@@ -1899,7 +1899,7 @@
         "Salamat sa pagbisita sa K-DOC.",
         "Ang K-DOC ay ang nangungunang platapormang medikal para sa plastic surgery sa Korea, na idinisenyo upang tulungan ang mga Thai na pumili ng nangungunang 5% ng mga klinika para sa plastic surgery at dermatology sa Korea nang may kumpiyansa, at magbigay pa ng mga diskwento.",
         "Ipinagmamalaki ng pangkat ng pamamahala ng K-DOC ang serbisyo nito sa platform, na direktang pinlano at pinapatakbo ng isang pangkat ng mga propesyonal sa medisina, kabilang ako, si MD Woo Jung Ho, isang kilalang awtoridad sa mundo sa larangan ng non-incisional thread lifting, at si MD Park Jong Hyeon, isang nagtapos sa ilan sa mga nangungunang paaralan ng medisina sa mundo. Ang aming prayoridad ay magbigay sa mga pasyenteng Thai at internasyonal ng access sa ligtas at napatunayang mga serbisyong medikal lamang ng Korea.",
-        "Ang platform na ito ay nagbibigay ng impormasyon tungkol sa mga pinaka-pinagkakatiwalaang ospital ng cosmetic surgery sa Korea, maaasahang mga review ng paggamot, at lahat ng bagay mula sa mga reserbasyon sa ospital hanggang sa walang putol na interpretasyon at pangangalaga pagkatapos ng pamamaraan—lahat sa iisang lugar.",
+        "Ang platform na ito ay nagbibigay ng impormasyon tungkol sa mga pinaka-pinagkakatiwalaang hospital ng cosmetic surgery sa Korea, maaasahang mga review ng paggamot, at lahat ng bagay mula sa mga reserbasyon sa hospital hanggang sa walang putol na interpretasyon at pangangalaga pagkatapos ng pamamaraan—lahat sa iisang lugar.",
         "Ang K-DOC ay hindi lamang isang plataporma ng impormasyon; layunin nitong maging isang mapagkakatiwalaan at maginhawang kasama sa iyong paglalakbay sa medisina para sa kagandahan sa Korea. Sinisikap naming bigyan ang bawat customer ng pinakamainam na solusyon at isang kasiya-siya at mapagkakatiwalaang karanasan sa medisina.",
         "Umaasa kaming maranasan ninyo ang natatanging teknolohiya ng medical plastic surgery sa Korea nang ligtas at walang panganib, at sasamahan kayo ng K-DOC sa inyong paglalakbay tungo sa may kumpiyansang kagandahan at kalusugan.",
         "Pagpalain ka ng Diyos!!",
@@ -1925,12 +1925,12 @@
           "image": "image_section2.png",
           "imagePc": "image_section2_pc.png",
           "title": "Ang plataporma ng plastic surgery na kailangan ng mga customer",
-          "description": "Tingnan ang lahat ng impormasyon tungkol sa mga pamamaraan at mga opsyon sa plastic surgery na gusto mo sa Korea sa isang sulyap, ihambing ang mga aktwal na review at impormasyon sa ospital, at gumawa ng kumpiyansang desisyon. Mula sa mga reserbasyon hanggang sa interpretasyon at pangangalaga pagkatapos ng pamamaraan, ang K-DOC ay nag-aalok ng isang maginhawang karanasan."
+          "description": "Tingnan ang lahat ng impormasyon tungkol sa mga pamamaraan at mga opsyon sa plastic surgery na gusto mo sa Korea sa isang sulyap, ihambing ang mga aktwal na review at impormasyon sa hospital, at gumawa ng kumpiyansang desisyon. Mula sa mga reserbasyon hanggang sa interpretasyon at pangangalaga pagkatapos ng pamamaraan, ang K-DOC ay nag-aalok ng isang maginhawang karanasan."
         },
         {
           "image": "image_section3.png",
           "imagePc": "image_section3_pc.png",
-          "title": "Panimula sa mga sikat na ospital sa Korea",
+          "title": "Panimula sa mga sikat na hospital sa Korea",
           "description": "Tinatanggap lamang ng K-DOC ang mga kinikilalang propesyonal sa medisina sa buong mundo at mga beripikadong nangungunang klinika ng plastic surgery sa Korea. Makakaranas ang mga customer na Thai at pandaigdigan ng mga de-kalidad na serbisyo sa plastic surgery sa pamamagitan ng aming mapagkakatiwalaang medical team at mga ligtas na sistema."
         }
       ]
@@ -1956,11 +1956,11 @@
         },
         {
           "title": "Ang Iyong Mapagkakatiwalaang Pagpipilian",
-          "description": "Tinutulungan ka naming gumawa ng isang kumpiyansang pagpili sa pamamagitan ng pagbibigay ng komprehensibong impormasyon tungkol sa mga ninanais na pamamaraan at mga ospital sa Korea at paghahambing ng mga aktwal na pagsusuri. Mula sa mga reserbasyon hanggang sa interpretasyon at pangangalaga pagkatapos ng pamamaraan, madali mong mararanasan ang buong proseso sa isang lugar."
+          "description": "Tinutulungan ka naming gumawa ng isang kumpiyansang pagpili sa pamamagitan ng pagbibigay ng komprehensibong impormasyon tungkol sa mga ninanais na pamamaraan at mga hospital sa Korea at paghahambing ng mga aktwal na pagsusuri. Mula sa mga reserbasyon hanggang sa interpretasyon at pangangalaga pagkatapos ng pamamaraan, madali mong mararanasan ang buong proseso sa isang lugar."
         },
         {
-          "title": "Mga Klinika at Ospital na Pinili",
-          "description": "Tampok lamang ng K-DOC ang mga nangungunang klinika, dermatologist, at ospital ng Korea na pinili ayon sa mahigpit na pamantayan. Maaaring makaranas ang mga pandaigdigang kostumer ng mataas na kalidad na serbisyo ng plastic surgery sa pamamagitan ng isang ligtas na sistema sa mga institusyong medikal na nakapasa sa proseso ng beripikasyon ng K-DOC."
+          "title": "Mga Klinika at Hospital na Pinili",
+          "description": "Tampok lamang ng K-DOC ang mga nangungunang klinika, dermatologist, at hospital ng Korea na pinili ayon sa mahigpit na pamantayan. Maaaring makaranas ang mga pandaigdigang kostumer ng mataas na kalidad na serbisyo ng plastic surgery sa pamamagitan ng isang ligtas na sistema sa mga institusyong medikal na nakapasa sa proseso ng beripikasyon ng K-DOC."
         }
       ]
     }
@@ -2110,7 +2110,7 @@
     "career": "maikling kasaysayan",
     "careerAndActivity": "Karera at mga Aktibidad",
     "noCareerInfo": "Walang impormasyon tungkol sa karera.",
-    "affiliatedHospital": "Kaakibat na ospital",
+    "affiliatedHospital": "Kaakibat na hospital",
     "reviews": "Reviews",
     "viewAllReviews": "Tingnan Lahat",
     "share": {
