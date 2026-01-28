@@ -49,7 +49,7 @@ export function ContactFloatingButton({ lang }: ContactFloatingButtonProps) {
         />
       )}
 
-      <div className='fixed right-5 bottom-[108px] z-500 flex flex-col items-end gap-2.5 md:right-auto md:left-[calc(50%+100px)]'>
+      <div className='fixed right-5 bottom-[240px] z-500 flex flex-col items-end gap-2.5 md:right-auto md:left-[calc(50%+100px)]'>
         {lang === 'th' ? (
           <>
             {/* LINE 버튼 (태국어) */}
