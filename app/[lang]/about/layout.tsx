@@ -18,7 +18,9 @@ interface AboutLayoutProps {
 
 export default async function AboutLayout({ children, params }: AboutLayoutProps) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  // 필리핀어(tl)일 때 about 페이지 전체(헤더·푸터 포함)를 영어로 표시
+  const effectiveLang = lang === 'tl' ? 'en' : lang;
+  const dict = await getDictionary(effectiveLang);
 
   return (
     <>
@@ -26,7 +28,7 @@ export default async function AboutLayout({ children, params }: AboutLayoutProps
       <main className={`min-h-screen bg-white ${pretendard.className}`}>
         {children}
       </main>
-      <FooterV2 lang={lang} dict={dict} />
+      <FooterV2 lang={effectiveLang} dict={dict} />
     </>
   );
 }

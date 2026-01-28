@@ -40,20 +40,25 @@ export function DoctorDetailContent({ doctorId, lang, dict }: DoctorDetailConten
   }
 
   const doctorName = getDoctorNameFromLocalizedText(doctor.name, lang) || '의사';
-  const doctorPosition = getLocalizedTextByLocale(doctor.position, lang);
+  const doctorPosition = getLocalizedTextByLocale(
+    doctor.position,
+    lang === 'tl' ? 'en' : lang,
+  );
   const doctorTitle = doctorPosition ? `${doctorName} ${doctorPosition}` : doctorName;
 
-  // 직접 접근으로 테스트
+  // 필리핀어(tl)일 때는 영어(en_US)와 동일하게 약력 표시
   const localeKey =
-    lang === 'ko'
-      ? 'ko_KR'
-      : lang === 'en'
-        ? 'en_US'
-        : lang === 'th'
-          ? 'th_TH'
-          : lang === 'zh-Hant'
-            ? 'zh_TW'
-            : 'ja_JP';
+    lang === 'tl'
+      ? 'en_US'
+      : lang === 'ko'
+        ? 'ko_KR'
+        : lang === 'en'
+          ? 'en_US'
+          : lang === 'th'
+            ? 'th_TH'
+            : lang === 'zh-Hant'
+              ? 'zh_TW'
+              : 'ja_JP';
   const doctorCareer =
     doctor.career[localeKey] ||
     doctor.career.ko_KR ||

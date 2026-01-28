@@ -12,8 +12,11 @@ interface DoctorCareerV2Props {
 }
 
 export function DoctorCareerV2({ doctor, lang, dict }: DoctorCareerV2Props) {
-  // 경력 텍스트 추출
-  const doctorCareer = getLocalizedTextByLocale(doctor.career, lang);
+  // 경력 텍스트 추출 (필리핀어일 때는 영어와 동일하게 표시)
+  const doctorCareer = getLocalizedTextByLocale(
+    doctor.career,
+    lang === 'tl' ? 'en' : lang,
+  );
 
   // 경력 데이터가 없으면 렌더링하지 않음
   if (!doctorCareer) {

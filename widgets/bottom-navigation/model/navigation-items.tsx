@@ -33,7 +33,7 @@ export const navigationItems: NavigationItem[] = [
       'zh-Hant': '醫院',
       ja: '病院',
       hi: 'अस्पताल',
-      tl: 'Ospital',
+      tl: 'Hospitals',
     },
   },
   {
@@ -61,7 +61,7 @@ export const navigationItems: NavigationItem[] = [
       'zh-Hant': '收藏',
       ja: 'お気に入り',
       hi: 'पसंदीदा',
-      tl: 'Paborito',
+      tl: 'Favorites',
     },
   },
   {
@@ -75,7 +75,7 @@ export const navigationItems: NavigationItem[] = [
       'zh-Hant': '諮詢',
       ja: '相談',
       hi: 'परामर्श',
-      tl: 'Consult',
+      tl: 'Consultation',
     },
   },
 ];

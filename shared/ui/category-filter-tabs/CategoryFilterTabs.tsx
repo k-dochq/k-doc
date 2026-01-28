@@ -41,7 +41,7 @@ export function CategoryFilterTabs({
         zh_TW: '全部',
         ja_JP: 'すべて',
         hi_IN: 'सभी',
-        tl_PH: 'Lahat',
+        tl_PH: 'All',
       },
     },
     ...medicalSpecialties.map((specialty) => ({

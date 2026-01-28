@@ -31,7 +31,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '眼睛',
       ja_JP: '目',
       hi_IN: 'आंखें',
-      tl_PH: 'Mata',
+      tl_PH: 'Eyes',
     } satisfies LocalizedText,
   },
   {
@@ -46,7 +46,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '鼻子',
       ja_JP: '鼻',
       hi_IN: 'नाक',
-      tl_PH: 'Ilong',
+      tl_PH: 'Nose',
     } satisfies LocalizedText,
   },
   {
@@ -91,7 +91,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '胸部',
       ja_JP: '胸',
       hi_IN: 'स्तन',
-      tl_PH: 'Suso',
+      tl_PH: 'Breast',
     } satisfies LocalizedText,
   },
   {
@@ -136,7 +136,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '身體',
       ja_JP: 'ボディ',
       hi_IN: 'शरीर',
-      tl_PH: 'Katawan',
+      tl_PH: 'Body',
     } satisfies LocalizedText,
   },
   {
@@ -214,7 +214,7 @@ const ALL_CATEGORY: CategoryItem = {
     zh_TW: '全部',
     ja_JP: 'すべて',
     hi_IN: 'सभी',
-    tl_PH: 'Lahat',
+    tl_PH: 'All',
   } satisfies LocalizedText,
 };
 

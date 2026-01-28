@@ -29,7 +29,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '眼睛',
       ja_JP: '目',
       hi_IN: 'आँख',
-      tl_PH: 'Mata',
+      tl_PH: 'Eyes',
     },
   },
   {
@@ -37,7 +37,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'NOSE',
     icon: () => <NoseIconV2 />,
     iconSmall: () => null,
-    labels: { ko_KR: '코', en_US: 'Nose', th_TH: 'จมูก', zh_TW: '鼻子', ja_JP: '鼻', hi_IN: 'नाक', tl_PH: 'Ilong' },
+    labels: { ko_KR: '코', en_US: 'Nose', th_TH: 'จมูก', zh_TW: '鼻子', ja_JP: '鼻', hi_IN: 'नाक', tl_PH: 'Nose' },
   },
   {
     id: 'bc0effa1-af1a-4048-8b57-45130bd74820', // LIFTING
@@ -81,7 +81,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '胸部',
       ja_JP: '胸',
       hi_IN: 'स्तन',
-      tl_PH: 'Suso',
+      tl_PH: 'Breast',
     },
   },
   {
@@ -127,7 +127,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       zh_TW: '身體',
       ja_JP: 'ボディ',
       hi_IN: 'बॉडी',
-      tl_PH: 'Katawan',
+      tl_PH: 'Body',
     },
   },
   {

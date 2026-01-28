@@ -39,7 +39,10 @@ export function DoctorDetailContentV2({ doctorId, lang, dict }: DoctorDetailCont
   }
 
   const doctorName = getDoctorNameFromLocalizedText(doctor.name, lang) || '의사';
-  const doctorPosition = getLocalizedTextByLocale(doctor.position, lang);
+  const doctorPosition = getLocalizedTextByLocale(
+    doctor.position,
+    lang === 'tl' ? 'en' : lang,
+  );
   const doctorTitle = doctorPosition ? `${doctorName} ${doctorPosition}` : doctorName;
   const affiliatedHospital = transformDoctorHospitalToHospitalCard(doctor);
   const hospitalId = doctor.hospital?.id;
