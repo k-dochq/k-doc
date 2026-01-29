@@ -45,6 +45,11 @@ const messages = {
     description: "The page you are looking for doesn't exist or may have been moved.",
     homeButton: 'Go back to Home',
   },
+  ar: {
+    title: 'الصفحة غير موجودة',
+    description: 'الصفحة التي تبحث عنها غير موجودة أو ربما تم نقلها.',
+    homeButton: 'العودة إلى الرئيسية',
+  },
 } as const;
 
 export default function NotFound() {

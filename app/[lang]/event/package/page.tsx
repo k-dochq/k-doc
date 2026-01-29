@@ -45,6 +45,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     ja: mainJaImage,
     hi: mainHiImage,
     tl: mainTlImage,
+    ar: mainEnImage,
   };
   const mainImage = mainImages[lang];
 
@@ -57,6 +58,7 @@ export default async function PackagePage({ params }: PackagePageProps) {
     ja: priceJaImage,
     hi: priceHiImage,
     tl: priceTlImage,
+    ar: priceEnImage,
   };
   const priceImage = priceImages[lang];
 

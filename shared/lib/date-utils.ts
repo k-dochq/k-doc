@@ -86,7 +86,8 @@ export function formatDate(
     'zh-Hant': 'zh-tw',
     ja: 'ja',
     hi: 'hi',
-    tl: 'en', // Fallback to English for now
+    tl: 'en',
+    ar: 'ar',
   };
 
   const dayjsLocale = dayjsLocales[locale];
@@ -99,8 +100,9 @@ export function formatDate(
     th: 'D MMMM YYYY',
     'zh-Hant': 'MMMM D, YYYY',
     ja: 'YYYY年M月D日',
-    hi: 'D MMMM YYYY', // 힌디어: "17 सितंबर 2025"
-    tl: 'MMMM D, YYYY', // Fallback to English format
+    hi: 'D MMMM YYYY',
+    tl: 'MMMM D, YYYY',
+    ar: 'D MMMM YYYY',
   };
 
   const formatString = localeFormats[locale];
@@ -178,6 +180,14 @@ export function formatRelativeDate(date: Date | string, locale: Locale): string 
       weeksAgo: (weeks: number) => `${weeks} weeks ago`,
       monthsAgo: (months: number) => `${months} months ago`,
       yearsAgo: (years: number) => `${years} years ago`,
+    },
+    ar: {
+      today: 'اليوم',
+      yesterday: 'أمس',
+      daysAgo: (days: number) => `منذ ${days} أيام`,
+      weeksAgo: (weeks: number) => `منذ ${weeks} أسابيع`,
+      monthsAgo: (months: number) => `منذ ${months} أشهر`,
+      yearsAgo: (years: number) => `منذ ${years} سنوات`,
     },
   };
 

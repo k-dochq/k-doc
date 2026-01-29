@@ -22,6 +22,8 @@ export function localeToDatabaseLocale(locale: Locale): DatabaseLocale {
       return 'hi_IN';
     case 'tl':
       return 'tl_PH';
+    case 'ar':
+      return 'ar_SA';
     default:
       return 'en_US';
   }
@@ -48,6 +50,8 @@ export function databaseLocaleToLocale(databaseLocale: DatabaseLocale): Locale {
       return 'hi';
     case 'tl_PH':
       return 'tl';
+    case 'ar_SA':
+      return 'ar';
     default:
       return 'en';
   }

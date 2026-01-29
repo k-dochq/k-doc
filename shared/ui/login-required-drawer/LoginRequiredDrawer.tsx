@@ -31,6 +31,7 @@ export function LoginRequiredDrawer({ lang, dict, redirectPath }: LoginRequiredD
     ja: '/images/login-required/login_required_background_ja.png',
     hi: '/images/login-required/login_required_background_hi.png',
     tl: '/images/login-required/login_required_background_en.png',
+    ar: '/images/login-required/login_required_background_en.png',
   };
 
   const imagePath = imagePathByLocale[lang];

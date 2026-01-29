@@ -12,6 +12,7 @@ export interface LocalizedText {
   ja_JP?: string;
   hi_IN?: string;
   tl_PH?: string;
+  ar_SA?: string;
 }
 
 // 가격 정보 타입
@@ -97,6 +98,7 @@ export function getLocalizedText(text: LocalizedText, locale: DatabaseLocale): s
     text.ja_JP ||
     text.hi_IN ||
     text.tl_PH ||
+    text.ar_SA ||
     ''
   );
 }
@@ -113,6 +115,7 @@ export function getLocalizedTextByLocale(text: LocalizedText, locale: Locale): s
     text.ja_JP ||
     text.hi_IN ||
     text.tl_PH ||
+    text.ar_SA ||
     ''
   );
 }
