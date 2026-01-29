@@ -11,6 +11,8 @@ interface CustomDateInputProps {
   error?: string;
   disabled?: boolean;
   dict?: Dictionary;
+  /** 로케일(예: 'ar') 전달 시 날짜 포맷/placeholder에 반영 */
+  locale?: string;
 }
 
 export function CustomDateInput({
@@ -21,6 +23,7 @@ export function CustomDateInput({
   error,
   disabled = false,
   dict,
+  locale: localeProp,
 }: CustomDateInputProps) {
   const [displayValue, setDisplayValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -80,6 +83,11 @@ export function CustomDateInput({
             year = part3;
             month = part1.padStart(2, '0');
             day = part2.padStart(2, '0');
+          } else if (locale === 'ar' || locale === 'ar-SA') {
+            // 아랍어: DD/MM/YYYY
+            year = part3;
+            month = part2.padStart(2, '0');
+            day = part1.padStart(2, '0');
           } else {
             // 기본: YYYY-MM-DD
             year = part1;
@@ -104,6 +112,7 @@ export function CustomDateInput({
 
   // 로케일 결정
   const getLocale = (): string => {
+    if (localeProp === 'ar') return 'ar-SA';
     if (dict?.auth?.signup?.dateFormat?.includes('Year')) return 'en-US';
     if (dict?.auth?.signup?.dateFormat?.includes('ปี')) return 'th-TH';
     // tl locale은 영어 형식 사용
@@ -119,7 +128,7 @@ export function CustomDateInput({
     } else {
       setDisplayValue('');
     }
-  }, [value, dict]);
+  }, [value, dict, localeProp]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -161,6 +170,7 @@ export function CustomDateInput({
     const locale = getLocale();
     if (locale === 'en-US') return 'MM/DD/YYYY';
     if (locale === 'th-TH') return 'DD/MM/YYYY';
+    if (locale === 'ar-SA') return 'DD/MM/YYYY';
     // tl locale은 영어 형식 사용
     return 'YYYY.MM.DD';
   };

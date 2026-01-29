@@ -62,6 +62,7 @@ export function LoginRequiredModal({
       ja: 'en',
       hi: 'en',
       tl: 'en',
+      ar: 'en',
     };
     return `/images/shared/login_required_bg_${localeMap[locale]}.png`;
   };

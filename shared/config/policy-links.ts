@@ -11,6 +11,9 @@ export const POLICY_LINKS = {
     'zh-Hant':
       'https://hypnotic-dryosaurus-c5c.notion.site/Terms-of-Service-27ad3f7f900d80429ab7e9ff8b97744d?source=copy_link',
     ja: 'https://hypnotic-dryosaurus-c5c.notion.site/Terms-of-Service-27ad3f7f900d80429ab7e9ff8b97744d?source=copy_link',
+    hi: 'https://hypnotic-dryosaurus-c5c.notion.site/Terms-of-Service-27ad3f7f900d80429ab7e9ff8b97744d?source=copy_link',
+    tl: 'https://hypnotic-dryosaurus-c5c.notion.site/Terms-of-Service-27ad3f7f900d80429ab7e9ff8b97744d?source=copy_link',
+    ar: 'https://hypnotic-dryosaurus-c5c.notion.site/Terms-of-Service-27ad3f7f900d80429ab7e9ff8b97744d?source=copy_link',
   },
   privacyPolicy: {
     ko: 'https://hypnotic-dryosaurus-c5c.notion.site/279d3f7f900d80c8ae1bdf05a68961a4?source=copy_link',
@@ -19,6 +22,9 @@ export const POLICY_LINKS = {
     'zh-Hant':
       'https://hypnotic-dryosaurus-c5c.notion.site/Privacy-Policy-27ad3f7f900d80d38997e64cad05ddc1?source=copy_link',
     ja: 'https://hypnotic-dryosaurus-c5c.notion.site/Privacy-Policy-27ad3f7f900d80d38997e64cad05ddc1?source=copy_link',
+    hi: 'https://hypnotic-dryosaurus-c5c.notion.site/Privacy-Policy-27ad3f7f900d80d38997e64cad05ddc1?source=copy_link',
+    tl: 'https://hypnotic-dryosaurus-c5c.notion.site/Privacy-Policy-27ad3f7f900d80d38997e64cad05ddc1?source=copy_link',
+    ar: 'https://hypnotic-dryosaurus-c5c.notion.site/Privacy-Policy-27ad3f7f900d80d38997e64cad05ddc1?source=copy_link',
   },
   dataRequest: {
     ko: 'https://forms.gle/dWaJwgY6TWKMzQWp8',
@@ -28,6 +34,7 @@ export const POLICY_LINKS = {
     ja: 'https://forms.gle/NLW2ptxFG88tPpZB9',
     hi: 'https://forms.gle/vCf3VoCEWys9sgHYA',
     tl: 'https://forms.gle/i48TdNDmHxJjbBZw9',
+    ar: 'https://forms.gle/TPPXupyUATAi1mua6',
   },
 } as const;
 

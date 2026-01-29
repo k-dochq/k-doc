@@ -32,6 +32,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '目',
       hi_IN: 'आंखें',
       tl_PH: 'Eyes',
+      ar_SA: 'عيون',
     } satisfies LocalizedText,
   },
   {
@@ -47,6 +48,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '鼻',
       hi_IN: 'नाक',
       tl_PH: 'Nose',
+      ar_SA: 'أنف',
     } satisfies LocalizedText,
   },
   {
@@ -62,6 +64,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: 'リフティング',
       hi_IN: 'लिफ्टिंग',
       tl_PH: 'Lifting',
+      ar_SA: 'رفع',
     } satisfies LocalizedText,
   },
   {
@@ -77,6 +80,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '顔面輪郭',
       hi_IN: 'चेहरे का आकार',
       tl_PH: 'Facial Contouring',
+      ar_SA: 'تشكيل الوجه',
     } satisfies LocalizedText,
   },
   {
@@ -92,6 +96,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '胸',
       hi_IN: 'स्तन',
       tl_PH: 'Breast',
+      ar_SA: 'الثدي',
     } satisfies LocalizedText,
   },
   {
@@ -107,6 +112,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '幹細胞',
       hi_IN: 'स्टेम सेल',
       tl_PH: 'Stem Cell',
+      ar_SA: 'الخلايا الجذعية',
     } satisfies LocalizedText,
   },
   {
@@ -122,6 +128,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '脂肪吸引',
       hi_IN: 'लिपोसक्शन',
       tl_PH: 'Liposuction',
+      ar_SA: 'شفط الدهون',
     } satisfies LocalizedText,
   },
   {
@@ -137,6 +144,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: 'ボディ',
       hi_IN: 'शरीर',
       tl_PH: 'Body',
+      ar_SA: 'الجسم',
     } satisfies LocalizedText,
   },
   {
@@ -152,6 +160,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '植毛',
       hi_IN: 'बाल प्रत्यारोपण',
       tl_PH: 'Hair Transplant',
+      ar_SA: 'زراعة الشعر',
     } satisfies LocalizedText,
   },
   {
@@ -167,6 +176,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '皮膚科',
       hi_IN: 'त्वचाविज्ञान',
       tl_PH: 'Dermatology',
+      ar_SA: 'الجلدية',
     } satisfies LocalizedText,
   },
   {
@@ -182,6 +192,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '歯科',
       hi_IN: 'दंत चिकित्सा',
       tl_PH: 'Dental',
+      ar_SA: 'الأسنان',
     } satisfies LocalizedText,
   },
   {
@@ -197,6 +208,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: 'その他',
       hi_IN: 'अन्य',
       tl_PH: 'Others',
+      ar_SA: 'أخرى',
     } satisfies LocalizedText,
   },
 ];
@@ -215,6 +227,7 @@ const ALL_CATEGORY: CategoryItem = {
     ja_JP: 'すべて',
     hi_IN: 'सभी',
     tl_PH: 'All',
+    ar_SA: 'الكل',
   } satisfies LocalizedText,
 };
 

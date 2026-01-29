@@ -9,6 +9,7 @@ export const dayNames: Record<Locale, string[]> = {
   ja: ['月', '火', '水', '木', '金', '土', '日'],
   hi: ['सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि', 'रवि'],
   tl: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  ar: ['الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت', 'الأحد'],
 };
 
 // 요일별 영어명 (데이터베이스 키용)
@@ -31,4 +32,5 @@ export const holidayTexts: Record<Locale, string> = {
   ja: '休診',
   hi: 'बंद',
   tl: 'Closed',
+  ar: 'مغلق',
 };

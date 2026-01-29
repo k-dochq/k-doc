@@ -30,6 +30,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '目',
       hi_IN: 'आँख',
       tl_PH: 'Eyes',
+      ar_SA: 'عيون',
     },
   },
   {
@@ -37,7 +38,16 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     type: 'NOSE',
     icon: () => <NoseIconV2 />,
     iconSmall: () => null,
-    labels: { ko_KR: '코', en_US: 'Nose', th_TH: 'จมูก', zh_TW: '鼻子', ja_JP: '鼻', hi_IN: 'नाक', tl_PH: 'Nose' },
+    labels: {
+      ko_KR: '코',
+      en_US: 'Nose',
+      th_TH: 'จมูก',
+      zh_TW: '鼻子',
+      ja_JP: '鼻',
+      hi_IN: 'नाक',
+      tl_PH: 'Nose',
+      ar_SA: 'أنف',
+    },
   },
   {
     id: 'bc0effa1-af1a-4048-8b57-45130bd74820', // LIFTING
@@ -52,6 +62,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: 'リフティング',
       hi_IN: 'लिफ्टिंग',
       tl_PH: 'Lifting',
+      ar_SA: 'رفع',
     },
   },
   {
@@ -67,6 +78,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '顔面輪郭',
       hi_IN: 'चेहरे की आकृति',
       tl_PH: 'Facial Contouring',
+      ar_SA: 'تشكيل الوجه',
     },
   },
   {
@@ -82,6 +94,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '胸',
       hi_IN: 'स्तन',
       tl_PH: 'Breast',
+      ar_SA: 'الثدي',
     },
   },
   {
@@ -97,6 +110,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '幹細胞',
       hi_IN: 'स्टेम सेल',
       tl_PH: 'Stem Cell',
+      ar_SA: 'الخلايا الجذعية',
     },
   },
   // 둘째줄: 지방흡입 > 바디 > 모발이식 > 피부과 > 치과 > 기타 (6개)
@@ -113,6 +127,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '脂肪吸引',
       hi_IN: 'लिपोसक्शन',
       tl_PH: 'Liposuction',
+      ar_SA: 'شفط الدهون',
     },
   },
   {
@@ -128,6 +143,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: 'ボディ',
       hi_IN: 'बॉडी',
       tl_PH: 'Body',
+      ar_SA: 'الجسم',
     },
   },
   {
@@ -143,6 +159,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '植毛',
       hi_IN: 'बाल प्रत्यारोपण',
       tl_PH: 'Hair Transplant',
+      ar_SA: 'زراعة الشعر',
     },
   },
   {
@@ -158,6 +175,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '皮膚科',
       hi_IN: 'त्वचाविज्ञान',
       tl_PH: 'Dermatology',
+      ar_SA: 'الجلدية',
     },
   },
   {
@@ -173,6 +191,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: '歯科',
       hi_IN: 'दंत चिकित्सा',
       tl_PH: 'Dental',
+      ar_SA: 'الأسنان',
     },
   },
   {
@@ -188,6 +207,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       ja_JP: 'その他',
       hi_IN: 'अन्य',
       tl_PH: 'Others',
+      ar_SA: 'أخرى',
     },
   },
 ];

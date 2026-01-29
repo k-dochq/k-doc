@@ -121,6 +121,24 @@ const locales: Record<Locale, CalendarLocale> = {
     weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     today: 'Today',
   },
+  ar: {
+    months: [
+      'يناير',
+      'فبراير',
+      'مارس',
+      'أبريل',
+      'مايو',
+      'يونيو',
+      'يوليو',
+      'أغسطس',
+      'سبتمبر',
+      'أكتوبر',
+      'نوفمبر',
+      'ديسمبر',
+    ],
+    weekdays: ['الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت', 'الأحد'],
+    today: 'اليوم',
+  },
 };
 
 const ChevronLeftIcon = ({ className }: { className?: string }) => (

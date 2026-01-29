@@ -65,6 +65,7 @@ export function FormDatePickerV2({
     if (locale === 'ko') return `${year}년 ${month}월 ${day}일`;
     if (locale === 'th') return `${day}/${month}/${year}`;
     if (locale === 'tl') return `${month}/${day}/${year}`;
+    if (locale === 'ar') return `${day}/${month}/${year}`;
     return `${month}/${day}/${year}`;
   };
 
@@ -73,6 +74,7 @@ export function FormDatePickerV2({
     if (locale === 'ko') return '날짜를 선택해주세요';
     if (locale === 'th') return 'เลือกวันที่';
     if (locale === 'tl') return 'Pumili ng petsa';
+    if (locale === 'ar') return 'اختر التاريخ';
     return 'Select date';
   };
 

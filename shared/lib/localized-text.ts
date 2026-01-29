@@ -2,8 +2,16 @@ import { type Prisma } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
 
-// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW, ja_JP, hi_IN, tl_PH)
-export type DatabaseLocale = 'ko_KR' | 'en_US' | 'th_TH' | 'zh_TW' | 'ja_JP' | 'hi_IN' | 'tl_PH';
+// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW, ja_JP, hi_IN, tl_PH, ar_SA)
+export type DatabaseLocale =
+  | 'ko_KR'
+  | 'en_US'
+  | 'th_TH'
+  | 'zh_TW'
+  | 'ja_JP'
+  | 'hi_IN'
+  | 'tl_PH'
+  | 'ar_SA';
 
 // LocalizedText 타입 정의
 export type LocalizedText = {
@@ -14,6 +22,7 @@ export type LocalizedText = {
   ja_JP?: string;
   hi_IN?: string;
   tl_PH?: string;
+  ar_SA?: string;
 };
 
 // LocalizedText에서 문자열 추출 헬퍼 함수
@@ -42,6 +51,7 @@ export function extractLocalizedText(
       'ja_JP',
       'hi_IN',
       'tl_PH',
+      'ar_SA',
       'ko',
       'en',
       'th',
@@ -50,6 +60,7 @@ export function extractLocalizedText(
       'ja',
       'hi',
       'tl',
+      'ar',
     ];
     const hasNonEmptyValue = allKeys.some(
       (key) =>
@@ -153,6 +164,22 @@ export function extractLocalizedText(
       }
     }
 
+    // ar locale인데 ar_SA, ar이 없으면 영어로 fallback
+    if (locale === 'ar') {
+      if (localizedText['en_US'] && typeof localizedText['en_US'] === 'string') {
+        const value = localizedText['en_US'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+      if (localizedText['en'] && typeof localizedText['en'] === 'string') {
+        const value = localizedText['en'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+    }
+
     // fallback: 첫 번째 사용 가능한 값 반환 (긴 형식 우선)
     const fallbackOrder = [
       'ko_KR',
@@ -161,15 +188,17 @@ export function extractLocalizedText(
       'zh_TW',
       'ja_JP',
       'hi_IN',
-      'tl_PH', // 긴 형식
+      'tl_PH',
+      'ar_SA', // 긴 형식
       'ko',
       'en',
       'th',
       'zh', // 데이터베이스에서 사용하는 형식
       'zh-Hant', // 짧은 형식
-      'ja', // 짧은 형식
-      'hi', // 짧은 형식
-      'tl', // 짧은 형식
+      'ja',
+      'hi',
+      'tl',
+      'ar', // 짧은 형식
     ];
 
     for (const key of fallbackOrder) {
@@ -206,6 +235,8 @@ export function localeToAltValue(locale: Locale): DatabaseLocale {
       return 'hi_IN';
     case 'tl':
       return 'tl_PH';
+    case 'ar':
+      return 'ar_SA';
     default:
       return 'en_US';
   }

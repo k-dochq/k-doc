@@ -79,6 +79,8 @@ export function DatePicker({
       return `${year}년 ${month}월 ${day}일`;
     } else if (locale === 'th') {
       return `${day}/${month}/${year}`;
+    } else if (locale === 'ar') {
+      return `${day}/${month}/${year}`;
     } else {
       return `${month}/${day}/${year}`;
     }
@@ -90,6 +92,7 @@ export function DatePicker({
     if (locale === 'ko') return '날짜를 선택해주세요';
     if (locale === 'th') return 'เลือกวันที่';
     if (locale === 'tl') return 'Pumili ng petsa';
+    if (locale === 'ar') return 'اختر التاريخ';
     return 'Select date';
   };
 

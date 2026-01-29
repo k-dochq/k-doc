@@ -45,6 +45,7 @@ export function CategoryButtonV2({
         ja_JP: 'おすすめ',
         hi_IN: 'अनुशंसित',
         tl_PH: 'Recommend',
+        ar_SA: 'موصى به',
       };
       return getLocalizedTextByLocale(recommendedLabels, lang);
     }

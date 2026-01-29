@@ -42,6 +42,11 @@ export function getLocaleFromRequest(request: NextRequest): Locale {
       return normalizeLocale('ja');
     }
 
+    // ar인 경우 ar로 매핑
+    if (primaryLang === 'ar') {
+      return normalizeLocale('ar');
+    }
+
     // 지원되는 locale인지 확인하고 반환
     if (isValidLocale(primaryLang)) {
       return normalizeLocale(primaryLang);

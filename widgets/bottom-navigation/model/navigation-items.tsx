@@ -20,6 +20,7 @@ export const navigationItems: NavigationItem[] = [
       ja: 'ホーム',
       hi: 'होम',
       tl: 'Home',
+      ar: 'الرئيسية',
     },
   },
   {
@@ -34,6 +35,7 @@ export const navigationItems: NavigationItem[] = [
       ja: '病院',
       hi: 'अस्पताल',
       tl: 'Hospitals',
+      ar: 'المستشفيات',
     },
   },
   {
@@ -48,6 +50,7 @@ export const navigationItems: NavigationItem[] = [
       ja: '手術レビュー',
       hi: 'समीक्षाएं',
       tl: 'Reviews',
+      ar: 'المراجعات',
     },
   },
   {
@@ -62,6 +65,7 @@ export const navigationItems: NavigationItem[] = [
       ja: 'お気に入り',
       hi: 'पसंदीदा',
       tl: 'Favorites',
+      ar: 'المفضلة',
     },
   },
   {
@@ -76,6 +80,7 @@ export const navigationItems: NavigationItem[] = [
       ja: '相談',
       hi: 'परामर्श',
       tl: 'Consultation',
+      ar: 'استشارة',
     },
   },
 ];
