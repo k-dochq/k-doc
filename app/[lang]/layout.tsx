@@ -47,6 +47,26 @@ const notoSansDevanagari = localFont({
   preload: false,
 });
 
+const notoSansArabic = localFont({
+  src: '../../fonts/notosansarabic/NotoSansArabic-VariableFont_wdth,wght.ttf',
+  display: 'swap',
+  weight: '100 900',
+  variable: '--font-noto-arabic',
+  preload: false,
+});
+
+/** 로케일별 적용 폰트 (특수 스크립트 미지원 로케일은 pretendard) */
+const LOCALE_FONTS: Record<Locale, ReturnType<typeof localFont>> = {
+  ko: pretendard,
+  en: pretendard,
+  ja: pretendard,
+  tl: pretendard,
+  th: notoSansThaiLooped,
+  'zh-Hant': notoSansTC,
+  hi: notoSansDevanagari,
+  ar: notoSansArabic,
+};
+
 interface LangLayoutProps {
   children: React.ReactNode;
   params: Promise<{ lang: Locale }>;
@@ -149,16 +169,14 @@ export const viewport: Viewport = {
 export default async function LangLayout({ children, params }: LangLayoutProps) {
   const { lang } = await params;
 
-  // 언어별 폰트 선택.
-  const currentFont =
-    lang === 'th'
-      ? notoSansThaiLooped
-      : lang === 'zh-Hant'
-        ? notoSansTC
-        : lang === 'hi'
-          ? notoSansDevanagari
-          : pretendard;
-  const allFontVariables = `${pretendard.variable} ${notoSansThaiLooped.variable} ${notoSansTC.variable} ${notoSansDevanagari.variable}`;
+  const currentFont = LOCALE_FONTS[lang];
+  const allFontVariables = [
+    pretendard.variable,
+    notoSansThaiLooped.variable,
+    notoSansTC.variable,
+    notoSansDevanagari.variable,
+    notoSansArabic.variable,
+  ].join(' ');
 
   return (
     <html lang={lang} className={allFontVariables}>
