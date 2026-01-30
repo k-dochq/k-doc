@@ -47,7 +47,7 @@ export function LiveReviewCardV2({ liveReview, lang, dict }: LiveReviewCardV2Pro
         />
 
         {/* 내용 (한줄 넘어가면 ellipsis) */}
-        <LiveReviewCardV2Content content={content} />
+        <LiveReviewCardV2Content content={content} lang={lang} />
       </div>
     </div>
   );

@@ -68,7 +68,7 @@ export function YoutubeVideoCardV2({ video, lang, dict, className = '' }: Youtub
         onThumbnailError={handleImageError}
         onIframeLoad={handleIframeLoad}
       />
-      <YoutubeVideoTextContent title={title} description={description} />
+      <YoutubeVideoTextContent title={title} description={description} lang={lang} />
     </div>
   );
 }
