@@ -7,12 +7,13 @@ interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: React.ReactNode;
   error?: string;
   showIcon?: boolean;
+  dir?: 'ltr' | 'rtl';
 }
 
 export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
-  ({ label, error, showIcon = false, className, ...props }, ref) => {
+  ({ label, error, showIcon = false, dir, className, ...props }, ref) => {
     return (
-      <div className='flex w-full flex-col gap-2'>
+      <div className='flex w-full flex-col gap-2' dir={dir}>
         <label className='text-sm leading-5 font-medium text-neutral-900'>{label}</label>
         <div className='relative'>
           <input

@@ -97,6 +97,7 @@ export function ForgotPasswordForm({ lang, dict, redirectTo }: ForgotPasswordFor
           placeholder={dict.auth?.forgotPassword?.placeholders?.email || 'your-email@example.com'}
           error={emailError}
           disabled={isLoading}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         {/* 에러 메시지 */}

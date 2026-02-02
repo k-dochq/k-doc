@@ -216,6 +216,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         error={errors.name}
         required
         rightIcon={<UserIcon />}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       {/* 국적 */}
