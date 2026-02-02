@@ -63,7 +63,7 @@ export function CategoryButtonV2({
         variant,
       })}
       <p
-        className={`text-center text-xs leading-4 font-medium ${
+        className={`text-center text-xs leading-4 font-medium whitespace-pre-line ${
           isActive ? 'text-primary-900' : 'text-neutral-700'
         }`}
       >

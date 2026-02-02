@@ -75,7 +75,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     labels: {
       ko_KR: '안면윤곽',
       en_US: 'Facial Contouring',
-      th_TH: 'แก้ไขโครงหน้า',
+      th_TH: 'แก้ไข\nโครงหน้า',
       zh_TW: '臉部輪廓',
       ja_JP: '顔面輪郭',
       hi_IN: 'चेहरे की आकृति',
@@ -107,7 +107,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     labels: {
       ko_KR: '줄기세포',
       en_US: 'Stem Cell',
-      th_TH: 'เซลล์ต้นกำเนิด',
+      th_TH: 'เซลล์\nต้นกำเนิด',
       zh_TW: '幹細胞',
       ja_JP: '幹細胞',
       hi_IN: 'स्टेम सेल',
@@ -123,7 +123,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     labels: {
       ko_KR: '지방흡입',
       en_US: 'Liposuction',
-      th_TH: 'ศัลยกรรมดูดไขมัน',
+      th_TH: 'ศัลยกรรม\nดูดไขมัน',
       zh_TW: '抽脂',
       ja_JP: '脂肪吸引',
       hi_IN: 'लिपोसक्शन',

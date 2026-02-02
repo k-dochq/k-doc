@@ -24,7 +24,7 @@ export function QuickMenuButtonV2({ category, lang, isFirst = false }: QuickMenu
       <div className='flex size-[60px] items-center justify-center rounded-2xl border border-[#f0b5f9] bg-white'>
         {category.icon()}
       </div>
-      <span className='line-clamp-2 overflow-hidden text-center text-xs leading-4 font-medium text-ellipsis text-neutral-700'>
+      <span className='line-clamp-2 overflow-hidden text-center text-xs leading-4 font-medium text-ellipsis whitespace-pre-line text-neutral-700'>
         {label}
       </span>
     </LocaleLink>
