@@ -9,6 +9,7 @@ import GuaranteeTh from '../guarantee_th';
 import GuaranteeZhHant from '../guarantee_zh_Hant';
 import GuaranteeJa from '../guarantee_ja';
 import GuaranteeHi from '../guarantee_hi';
+import GuaranteeAr from '../guarantee_ar';
 
 interface HospitalDetailRegistrationPromptV2Props {
   lang: Locale;
@@ -39,6 +40,8 @@ export function HospitalDetailRegistrationPromptV2({
         return GuaranteeJa;
       case 'hi':
         return GuaranteeHi;
+      case 'ar':
+        return GuaranteeAr;
       case 'tl':
       case 'en':
       case 'ko':
@@ -51,7 +54,7 @@ export function HospitalDetailRegistrationPromptV2({
 
   return (
     <div className='px-2 pt-1 pb-5 min-[371px]:px-5'>
-      <div className='flex items-center justify-between overflow-clip rounded-lg border-2 border-primary-900 bg-white p-3 shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
+      <div className='border-primary-900 flex items-center justify-between overflow-clip rounded-lg border-2 bg-white p-3 shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
         <div
           className='relative'
           style={{
@@ -63,7 +66,7 @@ export function HospitalDetailRegistrationPromptV2({
         <LocaleLink
           href='/auth/login'
           locale={lang}
-          className='flex shrink-0 items-center justify-center gap-0 rounded bg-primary-900 px-2 py-1.5 text-[13px] leading-[19px] font-medium text-white'
+          className='bg-primary-900 flex shrink-0 items-center justify-center gap-0 rounded px-2 py-1.5 text-[13px] leading-[19px] font-medium text-white'
         >
           {buttonText}
         </LocaleLink>
