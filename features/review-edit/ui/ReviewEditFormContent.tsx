@@ -91,6 +91,7 @@ export function ReviewEditFormContent({
         placeholder={formDict?.procedureNamePlaceholder || ''}
         error={errors.procedureName}
         required
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       {/* 시술부위선택 */}

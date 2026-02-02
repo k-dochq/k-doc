@@ -123,6 +123,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
             value={user?.email || ''}
             disabled={true}
             className='bg-gray-50'
+            dir={lang === 'ar' ? 'rtl' : 'ltr'}
           />
 
           {/* 닉네임 */}
@@ -134,6 +135,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
             placeholder={dict.my?.profile?.edit?.placeholders?.nickname || '닉네임을 입력하세요'}
             error={errors.nickname}
             disabled={isLoading}
+            dir={lang === 'ar' ? 'rtl' : 'ltr'}
           />
 
           {/* 이름 */}
@@ -145,6 +147,7 @@ export function ProfileEditForm({ lang, dict }: ProfileEditFormProps) {
             placeholder={dict.my?.profile?.edit?.placeholders?.name || '이름을 입력하세요'}
             error={errors.name}
             disabled={isLoading}
+            dir={lang === 'ar' ? 'rtl' : 'ltr'}
           />
 
           {/* 에러 메시지 */}

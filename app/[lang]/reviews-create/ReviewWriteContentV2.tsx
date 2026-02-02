@@ -222,6 +222,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
             placeholder={formDict?.procedureNamePlaceholder || ''}
             error={errors.procedureName}
             required
+            dir={lang === 'ar' ? 'rtl' : 'ltr'}
           />
 
           {/* 시술부위선택 */}

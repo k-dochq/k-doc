@@ -126,6 +126,7 @@ export function ResetPasswordForm({ lang, dict, tokenHash }: ResetPasswordFormPr
           }
           error={passwordError}
           disabled={isLoading}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         {/* 비밀번호 확인 입력 */}
@@ -139,6 +140,7 @@ export function ResetPasswordForm({ lang, dict, tokenHash }: ResetPasswordFormPr
           }
           error={confirmPasswordError}
           disabled={isLoading}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         {/* 에러 메시지 */}
