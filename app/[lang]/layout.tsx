@@ -23,6 +23,13 @@ const pretendard = localFont({
   variable: '--font-pretendard',
 });
 
+const pretendardJP = localFont({
+  src: '../../fonts/pretendardjp/PretendardJPVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard-jp',
+});
+
 const notoSansThaiLooped = localFont({
   src: '../../fonts/notosansthai/NotoSansThaiLooped-VariableFont_wdth,wght.ttf',
   display: 'swap',
@@ -59,7 +66,7 @@ const notoSansArabic = localFont({
 const LOCALE_FONTS: Record<Locale, ReturnType<typeof localFont>> = {
   ko: pretendard,
   en: pretendard,
-  ja: pretendard,
+  ja: pretendardJP,
   tl: pretendard,
   th: notoSansThaiLooped,
   'zh-Hant': notoSansTC,
@@ -172,6 +179,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   const currentFont = LOCALE_FONTS[lang];
   const allFontVariables = [
     pretendard.variable,
+    pretendardJP.variable,
     notoSansThaiLooped.variable,
     notoSansTC.variable,
     notoSansDevanagari.variable,
