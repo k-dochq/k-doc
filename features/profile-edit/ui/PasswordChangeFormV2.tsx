@@ -219,6 +219,7 @@ export function PasswordChangeFormV2({
         disabled={isLoading}
         rightIcon={showCurrentPassword ? <EyeIcon /> : <EyeOffIcon />}
         onRightIconClick={() => setShowCurrentPassword(!showCurrentPassword)}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       <InputFieldV2
@@ -233,6 +234,7 @@ export function PasswordChangeFormV2({
         disabled={isLoading}
         rightIcon={showNewPassword ? <EyeIcon /> : <EyeOffIcon />}
         onRightIconClick={() => setShowNewPassword(!showNewPassword)}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       <InputFieldV2
@@ -248,6 +250,7 @@ export function PasswordChangeFormV2({
         disabled={isLoading}
         rightIcon={showConfirmPassword ? <EyeIcon /> : <EyeOffIcon />}
         onRightIconClick={() => setShowConfirmPassword(!showConfirmPassword)}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       {/* 에러 메시지 */}

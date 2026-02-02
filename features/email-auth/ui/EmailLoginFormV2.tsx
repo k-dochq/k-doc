@@ -52,6 +52,7 @@ export function EmailLoginFormV2({ lang, dict, redirectTo }: EmailLoginFormV2Pro
         placeholder={dict.auth?.login?.placeholders?.email || '이메일을 입력해주세요'}
         error={errors.email}
         disabled={isLoading}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       {/* 비밀번호 + 링크 */}
@@ -64,6 +65,7 @@ export function EmailLoginFormV2({ lang, dict, redirectTo }: EmailLoginFormV2Pro
           placeholder={dict.auth?.login?.placeholders?.password || '비밀번호를 입력해주세요'}
           error={errors.password}
           disabled={isLoading}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         <div className='mt-1 flex w-full items-center justify-end'>

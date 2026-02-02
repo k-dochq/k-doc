@@ -12,6 +12,7 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'className'> & {
   helperText?: string;
   rightIcon?: ReactNode;
   onRightIconClick?: () => void;
+  dir?: 'ltr' | 'rtl';
 };
 
 export function InputFieldV2({
@@ -22,6 +23,7 @@ export function InputFieldV2({
   disabled,
   rightIcon,
   onRightIconClick,
+  dir,
   ...props
 }: InputProps) {
   // disabled일 때는 disabled 스타일이 우선 적용되도록 처리
@@ -45,7 +47,7 @@ export function InputFieldV2({
   const rightPaddingClass = hasRightIcon ? 'pr-11' : '';
 
   return (
-    <div className='flex w-full flex-col gap-2'>
+    <div className='flex w-full flex-col gap-2' dir={dir}>
       <FieldLabel label={label} required={required} />
       <div className='relative'>
         <input

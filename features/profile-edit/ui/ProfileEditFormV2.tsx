@@ -245,6 +245,7 @@ export function ProfileEditFormV2({
         value={formData.email}
         disabled={true}
         placeholder={dict.auth?.signup?.placeholders?.email || 'your-email@example.com'}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       <InputFieldV2
@@ -258,6 +259,7 @@ export function ProfileEditFormV2({
         helperText={dict.my?.profile?.edit?.placeholders?.passportNameHelperText}
         error={errors.passportName}
         disabled={isBusy}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       />
 
       <SelectFieldV2

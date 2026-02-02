@@ -85,6 +85,7 @@ export function AdditionalInfoStep1FormV2({
           }
           error={errors.passportName}
           disabled={isBusy}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         <SelectFieldV2

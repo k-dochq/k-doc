@@ -69,7 +69,7 @@ export function SearchBarV2({
   };
 
   return (
-    <div className='w-full'>
+    <div className='w-full' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <div className='flex items-center gap-1.5 rounded-full border border-neutral-200 bg-[#f1f1f1] px-4 py-3'>
         <div className='shrink-0'>
           <SearchIconV2 />

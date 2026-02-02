@@ -209,6 +209,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
           required
           rightIcon={<UserIcon />}
           helperText={passportNameHelperText}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         {/* 국적 */}

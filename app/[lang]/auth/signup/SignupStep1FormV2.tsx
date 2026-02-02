@@ -61,6 +61,7 @@ export function SignupStep1FormV2({
           placeholder={dict.auth?.signup?.placeholders?.email || 'your-email@example.com'}
           error={errors.email}
           disabled={isBusy}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         <InputFieldV2
@@ -72,6 +73,7 @@ export function SignupStep1FormV2({
           placeholder={dict.auth?.signup?.placeholders?.password || '6+ characters'}
           error={errors.password}
           disabled={isBusy}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         <InputFieldV2
@@ -83,6 +85,7 @@ export function SignupStep1FormV2({
           placeholder={dict.auth?.signup?.placeholders?.confirmPassword || 'Confirm your password'}
           error={errors.confirmPassword}
           disabled={isBusy}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         <InputFieldV2
@@ -96,6 +99,7 @@ export function SignupStep1FormV2({
           }
           error={errors.passportName}
           disabled={isBusy}
+          dir={lang === 'ar' ? 'rtl' : 'ltr'}
         />
 
         <SelectFieldV2
