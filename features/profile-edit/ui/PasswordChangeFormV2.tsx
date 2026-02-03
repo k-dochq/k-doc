@@ -101,8 +101,7 @@ export function PasswordChangeFormV2({
         'Please confirm your password.';
     } else if (formData.newPassword !== formData.confirmPassword) {
       newErrors.confirmPassword =
-        dict.my?.profile?.passwordChange?.errors?.passwordMismatch ||
-        'Passwords do not match.';
+        dict.my?.profile?.passwordChange?.errors?.passwordMismatch || 'Passwords do not match.';
     }
 
     setErrors(newErrors);
