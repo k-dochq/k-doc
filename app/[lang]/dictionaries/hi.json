@@ -303,218 +303,222 @@
   },
   "auth": {
     "login": {
-      "title": "Login",
-      "subtitle": "Login to your account",
-      "email": "Email",
-      "password": "Password",
-      "loginButton": "Login",
-      "laterButton": "Do Later",
-      "signupButton": "Register with Email",
-      "requiredMessage": "Please log in\nto use the service.",
-      "socialLogin": "Social Login",
-      "startIn3Seconds": "Get started in 3 seconds",
-      "googleLogin": "Continue with Google",
-      "appleLogin": "Continue with Apple",
-      "kakaoLogin": "Login with Kakao",
-      "emailLogin": "Continue with Email",
-      "recentLogin": "Recent login",
-      "forgotPassword": "Forgot your password?",
-      "signUp": "Register with Email",
-      "loading": "Loading...",
-      "loginError": "Login error occurred",
-      "noAccount": "Don't have an account?",
-      "signupLink": "Register with Email",
+      "title": "लॉगिन",
+      "subtitle": "अपने खाते में लॉगिन करें",
+      "email": "ईमेल",
+      "password": "पासवर्ड",
+      "loginButton": "लॉगिन",
+      "laterButton": "बाद में",
+      "signupButton": "ईमेल से रजिस्टर करें",
+      "requiredMessage": "सेवा का उपयोग करने के लिए\nकृपया लॉगिन करें।",
+      "socialLogin": "सोशल लॉगिन",
+      "startIn3Seconds": "3 सेकंड में शुरू करें",
+      "googleLogin": "Google के साथ जारी रखें",
+      "appleLogin": "Apple के साथ जारी रखें",
+      "kakaoLogin": "Kakao से लॉगिन",
+      "emailLogin": "ईमेल के साथ जारी रखें",
+      "recentLogin": "हाल ही का लॉगिन",
+      "forgotPassword": "पासवर्ड भूल गए?",
+      "signUp": "ईमेल से रजिस्टर करें",
+      "loading": "लोड हो रहा है...",
+      "loginError": "लॉगिन में त्रुटि हुई",
+      "noAccount": "खाता नहीं है?",
+      "signupLink": "ईमेल से रजिस्टर करें",
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "Enter your password"
+        "email": "अपना ईमेल दर्ज करें",
+        "password": "अपना पासवर्ड दर्ज करें"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account."
+        "emailRequired": "कृपया अपना ईमेल दर्ज करें।",
+        "emailInvalid": "कृपया एक वैध ईमेल पता दर्ज करें।",
+        "passwordRequired": "कृपया अपना पासवर्ड दर्ज करें।",
+        "invalidCredentials": "ईमेल या पासवर्ड गलत है।",
+        "emailNotConfirmed": "कृपया अपना ईमेल जांचें और अपने खाते की पुष्टि करें।"
       }
     },
     "additionalInfo": {
-      "title": "Additional Information",
-      "description": "Please provide additional information to use our service.",
-      "emailReadonly": "This is your social account email",
-      "submitButton": "Complete"
+      "title": "अतिरिक्त जानकारी",
+      "description": "सेवा का उपयोग करने के लिए कृपया अतिरिक्त जानकारी दें।",
+      "emailReadonly": "यह आपके सोशल खाते का ईमेल है",
+      "submitButton": "पूरा करें"
     },
     "signup": {
-      "title": "Register",
-      "subtitle": "Create a new account",
-      "required": "Required",
-      "optional": "Optional",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "passportName": "Passport Name (English)",
-      "nationality": "Nationality",
+      "title": "रजिस्टर",
+      "subtitle": "नया खाता बनाएं",
+      "required": "आवश्यक",
+      "optional": "वैकल्पिक",
+      "email": "ईमेल",
+      "password": "पासवर्ड",
+      "confirmPassword": "पासवर्ड की पुष्टि करें",
+      "passportName": "पासपोर्ट नाम (अंग्रेज़ी)",
+      "nationality": "राष्ट्रीयता",
       "nationalities": {
-        "thailand": "Thailand",
-        "korea": "Korea",
-        "united_states": "United States",
-        "united_kingdom": "United Kingdom",
-        "germany": "Germany",
-        "france": "France",
-        "japan": "Japan",
-        "china": "China",
-        "india": "India",
-        "australia": "Australia",
-        "brazil": "Brazil",
-        "russia": "Russia",
-        "spain": "Spain",
-        "italy": "Italy",
-        "mexico": "Mexico",
-        "netherlands": "Netherlands",
-        "sweden": "Sweden",
-        "switzerland": "Switzerland",
-        "belgium": "Belgium",
-        "norway": "Norway",
-        "denmark": "Denmark",
-        "singapore": "Singapore",
-        "new_zealand": "New Zealand",
-        "malaysia": "Malaysia",
-        "philippines": "Philippines",
-        "indonesia": "Indonesia",
-        "turkey": "Turkey",
-        "south_africa": "South Africa",
-        "egypt": "Egypt",
-        "nigeria": "Nigeria",
-        "pakistan": "Pakistan",
-        "bangladesh": "Bangladesh",
-        "sri_lanka": "Sri Lanka",
-        "iran": "Iran",
-        "israel": "Israel",
-        "saudi_arabia": "Saudi Arabia",
-        "united_arab_emirates": "United Arab Emirates"
+        "thailand": "थाईलैंड",
+        "korea": "कोरिया",
+        "united_states": "संयुक्त राज्य अमेरिका",
+        "united_kingdom": "यूनाइटेड किंगडम",
+        "germany": "जर्मनी",
+        "france": "फ्रांस",
+        "japan": "जापान",
+        "china": "चीन",
+        "india": "भारत",
+        "australia": "ऑस्ट्रेलिया",
+        "brazil": "ब्राज़ील",
+        "russia": "रूस",
+        "spain": "स्पेन",
+        "italy": "इटली",
+        "mexico": "मेक्सिको",
+        "netherlands": "नीदरलैंड्स",
+        "sweden": "स्वीडन",
+        "switzerland": "स्विट्ज़रलैंड",
+        "belgium": "बेल्जियम",
+        "norway": "नॉर्वे",
+        "denmark": "डेनमार्क",
+        "singapore": "सिंगापुर",
+        "new_zealand": "न्यूज़ीलैंड",
+        "malaysia": "मलेशिया",
+        "philippines": "फिलिपींस",
+        "indonesia": "इंडोनेशिया",
+        "turkey": "तुर्की",
+        "south_africa": "दक्षिण अफ्रीका",
+        "egypt": "मिस्र",
+        "nigeria": "नाइजीरिया",
+        "pakistan": "पाकिस्तान",
+        "bangladesh": "बांग्लादेश",
+        "sri_lanka": "श्रीलंका",
+        "iran": "ईरान",
+        "israel": "इज़राइल",
+        "saudi_arabia": "सऊदी अरब",
+        "united_arab_emirates": "संयुक्त अरब अमीरात"
       },
-      "gender": "Gender",
+      "gender": "लिंग",
       "genders": {
-        "female": "Female",
-        "male": "Male"
+        "female": "महिला",
+        "male": "पुरुष"
       },
-      "phoneNumber": "Phone Number",
-      "countryCode": "Country Code",
-      "phoneNumberOnly": "Phone Number",
-      "birthDate": "Date of Birth",
-      "dateFormat": "Year.Month.Day",
-      "signupButton": "Register",
-      "loading": "Signing up...",
-      "signupError": "Register error occurred",
-      "passwordMismatch": "Passwords do not match",
-      "alreadyHaveAccount": "Already have an account?",
-      "loginLink": "Login",
+      "phoneNumber": "फ़ोन नंबर",
+      "countryCode": "देश कोड",
+      "phoneNumberOnly": "फ़ोन नंबर",
+      "birthDate": "जन्म तिथि",
+      "dateFormat": "वर्ष.माह.दिन",
+      "signupButton": "रजिस्टर",
+      "loading": "रजिस्टर हो रहा है...",
+      "signupError": "रजिस्टर में त्रुटि हुई",
+      "passwordMismatch": "पासवर्ड मेल नहीं खाते",
+      "alreadyHaveAccount": "पहले से खाता है?",
+      "loginLink": "लॉगिन",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
-        "allAgreed": "Agree to all",
-        "age14Plus": "I am 14 years old or older.",
-        "termsOfService": "Terms of Service (Required)",
-        "privacyPolicy": "Privacy Policy (Required)",
-        "marketingNotifications": "Event/Service Benefit Notifications",
-        "requiredError": "Please agree to the required terms.",
-        "agreeAndStart": "Agree to all and start"
+        "title": [
+          "K-DOC",
+          "कृपया सहमत हों",
+          "सेवा का उपयोग करने के लिए"
+        ],
+        "allAgreed": "सभी से सहमत",
+        "age14Plus": "मैं 14 वर्ष या उससे अधिक का/की हूँ।",
+        "termsOfService": "सेवा की शर्तें (आवश्यक)",
+        "privacyPolicy": "गोपनीयता नीति (आवश्यक)",
+        "marketingNotifications": "इवेंट/सेवा लाभ सूचनाएँ",
+        "requiredError": "कृपया आवश्यक शर्तों से सहमत हों।",
+        "agreeAndStart": "सभी से सहमत होकर शुरू करें"
       },
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "6+ characters",
-        "confirmPassword": "Confirm your password",
-        "passportName": "Enter your passport name in English",
-        "nationality": "Select your nationality",
-        "gender": "Select your gender",
+        "email": "अपना ईमेल दर्ज करें",
+        "password": "6+ अक्षर",
+        "confirmPassword": "अपने पासवर्ड की पुष्टि करें",
+        "passportName": "पासपोर्ट नाम अंग्रेज़ी में दर्ज करें",
+        "nationality": "अपनी राष्ट्रीयता चुनें",
+        "gender": "अपना लिंग चुनें",
         "phoneNumber": "010-0000-0000",
-        "countryCode": "Select",
-        "phoneNumberOnly": "Enter phone number",
-        "birthDate": "Select your date of birth"
+        "countryCode": "चुनें",
+        "phoneNumberOnly": "फ़ोन नंबर दर्ज करें",
+        "birthDate": "अपनी जन्म तिथि चुनें"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password should be at least 6 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "passportNameRequired": "Treatment access may be limited without passport name in English.",
-        "passportNameTooShort": "Passport name should be at least 2 characters.",
-        "passportNameInvalid": "Passport name should only contain English letters.",
-        "genderRequired": "Please select your gender.",
-        "emailAlreadyRegistered": "This email is already registered.",
-        "invalidEmail": "Please enter a valid email address.",
-        "passwordTooShortServer": "Password should be at least 6 characters.",
-        "unexpectedError": "An unexpected error occurred.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account.",
-        "signupSuccess": "Register completed. Please check your email to activate your account.",
-        "userAlreadyRegistered": "This email is already registered.",
-        "updateProfileError": "An error occurred while saving your information."
+        "emailRequired": "कृपया अपना ईमेल दर्ज करें।",
+        "emailInvalid": "कृपया एक वैध ईमेल पता दर्ज करें।",
+        "passwordRequired": "कृपया अपना पासवर्ड दर्ज करें।",
+        "passwordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+        "confirmPasswordRequired": "कृपया अपने पासवर्ड की पुष्टि करें।",
+        "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
+        "passportNameRequired": "पासपोर्ट नाम (अंग्रेज़ी) के बिना उपचार तक पहुँच सीमित हो सकती है।",
+        "passportNameTooShort": "पासपोर्ट नाम कम से कम 2 अक्षरों का होना चाहिए।",
+        "passportNameInvalid": "पासपोर्ट नाम में केवल अंग्रेज़ी अक्षर होने चाहिए।",
+        "genderRequired": "कृपया अपना लिंग चुनें।",
+        "emailAlreadyRegistered": "यह ईमेल पहले से रजिस्टर्ड है।",
+        "invalidEmail": "कृपया एक वैध ईमेल पता दर्ज करें।",
+        "passwordTooShortServer": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+        "unexpectedError": "एक अप्रत्याशित त्रुटि हुई।",
+        "invalidCredentials": "ईमेल या पासवर्ड गलत है।",
+        "emailNotConfirmed": "कृपया अपना ईमेल जांचें और अपने खाते की पुष्टि करें।",
+        "signupSuccess": "रजिस्ट्रेशन पूरा हुआ। खाते को सक्रिय करने के लिए कृपया अपना ईमेल देखें।",
+        "userAlreadyRegistered": "यह ईमेल पहले से रजिस्टर्ड है।",
+        "updateProfileError": "आपकी जानकारी सहेजते समय त्रुटि हुई।"
       }
     },
     "forgotPassword": {
-      "title": "Forgot Password",
-      "description": "Enter your email address and we'll send you a password reset link.",
-      "descriptionLine1": "Enter your email address",
-      "descriptionLine2": "and we'll send you a password reset link.",
-      "email": "Email",
-      "resetButton": "Send Password Reset Link",
-      "loading": "Sending...",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "resetError": "An error occurred while resetting password",
+      "title": "पासवर्ड भूल गए",
+      "description": "अपना ईमेल दर्ज करें, हम आपको पासवर्ड रीसेट लिंक भेजेंगे।",
+      "descriptionLine1": "अपना ईमेल दर्ज करें",
+      "descriptionLine2": "और हम पासवर्ड रीसेट लिंक भेजेंगे।",
+      "email": "ईमेल",
+      "resetButton": "पासवर्ड रीसेट लिंक भेजें",
+      "loading": "भेजा जा रहा है...",
+      "backToLogin": "लॉगिन पर वापस",
+      "loginLink": "लॉगिन",
+      "resetError": "पासवर्ड रीसेट करते समय त्रुटि हुई",
       "placeholders": {
         "email": "your-email@example.com"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter in the correct format.",
-        "userNotFound": "No account found with this email address.",
-        "rateLimitExceeded": "Too many requests. Please try again later."
+        "emailRequired": "कृपया अपना ईमेल दर्ज करें।",
+        "emailInvalid": "कृपया सही फ़ॉर्मेट में दर्ज करें।",
+        "userNotFound": "इस ईमेल से कोई खाता नहीं मिला।",
+        "rateLimitExceeded": "बहुत अधिक अनुरोध। कृपया बाद में पुनः प्रयास करें।"
       },
       "success": {
-        "title": "Email Sent",
-        "description": "We've sent a password reset link to your email address. Please check your email."
+        "title": "ईमेल भेज दिया गया",
+        "description": "हमने आपके ईमेल पर पासवर्ड रीसेट लिंक भेज दिया है। कृपया अपना ईमेल देखें।"
       }
     },
     "resetPassword": {
-      "title": "Set New Password",
-      "description": "Enter your new password.",
-      "newPassword": "New Password",
-      "confirmPassword": "Confirm Password",
-      "updateButton": "Update Password",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "goToLogin": "Go to Login",
-      "updateError": "An error occurred while updating password",
-      "sessionError": "An error occurred while setting session.",
+      "title": "नया पासवर्ड सेट करें",
+      "description": "अपना नया पासवर्ड दर्ज करें।",
+      "newPassword": "नया पासवर्ड",
+      "confirmPassword": "पासवर्ड की पुष्टि करें",
+      "updateButton": "पासवर्ड अपडेट करें",
+      "backToLogin": "लॉगिन पर वापस",
+      "loginLink": "लॉगिन",
+      "goToLogin": "लॉगिन पर जाएँ",
+      "updateError": "पासवर्ड अपडेट करते समय त्रुटि हुई",
+      "sessionError": "सेशन सेट करते समय त्रुटि हुई।",
       "placeholders": {
-        "newPassword": "Enter your new password",
-        "confirmPassword": "Confirm your password"
+        "newPassword": "अपना नया पासवर्ड दर्ज करें",
+        "confirmPassword": "अपने पासवर्ड की पुष्टि करें"
       },
       "errors": {
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password must be at least 8 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "invalidSession": "Session is invalid. Please try again.",
-        "sessionMissing": "Authentication session is missing. Please try again."
+        "passwordRequired": "कृपया अपना पासवर्ड दर्ज करें।",
+        "passwordTooShort": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
+        "confirmPasswordRequired": "कृपया अपने पासवर्ड की पुष्टि करें।",
+        "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
+        "invalidSession": "सेशन अमान्य है। कृपया पुनः प्रयास करें।",
+        "sessionMissing": "ऑथेंटिकेशन सेशन नहीं मिला। कृपया पुनः प्रयास करें।"
       },
       "success": {
-        "title": "Password Updated",
-        "description": "Your password has been successfully updated. Please login with your new password."
+        "title": "पासवर्ड अपडेट हो गया",
+        "description": "आपका पासवर्ड सफलतापूर्वक अपडेट हो गया है। कृपया नए पासवर्ड से लॉगिन करें।"
       },
       "error": {
         "invalidLink": {
-          "title": "Invalid Link",
-          "description": "The password reset link is invalid or has expired. Please try again."
+          "title": "अमान्य लिंक",
+          "description": "पासवर्ड रीसेट लिंक अमान्य है या समाप्त हो गया है। कृपया पुनः प्रयास करें।"
         }
       }
     },
     "error": {
-      "title": "Authentication Error",
-      "description": "An error occurred during authentication. Please try again.",
-      "tryAgain": "Try Again",
-      "goHome": "Go Home"
+      "title": "प्रमाणीकरण त्रुटि",
+      "description": "प्रमाणीकरण के दौरान त्रुटि हुई। कृपया पुनः प्रयास करें।",
+      "tryAgain": "फिर से प्रयास करें",
+      "goHome": "होम जाएँ"
     }
   },
   "hospital": {
@@ -1758,7 +1762,10 @@
             },
             {
               "category": "संबंधित पूछताछ और क्षतिपूर्ति के तरीके",
-              "content": ["सेवा विभाग: सीएस", "संपर्क करें: all@k-doc.kr"]
+              "content": [
+                "सेवा विभाग: सीएस",
+                "संपर्क करें: all@k-doc.kr"
+              ]
             }
           ]
         }
@@ -1994,84 +2001,84 @@
     }
   },
   "my": {
-    "title": "My Page",
-    "description": "Manage your personal information and settings.",
+    "title": "मेरा पेज",
+    "description": "अपनी व्यक्तिगत जानकारी और सेटिंग्स प्रबंधित करें।",
     "profile": {
-      "title": "My Profile",
-      "editProfile": "Edit Profile",
-      "nicknameChange": "Change Nickname",
-      "nameChange": "Change Name",
+      "title": "मेरी प्रोफ़ाइल",
+      "editProfile": "प्रोफ़ाइल संपादित करें",
+      "nicknameChange": "उपनाम बदलें",
+      "nameChange": "नाम बदलें",
       "edit": {
-        "title": "Edit Profile",
-        "nickname": "Nickname",
-        "name": "Name",
-        "email": "Email",
-        "saveButton": "Save",
-        "cancelButton": "Cancel",
-        "success": "Profile updated successfully.",
-        "error": "An error occurred while updating profile.",
+        "title": "प्रोफ़ाइल संपादित करें",
+        "nickname": "उपनाम",
+        "name": "नाम",
+        "email": "ईमेल",
+        "saveButton": "सहेजें",
+        "cancelButton": "रद्द करें",
+        "success": "प्रोफ़ाइल सफलतापूर्वक अपडेट हो गई।",
+        "error": "प्रोफ़ाइल अपडेट करते समय त्रुटि हुई।",
         "placeholders": {
-          "nickname": "Enter your nickname",
-          "name": "Enter your name",
-          "passportNameHelperText": "Enter exactly as shown on your passport, including spaces."
+          "nickname": "अपना उपनाम दर्ज करें",
+          "name": "अपना नाम दर्ज करें",
+          "passportNameHelperText": "जैसा पासपोर्ट पर है वैसा ही दर्ज करें (स्पेस सहित)।"
         },
         "errors": {
-          "nicknameRequired": "Please enter your nickname.",
-          "nameRequired": "Please enter your name.",
-          "nicknameTooShort": "Nickname must be at least 2 characters.",
-          "nameTooShort": "Name must be at least 2 characters."
+          "nicknameRequired": "कृपया अपना उपनाम दर्ज करें।",
+          "nameRequired": "कृपया अपना नाम दर्ज करें।",
+          "nicknameTooShort": "उपनाम कम से कम 2 अक्षरों का होना चाहिए।",
+          "nameTooShort": "नाम कम से कम 2 अक्षरों का होना चाहिए।"
         },
-        "loading": "Loading user information...",
-        "errorTitle": "Error",
-        "changePassword": "Change Password"
+        "loading": "यूज़र जानकारी लोड हो रही है...",
+        "errorTitle": "त्रुटि",
+        "changePassword": "पासवर्ड बदलें"
       },
       "passwordChange": {
-        "title": "Change Password",
-        "completeButton": "Complete",
-        "currentPassword": "Current Password",
-        "newPassword": "New Password",
-        "confirmPassword": "Confirm New Password",
+        "title": "पासवर्ड बदलें",
+        "completeButton": "पूरा करें",
+        "currentPassword": "वर्तमान पासवर्ड",
+        "newPassword": "नया पासवर्ड",
+        "confirmPassword": "नए पासवर्ड की पुष्टि करें",
         "placeholders": {
-          "currentPassword": "Enter your current password",
-          "newPassword": "At least 6 characters",
-          "confirmPassword": "Enter your password again"
+          "currentPassword": "अपना वर्तमान पासवर्ड दर्ज करें",
+          "newPassword": "कम से कम 6 अक्षर",
+          "confirmPassword": "अपना पासवर्ड फिर से दर्ज करें"
         },
         "errors": {
-          "currentPasswordRequired": "Please enter your current password.",
-          "currentPasswordInvalid": "Current password is incorrect.",
-          "newPasswordRequired": "Please enter your new password.",
-          "newPasswordTooShort": "Password must be at least 6 characters.",
-          "confirmPasswordRequired": "Please confirm your password.",
-          "passwordMismatch": "Passwords do not match.",
-          "updateFailed": "An error occurred while changing password."
+          "currentPasswordRequired": "कृपया अपना वर्तमान पासवर्ड दर्ज करें।",
+          "currentPasswordInvalid": "वर्तमान पासवर्ड गलत है।",
+          "newPasswordRequired": "कृपया अपना नया पासवर्ड दर्ज करें।",
+          "newPasswordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+          "confirmPasswordRequired": "कृपया अपने पासवर्ड की पुष्टि करें।",
+          "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
+          "updateFailed": "पासवर्ड बदलते समय त्रुटि हुई।"
         }
       }
     },
     "activity": {
-      "title": "Activity",
-      "savedList": "My Saved List"
+      "title": "गतिविधि",
+      "savedList": "मेरी सेव की गई सूची"
     },
     "activityStats": {
-      "myPosts": "My Posts",
-      "consultationChatList": "Consultation Chats"
+      "myPosts": "मेरी पोस्ट",
+      "consultationChatList": "परामर्श चैट्स"
     },
     "notification": {
-      "title": "Notifications",
-      "myPosts": "My Posts",
-      "eventService": "Event/Service Benefits"
+      "title": "सूचनाएँ",
+      "myPosts": "मेरी पोस्ट",
+      "eventService": "इवेंट/सेवा लाभ"
     },
     "customerService": {
-      "title": "Customer Service",
-      "email": "Email",
-      "phone": "Phone",
+      "title": "ग्राहक सेवा",
+      "email": "ईमेल",
+      "phone": "फ़ोन",
       "phoneNumber": "1588-6930"
     },
     "account": {
-      "title": "Account",
-      "logout": "Logout",
-      "deleteAccount": "Delete Account",
-      "deleteAccountConfirm": "Are you sure you want to delete your account? Your account will be deactivated and you'll need to contact customer service to reactivate it.",
-      "deleteAccountError": "An error occurred while deleting your account. Please try again."
+      "title": "खाता",
+      "logout": "लॉगआउट",
+      "deleteAccount": "खाता हटाएँ",
+      "deleteAccountConfirm": "क्या आप वाकई अपना खाता हटाना चाहते हैं? आपका खाता निष्क्रिय हो जाएगा और पुनः सक्रिय करने के लिए आपको ग्राहक सेवा से संपर्क करना होगा।",
+      "deleteAccountError": "खाता हटाते समय त्रुटि हुई। कृपया पुनः प्रयास करें।"
     }
   },
   "taxiReservation": {

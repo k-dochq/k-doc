@@ -304,54 +304,54 @@
   "auth": {
     "login": {
       "title": "تسجيل الدخول",
-      "subtitle": "سجل الدخول إلى حسابك",
-      "email": "بريد إلكتروني",
+      "subtitle": "سجّل الدخول إلى حسابك",
+      "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
       "loginButton": "تسجيل الدخول",
-      "laterButton": "أفعل ذلك لاحقاً",
-      "signupButton": "سجل باستخدام البريد الإلكتروني",
-      "requiredMessage": "يرجى تسجيل الدخول لاستخدام الخدمة.",
-      "socialLogin": "تسجيل الدخول عبر وسائل التواصل الاجتماعي",
-      "startIn3Seconds": "ابدأ في 3 ثوانٍ",
-      "googleLogin": "تابع مع جوجل",
-      "appleLogin": "تابع مع أبل",
-      "kakaoLogin": "تسجيل الدخول باستخدام Kakao",
-      "emailLogin": "متابعة عبر البريد الإلكتروني",
-      "recentLogin": "تسجيل الدخول الأخير",
-      "forgotPassword": "نسيت كلمة السر؟",
-      "signUp": "سجل باستخدام البريد الإلكتروني",
-      "loading": "تحميل...",
-      "loginError": "حدث خطأ في تسجيل الدخول",
+      "laterButton": "لاحقًا",
+      "signupButton": "التسجيل بالبريد الإلكتروني",
+      "requiredMessage": "يرجى تسجيل الدخول\nلاستخدام الخدمة.",
+      "socialLogin": "تسجيل الدخول عبر الشبكات الاجتماعية",
+      "startIn3Seconds": "ابدأ خلال 3 ثوانٍ",
+      "googleLogin": "المتابعة باستخدام Google",
+      "appleLogin": "المتابعة باستخدام Apple",
+      "kakaoLogin": "تسجيل الدخول عبر Kakao",
+      "emailLogin": "المتابعة بالبريد الإلكتروني",
+      "recentLogin": "آخر تسجيل دخول",
+      "forgotPassword": "هل نسيت كلمة المرور؟",
+      "signUp": "التسجيل بالبريد الإلكتروني",
+      "loading": "جارٍ التحميل...",
+      "loginError": "حدث خطأ أثناء تسجيل الدخول",
       "noAccount": "ليس لديك حساب؟",
-      "signupLink": "سجل باستخدام البريد الإلكتروني",
+      "signupLink": "التسجيل بالبريد الإلكتروني",
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "أدخل كلمة المرور الخاصة بك"
+        "email": "أدخل بريدك الإلكتروني",
+        "password": "أدخل كلمة المرور"
       },
       "errors": {
         "emailRequired": "يرجى إدخال بريدك الإلكتروني.",
         "emailInvalid": "يرجى إدخال عنوان بريد إلكتروني صالح.",
-        "passwordRequired": "الرجاء إدخال كلمة المرور الخاصة بك.",
-        "invalidCredentials": "بريد إلكتروني أو كلمة مرور غير صحيحة.",
+        "passwordRequired": "يرجى إدخال كلمة المرور.",
+        "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
         "emailNotConfirmed": "يرجى التحقق من بريدك الإلكتروني وتأكيد حسابك."
       }
     },
     "additionalInfo": {
       "title": "معلومات إضافية",
       "description": "يرجى تقديم معلومات إضافية لاستخدام خدمتنا.",
-      "emailReadonly": "هذا هو بريدك الإلكتروني الخاص بحسابك على مواقع التواصل الاجتماعي",
-      "submitButton": "مكتمل"
+      "emailReadonly": "هذا هو بريد حسابك الاجتماعي",
+      "submitButton": "إكمال"
     },
     "signup": {
-      "title": "يسجل",
+      "title": "إنشاء حساب",
       "subtitle": "إنشاء حساب جديد",
-      "required": "مطلوب",
-      "optional": "خياري",
-      "email": "بريد إلكتروني",
+      "required": "إلزامي",
+      "optional": "اختياري",
+      "email": "البريد الإلكتروني",
       "password": "كلمة المرور",
       "confirmPassword": "تأكيد كلمة المرور",
-      "passportName": "اسم جواز السفر (باللغة الإنجليزية)",
-      "nationality": "جنسية",
+      "passportName": "اسم جواز السفر (بالإنجليزية)",
+      "nationality": "الجنسية",
       "nationalities": {
         "thailand": "تايلاند",
         "korea": "كوريا",
@@ -377,9 +377,9 @@
         "singapore": "سنغافورة",
         "new_zealand": "نيوزيلندا",
         "malaysia": "ماليزيا",
-        "philippines": "فيلبيني",
-        "indonesia": "أندونيسيا",
-        "turkey": "ديك رومى",
+        "philippines": "الفلبين",
+        "indonesia": "إندونيسيا",
+        "turkey": "تركيا",
         "south_africa": "جنوب أفريقيا",
         "egypt": "مصر",
         "nigeria": "نيجيريا",
@@ -391,75 +391,79 @@
         "saudi_arabia": "المملكة العربية السعودية",
         "united_arab_emirates": "الإمارات العربية المتحدة"
       },
-      "gender": "جنس",
+      "gender": "الجنس",
       "genders": {
         "female": "أنثى",
         "male": "ذكر"
       },
-      "phoneNumber": "رقم التليفون",
+      "phoneNumber": "رقم الهاتف",
       "countryCode": "رمز الدولة",
-      "phoneNumberOnly": "رقم التليفون",
+      "phoneNumberOnly": "رقم الهاتف",
       "birthDate": "تاريخ الميلاد",
-      "dateFormat": "السنة.الشهر.اليوم",
-      "signupButton": "يسجل",
-      "loading": "جارٍ التسجيل...",
-      "signupError": "حدث خطأ في السجل",
-      "passwordMismatch": "كلمات المرور غير متطابقة",
-      "alreadyHaveAccount": "هل لديك حساب بالفعل؟",
+      "dateFormat": "سنة.شهر.يوم",
+      "signupButton": "إنشاء حساب",
+      "loading": "جارٍ إنشاء الحساب...",
+      "signupError": "حدث خطأ أثناء التسجيل",
+      "passwordMismatch": "كلمتا المرور غير متطابقتين",
+      "alreadyHaveAccount": "لديك حساب بالفعل؟",
       "loginLink": "تسجيل الدخول",
       "termsAgreement": {
-        "title": ["كي-دوك", "يرجى الموافقة على", "استخدم الخدمة"],
-        "allAgreed": "أوافق على كل شيء",
-        "age14Plus": "عمري 14 عاماً أو أكثر.",
-        "termsOfService": "شروط الخدمة (إلزامية)",
-        "privacyPolicy": "سياسة الخصوصية (مطلوبة)",
-        "marketingNotifications": "إشعارات مزايا الفعاليات/الخدمات",
-        "requiredError": "يرجى الموافقة على الشروط المطلوبة.",
-        "agreeAndStart": "وافق على كل شيء وابدأ"
+        "title": [
+          "K-DOC",
+          "يرجى الموافقة على",
+          "لاستخدام الخدمة"
+        ],
+        "allAgreed": "الموافقة على الكل",
+        "age14Plus": "عمري 14 عامًا أو أكثر.",
+        "termsOfService": "شروط الخدمة (إلزامي)",
+        "privacyPolicy": "سياسة الخصوصية (إلزامي)",
+        "marketingNotifications": "إشعارات مزايا الفعاليات/الخدمة",
+        "requiredError": "يرجى الموافقة على البنود الإلزامية.",
+        "agreeAndStart": "الموافقة على الكل والبدء"
       },
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "أكثر من 6 أحرف",
-        "confirmPassword": "أكد كلمة مرورك",
-        "passportName": "أدخل اسمك في جواز السفر باللغة الإنجليزية",
+        "email": "أدخل بريدك الإلكتروني",
+        "password": "6+ أحرف",
+        "confirmPassword": "أكد كلمة المرور",
+        "passportName": "أدخل اسم جواز السفر بالإنجليزية",
         "nationality": "اختر جنسيتك",
         "gender": "اختر جنسك",
         "phoneNumber": "010-0000-0000",
-        "countryCode": "يختار",
+        "countryCode": "اختيار",
         "phoneNumberOnly": "أدخل رقم الهاتف",
         "birthDate": "اختر تاريخ ميلادك"
       },
       "errors": {
         "emailRequired": "يرجى إدخال بريدك الإلكتروني.",
         "emailInvalid": "يرجى إدخال عنوان بريد إلكتروني صالح.",
-        "passwordRequired": "الرجاء إدخال كلمة المرور الخاصة بك.",
-        "passwordTooShort": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
-        "confirmPasswordRequired": "يرجى تأكيد كلمة المرور الخاصة بك.",
-        "passwordMismatch": "كلمات المرور غير متطابقة.",
-        "passportNameRequired": "قد يكون الحصول على العلاج محدوداً بدون كتابة اسم جواز السفر باللغة الإنجليزية.",
-        "passportNameTooShort": "يجب أن يتكون اسم جواز السفر من حرفين على الأقل.",
+        "passwordRequired": "يرجى إدخال كلمة المرور.",
+        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
+        "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
+        "passwordMismatch": "كلمتا المرور غير متطابقتين.",
+        "passportNameRequired": "قد يكون الوصول إلى بعض العلاجات محدودًا بدون اسم جواز السفر بالإنجليزية.",
+        "passportNameTooShort": "يجب ألا يقل اسم جواز السفر عن حرفين.",
         "passportNameInvalid": "يجب أن يحتوي اسم جواز السفر على أحرف إنجليزية فقط.",
-        "genderRequired": "يرجى تحديد جنسك.",
-        "emailAlreadyRegistered": "عنوان البريد الإلكترونى هذا مسجل بالفعل.",
+        "genderRequired": "يرجى اختيار الجنس.",
+        "emailAlreadyRegistered": "هذا البريد الإلكتروني مسجل بالفعل.",
         "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح.",
-        "passwordTooShortServer": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
+        "passwordTooShortServer": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
         "unexpectedError": "حدث خطأ غير متوقع.",
-        "invalidCredentials": "بريد إلكتروني أو كلمة مرور غير صحيحة.",
+        "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
         "emailNotConfirmed": "يرجى التحقق من بريدك الإلكتروني وتأكيد حسابك.",
-        "signupSuccess": "تم التسجيل بنجاح. يرجى مراجعة بريدك الإلكتروني لتفعيل حسابك.",
-        "userAlreadyRegistered": "عنوان البريد الإلكترونى هذا مسجل بالفعل.",
+        "signupSuccess": "تم التسجيل. يرجى التحقق من بريدك الإلكتروني لتفعيل حسابك.",
+        "userAlreadyRegistered": "هذا البريد الإلكتروني مسجل بالفعل.",
         "updateProfileError": "حدث خطأ أثناء حفظ معلوماتك."
       }
     },
     "forgotPassword": {
-      "title": "هل نسيت كلمة السر",
-      "description": "أدخل عنوان بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.",
-      "descriptionLine1": "أدخل عنوان بريدك الإلكتروني",
-      "descriptionLine2": "وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.",
-      "email": "بريد إلكتروني",
+      "title": "نسيت كلمة المرور",
+      "description": "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+      "descriptionLine1": "أدخل بريدك الإلكتروني",
+      "descriptionLine2": "وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+      "email": "البريد الإلكتروني",
       "resetButton": "إرسال رابط إعادة تعيين كلمة المرور",
-      "loading": "إرسال...",
-      "backToLogin": "العودة إلى صفحة تسجيل الدخول",
+      "loading": "جارٍ الإرسال...",
+      "backToLogin": "العودة لتسجيل الدخول",
       "loginLink": "تسجيل الدخول",
       "resetError": "حدث خطأ أثناء إعادة تعيين كلمة المرور",
       "placeholders": {
@@ -467,54 +471,54 @@
       },
       "errors": {
         "emailRequired": "يرجى إدخال بريدك الإلكتروني.",
-        "emailInvalid": "يرجى الإدخال بالتنسيق الصحيح.",
-        "userNotFound": "لم يتم العثور على حساب بهذا البريد الإلكتروني.",
-        "rateLimitExceeded": "عدد الطلبات كبير جدًا. يرجى المحاولة مرة أخرى لاحقًا."
+        "emailInvalid": "يرجى الإدخال بالصيغة الصحيحة.",
+        "userNotFound": "لا يوجد حساب مرتبط بهذا البريد الإلكتروني.",
+        "rateLimitExceeded": "طلبات كثيرة جدًا. يرجى المحاولة لاحقًا."
       },
       "success": {
         "title": "تم إرسال البريد الإلكتروني",
-        "description": "لقد أرسلنا رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من بريدك الإلكتروني."
+        "description": "أرسلنا رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من بريدك."
       }
     },
     "resetPassword": {
       "title": "تعيين كلمة مرور جديدة",
-      "description": "أدخل كلمة المرور الجديدة.",
-      "newPassword": "كلمة المرور الجديدة",
+      "description": "أدخل كلمة مرورك الجديدة.",
+      "newPassword": "كلمة مرور جديدة",
       "confirmPassword": "تأكيد كلمة المرور",
       "updateButton": "تحديث كلمة المرور",
-      "backToLogin": "العودة إلى صفحة تسجيل الدخول",
+      "backToLogin": "العودة لتسجيل الدخول",
       "loginLink": "تسجيل الدخول",
-      "goToLogin": "انتقل إلى صفحة تسجيل الدخول",
+      "goToLogin": "الانتقال لتسجيل الدخول",
       "updateError": "حدث خطأ أثناء تحديث كلمة المرور",
       "sessionError": "حدث خطأ أثناء إعداد الجلسة.",
       "placeholders": {
-        "newPassword": "أدخل كلمة المرور الجديدة",
-        "confirmPassword": "أكد كلمة مرورك"
+        "newPassword": "أدخل كلمة مرورك الجديدة",
+        "confirmPassword": "أكد كلمة المرور"
       },
       "errors": {
-        "passwordRequired": "الرجاء إدخال كلمة المرور الخاصة بك.",
-        "passwordTooShort": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.",
-        "confirmPasswordRequired": "يرجى تأكيد كلمة المرور الخاصة بك.",
-        "passwordMismatch": "كلمات المرور غير متطابقة.",
+        "passwordRequired": "يرجى إدخال كلمة المرور.",
+        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 8 أحرف.",
+        "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
+        "passwordMismatch": "كلمتا المرور غير متطابقتين.",
         "invalidSession": "الجلسة غير صالحة. يرجى المحاولة مرة أخرى.",
         "sessionMissing": "جلسة المصادقة مفقودة. يرجى المحاولة مرة أخرى."
       },
       "success": {
         "title": "تم تحديث كلمة المرور",
-        "description": "تم تحديث كلمة مرورك بنجاح. يرجى تسجيل الدخول باستخدام كلمة مرورك الجديدة."
+        "description": "تم تحديث كلمة المرور بنجاح. يرجى تسجيل الدخول بكلمة المرور الجديدة."
       },
       "error": {
         "invalidLink": {
           "title": "رابط غير صالح",
-          "description": "رابط إعادة تعيين كلمة المرور غير صالح أو انتهت صلاحيته. يرجى المحاولة مرة أخرى."
+          "description": "رابط إعادة تعيين كلمة المرور غير صالح أو منتهي الصلاحية. يرجى المحاولة مرة أخرى."
         }
       }
     },
     "error": {
       "title": "خطأ في المصادقة",
-      "description": "حدث خطأ أثناء عملية المصادقة. يرجى المحاولة مرة أخرى.",
-      "tryAgain": "حاول ثانية",
-      "goHome": "العودة إلى المنزل"
+      "description": "حدث خطأ أثناء المصادقة. يرجى المحاولة مرة أخرى.",
+      "tryAgain": "حاول مرة أخرى",
+      "goHome": "الصفحة الرئيسية"
     }
   },
   "hospital": {
@@ -1758,7 +1762,10 @@
             },
             {
               "category": "الاستفسارات ذات الصلة وطرق تخفيف الأضرار",
-              "content": ["قسم الخدمات: CS", "للتواصل: all@k-doc.kr"]
+              "content": [
+                "قسم الخدمات: CS",
+                "للتواصل: all@k-doc.kr"
+              ]
             }
           ]
         }
@@ -1995,7 +2002,7 @@
   },
   "my": {
     "title": "صفحتي",
-    "description": "إدارة معلوماتك الشخصية وإعداداتك.",
+    "description": "إدارة معلوماتك الشخصية والإعدادات.",
     "profile": {
       "title": "ملفي الشخصي",
       "editProfile": "تعديل الملف الشخصي",
@@ -2003,23 +2010,23 @@
       "nameChange": "تغيير الاسم",
       "edit": {
         "title": "تعديل الملف الشخصي",
-        "nickname": "كنية",
-        "name": "اسم",
-        "email": "بريد إلكتروني",
-        "saveButton": "يحفظ",
-        "cancelButton": "يلغي",
+        "nickname": "الاسم المستعار",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "saveButton": "حفظ",
+        "cancelButton": "إلغاء",
         "success": "تم تحديث الملف الشخصي بنجاح.",
         "error": "حدث خطأ أثناء تحديث الملف الشخصي.",
         "placeholders": {
           "nickname": "أدخل اسمك المستعار",
           "name": "أدخل اسمك",
-          "passportNameHelperText": "أدخل البيانات تماماً كما هو موضح في جواز سفرك، بما في ذلك المسافات."
+          "passportNameHelperText": "أدخل الاسم تمامًا كما هو في جواز السفر، بما في ذلك المسافات."
         },
         "errors": {
-          "nicknameRequired": "الرجاء إدخال اسمك المستعار.",
-          "nameRequired": "الرجاء إدخال اسمك.",
-          "nicknameTooShort": "يجب أن يتكون اللقب من حرفين على الأقل.",
-          "nameTooShort": "يجب أن يتكون الاسم من حرفين على الأقل."
+          "nicknameRequired": "يرجى إدخال اسمك المستعار.",
+          "nameRequired": "يرجى إدخال اسمك.",
+          "nicknameTooShort": "يجب ألا يقل الاسم المستعار عن حرفين.",
+          "nameTooShort": "يجب ألا يقل الاسم عن حرفين."
         },
         "loading": "جارٍ تحميل معلومات المستخدم...",
         "errorTitle": "خطأ",
@@ -2027,51 +2034,51 @@
       },
       "passwordChange": {
         "title": "تغيير كلمة المرور",
-        "completeButton": "مكتمل",
+        "completeButton": "إكمال",
         "currentPassword": "كلمة المرور الحالية",
-        "newPassword": "كلمة المرور الجديدة",
+        "newPassword": "كلمة مرور جديدة",
         "confirmPassword": "تأكيد كلمة المرور الجديدة",
         "placeholders": {
           "currentPassword": "أدخل كلمة المرور الحالية",
-          "newPassword": "ستة أحرف على الأقل",
-          "confirmPassword": "أدخل كلمة المرور الخاصة بك مرة أخرى"
+          "newPassword": "6 أحرف على الأقل",
+          "confirmPassword": "أعد إدخال كلمة المرور"
         },
         "errors": {
-          "currentPasswordRequired": "الرجاء إدخال كلمة المرور الحالية.",
+          "currentPasswordRequired": "يرجى إدخال كلمة المرور الحالية.",
           "currentPasswordInvalid": "كلمة المرور الحالية غير صحيحة.",
           "newPasswordRequired": "يرجى إدخال كلمة المرور الجديدة.",
-          "newPasswordTooShort": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.",
-          "confirmPasswordRequired": "يرجى تأكيد كلمة المرور الخاصة بك.",
-          "passwordMismatch": "كلمات المرور غير متطابقة.",
+          "newPasswordTooShort": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
+          "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
+          "passwordMismatch": "كلمتا المرور غير متطابقتين.",
           "updateFailed": "حدث خطأ أثناء تغيير كلمة المرور."
         }
       }
     },
     "activity": {
-      "title": "نشاط",
+      "title": "النشاط",
       "savedList": "قائمتي المحفوظة"
     },
     "activityStats": {
       "myPosts": "منشوراتي",
-      "consultationChatList": "محادثات استشارية"
+      "consultationChatList": "محادثات الاستشارة"
     },
     "notification": {
-      "title": "إشعارات",
+      "title": "الإشعارات",
       "myPosts": "منشوراتي",
-      "eventService": "مزايا الفعاليات/الخدمات"
+      "eventService": "مزايا الفعاليات/الخدمة"
     },
     "customerService": {
       "title": "خدمة العملاء",
-      "email": "بريد إلكتروني",
-      "phone": "هاتف",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
       "phoneNumber": "1588-6930"
     },
     "account": {
-      "title": "حساب",
+      "title": "الحساب",
       "logout": "تسجيل الخروج",
       "deleteAccount": "حذف الحساب",
-      "deleteAccountConfirm": "هل أنت متأكد من رغبتك في حذف حسابك؟ سيتم تعطيل حسابك، وسيتعين عليك الاتصال بخدمة العملاء لإعادة تفعيله.",
-      "deleteAccountError": "حدث خطأ أثناء حذف حسابك. يرجى المحاولة مرة أخرى."
+      "deleteAccountConfirm": "هل أنت متأكد أنك تريد حذف حسابك؟ سيتم تعطيل حسابك وستحتاج إلى التواصل مع خدمة العملاء لإعادة تفعيله.",
+      "deleteAccountError": "حدث خطأ أثناء حذف الحساب. يرجى المحاولة مرة أخرى."
     }
   },
   "taxiReservation": {

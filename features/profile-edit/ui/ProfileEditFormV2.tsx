@@ -288,9 +288,7 @@ export function ProfileEditFormV2({
         onChange={(date) => updateField('birthDate', date ? date.toISOString().split('T')[0] : '')}
         locale={lang}
         dict={dict}
-        placeholder={
-          dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'
-        }
+        placeholder={dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'}
         error={errors.birthDate}
         required={false}
         yearRange={{ from: 1950, to: new Date().getFullYear() }}

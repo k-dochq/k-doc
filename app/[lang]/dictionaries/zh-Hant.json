@@ -303,218 +303,222 @@
   },
   "auth": {
     "login": {
-      "title": "Login",
-      "subtitle": "Login to your account",
-      "email": "Email",
-      "password": "Password",
-      "loginButton": "Login",
-      "laterButton": "Do Later",
-      "signupButton": "Register with Email",
-      "requiredMessage": "Please log in\nto use the service.",
-      "socialLogin": "Social Login",
-      "startIn3Seconds": "Get started in 3 seconds",
-      "googleLogin": "Continue with Google",
-      "appleLogin": "Continue with Apple",
-      "kakaoLogin": "Login with Kakao",
-      "emailLogin": "Continue with Email",
-      "recentLogin": "Recent login",
-      "forgotPassword": "Forgot your password?",
-      "signUp": "Register with Email",
-      "loading": "Loading...",
-      "loginError": "Login error occurred",
-      "noAccount": "Don't have an account?",
-      "signupLink": "Register with Email",
+      "title": "登入",
+      "subtitle": "登入你的帳戶",
+      "email": "電子郵件",
+      "password": "密碼",
+      "loginButton": "登入",
+      "laterButton": "稍後再做",
+      "signupButton": "使用電子郵件註冊",
+      "requiredMessage": "請登入\n以使用服務。",
+      "socialLogin": "社群登入",
+      "startIn3Seconds": "3 秒快速開始",
+      "googleLogin": "使用 Google 繼續",
+      "appleLogin": "使用 Apple 繼續",
+      "kakaoLogin": "使用 Kakao 登入",
+      "emailLogin": "使用電子郵件繼續",
+      "recentLogin": "最近登入",
+      "forgotPassword": "忘記密碼？",
+      "signUp": "使用電子郵件註冊",
+      "loading": "載入中…",
+      "loginError": "登入時發生錯誤",
+      "noAccount": "還沒有帳戶？",
+      "signupLink": "使用電子郵件註冊",
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "Enter your password"
+        "email": "請輸入您的電子郵件",
+        "password": "輸入你的密碼"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account."
+        "emailRequired": "請輸入你的電子郵件。",
+        "emailInvalid": "請輸入有效的電子郵件地址。",
+        "passwordRequired": "請輸入你的密碼。",
+        "invalidCredentials": "電子郵件或密碼不正確。",
+        "emailNotConfirmed": "請查看你的電子郵件並完成帳戶驗證。"
       }
     },
     "additionalInfo": {
-      "title": "Additional Information",
-      "description": "Please provide additional information to use our service.",
-      "emailReadonly": "This is your social account email",
-      "submitButton": "Complete"
+      "title": "補充資訊",
+      "description": "請提供補充資訊以使用我們的服務。",
+      "emailReadonly": "這是你的社群帳戶電子郵件",
+      "submitButton": "完成"
     },
     "signup": {
-      "title": "Register",
-      "subtitle": "Create a new account",
-      "required": "Required",
-      "optional": "Optional",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "passportName": "Passport Name (English)",
-      "nationality": "Nationality",
+      "title": "註冊",
+      "subtitle": "建立新帳戶",
+      "required": "必填",
+      "optional": "選填",
+      "email": "電子郵件",
+      "password": "密碼",
+      "confirmPassword": "確認密碼",
+      "passportName": "護照姓名（英文）",
+      "nationality": "國籍",
       "nationalities": {
-        "thailand": "Thailand",
-        "korea": "Korea",
-        "united_states": "United States",
-        "united_kingdom": "United Kingdom",
-        "germany": "Germany",
-        "france": "France",
-        "japan": "Japan",
-        "china": "China",
-        "india": "India",
-        "australia": "Australia",
-        "brazil": "Brazil",
-        "russia": "Russia",
-        "spain": "Spain",
-        "italy": "Italy",
-        "mexico": "Mexico",
-        "netherlands": "Netherlands",
-        "sweden": "Sweden",
-        "switzerland": "Switzerland",
-        "belgium": "Belgium",
-        "norway": "Norway",
-        "denmark": "Denmark",
-        "singapore": "Singapore",
-        "new_zealand": "New Zealand",
-        "malaysia": "Malaysia",
-        "philippines": "Philippines",
-        "indonesia": "Indonesia",
-        "turkey": "Turkey",
-        "south_africa": "South Africa",
-        "egypt": "Egypt",
-        "nigeria": "Nigeria",
-        "pakistan": "Pakistan",
-        "bangladesh": "Bangladesh",
-        "sri_lanka": "Sri Lanka",
-        "iran": "Iran",
-        "israel": "Israel",
-        "saudi_arabia": "Saudi Arabia",
-        "united_arab_emirates": "United Arab Emirates"
+        "thailand": "泰國",
+        "korea": "韓國",
+        "united_states": "美國",
+        "united_kingdom": "英國",
+        "germany": "德國",
+        "france": "法國",
+        "japan": "日本",
+        "china": "中國",
+        "india": "印度",
+        "australia": "澳洲",
+        "brazil": "巴西",
+        "russia": "俄羅斯",
+        "spain": "西班牙",
+        "italy": "義大利",
+        "mexico": "墨西哥",
+        "netherlands": "荷蘭",
+        "sweden": "瑞典",
+        "switzerland": "瑞士",
+        "belgium": "比利時",
+        "norway": "挪威",
+        "denmark": "丹麥",
+        "singapore": "新加坡",
+        "new_zealand": "紐西蘭",
+        "malaysia": "馬來西亞",
+        "philippines": "菲律賓",
+        "indonesia": "印尼",
+        "turkey": "土耳其",
+        "south_africa": "南非",
+        "egypt": "埃及",
+        "nigeria": "奈及利亞",
+        "pakistan": "巴基斯坦",
+        "bangladesh": "孟加拉",
+        "sri_lanka": "斯里蘭卡",
+        "iran": "伊朗",
+        "israel": "以色列",
+        "saudi_arabia": "沙烏地阿拉伯",
+        "united_arab_emirates": "阿拉伯聯合大公國"
       },
-      "gender": "Gender",
+      "gender": "性別",
       "genders": {
-        "female": "Female",
-        "male": "Male"
+        "female": "女性",
+        "male": "男性"
       },
-      "phoneNumber": "Phone Number",
-      "countryCode": "Country Code",
-      "phoneNumberOnly": "Phone Number",
-      "birthDate": "Date of Birth",
-      "dateFormat": "Year.Month.Day",
-      "signupButton": "Register",
-      "loading": "Signing up...",
-      "signupError": "Register error occurred",
-      "passwordMismatch": "Passwords do not match",
-      "alreadyHaveAccount": "Already have an account?",
-      "loginLink": "Login",
+      "phoneNumber": "電話號碼",
+      "countryCode": "國碼",
+      "phoneNumberOnly": "電話號碼",
+      "birthDate": "出生日期",
+      "dateFormat": "年.月.日",
+      "signupButton": "註冊",
+      "loading": "註冊中…",
+      "signupError": "註冊時發生錯誤",
+      "passwordMismatch": "兩次密碼不一致",
+      "alreadyHaveAccount": "已經有帳戶？",
+      "loginLink": "登入",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
-        "allAgreed": "Agree to all",
-        "age14Plus": "I am 14 years old or older.",
-        "termsOfService": "Terms of Service (Required)",
-        "privacyPolicy": "Privacy Policy (Required)",
-        "marketingNotifications": "Event/Service Benefit Notifications",
-        "requiredError": "Please agree to the required terms.",
-        "agreeAndStart": "Agree to all and start"
+        "title": [
+          "K-DOC",
+          "請同意",
+          "以使用服務"
+        ],
+        "allAgreed": "全部同意",
+        "age14Plus": "我已滿 14 歲。",
+        "termsOfService": "服務條款（必填）",
+        "privacyPolicy": "隱私權政策（必填）",
+        "marketingNotifications": "活動／服務優惠通知",
+        "requiredError": "請同意必填條款。",
+        "agreeAndStart": "全部同意並開始"
       },
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "6+ characters",
-        "confirmPassword": "Confirm your password",
-        "passportName": "Enter your passport name in English",
-        "nationality": "Select your nationality",
-        "gender": "Select your gender",
+        "email": "請輸入您的電子郵件",
+        "password": "6 個字元以上",
+        "confirmPassword": "確認你的密碼",
+        "passportName": "請輸入護照英文姓名",
+        "nationality": "選擇你的國籍",
+        "gender": "選擇你的性別",
         "phoneNumber": "010-0000-0000",
-        "countryCode": "Select",
-        "phoneNumberOnly": "Enter phone number",
-        "birthDate": "Select your date of birth"
+        "countryCode": "選擇",
+        "phoneNumberOnly": "輸入電話號碼",
+        "birthDate": "選擇你的出生日期"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password should be at least 6 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "passportNameRequired": "Treatment access may be limited without passport name in English.",
-        "passportNameTooShort": "Passport name should be at least 2 characters.",
-        "passportNameInvalid": "Passport name should only contain English letters.",
-        "genderRequired": "Please select your gender.",
-        "emailAlreadyRegistered": "This email is already registered.",
-        "invalidEmail": "Please enter a valid email address.",
-        "passwordTooShortServer": "Password should be at least 6 characters.",
-        "unexpectedError": "An unexpected error occurred.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account.",
-        "signupSuccess": "Register completed. Please check your email to activate your account.",
-        "userAlreadyRegistered": "This email is already registered.",
-        "updateProfileError": "An error occurred while saving your information."
+        "emailRequired": "請輸入你的電子郵件。",
+        "emailInvalid": "請輸入有效的電子郵件地址。",
+        "passwordRequired": "請輸入你的密碼。",
+        "passwordTooShort": "密碼至少需 6 個字元。",
+        "confirmPasswordRequired": "請確認你的密碼。",
+        "passwordMismatch": "兩次密碼不一致。",
+        "passportNameRequired": "若未填寫護照英文姓名，部分療程使用可能受限。",
+        "passportNameTooShort": "護照姓名至少需 2 個字元。",
+        "passportNameInvalid": "護照姓名僅能包含英文字母。",
+        "genderRequired": "請選擇你的性別。",
+        "emailAlreadyRegistered": "此電子郵件已註冊。",
+        "invalidEmail": "請輸入有效的電子郵件地址。",
+        "passwordTooShortServer": "密碼至少需 6 個字元。",
+        "unexpectedError": "發生未預期的錯誤。",
+        "invalidCredentials": "電子郵件或密碼不正確。",
+        "emailNotConfirmed": "請查看你的電子郵件並完成帳戶驗證。",
+        "signupSuccess": "註冊完成。請查看電子郵件以啟用帳戶。",
+        "userAlreadyRegistered": "此電子郵件已註冊。",
+        "updateProfileError": "儲存資訊時發生錯誤。"
       }
     },
     "forgotPassword": {
-      "title": "Forgot Password",
-      "description": "Enter your email address and we'll send you a password reset link.",
-      "descriptionLine1": "Enter your email address",
-      "descriptionLine2": "and we'll send you a password reset link.",
-      "email": "Email",
-      "resetButton": "Send Password Reset Link",
-      "loading": "Sending...",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "resetError": "An error occurred while resetting password",
+      "title": "忘記密碼",
+      "description": "輸入你的電子郵件，我們將寄送密碼重設連結。",
+      "descriptionLine1": "輸入你的電子郵件",
+      "descriptionLine2": "我們將寄送密碼重設連結。",
+      "email": "電子郵件",
+      "resetButton": "寄送密碼重設連結",
+      "loading": "傳送中…",
+      "backToLogin": "返回登入",
+      "loginLink": "登入",
+      "resetError": "重設密碼時發生錯誤",
       "placeholders": {
         "email": "your-email@example.com"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter in the correct format.",
-        "userNotFound": "No account found with this email address.",
-        "rateLimitExceeded": "Too many requests. Please try again later."
+        "emailRequired": "請輸入你的電子郵件。",
+        "emailInvalid": "請以正確格式輸入。",
+        "userNotFound": "找不到使用此電子郵件的帳戶。",
+        "rateLimitExceeded": "請求過多，請稍後再試。"
       },
       "success": {
-        "title": "Email Sent",
-        "description": "We've sent a password reset link to your email address. Please check your email."
+        "title": "已寄出電子郵件",
+        "description": "我們已將密碼重設連結寄到你的電子郵件，請查收。"
       }
     },
     "resetPassword": {
-      "title": "Set New Password",
-      "description": "Enter your new password.",
-      "newPassword": "New Password",
-      "confirmPassword": "Confirm Password",
-      "updateButton": "Update Password",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "goToLogin": "Go to Login",
-      "updateError": "An error occurred while updating password",
-      "sessionError": "An error occurred while setting session.",
+      "title": "設定新密碼",
+      "description": "輸入你的新密碼。",
+      "newPassword": "新密碼",
+      "confirmPassword": "確認密碼",
+      "updateButton": "更新密碼",
+      "backToLogin": "返回登入",
+      "loginLink": "登入",
+      "goToLogin": "前往登入",
+      "updateError": "更新密碼時發生錯誤",
+      "sessionError": "建立工作階段時發生錯誤。",
       "placeholders": {
-        "newPassword": "Enter your new password",
-        "confirmPassword": "Confirm your password"
+        "newPassword": "輸入你的新密碼",
+        "confirmPassword": "確認你的密碼"
       },
       "errors": {
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password must be at least 8 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "invalidSession": "Session is invalid. Please try again.",
-        "sessionMissing": "Authentication session is missing. Please try again."
+        "passwordRequired": "請輸入你的密碼。",
+        "passwordTooShort": "密碼至少需 8 個字元。",
+        "confirmPasswordRequired": "請確認你的密碼。",
+        "passwordMismatch": "兩次密碼不一致。",
+        "invalidSession": "工作階段無效，請再試一次。",
+        "sessionMissing": "缺少驗證工作階段，請再試一次。"
       },
       "success": {
-        "title": "Password Updated",
-        "description": "Your password has been successfully updated. Please login with your new password."
+        "title": "密碼已更新",
+        "description": "你的密碼已成功更新。請使用新密碼登入。"
       },
       "error": {
         "invalidLink": {
-          "title": "Invalid Link",
-          "description": "The password reset link is invalid or has expired. Please try again."
+          "title": "連結無效",
+          "description": "密碼重設連結無效或已過期，請再試一次。"
         }
       }
     },
     "error": {
-      "title": "Authentication Error",
-      "description": "An error occurred during authentication. Please try again.",
-      "tryAgain": "Try Again",
-      "goHome": "Go Home"
+      "title": "驗證錯誤",
+      "description": "驗證過程發生錯誤，請再試一次。",
+      "tryAgain": "再試一次",
+      "goHome": "回到首頁"
     }
   },
   "hospital": {
@@ -1144,7 +1148,11 @@
         },
         {
           "content": "公司於服務使用申請符合下列各款時，得保留核准至核准限制事由解除：",
-          "subItems": ["公司設備不足時", "公司技術上有障礙時", "其他因可歸責於公司致使用核准困難時"]
+          "subItems": [
+            "公司設備不足時",
+            "公司技術上有障礙時",
+            "其他因可歸責於公司致使用核准困難時"
+          ]
         },
         "公司於申請人為相關法令所定未成年人時，得依服務別指引保留核准。",
         "公司於會員註冊完成後發現第2項各款事由時，得撤回使用核准。"
@@ -1754,7 +1762,10 @@
             },
             {
               "category": "相關詢問及損害救濟方法",
-              "content": ["服務負責部門：CS", "詢問處：all@k-doc.kr"]
+              "content": [
+                "服務負責部門：CS",
+                "詢問處：all@k-doc.kr"
+              ]
             }
           ]
         }
@@ -1990,84 +2001,84 @@
     }
   },
   "my": {
-    "title": "My Page",
-    "description": "Manage your personal information and settings.",
+    "title": "我的頁面",
+    "description": "管理你的個人資訊與設定。",
     "profile": {
-      "title": "My Profile",
-      "editProfile": "Edit Profile",
-      "nicknameChange": "Change Nickname",
-      "nameChange": "Change Name",
+      "title": "我的個人資料",
+      "editProfile": "編輯個人資料",
+      "nicknameChange": "更改暱稱",
+      "nameChange": "更改姓名",
       "edit": {
-        "title": "Edit Profile",
-        "nickname": "Nickname",
-        "name": "Name",
-        "email": "Email",
-        "saveButton": "Save",
-        "cancelButton": "Cancel",
-        "success": "Profile updated successfully.",
-        "error": "An error occurred while updating profile.",
+        "title": "編輯個人資料",
+        "nickname": "暱稱",
+        "name": "姓名",
+        "email": "電子郵件",
+        "saveButton": "儲存",
+        "cancelButton": "取消",
+        "success": "個人資料已成功更新。",
+        "error": "更新個人資料時發生錯誤。",
         "placeholders": {
-          "nickname": "Enter your nickname",
-          "name": "Enter your name",
-          "passportNameHelperText": "Enter exactly as shown on your passport, including spaces."
+          "nickname": "輸入你的暱稱",
+          "name": "輸入你的姓名",
+          "passportNameHelperText": "請依護照顯示完整輸入（含空格）。"
         },
         "errors": {
-          "nicknameRequired": "Please enter your nickname.",
-          "nameRequired": "Please enter your name.",
-          "nicknameTooShort": "Nickname must be at least 2 characters.",
-          "nameTooShort": "Name must be at least 2 characters."
+          "nicknameRequired": "請輸入你的暱稱。",
+          "nameRequired": "請輸入你的姓名。",
+          "nicknameTooShort": "暱稱至少需 2 個字元。",
+          "nameTooShort": "姓名至少需 2 個字元。"
         },
-        "loading": "Loading user information...",
-        "errorTitle": "Error",
-        "changePassword": "Change Password"
+        "loading": "正在載入使用者資訊…",
+        "errorTitle": "錯誤",
+        "changePassword": "變更密碼"
       },
       "passwordChange": {
-        "title": "Change Password",
-        "completeButton": "Complete",
-        "currentPassword": "Current Password",
-        "newPassword": "New Password",
-        "confirmPassword": "Confirm New Password",
+        "title": "變更密碼",
+        "completeButton": "完成",
+        "currentPassword": "目前密碼",
+        "newPassword": "新密碼",
+        "confirmPassword": "確認新密碼",
         "placeholders": {
-          "currentPassword": "Enter your current password",
-          "newPassword": "At least 6 characters",
-          "confirmPassword": "Enter your password again"
+          "currentPassword": "輸入目前密碼",
+          "newPassword": "至少 6 個字元",
+          "confirmPassword": "再次輸入密碼"
         },
         "errors": {
-          "currentPasswordRequired": "Please enter your current password.",
-          "currentPasswordInvalid": "Current password is incorrect.",
-          "newPasswordRequired": "Please enter your new password.",
-          "newPasswordTooShort": "Password must be at least 6 characters.",
-          "confirmPasswordRequired": "Please confirm your password.",
-          "passwordMismatch": "Passwords do not match.",
-          "updateFailed": "An error occurred while changing password."
+          "currentPasswordRequired": "請輸入目前密碼。",
+          "currentPasswordInvalid": "目前密碼不正確。",
+          "newPasswordRequired": "請輸入新密碼。",
+          "newPasswordTooShort": "密碼至少需 6 個字元。",
+          "confirmPasswordRequired": "請確認你的密碼。",
+          "passwordMismatch": "兩次密碼不一致。",
+          "updateFailed": "變更密碼時發生錯誤。"
         }
       }
     },
     "activity": {
-      "title": "Activity",
-      "savedList": "My Saved List"
+      "title": "活動",
+      "savedList": "我的收藏清單"
     },
     "activityStats": {
-      "myPosts": "My Posts",
-      "consultationChatList": "Consultation Chats"
+      "myPosts": "我的貼文",
+      "consultationChatList": "諮詢聊天"
     },
     "notification": {
-      "title": "Notifications",
-      "myPosts": "My Posts",
-      "eventService": "Event/Service Benefits"
+      "title": "通知",
+      "myPosts": "我的貼文",
+      "eventService": "活動／服務優惠"
     },
     "customerService": {
-      "title": "Customer Service",
-      "email": "Email",
-      "phone": "Phone",
+      "title": "客服中心",
+      "email": "電子郵件",
+      "phone": "電話",
       "phoneNumber": "1588-6930"
     },
     "account": {
-      "title": "Account",
-      "logout": "Logout",
-      "deleteAccount": "Delete Account",
-      "deleteAccountConfirm": "Are you sure you want to delete your account? Your account will be deactivated and you'll need to contact customer service to reactivate it.",
-      "deleteAccountError": "An error occurred while deleting your account. Please try again."
+      "title": "帳戶",
+      "logout": "登出",
+      "deleteAccount": "刪除帳戶",
+      "deleteAccountConfirm": "確定要刪除帳戶嗎？帳戶將被停用，需聯絡客服才能重新啟用。",
+      "deleteAccountError": "刪除帳戶時發生錯誤，請再試一次。"
     }
   },
   "taxiReservation": {
