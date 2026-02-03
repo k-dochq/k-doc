@@ -303,218 +303,222 @@
   },
   "auth": {
     "login": {
-      "title": "Login",
-      "subtitle": "Login to your account",
-      "email": "Email",
-      "password": "Password",
-      "loginButton": "Login",
-      "laterButton": "Do Later",
-      "signupButton": "Register with Email",
-      "requiredMessage": "Please log in\nto use the service.",
-      "socialLogin": "Social Login",
-      "startIn3Seconds": "Get started in 3 seconds",
-      "googleLogin": "Continue with Google",
-      "appleLogin": "Continue with Apple",
-      "kakaoLogin": "Login with Kakao",
-      "emailLogin": "Continue with Email",
-      "recentLogin": "Recent login",
-      "forgotPassword": "Forgot your password?",
-      "signUp": "Register with Email",
-      "loading": "Loading...",
-      "loginError": "Login error occurred",
-      "noAccount": "Don't have an account?",
-      "signupLink": "Register with Email",
+      "title": "ログイン",
+      "subtitle": "アカウントにログイン",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "loginButton": "ログイン",
+      "laterButton": "あとで",
+      "signupButton": "メールで登録",
+      "requiredMessage": "ログインして\nサービスをご利用ください。",
+      "socialLogin": "ソーシャルログイン",
+      "startIn3Seconds": "3秒で開始",
+      "googleLogin": "Googleで続行",
+      "appleLogin": "Appleで続行",
+      "kakaoLogin": "Kakaoでログイン",
+      "emailLogin": "メールで続行",
+      "recentLogin": "最近のログイン",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "signUp": "メールで登録",
+      "loading": "読み込み中…",
+      "loginError": "ログインエラーが発生しました",
+      "noAccount": "アカウントをお持ちではありませんか？",
+      "signupLink": "メールで登録",
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "Enter your password"
+        "email": "メールアドレスを入力",
+        "password": "パスワードを入力"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account."
+        "emailRequired": "メールアドレスを入力してください。",
+        "emailInvalid": "有効なメールアドレスを入力してください。",
+        "passwordRequired": "パスワードを入力してください。",
+        "invalidCredentials": "メールアドレスまたはパスワードが正しくありません。",
+        "emailNotConfirmed": "メールを確認してアカウントを認証してください。"
       }
     },
     "additionalInfo": {
-      "title": "Additional Information",
-      "description": "Please provide additional information to use our service.",
-      "emailReadonly": "This is your social account email",
-      "submitButton": "Complete"
+      "title": "追加情報",
+      "description": "サービス利用のため、追加情報を入力してください。",
+      "emailReadonly": "これはソーシャルアカウントのメールです",
+      "submitButton": "完了"
     },
     "signup": {
-      "title": "Register",
-      "subtitle": "Create a new account",
-      "required": "Required",
-      "optional": "Optional",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "passportName": "Passport Name (English)",
-      "nationality": "Nationality",
+      "title": "登録",
+      "subtitle": "新しいアカウントを作成",
+      "required": "必須",
+      "optional": "任意",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "confirmPassword": "パスワード（確認）",
+      "passportName": "パスポート氏名（英語）",
+      "nationality": "国籍",
       "nationalities": {
-        "thailand": "Thailand",
-        "korea": "Korea",
-        "united_states": "United States",
-        "united_kingdom": "United Kingdom",
-        "germany": "Germany",
-        "france": "France",
-        "japan": "Japan",
-        "china": "China",
-        "india": "India",
-        "australia": "Australia",
-        "brazil": "Brazil",
-        "russia": "Russia",
-        "spain": "Spain",
-        "italy": "Italy",
-        "mexico": "Mexico",
-        "netherlands": "Netherlands",
-        "sweden": "Sweden",
-        "switzerland": "Switzerland",
-        "belgium": "Belgium",
-        "norway": "Norway",
-        "denmark": "Denmark",
-        "singapore": "Singapore",
-        "new_zealand": "New Zealand",
-        "malaysia": "Malaysia",
-        "philippines": "Philippines",
-        "indonesia": "Indonesia",
-        "turkey": "Turkey",
-        "south_africa": "South Africa",
-        "egypt": "Egypt",
-        "nigeria": "Nigeria",
-        "pakistan": "Pakistan",
-        "bangladesh": "Bangladesh",
-        "sri_lanka": "Sri Lanka",
-        "iran": "Iran",
-        "israel": "Israel",
-        "saudi_arabia": "Saudi Arabia",
-        "united_arab_emirates": "United Arab Emirates"
+        "thailand": "タイ",
+        "korea": "韓国",
+        "united_states": "アメリカ合衆国",
+        "united_kingdom": "イギリス",
+        "germany": "ドイツ",
+        "france": "フランス",
+        "japan": "日本",
+        "china": "中国",
+        "india": "インド",
+        "australia": "オーストラリア",
+        "brazil": "ブラジル",
+        "russia": "ロシア",
+        "spain": "スペイン",
+        "italy": "イタリア",
+        "mexico": "メキシコ",
+        "netherlands": "オランダ",
+        "sweden": "スウェーデン",
+        "switzerland": "スイス",
+        "belgium": "ベルギー",
+        "norway": "ノルウェー",
+        "denmark": "デンマーク",
+        "singapore": "シンガポール",
+        "new_zealand": "ニュージーランド",
+        "malaysia": "マレーシア",
+        "philippines": "フィリピン",
+        "indonesia": "インドネシア",
+        "turkey": "トルコ",
+        "south_africa": "南アフリカ",
+        "egypt": "エジプト",
+        "nigeria": "ナイジェリア",
+        "pakistan": "パキスタン",
+        "bangladesh": "バングラデシュ",
+        "sri_lanka": "スリランカ",
+        "iran": "イラン",
+        "israel": "イスラエル",
+        "saudi_arabia": "サウジアラビア",
+        "united_arab_emirates": "アラブ首長国連邦"
       },
-      "gender": "Gender",
+      "gender": "性別",
       "genders": {
-        "female": "Female",
-        "male": "Male"
+        "female": "女性",
+        "male": "男性"
       },
-      "phoneNumber": "Phone Number",
-      "countryCode": "Country Code",
-      "phoneNumberOnly": "Phone Number",
-      "birthDate": "Date of Birth",
-      "dateFormat": "Year.Month.Day",
-      "signupButton": "Register",
-      "loading": "Signing up...",
-      "signupError": "Register error occurred",
-      "passwordMismatch": "Passwords do not match",
-      "alreadyHaveAccount": "Already have an account?",
-      "loginLink": "Login",
+      "phoneNumber": "電話番号",
+      "countryCode": "国番号",
+      "phoneNumberOnly": "電話番号",
+      "birthDate": "生年月日",
+      "dateFormat": "年.月.日",
+      "signupButton": "登録",
+      "loading": "登録中…",
+      "signupError": "登録エラーが発生しました",
+      "passwordMismatch": "パスワードが一致しません",
+      "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+      "loginLink": "ログイン",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
-        "allAgreed": "Agree to all",
-        "age14Plus": "I am 14 years old or older.",
-        "termsOfService": "Terms of Service (Required)",
-        "privacyPolicy": "Privacy Policy (Required)",
-        "marketingNotifications": "Event/Service Benefit Notifications",
-        "requiredError": "Please agree to the required terms.",
-        "agreeAndStart": "Agree to all and start"
+        "title": [
+          "K-DOC",
+          "同意して",
+          "サービスをご利用ください"
+        ],
+        "allAgreed": "すべて同意",
+        "age14Plus": "14歳以上です。",
+        "termsOfService": "利用規約（必須）",
+        "privacyPolicy": "プライバシーポリシー（必須）",
+        "marketingNotifications": "イベント／サービス特典のお知らせ",
+        "requiredError": "必須項目に同意してください。",
+        "agreeAndStart": "すべて同意して開始"
       },
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "6+ characters",
-        "confirmPassword": "Confirm your password",
-        "passportName": "Enter your passport name in English",
-        "nationality": "Select your nationality",
-        "gender": "Select your gender",
+        "email": "メールアドレスを入力",
+        "password": "6文字以上",
+        "confirmPassword": "パスワードを確認",
+        "passportName": "パスポート氏名（英語）を入力",
+        "nationality": "国籍を選択",
+        "gender": "性別を選択",
         "phoneNumber": "010-0000-0000",
-        "countryCode": "Select",
-        "phoneNumberOnly": "Enter phone number",
-        "birthDate": "Select your date of birth"
+        "countryCode": "選択",
+        "phoneNumberOnly": "電話番号を入力",
+        "birthDate": "生年月日を選択"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password should be at least 6 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "passportNameRequired": "Treatment access may be limited without passport name in English.",
-        "passportNameTooShort": "Passport name should be at least 2 characters.",
-        "passportNameInvalid": "Passport name should only contain English letters.",
-        "genderRequired": "Please select your gender.",
-        "emailAlreadyRegistered": "This email is already registered.",
-        "invalidEmail": "Please enter a valid email address.",
-        "passwordTooShortServer": "Password should be at least 6 characters.",
-        "unexpectedError": "An unexpected error occurred.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account.",
-        "signupSuccess": "Register completed. Please check your email to activate your account.",
-        "userAlreadyRegistered": "This email is already registered.",
-        "updateProfileError": "An error occurred while saving your information."
+        "emailRequired": "メールアドレスを入力してください。",
+        "emailInvalid": "有効なメールアドレスを入力してください。",
+        "passwordRequired": "パスワードを入力してください。",
+        "passwordTooShort": "パスワードは6文字以上にしてください。",
+        "confirmPasswordRequired": "パスワードを確認してください。",
+        "passwordMismatch": "パスワードが一致しません。",
+        "passportNameRequired": "パスポート氏名（英語）がないと、一部の治療が利用できない場合があります。",
+        "passportNameTooShort": "パスポート氏名は2文字以上にしてください。",
+        "passportNameInvalid": "パスポート氏名は英字のみで入力してください。",
+        "genderRequired": "性別を選択してください。",
+        "emailAlreadyRegistered": "このメールアドレスは既に登録されています。",
+        "invalidEmail": "有効なメールアドレスを入力してください。",
+        "passwordTooShortServer": "パスワードは6文字以上にしてください。",
+        "unexpectedError": "予期しないエラーが発生しました。",
+        "invalidCredentials": "メールアドレスまたはパスワードが正しくありません。",
+        "emailNotConfirmed": "メールを確認してアカウントを認証してください。",
+        "signupSuccess": "登録が完了しました。メールを確認してアカウントを有効化してください。",
+        "userAlreadyRegistered": "このメールアドレスは既に登録されています。",
+        "updateProfileError": "情報の保存中にエラーが発生しました。"
       }
     },
     "forgotPassword": {
-      "title": "Forgot Password",
-      "description": "Enter your email address and we'll send you a password reset link.",
-      "descriptionLine1": "Enter your email address",
-      "descriptionLine2": "and we'll send you a password reset link.",
-      "email": "Email",
-      "resetButton": "Send Password Reset Link",
-      "loading": "Sending...",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "resetError": "An error occurred while resetting password",
+      "title": "パスワードをお忘れですか",
+      "description": "メールアドレスを入力すると、パスワード再設定リンクを送信します。",
+      "descriptionLine1": "メールアドレスを入力してください",
+      "descriptionLine2": "パスワード再設定リンクを送信します。",
+      "email": "メールアドレス",
+      "resetButton": "再設定リンクを送信",
+      "loading": "送信中…",
+      "backToLogin": "ログインに戻る",
+      "loginLink": "ログイン",
+      "resetError": "パスワード再設定中にエラーが発生しました",
       "placeholders": {
         "email": "your-email@example.com"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter in the correct format.",
-        "userNotFound": "No account found with this email address.",
-        "rateLimitExceeded": "Too many requests. Please try again later."
+        "emailRequired": "メールアドレスを入力してください。",
+        "emailInvalid": "正しい形式で入力してください。",
+        "userNotFound": "このメールアドレスのアカウントが見つかりません。",
+        "rateLimitExceeded": "リクエストが多すぎます。しばらくしてから再度お試しください。"
       },
       "success": {
-        "title": "Email Sent",
-        "description": "We've sent a password reset link to your email address. Please check your email."
+        "title": "メールを送信しました",
+        "description": "パスワード再設定リンクをメールで送信しました。メールをご確認ください。"
       }
     },
     "resetPassword": {
-      "title": "Set New Password",
-      "description": "Enter your new password.",
-      "newPassword": "New Password",
-      "confirmPassword": "Confirm Password",
-      "updateButton": "Update Password",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "goToLogin": "Go to Login",
-      "updateError": "An error occurred while updating password",
-      "sessionError": "An error occurred while setting session.",
+      "title": "新しいパスワードを設定",
+      "description": "新しいパスワードを入力してください。",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "パスワード（確認）",
+      "updateButton": "パスワードを更新",
+      "backToLogin": "ログインに戻る",
+      "loginLink": "ログイン",
+      "goToLogin": "ログインへ",
+      "updateError": "パスワード更新中にエラーが発生しました",
+      "sessionError": "セッション設定中にエラーが発生しました。",
       "placeholders": {
-        "newPassword": "Enter your new password",
-        "confirmPassword": "Confirm your password"
+        "newPassword": "新しいパスワードを入力",
+        "confirmPassword": "パスワードを確認"
       },
       "errors": {
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password must be at least 8 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "invalidSession": "Session is invalid. Please try again.",
-        "sessionMissing": "Authentication session is missing. Please try again."
+        "passwordRequired": "パスワードを入力してください。",
+        "passwordTooShort": "パスワードは8文字以上にしてください。",
+        "confirmPasswordRequired": "パスワードを確認してください。",
+        "passwordMismatch": "パスワードが一致しません。",
+        "invalidSession": "セッションが無効です。再度お試しください。",
+        "sessionMissing": "認証セッションがありません。再度お試しください。"
       },
       "success": {
-        "title": "Password Updated",
-        "description": "Your password has been successfully updated. Please login with your new password."
+        "title": "パスワードを更新しました",
+        "description": "パスワードが更新されました。新しいパスワードでログインしてください。"
       },
       "error": {
         "invalidLink": {
-          "title": "Invalid Link",
-          "description": "The password reset link is invalid or has expired. Please try again."
+          "title": "無効なリンク",
+          "description": "再設定リンクが無効、または期限切れです。再度お試しください。"
         }
       }
     },
     "error": {
-      "title": "Authentication Error",
-      "description": "An error occurred during authentication. Please try again.",
-      "tryAgain": "Try Again",
-      "goHome": "Go Home"
+      "title": "認証エラー",
+      "description": "認証中にエラーが発生しました。再度お試しください。",
+      "tryAgain": "再試行",
+      "goHome": "ホームへ"
     }
   },
   "hospital": {
@@ -1758,7 +1762,10 @@
             },
             {
               "category": "関連問い合わせおよび被害救済方法",
-              "content": ["サービス担当部門: CS", "問い合わせ先: all@k-doc.kr"]
+              "content": [
+                "サービス担当部門: CS",
+                "問い合わせ先: all@k-doc.kr"
+              ]
             }
           ]
         }
@@ -1994,84 +2001,84 @@
     }
   },
   "my": {
-    "title": "My Page",
-    "description": "Manage your personal information and settings.",
+    "title": "マイページ",
+    "description": "個人情報と設定を管理します。",
     "profile": {
-      "title": "My Profile",
-      "editProfile": "Edit Profile",
-      "nicknameChange": "Change Nickname",
-      "nameChange": "Change Name",
+      "title": "プロフィール",
+      "editProfile": "プロフィール編集",
+      "nicknameChange": "ニックネーム変更",
+      "nameChange": "名前変更",
       "edit": {
-        "title": "Edit Profile",
-        "nickname": "Nickname",
-        "name": "Name",
-        "email": "Email",
-        "saveButton": "Save",
-        "cancelButton": "Cancel",
-        "success": "Profile updated successfully.",
-        "error": "An error occurred while updating profile.",
+        "title": "プロフィール編集",
+        "nickname": "ニックネーム",
+        "name": "名前",
+        "email": "メールアドレス",
+        "saveButton": "保存",
+        "cancelButton": "キャンセル",
+        "success": "プロフィールを更新しました。",
+        "error": "プロフィール更新中にエラーが発生しました。",
         "placeholders": {
-          "nickname": "Enter your nickname",
-          "name": "Enter your name",
-          "passportNameHelperText": "Enter exactly as shown on your passport, including spaces."
+          "nickname": "ニックネームを入力",
+          "name": "名前を入力",
+          "passportNameHelperText": "パスポート表記どおり（スペース含む）に入力してください。"
         },
         "errors": {
-          "nicknameRequired": "Please enter your nickname.",
-          "nameRequired": "Please enter your name.",
-          "nicknameTooShort": "Nickname must be at least 2 characters.",
-          "nameTooShort": "Name must be at least 2 characters."
+          "nicknameRequired": "ニックネームを入力してください。",
+          "nameRequired": "名前を入力してください。",
+          "nicknameTooShort": "ニックネームは2文字以上にしてください。",
+          "nameTooShort": "名前は2文字以上にしてください。"
         },
-        "loading": "Loading user information...",
-        "errorTitle": "Error",
-        "changePassword": "Change Password"
+        "loading": "ユーザー情報を読み込み中…",
+        "errorTitle": "エラー",
+        "changePassword": "パスワード変更"
       },
       "passwordChange": {
-        "title": "Change Password",
-        "completeButton": "Complete",
-        "currentPassword": "Current Password",
-        "newPassword": "New Password",
-        "confirmPassword": "Confirm New Password",
+        "title": "パスワード変更",
+        "completeButton": "完了",
+        "currentPassword": "現在のパスワード",
+        "newPassword": "新しいパスワード",
+        "confirmPassword": "新しいパスワード（確認）",
         "placeholders": {
-          "currentPassword": "Enter your current password",
-          "newPassword": "At least 6 characters",
-          "confirmPassword": "Enter your password again"
+          "currentPassword": "現在のパスワードを入力",
+          "newPassword": "6文字以上",
+          "confirmPassword": "もう一度パスワードを入力"
         },
         "errors": {
-          "currentPasswordRequired": "Please enter your current password.",
-          "currentPasswordInvalid": "Current password is incorrect.",
-          "newPasswordRequired": "Please enter your new password.",
-          "newPasswordTooShort": "Password must be at least 6 characters.",
-          "confirmPasswordRequired": "Please confirm your password.",
-          "passwordMismatch": "Passwords do not match.",
-          "updateFailed": "An error occurred while changing password."
+          "currentPasswordRequired": "現在のパスワードを入力してください。",
+          "currentPasswordInvalid": "現在のパスワードが正しくありません。",
+          "newPasswordRequired": "新しいパスワードを入力してください。",
+          "newPasswordTooShort": "パスワードは6文字以上にしてください。",
+          "confirmPasswordRequired": "パスワードを確認してください。",
+          "passwordMismatch": "パスワードが一致しません。",
+          "updateFailed": "パスワード変更中にエラーが発生しました。"
         }
       }
     },
     "activity": {
-      "title": "Activity",
-      "savedList": "My Saved List"
+      "title": "アクティビティ",
+      "savedList": "保存リスト"
     },
     "activityStats": {
-      "myPosts": "My Posts",
-      "consultationChatList": "Consultation Chats"
+      "myPosts": "自分の投稿",
+      "consultationChatList": "相談チャット"
     },
     "notification": {
-      "title": "Notifications",
-      "myPosts": "My Posts",
-      "eventService": "Event/Service Benefits"
+      "title": "通知",
+      "myPosts": "自分の投稿",
+      "eventService": "イベント／サービス特典"
     },
     "customerService": {
-      "title": "Customer Service",
-      "email": "Email",
-      "phone": "Phone",
+      "title": "カスタマーサービス",
+      "email": "メールアドレス",
+      "phone": "電話",
       "phoneNumber": "1588-6930"
     },
     "account": {
-      "title": "Account",
-      "logout": "Logout",
-      "deleteAccount": "Delete Account",
-      "deleteAccountConfirm": "Are you sure you want to delete your account? Your account will be deactivated and you'll need to contact customer service to reactivate it.",
-      "deleteAccountError": "An error occurred while deleting your account. Please try again."
+      "title": "アカウント",
+      "logout": "ログアウト",
+      "deleteAccount": "アカウント削除",
+      "deleteAccountConfirm": "アカウントを削除しますか？アカウントは無効化され、再有効化にはカスタマーサービスへの連絡が必要です。",
+      "deleteAccountError": "アカウント削除中にエラーが発生しました。再度お試しください。"
     }
   },
   "taxiReservation": {

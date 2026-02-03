@@ -325,7 +325,7 @@
       "noAccount": "Don't have an account?",
       "signupLink": "Register with Email",
       "placeholders": {
-        "email": "your-email@example.com",
+        "email": "Enter your email",
         "password": "Enter your password"
       },
       "errors": {
@@ -408,7 +408,11 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": [
+          "K-DOC",
+          "Please agree to",
+          "use the service"
+        ],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -418,7 +422,7 @@
         "agreeAndStart": "Agree to all and start"
       },
       "placeholders": {
-        "email": "your-email@example.com",
+        "email": "Enter your email",
         "password": "6+ characters",
         "confirmPassword": "Confirm your password",
         "passportName": "Enter your passport name in English",
@@ -1759,7 +1763,10 @@
             },
             {
               "category": "Related Inquiries and Methods for Redress",
-              "content": ["Service department in charge: CS", "Contact: all@k-doc.kr"]
+              "content": [
+                "Service department in charge: CS",
+                "Contact: all@k-doc.kr"
+              ]
             }
           ]
         }

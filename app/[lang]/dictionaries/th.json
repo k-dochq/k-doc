@@ -303,218 +303,222 @@
   },
   "auth": {
     "login": {
-      "title": "Login",
-      "subtitle": "Login to your account",
-      "email": "Email",
-      "password": "Password",
-      "loginButton": "Login",
-      "laterButton": "Do Later",
-      "signupButton": "Register with Email",
-      "requiredMessage": "Please log in\nto use the service.",
-      "socialLogin": "Social Login",
-      "startIn3Seconds": "Get started in 3 seconds",
-      "googleLogin": "Continue with Google",
-      "appleLogin": "Continue with Apple",
-      "kakaoLogin": "Login with Kakao",
-      "emailLogin": "Continue with Email",
-      "recentLogin": "Recent login",
-      "forgotPassword": "Forgot your password?",
-      "signUp": "Register with Email",
-      "loading": "Loading...",
-      "loginError": "Login error occurred",
-      "noAccount": "Don't have an account?",
-      "signupLink": "Register with Email",
+      "title": "เข้าสู่ระบบ",
+      "subtitle": "เข้าสู่ระบบบัญชีของคุณ",
+      "email": "อีเมล",
+      "password": "รหัสผ่าน",
+      "loginButton": "เข้าสู่ระบบ",
+      "laterButton": "ทำภายหลัง",
+      "signupButton": "สมัครด้วยอีเมล",
+      "requiredMessage": "โปรดเข้าสู่ระบบ\nเพื่อใช้บริการ",
+      "socialLogin": "เข้าสู่ระบบด้วยโซเชียล",
+      "startIn3Seconds": "เริ่มต้นภายใน 3 วินาที",
+      "googleLogin": "ดำเนินการต่อด้วย Google",
+      "appleLogin": "ดำเนินการต่อด้วย Apple",
+      "kakaoLogin": "เข้าสู่ระบบด้วย Kakao",
+      "emailLogin": "ดำเนินการต่อด้วยอีเมล",
+      "recentLogin": "การเข้าสู่ระบบล่าสุด",
+      "forgotPassword": "ลืมรหัสผ่าน?",
+      "signUp": "สมัครด้วยอีเมล",
+      "loading": "กำลังโหลด...",
+      "loginError": "เกิดข้อผิดพลาดในการเข้าสู่ระบบ",
+      "noAccount": "ยังไม่มีบัญชีใช่ไหม?",
+      "signupLink": "สมัครด้วยอีเมล",
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "Enter your password"
+        "email": "กรอกอีเมลของคุณ",
+        "password": "กรอกรหัสผ่านของคุณ"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account."
+        "emailRequired": "กรุณากรอกอีเมลของคุณ",
+        "emailInvalid": "กรุณากรอกอีเมลให้ถูกต้อง",
+        "passwordRequired": "กรุณากรอกรหัสผ่านของคุณ",
+        "invalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+        "emailNotConfirmed": "โปรดตรวจสอบอีเมลและยืนยันบัญชีของคุณ"
       }
     },
     "additionalInfo": {
-      "title": "Additional Information",
-      "description": "Please provide additional information to use our service.",
-      "emailReadonly": "This is your social account email",
-      "submitButton": "Complete"
+      "title": "ข้อมูลเพิ่มเติม",
+      "description": "โปรดระบุข้อมูลเพิ่มเติมเพื่อใช้บริการของเรา",
+      "emailReadonly": "นี่คืออีเมลจากบัญชีโซเชียลของคุณ",
+      "submitButton": "เสร็จสิ้น"
     },
     "signup": {
-      "title": "Register",
-      "subtitle": "Create a new account",
-      "required": "Required",
-      "optional": "Optional",
-      "email": "Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "passportName": "Passport Name (English)",
-      "nationality": "Nationality",
+      "title": "สมัครสมาชิก",
+      "subtitle": "สร้างบัญชีใหม่",
+      "required": "จำเป็น",
+      "optional": "ไม่จำเป็น",
+      "email": "อีเมล",
+      "password": "รหัสผ่าน",
+      "confirmPassword": "ยืนยันรหัสผ่าน",
+      "passportName": "ชื่อในพาสปอร์ต (ภาษาอังกฤษ)",
+      "nationality": "สัญชาติ",
       "nationalities": {
-        "thailand": "Thailand",
-        "korea": "Korea",
-        "united_states": "United States",
-        "united_kingdom": "United Kingdom",
-        "germany": "Germany",
-        "france": "France",
-        "japan": "Japan",
-        "china": "China",
-        "india": "India",
-        "australia": "Australia",
-        "brazil": "Brazil",
-        "russia": "Russia",
-        "spain": "Spain",
-        "italy": "Italy",
-        "mexico": "Mexico",
-        "netherlands": "Netherlands",
-        "sweden": "Sweden",
-        "switzerland": "Switzerland",
-        "belgium": "Belgium",
-        "norway": "Norway",
-        "denmark": "Denmark",
-        "singapore": "Singapore",
-        "new_zealand": "New Zealand",
-        "malaysia": "Malaysia",
-        "philippines": "Philippines",
-        "indonesia": "Indonesia",
-        "turkey": "Turkey",
-        "south_africa": "South Africa",
-        "egypt": "Egypt",
-        "nigeria": "Nigeria",
-        "pakistan": "Pakistan",
-        "bangladesh": "Bangladesh",
-        "sri_lanka": "Sri Lanka",
-        "iran": "Iran",
-        "israel": "Israel",
-        "saudi_arabia": "Saudi Arabia",
-        "united_arab_emirates": "United Arab Emirates"
+        "thailand": "ประเทศไทย",
+        "korea": "เกาหลี",
+        "united_states": "สหรัฐอเมริกา",
+        "united_kingdom": "สหราชอาณาจักร",
+        "germany": "เยอรมนี",
+        "france": "ฝรั่งเศส",
+        "japan": "ญี่ปุ่น",
+        "china": "จีน",
+        "india": "อินเดีย",
+        "australia": "ออสเตรเลีย",
+        "brazil": "บราซิล",
+        "russia": "รัสเซีย",
+        "spain": "สเปน",
+        "italy": "อิตาลี",
+        "mexico": "เม็กซิโก",
+        "netherlands": "เนเธอร์แลนด์",
+        "sweden": "สวีเดน",
+        "switzerland": "สวิตเซอร์แลนด์",
+        "belgium": "เบลเยียม",
+        "norway": "นอร์เวย์",
+        "denmark": "เดนมาร์ก",
+        "singapore": "สิงคโปร์",
+        "new_zealand": "นิวซีแลนด์",
+        "malaysia": "มาเลเซีย",
+        "philippines": "ฟิลิปปินส์",
+        "indonesia": "อินโดนีเซีย",
+        "turkey": "ตุรกี",
+        "south_africa": "แอฟริกาใต้",
+        "egypt": "อียิปต์",
+        "nigeria": "ไนจีเรีย",
+        "pakistan": "ปากีสถาน",
+        "bangladesh": "บังกลาเทศ",
+        "sri_lanka": "ศรีลังกา",
+        "iran": "อิหร่าน",
+        "israel": "อิสราเอล",
+        "saudi_arabia": "ซาอุดีอาระเบีย",
+        "united_arab_emirates": "สหรัฐอาหรับเอมิเรตส์"
       },
-      "gender": "Gender",
+      "gender": "เพศ",
       "genders": {
-        "female": "Female",
-        "male": "Male"
+        "female": "หญิง",
+        "male": "ชาย"
       },
-      "phoneNumber": "Phone Number",
-      "countryCode": "Country Code",
-      "phoneNumberOnly": "Phone Number",
-      "birthDate": "Date of Birth",
-      "dateFormat": "Year.Month.Day",
-      "signupButton": "Register",
-      "loading": "Signing up...",
-      "signupError": "Register error occurred",
-      "passwordMismatch": "Passwords do not match",
-      "alreadyHaveAccount": "Already have an account?",
-      "loginLink": "Login",
+      "phoneNumber": "หมายเลขโทรศัพท์",
+      "countryCode": "รหัสประเทศ",
+      "phoneNumberOnly": "หมายเลขโทรศัพท์",
+      "birthDate": "วันเดือนปีเกิด",
+      "dateFormat": "ปี.เดือน.วัน",
+      "signupButton": "สมัครสมาชิก",
+      "loading": "กำลังสมัครสมาชิก...",
+      "signupError": "เกิดข้อผิดพลาดในการสมัครสมาชิก",
+      "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+      "alreadyHaveAccount": "มีบัญชีอยู่แล้วใช่ไหม?",
+      "loginLink": "เข้าสู่ระบบ",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
-        "allAgreed": "Agree to all",
-        "age14Plus": "I am 14 years old or older.",
-        "termsOfService": "Terms of Service (Required)",
-        "privacyPolicy": "Privacy Policy (Required)",
-        "marketingNotifications": "Event/Service Benefit Notifications",
-        "requiredError": "Please agree to the required terms.",
-        "agreeAndStart": "Agree to all and start"
+        "title": [
+          "K-DOC",
+          "โปรดตกลง",
+          "เพื่อใช้บริการ"
+        ],
+        "allAgreed": "ยอมรับทั้งหมด",
+        "age14Plus": "ฉันอายุ 14 ปีขึ้นไป",
+        "termsOfService": "ข้อกำหนดการใช้งาน (จำเป็น)",
+        "privacyPolicy": "นโยบายความเป็นส่วนตัว (จำเป็น)",
+        "marketingNotifications": "การแจ้งเตือนสิทธิประโยชน์/บริการ",
+        "requiredError": "โปรดยอมรับข้อตกลงที่จำเป็น",
+        "agreeAndStart": "ยอมรับทั้งหมดและเริ่มต้น"
       },
       "placeholders": {
-        "email": "your-email@example.com",
-        "password": "6+ characters",
-        "confirmPassword": "Confirm your password",
-        "passportName": "Enter your passport name in English",
-        "nationality": "Select your nationality",
-        "gender": "Select your gender",
+        "email": "กรอกอีเมลของคุณ",
+        "password": "อย่างน้อย 6 ตัวอักษร",
+        "confirmPassword": "ยืนยันรหัสผ่านของคุณ",
+        "passportName": "กรอกชื่อในพาสปอร์ตเป็นภาษาอังกฤษ",
+        "nationality": "เลือกสัญชาติของคุณ",
+        "gender": "เลือกเพศของคุณ",
         "phoneNumber": "010-0000-0000",
-        "countryCode": "Select",
-        "phoneNumberOnly": "Enter phone number",
-        "birthDate": "Select your date of birth"
+        "countryCode": "เลือก",
+        "phoneNumberOnly": "กรอกหมายเลขโทรศัพท์",
+        "birthDate": "เลือกวันเกิดของคุณ"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter a valid email address.",
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password should be at least 6 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "passportNameRequired": "Treatment access may be limited without passport name in English.",
-        "passportNameTooShort": "Passport name should be at least 2 characters.",
-        "passportNameInvalid": "Passport name should only contain English letters.",
-        "genderRequired": "Please select your gender.",
-        "emailAlreadyRegistered": "This email is already registered.",
-        "invalidEmail": "Please enter a valid email address.",
-        "passwordTooShortServer": "Password should be at least 6 characters.",
-        "unexpectedError": "An unexpected error occurred.",
-        "invalidCredentials": "Invalid email or password.",
-        "emailNotConfirmed": "Please check your email and confirm your account.",
-        "signupSuccess": "Register completed. Please check your email to activate your account.",
-        "userAlreadyRegistered": "This email is already registered.",
-        "updateProfileError": "An error occurred while saving your information."
+        "emailRequired": "กรุณากรอกอีเมลของคุณ",
+        "emailInvalid": "กรุณากรอกอีเมลให้ถูกต้อง",
+        "passwordRequired": "กรุณากรอกรหัสผ่านของคุณ",
+        "passwordTooShort": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+        "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
+        "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+        "passportNameRequired": "อาจไม่สามารถเข้าถึงการรักษาบางอย่างได้หากไม่มีชื่อในพาสปอร์ตเป็นภาษาอังกฤษ",
+        "passportNameTooShort": "ชื่อในพาสปอร์ตต้องมีอย่างน้อย 2 ตัวอักษร",
+        "passportNameInvalid": "ชื่อในพาสปอร์ตต้องเป็นตัวอักษรภาษาอังกฤษเท่านั้น",
+        "genderRequired": "กรุณาเลือกเพศของคุณ",
+        "emailAlreadyRegistered": "อีเมลนี้ถูกสมัครไว้แล้ว",
+        "invalidEmail": "กรุณากรอกอีเมลให้ถูกต้อง",
+        "passwordTooShortServer": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+        "unexpectedError": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
+        "invalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+        "emailNotConfirmed": "โปรดตรวจสอบอีเมลและยืนยันบัญชีของคุณ",
+        "signupSuccess": "สมัครสมาชิกเสร็จสิ้น โปรดตรวจสอบอีเมลเพื่อเปิดใช้งานบัญชีของคุณ",
+        "userAlreadyRegistered": "อีเมลนี้ถูกสมัครไว้แล้ว",
+        "updateProfileError": "เกิดข้อผิดพลาดขณะบันทึกข้อมูลของคุณ"
       }
     },
     "forgotPassword": {
-      "title": "Forgot Password",
-      "description": "Enter your email address and we'll send you a password reset link.",
-      "descriptionLine1": "Enter your email address",
-      "descriptionLine2": "and we'll send you a password reset link.",
-      "email": "Email",
-      "resetButton": "Send Password Reset Link",
-      "loading": "Sending...",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "resetError": "An error occurred while resetting password",
+      "title": "ลืมรหัสผ่าน",
+      "description": "กรอกอีเมลของคุณ แล้วเราจะส่งลิงก์รีเซ็ตรหัสผ่านให้",
+      "descriptionLine1": "กรอกอีเมลของคุณ",
+      "descriptionLine2": "แล้วเราจะส่งลิงก์รีเซ็ตรหัสผ่านให้",
+      "email": "อีเมล",
+      "resetButton": "ส่งลิงก์รีเซ็ตรหัสผ่าน",
+      "loading": "กำลังส่ง...",
+      "backToLogin": "กลับไปหน้าเข้าสู่ระบบ",
+      "loginLink": "เข้าสู่ระบบ",
+      "resetError": "เกิดข้อผิดพลาดขณะรีเซ็ตรหัสผ่าน",
       "placeholders": {
         "email": "your-email@example.com"
       },
       "errors": {
-        "emailRequired": "Please enter your email.",
-        "emailInvalid": "Please enter in the correct format.",
-        "userNotFound": "No account found with this email address.",
-        "rateLimitExceeded": "Too many requests. Please try again later."
+        "emailRequired": "กรุณากรอกอีเมลของคุณ",
+        "emailInvalid": "กรุณากรอกในรูปแบบที่ถูกต้อง",
+        "userNotFound": "ไม่พบบัญชีด้วยอีเมลนี้",
+        "rateLimitExceeded": "มีคำขอมากเกินไป โปรดลองอีกครั้งภายหลัง"
       },
       "success": {
-        "title": "Email Sent",
-        "description": "We've sent a password reset link to your email address. Please check your email."
+        "title": "ส่งอีเมลแล้ว",
+        "description": "เราได้ส่งลิงก์รีเซ็ตรหัสผ่านไปยังอีเมลของคุณแล้ว โปรดตรวจสอบอีเมล"
       }
     },
     "resetPassword": {
-      "title": "Set New Password",
-      "description": "Enter your new password.",
-      "newPassword": "New Password",
-      "confirmPassword": "Confirm Password",
-      "updateButton": "Update Password",
-      "backToLogin": "Back to Login",
-      "loginLink": "Login",
-      "goToLogin": "Go to Login",
-      "updateError": "An error occurred while updating password",
-      "sessionError": "An error occurred while setting session.",
+      "title": "ตั้งรหัสผ่านใหม่",
+      "description": "กรอกรหัสผ่านใหม่ของคุณ",
+      "newPassword": "รหัสผ่านใหม่",
+      "confirmPassword": "ยืนยันรหัสผ่าน",
+      "updateButton": "อัปเดตรหัสผ่าน",
+      "backToLogin": "กลับไปหน้าเข้าสู่ระบบ",
+      "loginLink": "เข้าสู่ระบบ",
+      "goToLogin": "ไปที่เข้าสู่ระบบ",
+      "updateError": "เกิดข้อผิดพลาดขณะอัปเดตรหัสผ่าน",
+      "sessionError": "เกิดข้อผิดพลาดขณะตั้งค่าเซสชัน",
       "placeholders": {
-        "newPassword": "Enter your new password",
-        "confirmPassword": "Confirm your password"
+        "newPassword": "กรอกรหัสผ่านใหม่ของคุณ",
+        "confirmPassword": "ยืนยันรหัสผ่านของคุณ"
       },
       "errors": {
-        "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password must be at least 8 characters.",
-        "confirmPasswordRequired": "Please confirm your password.",
-        "passwordMismatch": "Passwords do not match.",
-        "invalidSession": "Session is invalid. Please try again.",
-        "sessionMissing": "Authentication session is missing. Please try again."
+        "passwordRequired": "กรุณากรอกรหัสผ่านของคุณ",
+        "passwordTooShort": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+        "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
+        "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+        "invalidSession": "เซสชันไม่ถูกต้อง โปรดลองอีกครั้ง",
+        "sessionMissing": "ไม่พบเซสชันการยืนยันตัวตน โปรดลองอีกครั้ง"
       },
       "success": {
-        "title": "Password Updated",
-        "description": "Your password has been successfully updated. Please login with your new password."
+        "title": "อัปเดตรหัสผ่านแล้ว",
+        "description": "อัปเดตรหัสผ่านเรียบร้อยแล้ว โปรดเข้าสู่ระบบด้วยรหัสผ่านใหม่"
       },
       "error": {
         "invalidLink": {
-          "title": "Invalid Link",
-          "description": "The password reset link is invalid or has expired. Please try again."
+          "title": "ลิงก์ไม่ถูกต้อง",
+          "description": "ลิงก์รีเซ็ตรหัสผ่านไม่ถูกต้องหรือหมดอายุ โปรดลองอีกครั้ง"
         }
       }
     },
     "error": {
-      "title": "Authentication Error",
-      "description": "An error occurred during authentication. Please try again.",
-      "tryAgain": "Try Again",
-      "goHome": "Go Home"
+      "title": "ข้อผิดพลาดในการยืนยันตัวตน",
+      "description": "เกิดข้อผิดพลาดระหว่างการยืนยันตัวตน โปรดลองอีกครั้ง",
+      "tryAgain": "ลองอีกครั้ง",
+      "goHome": "กลับหน้าแรก"
     }
   },
   "hospital": {
@@ -1759,7 +1763,10 @@
             },
             {
               "category": "วิธีการสอบถามและชดเชยความเสียหายที่เกี่ยวข้อง",
-              "content": ["แผนกบริการที่รับผิดชอบ: CS", "ติดต่อ: all@k-doc.kr"]
+              "content": [
+                "แผนกบริการที่รับผิดชอบ: CS",
+                "ติดต่อ: all@k-doc.kr"
+              ]
             }
           ]
         }
@@ -1995,84 +2002,84 @@
     }
   },
   "my": {
-    "title": "My Page",
-    "description": "Manage your personal information and settings.",
+    "title": "หน้าของฉัน",
+    "description": "จัดการข้อมูลส่วนตัวและการตั้งค่า",
     "profile": {
-      "title": "My Profile",
-      "editProfile": "Edit Profile",
-      "nicknameChange": "Change Nickname",
-      "nameChange": "Change Name",
+      "title": "โปรไฟล์ของฉัน",
+      "editProfile": "แก้ไขโปรไฟล์",
+      "nicknameChange": "เปลี่ยนชื่อเล่น",
+      "nameChange": "เปลี่ยนชื่อ",
       "edit": {
-        "title": "Edit Profile",
-        "nickname": "Nickname",
-        "name": "Name",
-        "email": "Email",
-        "saveButton": "Save",
-        "cancelButton": "Cancel",
-        "success": "Profile updated successfully.",
-        "error": "An error occurred while updating profile.",
+        "title": "แก้ไขโปรไฟล์",
+        "nickname": "ชื่อเล่น",
+        "name": "ชื่อ",
+        "email": "อีเมล",
+        "saveButton": "บันทึก",
+        "cancelButton": "ยกเลิก",
+        "success": "อัปเดตโปรไฟล์เรียบร้อยแล้ว",
+        "error": "เกิดข้อผิดพลาดขณะอัปเดตโปรไฟล์",
         "placeholders": {
-          "nickname": "Enter your nickname",
-          "name": "Enter your name",
-          "passportNameHelperText": "Enter exactly as shown on your passport, including spaces."
+          "nickname": "กรอกชื่อเล่นของคุณ",
+          "name": "กรอกชื่อของคุณ",
+          "passportNameHelperText": "กรอกให้ตรงตามพาสปอร์ต รวมถึงเว้นวรรค"
         },
         "errors": {
-          "nicknameRequired": "Please enter your nickname.",
-          "nameRequired": "Please enter your name.",
-          "nicknameTooShort": "Nickname must be at least 2 characters.",
-          "nameTooShort": "Name must be at least 2 characters."
+          "nicknameRequired": "กรุณากรอกชื่อเล่นของคุณ",
+          "nameRequired": "กรุณากรอกชื่อของคุณ",
+          "nicknameTooShort": "ชื่อเล่นต้องมีอย่างน้อย 2 ตัวอักษร",
+          "nameTooShort": "ชื่อต้องมีอย่างน้อย 2 ตัวอักษร"
         },
-        "loading": "Loading user information...",
-        "errorTitle": "Error",
-        "changePassword": "Change Password"
+        "loading": "กำลังโหลดข้อมูลผู้ใช้...",
+        "errorTitle": "ข้อผิดพลาด",
+        "changePassword": "เปลี่ยนรหัสผ่าน"
       },
       "passwordChange": {
-        "title": "Change Password",
-        "completeButton": "Complete",
-        "currentPassword": "Current Password",
-        "newPassword": "New Password",
-        "confirmPassword": "Confirm New Password",
+        "title": "เปลี่ยนรหัสผ่าน",
+        "completeButton": "เสร็จสิ้น",
+        "currentPassword": "รหัสผ่านปัจจุบัน",
+        "newPassword": "รหัสผ่านใหม่",
+        "confirmPassword": "ยืนยันรหัสผ่านใหม่",
         "placeholders": {
-          "currentPassword": "Enter your current password",
-          "newPassword": "At least 6 characters",
-          "confirmPassword": "Enter your password again"
+          "currentPassword": "กรอกรหัสผ่านปัจจุบันของคุณ",
+          "newPassword": "อย่างน้อย 6 ตัวอักษร",
+          "confirmPassword": "กรอกรหัสผ่านอีกครั้ง"
         },
         "errors": {
-          "currentPasswordRequired": "Please enter your current password.",
-          "currentPasswordInvalid": "Current password is incorrect.",
-          "newPasswordRequired": "Please enter your new password.",
-          "newPasswordTooShort": "Password must be at least 6 characters.",
-          "confirmPasswordRequired": "Please confirm your password.",
-          "passwordMismatch": "Passwords do not match.",
-          "updateFailed": "An error occurred while changing password."
+          "currentPasswordRequired": "กรุณากรอกรหัสผ่านปัจจุบันของคุณ",
+          "currentPasswordInvalid": "รหัสผ่านปัจจุบันไม่ถูกต้อง",
+          "newPasswordRequired": "กรุณากรอกรหัสผ่านใหม่ของคุณ",
+          "newPasswordTooShort": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+          "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
+          "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+          "updateFailed": "เกิดข้อผิดพลาดขณะเปลี่ยนรหัสผ่าน"
         }
       }
     },
     "activity": {
-      "title": "Activity",
-      "savedList": "My Saved List"
+      "title": "กิจกรรม",
+      "savedList": "รายการที่บันทึกไว้"
     },
     "activityStats": {
-      "myPosts": "My Posts",
-      "consultationChatList": "Consultation Chats"
+      "myPosts": "โพสต์ของฉัน",
+      "consultationChatList": "แชทปรึกษา"
     },
     "notification": {
-      "title": "Notifications",
-      "myPosts": "My Posts",
-      "eventService": "Event/Service Benefits"
+      "title": "การแจ้งเตือน",
+      "myPosts": "โพสต์ของฉัน",
+      "eventService": "สิทธิประโยชน์กิจกรรม/บริการ"
     },
     "customerService": {
-      "title": "Customer Service",
-      "email": "Email",
-      "phone": "Phone",
+      "title": "ฝ่ายบริการลูกค้า",
+      "email": "อีเมล",
+      "phone": "โทรศัพท์",
       "phoneNumber": "1588-6930"
     },
     "account": {
-      "title": "Account",
-      "logout": "Logout",
-      "deleteAccount": "Delete Account",
-      "deleteAccountConfirm": "Are you sure you want to delete your account? Your account will be deactivated and you'll need to contact customer service to reactivate it.",
-      "deleteAccountError": "An error occurred while deleting your account. Please try again."
+      "title": "บัญชี",
+      "logout": "ออกจากระบบ",
+      "deleteAccount": "ลบบัญชี",
+      "deleteAccountConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบบัญชี? บัญชีของคุณจะถูกปิดการใช้งาน และคุณต้องติดต่อฝ่ายบริการลูกค้าเพื่อเปิดใช้งานอีกครั้ง",
+      "deleteAccountError": "เกิดข้อผิดพลาดขณะลบบัญชี โปรดลองอีกครั้ง"
     }
   },
   "taxiReservation": {
