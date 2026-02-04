@@ -22,7 +22,7 @@ export function TableImageWithButtonSection({
     <div className='relative'>
       <PackageImage src={imageSrc} alt={imageAlt} />
       <div className='absolute right-[35px] bottom-[110px] left-[35px] md:bottom-[160px]'>
-        <ExploreClinicsButton text={buttonText} />
+        <ExploreClinicsButton text={buttonText} locale={locale} />
         <BubbleAnimation locale={locale} text={bubbleText} />
       </div>
     </div>
