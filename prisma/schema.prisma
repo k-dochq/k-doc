@@ -299,6 +299,7 @@ model HospitalImage {
   createdAt      DateTime          @default(now())
   updatedAt      DateTime
   localizedLinks Json?
+  title          Json?
   Hospital       Hospital          @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
 
   @@index([hospitalId])
