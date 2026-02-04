@@ -4,6 +4,7 @@ export interface HospitalVideoAsset {
   localizedLinks: Prisma.JsonValue | null;
   fallbackUrl: string | null;
   alt: string | null;
+  title: Prisma.JsonValue | null;
 }
 
 export interface HospitalProcedureImage {

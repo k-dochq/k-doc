@@ -10,6 +10,7 @@ interface HospitalVideoAsset {
   localizedLinks: Prisma.JsonValue | null;
   fallbackUrl: string | null;
   alt: string | null;
+  title: Prisma.JsonValue | null;
 }
 
 interface HospitalProcedureImage {
@@ -61,6 +62,7 @@ export async function GET(
             localizedLinks: (thumbnailImage.localizedLinks as Prisma.JsonValue | null) ?? null,
             fallbackUrl: thumbnailImage.imageUrl ?? null,
             alt: thumbnailImage.alt ?? null,
+            title: thumbnailImage.title ?? null,
           }
         : null,
       video: videoImage
@@ -68,17 +70,20 @@ export async function GET(
             localizedLinks: (videoImage.localizedLinks as Prisma.JsonValue | null) ?? null,
             fallbackUrl: videoImage.imageUrl ?? null,
             alt: videoImage.alt ?? null,
+            title: videoImage.title ?? null,
           }
         : null,
       thumbnails: thumbnailImages.map((img) => ({
         localizedLinks: (img.localizedLinks as Prisma.JsonValue | null) ?? null,
         fallbackUrl: img.imageUrl ?? null,
         alt: img.alt ?? null,
+        title: img.title ?? null,
       })),
       videos: videoImages.map((img) => ({
         localizedLinks: (img.localizedLinks as Prisma.JsonValue | null) ?? null,
         fallbackUrl: img.imageUrl ?? null,
         alt: img.alt ?? null,
+        title: img.title ?? null,
       })),
       procedures: procedureImages.map((img) => ({
         id: img.id,
