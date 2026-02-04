@@ -37,6 +37,20 @@ function getLocalizedVideoUrl(
   return fallbackUrl;
 }
 
+/**
+ * title(Json)에서 현재 언어에 맞는 제목 문자열을 가져오는 헬퍼 함수
+ */
+function getLocalizedVideoTitle(
+  title: Record<string, string> | null,
+  locale: Locale,
+): string | null {
+  if (!title || typeof title !== 'object') return null;
+  const altValue = localeToAltValue(locale);
+  const value = title[altValue];
+  if (typeof value === 'string' && value.trim() !== '') return value.trim();
+  return null;
+}
+
 export function HospitalDetailProceduresVideoSection({
   hospitalId,
   lang,
@@ -65,6 +79,11 @@ export function HospitalDetailProceduresVideoSection({
 
   const thumbnailAlt = data?.thumbnail?.alt || dict.hospitalDetailTabs.youtube;
 
+  const videoTitle = getLocalizedVideoTitle(
+    (data?.video?.title as Record<string, string> | null) ?? null,
+    lang,
+  );
+
   const hasVideoData = !!thumbnailUrl && !!videoUrl;
 
   const handlePlay = () => {
@@ -83,35 +102,38 @@ export function HospitalDetailProceduresVideoSection({
           {dict.hospitalDetailTabs.youtubePreparing}
         </p>
       ) : (
-        <div className='relative aspect-[335/188] w-full overflow-hidden rounded-xl'>
-          {!isPlaying ? (
-            <button
-              type='button'
-              onClick={handlePlay}
-              className='relative block h-full w-full cursor-pointer'
-              aria-label={dict.hospitalDetailTabs.youtube}
-            >
-              <Image
-                src={thumbnailUrl || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
-                alt={thumbnailAlt || 'youtube thumbnail'}
-                fill
-                sizes='100%'
-                className='absolute inset-0 max-w-none object-cover object-center'
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = DEFAULT_IMAGES.HOSPITAL_DEFAULT;
-                }}
+        <>
+          <div className='relative aspect-[335/188] w-full overflow-hidden rounded-xl'>
+            {!isPlaying ? (
+              <button
+                type='button'
+                onClick={handlePlay}
+                className='relative block h-full w-full cursor-pointer'
+                aria-label={dict.hospitalDetailTabs.youtube}
+              >
+                <Image
+                  src={thumbnailUrl || DEFAULT_IMAGES.HOSPITAL_DEFAULT}
+                  alt={thumbnailAlt || 'youtube thumbnail'}
+                  fill
+                  sizes='100%'
+                  className='absolute inset-0 max-w-none object-cover object-center'
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = DEFAULT_IMAGES.HOSPITAL_DEFAULT;
+                  }}
+                />
+              </button>
+            ) : (
+              <YoutubeVideoEmbedPlayer
+                videoUrl={videoUrl}
+                title={dict.hospitalDetailTabs.youtube}
+                isLoading={isPlayerLoading}
+                onLoad={() => setIsPlayerLoading(false)}
               />
-            </button>
-          ) : (
-            <YoutubeVideoEmbedPlayer
-              videoUrl={videoUrl}
-              title={dict.hospitalDetailTabs.youtube}
-              isLoading={isPlayerLoading}
-              onLoad={() => setIsPlayerLoading(false)}
-            />
-          )}
-        </div>
+            )}
+          </div>
+          {videoTitle && <p className='text-base font-semibold text-neutral-700'>{videoTitle}</p>}
+        </>
       )}
     </div>
   );
