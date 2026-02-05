@@ -2,7 +2,7 @@ import { type Prisma } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
 
-// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW, ja_JP, hi_IN, tl_PH, ar_SA)
+// 데이터베이스에서 사용하는 locale 타입 (ko_KR, en_US, th_TH, zh_TW, ja_JP, hi_IN, tl_PH, ar_SA, ru_RU)
 export type DatabaseLocale =
   | 'ko_KR'
   | 'en_US'
@@ -11,7 +11,8 @@ export type DatabaseLocale =
   | 'ja_JP'
   | 'hi_IN'
   | 'tl_PH'
-  | 'ar_SA';
+  | 'ar_SA'
+  | 'ru_RU';
 
 // LocalizedText 타입 정의
 export type LocalizedText = {
@@ -23,6 +24,7 @@ export type LocalizedText = {
   hi_IN?: string;
   tl_PH?: string;
   ar_SA?: string;
+  ru_RU?: string;
 };
 
 // LocalizedText에서 문자열 추출 헬퍼 함수
@@ -52,6 +54,7 @@ export function extractLocalizedText(
       'hi_IN',
       'tl_PH',
       'ar_SA',
+      'ru_RU',
       'ko',
       'en',
       'th',
@@ -61,6 +64,7 @@ export function extractLocalizedText(
       'hi',
       'tl',
       'ar',
+      'ru',
     ];
     const hasNonEmptyValue = allKeys.some(
       (key) =>
@@ -180,6 +184,22 @@ export function extractLocalizedText(
       }
     }
 
+    // ru locale인데 ru_RU, ru이 없으면 영어로 fallback
+    if (locale === 'ru') {
+      if (localizedText['en_US'] && typeof localizedText['en_US'] === 'string') {
+        const value = localizedText['en_US'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+      if (localizedText['en'] && typeof localizedText['en'] === 'string') {
+        const value = localizedText['en'] as string;
+        if (value.trim() !== '') {
+          return value;
+        }
+      }
+    }
+
     // fallback: 첫 번째 사용 가능한 값 반환 (긴 형식 우선)
     const fallbackOrder = [
       'ko_KR',
@@ -189,7 +209,8 @@ export function extractLocalizedText(
       'ja_JP',
       'hi_IN',
       'tl_PH',
-      'ar_SA', // 긴 형식
+      'ar_SA',
+      'ru_RU', // 긴 형식
       'ko',
       'en',
       'th',
@@ -198,7 +219,8 @@ export function extractLocalizedText(
       'ja',
       'hi',
       'tl',
-      'ar', // 짧은 형식
+      'ar',
+      'ru', // 짧은 형식
     ];
 
     for (const key of fallbackOrder) {
@@ -237,6 +259,8 @@ export function localeToAltValue(locale: Locale): DatabaseLocale {
       return 'tl_PH';
     case 'ar':
       return 'ar_SA';
+    case 'ru':
+      return 'ru_RU';
     default:
       return 'en_US';
   }

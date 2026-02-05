@@ -47,6 +47,11 @@ export function getLocaleFromRequest(request: NextRequest): Locale {
       return normalizeLocale('ar');
     }
 
+    // ru인 경우 ru로 매핑
+    if (primaryLang === 'ru') {
+      return normalizeLocale('ru');
+    }
+
     // 지원되는 locale인지 확인하고 반환
     if (isValidLocale(primaryLang)) {
       return normalizeLocale(primaryLang);

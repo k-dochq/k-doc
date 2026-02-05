@@ -17,7 +17,7 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
       <div className='flex flex-col gap-4'>
         {/* 정책 링크 */}
         <div
-          className={`flex items-start ${linkGap} text-xs leading-[16px] font-normal text-[#BABEC4]`}
+          className={`flex flex-wrap items-start ${linkGap} text-xs leading-[16px] font-normal text-[#BABEC4]`}
         >
           <LocaleLink
             href='/terms-of-service'

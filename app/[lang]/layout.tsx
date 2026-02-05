@@ -72,6 +72,7 @@ const LOCALE_FONTS: Record<Locale, ReturnType<typeof localFont>> = {
   'zh-Hant': notoSansTC,
   hi: notoSansDevanagari,
   ar: notoSansArabic,
+  ru: pretendard,
 };
 
 interface LangLayoutProps {
@@ -98,6 +99,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     hi: 'K-DOC 10',
     tl: 'K-DOC 10',
     ar: 'K-DOC 10',
+    ru: 'K-DOC 10',
   };
 
   const descriptions = {
@@ -110,6 +112,7 @@ export async function generateMetadata({ params }: LangLayoutProps): Promise<Met
     hi: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
     tl: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
     ar: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
+    ru: 'K-DOC, the essential Korean Plastic Surgery Guide — Compare top hospitals, read real reviews, book safely, and enjoy exclusive surgery benefits & beauty tour benefits.',
   };
 
   // 기본 keywords

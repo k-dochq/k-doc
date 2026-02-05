@@ -30,6 +30,7 @@ const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> 
     hi_IN: 'लोकप्रिय',
     tl_PH: 'Popular',
     ar_SA: 'الأكثر شعبية',
+    ru_RU: 'По популярности',
   } satisfies LocalizedText,
   recommended: {
     ko_KR: '추천순',
@@ -40,6 +41,7 @@ const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> 
     hi_IN: 'अनुशंसित',
     tl_PH: 'Recommended',
     ar_SA: 'موصى به',
+    ru_RU: 'Рекомендуемые',
   } satisfies LocalizedText,
   newest: {
     ko_KR: '신규 병원순',
@@ -50,6 +52,7 @@ const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> 
     hi_IN: 'नवीनतम',
     tl_PH: 'Newest',
     ar_SA: 'الأحدث',
+    ru_RU: 'Новейшие',
   } satisfies LocalizedText,
 };
 
