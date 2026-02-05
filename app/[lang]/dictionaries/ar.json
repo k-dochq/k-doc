@@ -106,7 +106,7 @@
     }
   },
   "reviewCarousel": {
-    "title": "مراجعة ما بعد العلاج",
+    "title": "المراجعات",
     "error": {
       "message": "حدث خطأ أثناء تحميل التقييمات.",
       "description": "يرجى المحاولة مرة أخرى لاحقاً.",
@@ -119,8 +119,8 @@
     "viewAll": "عرض الكل"
   },
   "hospitalReviews": {
-    "title": "مراجعة ما بعد العلاج",
-    "subtitle": "مراجعة ما بعد العلاج",
+    "title": "المراجعات",
+    "subtitle": "المراجعات",
     "loadingMore": "جارٍ تحميل المزيد من التقييمات...",
     "allLoaded": "تم تحميل جميع التقييمات.",
     "retry": "حاول ثانية",
@@ -134,7 +134,7 @@
     }
   },
   "hospitalDetailReviews": {
-    "title": "مراجعة ما بعد العلاج",
+    "title": "المراجعات",
     "viewAll": "عرض الكل",
     "emptyMessage": "لا توجد تقييمات مسجلة حتى الآن."
   },
@@ -253,7 +253,7 @@
       "beforeImagesLabel": "[اختياري] قبل الإجراء",
       "afterImagesLabel": "[اختياري] بعد الإجراء",
       "addPhotoButton": "أضف صورة",
-      "submitButton": "تسجيل مراجعة ما بعد العلاج",
+      "submitButton": "تسجيل المراجعات",
       "submitting": "جارٍ التسجيل...",
       "uploading": "جارٍ التحميل",
       "characterCount": "{{current}}/500",
@@ -274,7 +274,7 @@
       "imageSizeLimit": "يجب ألا يتجاوز حجم الصورة 10 ميجابايت"
     },
     "success": {
-      "title": "تم نشر مراجعة ما بعد العلاج",
+      "title": "تم نشر المراجعات",
       "message": "شكراً لك على تقييمك القيّم",
       "goToReviews": "اطلع على تقييمات العلاج"
     },
@@ -523,7 +523,7 @@
   },
   "hospital": {
     "region": "منطقة",
-    "reviewsButton": "مراجعة ما بعد العلاج",
+    "reviewsButton": "المراجعات",
     "priceConsultation": "التشاور والمناقشة",
     "introduction": {
       "title": "مقدمة عن المستشفى"
@@ -594,7 +594,7 @@
   "favorites": {
     "title": "المفضلة",
     "hospitals": "مستشفى",
-    "reviews": "مراجعة ما بعد العلاج",
+    "reviews": "المراجعات",
     "doctors": "طبيب",
     "loading": "تحميل...",
     "error": "حدث خطأ أثناء تحميل البيانات.",
@@ -2118,7 +2118,7 @@
     "careerAndActivity": "الوظائف والأنشطة",
     "noCareerInfo": "لا توجد معلومات عن الوظائف.",
     "affiliatedHospital": "المستشفى التابع",
-    "reviews": "مراجعة ما بعد العلاج",
+    "reviews": "المراجعات",
     "viewAllReviews": "عرض الكل",
     "share": {
       "title": "اطلع على معلومات الطبيب",
