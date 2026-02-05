@@ -35,7 +35,7 @@ export function ReviewCommentsSectionV2({
         <CommentList reviewId={reviewId} lang={lang} dict={dict} />
       </div>
 
-      <div className='border-t border-neutral-200'>
+      <div className='overflow-hidden border-t border-neutral-200'>
         <CommentForm reviewId={reviewId} lang={lang} dict={dict} />
       </div>
     </section>
