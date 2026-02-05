@@ -25,6 +25,7 @@ function getCompletionMessage(locale: Locale): string {
     hi: 'चिकित्सा सर्वेक्षण सफलतापूर्वक\nपूरा हो गया है।\nआपकी सुरक्षित प्रक्रिया सुनिश्चित करने के लिए,\nहम आपके द्वारा प्रदान की गई जानकारी के आधार पर\nव्यवहार्यता की समीक्षा कर रहे हैं।\nइसमें कुछ समय लग सकता है, और\nसमीक्षा पूरी होते ही हम आपको\nपरामर्श के माध्यम से मार्गदर्शन करेंगे।',
     tl: 'Medical survey has been\nsuccessfully completed.\nTo ensure your safe procedure,\nwe are reviewing the feasibility\nbased on the information you provided.\nThis may take some time, and\nwe will guide you through consultation\nas soon as the review is complete.',
     ar: 'تم إكمال الاستبيان الطبي\nبنجاح.\nلضمان سلامة إجراءك،\nنحن نراجع الجدوى\nبناءً على المعلومات التي قدمتها.\nقد يستغرق هذا بعض الوقت،\nوسنوجهك للاستشارة\nبمجرد اكتمال المراجعة.',
+    ru: 'Медицинская анкета успешно\nзаполнена.\nДля обеспечения безопасности процедуры\nмы проверяем возможность проведения\nна основе предоставленной информации.\nЭто может занять некоторое время,\nи мы свяжемся с вами для консультации\nпосле завершения проверки.',
   };
 
   return messages[locale] || messages.ko;

@@ -50,6 +50,11 @@ const messages = {
     description: 'الصفحة التي تبحث عنها غير موجودة أو ربما تم نقلها.',
     homeButton: 'العودة إلى الرئيسية',
   },
+  ru: {
+    title: 'Страница не найдена',
+    description: 'Запрашиваемая страница не существует или была перемещена.',
+    homeButton: 'Вернуться на главную',
+  },
 } as const;
 
 export default function NotFound() {

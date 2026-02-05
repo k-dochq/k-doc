@@ -24,6 +24,8 @@ export function localeToDatabaseLocale(locale: Locale): DatabaseLocale {
       return 'tl_PH';
     case 'ar':
       return 'ar_SA';
+    case 'ru':
+      return 'ru_RU';
     default:
       return 'en_US';
   }
@@ -52,6 +54,8 @@ export function databaseLocaleToLocale(databaseLocale: DatabaseLocale): Locale {
       return 'tl';
     case 'ar_SA':
       return 'ar';
+    case 'ru_RU':
+      return 'ru';
     default:
       return 'en';
   }

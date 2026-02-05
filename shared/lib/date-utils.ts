@@ -5,6 +5,7 @@ import 'dayjs/locale/th';
 import 'dayjs/locale/zh-tw';
 import 'dayjs/locale/ja';
 import 'dayjs/locale/hi';
+import 'dayjs/locale/ru';
 import { type Locale } from 'shared/config';
 
 /**
@@ -88,6 +89,7 @@ export function formatDate(
     hi: 'hi',
     tl: 'en',
     ar: 'ar',
+    ru: 'ru',
   };
 
   const dayjsLocale = dayjsLocales[locale];
@@ -103,6 +105,7 @@ export function formatDate(
     hi: 'D MMMM YYYY',
     tl: 'MMMM D, YYYY',
     ar: 'D MMMM YYYY',
+    ru: 'D MMMM YYYY',
   };
 
   const formatString = localeFormats[locale];
@@ -188,6 +191,14 @@ export function formatRelativeDate(date: Date | string, locale: Locale): string 
       weeksAgo: (weeks: number) => `منذ ${weeks} أسابيع`,
       monthsAgo: (months: number) => `منذ ${months} أشهر`,
       yearsAgo: (years: number) => `منذ ${years} سنوات`,
+    },
+    ru: {
+      today: 'Сегодня',
+      yesterday: 'Вчера',
+      daysAgo: (days: number) => `${days} дн. назад`,
+      weeksAgo: (weeks: number) => `${weeks} нед. назад`,
+      monthsAgo: (months: number) => `${months} мес. назад`,
+      yearsAgo: (years: number) => `${years} г. назад`,
     },
   };
 

@@ -21,6 +21,7 @@ export const navigationItems: NavigationItem[] = [
       hi: 'होम',
       tl: 'Home',
       ar: 'الرئيسية',
+      ru: 'Главная',
     },
   },
   {
@@ -36,6 +37,7 @@ export const navigationItems: NavigationItem[] = [
       hi: 'अस्पताल',
       tl: 'Hospitals',
       ar: 'المستشفيات',
+      ru: 'Клиники',
     },
   },
   {
@@ -51,6 +53,7 @@ export const navigationItems: NavigationItem[] = [
       hi: 'समीक्षाएं',
       tl: 'Reviews',
       ar: 'المراجعات',
+      ru: 'Отзывы',
     },
   },
   {
@@ -66,6 +69,7 @@ export const navigationItems: NavigationItem[] = [
       hi: 'पसंदीदा',
       tl: 'Favorites',
       ar: 'المفضلة',
+      ru: 'Избранное',
     },
   },
   {
@@ -81,6 +85,7 @@ export const navigationItems: NavigationItem[] = [
       hi: 'परामर्श',
       tl: 'Consultation',
       ar: 'استشارة',
+      ru: 'Консультация',
     },
   },
 ];

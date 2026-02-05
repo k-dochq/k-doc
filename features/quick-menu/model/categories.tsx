@@ -33,6 +33,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'आंखें',
       tl_PH: 'Eyes',
       ar_SA: 'عيون',
+      ru_RU: 'глаз',
     } satisfies LocalizedText,
   },
   {
@@ -49,6 +50,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'नाक',
       tl_PH: 'Nose',
       ar_SA: 'أنف',
+      ru_RU: 'нос',
     } satisfies LocalizedText,
   },
   {
@@ -65,6 +67,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'लिफ्टिंग',
       tl_PH: 'Lifting',
       ar_SA: 'رفع',
+      ru_RU: 'Подъем',
     } satisfies LocalizedText,
   },
   {
@@ -81,6 +84,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'चेहरे की आकृति',
       tl_PH: 'Facial Contouring',
       ar_SA: 'تشكيل الوجه',
+      ru_RU: 'контурирование лица',
     } satisfies LocalizedText,
   },
   {
@@ -97,6 +101,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'स्तन',
       tl_PH: 'Breast',
       ar_SA: 'الثدي',
+      ru_RU: 'грудь',
     } satisfies LocalizedText,
   },
   {
@@ -113,6 +118,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'स्टेम सेल',
       tl_PH: 'Stem Cell',
       ar_SA: 'الخلايا الجذعية',
+      ru_RU: 'стволовые клетки',
     } satisfies LocalizedText,
   },
   {
@@ -129,6 +135,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'लिपोसक्शन',
       tl_PH: 'Liposuction',
       ar_SA: 'شفط الدهون',
+      ru_RU: 'Липосакция',
     } satisfies LocalizedText,
   },
   {
@@ -145,6 +152,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'शरीर',
       tl_PH: 'Body',
       ar_SA: 'الجسم',
+      ru_RU: 'тело',
     } satisfies LocalizedText,
   },
   {
@@ -161,6 +169,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'बाल प्रत्यारोपण',
       tl_PH: 'Hair Transplant',
       ar_SA: 'زراعة الشعر',
+      ru_RU: 'пересадка волос',
     } satisfies LocalizedText,
   },
   {
@@ -177,6 +186,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'त्वचा विज्ञान',
       tl_PH: 'Dermatology',
       ar_SA: 'الجلدية',
+      ru_RU: 'дерматология',
     } satisfies LocalizedText,
   },
   {
@@ -193,6 +203,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'दंत चिकित्सा',
       tl_PH: 'Dental',
       ar_SA: 'الأسنان',
+      ru_RU: 'Стоматология',
     } satisfies LocalizedText,
   },
   {
@@ -209,6 +220,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'अन्य',
       tl_PH: 'Others',
       ar_SA: 'أخرى',
+      ru_RU: 'и т. д.',
     } satisfies LocalizedText,
   },
 ];
@@ -228,6 +240,7 @@ const ALL_CATEGORY: CategoryItem = {
     hi_IN: 'सभी',
     tl_PH: 'All',
     ar_SA: 'الكل',
+    ru_RU: 'Все',
   } satisfies LocalizedText,
 };
 

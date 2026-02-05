@@ -53,6 +53,7 @@ export function formatReservationDate(reservationDate: Date | string, lang: Loca
     hi: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
     tl: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     ar: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+    ru: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
   };
 
   const dayName = dayNames[lang][date.day()];
@@ -86,6 +87,7 @@ export function getReservationStatusBadge(
       hi: 'पूर्ण',
       tl: 'Completed',
       ar: 'مكتمل',
+      ru: 'Завершено',
     };
     return statusTexts[lang];
   }
