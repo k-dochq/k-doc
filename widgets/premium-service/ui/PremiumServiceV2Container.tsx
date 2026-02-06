@@ -15,6 +15,7 @@ export function PremiumServiceV2Container({ lang, dict }: PremiumServiceV2Contai
 
       {/* 통역 서비스 카드 */}
       <PremiumServiceCardV2
+        lang={lang}
         imageUrl='/images/figma/premium-service/premium-service-interpreter.png'
         imageAlt={dict.premiumService?.services?.interpreter?.title || '통역 서비스'}
         title={dict.premiumService?.services?.interpreter?.title || '통역 서비스 제공 가능'}
@@ -26,6 +27,7 @@ export function PremiumServiceV2Container({ lang, dict }: PremiumServiceV2Contai
 
       {/* 차량 서비스 카드 */}
       <PremiumServiceCardV2
+        lang={lang}
         imageUrl='/images/figma/premium-service/premium-service-vehicle.png'
         imageAlt={dict.premiumService?.services?.vehicle?.title || '차량 서비스'}
         title={dict.premiumService?.services?.vehicle?.title || '차량 서비스 제공 가능'}
