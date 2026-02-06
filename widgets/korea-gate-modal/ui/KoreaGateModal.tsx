@@ -27,10 +27,10 @@ export function KoreaGateModal() {
     <DialogPrimitive.Root open={shouldShow} onOpenChange={() => undefined}>
       <DialogPrimitive.Portal>
         {/* Korea gate 모달에서만 배경을 흰색으로 완전히 덮음 */}
-        <DialogPrimitive.Overlay className='fixed inset-0 z-50 bg-white' />
+        <DialogPrimitive.Overlay className='fixed inset-0 z-[70] bg-white' />
 
         <DialogPrimitive.Content
-          className='fixed top-[50%] left-[50%] z-50 w-[calc(100vw-60px)] max-w-[calc(500px-60px)] translate-x-[-50%] translate-y-[-50%] border-none bg-transparent p-0 shadow-none'
+          className='fixed top-[50%] left-[50%] z-[70] w-[calc(100vw-60px)] max-w-[calc(500px-60px)] translate-x-[-50%] translate-y-[-50%] border-none bg-transparent p-0 shadow-none'
           onEscapeKeyDown={(e) => e.preventDefault()}
           onPointerDownOutside={(e) => e.preventDefault()}
         >
