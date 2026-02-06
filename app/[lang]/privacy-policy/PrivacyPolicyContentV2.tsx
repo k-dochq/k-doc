@@ -485,6 +485,7 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
               <h4 className='text-lg font-semibold text-neutral-700'>
                 {dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis.title}
               </h4>
+              <div className='min-w-0 overflow-x-auto'>
               <div className='flex min-w-0 flex-col border-t border-neutral-400'>
                 {/* 테이블 헤더 */}
                 <div className='flex min-w-0 border-b border-neutral-200 bg-neutral-100'>
@@ -510,8 +511,8 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                   <div className='flex w-0 shrink-0 items-center justify-center'>
                     <div className='h-full w-px bg-neutral-200' />
                   </div>
-                  <div className='flex w-[70px] shrink-0 items-center px-3 py-4'>
-                    <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                  <div className='flex min-w-[70px] w-[70px] shrink-0 items-start overflow-hidden px-3 py-4'>
+                    <p className='break-words text-sm leading-5 font-semibold text-neutral-700' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                       {
                         dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis
                           .table.headers.retentionPeriod
@@ -540,14 +541,15 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                       <div className='flex w-0 shrink-0 items-center justify-center'>
                         <div className='h-full w-px bg-neutral-200' />
                       </div>
-                      <div className='flex w-[70px] shrink-0 items-center px-3 py-4'>
-                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                      <div className='flex min-w-[70px] w-[70px] shrink-0 items-start overflow-hidden px-3 py-4'>
+                        <p className='break-words text-sm leading-5 font-normal text-neutral-500' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                           {row.retentionPeriod}
                         </p>
                       </div>
                     </div>
                   ),
                 )}
+              </div>
               </div>
             </div>
           </div>
