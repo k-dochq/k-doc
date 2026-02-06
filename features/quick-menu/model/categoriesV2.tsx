@@ -185,7 +185,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'त्वचा विज्ञान',
       tl_PH: 'Dermatology',
       ar_SA: 'الجلدية',
-      ru_RU: 'дерматология',
+      ru_RU: 'Дермато',
     },
   },
   {
@@ -202,7 +202,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'दंत चिकित्सा',
       tl_PH: 'Dental',
       ar_SA: 'الأسنان',
-      ru_RU: 'Стоматология',
+      ru_RU: 'Стомат',
     },
   },
   {
