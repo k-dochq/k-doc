@@ -34,10 +34,10 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
   };
 
   return (
-    <div className='px-5 pt-8 pb-20'>
+    <div className='min-w-0 px-5 pt-8 pb-20'>
       <h1 className='mb-8 text-3xl font-semibold text-neutral-700'>{dict.footer.privacyPolicy}</h1>
 
-      <div className='flex flex-col gap-10'>
+      <div className='flex min-w-0 flex-col gap-10'>
         <div className='rounded-lg bg-neutral-100 p-5'>
           <p className='text-base leading-6 font-normal text-neutral-700'>
             {(() => {
@@ -61,9 +61,9 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
               </h3>
 
               {/* 테이블 */}
-              <div className='flex flex-col border-t border-neutral-400'>
+              <div className='flex min-w-0 flex-col border-t border-neutral-400'>
                 {/* 테이블 헤더 */}
-                <div className='flex border-b border-neutral-200 bg-neutral-100'>
+                <div className='flex min-w-0 border-b border-neutral-200 bg-neutral-100'>
                   <div className='flex w-[122px] shrink-0 items-center px-3 py-4'>
                     <p className='text-sm leading-5 font-semibold text-neutral-700'>
                       {
@@ -75,8 +75,8 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                   <div className='flex w-0 shrink-0 items-center justify-center'>
                     <div className='h-full w-px bg-neutral-200' />
                   </div>
-                  <div className='flex flex-1 items-center px-3 py-4'>
-                    <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                  <div className='flex min-w-0 flex-1 items-center px-3 py-4'>
+                    <p className='break-words text-sm leading-5 font-semibold text-neutral-700'>
                       {
                         dict.privacyPolicy.collectionOfPersonalInformation.table.headers
                           .collectedItems
@@ -87,23 +87,23 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
 
                 {/* 테이블 본문 */}
                 {dict.privacyPolicy.collectionOfPersonalInformation.table.rows.map((row, index) => (
-                  <div key={index} className='flex border-b border-neutral-200'>
-                    <div className='flex w-[122px] shrink-0 items-center px-3 py-4'>
-                      <p className='text-sm leading-5 font-normal text-neutral-500'>
+                  <div key={index} className='flex min-w-0 border-b border-neutral-200'>
+                    <div className='flex w-[122px] shrink-0 items-start overflow-hidden px-3 py-4'>
+                      <p className='break-words text-sm leading-5 font-normal text-neutral-500'>
                         {row.serviceCategory}
                       </p>
                     </div>
                     <div className='flex w-0 shrink-0 items-center justify-center'>
                       <div className='h-full w-px bg-neutral-200' />
                     </div>
-                    <div className='flex flex-1 items-center px-3 py-4'>
-                      <div className='flex flex-col gap-1'>
+                    <div className='flex min-w-0 flex-1 items-start overflow-hidden px-3 py-4'>
+                      <div className='flex min-w-0 flex-col gap-1 break-words' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                         {(() => {
                           const items = row.collectedItems;
                           // simple 타입 (단순 문자열)
                           if ('simple' in items) {
                             return (
-                              <p className='text-sm leading-5 font-normal text-neutral-500'>
+                              <p className='break-words text-sm leading-5 font-normal text-neutral-500'>
                                 {items.simple}
                               </p>
                             );
@@ -113,7 +113,7 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                             return (
                               <>
                                 {items.required && (
-                                  <p className='text-sm leading-5 font-normal text-neutral-500'>
+                                  <p className='break-words text-sm leading-5 font-normal text-neutral-500'>
                                     {
                                       dict.privacyPolicy.collectionOfPersonalInformation.tableLabels
                                         .required
@@ -122,7 +122,7 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                                   </p>
                                 )}
                                 {items.optional && (
-                                  <p className='text-sm leading-5 font-normal text-neutral-500'>
+                                  <p className='break-words text-sm leading-5 font-normal text-neutral-500'>
                                     {
                                       dict.privacyPolicy.collectionOfPersonalInformation.tableLabels
                                         .optional
@@ -139,10 +139,10 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                               <>
                                 {items.applicant && (
                                   <>
-                                    <p className='text-sm leading-5 font-semibold text-neutral-500'>
+                                    <p className='break-words text-sm leading-5 font-semibold text-neutral-500'>
                                       {items.applicant.label}
                                     </p>
-                                    <p className='pl-4 text-sm leading-5 font-normal text-neutral-500'>
+                                    <p className='break-words pl-4 text-sm leading-5 font-normal text-neutral-500'>
                                       {
                                         dict.privacyPolicy.collectionOfPersonalInformation
                                           .tableLabels.required
@@ -153,10 +153,10 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                                 )}
                                 {items.applicationInfo && (
                                   <>
-                                    <p className='text-sm leading-5 font-semibold text-neutral-500'>
+                                    <p className='break-words text-sm leading-5 font-semibold text-neutral-500'>
                                       {items.applicationInfo.label}
                                     </p>
-                                    <p className='pl-4 text-sm leading-5 font-normal text-neutral-500'>
+                                    <p className='break-words pl-4 text-sm leading-5 font-normal text-neutral-500'>
                                       {
                                         dict.privacyPolicy.collectionOfPersonalInformation
                                           .tableLabels.required
@@ -172,10 +172,10 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                           if ('review' in items && items.review) {
                             return (
                               <>
-                                <p className='text-sm leading-5 font-semibold text-neutral-500'>
+                                <p className='break-words text-sm leading-5 font-semibold text-neutral-500'>
                                   {items.review.label}
                                 </p>
-                                <p className='pl-4 text-sm leading-5 font-normal text-neutral-500'>
+                                <p className='break-words pl-4 text-sm leading-5 font-normal text-neutral-500'>
                                   {
                                     dict.privacyPolicy.collectionOfPersonalInformation.tableLabels
                                       .required
@@ -183,7 +183,7 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                                   {items.review.required}
                                 </p>
                                 {items.review.optional && (
-                                  <p className='pl-4 text-sm leading-5 font-normal text-neutral-500'>
+                                  <p className='break-words pl-4 text-sm leading-5 font-normal text-neutral-500'>
                                     {
                                       dict.privacyPolicy.collectionOfPersonalInformation.tableLabels
                                         .optional
@@ -200,10 +200,10 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                               <>
                                 {items.individual && (
                                   <>
-                                    <p className='text-sm leading-5 font-semibold text-neutral-500'>
+                                    <p className='break-words text-sm leading-5 font-semibold text-neutral-500'>
                                       {items.individual.label}
                                     </p>
-                                    <p className='pl-4 text-sm leading-5 font-normal text-neutral-500'>
+                                    <p className='break-words pl-4 text-sm leading-5 font-normal text-neutral-500'>
                                       {
                                         dict.privacyPolicy.collectionOfPersonalInformation
                                           .tableLabels.required
@@ -214,10 +214,10 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                                 )}
                                 {items.organization && (
                                   <>
-                                    <p className='text-sm leading-5 font-semibold text-neutral-500'>
+                                    <p className='break-words text-sm leading-5 font-semibold text-neutral-500'>
                                       {items.organization.label}
                                     </p>
-                                    <p className='pl-4 text-sm leading-5 font-normal text-neutral-500'>
+                                    <p className='break-words pl-4 text-sm leading-5 font-normal text-neutral-500'>
                                       {
                                         dict.privacyPolicy.collectionOfPersonalInformation
                                           .tableLabels.required
@@ -350,9 +350,9 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                       .processingConsignment.koreaStatus.title
                   }
                 </h5>
-                <div className='flex flex-col border-t border-neutral-400'>
+                <div className='flex min-w-0 flex-col border-t border-neutral-400'>
                   {/* 테이블 헤더 */}
-                  <div className='flex border-b border-neutral-200 bg-neutral-100'>
+                  <div className='flex min-w-0 border-b border-neutral-200 bg-neutral-100'>
                     <div className='flex w-[122px] shrink-0 items-center px-3 py-4'>
                       <p className='text-sm leading-5 font-semibold text-neutral-700'>
                         {
@@ -364,8 +364,8 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                     <div className='flex w-0 shrink-0 items-center justify-center'>
                       <div className='h-full w-px bg-neutral-200' />
                     </div>
-                    <div className='flex flex-1 items-center px-3 py-4'>
-                      <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                    <div className='flex min-w-0 flex-1 items-center px-3 py-4'>
+                      <p className='break-words text-sm leading-5 font-semibold text-neutral-700'>
                         {
                           dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment
                             .processingConsignment.koreaStatus.table.headers.workDetails
@@ -377,17 +377,17 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                   {/* 테이블 본문 */}
                   {dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment.processingConsignment.koreaStatus.table.rows.map(
                     (row, index) => (
-                      <div key={index} className='flex border-b border-neutral-200'>
-                        <div className='flex w-[122px] shrink-0 items-center px-3 py-4'>
-                          <p className='text-sm leading-5 font-normal text-neutral-500'>
+                      <div key={index} className='flex min-w-0 border-b border-neutral-200'>
+                        <div className='flex w-[122px] shrink-0 items-start overflow-hidden px-3 py-4'>
+                          <p className='break-words text-sm leading-5 font-normal text-neutral-500'>
                             {row.consignee}
                           </p>
                         </div>
                         <div className='flex w-0 shrink-0 items-center justify-center'>
                           <div className='h-full w-px bg-neutral-200' />
                         </div>
-                        <div className='flex flex-1 items-center px-3 py-4'>
-                          <p className='text-sm leading-5 font-normal text-neutral-500'>
+                        <div className='flex min-w-0 flex-1 items-start overflow-hidden px-3 py-4'>
+                          <p className='break-words text-sm leading-5 font-normal text-neutral-500' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                             {row.workDetails}
                           </p>
                         </div>
@@ -405,20 +405,20 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                       .processingConsignment.overseasStatus.title
                   }
                 </h5>
-                <div className='flex flex-col border-t border-neutral-400'>
+                <div className='flex min-w-0 flex-col border-t border-neutral-400'>
                   {dict.privacyPolicy.collectionOfPersonalInformation.provisionAndConsignment.processingConsignment.overseasStatus.table.rows.map(
                     (row, index) => (
-                      <div key={index} className='flex border-b border-neutral-200'>
-                        <div className='flex w-[106px] shrink-0 items-center bg-neutral-100 px-3 py-4'>
-                          <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                      <div key={index} className='flex min-w-0 border-b border-neutral-200'>
+                        <div className='flex w-[106px] shrink-0 items-start overflow-hidden bg-neutral-100 px-3 py-4'>
+                          <p className='break-words text-sm leading-5 font-semibold text-neutral-700' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                             {row.label}
                           </p>
                         </div>
                         <div className='flex w-0 shrink-0 items-center justify-center'>
                           <div className='h-full w-px bg-neutral-200' />
                         </div>
-                        <div className='flex flex-1 items-center px-3 py-4'>
-                          <p className='text-sm leading-5 font-normal text-neutral-500'>
+                        <div className='flex min-w-0 flex-1 items-start overflow-hidden px-3 py-4'>
+                          <p className='break-words text-sm leading-5 font-normal text-neutral-500' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                             {row.value}
                           </p>
                         </div>
@@ -485,9 +485,9 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
               <h4 className='text-lg font-semibold text-neutral-700'>
                 {dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis.title}
               </h4>
-              <div className='flex flex-col border-t border-neutral-400'>
+              <div className='flex min-w-0 flex-col border-t border-neutral-400'>
                 {/* 테이블 헤더 */}
-                <div className='flex border-b border-neutral-200 bg-neutral-100'>
+                <div className='flex min-w-0 border-b border-neutral-200 bg-neutral-100'>
                   <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
                     <p className='text-sm leading-5 font-semibold text-neutral-700'>
                       {
@@ -499,8 +499,8 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                   <div className='flex w-0 shrink-0 items-center justify-center'>
                     <div className='h-full w-px bg-neutral-200' />
                   </div>
-                  <div className='flex flex-1 items-center px-3 py-4'>
-                    <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                  <div className='flex min-w-0 flex-1 items-center px-3 py-4'>
+                    <p className='break-words text-sm leading-5 font-semibold text-neutral-700'>
                       {
                         dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis
                           .table.headers.legalBasis
@@ -523,17 +523,17 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                 {/* 테이블 본문 */}
                 {dict.privacyPolicy.collectionOfPersonalInformation.destruction.legalBasis.table.rows.map(
                   (row, index) => (
-                    <div key={index} className='flex border-b border-neutral-200'>
-                      <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
-                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                    <div key={index} className='flex min-w-0 border-b border-neutral-200'>
+                      <div className='flex w-[140px] shrink-0 items-start overflow-hidden px-3 py-4'>
+                        <p className='break-words text-sm leading-5 font-normal text-neutral-500' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                           {row.retentionItem}
                         </p>
                       </div>
                       <div className='flex w-0 shrink-0 items-center justify-center'>
                         <div className='h-full w-px bg-neutral-200' />
                       </div>
-                      <div className='flex flex-1 items-center px-3 py-4'>
-                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                      <div className='flex min-w-0 flex-1 items-start overflow-hidden px-3 py-4'>
+                        <p className='break-words text-sm leading-5 font-normal text-neutral-500' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                           {row.legalBasis}
                         </p>
                       </div>
@@ -645,9 +645,9 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
             </p>
 
             {/* 테이블 */}
-            <div className='flex flex-col border-t border-neutral-400'>
+            <div className='flex min-w-0 flex-col border-t border-neutral-400'>
               {/* 테이블 헤더 */}
-              <div className='flex border-b border-neutral-200 bg-neutral-100'>
+              <div className='flex min-w-0 border-b border-neutral-200 bg-neutral-100'>
                 <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
                   <p className='text-sm leading-5 font-semibold text-neutral-700'>
                     {
@@ -659,8 +659,8 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
                 <div className='flex w-0 shrink-0 items-center justify-center'>
                   <div className='h-full w-px bg-neutral-200' />
                 </div>
-                <div className='flex flex-1 items-center px-3 py-4'>
-                  <p className='text-sm leading-5 font-semibold text-neutral-700'>
+                <div className='flex min-w-0 flex-1 items-center px-3 py-4'>
+                  <p className='break-words text-sm leading-5 font-semibold text-neutral-700'>
                     {
                       dict.privacyPolicy.collectionOfPersonalInformation.behavioralInformation.table
                         .headers.content
@@ -672,29 +672,29 @@ export function PrivacyPolicyContentV2({ lang, dict }: PrivacyPolicyContentV2Pro
               {/* 테이블 본문 */}
               {dict.privacyPolicy.collectionOfPersonalInformation.behavioralInformation.table.rows.map(
                 (row, index) => (
-                  <div key={index} className='flex border-b border-neutral-200'>
-                    <div className='flex w-[140px] shrink-0 items-center px-3 py-4'>
-                      <p className='text-sm leading-5 font-normal text-neutral-500'>
+                  <div key={index} className='flex min-w-0 border-b border-neutral-200'>
+                    <div className='flex w-[140px] shrink-0 items-start overflow-hidden px-3 py-4'>
+                      <p className='break-words text-sm leading-5 font-normal text-neutral-500' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                         {row.category}
                       </p>
                     </div>
                     <div className='flex w-0 shrink-0 items-center justify-center'>
                       <div className='h-full w-px bg-neutral-200' />
                     </div>
-                    <div className='flex flex-1 items-center px-3 py-4'>
+                    <div className='flex min-w-0 flex-1 items-start overflow-hidden px-3 py-4'>
                       {Array.isArray(row.content) ? (
-                        <div className='flex flex-col gap-1'>
+                        <div className='flex flex-col gap-1 break-words' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                           {row.content.map((item, itemIndex) => (
                             <p
                               key={itemIndex}
-                              className='text-sm leading-5 font-normal text-neutral-500'
+                              className='break-words text-sm leading-5 font-normal text-neutral-500'
                             >
                               {item}
                             </p>
                           ))}
                         </div>
                       ) : (
-                        <p className='text-sm leading-5 font-normal text-neutral-500'>
+                        <p className='break-words text-sm leading-5 font-normal text-neutral-500' style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
                           {row.content}
                         </p>
                       )}
