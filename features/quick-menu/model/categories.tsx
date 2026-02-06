@@ -84,7 +84,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'चेहरे की आकृति',
       tl_PH: 'Facial Contouring',
       ar_SA: 'تشكيل الوجه',
-      ru_RU: 'контурирование лица',
+      ru_RU: 'Контур\nлица',
     } satisfies LocalizedText,
   },
   {
@@ -118,7 +118,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'स्टेम सेल',
       tl_PH: 'Stem Cell',
       ar_SA: 'الخلايا الجذعية',
-      ru_RU: 'стволовые клетки',
+      ru_RU: 'стволовые\nклетки',
     } satisfies LocalizedText,
   },
   {
@@ -169,7 +169,7 @@ const COMMON_CATEGORIES: CategoryItem[] = [
       hi_IN: 'बाल प्रत्यारोपण',
       tl_PH: 'Hair Transplant',
       ar_SA: 'زراعة الشعر',
-      ru_RU: 'пересадка волос',
+      ru_RU: 'пересадка\nволос',
     } satisfies LocalizedText,
   },
   {
