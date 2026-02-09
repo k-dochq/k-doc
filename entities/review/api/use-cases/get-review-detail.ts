@@ -77,6 +77,7 @@ export async function getReviewDetail({
             ranking: true,
             displayLocationName: true,
             badge: true,
+            approvalStatusType: true,
             District: {
               select: {
                 name: true,
@@ -190,6 +191,7 @@ export async function getReviewDetail({
           ? parseLocalizedText(review.Hospital.displayLocationName)
           : null,
         badge: review.Hospital.badge,
+        approvalStatusType: review.Hospital.approvalStatusType ?? null,
       },
       medicalSpecialty: {
         name: parseLocalizedText(review.MedicalSpecialty.name),

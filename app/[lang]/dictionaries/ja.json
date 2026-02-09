@@ -589,7 +589,11 @@
     "procedureTiming": "施術時期",
     "showMore": "もっと見る",
     "showLess": "折りたたみ",
-    "view": "照会"
+    "view": "照会",
+    "reviewDetailPreparing": {
+      "line1": "該当病院のレビュー詳細は現在準備中です。",
+      "line2": "準備が完了次第、提供予定です。"
+    }
   },
   "favorites": {
     "title": "お気に入り",

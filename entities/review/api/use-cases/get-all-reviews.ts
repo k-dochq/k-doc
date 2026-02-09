@@ -19,6 +19,7 @@ export async function getAllReviews({
   likedOnly = false,
   userId,
   hasBothImages = false,
+  excludeRejectedHospitals = false,
 }: GetAllReviewsParams): Promise<GetAllReviewsResponse> {
   // offset이 제공되면 사용하고, 그렇지 않으면 page를 기반으로 계산
   const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
@@ -29,6 +30,13 @@ export async function getAllReviews({
       // isActive가 false인 리뷰는 제외 (null과 true는 포함)
       isActive: { not: false },
     };
+
+    // excludeRejectedHospitals가 true이면 REJECTED 병원의 리뷰 제외 (예: /reviews 페이지)
+    if (excludeRejectedHospitals) {
+      whereCondition.Hospital = {
+        approvalStatusType: { not: 'REJECTED' },
+      };
+    }
 
     // hospitalId가 있으면 해당 병원의 리뷰만 필터링
     if (hospitalId) {
@@ -132,6 +140,7 @@ export async function getAllReviews({
             ranking: true,
             displayLocationName: true,
             badge: true,
+            approvalStatusType: true,
             District: {
               select: {
                 name: true,
@@ -248,6 +257,7 @@ export async function getAllReviews({
             ? parseLocalizedText(review.Hospital.displayLocationName)
             : null,
           badge: review.Hospital.badge,
+          approvalStatusType: review.Hospital.approvalStatusType ?? null,
         },
         medicalSpecialty: {
           name: parseLocalizedText(review.MedicalSpecialty.name),

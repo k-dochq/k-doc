@@ -585,7 +585,11 @@
     "procedureTiming": "Panahon ng paggamot",
     "showMore": "tingnan ang higit pa",
     "showLess": "Tupiin",
-    "view": "tseke"
+    "view": "tseke",
+    "reviewDetailPreparing": {
+      "line1": "Ang mga detalyadong review ng clinic na ito ay kasalukuyang inihahanda.",
+      "line2": "Magiging available ang mga ito kapag tapos na ang paghahanda."
+    }
   },
   "favorites": {
     "title": "Mga Paborito",
