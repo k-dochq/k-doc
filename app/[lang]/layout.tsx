@@ -62,6 +62,14 @@ const notoSansArabic = localFont({
   preload: false,
 });
 
+const inter = localFont({
+  src: '../../fonts/inter/Inter-VariableFont_opsz,wght.ttf',
+  display: 'swap',
+  weight: '100 900',
+  variable: '--font-inter',
+  preload: false,
+});
+
 /** 로케일별 적용 폰트 (특수 스크립트 미지원 로케일은 pretendard) */
 const LOCALE_FONTS: Record<Locale, ReturnType<typeof localFont>> = {
   ko: pretendard,
@@ -72,7 +80,7 @@ const LOCALE_FONTS: Record<Locale, ReturnType<typeof localFont>> = {
   'zh-Hant': notoSansTC,
   hi: notoSansDevanagari,
   ar: notoSansArabic,
-  ru: pretendard,
+  ru: inter,
 };
 
 interface LangLayoutProps {
@@ -187,6 +195,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
     notoSansTC.variable,
     notoSansDevanagari.variable,
     notoSansArabic.variable,
+    inter.variable,
   ].join(' ');
 
   return (
