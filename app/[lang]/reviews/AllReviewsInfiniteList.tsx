@@ -31,11 +31,12 @@ export function AllReviewsInfiniteList({ lang, dict, searchParams }: AllReviewsI
   const { category, sort } = searchParams;
   const { user } = useAuth();
 
-  // 타입 안전한 파라미터 구성
+  // 타입 안전한 파라미터 구성 (/reviews 페이지에서는 REJECTED 병원 리뷰 제외)
   const queryParams = {
     limit: 10,
     sort: sort || REVIEW_SORT_OPTIONS.POPULAR,
     category,
+    excludeRejectedHospitals: true,
   };
 
   // 좋아요 토글 뮤테이션
