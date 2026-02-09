@@ -6,7 +6,6 @@ import {
 } from '../../model/types';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getReviewNickname } from 'shared/lib/review-nickname';
-import { validateHospitalApprovalStatus } from 'shared/lib/hospital/approval-status-validator';
 
 export async function getHospitalReviews({
   hospitalId,
@@ -16,8 +15,6 @@ export async function getHospitalReviews({
   excludeReviewId,
 }: GetHospitalReviewsParams): Promise<GetHospitalReviewsResponse> {
   try {
-    // 병원 승인 상태 검증 (REJECTED인 경우 에러 throw)
-    await validateHospitalApprovalStatus(hospitalId);
     // offset 계산 (page가 제공된 경우 우선 사용)
     const calculatedOffset = offset !== undefined ? offset : (page - 1) * limit;
 

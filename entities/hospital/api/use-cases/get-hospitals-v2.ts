@@ -182,9 +182,6 @@ export async function getHospitalsV2(
 
     // 필터 조건 설정
     const where: Prisma.HospitalWhereInput = {
-      approvalStatusType: {
-        not: 'REJECTED',
-      },
       rating: {
         gte: minRating,
       },
