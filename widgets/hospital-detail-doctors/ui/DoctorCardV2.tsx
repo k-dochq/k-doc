@@ -25,8 +25,7 @@ interface DoctorCardV2Props {
 
 export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
   const doctorName = getDoctorNameFromJsonValue(doctor.name, lang) || '';
-  const position =
-    extractLocalizedText(doctor.position, lang === 'tl' ? 'en' : lang) || '';
+  const position = extractLocalizedText(doctor.position, lang === 'tl' ? 'en' : lang) || '';
   const hospitalName = extractLocalizedText(doctor.hospital?.name, lang) || '';
   const profileImage =
     doctor.doctorImages && doctor.doctorImages.length > 0 ? doctor.doctorImages[0] : null;
