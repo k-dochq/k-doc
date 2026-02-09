@@ -589,7 +589,11 @@
     "procedureTiming": "治療期",
     "showMore": "看更多",
     "showLess": "折疊",
-    "view": "查看"
+    "view": "查看",
+    "reviewDetailPreparing": {
+      "line1": "該診所的評論詳情正在準備中。",
+      "line2": "準備完成後將提供。"
+    }
   },
   "favorites": {
     "title": "收藏夾",

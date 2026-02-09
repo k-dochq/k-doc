@@ -87,6 +87,7 @@ export type ReviewCardData = {
     };
     displayLocationName?: LocalizedText | null;
     badge?: string[] | null;
+    approvalStatusType?: 'PENDING' | 'APPROVED' | 'REJECTED' | null;
   };
   medicalSpecialty: {
     name: LocalizedText;

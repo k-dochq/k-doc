@@ -585,7 +585,11 @@
     "procedureTiming": "시술시기",
     "showMore": "더보기",
     "showLess": "접기",
-    "view": "조회"
+    "view": "조회",
+    "reviewDetailPreparing": {
+      "line1": "해당 병원의 리뷰 상세는 현재 준비 중입니다.",
+      "line2": "준비가 완료되는 대로 제공될 예정입니다."
+    }
   },
   "favorites": {
     "title": "즐겨찾기",

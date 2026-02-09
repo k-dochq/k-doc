@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from '../model/types';
 import { ReviewListCardFooterV2 } from './ReviewListCardFooterV2';
 import { type RefObject } from 'react';
+import { useReviewClickGuard } from '../model/useReviewClickGuard';
 
 interface ReviewListCardV2ContentProps {
   review: ReviewCardData;
@@ -18,6 +19,7 @@ interface ReviewListCardV2ContentProps {
   onToggleExpand: () => void;
   disableLink: boolean;
   textRef: RefObject<HTMLDivElement | null>;
+  blockedMessage?: string;
 }
 
 export function ReviewListCardV2Content({
@@ -31,7 +33,12 @@ export function ReviewListCardV2Content({
   onToggleExpand,
   disableLink,
   textRef,
+  blockedMessage,
 }: ReviewListCardV2ContentProps) {
+  const handleClick = useReviewClickGuard(
+    review.hospital?.approvalStatusType,
+    blockedMessage,
+  );
   const ContentBlock = (
     <div className='px-5'>
       {/* 해시태그, 시술시기, 조회수 */}
@@ -70,7 +77,12 @@ export function ReviewListCardV2Content({
   }
 
   return (
-    <LocaleLink href={`/review/${review.id}`} locale={lang} className='block'>
+    <LocaleLink
+      href={`/review/${review.id}`}
+      locale={lang}
+      className='block'
+      onClick={handleClick}
+    >
       {ContentBlock}
     </LocaleLink>
   );

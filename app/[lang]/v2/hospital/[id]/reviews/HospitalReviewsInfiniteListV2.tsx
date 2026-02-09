@@ -5,7 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
 import { ReviewsSkeletonV2 } from 'entities/review/ui/ReviewsSkeletonV2';
-import { useInfiniteAllReviews } from 'entities/review';
+import { useInfiniteAllReviews, buildReviewPreparingMessage } from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
@@ -79,6 +79,7 @@ export function HospitalReviewsInfiniteListV2({
 
   // 데이터 플래튼
   const allReviews = data?.pages.flatMap((page) => page.reviews) || [];
+  const blockedMessage = buildReviewPreparingMessage(dict);
 
   return (
     <div>
@@ -94,6 +95,7 @@ export function HospitalReviewsInfiniteListV2({
               user={user}
               onToggleLike={handleToggleLike}
               isLikeLoading={loadingReviewId === review.id}
+              blockedMessage={blockedMessage}
             />
           ))}
 

@@ -15,6 +15,7 @@ import { ReviewListCardFooter } from './ReviewListCardFooter';
 import { ReviewContentSection } from './ReviewContentSection';
 import { ReviewStatsSection } from './ReviewStatsSection';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { useReviewClickGuard } from '../model/useReviewClickGuard';
 
 interface ReviewListCardProps {
   review: ReviewCardData;
@@ -25,6 +26,7 @@ interface ReviewListCardProps {
   isLikeLoading?: boolean;
   className?: string;
   onDelete?: (reviewId: string) => void;
+  blockedMessage?: string;
 }
 
 export function ReviewListCard({
@@ -36,7 +38,12 @@ export function ReviewListCard({
   isLikeLoading = false,
   className = '',
   onDelete,
+  blockedMessage,
 }: ReviewListCardProps) {
+  const handleClick = useReviewClickGuard(
+    review.hospital?.approvalStatusType,
+    blockedMessage,
+  );
   const title = decodeHtmlEntities(extractLocalizedText(review.title, lang) || '');
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
 
@@ -66,7 +73,12 @@ export function ReviewListCard({
         />
 
         {/* 세 번째 섹션과 네 번째 섹션을 LocaleLink로 감싸기 */}
-        <LocaleLink href={`/review/${review.id}`} locale={lang} className='block'>
+        <LocaleLink
+          href={`/review/${review.id}`}
+          locale={lang}
+          className='block'
+          onClick={handleClick}
+        >
           {/* 세 번째 섹션: 해시태그, 시술시기 */}
           <ReviewListCardFooter review={review} lang={lang} dict={dict} className='mt-3' />
 

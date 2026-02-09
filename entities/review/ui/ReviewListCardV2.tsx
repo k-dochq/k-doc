@@ -24,6 +24,7 @@ interface ReviewListCardV2Props {
   forceContentExpanded?: boolean;
   disableLink?: boolean;
   useHorizontalImages?: boolean;
+  blockedMessage?: string;
 }
 
 export function ReviewListCardV2({
@@ -37,6 +38,7 @@ export function ReviewListCardV2({
   forceContentExpanded = false,
   disableLink = false,
   useHorizontalImages = false,
+  blockedMessage,
 }: ReviewListCardV2Props) {
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
   const [isExpanded, setIsExpanded] = useState(forceContentExpanded);
@@ -103,6 +105,7 @@ export function ReviewListCardV2({
           onToggleExpand={() => setIsExpanded((prev) => !prev)}
           disableLink={disableLink}
           textRef={textRef}
+          blockedMessage={blockedMessage}
         />
       </div>
 

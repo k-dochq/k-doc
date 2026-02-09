@@ -62,6 +62,7 @@ export async function getHospitalReviews({
             discountRate: true,
             ranking: true,
             displayLocationName: true,
+            approvalStatusType: true,
             District: {
               select: {
                 name: true,
@@ -179,6 +180,7 @@ export async function getHospitalReviews({
           displayLocationName: review.Hospital.displayLocationName
             ? parseLocalizedText(review.Hospital.displayLocationName)
             : null,
+          approvalStatusType: review.Hospital.approvalStatusType ?? null,
         },
         medicalSpecialty: {
           name: parseLocalizedText(review.MedicalSpecialty.name),
