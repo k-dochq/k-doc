@@ -39,9 +39,6 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
     // 좋아요한 병원들의 상세 정보 가져오기
     const hospitals = await prisma.hospital.findMany({
       where: {
-        approvalStatusType: {
-          not: 'REJECTED',
-        },
         id: {
           in: paginatedHospitalIds,
         },

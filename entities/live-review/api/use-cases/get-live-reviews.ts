@@ -54,11 +54,6 @@ export async function getLiveReviews(
     // 카테고리 및 병원 필터링 조건
     const whereCondition: Prisma.LiveReviewWhereInput = {
       isActive: true,
-      Hospital: {
-        approvalStatusType: {
-          not: 'REJECTED',
-        },
-      },
     };
 
     if (hospitalId) {
