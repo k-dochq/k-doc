@@ -26,6 +26,7 @@ export const INCISIONAL_CATEGORY = {
     ja_JP: '切開',
     hi_IN: 'कट के साथ',
     ar_SA: 'قطعي',
+    ru_RU: 'С разрезом',
   } satisfies LocalizedText,
 } as const;
 
@@ -40,5 +41,6 @@ export const NON_INCISIONAL_CATEGORY = {
     ja_JP: '非切開',
     hi_IN: 'बिना चीरा',
     ar_SA: 'غير قطعي',
+    ru_RU: 'Без разреза',
   } satisfies LocalizedText,
 } as const;
