@@ -4,6 +4,7 @@ import { PageHeaderV2 } from 'shared/ui/page-header';
 import {
   DonationAfterCarouselSection,
   DonationCarouselSection,
+  DonationImagesListSection,
   DonationVideoSection,
 } from '@/widgets/donation-video';
 
@@ -37,6 +38,13 @@ export default async function DonationPage({ params }: DonationPageProps) {
     src: `${afterImgBasePath}/donation_09_after_${i}.png`,
     alt: `Donation after ${i}`,
   }));
+  const commonListBase = '/images/event/donation_water/common/donation_11_images_list';
+  const list1ImageSrcs = [1, 2, 3, 4, 5].map(
+    (i) => `${commonListBase}/list_1/list1_img${i}.png`
+  );
+  const list2ImageSrcs = [1, 2, 3, 4, 5].map(
+    (i) => `${commonListBase}/list_2/list2_img${i}.png`
+  );
 
   return (
     <div>
@@ -87,6 +95,10 @@ export default async function DonationPage({ params }: DonationPageProps) {
         className="w-full h-auto"
       />
       <DonationAfterCarouselSection images={donation09Images} />
+      <DonationImagesListSection
+        list1ImageSrcs={list1ImageSrcs}
+        list2ImageSrcs={list2ImageSrcs}
+      />
     </div>
   );
 }

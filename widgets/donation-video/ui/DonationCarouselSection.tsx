@@ -20,10 +20,7 @@ const TWEEN_FACTOR_BASE = 0.1;
 const numberWithinRange = (number: number, min: number, max: number): number =>
   Math.min(Math.max(number, min), max);
 
-export function DonationCarouselSection({
-  images,
-  className = '',
-}: DonationCarouselSectionProps) {
+export function DonationCarouselSection({ images, className = '' }: DonationCarouselSectionProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentPage, setCurrentPage] = useState(0);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
@@ -153,7 +150,7 @@ export function DonationCarouselSection({
     'relative aspect-[1048/1480] w-full overflow-hidden rounded-xl shadow-[2px_3px_5px_0_rgba(0,0,0,0.4)]';
 
   return (
-    <div className={`relative w-full bg-white pb-[200px] ${className}`}>
+    <div className={`relative w-full bg-white ${className}`}>
       <Carousel
         setApi={setApi}
         opts={{

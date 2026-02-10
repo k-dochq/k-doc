@@ -6,3 +6,5 @@ export type {
   DonationAfterCarouselSectionProps,
   DonationAfterCarouselImage,
 } from './ui/DonationAfterCarouselSection';
+export { DonationImagesListSection } from './ui/DonationImagesListSection';
+export type { DonationImagesListSectionProps } from './ui/DonationImagesListSection';
