@@ -17,6 +17,7 @@ export interface ParsedReviewQueryParams {
   hospitalId?: string;
   likedOnly?: boolean;
   hasBothImages?: boolean;
+  excludeRejectedHospitals?: boolean;
 }
 
 /**
@@ -31,6 +32,7 @@ export interface DbReviewQueryParams {
   likedOnly?: boolean;
   userId?: string; // likedOnly가 true일 때 필요한 사용자 ID
   hasBothImages?: boolean;
+  excludeRejectedHospitals?: boolean;
 }
 
 /**
@@ -69,6 +71,7 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
   const hospitalId = searchParams.get('hospitalId') || undefined;
   const likedOnly = searchParams.get('likedOnly') === 'true';
   const hasBothImages = searchParams.get('hasBothImages') === 'true';
+  const excludeRejectedHospitals = searchParams.get('excludeRejectedHospitals') === 'true';
 
   return {
     page,
@@ -78,6 +81,7 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
     hospitalId,
     likedOnly,
     hasBothImages,
+    excludeRejectedHospitals,
   };
 }
 
@@ -97,6 +101,7 @@ export function convertToDbReviewQueryParams(
     likedOnly: params.likedOnly,
     userId: params.likedOnly ? userId : undefined,
     hasBothImages: params.hasBothImages,
+    excludeRejectedHospitals: params.excludeRejectedHospitals,
   };
 }
 
@@ -132,6 +137,10 @@ export function buildReviewQueryString(params: Partial<ParsedReviewQueryParams>)
 
   if (params.hasBothImages) {
     searchParams.set('hasBothImages', 'true');
+  }
+
+  if (params.excludeRejectedHospitals) {
+    searchParams.set('excludeRejectedHospitals', 'true');
   }
 
   return searchParams.toString();

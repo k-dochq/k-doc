@@ -66,6 +66,7 @@ export class LikedReviewsRepository {
                 rating: true,
                 discountRate: true,
                 ranking: true,
+                approvalStatusType: true,
                 District: {
                   select: {
                     name: true,
@@ -188,6 +189,7 @@ export class LikedReviewsRepository {
               ? parseLocalizedText(review.Hospital.District.name)
               : { ko_KR: '', en_US: '', th_TH: '', zh_TW: '', ja_JP: '', hi_IN: '', tl_PH: '' },
           },
+          approvalStatusType: review.Hospital.approvalStatusType ?? null,
         },
         medicalSpecialty: {
           name: parseLocalizedText(review.MedicalSpecialty.name),

@@ -10,15 +10,21 @@ import { Star, User, Calendar } from 'lucide-react';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { ReviewLikeButton } from 'features/review-like/ui/ReviewLikeButton';
 import type { Dictionary } from 'shared/model/types';
+import { useReviewClickGuard } from '../model/useReviewClickGuard';
 
 interface ReviewCardProps {
   review: ReviewCardData;
   lang: Locale;
   dict: Dictionary;
+  blockedMessage?: string;
 }
 
-export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
+export function ReviewCard({ review, lang, dict, blockedMessage }: ReviewCardProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const handleClick = useReviewClickGuard(
+    review.hospital?.approvalStatusType,
+    blockedMessage,
+  );
 
   const title = decodeHtmlEntities(extractLocalizedText(review.title, lang) || '');
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
@@ -40,6 +46,7 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
       href={`/review/${review.id}`}
       locale={lang}
       className='relative z-10 flex h-full cursor-pointer flex-col rounded-xl border border-white bg-white/50 p-4 shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] backdrop-blur-[6px] transition-shadow hover:shadow-md'
+      onClick={handleClick}
     >
       {/* 헤더 */}
       <div className='mb-3 flex items-start justify-between'>

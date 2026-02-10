@@ -3,7 +3,12 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
-import { ReviewListCard, ReviewsSkeleton, useInfiniteAllReviews } from 'entities/review';
+import {
+  ReviewListCard,
+  ReviewsSkeleton,
+  useInfiniteAllReviews,
+  buildReviewPreparingMessage,
+} from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
@@ -71,6 +76,7 @@ export function FavoritesReviewsTab({ lang, dict }: FavoritesReviewsTabProps) {
 
   // 데이터 플래튼
   const allReviews = data?.pages.flatMap((page) => page.reviews) || [];
+  const blockedMessage = buildReviewPreparingMessage(dict);
 
   return (
     <div>
@@ -87,6 +93,7 @@ export function FavoritesReviewsTab({ lang, dict }: FavoritesReviewsTabProps) {
                   user={user}
                   onToggleLike={handleToggleLike}
                   isLikeLoading={loadingReviewId === review.id}
+                  blockedMessage={blockedMessage}
                 />
               </div>
             </div>

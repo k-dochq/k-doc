@@ -11,6 +11,7 @@ import { ReviewText } from './ReviewText';
 import { ReviewHashtags } from './ReviewHashtags';
 import { ReviewHospitalInfo } from './ReviewHospitalInfo';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { useReviewClickGuard } from '../model/useReviewClickGuard';
 
 interface PopularReviewCardProps {
   review: ReviewCardData;
@@ -18,6 +19,7 @@ interface PopularReviewCardProps {
   dict: Dictionary;
   className?: string;
   noBorder?: boolean;
+  blockedMessage?: string;
 }
 
 export function PopularReviewCard({
@@ -26,7 +28,12 @@ export function PopularReviewCard({
   dict,
   className = '',
   noBorder = false,
+  blockedMessage,
 }: PopularReviewCardProps) {
+  const handleClick = useReviewClickGuard(
+    review.hospital?.approvalStatusType,
+    blockedMessage,
+  );
   const title = decodeHtmlEntities(extractLocalizedText(review.title, lang) || '');
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
 
@@ -45,6 +52,7 @@ export function PopularReviewCard({
       href={`/review/${review.id}`}
       locale={lang}
       className={`block h-full w-full overflow-hidden rounded-lg bg-white ${noBorder ? '' : 'border border-neutral-200'}`}
+      onClick={handleClick}
     >
       {/* Before/After 이미지 */}
       <div className=''>

@@ -589,7 +589,11 @@
     "procedureTiming": "Procedure Date",
     "showMore": "Show More",
     "showLess": "Show Less",
-    "view": "Views"
+    "view": "Views",
+    "reviewDetailPreparing": {
+      "line1": "Detailed reviews for this clinic are currently being prepared.",
+      "line2": "They will be available once preparation is complete."
+    }
   },
   "favorites": {
     "title": "Favorites",

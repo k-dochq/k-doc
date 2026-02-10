@@ -4,7 +4,6 @@ import { type LocalizedText } from 'shared/lib/localized-text';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getReviewNickname } from 'shared/lib/review-nickname';
 import { getHospitalThumbnailImageUrl } from 'entities/hospital/lib/image-utils';
-import { validateHospitalApprovalStatus } from 'shared/lib/hospital/approval-status-validator';
 
 export interface GetReviewDetailParams {
   reviewId: string;
@@ -78,6 +77,7 @@ export async function getReviewDetail({
             ranking: true,
             displayLocationName: true,
             badge: true,
+            approvalStatusType: true,
             District: {
               select: {
                 name: true,
@@ -136,9 +136,6 @@ export async function getReviewDetail({
       throw new Error('리뷰를 찾을 수 없습니다.');
     }
 
-    // 병원 승인 상태 검증 (REJECTED인 경우 에러 throw)
-    await validateHospitalApprovalStatus(review.hospitalId);
-
     // 리뷰 작성일자 기준으로 닉네임 결정
     const { displayName, nickName } = await getReviewNickname(
       review.id,
@@ -194,6 +191,7 @@ export async function getReviewDetail({
           ? parseLocalizedText(review.Hospital.displayLocationName)
           : null,
         badge: review.Hospital.badge,
+        approvalStatusType: review.Hospital.approvalStatusType ?? null,
       },
       medicalSpecialty: {
         name: parseLocalizedText(review.MedicalSpecialty.name),
