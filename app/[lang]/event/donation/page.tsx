@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
-import { DonationVideoSection } from '@/widgets/donation-video';
+import { DonationCarouselSection, DonationVideoSection } from '@/widgets/donation-video';
 
 const DONATION_WATER_LOCALES: Locale[] = ['ko'];
 
@@ -22,6 +22,11 @@ export default async function DonationPage({ params }: DonationPageProps) {
   const donation04Src = `/images/event/donation_water/${imageLang}/donation_04_why.png`;
   const donation05Src = `/images/event/donation_water/${imageLang}/donation_05_making.png`;
   const donation06Src = `/images/event/donation_water/${imageLang}/donation_06_carousel_title.png`;
+  const carouselBasePath = `/images/event/donation_water/${imageLang}/donation_07_carousel_img`;
+  const donationCarouselImages = [1, 2, 3, 4, 5].map((i) => ({
+    src: `${carouselBasePath}/donation_07_carousel_img_${i}.png`,
+    alt: `Donation carousel ${i}`,
+  }));
 
   return (
     <div>
@@ -63,6 +68,7 @@ export default async function DonationPage({ params }: DonationPageProps) {
         height={474}
         className="w-full h-auto"
       />
+      <DonationCarouselSection images={donationCarouselImages} />
     </div>
   );
 }
