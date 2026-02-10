@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
+import { DonationVideoSection } from '@/widgets/donation-video';
 
 const DONATION_WATER_LOCALES: Locale[] = ['ko'];
 
@@ -37,17 +38,7 @@ export default async function DonationPage({ params }: DonationPageProps) {
         height={600}
         className="w-full h-auto"
       />
-      <div className="w-full aspect-[753/1000] overflow-hidden bg-black">
-        <video
-          className="w-full h-full object-cover"
-          src={videoSrc}
-          autoPlay
-          playsInline
-          muted
-          loop
-          preload="auto"
-        />
-      </div>
+      <DonationVideoSection videoSrc={videoSrc} />
     </div>
   );
 }
