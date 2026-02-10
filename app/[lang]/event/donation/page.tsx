@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
-import { DonationCarouselSection, DonationVideoSection } from '@/widgets/donation-video';
+import {
+  DonationAfterCarouselSection,
+  DonationCarouselSection,
+  DonationVideoSection,
+} from '@/widgets/donation-video';
 
 const DONATION_WATER_LOCALES: Locale[] = ['ko'];
 
@@ -26,6 +30,12 @@ export default async function DonationPage({ params }: DonationPageProps) {
   const donationCarouselImages = [1, 2, 3, 4, 5].map((i) => ({
     src: `${carouselBasePath}/donation_07_carousel_img_${i}.png`,
     alt: `Donation carousel ${i}`,
+  }));
+  const donation08Src = `/images/event/donation_water/${imageLang}/donation_08_after_title.png`;
+  const afterImgBasePath = `/images/event/donation_water/${imageLang}/donation_09_after_img`;
+  const donation09Images = [1, 2, 3, 4].map((i) => ({
+    src: `${afterImgBasePath}/donation_09_after_${i}.png`,
+    alt: `Donation after ${i}`,
   }));
 
   return (
@@ -69,6 +79,14 @@ export default async function DonationPage({ params }: DonationPageProps) {
         className="w-full h-auto"
       />
       <DonationCarouselSection images={donationCarouselImages} />
+      <Image
+        src={donation08Src}
+        alt="After title"
+        width={750}
+        height={484}
+        className="w-full h-auto"
+      />
+      <DonationAfterCarouselSection images={donation09Images} />
     </div>
   );
 }
