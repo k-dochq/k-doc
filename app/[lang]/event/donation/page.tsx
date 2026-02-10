@@ -19,6 +19,9 @@ export default async function DonationPage({ params }: DonationPageProps) {
   const mainImageSrc = `/images/event/donation_water/${imageLang}/donation_01_main.png`;
   const illustSrc = `/images/event/donation_water/${imageLang}/donation_02_illust.png`;
   const videoSrc = `/images/event/donation_water/${imageLang}/donation_03_video.mp4`;
+  const donation04Src = `/images/event/donation_water/${imageLang}/donation_04_why.png`;
+  const donation05Src = `/images/event/donation_water/${imageLang}/donation_05_making.png`;
+  const donation06Src = `/images/event/donation_water/${imageLang}/donation_06_carousel_title.png`;
 
   return (
     <div>
@@ -39,6 +42,27 @@ export default async function DonationPage({ params }: DonationPageProps) {
         className="w-full h-auto"
       />
       <DonationVideoSection videoSrc={videoSrc} />
+      <Image
+        src={donation04Src}
+        alt="Why donation"
+        width={750}
+        height={1678}
+        className="w-full h-auto"
+      />
+      <Image
+        src={donation05Src}
+        alt="Making process"
+        width={750}
+        height={1250}
+        className="w-full h-auto"
+      />
+      <Image
+        src={donation06Src}
+        alt="Carousel title"
+        width={750}
+        height={474}
+        className="w-full h-auto"
+      />
     </div>
   );
 }
