@@ -8,3 +8,4 @@ export type {
 } from './ui/DonationAfterCarouselSection';
 export { DonationImagesListSection } from './ui/DonationImagesListSection';
 export type { DonationImagesListSectionProps } from './ui/DonationImagesListSection';
+export { DonationFloatingButton } from './ui/DonationFloatingButton';

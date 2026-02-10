@@ -4,6 +4,7 @@ import { PageHeaderV2 } from 'shared/ui/page-header';
 import {
   DonationAfterCarouselSection,
   DonationCarouselSection,
+  DonationFloatingButton,
   DonationImagesListSection,
   DonationVideoSection,
 } from '@/widgets/donation-video';
@@ -45,6 +46,8 @@ export default async function DonationPage({ params }: DonationPageProps) {
   const list2ImageSrcs = [1, 2, 3, 4, 5].map(
     (i) => `${commonListBase}/list_2/list2_img${i}.png`
   );
+  const donation11BgSrc = `/images/event/donation_water/${imageLang}/donation_11_images_bg.png`;
+  const donation12Src = `/images/event/donation_water/${imageLang}/donation_12_qna.png`;
 
   return (
     <div>
@@ -95,10 +98,25 @@ export default async function DonationPage({ params }: DonationPageProps) {
         className="w-full h-auto"
       />
       <DonationAfterCarouselSection images={donation09Images} />
+      <Image
+        src={donation11BgSrc}
+        alt="Donation 11 background"
+        width={750}
+        height={1828}
+        className="w-full h-auto"
+      />
       <DonationImagesListSection
         list1ImageSrcs={list1ImageSrcs}
         list2ImageSrcs={list2ImageSrcs}
       />
+      <Image
+        src={donation12Src}
+        alt="Donation QnA"
+        width={750}
+        height={1200}
+        className="w-full h-auto"
+      />
+      <DonationFloatingButton />
     </div>
   );
 }

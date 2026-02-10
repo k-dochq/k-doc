@@ -15,7 +15,7 @@ export function DonationImagesListSection({
   const duplicatedList2 = [...list2ImageSrcs, ...list2ImageSrcs];
 
   return (
-    <section className={`relative w-full flex flex-col gap-[20px] ${className}`}>
+    <section className={`relative w-full flex flex-col gap-[20px] pb-[120px] bg-[#E2F3FF] ${className}`}>
       {/* list_1: scroll left */}
       <div className='overflow-hidden'>
         <div
