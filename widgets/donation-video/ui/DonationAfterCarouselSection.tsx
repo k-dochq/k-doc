@@ -46,7 +46,7 @@ export function DonationAfterCarouselSection({
   if (images.length === 0) return null;
 
   return (
-    <div className={`w-full bg-neutral-100 ${className}`}>
+    <div className={`w-full bg-neutral-100 pb-[120px] ${className}`}>
       <Carousel
         setApi={setApi}
         opts={{
