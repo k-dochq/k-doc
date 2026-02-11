@@ -36,6 +36,19 @@ export async function GET(
   const { id } = await params;
 
   try {
+    // 노출 중인 병원만 비디오 조회 허용
+    const hospital = await prisma.hospital.findFirst({
+      where: { id, isActive: true },
+      select: { id: true },
+    });
+
+    if (!hospital) {
+      return NextResponse.json(
+        { success: false, error: 'Hospital not found' },
+        { status: 404 },
+      );
+    }
+
     const images = await prisma.hospitalImage.findMany({
       where: {
         hospitalId: id,

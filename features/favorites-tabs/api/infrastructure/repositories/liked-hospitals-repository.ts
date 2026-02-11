@@ -36,9 +36,10 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
       return [];
     }
 
-    // 좋아요한 병원들의 상세 정보 가져오기
+    // 좋아요한 병원들의 상세 정보 가져오기 (노출 중인 병원만)
     const hospitals = await prisma.hospital.findMany({
       where: {
+        isActive: true,
         id: {
           in: paginatedHospitalIds,
         },

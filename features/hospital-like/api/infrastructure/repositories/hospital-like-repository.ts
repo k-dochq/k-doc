@@ -60,11 +60,11 @@ export class HospitalLikeRepository {
   }
 
   /**
-   * 병원 존재 여부 확인
+   * 병원 존재 여부 확인 (노출 중인 병원만)
    */
   async hospitalExists(hospitalId: string): Promise<boolean> {
-    const hospital = await prisma.hospital.findUnique({
-      where: { id: hospitalId },
+    const hospital = await prisma.hospital.findFirst({
+      where: { id: hospitalId, isActive: true },
     });
     return !!hospital;
   }

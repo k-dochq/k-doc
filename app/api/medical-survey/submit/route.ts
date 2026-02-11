@@ -91,13 +91,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // userId는 세션에서 가져옴
     const userId = session.user.id;
 
-    // 병원 존재 여부 확인
+    // 병원 존재 여부 확인 (노출 중인 병원만)
     const hospital = await prisma.hospital.findUnique({
       where: { id: hospitalId },
-      select: { id: true },
+      select: { id: true, isActive: true },
     });
 
-    if (!hospital) {
+    if (!hospital || hospital.isActive !== true) {
       return NextResponse.json({ success: false, error: 'HOSPITAL_NOT_FOUND' }, { status: 404 });
     }
 

@@ -170,13 +170,13 @@ async function handleChatMessage(body: ChatMessageBody, userId: string, _locale:
     return NextResponse.json({ success: false, error: 'MISSING_REQUIRED_FIELDS' }, { status: 400 });
   }
 
-  // 병원 존재 여부 확인
+  // 병원 존재 여부 확인 (노출 중인 병원만)
   const hospital = await prisma.hospital.findUnique({
     where: { id: hospitalId },
-    select: { id: true },
+    select: { id: true, isActive: true },
   });
 
-  if (!hospital) {
+  if (!hospital || hospital.isActive !== true) {
     return NextResponse.json({ success: false, error: 'HOSPITAL_NOT_FOUND' }, { status: 404 });
   }
 
@@ -233,13 +233,13 @@ async function handleConsultationRequest(
     return NextResponse.json({ success: false, error: 'MISSING_REQUIRED_FIELDS' }, { status: 400 });
   }
 
-  // 병원 존재 여부 확인
+  // 병원 존재 여부 확인 (노출 중인 병원만)
   const hospital = await prisma.hospital.findUnique({
     where: { id: hospitalId },
-    select: { id: true, name: true },
+    select: { id: true, name: true, isActive: true },
   });
 
-  if (!hospital) {
+  if (!hospital || hospital.isActive !== true) {
     return NextResponse.json({ success: false, error: 'HOSPITAL_NOT_FOUND' }, { status: 404 });
   }
 

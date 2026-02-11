@@ -182,6 +182,7 @@ export async function getHospitalsV2(
 
     // 필터 조건 설정
     const where: Prisma.HospitalWhereInput = {
+      isActive: true,
       rating: {
         gte: minRating,
       },
