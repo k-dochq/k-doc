@@ -110,6 +110,7 @@ model Hospital {
   displayLocationName        Json?
   recommendedRanking         Int?
   badge                      String[]                     @default([])
+  isActive                   Boolean?                     @default(true)
   ConsultationMemo           ConsultationMemo[]
   ConsultationMessage        ConsultationMessage[]
   Doctor                     Doctor[]
