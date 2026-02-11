@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { usePopularReviewsV2 } from 'entities/review/api/queries/use-popular-reviews-v2';
+import { useHospitalReviewStats } from 'entities/review/api/queries/use-hospital-review-stats';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { PopularReviewsTitleV2ForHospital } from './PopularReviewsTitleV2ForHospital';
 import { HospitalReviewStatsV2 } from './HospitalReviewStatsV2';
@@ -39,9 +40,34 @@ function PopularReviewsV2Content({
     hasBothImages: false,
     sort,
   });
+  const { data: reviewStats } = useHospitalReviewStats(hospitalId);
 
-  // 데이터가 없으면 섹션 전체를 렌더링하지 않음
+  const hasVisibleReviews =
+    popularReviews && popularReviews.reviews.length > 0;
+  const hasAnyReviewsIncludingHidden =
+    reviewStats != null && reviewStats.reviewCount > 0;
+
+  // 노출 리뷰가 0개일 때: 전체 리뷰(숨김 포함)가 있으면 타이틀+별점+개수만 노출, 캐러셀은 미노출
   if (!isLoading && (!popularReviews || popularReviews.reviews.length === 0)) {
+    if (hasAnyReviewsIncludingHidden) {
+      return (
+        <>
+          <PopularReviewsTitleV2ForHospital
+            hospitalId={hospitalId}
+            lang={lang}
+            dict={dict}
+            titleOverride={titleOverride}
+            hasVisibleReviews={hasVisibleReviews}
+          />
+          {showStats && (
+            <>
+              <div className='h-3' />
+              <HospitalReviewStatsV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+            </>
+          )}
+        </>
+      );
+    }
     return null;
   }
 
@@ -57,6 +83,7 @@ function PopularReviewsV2Content({
           lang={lang}
           dict={dict}
           titleOverride={titleOverride}
+          hasVisibleReviews={hasVisibleReviews}
         />
         {showStats && (
           <>
@@ -78,6 +105,7 @@ function PopularReviewsV2Content({
           lang={lang}
           dict={dict}
           titleOverride={titleOverride}
+          hasVisibleReviews={hasVisibleReviews}
         />
         {showStats && (
           <>

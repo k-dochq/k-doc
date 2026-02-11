@@ -67,7 +67,14 @@ export function HospitalDetailContentV2({ hospitalId, lang, dict }: HospitalDeta
 
       {/* 병원 이미지 섹션 - 여백 없이 최상단에 배치 */}
       <div className='relative'>
-        <HospitalDetailPhotosV2 hospital={hospital} lang={lang} dict={dict} />
+        <HospitalDetailPhotosV2
+          hospital={hospital}
+          lang={lang}
+          dict={dict}
+          hasActiveReviews={
+            hospital.activeReviewCount != null && hospital.activeReviewCount > 0
+          }
+        />
       </div>
 
       {/* 병원 정보 섹션 */}

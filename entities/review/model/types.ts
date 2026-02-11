@@ -129,8 +129,6 @@ export interface GetAllReviewsParams {
   likedOnly?: boolean; // 좋아요한 리뷰만 조회
   userId?: string; // likedOnly가 true일 때 필요한 사용자 ID
   hasBothImages?: boolean; // before/after 이미지가 모두 있는 리뷰만 조회
-  /** true이면 REJECTED 병원의 리뷰를 목록에서 제외 (예: /reviews 페이지) */
-  excludeRejectedHospitals?: boolean;
 }
 
 // 전체 리뷰 목록 응답

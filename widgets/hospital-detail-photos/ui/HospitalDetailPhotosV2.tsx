@@ -21,9 +21,16 @@ interface HospitalDetailPhotosV2Props {
   hospital: Hospital;
   lang: Locale;
   dict: Dictionary;
+  /** 활성(노출) 리뷰가 1개 이상일 때만 플로팅 버튼 클릭 시 리뷰 페이지로 이동. 기본값 true(기존 동작 유지) */
+  hasActiveReviews?: boolean;
 }
 
-export function HospitalDetailPhotosV2({ hospital, lang, dict }: HospitalDetailPhotosV2Props) {
+export function HospitalDetailPhotosV2({
+  hospital,
+  lang,
+  dict,
+  hasActiveReviews = true,
+}: HospitalDetailPhotosV2Props) {
   const hospitalName = extractLocalizedText(hospital.name, lang) || '병원명 없음';
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -98,16 +105,27 @@ export function HospitalDetailPhotosV2({ hospital, lang, dict }: HospitalDetailP
         </CarouselContent>
       </Carousel>
 
-      {/* 시술후기 버튼 */}
-      <LocaleLink
-        href={`/hospital/${hospital.id}/reviews`}
-        locale={lang}
-        className='fixed top-[120px] right-[20px] z-[60] flex min-h-[66px] min-w-[66px] items-center justify-center rounded-full bg-gradient-to-r from-[#3E57E2] via-[#B133FF] to-[#FF5DCA] shadow-[1px_3px_8px_0_rgba(0,0,0,0.15)] md:right-[calc(50vw-250px+20px)]'
-      >
-        <span className='text-[13px] font-semibold text-white'>
-          {dict.hospital?.reviewsButton || '시술후기'}
-        </span>
-      </LocaleLink>
+      {/* 시술후기 버튼 - 활성 리뷰가 있을 때만 링크, 없으면 같은 스타일의 비링크 */}
+      {hasActiveReviews ? (
+        <LocaleLink
+          href={`/hospital/${hospital.id}/reviews`}
+          locale={lang}
+          className='fixed top-[120px] right-[20px] z-[60] flex min-h-[66px] min-w-[66px] items-center justify-center rounded-full bg-gradient-to-r from-[#3E57E2] via-[#B133FF] to-[#FF5DCA] shadow-[1px_3px_8px_0_rgba(0,0,0,0.15)] md:right-[calc(50vw-250px+20px)]'
+        >
+          <span className='text-[13px] font-semibold text-white'>
+            {dict.hospital?.reviewsButton || '시술후기'}
+          </span>
+        </LocaleLink>
+      ) : (
+        <div
+          role='presentation'
+          className='fixed top-[120px] right-[20px] z-[60] flex min-h-[66px] min-w-[66px] cursor-default items-center justify-center rounded-full bg-gradient-to-r from-[#3E57E2] via-[#B133FF] to-[#FF5DCA] shadow-[1px_3px_8px_0_rgba(0,0,0,0.15)] md:right-[calc(50vw-250px+20px)]'
+        >
+          <span className='text-[13px] font-semibold text-white'>
+            {dict.hospital?.reviewsButton || '시술후기'}
+          </span>
+        </div>
+      )}
 
       {/* 인디케이터 - 이미지가 2개 이상일 때만 표시 */}
       {hospitalImages.length > 1 && (

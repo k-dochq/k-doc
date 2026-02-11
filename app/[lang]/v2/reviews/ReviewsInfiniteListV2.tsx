@@ -5,7 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
 import { ReviewsSkeletonV2 } from 'entities/review/ui/ReviewsSkeletonV2';
-import { useInfiniteAllReviews, buildReviewPreparingMessage } from 'entities/review';
+import { useInfiniteAllReviews } from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
@@ -29,12 +29,10 @@ export function ReviewsInfiniteListV2({
 }: ReviewsInfiniteListV2Props) {
   const { user } = useAuth();
 
-  // 타입 안전한 파라미터 구성 (/reviews 페이지에서는 REJECTED 병원 리뷰 제외)
   const queryParams = {
     limit: 10,
     sort: sort || REVIEW_SORT_OPTIONS.POPULAR,
     category: category && category !== 'all' ? category : undefined,
-    excludeRejectedHospitals: true,
   };
 
   // 좋아요 토글 뮤테이션
@@ -80,7 +78,6 @@ export function ReviewsInfiniteListV2({
 
   // 데이터 플래튼
   const allReviews = data?.pages.flatMap((page) => page.reviews) || [];
-  const blockedMessage = buildReviewPreparingMessage(dict);
 
   return (
     <div>
@@ -96,7 +93,6 @@ export function ReviewsInfiniteListV2({
               user={user}
               onToggleLike={handleToggleLike}
               isLikeLoading={loadingReviewId === review.id}
-              blockedMessage={blockedMessage}
             />
           ))}
 

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewCardData } from 'entities/review/model/types';
-import { PopularReviewCard, buildReviewPreparingMessage } from 'entities/review';
+import { PopularReviewCard } from 'entities/review';
 import {
   Carousel,
   CarouselContent,
@@ -52,7 +52,6 @@ export function ReviewCarousel({
 }: ReviewCarouselProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const blockedMessage = buildReviewPreparingMessage(dict);
 
   useEffect(() => {
     if (!api) {
@@ -108,7 +107,6 @@ export function ReviewCarousel({
                 lang={lang}
                 dict={dict}
                 noBorder={noBorder}
-                blockedMessage={blockedMessage}
               />
             </CarouselItem>
           ))}

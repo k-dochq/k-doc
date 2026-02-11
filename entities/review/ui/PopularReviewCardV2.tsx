@@ -11,14 +11,12 @@ import { PopularReviewCardV2UserInfo } from './PopularReviewCardV2UserInfo';
 import { PopularReviewCardV2Location } from './PopularReviewCardV2Location';
 import { PopularReviewCardV2Content } from './PopularReviewCardV2Content';
 import { PopularReviewCardV2Hashtags } from './PopularReviewCardV2Hashtags';
-import { useReviewClickGuard } from '../model/useReviewClickGuard';
 
 interface PopularReviewCardV2Props {
   review: ReviewCardData;
   lang: Locale;
   dict: Dictionary;
   className?: string;
-  blockedMessage?: string;
 }
 
 export function PopularReviewCardV2({
@@ -26,12 +24,7 @@ export function PopularReviewCardV2({
   lang,
   dict,
   className = '',
-  blockedMessage,
 }: PopularReviewCardV2Props) {
-  const handleClick = useReviewClickGuard(
-    review.hospital?.approvalStatusType,
-    blockedMessage,
-  );
   const content = decodeHtmlEntities(extractLocalizedText(review.content, lang) || '');
 
   // 사용자 표시명
@@ -60,7 +53,6 @@ export function PopularReviewCardV2({
       href={`/review/${review.id}`}
       locale={lang}
       className={`block h-full w-full overflow-hidden rounded-xl bg-white shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)] ${className}`}
-      onClick={handleClick}
     >
       {/* Before/After 이미지 영역 */}
       {hasImages && (

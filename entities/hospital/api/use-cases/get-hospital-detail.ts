@@ -142,12 +142,19 @@ export async function getHospitalDetail(
       throw new Error(`Hospital not found with id: ${id}`);
     }
 
-    // 소속 의사 정보 조회
-    const { doctors } = await getHospitalDoctors({ hospitalId: id });
+    const [doctorsResult, activeReviewCount] = await Promise.all([
+      getHospitalDoctors({ hospitalId: id }),
+      prisma.review.count({
+        where: {
+          hospitalId: id,
+          isActive: { not: false },
+        },
+      }),
+    ]);
 
-    // 데이터 변환 (조회수 증가 없음)
     const hospital = transformHospitalDetailStatic(hospitalData);
-    hospital.doctors = doctors;
+    hospital.doctors = doctorsResult.doctors;
+    hospital.activeReviewCount = activeReviewCount;
 
     return {
       hospital,

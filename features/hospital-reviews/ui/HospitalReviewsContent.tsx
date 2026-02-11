@@ -8,7 +8,6 @@ import {
   ReviewsSkeleton,
   useInfiniteAllReviews,
   createHospitalReviewsInfiniteQueryParams,
-  buildReviewPreparingMessage,
 } from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { useDeleteReview } from 'entities/review/model/useDeleteReview';
@@ -102,7 +101,6 @@ export function HospitalReviewsContent({
 
   // 데이터 플래튼
   const allReviews = data?.pages.flatMap((page) => page.reviews) || [];
-  const blockedMessage = buildReviewPreparingMessage(dict);
 
   return (
     <div className=''>
@@ -127,7 +125,6 @@ export function HospitalReviewsContent({
                 onToggleLike={handleToggleLike}
                 isLikeLoading={loadingReviewId === review.id}
                 onDelete={handleDelete}
-                blockedMessage={blockedMessage}
               />
             </div>
           ))}
