@@ -14,7 +14,6 @@ export * from './model/useHospitalReviews';
 export * from './model/useToggleReviewLike';
 export * from './model/useDeleteReview';
 export * from './model/usePrefetchHospitalReviews';
-export { buildReviewPreparingMessage } from './model/useReviewClickGuard';
 export * from './lib/query-params';
 export * from './ui/PopularReviewCard';
 export * from './ui/ReviewListCard';
