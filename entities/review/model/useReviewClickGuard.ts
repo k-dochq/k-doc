@@ -21,8 +21,8 @@ export function buildReviewPreparingMessage(dict: Dictionary): string {
 }
 
 /**
- * REJECTED 병원 리뷰 카드 클릭 시 이동을 막고 알럿을 띄우기 위한 onClick 핸들러를 반환.
- * approvalStatusType === 'REJECTED' 이고 message 가 있으면 preventDefault + alert.
+ * REJECTED 병원 리뷰 카드 클릭 시 리뷰 상세로 이동만 막기 위한 onClick 핸들러를 반환.
+ * approvalStatusType === 'REJECTED' 이고 message 가 있으면 preventDefault.
  */
 export function useReviewClickGuard(
   approvalStatusType: 'PENDING' | 'APPROVED' | 'REJECTED' | null | undefined,
@@ -32,7 +32,6 @@ export function useReviewClickGuard(
     (e: MouseEvent<HTMLAnchorElement>) => {
       if (approvalStatusType === 'REJECTED' && message) {
         e.preventDefault();
-        window.alert(message);
       }
     },
     [approvalStatusType, message],
