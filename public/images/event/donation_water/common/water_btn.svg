@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 335 62">
+  <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 126)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+      }
+
+      .st1 {
+        fill: url(#_무제_그라디언트_41);
+      }
+
+      .st1, .st2 {
+        mix-blend-mode: screen;
+      }
+
+      .st1, .st2, .st3 {
+        isolation: isolate;
+      }
+
+      .st4 {
+        fill: url(#_무제_그라디언트);
+      }
+
+      .st2 {
+        fill: url(#_무제_그라디언트_4);
+      }
+
+      .st5 {
+        fill: url(#_무제_그라디언트_2);
+      }
+    </style>
+    <linearGradient id="_무제_그라디언트" data-name="무제 그라디언트" x1="167.5" y1="-2030" x2="167.5" y2="-1968" gradientTransform="translate(0 -1968) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0084e0"/>
+      <stop offset="1" stop-color="#0268eb"/>
+    </linearGradient>
+    <linearGradient id="_무제_그라디언트_2" data-name="무제 그라디언트 2" x1="167.5" y1="-2030" x2="167.5" y2="-1968" gradientTransform="translate(0 -1968) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#88d2ff"/>
+      <stop offset=".2" stop-color="#68aef8"/>
+      <stop offset=".5" stop-color="#579bf4"/>
+      <stop offset=".8" stop-color="#72bafa"/>
+      <stop offset="1" stop-color="#88d2ff"/>
+    </linearGradient>
+    <radialGradient id="_무제_그라디언트_4" data-name="무제 그라디언트 4" cx="-682.6" cy="82.1" fx="-662.8" fy="82.1" r="63.9" gradientTransform="translate(614.6 722.7) rotate(89.7) scale(1 5.4) skewX(.4)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#76c8c8"/>
+      <stop offset=".3" stop-color="#000205" stop-opacity=".3"/>
+    </radialGradient>
+    <radialGradient id="_무제_그라디언트_41" data-name="무제 그라디언트 4" cx="-703" cy="82.1" fx="-683.2" fy="82.1" r="63.9" gradientTransform="translate(614.6 -681.1) rotate(-89.7) scale(1 -5.4) skewX(.4)" xlink:href="#_무제_그라디언트_4"/>
+  </defs>
+  <g class="st3">
+    <g id="_레이어_1">
+      <rect class="st0" width="335" height="62"/>
+      <path class="st4" d="M0,31C0,13.9,13.9,0,31,0h273c17.1,0,31,13.9,31,31h0c0,17.1-13.9,31-31,31H31C13.9,62,0,48.1,0,31h0Z"/>
+      <path class="st5" d="M304,59v3H31v-3h273ZM332,31c0-15.5-12.5-28-28-28H31C15.5,3,3,15.5,3,31s12.5,28,28,28v3h-.8C13.4,61.6,0,47.9,0,31S13.9,0,31,0h273c17.1,0,31,13.9,31,31s-13.4,30.6-30.2,31h-.8v-3c15.5,0,28-12.5,28-28Z"/>
+      <path class="st2" d="M44.4,62h246.2v-11.8c-6.6-2.1-23.1-7-40.1-12-17.9-5.3-53.1-12.6-80.7-13.1s-55.3,7.2-78.5,13.1c-18.5,4.7-38.6,11.8-46.9,12v11.8Z"/>
+      <path class="st1" d="M44.4,0h246.2v11.8c-6.6,2.1-23.1,7-40.1,12-17.9,5.3-53.1,12.6-80.7,13.1s-55.3-7.2-78.5-13.1c-18.5-4.7-38.6-11.8-46.9-12V0Z"/>
+    </g>
+  </g>
+</svg>
