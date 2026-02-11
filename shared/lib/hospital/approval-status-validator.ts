@@ -10,7 +10,7 @@ import { prisma } from 'shared/lib/prisma';
 export async function validateHospitalApprovalStatus(hospitalId: string): Promise<void> {
   const hospital = await prisma.hospital.findUnique({
     where: { id: hospitalId },
-    select: { approvalStatusType: true },
+    select: { approvalStatusType: true, isActive: true },
   });
 
   if (!hospital) {
@@ -19,5 +19,9 @@ export async function validateHospitalApprovalStatus(hospitalId: string): Promis
 
   if (hospital.approvalStatusType === 'REJECTED') {
     throw new Error('Hospital is rejected');
+  }
+
+  if (hospital.isActive !== true) {
+    throw new Error('Hospital not found');
   }
 }

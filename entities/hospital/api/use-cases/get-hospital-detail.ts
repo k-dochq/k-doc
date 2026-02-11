@@ -79,9 +79,10 @@ export async function getHospitalDetail(
 
     console.log(`[${new Date().toISOString()}] 병원 상세 조회: ${id}`);
 
-    const hospitalData = await prisma.hospital.findUnique({
+    const hospitalData = await prisma.hospital.findFirst({
       where: {
         id,
+        isActive: true,
       },
       select: {
         id: true,
@@ -171,7 +172,7 @@ export async function getHospitalDetail(
 export async function getAllHospitalIds(): Promise<string[]> {
   try {
     const hospitals = await prisma.hospital.findMany({
-      where: {},
+      where: { isActive: true },
       select: {
         id: true,
       },

@@ -15,7 +15,9 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
     const { category = 'ALL', limit = 2 } = options;
 
     // 카테고리별 필터링을 위한 where 조건 구성
-    const whereCondition: Prisma.HospitalWhereInput = {};
+    const whereCondition: Prisma.HospitalWhereInput = {
+      isActive: true,
+    };
 
     // 특정 카테고리가 선택된 경우 해당 카테고리를 가진 병원만 필터링
     if (category !== 'ALL') {
