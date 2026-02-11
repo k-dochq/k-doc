@@ -23,31 +23,19 @@ export async function getHospitalReviewStats(
   try {
     const { hospitalId } = request;
 
-    // 병원의 리뷰 통계 조회
+    // 병원의 리뷰 통계 조회 (숨김 처리된 리뷰 포함)
     const [reviewStats, reviewCount, reviews] = await Promise.all([
       prisma.review.aggregate({
-        where: {
-          hospitalId,
-          // isActive가 false인 리뷰는 제외 (null과 true는 포함)
-          isActive: { not: false },
-        },
+        where: { hospitalId },
         _avg: {
           rating: true,
         },
       }),
       prisma.review.count({
-        where: {
-          hospitalId,
-          // isActive가 false인 리뷰는 제외 (null과 true는 포함)
-          isActive: { not: false },
-        },
+        where: { hospitalId },
       }),
       prisma.review.findMany({
-        where: {
-          hospitalId,
-          // isActive가 false인 리뷰는 제외 (null과 true는 포함)
-          isActive: { not: false },
-        },
+        where: { hospitalId },
         select: {
           rating: true,
         },

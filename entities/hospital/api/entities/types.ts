@@ -87,6 +87,8 @@ export interface Hospital {
   district?: District | null; // 지역 정보
   displayLocationName?: Prisma.JsonValue | null; // 표시 지역명
   badge?: string[] | null; // 뱃지 배열
+  /** 병원 상세 전용: 노출 가능한 리뷰 개수 (isActive !== false). View All/플로팅 버튼 활성화 여부에 사용 */
+  activeReviewCount?: number;
 }
 
 export interface GetBestHospitalsRequest {

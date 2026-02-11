@@ -10,6 +10,8 @@ interface PopularReviewsTitleV2ForHospitalProps {
   lang: Locale;
   dict: Dictionary;
   titleOverride?: string;
+  /** 활성(노출) 리뷰가 1개 이상일 때만 View All 클릭 시 이동. 기본값 true(기존 동작 유지) */
+  hasVisibleReviews?: boolean;
 }
 
 export function PopularReviewsTitleV2ForHospital({
@@ -17,12 +19,16 @@ export function PopularReviewsTitleV2ForHospital({
   lang,
   dict,
   titleOverride,
+  hasVisibleReviews = true,
 }: PopularReviewsTitleV2ForHospitalProps) {
   const router = useLocalizedRouter();
 
   const handleViewAll = () => {
+    if (hasVisibleReviews === false) return;
     router.push(`/hospital/${hospitalId}/reviews`);
   };
+
+  const viewAllDisabled = hasVisibleReviews === false;
 
   return (
     <div className='flex w-full items-center justify-between px-5'>
@@ -31,9 +37,12 @@ export function PopularReviewsTitleV2ForHospital({
       </h2>
 
       <button
+        type='button'
         onClick={handleViewAll}
-        className='flex items-center gap-0.5 transition-opacity hover:opacity-80'
+        disabled={viewAllDisabled}
+        className='flex items-center gap-0.5 transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-60'
         aria-label={dict.popularReviews.viewAll}
+        aria-disabled={viewAllDisabled}
       >
         <span className='text-sm leading-5 font-medium text-neutral-500'>
           {dict.popularReviews.viewAll}
