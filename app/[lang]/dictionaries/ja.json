@@ -1992,11 +1992,11 @@
     "emailInquiry": {
       "title": "メール問い合わせ",
       "description": "サービスご利用中に不便がある場合は、下記メールにてお問い合わせいただきありがとうございます。",
-      "button": "Send Email Inquiry"
+      "button": "メールでお問い合わせ"
     },
     "partnershipInquiry": {
       "title": "K-DOC入店申請相談",
-      "button": "Apply for Partnership"
+      "button": "パートナーシップに申し込む"
     },
     "gradientText": {
       "line1": "海外患者を獲得",
