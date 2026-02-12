@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { SUPPORTED_LOCALES, type Locale } from 'shared/config';
+import { type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import {
   DonationAfterCarouselSection,
@@ -8,8 +8,6 @@ import {
   DonationImagesListSection,
   DonationVideoSection,
 } from '@/widgets/donation-video';
-
-const DONATION_WATER_LOCALES: Locale[] = [...SUPPORTED_LOCALES];
 
 /** donation_water 이미지 폴더가 실제로 존재하는 로케일. 없으면 en 폴백 */
 const DONATION_WATER_HAS_FOLDER: Locale[] = ['en', 'ko', 'th', 'zh-Hant'];
