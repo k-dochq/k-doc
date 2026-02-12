@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { type Locale } from 'shared/config';
+import { SUPPORTED_LOCALES, type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import {
   DonationAfterCarouselSection,
@@ -9,10 +9,13 @@ import {
   DonationVideoSection,
 } from '@/widgets/donation-video';
 
-const DONATION_WATER_LOCALES: Locale[] = ['ko'];
+const DONATION_WATER_LOCALES: Locale[] = [...SUPPORTED_LOCALES];
+
+/** donation_water 이미지 폴더가 실제로 존재하는 로케일. 없으면 en 폴백 */
+const DONATION_WATER_HAS_FOLDER: Locale[] = ['en', 'ko', 'th', 'zh-Hant'];
 
 function getDonationImageLang(lang: Locale): string {
-  return DONATION_WATER_LOCALES.includes(lang) ? lang : 'ko';
+  return DONATION_WATER_HAS_FOLDER.includes(lang) ? lang : 'en';
 }
 
 interface DonationPageProps {
@@ -40,12 +43,8 @@ export default async function DonationPage({ params }: DonationPageProps) {
     alt: `Donation after ${i}`,
   }));
   const commonListBase = '/images/event/donation_water/common/donation_11_images_list';
-  const list1ImageSrcs = [1, 2, 3, 4, 5].map(
-    (i) => `${commonListBase}/list_1/list1_img${i}.png`
-  );
-  const list2ImageSrcs = [1, 2, 3, 4, 5].map(
-    (i) => `${commonListBase}/list_2/list2_img${i}.png`
-  );
+  const list1ImageSrcs = [1, 2, 3, 4, 5].map((i) => `${commonListBase}/list_1/list1_img${i}.png`);
+  const list2ImageSrcs = [1, 2, 3, 4, 5].map((i) => `${commonListBase}/list_2/list2_img${i}.png`);
   const donation11BgSrc = `/images/event/donation_water/${imageLang}/donation_11_images_bg.png`;
   const donation12Src = `/images/event/donation_water/${imageLang}/donation_12_qna.png`;
 
@@ -58,63 +57,60 @@ export default async function DonationPage({ params }: DonationPageProps) {
         alt="Change an African Child's Life"
         width={750}
         height={820}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
       <Image
         src={illustSrc}
         alt="Change an African Child's Life - illustration"
         width={750}
         height={600}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
       <DonationVideoSection videoSrc={videoSrc} />
       <Image
         src={donation04Src}
-        alt="Why donation"
+        alt='Why donation'
         width={750}
         height={1678}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
       <Image
         src={donation05Src}
-        alt="Making process"
+        alt='Making process'
         width={750}
         height={1250}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
       <Image
         src={donation06Src}
-        alt="Carousel title"
+        alt='Carousel title'
         width={750}
         height={474}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
       <DonationCarouselSection images={donationCarouselImages} />
       <Image
         src={donation08Src}
-        alt="After title"
+        alt='After title'
         width={750}
         height={484}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
       <DonationAfterCarouselSection images={donation09Images} />
       <Image
         src={donation11BgSrc}
-        alt="Donation 11 background"
+        alt='Donation 11 background'
         width={750}
         height={1828}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
-      <DonationImagesListSection
-        list1ImageSrcs={list1ImageSrcs}
-        list2ImageSrcs={list2ImageSrcs}
-      />
+      <DonationImagesListSection list1ImageSrcs={list1ImageSrcs} list2ImageSrcs={list2ImageSrcs} />
       <Image
         src={donation12Src}
-        alt="Donation QnA"
+        alt='Donation QnA'
         width={750}
         height={1200}
-        className="w-full h-auto"
+        className='h-auto w-full'
       />
       <DonationFloatingButton />
     </div>
