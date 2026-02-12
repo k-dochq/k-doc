@@ -88,6 +88,33 @@ export function BubbleSVG({ locale, className = '', text }: BubbleSVGProps) {
     );
   }
 
+  if (locale === 'ru') {
+    return (
+      <div className={`relative ${className}`} style={{ width: '217px', height: '40px' }}>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='217'
+          height='40'
+          viewBox='0 0 217 40'
+          fill='none'
+          className='absolute inset-0'
+        >
+          <path
+            d='M0 23.4667C0 14.3356 8.0931 6.93333 18.0764 6.93333H198.508C208.491 6.93333 216.584 14.3356 216.584 23.4667C216.584 32.5978 208.491 40 198.508 40H18.0764C8.0931 40 0 32.5978 0 23.4667Z'
+            fill='white'
+          />
+          <path d='M23.9075 0V10.6667H6.99733L23.9075 0Z' fill='white' />
+        </svg>
+        <span
+          className='absolute top-[54%] left-1/2 w-[197px] -translate-x-1/2 -translate-y-1/2 text-center text-[16px] leading-[130%] font-semibold break-words text-[#FF5DCA]'
+          style={{ letterSpacing: '-0.32px' }}
+        >
+          {text}
+        </span>
+      </div>
+    );
+  }
+
   if (locale === 'ar') {
     return (
       <div className={`relative ${className}`} style={{ width: '188px', height: '40px' }}>

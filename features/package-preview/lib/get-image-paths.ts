@@ -25,7 +25,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/main_hi.png',
     tl: '/images/event/package/main_tl.png',
     ar: '/images/event/package/main_ar.png',
-    ru: '/images/event/package/main_en.png',
+    ru: '/images/event/package/main_ru.png',
   },
   price: {
     ko: '/images/event/package/price_ko.png',
@@ -36,7 +36,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/price_hi.png',
     tl: '/images/event/package/price_tl.png',
     ar: '/images/event/package/price_ar.png',
-    ru: '/images/event/package/price_en.png',
+    ru: '/images/event/package/price_ru.png',
   },
   notice: {
     ko: '/images/event/package/notice_ko.png',
@@ -47,7 +47,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/notice_hi.png',
     tl: '/images/event/package/notice_tl.png',
     ar: '/images/event/package/notice_ar.png',
-    ru: '/images/event/package/notice_en.png',
+    ru: '/images/event/package/notice_ru.png',
   },
   what: {
     ko: '/images/event/package/what_ko.png',
@@ -58,7 +58,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/what_hi.png',
     tl: '/images/event/package/what_tl.png',
     ar: '/images/event/package/what_ar.png',
-    ru: '/images/event/package/what_en.png',
+    ru: '/images/event/package/what_ru.png',
   },
   why: {
     ko: '/images/event/package/why_ko.png',
@@ -69,7 +69,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/why_hi.png',
     tl: '/images/event/package/why_tl.png',
     ar: '/images/event/package/why_ar.png',
-    ru: '/images/event/package/why_en.png',
+    ru: '/images/event/package/why_ru.png',
   },
   experience: {
     ko: '/images/event/package/experience_ko.png',
@@ -80,7 +80,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/experience_hi.png',
     tl: '/images/event/package/experience_tl.png',
     ar: '/images/event/package/experience_ar.png',
-    ru: '/images/event/package/experience_en.png',
+    ru: '/images/event/package/experience_ru.png',
   },
   review: {
     ko: '/images/event/package/review_ko.png',
@@ -91,7 +91,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/review_hi.png',
     tl: '/images/event/package/review_tl.png',
     ar: '/images/event/package/review_ar.png',
-    ru: '/images/event/package/review_en.png',
+    ru: '/images/event/package/review_ru.png',
   },
   how: {
     ko: '/images/event/package/how_ko.png',
@@ -102,7 +102,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/how_hi.png',
     tl: '/images/event/package/how_tl.png',
     ar: '/images/event/package/how_ar.png',
-    ru: '/images/event/package/how_en.png',
+    ru: '/images/event/package/how_ru.png',
   },
   support: {
     ko: '/images/event/package/support_ko.png',
@@ -113,7 +113,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/support_hi.png',
     tl: '/images/event/package/support_tl.png',
     ar: '/images/event/package/support_ar.png',
-    ru: '/images/event/package/support_en.png',
+    ru: '/images/event/package/support_ru.png',
   },
   faq: {
     ko: '/images/event/package/faq_ko.png',
@@ -124,7 +124,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/faq_hi.png',
     tl: '/images/event/package/faq_tl.png',
     ar: '/images/event/package/faq_ar.png',
-    ru: '/images/event/package/faq_en.png',
+    ru: '/images/event/package/faq_ru.png',
   },
   table: {
     ko: '/images/event/package/table_ko.png',
@@ -135,7 +135,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/table_hi.png',
     tl: '/images/event/package/table_tl.png',
     ar: '/images/event/package/table_ar.png',
-    ru: '/images/event/package/table_en.png',
+    ru: '/images/event/package/table_ru.png',
   },
   notice2: {
     ko: '/images/event/package/notice2_ko.png',
@@ -146,7 +146,7 @@ const IMAGE_PATHS: Record<PackageImageType, Record<Locale, string>> = {
     hi: '/images/event/package/notice2_hi.png',
     tl: '/images/event/package/notice2_tl.png',
     ar: '/images/event/package/notice2_ar.png',
-    ru: '/images/event/package/notice2_en.png',
+    ru: '/images/event/package/notice2_ru.png',
   },
   bubble: {
     ko: '/images/event/package/bubble_en.svg', // ko용 파일이 없으면 en 사용
