@@ -10,6 +10,7 @@ import GuaranteeZhHant from '../guarantee_zh_Hant';
 import GuaranteeJa from '../guarantee_ja';
 import GuaranteeHi from '../guarantee_hi';
 import GuaranteeAr from '../guarantee_ar';
+import GuaranteeRu from '../guarantee_ru';
 
 interface HospitalDetailRegistrationPromptV2Props {
   lang: Locale;
@@ -42,6 +43,8 @@ export function HospitalDetailRegistrationPromptV2({
         return GuaranteeHi;
       case 'ar':
         return GuaranteeAr;
+      case 'ru':
+        return GuaranteeRu;
       case 'tl':
       case 'en':
       case 'ko':
