@@ -23,7 +23,7 @@ export function LoginContentV2({ lang, dict, redirectTo }: LoginContentV2Props) 
     hi: { src: '/images/premium/premium_hi.png', width: 312, height: 269 },
     tl: { src: '/images/premium/premium_en.png', width: 312, height: 269 },
     ar: { src: '/images/premium/premium_ar.png', width: 312, height: 269 },
-    ru: { src: '/images/premium/premium_en.png', width: 312, height: 269 },
+    ru: { src: '/images/premium/premium_ru.png', width: 312, height: 269 },
   };
 
   const imageConfig = imageConfigByLocale[lang];
