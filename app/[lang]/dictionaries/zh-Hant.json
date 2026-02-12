@@ -1992,11 +1992,11 @@
     "emailInquiry": {
       "title": "電子郵件諮詢",
       "description": "如果您在使用服務過程中遇到任何不便，請透過以下電子郵件地址與我們聯絡。",
-      "button": "Send Email Inquiry"
+      "button": "寄送電子郵件諮詢"
     },
     "partnershipInquiry": {
       "title": "K-DOC商店申請諮詢",
-      "button": "Apply for Partnership"
+      "button": "申請合作"
     },
     "gradientText": {
       "line1": "吸引國際患者",

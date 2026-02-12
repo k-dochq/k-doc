@@ -1993,11 +1993,11 @@
     "emailInquiry": {
       "title": "สอบถามทางอีเมล",
       "description": "หากคุณพบความไม่สะดวกในการใช้บริการ กรุณาติดต่อเราผ่านอีเมลด้านล่าง",
-      "button": "Send Email Inquiry"
+      "button": "ส่งคำถามทางอีเมล"
     },
     "partnershipInquiry": {
       "title": "ปรึกษาการสมัครเป็นพาร์ทเนอร์ K-DOC",
-      "button": "Apply for Partnership"
+      "button": "สมัครเป็นพาร์ทเนอร์"
     },
     "gradientText": {
       "line1": "รับผู้ป่วยต่างชาติ",

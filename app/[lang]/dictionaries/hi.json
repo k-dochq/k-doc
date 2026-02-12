@@ -1992,11 +1992,11 @@
     "emailInquiry": {
       "title": "ईमेल पूछताछ",
       "description": "यदि आपको सेवा का उपयोग करते समय कोई असुविधा होती है, तो कृपया नीचे दिए गए ईमेल पते के माध्यम से हमसे संपर्क करें।",
-      "button": "Send Email Inquiry"
+      "button": "ईमेल पूछताछ भेजें"
     },
     "partnershipInquiry": {
       "title": "के-डॉक स्टोर आवेदन परामर्श",
-      "button": "Apply for Partnership"
+      "button": "साझेदारी के लिए आवेदन करें"
     },
     "gradientText": {
       "line1": "अंतर्राष्ट्रीय रोगी प्राप्त करें",
