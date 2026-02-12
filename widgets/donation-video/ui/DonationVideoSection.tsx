@@ -34,7 +34,7 @@ export function DonationVideoSection({ videoSrc }: DonationVideoSectionProps) {
       <button
         type='button'
         onClick={handleToggleMute}
-        className='absolute left-[37px] bottom-[40px] flex size-[60px] items-center justify-center p-0 outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black'
+        className='absolute left-[37px] bottom-[40px] flex size-[30px] items-center justify-center p-0 outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black'
         aria-label={isMuted ? 'Unmute' : 'Mute'}
       >
         {isMuted ? <SpeakerMutedIcon /> : <SpeakerUnmutedIcon />}
