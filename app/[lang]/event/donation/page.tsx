@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { type Locale } from 'shared/config';
+import { getDictionary } from '../../dictionaries';
+import { SUPPORTED_LOCALES, type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import {
   DonationAfterCarouselSection,
@@ -9,8 +10,8 @@ import {
   DonationVideoSection,
 } from '@/widgets/donation-video';
 
-/** donation_water 이미지 폴더가 실제로 존재하는 로케일. 없으면 en 폴백 */
-const DONATION_WATER_HAS_FOLDER: Locale[] = ['en', 'ko', 'th', 'zh-Hant'];
+/** donation_water 이미지 경로에 사용할 로케일 (전체). 폴더 없으면 en 폴백 */
+const DONATION_WATER_HAS_FOLDER: Locale[] = [...SUPPORTED_LOCALES];
 
 function getDonationImageLang(lang: Locale): string {
   return DONATION_WATER_HAS_FOLDER.includes(lang) ? lang : 'en';
@@ -22,6 +23,7 @@ interface DonationPageProps {
 
 export default async function DonationPage({ params }: DonationPageProps) {
   const { lang } = await params;
+  const dict = await getDictionary(lang);
   const imageLang = getDonationImageLang(lang);
   const mainImageSrc = `/images/event/donation_water/${imageLang}/donation_01_main.png`;
   const illustSrc = `/images/event/donation_water/${imageLang}/donation_02_illust.png`;
@@ -110,7 +112,7 @@ export default async function DonationPage({ params }: DonationPageProps) {
         height={1200}
         className='h-auto w-full'
       />
-      <DonationFloatingButton />
+      <DonationFloatingButton buttonText={dict.donation.floatingButton} />
     </div>
   );
 }

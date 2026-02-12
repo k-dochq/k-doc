@@ -2280,5 +2280,8 @@
       "noPaymentCancel": "Kinansela ang reserbasyon dahil hindi nakumpleto ang pagbabayad.",
       "processing": "Matagumpay na natanggap ang pagkansela ng iyong reserbasyon. Ang mga pagkansela ng bayad (mga refund) ay ipoproseso nang sunud-sunod ayon sa proseso ng pag-apruba ng kumpanya ng pagbabayad, at aabisuhan ka nang hiwalay pagkatapos makumpleto."
     }
+  },
+  "donation": {
+    "floatingButton": "Find Clinics & Consult"
   }
 }
