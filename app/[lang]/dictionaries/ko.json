@@ -2280,5 +2280,8 @@
       "noPaymentCancel": "결제가 완료되지 않아 예약만 취소되었습니다.",
       "processing": "예약 취소가 정상적으로 접수되었습니다.\n\n결제 취소(환불)는 결제사 승인 절차에 따라 순차적으로 처리되며,\n완료 시 별도 알림을 드리겠습니다."
     }
+  },
+  "donation": {
+    "floatingButton": "Find Clinics & Consult"
   }
 }
