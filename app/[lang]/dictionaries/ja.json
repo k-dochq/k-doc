@@ -208,10 +208,10 @@
     },
     "sort": {
       "popular": "人気順",
-      "recommended": "推奨順",
-      "latest": "最新順",
-      "ratingHigh": "星の高い順",
-      "ratingLow": "星の低い順"
+      "recommended": "おすすめ順",
+      "latest": "新着順",
+      "ratingHigh": "評価の高い順",
+      "ratingLow": "評価の低い順"
     }
   },
   "reviewWrite": {
@@ -563,8 +563,8 @@
   },
   "hospitalSort": {
     "popular": "人気順",
-    "recommended": "推奨順",
-    "newest": "新規病院順"
+    "recommended": "おすすめ順",
+    "newest": "新着順"
   },
   "review": {
     "like": {

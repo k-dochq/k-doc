@@ -1,7 +1,7 @@
 {
   "common": {
     "confirm": "查看",
-    "cancel": "消除",
+    "cancel": "取消",
     "today": "今天"
   },
   "quickMenu": {
@@ -207,11 +207,11 @@
       "hairTransplant": "植髮"
     },
     "sort": {
-      "popular": "按受歡迎程度排序",
-      "recommended": "受到推崇的",
-      "latest": "最新的",
-      "ratingHigh": "按評分最高排序",
-      "ratingLow": "按評分最低排序"
+      "popular": "熱門",
+      "recommended": "推薦",
+      "latest": "最新",
+      "ratingHigh": "評分最高",
+      "ratingLow": "評分最低"
     }
   },
   "reviewWrite": {
@@ -562,9 +562,9 @@
     }
   },
   "hospitalSort": {
-    "popular": "按受歡迎程度排序",
-    "recommended": "受到推崇的",
-    "newest": "新醫院命令"
+    "popular": "熱門",
+    "recommended": "推薦",
+    "newest": "最新"
   },
   "review": {
     "like": {
