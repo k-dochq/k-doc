@@ -12,7 +12,7 @@ interface LoginEmailLinksV2Props {
 
 export function LoginEmailLinksV2({ redirectTo, dict }: LoginEmailLinksV2Props) {
   return (
-    <div className='mt-6 flex items-center justify-center gap-6'>
+    <div className='mt-6 flex max-w-[335px] items-center justify-center gap-6'>
       <LocaleLink
         href={
           redirectTo
@@ -24,7 +24,7 @@ export function LoginEmailLinksV2({ redirectTo, dict }: LoginEmailLinksV2Props) 
             window.localStorage.setItem('kdoc_recent_login_method', 'email');
           }
         }}
-        className='text-sm font-medium text-[#737373] underline underline-offset-[3px]'
+        className='text-center text-sm font-medium text-[#737373] underline underline-offset-[3px]'
       >
         {dict.auth?.login?.emailLogin || '이메일로 시작'}
       </LocaleLink>
@@ -33,7 +33,7 @@ export function LoginEmailLinksV2({ redirectTo, dict }: LoginEmailLinksV2Props) 
 
       <LocaleLink
         href='/auth/signup'
-        className='text-sm font-medium text-[#737373] underline underline-offset-[3px]'
+        className='text-center text-sm font-medium text-[#737373] underline underline-offset-[3px]'
       >
         {dict.auth?.login?.signupButton || '이메일로 가입'}
       </LocaleLink>
