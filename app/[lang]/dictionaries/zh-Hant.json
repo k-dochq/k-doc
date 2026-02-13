@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "已經有帳戶？",
       "loginLink": "登入",
       "termsAgreement": {
-        "title": "[\"K-DOC\", \"請同意\", \"以使用服務\"]",
+        "title": ["K-DOC", "請同意", "以使用服務"],
         "allAgreed": "全部同意",
         "age14Plus": "我已滿 14 歲。",
         "termsOfService": "服務條款（必填）",

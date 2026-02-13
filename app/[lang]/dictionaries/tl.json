@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": "[\"K-DOC\", \"Please agree to\", \"use the service\"]",
+        "title": ["K-DOC", "Please agree to", "use the service"],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
