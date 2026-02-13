@@ -207,11 +207,11 @@
       "hairTransplant": "زراعة الشعر"
     },
     "sort": {
-      "popular": "فرز حسب الشعبية",
-      "recommended": "مُستَحسَن",
-      "latest": "أحدث",
-      "ratingHigh": "رتب حسب أعلى تقييم",
-      "ratingLow": "رتب حسب أقل تقييم"
+      "popular": "الأكثر شيوعًا",
+      "recommended": "موصى به",
+      "latest": "الأحدث",
+      "ratingHigh": "الأعلى تقييمًا",
+      "ratingLow": "الأدنى تقييمًا"
     }
   },
   "reviewWrite": {
@@ -562,9 +562,9 @@
     }
   },
   "hospitalSort": {
-    "popular": "فرز حسب الشعبية",
-    "recommended": "مُستَحسَن",
-    "newest": "أمر جديد للمستشفى"
+    "popular": "الأكثر شيوعًا",
+    "recommended": "موصى به",
+    "newest": "الأحدث"
   },
   "review": {
     "like": {

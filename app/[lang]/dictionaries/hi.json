@@ -208,10 +208,10 @@
     },
     "sort": {
       "popular": "लोकप्रिय",
-      "recommended": "सिफ़ारिश की गई",
+      "recommended": "अनुशंसित",
       "latest": "नवीनतम",
-      "ratingHigh": "सबसे अधिक रेटिंग",
-      "ratingLow": "सबसे कम रेटिंग"
+      "ratingHigh": "उच्चतम रेटिंग",
+      "ratingLow": "न्यूनतम रेटिंग"
     }
   },
   "reviewWrite": {
@@ -563,7 +563,7 @@
   },
   "hospitalSort": {
     "popular": "लोकप्रिय",
-    "recommended": "सिफ़ारिश की गई",
+    "recommended": "अनुशंसित",
     "newest": "नवीनतम"
   },
   "review": {
