@@ -31,14 +31,14 @@ export function ReservationHospitalInfo({
 
       {/* 병원 이름 및 지역 */}
       <div className='min-w-0 flex-1 flex flex-col gap-0.5'>
-        <p className='truncate text-sm leading-5 font-semibold text-[#404040]'>{hospitalName}</p>
+        <p className='line-clamp-2 text-sm leading-5 font-semibold text-[#404040]'>{hospitalName}</p>
         {displayLocationName && (
           <div className='flex min-w-0 items-center gap-1'>
             <p className='shrink-0 text-xs leading-4 font-medium text-[#a3a3a3]'>
               {dict.consultation?.appointment?.region || '지역'}
             </p>
             <div className='h-[10px] w-px shrink-0 bg-[#A3A3A3]' />
-            <p className='min-w-0 truncate pl-0.5 text-xs leading-4 font-medium text-[#a3a3a3]'>
+            <p className='line-clamp-2 min-w-0 pl-0.5 text-xs leading-4 font-medium text-[#a3a3a3]'>
               {displayLocationName}
             </p>
           </div>

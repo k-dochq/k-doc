@@ -31,7 +31,7 @@ export function ReservationStatusBadge({
   if (isCancelled) {
     return (
       <div className='flex min-w-0 items-center justify-center rounded-full bg-[#e5e5e5] px-3 py-1'>
-        <p className='truncate text-sm leading-5 font-semibold text-[#737373]'>
+        <p className='line-clamp-2 text-sm leading-5 font-semibold text-[#737373]'>
           {dict?.consultation?.reservationDetail?.cancelled || '예약 취소됨'}
         </p>
       </div>
@@ -43,7 +43,7 @@ export function ReservationStatusBadge({
     const statusBadge = getReservationStatusBadge(reservationDate, reservationTime, lang);
     return (
       <div className='flex min-w-0 items-center justify-center rounded-full bg-primary-900 px-3 py-1'>
-        <p className='truncate text-sm leading-5 font-semibold text-white'>{statusBadge}</p>
+        <p className='line-clamp-2 text-sm leading-5 font-semibold text-white'>{statusBadge}</p>
       </div>
     );
   }
@@ -53,7 +53,7 @@ export function ReservationStatusBadge({
     const statusBadge = getReservationStatusBadge(reservationDate, reservationTime, lang);
     return (
       <div className='flex min-w-0 items-center justify-center rounded-full bg-[#e5e5e5] px-3 py-1'>
-        <p className='truncate text-sm leading-5 font-semibold text-[#737373]'>{statusBadge}</p>
+        <p className='line-clamp-2 text-sm leading-5 font-semibold text-[#737373]'>{statusBadge}</p>
       </div>
     );
   }
