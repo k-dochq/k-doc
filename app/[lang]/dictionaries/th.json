@@ -310,12 +310,12 @@
       "loginButton": "เข้าสู่ระบบ",
       "laterButton": "ทำภายหลัง",
       "signupButton": "สมัครด้วยอีเมล",
-      "requiredMessage": "โปรดเข้าสู่ระบบ\nเพื่อใช้บริการ",
+      "requiredMessage": "โปรดเข้าสู่ระบบ\r\nเพื่อใช้บริการ",
       "socialLogin": "เข้าสู่ระบบด้วยโซเชียล",
       "startIn3Seconds": "เริ่มต้นภายใน 3 วินาที",
       "googleLogin": "ดำเนินการต่อด้วย Google",
       "appleLogin": "ดำเนินการต่อด้วย Apple",
-      "kakaoLogin": "เข้าสู่ระบบด้วย Kakao",
+      "kakaoLogin": "ดำเนินการต่อด้วย Kakao",
       "emailLogin": "ดำเนินการต่อด้วยอีเมล",
       "recentLogin": "การเข้าสู่ระบบล่าสุด",
       "forgotPassword": "ลืมรหัสผ่าน?",
@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "มีบัญชีอยู่แล้วใช่ไหม?",
       "loginLink": "เข้าสู่ระบบ",
       "termsAgreement": {
-        "title": ["K-DOC", "โปรดตกลง", "เพื่อใช้บริการ"],
+        "title": "[\"K-DOC\", \"โปรดตกลง\", \"เพื่อใช้บริการ\"]",
         "allAgreed": "ยอมรับทั้งหมด",
         "age14Plus": "ฉันอายุ 14 ปีขึ้นไป",
         "termsOfService": "ข้อกำหนดการใช้งาน (จำเป็น)",
@@ -463,7 +463,7 @@
       "loginLink": "เข้าสู่ระบบ",
       "resetError": "เกิดข้อผิดพลาดขณะรีเซ็ตรหัสผ่าน",
       "placeholders": {
-        "email": "your-email@example.com"
+        "email": "กรอกอีเมลของคุณ"
       },
       "errors": {
         "emailRequired": "กรุณากรอกอีเมลของคุณ",
@@ -1763,7 +1763,10 @@
             },
             {
               "category": "วิธีการสอบถามและชดเชยความเสียหายที่เกี่ยวข้อง",
-              "content": ["แผนกบริการที่รับผิดชอบ: CS", "ติดต่อ: all@k-doc.kr"]
+              "content": [
+                "แผนกบริการที่รับผิดชอบ: CS",
+                "ติดต่อ: all@k-doc.kr"
+              ]
             }
           ]
         }

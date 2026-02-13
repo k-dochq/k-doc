@@ -310,12 +310,12 @@
       "loginButton": "Login",
       "laterButton": "Do Later",
       "signupButton": "Register with Email",
-      "requiredMessage": "Please log in\nto use the service.",
+      "requiredMessage": "Please log in\r\nto use the service.",
       "socialLogin": "Social Login",
       "startIn3Seconds": "Get started in 3 seconds",
       "googleLogin": "Continue with Google",
       "appleLogin": "Continue with Apple",
-      "kakaoLogin": "Login with Kakao",
+      "kakaoLogin": "Continue with Kakao",
       "emailLogin": "Continue with Email",
       "recentLogin": "Recent login",
       "forgotPassword": "Forgot your password?",
@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": "[\"K-DOC\", \"Please agree to\", \"use the service\"]",
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -463,7 +463,7 @@
       "loginLink": "Login",
       "resetError": "An error occurred while resetting password",
       "placeholders": {
-        "email": "your-email@example.com"
+        "email": "Enter your email"
       },
       "errors": {
         "emailRequired": "Please enter your email.",
@@ -1763,7 +1763,10 @@
             },
             {
               "category": "Related Inquiries and Methods for Redress",
-              "content": ["Service department in charge: CS", "Contact: all@k-doc.kr"]
+              "content": [
+                "Service department in charge: CS",
+                "Contact: all@k-doc.kr"
+              ]
             }
           ]
         }

@@ -17,7 +17,9 @@
     "clean-unused": "tsx scripts/find-unused-files.ts --delete",
     "analyze-unused": "tsx scripts/find-unused-files.ts --json",
     "compress-image": "tsx scripts/compress-image.ts",
-    "transform-review": "tsx scripts/transform-review.ts"
+    "transform-review": "tsx scripts/transform-review.ts",
+    "sync-dicts": "tsx scripts/sync-dictionaries-from-xlsx.ts",
+    "read-xlsx": "tsx scripts/read-translation-xlsx.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.71",
@@ -82,6 +84,7 @@
     "sharp": "^0.34.3",
     "tailwindcss": "^4",
     "tsx": "^4.20.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "xlsx": "^0.18.5"
   }
 }

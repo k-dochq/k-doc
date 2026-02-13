@@ -310,12 +310,12 @@
       "loginButton": "登入",
       "laterButton": "稍後再做",
       "signupButton": "使用電子郵件註冊",
-      "requiredMessage": "請登入\n以使用服務。",
+      "requiredMessage": "請登入\r\n以使用服務。",
       "socialLogin": "社群登入",
       "startIn3Seconds": "3 秒快速開始",
       "googleLogin": "使用 Google 繼續",
       "appleLogin": "使用 Apple 繼續",
-      "kakaoLogin": "使用 Kakao 登入",
+      "kakaoLogin": "使用 Kakao 繼續",
       "emailLogin": "使用電子郵件繼續",
       "recentLogin": "最近登入",
       "forgotPassword": "忘記密碼？",
@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "已經有帳戶？",
       "loginLink": "登入",
       "termsAgreement": {
-        "title": ["K-DOC", "請同意", "以使用服務"],
+        "title": "[\"K-DOC\", \"請同意\", \"以使用服務\"]",
         "allAgreed": "全部同意",
         "age14Plus": "我已滿 14 歲。",
         "termsOfService": "服務條款（必填）",
@@ -463,7 +463,7 @@
       "loginLink": "登入",
       "resetError": "重設密碼時發生錯誤",
       "placeholders": {
-        "email": "your-email@example.com"
+        "email": "請輸入您的電子郵件"
       },
       "errors": {
         "emailRequired": "請輸入你的電子郵件。",
@@ -1148,7 +1148,11 @@
         },
         {
           "content": "公司於服務使用申請符合下列各款時，得保留核准至核准限制事由解除：",
-          "subItems": ["公司設備不足時", "公司技術上有障礙時", "其他因可歸責於公司致使用核准困難時"]
+          "subItems": [
+            "公司設備不足時",
+            "公司技術上有障礙時",
+            "其他因可歸責於公司致使用核准困難時"
+          ]
         },
         "公司於申請人為相關法令所定未成年人時，得依服務別指引保留核准。",
         "公司於會員註冊完成後發現第2項各款事由時，得撤回使用核准。"
@@ -1758,7 +1762,10 @@
             },
             {
               "category": "相關詢問及損害救濟方法",
-              "content": ["服務負責部門：CS", "詢問處：all@k-doc.kr"]
+              "content": [
+                "服務負責部門：CS",
+                "詢問處：all@k-doc.kr"
+              ]
             }
           ]
         }

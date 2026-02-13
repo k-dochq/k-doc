@@ -310,12 +310,12 @@
       "loginButton": "تسجيل الدخول",
       "laterButton": "لاحقًا",
       "signupButton": "التسجيل بالبريد الإلكتروني",
-      "requiredMessage": "يرجى تسجيل الدخول\nلاستخدام الخدمة.",
+      "requiredMessage": "يرجى تسجيل الدخول\r\nلاستخدام الخدمة.",
       "socialLogin": "تسجيل الدخول عبر الشبكات الاجتماعية",
       "startIn3Seconds": "ابدأ خلال 3 ثوانٍ",
       "googleLogin": "المتابعة باستخدام Google",
       "appleLogin": "المتابعة باستخدام Apple",
-      "kakaoLogin": "تسجيل الدخول عبر Kakao",
+      "kakaoLogin": "المتابعة باستخدام Kakao",
       "emailLogin": "المتابعة بالبريد الإلكتروني",
       "recentLogin": "آخر تسجيل دخول",
       "forgotPassword": "هل نسيت كلمة المرور؟",
@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "لديك حساب بالفعل؟",
       "loginLink": "تسجيل الدخول",
       "termsAgreement": {
-        "title": ["K-DOC", "يرجى الموافقة على", "لاستخدام الخدمة"],
+        "title": "[\"K-DOC\", \"يرجى الموافقة على\", \"لاستخدام الخدمة\"]",
         "allAgreed": "الموافقة على الكل",
         "age14Plus": "عمري 14 عامًا أو أكثر.",
         "termsOfService": "شروط الخدمة (إلزامي)",
@@ -463,7 +463,7 @@
       "loginLink": "تسجيل الدخول",
       "resetError": "حدث خطأ أثناء إعادة تعيين كلمة المرور",
       "placeholders": {
-        "email": "your-email@example.com"
+        "email": "أدخل بريدك الإلكتروني"
       },
       "errors": {
         "emailRequired": "يرجى إدخال بريدك الإلكتروني.",
@@ -1762,7 +1762,10 @@
             },
             {
               "category": "الاستفسارات ذات الصلة وطرق تخفيف الأضرار",
-              "content": ["قسم الخدمات: CS", "للتواصل: all@k-doc.kr"]
+              "content": [
+                "قسم الخدمات: CS",
+                "للتواصل: all@k-doc.kr"
+              ]
             }
           ]
         }

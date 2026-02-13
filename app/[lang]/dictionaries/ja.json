@@ -310,12 +310,12 @@
       "loginButton": "ログイン",
       "laterButton": "あとで",
       "signupButton": "メールで登録",
-      "requiredMessage": "ログインして\nサービスをご利用ください。",
+      "requiredMessage": "ログインして\r\nサービスをご利用ください。",
       "socialLogin": "ソーシャルログイン",
       "startIn3Seconds": "3秒で開始",
       "googleLogin": "Googleで続行",
       "appleLogin": "Appleで続行",
-      "kakaoLogin": "Kakaoでログイン",
+      "kakaoLogin": "Kakaoで続行",
       "emailLogin": "メールで続行",
       "recentLogin": "最近のログイン",
       "forgotPassword": "パスワードをお忘れですか？",
@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
       "loginLink": "ログイン",
       "termsAgreement": {
-        "title": ["K-DOC", "同意して", "サービスをご利用ください"],
+        "title": "[\"K-DOC\", \"同意して\", \"サービスをご利用ください\"]",
         "allAgreed": "すべて同意",
         "age14Plus": "14歳以上です。",
         "termsOfService": "利用規約（必須）",
@@ -463,7 +463,7 @@
       "loginLink": "ログイン",
       "resetError": "パスワード再設定中にエラーが発生しました",
       "placeholders": {
-        "email": "your-email@example.com"
+        "email": "メールアドレスを入力"
       },
       "errors": {
         "emailRequired": "メールアドレスを入力してください。",
@@ -1762,7 +1762,10 @@
             },
             {
               "category": "関連問い合わせおよび被害救済方法",
-              "content": ["サービス担当部門: CS", "問い合わせ先: all@k-doc.kr"]
+              "content": [
+                "サービス担当部門: CS",
+                "問い合わせ先: all@k-doc.kr"
+              ]
             }
           ]
         }
