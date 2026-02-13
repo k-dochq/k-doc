@@ -18,8 +18,7 @@ interface HospitalInfoCardProps {
 
 export function HospitalInfoCard({ hospital, lang }: HospitalInfoCardProps) {
   const hospitalName = extractLocalizedText(hospital.name as Prisma.JsonValue, lang);
-  // 주소는 영어만 표시
-  const hospitalAddress = extractLocalizedText(hospital.address as Prisma.JsonValue, 'en');
+  const hospitalAddress = extractLocalizedText(hospital.address as Prisma.JsonValue, lang);
 
   return (
     <div className='rounded-xl border border-white bg-white/50 p-4 shadow-sm backdrop-blur-sm'>
