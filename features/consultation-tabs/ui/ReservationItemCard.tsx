@@ -27,21 +27,21 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
 
   // 병원 정보
   const hospitalName = extractLocalizedText(reservation.hospital.name, lang);
-  // 주소는 영어만 표시
+  // 주소는 영어만 표시 (지도/복사용)
   const address = extractLocalizedText(
     reservation.hospital.directions || reservation.hospital.address,
     'en',
   );
-  // 표시지역명 우선, 없으면 district.displayName, 그 다음 district.name (영어만 표시)
+  // 표시지역명 우선, 없으면 district.displayName, 그 다음 district.name (현재 언어로 표시)
   const displayLocationName = reservation.hospital.displayLocationName
-    ? extractLocalizedText(reservation.hospital.displayLocationName, 'en')
+    ? extractLocalizedText(reservation.hospital.displayLocationName, lang)
     : null;
   const districtName =
     displayLocationName ||
     (reservation.hospital.district
       ? extractLocalizedText(
           reservation.hospital.district.displayName || reservation.hospital.district.name,
-          'en',
+          lang,
         )
       : null);
 

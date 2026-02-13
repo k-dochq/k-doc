@@ -33,11 +33,11 @@ export function ReservationHospitalInfoCard({
 }: ReservationHospitalInfoCardProps) {
   const router = useLocalizedRouter();
 
-  // 지역명 추출: displayLocationName 우선, 없으면 district.displayName, 그것도 없으면 district.name (영어만 표시)
+  // 지역명 추출: displayLocationName 우선, 없으면 district.displayName, 그것도 없으면 district.name (현재 언어로 표시)
   const locationName = displayLocationName
-    ? extractLocalizedText(displayLocationName, 'en')
+    ? extractLocalizedText(displayLocationName, lang)
     : district
-      ? extractLocalizedText(district.displayName || district.name, 'en')
+      ? extractLocalizedText(district.displayName || district.name, lang)
       : null;
 
   const handleClick = () => {

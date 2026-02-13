@@ -27,11 +27,14 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
         zh_TW?: string;
         ja_JP?: string;
         hi_IN?: string;
+        ru_RU?: string;
+        tl_PH?: string;
+        ar_SA?: string;
       })
     : hospital.address;
 
   const hospitalName = extractLocalizedText(hospital.name, lang) || '';
-  const hospitalAddress = extractLocalizedText(displayAddress, 'en') || '';
+  const hospitalAddress = extractLocalizedText(displayAddress, lang) || '';
   const medicalSpecialtiesWithAdditionalCategory = addAdditionalCategoryToMedicalSpecialties(
     hospital.id,
     hospital.medicalSpecialties,
