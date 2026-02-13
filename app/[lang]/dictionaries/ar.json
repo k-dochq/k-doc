@@ -408,11 +408,7 @@
       "alreadyHaveAccount": "لديك حساب بالفعل؟",
       "loginLink": "تسجيل الدخول",
       "termsAgreement": {
-        "title": [
-          "K-DOC",
-          "يرجى الموافقة على",
-          "لاستخدام الخدمة"
-        ],
+        "title": ["K-DOC", "يرجى الموافقة على", "لاستخدام الخدمة"],
         "allAgreed": "الموافقة على الكل",
         "age14Plus": "عمري 14 عامًا أو أكثر.",
         "termsOfService": "شروط الخدمة (إلزامي)",
@@ -935,8 +931,8 @@
     "companyName": "شركة فيلمان المحدودة",
     "ceo": "الممثل: وو جونغ هو",
     "address": "103 ميساجانج بيوننام رو، هانام سي، جيونج جي دو",
-    "businessNumber": "رقم تسجيل الشركة 474-86-03352",
-    "customerEmail": "البريد الإلكتروني لمركز خدمة العملاء: cs@k-doc.kr",
+    "businessNumber": "No. 474-86-03352",
+    "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "مشترك",
     "addressLabel": "عنوان",
     "businessNumberLabel": "رقم تسجيل الأعمال",
@@ -1766,10 +1762,7 @@
             },
             {
               "category": "الاستفسارات ذات الصلة وطرق تخفيف الأضرار",
-              "content": [
-                "قسم الخدمات: CS",
-                "للتواصل: all@k-doc.kr"
-              ]
+              "content": ["قسم الخدمات: CS", "للتواصل: all@k-doc.kr"]
             }
           ]
         }

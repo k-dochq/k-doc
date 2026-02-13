@@ -408,11 +408,7 @@
       "alreadyHaveAccount": "已經有帳戶？",
       "loginLink": "登入",
       "termsAgreement": {
-        "title": [
-          "K-DOC",
-          "請同意",
-          "以使用服務"
-        ],
+        "title": ["K-DOC", "請同意", "以使用服務"],
         "allAgreed": "全部同意",
         "age14Plus": "我已滿 14 歲。",
         "termsOfService": "服務條款（必填）",
@@ -935,8 +931,8 @@
     "companyName": "菲爾曼有限公司",
     "ceo": "代表：Woo Jung Ho",
     "address": "京畿道河南市美沙江邊南路103",
-    "businessNumber": "商業登記號碼 474-86-03352",
-    "customerEmail": "客戶服務中心信箱 cs@k-doc.kr",
+    "businessNumber": "No. 474-86-03352",
+    "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "相互的",
     "addressLabel": "地址",
     "businessNumberLabel": "商業登記號",
@@ -1152,11 +1148,7 @@
         },
         {
           "content": "公司於服務使用申請符合下列各款時，得保留核准至核准限制事由解除：",
-          "subItems": [
-            "公司設備不足時",
-            "公司技術上有障礙時",
-            "其他因可歸責於公司致使用核准困難時"
-          ]
+          "subItems": ["公司設備不足時", "公司技術上有障礙時", "其他因可歸責於公司致使用核准困難時"]
         },
         "公司於申請人為相關法令所定未成年人時，得依服務別指引保留核准。",
         "公司於會員註冊完成後發現第2項各款事由時，得撤回使用核准。"
@@ -1766,10 +1758,7 @@
             },
             {
               "category": "相關詢問及損害救濟方法",
-              "content": [
-                "服務負責部門：CS",
-                "詢問處：all@k-doc.kr"
-              ]
+              "content": ["服務負責部門：CS", "詢問處：all@k-doc.kr"]
             }
           ]
         }

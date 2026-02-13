@@ -408,11 +408,7 @@
       "alreadyHaveAccount": "มีบัญชีอยู่แล้วใช่ไหม?",
       "loginLink": "เข้าสู่ระบบ",
       "termsAgreement": {
-        "title": [
-          "K-DOC",
-          "โปรดตกลง",
-          "เพื่อใช้บริการ"
-        ],
+        "title": ["K-DOC", "โปรดตกลง", "เพื่อใช้บริการ"],
         "allAgreed": "ยอมรับทั้งหมด",
         "age14Plus": "ฉันอายุ 14 ปีขึ้นไป",
         "termsOfService": "ข้อกำหนดการใช้งาน (จำเป็น)",
@@ -937,7 +933,7 @@
     "ceo": "CEO: Woo Jung-ho",
     "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, Republic of Korea",
     "businessNumber": "No. 474-86-03352",
-    "customerEmail": "CS@k-doc.kr",
+    "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "ชื่อบริษัท",
     "addressLabel": "ที่อยู่",
     "businessNumberLabel": "เลขทะเบียนธุรกิจ",
@@ -1767,10 +1763,7 @@
             },
             {
               "category": "วิธีการสอบถามและชดเชยความเสียหายที่เกี่ยวข้อง",
-              "content": [
-                "แผนกบริการที่รับผิดชอบ: CS",
-                "ติดต่อ: all@k-doc.kr"
-              ]
+              "content": ["แผนกบริการที่รับผิดชอบ: CS", "ติดต่อ: all@k-doc.kr"]
             }
           ]
         }
