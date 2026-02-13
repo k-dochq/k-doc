@@ -84,7 +84,7 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
       >
         {/* 상단: D-day 배지 및 화살표 */}
         <div className='flex min-w-0 items-center justify-between gap-2'>
-          <div className='min-w-0 flex-1'>
+          <div className='shrink-0'>
               <ReservationStatusBadge
               reservationDate={reservation.reservationDate}
               reservationTime={reservation.reservationTime}

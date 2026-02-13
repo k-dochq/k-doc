@@ -82,7 +82,7 @@ export function getReservationStatusBadge(
       ko: '시술 완료',
       en: 'Completed',
       th: 'เสร็จสิ้น',
-      'zh-Hant': 'Completed',
+      'zh-Hant': '已完成',
       ja: '完了',
       hi: 'पूर्ण',
       tl: 'Completed',
