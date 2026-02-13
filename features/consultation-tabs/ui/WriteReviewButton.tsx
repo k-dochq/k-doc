@@ -11,7 +11,7 @@ export function WriteReviewButton({ onClick, dict }: WriteReviewButtonProps) {
   return (
     <button
       onClick={onClick}
-      className='bg-sub-900 flex h-9 items-center justify-center gap-1 rounded-lg px-4 py-2'
+      className='bg-sub-900 flex h-9 min-w-0 items-center justify-center gap-1 overflow-hidden rounded-lg px-4 py-2'
     >
       {/* 펜 아이콘 */}
       <svg
@@ -35,7 +35,7 @@ export function WriteReviewButton({ onClick, dict }: WriteReviewButtonProps) {
           strokeLinejoin='round'
         />
       </svg>
-      <p className='text-sm leading-5 font-semibold text-white'>
+      <p className='min-w-0 truncate text-sm leading-5 font-semibold text-white'>
         {dict.consultation?.appointment?.writeReview || '시술후기 작성하기'}
       </p>
     </button>

@@ -23,13 +23,13 @@ export function ReservationDateTime({
   const dateTimeText = `${formattedDate} ${reservationTime} (${timezone})`;
 
   return (
-    <div className='flex flex-col gap-0.5'>
-      <p className='text-sm leading-5 font-semibold text-[#404040]'>
+    <div className='min-w-0 flex flex-col gap-0.5'>
+      <p className='truncate text-sm leading-5 font-semibold text-[#404040]'>
         {dict.consultation?.appointment?.reservationDateTime ||
           dict.consultation?.reservationDateTime ||
           '예약 일시'}
       </p>
-      <p className='text-sm leading-5 text-[#737373]'>{dateTimeText}</p>
+      <p className='truncate text-sm leading-5 text-[#737373]'>{dateTimeText}</p>
     </div>
   );
 }

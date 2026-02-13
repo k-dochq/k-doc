@@ -83,15 +83,17 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
         aria-label='예약 상세 보기'
       >
         {/* 상단: D-day 배지 및 화살표 */}
-        <div className='flex items-center justify-between'>
-          <ReservationStatusBadge
-            reservationDate={reservation.reservationDate}
-            reservationTime={reservation.reservationTime}
-            reservationStatus={reservation.status}
-            lang={lang}
-            dict={dict}
-          />
-          <ChevronRightIcon size={24} color='#A3A3A3' />
+        <div className='flex min-w-0 items-center justify-between gap-2'>
+          <div className='min-w-0 flex-1'>
+              <ReservationStatusBadge
+              reservationDate={reservation.reservationDate}
+              reservationTime={reservation.reservationTime}
+              reservationStatus={reservation.status}
+              lang={lang}
+              dict={dict}
+            />
+          </div>
+          <ChevronRightIcon size={24} color='#A3A3A3' className='shrink-0' />
         </div>
 
         {/* 병원 썸네일 및 예약 정보 */}
@@ -103,7 +105,7 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
           />
 
           {/* 예약 정보 */}
-          <div className='flex flex-1 flex-col gap-3'>
+          <div className='flex min-w-0 flex-1 flex-col gap-3'>
             <ReservationDateTime
               reservationDate={reservation.reservationDate}
               reservationTime={reservation.reservationTime}
