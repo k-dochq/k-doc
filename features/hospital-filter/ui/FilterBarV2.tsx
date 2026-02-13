@@ -41,7 +41,7 @@ const filterLabels: Record<'popular' | 'recommended' | 'newest', LocalizedText> 
     hi_IN: 'अनुशंसित',
     tl_PH: 'Recommended',
     ar_SA: 'موصى به',
-    ru_RU: 'Рекомендуемые',
+    ru_RU: 'Топ',
   } satisfies LocalizedText,
   newest: {
     ko_KR: '신규 병원순',

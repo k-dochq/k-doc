@@ -310,12 +310,12 @@
       "loginButton": "लॉगिन",
       "laterButton": "बाद में",
       "signupButton": "ईमेल से रजिस्टर करें",
-      "requiredMessage": "सेवा का उपयोग करने के लिए\nकृपया लॉगिन करें।",
+      "requiredMessage": "सेवा का उपयोग करने के लिए\r\nकृपया लॉगिन करें।",
       "socialLogin": "सोशल लॉगिन",
       "startIn3Seconds": "3 सेकंड में शुरू करें",
       "googleLogin": "Google के साथ जारी रखें",
       "appleLogin": "Apple के साथ जारी रखें",
-      "kakaoLogin": "Kakao से लॉगिन",
+      "kakaoLogin": "Kakao के साथ जारी रखें",
       "emailLogin": "ईमेल के साथ जारी रखें",
       "recentLogin": "हाल ही का लॉगिन",
       "forgotPassword": "पासवर्ड भूल गए?",
@@ -408,7 +408,7 @@
       "alreadyHaveAccount": "पहले से खाता है?",
       "loginLink": "लॉगिन",
       "termsAgreement": {
-        "title": ["K-DOC", "कृपया सहमत हों", "सेवा का उपयोग करने के लिए"],
+        "title": "[\"K-DOC\", \"कृपया सहमत हों\", \"सेवा का उपयोग करने के लिए\"]",
         "allAgreed": "सभी से सहमत",
         "age14Plus": "मैं 14 वर्ष या उससे अधिक का/की हूँ।",
         "termsOfService": "सेवा की शर्तें (आवश्यक)",
@@ -463,7 +463,7 @@
       "loginLink": "लॉगिन",
       "resetError": "पासवर्ड रीसेट करते समय त्रुटि हुई",
       "placeholders": {
-        "email": "your-email@example.com"
+        "email": "अपना ईमेल दर्ज करें"
       },
       "errors": {
         "emailRequired": "कृपया अपना ईमेल दर्ज करें।",
@@ -1762,7 +1762,10 @@
             },
             {
               "category": "संबंधित पूछताछ और क्षतिपूर्ति के तरीके",
-              "content": ["सेवा विभाग: सीएस", "संपर्क करें: all@k-doc.kr"]
+              "content": [
+                "सेवा विभाग: सीएस",
+                "संपर्क करें: all@k-doc.kr"
+              ]
             }
           ]
         }

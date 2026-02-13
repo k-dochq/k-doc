@@ -46,7 +46,7 @@ export function CategoryButtonV2({
         hi_IN: 'अनुशंसित',
         tl_PH: 'Recommend',
         ar_SA: 'موصى به',
-        ru_RU: 'Рекомендуемые',
+        ru_RU: 'Топ',
       };
       return getLocalizedTextByLocale(recommendedLabels, lang);
     }
