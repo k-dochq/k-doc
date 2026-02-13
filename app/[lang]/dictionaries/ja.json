@@ -408,11 +408,7 @@
       "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
       "loginLink": "ログイン",
       "termsAgreement": {
-        "title": [
-          "K-DOC",
-          "同意して",
-          "サービスをご利用ください"
-        ],
+        "title": ["K-DOC", "同意して", "サービスをご利用ください"],
         "allAgreed": "すべて同意",
         "age14Plus": "14歳以上です。",
         "termsOfService": "利用規約（必須）",
@@ -935,8 +931,8 @@
     "companyName": "FILLMAN co., Ltd.",
     "ceo": "代表：Woo Jung Ho",
     "address": "京畿道河南市ミサガン辺南路103",
-    "businessNumber": "事業者登録番号 474-86-03352",
-    "customerEmail": "カスタマーセンターのメール cs@k-doc.kr",
+    "businessNumber": "No. 474-86-03352",
+    "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "相互",
     "addressLabel": "住所",
     "businessNumberLabel": "事業者登録番号",
@@ -1766,10 +1762,7 @@
             },
             {
               "category": "関連問い合わせおよび被害救済方法",
-              "content": [
-                "サービス担当部門: CS",
-                "問い合わせ先: all@k-doc.kr"
-              ]
+              "content": ["サービス担当部門: CS", "問い合わせ先: all@k-doc.kr"]
             }
           ]
         }
