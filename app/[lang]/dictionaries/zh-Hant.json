@@ -930,7 +930,7 @@
   "footer": {
     "companyName": "菲爾曼有限公司",
     "ceo": "代表：Woo Jung Ho",
-    "address": "京畿道河南市美沙江邊南路103",
+    "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, Republic of Korea",
     "businessNumber": "No. 474-86-03352",
     "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "相互的",
@@ -1969,14 +1969,14 @@
     "title": "聯絡我們",
     "subtitle": "K-DOC 哈南總部",
     "description": "歡迎來到K-DOC河南總部。如有任何疑問，請隨時與我們聯繫。",
-    "address": "京畿道河南市美沙江邊南路103 701-014",
+    "address": "103, Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, 701-014",
     "phone": "031-123-4567",
     "email": "contact@k-doc.com",
     "mapTitle": "位置指南",
     "copyButton": "複製地址",
     "seoulOffice": {
       "subtitle": "K-DOC首爾分部",
-      "address": "首爾特別市江南區宣陵路157街14號韓州大樓6樓"
+      "address": "6F, Hanju Building, 14 Seolleung-ro 157-gil, Gangnam-gu, Seoul"
     },
     "emailInquiry": {
       "title": "電子郵件諮詢",

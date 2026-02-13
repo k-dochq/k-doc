@@ -930,7 +930,7 @@
   "footer": {
     "companyName": "FILLMAN co., Ltd.",
     "ceo": "代表：Woo Jung Ho",
-    "address": "京畿道河南市ミサガン辺南路103",
+    "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, Republic of Korea",
     "businessNumber": "No. 474-86-03352",
     "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "相互",
@@ -1973,14 +1973,14 @@
     "title": "Contact us",
     "subtitle": "K-DOC ハナム本社",
     "description": "K-DOC ハナム本社へようこそ。いつでもお問い合わせください。",
-    "address": "京畿道河南市ミサガン辺南路103、701-014",
+    "address": "103, Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, 701-014",
     "phone": "031-123-4567",
     "email": "contact@k-doc.com",
     "mapTitle": "位置情報",
     "copyButton": "アドレスコピー",
     "seoulOffice": {
       "subtitle": "K-DOCソウル支店",
-      "address": "ソウル江南区サン陵路157ギル14ハンジュビル6階"
+      "address": "6F, Hanju Building, 14 Seolleung-ro 157-gil, Gangnam-gu, Seoul"
     },
     "emailInquiry": {
       "title": "メール問い合わせ",
