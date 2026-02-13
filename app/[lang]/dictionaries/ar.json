@@ -930,7 +930,7 @@
   "footer": {
     "companyName": "شركة فيلمان المحدودة",
     "ceo": "الممثل: وو جونغ هو",
-    "address": "103 ميساجانج بيوننام رو، هانام سي، جيونج جي دو",
+    "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, Republic of Korea",
     "businessNumber": "No. 474-86-03352",
     "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "مشترك",
@@ -1973,14 +1973,14 @@
     "title": "اتصل بنا",
     "subtitle": "مقر شركة K-DOC هانام",
     "description": "أهلاً بكم في المقر الرئيسي لشركة K-DOC في هانام. تواصلوا معنا في أي وقت.",
-    "address": "701-014, 103 ميساجانجبيوننام رو، هانام سي، جيونجي دو",
+    "address": "103, Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, 701-014",
     "phone": "031-123-4567",
     "email": "contact@k-doc.com",
     "mapTitle": "دليل الموقع",
     "copyButton": "انسخ العنوان",
     "seoulOffice": {
       "subtitle": "فرع كي-دوك في سيول",
-      "address": "الطابق السادس، مبنى هانجو، 14 سيولونغ رو 157-غيل، جانجنام غو، سيول"
+      "address": "6F, Hanju Building, 14 Seolleung-ro 157-gil, Gangnam-gu, Seoul"
     },
     "emailInquiry": {
       "title": "استفسار عبر البريد الإلكتروني",

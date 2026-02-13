@@ -930,7 +930,7 @@
   "footer": {
     "companyName": "Компания FILLMAN, Ltd.",
     "ceo": "Представитель: У Чонхо",
-    "address": "103 Мисаганбённам-ро, Ханамси, Кёнгидо",
+    "address": "701-014, 103 Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, Republic of Korea",
     "businessNumber": "No. 474-86-03352",
     "customerEmail": "cs@k-doc.kr",
     "companyNameLabel": "Взаимный",
@@ -1973,14 +1973,14 @@
     "title": "Связаться с нами",
     "subtitle": "Штаб-квартира K-DOC в Ханаме",
     "description": "Добро пожаловать в штаб-квартиру K-DOC в Ханаме. Пожалуйста, свяжитесь с нами в любое время.",
-    "address": "701-014, Мисаганбённам-ро, 103, Ханам-си, Кёнгидо",
+    "address": "103, Misagangbyeonnam-ro, Hanam-si, Gyeonggi-do, 701-014",
     "phone": "031-123-4567",
     "email": "contact@k-doc.com",
     "mapTitle": "Путеводитель по местоположениям",
     "copyButton": "Скопировать адрес",
     "seoulOffice": {
       "subtitle": "Сеульский филиал K-DOC",
-      "address": "6-й этаж, здание Хандзю, 14 Соллын-ро 157-гиль, Каннамгу, Сеул"
+      "address": "6F, Hanju Building, 14 Seolleung-ro 157-gil, Gangnam-gu, Seoul"
     },
     "emailInquiry": {
       "title": "Запрос по электронной почте",
