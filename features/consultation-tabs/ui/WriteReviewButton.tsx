@@ -35,7 +35,7 @@ export function WriteReviewButton({ onClick, dict }: WriteReviewButtonProps) {
           strokeLinejoin='round'
         />
       </svg>
-      <p className='min-w-0 truncate text-sm leading-5 font-semibold text-white'>
+      <p className='line-clamp-2 min-w-0 text-sm leading-5 font-semibold text-white'>
         {dict.consultation?.appointment?.writeReview || '시술후기 작성하기'}
       </p>
     </button>
