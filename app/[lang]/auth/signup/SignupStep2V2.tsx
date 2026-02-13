@@ -39,11 +39,12 @@ export function SignupStep2V2({
   isRequiredAgreementsValid,
   error,
 }: SignupStep2V2Props) {
-  const titleLines = (dict.auth?.signup?.termsAgreement?.title as string[] | undefined) || [
-    'K-DOC',
-    'Please agree to',
-    'use the service',
-  ];
+  const titleLines =
+    dict.auth?.signup?.termsAgreement?.title ?? [
+      'K-DOC',
+      'Please agree to',
+      'use the service',
+    ];
 
   const allTitle =
     dict.auth?.signup?.termsAgreement?.allAgreed || 'Agree to all terms and conditions';
