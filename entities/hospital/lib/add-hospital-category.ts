@@ -5,6 +5,7 @@ import {
   INCISIONAL_CATEGORY,
   NON_INCISIONAL_CATEGORY,
 } from './hospital-category-constants';
+import { sortMedicalSpecialtiesByDisplayOrder } from './medical-specialty-display-order';
 
 type AdditionalCategorySpecialtyType = 'INCISIONAL' | 'NON_INCISIONAL';
 
@@ -70,14 +71,19 @@ export function addAdditionalCategoryToMedicalSpecialties<
 }
 
 /**
- * HospitalCardData에 추가 카테고리를 추가하는 함수
+ * HospitalCardData에 추가 카테고리를 추가하고, 부위 태그 표시 순서로 정렬하는 함수
  */
 export function addCategoryToHospitalCardData(hospital: HospitalCardData): HospitalCardData {
+  const combined = addAdditionalCategoryToMedicalSpecialties(
+    hospital.id,
+    hospital.medicalSpecialties,
+  );
+  const sorted = sortMedicalSpecialtiesByDisplayOrder(combined, (s) => ({
+    id: s.id,
+    specialtyType: 'specialtyType' in s ? (s.specialtyType as string) : undefined,
+  }));
   return {
     ...hospital,
-    medicalSpecialties: addAdditionalCategoryToMedicalSpecialties(
-      hospital.id,
-      hospital.medicalSpecialties,
-    ),
+    medicalSpecialties: sorted,
   } satisfies HospitalCardData;
 }
