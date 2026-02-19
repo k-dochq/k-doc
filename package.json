@@ -19,6 +19,7 @@
     "compress-image": "tsx scripts/compress-image.ts",
     "transform-review": "tsx scripts/transform-review.ts",
     "sync-dicts": "tsx scripts/sync-dictionaries-from-xlsx.ts",
+    "export-dicts": "tsx scripts/export-dictionaries-to-xlsx.ts",
     "read-xlsx": "tsx scripts/read-translation-xlsx.ts"
   },
   "dependencies": {
