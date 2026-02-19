@@ -24,8 +24,8 @@ export const INCISIONAL_CATEGORY = {
     th_TH: 'การผ่าตัดแบบเปิดแผล',
     zh_TW: '切開',
     ja_JP: '切開',
-    hi_IN: 'कट के साथ',
-    ar_SA: 'قطعي',
+    hi_IN: 'चीरा युक्त',
+    ar_SA: 'بشق جراحي',
     ru_RU: 'С разрезом',
   } satisfies LocalizedText,
 } as const;
@@ -40,7 +40,7 @@ export const NON_INCISIONAL_CATEGORY = {
     zh_TW: '非切開',
     ja_JP: '非切開',
     hi_IN: 'बिना चीरा',
-    ar_SA: 'غير قطعي',
+    ar_SA: 'بدون شق',
     ru_RU: 'Без разреза',
   } satisfies LocalizedText,
 } as const;
