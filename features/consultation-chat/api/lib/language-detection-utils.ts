@@ -11,14 +11,30 @@ const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export type DetectedLanguage = 'ko' | 'en' | 'th';
+export type DetectedLanguage =
+  | 'ko'
+  | 'en'
+  | 'th'
+  | 'zh-Hant'
+  | 'ja'
+  | 'hi'
+  | 'ar'
+  | 'ru'
+  | 'tl';
+
+function normalizeDetectedCode(raw: string): DetectedLanguage | null {
+  const s = raw.trim().toLowerCase();
+  if (s === 'zh-hant') return 'zh-Hant';
+  if (['ko', 'en', 'th', 'ja', 'hi', 'ar', 'ru', 'tl'].includes(s)) return s as DetectedLanguage;
+  return null;
+}
 
 /**
  * 텍스트의 언어를 감지합니다.
- * GPT-4o-mini 모델을 사용하여 한국어(ko), 영어(en), 태국어(th) 중 하나를 반환합니다.
+ * GPT-4o-mini를 사용하여 ko, en, th, zh-Hant, ja, hi, ar, ru, tl 중 하나를 반환합니다.
  *
  * @param text - 감지할 텍스트
- * @returns 감지된 언어 코드 (ko, en, th) 또는 null (에러 발생 시)
+ * @returns 감지된 언어 코드 또는 null (에러/미지원 시)
  */
 export async function detectLanguage(text: string): Promise<DetectedLanguage | null> {
   // 빈 텍스트나 너무 짧은 텍스트는 처리하지 않음
@@ -29,26 +45,17 @@ export async function detectLanguage(text: string): Promise<DetectedLanguage | n
   try {
     const { text: responseText } = await generateText({
       model: openai('gpt-4o-mini'),
-      prompt: `Detect the language of the following text. Return ONLY the language code as a single word: "ko" for Korean, "en" for English, or "th" for Thai. Do not include any other text or explanation.
+      prompt: `Detect the language of the following text. Return ONLY one of these language codes: ko, en, th, zh-Hant, ja, hi, ar, ru, tl. No other text or explanation.
 
 Text: "${text.trim()}"`,
-      temperature: 0.1, // 낮은 temperature로 일관된 결과
-      maxOutputTokens: 16, // OpenAI Responses API 최소값
+      temperature: 0.1,
+      maxOutputTokens: 16,
     });
 
-    // 응답에서 언어 코드 추출 (공백 제거, 소문자 변환)
-    const detectedLang = responseText.trim().toLowerCase() as DetectedLanguage;
-
-    // 유효한 언어 코드인지 확인
-    if (detectedLang === 'ko' || detectedLang === 'en' || detectedLang === 'th') {
-      return detectedLang;
-    }
-
-    // 유효하지 않은 경우 null 반환
-    return null;
+    const detected = normalizeDetectedCode(responseText);
+    return detected ?? null;
   } catch (error) {
     console.error('Error detecting language:', error);
-    // 에러 발생 시 null 반환 (기본값 처리)
     return null;
   }
 }

@@ -3,7 +3,7 @@
  * UI와 독립적인 API 호출 로직
  */
 
-import { type ChatMessage } from './entities/types';
+import { type ChatMessage, type CheckBusinessHoursDetectedLanguage } from './entities/types';
 import debounce from 'lodash/debounce';
 
 /**
@@ -105,7 +105,7 @@ export async function saveMessageToDatabase(
 export interface BusinessHoursCheckResult {
   success: boolean;
   isBusinessHours?: boolean;
-  detectedLanguage?: 'ko' | 'en' | 'th';
+  detectedLanguage?: CheckBusinessHoursDetectedLanguage;
   autoResponseMessage?: string;
   error?: string;
 }
@@ -162,7 +162,7 @@ export async function checkBusinessHours(
  */
 export interface AutoResponseHandlerPayload {
   message: string;
-  detectedLanguage?: 'ko' | 'en' | 'th';
+  detectedLanguage?: CheckBusinessHoursDetectedLanguage;
 }
 
 type AutoResponseHandler = (payload: AutoResponseHandlerPayload) => Promise<void> | void;

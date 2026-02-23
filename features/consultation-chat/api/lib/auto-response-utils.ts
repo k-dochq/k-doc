@@ -1,22 +1,40 @@
 /**
  * 자동 응답 메시지 생성 유틸리티
  * 언어 코드에 따라 적절한 메시지를 반환합니다.
+ * 일과시간 외 / 공휴일 메시지를 구분합니다.
  */
 
 import {
   AUTO_RESPONSE_MESSAGES,
+  AUTO_RESPONSE_HOLIDAY_MESSAGES,
+  NEXT_BUSINESS_DAY_PLACEHOLDER,
   type AutoResponseLanguage,
 } from '../config/auto-response-messages';
 import { type DetectedLanguage } from './language-detection-utils';
 
+export interface GetAutoResponseMessageOptions {
+  isPublicHoliday?: boolean;
+  nextBusinessDayFormatted?: string;
+}
+
 /**
  * 감지된 언어에 해당하는 자동 응답 메시지를 반환합니다.
- *
- * @param language - 감지된 언어 코드
- * @returns 해당 언어의 자동 응답 메시지
+ * 공휴일인 경우 nextBusinessDayFormatted로 플레이스홀더를 치환한 공휴일 전용 메시지를 반환합니다.
  */
-export function getAutoResponseMessage(language: DetectedLanguage): string {
-  return AUTO_RESPONSE_MESSAGES[language as AutoResponseLanguage];
+export function getAutoResponseMessage(
+  language: DetectedLanguage,
+  options?: GetAutoResponseMessageOptions,
+): string {
+  const lang = language as AutoResponseLanguage;
+  if (
+    options?.isPublicHoliday === true &&
+    options?.nextBusinessDayFormatted != null &&
+    options.nextBusinessDayFormatted !== ''
+  ) {
+    const template = AUTO_RESPONSE_HOLIDAY_MESSAGES[lang];
+    return template.replace(NEXT_BUSINESS_DAY_PLACEHOLDER, options.nextBusinessDayFormatted);
+  }
+  return AUTO_RESPONSE_MESSAGES[lang];
 }
 
 /**
