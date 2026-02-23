@@ -90,11 +90,22 @@ export interface CheckBusinessHoursRequest {
 }
 
 // 비즈니스 시간 체크 응답 타입
+export type CheckBusinessHoursDetectedLanguage =
+  | 'ko'
+  | 'en'
+  | 'th'
+  | 'zh-Hant'
+  | 'ja'
+  | 'hi'
+  | 'ar'
+  | 'ru'
+  | 'tl';
+
 export interface CheckBusinessHoursResponse {
   success: boolean;
   isBusinessHours: boolean;
   currentTime?: string;
-  detectedLanguage?: 'ko' | 'en' | 'th';
+  detectedLanguage?: CheckBusinessHoursDetectedLanguage;
   autoResponseMessage?: string;
   error?: string;
 }

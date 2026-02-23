@@ -1,7 +1,12 @@
 /**
  * 비즈니스 시간 체크 관련 유틸리티 함수들
- * 한국 시간 기준 평일 09:00~18:00 체크 로직
+ * 한국 시간 기준 평일 09:00~18:00 체크 로직 (공휴일 제외)
  */
+
+import {
+  isKoreanPublicHoliday,
+  getNextBusinessDayInKorea,
+} from './korean-holidays';
 
 export interface KoreaTimeComponents {
   year: number;
@@ -80,23 +85,34 @@ export function isBusinessHours(hours: number, minutes: number): boolean {
 
 /**
  * 한국 시간 기준으로 비즈니스 시간인지 확인합니다.
- * 평일(월~금) 09:00~18:00 범위를 체크합니다.
+ * 평일(월~금) 09:00~18:00 범위를 체크하며, 한국 공휴일은 제외합니다.
  */
 export function checkBusinessHoursInKorea(): {
   isBusinessHours: boolean;
   currentTime: string;
   koreaTime: KoreaTimeComponents;
+  isPublicHoliday: boolean;
+  nextBusinessDay?: Date;
 } {
   const koreaTime = getKoreaTimeComponents();
 
-  // 평일인지 확인
+  // 오늘 날짜(한국 시간 0시)를 Date로 생성
+  const todayKorea = new Date(
+    `${koreaTime.year}-${String(koreaTime.month).padStart(2, '0')}-${String(koreaTime.day).padStart(2, '0')}T00:00:00+09:00`,
+  );
+  const isPublicHoliday = isKoreanPublicHoliday(todayKorea);
+  const nextBusinessDay =
+    isPublicHoliday ? getNextBusinessDayInKorea(todayKorea) : undefined;
+
+  // 평일인지 확인 (공휴일이면 비즈니스 시간 아님)
   const isWeekdayCheck = isWeekday(koreaTime.dayOfWeek);
 
   // 비즈니스 시간인지 확인
   const isBusinessHoursCheck = isBusinessHours(koreaTime.hours, koreaTime.minutes);
 
-  // 평일이고 비즈니스 시간 범위 내인지 확인
-  const result = isWeekdayCheck && isBusinessHoursCheck;
+  // 평일이고 공휴일이 아니고 비즈니스 시간 범위 내인지 확인
+  const result =
+    !isPublicHoliday && isWeekdayCheck && isBusinessHoursCheck;
 
   // 현재 시간 포맷팅 (디버깅/로깅용)
   const currentTimeString = `${koreaTime.year}-${String(koreaTime.month).padStart(2, '0')}-${String(koreaTime.day).padStart(2, '0')}T${String(koreaTime.hours).padStart(2, '0')}:${String(koreaTime.minutes).padStart(2, '0')}:00+09:00`;
@@ -105,5 +121,7 @@ export function checkBusinessHoursInKorea(): {
     isBusinessHours: result,
     currentTime: currentTimeString,
     koreaTime,
+    isPublicHoliday,
+    nextBusinessDay,
   };
 }
