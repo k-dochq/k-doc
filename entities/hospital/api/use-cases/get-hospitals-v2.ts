@@ -115,10 +115,9 @@ export async function getHospitalsV2(
       // 병원명에서 검색 (현재 locale에 해당하는 언어만)
       const hospitalNameConditions: Prisma.HospitalWhereInput[] = [];
 
-      // en_US 로케일에만 대소문자 변형 적용
-      if (searchLocale === 'en_US' && isEnglishSearch) {
+      // en_US: 항상 대소문자 변형 적용 (특수문자 포함 검색어 예: v&mj → V&MJ 매칭)
+      if (searchLocale === 'en_US') {
         const searchVariations = generateSearchVariations(search);
-        // 각 변형에 대해 조건 생성
         const enUSConditions = searchVariations.map((variation) => ({
           name: {
             path: ['en_US'],
@@ -127,7 +126,6 @@ export async function getHospitalsV2(
         }));
         hospitalNameConditions.push(...enUSConditions);
       } else {
-        // 다른 언어 또는 영어가 아닌 경우 원본만 사용
         hospitalNameConditions.push({
           name: {
             path: [searchLocale],
