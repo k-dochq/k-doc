@@ -7,6 +7,8 @@ import { getHospitalThumbnailImageUrl } from 'entities/hospital/lib/image-utils'
 
 export interface GetReviewDetailParams {
   reviewId: string;
+  /** true면 조회수 증가 생략 (generateMetadata 등에서 사용) */
+  skipViewCountIncrement?: boolean;
 }
 
 export interface GetReviewDetailResponse {
@@ -42,6 +44,7 @@ export async function getAllReviewIds(): Promise<string[]> {
 
 export async function getReviewDetail({
   reviewId,
+  skipViewCountIncrement = false,
 }: GetReviewDetailParams): Promise<GetReviewDetailResponse> {
   try {
     // 리뷰 상세 정보 조회 (이미지 포함)
@@ -136,16 +139,18 @@ export async function getReviewDetail({
       throw new Error('리뷰를 찾을 수 없습니다.');
     }
 
-    // 상세 페이지 진입 시 조회수 1 증가
-    let viewCountToReturn = review.viewCount;
-    try {
-      await prisma.review.update({
-        where: { id: reviewId },
-        data: { viewCount: { increment: 1 } },
-      });
-      viewCountToReturn = review.viewCount + 1;
-    } catch (err) {
-      console.error('Error incrementing review viewCount:', err);
+    // 상세 페이지 진입 시 조회수 1 증가 (메타데이터용 호출에서는 생략)
+    let didIncrementViewCount = false;
+    if (!skipViewCountIncrement) {
+      try {
+        await prisma.review.update({
+          where: { id: reviewId },
+          data: { viewCount: { increment: 1 } },
+        });
+        didIncrementViewCount = true;
+      } catch (err) {
+        console.error('Error incrementing review viewCount:', err);
+      }
     }
 
     // 리뷰 작성일자 기준으로 닉네임 결정
@@ -171,7 +176,7 @@ export async function getReviewDetail({
         ? parseLocalizedText(review.concernsMultilingual)
         : null,
       createdAt: review.createdAt,
-      viewCount: viewCountToReturn,
+      viewCount: didIncrementViewCount ? review.viewCount + 1 : review.viewCount,
       likeCount: review._count.ReviewLike, // 실시간 좋아요 수 계산
       commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)
       likedUserIds, // 좋아요를 한 사용자 ID들

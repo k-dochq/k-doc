@@ -107,7 +107,7 @@ export async function generateMetadata({ params }: ReviewDetailPageProps) {
   const { lang, id } = await params;
 
   try {
-    const { review } = await getReviewDetail({ reviewId: id });
+    const { review } = await getReviewDetail({ reviewId: id, skipViewCountIncrement: true });
     const dict = await getDictionary(lang);
 
     const reviewTitle = extractLocalizedText(review.content, lang)?.slice(0, 50) || '시술후기';
