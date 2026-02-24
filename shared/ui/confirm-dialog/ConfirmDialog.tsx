@@ -30,7 +30,7 @@ export function ConfirmDialog({
       {/* Text Area */}
       <div className='flex w-full flex-col items-center gap-[12px] text-center'>
         {/* Title - 필수 */}
-        <p className='text-lg font-bold whitespace-pre-wrap text-neutral-900'>{title}</p>
+        <p className='text-lg font-bold whitespace-pre-wrap text-neutral-700'>{title}</p>
 
         {/* Message - 선택, 있을 때만 렌더링 */}
         {message && (
@@ -53,7 +53,7 @@ export function ConfirmDialog({
         <button
           onClick={onCancel}
           disabled={isLoading}
-          className='flex flex-1 items-center justify-center rounded-[12px] bg-[#f9d1ff] px-[40px] py-[16px] text-base font-medium text-[#da47ef] disabled:cursor-not-allowed disabled:opacity-70'
+          className='flex flex-1 items-center justify-center rounded-[12px] bg-primary-300 px-[40px] py-[16px] text-base font-medium text-primary-900 disabled:cursor-not-allowed disabled:opacity-70'
         >
           {cancelText}
         </button>
