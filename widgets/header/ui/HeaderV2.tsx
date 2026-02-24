@@ -13,7 +13,7 @@ interface HeaderV2Props {
 export function HeaderV2({ currentLang, dict }: HeaderV2Props) {
   return (
     <header
-      className='sticky top-0 z-50 w-full border-b border-neutral-200 bg-white'
+      className='sticky top-0 z-50 w-full bg-white'
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
       <div className='flex h-[58px] items-center justify-between px-5'>
