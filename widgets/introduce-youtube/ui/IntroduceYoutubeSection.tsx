@@ -6,7 +6,11 @@ import { type Locale } from 'shared/config';
 import { getIntroduceEmbedUrl } from '../lib/get-introduce-video-id';
 import { IntroduceYoutubePlayIcon } from './IntroduceYoutubePlayIcon';
 
-const THUMBNAIL_SRC = '/images/main/introduce_thumbnail.png';
+function getThumbnailSrc(lang: Locale): string {
+  if (lang === 'ja') return '/images/main/video_thum_ja.png';
+  if (lang === 'zh-Hant') return '/images/main/video_thum_zh.png';
+  return '/images/main/video_thum_en.png';
+}
 
 interface IntroduceYoutubeSectionProps {
   lang: Locale;
@@ -14,31 +18,22 @@ interface IntroduceYoutubeSectionProps {
 
 export function IntroduceYoutubeSection({ lang }: IntroduceYoutubeSectionProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const embedUrl = getIntroduceEmbedUrl(lang);
   const embedUrlWithAutoplay = `${embedUrl}${embedUrl.includes('?') ? '&' : '?'}autoplay=1`;
-
-  const handleThumbnailClick = () => {
-    setIsPlaying(true);
-    setIsLoading(true);
-  };
-
-  const handleIframeLoad = () => {
-    setIsLoading(false);
-  };
+  const thumbnailSrc = getThumbnailSrc(lang);
 
   return (
     <div className='relative aspect-[375/212] w-full overflow-hidden'>
       {!isPlaying ? (
         <button
           type='button'
-          onClick={handleThumbnailClick}
-          className='relative h-full w-full cursor-pointer border-0 p-0 text-left'
+          onClick={() => setIsPlaying(true)}
+          className='absolute inset-0 cursor-pointer border-0 p-0'
           aria-label='Play introduction video'
         >
           <Image
-            src={THUMBNAIL_SRC}
+            src={thumbnailSrc}
             alt='Introduction video thumbnail'
             fill
             sizes='100vw'
@@ -50,24 +45,13 @@ export function IntroduceYoutubeSection({ lang }: IntroduceYoutubeSectionProps) 
           </span>
         </button>
       ) : (
-        <div className='relative h-full w-full'>
-          {isLoading && (
-            <div className='absolute inset-0 z-10 flex items-center justify-center bg-gray-900'>
-              <div className='h-12 w-12 animate-spin rounded-full border-4 border-gray-600 border-t-white' />
-            </div>
-          )}
-          <iframe
-            width='100%'
-            height='100%'
-            src={embedUrlWithAutoplay}
-            title='YouTube introduction video'
-            frameBorder='0'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            allowFullScreen
-            className='absolute inset-0 h-full w-full'
-            onLoad={handleIframeLoad}
-          />
-        </div>
+        <iframe
+          src={embedUrlWithAutoplay}
+          title='YouTube introduction video'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+          allowFullScreen
+          className='absolute inset-0 h-full w-full'
+        />
       )}
     </div>
   );
