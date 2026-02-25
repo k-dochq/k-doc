@@ -9,6 +9,7 @@ import { LiveReviewV2Container } from 'widgets/live-reviews/ui';
 import { PopularReviewsV2Wrapper } from 'widgets/popular-reviews/ui';
 import { PremiumServiceV2Container } from 'widgets/premium-service/ui';
 import { YoutubeVideosV2Wrapper } from 'widgets/youtube-videos/ui';
+import { IntroduceYoutubeSection } from 'widgets/introduce-youtube/ui';
 import { getDictionary } from 'app/[lang]/dictionaries';
 import { ContactFloatingButton } from 'features/contact-floating-button';
 
@@ -34,6 +35,7 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
         <div className='py-5'>
           <QuickMenuV2 lang={lang} />
         </div>
+        <IntroduceYoutubeSection lang={lang} />
       </div>
 
       <div className='pt-[2px] pb-9'>
