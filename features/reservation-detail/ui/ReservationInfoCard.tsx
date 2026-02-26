@@ -16,6 +16,7 @@ interface ReservationInfoCardProps {
   reservationTime: string;
   reservationStatus: string;
   hospitalId: string;
+  reviewId?: string;
   lang: Locale;
   dict: Dictionary;
 }
@@ -27,6 +28,7 @@ export function ReservationInfoCard({
   reservationTime,
   reservationStatus,
   hospitalId,
+  reviewId,
   lang,
   dict,
 }: ReservationInfoCardProps) {
@@ -41,9 +43,13 @@ export function ReservationInfoCard({
   // 상태 배지 표시 조건: 취소된 경우 또는 CONFIRMED이고 예약 날짜 전일 때
   const shouldShowStatusBadge = isCancelled || isConfirmed;
 
-  // 시술후기 작성 핸들러
+  // 시술후기 작성/수정 핸들러
   const handleWriteReview = () => {
-    router.push(`/reviews-create?hospitalId=${hospitalId}`);
+    if (reviewId) {
+      router.push(`/reviews-edit/${reviewId}`);
+    } else {
+      router.push(`/reviews-create?hospitalId=${hospitalId}`);
+    }
   };
 
   return (
@@ -81,7 +87,9 @@ export function ReservationInfoCard({
       </div>
 
       {/* 시술후기 작성하기 버튼 (과거 예약이거나 완료된 경우만) */}
-      {isCompleted && <WriteReviewButton onClick={handleWriteReview} dict={dict} />}
+      {isCompleted && (
+        <WriteReviewButton onClick={handleWriteReview} dict={dict} reviewId={reviewId} />
+      )}
     </div>
   );
 }

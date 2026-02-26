@@ -102,6 +102,7 @@ export function ReservationDetailContent({
             reservationTime={reservation.reservationTime}
             reservationStatus={reservation.status}
             hospitalId={reservation.hospital.id}
+            reviewId={reservation.reviewId}
             lang={lang}
             dict={dict}
           />

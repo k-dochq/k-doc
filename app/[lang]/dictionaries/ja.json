@@ -632,6 +632,7 @@
       "reservationDateTime": "予約日時",
       "region": "地域",
       "writeReview": "施術後期を作成する",
+      "editReview": "レビューを編集する",
       "loadingMore": "より多くの予約履歴を読み込んでいます...",
       "allLoaded": "すべての予約履歴を呼び出しました。",
       "completed": "施術完了",

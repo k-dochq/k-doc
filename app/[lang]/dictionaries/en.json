@@ -632,6 +632,7 @@
       "reservationDateTime": "Reservation Date/Time",
       "region": "Region",
       "writeReview": "Write Review",
+      "editReview": "Edit Review",
       "loadingMore": "Loading more reservations...",
       "allLoaded": "All reservations loaded.",
       "completed": "Completed",

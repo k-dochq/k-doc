@@ -192,6 +192,8 @@ export interface ReservationData {
   reservationTime: string;
   status: string;
   procedureName: string;
+  /** 해당 병원에 사용자가 작성한 리뷰 ID (있을 경우) */
+  reviewId?: string;
   hospital: {
     id: string;
     name: Record<string, string>;
@@ -241,6 +243,8 @@ export interface ReservationDetailData {
   reservationTime: string;
   status: string;
   procedureName: string;
+  /** 해당 병원에 사용자가 작성한 리뷰 ID (있을 경우) */
+  reviewId?: string;
   depositAmount: number;
   currency: string;
   paymentDeadline: Date;

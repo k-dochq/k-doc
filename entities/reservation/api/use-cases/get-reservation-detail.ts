@@ -1,3 +1,4 @@
+import { prisma } from 'shared/lib/prisma';
 import { ReservationRepository } from '../infrastructure/repositories';
 import {
   type GetReservationDetailParams,
@@ -47,8 +48,19 @@ export async function getReservationDetail(
       gender = userMetaData.gender;
     }
 
+    // 해당 병원에 사용자가 작성한 리뷰 ID 조회
+    const existingReview = await prisma.review.findFirst({
+      where: {
+        userId: rawReservation.userId,
+        hospitalId: rawReservation.hospitalId,
+        isActive: { not: false },
+      },
+      select: { id: true },
+    });
+
     const reservation: ReservationDetailData = {
       id: rawReservation.id,
+      reviewId: existingReview?.id,
       reservationDate: rawReservation.reservationDate,
       reservationTime: rawReservation.reservationTime,
       status: rawReservation.status,

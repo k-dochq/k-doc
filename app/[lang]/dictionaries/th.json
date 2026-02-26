@@ -632,6 +632,7 @@
       "reservationDateTime": "วันที่และเวลานัดหมาย",
       "region": "ภูมิภาค",
       "writeReview": "เขียนรีวิว",
+      "editReview": "แก้ไขรีวิว",
       "loadingMore": "กำลังโหลดการจองเพิ่มเติม...",
       "allLoaded": "โหลดการจองทั้งหมดแล้ว",
       "completed": "เสร็จสิ้น",

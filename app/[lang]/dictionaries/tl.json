@@ -632,6 +632,7 @@
       "reservationDateTime": "Reservation Date/Time",
       "region": "rehiyon",
       "writeReview": "Write Review",
+      "editReview": "Edit Review",
       "loadingMore": "Naglo-load ng higit pang mga reserbasyon...",
       "allLoaded": "Nakuha na ang lahat ng detalye ng reserbasyon.",
       "completed": "Nakumpleto na ang proseso",
