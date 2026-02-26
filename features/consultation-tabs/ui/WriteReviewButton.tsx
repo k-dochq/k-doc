@@ -13,10 +13,14 @@ export function WriteReviewButton({ onClick, dict, reviewId }: WriteReviewButton
   const label = reviewId
     ? dict.consultation?.appointment?.editReview || '리뷰 수정하기'
     : dict.consultation?.appointment?.writeReview || '시술후기 작성하기';
+  const isEditReview = !!reviewId;
+
   return (
     <button
       onClick={onClick}
-      className='bg-sub-900 flex h-9 min-w-0 items-center justify-center gap-1 overflow-hidden rounded-lg px-4 py-2'
+      className={`flex h-9 min-w-0 items-center justify-center gap-1 overflow-hidden rounded-lg px-4 py-2 ${
+        isEditReview ? 'bg-neutral-400' : 'bg-sub-900'
+      }`}
     >
       {/* 펜 아이콘 */}
       <svg
