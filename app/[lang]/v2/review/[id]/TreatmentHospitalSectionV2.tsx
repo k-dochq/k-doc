@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalCardData } from 'shared/model/types';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { DoctorAffiliatedHospitalCardV2 } from 'widgets/doctor-affiliated-hospital/ui/DoctorAffiliatedHospitalCardV2';
 
 interface TreatmentHospitalSectionV2Props {
@@ -20,7 +21,9 @@ export function TreatmentHospitalSectionV2({
         {dict.reviewDetail?.hospital || '시술 병원'}
       </h3>
       <div className='mt-3'>
-        <DoctorAffiliatedHospitalCardV2 hospital={hospital} lang={lang} dict={dict} />
+        <LocaleLink href={`/hospital/${hospital.id}`} className='block'>
+          <DoctorAffiliatedHospitalCardV2 hospital={hospital} lang={lang} dict={dict} />
+        </LocaleLink>
       </div>
     </div>
   );

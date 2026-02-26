@@ -24,7 +24,7 @@ export function IntroduceYoutubeSection({ lang }: IntroduceYoutubeSectionProps) 
   const thumbnailSrc = getThumbnailSrc(lang);
 
   return (
-    <div className='relative aspect-[375/212] w-full overflow-hidden'>
+    <div className='relative aspect-[500/279] w-full overflow-hidden'>
       {!isPlaying ? (
         <button
           type='button'
