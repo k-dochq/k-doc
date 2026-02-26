@@ -125,6 +125,7 @@ export interface GetAllReviewsParams {
   offset?: number;
   category?: MedicalSpecialtyType | 'ALL';
   sort?: ReviewSortOption; // 정렬 옵션
+  seed?: string; // 추천순 랜덤 정렬용 seed (일관된 랜덤 순서 보장)
   hospitalId?: string; // 특정 병원의 리뷰만 조회
   likedOnly?: boolean; // 좋아요한 리뷰만 조회
   userId?: string; // likedOnly가 true일 때 필요한 사용자 ID

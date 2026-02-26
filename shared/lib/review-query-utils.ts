@@ -13,6 +13,7 @@ export interface ParsedReviewQueryParams {
   page: number;
   limit: number;
   sort: ReviewSortOption;
+  seed?: string; // 추천순 랜덤 정렬용 seed
   category?: MedicalSpecialtyType;
   hospitalId?: string;
   likedOnly?: boolean;
@@ -26,6 +27,7 @@ export interface DbReviewQueryParams {
   page: number;
   limit: number;
   sort: ReviewSortOption;
+  seed?: string; // 추천순 랜덤 정렬용 seed
   category?: MedicalSpecialtyType;
   hospitalId?: string;
   likedOnly?: boolean;
@@ -39,7 +41,7 @@ export interface DbReviewQueryParams {
 export const DEFAULT_REVIEW_QUERY_PARAMS = {
   page: 1,
   limit: 10,
-  sort: REVIEW_SORT_OPTIONS.POPULAR,
+  sort: REVIEW_SORT_OPTIONS.RECOMMENDED,
 } as const;
 
 /**
@@ -60,6 +62,8 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
   const sort =
     sortParam && isValidReviewSortOption(sortParam) ? sortParam : DEFAULT_REVIEW_QUERY_PARAMS.sort;
 
+  const seed = searchParams.get('seed') || undefined;
+
   const categoryParam = searchParams.get('category');
   const category =
     categoryParam && categoryParam !== 'ALL' && isValidMedicalSpecialtyType(categoryParam)
@@ -74,6 +78,7 @@ export function parseReviewQueryParams(searchParams: URLSearchParams): ParsedRev
     page,
     limit,
     sort,
+    seed,
     category,
     hospitalId,
     likedOnly,
@@ -92,6 +97,7 @@ export function convertToDbReviewQueryParams(
     page: params.page,
     limit: params.limit,
     sort: params.sort,
+    seed: params.seed,
     category: params.category,
     hospitalId: params.hospitalId,
     likedOnly: params.likedOnly,
