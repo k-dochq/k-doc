@@ -69,6 +69,8 @@ export interface MedicalSpecialty {
   id: string;
   name: LocalizedText;
   specialtyType: string;
+  parentSpecialtyId?: string | null;
+  order?: number | null;
 }
 
 // Prisma JsonValue를 LocalizedText로 변환하는 헬퍼 함수

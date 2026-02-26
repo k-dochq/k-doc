@@ -10,7 +10,7 @@ import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
 import { HospitalCardV2NameAndLocation } from './HospitalCardV2NameAndLocation';
 import { HospitalCardV2Price } from './HospitalCardV2Price';
 import { HospitalCardV2Rating } from './HospitalCardV2Rating';
-import { addCategoryToHospitalCardData } from '../lib/add-hospital-category';
+import { sortMedicalSpecialtiesByDisplayOrder } from '../lib/medical-specialty-display-order';
 import { formatHospitalPrice } from 'shared/lib/utils/hospital-price';
 
 interface HospitalCardV2Props {
@@ -34,37 +34,50 @@ export function HospitalCardV2({
   showLikeButton = false,
   href,
 }: HospitalCardV2Props) {
-  // 추가 카테고리가 포함된 병원 데이터
-  const hospitalWithCategory = addCategoryToHospitalCardData(hospital);
+  // medicalSpecialties 정렬 (표시 순서대로)
+  const sortedMedicalSpecialties = hospital.medicalSpecialties
+    ? sortMedicalSpecialtiesByDisplayOrder(hospital.medicalSpecialties, (s) => ({
+        id: s.id,
+        specialtyType: 'specialtyType' in s ? (s.specialtyType as string) : undefined,
+        parentSpecialtyId: 'parentSpecialtyId' in s ? s.parentSpecialtyId : undefined,
+        name: 'name' in s ? s.name : undefined,
+        order: 'order' in s ? s.order : undefined,
+      }))
+    : undefined;
 
-  const hospitalName = getLocalizedTextByLocale(hospitalWithCategory.name, lang);
-  const displayLocationName = hospitalWithCategory.displayLocationName
-    ? getLocalizedTextByLocale(hospitalWithCategory.displayLocationName, lang)
+  const hospitalData = {
+    ...hospital,
+    medicalSpecialties: sortedMedicalSpecialties ?? hospital.medicalSpecialties,
+  };
+
+  const hospitalName = getLocalizedTextByLocale(hospitalData.name, lang);
+  const displayLocationName = hospitalData.displayLocationName
+    ? getLocalizedTextByLocale(hospitalData.displayLocationName, lang)
     : null;
-  const address = getLocalizedTextByLocale(hospitalWithCategory.address, lang);
+  const address = getLocalizedTextByLocale(hospitalData.address, lang);
 
   // 가격 포맷팅
-  const price = formatHospitalPrice(hospitalWithCategory.prices, dict);
+  const price = formatHospitalPrice(hospitalData.prices, dict);
 
   // 지역 정보 (displayLocationName이 있으면 사용)
   const location = displayLocationName || address;
 
   // 클라이언트에서 현재 사용자의 좋아요 상태 계산
   const isLiked =
-    user && hospitalWithCategory.likedUserIds
-      ? hospitalWithCategory.likedUserIds.includes(user.id)
+    user && hospitalData.likedUserIds
+      ? hospitalData.likedUserIds.includes(user.id)
       : false;
 
   // 좋아요 토글 핸들러
   const handleToggleLike = () => {
-    onToggleLike?.(hospitalWithCategory.id);
+    onToggleLike?.(hospitalData.id);
   };
 
   // 뱃지 로직: badge 배열의 첫 번째 요소 확인
-  const firstBadge = hospitalWithCategory.badge?.[0];
+  const firstBadge = hospitalData.badge?.[0];
 
   // 링크 URL 결정: href prop이 제공되면 사용, 없으면 기본값 사용 (locale prefix 없이 전달)
-  const linkHref = href || `/hospital/${hospitalWithCategory.id}`;
+  const linkHref = href || `/hospital/${hospitalData.id}`;
 
   return (
     <LocaleLink href={linkHref} className='block'>
@@ -77,7 +90,7 @@ export function HospitalCardV2({
         <div className='flex flex-col items-center overflow-clip rounded-xl bg-white shadow-[1px_2px_4px_0_rgba(0,0,0,0.40)]'>
           {/* 썸네일 이미지 */}
           <HospitalCardV2Thumbnail
-            imageUrl={hospitalWithCategory.thumbnailImageUrl}
+            imageUrl={hospitalData.thumbnailImageUrl}
             alt={hospitalName}
             showLikeButton={showLikeButton}
             isLiked={isLiked}
@@ -90,10 +103,10 @@ export function HospitalCardV2({
             {/* 상단 영역 */}
             <div className='flex w-full shrink-0 flex-col items-start gap-1.5'>
               {/* 카테고리 태그 */}
-              {hospitalWithCategory.medicalSpecialties &&
-                hospitalWithCategory.medicalSpecialties.length > 0 && (
+              {hospitalData.medicalSpecialties &&
+                hospitalData.medicalSpecialties.length > 0 && (
                   <MedicalSpecialtyTagsV2
-                    specialties={hospitalWithCategory.medicalSpecialties}
+                    specialties={hospitalData.medicalSpecialties}
                     lang={lang}
                     maxDisplay={3}
                   />
@@ -114,8 +127,8 @@ export function HospitalCardV2({
 
               {/* 별점 및 리뷰 */}
               <HospitalCardV2Rating
-                rating={hospitalWithCategory.rating}
-                reviewCount={hospitalWithCategory.reviewCount}
+                rating={hospitalData.rating}
+                reviewCount={hospitalData.reviewCount}
               />
             </div>
           </div>

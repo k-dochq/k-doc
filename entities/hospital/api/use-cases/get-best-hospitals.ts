@@ -61,7 +61,6 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
           where: {
             MedicalSpecialty: {
               isActive: true,
-              parentSpecialtyId: null, // 상위 카테고리만 (하위 카테고리 제외)
             },
           },
           select: {
@@ -70,6 +69,8 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
                 id: true,
                 name: true,
                 specialtyType: true,
+                parentSpecialtyId: true,
+                order: true,
               },
             },
           },
@@ -111,6 +112,8 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
         id: hms.MedicalSpecialty.id,
         name: parseLocalizedText(hms.MedicalSpecialty.name),
         specialtyType: hms.MedicalSpecialty.specialtyType,
+        parentSpecialtyId: hms.MedicalSpecialty.parentSpecialtyId ?? undefined,
+        order: hms.MedicalSpecialty.order ?? undefined,
       })),
       displayLocationName: parseLocalizedText(hospital.displayLocationName || '{}'),
       district: hospital.District || null, // District 정보 추가

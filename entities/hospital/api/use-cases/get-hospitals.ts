@@ -286,7 +286,6 @@ export async function getHospitals(
           where: {
             MedicalSpecialty: {
               isActive: true,
-              parentSpecialtyId: null, // 상위 카테고리만 (하위 카테고리 제외)
             },
           },
         },
@@ -336,6 +335,8 @@ export async function getHospitals(
             id: hms.MedicalSpecialty.id,
             name: parseLocalizedText(hms.MedicalSpecialty.name),
             specialtyType: hms.MedicalSpecialty.specialtyType,
+            parentSpecialtyId: hms.MedicalSpecialty.parentSpecialtyId ?? undefined,
+            order: hms.MedicalSpecialty.order ?? undefined,
           })) || [],
         displayLocationName: parseLocalizedText(hospital.displayLocationName || '{}'),
         district: hospital.District

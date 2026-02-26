@@ -23,6 +23,8 @@ export function convertHospitalToCardData(hospital: Hospital): HospitalCardData 
         id: ms.id,
         name: parseLocalizedText(ms.name),
         specialtyType: ms.specialtyType,
+        parentSpecialtyId: ms.parentSpecialtyId ?? undefined,
+        order: ms.order ?? undefined,
       })) || [],
     displayLocationName: parseLocalizedText(hospital.displayLocationName || '{}'),
     district: hospital.district,
