@@ -493,7 +493,7 @@
       },
       "errors": {
         "passwordRequired": "Please enter your password.",
-        "passwordTooShort": "Password must be at least 8 characters.",
+        "passwordTooShort": "Password must be at least 6 characters.",
         "confirmPasswordRequired": "Please confirm your password.",
         "passwordMismatch": "Passwords do not match.",
         "invalidSession": "Session is invalid. Please try again.",

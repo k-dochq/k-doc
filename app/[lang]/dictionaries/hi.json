@@ -493,7 +493,7 @@
       },
       "errors": {
         "passwordRequired": "कृपया अपना पासवर्ड दर्ज करें।",
-        "passwordTooShort": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
+        "passwordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
         "confirmPasswordRequired": "कृपया अपने पासवर्ड की पुष्टि करें।",
         "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
         "invalidSession": "सेशन अमान्य है। कृपया पुनः प्रयास करें।",

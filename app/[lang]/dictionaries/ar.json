@@ -493,7 +493,7 @@
       },
       "errors": {
         "passwordRequired": "يرجى إدخال كلمة المرور.",
-        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 8 أحرف.",
+        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
         "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
         "passwordMismatch": "كلمتا المرور غير متطابقتين.",
         "invalidSession": "الجلسة غير صالحة. يرجى المحاولة مرة أخرى.",
