@@ -632,6 +632,7 @@
       "reservationDateTime": "예약 일시",
       "region": "지역",
       "writeReview": "시술후기 작성하기",
+      "editReview": "리뷰 수정하기",
       "loadingMore": "더 많은 예약 내역을 불러오는 중...",
       "allLoaded": "모든 예약 내역을 불러왔습니다.",
       "completed": "시술 완료",

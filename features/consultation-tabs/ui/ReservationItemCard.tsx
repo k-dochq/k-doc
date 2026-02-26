@@ -64,9 +64,13 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
     }
   };
 
-  // 시술후기 작성 핸들러
+  // 시술후기 작성/수정 핸들러
   const handleWriteReview = () => {
-    router.push(`/reviews-create?hospitalId=${reservation.hospital.id}`);
+    if (reservation.reviewId) {
+      router.push(`/reviews-edit/${reservation.reviewId}`);
+    } else {
+      router.push(`/reviews-create?hospitalId=${reservation.hospital.id}`);
+    }
   };
 
   // 예약 상세로 이동 핸들러
@@ -139,8 +143,12 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
         dict={dict}
       />
 
-      {/* 시술후기 작성하기 버튼 */}
-      <WriteReviewButton onClick={handleWriteReview} dict={dict} />
+      {/* 시술후기 작성/수정 버튼 */}
+      <WriteReviewButton
+        onClick={handleWriteReview}
+        dict={dict}
+        reviewId={reservation.reviewId}
+      />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { prisma } from 'shared/lib/prisma';
 import { ReservationRepository } from '../infrastructure/repositories';
 import {
   type GetUserReservationsResponse,
@@ -9,7 +10,10 @@ import {
 /**
  * 예약 내역을 ReservationData 타입으로 변환
  */
-function transformReservationToData(reservation: ReservationWithHospitalForList): ReservationData {
+function transformReservationToData(
+  reservation: ReservationWithHospitalForList,
+  reviewIdByHospital: Map<string, string>,
+): ReservationData {
   const { Hospital } = reservation;
 
   // THUMBNAIL과 LOGO 이미지 분리
@@ -18,6 +22,7 @@ function transformReservationToData(reservation: ReservationWithHospitalForList)
 
   return {
     id: reservation.id,
+    reviewId: reviewIdByHospital.get(reservation.hospitalId),
     reservationDate: reservation.reservationDate,
     reservationTime: reservation.reservationTime,
     status: reservation.status,
@@ -60,11 +65,28 @@ export async function getUserReservations(
     // 예약 내역 조회
     const reservations = await repository.getUserReservations(userId, page, limit);
 
+    // 각 예약(병원)별 사용자 리뷰 ID 조회
+    const hospitalIds = reservations.map((r) => r.hospitalId);
+    const reviews =
+      hospitalIds.length > 0
+        ? await prisma.review.findMany({
+            where: {
+              userId,
+              hospitalId: { in: hospitalIds },
+              isActive: { not: false },
+            },
+            select: { id: true, hospitalId: true },
+          })
+        : [];
+    const reviewIdByHospital = new Map(reviews.map((r) => [r.hospitalId, r.id]));
+
     // 전체 예약 수 조회
     const totalCount = await repository.getUserReservationsCount(userId);
 
     // 데이터 변환
-    const reservationData = reservations.map(transformReservationToData);
+    const reservationData = reservations.map((r) =>
+      transformReservationToData(r, reviewIdByHospital),
+    );
 
     // 다음 페이지 여부 계산
     const hasNextPage = page * limit < totalCount;

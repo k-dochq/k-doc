@@ -632,6 +632,7 @@
       "reservationDateTime": "預訂日期和時間",
       "region": "地區",
       "writeReview": "手術後請寫一篇評價",
+      "editReview": "編輯評價",
       "loadingMore": "正在加載更多預訂資訊…",
       "allLoaded": "所有預訂詳情均已取得。",
       "completed": "手術完成",

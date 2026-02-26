@@ -5,9 +5,14 @@ import { type Dictionary } from 'shared/model/types';
 interface WriteReviewButtonProps {
   onClick: () => void;
   dict: Dictionary;
+  /** 리뷰 ID가 있으면 "리뷰 수정하기" 표시 */
+  reviewId?: string;
 }
 
-export function WriteReviewButton({ onClick, dict }: WriteReviewButtonProps) {
+export function WriteReviewButton({ onClick, dict, reviewId }: WriteReviewButtonProps) {
+  const label = reviewId
+    ? dict.consultation?.appointment?.editReview || '리뷰 수정하기'
+    : dict.consultation?.appointment?.writeReview || '시술후기 작성하기';
   return (
     <button
       onClick={onClick}
@@ -36,7 +41,7 @@ export function WriteReviewButton({ onClick, dict }: WriteReviewButtonProps) {
         />
       </svg>
       <p className='line-clamp-2 min-w-0 text-sm leading-5 font-semibold text-white'>
-        {dict.consultation?.appointment?.writeReview || '시술후기 작성하기'}
+        {label}
       </p>
     </button>
   );
