@@ -216,6 +216,8 @@ function transformHospitalData(
       ? hospital._count.Review
       : (hospital as DoctorRouteHospital)._count.Review;
 
+  const hospitalWithOptional = hospital as Record<string, unknown>;
+
   return {
     id: hospital.id,
     name: parseLocalizedText(hospital.name),
@@ -235,6 +237,13 @@ function transformHospitalData(
     displayLocationName: hospital.displayLocationName
       ? parseLocalizedText(hospital.displayLocationName)
       : null,
+    badge: hospitalWithOptional.badge as string[] | null | undefined,
+    approvalStatusType: hospitalWithOptional.approvalStatusType as
+      | 'PENDING'
+      | 'APPROVED'
+      | 'REJECTED'
+      | null
+      | undefined,
   };
 }
 

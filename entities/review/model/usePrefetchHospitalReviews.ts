@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from 'shared/lib/query-keys';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
-import { fetchAllReviews } from './useInfiniteAllReviews';
+import { fetchAllReviews } from '../api/queries/fetch-all-reviews';
 import { createHospitalReviewsInfiniteQueryParams } from '../lib/query-params';
 
 interface UsePrefetchHospitalReviewsParams {
