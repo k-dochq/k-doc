@@ -331,11 +331,15 @@ model MedicalSpecialty {
   isActive                 Boolean                    @default(true)
   createdAt                DateTime                   @default(now())
   updatedAt                DateTime
+  parentSpecialtyId        String?                    @db.Uuid
   DoctorMedicalSpecialty   DoctorMedicalSpecialty[]
   HospitalMedicalSpecialty HospitalMedicalSpecialty[]
   LiveReview               LiveReview[]
+  MedicalSpecialty         MedicalSpecialty?          @relation("MedicalSpecialtyToMedicalSpecialty", fields: [parentSpecialtyId], references: [id], onDelete: Cascade)
+  other_MedicalSpecialty   MedicalSpecialty[]         @relation("MedicalSpecialtyToMedicalSpecialty")
   Review                   Review[]
 
+  @@index([parentSpecialtyId])
   @@schema("public")
 }
 
