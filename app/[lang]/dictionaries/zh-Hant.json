@@ -220,9 +220,14 @@
       "buttonText": "手術後請寫一篇評價"
     },
     "selectHospital": {
+      "headerTitle": "評價",
       "title": "選擇醫院",
       "description": "請選擇您要撰寫評價的醫院。您可以從您已預約的醫院清單中選擇。",
       "pageTitle": "請選擇您預約的醫院。",
+      "tabs": {
+        "writable": "可撰寫",
+        "written": "已撰寫"
+      },
       "pageSubtitle": "選擇您要撰寫評論的醫院。",
       "notificationMessage": "請選擇您要撰寫評價的醫院。",
       "infiniteScroll": {
@@ -237,7 +242,11 @@
         "title": "沒有預訂。",
         "description": "要撰寫評論，您必須先在醫院預約。",
         "subdescription": "請找到您想去的醫院並預約。",
-        "browseButton": "參觀醫院"
+        "browseButton": "參觀醫院",
+        "writableTitle": "沒有可撰寫的評價",
+        "writableDescription": "開始諮詢您感興趣的手術或醫院",
+        "writtenTitle": "尚未有已撰寫的評價",
+        "writtenDescription": "開始諮詢您感興趣的手術或醫院"
       }
     },
     "form": {

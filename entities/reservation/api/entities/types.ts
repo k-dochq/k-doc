@@ -232,6 +232,8 @@ export interface GetUserReservationsParams {
   userId: string;
   page: number;
   limit: number;
+  /** 리뷰 작성 여부 필터 (true: 작성한 병원만, false: 미작성 병원만, undefined: 전체) */
+  hasReviewed?: boolean;
 }
 
 /**

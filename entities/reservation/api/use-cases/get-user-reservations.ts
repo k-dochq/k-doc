@@ -57,13 +57,18 @@ function transformReservationToData(
 export async function getUserReservations(
   params: GetUserReservationsParams,
 ): Promise<GetUserReservationsResponse> {
-  const { userId, page, limit } = params;
+  const { userId, page, limit, hasReviewed } = params;
 
   try {
     const repository = new ReservationRepository();
 
-    // 예약 내역 조회
-    const reservations = await repository.getUserReservations(userId, page, limit);
+    // 예약 내역 조회 (hasReviewed 필터 적용)
+    const reservations = await repository.getUserReservations(
+      userId,
+      page,
+      limit,
+      hasReviewed,
+    );
 
     // 각 예약(병원)별 사용자 리뷰 ID 조회
     const hospitalIds = reservations.map((r) => r.hospitalId);
@@ -80,8 +85,8 @@ export async function getUserReservations(
         : [];
     const reviewIdByHospital = new Map(reviews.map((r) => [r.hospitalId, r.id]));
 
-    // 전체 예약 수 조회
-    const totalCount = await repository.getUserReservationsCount(userId);
+    // 전체 예약 수 조회 (hasReviewed 필터 적용)
+    const totalCount = await repository.getUserReservationsCount(userId, hasReviewed);
 
     // 데이터 변환
     const reservationData = reservations.map((r) =>

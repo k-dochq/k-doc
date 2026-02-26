@@ -6,6 +6,8 @@ import { type GetUserReservationsResponse } from '../api/entities/types';
 
 interface UseInfiniteReservationsParams extends Record<string, unknown> {
   limit?: number;
+  /** 리뷰 작성 여부 필터 (true: 작성한 병원만, false: 미작성 병원만, undefined: 전체) */
+  hasReviewed?: boolean;
 }
 
 interface ReservationsApiResponse {
@@ -17,6 +19,7 @@ interface ReservationsApiResponse {
 async function fetchReservations({
   pageParam = 1,
   limit = 10,
+  hasReviewed,
 }: {
   pageParam: number;
 } & UseInfiniteReservationsParams): Promise<GetUserReservationsResponse> {
@@ -24,6 +27,9 @@ async function fetchReservations({
     page: pageParam.toString(),
     limit: limit.toString(),
   });
+  if (hasReviewed !== undefined) {
+    queryParams.append('hasReviewed', String(hasReviewed));
+  }
 
   const url = `/api/reservations?${queryParams.toString()}`;
 
