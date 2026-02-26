@@ -493,7 +493,7 @@
       },
       "errors": {
         "passwordRequired": "パスワードを入力してください。",
-        "passwordTooShort": "パスワードは8文字以上にしてください。",
+        "passwordTooShort": "パスワードは6文字以上にしてください。",
         "confirmPasswordRequired": "パスワードを確認してください。",
         "passwordMismatch": "パスワードが一致しません。",
         "invalidSession": "セッションが無効です。再度お試しください。",

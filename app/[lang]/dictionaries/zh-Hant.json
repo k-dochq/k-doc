@@ -493,7 +493,7 @@
       },
       "errors": {
         "passwordRequired": "請輸入你的密碼。",
-        "passwordTooShort": "密碼至少需 8 個字元。",
+        "passwordTooShort": "密碼至少需 6 個字元。",
         "confirmPasswordRequired": "請確認你的密碼。",
         "passwordMismatch": "兩次密碼不一致。",
         "invalidSession": "工作階段無效，請再試一次。",
