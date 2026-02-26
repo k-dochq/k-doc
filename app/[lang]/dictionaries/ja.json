@@ -220,9 +220,14 @@
       "buttonText": "施術レビューを書く"
     },
     "selectHospital": {
+      "headerTitle": "レビュー",
       "title": "病院の選択",
       "description": "施術後期を作成する病院を選択してください。予約した病院のリストから選択できます。",
       "pageTitle": "予約した病院を選択",
+      "tabs": {
+        "writable": "作成可能",
+        "written": "作成完了"
+      },
       "pageSubtitle": "施術後期を作成する病院を選択してください",
       "notificationMessage": "レビューを書く病院を選択してください",
       "infiniteScroll": {
@@ -237,7 +242,11 @@
         "title": "予約履歴がありません",
         "description": "施術後期を作成するには、まず病院の予約が必要です。",
         "subdescription": "希望の病院を見つけて予約を進めてください。",
-        "browseButton": "病院ツアー"
+        "browseButton": "病院ツアー",
+        "writableTitle": "作成可能なレビューがありません",
+        "writableDescription": "気になる施術や病院について相談を始めましょう",
+        "writtenTitle": "作成完了したレビューがありません",
+        "writtenDescription": "気になる施術や病院について相談を始めましょう"
       }
     },
     "form": {

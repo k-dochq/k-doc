@@ -220,9 +220,14 @@
       "buttonText": "Write Review"
     },
     "selectHospital": {
+      "headerTitle": "Review",
       "title": "Pagpili ng hospital",
       "description": "Mangyaring piliin ang hospital kung saan mo gustong magsulat ng review. Maaari kang pumili mula sa listahan ng mga hospital kung saan ka nagpareserba.",
       "pageTitle": "Piliin ang hospital kung saan ka nagpareserba",
+      "tabs": {
+        "writable": "Maaaring isulat",
+        "written": "Naisulat na"
+      },
       "pageSubtitle": "Piliin ang hospital kung saan mo gustong magsulat ng review.",
       "notificationMessage": "Mangyaring piliin ang hospital kung saan mo gustong magsulat ng review.",
       "infiniteScroll": {
@@ -237,7 +242,11 @@
         "title": "Walang mga reserbasyon",
         "description": "Para makapagsulat ng review, kailangan mo munang magpa-appointment sa hospital.",
         "subdescription": "Hanapin ang hospital na gusto mo at magpareserba.",
-        "browseButton": "Maglibot sa hospital"
+        "browseButton": "Maglibot sa hospital",
+        "writableTitle": "Walang available na review na maisusulat",
+        "writableDescription": "Magsimula ng konsultasyon para sa mga pamamaraan o hospital na nais mong malaman",
+        "writtenTitle": "Wala pang naisulat na review",
+        "writtenDescription": "Magsimula ng konsultasyon para sa mga pamamaraan o hospital na nais mong malaman"
       }
     },
     "form": {

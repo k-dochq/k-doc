@@ -21,6 +21,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const searchParams = request.nextUrl.searchParams;
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') || '10', 10);
+    const hasReviewedParam = searchParams.get('hasReviewed');
+    const hasReviewed =
+      hasReviewedParam === 'true'
+        ? true
+        : hasReviewedParam === 'false'
+          ? false
+          : undefined;
 
     // 페이지 및 limit 유효성 검사
     if (page < 1) {
@@ -48,6 +55,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       userId: user.id,
       page,
       limit,
+      hasReviewed,
     });
 
     return NextResponse.json({

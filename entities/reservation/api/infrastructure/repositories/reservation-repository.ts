@@ -79,14 +79,17 @@ export class ReservationRepository {
   /**
    * 사용자의 전체 예약 수 조회
    * @param userId 사용자 ID
+   * @param hasReviewed 리뷰 작성 여부 필터 (true: 작성한 병원만, false: 미작성 병원만, undefined: 전체)
    * @returns 전체 예약 수
    */
-  async getUserReservationsCount(userId: string): Promise<number> {
+  async getUserReservationsCount(
+    userId: string,
+    hasReviewed?: boolean,
+  ): Promise<number> {
     try {
+      const whereClause = await this.buildReservationsWhereClause(userId, hasReviewed);
       const count = await prisma.reservation.count({
-        where: {
-          userId,
-        },
+        where: whereClause,
       });
 
       return count;
@@ -97,22 +100,65 @@ export class ReservationRepository {
   }
 
   /**
+   * hasReviewed 필터에 따른 where 조건 생성
+   */
+  private async buildReservationsWhereClause(
+    userId: string,
+    hasReviewed?: boolean,
+  ): Promise<{ userId: string; hospitalId?: { in?: string[]; notIn?: string[] } }> {
+    const baseWhere = { userId };
+
+    if (hasReviewed === undefined) {
+      return baseWhere;
+    }
+
+    const reviews = await prisma.review.findMany({
+      where: {
+        userId,
+        isActive: { not: false },
+      },
+      select: { hospitalId: true },
+      distinct: ['hospitalId'],
+    });
+    const hospitalIdsWithReviews = reviews.map((r) => r.hospitalId);
+
+    if (hasReviewed) {
+      return {
+        ...baseWhere,
+        hospitalId: { in: hospitalIdsWithReviews },
+      };
+    }
+
+    // hasReviewed=false: 리뷰 미작성 병원만. 비어있으면 모든 병원이 미작성
+    if (hospitalIdsWithReviews.length === 0) {
+      return baseWhere;
+    }
+
+    return {
+      ...baseWhere,
+      hospitalId: { notIn: hospitalIdsWithReviews },
+    };
+  }
+
+  /**
    * 사용자의 예약 내역을 개별 예약 정보와 병원 정보를 함께 조회
    * @param userId 사용자 ID
    * @param page 페이지 번호
    * @param limit 페이지당 항목 수
+   * @param hasReviewed 리뷰 작성 여부 필터 (true: 작성한 병원만, false: 미작성 병원만, undefined: 전체)
    * @returns 예약 내역 배열 (개별 예약 정보 포함)
    */
   async getUserReservations(
     userId: string,
     page: number,
     limit: number,
+    hasReviewed?: boolean,
   ): Promise<ReservationWithHospitalForList[]> {
     try {
+      const whereClause = await this.buildReservationsWhereClause(userId, hasReviewed);
+
       const reservations = await prisma.reservation.findMany({
-        where: {
-          userId,
-        },
+        where: whereClause,
         include: {
           Hospital: {
             include: {

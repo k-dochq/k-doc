@@ -220,9 +220,14 @@
       "buttonText": "Write Review"
     },
     "selectHospital": {
+      "headerTitle": "Review",
       "title": "Select Hospital",
       "description": "Select a hospital to write a review. You can choose from your booked hospitals.",
       "pageTitle": "Select Your Booked Hospital",
+      "tabs": {
+        "writable": "Can Write",
+        "written": "Written"
+      },
       "pageSubtitle": "Select a hospital to write your review",
       "notificationMessage": "Please select a hospital to write a review",
       "infiniteScroll": {
@@ -237,7 +242,11 @@
         "title": "No Reservation History",
         "description": "You need to book a hospital first to write a review.",
         "subdescription": "Find your desired hospital and make a reservation.",
-        "browseButton": "Browse Hospitals"
+        "browseButton": "Browse Hospitals",
+        "writableTitle": "No reviews available to write",
+        "writableDescription": "Start a consultation for procedures or hospitals you're curious about",
+        "writtenTitle": "No written reviews yet",
+        "writtenDescription": "Start a consultation for procedures or hospitals you're curious about"
       }
     },
     "form": {
