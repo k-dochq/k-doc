@@ -9,7 +9,7 @@ import { HospitalDetailLogoV2 } from 'widgets/hospital-detail-logo/ui/HospitalDe
 import { HospitalReviewStatsV2 } from 'widgets/popular-reviews/ui/HospitalReviewStatsV2';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { formatHospitalPrice } from 'shared/lib/utils/hospital-price';
-import { addAdditionalCategoryToMedicalSpecialties } from 'entities/hospital/lib/add-hospital-category';
+import { sortMedicalSpecialtiesByDisplayOrder } from 'entities/hospital/lib/medical-specialty-display-order';
 
 interface HospitalDetailInfoV2Props {
   hospital: Hospital;
@@ -35,10 +35,15 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
 
   const hospitalName = extractLocalizedText(hospital.name, lang) || '';
   const hospitalAddress = extractLocalizedText(displayAddress, lang) || '';
-  const medicalSpecialtiesWithAdditionalCategory = addAdditionalCategoryToMedicalSpecialties(
-    hospital.id,
-    hospital.medicalSpecialties,
-  );
+  const medicalSpecialties = hospital.medicalSpecialties
+    ? sortMedicalSpecialtiesByDisplayOrder(hospital.medicalSpecialties, (s) => ({
+        id: s.id,
+        specialtyType: 'specialtyType' in s ? (s.specialtyType as string) : undefined,
+        parentSpecialtyId: 'parentSpecialtyId' in s ? s.parentSpecialtyId : undefined,
+        name: 'name' in s ? s.name : undefined,
+        order: 'order' in s ? s.order : undefined,
+      }))
+    : [];
 
   return (
     <div className='relative z-10 -mt-3 rounded-tl-2xl rounded-tr-2xl bg-white px-5 pt-10 pb-4'>
@@ -126,10 +131,10 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
       </div>
 
       {/* 시술부위 태그 */}
-      {medicalSpecialtiesWithAdditionalCategory.length > 0 && (
+      {medicalSpecialties.length > 0 && (
         <div className='mt-1.5'>
           <MedicalSpecialtyTagsV2
-            specialties={medicalSpecialtiesWithAdditionalCategory}
+            specialties={medicalSpecialties}
             lang={lang}
             maxDisplay={3}
             textClassName='!text-sm !leading-5'

@@ -15,6 +15,8 @@ export interface MedicalSpecialty {
   id: string;
   name: Prisma.JsonValue;
   specialtyType: MedicalSpecialtyType;
+  parentSpecialtyId?: string | null;
+  order?: number | null;
 }
 
 export interface DoctorImage {

@@ -204,6 +204,8 @@ function transformHospitalDetailStatic(data: HospitalDetailWithRelations): Hospi
     id: hms.MedicalSpecialty.id,
     name: hms.MedicalSpecialty.name,
     specialtyType: hms.MedicalSpecialty.specialtyType,
+    parentSpecialtyId: hms.MedicalSpecialty.parentSpecialtyId ?? undefined,
+    order: hms.MedicalSpecialty.order ?? undefined,
   }));
 
   // 운영시간은 JSON 필드에서 직접 가져옴 (타입 안전성을 위해 캐스팅)
@@ -278,6 +280,8 @@ function transformHospitalDetail(data: HospitalDetailWithRelations): Hospital & 
     id: hms.MedicalSpecialty.id,
     name: hms.MedicalSpecialty.name,
     specialtyType: hms.MedicalSpecialty.specialtyType,
+    parentSpecialtyId: hms.MedicalSpecialty.parentSpecialtyId ?? undefined,
+    order: hms.MedicalSpecialty.order ?? undefined,
   }));
 
   // 운영시간은 JSON 필드에서 직접 가져옴 (타입 안전성을 위해 캐스팅)
