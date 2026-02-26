@@ -11,6 +11,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const medicalSpecialties = await prisma.medicalSpecialty.findMany({
       where: {
         isActive: true,
+        parentSpecialtyId: null, // 상위 카테고리만 (하위 카테고리 제외)
       },
       select: {
         id: true,
