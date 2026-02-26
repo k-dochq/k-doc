@@ -30,7 +30,7 @@ export async function fetchRandomOrderedReviewIds({
       WHERE "specialtyType" = ${category}::"MedicalSpecialtyType" 
       AND "isActive" = true
     )` : Prisma.empty}
-    ${hospitalId ? Prisma.sql`AND "hospitalId" = ${hospitalId}` : Prisma.empty}
+    ${hospitalId ? Prisma.sql`AND "hospitalId" = CAST(${hospitalId} AS uuid)` : Prisma.empty}
     ORDER BY MD5(CONCAT(id::text, ${seed}))
     LIMIT ${limit}
     OFFSET ${offset}
