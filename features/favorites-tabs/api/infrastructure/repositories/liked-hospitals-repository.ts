@@ -74,6 +74,12 @@ export class LikedHospitalsRepository implements ILikedHospitalsRepository {
           },
         },
         HospitalMedicalSpecialty: {
+          where: {
+            MedicalSpecialty: {
+              isActive: true,
+              parentSpecialtyId: null, // 상위 카테고리만 (하위 카테고리 제외)
+            },
+          },
           select: {
             MedicalSpecialty: {
               select: {
