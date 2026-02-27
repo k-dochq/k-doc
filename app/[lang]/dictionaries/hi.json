@@ -428,7 +428,7 @@
       },
       "placeholders": {
         "email": "अपना ईमेल दर्ज करें",
-        "password": "6+ अक्षर",
+        "password": "8+ अक्षर",
         "confirmPassword": "अपने पासवर्ड की पुष्टि करें",
         "passportName": "पासपोर्ट नाम अंग्रेज़ी में दर्ज करें",
         "nationality": "अपनी राष्ट्रीयता चुनें",
@@ -442,7 +442,7 @@
         "emailRequired": "कृपया अपना ईमेल दर्ज करें।",
         "emailInvalid": "कृपया एक वैध ईमेल पता दर्ज करें।",
         "passwordRequired": "कृपया अपना पासवर्ड दर्ज करें।",
-        "passwordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+        "passwordTooShort": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
         "confirmPasswordRequired": "कृपया अपने पासवर्ड की पुष्टि करें।",
         "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
         "passportNameRequired": "पासपोर्ट नाम (अंग्रेज़ी) के बिना उपचार तक पहुँच सीमित हो सकती है।",
@@ -451,7 +451,7 @@
         "genderRequired": "कृपया अपना लिंग चुनें।",
         "emailAlreadyRegistered": "यह ईमेल पहले से रजिस्टर्ड है।",
         "invalidEmail": "कृपया एक वैध ईमेल पता दर्ज करें।",
-        "passwordTooShortServer": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+        "passwordTooShortServer": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
         "unexpectedError": "एक अप्रत्याशित त्रुटि हुई।",
         "invalidCredentials": "ईमेल या पासवर्ड गलत है।",
         "emailNotConfirmed": "कृपया अपना ईमेल जांचें और अपने खाते की पुष्टि करें।",
@@ -502,7 +502,7 @@
       },
       "errors": {
         "passwordRequired": "कृपया अपना पासवर्ड दर्ज करें।",
-        "passwordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+        "passwordTooShort": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
         "confirmPasswordRequired": "कृपया अपने पासवर्ड की पुष्टि करें।",
         "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
         "invalidSession": "सेशन अमान्य है। कृपया पुनः प्रयास करें।",
@@ -2050,14 +2050,14 @@
         "confirmPassword": "नए पासवर्ड की पुष्टि करें",
         "placeholders": {
           "currentPassword": "अपना वर्तमान पासवर्ड दर्ज करें",
-          "newPassword": "कम से कम 6 अक्षर",
+          "newPassword": "कम से कम 8 अक्षर",
           "confirmPassword": "अपना पासवर्ड फिर से दर्ज करें"
         },
         "errors": {
           "currentPasswordRequired": "कृपया अपना वर्तमान पासवर्ड दर्ज करें।",
           "currentPasswordInvalid": "वर्तमान पासवर्ड गलत है।",
           "newPasswordRequired": "कृपया अपना नया पासवर्ड दर्ज करें।",
-          "newPasswordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए।",
+          "newPasswordTooShort": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
           "confirmPasswordRequired": "कृपया अपने पासवर्ड की पुष्टि करें।",
           "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
           "updateFailed": "पासवर्ड बदलते समय त्रुटि हुई।"

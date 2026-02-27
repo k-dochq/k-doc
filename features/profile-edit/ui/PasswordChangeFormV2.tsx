@@ -88,10 +88,10 @@ export function PasswordChangeFormV2({
       newErrors.newPassword =
         dict.my?.profile?.passwordChange?.errors?.newPasswordRequired ||
         'Please enter your new password.';
-    } else if (formData.newPassword.length < 6) {
+    } else if (formData.newPassword.length < 8) {
       newErrors.newPassword =
         dict.my?.profile?.passwordChange?.errors?.newPasswordTooShort ||
-        'Password must be at least 6 characters.';
+        'Password must be at least 8 characters.';
     }
 
     // 비밀번호 확인 검증
@@ -113,7 +113,7 @@ export function PasswordChangeFormV2({
       data.currentPassword.trim() &&
       data.newPassword &&
       data.confirmPassword &&
-      data.newPassword.length >= 6 &&
+      data.newPassword.length >= 8 &&
       data.newPassword === data.confirmPassword
     );
     onFormValidChange?.(isValid);
@@ -175,7 +175,7 @@ export function PasswordChangeFormV2({
         if (updateError.message.includes('Password should be at least')) {
           errorMessage =
             dict.my?.profile?.passwordChange?.errors?.newPasswordTooShort ||
-            'Password must be at least 6 characters.';
+            'Password must be at least 8 characters.';
         }
 
         setSubmitError(errorMessage);
@@ -227,7 +227,7 @@ export function PasswordChangeFormV2({
         value={formData.newPassword}
         onChange={(e) => updateField('newPassword', e.target.value)}
         placeholder={
-          dict.my?.profile?.passwordChange?.placeholders?.newPassword || 'At least 6 characters'
+          dict.my?.profile?.passwordChange?.placeholders?.newPassword || 'At least 8 characters'
         }
         error={errors.newPassword}
         disabled={isLoading}

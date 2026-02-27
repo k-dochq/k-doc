@@ -91,7 +91,7 @@ export function usePasswordUpdate({
         if (err.message.includes('Password should be at least')) {
           errorMessage =
             dict.auth?.resetPassword?.errors?.passwordTooShort ||
-            '비밀번호는 6자 이상이어야 합니다.';
+            '비밀번호는 8자 이상이어야 합니다.';
         } else if (err.message.includes('Unable to validate email address')) {
           errorMessage =
             dict.auth?.resetPassword?.errors?.invalidSession ||

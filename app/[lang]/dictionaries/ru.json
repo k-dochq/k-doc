@@ -428,7 +428,7 @@
       },
       "placeholders": {
         "email": "Введите email",
-        "password": "6+ символов",
+        "password": "8+ символов",
         "confirmPassword": "Подтвердите пароль",
         "passportName": "Введите имя в паспорте латиницей",
         "nationality": "Выберите гражданство",
@@ -442,7 +442,7 @@
         "emailRequired": "Введите адрес электронной почты.",
         "emailInvalid": "Введите корректный адрес электронной почты.",
         "passwordRequired": "Введите пароль.",
-        "passwordTooShort": "Пароль должен содержать не менее 6 символов.",
+        "passwordTooShort": "Пароль должен содержать не менее 8 символов.",
         "confirmPasswordRequired": "Подтвердите пароль.",
         "passwordMismatch": "Пароли не совпадают.",
         "passportNameRequired": "Без имени в паспорте (латиницей) доступ к некоторым услугам может быть ограничен.",
@@ -451,7 +451,7 @@
         "genderRequired": "Выберите пол.",
         "emailAlreadyRegistered": "Этот email уже зарегистрирован.",
         "invalidEmail": "Введите корректный адрес электронной почты.",
-        "passwordTooShortServer": "Пароль должен содержать не менее 6 символов.",
+        "passwordTooShortServer": "Пароль должен содержать не менее 8 символов.",
         "unexpectedError": "Произошла непредвиденная ошибка.",
         "invalidCredentials": "Неверный email или пароль.",
         "emailNotConfirmed": "Проверьте почту и подтвердите аккаунт.",
@@ -502,7 +502,7 @@
       },
       "errors": {
         "passwordRequired": "Введите пароль.",
-        "passwordTooShort": "Пароль должен содержать не менее 6 символов.",
+        "passwordTooShort": "Пароль должен содержать не менее 8 символов.",
         "confirmPasswordRequired": "Подтвердите пароль.",
         "passwordMismatch": "Пароли не совпадают.",
         "invalidSession": "Сессия недействительна. Попробуйте снова.",
@@ -2050,14 +2050,14 @@
         "confirmPassword": "Подтвердите новый пароль",
         "placeholders": {
           "currentPassword": "Введите текущий пароль",
-          "newPassword": "Не менее 6 символов",
+          "newPassword": "Не менее 8 символов",
           "confirmPassword": "Введите пароль ещё раз"
         },
         "errors": {
           "currentPasswordRequired": "Введите текущий пароль.",
           "currentPasswordInvalid": "Текущий пароль неверный.",
           "newPasswordRequired": "Введите новый пароль.",
-          "newPasswordTooShort": "Пароль должен содержать не менее 6 символов.",
+          "newPasswordTooShort": "Пароль должен содержать не менее 8 символов.",
           "confirmPasswordRequired": "Подтвердите пароль.",
           "passwordMismatch": "Пароли не совпадают.",
           "updateFailed": "Ошибка при смене пароля."

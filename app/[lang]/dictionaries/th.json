@@ -428,7 +428,7 @@
       },
       "placeholders": {
         "email": "กรอกอีเมลของคุณ",
-        "password": "อย่างน้อย 6 ตัวอักษร",
+        "password": "อย่างน้อย 8 ตัวอักษร",
         "confirmPassword": "ยืนยันรหัสผ่านของคุณ",
         "passportName": "กรอกชื่อในพาสปอร์ตเป็นภาษาอังกฤษ",
         "nationality": "เลือกสัญชาติของคุณ",
@@ -442,7 +442,7 @@
         "emailRequired": "กรุณากรอกอีเมลของคุณ",
         "emailInvalid": "กรุณากรอกอีเมลให้ถูกต้อง",
         "passwordRequired": "กรุณากรอกรหัสผ่านของคุณ",
-        "passwordTooShort": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+        "passwordTooShort": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
         "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
         "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
         "passportNameRequired": "อาจไม่สามารถเข้าถึงการรักษาบางอย่างได้หากไม่มีชื่อในพาสปอร์ตเป็นภาษาอังกฤษ",
@@ -451,7 +451,7 @@
         "genderRequired": "กรุณาเลือกเพศของคุณ",
         "emailAlreadyRegistered": "อีเมลนี้ถูกสมัครไว้แล้ว",
         "invalidEmail": "กรุณากรอกอีเมลให้ถูกต้อง",
-        "passwordTooShortServer": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+        "passwordTooShortServer": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
         "unexpectedError": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
         "invalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
         "emailNotConfirmed": "โปรดตรวจสอบอีเมลและยืนยันบัญชีของคุณ",
@@ -502,7 +502,7 @@
       },
       "errors": {
         "passwordRequired": "กรุณากรอกรหัสผ่านของคุณ",
-        "passwordTooShort": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+        "passwordTooShort": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
         "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
         "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
         "invalidSession": "เซสชันไม่ถูกต้อง โปรดลองอีกครั้ง",
@@ -2051,14 +2051,14 @@
         "confirmPassword": "ยืนยันรหัสผ่านใหม่",
         "placeholders": {
           "currentPassword": "กรอกรหัสผ่านปัจจุบันของคุณ",
-          "newPassword": "อย่างน้อย 6 ตัวอักษร",
+          "newPassword": "อย่างน้อย 8 ตัวอักษร",
           "confirmPassword": "กรอกรหัสผ่านอีกครั้ง"
         },
         "errors": {
           "currentPasswordRequired": "กรุณากรอกรหัสผ่านปัจจุบันของคุณ",
           "currentPasswordInvalid": "รหัสผ่านปัจจุบันไม่ถูกต้อง",
           "newPasswordRequired": "กรุณากรอกรหัสผ่านใหม่ของคุณ",
-          "newPasswordTooShort": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+          "newPasswordTooShort": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
           "confirmPasswordRequired": "กรุณายืนยันรหัสผ่านของคุณ",
           "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
           "updateFailed": "เกิดข้อผิดพลาดขณะเปลี่ยนรหัสผ่าน"

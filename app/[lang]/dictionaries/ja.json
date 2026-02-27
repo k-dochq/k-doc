@@ -428,7 +428,7 @@
       },
       "placeholders": {
         "email": "メールアドレスを入力",
-        "password": "6文字以上",
+        "password": "8文字以上",
         "confirmPassword": "パスワードを確認",
         "passportName": "パスポート氏名（英語）を入力",
         "nationality": "国籍を選択",
@@ -442,7 +442,7 @@
         "emailRequired": "メールアドレスを入力してください。",
         "emailInvalid": "有効なメールアドレスを入力してください。",
         "passwordRequired": "パスワードを入力してください。",
-        "passwordTooShort": "パスワードは6文字以上にしてください。",
+        "passwordTooShort": "パスワードは8文字以上にしてください。",
         "confirmPasswordRequired": "パスワードを確認してください。",
         "passwordMismatch": "パスワードが一致しません。",
         "passportNameRequired": "パスポート氏名（英語）がないと、一部の治療が利用できない場合があります。",
@@ -451,7 +451,7 @@
         "genderRequired": "性別を選択してください。",
         "emailAlreadyRegistered": "このメールアドレスは既に登録されています。",
         "invalidEmail": "有効なメールアドレスを入力してください。",
-        "passwordTooShortServer": "パスワードは6文字以上にしてください。",
+        "passwordTooShortServer": "パスワードは8文字以上にしてください。",
         "unexpectedError": "予期しないエラーが発生しました。",
         "invalidCredentials": "メールアドレスまたはパスワードが正しくありません。",
         "emailNotConfirmed": "メールを確認してアカウントを認証してください。",
@@ -502,7 +502,7 @@
       },
       "errors": {
         "passwordRequired": "パスワードを入力してください。",
-        "passwordTooShort": "パスワードは6文字以上にしてください。",
+        "passwordTooShort": "パスワードは8文字以上にしてください。",
         "confirmPasswordRequired": "パスワードを確認してください。",
         "passwordMismatch": "パスワードが一致しません。",
         "invalidSession": "セッションが無効です。再度お試しください。",
@@ -2050,14 +2050,14 @@
         "confirmPassword": "新しいパスワード（確認）",
         "placeholders": {
           "currentPassword": "現在のパスワードを入力",
-          "newPassword": "6文字以上",
+          "newPassword": "8文字以上",
           "confirmPassword": "もう一度パスワードを入力"
         },
         "errors": {
           "currentPasswordRequired": "現在のパスワードを入力してください。",
           "currentPasswordInvalid": "現在のパスワードが正しくありません。",
           "newPasswordRequired": "新しいパスワードを入力してください。",
-          "newPasswordTooShort": "パスワードは6文字以上にしてください。",
+          "newPasswordTooShort": "パスワードは8文字以上にしてください。",
           "confirmPasswordRequired": "パスワードを確認してください。",
           "passwordMismatch": "パスワードが一致しません。",
           "updateFailed": "パスワード変更中にエラーが発生しました。"
