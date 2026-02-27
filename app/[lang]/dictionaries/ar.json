@@ -428,7 +428,7 @@
       },
       "placeholders": {
         "email": "أدخل بريدك الإلكتروني",
-        "password": "6+ أحرف",
+        "password": "8+ أحرف",
         "confirmPassword": "أكد كلمة المرور",
         "passportName": "أدخل اسم جواز السفر بالإنجليزية",
         "nationality": "اختر جنسيتك",
@@ -442,7 +442,7 @@
         "emailRequired": "يرجى إدخال بريدك الإلكتروني.",
         "emailInvalid": "يرجى إدخال عنوان بريد إلكتروني صالح.",
         "passwordRequired": "يرجى إدخال كلمة المرور.",
-        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
+        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 8 أحرف.",
         "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
         "passwordMismatch": "كلمتا المرور غير متطابقتين.",
         "passportNameRequired": "قد يكون الوصول إلى بعض العلاجات محدودًا بدون اسم جواز السفر بالإنجليزية.",
@@ -451,7 +451,7 @@
         "genderRequired": "يرجى اختيار الجنس.",
         "emailAlreadyRegistered": "هذا البريد الإلكتروني مسجل بالفعل.",
         "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح.",
-        "passwordTooShortServer": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
+        "passwordTooShortServer": "يجب ألا تقل كلمة المرور عن 8 أحرف.",
         "unexpectedError": "حدث خطأ غير متوقع.",
         "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
         "emailNotConfirmed": "يرجى التحقق من بريدك الإلكتروني وتأكيد حسابك.",
@@ -502,7 +502,7 @@
       },
       "errors": {
         "passwordRequired": "يرجى إدخال كلمة المرور.",
-        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
+        "passwordTooShort": "يجب ألا تقل كلمة المرور عن 8 أحرف.",
         "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
         "passwordMismatch": "كلمتا المرور غير متطابقتين.",
         "invalidSession": "الجلسة غير صالحة. يرجى المحاولة مرة أخرى.",
@@ -2050,14 +2050,14 @@
         "confirmPassword": "تأكيد كلمة المرور الجديدة",
         "placeholders": {
           "currentPassword": "أدخل كلمة المرور الحالية",
-          "newPassword": "6 أحرف على الأقل",
+          "newPassword": "8 أحرف على الأقل",
           "confirmPassword": "أعد إدخال كلمة المرور"
         },
         "errors": {
           "currentPasswordRequired": "يرجى إدخال كلمة المرور الحالية.",
           "currentPasswordInvalid": "كلمة المرور الحالية غير صحيحة.",
           "newPasswordRequired": "يرجى إدخال كلمة المرور الجديدة.",
-          "newPasswordTooShort": "يجب ألا تقل كلمة المرور عن 6 أحرف.",
+          "newPasswordTooShort": "يجب ألا تقل كلمة المرور عن 8 أحرف.",
           "confirmPasswordRequired": "يرجى تأكيد كلمة المرور.",
           "passwordMismatch": "كلمتا المرور غير متطابقتين.",
           "updateFailed": "حدث خطأ أثناء تغيير كلمة المرور."

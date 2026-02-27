@@ -428,7 +428,7 @@
       },
       "placeholders": {
         "email": "請輸入您的電子郵件",
-        "password": "6 個字元以上",
+        "password": "8 個字元以上",
         "confirmPassword": "確認你的密碼",
         "passportName": "請輸入護照英文姓名",
         "nationality": "選擇你的國籍",
@@ -442,7 +442,7 @@
         "emailRequired": "請輸入你的電子郵件。",
         "emailInvalid": "請輸入有效的電子郵件地址。",
         "passwordRequired": "請輸入你的密碼。",
-        "passwordTooShort": "密碼至少需 6 個字元。",
+        "passwordTooShort": "密碼至少需 8 個字元。",
         "confirmPasswordRequired": "請確認你的密碼。",
         "passwordMismatch": "兩次密碼不一致。",
         "passportNameRequired": "若未填寫護照英文姓名，部分療程使用可能受限。",
@@ -451,7 +451,7 @@
         "genderRequired": "請選擇你的性別。",
         "emailAlreadyRegistered": "此電子郵件已註冊。",
         "invalidEmail": "請輸入有效的電子郵件地址。",
-        "passwordTooShortServer": "密碼至少需 6 個字元。",
+        "passwordTooShortServer": "密碼至少需 8 個字元。",
         "unexpectedError": "發生未預期的錯誤。",
         "invalidCredentials": "電子郵件或密碼不正確。",
         "emailNotConfirmed": "請查看你的電子郵件並完成帳戶驗證。",
@@ -502,7 +502,7 @@
       },
       "errors": {
         "passwordRequired": "請輸入你的密碼。",
-        "passwordTooShort": "密碼至少需 6 個字元。",
+        "passwordTooShort": "密碼至少需 8 個字元。",
         "confirmPasswordRequired": "請確認你的密碼。",
         "passwordMismatch": "兩次密碼不一致。",
         "invalidSession": "工作階段無效，請再試一次。",
@@ -2050,14 +2050,14 @@
         "confirmPassword": "確認新密碼",
         "placeholders": {
           "currentPassword": "輸入目前密碼",
-          "newPassword": "至少 6 個字元",
+          "newPassword": "至少 8 個字元",
           "confirmPassword": "再次輸入密碼"
         },
         "errors": {
           "currentPasswordRequired": "請輸入目前密碼。",
           "currentPasswordInvalid": "目前密碼不正確。",
           "newPasswordRequired": "請輸入新密碼。",
-          "newPasswordTooShort": "密碼至少需 6 個字元。",
+          "newPasswordTooShort": "密碼至少需 8 個字元。",
           "confirmPasswordRequired": "請確認你的密碼。",
           "passwordMismatch": "兩次密碼不一致。",
           "updateFailed": "變更密碼時發生錯誤。"

@@ -34,9 +34,9 @@ export function ResetPasswordForm({ lang, dict, tokenHash }: ResetPasswordFormPr
       return false;
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       setPasswordError(
-        dict.auth?.resetPassword?.errors?.passwordTooShort || '비밀번호는 6자 이상이어야 합니다.',
+        dict.auth?.resetPassword?.errors?.passwordTooShort || '비밀번호는 8자 이상이어야 합니다.',
       );
       return false;
     }

@@ -70,9 +70,9 @@ export function useSignupForm({ lang, dict }: UseSignupFormParams) {
     if (!formData.password) {
       newErrors.password =
         dict.auth?.signup?.errors?.passwordRequired || '비밀번호를 입력해주세요.';
-    } else if (formData.password.length < 6) {
+    } else if (formData.password.length < 8) {
       newErrors.password =
-        dict.auth?.signup?.errors?.passwordTooShort || '비밀번호는 최소 6자 이상이어야 합니다.';
+        dict.auth?.signup?.errors?.passwordTooShort || '비밀번호는 최소 8자 이상이어야 합니다.';
     }
 
     // 비밀번호 확인 검증
@@ -104,7 +104,7 @@ export function useSignupForm({ lang, dict }: UseSignupFormParams) {
       formData.password &&
       formData.confirmPassword &&
       formData.password === formData.confirmPassword &&
-      formData.password.length >= 6 &&
+      formData.password.length >= 8 &&
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
       formData.passportName.trim()
       // gender는 선택사항이므로 검증에서 제외
