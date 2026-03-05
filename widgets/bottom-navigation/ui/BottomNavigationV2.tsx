@@ -5,7 +5,7 @@ import { useAuth } from 'shared/lib/auth/useAuth';
 import { openDrawer } from 'shared/lib/drawer';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
-import { MAX_MOBILE_WIDTH_CLASS, PROTECTED_ROUTES } from 'shared/config';
+import { PROTECTED_ROUTES } from 'shared/config';
 import { type BottomNavigationProps } from '../model/types';
 import { navigationItems } from '../model/navigation-items';
 import { type Dictionary } from 'shared/model/types';
@@ -35,7 +35,7 @@ export function BottomNavigationV2({ currentLang, dict }: BottomNavigationV2With
 
   return (
     <nav
-      className={`fixed bottom-0 left-1/2 z-50 -translate-x-1/2 bg-[#f5f5f5] ${MAX_MOBILE_WIDTH_CLASS} w-full`}
+      className='fixed bottom-0 left-1/2 z-50 w-full -translate-x-1/2 bg-[#f5f5f5] lg:max-w-[500px]'
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
       <div className='border-t border-neutral-200 bg-white'>
