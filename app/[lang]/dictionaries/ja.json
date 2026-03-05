@@ -2296,5 +2296,44 @@
   },
   "donation": {
     "floatingButton": "クリニック検索 ・ 相談"
+  },
+  "support": {
+    "pageTitle": "お問い合わせ",
+    "form": {
+      "name": {
+        "label": "お名前",
+        "placeholder": "お名前を入力してください"
+      },
+      "email": {
+        "label": "メールアドレス",
+        "placeholder": "メールアドレスを入力してください"
+      },
+      "subject": {
+        "label": "件名",
+        "placeholder": "件名を入力してください"
+      },
+      "content": {
+        "label": "お問い合わせ内容",
+        "placeholder": "お問い合わせ内容を入力してください"
+      },
+      "submitButton": "送信",
+      "successMessage": "お問い合わせを受け付けました。\n\n担当者が確認次第、できるだけ早くご返信いたします。",
+      "errors": {
+        "name": {
+          "required": "お名前を入力してください。"
+        },
+        "email": {
+          "required": "メールアドレスを入力してください。",
+          "invalid": "正しいメールアドレスを入力してください。"
+        },
+        "subject": {
+          "required": "件名を入力してください。"
+        },
+        "content": {
+          "required": "お問い合わせ内容を入力してください。",
+          "minLength": "10文字以上入力してください。"
+        }
+      }
+    }
   }
 }

@@ -2297,5 +2297,44 @@
   },
   "donation": {
     "floatingButton": "Find Clinics & Consult"
+  },
+  "support": {
+    "pageTitle": "Contact Us",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Please enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Please enter your email"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Please enter the subject"
+      },
+      "content": {
+        "label": "Message",
+        "placeholder": "Please enter your inquiry"
+      },
+      "submitButton": "Submit",
+      "successMessage": "Your inquiry has been submitted.\n\nOur team will review and respond to you as soon as possible.",
+      "errors": {
+        "name": {
+          "required": "Please enter your name."
+        },
+        "email": {
+          "required": "Please enter your email.",
+          "invalid": "Please enter a valid email address."
+        },
+        "subject": {
+          "required": "Please enter the subject."
+        },
+        "content": {
+          "required": "Please enter your message.",
+          "minLength": "Please enter at least 10 characters."
+        }
+      }
+    }
   }
 }

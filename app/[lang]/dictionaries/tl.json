@@ -2296,5 +2296,44 @@
   },
   "donation": {
     "floatingButton": "Find Clinics & Consult"
+  },
+  "support": {
+    "pageTitle": "Makipag-ugnayan sa Amin",
+    "form": {
+      "name": {
+        "label": "Pangalan",
+        "placeholder": "Pakiusap ilagay ang iyong pangalan"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Pakiusap ilagay ang iyong email"
+      },
+      "subject": {
+        "label": "Paksa",
+        "placeholder": "Pakiusap ilagay ang paksa"
+      },
+      "content": {
+        "label": "Mensahe",
+        "placeholder": "Pakiusap ilagay ang iyong katanungan"
+      },
+      "submitButton": "Isumite",
+      "successMessage": "Naisumite na ang iyong katanungan.\n\nSusuriin ng aming koponan at tutugon sa iyo sa lalong madaling panahon.",
+      "errors": {
+        "name": {
+          "required": "Pakiusap ilagay ang iyong pangalan."
+        },
+        "email": {
+          "required": "Pakiusap ilagay ang iyong email.",
+          "invalid": "Pakiusap maglagay ng wastong email address."
+        },
+        "subject": {
+          "required": "Pakiusap ilagay ang paksa."
+        },
+        "content": {
+          "required": "Pakiusap ilagay ang iyong mensahe.",
+          "minLength": "Pakiusap maglagay ng hindi bababa sa 10 character."
+        }
+      }
+    }
   }
 }
