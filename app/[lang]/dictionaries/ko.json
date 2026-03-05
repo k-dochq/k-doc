@@ -2293,5 +2293,44 @@
   },
   "donation": {
     "floatingButton": "Find Clinics & Consult"
+  },
+  "support": {
+    "pageTitle": "문의하기",
+    "form": {
+      "name": {
+        "label": "이름",
+        "placeholder": "이름을 입력해주세요"
+      },
+      "email": {
+        "label": "이메일",
+        "placeholder": "이메일을 입력해주세요"
+      },
+      "subject": {
+        "label": "제목",
+        "placeholder": "제목을 입력해주세요"
+      },
+      "content": {
+        "label": "상담 내용",
+        "placeholder": "문의 내용을 입력해주세요"
+      },
+      "submitButton": "제출하기",
+      "successMessage": "문의가 접수되었습니다.\n\n빠른 시일 내에 담당자가\n확인 후 답변드리겠습니다.",
+      "errors": {
+        "name": {
+          "required": "이름을 입력해주세요."
+        },
+        "email": {
+          "required": "이메일을 입력해주세요.",
+          "invalid": "올바른 이메일 형식이 아닙니다."
+        },
+        "subject": {
+          "required": "제목을 입력해주세요."
+        },
+        "content": {
+          "required": "상담 내용을 입력해주세요.",
+          "minLength": "10자 이상 입력해주세요."
+        }
+      }
+    }
   }
 }

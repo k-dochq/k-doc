@@ -2296,5 +2296,44 @@
   },
   "donation": {
     "floatingButton": "尋找診所並諮詢"
+  },
+  "support": {
+    "pageTitle": "聯絡我們",
+    "form": {
+      "name": {
+        "label": "姓名",
+        "placeholder": "請輸入您的姓名"
+      },
+      "email": {
+        "label": "電子郵件",
+        "placeholder": "請輸入您的電子郵件"
+      },
+      "subject": {
+        "label": "主旨",
+        "placeholder": "請輸入主旨"
+      },
+      "content": {
+        "label": "諮詢內容",
+        "placeholder": "請輸入您的詢問內容"
+      },
+      "submitButton": "提交",
+      "successMessage": "您的詢問已提交。\n\n我們的團隊將盡快審核並回覆您。",
+      "errors": {
+        "name": {
+          "required": "請輸入您的姓名。"
+        },
+        "email": {
+          "required": "請輸入您的電子郵件。",
+          "invalid": "請輸入有效的電子郵件地址。"
+        },
+        "subject": {
+          "required": "請輸入主旨。"
+        },
+        "content": {
+          "required": "請輸入您的訊息。",
+          "minLength": "請至少輸入10個字元。"
+        }
+      }
+    }
   }
 }
