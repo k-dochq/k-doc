@@ -9,7 +9,7 @@ interface MaxWidthLayoutProps {
 
 export function MaxWidthLayout({ children, className = '' }: MaxWidthLayoutProps) {
   return (
-    <div className={`mx-auto min-h-screen w-full lg:max-w-[500px]`}>
+    <div className={`mx-auto min-h-screen w-full max-w-[500px]`}>
       <ShadowWrapper className={className}>{children}</ShadowWrapper>
     </div>
   );
