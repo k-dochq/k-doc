@@ -35,7 +35,7 @@ export function BottomNavigationV2({ currentLang, dict }: BottomNavigationV2With
 
   return (
     <nav
-      className='fixed bottom-0 left-1/2 z-50 w-full max-w-[500px] -translate-x-1/2 bg-[#f5f5f5]'
+      className='fixed bottom-0 left-1/2 z-50 w-full -translate-x-1/2 bg-[#f5f5f5]'
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
       <div className='border-t border-neutral-200 bg-white'>
