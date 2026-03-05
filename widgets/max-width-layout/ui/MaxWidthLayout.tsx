@@ -1,3 +1,5 @@
+'use client';
+
 import { ShadowWrapper } from 'shared/ui/shadow-wrapper';
 
 interface MaxWidthLayoutProps {
