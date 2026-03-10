@@ -107,9 +107,11 @@ export function PhoneNumberFieldV2({
                 backgroundPosition: 'right 12px center',
               }}
             >
-              <option value=''>{countryPlaceholder}</option>
+              <option value='' style={{ color: 'initial' }}>
+                {countryPlaceholder}
+              </option>
               {countryOptions.map((option) => (
-                <option key={option.key} value={option.value}>
+                <option key={option.key} value={option.value} style={{ color: 'initial' }}>
                   {option.label}
                 </option>
               ))}
