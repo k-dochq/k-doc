@@ -36,6 +36,8 @@ export function ImageModalCarouselV2({
         style={{
           minHeight: '100dvh',
           height: '100dvh',
+          width: '500px',
+          maxWidth: '100vw',
         }}
       >
         <div
