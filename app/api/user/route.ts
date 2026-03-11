@@ -23,6 +23,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         nickName: true,
         displayName: true,
         name: true,
+        profileImgUrl: true,
         genderType: true,
         phoneNumber: true,
         raw_user_meta_data: true,

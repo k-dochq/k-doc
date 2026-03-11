@@ -6,6 +6,7 @@ export interface UserProfile {
   nickName: string | null;
   displayName: string | null;
   name: string | null;
+  profileImgUrl: string | null;
   genderType: 'MALE' | 'FEMALE' | null;
   phoneNumber: string | null;
   raw_user_meta_data: {
@@ -28,6 +29,7 @@ export interface UpdateUserProfileRequest {
   nickName?: string;
   displayName?: string;
   name?: string;
+  profileImgUrl?: string | null;
   marketingNotifications?: boolean;
   // 추가정보 입력용 필드
   passportName?: string;

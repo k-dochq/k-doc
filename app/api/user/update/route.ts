@@ -8,6 +8,7 @@ interface UpdateUserRequest {
   nickName?: string;
   displayName?: string;
   name?: string;
+  profileImgUrl?: string | null;
   marketingNotifications?: boolean;
   // 추가정보 입력용 필드
   passportName?: string;
@@ -38,6 +39,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
       nickName,
       displayName,
       name,
+      profileImgUrl,
       marketingNotifications,
       passportName,
       nationality,
@@ -56,6 +58,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
       nickName !== undefined ||
       displayName !== undefined ||
       name !== undefined ||
+      profileImgUrl !== undefined ||
       marketingNotifications !== undefined ||
       passportName !== undefined ||
       nationality !== undefined ||
@@ -93,6 +96,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
     if (nickName !== undefined) updateData.nickName = nickName;
     if (displayName !== undefined) updateData.displayName = displayName;
     if (name !== undefined) updateData.name = name;
+    if (profileImgUrl !== undefined) updateData.profileImgUrl = profileImgUrl;
     if (genderType !== undefined) updateData.genderType = genderType;
     if (phoneNumber !== undefined) updateData.phoneNumber = phoneNumber;
     if (locale !== undefined) updateData.locale = locale;
@@ -149,6 +153,7 @@ export async function PUT(request: NextRequest): Promise<NextResponse> {
         nickName: true,
         displayName: true,
         name: true,
+        profileImgUrl: true,
         raw_user_meta_data: true,
         updatedAt: true,
       },
