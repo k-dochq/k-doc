@@ -22,6 +22,7 @@ export const REVIEW_LIST_INCLUDE = {
       discountRate: true,
       ranking: true,
       displayLocationName: true,
+      isActive: true,
       badge: true,
       approvalStatusType: true,
       District: {

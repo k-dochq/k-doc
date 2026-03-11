@@ -2,6 +2,10 @@ import { type ReviewCardData, type ReviewImage } from '../../../model/types';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getReviewNickname } from 'shared/lib/review-nickname';
 import { type Prisma } from '@prisma/client';
+import {
+  sanitizeReviewImagesByHospitalActive,
+  type ReviewWithHospitalAndImages,
+} from './review-image-sanitizer';
 
 /**
  * Prisma Review 쿼리 결과 타입
@@ -26,6 +30,9 @@ type PrismaReviewWithRelations = Prisma.ReviewGetPayload<{
         discountRate: true;
         ranking: true;
         displayLocationName: true;
+        isActive: true;
+        badge: true;
+        approvalStatusType: true;
         District: {
           select: {
             name: true;
@@ -253,43 +260,46 @@ function transformHospitalData(
 export async function transformReviewToCardData(
   review: PrismaReviewWithRelations,
 ): Promise<ReviewCardData> {
-  const likedUserIds = review.ReviewLike.map((like) => like.userId);
-  const { before, after } = separateReviewImages(review.ReviewImage);
+  const sanitizedReview: PrismaReviewWithRelations & ReviewWithHospitalAndImages =
+    sanitizeReviewImagesByHospitalActive(review);
+
+  const likedUserIds = sanitizedReview.ReviewLike.map((like) => like.userId);
+  const { before, after } = separateReviewImages(sanitizedReview.ReviewImage);
 
   // 리뷰 작성일자 기준으로 닉네임 결정
   const { displayName, nickName } = await getReviewNickname(
-    review.id,
-    review.createdAt,
-    review.User.nickName,
-    review.User.displayName,
-    review.User.name,
+    sanitizedReview.id,
+    sanitizedReview.createdAt,
+    sanitizedReview.User.nickName,
+    sanitizedReview.User.displayName,
+    sanitizedReview.User.name,
   );
 
   return {
-    id: review.id,
-    userId: review.userId,
-    rating: review.rating,
-    title: review.title ? parseLocalizedText(review.title) : null,
-    content: review.content ? parseLocalizedText(review.content) : null,
-    concernsMultilingual: review.concernsMultilingual
-      ? parseLocalizedText(review.concernsMultilingual)
+    id: sanitizedReview.id,
+    userId: sanitizedReview.userId,
+    rating: sanitizedReview.rating,
+    title: sanitizedReview.title ? parseLocalizedText(sanitizedReview.title) : null,
+    content: sanitizedReview.content ? parseLocalizedText(sanitizedReview.content) : null,
+    concernsMultilingual: sanitizedReview.concernsMultilingual
+      ? parseLocalizedText(sanitizedReview.concernsMultilingual)
       : null,
-    createdAt: review.createdAt,
-    viewCount: review.viewCount,
-    likeCount: review._count.ReviewLike,
-    commentCount: review.commentCount,
+    createdAt: sanitizedReview.createdAt,
+    viewCount: sanitizedReview.viewCount,
+    likeCount: sanitizedReview._count.ReviewLike,
+    commentCount: sanitizedReview.commentCount,
     likedUserIds,
     isLiked: false,
     isRecommended: review.isRecommended,
     user: {
       displayName,
       nickName,
-      name: review.User.name,
+      name: sanitizedReview.User.name,
     },
-    hospital: transformHospitalData(review.Hospital),
+    hospital: transformHospitalData(sanitizedReview.Hospital),
     medicalSpecialty: {
-      name: parseLocalizedText(review.MedicalSpecialty.name),
-      specialtyType: review.MedicalSpecialty.specialtyType,
+      name: parseLocalizedText(sanitizedReview.MedicalSpecialty.name),
+      specialtyType: sanitizedReview.MedicalSpecialty.specialtyType,
     },
     images: {
       before,

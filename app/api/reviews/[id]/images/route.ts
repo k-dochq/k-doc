@@ -22,6 +22,11 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       },
       select: {
         id: true,
+        Hospital: {
+          select: {
+            isActive: true,
+          },
+        },
         MedicalSpecialty: {
           select: {
             specialtyType: true,
@@ -55,8 +60,14 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       );
     }
 
-    const beforeImages = review.ReviewImage.filter((image) => image.imageType === 'BEFORE');
-    const afterImages = review.ReviewImage.filter((image) => image.imageType === 'AFTER');
+    const isHospitalHidden = review.Hospital?.isActive === false;
+
+    const beforeImages = isHospitalHidden
+      ? []
+      : review.ReviewImage.filter((image) => image.imageType === 'BEFORE');
+    const afterImages = isHospitalHidden
+      ? []
+      : review.ReviewImage.filter((image) => image.imageType === 'AFTER');
 
     let images = {
       before: beforeImages,

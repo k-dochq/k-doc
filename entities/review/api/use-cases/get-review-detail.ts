@@ -81,6 +81,7 @@ export async function getReviewDetail({
             displayLocationName: true,
             badge: true,
             approvalStatusType: true,
+            isActive: true,
             District: {
               select: {
                 name: true,
@@ -165,6 +166,8 @@ export async function getReviewDetail({
     // 데이터 변환
     const likedUserIds = review.ReviewLike.map((like) => like.userId);
 
+    const isHospitalHidden = review.Hospital?.isActive === false;
+
     const reviewCardData: ReviewCardData = {
       id: review.id,
       userId: review.userId,
@@ -215,20 +218,24 @@ export async function getReviewDetail({
         specialtyType: review.MedicalSpecialty.specialtyType,
       },
       images: {
-        before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
-          id: img.id,
-          imageType: img.imageType,
-          imageUrl: img.imageUrl,
-          alt: img.alt,
-          order: img.order,
-        })),
-        after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
-          id: img.id,
-          imageType: img.imageType,
-          imageUrl: img.imageUrl,
-          alt: img.alt,
-          order: img.order,
-        })),
+        before: isHospitalHidden
+          ? []
+          : review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
+              id: img.id,
+              imageType: img.imageType,
+              imageUrl: img.imageUrl,
+              alt: img.alt,
+              order: img.order,
+            })),
+        after: isHospitalHidden
+          ? []
+          : review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
+              id: img.id,
+              imageType: img.imageType,
+              imageUrl: img.imageUrl,
+              alt: img.alt,
+              order: img.order,
+            })),
       },
       requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
     };
