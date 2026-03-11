@@ -65,9 +65,18 @@ export async function GET(
     const videoImages = images.filter((img) => img.imageType === 'VIDEO');
     const procedureImages = images.filter((img) => img.imageType === 'PROCEDURE_DETAIL');
 
+    // title이 존재하고 비어 있지 않은 VIDEO 중 첫 번째를 대표로 사용 (없으면 기존처럼 첫 번째)
+    const videoWithTitle = videoImages.find((img) => {
+      const t = img.title;
+      if (t == null || typeof t !== 'object' || Array.isArray(t)) return false;
+      return Object.values(t).some(
+        (v) => typeof v === 'string' && v.trim() !== '',
+      );
+    });
+    const videoImage = videoWithTitle ?? videoImages[0] ?? null;
+
     // 첫 번째 이미지 (하위 호환성 유지)
     const thumbnailImage = thumbnailImages[0] || null;
-    const videoImage = videoImages[0] || null;
 
     const response: HospitalVideosResponse = {
       thumbnail: thumbnailImage
