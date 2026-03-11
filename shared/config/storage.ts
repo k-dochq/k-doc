@@ -14,4 +14,5 @@ export const STORAGE_PATHS = {
   CHAT_DOCUMENTS: 'chat-documents',
   REVIEW_CREATE_BEFORE: 'review-create/before',
   REVIEW_CREATE_AFTER: 'review-create/after',
+  PROFILE_IMAGE: 'profile-images',
 } as const;
