@@ -1,5 +1,3 @@
-import type { Prisma } from '@prisma/client';
-
 /**
  * Hospital.isActive 값에 따라 리뷰 이미지 노출 여부를 제어하기 위한 유틸들입니다.
  *
@@ -14,7 +12,7 @@ export type ReviewWithHospitalAndImages = {
   } | null;
   ReviewImage?: Array<{
     id: string;
-    imageType: Prisma.ReviewImageType;
+    imageType: string;
     imageUrl: string;
     alt: string | null;
     order: number | null;
