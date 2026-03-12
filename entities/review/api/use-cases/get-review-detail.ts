@@ -172,7 +172,7 @@ export async function getReviewDetail({
     const likedUserIds = review.ReviewLike.map((like) => like.userId);
     const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
 
-    const isHospitalHidden = review.Hospital?.isActive === false;
+    const isUncontractedHospital = review.Hospital?.approvalStatusType !== 'APPROVED';
 
     const reviewCardData: ReviewCardData = {
       id: review.id,
@@ -226,7 +226,7 @@ export async function getReviewDetail({
         specialtyType: review.MedicalSpecialty.specialtyType,
       },
       images: {
-        before: isHospitalHidden
+        before: isUncontractedHospital
           ? []
           : review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
               id: img.id,
@@ -235,7 +235,7 @@ export async function getReviewDetail({
               alt: img.alt,
               order: img.order,
             })),
-        after: isHospitalHidden
+        after: isUncontractedHospital
           ? []
           : review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
               id: img.id,
