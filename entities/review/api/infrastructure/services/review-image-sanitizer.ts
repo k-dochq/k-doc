@@ -1,14 +1,14 @@
 /**
- * Hospital.isActive 값에 따라 리뷰 이미지 노출 여부를 제어하기 위한 유틸들입니다.
+ * Hospital.approvalStatusType 값에 따라 리뷰 이미지 노출 여부를 제어하기 위한 유틸들입니다.
  *
- * - Hospital.isActive === false 인 병원에 속한 리뷰라면 ReviewImage를 항상 빈 배열로 마스킹합니다.
- * - Review 구조가 살짝 달라도 최소한 Hospital.isActive와 ReviewImage 필드만 있으면 동작하도록 느슨하게 설계합니다.
+ * - Hospital.approvalStatusType !== 'APPROVED' 인 병원에 속한 리뷰라면 ReviewImage를 항상 빈 배열로 마스킹합니다.
+ * - Review 구조가 살짝 달라도 최소한 Hospital.approvalStatusType와 ReviewImage 필드만 있으면 동작하도록 느슨하게 설계합니다.
  */
 
-// Prisma Review payload 중 Hospital.isActive만 필요한 최소 타입
+// Prisma Review payload 중 Hospital.approvalStatusType만 필요한 최소 타입
 export type ReviewWithHospitalAndImages = {
   Hospital?: {
-    isActive?: boolean | null;
+    approvalStatusType?: string | null;
   } | null;
   ReviewImage?: Array<{
     id: string;
@@ -20,12 +20,12 @@ export type ReviewWithHospitalAndImages = {
 };
 
 /**
- * 단일 리뷰에 대해, 병원이 숨김(isActive=false)이면 ReviewImage를 빈 배열로 대체합니다.
+ * 단일 리뷰에 대해, 미계약 병원(approvalStatusType !== 'APPROVED')이면 ReviewImage를 빈 배열로 대체합니다.
  */
 export function sanitizeReviewImagesByHospitalActive<T extends ReviewWithHospitalAndImages>(
   review: T,
 ): T {
-  if (review.Hospital && review.Hospital.isActive === false) {
+  if (review.Hospital && review.Hospital.approvalStatusType !== 'APPROVED') {
     return {
       ...review,
       ReviewImage: [],

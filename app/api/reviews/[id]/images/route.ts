@@ -24,7 +24,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
         id: true,
         Hospital: {
           select: {
-            isActive: true,
+            approvalStatusType: true,
           },
         },
         MedicalSpecialty: {
@@ -60,12 +60,12 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       );
     }
 
-    const isHospitalHidden = review.Hospital?.isActive === false;
+    const isUncontractedHospital = review.Hospital?.approvalStatusType !== 'APPROVED';
 
-    const beforeImages = isHospitalHidden
+    const beforeImages = isUncontractedHospital
       ? []
       : review.ReviewImage.filter((image) => image.imageType === 'BEFORE');
-    const afterImages = isHospitalHidden
+    const afterImages = isUncontractedHospital
       ? []
       : review.ReviewImage.filter((image) => image.imageType === 'AFTER');
 
