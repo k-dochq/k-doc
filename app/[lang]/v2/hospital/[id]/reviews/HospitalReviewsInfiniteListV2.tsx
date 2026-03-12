@@ -7,6 +7,7 @@ import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
 import { ReviewsSkeletonV2 } from 'entities/review/ui/ReviewsSkeletonV2';
 import { useInfiniteAllReviews } from 'entities/review';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
+import { useToggleReviewRecommend } from 'entities/review/model/useToggleReviewRecommend';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 import { EmptyReviewsState } from 'shared/ui/empty-state';
@@ -39,6 +40,9 @@ export function HospitalReviewsInfiniteListV2({
   // 좋아요 토글 뮤테이션
   const toggleLikeMutation = useToggleReviewLike({ queryParams });
 
+  // 추천 토글 뮤테이션
+  const toggleRecommendMutation = useToggleReviewRecommend({ queryParams });
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteAllReviews(queryParams);
 
@@ -55,8 +59,22 @@ export function HospitalReviewsInfiniteListV2({
     toggleLikeMutation.mutate(reviewId);
   };
 
+  // 추천 토글 핸들러
+  const handleToggleRecommend = async (reviewId: string) => {
+    if (!user) {
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
+      });
+      return;
+    }
+    toggleRecommendMutation.mutate(reviewId);
+  };
+
   // 현재 로딩 중인 리뷰 ID (TanStack Query의 variables 활용)
   const loadingReviewId = toggleLikeMutation.isPending ? toggleLikeMutation.variables : null;
+  const loadingRecommendReviewId = toggleRecommendMutation.isPending
+    ? toggleRecommendMutation.variables
+    : null;
 
   // 로딩 상태
   if (isLoading) {
@@ -94,6 +112,8 @@ export function HospitalReviewsInfiniteListV2({
               user={user}
               onToggleLike={handleToggleLike}
               isLikeLoading={loadingReviewId === review.id}
+              onToggleRecommend={handleToggleRecommend}
+              isRecommendLoading={loadingRecommendReviewId === review.id}
             />
           ))}
 
