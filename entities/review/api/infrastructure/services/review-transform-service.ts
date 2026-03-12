@@ -76,6 +76,11 @@ type PrismaReviewWithRelations = Prisma.ReviewGetPayload<{
         userId: true;
       };
     };
+    ReviewRecommend: {
+      select: {
+        userId: true;
+      };
+    };
     _count: {
       select: {
         ReviewLike: true;
@@ -117,6 +122,9 @@ type DoctorRouteReview = {
     order: number | null;
   }>;
   ReviewLike: Array<{
+    userId: string;
+  }>;
+  ReviewRecommend: Array<{
     userId: string;
   }>;
   _count: {
@@ -264,6 +272,7 @@ export async function transformReviewToCardData(
     sanitizeReviewImagesByHospitalActive(review);
 
   const likedUserIds = sanitizedReview.ReviewLike.map((like) => like.userId);
+  const recommendedUserIds = sanitizedReview.ReviewRecommend.map((r) => r.userId);
   const { before, after } = separateReviewImages(sanitizedReview.ReviewImage);
 
   // 리뷰 작성일자 기준으로 닉네임 결정
@@ -290,6 +299,8 @@ export async function transformReviewToCardData(
     commentCount: sanitizedReview.commentCount,
     likedUserIds,
     isLiked: false,
+    recommendedUserIds,
+    recommendCount: recommendedUserIds.length,
     isRecommended: review.isRecommended,
     user: {
       displayName,
@@ -317,6 +328,7 @@ export async function transformDoctorReviewToCardData(
   hospital: DoctorRouteHospital,
 ): Promise<ReviewCardData> {
   const likedUserIds = review.ReviewLike.map((like) => like.userId);
+  const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
   const { before, after } = separateReviewImages(review.ReviewImage);
 
   // 리뷰 작성일자 기준으로 닉네임 결정
@@ -343,6 +355,8 @@ export async function transformDoctorReviewToCardData(
     commentCount: review.commentCount,
     likedUserIds,
     isLiked: false,
+    recommendedUserIds,
+    recommendCount: recommendedUserIds.length,
     isRecommended: review.isRecommended,
     user: {
       displayName,

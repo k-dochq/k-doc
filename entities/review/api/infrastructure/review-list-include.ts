@@ -60,6 +60,9 @@ export const REVIEW_LIST_INCLUDE = {
   ReviewLike: {
     select: { userId: true },
   },
+  ReviewRecommend: {
+    select: { userId: true },
+  },
   _count: {
     select: { ReviewLike: true },
   },

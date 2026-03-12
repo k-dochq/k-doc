@@ -63,6 +63,8 @@ export type ReviewCardData = {
   commentCount: number; // 댓글 수
   likedUserIds: string[]; // 좋아요를 한 사용자 ID들
   isLiked: boolean; // 현재 사용자의 좋아요 상태
+  recommendedUserIds: string[]; // 추천을 한 사용자 ID들
+  recommendCount: number; // 추천 수
   user: {
     displayName: string | null;
     nickName: string | null;

@@ -74,6 +74,12 @@ export const queryKeys = {
     status: (reviewId: string) => [...queryKeys.reviewLike.all, reviewId] as const,
   },
 
+  // 리뷰 추천 관련 쿼리
+  reviewRecommend: {
+    all: ['review-recommend'] as const,
+    status: (reviewId: string) => [...queryKeys.reviewRecommend.all, reviewId] as const,
+  },
+
   // 사용자 관련 쿼리
   user: {
     all: ['user'] as const,

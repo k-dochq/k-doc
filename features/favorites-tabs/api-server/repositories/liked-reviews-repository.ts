@@ -120,6 +120,11 @@ export class LikedReviewsRepository {
                 userId: true,
               },
             },
+            ReviewRecommend: {
+              select: {
+                userId: true,
+              },
+            },
             _count: {
               select: {
                 ReviewLike: true,
@@ -150,6 +155,7 @@ export class LikedReviewsRepository {
 
       // 좋아요한 사용자 ID들
       const likedUserIds = review.ReviewLike.map((like) => like.userId);
+      const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
 
       // 리뷰 작성일자 기준으로 닉네임 결정
       const { displayName, nickName } = await getReviewNickname(
@@ -172,6 +178,8 @@ export class LikedReviewsRepository {
         commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)
         likedUserIds, // 좋아요를 한 사용자 ID들
         isLiked: true, // 좋아요한 리뷰 리스트이므로 항상 true
+        recommendedUserIds, // 추천을 한 사용자 ID들
+        recommendCount: recommendedUserIds.length,
         createdAt: review.createdAt,
         concernsMultilingual: review.concernsMultilingual
           ? parseLocalizedText(review.concernsMultilingual)

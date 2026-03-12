@@ -112,6 +112,11 @@ export async function getHospitalReviews({
             userId: true,
           },
         },
+        ReviewRecommend: {
+          select: {
+            userId: true,
+          },
+        },
         _count: {
           select: {
             ReviewLike: true,
@@ -128,6 +133,7 @@ export async function getHospitalReviews({
     // 데이터 변환 (닉네임 생성 포함)
     const reviewCardDataPromises = reviews.map(async (review) => {
       const likedUserIds = review.ReviewLike.map((like) => like.userId);
+      const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
 
       // 리뷰 작성일자 기준으로 닉네임 결정
       const { displayName, nickName } = await getReviewNickname(
@@ -154,6 +160,8 @@ export async function getHospitalReviews({
         commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)
         likedUserIds, // 좋아요를 한 사용자 ID들
         isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
+        recommendedUserIds, // 추천을 한 사용자 ID들
+        recommendCount: recommendedUserIds.length,
         user: {
           displayName,
           nickName,
