@@ -20,6 +20,8 @@ interface ReviewListCardV2Props {
   user: User | null;
   onToggleLike?: (reviewId: string) => void;
   isLikeLoading?: boolean;
+  onToggleRecommend?: (reviewId: string) => void;
+  isRecommendLoading?: boolean;
   className?: string;
   forceContentExpanded?: boolean;
   disableLink?: boolean;
@@ -33,6 +35,8 @@ export function ReviewListCardV2({
   user,
   onToggleLike,
   isLikeLoading = false,
+  onToggleRecommend,
+  isRecommendLoading = false,
   className = '',
   forceContentExpanded = false,
   disableLink = false,
@@ -113,6 +117,8 @@ export function ReviewListCardV2({
         user={user}
         onToggleLike={onToggleLike}
         isLikeLoading={isLikeLoading}
+        onToggleRecommend={onToggleRecommend}
+        isRecommendLoading={isRecommendLoading}
         dict={dict}
       />
 

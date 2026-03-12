@@ -6,10 +6,11 @@ import { type ReviewCardData } from 'entities/review/model/types';
 import { ReviewListCardV2 } from 'entities/review/ui/ReviewListCardV2';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
+import { useToggleReviewRecommend } from 'entities/review/model/useToggleReviewRecommend';
+import { useGetReviewDetail } from 'entities/review/model/useGetReviewDetail';
 import { REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { openDrawer } from 'shared/lib/drawer';
 import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
-import { useMemo, useState } from 'react';
 
 interface ReviewDetailCardV2ShellProps {
   review: ReviewCardData;
@@ -17,8 +18,14 @@ interface ReviewDetailCardV2ShellProps {
   dict: Dictionary;
 }
 
-export function ReviewDetailCardV2Shell({ review, lang, dict }: ReviewDetailCardV2ShellProps) {
+export function ReviewDetailCardV2Shell({
+  review: initialReview,
+  lang,
+  dict,
+}: ReviewDetailCardV2ShellProps) {
   const { user } = useAuth();
+
+  const { data: review = initialReview } = useGetReviewDetail(initialReview.id, initialReview);
 
   const queryParams = {
     limit: 10,
@@ -26,61 +33,38 @@ export function ReviewDetailCardV2Shell({ review, lang, dict }: ReviewDetailCard
   };
 
   const toggleLikeMutation = useToggleReviewLike({ queryParams });
-  const loadingReviewId = toggleLikeMutation.isPending ? toggleLikeMutation.variables : null;
-
-  // 로컬 상태로 즉시 반영
-  const initialIsLiked = useMemo(
-    () => (user && review.likedUserIds ? review.likedUserIds.includes(user.id) : false),
-    [review.likedUserIds, user],
-  );
-  const initialLikeCount = review.likeCount ?? 0;
-
-  const [isLikedLocal, setIsLikedLocal] = useState(initialIsLiked);
-  const [likeCountLocal, setLikeCountLocal] = useState(initialLikeCount);
+  const toggleRecommendMutation = useToggleReviewRecommend({ queryParams });
 
   const handleToggleLike = async (reviewId: string) => {
-    const nextIsLiked = !isLikedLocal;
-    const delta = nextIsLiked ? 1 : -1;
-
     if (!user) {
       await openDrawer({
         content: <LoginRequiredDrawer lang={lang} dict={dict} />,
       });
       return;
     }
-
-    // optimistic update
-    setIsLikedLocal(nextIsLiked);
-    setLikeCountLocal((prev) => prev + delta);
-
-    toggleLikeMutation.mutate(reviewId, {
-      onError: () => {
-        // rollback
-        setIsLikedLocal(!nextIsLiked);
-        setLikeCountLocal((prev) => prev - delta);
-      },
-    });
+    toggleLikeMutation.mutate(reviewId);
   };
 
-  const reviewWithLocal = useMemo(
-    () => ({
-      ...review,
-      likeCount: likeCountLocal,
-      likedUserIds: isLikedLocal
-        ? [...(review.likedUserIds || []), user?.id || '']
-        : (review.likedUserIds || []).filter((id) => id !== user?.id),
-    }),
-    [isLikedLocal, likeCountLocal, review, user?.id],
-  );
+  const handleToggleRecommend = async (reviewId: string) => {
+    if (!user) {
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
+      });
+      return;
+    }
+    toggleRecommendMutation.mutate(reviewId);
+  };
 
   return (
     <ReviewListCardV2
-      review={reviewWithLocal}
+      review={review}
       lang={lang}
       dict={dict}
       user={user}
       onToggleLike={handleToggleLike}
-      isLikeLoading={loadingReviewId === review.id}
+      isLikeLoading={toggleLikeMutation.isPending}
+      onToggleRecommend={handleToggleRecommend}
+      isRecommendLoading={toggleRecommendMutation.isPending}
       forceContentExpanded
       disableLink
       useHorizontalImages

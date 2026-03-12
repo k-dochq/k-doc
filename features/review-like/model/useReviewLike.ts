@@ -104,10 +104,15 @@ export function useReviewLike({ reviewId, enabled = true }: UseReviewLikeOptions
       // 현재 리뷰의 좋아요 상태 캐시 업데이트
       queryClient.setQueryData(queryKeys.reviewLike.status(reviewId), data);
 
+      // 리뷰 상세 쿼리 invalidate (detail 페이지 아래 하트 동기화)
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.reviews.byId(reviewId),
+      });
+
       // 좋아요한 리뷰 리스트 쿼리 invalidate
       queryClient.invalidateQueries({
         queryKey: queryKeys.reviews.liked.all(),
-        exact: false, // 모든 liked reviews 쿼리를 invalidate
+        exact: false,
       });
 
       // 리뷰 리스트도 invalidate (likeCount 업데이트를 위해)

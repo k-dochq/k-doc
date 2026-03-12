@@ -96,6 +96,11 @@ export type PrismaDoctorWithRelations = Prisma.DoctorGetPayload<{
                 userId: true;
               };
             };
+            ReviewRecommend: {
+              select: {
+                userId: true;
+              };
+            };
             _count: {
               select: {
                 ReviewLike: true;
@@ -244,6 +249,11 @@ export async function getDoctorDetail(
                   },
                 },
                 ReviewLike: {
+                  select: {
+                    userId: true,
+                  },
+                },
+                ReviewRecommend: {
                   select: {
                     userId: true,
                   },

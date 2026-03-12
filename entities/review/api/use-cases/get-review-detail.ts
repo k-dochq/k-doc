@@ -128,6 +128,11 @@ export async function getReviewDetail({
             userId: true,
           },
         },
+        ReviewRecommend: {
+          select: {
+            userId: true,
+          },
+        },
         _count: {
           select: {
             ReviewLike: true,
@@ -165,6 +170,7 @@ export async function getReviewDetail({
 
     // 데이터 변환
     const likedUserIds = review.ReviewLike.map((like) => like.userId);
+    const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
 
     const isHospitalHidden = review.Hospital?.isActive === false;
 
@@ -184,6 +190,8 @@ export async function getReviewDetail({
       commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)
       likedUserIds, // 좋아요를 한 사용자 ID들
       isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
+      recommendedUserIds, // 추천을 한 사용자 ID들
+      recommendCount: recommendedUserIds.length,
       user: {
         displayName,
         nickName,
