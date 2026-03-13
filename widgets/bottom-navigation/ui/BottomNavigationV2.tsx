@@ -9,6 +9,7 @@ import { PROTECTED_ROUTES } from 'shared/config';
 import { type BottomNavigationProps } from '../model/types';
 import { navigationItems } from '../model/navigation-items';
 import { type Dictionary } from 'shared/model/types';
+import { ConsultationBadge } from './ConsultationBadge';
 
 interface BottomNavigationV2WithDictProps extends BottomNavigationProps {
   dict: Dictionary;
@@ -54,10 +55,13 @@ export function BottomNavigationV2({ currentLang, dict }: BottomNavigationV2With
                   active ? 'text-primary-900' : 'text-neutral-400 hover:text-gray-700'
                 }`}
               >
-                <Icon
-                  className={`mb-1 h-5 w-5 ${active ? 'text-primary-900' : 'text-neutral-400'}`}
-                  active={active}
-                />
+                <div className='relative mb-1'>
+                  <Icon
+                    className={`h-5 w-5 ${active ? 'text-primary-900' : 'text-neutral-400'}`}
+                    active={active}
+                  />
+                  {item.id === 'consultation' && <ConsultationBadge />}
+                </div>
                 <span
                   className={`truncate text-xs font-medium ${
                     active ? 'text-primary-900' : 'text-neutral-400'
