@@ -57,6 +57,15 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
       },
     });
 
+    // 병원별 읽지 않은 메시지 수 집계 (ADMIN이 보낸 메시지 중 isRead = false)
+    const unreadCountMap = new Map<string, number>();
+    messages.forEach((message) => {
+      if (message.senderType === 'ADMIN' && message.isRead === false) {
+        const prev = unreadCountMap.get(message.hospitalId) ?? 0;
+        unreadCountMap.set(message.hospitalId, prev + 1);
+      }
+    });
+
     // 병원별로 그룹화하고 마지막 메시지 정보 추출
     const hospitalMap = new Map<string, ChatRoom>();
 
@@ -84,7 +93,7 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
           lastMessageContent: message.content,
           lastMessageDate: message.createdAt.toISOString(),
           lastMessageSenderType: message.senderType,
-          unreadCount: 0, // TODO: 읽지 않은 메시지 수 계산 로직 추가
+          unreadCount: unreadCountMap.get(hospitalId) ?? 0,
         });
       }
     });

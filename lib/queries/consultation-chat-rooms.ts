@@ -19,10 +19,11 @@ export async function fetchChatRooms(): Promise<ChatRoom[]> {
   return result.data;
 }
 
-export function useChatRooms() {
+export function useChatRooms({ enabled = true }: { enabled?: boolean } = {}) {
   return useQuery({
     queryKey: ['consultation', 'chat-rooms'],
     queryFn: fetchChatRooms,
+    enabled,
     retry: 3,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     refetchOnMount: true,
