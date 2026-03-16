@@ -54,7 +54,7 @@ export function ConciergeHeroCards() {
   }, []);
 
   return (
-    <div className='relative flex w-full items-center justify-center' style={{ height: '230px' }}>
+    <div className='relative flex h-full w-full items-center justify-center'>
       {CARDS.map((card, index) => {
         const total = CARDS.length;
         const diff = (index - currentIndex + total) % total;

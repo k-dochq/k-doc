@@ -26,7 +26,7 @@ export function ConciergeServiceCard({
       <div className='absolute inset-0' style={{ backgroundImage: overlayGradient }} />
       <div
         className='absolute left-0 right-0 text-center leading-none text-white'
-        style={{ top: 124, fontSize: 22, letterSpacing: '-0.22px', fontFamily: 'var(--font-dm-serif-text)' }}
+        style={{ top: 124, fontSize: 22, letterSpacing: '-0.22px' }}
       >
         <p className='mb-0'>{line1}</p>
         <p>{line2}</p>
