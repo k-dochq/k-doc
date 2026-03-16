@@ -2358,6 +2358,11 @@
         "dedicatedManager": "専任コンシェルジュマネージャー",
         "recoveryPackage": "K-DOC回復ケアパッケージ"
       }
+    },
+    "notice": {
+      "noticeTitle": "コンシェルジュサービスのご案内",
+      "noticeLine1": "コンシェルジュサービスはオプションです。",
+      "noticeLine2": "韓国訪問中に施術または手術が行われた場合、Commitment feeは自動的に全額返金されます。"
     }
   }
 }

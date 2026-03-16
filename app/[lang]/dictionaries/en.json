@@ -2359,6 +2359,11 @@
         "dedicatedManager": "Dedicated Concierge Manager",
         "recoveryPackage": "K-DOC Recovery Care Package"
       }
+    },
+    "notice": {
+      "noticeTitle": "Concierge Service Guide",
+      "noticeLine1": "Concierge service is optional.",
+      "noticeLine2": "If a procedure or surgery is performed during your visit to Korea, the Commitment fee will be automatically refunded in full."
     }
   }
 }

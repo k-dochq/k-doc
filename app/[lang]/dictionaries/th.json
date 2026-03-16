@@ -2359,6 +2359,11 @@
         "dedicatedManager": "ผู้จัดการคอนเซียร์จประจำตัว",
         "recoveryPackage": "แพ็กเกจฟื้นฟู K-DOC"
       }
+    },
+    "notice": {
+      "noticeTitle": "คำแนะนำบริการ Concierge",
+      "noticeLine1": "บริการ Concierge เป็นทางเลือก",
+      "noticeLine2": "หากมีการทำหัตถการหรือผ่าตัดระหว่างการเยือนเกาหลี Commitment fee จะได้รับคืนเต็มจำนวนโดยอัตโนมัติ"
     }
   }
 }

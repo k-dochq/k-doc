@@ -2358,6 +2358,11 @@
         "dedicatedManager": "전담 컨시어지 매니저",
         "recoveryPackage": "K-DOC 회복 케어 패키지"
       }
+    },
+    "notice": {
+      "noticeTitle": "컨시어지 서비스 안내",
+      "noticeLine1": "컨시어지 서비스는 선택 사항입니다.",
+      "noticeLine2": "한국에 방문하여 시술 또는 수술이 진행될 경우, Commitment fee은 자동 전액 환급됩니다."
     }
   }
 }

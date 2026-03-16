@@ -2358,6 +2358,11 @@
         "dedicatedManager": "Dedikadong Concierge Manager",
         "recoveryPackage": "K-DOC Recovery Care Package"
       }
+    },
+    "notice": {
+      "noticeTitle": "Gabay sa Serbisyo ng Concierge",
+      "noticeLine1": "Opsyonal ang serbisyo ng Concierge.",
+      "noticeLine2": "Kung may isinagawang pamamaraan o operasyon sa panahon ng iyong pagbisita sa Korea, ang Commitment fee ay awtomatikong ibabalik nang buo."
     }
   }
 }
