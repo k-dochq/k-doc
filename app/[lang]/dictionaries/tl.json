@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": [
+          "K-DOC",
+          "Please agree to",
+          "use the service"
+        ],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -2335,9 +2339,25 @@
         }
       }
     }
-  }
-,
+  },
   "concierge": {
-    "section3Description": "Ang mabilis na konsultasyon at reserbasyon sa ospital ay ibinibigay nang libre. Sa pamamagitan ng libreng konsultasyon, maaari kang kumpirmahin ang isang quote at gumawa ng reserbasyon sa ospital. Ang mga serbisyo ng Concierge ay sinisingil lamang kapag kailangan mo ang mga ito."
+    "section3Description": "Ang mabilis na konsultasyon at reserbasyon sa ospital ay ibinibigay nang libre. Sa pamamagitan ng libreng konsultasyon, maaari kang kumpirmahin ang isang quote at gumawa ng reserbasyon sa ospital. Ang mga serbisyo ng Concierge ay sinisingil lamang kapag kailangan mo ang mga ito.",
+    "planCard": {
+      "recommended": "Inirerekomenda",
+      "planTitle": "VIP Care Service",
+      "startingAt": "Simula sa",
+      "price": "$0",
+      "ctaButton": "Pumunta sa Premium",
+      "features": {
+        "quickConsultation": "Mabilis na Konsultasyon",
+        "fastHospitalBooking": "Mabilis na Reserbasyon sa Ospital",
+        "medicalInterpreter": "Propesyonal na Medikal na Tagasalin",
+        "scheduleCoordination": "Koordinasyon ng Iskedyul ng Pamamaraan",
+        "airportPickup": "Paliparan → Hotel VIP Pickup",
+        "hospitalTransfer": "Hotel → Ospital na Paglipat",
+        "dedicatedManager": "Dedikadong Concierge Manager",
+        "recoveryPackage": "K-DOC Recovery Care Package"
+      }
+    }
   }
 }

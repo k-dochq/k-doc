@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": [
+          "K-DOC",
+          "Please agree to",
+          "use the service"
+        ],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -2336,9 +2340,25 @@
         }
       }
     }
-  }
-,
+  },
   "concierge": {
-    "section3Description": "Quick consultations and hospital reservations are provided free of charge. Through a free consultation, you can confirm a quote and make a hospital reservation. Concierge services are only charged when you need them."
+    "section3Description": "Quick consultations and hospital reservations are provided free of charge. Through a free consultation, you can confirm a quote and make a hospital reservation. Concierge services are only charged when you need them.",
+    "planCard": {
+      "recommended": "Recommended",
+      "planTitle": "VIP Care Service",
+      "startingAt": "Starting at",
+      "price": "$0",
+      "ctaButton": "Go Premium",
+      "features": {
+        "quickConsultation": "Quick Consultation",
+        "fastHospitalBooking": "Fast Hospital Booking",
+        "medicalInterpreter": "Professional Medical Interpreter",
+        "scheduleCoordination": "Procedure Schedule Coordination",
+        "airportPickup": "Airport → Hotel VIP Pickup",
+        "hospitalTransfer": "Hotel → Hospital Transfer",
+        "dedicatedManager": "Dedicated Concierge Manager",
+        "recoveryPackage": "K-DOC Recovery Care Package"
+      }
+    }
   }
 }

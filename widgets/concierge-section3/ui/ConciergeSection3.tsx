@@ -1,4 +1,5 @@
 import { type Dictionary } from 'shared/model/types';
+import { ConciergePlanCard } from './ConciergePlanCard';
 
 interface ConciergeSection3Props {
   dict: Dictionary;
@@ -15,6 +16,10 @@ export function ConciergeSection3({ dict }: ConciergeSection3Props) {
         <p className='w-full text-[14px] leading-5 text-[#737373]'>
           {dict.concierge?.section3Description}
         </p>
+      </div>
+
+      <div className='mt-6'>
+        <ConciergePlanCard dict={dict} />
       </div>
     </section>
   );

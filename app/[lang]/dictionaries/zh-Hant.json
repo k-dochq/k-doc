@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "已經有帳戶？",
       "loginLink": "登入",
       "termsAgreement": {
-        "title": ["K-DOC", "請同意", "以使用服務"],
+        "title": [
+          "K-DOC",
+          "請同意",
+          "以使用服務"
+        ],
         "allAgreed": "全部同意",
         "age14Plus": "我已滿 14 歲。",
         "termsOfService": "服務條款（必填）",
@@ -2335,9 +2339,25 @@
         }
       }
     }
-  }
-,
+  },
   "concierge": {
-    "section3Description": "快速諮詢和醫院預約免費提供。透過免費諮詢，您可以確認報價並預約醫院。禮賓服務僅在您需要時才收費。"
+    "section3Description": "快速諮詢和醫院預約免費提供。透過免費諮詢，您可以確認報價並預約醫院。禮賓服務僅在您需要時才收費。",
+    "planCard": {
+      "recommended": "推薦",
+      "planTitle": "VIP護理服務",
+      "startingAt": "起始價格",
+      "price": "$0",
+      "ctaButton": "升級至尊方案",
+      "features": {
+        "quickConsultation": "快速諮詢",
+        "fastHospitalBooking": "快速醫院預約",
+        "medicalInterpreter": "專業醫療口譯員",
+        "scheduleCoordination": "療程時間協調",
+        "airportPickup": "機場 → 酒店 VIP 接送",
+        "hospitalTransfer": "酒店 → 醫院接送",
+        "dedicatedManager": "專屬禮賓經理",
+        "recoveryPackage": "K-DOC 康復護理套餐"
+      }
+    }
   }
 }

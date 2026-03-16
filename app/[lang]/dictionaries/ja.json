@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
       "loginLink": "ログイン",
       "termsAgreement": {
-        "title": ["K-DOC", "同意して", "サービスをご利用ください"],
+        "title": [
+          "K-DOC",
+          "同意して",
+          "サービスをご利用ください"
+        ],
         "allAgreed": "すべて同意",
         "age14Plus": "14歳以上です。",
         "termsOfService": "利用規約（必須）",
@@ -2335,9 +2339,25 @@
         }
       }
     }
-  }
-,
+  },
   "concierge": {
-    "section3Description": "迅速な相談と病院予約は無料で提供されます。無料相談を通じて、見積もりの確認と病院予約が可能です。コンシェルジュサービスは必要な場合のみお支払いいただきます。"
+    "section3Description": "迅速な相談と病院予約は無料で提供されます。無料相談を通じて、見積もりの確認と病院予約が可能です。コンシェルジュサービスは必要な場合のみお支払いいただきます。",
+    "planCard": {
+      "recommended": "おすすめ",
+      "planTitle": "VIPケアサービス",
+      "startingAt": "開始価格",
+      "price": "$0",
+      "ctaButton": "プレミアムへ",
+      "features": {
+        "quickConsultation": "迅速な相談",
+        "fastHospitalBooking": "病院の素早い予約",
+        "medicalInterpreter": "専門医療通訳士",
+        "scheduleCoordination": "施術スケジュール調整",
+        "airportPickup": "空港 → ホテル VIPピックアップ",
+        "hospitalTransfer": "ホテル → 病院への移動",
+        "dedicatedManager": "専任コンシェルジュマネージャー",
+        "recoveryPackage": "K-DOC回復ケアパッケージ"
+      }
+    }
   }
 }

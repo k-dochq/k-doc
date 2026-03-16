@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": [
+          "K-DOC",
+          "Please agree to",
+          "use the service"
+        ],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -1772,7 +1776,10 @@
             },
             {
               "category": "관련 문의 및 피해구제 방법",
-              "content": ["서비스 담당 부서 : CS", "문의처 : all@k-doc.kr"]
+              "content": [
+                "서비스 담당 부서 : CS",
+                "문의처 : all@k-doc.kr"
+              ]
             }
           ]
         }
@@ -2332,9 +2339,25 @@
         }
       }
     }
-  }
-,
+  },
   "concierge": {
-    "section3Description": "빠른 상담과 병원 예약은 무료로 제공됩니다. 무료 상담을 통해 견적 확인과 병원 예약이 가능합니다. 컨시어지 서비스는 필요하신 경우에만 결제하시면 됩니다."
+    "section3Description": "빠른 상담과 병원 예약은 무료로 제공됩니다. 무료 상담을 통해 견적 확인과 병원 예약이 가능합니다. 컨시어지 서비스는 필요하신 경우에만 결제하시면 됩니다.",
+    "planCard": {
+      "recommended": "추천",
+      "planTitle": "VIP 케어 서비스",
+      "startingAt": "시작가",
+      "price": "$0",
+      "ctaButton": "프리미엄 시작하기",
+      "features": {
+        "quickConsultation": "빠른 상담",
+        "fastHospitalBooking": "병원 빠른 예약",
+        "medicalInterpreter": "전문 의료 통역사",
+        "scheduleCoordination": "시술 일정 코디네이션",
+        "airportPickup": "공항 → 호텔 VIP 픽업",
+        "hospitalTransfer": "호텔 → 병원 이동",
+        "dedicatedManager": "전담 컨시어지 매니저",
+        "recoveryPackage": "K-DOC 회복 케어 패키지"
+      }
+    }
   }
 }
