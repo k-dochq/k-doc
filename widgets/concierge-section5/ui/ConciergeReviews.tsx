@@ -1,3 +1,5 @@
+import { ConciergeVideoGrid } from './ConciergeVideoGrid';
+
 export function ConciergeReviews() {
   return (
     <section
@@ -10,6 +12,8 @@ export function ConciergeReviews() {
         <p className='mb-0'>Global Patient</p>
         <p>Reviews</p>
       </div>
+
+      <ConciergeVideoGrid />
     </section>
   );
 }
