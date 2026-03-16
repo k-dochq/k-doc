@@ -6,6 +6,7 @@ import { PageHeaderV2 } from 'shared/ui/page-header';
 import { ConciergeHero } from 'widgets/concierge-hero';
 import { ConciergeSection2 } from 'widgets/concierge-section2';
 import { ConciergeSection3 } from 'widgets/concierge-section3';
+import { ConciergePlanTable } from 'widgets/concierge-section4';
 
 interface ConciergeContentProps {
   lang: Locale;
@@ -21,6 +22,7 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <ConciergeHero />
       <ConciergeSection2 />
       <ConciergeSection3 dict={dict} />
+      <ConciergePlanTable dict={dict} />
     </div>
   );
 }
