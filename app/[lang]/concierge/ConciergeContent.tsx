@@ -9,6 +9,7 @@ import { ConciergeSection3 } from 'widgets/concierge-section3';
 import { ConciergePlanTable } from 'widgets/concierge-section4';
 import { ConciergeReviews } from 'widgets/concierge-section5';
 import { ConciergeWhyChoose } from 'widgets/concierge-section6';
+import { ConciergeTravel } from 'widgets/concierge-section7';
 
 interface ConciergeContentProps {
   lang: Locale;
@@ -27,6 +28,7 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <ConciergePlanTable dict={dict} />
       <ConciergeReviews dict={dict} />
       <ConciergeWhyChoose dict={dict} />
+      <ConciergeTravel dict={dict} />
     </div>
   );
 }
