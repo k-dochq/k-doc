@@ -5,13 +5,14 @@ import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import { ConciergeHero } from 'widgets/concierge-hero';
 import { ConciergeSection2 } from 'widgets/concierge-section2';
+import { ConciergeSection3 } from 'widgets/concierge-section3';
 
 interface ConciergeContentProps {
   lang: Locale;
   dict: Dictionary;
 }
 
-export function ConciergeContent({ lang, dict: _dict }: ConciergeContentProps) {
+export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
   return (
     <div className='min-h-screen bg-white'>
       <PageHeaderV2 title='K-DOC Concierge Services' fallbackUrl={`/${lang}/main`} />
@@ -19,6 +20,7 @@ export function ConciergeContent({ lang, dict: _dict }: ConciergeContentProps) {
 
       <ConciergeHero />
       <ConciergeSection2 />
+      <ConciergeSection3 dict={dict} />
     </div>
   );
 }

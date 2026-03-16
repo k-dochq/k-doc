@@ -2337,4 +2337,8 @@
       }
     }
   }
+,
+  "concierge": {
+    "section3Description": "Quick consultations and hospital reservations are provided free of charge. Through a free consultation, you can confirm a quote and make a hospital reservation. Concierge services are only charged when you need them."
+  }
 }
