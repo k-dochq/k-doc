@@ -2382,6 +2382,42 @@
     "section6Description": "Nagbibigay kami ng medikal na serbisyong concierge upang tulungan ang mga internasyonal na pasyenteng bumibisita sa Korea na magkaroon ng ligtas at komportableng karanasan sa medikal.",
     "section6NoticeTitle": "Gabay sa Bayad ng Serbisyong Concierge",
     "section6NoticeBody": "Kung may isinagawang pamamaraan o operasyon sa panahon ng iyong pagbisita sa Korea, ang Commitment fee ay awtomatikong ibabalik nang buo.",
-    "section7Description": "Mag-enjoy ng iba't ibang karanasan sa paglalakbay sa Korea, kabilang ang pagkain, mga atraksyon, at pamimili, kasama ang K-DOC sa pagitan ng iyong mga iskedyul ng paggamot."
+    "section7Description": "Mag-enjoy ng iba't ibang karanasan sa paglalakbay sa Korea, kabilang ang pagkain, mga atraksyon, at pamimili, kasama ang K-DOC sa pagitan ng iyong mga iskedyul ng paggamot.",
+    "faq": {
+      "items": [
+        {
+          "question": "Libre ba ang mga konsultasyon at reserbasyon sa ospital?",
+          "answer": "Oo. Ang mga konsultasyon at reserbasyon sa ospital sa pamamagitan ng K-DOC ay libre. Sa pamamagitan ng aming Fast Track na serbisyo, tinutulungan ka naming mabilis na makapag-konsulta at mag-book ng ospital."
+        },
+        {
+          "question": "Mayroon bang mga kondisyon para sa paggamit ng serbisyong concierge?",
+          "answer": "Ang Plus ay available para sa mga pamamaraan o operasyong naka-book sa $2,000 o higit pa, at ang Premium ay available para sa mga naka-book sa $5,000 o higit pa."
+        },
+        {
+          "question": "Paano ibabalik ang bayad ng concierge?",
+          "answer": "Kung may isinagawang pamamaraan o operasyon sa panahon ng iyong pagbisita sa Korea, ang Commitment fee ay awtomatikong ibabalik nang buo."
+        },
+        {
+          "question": "Anong mga wika ang sinusuportahan ng serbisyong medikal na interpreter?",
+          "answer": "Nagbibigay kami ng propesyonal na medikal na serbisyong interpreter sa iba't ibang wika kabilang ang Ingles, Thai, Tsino, at Hapon."
+        },
+        {
+          "question": "May serbisyo ba para sa pagkuha sa paliparan?",
+          "answer": "Ang Premium na plano ay may kasamang serbisyo ng paliparan → hotel na pagkuha at hotel → ospital na transportasyon."
+        },
+        {
+          "question": "Anong mga ospital ang inyong pinagtatrabahuhan?",
+          "answer": "Ang K-DOC ay nakikipagtulungan sa iba't ibang medikal na institusyon sa Korea kabilang ang plastic surgery, dermatology, at dental. Ikinokonekta lamang namin ang mga pasyente sa mga ospitaleng may karanasan sa paggamot ng mga internasyonal na pasyente at opisyal na nakarehistrong para sa mga dayuhang pasyente."
+        },
+        {
+          "question": "Mula sa anong mga bansa ang mga pasyente?",
+          "answer": "Ang mga pasyente mula sa iba't ibang bansa kabilang ang Thailand, Singapore, Japan, China, UAE, at Philippines ay gumagamit ng mga medikal na serbisyo ng Korea sa pamamagitan ng K-DOC."
+        },
+        {
+          "question": "Maaari rin ba akong humingi ng tulong sa aking itineraryo sa Korea?",
+          "answer": "Oo. Bukod sa mga iskedyul ng paggamot, sinusuportahan din namin ang lahat ng aspeto ng iyong medikal na paglalakbay sa Korea kabilang ang transportasyon, pagbisita sa ospital, at koordinasyon ng iskedyul."
+        }
+      ]
+    }
   }
 }
