@@ -1,12 +1,14 @@
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { ConciergeVideoGrid } from './ConciergeVideoGrid';
 import { ConciergeReviewCarousel } from './ConciergeReviewCarousel';
 
 interface ConciergeReviewsProps {
   dict: Dictionary;
+  lang: Locale;
 }
 
-export function ConciergeReviews({ dict }: ConciergeReviewsProps) {
+export function ConciergeReviews({ dict, lang }: ConciergeReviewsProps) {
   return (
     <section
       className='w-full px-5 pt-12 pb-12'
@@ -21,7 +23,7 @@ export function ConciergeReviews({ dict }: ConciergeReviewsProps) {
 
       <ConciergeVideoGrid />
 
-      <ConciergeReviewCarousel dict={dict} />
+      <ConciergeReviewCarousel dict={dict} lang={lang} />
     </section>
   );
 }

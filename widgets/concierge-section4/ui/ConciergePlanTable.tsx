@@ -40,7 +40,7 @@ export function ConciergePlanTable({ dict }: ConciergePlanTableProps) {
       {/* Table */}
       <div className='mt-6 flex flex-col items-end'>
         {/* Header row */}
-        <div className='flex items-center pr-5'>
+        <div className='flex items-center pe-5'>
           {(['Basic', 'Plus', 'Premium'] as const).map((plan) => (
             <div key={plan} className='flex w-[62px] items-center justify-center pb-2'>
               <p className='text-[14px] font-bold leading-5 text-[#404040]'>{plan}</p>

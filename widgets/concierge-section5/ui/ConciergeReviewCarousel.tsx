@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useCarouselAutoplay } from 'shared/model/hooks';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
@@ -8,6 +9,7 @@ import { ConciergeReviewCard } from './ConciergeReviewCard';
 
 interface ConciergeReviewCarouselProps {
   dict: Dictionary;
+  lang: Locale;
 }
 
 const REVIEWS = [
@@ -18,7 +20,7 @@ const REVIEWS = [
   { titleKey: 'review5Title', bodyKey: 'review5Body', author: 'Maria S. / Philippines' },
 ] as const;
 
-export function ConciergeReviewCarousel({ dict }: ConciergeReviewCarouselProps) {
+export function ConciergeReviewCarousel({ dict, lang }: ConciergeReviewCarouselProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const t = dict.concierge?.reviews;
@@ -40,7 +42,7 @@ export function ConciergeReviewCarousel({ dict }: ConciergeReviewCarouselProps) 
       <div className='mx-[-20px] mt-6'>
         <Carousel
           setApi={setApi}
-          opts={{ loop: true, align: 'center' }}
+          opts={{ loop: true, align: 'center', direction: lang === 'ar' ? 'rtl' : 'ltr' }}
           className='w-full'
         >
           <CarouselContent className='items-stretch'>

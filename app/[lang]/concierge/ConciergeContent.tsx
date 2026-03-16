@@ -21,7 +21,7 @@ interface ConciergeContentProps {
 
 export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
   return (
-    <div className='min-h-screen bg-white'>
+    <div className='min-h-screen bg-white' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <PageHeaderV2 title='K-DOC Concierge Services' fallbackUrl={`/${lang}/main`} />
       <div className='h-[58px]' />
 
@@ -29,7 +29,7 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <ConciergeSection2 />
       <ConciergeSection3 dict={dict} />
       <ConciergePlanTable dict={dict} />
-      <ConciergeReviews dict={dict} />
+      <ConciergeReviews dict={dict} lang={lang} />
       <ConciergeWhyChoose dict={dict} />
       <ConciergeTravel dict={dict} />
       <ConciergeJourneyBanner />

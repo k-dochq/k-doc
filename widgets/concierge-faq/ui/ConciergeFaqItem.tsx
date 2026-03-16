@@ -17,7 +17,7 @@ export function ConciergeFaqItem({ question, answer, defaultOpen = false }: Conc
     <div className='w-full border-b border-[#d4d4d4]'>
       <button
         type='button'
-        className='flex w-full items-center gap-[6px] px-5 py-4 text-left'
+        className='flex w-full items-center gap-[6px] px-5 py-4 text-start'
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className='flex-1 text-[18px] font-bold leading-7 text-[#404040]'>{question}</span>
