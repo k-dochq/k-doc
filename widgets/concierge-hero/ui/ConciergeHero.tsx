@@ -11,9 +11,9 @@ export function ConciergeHero() {
       className='relative w-full overflow-hidden'
       style={{ height: '584px', backgroundColor: '#fef8ff' }}
     >
-      {/* Background image */}
+      {/* Background image - 의도적으로 섹션 밖으로 확장되는 장식 요소 */}
       <div
-        className='absolute blur-[0.5px]'
+        className='absolute z-0 blur-[0.5px]'
         style={{ left: '-248px', top: '56px', width: '967px', height: '540px' }}
       >
         <Image
@@ -25,19 +25,17 @@ export function ConciergeHero() {
         />
       </div>
 
-      {/* Blue gradient dim overlay */}
+      {/* Blue gradient dim overlay - 배경 위에 덮는 반투명 레이어 */}
       <div
-        className='absolute top-0 left-0 w-full'
+        className='absolute inset-x-0 top-0 z-[1]'
         style={{ height: '527px', backgroundImage: BLUE_GRADIENT }}
       />
 
-      {/* Title - top frame starts at y:16 */}
-      <div className='absolute top-4 left-0 right-0'>
+      {/* Main content - flex 레이아웃으로 타이틀 + 카드 순서 배치 */}
+      <div className='relative z-[2] flex w-full flex-col items-center pt-4'>
         <ConciergeHeroTitle />
+        <ConciergeHeroCards />
       </div>
-
-      {/* Service cards */}
-      <ConciergeHeroCards />
     </section>
   );
 }
