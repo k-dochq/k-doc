@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import { ConciergeHero } from 'widgets/concierge-hero';
+import { ConciergeSection2 } from 'widgets/concierge-section2';
 
 interface ConciergeContentProps {
   lang: Locale;
@@ -17,6 +18,7 @@ export function ConciergeContent({ lang, dict: _dict }: ConciergeContentProps) {
       <div className='h-[58px]' />
 
       <ConciergeHero />
+      <ConciergeSection2 />
     </div>
   );
 }
