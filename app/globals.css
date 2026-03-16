@@ -235,3 +235,28 @@
 .animate-scroll-right {
   animation: scrollRight 30s linear infinite;
 }
+
+/* Concierge floating button animated border */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-rotate {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.animated-border {
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0%,
+    transparent 75%,
+    rgba(200, 180, 255, 0.6) 85%,
+    rgba(255, 255, 255, 0.9) 92%,
+    transparent 100%
+  );
+  animation: border-rotate 2s linear infinite;
+}

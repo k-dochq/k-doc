@@ -12,6 +12,7 @@ import { ConciergeWhyChoose } from 'widgets/concierge-section6';
 import { ConciergeTravel } from 'widgets/concierge-section7';
 import { ConciergeJourneyBanner } from 'widgets/concierge-section8';
 import { ConciergeFaq } from 'widgets/concierge-faq';
+import { ConciergeFloatingButton } from 'widgets/concierge-floating';
 
 interface ConciergeContentProps {
   lang: Locale;
@@ -33,6 +34,7 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <ConciergeTravel dict={dict} />
       <ConciergeJourneyBanner />
       <ConciergeFaq dict={dict} />
+      <ConciergeFloatingButton dict={dict} />
     </div>
   );
 }
