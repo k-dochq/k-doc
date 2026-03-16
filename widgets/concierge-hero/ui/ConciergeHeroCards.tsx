@@ -6,7 +6,7 @@ import { ConciergeServiceCard } from './ConciergeServiceCard';
 
 const CARDS = [
   {
-    src: '/images/concierge/section1-card-vip.jpg',
+    src: '/images/concierge/premium_top_1.png',
     alt: 'VIP Transportation',
     line1: 'VIP',
     line2: 'Transportation',
@@ -14,7 +14,7 @@ const CARDS = [
       'linear-gradient(0deg, #0fe5e1 10%, rgba(15, 229, 225, 0.8) 30%, rgba(15, 229, 225, 0) 60%)',
   },
   {
-    src: '/images/concierge/section1-card-interpreter.jpg',
+    src: '/images/concierge/premium_top_2.png',
     alt: 'Medical Interpreter',
     line1: 'Medical',
     line2: 'Interpreter',
@@ -22,7 +22,7 @@ const CARDS = [
       'linear-gradient(0deg, #e5b62d 10%, rgba(229, 182, 45, 0.8) 30%, rgba(229, 182, 45, 0) 60%)',
   },
   {
-    src: '/images/concierge/section1-card-recovery.jpg',
+    src: '/images/concierge/premium_top_3.png',
     alt: 'K-DOC Recovery Care',
     line1: 'K-DOC',
     line2: 'Recovery Care',
@@ -31,16 +31,13 @@ const CARDS = [
   },
 ] as const;
 
-const SIDE_OFFSET = 110;
+// sideOffset / cardWidth = 110 / 180 = 61.11% — 비율 고정이라 항상 동일
+const SIDE_X = `${((110 / 180) * 100).toFixed(4)}%`;
 
 function getCardAnimation(diff: number) {
-  if (diff === 0) {
-    return { x: 0, scale: 1, zIndex: 10 };
-  } else if (diff === 1) {
-    return { x: SIDE_OFFSET, scale: 0.7, zIndex: 5 };
-  } else {
-    return { x: -SIDE_OFFSET, scale: 0.7, zIndex: 5 };
-  }
+  if (diff === 0) return { x: '0%', scale: 1, zIndex: 10 };
+  if (diff === 1) return { x: SIDE_X, scale: 0.7, zIndex: 5 };
+  return { x: `-${SIDE_X}`, scale: 0.7, zIndex: 5 };
 }
 
 export function ConciergeHeroCards() {
@@ -54,26 +51,20 @@ export function ConciergeHeroCards() {
   }, []);
 
   return (
-    <div className='relative flex h-full w-full items-center justify-center'>
+    <div
+      className='relative flex w-full items-center justify-center'
+      style={{ aspectRatio: '335 / 192' }}
+    >
       {CARDS.map((card, index) => {
-        const total = CARDS.length;
-        const diff = (index - currentIndex + total) % total;
+        const diff = (index - currentIndex + CARDS.length) % CARDS.length;
         const anim = getCardAnimation(diff);
 
         return (
           <motion.div
             key={card.alt}
-            className='absolute'
-            animate={{
-              x: anim.x,
-              scale: anim.scale,
-              zIndex: anim.zIndex,
-            }}
-            transition={{
-              type: 'spring',
-              stiffness: 300,
-              damping: 30,
-            }}
+            className='absolute w-[53.73%]'
+            animate={{ x: anim.x, scale: anim.scale, zIndex: anim.zIndex }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
             <ConciergeServiceCard
               src={card.src}

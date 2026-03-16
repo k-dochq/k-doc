@@ -14,7 +14,7 @@ export function ConciergeHero() {
       />
       <div className='relative flex h-full w-full flex-col items-center pt-4'>
         <ConciergeHeroTitle />
-        <div className='mt-6 h-[192px] w-full px-5'>
+        <div className='mt-6 w-full px-5'>
           <ConciergeHeroCards />
         </div>
       </div>

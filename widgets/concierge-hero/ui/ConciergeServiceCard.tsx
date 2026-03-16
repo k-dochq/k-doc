@@ -20,13 +20,17 @@ export function ConciergeServiceCard({
   return (
     <div
       className={`relative overflow-hidden rounded-xl ${className}`}
-      style={{ width: 180, height: 192 }}
+      style={{ width: '100%', aspectRatio: '180 / 192', containerType: 'inline-size' }}
     >
       <Image src={src} alt={alt} fill className='object-cover' />
       <div className='absolute inset-0' style={{ backgroundImage: overlayGradient }} />
       <div
         className='absolute left-0 right-0 text-center leading-none text-white'
-        style={{ top: 124, fontSize: 22, letterSpacing: '-0.22px' }}
+        style={{
+          top: '64.58%',      // 124 / 192 * 100%
+          fontSize: '12.22cqi', // 22 / 180 * 100 — 카드 width 기준
+          letterSpacing: '-0.22px',
+        }}
       >
         <p className='mb-0'>{line1}</p>
         <p>{line2}</p>
