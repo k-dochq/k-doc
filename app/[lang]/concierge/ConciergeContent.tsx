@@ -10,6 +10,7 @@ import { ConciergePlanTable } from 'widgets/concierge-section4';
 import { ConciergeReviews } from 'widgets/concierge-section5';
 import { ConciergeWhyChoose } from 'widgets/concierge-section6';
 import { ConciergeTravel } from 'widgets/concierge-section7';
+import { ConciergeJourneyBanner } from 'widgets/concierge-section8';
 
 interface ConciergeContentProps {
   lang: Locale;
@@ -29,6 +30,7 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <ConciergeReviews dict={dict} />
       <ConciergeWhyChoose dict={dict} />
       <ConciergeTravel dict={dict} />
+      <ConciergeJourneyBanner />
     </div>
   );
 }
