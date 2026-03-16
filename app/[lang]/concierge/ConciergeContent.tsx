@@ -24,7 +24,7 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <ConciergeSection2 />
       <ConciergeSection3 dict={dict} />
       <ConciergePlanTable dict={dict} />
-      <ConciergeReviews />
+      <ConciergeReviews dict={dict} />
     </div>
   );
 }

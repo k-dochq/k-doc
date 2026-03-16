@@ -1,9 +1,15 @@
+import { type Dictionary } from 'shared/model/types';
 import { ConciergeVideoGrid } from './ConciergeVideoGrid';
+import { ConciergeReviewCarousel } from './ConciergeReviewCarousel';
 
-export function ConciergeReviews() {
+interface ConciergeReviewsProps {
+  dict: Dictionary;
+}
+
+export function ConciergeReviews({ dict }: ConciergeReviewsProps) {
   return (
     <section
-      className='w-full px-5 pt-12'
+      className='w-full px-5 pt-12 pb-12'
       style={{
         background: 'linear-gradient(180deg, #ffffff 13.47%, #7657ff 100%)',
       }}
@@ -14,6 +20,8 @@ export function ConciergeReviews() {
       </div>
 
       <ConciergeVideoGrid />
+
+      <ConciergeReviewCarousel dict={dict} />
     </section>
   );
 }
