@@ -2347,7 +2347,7 @@
       "recommended": "Recommended",
       "planTitle": "VIP Care Service",
       "startingAt": "Starting at",
-      "price": "$0",
+      "price": "0",
       "ctaButton": "Go Premium",
       "features": {
         "quickConsultation": "Quick Consultation",
@@ -2427,7 +2427,7 @@
     "heroCard2Line2": "Interpreter",
     "heroCard3Line1": "K-DOC",
     "heroCard3Line2": "Recovery Care",
-    "section2Title": "Our Premium Vehicles",
+    "section2Title": "Our Premium Vehicless",
     "section3Title": "Concierge\nService Plan",
     "planBasic": "Basic",
     "planPlus": "Plus",
