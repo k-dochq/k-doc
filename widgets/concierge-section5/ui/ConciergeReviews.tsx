@@ -20,7 +20,7 @@ export function ConciergeReviews({ dict, lang }: ConciergeReviewsProps) {
         {dict.concierge?.section5Title}
       </p>
 
-      <ConciergeVideoGrid />
+      <ConciergeVideoGrid lang={lang} />
 
       <ConciergeReviewCarousel dict={dict} lang={lang} />
     </section>
