@@ -15,10 +15,9 @@ export function ConciergeWhyChoose({ dict, lang }: ConciergeWhyChooseProps) {
   return (
     <section className='flex w-full flex-col items-center gap-6 bg-[#7657ff] px-5 py-12'>
       {/* Title */}
-      <div className='w-full text-center text-[42px] leading-[1.1] text-white'>
-        <p className='mb-0'>Why Choose</p>
-        <p>K-DOC</p>
-      </div>
+      <p className='concierge-title w-full whitespace-pre-line text-center text-[42px] leading-[1.1] text-white'>
+        {t?.section6Title}
+      </p>
 
       {/* Description */}
       <p className='w-full text-center text-[14px] leading-5 text-[#f5f5f5]'>

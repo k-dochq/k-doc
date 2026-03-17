@@ -2419,6 +2419,27 @@
         }
       ]
     },
-    "floatingButtonText": "無料相談を始める"
+    "floatingButtonText": "無料相談を始める",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "専用送迎",
+    "heroCard2Line1": "医療",
+    "heroCard2Line2": "通訳士",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "リカバリーケア",
+    "section2Title": "プレミアム車両",
+    "section3Title": "コンシェルジュ\nサービスプラン",
+    "planBasic": "ベーシック",
+    "planPlus": "プラス",
+    "planPremium": "プレミアム",
+    "section5Title": "グローバル患者\nレビュー",
+    "review1Author": "Yuki N. / 日本",
+    "review2Author": "Michelle T. / シンガポール",
+    "review3Author": "Nattapong S. / タイ",
+    "review4Author": "Li W. / 中国",
+    "review5Author": "Maria S. / フィリピン",
+    "section6Title": "なぜ\nK-DOCなのか",
+    "section7TitleLine1": "医療を超えた",
+    "section7TitleLine2Italic": "特別な",
+    "section7TitleLine2Normal": "旅"
   }
 }

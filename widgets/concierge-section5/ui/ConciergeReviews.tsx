@@ -16,10 +16,9 @@ export function ConciergeReviews({ dict, lang }: ConciergeReviewsProps) {
         background: 'linear-gradient(180deg, #ffffff 13.47%, #7657ff 100%)',
       }}
     >
-      <div className='concierge-title text-center text-[42px] leading-[1.1] text-[#7657ff]'>
-        <p className='mb-0'>Global Patient</p>
-        <p>Reviews</p>
-      </div>
+      <p className='concierge-title whitespace-pre-line text-center text-[42px] leading-[1.1] text-[#7657ff]'>
+        {dict.concierge?.section5Title}
+      </p>
 
       <ConciergeVideoGrid />
 

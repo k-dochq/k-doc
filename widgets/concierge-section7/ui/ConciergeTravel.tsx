@@ -13,10 +13,10 @@ export function ConciergeTravel({ dict }: ConciergeTravelProps) {
       {/* Title + Description */}
       <div className='flex w-full flex-col items-center gap-3 px-5 text-center'>
         <div className='concierge-title w-full text-[42px] leading-[1.1] text-[#7657ff]'>
-          <p className='mb-0'>Beyond</p>
+          <p className='mb-0'>{t?.section7TitleLine1}</p>
           <p>
-            <span className='italic'>Medical </span>
-            <span>Travel</span>
+            <span className='italic'>{t?.section7TitleLine2Italic} </span>
+            <span>{t?.section7TitleLine2Normal}</span>
           </p>
         </div>
         <p className='w-full text-[14px] leading-5 text-[#737373]'>{t?.section7Description}</p>

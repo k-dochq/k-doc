@@ -25,8 +25,8 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <PageHeaderV2 title='K-DOC Concierge Services' fallbackUrl={`/${lang}/main`} />
       <div className='h-[58px]' />
 
-      <ConciergeHero lang={lang} />
-      <ConciergeSection2 lang={lang} />
+      <ConciergeHero lang={lang} dict={dict} />
+      <ConciergeSection2 lang={lang} dict={dict} />
       <ConciergeSection3 dict={dict} />
       <ConciergePlanTable dict={dict} />
       <ConciergeReviews dict={dict} lang={lang} />

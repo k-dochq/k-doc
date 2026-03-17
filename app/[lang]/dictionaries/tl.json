@@ -2419,6 +2419,27 @@
         }
       ]
     },
-    "floatingButtonText": "Magsimula ng Libreng Konsultasyon"
+    "floatingButtonText": "Magsimula ng Libreng Konsultasyon",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "Transportation",
+    "heroCard2Line1": "Medical",
+    "heroCard2Line2": "Interpreter",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "Recovery Care",
+    "section2Title": "Aming Premium na Sasakyan",
+    "section3Title": "Concierge\nService Plan",
+    "planBasic": "Basic",
+    "planPlus": "Plus",
+    "planPremium": "Premium",
+    "section5Title": "Mga Review ng\nGlobal na Pasyente",
+    "review1Author": "Yuki N. / Japan",
+    "review2Author": "Michelle T. / Singapore",
+    "review3Author": "Nattapong S. / Thailand",
+    "review4Author": "Li W. / China",
+    "review5Author": "Maria S. / Philippines",
+    "section6Title": "Bakit Pumili ng\nK-DOC",
+    "section7TitleLine1": "Higit Pa sa",
+    "section7TitleLine2Italic": "Medikal na",
+    "section7TitleLine2Normal": "Paglalakbay"
   }
 }

@@ -2419,6 +2419,27 @@
         }
       ]
     },
-    "floatingButtonText": "開始免費諮詢"
+    "floatingButtonText": "開始免費諮詢",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "專車接送",
+    "heroCard2Line1": "醫療",
+    "heroCard2Line2": "口譯員",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "康復護理",
+    "section2Title": "頂級豪華車輛",
+    "section3Title": "禮賓服務\n計劃方案",
+    "planBasic": "基本",
+    "planPlus": "進階",
+    "planPremium": "尊享",
+    "section5Title": "全球患者\n真實評價",
+    "review1Author": "Yuki N. / 日本",
+    "review2Author": "Michelle T. / 新加坡",
+    "review3Author": "Nattapong S. / 泰國",
+    "review4Author": "Li W. / 中國",
+    "review5Author": "Maria S. / 菲律賓",
+    "section6Title": "為何選擇\nK-DOC",
+    "section7TitleLine1": "超越",
+    "section7TitleLine2Italic": "醫療",
+    "section7TitleLine2Normal": "旅程"
   }
 }

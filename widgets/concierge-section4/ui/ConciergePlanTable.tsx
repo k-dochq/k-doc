@@ -33,7 +33,7 @@ export function ConciergePlanTable({ dict }: ConciergePlanTableProps) {
     <section className='w-full py-9'>
       {/* Title */}
       <div className='flex flex-col items-center gap-3 px-5 text-center'>
-        <p className='concierge-title w-full text-[42px] leading-[1.1] text-[#7657ff]'>Plan Comparison</p>
+        <p className='concierge-title w-full text-[42px] leading-[1.1] text-[#7657ff]'>{t?.section4Title}</p>
         <p className='w-full text-[14px] leading-5 text-[#737373]'>{t?.section4Description}</p>
       </div>
 
@@ -41,7 +41,7 @@ export function ConciergePlanTable({ dict }: ConciergePlanTableProps) {
       <div className='mt-6 flex flex-col items-end'>
         {/* Header row */}
         <div className='flex items-center pe-5'>
-          {(['Basic', 'Plus', 'Premium'] as const).map((plan) => (
+          {([t?.planBasic, t?.planPlus, t?.planPremium] as const).map((plan) => (
             <div key={plan} className='flex w-[62px] items-center justify-center pb-2'>
               <p className='text-[14px] font-bold leading-5 text-[#404040]'>{plan}</p>
             </div>

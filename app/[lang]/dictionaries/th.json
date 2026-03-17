@@ -2420,6 +2420,27 @@
         }
       ]
     },
-    "floatingButtonText": "เริ่มรับคำปรึกษาฟรี"
+    "floatingButtonText": "เริ่มรับคำปรึกษาฟรี",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "รถรับส่งพิเศษ",
+    "heroCard2Line1": "ล่าม",
+    "heroCard2Line2": "การแพทย์",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "การดูแลฟื้นฟู",
+    "section2Title": "ยานพาหนะระดับพรีเมียม",
+    "section3Title": "บริการคอนเซียร์จ\nแพ็คเกจ",
+    "planBasic": "เบสิก",
+    "planPlus": "พลัส",
+    "planPremium": "พรีเมียม",
+    "section5Title": "รีวิวจากผู้ป่วย\nทั่วโลก",
+    "review1Author": "Yuki N. / ญี่ปุ่น",
+    "review2Author": "Michelle T. / สิงคโปร์",
+    "review3Author": "Nattapong S. / ไทย",
+    "review4Author": "Li W. / จีน",
+    "review5Author": "Maria S. / ฟิลิปปินส์",
+    "section6Title": "ทำไมต้องเลือก\nK-DOC",
+    "section7TitleLine1": "เหนือกว่า",
+    "section7TitleLine2Italic": "การแพทย์",
+    "section7TitleLine2Normal": "ท่องเที่ยว"
   }
 }

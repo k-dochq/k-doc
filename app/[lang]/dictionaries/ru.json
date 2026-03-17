@@ -2419,6 +2419,27 @@
         }
       ]
     },
-    "floatingButtonText": "Начать бесплатную консультацию"
+    "floatingButtonText": "Начать бесплатную консультацию",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "Трансфер",
+    "heroCard2Line1": "Медицинский",
+    "heroCard2Line2": "переводчик",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "Послеоперационный уход",
+    "section2Title": "Наш премиум автопарк",
+    "section3Title": "Консьерж-\nсервис",
+    "planBasic": "Базовый",
+    "planPlus": "Плюс",
+    "planPremium": "Премиум",
+    "section5Title": "Отзывы\nпациентов",
+    "review1Author": "Yuki N. / Япония",
+    "review2Author": "Michelle T. / Сингапур",
+    "review3Author": "Nattapong S. / Таиланд",
+    "review4Author": "Li W. / Китай",
+    "review5Author": "Maria S. / Филиппины",
+    "section6Title": "Почему\nK-DOC",
+    "section7TitleLine1": "За пределами",
+    "section7TitleLine2Italic": "медицинского",
+    "section7TitleLine2Normal": "путешествия"
   }
 }

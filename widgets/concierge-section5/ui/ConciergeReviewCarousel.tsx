@@ -13,17 +13,18 @@ interface ConciergeReviewCarouselProps {
 }
 
 const REVIEWS = [
-  { titleKey: 'review1Title', bodyKey: 'review1Body', author: 'Yuki N. / Japan' },
-  { titleKey: 'review2Title', bodyKey: 'review2Body', author: 'Michelle T. / Singapore' },
-  { titleKey: 'review3Title', bodyKey: 'review3Body', author: 'Nattapong S. / Thailand' },
-  { titleKey: 'review4Title', bodyKey: 'review4Body', author: 'Li W. / China' },
-  { titleKey: 'review5Title', bodyKey: 'review5Body', author: 'Maria S. / Philippines' },
+  { titleKey: 'review1Title', bodyKey: 'review1Body', authorKey: 'review1Author' },
+  { titleKey: 'review2Title', bodyKey: 'review2Body', authorKey: 'review2Author' },
+  { titleKey: 'review3Title', bodyKey: 'review3Body', authorKey: 'review3Author' },
+  { titleKey: 'review4Title', bodyKey: 'review4Body', authorKey: 'review4Author' },
+  { titleKey: 'review5Title', bodyKey: 'review5Body', authorKey: 'review5Author' },
 ] as const;
 
 export function ConciergeReviewCarousel({ dict, lang }: ConciergeReviewCarouselProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const t = dict.concierge?.reviews;
+  const c = dict.concierge;
 
   useCarouselAutoplay({ api, itemCount: REVIEWS.length, interval: 2500, enabled: true });
 
@@ -46,13 +47,13 @@ export function ConciergeReviewCarousel({ dict, lang }: ConciergeReviewCarouselP
           className='w-full'
         >
           <CarouselContent className='items-stretch'>
-            {REVIEWS.map(({ titleKey, bodyKey, author }) => (
-              <CarouselItem key={author} className='basis-[69.33%]'>
+            {REVIEWS.map(({ titleKey, bodyKey, authorKey }) => (
+              <CarouselItem key={authorKey} className='basis-[69.33%]'>
                 <div className='h-full px-[6px]'>
                   <ConciergeReviewCard
                     title={t?.[titleKey] ?? ''}
                     body={t?.[bodyKey] ?? ''}
-                    author={author}
+                    author={c?.[authorKey] ?? ''}
                   />
                 </div>
               </CarouselItem>

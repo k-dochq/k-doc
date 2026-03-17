@@ -2419,6 +2419,27 @@
         }
       ]
     },
-    "floatingButtonText": "ابدأ الاستشارة المجانية"
+    "floatingButtonText": "ابدأ الاستشارة المجانية",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "النقل الفاخر",
+    "heroCard2Line1": "الترجمة",
+    "heroCard2Line2": "الطبية",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "رعاية التعافي",
+    "section2Title": "سياراتنا الفاخرة",
+    "section3Title": "خدمة\nالكونسيرج",
+    "planBasic": "الأساسي",
+    "planPlus": "بلس",
+    "planPremium": "بريميوم",
+    "section5Title": "آراء المرضى\nالدوليين",
+    "review1Author": "Yuki N. / اليابان",
+    "review2Author": "Michelle T. / سنغافورة",
+    "review3Author": "Nattapong S. / تايلاند",
+    "review4Author": "Li W. / الصين",
+    "review5Author": "Maria S. / الفلبين",
+    "section6Title": "لماذا تختار\nK-DOC",
+    "section7TitleLine1": "ما وراء",
+    "section7TitleLine2Italic": "الطبي",
+    "section7TitleLine2Normal": "السفر"
   }
 }

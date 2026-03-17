@@ -2419,6 +2419,27 @@
         }
       ]
     },
-    "floatingButtonText": "मुफ्त परामर्श शुरू करें"
+    "floatingButtonText": "मुफ्त परामर्श शुरू करें",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "परिवहन",
+    "heroCard2Line1": "चिकित्सा",
+    "heroCard2Line2": "दुभाषिया",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "रिकवरी केयर",
+    "section2Title": "हमारे प्रीमियम वाहन",
+    "section3Title": "कंसीयर्ज\nसेवा योजना",
+    "planBasic": "बेसिक",
+    "planPlus": "प्लस",
+    "planPremium": "प्रीमियम",
+    "section5Title": "वैश्विक रोगी\nसमीक्षाएं",
+    "review1Author": "Yuki N. / जापान",
+    "review2Author": "Michelle T. / सिंगापुर",
+    "review3Author": "Nattapong S. / थाईलैंड",
+    "review4Author": "Li W. / चीन",
+    "review5Author": "Maria S. / फिलीपींस",
+    "section6Title": "K-DOC को\nक्यों चुनें",
+    "section7TitleLine1": "परे",
+    "section7TitleLine2Italic": "चिकित्सा",
+    "section7TitleLine2Normal": "यात्रा"
   }
 }
