@@ -25,14 +25,14 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
       <PageHeaderV2 title='K-DOC Concierge Services' fallbackUrl={`/${lang}/main`} />
       <div className='h-[58px]' />
 
-      <ConciergeHero />
-      <ConciergeSection2 />
+      <ConciergeHero lang={lang} />
+      <ConciergeSection2 lang={lang} />
       <ConciergeSection3 dict={dict} />
       <ConciergePlanTable dict={dict} />
       <ConciergeReviews dict={dict} lang={lang} />
-      <ConciergeWhyChoose dict={dict} />
+      <ConciergeWhyChoose dict={dict} lang={lang} />
       <ConciergeTravel dict={dict} />
-      <ConciergeJourneyBanner />
+      <ConciergeJourneyBanner lang={lang} />
       <ConciergeFaq dict={dict} />
       <ConciergeFloatingButton dict={dict} />
     </div>

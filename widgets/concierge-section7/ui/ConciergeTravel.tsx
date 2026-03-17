@@ -12,7 +12,7 @@ export function ConciergeTravel({ dict }: ConciergeTravelProps) {
     <section className='flex w-full flex-col items-center gap-6 bg-white py-12'>
       {/* Title + Description */}
       <div className='flex w-full flex-col items-center gap-3 px-5 text-center'>
-        <div className='w-full text-[42px] leading-[1.1] text-[#7657ff]'>
+        <div className='concierge-title w-full text-[42px] leading-[1.1] text-[#7657ff]'>
           <p className='mb-0'>Beyond</p>
           <p>
             <span className='italic'>Medical </span>
@@ -25,7 +25,7 @@ export function ConciergeTravel({ dict }: ConciergeTravelProps) {
       {/* Full-width image */}
       <div className='relative w-full' style={{ aspectRatio: '375 / 562' }}>
         <Image
-          src='/images/concierge/premium_07_travel_bg.png'
+          src='/images/premium_package/common/premium_07_travel_bg.png'
           alt='Beyond Medical Travel'
           fill
           className='object-cover'

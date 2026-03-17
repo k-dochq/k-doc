@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { type Locale } from 'shared/config';
 import { ConciergeServiceCard } from './ConciergeServiceCard';
 
-const CARDS = [
+const CARD_META = [
   {
-    src: '/images/concierge/premium_top_1.png',
+    key: 'premium_top_1',
     alt: 'VIP Transportation',
     line1: 'VIP',
     line2: 'Transportation',
@@ -14,7 +15,7 @@ const CARDS = [
       'linear-gradient(0deg, #0fe5e1 10%, rgba(15, 229, 225, 0.8) 30%, rgba(15, 229, 225, 0) 60%)',
   },
   {
-    src: '/images/concierge/premium_top_2.png',
+    key: 'premium_top_2',
     alt: 'Medical Interpreter',
     line1: 'Medical',
     line2: 'Interpreter',
@@ -22,7 +23,7 @@ const CARDS = [
       'linear-gradient(0deg, #e5b62d 10%, rgba(229, 182, 45, 0.8) 30%, rgba(229, 182, 45, 0) 60%)',
   },
   {
-    src: '/images/concierge/premium_top_3.png',
+    key: 'premium_top_3',
     alt: 'K-DOC Recovery Care',
     line1: 'K-DOC',
     line2: 'Recovery Care',
@@ -40,12 +41,16 @@ function getCardAnimation(diff: number) {
   return { x: `-${SIDE_X}`, scale: 0.7, zIndex: 5 };
 }
 
-export function ConciergeHeroCards() {
+interface ConciergeHeroCardsProps {
+  lang: Locale;
+}
+
+export function ConciergeHeroCards({ lang }: ConciergeHeroCardsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % CARDS.length);
+      setCurrentIndex((prev) => (prev + 1) % CARD_META.length);
     }, 1200);
     return () => clearInterval(interval);
   }, []);
@@ -55,8 +60,8 @@ export function ConciergeHeroCards() {
       className='relative flex w-full items-center justify-center'
       style={{ aspectRatio: '335 / 192' }}
     >
-      {CARDS.map((card, index) => {
-        const diff = (index - currentIndex + CARDS.length) % CARDS.length;
+      {CARD_META.map((card, index) => {
+        const diff = (index - currentIndex + CARD_META.length) % CARD_META.length;
         const anim = getCardAnimation(diff);
 
         return (
@@ -67,7 +72,7 @@ export function ConciergeHeroCards() {
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           >
             <ConciergeServiceCard
-              src={card.src}
+              src={`/images/premium_package/${lang}/${card.key}.png`}
               alt={card.alt}
               line1={card.line1}
               line2={card.line2}

@@ -10,7 +10,7 @@ export function ConciergeFaq({ dict }: ConciergeFaqProps) {
 
   return (
     <section className='flex w-full flex-col items-center gap-6 bg-white pt-12 pb-[120px]'>
-      <p className='w-full text-center text-[42px] leading-[1.1] text-[#7657ff]'>FAQ</p>
+      <p className='concierge-title w-full text-center text-[42px] leading-[1.1] text-[#7657ff]'>FAQ</p>
       <div className='w-full border-t border-[#d4d4d4]'>
         {items.map((item, index) => (
           <ConciergeFaqItem

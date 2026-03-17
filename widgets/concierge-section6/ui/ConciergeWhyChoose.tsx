@@ -1,19 +1,15 @@
 import Image from 'next/image';
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
 interface ConciergeWhyChooseProps {
   dict: Dictionary;
+  lang: Locale;
 }
 
-const ICON_LIST_IMAGES = [
-  '/images/concierge/premium_06_icon_list_1.png',
-  '/images/concierge/premium_06_icon_list_2.png',
-  '/images/concierge/premium_06_icon_list_3.png',
-  '/images/concierge/premium_06_icon_list_4.png',
-  '/images/concierge/premium_06_icon_list_5.png',
-];
+const ICON_LIST_KEYS = [1, 2, 3, 4, 5] as const;
 
-export function ConciergeWhyChoose({ dict }: ConciergeWhyChooseProps) {
+export function ConciergeWhyChoose({ dict, lang }: ConciergeWhyChooseProps) {
   const t = dict.concierge;
 
   return (
@@ -31,15 +27,15 @@ export function ConciergeWhyChoose({ dict }: ConciergeWhyChooseProps) {
 
       {/* Icon list images */}
       <div className='flex w-full flex-col gap-4'>
-        {ICON_LIST_IMAGES.map((src, index) => (
+        {ICON_LIST_KEYS.map((n) => (
           <div
-            key={src}
+            key={n}
             className='relative w-full overflow-hidden rounded-2xl'
             style={{ aspectRatio: '335 / 124' }}
           >
             <Image
-              src={src}
-              alt={`K-DOC service ${index + 1}`}
+              src={`/images/premium_package/${lang}/premium_06_icon_list/premium_06_icon_list_${n}.png`}
+              alt={`K-DOC service ${n}`}
               fill
               className='object-cover'
             />

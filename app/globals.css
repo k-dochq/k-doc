@@ -236,6 +236,16 @@
   animation: scrollRight 30s linear infinite;
 }
 
+/* Concierge 섹션 타이틀 전용 폰트 — concierge/layout.tsx에서 --concierge-title-font 주입 */
+.concierge-title {
+  font-family: var(--concierge-title-font), sans-serif;
+}
+
+/* 아랍어 타이틀 line-height 보정 */
+[dir='rtl'] .concierge-title {
+  line-height: 1.2;
+}
+
 /* Concierge floating button animated border */
 @property --border-angle {
   syntax: '<angle>';

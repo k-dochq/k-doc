@@ -1,6 +1,11 @@
 import Image from 'next/image';
+import { type Locale } from 'shared/config';
 
-export function ConciergeSection2() {
+interface ConciergeSection2Props {
+  lang: Locale;
+}
+
+export function ConciergeSection2({ lang }: ConciergeSection2Props) {
   return (
     <section
       className='flex w-full flex-col items-center gap-3 pt-9'
@@ -9,7 +14,7 @@ export function ConciergeSection2() {
       }}
     >
       <div className='flex w-full max-w-[335px] flex-col items-center gap-3'>
-        <p className='w-full text-center text-[32px] leading-[1.1] text-[#7657ff]'>
+        <p className='concierge-title w-full text-center text-[32px] leading-[1.1] text-[#7657ff]'>
           Our Premium Vehicles
         </p>
         <div className='flex items-center gap-2 text-[14px] leading-5 text-[#737373]'>
@@ -22,7 +27,7 @@ export function ConciergeSection2() {
       </div>
       <div className='relative w-full' style={{ aspectRatio: '375 / 247' }}>
         <Image
-          src='/images/concierge/premium_02_car_bg.png'
+          src={`/images/premium_package/${lang}/premium_02_car_bg.png`}
           alt='Premium Vehicles'
           fill
           className='object-cover'
