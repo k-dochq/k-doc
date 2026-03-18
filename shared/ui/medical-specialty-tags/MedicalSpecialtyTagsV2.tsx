@@ -10,6 +10,10 @@ interface MedicalSpecialty {
 interface MedicalSpecialtyTagsV2Props {
   specialties: MedicalSpecialty[];
   lang: Locale;
+  /**
+   * (Deprecated) 기존 호출부 호환용. 현재는 제한 로직을 적용하지 않습니다.
+   */
+  maxDisplay?: number;
   className?: string;
   tagClassName?: string;
   textClassName?: string;
@@ -22,6 +26,7 @@ interface MedicalSpecialtyTagsV2Props {
 export function MedicalSpecialtyTagsV2({
   specialties,
   lang,
+  maxDisplay: _maxDisplay,
   className = '',
   tagClassName = '',
   textClassName = '',
