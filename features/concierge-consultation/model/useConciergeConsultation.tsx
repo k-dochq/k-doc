@@ -51,7 +51,19 @@ export function useConciergeConsultation(lang: Locale, dict: Dictionary) {
     if (isAuthLoading || isPending) return;
 
     if (!user) {
-      openDrawer({ content: <LoginRequiredDrawer lang={lang} dict={dict} /> });
+      sessionStorage.setItem(
+        'pending_concierge_consult',
+        JSON.stringify({ content: dict.concierge.consultationMessage, lang }),
+      );
+      openDrawer({
+        content: (
+          <LoginRequiredDrawer
+            lang={lang}
+            dict={dict}
+            redirectPath={`/${lang}/concierge/consult-redirect`}
+          />
+        ),
+      });
       return;
     }
 
