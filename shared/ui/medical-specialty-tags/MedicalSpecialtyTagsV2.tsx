@@ -10,7 +10,6 @@ interface MedicalSpecialty {
 interface MedicalSpecialtyTagsV2Props {
   specialties: MedicalSpecialty[];
   lang: Locale;
-  maxDisplay?: number;
   className?: string;
   tagClassName?: string;
   textClassName?: string;
@@ -23,7 +22,6 @@ interface MedicalSpecialtyTagsV2Props {
 export function MedicalSpecialtyTagsV2({
   specialties,
   lang,
-  maxDisplay,
   className = '',
   tagClassName = '',
   textClassName = '',
@@ -32,13 +30,9 @@ export function MedicalSpecialtyTagsV2({
     return null;
   }
 
-  const displaySpecialties = maxDisplay ? specialties.slice(0, maxDisplay) : specialties;
-  const remainingCount =
-    maxDisplay && specialties.length > maxDisplay ? specialties.length - maxDisplay : 0;
-
   return (
     <div className={`flex flex-wrap gap-1 ${className}`}>
-      {displaySpecialties.map((specialty) => {
+      {specialties.map((specialty) => {
         const specialtyName = extractLocalizedText(specialty.name, lang) || '';
         return (
           <MedicalSpecialtyTagV2
@@ -49,13 +43,6 @@ export function MedicalSpecialtyTagsV2({
           />
         );
       })}
-      {remainingCount > 0 && (
-        <MedicalSpecialtyTagV2
-          name={`+${remainingCount}`}
-          className={tagClassName}
-          textClassName={textClassName}
-        />
-      )}
     </div>
   );
 }
