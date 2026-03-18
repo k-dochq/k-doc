@@ -36,7 +36,7 @@ async function fetchCsv(): Promise<string> {
 function parseCsv(csv: string): Map<string, Record<Locale, string>> {
   const workbook = XLSX.read(csv, { type: 'string' });
   const sheet = workbook.Sheets[workbook.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json<string[]>(sheet, { header: 1 }) as string[][];
+  const rows = XLSX.utils.sheet_to_json<string[]>(sheet, { header: 1, raw: false }) as string[][];
 
   if (rows.length < 2) throw new Error('시트에 데이터가 없습니다.');
 
