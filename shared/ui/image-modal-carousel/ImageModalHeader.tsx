@@ -26,7 +26,7 @@ export function ImageModalHeader({
     >
       {/* 왼쪽 X 버튼 */}
       <button onClick={onClose} className='rounded-full p-2 hover:bg-white/10' aria-label='닫기'>
-        <CloseIcon className='h-6 w-6 text-neutral-500' color='#737373' />
+        <CloseIcon className='h-6 w-6' color='#737373' />
       </button>
 
       {/* 오른쪽 영역: 센터 텍스트 또는 페이지 정보 */}
