@@ -27,14 +27,14 @@ export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
 
       <ConciergeHero lang={lang} dict={dict} />
       <ConciergeSection2 lang={lang} dict={dict} />
-      <ConciergeSection3 dict={dict} />
+      <ConciergeSection3 lang={lang} dict={dict} />
       <ConciergePlanTable dict={dict} />
       <ConciergeReviews dict={dict} lang={lang} />
       <ConciergeWhyChoose dict={dict} lang={lang} />
       <ConciergeTravel dict={dict} />
       <ConciergeJourneyBanner lang={lang} />
       <ConciergeFaq dict={dict} />
-      <ConciergeFloatingButton dict={dict} />
+      <ConciergeFloatingButton lang={lang} dict={dict} />
     </div>
   );
 }

@@ -1,12 +1,14 @@
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { ConciergePlanCard } from './ConciergePlanCard';
 import { ConciergeNotice } from './ConciergeNotice';
 
 interface ConciergeSection3Props {
+  lang: Locale;
   dict: Dictionary;
 }
 
-export function ConciergeSection3({ dict }: ConciergeSection3Props) {
+export function ConciergeSection3({ lang, dict }: ConciergeSection3Props) {
   return (
     <section className='w-full px-5 py-9' style={{ backgroundColor: '#F0EFFF' }}>
       <div className='flex w-full flex-col items-center gap-3 text-center'>
@@ -19,7 +21,7 @@ export function ConciergeSection3({ dict }: ConciergeSection3Props) {
       </div>
 
       <div className='mt-6'>
-        <ConciergePlanCard dict={dict} />
+        <ConciergePlanCard lang={lang} dict={dict} />
       </div>
 
       <div className='mt-6'>
