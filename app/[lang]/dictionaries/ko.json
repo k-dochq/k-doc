@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": [
+          "K-DOC",
+          "Please agree to",
+          "use the service"
+        ],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -1772,7 +1776,10 @@
             },
             {
               "category": "관련 문의 및 피해구제 방법",
-              "content": ["서비스 담당 부서 : CS", "문의처 : all@k-doc.kr"]
+              "content": [
+                "서비스 담당 부서 : CS",
+                "문의처 : all@k-doc.kr"
+              ]
             }
           ]
         }
@@ -2332,5 +2339,108 @@
         }
       }
     }
+  },
+  "concierge": {
+    "section3Description": "빠른 상담과 병원 예약은 무료로 제공됩니다. 무료 상담을 통해 견적 확인과 병원 예약이 가능합니다. 컨시어지 서비스는 필요하신 경우에만 결제하시면 됩니다.",
+    "planCard": {
+      "recommended": "추천",
+      "planTitle": "VIP 케어 서비스",
+      "startingAt": "시작가",
+      "price": "$0",
+      "ctaButton": "프리미엄 시작하기",
+      "features": {
+        "quickConsultation": "빠른 상담",
+        "fastHospitalBooking": "병원 빠른 예약",
+        "medicalInterpreter": "전문 의료 통역사",
+        "scheduleCoordination": "시술 일정 코디네이션",
+        "airportPickup": "공항 → 호텔 VIP 픽업",
+        "hospitalTransfer": "호텔 → 병원 이동",
+        "dedicatedManager": "전담 컨시어지 매니저",
+        "recoveryPackage": "K-DOC 회복 케어 패키지"
+      }
+    },
+    "notice": {
+      "noticeTitle": "컨시어지 서비스 안내",
+      "noticeLine1": "컨시어지 서비스는 선택 사항입니다.",
+      "noticeLine2": "한국에 방문하여 시술 또는 수술이 진행될 경우, Commitment fee은 자동 전액 환급됩니다."
+    },
+    "section4Title": "플랜 비교",
+    "section4Description": "각 컨시어지 플랜에서 제공되는 서비스를 비교해보세요.",
+    "reviews": {
+      "sectionTitle": "전 세계 환자들의 더 많은 후기를 살펴보세요",
+      "review1Title": "언어가 달라도 치료 과정은 불편하지 않았습니다",
+      "review1Body": "한국 의료 기술을 믿고 방문했지만 언어가 걱정되었습니다. 하지만 전문 의료 통역사가 함께해 상담부터 시술까지 모든 과정이 수월했습니다.",
+      "review2Title": "병원 선택부터 시술까지 모든 일정이 체계적이었습니다",
+      "review2Body": "한국에서 치료를 받고 싶었지만 어떤 병원을 선택해야 할지 고민이 많았습니다. K-DOC을 통해 상담과 병원 예약을 진행했고 모든 일정이 잘 준비되어 매우 만족했습니다.",
+      "review3Title": "한국에서의 첫 수술이라 걱정했지만 K-DOC 덕분에 편안했습니다",
+      "review3Body": "처음 한국에서 수술을 받는 것이라 많이 긴장했습니다. 하지만 상담부터 병원 예약까지 빠르게 진행되었고 통역과 이동 서비스까지 지원받아 매우 편했습니다.",
+      "review4Title": "한국 의료 여행이 이렇게 편리한 줄 몰랐습니다",
+      "review4Body": "병원 예약과 상담 과정이 복잡할 것이라 생각했습니다. 하지만 K-DOC을 통해 빠르게 상담을 진행했고 병원 방문 일정과 이동까지 잘 안내받아 만족했습니다.",
+      "review5Title": "처음부터 끝까지 안심하고 치료를 받을 수 있었습니다",
+      "review5Body": "한국 도착 후 공항 픽업부터 병원 예약까지 모든 일정이 체계적으로 진행되었습니다. 덕분에 치료에만 집중할 수 있었고 K-DOC 서비스에 매우 만족합니다."
+    },
+    "section6Description": "한국을 방문하는 해외 환자들이 안전하고 편안한 의료 경험을 할 수 있도록 지원하는 의료 컨시어지 서비스를 제공합니다.",
+    "section6NoticeTitle": "컨시어지 서비스 비용 안내",
+    "section6NoticeBody": "한국에 방문하여 시술 또는 수술이 진행될 경우, Commitment fee은 자동 전액 환급됩니다.",
+    "section7Description": "시술 일정 사이에도 K-DOC과 함께 한국의 음식, 명소, 쇼핑 등 다양한 여행 경험을 즐겨보세요.",
+    "faq": {
+      "items": [
+        {
+          "question": "상담과 병원 예약은 무료인가요?",
+          "answer": "네. K-DOC을 통한 상담과 병원 예약은 기본적으로 무료로 제공됩니다. Fast Track 서비스를 통해 빠르게 상담을 진행하고 병원 예약을 도와드립니다."
+        },
+        {
+          "question": "컨시어지 서비스 이용 조건이 있나요?",
+          "answer": "Plus는 $2,000 이상의 시술 또는 수술 예약 시 이용 가능하며, Premium은 $5,000 이상의 시술 또는 수술 예약 시 이용 가능합니다."
+        },
+        {
+          "question": "컨시어지 비용은 어떻게 환급되나요?",
+          "answer": "한국에 방문하여 시술 또는 수술이 진행될 경우, Commitment fee은 자동 전액 환급됩니다."
+        },
+        {
+          "question": "의료 통역 서비스는 어떤 언어를 지원하나요?",
+          "answer": "영어, 태국어, 중국어, 일본어 등 다양한 언어의 전문 의료 통역 서비스를 지원합니다."
+        },
+        {
+          "question": "공항 픽업 서비스도 제공되나요?",
+          "answer": "Premium 플랜에서 공항 → 호텔 픽업 서비스와 호텔 → 병원 이동 서비스를 제공합니다."
+        },
+        {
+          "question": "어떤 병원과 협력하고 있나요?",
+          "answer": "K-DOC은 한국의 성형외과, 피부과, 치과 등 다양한 의료기관과 협력하고 있으며 해외 환자 진료 경험이 있고 외국인 환자 유치가 공식 등록된 병원만 연결해 드립니다."
+        },
+        {
+          "question": "어떤 국가 환자들이 이용하고 있나요?",
+          "answer": "태국, 싱가포르, 일본, 중국, UAE, 필리핀 등 다양한 국가의 환자들이 K-DOC을 통해 한국 의료 서비스를 이용하고 있습니다."
+        },
+        {
+          "question": "한국 방문 일정도 함께 도움 받을 수 있나요?",
+          "answer": "네. 시술 일정 외에도 이동, 병원 방문, 일정 조율 등 한국 의료 여행 전반을 지원합니다."
+        }
+      ]
+    },
+    "floatingButtonText": "무료 상담 시작하기",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "의전 차량",
+    "heroCard2Line1": "전문",
+    "heroCard2Line2": "의료 통역사",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "회복 케어",
+    "section2Title": "프리미엄 차량",
+    "section3Title": "컨시어지\n서비스 플랜",
+    "planBasic": "베이직",
+    "planPlus": "플러스",
+    "planPremium": "프리미엄",
+    "section5Title": "해외 환자\n실제 후기",
+    "review1Author": "Yuki N. / 일본",
+    "review2Author": "Michelle T. / 싱가포르",
+    "review3Author": "Nattapong S. / 태국",
+    "review4Author": "Li W. / 중국",
+    "review5Author": "Maria S. / 필리핀",
+    "section6Title": "K-DOC을\n선택하는 이유",
+    "section7TitleLine1": "의료를 넘어선",
+    "section7TitleLine2Italic": "특별한",
+    "section7TitleLine2Normal": "여행",
+    "consultationMessage": "K-DOC은 한국을 방문하는 해외 환자의 의료 여정을 지원합니다.\n • 검증된 병원 추천 • 상담 및 병원 예약 • 공항 픽업 및 VIP 이동 • 전문 의료 통역사 • 시술 후 케어\n 컨시어지 서비스 플랜은 K-DOC을 통해 시술 또는 수술을 예약한 경우 이용할 수 있습니다.\n Basic Care – 간단한 상담 및 병원 예약만 원하시는 경우 Plus Care – 전문 의료 통역사를 원하시는 경우 Premium Care – 전문 의료 통역사와 공항 및 호텔 픽업, 시술 후 관리 케어까지 원하시는 경우 \n관심 있는 시술을 알려주시면 다음 절차를 안내해 드리겠습니다."
   }
 }

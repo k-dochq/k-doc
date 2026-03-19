@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeftIconV2 } from 'shared/ui/icon/ArrowLeftIconV2';
+import { CloseIcon } from 'shared/ui/icon/CloseIcon';
 import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 
 interface PageHeaderV2Props {
@@ -12,6 +13,7 @@ interface PageHeaderV2Props {
   className?: string;
   enableScrollTransparency?: boolean;
   backgroundColor?: string;
+  closeUrl?: string;
 }
 
 export function PageHeaderV2({
@@ -21,6 +23,7 @@ export function PageHeaderV2({
   className = '',
   enableScrollTransparency = false,
   backgroundColor = 'bg-white',
+  closeUrl,
 }: PageHeaderV2Props) {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -113,9 +116,20 @@ export function PageHeaderV2({
         </h1>
       </div>
 
-      {/* 오른쪽 컨텐츠 (공유하기, 좋아요 버튼 등) */}
-      {rightContent && (
-        <div className={`flex items-center gap-3 ${styles.text}`}>{rightContent}</div>
+      {/* 오른쪽 컨텐츠 (공유하기, 좋아요 버튼 등) + 닫기 버튼 */}
+      {(rightContent || closeUrl) && (
+        <div className={`flex items-center gap-3 ${styles.text}`}>
+          {rightContent}
+          {closeUrl && (
+            <button
+              onClick={() => router.push(closeUrl)}
+              className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
+              aria-label='Close'
+            >
+              <CloseIcon className={styles.text} />
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
