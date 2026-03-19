@@ -9,7 +9,7 @@ export function ConciergeTravel({ dict }: ConciergeTravelProps) {
   const t = dict.concierge;
 
   return (
-    <section className='flex w-full flex-col items-center gap-6 bg-white py-12'>
+    <section className='flex w-full flex-col items-center gap-6 bg-[#FFF3FF] py-12'>
       {/* Title + Description */}
       <div className='flex w-full flex-col items-center gap-3 px-5 text-center'>
         <div className='concierge-title w-full text-[42px] leading-[1.1] text-[#7657ff]'>
@@ -29,7 +29,7 @@ export function ConciergeTravel({ dict }: ConciergeTravelProps) {
         width={0}
         height={0}
         sizes='100vw'
-        className='w-full h-auto'
+        className='h-auto w-full'
       />
     </section>
   );
