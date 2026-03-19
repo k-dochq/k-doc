@@ -235,3 +235,38 @@
 .animate-scroll-right {
   animation: scrollRight 30s linear infinite;
 }
+
+/* Concierge 섹션 타이틀 전용 폰트 — concierge/layout.tsx에서 --concierge-title-font 주입 */
+.concierge-title {
+  font-family: var(--concierge-title-font), sans-serif;
+}
+
+/* 아랍어 타이틀 line-height 보정 */
+[dir='rtl'] .concierge-title {
+  line-height: 1.2;
+}
+
+/* Concierge floating button animated border */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-rotate {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.animated-border {
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0%,
+    transparent 75%,
+    rgba(200, 180, 255, 0.6) 85%,
+    rgba(255, 255, 255, 0.9) 92%,
+    transparent 100%
+  );
+  animation: border-rotate 2s linear infinite;
+}

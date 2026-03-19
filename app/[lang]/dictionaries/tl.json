@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": [
+          "K-DOC",
+          "Please agree to",
+          "use the service"
+        ],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -2335,5 +2339,108 @@
         }
       }
     }
+  },
+  "concierge": {
+    "section3Description": "Ang mabilis na konsultasyon at reserbasyon sa ospital ay ibinibigay nang libre. Sa pamamagitan ng libreng konsultasyon, maaari kang kumpirmahin ang isang quote at gumawa ng reserbasyon sa ospital. Ang mga serbisyo ng Concierge ay sinisingil lamang kapag kailangan mo ang mga ito.",
+    "planCard": {
+      "recommended": "Inirerekomenda",
+      "planTitle": "VIP Care Service",
+      "startingAt": "Simula sa",
+      "price": "$0",
+      "ctaButton": "Pumunta sa Premium",
+      "features": {
+        "quickConsultation": "Mabilis na Konsultasyon",
+        "fastHospitalBooking": "Mabilis na Reserbasyon sa Ospital",
+        "medicalInterpreter": "Propesyonal na Medikal na Tagasalin",
+        "scheduleCoordination": "Koordinasyon ng Iskedyul ng Pamamaraan",
+        "airportPickup": "Paliparan → Hotel VIP Pickup",
+        "hospitalTransfer": "Hotel → Ospital na Paglipat",
+        "dedicatedManager": "Dedikadong Concierge Manager",
+        "recoveryPackage": "K-DOC Recovery Care Package"
+      }
+    },
+    "notice": {
+      "noticeTitle": "Gabay sa Serbisyo ng Concierge",
+      "noticeLine1": "Opsyonal ang serbisyo ng Concierge.",
+      "noticeLine2": "Kung may isinagawang pamamaraan o operasyon sa panahon ng iyong pagbisita sa Korea, ang Commitment fee ay awtomatikong ibabalik nang buo."
+    },
+    "section4Title": "Paghahambing ng Plano",
+    "section4Description": "Ihambing ang mga serbisyong inaalok sa bawat plano ng concierge.",
+    "reviews": {
+      "sectionTitle": "Tuklasin ang higit pang mga review mula sa mga pasyenteng buong mundo",
+      "review1Title": "Kahit magkaiba ang wika, hindi nakaabala ang proseso ng paggamot",
+      "review1Body": "Pinagkatiwalaan ko ang medikal na teknolohiya ng Korea at nagpasyang bumisita, ngunit nag-aalala ako sa wika. Gayunpaman, sa tulong ng propesyonal na medikal na interpreter, ang buong proseso mula sa konsultasyon hanggang sa pamamaraan ay maayos na naging maayos.",
+      "review2Title": "Mula sa pagpili ng klinika hanggang sa pamamaraan, lahat ay maayos na naihanda",
+      "review2Body": "Nais kong makatanggap ng paggamot sa Korea ngunit nahirapan akong magpasya kung aling klinika ang pipiliin. Sa pamamagitan ng K-DOC, naayos ang mga konsultasyon at reserbasyong pangklinika, at lahat ay handa nang maayos, kaya naman lubos akong nasiyahan.",
+      "review3Title": "Ito ang aking unang operasyon sa Korea kaya nag-aalala ako, ngunit gininginhawahan ako ng K-DOC",
+      "review3Body": "Dahil ito ang aking unang operasyon sa Korea, lubhang kinakabahan ako. Gayunpaman, ang lahat mula sa konsultasyon hanggang sa reserbasyon ng klinika ay mabilis na naayos, at ang mga serbisyo ng interpreter at transportasyon ay lubhang nagpabuti ng karanasan.",
+      "review4Title": "Hindi ko inaasahan na magiging ganito kaginhawa ang medikal na paglalakbay sa Korea",
+      "review4Body": "Inakala kong magiging kumplikado ang mga reserbasyon sa klinika at konsultasyon. Ngunit sa pamamagitan ng K-DOC, mabilis kong naayos ang mga konsultasyon, at ang iskedyul ng pagbisita sa klinika at transportasyon ay maayos na napamahalaan. Sa kabuuan, lubos akong nasiyahan.",
+      "review5Title": "Nakatanggap ako ng paggamot nang may kapayapaan ng isip mula simula hanggang katapusan",
+      "review5Body": "Pagdating sa Korea, lahat mula sa pagkuha sa paliparan hanggang sa reserbasyon sa klinika ay maayos na naayos. Dahil dito, nakapag-focus ako sa aking paggamot at lubos akong nasiyahan sa serbisyo ng K-DOC."
+    },
+    "section6Description": "Nagbibigay kami ng medikal na serbisyong concierge upang tulungan ang mga internasyonal na pasyenteng bumibisita sa Korea na magkaroon ng ligtas at komportableng karanasan sa medikal.",
+    "section6NoticeTitle": "Gabay sa Bayad ng Serbisyong Concierge",
+    "section6NoticeBody": "Kung may isinagawang pamamaraan o operasyon sa panahon ng iyong pagbisita sa Korea, ang Commitment fee ay awtomatikong ibabalik nang buo.",
+    "section7Description": "Mag-enjoy ng iba't ibang karanasan sa paglalakbay sa Korea, kabilang ang pagkain, mga atraksyon, at pamimili, kasama ang K-DOC sa pagitan ng iyong mga iskedyul ng paggamot.",
+    "faq": {
+      "items": [
+        {
+          "question": "Libre ba ang mga konsultasyon at reserbasyon sa ospital?",
+          "answer": "Oo. Ang mga konsultasyon at reserbasyon sa ospital sa pamamagitan ng K-DOC ay libre. Sa pamamagitan ng aming Fast Track na serbisyo, tinutulungan ka naming mabilis na makapag-konsulta at mag-book ng ospital."
+        },
+        {
+          "question": "Mayroon bang mga kondisyon para sa paggamit ng serbisyong concierge?",
+          "answer": "Ang Plus ay available para sa mga pamamaraan o operasyong naka-book sa $2,000 o higit pa, at ang Premium ay available para sa mga naka-book sa $5,000 o higit pa."
+        },
+        {
+          "question": "Paano ibabalik ang bayad ng concierge?",
+          "answer": "Kung may isinagawang pamamaraan o operasyon sa panahon ng iyong pagbisita sa Korea, ang Commitment fee ay awtomatikong ibabalik nang buo."
+        },
+        {
+          "question": "Anong mga wika ang sinusuportahan ng serbisyong medikal na interpreter?",
+          "answer": "Nagbibigay kami ng propesyonal na medikal na serbisyong interpreter sa iba't ibang wika kabilang ang Ingles, Thai, Tsino, at Hapon."
+        },
+        {
+          "question": "May serbisyo ba para sa pagkuha sa paliparan?",
+          "answer": "Ang Premium na plano ay may kasamang serbisyo ng paliparan → hotel na pagkuha at hotel → ospital na transportasyon."
+        },
+        {
+          "question": "Anong mga ospital ang inyong pinagtatrabahuhan?",
+          "answer": "Ang K-DOC ay nakikipagtulungan sa iba't ibang medikal na institusyon sa Korea kabilang ang plastic surgery, dermatology, at dental. Ikinokonekta lamang namin ang mga pasyente sa mga ospitaleng may karanasan sa paggamot ng mga internasyonal na pasyente at opisyal na nakarehistrong para sa mga dayuhang pasyente."
+        },
+        {
+          "question": "Mula sa anong mga bansa ang mga pasyente?",
+          "answer": "Ang mga pasyente mula sa iba't ibang bansa kabilang ang Thailand, Singapore, Japan, China, UAE, at Philippines ay gumagamit ng mga medikal na serbisyo ng Korea sa pamamagitan ng K-DOC."
+        },
+        {
+          "question": "Maaari rin ba akong humingi ng tulong sa aking itineraryo sa Korea?",
+          "answer": "Oo. Bukod sa mga iskedyul ng paggamot, sinusuportahan din namin ang lahat ng aspeto ng iyong medikal na paglalakbay sa Korea kabilang ang transportasyon, pagbisita sa ospital, at koordinasyon ng iskedyul."
+        }
+      ]
+    },
+    "floatingButtonText": "Magsimula ng Libreng Konsultasyon",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "Transportation",
+    "heroCard2Line1": "Medical",
+    "heroCard2Line2": "Interpreter",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "Recovery Care",
+    "section2Title": "Aming Premium na Sasakyan",
+    "section3Title": "Concierge\nService Plan",
+    "planBasic": "Basic",
+    "planPlus": "Plus",
+    "planPremium": "Premium",
+    "section5Title": "Mga Review ng\nGlobal na Pasyente",
+    "review1Author": "Yuki N. / Japan",
+    "review2Author": "Michelle T. / Singapore",
+    "review3Author": "Nattapong S. / Thailand",
+    "review4Author": "Li W. / China",
+    "review5Author": "Maria S. / Philippines",
+    "section6Title": "Bakit Pumili ng\nK-DOC",
+    "section7TitleLine1": "Higit Pa sa",
+    "section7TitleLine2Italic": "Medikal na",
+    "section7TitleLine2Normal": "Paglalakbay",
+    "consultationMessage": "Sinusuportahan ng K-DOC ang buong medical journey ng mga international patients na bumibisita sa Korea.\n\n• Rekomendasyon ng mga verified clinics\n• Konsultasyon at reservation sa clinic\n• Airport pickup at VIP transportation\n• Mga propesyonal na medical interpreter\n• Pangangalaga pagkatapos ng treatment\n\nAvailable ang concierge service plans kapag nag-book ka ng procedure o surgery sa pamamagitan ng K-DOC.\n\nBasic Care – Para sa mga nangangailangan lamang ng simpleng konsultasyon at clinic reservation\nPlus Care – Para sa mga nangangailangan ng propesyonal na medical interpreter\nPremium Care – Para sa mga nais ng propesyonal na medical interpreter, airport at hotel pickup, at post-treatment care\n\nIpaalam lamang sa amin kung aling procedure ang interesado ka, at gagabayan ka namin sa mga susunod na hakbang."
   }
 }

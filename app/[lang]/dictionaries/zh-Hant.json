@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "已經有帳戶？",
       "loginLink": "登入",
       "termsAgreement": {
-        "title": ["K-DOC", "請同意", "以使用服務"],
+        "title": [
+          "K-DOC",
+          "請同意",
+          "以使用服務"
+        ],
         "allAgreed": "全部同意",
         "age14Plus": "我已滿 14 歲。",
         "termsOfService": "服務條款（必填）",
@@ -2335,5 +2339,108 @@
         }
       }
     }
+  },
+  "concierge": {
+    "section3Description": "快速諮詢和醫院預約免費提供。透過免費諮詢，您可以確認報價並預約醫院。禮賓服務僅在您需要時才收費。",
+    "planCard": {
+      "recommended": "推薦",
+      "planTitle": "VIP護理服務",
+      "startingAt": "起始價格",
+      "price": "$0",
+      "ctaButton": "升級至尊方案",
+      "features": {
+        "quickConsultation": "快速諮詢",
+        "fastHospitalBooking": "快速醫院預約",
+        "medicalInterpreter": "專業醫療口譯員",
+        "scheduleCoordination": "療程時間協調",
+        "airportPickup": "機場 → 酒店 VIP 接送",
+        "hospitalTransfer": "酒店 → 醫院接送",
+        "dedicatedManager": "專屬禮賓經理",
+        "recoveryPackage": "K-DOC 康復護理套餐"
+      }
+    },
+    "notice": {
+      "noticeTitle": "禮賓服務說明",
+      "noticeLine1": "禮賓服務為選擇性服務。",
+      "noticeLine2": "若在訪問韓國期間進行療程或手術，Commitment fee將自動全額退還。"
+    },
+    "section4Title": "方案比較",
+    "section4Description": "比較每個禮賓服務方案所提供的服務。",
+    "reviews": {
+      "sectionTitle": "探索更多來自全球患者的評論",
+      "review1Title": "即使語言不同，治療過程也沒有不便",
+      "review1Body": "我信任韓國的醫療技術而前來，但擔心語言問題。然而，有專業醫療口譯員的協助，從諮詢到治療的整個過程都非常順利。",
+      "review2Title": "從選擇醫院到手術，所有行程都很有條理",
+      "review2Body": "我想在韓國接受治療，但苦惱於如何選擇醫院。透過K-DOC安排了諮詢和醫院預約，一切準備就緒，非常滿意。",
+      "review3Title": "這是我在韓國的第一次手術，雖然很擔心，但K-DOC讓過程很舒適",
+      "review3Body": "這是我第一次在韓國動手術，非常緊張。但從諮詢到預約醫院都進行得很快，還有翻譯和交通服務的支援，非常方便。",
+      "review4Title": "沒想到在韓國的醫療旅遊這麼便利",
+      "review4Body": "我以為預約醫院和諮詢會很複雜，但透過K-DOC快速完成了諮詢，醫院行程和交通安排也很周到，非常滿意。",
+      "review5Title": "從頭到尾都能安心地接受治療",
+      "review5Body": "抵達韓國後，從機場接送到醫院預約，所有行程都進行得很順利。因此我可以專心接受治療，對K-DOC的服務非常滿意。"
+    },
+    "section6Description": "我們提供醫療禮賓服務，幫助來韓國就診的海外患者獲得安全且舒適的醫療體驗。",
+    "section6NoticeTitle": "禮賓服務費用說明",
+    "section6NoticeBody": "如果您在訪問韓國期間進行了手術或外科手術，Commitment fee將自動全額退還。",
+    "section7Description": "在治療行程之間，與K-DOC一起享受韓國的美食、景點、購物等多樣化的旅遊體驗。",
+    "faq": {
+      "items": [
+        {
+          "question": "諮詢和預約醫院是免費的嗎？",
+          "answer": "是的。透過K-DOC進行諮詢和預約醫院基本上是免費的。透過Fast Track服務，我們可以快速進行諮詢並協助預約醫院。"
+        },
+        {
+          "question": "使用禮賓服務有什麼條件嗎？",
+          "answer": "Plus適用於預約金額2,000美元以上的手術或治療，Premium適用於預約金額5,000美元以上的手術或治療。"
+        },
+        {
+          "question": "禮賓費用如何退款？",
+          "answer": "如果您在訪問韓國期間進行了手術或治療，Commitment fee將自動全額退還。"
+        },
+        {
+          "question": "醫療口譯服務支援哪些語言？",
+          "answer": "我們提供英語、泰語、中文、日語等多種語言的專業醫療口譯服務。"
+        },
+        {
+          "question": "也提供機場接送服務嗎？",
+          "answer": "Premium方案提供機場→酒店接送服務和酒店→醫院交通服務。"
+        },
+        {
+          "question": "您與哪些醫院合作？",
+          "answer": "K-DOC與韓國的整形外科、皮膚科、牙科等各類醫療機構合作，我們只連接有海外患者診療經驗且已正式登記招募外國患者的醫院。"
+        },
+        {
+          "question": "哪些國家的患者在使用？",
+          "answer": "來自泰國、新加坡、日本、中國、UAE、菲律賓等各個國家的患者正在透過K-DOC使用韓國醫療服務。"
+        },
+        {
+          "question": "也可以獲得韓國訪問行程的幫助嗎？",
+          "answer": "是的。除了治療行程外，我們還支援交通、醫院訪問、行程協調等韓國醫療旅遊的全面服務。"
+        }
+      ]
+    },
+    "floatingButtonText": "開始免費諮詢",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "專車接送",
+    "heroCard2Line1": "醫療",
+    "heroCard2Line2": "口譯員",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "康復護理",
+    "section2Title": "頂級豪華車輛",
+    "section3Title": "禮賓服務\n計劃方案",
+    "planBasic": "基本",
+    "planPlus": "進階",
+    "planPremium": "尊享",
+    "section5Title": "全球患者\n真實評價",
+    "review1Author": "Yuki N. / 日本",
+    "review2Author": "Michelle T. / 新加坡",
+    "review3Author": "Nattapong S. / 泰國",
+    "review4Author": "Li W. / 中國",
+    "review5Author": "Maria S. / 菲律賓",
+    "section6Title": "為何選擇\nK-DOC",
+    "section7TitleLine1": "超越",
+    "section7TitleLine2Italic": "醫療",
+    "section7TitleLine2Normal": "旅程",
+    "consultationMessage": "K-DOC 支援前往韓國就醫的國際患者醫療旅程。\n\n• 推薦經過驗證的醫療診所\n• 療程諮詢與診所預約\n• 機場接送與 VIP 專車服務\n• 專業醫療口譯人員\n• 術後照護支援\n\n禮賓服務方案適用於透過 K-DOC 預約療程或手術的客戶。\n\nBasic Care – 適合只需要簡單諮詢與診所預約的客戶\nPlus Care – 適合需要專業醫療口譯人員支援的客戶\nPremium Care – 適合需要專業醫療口譯、機場與飯店接送，以及術後照護服務的客戶\n\n請告訴我們您感興趣的療程項目，我們將協助您進行下一步的安排與說明。"
   }
 }

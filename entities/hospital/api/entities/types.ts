@@ -8,6 +8,9 @@ import { type HospitalSortOption, type SortOrderOption } from 'shared/model/type
 import { type PriceInfo } from 'shared/model/types';
 import { type DatabaseLocale } from 'shared/lib/localized-text';
 
+// 상담 채팅 등에서 사용하는 K-DOC 테스트 병원 ID
+export const K_DOC_TEST_HOSPITAL_ID = '9f0b2e9a-4c3d-4f1f-9a0e-6f8a7b1c2d34';
+
 // Prisma 모델 타입을 그대로 사용해 enum 추가 시 자동 반영되도록 처리
 export type HospitalImage = PrismaHospitalImage;
 

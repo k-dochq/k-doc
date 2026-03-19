@@ -34,7 +34,7 @@ export function ConsultationChatMainV2({
 }: ConsultationChatMainV2Props) {
   return (
     <div className='flex h-screen flex-col bg-white'>
-      <PageHeaderV2 title={hospitalName} fallbackUrl={`/${lang}/consultation`} />
+      <PageHeaderV2 title={hospitalName} fallbackUrl={`/${lang}/consultation`} closeUrl='/' />
 
       <div className='h-[58px]' />
 

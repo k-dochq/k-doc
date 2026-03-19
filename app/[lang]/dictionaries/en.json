@@ -417,7 +417,11 @@
       "alreadyHaveAccount": "Already have an account?",
       "loginLink": "Login",
       "termsAgreement": {
-        "title": ["K-DOC", "Please agree to", "use the service"],
+        "title": [
+          "K-DOC",
+          "Please agree to",
+          "use the service"
+        ],
         "allAgreed": "Agree to all",
         "age14Plus": "I am 14 years old or older.",
         "termsOfService": "Terms of Service (Required)",
@@ -2336,5 +2340,108 @@
         }
       }
     }
+  },
+  "concierge": {
+    "section3Description": "Quick consultations and hospital reservations are provided free of charge. Through a free consultation, you can confirm a quote and make a hospital reservation. Concierge services are only charged when you need them.",
+    "planCard": {
+      "recommended": "Recommended",
+      "planTitle": "VIP Care Service",
+      "startingAt": "Starting at",
+      "price": "$0",
+      "ctaButton": "Go Premium",
+      "features": {
+        "quickConsultation": "Quick Consultation",
+        "fastHospitalBooking": "Fast Hospital Booking",
+        "medicalInterpreter": "Professional Medical Interpreter",
+        "scheduleCoordination": "Procedure Schedule Coordination",
+        "airportPickup": "Airport → Hotel VIP Pickup",
+        "hospitalTransfer": "Hotel → Hospital Transfer",
+        "dedicatedManager": "Dedicated Concierge Manager",
+        "recoveryPackage": "K-DOC Recovery Care Package"
+      }
+    },
+    "notice": {
+      "noticeTitle": "Concierge Service Guide",
+      "noticeLine1": "Concierge service is optional.",
+      "noticeLine2": "If a procedure or surgery is performed during your visit to Korea, the Commitment fee will be automatically refunded in full."
+    },
+    "section4Title": "Plan Comparison",
+    "section4Description": "Compare the services offered in each concierge plan.",
+    "reviews": {
+      "sectionTitle": "Explore more reviews from global patients",
+      "review1Title": "Even with a language difference, the treatment process was not inconvenient.",
+      "review1Body": "I trusted Korea's medical technology and decided to visit, but I was worried about the language. However, with the help of a professional medical interpreter, the entire process from consultation to the procedure went smoothly.",
+      "review2Title": "From choosing a clinic to the procedure, everything was well organized.",
+      "review2Body": "I wanted to receive treatment in Korea but had difficulty deciding which clinic to choose. Through K-DOC, I was able to arrange consultations and clinic reservations, and everything was well prepared, so I was very satisfied.",
+      "review3Title": "It was my first surgery in Korea, so I was worried, but K-DOC made the process comfortable.",
+      "review3Body": "It was my first time having surgery in Korea, so I was very nervous. However, everything from consultation to clinic reservation was arranged quickly, and the interpreter and transportation services made the experience very convenient.",
+      "review4Title": "I didn't expect medical travel in Korea to be this convenient.",
+      "review4Body": "I thought clinic reservations and consultations would be complicated. But through K-DOC, I was able to arrange consultations quickly, and the clinic visit schedule and transportation were well organized. Overall, I was very satisfied.",
+      "review5Title": "I was able to receive treatment with peace of mind from start to finish.",
+      "review5Body": "After arriving in Korea, everything from airport pickup to clinic reservation was arranged smoothly. Because of that, I could focus entirely on my treatment, and I am very satisfied with the K-DOC service."
+    },
+    "section6Description": "We provide medical concierge services to help international patients visiting Korea have a safe and comfortable medical experience.",
+    "section6NoticeTitle": "Concierge Service Fee Guide",
+    "section6NoticeBody": "If a procedure or surgery is performed during your visit to Korea, the Commitment fee will be automatically refunded in full.",
+    "section7Description": "Enjoy various travel experiences in Korea, including food, attractions, and shopping, with K-DOC between your treatment schedules.",
+    "faq": {
+      "items": [
+        {
+          "question": "Are consultations and hospital reservations free?",
+          "answer": "Yes. Consultations and hospital reservations through K-DOC are provided free of charge. Through our Fast Track service, we help you quickly proceed with consultations and hospital bookings."
+        },
+        {
+          "question": "Are there any conditions for using the concierge service?",
+          "answer": "Plus is available for procedures or surgeries booked at $2,000 or more, and Premium is available for procedures or surgeries booked at $5,000 or more."
+        },
+        {
+          "question": "How is the concierge fee refunded?",
+          "answer": "If a procedure or surgery is performed during your visit to Korea, the Commitment fee will be automatically refunded in full."
+        },
+        {
+          "question": "What languages does the medical interpreter service support?",
+          "answer": "We support professional medical interpreter services in various languages including English, Thai, Chinese, and Japanese."
+        },
+        {
+          "question": "Is airport pickup service also provided?",
+          "answer": "The Premium plan includes airport → hotel pickup service and hotel → hospital transfer service."
+        },
+        {
+          "question": "Which hospitals do you work with?",
+          "answer": "K-DOC collaborates with various medical institutions in Korea including plastic surgery, dermatology, and dental clinics. We only connect patients with hospitals that have experience treating international patients and are officially registered for foreign patient attraction."
+        },
+        {
+          "question": "Which countries are the patients from?",
+          "answer": "Patients from various countries including Thailand, Singapore, Japan, China, UAE, and the Philippines are using Korean medical services through K-DOC."
+        },
+        {
+          "question": "Can I also get help with my travel schedule in Korea?",
+          "answer": "Yes. In addition to treatment schedules, we support all aspects of your medical travel in Korea including transportation, hospital visits, and schedule coordination."
+        }
+      ]
+    },
+    "floatingButtonText": "Start Free Consultation",
+    "heroCard1Line1": "VIP",
+    "heroCard1Line2": "Transportation",
+    "heroCard2Line1": "Medical",
+    "heroCard2Line2": "Interpreter",
+    "heroCard3Line1": "K-DOC",
+    "heroCard3Line2": "Recovery Care",
+    "section2Title": "Our Premium Vehicles",
+    "section3Title": "Concierge\nService Plan",
+    "planBasic": "Basic",
+    "planPlus": "Plus",
+    "planPremium": "Premium",
+    "section5Title": "Global Patient\nReviews",
+    "review1Author": "Yuki N. / Japan",
+    "review2Author": "Michelle T. / Singapore",
+    "review3Author": "Nattapong S. / Thailand",
+    "review4Author": "Li W. / China",
+    "review5Author": "Maria S. / Philippines",
+    "section6Title": "Why Choose\nK-DOC",
+    "section7TitleLine1": "Beyond",
+    "section7TitleLine2Italic": "Medical",
+    "section7TitleLine2Normal": "Travel",
+    "consultationMessage": "K-DOC supports the medical journey of international patients visiting Korea.\n\n• Recommendations of verified clinics\n• Consultation and clinic reservations\n• Airport pickup and VIP transportation\n• Professional medical interpreters\n• Post-treatment care\n\nThe concierge service plans are available when you book a procedure or surgery through K-DOC.\n\nBasic Care – For those who only need simple consultation and clinic reservation\nPlus Care – For those who require a professional medical interpreter\nPremium Care – For those who want a professional medical interpreter, airport and hotel pickup, and post-treatment care\n\nPlease let us know the procedure you are interested in, and we will guide you through the next steps."
   }
 }

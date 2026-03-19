@@ -2,7 +2,7 @@ import { type Prisma } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError, extractLocalizedText } from 'shared/lib';
 import { parsePriceInfo } from 'shared/model/types';
-import { type Hospital } from '../entities/types';
+import { K_DOC_TEST_HOSPITAL_ID, type Hospital } from '../entities/types';
 import { type OpeningHours } from '../entities/opening-hours-types';
 import { getHospitalDoctors } from './get-hospital-doctors';
 import { getHospitalMainImageUrl, getHospitalThumbnailImageUrl } from '../../lib/image-utils';
@@ -82,7 +82,13 @@ export async function getHospitalDetail(
     const hospitalData = await prisma.hospital.findFirst({
       where: {
         id,
-        isActive: true,
+        OR: [
+          { isActive: true },
+          {
+            // 상담 채팅 테스트용 K-DOC 병원은 isActive가 false여도 허용
+            id: K_DOC_TEST_HOSPITAL_ID,
+          },
+        ],
       },
       select: {
         id: true,
