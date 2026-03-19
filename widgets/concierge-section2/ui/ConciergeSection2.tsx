@@ -35,6 +35,7 @@ export function ConciergeSection2({ lang, dict }: ConciergeSection2Props) {
           alt='Premium Vehicles'
           fill
           className='object-cover'
+          sizes='(max-width: 500px) 100vw, 500px'
         />
       </div>
     </section>

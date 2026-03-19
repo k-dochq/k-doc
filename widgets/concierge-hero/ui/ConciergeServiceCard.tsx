@@ -22,7 +22,7 @@ export function ConciergeServiceCard({
       className={`relative overflow-hidden rounded-xl ${className}`}
       style={{ width: '100%', aspectRatio: '180 / 192', containerType: 'inline-size' }}
     >
-      <Image src={src} alt={alt} fill className='object-cover' />
+      <Image src={src} alt={alt} fill className='object-cover' sizes='(max-width: 500px) 54vw, 247px' priority />
       <div className='absolute inset-0' style={{ backgroundImage: overlayGradient }} />
       <div
         className='absolute left-0 right-0 text-center leading-none text-white'
