@@ -259,14 +259,20 @@
   }
 }
 
+.animated-border-wrapper {
+  background: #795cf9;
+  border-radius: 9999px;
+}
+
 .animated-border {
+  animation: border-rotate 2s linear infinite;
   background: conic-gradient(
     from var(--border-angle),
     transparent 0%,
     transparent 75%,
-    rgba(200, 180, 255, 0.6) 85%,
-    rgba(255, 255, 255, 0.9) 92%,
+    rgba(255, 255, 255, 0.5) 82%,
+    #ffffff 88%,
+    rgba(255, 255, 255, 0.5) 94%,
     transparent 100%
   );
-  animation: border-rotate 2s linear infinite;
 }
