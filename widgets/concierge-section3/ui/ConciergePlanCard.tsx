@@ -42,7 +42,7 @@ export function ConciergePlanCard({ lang, dict }: ConciergePlanCardProps) {
       </div>
 
       {/* Card body */}
-      <div className='flex flex-col gap-4 rounded-3xl border-2 border-[#3e57e2] bg-white p-6'>
+      <div className='flex flex-col gap-4 rounded-3xl bg-white p-6'>
         {/* Title + Price */}
         <div className='flex items-end justify-between gap-[6px]'>
           <p className='text-[24px] leading-8 font-semibold text-[#404040]'>{t?.planTitle}</p>
