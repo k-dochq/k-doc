@@ -10,6 +10,9 @@ interface MedicalSpecialty {
 interface MedicalSpecialtyTagsV2Props {
   specialties: MedicalSpecialty[];
   lang: Locale;
+  /**
+   * (Deprecated) 기존 호출부 호환용. 현재는 제한 로직을 적용하지 않습니다.
+   */
   maxDisplay?: number;
   className?: string;
   tagClassName?: string;
@@ -23,7 +26,7 @@ interface MedicalSpecialtyTagsV2Props {
 export function MedicalSpecialtyTagsV2({
   specialties,
   lang,
-  maxDisplay,
+  maxDisplay: _maxDisplay,
   className = '',
   tagClassName = '',
   textClassName = '',
@@ -32,13 +35,9 @@ export function MedicalSpecialtyTagsV2({
     return null;
   }
 
-  const displaySpecialties = maxDisplay ? specialties.slice(0, maxDisplay) : specialties;
-  const remainingCount =
-    maxDisplay && specialties.length > maxDisplay ? specialties.length - maxDisplay : 0;
-
   return (
     <div className={`flex flex-wrap gap-1 ${className}`}>
-      {displaySpecialties.map((specialty) => {
+      {specialties.map((specialty) => {
         const specialtyName = extractLocalizedText(specialty.name, lang) || '';
         return (
           <MedicalSpecialtyTagV2
@@ -49,13 +48,6 @@ export function MedicalSpecialtyTagsV2({
           />
         );
       })}
-      {remainingCount > 0 && (
-        <MedicalSpecialtyTagV2
-          name={`+${remainingCount}`}
-          className={tagClassName}
-          textClassName={textClassName}
-        />
-      )}
     </div>
   );
 }
