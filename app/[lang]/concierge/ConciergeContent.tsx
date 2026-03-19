@@ -1,5 +1,3 @@
-'use client';
-
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header';

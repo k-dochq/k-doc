@@ -17,6 +17,7 @@ export function ConciergeHero({ lang, dict }: ConciergeHeroProps) {
         alt=''
         fill
         className='object-cover'
+        sizes='(max-width: 500px) 100vw, 500px'
         priority
       />
       <div className='relative flex h-full w-full flex-col items-center pt-4'>

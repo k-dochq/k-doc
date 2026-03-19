@@ -13,6 +13,7 @@ export function ConciergeHeroTitle({ lang }: ConciergeHeroTitleProps) {
         alt='Choose Your Concierge Experience'
         fill
         className='object-contain'
+        sizes='(max-width: 500px) 100vw, 500px'
         priority
       />
     </div>
