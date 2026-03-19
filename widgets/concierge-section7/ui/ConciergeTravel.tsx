@@ -23,14 +23,14 @@ export function ConciergeTravel({ dict }: ConciergeTravelProps) {
       </div>
 
       {/* Full-width image */}
-      <div className='relative w-full' style={{ aspectRatio: '375 / 562' }}>
-        <Image
-          src='/images/premium_package/common/premium_07_travel_bg.png'
-          alt='Beyond Medical Travel'
-          fill
-          className='object-cover'
-        />
-      </div>
+      <Image
+        src='/images/premium_package/common/premium_07_travel_bg.png'
+        alt='Beyond Medical Travel'
+        width={0}
+        height={0}
+        sizes='100vw'
+        className='w-full h-auto'
+      />
     </section>
   );
 }
