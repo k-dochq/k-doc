@@ -106,7 +106,7 @@ export function PageHeaderV2({
           onClick={handleBack}
           className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
         >
-          <ArrowLeftIconV2 className={styles.text} width={24} height={24} />
+          <ArrowLeftIconV2 className={`${styles.text} rtl:scale-x-[-1]`} width={24} height={24} />
         </button>
         {/* 제목 */}
         <h1

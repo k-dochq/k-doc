@@ -11,14 +11,14 @@ const dmSerifText = localFont({
 });
 
 const genRyuMin = localFont({
-  src: '../../../public/images/premium_package/ja/font/genryu-font/GenRyuMin2JP-B.otf',
+  src: '../../../public/images/premium_package/ja/font/genryu-font/GenRyuMin2JP-B.woff2',
   display: 'swap',
   variable: '--font-concierge-genryu',
   preload: false,
 });
 
 const hSiuNiu = localFont({
-  src: '../../../public/images/premium_package/zh-Hant/font/H-XiuYue-CuTi/H-SiuNiu-Bold-2.ttf',
+  src: '../../../public/images/premium_package/zh-Hant/font/H-XiuYue-CuTi/H-SiuNiu-Bold-2.woff2',
   display: 'swap',
   variable: '--font-concierge-siuniu',
   preload: false,
