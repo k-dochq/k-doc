@@ -2387,11 +2387,11 @@
       "items": [
         {
           "question": "Libre ba ang mga konsultasyon at reserbasyon sa ospital?",
-          "answer": "Oo. Ang mga konsultasyon at reserbasyon sa ospital sa pamamagitan ng K-DOC ay libre. Sa pamamagitan ng aming Fast Track na serbisyo, tinutulungan ka naming mabilis na makapag-konsulta at mag-book ng ospital."
+          "answer": "Oo. Ang konsultasyon at clinic reservations sa pamamagitan ng K-DOC ay karaniwang ibinibigay nang libre.\nSa pamamagitan ng Basic Care, tinutulungan ka naming makapagpatuloy sa konsultasyon nang mabilis at inaasistahan ka namin sa pag-book ng clinic reservations."
         },
         {
           "question": "Mayroon bang mga kondisyon para sa paggamit ng serbisyong concierge?",
-          "answer": "Ang Plus ay available para sa mga pamamaraan o operasyong naka-book sa $2,000 o higit pa, at ang Premium ay available para sa mga naka-book sa $5,000 o higit pa."
+          "answer": "Ang Plus Care ay available kapag nag-book ka ng procedure o surgery na nagkakahalaga ng $1,000 o higit pa, at ang Premium Care ay available kapag nag-book ka ng procedure o surgery na nagkakahalaga ng $5,000 o higit pa."
         },
         {
           "question": "Paano ibabalik ang bayad ng concierge?",
