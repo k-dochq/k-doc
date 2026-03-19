@@ -53,7 +53,7 @@ export function ConciergePlanTable({ dict }: ConciergePlanTableProps) {
           {PLAN_FEATURES.map(({ key, basic, plus, premium }, index) => (
             <div
               key={key}
-              className={`flex h-[52px] items-center border-t border-[#d4d4d4] px-5${index === PLAN_FEATURES.length - 1 ? ' border-b' : ''}`}
+              className={`flex min-h-[52px] items-center border-t border-[#d4d4d4] px-5${index === PLAN_FEATURES.length - 1 ? ' border-b' : ''}`}
             >
               <p className='flex-1 text-[14px] leading-5 text-[#404040]'>{features?.[key]}</p>
               <PlanCell included={basic} />
