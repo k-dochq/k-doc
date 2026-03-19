@@ -37,7 +37,7 @@ export function ConciergeReviewCarousel({ dict, lang }: ConciergeReviewCarouselP
   return (
     <div className='mt-8'>
       {/* Title */}
-      <p className='text-center text-[32px] leading-[1.1] text-white'>{t?.sectionTitle}</p>
+      <p className='concierge-title text-center text-[32px] leading-[1.1] text-white'>{t?.sectionTitle}</p>
 
       {/* Carousel — full screen width by breaking out of section px-5 */}
       <div className='mx-[-20px] mt-6'>
