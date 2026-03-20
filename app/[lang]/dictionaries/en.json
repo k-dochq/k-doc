@@ -2363,7 +2363,7 @@
     "notice": {
       "noticeTitle": "Concierge Service Guide",
       "noticeLine1": "Concierge service is optional.",
-      "noticeLine2": "If a procedure or surgery is performed during your visit to Korea, the Commitment fee will be automatically refunded in full."
+      "noticeLine2": "If you visit Korea and proceed with a procedure or surgery, the commitment fee will be fully refunded automatically."
     },
     "section4Title": "Plan Comparison",
     "section4Description": "Compare the services offered in each concierge plan.",
@@ -2381,42 +2381,42 @@
       "review5Body": "After arriving in Korea, everything from airport pickup to clinic reservation was arranged smoothly. Because of that, I could focus entirely on my treatment, and I am very satisfied with the K-DOC service."
     },
     "section6Description": "We provide medical concierge services to help international patients visiting Korea have a safe and comfortable medical experience.",
-    "section6NoticeTitle": "Concierge Service Fee Guide",
-    "section6NoticeBody": "If a procedure or surgery is performed during your visit to Korea, the Commitment fee will be automatically refunded in full.",
+    "section6NoticeTitle": "Concierge Service Guide",
+    "section6NoticeBody": "If you visit Korea and proceed with a procedure or surgery, the commitment fee will be fully refunded automatically.",
     "section7Description": "Enjoy various travel experiences in Korea, including food, attractions, and shopping, with K-DOC between your treatment schedules.",
     "faq": {
       "items": [
         {
-          "question": "Are consultations and hospital reservations free?",
-          "answer": "Yes. Consultation and clinic reservations through K-DOC are basically provided free of charge. Through Basic Care, we help you proceed with consultations quickly and assist with clinic reservations."
+          "question": "Are consultation and clinic reservations free?",
+          "answer": "Yes. Consultation and clinic reservations through K-DOC are provided free of charge by default. Through Basic Care, we help you proceed with consultations quickly and assist with clinic reservations."
         },
         {
-          "question": "Are there any conditions for using the concierge service?",
+          "question": "Are there any requirements to use the concierge service?",
           "answer": "Plus Care is available when you book a procedure or surgery of $1,000 or more, and Premium Care is available when you book a procedure or surgery of $5,000 or more."
         },
         {
           "question": "How is the concierge fee refunded?",
-          "answer": "If a procedure or surgery is performed during your visit to Korea, the Commitment fee will be automatically refunded in full."
+          "answer": "If you visit Korea and proceed with a procedure or surgery, the commitment fee will be fully refunded."
         },
         {
           "question": "What languages does the medical interpreter service support?",
-          "answer": "We support professional medical interpreter services in various languages including English, Thai, Chinese, and Japanese."
+          "answer": "Professional medical interpretation services are available in multiple languages, including English, Thai, Chinese, and Japanese."
         },
         {
           "question": "Is airport pickup service also provided?",
-          "answer": "The Premium plan includes airport → hotel pickup service and hotel → hospital transfer service."
+          "answer": "The Premium plan includes airport-to-hotel pickup service and hotel-to-clinic transportation."
         },
         {
-          "question": "Which hospitals do you work with?",
-          "answer": "K-DOC collaborates with various medical institutions in Korea including plastic surgery, dermatology, and dental clinics. We only connect patients with hospitals that have experience treating international patients and are officially registered for foreign patient attraction."
+          "question": "What types of clinics do you partner with?",
+          "answer": "K-DOC partners with various medical institutions in Korea, including plastic surgery, dermatology, and dental clinics. We only connect you with clinics that have experience treating international patients and are officially registered to treat foreign patients."
         },
         {
           "question": "Which countries are the patients from?",
-          "answer": "Patients from various countries including Thailand, Singapore, Japan, China, UAE, and the Philippines are using Korean medical services through K-DOC."
+          "answer": "Patients from countries such as Thailand, Singapore, Japan, China, the UAE, and the Philippines use K-DOC to access medical services in Korea."
         },
         {
-          "question": "Can I also get help with my travel schedule in Korea?",
-          "answer": "Yes. In addition to treatment schedules, we support all aspects of your medical travel in Korea including transportation, hospital visits, and schedule coordination."
+          "question": "Can you also help with travel arrangements when visiting Korea?",
+          "answer": "Yes. In addition to treatment schedules, we support all aspects of your medical travel in Korea, including transportation, clinic visits, and schedule coordination."
         }
       ]
     },
