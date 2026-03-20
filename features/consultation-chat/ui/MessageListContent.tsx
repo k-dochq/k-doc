@@ -94,7 +94,7 @@ export function MessageListContent({
   };
 
   return (
-    <div ref={containerRef} className='flex-1 overflow-y-auto'>
+    <div ref={containerRef} className='flex-1 overflow-y-auto overflow-x-hidden'>
       <LoadOlderButton hasMore={hasMore} onClick={handleLoadMoreClick} dict={dict} />
       <div className='flex flex-col content-stretch items-start justify-start gap-2 p-5'>
         {messages.map((message, index) => {

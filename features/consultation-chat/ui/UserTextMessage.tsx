@@ -17,7 +17,7 @@ export function UserTextMessage({ content, formattedTime, lang, dict }: UserText
   return (
     <div className='relative flex w-full shrink-0 content-stretch items-end justify-end gap-2'>
       <MessageTime time={formattedTime} />
-      <div className='relative flex shrink-0 content-stretch items-end justify-end'>
+      <div className='relative flex min-w-0 content-stretch items-end justify-end'>
         <div className='flex flex-row items-end self-stretch'>
           <UserMessageBubble className='h-full items-end justify-start'>
             <div
