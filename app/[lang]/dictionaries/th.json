@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "สิทธิการจองแบบเร่งด่วน!!",
       "button": "สมัครสมาชิก"
+    },
+    "location": {
+      "title": "ที่ตั้งโรงพยาบาล"
     }
   },
   "districtFilter": {

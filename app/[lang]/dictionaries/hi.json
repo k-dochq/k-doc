@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "तुरंत बुकिंग की गारंटी!!",
       "button": "रजिस्टर करें"
+    },
+    "location": {
+      "title": "अस्पताल का स्थान"
     }
   },
   "districtFilter": {

@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "Fast Reservation Guarantee!!",
       "button": "新規登録"
+    },
+    "location": {
+      "title": "病院の場所"
     }
   },
   "districtFilter": {

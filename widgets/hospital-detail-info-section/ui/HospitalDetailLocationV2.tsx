@@ -46,7 +46,11 @@ export function HospitalDetailLocationV2({ hospital, lang, dict }: HospitalDetai
   }
 
   return (
-    <div className='space-y-3'>
+    <div className='flex flex-col'>
+      <h2 className='text-lg leading-7 font-semibold text-neutral-700'>
+        {dict.hospital.location?.title}
+      </h2>
+
       {/* 지도 영역 */}
       <HospitalDetailMap
         lang={lang}
