@@ -1,13 +1,17 @@
 'use client';
 
 import { type Locale } from 'shared/config';
+import { useIsIOSWebView } from 'shared/model/hooks';
 
 interface ConciergeVideoGridProps {
   lang: Locale;
 }
 
 export function ConciergeVideoGrid({ lang }: ConciergeVideoGridProps) {
+  const isIOSWebView = useIsIOSWebView();
   const base = `/images/premium_package/${lang}/video`;
+
+  if (isIOSWebView) return null;
 
   return (
     <div className='mt-6 flex flex-col gap-3'>
