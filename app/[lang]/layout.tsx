@@ -12,6 +12,7 @@ import { GoogleTagManager } from 'shared/ui/google-tag-manager';
 import { GoogleAdsGTM } from 'shared/ui/google-ads-gtm';
 import { RedditPixel } from 'shared/ui/reddit-pixel';
 import { MarketingAttributionTracker } from 'shared/ui/marketing-attribution/MarketingAttributionTracker';
+import { ScrollRestoration } from 'shared/ui/scroll-restoration/ScrollRestoration';
 import { Toaster } from 'sonner';
 import { KoreaGateModal } from 'widgets/korea-gate-modal';
 import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
@@ -217,6 +218,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         {/* 마케팅 어트리뷰션 추적 */}
         <MarketingAttributionTracker />
 
+        <ScrollRestoration />
         <QueryProvider>
           <MaxWidthLayout>{children}</MaxWidthLayout>
           <KoreaGateModal />
