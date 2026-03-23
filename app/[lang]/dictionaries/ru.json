@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "Гарантия быстрого бронирования!!",
       "button": "Регистрация"
+    },
+    "location": {
+      "title": "Расположение больницы"
     }
   },
   "districtFilter": {

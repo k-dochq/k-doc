@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "ضمان الحجز السريع!!",
       "button": "التسجيل"
+    },
+    "location": {
+      "title": "موقع المستشفى"
     }
   },
   "districtFilter": {

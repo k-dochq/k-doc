@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "快速預訂保證！ ！",
       "button": "立即註冊"
+    },
+    "location": {
+      "title": "醫院位置"
     }
   },
   "districtFilter": {

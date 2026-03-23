@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "Fast Reservation Guarantee !!",
       "button": "Register"
+    },
+    "location": {
+      "title": "Hospital Location"
     }
   },
   "districtFilter": {

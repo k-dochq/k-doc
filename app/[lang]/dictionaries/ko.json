@@ -561,6 +561,9 @@
     "registrationPrompt": {
       "message": "Fast Reservation Guarantee !!",
       "button": "Register"
+    },
+    "location": {
+      "title": "병원 위치"
     }
   },
   "districtFilter": {
