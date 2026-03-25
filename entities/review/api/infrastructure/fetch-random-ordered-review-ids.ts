@@ -31,7 +31,9 @@ export async function fetchRandomOrderedReviewIds({
       AND "isActive" = true
     )` : Prisma.empty}
     ${hospitalId ? Prisma.sql`AND "hospitalId" = CAST(${hospitalId} AS uuid)` : Prisma.empty}
-    ORDER BY MD5(CONCAT(id::text, ${seed}))
+    ORDER BY
+      CASE WHEN EXISTS (SELECT 1 FROM "ReviewImage" WHERE "reviewId" = "Review".id AND "isActive" = true) THEN 0 ELSE 1 END,
+      MD5(CONCAT(id::text, ${seed}))
     LIMIT ${limit}
     OFFSET ${offset}
   `;

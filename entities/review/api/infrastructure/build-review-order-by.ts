@@ -15,23 +15,27 @@ export function buildReviewOrderBy(
     return undefined;
   }
 
+  const imageFirst = { ReviewImage: { _count: 'desc' as const } };
+
   switch (sort) {
     case 'popular':
-      return [{ viewCount: 'desc' as const }, { likeCount: 'desc' as const }];
+      return [imageFirst, { viewCount: 'desc' as const }, { likeCount: 'desc' as const }];
     case 'recommended':
       return [
+        imageFirst,
         { rating: 'desc' as const },
         { likeCount: 'desc' as const },
         { createdAt: 'desc' as const },
       ];
     case 'latest':
-      return [{ createdAt: 'desc' as const }];
+      return [imageFirst, { createdAt: 'desc' as const }];
     case 'rating_high':
-      return [{ rating: 'desc' as const }];
+      return [imageFirst, { rating: 'desc' as const }];
     case 'rating_low':
-      return [{ rating: 'asc' as const }];
+      return [imageFirst, { rating: 'asc' as const }];
     default:
       return [
+        imageFirst,
         { viewCount: 'desc' as const },
         { likeCount: 'desc' as const },
         { createdAt: 'desc' as const },

@@ -5,10 +5,6 @@ import type { ReviewCardData } from 'entities/review/model/types';
 import type { Prisma } from '@prisma/client';
 import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getReviewNickname } from 'shared/lib/review-nickname';
-import {
-  sanitizeReviewImagesByHospitalActive,
-  type ReviewWithHospitalAndImages,
-} from 'entities/review/api/infrastructure/services/review-image-sanitizer';
 
 interface GetLikedReviewsParams {
   userId: string;
@@ -145,11 +141,9 @@ export class LikedReviewsRepository {
 
     // ReviewCardData 형태로 변환 (닉네임 생성 포함)
     const transformedReviewsPromises = reviews.map(async (likedReview) => {
-      const rawReview = likedReview.Review;
-      const review: typeof rawReview & ReviewWithHospitalAndImages =
-        sanitizeReviewImagesByHospitalActive(rawReview);
+      const review = likedReview.Review;
 
-      // 이미지를 Before/After로 분류 (숨김 병원인 경우 ReviewImage는 빈 배열)
+      // 이미지를 Before/After로 분류
       const beforeImages = review.ReviewImage.filter((img) => img.imageType === 'BEFORE');
       const afterImages = review.ReviewImage.filter((img) => img.imageType === 'AFTER');
 
