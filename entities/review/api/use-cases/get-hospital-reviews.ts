@@ -123,9 +123,10 @@ export async function getHospitalReviews({
           },
         },
       },
-      orderBy: {
-        createdAt: 'desc',
-      },
+      orderBy: [
+        { ReviewImage: { _count: 'desc' } },
+        { createdAt: 'desc' },
+      ],
       take: limit,
       skip: calculatedOffset,
     });
