@@ -85,8 +85,9 @@ export function HospitalDetailHoursAndLocationV2({
   const todayDayOfWeek = getTodayDayOfWeekKST(lang);
   const todayHours = getTodayOperatingHours(hospital.openingHours);
 
-  // 주소: directions가 있으면 사용, 없으면 address 사용 (현재 언어로 표시)
-  const address = extractLocalizedText(hospital.directions || hospital.address, lang) || '';
+  // 주소: directions가 있으면 사용, 없으면 address 사용 (ko는 한국어, 그 외 영어 고정)
+  const addressLang = lang === 'ko' ? 'ko' : 'en';
+  const address = extractLocalizedText(hospital.directions || hospital.address, addressLang) || '';
 
   const handleCopyAddress = () => {
     if (address) {
