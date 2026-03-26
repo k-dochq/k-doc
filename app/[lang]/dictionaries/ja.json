@@ -2128,7 +2128,8 @@
       "minutesAgo": "分前",
       "hoursAgo": "時間前",
       "daysAgo": "仕事前"
-    }
+    },
+    "delete": "削除"
   },
   "doctor": {
     "career": "伝記",

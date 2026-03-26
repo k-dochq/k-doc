@@ -2128,7 +2128,8 @@
       "minutesAgo": "분 전",
       "hoursAgo": "시간 전",
       "daysAgo": "일 전"
-    }
+    },
+    "delete": "삭제"
   },
   "doctor": {
     "career": "약력",

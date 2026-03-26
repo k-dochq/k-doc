@@ -7,18 +7,25 @@ import { extractLocalizedText } from 'shared/lib/localized-text';
 import { decodeHtmlEntities } from 'shared/lib/html-entities';
 import { maskNickname } from 'shared/lib/nickname-mask';
 import { UserAvatar } from 'shared/ui';
+import { useDeleteComment } from '../model';
 
 interface CommentItemProps {
   comment: Comment;
   lang: Locale;
   dict: Dictionary;
+  currentUserId?: string;
+  reviewId: string;
 }
 
-export function CommentItem({ comment, lang, dict }: CommentItemProps) {
+export function CommentItem({ comment, lang, dict, currentUserId, reviewId }: CommentItemProps) {
   const rawDisplayName =
     comment.user.nickName || comment.user.displayName || comment.user.name || '익명';
   const displayName = rawDisplayName === '익명' ? rawDisplayName : maskNickname(rawDisplayName);
   const commentText = decodeHtmlEntities(extractLocalizedText(comment.content, lang) || '');
+
+  const isOwner = !!currentUserId && currentUserId === comment.userId;
+
+  const { mutate: deleteComment, isPending } = useDeleteComment({ reviewId });
 
   // 날짜 포맷팅
   const formatDate = (date: Date) => {
@@ -48,6 +55,15 @@ export function CommentItem({ comment, lang, dict }: CommentItemProps) {
         <div className='mb-1 flex items-center space-x-2'>
           <span className='text-sm font-medium text-gray-900'>{displayName}</span>
           <span className='text-xs text-gray-500'>{formatDate(new Date(comment.createdAt))}</span>
+          {isOwner && (
+            <button
+              onClick={() => deleteComment(comment.id)}
+              disabled={isPending}
+              className='ml-auto text-xs text-gray-400 hover:text-red-500 disabled:opacity-50'
+            >
+              {dict.comments?.delete || '삭제'}
+            </button>
+          )}
         </div>
 
         <p className='text-sm break-words whitespace-pre-wrap text-gray-700'>{commentText}</p>

@@ -2128,7 +2128,8 @@
       "minutesAgo": "ilang minuto ang nakalipas",
       "hoursAgo": "matagal na ang nakalipas",
       "daysAgo": "Isang araw na ang nakalipas"
-    }
+    },
+    "delete": "Burahin"
   },
   "doctor": {
     "career": "maikling kasaysayan",

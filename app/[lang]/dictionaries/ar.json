@@ -2128,7 +2128,8 @@
       "minutesAgo": "قبل دقائق",
       "hoursAgo": "منذ وقت مضى",
       "daysAgo": "قبل يوم واحد"
-    }
+    },
+    "delete": "حذف"
   },
   "doctor": {
     "career": "نبذة تاريخية",

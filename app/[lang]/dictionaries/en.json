@@ -2129,7 +2129,8 @@
       "minutesAgo": " minutes ago",
       "hoursAgo": " hours ago",
       "daysAgo": " days ago"
-    }
+    },
+    "delete": "Delete"
   },
   "doctor": {
     "career": "Career",
