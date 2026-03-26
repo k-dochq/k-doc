@@ -62,6 +62,7 @@ export function PopularReviewCardV2({
       {/* 텍스트 영역 */}
       <div
         className={`flex w-full flex-col gap-4 p-4 ${hasImages ? 'border-t border-neutral-200' : ''}`}
+        dir={lang === 'ar' ? 'rtl' : 'ltr'}
       >
         {/* 사용자 정보 및 평점 */}
         <PopularReviewCardV2UserInfo userName={userName} rating={review.rating} />
