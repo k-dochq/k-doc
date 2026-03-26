@@ -1,6 +1,6 @@
 export function HotRibbonV2() {
   return (
-    <div className='absolute top-[-5px] start-[-5px] z-10 overflow-clip'>
+    <div className='absolute top-[-5px] left-[-5px] z-10 overflow-clip'>
       <svg
         width='46'
         height='34'

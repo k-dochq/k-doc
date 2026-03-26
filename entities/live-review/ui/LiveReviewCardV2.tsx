@@ -38,7 +38,7 @@ export function LiveReviewCardV2({ liveReview, lang, dict }: LiveReviewCardV2Pro
       />
 
       {/* 텍스트 영역 */}
-      <div className='flex w-full shrink-0 flex-col gap-0.5 px-5 py-4'>
+      <div className='flex w-full shrink-0 flex-col gap-0.5 px-5 py-4' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         {/* 지역 | 병원명 */}
         <LiveReviewCardV2LocationAndHospital
           location={location}
