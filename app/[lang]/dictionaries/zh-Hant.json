@@ -2128,7 +2128,8 @@
       "minutesAgo": "幾分鐘前",
       "hoursAgo": "很久以前",
       "daysAgo": "一天前"
-    }
+    },
+    "delete": "刪除"
   },
   "doctor": {
     "career": "簡史",

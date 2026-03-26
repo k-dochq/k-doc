@@ -2,6 +2,7 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { useAuth } from 'shared/lib/auth';
 import { useComments } from '../model';
 import { CommentItem } from './CommentItem';
 
@@ -15,6 +16,7 @@ export function CommentList({ reviewId, lang, dict }: CommentListProps) {
   const { data, isLoading, error, fetchNextPage, hasNextPage, isFetchingNextPage } = useComments({
     reviewId,
   });
+  const { user } = useAuth();
 
   if (isLoading) {
     return (
@@ -58,7 +60,14 @@ export function CommentList({ reviewId, lang, dict }: CommentListProps) {
   return (
     <div className='pt-4'>
       {comments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} lang={lang} dict={dict} />
+        <CommentItem
+          key={comment.id}
+          comment={comment}
+          lang={lang}
+          dict={dict}
+          reviewId={reviewId}
+          currentUserId={user?.id}
+        />
       ))}
 
       {hasNextPage && (
