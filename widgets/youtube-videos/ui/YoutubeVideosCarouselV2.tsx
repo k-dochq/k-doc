@@ -56,7 +56,7 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
               <>
                 <CarouselItem
                   key={video.id}
-                  className={`basis-[316px] ${isFirst ? 'pl-5' : 'pl-[16px]'}`}
+                  className={`basis-[316px] ${isFirst ? 'ps-5' : 'ps-[16px]'}`}
                 >
                   <YoutubeVideoCardV2 video={video} lang={lang} dict={dict} />
                 </CarouselItem>

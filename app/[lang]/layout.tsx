@@ -200,7 +200,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   ].join(' ');
 
   return (
-    <html lang={lang} className={allFontVariables}>
+    <html lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'} className={allFontVariables}>
       <body className={`${currentFont.className} bg-[#f5f5f5]`}>
         {/* Google Tag Manager */}
         <GoogleTagManager containerId='GTM-MBVD4CJR' />

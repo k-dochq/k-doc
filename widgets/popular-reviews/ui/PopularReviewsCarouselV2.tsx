@@ -58,7 +58,7 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
               <>
                 <CarouselItem
                   key={review.id}
-                  className={`${isFirst ? 'basis-[306px] pl-5' : 'basis-[302px] pl-[16px]'}`}
+                  className={`${isFirst ? 'basis-[306px] ps-5' : 'basis-[302px] ps-[16px]'}`}
                 >
                   <PopularReviewCardV2 review={review} lang={lang} dict={dict} />
                 </CarouselItem>

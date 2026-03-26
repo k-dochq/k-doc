@@ -19,19 +19,19 @@ export function DesktopNavigation({
       {/* 왼쪽 음영 효과 */}
       {canScrollPrev && (
         <>
-          <div className='pointer-events-none absolute top-0 left-0 z-5 h-full w-8' />
-          <NavigationButton direction='left' onClick={onScrollPrev}>
-            <LeftArrowIcon />
+          <div className='pointer-events-none absolute top-0 start-0 z-5 h-full w-8' />
+          <NavigationButton direction='start' onClick={onScrollPrev}>
+            <LeftArrowIcon className='rtl:scale-x-[-1]' />
           </NavigationButton>
         </>
       )}
 
-      {/* 오른쪽 음영 효과 */}
+      {/* 끝쪽 음영 효과 */}
       {canScrollNext && (
         <>
-          <div className='pointer-events-none absolute top-0 right-0 z-5 h-full w-8' />
-          <NavigationButton direction='right' onClick={onScrollNext}>
-            <RightArrowIcon />
+          <div className='pointer-events-none absolute top-0 end-0 z-5 h-full w-8' />
+          <NavigationButton direction='end' onClick={onScrollNext}>
+            <RightArrowIcon className='rtl:scale-x-[-1]' />
           </NavigationButton>
         </>
       )}

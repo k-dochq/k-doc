@@ -41,7 +41,7 @@ export function YoutubeVideoFilterTabsV2({
   ];
 
   return (
-    <div className='flex w-full min-w-0 items-center gap-1 overflow-x-auto overflow-y-hidden pl-5'>
+    <div className='flex w-full min-w-0 items-center gap-1 overflow-x-auto overflow-y-hidden ps-5'>
       {tabs.map((tab) => {
         const isSelected = selectedCategory === tab.id;
 

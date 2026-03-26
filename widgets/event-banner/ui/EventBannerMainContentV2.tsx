@@ -143,7 +143,9 @@ export function EventBannerMainContentV2({
     }
 
     const interval = setInterval(() => {
-      if (api.canScrollNext()) {
+      if (currentLocale === 'ar') {
+        api.scrollPrev();
+      } else if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         api.scrollTo(0);
@@ -151,7 +153,7 @@ export function EventBannerMainContentV2({
     }, 2500);
 
     return () => clearInterval(interval);
-  }, [api, banners.length, isUserInteracting]);
+  }, [api, banners.length, isUserInteracting, currentLocale]);
 
   return (
     <div className={`relative w-full ${className}`}>
