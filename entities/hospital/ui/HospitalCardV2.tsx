@@ -81,7 +81,7 @@ export function HospitalCardV2({
 
   return (
     <LocaleLink href={linkHref} className='block'>
-      <div className='relative'>
+      <div className='relative' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         {/* 뱃지 표시 */}
         {firstBadge === 'HOT' && <HotRibbonV2 />}
         {firstBadge === 'BEST' && <BestRibbonV2 />}

@@ -135,11 +135,11 @@ const Carousel = React.forwardRef<
 Carousel.displayName = 'Carousel';
 
 const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => {
+  ({ className, dir = 'ltr', ...props }, ref) => {
     const { carouselRef, orientation } = useCarousel();
 
     return (
-      <div ref={carouselRef} className='overflow-x-clip' dir='ltr'>
+      <div ref={carouselRef} className='overflow-x-clip' dir={dir}>
         <div
           ref={ref}
           className={cn(

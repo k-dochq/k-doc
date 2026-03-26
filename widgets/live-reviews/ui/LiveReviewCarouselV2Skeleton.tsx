@@ -18,7 +18,7 @@ export function LiveReviewCarouselV2Skeleton() {
             return (
               <CarouselItem
                 key={index}
-                className={`basis-[312px] ${isFirst ? 'ps-[16px]' : 'ps-4'}`}
+                className={`basis-[312px] ${isFirst ? 'pl-[16px]' : 'pl-4'}`}
               >
                 <div className='flex w-full flex-col items-start overflow-clip rounded-xl bg-white/10 shadow-[0px_2px_4px_0px_rgba(0,0,0,0.2)]'>
                   {/* 이미지 스켈레톤 */}

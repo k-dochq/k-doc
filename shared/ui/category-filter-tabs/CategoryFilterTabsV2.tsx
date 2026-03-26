@@ -76,7 +76,7 @@ export function CategoryFilterTabsV2({
         }}
         className='w-full'
       >
-        <CarouselContent className=''>
+        <CarouselContent dir={lang === 'ar' ? 'rtl' : 'ltr'} className=''>
           {allCategories.map((category, index) => {
             const isSelected = selectedCategory === category.id;
             const isLast = index === allCategories.length - 1;
