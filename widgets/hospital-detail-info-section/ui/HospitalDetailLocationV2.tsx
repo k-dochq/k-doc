@@ -24,9 +24,10 @@ interface HospitalDetailLocationV2Props {
 export function HospitalDetailLocationV2({ hospital, lang, dict }: HospitalDetailLocationV2Props) {
   const { copyAddress } = useAddressCopy(dict);
   const hasCoordinates = hospital.latitude && hospital.longitude;
+  const addressLang = lang === 'ko' ? 'ko' : 'en';
   const address =
-    extractLocalizedText(hospital.directions, lang) ||
-    extractLocalizedText(hospital.address, lang) ||
+    extractLocalizedText(hospital.directions, addressLang) ||
+    extractLocalizedText(hospital.address, addressLang) ||
     '';
 
   const handleCopyAddress = () => {
