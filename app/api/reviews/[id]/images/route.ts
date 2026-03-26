@@ -22,11 +22,6 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       },
       select: {
         id: true,
-        Hospital: {
-          select: {
-            approvalStatusType: true,
-          },
-        },
         MedicalSpecialty: {
           select: {
             specialtyType: true,
@@ -60,14 +55,8 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       );
     }
 
-    const isUncontractedHospital = review.Hospital?.approvalStatusType !== 'APPROVED';
-
-    const beforeImages = isUncontractedHospital
-      ? []
-      : review.ReviewImage.filter((image) => image.imageType === 'BEFORE');
-    const afterImages = isUncontractedHospital
-      ? []
-      : review.ReviewImage.filter((image) => image.imageType === 'AFTER');
+    const beforeImages = review.ReviewImage.filter((image) => image.imageType === 'BEFORE');
+    const afterImages = review.ReviewImage.filter((image) => image.imageType === 'AFTER');
 
     let images = {
       before: beforeImages,

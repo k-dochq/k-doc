@@ -172,8 +172,6 @@ export async function getReviewDetail({
     const likedUserIds = review.ReviewLike.map((like) => like.userId);
     const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
 
-    const isUncontractedHospital = review.Hospital?.approvalStatusType !== 'APPROVED';
-
     const reviewCardData: ReviewCardData = {
       id: review.id,
       userId: review.userId,
@@ -226,24 +224,20 @@ export async function getReviewDetail({
         specialtyType: review.MedicalSpecialty.specialtyType,
       },
       images: {
-        before: isUncontractedHospital
-          ? []
-          : review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
-              id: img.id,
-              imageType: img.imageType,
-              imageUrl: img.imageUrl,
-              alt: img.alt,
-              order: img.order,
-            })),
-        after: isUncontractedHospital
-          ? []
-          : review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
-              id: img.id,
-              imageType: img.imageType,
-              imageUrl: img.imageUrl,
-              alt: img.alt,
-              order: img.order,
-            })),
+        before: review.ReviewImage.filter((img) => img.imageType === 'BEFORE').map((img) => ({
+          id: img.id,
+          imageType: img.imageType,
+          imageUrl: img.imageUrl,
+          alt: img.alt,
+          order: img.order,
+        })),
+        after: review.ReviewImage.filter((img) => img.imageType === 'AFTER').map((img) => ({
+          id: img.id,
+          imageType: img.imageType,
+          imageUrl: img.imageUrl,
+          alt: img.alt,
+          order: img.order,
+        })),
       },
       requiresLogin: false, // 기본값, route handler에서 로그인 상태 확인 후 설정
     };
