@@ -1,11 +1,13 @@
 'use client';
 
+/// <reference types="youtube" />
+
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { localeToAltValue } from 'shared/lib/localized-text';
-import { YoutubeVideoEmbedPlayer } from 'entities/youtube-video';
+import { loadYouTubeIframeAPI, extractYouTubeVideoId } from 'shared/lib/youtube-iframe-api';
 import { useHospitalVideos } from 'entities/hospital/model/useHospitalVideos';
 import { DEFAULT_IMAGES } from 'shared/config/images';
 
@@ -26,14 +28,12 @@ function getLocalizedVideoUrl(
   const altValue = localeToAltValue(locale);
 
   if (localizedLinks && typeof localizedLinks === 'object') {
-    // localizedLinks에서 현재 언어에 맞는 URL 찾기
     const localizedUrl = localizedLinks[altValue];
     if (localizedUrl && typeof localizedUrl === 'string' && localizedUrl.trim() !== '') {
       return localizedUrl;
     }
   }
 
-  // localizedLinks가 없거나 현재 언어가 없으면 fallback 사용
   return fallbackUrl;
 }
 
@@ -58,13 +58,10 @@ export function HospitalDetailProceduresVideoSection({
 }: HospitalDetailProceduresVideoSectionProps) {
   const { data, isLoading, error } = useHospitalVideos(hospitalId);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isPlayerLoading, setIsPlayerLoading] = useState(false);
+  const playerContainerRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<YT.Player | null>(null);
+  const isPlayerReadyRef = useRef(false);
 
-  if (isLoading) {
-    return null;
-  }
-
-  // localizedLinks에서 현재 언어에 맞는 URL 가져오기
   const thumbnailUrl = getLocalizedVideoUrl(
     data?.thumbnail?.localizedLinks as Record<string, string> | null,
     data?.thumbnail?.fallbackUrl || null,
@@ -84,12 +81,51 @@ export function HospitalDetailProceduresVideoSection({
     lang,
   );
 
-  const hasVideoData = !!thumbnailUrl && !!videoUrl;
+  // YT.Player 초기화 (videoUrl이 준비되면)
+  useEffect(() => {
+    const videoId = videoUrl ? extractYouTubeVideoId(videoUrl) : null;
+    if (!videoId) return;
+
+    let destroyed = false;
+
+    loadYouTubeIframeAPI().then(() => {
+      if (destroyed || !playerContainerRef.current) return;
+
+      playerRef.current = new window.YT.Player(playerContainerRef.current, {
+        videoId,
+        playerVars: {
+          playsinline: 1,
+          rel: 0,
+          enablejsapi: 1,
+        },
+        events: {
+          onReady: () => {
+            if (!destroyed) isPlayerReadyRef.current = true;
+          },
+        },
+      });
+    });
+
+    return () => {
+      destroyed = true;
+      isPlayerReadyRef.current = false;
+      playerRef.current?.destroy();
+      playerRef.current = null;
+    };
+  }, [videoUrl]);
 
   const handlePlay = () => {
-    setIsPlayerLoading(true);
     setIsPlaying(true);
+    if (isPlayerReadyRef.current && playerRef.current) {
+      playerRef.current.playVideo();
+    }
   };
+
+  if (isLoading) {
+    return null;
+  }
+
+  const hasVideoData = !!thumbnailUrl && !!videoUrl;
 
   return (
     <div className='flex flex-col space-y-3'>
@@ -104,11 +140,14 @@ export function HospitalDetailProceduresVideoSection({
       ) : (
         <>
           <div className='relative aspect-[335/188] w-full overflow-hidden rounded-xl'>
-            {!isPlaying ? (
+            {/* 플레이어는 항상 렌더링 (display:none 금지 — YT.Player 초기화 실패 원인) */}
+            <div ref={playerContainerRef} className='absolute inset-0 h-full w-full' />
+            {/* 재생 전: 썸네일이 플레이어 위를 덮음 */}
+            {!isPlaying && (
               <button
                 type='button'
                 onClick={handlePlay}
-                className='relative block h-full w-full cursor-pointer'
+                className='absolute inset-0 z-10 block h-full w-full cursor-pointer'
                 aria-label={dict.hospitalDetailTabs.youtube}
               >
                 <Image
@@ -123,13 +162,6 @@ export function HospitalDetailProceduresVideoSection({
                   }}
                 />
               </button>
-            ) : (
-              <YoutubeVideoEmbedPlayer
-                videoUrl={videoUrl}
-                title={dict.hospitalDetailTabs.youtube}
-                isLoading={isPlayerLoading}
-                onLoad={() => setIsPlayerLoading(false)}
-              />
             )}
           </div>
           {videoTitle && <p className='text-base font-semibold text-neutral-700'>{videoTitle}</p>}
