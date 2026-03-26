@@ -69,12 +69,15 @@ const Carousel = React.forwardRef<
 
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
+      const isRtl =
+        event.currentTarget.closest('[dir]')?.getAttribute('dir') === 'rtl' ||
+        document.documentElement.dir === 'rtl';
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        scrollPrev();
+        isRtl ? scrollNext() : scrollPrev();
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
-        scrollNext();
+        isRtl ? scrollPrev() : scrollNext();
       }
     },
     [scrollPrev, scrollNext],
@@ -136,7 +139,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
     const { carouselRef, orientation } = useCarousel();
 
     return (
-      <div ref={carouselRef} className='overflow-x-clip'>
+      <div ref={carouselRef} className='overflow-x-clip' dir='ltr'>
         <div
           ref={ref}
           className={cn(

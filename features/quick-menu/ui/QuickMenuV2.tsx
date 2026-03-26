@@ -25,7 +25,8 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
     const updateIndicator = () => {
       const { scrollLeft, scrollWidth, clientWidth } = element;
       const maxScroll = scrollWidth - clientWidth;
-      const progress = maxScroll > 0 ? scrollLeft / maxScroll : 0;
+      // In RTL, scrollLeft is 0 at start (right side) and goes negative — use abs value
+      const progress = maxScroll > 0 ? Math.abs(scrollLeft) / maxScroll : 0;
       const offset = progress * 16; // 40px - 24px = 16px
 
       indicator.style.transform = `translateX(${offset}px)`;
@@ -59,7 +60,7 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
           WebkitOverflowScrolling: 'touch',
         }}
       >
-        <div className='flex flex-col gap-3 pl-5'>
+        <div className='flex flex-col gap-3 ps-5'>
           <div className='flex'>
             {firstRow.map((category, index) => (
               <QuickMenuButtonV2

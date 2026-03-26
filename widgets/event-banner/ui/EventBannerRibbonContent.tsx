@@ -59,7 +59,9 @@ export function EventBannerRibbonContent({
     }
 
     const interval = setInterval(() => {
-      if (api.canScrollNext()) {
+      if (currentLocale === 'ar') {
+        api.scrollPrev();
+      } else if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         // loop가 true이면 처음으로 돌아감
@@ -68,7 +70,7 @@ export function EventBannerRibbonContent({
     }, 2000); // 2초 간격
 
     return () => clearInterval(interval);
-  }, [api, banners.length, isUserInteracting]);
+  }, [api, banners.length, isUserInteracting, currentLocale]);
 
   return (
     <div className={`relative w-full ${className}`}>

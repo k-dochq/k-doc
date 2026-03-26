@@ -18,7 +18,7 @@ export function ArrowRightIconFigma({
 
   return (
     <svg
-      className={className}
+      className={`rtl:scale-x-[-1] ${className}`}
       width={size}
       height={height}
       viewBox='0 0 7 12'

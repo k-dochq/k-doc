@@ -35,11 +35,11 @@ export function PremiumServiceCardV2({
       </div>
 
       {/* 그라데이션 오버레이 */}
-      <div className='absolute bottom-0 left-0 h-[110px] w-full bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.194)] to-[rgba(0,0,0,0.8)]' />
+      <div className='absolute bottom-0 inset-x-0 h-[110px] w-full bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.194)] to-[rgba(0,0,0,0.8)]' />
 
       {/* 텍스트 영역: 한국어만 고정 너비, 그 외는 pr-5 */}
       <div
-        className={`absolute bottom-5 left-5 flex flex-col gap-0.5 whitespace-pre-wrap text-white ${isKorean ? 'w-[267px]' : 'pr-5'}`}
+        className={`absolute bottom-5 start-5 flex flex-col gap-0.5 whitespace-pre-wrap text-white ${isKorean ? 'w-[267px]' : 'pe-5'}`}
       >
         <p className='w-full text-lg leading-7 font-semibold'>{title}</p>
         <p className='w-full text-[13px] leading-[19px] font-medium'>{description}</p>

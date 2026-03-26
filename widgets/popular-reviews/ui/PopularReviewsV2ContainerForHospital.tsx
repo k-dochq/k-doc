@@ -77,7 +77,7 @@ function PopularReviewsV2Content({
 
   if (isLoading) {
     return (
-      <div className='pl-2'>
+      <div className='ps-2'>
         <PopularReviewsTitleV2ForHospital
           hospitalId={hospitalId}
           lang={lang}
