@@ -73,6 +73,7 @@ export function CategoryFilterTabsV2({
           align: 'start',
           dragFree: true,
           containScroll: 'trimSnaps',
+          ...(lang === 'ar' && { direction: 'rtl' }),
         }}
         className='w-full'
       >
