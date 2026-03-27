@@ -27,8 +27,12 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
     const updateIndicator = () => {
       const { scrollLeft, scrollWidth, clientWidth } = element;
       const maxScroll = scrollWidth - clientWidth;
-      // In RTL, scrollLeft is 0 at start (right side) and goes negative — use abs value
-      const progress = maxScroll > 0 ? Math.abs(scrollLeft) / maxScroll : 0;
+      // Clamp scrollLeft to its valid scroll range to prevent indicator jumping during
+      // iOS Safari bounce (overscroll). RTL: valid range [-maxScroll, 0], LTR: [0, maxScroll]
+      const clampedScrollLeft = isRtl
+        ? Math.min(0, Math.max(-maxScroll, scrollLeft))
+        : Math.max(0, Math.min(maxScroll, scrollLeft));
+      const progress = maxScroll > 0 ? Math.abs(clampedScrollLeft) / maxScroll : 0;
       // In RTL: start=right(offset=16), end=left(offset=0) — reverse direction
       const offset = isRtl ? (1 - progress) * 16 : progress * 16; // 40px - 24px = 16px
 
