@@ -46,7 +46,7 @@ export function ConciergeReviewCarousel({ dict, lang }: ConciergeReviewCarouselP
           opts={{ loop: true, align: 'center', direction: lang === 'ar' ? 'rtl' : 'ltr' }}
           className='w-full'
         >
-          <CarouselContent className='items-stretch'>
+          <CarouselContent className='items-stretch' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
             {REVIEWS.map(({ titleKey, bodyKey, authorKey }) => (
               <CarouselItem key={authorKey} className='basis-[69.33%]'>
                 <div className='h-full px-[6px]'>
