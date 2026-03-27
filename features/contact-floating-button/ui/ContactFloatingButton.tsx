@@ -49,7 +49,9 @@ export function ContactFloatingButton({ lang }: ContactFloatingButtonProps) {
         />
       )}
 
-      <div className='fixed right-5 bottom-[240px] z-500 flex flex-col items-end gap-2.5 md:right-auto md:left-[calc(50%+100px)]'>
+      <div className='fixed right-5 bottom-[240px] z-500 md:right-auto md:left-[calc(50%+100px)]'>
+        {/* 서브 버튼: 메인 버튼 위에 absolute로 배치 (컨테이너 크기에 영향 안 줌) */}
+        <div className='pointer-events-none absolute bottom-full right-0 mb-2.5 flex flex-col items-end gap-2.5'>
         {lang === 'th' ? (
           <>
             {/* LINE 버튼 (태국어) */}
@@ -171,6 +173,7 @@ export function ContactFloatingButton({ lang }: ContactFloatingButtonProps) {
             </a>
           </>
         ) : null}
+        </div>
 
         {/* 메인 버튼 (K 또는 Close) */}
         <button
