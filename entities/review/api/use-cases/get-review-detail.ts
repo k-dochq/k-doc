@@ -61,6 +61,7 @@ export async function getReviewDetail({
             displayName: true,
             nickName: true,
             name: true,
+            email: true,
           },
         },
         MedicalSpecialty: {
@@ -159,10 +160,9 @@ export async function getReviewDetail({
       }
     }
 
-    // 리뷰 작성일자 기준으로 닉네임 결정
     const { displayName, nickName } = await getReviewNickname(
       review.id,
-      review.createdAt,
+      review.User?.email || null,
       review.User?.nickName || null,
       review.User?.displayName || null,
       review.User?.name || null,
