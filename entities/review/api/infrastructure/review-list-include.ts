@@ -10,6 +10,7 @@ export const REVIEW_LIST_INCLUDE = {
       displayName: true,
       nickName: true,
       name: true,
+      email: true,
     },
   },
   Hospital: {
