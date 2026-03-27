@@ -15,6 +15,8 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
   // 둘째 줄: 지방흡입, 바디, 모발이식, 피부과, 치과, 기타 (6개)
   const secondRow = QUICK_MENU_CATEGORIES_V2.slice(6, 12);
 
+  const isRtl = lang === 'ar';
+
   useEffect(() => {
     const element = scrollContainerRef.current;
     const indicator = indicatorRef.current;
@@ -27,7 +29,8 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
       const maxScroll = scrollWidth - clientWidth;
       // In RTL, scrollLeft is 0 at start (right side) and goes negative — use abs value
       const progress = maxScroll > 0 ? Math.abs(scrollLeft) / maxScroll : 0;
-      const offset = progress * 16; // 40px - 24px = 16px
+      // In RTL: start=right(offset=16), end=left(offset=0) — reverse direction
+      const offset = isRtl ? (1 - progress) * 16 : progress * 16; // 40px - 24px = 16px
 
       indicator.style.transform = `translateX(${offset}px)`;
     };
@@ -53,7 +56,7 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
     <div className='flex w-full flex-col gap-4'>
       <div
         ref={scrollContainerRef}
-        className='scrollbar-hide overflow-x-auto scroll-smooth'
+        className='scrollbar-hide overflow-x-auto'
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -85,7 +88,7 @@ export function QuickMenuV2({ lang }: QuickMenuProps) {
           </div>
         </div>
       </div>
-      <QuickMenuIndicatorV2 indicatorRef={indicatorRef} />
+      <QuickMenuIndicatorV2 indicatorRef={indicatorRef} isRtl={isRtl} />
     </div>
   );
 }
