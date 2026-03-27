@@ -68,6 +68,7 @@ export type PrismaDoctorWithRelations = Prisma.DoctorGetPayload<{
                 displayName: true;
                 nickName: true;
                 name: true;
+                email: true;
               };
             };
             MedicalSpecialty: {
@@ -225,6 +226,7 @@ export async function getDoctorDetail(
                     displayName: true,
                     nickName: true,
                     name: true,
+                    email: true,
                   },
                 },
                 MedicalSpecialty: {
