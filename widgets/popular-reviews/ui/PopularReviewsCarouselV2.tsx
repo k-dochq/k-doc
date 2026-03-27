@@ -18,6 +18,7 @@ interface PopularReviewsCarouselV2Props {
 export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviewsCarouselV2Props) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const isRtl = lang === 'ar';
 
   // 자동재생 기능
   useCarouselAutoplay({
@@ -47,10 +48,11 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
         opts={{
           align: 'start',
           containScroll: 'trimSnaps',
+          ...(isRtl && { direction: 'rtl' }),
         }}
         className='w-full'
       >
-        <CarouselContent className=''>
+        <CarouselContent className='' dir={isRtl ? 'rtl' : 'ltr'}>
           {reviews.map((review, index) => {
             const isFirst = index === 0;
             const isLast = index === reviews.length - 1;
@@ -58,7 +60,7 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
               <>
                 <CarouselItem
                   key={review.id}
-                  className={`${isFirst ? 'basis-[306px] pl-5' : 'basis-[302px] pl-[16px]'}`}
+                  className={`${isFirst ? 'basis-[306px] ps-5' : 'basis-[302px] ps-4'}`}
                 >
                   <PopularReviewCardV2 review={review} lang={lang} dict={dict} />
                 </CarouselItem>

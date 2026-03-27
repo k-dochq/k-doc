@@ -14,16 +14,19 @@ interface LiveReviewCarouselV2Props {
 }
 
 export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCarouselV2Props) {
+  const isRtl = lang === 'ar';
+
   return (
     <div className='w-full'>
       <Carousel
         opts={{
           align: 'start',
           containScroll: 'trimSnaps',
+          ...(isRtl && { direction: 'rtl' }),
         }}
         className='w-full'
       >
-        <CarouselContent className=''>
+        <CarouselContent className='' dir={isRtl ? 'rtl' : 'ltr'}>
           {liveReviews.map((liveReview, index) => {
             const isFirst = index === 0;
             const isLast = index === liveReviews.length - 1;
@@ -31,7 +34,7 @@ export function LiveReviewCarouselV2({ liveReviews, lang, dict }: LiveReviewCaro
               <React.Fragment key={liveReview.id}>
                 <CarouselItem
                   key={liveReview.id}
-                  className={`${isFirst ? 'basis-[316px] pl-[20px]' : 'basis-[312px] pl-[16px]'}`}
+                  className={`${isFirst ? 'basis-[316px] ps-5' : 'basis-[312px] ps-4'}`}
                 >
                   <LiveReviewCardV2 liveReview={liveReview} lang={lang} dict={dict} />
                 </CarouselItem>

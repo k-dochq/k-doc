@@ -143,13 +143,7 @@ export function EventBannerMainContentV2({
     }
 
     const interval = setInterval(() => {
-      if (currentLocale === 'ar') {
-        api.scrollPrev();
-      } else if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        api.scrollTo(0);
-      }
+      api.scrollNext();
     }, 2500);
 
     return () => clearInterval(interval);
@@ -163,10 +157,11 @@ export function EventBannerMainContentV2({
           loop: true,
           align: 'center',
           containScroll: 'trimSnaps',
+          ...(currentLocale === 'ar' && { direction: 'rtl' }),
         }}
         className='w-full'
       >
-        <CarouselContent className=''>
+        <CarouselContent className='' dir={currentLocale === 'ar' ? 'rtl' : 'ltr'}>
           {banners.map((banner) => (
             <CarouselItem key={banner.id} className='shrink-0 basis-[82.67%]'>
               <div className='embla__slide__item px-[6px] [backface-visibility:hidden]'>

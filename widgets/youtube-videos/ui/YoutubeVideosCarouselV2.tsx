@@ -17,6 +17,7 @@ interface YoutubeVideosCarouselV2Props {
 export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCarouselV2Props) {
   const [api, setApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const isRtl = lang === 'ar';
 
   useEffect(() => {
     if (!api) {
@@ -45,10 +46,11 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
         opts={{
           align: 'start',
           containScroll: 'trimSnaps',
+          ...(isRtl && { direction: 'rtl' }),
         }}
         className='w-full'
       >
-        <CarouselContent className=''>
+        <CarouselContent className='' dir={isRtl ? 'rtl' : 'ltr'}>
           {videos.map((video, index) => {
             const isFirst = index === 0;
             const isLast = index === videos.length - 1;
@@ -56,7 +58,7 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
               <>
                 <CarouselItem
                   key={video.id}
-                  className={`basis-[316px] ${isFirst ? 'pl-5' : 'pl-[16px]'}`}
+                  className={`basis-[316px] ${isFirst ? 'ps-5' : 'ps-4'}`}
                 >
                   <YoutubeVideoCardV2 video={video} lang={lang} dict={dict} />
                 </CarouselItem>

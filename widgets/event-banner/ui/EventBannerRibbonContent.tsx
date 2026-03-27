@@ -59,14 +59,7 @@ export function EventBannerRibbonContent({
     }
 
     const interval = setInterval(() => {
-      if (currentLocale === 'ar') {
-        api.scrollPrev();
-      } else if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        // loop가 true이면 처음으로 돌아감
-        api.scrollTo(0);
-      }
+      api.scrollNext();
     }, 2000); // 2초 간격
 
     return () => clearInterval(interval);
@@ -79,10 +72,11 @@ export function EventBannerRibbonContent({
         opts={{
           loop: true,
           align: 'start',
+          ...(currentLocale === 'ar' && { direction: 'rtl' }),
         }}
         className='w-full'
       >
-        <CarouselContent className='-ml-0'>
+        <CarouselContent className='-ml-0' dir={currentLocale === 'ar' ? 'rtl' : 'ltr'}>
           {banners.map((banner) => (
             <CarouselItem key={banner.id} className='basis-full pl-0'>
               <EventBannerRibbonItem
