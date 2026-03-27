@@ -1,12 +1,14 @@
 import { generateNickname } from './nickname-generator';
 
+const ADMIN_GENERATED_EMAIL_SUFFIXES = ['@example.com', '@dummy.com'] as const;
+
 /**
- * 리뷰 작성일자 기준으로 닉네임을 결정하는 함수
- * - 2026년 1월 13일 이전 리뷰: 생성된 닉네임 사용
- * - 2026년 1월 13일 이후 리뷰: DB의 원래 닉네임 사용
+ * 리뷰 작성자 이메일 기준으로 닉네임을 결정하는 함수
+ * - 관리자 생성 사용자(@example.com, @dummy.com): 생성된 닉네임 사용
+ * - 실제 사용자: DB의 원래 닉네임 사용
  *
  * @param reviewId - 리뷰 ID (시드로 사용)
- * @param createdAt - 리뷰 작성일자
+ * @param userEmail - 사용자 이메일
  * @param userNickName - DB의 사용자 닉네임
  * @param userDisplayName - DB의 사용자 표시명
  * @param userName - DB의 사용자 이름
@@ -14,15 +16,18 @@ import { generateNickname } from './nickname-generator';
  */
 export async function getReviewNickname(
   reviewId: string,
-  createdAt: Date,
+  userEmail: string | null,
   userNickName: string | null,
   userDisplayName: string | null,
   userName: string | null,
 ): Promise<{ displayName: string; nickName: string | null }> {
-  const cutoffDate = new Date('2026-01-13T00:00:00Z');
-  const shouldUseGeneratedNickname = createdAt < cutoffDate;
+  const isAdminGenerated =
+    !!userEmail &&
+    ADMIN_GENERATED_EMAIL_SUFFIXES.some((suffix) =>
+      userEmail.toLowerCase().endsWith(suffix),
+    );
 
-  if (shouldUseGeneratedNickname) {
+  if (isAdminGenerated) {
     // 리뷰 ID를 시드로 사용하여 닉네임 생성
     const nicknameResult = await generateNickname({
       style: 'pascal',

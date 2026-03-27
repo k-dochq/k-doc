@@ -14,6 +14,7 @@ type PrismaReviewWithRelations = Prisma.ReviewGetPayload<{
         displayName: true;
         nickName: true;
         name: true;
+        email: true;
       };
     };
     Hospital: {
@@ -105,6 +106,7 @@ type DoctorRouteReview = {
     displayName: string | null;
     nickName: string | null;
     name: string | null;
+    email: string | null;
   };
   MedicalSpecialty: {
     name: Prisma.JsonValue;
@@ -268,10 +270,9 @@ export async function transformReviewToCardData(
   const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
   const { before, after } = separateReviewImages(review.ReviewImage);
 
-  // 리뷰 작성일자 기준으로 닉네임 결정
   const { displayName, nickName } = await getReviewNickname(
     review.id,
-    review.createdAt,
+    review.User.email,
     review.User.nickName,
     review.User.displayName,
     review.User.name,
@@ -324,10 +325,9 @@ export async function transformDoctorReviewToCardData(
   const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
   const { before, after } = separateReviewImages(review.ReviewImage);
 
-  // 리뷰 작성일자 기준으로 닉네임 결정
   const { displayName, nickName } = await getReviewNickname(
     review.id,
-    review.createdAt,
+    review.User.email,
     review.User.nickName,
     review.User.displayName,
     review.User.name,

@@ -50,6 +50,7 @@ export async function getHospitalReviews({
             displayName: true,
             nickName: true,
             name: true,
+            email: true,
           },
         },
         Hospital: {
@@ -136,10 +137,9 @@ export async function getHospitalReviews({
       const likedUserIds = review.ReviewLike.map((like) => like.userId);
       const recommendedUserIds = review.ReviewRecommend.map((r) => r.userId);
 
-      // 리뷰 작성일자 기준으로 닉네임 결정
       const { displayName, nickName } = await getReviewNickname(
         review.id,
-        review.createdAt,
+        review.User?.email || null,
         review.User?.nickName || null,
         review.User?.displayName || null,
         review.User?.name || null,
