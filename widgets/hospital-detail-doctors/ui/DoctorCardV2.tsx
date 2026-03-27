@@ -88,14 +88,14 @@ export function DoctorCardV2({ doctor, lang, dict }: DoctorCardV2Props) {
 
           <div className='flex items-center gap-1 text-[12px] leading-4 text-neutral-500'>
             <span>{dict.review?.showMore || '더보기'}</span>
-            <ArrowRightIcon size={12} className='text-neutral-500' />
+            <ArrowRightIcon size={12} className='text-neutral-500 rtl:rotate-180' />
           </div>
         </div>
 
         {/* 좋아요 */}
         <button
           onClick={handleLikeToggle}
-          className='absolute right-3 bottom-3 flex h-6 w-6 items-center justify-center'
+          className='absolute end-3 bottom-3 flex h-6 w-6 items-center justify-center'
         >
           {isLiked ? (
             <HeartFilledV2 width={20} height={20} />
