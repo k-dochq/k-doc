@@ -5,9 +5,10 @@ import { type ReactNode } from 'react';
 interface UserMessageBubbleProps {
   children: ReactNode;
   className?: string;
+  isRtl?: boolean;
 }
 
-export function UserMessageBubble({ children, className = '' }: UserMessageBubbleProps) {
+export function UserMessageBubble({ children, className = '', isRtl = false }: UserMessageBubbleProps) {
   const baseClasses =
     'box-border content-stretch flex flex-col gap-3 items-start justify-start px-3 py-2 relative rounded-[12px] max-w-[260px] break-words overflow-visible min-w-0';
 
@@ -25,8 +26,7 @@ export function UserMessageBubble({ children, className = '' }: UserMessageBubbl
         height='19'
         viewBox='0 0 12 19'
         fill='none'
-        className='pointer-events-none absolute right-[-5px] bottom-0 z-0'
-        // style={{ transform: 'translate(50%, 50%)' }}
+        className={`pointer-events-none absolute bottom-0 z-0 ${isRtl ? 'left-[-5px] scale-x-[-1]' : 'right-[-5px]'}`}
       >
         <path
           d='M11.8886 18.8631C6.73688 19.6573 1.6512 16.8201 0 15L7 0V6C7 17.5 12.8793 18.2642 11.8886 18.8631Z'

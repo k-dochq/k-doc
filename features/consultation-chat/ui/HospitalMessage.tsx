@@ -54,6 +54,7 @@ export function HospitalMessage({
         hospitalName={hospitalName}
         hospitalImageUrl={hospitalImageUrl}
         showHeader={showHeader}
+        lang={lang}
       />
     );
   }

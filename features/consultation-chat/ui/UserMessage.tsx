@@ -41,6 +41,7 @@ export function UserMessage({ message, lang, dict }: UserMessageProps) {
       <UserEditorMessage
         editorContent={contentAnalysis.editorContent}
         formattedTime={formattedTime}
+        lang={lang}
       />
     );
   }
