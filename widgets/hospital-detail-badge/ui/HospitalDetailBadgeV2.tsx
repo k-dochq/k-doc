@@ -16,7 +16,7 @@ export function HospitalDetailBadgeV2({ hospital }: HospitalDetailBadgeV2Props) 
   }
 
   return (
-    <div className='absolute -top-[5px] right-[18px] z-20 overflow-clip'>
+    <div className='absolute -top-[5px] right-[18px] z-20 overflow-clip rtl:right-auto rtl:left-[18px]'>
       {firstBadge === 'HOT' && (
         <svg
           width='58'
