@@ -19,7 +19,7 @@ export function UserTextMessage({ content, formattedTime, lang, dict }: UserText
       <MessageTime time={formattedTime} />
       <div className='relative flex min-w-0 content-stretch items-end justify-end'>
         <div className='flex flex-row items-end self-stretch'>
-          <UserMessageBubble className='h-full items-end justify-start'>
+          <UserMessageBubble className='h-full items-end justify-start' isRtl={lang === 'ar'}>
             <div
               className="relative min-w-0 font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words whitespace-pre-wrap text-neutral-50 not-italic"
               style={{ overflowWrap: 'anywhere', wordBreak: 'break-word' }}
