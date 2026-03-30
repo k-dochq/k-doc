@@ -175,6 +175,7 @@ export class LikedReviewsRepository {
         recommendedUserIds, // 추천을 한 사용자 ID들
         recommendCount: recommendedUserIds.length,
         createdAt: review.createdAt,
+        procedureDate: review.procedureDate ?? null,
         concernsMultilingual: review.concernsMultilingual
           ? parseLocalizedText(review.concernsMultilingual)
           : null,

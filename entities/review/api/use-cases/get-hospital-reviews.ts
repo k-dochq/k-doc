@@ -156,6 +156,7 @@ export async function getHospitalReviews({
           ? parseLocalizedText(review.concernsMultilingual)
           : null,
         createdAt: review.createdAt,
+        procedureDate: review.procedureDate ?? null,
         viewCount: review.viewCount,
         likeCount: review._count.ReviewLike, // 실시간 좋아요 수 계산
         commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)

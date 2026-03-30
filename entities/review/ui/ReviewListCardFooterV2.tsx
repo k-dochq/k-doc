@@ -36,7 +36,7 @@ export function ReviewListCardFooterV2({
       {/* 시술시기와 조회수 */}
       <div className='flex items-center justify-between'>
         {/* 시술시기 */}
-        <ReviewProcedureTiming createdAt={review.createdAt} lang={lang} dict={dict} />
+        <ReviewProcedureTiming createdAt={review.createdAt} procedureDate={review.procedureDate} lang={lang} dict={dict} />
 
         {/* 조회수 */}
         <div className='flex items-center gap-1'>
