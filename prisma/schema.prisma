@@ -176,29 +176,30 @@ model Product {
 }
 
 model Review {
-  id                   String            @id @db.Uuid
-  rating               Float             @default(0)
-  title                Json?
-  content              Json?
-  isRecommended        Boolean           @default(false)
-  viewCount            Int               @default(0)
-  likeCount            Int               @default(0)
-  userId               String            @db.Uuid
-  hospitalId           String            @db.Uuid
-  createdAt            DateTime          @default(now())
-  updatedAt            DateTime
-  concerns             String?           @db.VarChar(500)
-  medicalSpecialtyId   String            @db.Uuid
-  concernsMultilingual Json?
-  commentCount         Int               @default(0)
-  isActive             Boolean?          @default(true)
-  Comment              Comment[]
-  Hospital             Hospital          @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  MedicalSpecialty     MedicalSpecialty  @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
-  User                 User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  ReviewImage          ReviewImage[]
-  ReviewLike           ReviewLike[]
-  ReviewRecommend      ReviewRecommend[]
+  id                     String                   @id @db.Uuid
+  rating                 Float                    @default(0)
+  title                  Json?
+  content                Json?
+  isRecommended          Boolean                  @default(false)
+  viewCount              Int                      @default(0)
+  likeCount              Int                      @default(0)
+  userId                 String                   @db.Uuid
+  hospitalId             String                   @db.Uuid
+  createdAt              DateTime                 @default(now())
+  updatedAt              DateTime
+  concerns               String?                  @db.VarChar(500)
+  medicalSpecialtyId     String                   @db.Uuid
+  concernsMultilingual   Json?
+  commentCount           Int                      @default(0)
+  isActive               Boolean?                 @default(true)
+  Comment                Comment[]
+  Hospital               Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  MedicalSpecialty       MedicalSpecialty         @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+  User                   User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ReviewImage            ReviewImage[]
+  ReviewLike             ReviewLike[]
+  ReviewMedicalSpecialty ReviewMedicalSpecialty[]
+  ReviewRecommend        ReviewRecommend[]
 
   @@index([hospitalId])
   @@index([userId])
@@ -340,6 +341,7 @@ model MedicalSpecialty {
   MedicalSpecialty         MedicalSpecialty?          @relation("MedicalSpecialtyToMedicalSpecialty", fields: [parentSpecialtyId], references: [id], onDelete: Cascade)
   other_MedicalSpecialty   MedicalSpecialty[]         @relation("MedicalSpecialtyToMedicalSpecialty")
   Review                   Review[]
+  ReviewMedicalSpecialty   ReviewMedicalSpecialty[]
 
   @@index([parentSpecialtyId])
   @@schema("public")
@@ -812,6 +814,20 @@ model ReviewRecommend {
   @@index([createdAt])
   @@index([reviewId])
   @@index([userId])
+  @@schema("public")
+}
+
+model ReviewMedicalSpecialty {
+  id                 String           @id @db.Uuid
+  reviewId           String           @db.Uuid
+  medicalSpecialtyId String           @db.Uuid
+  createdAt          DateTime         @default(now())
+  MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+  Review             Review           @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@unique([reviewId, medicalSpecialtyId])
+  @@index([medicalSpecialtyId])
+  @@index([reviewId])
   @@schema("public")
 }
 
