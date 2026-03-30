@@ -24,6 +24,7 @@ export function DoctorCareerImagesCarouselV2({ images, lang }: DoctorCareerImage
   const [api, setApi] = useState<CarouselApi>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const isRtl = lang === 'ar';
 
   useEffect(() => {
     if (!api) {
@@ -63,10 +64,11 @@ export function DoctorCareerImagesCarouselV2({ images, lang }: DoctorCareerImage
         opts={{
           align: 'start',
           loop: true,
+          ...(isRtl && { direction: 'rtl' }),
         }}
         className='w-full'
       >
-        <CarouselContent className='-ml-2'>
+        <CarouselContent className='-ml-2' dir={isRtl ? 'rtl' : 'ltr'}>
           {images.map((image, index) => (
             <CarouselItem key={image.id} className='basis-auto pl-2'>
               <button

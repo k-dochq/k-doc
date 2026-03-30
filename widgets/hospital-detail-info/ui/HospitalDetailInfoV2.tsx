@@ -48,7 +48,7 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
   return (
     <div className='relative z-10 -mt-3 rounded-tl-2xl rounded-tr-2xl bg-white px-5 pt-10 pb-4'>
       {/* 로고 - 병원정보 섹션 기준으로 위치 설정 */}
-      <div className='absolute -top-[28px] left-5 z-20'>
+      <div className='absolute -top-[28px] left-5 z-20 rtl:left-auto rtl:right-5'>
         <HospitalDetailLogoV2 hospital={hospital} />
       </div>
 

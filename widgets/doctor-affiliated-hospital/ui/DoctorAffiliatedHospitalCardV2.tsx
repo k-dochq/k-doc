@@ -37,6 +37,7 @@ export function DoctorAffiliatedHospitalCardV2({
         imageUrl={hospital.thumbnailImageUrl}
         alt={hospitalName || 'hospital thumbnail'}
         firstBadge={firstBadge}
+        lang={lang}
       />
 
       {/* 정보 영역 */}
