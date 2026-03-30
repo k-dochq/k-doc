@@ -5,7 +5,7 @@ interface BestRibbonV2Props {
 export function BestRibbonV2({ mirrored = false }: BestRibbonV2Props) {
   return (
     <div
-      className={`absolute top-[-5px] z-10 overflow-clip ${mirrored ? 'right-[-7px]' : 'left-[-5px]'}`}
+      className={`absolute top-[-5px] z-10 overflow-clip ${mirrored ? 'right-[-6px]' : 'left-[-5px]'}`}
     >
       {mirrored ? (
         <svg
