@@ -25,10 +25,19 @@ export async function fetchRandomOrderedReviewIds({
     SELECT id
     FROM "Review"
     WHERE "isActive" IS NOT FALSE
-    ${category && category !== 'ALL' ? Prisma.sql`AND "medicalSpecialtyId" IN (
-      SELECT id FROM "MedicalSpecialty" 
-      WHERE "specialtyType" = ${category}::"MedicalSpecialtyType" 
-      AND "isActive" = true
+    ${category && category !== 'ALL' ? Prisma.sql`AND (
+      "medicalSpecialtyId" IN (
+        SELECT id FROM "MedicalSpecialty"
+        WHERE "specialtyType" = ${category}::"MedicalSpecialtyType"
+        AND "isActive" = true
+      )
+      OR EXISTS (
+        SELECT 1 FROM "ReviewMedicalSpecialty" rms
+        JOIN "MedicalSpecialty" ms ON ms.id = rms."medicalSpecialtyId"
+        WHERE rms."reviewId" = "Review".id
+        AND ms."specialtyType" = ${category}::"MedicalSpecialtyType"
+        AND ms."isActive" = true
+      )
     )` : Prisma.empty}
     ${hospitalId ? Prisma.sql`AND "hospitalId" = CAST(${hospitalId} AS uuid)` : Prisma.empty}
     ORDER BY
