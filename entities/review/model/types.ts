@@ -58,6 +58,7 @@ export type ReviewCardData = {
   isRecommended: boolean;
   concernsMultilingual: LocalizedText | null;
   createdAt: Date;
+  procedureDate: Date | null;
   viewCount: number;
   likeCount: number;
   commentCount: number; // 댓글 수

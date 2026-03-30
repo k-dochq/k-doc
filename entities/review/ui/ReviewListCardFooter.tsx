@@ -31,7 +31,7 @@ export function ReviewListCardFooter({
 
       <div className='flex items-center justify-between'>
         {/* 시술시기 */}
-        <ReviewProcedureTiming createdAt={review.createdAt} lang={lang} dict={dict} />
+        <ReviewProcedureTiming createdAt={review.createdAt} procedureDate={review.procedureDate} lang={lang} dict={dict} />
         <span className='text-xs font-medium text-neutral-900'>
           {dict.review.view} {review.viewCount}
         </span>

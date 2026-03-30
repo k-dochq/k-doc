@@ -5,6 +5,7 @@ import { formatDate } from 'shared/lib/date-utils';
 
 interface ReviewProcedureTimingProps {
   createdAt: Date;
+  procedureDate?: Date | null;
   lang: Locale;
   dict: {
     review: {
@@ -18,11 +19,12 @@ interface ReviewProcedureTimingProps {
 
 export function ReviewProcedureTiming({
   createdAt,
+  procedureDate,
   lang,
   dict,
   className = '',
 }: ReviewProcedureTimingProps) {
-  const timingText = formatDate(createdAt, lang, 'YYYY년 M월 D일');
+  const timingText = formatDate(procedureDate ?? createdAt, lang, 'YYYY년 M월 D일');
 
   return (
     <div className={`${className}`}>

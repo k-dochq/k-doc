@@ -288,6 +288,7 @@ export async function transformReviewToCardData(
       ? parseLocalizedText(review.concernsMultilingual)
       : null,
     createdAt: review.createdAt,
+    procedureDate: (review as unknown as { procedureDate?: Date | null }).procedureDate ?? null,
     viewCount: review.viewCount,
     likeCount: review._count.ReviewLike,
     commentCount: review.commentCount,
@@ -343,6 +344,7 @@ export async function transformDoctorReviewToCardData(
       ? parseLocalizedText(review.concernsMultilingual)
       : null,
     createdAt: review.createdAt,
+    procedureDate: (review as unknown as { procedureDate?: Date | null }).procedureDate ?? null,
     viewCount: review.viewCount,
     likeCount: review._count.ReviewLike,
     commentCount: review.commentCount,

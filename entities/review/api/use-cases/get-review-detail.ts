@@ -183,6 +183,7 @@ export async function getReviewDetail({
         ? parseLocalizedText(review.concernsMultilingual)
         : null,
       createdAt: review.createdAt,
+      procedureDate: review.procedureDate ?? null,
       viewCount: didIncrementViewCount ? review.viewCount + 1 : review.viewCount,
       likeCount: review._count.ReviewLike, // 실시간 좋아요 수 계산
       commentCount: review.commentCount, // 댓글 수 (DB 필드 직접 사용)
