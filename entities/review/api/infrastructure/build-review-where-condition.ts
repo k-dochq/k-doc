@@ -21,10 +21,24 @@ export function buildReviewWhereCondition(
   }
 
   if (category && category !== 'ALL') {
-    where.MedicalSpecialty = {
-      specialtyType: category as MedicalSpecialtyType,
-      isActive: true,
-    };
+    where.OR = [
+      {
+        MedicalSpecialty: {
+          specialtyType: category as MedicalSpecialtyType,
+          isActive: true,
+        },
+      },
+      {
+        ReviewMedicalSpecialty: {
+          some: {
+            MedicalSpecialty: {
+              specialtyType: category as MedicalSpecialtyType,
+              isActive: true,
+            },
+          },
+        },
+      },
+    ];
   }
 
   if (likedOnly && userId) {
