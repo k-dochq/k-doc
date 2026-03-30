@@ -88,10 +88,11 @@ export function CategorySectionV2({
           align: 'start',
           dragFree: true,
           containScroll: 'trimSnaps',
+          ...(lang === 'ar' && { direction: 'rtl' }),
         }}
         className='w-full'
       >
-        <CarouselContent className='py-4 pl-[9px]'>
+        <CarouselContent dir={lang === 'ar' ? 'rtl' : 'ltr'} className='py-4'>
           {categoryButtons.map((categoryButton, index) => {
             const isActive =
               categoryButton.type === 'all'
@@ -103,12 +104,13 @@ export function CategorySectionV2({
               categoryButton.type === 'all'
                 ? pathname || undefined
                 : `${pathname || ''}?category=${categoryButton.type}`;
+            const isFirst = index === 0;
             const isLast = index === categoryButtons.length - 1;
 
             return (
-              <CarouselItem key={categoryButton.type} className='basis-auto'>
+              <CarouselItem key={categoryButton.type} className={`basis-auto ${isFirst ? 'ps-[9px]' : ''}`}>
                 {isLast ? (
-                  <div className='pr-5'>
+                  <div className='pe-5'>
                     <CategoryButtonV2
                       category={categoryButton}
                       lang={lang}

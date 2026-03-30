@@ -1,7 +1,14 @@
-export function HotRibbonV2() {
+interface HotRibbonV2Props {
+  mirrored?: boolean;
+}
+
+export function HotRibbonV2({ mirrored = false }: HotRibbonV2Props) {
   return (
-    <div className='absolute top-[-5px] left-[-5px] z-10 overflow-clip'>
+    <div
+      className={`absolute top-[-5px] z-10 overflow-clip ${mirrored ? 'right-[-5px]' : 'left-[-5px]'}`}
+    >
       <svg
+        style={mirrored ? { transform: 'scaleX(-1)' } : undefined}
         width='46'
         height='34'
         viewBox='0 0 46 34'

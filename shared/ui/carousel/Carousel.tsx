@@ -142,6 +142,7 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
       <div ref={carouselRef} className='overflow-x-clip' dir={dir}>
         <div
           ref={ref}
+          dir={dir}
           className={cn(
             'flex',
             orientation === 'horizontal' ? '' : '-mt-4 flex-col',
