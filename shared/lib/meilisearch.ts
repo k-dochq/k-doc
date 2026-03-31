@@ -1,6 +1,6 @@
 const MEILISEARCH_URL = process.env.MEILISEARCH_URL!;
 const MEILISEARCH_SEARCH_KEY = process.env.MEILISEARCH_SEARCH_KEY!;
-const INDEX_UID = 'K-DOC';
+const INDEX_UID = 'hospitals';
 
 /**
  * Meilisearch에서 검색어와 매칭되는 병원 ID 목록을 반환
