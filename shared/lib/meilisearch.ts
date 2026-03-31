@@ -1,6 +1,20 @@
+import { type Locale } from 'shared/config';
+
 const MEILISEARCH_URL = process.env.MEILISEARCH_URL!;
 const MEILISEARCH_SEARCH_KEY = process.env.MEILISEARCH_SEARCH_KEY!;
 const INDEX_UID = 'hospitals';
+
+const LOCALE_TO_SUFFIX: Record<Locale, string> = {
+  ko: 'kokr',
+  en: 'enus',
+  th: 'thth',
+  'zh-Hant': 'zhtw',
+  ja: 'jajp',
+  hi: 'hiin',
+  tl: 'tlph',
+  ar: 'arsa',
+  ru: 'ruru',
+};
 
 /**
  * Meilisearch에서 검색어와 매칭되는 병원 ID 목록을 반환
@@ -27,4 +41,32 @@ export async function searchHospitalIds(query: string): Promise<string[]> {
 
   const data = (await response.json()) as { hits: { id: string }[] };
   return data.hits.map((hit) => hit.id);
+}
+
+/**
+ * 자동완성용 — 검색어와 매칭되는 병원 이름 목록 반환 (locale별)
+ */
+export async function searchHospitalSuggestions(query: string, locale: Locale): Promise<string[]> {
+  const suffix = LOCALE_TO_SUFFIX[locale];
+  const nameField = `name_${suffix}`;
+
+  const response = await fetch(`${MEILISEARCH_URL}/indexes/${INDEX_UID}/search`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${MEILISEARCH_SEARCH_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      q: query,
+      limit: 10,
+      attributesToRetrieve: [nameField],
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Meilisearch suggestions failed: ${response.status}`);
+  }
+
+  const data = (await response.json()) as { hits: Record<string, string>[] };
+  return data.hits.map((hit) => hit[nameField]).filter(Boolean);
 }
