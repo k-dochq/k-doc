@@ -19,6 +19,8 @@ export const queryKeys = {
     },
     infinite: <T extends Record<string, unknown>>(filters: T) =>
       [...queryKeys.hospitals.lists(), 'infinite', filters] as const,
+    suggestions: (query: string, lang: string) =>
+      [...queryKeys.hospitals.all, 'suggestions', query, lang] as const,
   },
 
   // 병원 좋아요 관련 쿼리
