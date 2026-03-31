@@ -12,7 +12,7 @@ function HighlightMatch({ text, query }: { text: string; query: string }) {
   return (
     <>
       {text.slice(0, idx)}
-      <span className='font-semibold text-[#DA47EF]'>{text.slice(idx, idx + query.length)}</span>
+      <span className='font-semibold text-primary'>{text.slice(idx, idx + query.length)}</span>
       {text.slice(idx + query.length)}
     </>
   );
