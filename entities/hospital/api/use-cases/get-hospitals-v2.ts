@@ -1,6 +1,6 @@
-import { type Prisma, type MedicalSpecialtyType } from '@prisma/client';
+import { type Prisma } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
-import { handleDatabaseError, extractLocalizedText } from 'shared/lib';
+import { handleDatabaseError } from 'shared/lib';
 import {
   type Hospital,
   type GetHospitalsRequestV2,
@@ -11,6 +11,7 @@ import { getHospitalMainImageUrl } from '../../lib/image-utils';
 import { type HospitalCardData, parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
 import { buildHospitalOrderBy } from '../lib/build-hospital-order-by';
+import { searchHospitalIds } from 'shared/lib/meilisearch';
 
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
@@ -51,30 +52,6 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
   };
 }>;
 
-type HospitalImageData = {
-  imageType: string;
-  isActive: boolean;
-  imageUrl: string;
-};
-
-/**
- * 검색어를 대소문자 변형으로 변환하는 헬퍼 함수
- * 원본, 전체 대문자, 전체 소문자, 첫 글자 대문자 변형을 반환
- */
-function generateSearchVariations(search: string): string[] {
-  const variations = [search]; // 원본 검색어
-  variations.push(search.toUpperCase()); // 전체 대문자
-  variations.push(search.toLowerCase()); // 전체 소문자
-  // 첫 글자 대문자 변형 (예: "windy" → "Windy")
-  if (search.length > 0) {
-    variations.push(search.charAt(0).toUpperCase() + search.slice(1).toLowerCase());
-  }
-  // 중복 제거
-  return Array.from(new Set(variations));
-}
-
-// 메인 이미지 URL 추출 헬퍼 함수
-
 // 추천 카테고리 ID (하드코딩)
 const RECOMMENDED_CATEGORY_ID = '893fa5bd-dc1d-48c7-ac46-78e72742d32c';
 
@@ -97,85 +74,21 @@ export async function getHospitalsV2(
 
     const offset = (page - 1) * limit;
 
-    // 검색 조건 설정 (병원명 또는 시술부위에서 다국어 검색)
-    const searchConditions: Prisma.HospitalWhereInput[] = [];
-
+    // 검색어가 있으면 Meilisearch에서 매칭 병원 ID 조회
+    let meilisearchIds: string[] | null = null;
     if (search) {
-      // 현재 선택된 locale에 따라 해당 언어만 검색
-      const searchLocale = locale || 'en_US'; // 기본값은 영어
+      meilisearchIds = await searchHospitalIds(search);
+    }
 
-      // 영어 검색어인지 확인
-      const isEnglishSearch = /^[a-zA-Z\s]+$/.test(search);
-      // 시술부위 검색에서 사용할 첫 글자 대문자 변형 (병원명 검색에서는 사용하지 않음)
-      const capitalizedSearch =
-        isEnglishSearch && search.length > 0
-          ? search.charAt(0).toUpperCase() + search.slice(1).toLowerCase()
-          : search;
-
-      // 병원명에서 검색 (현재 locale에 해당하는 언어만)
-      const hospitalNameConditions: Prisma.HospitalWhereInput[] = [];
-
-      // en_US: 항상 대소문자 변형 적용 (특수문자 포함 검색어 예: v&mj → V&MJ 매칭)
-      if (searchLocale === 'en_US') {
-        const searchVariations = generateSearchVariations(search);
-        const enUSConditions = searchVariations.map((variation) => ({
-          name: {
-            path: ['en_US'],
-            string_contains: variation,
-          },
-        }));
-        hospitalNameConditions.push(...enUSConditions);
-      } else {
-        hospitalNameConditions.push({
-          name: {
-            path: [searchLocale],
-            string_contains: search,
-          },
-        });
-      }
-
-      searchConditions.push({
-        OR: hospitalNameConditions,
-      });
-
-      // 시술부위에서 검색 (현재 locale에 해당하는 언어만)
-      const specialtyConditions: Prisma.MedicalSpecialtyWhereInput[] = [];
-
-      // 영어 검색어인 경우 원본과 첫 글자 대문자 버전 모두 검색
-      if (searchLocale === 'en_US' && isEnglishSearch) {
-        specialtyConditions.push(
-          {
-            name: {
-              path: ['en_US'],
-              string_contains: search,
-            },
-          },
-          {
-            name: {
-              path: ['en_US'],
-              string_contains: capitalizedSearch,
-            },
-          },
-        );
-      } else {
-        specialtyConditions.push({
-          name: {
-            path: [searchLocale],
-            string_contains: search,
-          },
-        });
-      }
-
-      searchConditions.push({
-        HospitalMedicalSpecialty: {
-          some: {
-            MedicalSpecialty: {
-              isActive: true,
-              OR: specialtyConditions,
-            },
-          },
-        },
-      });
+    // 검색 결과가 없으면 빈 응답 반환
+    if (meilisearchIds !== null && meilisearchIds.length === 0) {
+      return {
+        hospitals: [],
+        totalCount: 0,
+        currentPage: page,
+        totalPages: 0,
+        hasNextPage: false,
+      };
     }
 
     // 필터 조건 설정
@@ -186,8 +99,8 @@ export async function getHospitalsV2(
       },
       // 검색 조건과 카테고리 필터를 AND 조건으로 결합
       AND: [
-        // 검색 조건 (병원명 또는 시술부위)
-        ...(searchConditions.length > 0 ? [{ OR: searchConditions }] : []),
+        // Meilisearch 검색 결과 ID 필터
+        ...(meilisearchIds !== null ? [{ id: { in: meilisearchIds } }] : []),
         // 진료 부위 필터링
         ...(specialtyType
           ? [
