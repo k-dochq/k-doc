@@ -17,7 +17,8 @@
   },
   "search": {
     "placeholder": "Search hospitals, procedures",
-    "resultTitle": "results"
+    "resultTitle": "results",
+    "categoryTitle": "Find by Category"
   },
   "hospitalList": {
     "title": "Popular Hospitals",

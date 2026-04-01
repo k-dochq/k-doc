@@ -17,7 +17,8 @@
   },
   "search": {
     "placeholder": "Maghanap ng hospital at mga procedure",
-    "resultTitle": "Mga resulta ng paghahanap"
+    "resultTitle": "Mga resulta ng paghahanap",
+    "categoryTitle": "Maghanap ayon sa Kategorya"
   },
   "hospitalList": {
     "title": "Mga Sikat na Hospital",

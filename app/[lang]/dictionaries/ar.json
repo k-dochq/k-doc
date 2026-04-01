@@ -17,7 +17,8 @@
   },
   "search": {
     "placeholder": "ابحث عن المستشفيات ومناطق العلاج",
-    "resultTitle": "نتائج البحث"
+    "resultTitle": "نتائج البحث",
+    "categoryTitle": "البحث حسب الفئة"
   },
   "hospitalList": {
     "title": "المستشفى الأكثر زيارة",

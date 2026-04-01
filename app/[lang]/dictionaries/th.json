@@ -17,7 +17,8 @@
   },
   "search": {
     "placeholder": "ค้นหาโรงพยาบาล ขั้นตอนการรักษา",
-    "resultTitle": "ผลการค้นหา"
+    "resultTitle": "ผลการค้นหา",
+    "categoryTitle": "ค้นหาตามหมวดหมู่"
   },
   "hospitalList": {
     "title": "โรงพยาบาลยอดนิยม",

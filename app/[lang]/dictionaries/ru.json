@@ -17,7 +17,8 @@
   },
   "search": {
     "placeholder": "Поиск клиник и процедур",
-    "resultTitle": "Результаты поиска"
+    "resultTitle": "Результаты поиска",
+    "categoryTitle": "Найти по категории"
   },
   "hospitalList": {
     "title": "Популярные клиники",

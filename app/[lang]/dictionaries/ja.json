@@ -17,7 +17,8 @@
   },
   "search": {
     "placeholder": "病院、手術部位を検索してみてください",
-    "resultTitle": "検索結果"
+    "resultTitle": "検索結果",
+    "categoryTitle": "カテゴリーから探す"
   },
   "hospitalList": {
     "title": "たくさん探している病院",

@@ -34,3 +34,4 @@ export { ContactLineIcon } from './ContactLineIcon';
 export { ContactWhatsAppIcon } from './ContactWhatsAppIcon';
 export { ContactKIcon } from './ContactKIcon';
 export { ContactCloseIcon } from './ContactCloseIcon';
+export { SearchIcon } from './SearchIcon';
