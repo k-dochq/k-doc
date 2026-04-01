@@ -54,7 +54,7 @@ export function SearchGnbV2({ dict }: SearchGnbV2Props) {
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={dict.search?.placeholder}
-          className="flex-1 bg-transparent font-['Pretendard'] text-base font-semibold leading-6 text-[#404040] outline-none placeholder:text-[#a3a3a3]"
+          className="min-w-0 flex-1 bg-transparent font-['Pretendard'] text-base font-semibold leading-6 text-[#404040] outline-none placeholder:text-[#a3a3a3]"
         />
         {value.length > 0 ? (
           <button

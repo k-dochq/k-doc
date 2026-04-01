@@ -12,7 +12,7 @@ export default async function SearchV2Layout({ children, params }: SearchV2Layou
   const dict = await getDictionary(lang);
 
   return (
-    <div className='min-h-screen bg-white'>
+    <div className='min-h-screen overflow-x-clip bg-white'>
       <SearchGnbV2 dict={dict} />
       <main>{children}</main>
     </div>
