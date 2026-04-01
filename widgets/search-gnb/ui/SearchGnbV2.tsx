@@ -56,7 +56,7 @@ export function SearchGnbV2({ dict }: SearchGnbV2Props) {
           placeholder={dict.search?.placeholder}
           className="flex-1 bg-transparent font-['Pretendard'] text-base font-semibold leading-6 text-[#404040] outline-none placeholder:text-[#a3a3a3]"
         />
-        {value.length > 0 && (
+        {value.length > 0 ? (
           <button
             type='button'
             onClick={() => setValue('')}
@@ -66,10 +66,11 @@ export function SearchGnbV2({ dict }: SearchGnbV2Props) {
               <path d='M1 1L9 9M9 1L1 9' stroke='white' strokeWidth='1.5' strokeLinecap='round' />
             </svg>
           </button>
+        ) : (
+          <button type='button' onClick={handleSearch} className='flex shrink-0 items-center'>
+            <SearchIcon size={20} color='#F15BFF' />
+          </button>
         )}
-        <button type='button' onClick={handleSearch} className='flex shrink-0 items-center'>
-          <SearchIcon size={20} color='#F15BFF' />
-        </button>
       </div>
     </div>
   );
