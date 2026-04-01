@@ -29,7 +29,7 @@ export function SearchGnbV2({ dict }: SearchGnbV2Props) {
     const trimmed = value.trim();
     const params = new URLSearchParams();
     if (trimmed) params.set('q', trimmed);
-    localizedRouter.push(`/v2/search${params.size ? `?${params.toString()}` : ''}`);
+    localizedRouter.replace(`/v2/search${params.size ? `?${params.toString()}` : ''}`);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
