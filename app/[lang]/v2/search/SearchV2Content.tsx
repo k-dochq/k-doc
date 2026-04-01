@@ -18,6 +18,7 @@ import { useDistrictFilter } from 'features/district-filter/model/useDistrictFil
 import { openDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useSearchParams } from 'next/navigation';
+import { ProcedureFilterButton } from './ProcedureFilterButton';
 
 interface SearchV2ContentProps {
   lang: Locale;
@@ -165,23 +166,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                 </p>
               </button>
               <DistrictFilterButtonV2 lang={lang} dict={dict} districtFilter={districtFilter} />
-              <button className='flex items-center justify-center gap-[2px] rounded-lg border border-[#e5e5e5] bg-white px-2 py-[6px]'>
-                <svg
-                  width='18'
-                  height='18'
-                  viewBox='0 0 18 18'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M9 2L10.5 6.5H15L11.25 9.25L12.75 13.75L9 11L5.25 13.75L6.75 9.25L3 6.5H7.5L9 2Z'
-                    fill='#A855F7'
-                  />
-                </svg>
-                <p className="font-['Pretendard'] text-sm font-semibold leading-5 text-[#404040]">
-                  {dict.search?.filter?.procedure}
-                </p>
-              </button>
+              <ProcedureFilterButton dict={dict} />
             </div>
           </div>
           <HospitalsInfiniteListV2
@@ -202,7 +187,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       {currentTab === TAB_REVIEW && (
         <>
           <div className='w-full'>
-            <div className='flex items-center px-5 py-3'>
+            <div className='flex items-center gap-2 px-5 py-3'>
               <button
                 onClick={handleReviewSortClick}
                 className='flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'
@@ -218,6 +203,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                         : (dict.allReviews?.sort?.popular ?? '')}
                 </p>
               </button>
+              <ProcedureFilterButton dict={dict} />
             </div>
           </div>
           <SearchReviewsInfiniteListV2
