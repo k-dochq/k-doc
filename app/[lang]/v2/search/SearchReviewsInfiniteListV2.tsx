@@ -33,7 +33,7 @@ export function SearchReviewsInfiniteListV2({
 }: SearchReviewsInfiniteListV2Props) {
   const { user } = useAuth();
 
-  const queryParams = { query, limit: 10, categories };
+  const queryParams = { query, limit: 10, categories, sort };
 
   const toggleLikeMutation = useToggleReviewLike({ queryParams: { limit: 10, sort } });
   const toggleRecommendMutation = useToggleReviewRecommend({ queryParams: { limit: 10, sort } });
