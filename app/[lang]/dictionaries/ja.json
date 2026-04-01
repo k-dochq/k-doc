@@ -25,6 +25,10 @@
     },
     "filter": {
       "procedure": "施術"
+    },
+    "empty": {
+      "title": "検索結果がありません。",
+      "description": "別のキーワードで検索してみてください。"
     }
   },
   "hospitalList": {

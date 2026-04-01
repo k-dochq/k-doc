@@ -25,6 +25,10 @@
     },
     "filter": {
       "procedure": "Procedure"
+    },
+    "empty": {
+      "title": "No search results.",
+      "description": "Try searching with a different keyword."
     }
   },
   "hospitalList": {

@@ -25,6 +25,10 @@
     },
     "filter": {
       "procedure": "الإجراء"
+    },
+    "empty": {
+      "title": "لا توجد نتائج بحث.",
+      "description": "جرب البحث بكلمة رئيسية مختلفة."
     }
   },
   "hospitalList": {

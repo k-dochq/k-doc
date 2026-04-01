@@ -7,7 +7,7 @@ import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/r
 import { QUICK_MENU_CATEGORIES } from 'features/quick-menu/model/categories';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { LocaleLink } from 'shared/ui/locale-link';
-import { TabHeader } from 'shared/ui/tab-header/TabHeader';
+import { HospitalDetailTabsHeaderV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDetailTabsHeaderV2';
 import { FilterIconV2 } from 'shared/ui/icons';
 import { HospitalsInfiniteListV2 } from '../hospitals/HospitalsInfiniteListV2';
 import { SearchReviewsInfiniteListV2 } from './SearchReviewsInfiniteListV2';
@@ -141,17 +141,15 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
 
   return (
     <div>
-      <TabHeader
+      <HospitalDetailTabsHeaderV2
         tabs={tabs}
         activeTab={activeTabIndex}
         onTabClick={handleTabClick}
-        className='border-t border-neutral-100'
       />
 
       {currentTab === TAB_HOSPITAL && (
         <>
           <div className='w-full'>
-            <div className='h-[6px] w-full bg-neutral-100' />
             <div className='flex items-center gap-2 px-5 py-3'>
               <button
                 onClick={handleHospitalSortClick}
@@ -204,7 +202,6 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       {currentTab === TAB_REVIEW && (
         <>
           <div className='w-full'>
-            <div className='h-[6px] w-full bg-neutral-100' />
             <div className='flex items-center px-5 py-3'>
               <button
                 onClick={handleReviewSortClick}

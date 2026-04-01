@@ -25,6 +25,10 @@
     },
     "filter": {
       "procedure": "手術"
+    },
+    "empty": {
+      "title": "找不到搜尋結果。",
+      "description": "請嘗試使用其他關鍵字搜尋。"
     }
   },
   "hospitalList": {

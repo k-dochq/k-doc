@@ -25,6 +25,10 @@
     },
     "filter": {
       "procedure": "प्रक्रिया"
+    },
+    "empty": {
+      "title": "कोई खोज परिणाम नहीं मिला।",
+      "description": "किसी अन्य कीवर्ड से खोजें।"
     }
   },
   "hospitalList": {

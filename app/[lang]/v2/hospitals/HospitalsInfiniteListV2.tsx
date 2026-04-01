@@ -14,7 +14,7 @@ import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospital
 import { HospitalsSkeletonV2 } from './HospitalsSkeletonV2';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
-import { EmptyHospitalsState } from 'shared/ui/empty-state';
+import { EmptyHospitalsState, SearchEmptyState } from 'shared/ui/empty-state';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { openDrawer } from 'shared/lib/drawer';
 import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
@@ -135,7 +135,7 @@ export function HospitalsInfiniteListV2({
           </div>
         </div>
       ) : (
-        <EmptyHospitalsState dict={dict} />
+        searchParams.search ? <SearchEmptyState dict={dict} /> : <EmptyHospitalsState dict={dict} />
       )}
     </div>
   );

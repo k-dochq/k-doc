@@ -10,7 +10,7 @@ import { useToggleReviewLike } from 'entities/review/model/useToggleReviewLike';
 import { useToggleReviewRecommend } from 'entities/review/model/useToggleReviewRecommend';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
-import { EmptyReviewsState } from 'shared/ui/empty-state';
+import { SearchEmptyState } from 'shared/ui/empty-state';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { openDrawer } from 'shared/lib/drawer';
 import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
@@ -104,7 +104,7 @@ export function SearchReviewsInfiniteListV2({
           />
         </div>
       ) : (
-        <EmptyReviewsState dict={dict} />
+        <SearchEmptyState dict={dict} />
       )}
     </div>
   );

@@ -25,6 +25,10 @@
     },
     "filter": {
       "procedure": "Pamamaraan"
+    },
+    "empty": {
+      "title": "Walang resulta ng paghahanap.",
+      "description": "Subukan ang ibang keyword."
     }
   },
   "hospitalList": {

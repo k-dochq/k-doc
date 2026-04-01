@@ -25,6 +25,10 @@
     },
     "filter": {
       "procedure": "หัตถการ"
+    },
+    "empty": {
+      "title": "ไม่พบผลการค้นหา",
+      "description": "ลองค้นหาด้วยคำค้นหาอื่น"
     }
   },
   "hospitalList": {
