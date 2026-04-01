@@ -4,6 +4,7 @@ import { HeaderProfileV2 } from './HeaderProfileV2';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { SearchIcon } from 'shared/ui/icons';
 
 interface HeaderV2Props {
   currentLang: Locale;
@@ -21,6 +22,9 @@ export function HeaderV2({ currentLang, dict }: HeaderV2Props) {
           <HeaderLogoV2 />
         </LocaleLink>
         <div className='flex items-center gap-3'>
+          {/* <LocaleLink href='/v2/search' aria-label='search'>
+            <SearchIcon />
+          </LocaleLink> */}
           <HeaderLanguageSwitcherV2 currentLang={currentLang} />
           <HeaderProfileV2 lang={currentLang} dict={dict} />
         </div>

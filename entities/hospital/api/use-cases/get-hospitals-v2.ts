@@ -65,6 +65,7 @@ export async function getHospitalsV2(
       sortBy = DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
       sortOrder = DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
       specialtyType,
+      specialtyTypes,
       category,
       minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
       search,
@@ -101,7 +102,7 @@ export async function getHospitalsV2(
       AND: [
         // Meilisearch 검색 결과 ID 필터
         ...(meilisearchIds !== null ? [{ id: { in: meilisearchIds } }] : []),
-        // 진료 부위 필터링
+        // 진료 부위 필터링 (단일)
         ...(specialtyType
           ? [
               {
@@ -109,6 +110,21 @@ export async function getHospitalsV2(
                   some: {
                     MedicalSpecialty: {
                       specialtyType: specialtyType,
+                      isActive: true,
+                    },
+                  },
+                },
+              },
+            ]
+          : []),
+        // 진료 부위 복수 필터링
+        ...(specialtyTypes && specialtyTypes.length > 0
+          ? [
+              {
+                HospitalMedicalSpecialty: {
+                  some: {
+                    MedicalSpecialty: {
+                      specialtyType: { in: specialtyTypes },
                       isActive: true,
                     },
                   },

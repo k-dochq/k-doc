@@ -17,7 +17,26 @@
   },
   "search": {
     "placeholder": "Поиск клиник и процедур",
-    "resultTitle": "Результаты поиска"
+    "resultTitle": "Результаты поиска",
+    "categoryTitle": "Найти по категории",
+    "tabs": {
+      "hospital": "Больницы",
+      "review": "Отзывы"
+    },
+    "filter": {
+      "procedure": "Процедура"
+    },
+    "empty": {
+      "title": "Результаты не найдены.",
+      "description": "Попробуйте другое ключевое слово."
+    },
+    "drawer": {
+      "procedure": {
+        "title": "Процедура",
+        "reset": "Сброс",
+        "confirm": "Готово"
+      }
+    }
   },
   "hospitalList": {
     "title": "Популярные клиники",
