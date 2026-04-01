@@ -46,7 +46,7 @@ export function ProcedureFilterDrawer({
   return (
     <div className='flex w-full flex-col bg-white'>
       {/* 헤더 */}
-      <div className='flex items-center justify-between px-5 py-4'>
+      <div className='flex items-center justify-between px-5 pb-3'>
         <p className="font-['Pretendard'] text-lg font-bold leading-7 text-[#404040]">
           {dict.search?.drawer?.procedure?.title}
         </p>
