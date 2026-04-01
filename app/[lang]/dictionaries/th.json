@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "ค้นหาโรงพยาบาล ขั้นตอนการรักษา",
     "resultTitle": "ผลการค้นหา",
-    "categoryTitle": "ค้นหาตามหมวดหมู่"
+    "categoryTitle": "ค้นหาตามหมวดหมู่",
+    "tabs": {
+      "hospital": "โรงพยาบาล",
+      "review": "รีวิว"
+    },
+    "filter": {
+      "procedure": "หัตถการ"
+    }
   },
   "hospitalList": {
     "title": "โรงพยาบาลยอดนิยม",

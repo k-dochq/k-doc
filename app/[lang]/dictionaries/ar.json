@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "ابحث عن المستشفيات ومناطق العلاج",
     "resultTitle": "نتائج البحث",
-    "categoryTitle": "البحث حسب الفئة"
+    "categoryTitle": "البحث حسب الفئة",
+    "tabs": {
+      "hospital": "المستشفيات",
+      "review": "التقييمات"
+    },
+    "filter": {
+      "procedure": "الإجراء"
+    }
   },
   "hospitalList": {
     "title": "المستشفى الأكثر زيارة",

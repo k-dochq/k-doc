@@ -4,7 +4,7 @@ import { SearchV2Content } from './SearchV2Content';
 
 interface SearchV2PageProps {
   params: Promise<{ lang: Locale }>;
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; tab?: string; sort?: string }>;
 }
 
 export default async function SearchV2Page({ params, searchParams }: SearchV2PageProps) {

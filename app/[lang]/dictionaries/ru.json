@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "Поиск клиник и процедур",
     "resultTitle": "Результаты поиска",
-    "categoryTitle": "Найти по категории"
+    "categoryTitle": "Найти по категории",
+    "tabs": {
+      "hospital": "Больницы",
+      "review": "Отзывы"
+    },
+    "filter": {
+      "procedure": "Процедура"
+    }
   },
   "hospitalList": {
     "title": "Популярные клиники",

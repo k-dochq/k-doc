@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "अस्पतालों और उपचार क्षेत्रों की खोज करें",
     "resultTitle": "खोज के परिणाम",
-    "categoryTitle": "श्रेणी के अनुसार खोजें"
+    "categoryTitle": "श्रेणी के अनुसार खोजें",
+    "tabs": {
+      "hospital": "अस्पताल",
+      "review": "समीक्षाएं"
+    },
+    "filter": {
+      "procedure": "प्रक्रिया"
+    }
   },
   "hospitalList": {
     "title": "सबसे अधिक दौरा किया जाने वाला अस्पताल",

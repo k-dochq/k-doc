@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "병원, 시술 부위를 검색해보세요",
     "resultTitle": "검색결과",
-    "categoryTitle": "카테고리로 찾기"
+    "categoryTitle": "카테고리로 찾기",
+    "tabs": {
+      "hospital": "병원",
+      "review": "시술후기"
+    },
+    "filter": {
+      "procedure": "시술"
+    }
   },
   "hospitalList": {
     "title": "많이 찾는 병원",

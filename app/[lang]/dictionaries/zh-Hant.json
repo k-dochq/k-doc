@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "搜尋醫院和治療區域",
     "resultTitle": "搜尋結果",
-    "categoryTitle": "按類別搜尋"
+    "categoryTitle": "按類別搜尋",
+    "tabs": {
+      "hospital": "醫院",
+      "review": "評價"
+    },
+    "filter": {
+      "procedure": "手術"
+    }
   },
   "hospitalList": {
     "title": "就診次數最多的醫院",

@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "Maghanap ng hospital at mga procedure",
     "resultTitle": "Mga resulta ng paghahanap",
-    "categoryTitle": "Maghanap ayon sa Kategorya"
+    "categoryTitle": "Maghanap ayon sa Kategorya",
+    "tabs": {
+      "hospital": "Mga Ospital",
+      "review": "Mga Review"
+    },
+    "filter": {
+      "procedure": "Pamamaraan"
+    }
   },
   "hospitalList": {
     "title": "Mga Sikat na Hospital",

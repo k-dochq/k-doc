@@ -18,7 +18,14 @@
   "search": {
     "placeholder": "Search hospitals, procedures",
     "resultTitle": "results",
-    "categoryTitle": "Find by Category"
+    "categoryTitle": "Find by Category",
+    "tabs": {
+      "hospital": "Hospitals",
+      "review": "Reviews"
+    },
+    "filter": {
+      "procedure": "Procedure"
+    }
   },
   "hospitalList": {
     "title": "Popular Hospitals",
