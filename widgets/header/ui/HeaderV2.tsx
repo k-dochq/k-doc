@@ -22,9 +22,9 @@ export function HeaderV2({ currentLang, dict }: HeaderV2Props) {
           <HeaderLogoV2 />
         </LocaleLink>
         <div className='flex items-center gap-3'>
-          <LocaleLink href='/v2/search' aria-label='search'>
+          {/* <LocaleLink href='/v2/search' aria-label='search'>
             <SearchIcon />
-          </LocaleLink>
+          </LocaleLink> */}
           <HeaderLanguageSwitcherV2 currentLang={currentLang} />
           <HeaderProfileV2 lang={currentLang} dict={dict} />
         </div>
