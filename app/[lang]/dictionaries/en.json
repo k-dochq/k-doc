@@ -29,6 +29,13 @@
     "empty": {
       "title": "No search results.",
       "description": "Try searching with a different keyword."
+    },
+    "drawer": {
+      "procedure": {
+        "title": "Procedure",
+        "reset": "Reset",
+        "confirm": "Done"
+      }
     }
   },
   "hospitalList": {

@@ -29,6 +29,13 @@
     "empty": {
       "title": "Результаты не найдены.",
       "description": "Попробуйте другое ключевое слово."
+    },
+    "drawer": {
+      "procedure": {
+        "title": "Процедура",
+        "reset": "Сброс",
+        "confirm": "Готово"
+      }
     }
   },
   "hospitalList": {

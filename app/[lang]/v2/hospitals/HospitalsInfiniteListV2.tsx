@@ -1,5 +1,6 @@
 'use client';
 
+import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import {
   type Dictionary,
@@ -27,6 +28,7 @@ interface HospitalsInfiniteListV2Props {
     sort?: HospitalSortOption;
     search?: string;
     districtIds?: string[];
+    categories?: MedicalSpecialtyType[];
   };
 }
 
@@ -35,7 +37,7 @@ export function HospitalsInfiniteListV2({
   dict,
   searchParams,
 }: HospitalsInfiniteListV2Props) {
-  const { category, sort, search, districtIds } = searchParams;
+  const { category, sort, search, districtIds, categories } = searchParams;
   const { user } = useAuth();
 
   // 타입 안전한 파라미터 구성
@@ -44,6 +46,7 @@ export function HospitalsInfiniteListV2({
     sortBy: sort || HOSPITAL_SORT_OPTIONS.POPULAR,
     sortOrder: 'desc' as const,
     category,
+    categories,
     search,
     districtIds,
     lang,

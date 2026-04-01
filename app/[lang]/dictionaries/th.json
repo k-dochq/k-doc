@@ -29,6 +29,13 @@
     "empty": {
       "title": "ไม่พบผลการค้นหา",
       "description": "ลองค้นหาด้วยคำค้นหาอื่น"
+    },
+    "drawer": {
+      "procedure": {
+        "title": "หัตถการ",
+        "reset": "รีเซ็ต",
+        "confirm": "เสร็จสิ้น"
+      }
     }
   },
   "hospitalList": {

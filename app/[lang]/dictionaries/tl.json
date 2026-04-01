@@ -29,6 +29,13 @@
     "empty": {
       "title": "Walang resulta ng paghahanap.",
       "description": "Subukan ang ibang keyword."
+    },
+    "drawer": {
+      "procedure": {
+        "title": "Pamamaraan",
+        "reset": "I-reset",
+        "confirm": "Tapos na"
+      }
     }
   },
   "hospitalList": {

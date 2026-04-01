@@ -1,4 +1,5 @@
 import { prisma } from 'shared/lib/prisma';
+import { type MedicalSpecialtyType } from '@prisma/client';
 import { searchReviewIds } from 'shared/lib/meilisearch';
 import { REVIEW_LIST_INCLUDE } from '../infrastructure/review-list-include';
 import { transformReviewToCardData } from '../infrastructure/services/review-transform-service';
@@ -8,12 +9,14 @@ interface GetReviewsBySearchParams {
   query: string;
   page?: number;
   limit?: number;
+  categories?: MedicalSpecialtyType[];
 }
 
 export async function getReviewsBySearch({
   query,
   page = 1,
   limit = 10,
+  categories,
 }: GetReviewsBySearchParams): Promise<GetAllReviewsResponse> {
   const offset = (page - 1) * limit;
 
@@ -26,6 +29,9 @@ export async function getReviewsBySearch({
   const where = {
     id: { in: meilisearchIds },
     isActive: true,
+    ...(categories && categories.length > 0
+      ? { MedicalSpecialty: { specialtyType: { in: categories } } }
+      : {}),
   };
 
   const totalCount = await prisma.review.count({ where });

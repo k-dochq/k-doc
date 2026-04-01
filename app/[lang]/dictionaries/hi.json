@@ -29,6 +29,13 @@
     "empty": {
       "title": "कोई खोज परिणाम नहीं मिला।",
       "description": "किसी अन्य कीवर्ड से खोजें।"
+    },
+    "drawer": {
+      "procedure": {
+        "title": "प्रक्रिया",
+        "reset": "रीसेट",
+        "confirm": "पूर्ण"
+      }
     }
   },
   "hospitalList": {

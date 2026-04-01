@@ -29,6 +29,13 @@
     "empty": {
       "title": "找不到搜尋結果。",
       "description": "請嘗試使用其他關鍵字搜尋。"
+    },
+    "drawer": {
+      "procedure": {
+        "title": "手術",
+        "reset": "重設",
+        "confirm": "完成"
+      }
     }
   },
   "hospitalList": {

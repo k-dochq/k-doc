@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
@@ -19,6 +21,7 @@ import { openDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useSearchParams } from 'next/navigation';
 import { ProcedureFilterButton } from './ProcedureFilterButton';
+
 
 interface SearchV2ContentProps {
   lang: Locale;
@@ -52,6 +55,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
   const router = useLocalizedRouter();
   const urlSearchParams = useSearchParams();
   const districtFilter = useDistrictFilter();
+  const [selectedCategories, setSelectedCategories] = useState<MedicalSpecialtyType[]>([]);
 
   const tabs = [
     { id: 0, label: dict.search?.tabs?.hospital ?? '' },
@@ -166,7 +170,12 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                 </p>
               </button>
               <DistrictFilterButtonV2 lang={lang} dict={dict} districtFilter={districtFilter} />
-              <ProcedureFilterButton dict={dict} />
+              <ProcedureFilterButton
+                lang={lang}
+                dict={dict}
+                selectedCategories={selectedCategories}
+                onApply={setSelectedCategories}
+              />
             </div>
           </div>
           <HospitalsInfiniteListV2
@@ -179,6 +188,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                 districtFilter.selectedDistrictIds.length > 0
                   ? districtFilter.selectedDistrictIds
                   : undefined,
+              categories: selectedCategories.length > 0 ? selectedCategories : undefined,
             }}
           />
         </>
@@ -203,7 +213,12 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                         : (dict.allReviews?.sort?.popular ?? '')}
                 </p>
               </button>
-              <ProcedureFilterButton dict={dict} />
+              <ProcedureFilterButton
+                lang={lang}
+                dict={dict}
+                selectedCategories={selectedCategories}
+                onApply={setSelectedCategories}
+              />
             </div>
           </div>
           <SearchReviewsInfiniteListV2
@@ -211,6 +226,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
             dict={dict}
             query={q}
             sort={currentReviewSort}
+            categories={selectedCategories.length > 0 ? selectedCategories : undefined}
           />
         </>
       )}

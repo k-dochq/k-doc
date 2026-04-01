@@ -1,5 +1,6 @@
 'use client';
 
+import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
@@ -20,6 +21,7 @@ interface SearchReviewsInfiniteListV2Props {
   dict: Dictionary;
   query: string;
   sort?: ReviewSortOption;
+  categories?: MedicalSpecialtyType[];
 }
 
 export function SearchReviewsInfiniteListV2({
@@ -27,10 +29,11 @@ export function SearchReviewsInfiniteListV2({
   dict,
   query,
   sort = REVIEW_SORT_OPTIONS.POPULAR,
+  categories,
 }: SearchReviewsInfiniteListV2Props) {
   const { user } = useAuth();
 
-  const queryParams = { query, limit: 10 };
+  const queryParams = { query, limit: 10, categories };
 
   const toggleLikeMutation = useToggleReviewLike({ queryParams: { limit: 10, sort } });
   const toggleRecommendMutation = useToggleReviewRecommend({ queryParams: { limit: 10, sort } });

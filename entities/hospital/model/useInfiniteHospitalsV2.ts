@@ -19,6 +19,7 @@ interface UseInfiniteHospitalsV2Params extends Record<string, unknown> {
   sortBy?: HospitalSortOption;
   sortOrder?: SortOrderOption;
   category?: HospitalCategoryType;
+  categories?: MedicalSpecialtyType[];
   search?: string;
   districtIds?: string[];
   lang?: Locale;
@@ -36,6 +37,7 @@ async function fetchHospitalsV2({
   sortBy = DEFAULT_HOSPITAL_QUERY_PARAMS.sort,
   sortOrder = DEFAULT_HOSPITAL_QUERY_PARAMS.sortOrder,
   category,
+  categories,
   search,
   districtIds,
   lang,
@@ -55,7 +57,10 @@ async function fetchHospitalsV2({
   };
 
   const queryString = buildHospitalQueryString(queryParams);
-  const url = `/api/hospitals/v2${queryString ? `?${queryString}` : ''}`;
+  const categoriesStr = categories && categories.length > 0 ? categories.join(',') : '';
+  const categoriesQuery = categoriesStr ? `categories=${categoriesStr}` : '';
+  const separator = queryString ? '&' : '';
+  const url = `/api/hospitals/v2${queryString || categoriesQuery ? `?${queryString}${separator}${categoriesQuery}` : ''}`;
 
   const response = await fetch(url, {
     // Next.js 캐싱: 5분간 캐시, 그 후 재검증

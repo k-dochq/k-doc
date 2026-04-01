@@ -114,6 +114,7 @@ export interface GetHospitalsRequestV2 {
   sortBy?: HospitalSortOption;
   sortOrder?: SortOrderOption;
   specialtyType?: MedicalSpecialtyType;
+  specialtyTypes?: MedicalSpecialtyType[];
   category?: 'RECOMMEND' | MedicalSpecialtyType;
   minRating?: number;
   search?: string;

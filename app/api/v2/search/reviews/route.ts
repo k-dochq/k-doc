@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { type MedicalSpecialtyType } from '@prisma/client';
 import { getReviewsBySearch } from 'entities/review/api/use-cases/get-reviews-by-search';
 
 export async function GET(request: NextRequest) {
@@ -6,6 +7,10 @@ export async function GET(request: NextRequest) {
   const q = searchParams.get('q')?.trim() ?? '';
   const page = Math.max(1, parseInt(searchParams.get('page') ?? '1', 10));
   const limit = Math.min(20, Math.max(1, parseInt(searchParams.get('limit') ?? '10', 10)));
+  const categoriesParam = searchParams.get('categories');
+  const categories = categoriesParam
+    ? (categoriesParam.split(',').filter(Boolean) as MedicalSpecialtyType[])
+    : undefined;
 
   if (!q) {
     return NextResponse.json({
@@ -15,7 +20,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const data = await getReviewsBySearch({ query: q, page, limit });
+    const data = await getReviewsBySearch({ query: q, page, limit, categories });
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error('[v2/search/reviews] Error:', error);

@@ -29,6 +29,13 @@
     "empty": {
       "title": "検索結果がありません。",
       "description": "別のキーワードで検索してみてください。"
+    },
+    "drawer": {
+      "procedure": {
+        "title": "施術",
+        "reset": "リセット",
+        "confirm": "完了"
+      }
     }
   },
   "hospitalList": {

@@ -29,6 +29,13 @@
     "empty": {
       "title": "검색 결과가 없습니다.",
       "description": "다른 키워드로 검색해 보세요."
+    },
+    "drawer": {
+      "procedure": {
+        "title": "시술",
+        "reset": "초기화",
+        "confirm": "완료"
+      }
     }
   },
   "hospitalList": {
