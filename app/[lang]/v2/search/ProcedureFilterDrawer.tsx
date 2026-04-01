@@ -98,7 +98,7 @@ export function ProcedureFilterDrawer({
                     isLeft ? 'px-5' : 'pl-2 pr-5'
                   } ${isSelected ? 'bg-[#feefff]' : 'bg-white'}`}
                 >
-                  <div className='flex size-[48px] shrink-0 items-center justify-center rounded-2xl border border-[#f0b5f9] bg-white'>
+                  <div className='flex size-[48px] shrink-0 items-center justify-center'>
                     {category.icon()}
                   </div>
                   <p className="flex-1 min-w-0 text-left font-['Pretendard'] text-[13px] font-normal leading-[19px] text-[#404040]">
