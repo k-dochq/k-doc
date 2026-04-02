@@ -56,7 +56,7 @@ export function RecentSearchesSection({ dict }: RecentSearchesSectionProps) {
           }}
           className='w-full'
         >
-          <CarouselContent className='py-0'>
+          <CarouselContent className='gap-2 py-0'>
             {searches.map((term, index) => (
               <CarouselItem
                 key={term}
