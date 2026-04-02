@@ -68,6 +68,8 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
     const params = new URLSearchParams(urlSearchParams?.toString() || '');
     params.set('tab', index === 1 ? TAB_REVIEW : TAB_HOSPITAL);
     params.delete('sort');
+    setSelectedCategories([]);
+    districtFilter.resetDistrictFilter();
     router.replace(`/v2/search?${params.toString()}`);
   };
 
