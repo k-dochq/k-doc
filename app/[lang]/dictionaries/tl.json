@@ -36,6 +36,10 @@
         "reset": "I-reset",
         "confirm": "Tapos na"
       }
+    },
+    "recentSearches": {
+      "title": "Mga Kamakailang Paghahanap",
+      "clearAll": "I-clear Lahat"
     }
   },
   "hospitalList": {

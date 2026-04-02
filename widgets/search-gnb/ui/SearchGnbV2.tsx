@@ -9,7 +9,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
 import { useSearchBarV2 } from 'shared/ui/search-bar/model/useSearchBarV2';
 import { useConcernSuggestions } from 'entities/review/api/queries/use-concern-suggestions';
-import { useRecentSearches } from '../model/useRecentSearches';
+import { useRecentSearches } from 'shared/model/hooks';
 import { SearchGnbDropdown } from './SearchGnbDropdown';
 
 interface SearchGnbV2Props {

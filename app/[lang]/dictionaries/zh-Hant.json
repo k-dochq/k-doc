@@ -36,6 +36,10 @@
         "reset": "重設",
         "confirm": "完成"
       }
+    },
+    "recentSearches": {
+      "title": "最近搜尋",
+      "clearAll": "全部清除"
     }
   },
   "hospitalList": {
