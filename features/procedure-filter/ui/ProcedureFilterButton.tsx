@@ -27,7 +27,7 @@ export function ProcedureFilterButton({
     <Drawer open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger asChild>
         <button
-          className={`flex items-center justify-center gap-[2px] rounded-lg border px-2 py-[6px] ${
+          className={`flex shrink-0 items-center justify-center gap-[2px] rounded-lg border px-2 py-[6px] ${
             hasSelected ? 'border-[#f58cff] bg-[#feefff]' : 'border-[#e5e5e5] bg-white'
           }`}
         >

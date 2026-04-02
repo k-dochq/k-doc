@@ -50,7 +50,7 @@ export function DistrictFilterButtonV2({
   if (isLoading || error || parentDistricts.length === 0) {
     return (
       <button
-        className='flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5 opacity-50'
+        className='flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5 opacity-50'
         disabled
       >
         <MapIconV2 className='h-[18px] w-[18px] shrink-0' />
@@ -61,8 +61,8 @@ export function DistrictFilterButtonV2({
 
   // 지역이 선택되었을 때 Figma 디자인에 맞는 스타일 적용
   const buttonClassName = hasSelectedDistricts
-    ? 'flex items-center justify-center gap-0.5 rounded-lg border border-[#f58cff] bg-[#feefff] px-2 py-1.5'
-    : 'flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5';
+    ? 'flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-[#f58cff] bg-[#feefff] px-2 py-1.5'
+    : 'flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5';
 
   const textClassName = hasSelectedDistricts
     ? 'text-sm leading-5 font-semibold text-primary-900'

@@ -164,10 +164,13 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       {currentTab === TAB_HOSPITAL && (
         <>
           <div className='w-full'>
-            <div className='flex flex-wrap items-center gap-2 px-5 py-3'>
+            <div
+              className='scrollbar-hide flex items-center gap-2 overflow-x-auto overflow-y-hidden px-5 py-3'
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
+            >
               <button
                 onClick={handleHospitalSortClick}
-                className='flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'
+                className='flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'
               >
                 <FilterIconV2 className='h-[18px] w-[18px] shrink-0' />
                 <p className='text-sm leading-5 font-semibold text-neutral-700'>
@@ -206,10 +209,13 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       {currentTab === TAB_REVIEW && (
         <>
           <div className='w-full'>
-            <div className='flex flex-wrap items-center gap-2 px-5 py-3'>
+            <div
+              className='scrollbar-hide flex items-center gap-2 overflow-x-auto overflow-y-hidden px-5 py-3'
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
+            >
               <button
                 onClick={handleReviewSortClick}
-                className='flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'
+                className='flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'
               >
                 <FilterIconV2 className='h-[18px] w-[18px] shrink-0' />
                 <p className='text-sm leading-5 font-semibold text-neutral-700'>
