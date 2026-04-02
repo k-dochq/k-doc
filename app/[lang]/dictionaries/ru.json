@@ -36,6 +36,10 @@
         "reset": "Сброс",
         "confirm": "Готово"
       }
+    },
+    "recentSearches": {
+      "title": "Недавние поиски",
+      "clearAll": "Очистить все"
     }
   },
   "hospitalList": {

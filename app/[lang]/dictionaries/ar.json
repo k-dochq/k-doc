@@ -36,6 +36,10 @@
         "reset": "إعادة ضبط",
         "confirm": "تم"
       }
+    },
+    "recentSearches": {
+      "title": "عمليات البحث الأخيرة",
+      "clearAll": "مسح الكل"
     }
   },
   "hospitalList": {

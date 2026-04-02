@@ -36,6 +36,10 @@
         "reset": "रीसेट",
         "confirm": "पूर्ण"
       }
+    },
+    "recentSearches": {
+      "title": "हाल की खोजें",
+      "clearAll": "सभी हटाएं"
     }
   },
   "hospitalList": {

@@ -21,6 +21,7 @@ import { openDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useSearchParams } from 'next/navigation';
 import { ProcedureFilterButton } from 'features/procedure-filter';
+import { RecentSearchesSection } from './RecentSearchesSection';
 
 
 interface SearchV2ContentProps {
@@ -113,8 +114,9 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
 
   if (!q) {
     return (
-      <div className='p-5'>
-        <div className='flex flex-col gap-4'>
+      <div className='pb-5'>
+        <RecentSearchesSection dict={dict} />
+        <div className='flex flex-col gap-4 p-5'>
           <p className="font-['Pretendard'] text-base font-semibold leading-6 text-[#404040]">
             {dict.search?.categoryTitle}
           </p>

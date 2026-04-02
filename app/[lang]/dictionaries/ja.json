@@ -36,6 +36,10 @@
         "reset": "リセット",
         "confirm": "完了"
       }
+    },
+    "recentSearches": {
+      "title": "最近の検索",
+      "clearAll": "すべて削除"
     }
   },
   "hospitalList": {

@@ -36,6 +36,10 @@
         "reset": "รีเซ็ต",
         "confirm": "เสร็จสิ้น"
       }
+    },
+    "recentSearches": {
+      "title": "การค้นหาล่าสุด",
+      "clearAll": "ล้างทั้งหมด"
     }
   },
   "hospitalList": {
