@@ -53,7 +53,16 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
   const suggestions = [
     ...hospitalSuggestions,
     ...concernSuggestions.filter((c) => !hospitalSuggestions.includes(c)),
-  ].slice(0, 8);
+  ]
+    .sort((a, b) => {
+      const q = debouncedQuery.toLowerCase();
+      const aIdx = a.toLowerCase().indexOf(q);
+      const bIdx = b.toLowerCase().indexOf(q);
+      const aMatch = aIdx === -1 ? 0 : q.length / a.length;
+      const bMatch = bIdx === -1 ? 0 : q.length / b.length;
+      return bMatch - aMatch;
+    })
+    .slice(0, 8);
 
   const filteredRecentSearches = value.trim()
     ? searches.filter((s) => s.toLowerCase().includes(value.toLowerCase().trim())).slice(0, 3)
