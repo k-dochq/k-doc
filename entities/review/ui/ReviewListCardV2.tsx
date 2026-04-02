@@ -104,7 +104,6 @@ export function ReviewListCardV2({
           isExpanded={isExpanded}
           forceContentExpanded={forceContentExpanded}
           shouldShowMore={shouldShowMore}
-          onToggleExpand={() => setIsExpanded((prev) => !prev)}
           disableLink={disableLink}
           textRef={textRef}
         />

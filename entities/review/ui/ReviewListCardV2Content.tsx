@@ -15,7 +15,6 @@ interface ReviewListCardV2ContentProps {
   isExpanded: boolean;
   forceContentExpanded: boolean;
   shouldShowMore: boolean;
-  onToggleExpand: () => void;
   disableLink: boolean;
   textRef: RefObject<HTMLDivElement | null>;
 }
@@ -28,7 +27,6 @@ export function ReviewListCardV2Content({
   isExpanded,
   forceContentExpanded,
   shouldShowMore,
-  onToggleExpand,
   disableLink,
   textRef,
 }: ReviewListCardV2ContentProps) {
