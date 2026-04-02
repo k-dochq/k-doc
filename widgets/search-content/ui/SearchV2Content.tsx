@@ -157,7 +157,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       {currentTab === TAB_HOSPITAL && (
         <>
           <div className='w-full'>
-            <div className='flex items-center gap-2 px-5 py-3'>
+            <div className='flex flex-wrap items-center gap-2 px-5 py-3'>
               <button
                 onClick={handleHospitalSortClick}
                 className='flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'
@@ -199,7 +199,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       {currentTab === TAB_REVIEW && (
         <>
           <div className='w-full'>
-            <div className='flex items-center gap-2 px-5 py-3'>
+            <div className='flex flex-wrap items-center gap-2 px-5 py-3'>
               <button
                 onClick={handleReviewSortClick}
                 className='flex items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5'
