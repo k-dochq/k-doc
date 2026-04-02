@@ -8,7 +8,6 @@ import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/typ
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
 import { QUICK_MENU_CATEGORIES } from 'features/quick-menu/model/categories';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
-import { LocaleLink } from 'shared/ui/locale-link';
 import { HospitalDetailTabsHeaderV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDetailTabsHeaderV2';
 import { FilterIconV2 } from 'shared/ui/icons';
 import { HospitalsInfiniteListV2 } from 'features/hospital-search';
@@ -22,6 +21,7 @@ import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useSearchParams } from 'next/navigation';
 import { ProcedureFilterButton } from 'features/procedure-filter';
 import { RecentSearchesSection } from './RecentSearchesSection';
+import { useRecentSearches } from 'shared/model/hooks';
 
 
 interface SearchV2ContentProps {
@@ -57,6 +57,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
   const urlSearchParams = useSearchParams();
   const districtFilter = useDistrictFilter();
   const [selectedCategories, setSelectedCategories] = useState<MedicalSpecialtyType[]>([]);
+  const { addSearch } = useRecentSearches();
 
   const tabs = [
     { id: 0, label: dict.search?.tabs?.hospital ?? '' },
@@ -126,9 +127,13 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                 {QUICK_MENU_CATEGORIES.slice(rowIndex * 4, rowIndex * 4 + 4).map((category) => {
                   const label = getLocalizedTextByLocale(category.labels, lang);
                   return (
-                    <LocaleLink
+                    <button
                       key={category.type}
-                      href={`/v2/search?q=${encodeURIComponent(label)}`}
+                      type='button'
+                      onClick={() => {
+                        addSearch(label);
+                        router.push(`/v2/search?q=${encodeURIComponent(label)}`);
+                      }}
                       className='flex w-[60px] flex-col items-center gap-1'
                     >
                       <div className='flex size-[60px] items-center justify-center rounded-2xl border border-[#f8adff] bg-white'>
@@ -137,7 +142,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                       <p className="w-full text-center font-['Pretendard'] text-xs font-medium leading-4 text-[#404040]">
                         {label}
                       </p>
-                    </LocaleLink>
+                    </button>
                   );
                 })}
               </div>
@@ -210,11 +215,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                 <p className='text-sm leading-5 font-semibold text-neutral-700'>
                   {currentReviewSort === REVIEW_SORT_OPTIONS.RECOMMENDED
                     ? (dict.allReviews?.sort?.recommended ?? '')
-                    : currentReviewSort === REVIEW_SORT_OPTIONS.RATING_HIGH
-                      ? (dict.allReviews?.sort?.ratingHigh ?? '')
-                      : currentReviewSort === REVIEW_SORT_OPTIONS.RATING_LOW
-                        ? (dict.allReviews?.sort?.ratingLow ?? '')
-                        : (dict.allReviews?.sort?.popular ?? '')}
+                    : (dict.allReviews?.sort?.popular ?? '')}
                 </p>
               </button>
               <ProcedureFilterButton

@@ -832,6 +832,39 @@ model ReviewMedicalSpecialty {
   @@schema("public")
 }
 
+model InfluencerVideo {
+  id           String                  @id @db.Uuid
+  platform     InfluencerVideoPlatform @default(INSTAGRAM)
+  handle       String                  @db.VarChar(100)
+  videoUrl     String                  @db.VarChar(500)
+  externalLink String                  @db.VarChar(500)
+  title        Json
+  order        Int?
+  isActive     Boolean                 @default(true)
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime
+  createdBy    String?                 @db.Uuid
+  updatedBy    String?                 @db.Uuid
+
+  @@index([createdAt])
+  @@index([isActive])
+  @@index([order])
+  @@schema("public")
+}
+
+model InfluencerVideoSection {
+  id          String   @id @db.Uuid
+  buttonLabel Json
+  buttonUrl   Json
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  createdBy   String?  @db.Uuid
+  updatedBy   String?  @db.Uuid
+
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -1055,6 +1088,14 @@ enum TaskStatus {
   PENDING
   IN_PROGRESS
   COMPLETED
+
+  @@schema("public")
+}
+
+enum InfluencerVideoPlatform {
+  INSTAGRAM
+  YOUTUBE
+  TIKTOK
 
   @@schema("public")
 }
