@@ -46,7 +46,7 @@ export function SearchGnbV2({ dict }: SearchGnbV2Props) {
       >
         <ChevronRightIcon size={24} color='#404040' className='rotate-180' />
       </button>
-      <div className='flex flex-1 items-center gap-[6px] rounded-full border border-[#e5e5e5] bg-[#f1f1f1] px-4 py-2'>
+      <div className='flex min-w-0 flex-1 items-center gap-[6px] rounded-full border border-[#e5e5e5] bg-[#f1f1f1] px-4 py-2'>
         <input
           ref={inputRef}
           type='text'
