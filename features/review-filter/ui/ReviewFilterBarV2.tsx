@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, usePathname } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
@@ -18,6 +18,7 @@ interface ReviewFilterBarV2Props {
 export function ReviewFilterBarV2({ lang, dict, currentSort }: ReviewFilterBarV2Props) {
   const router = useLocalizedRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   // 현재 정렬 상태에 따른 버튼 텍스트
   const getSortLabel = (): string => {
@@ -48,7 +49,8 @@ export function ReviewFilterBarV2({ lang, dict, currentSort }: ReviewFilterBarV2
             // URL 업데이트 (기존 파라미터 유지)
             const params = new URLSearchParams(searchParams?.toString() || '');
             params.set('sort', sort);
-            router.replace(`/v2/reviews?${params.toString()}`);
+            const basePath = pathname?.replace(/^\/[^/]+/, '') || '/reviews';
+            router.replace(`${basePath}?${params.toString()}`);
           }}
         />
       ),
