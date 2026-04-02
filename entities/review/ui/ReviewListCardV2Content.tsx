@@ -49,16 +49,13 @@ export function ReviewListCardV2Content({
             {content}
           </div>
           {!forceContentExpanded && shouldShowMore && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                onToggleExpand();
-              }}
+            <LocaleLink
+              href={`/review/${review.id}`}
+              locale={lang}
               className='inline-flex items-center text-xs leading-4 font-medium text-neutral-400 transition-colors hover:text-neutral-500'
             >
-              {isExpanded ? dict.review.showLess : dict.review.showMore}
-            </button>
+              {dict.review.showMore}
+            </LocaleLink>
           )}
         </div>
       )}
