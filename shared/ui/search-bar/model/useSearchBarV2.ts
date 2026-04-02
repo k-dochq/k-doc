@@ -93,6 +93,7 @@ export function useSearchBarV2({ lang, initialValue, onSearch, searchPath }: Use
 
   return {
     searchTerm,
+    setSearchTerm,
     debouncedQuery,
     showSuggestions,
     suggestions,

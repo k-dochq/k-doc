@@ -15,7 +15,7 @@ export default async function SearchV2Page({ params, searchParams }: SearchV2Pag
 
   return (
     <>
-      <SearchGnbV2 dict={dict} />
+      <SearchGnbV2 lang={lang} dict={dict} />
       <SearchV2Content lang={lang} dict={dict} searchParams={resolvedSearchParams} />
     </>
   );

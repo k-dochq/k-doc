@@ -53,6 +53,8 @@ export const queryKeys = {
   // 리뷰 관련 쿼리
   reviews: {
     all: ['reviews'] as const,
+    suggestions: (query: string, lang: string) =>
+      ['reviews', 'suggestions', query, lang] as const,
     lists: () => [...queryKeys.reviews.all, 'list'] as const,
     list: (filters: Record<string, unknown>) => [...queryKeys.reviews.lists(), filters] as const,
     byId: (id: string) => ['reviews', id] as const,
