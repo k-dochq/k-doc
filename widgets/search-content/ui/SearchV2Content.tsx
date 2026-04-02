@@ -215,11 +215,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                 <p className='text-sm leading-5 font-semibold text-neutral-700'>
                   {currentReviewSort === REVIEW_SORT_OPTIONS.RECOMMENDED
                     ? (dict.allReviews?.sort?.recommended ?? '')
-                    : currentReviewSort === REVIEW_SORT_OPTIONS.RATING_HIGH
-                      ? (dict.allReviews?.sort?.ratingHigh ?? '')
-                      : currentReviewSort === REVIEW_SORT_OPTIONS.RATING_LOW
-                        ? (dict.allReviews?.sort?.ratingLow ?? '')
-                        : (dict.allReviews?.sort?.popular ?? '')}
+                    : (dict.allReviews?.sort?.popular ?? '')}
                 </p>
               </button>
               <ProcedureFilterButton

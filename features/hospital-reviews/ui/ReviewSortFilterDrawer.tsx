@@ -28,14 +28,6 @@ export function ReviewSortFilterDrawer({
       value: REVIEW_SORT_OPTIONS.RECOMMENDED,
       label: dict.allReviews?.sort?.recommended ?? '',
     },
-    {
-      value: REVIEW_SORT_OPTIONS.RATING_HIGH,
-      label: dict.allReviews?.sort?.ratingHigh ?? '',
-    },
-    {
-      value: REVIEW_SORT_OPTIONS.RATING_LOW,
-      label: dict.allReviews?.sort?.ratingLow ?? '',
-    },
   ];
 
   const handleSelect = (sort: ReviewSortOption) => {
