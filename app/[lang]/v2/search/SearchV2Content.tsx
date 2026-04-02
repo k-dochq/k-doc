@@ -20,7 +20,7 @@ import { useDistrictFilter } from 'features/district-filter/model/useDistrictFil
 import { openDrawer } from 'shared/lib/drawer';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { useSearchParams } from 'next/navigation';
-import { ProcedureFilterButton } from './ProcedureFilterButton';
+import { ProcedureFilterButton } from 'features/procedure-filter';
 
 
 interface SearchV2ContentProps {
