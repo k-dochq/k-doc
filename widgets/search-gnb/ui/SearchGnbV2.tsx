@@ -8,8 +8,9 @@ import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type Dictionary } from 'shared/model/types';
 import { type Locale } from 'shared/config';
 import { useSearchBarV2 } from 'shared/ui/search-bar/model/useSearchBarV2';
-import { SuggestionList } from 'shared/ui/search-bar/ui/SuggestionList';
 import { useConcernSuggestions } from 'entities/review/api/queries/use-concern-suggestions';
+import { useRecentSearches } from '../model/useRecentSearches';
+import { SearchGnbDropdown } from './SearchGnbDropdown';
 
 interface SearchGnbV2Props {
   lang: Locale;
@@ -20,12 +21,14 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
   const router = useRouter();
   const localizedRouter = useLocalizedRouter();
   const searchParams = useSearchParams();
+  const { searches, addSearch, removeSearch } = useRecentSearches();
 
   const {
     searchTerm: value,
     setSearchTerm,
     debouncedQuery,
     showSuggestions,
+    setShowSuggestions,
     suggestions: hospitalSuggestions,
     containerRef,
     handleSearch,
@@ -38,6 +41,7 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
     initialValue: searchParams.get('q') ?? '',
     searchPath: '/v2/search',
     onSearch: (term: string) => {
+      if (term) addSearch(term);
       const params = new URLSearchParams();
       if (term) params.set('q', term);
       localizedRouter.replace(`/v2/search${params.size ? `?${params.toString()}` : ''}`);
@@ -50,6 +54,18 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
     ...hospitalSuggestions,
     ...concernSuggestions.filter((c) => !hospitalSuggestions.includes(c)),
   ].slice(0, 8);
+
+  const filteredRecentSearches = value.trim()
+    ? searches.filter((s) => s.toLowerCase().includes(value.toLowerCase().trim())).slice(0, 3)
+    : searches.slice(0, 5);
+
+  const showDropdown =
+    showSuggestions && (filteredRecentSearches.length > 0 || suggestions.length > 0);
+
+  const handleFocus = () => {
+    handleInputFocus();
+    if (searches.length > 0) setShowSuggestions(true);
+  };
 
   return (
     <div className='sticky top-0 z-50 flex h-[58px] w-full items-center gap-1 bg-white px-5 py-4'>
@@ -67,7 +83,7 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
             value={value}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            onFocus={handleInputFocus}
+            onFocus={handleFocus}
             placeholder={dict.search?.placeholder}
             className="min-w-0 flex-1 bg-transparent font-['Pretendard'] text-base font-semibold leading-6 text-[#404040] outline-none placeholder:text-[#a3a3a3]"
           />
@@ -87,11 +103,13 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
             </button>
           )}
         </div>
-        {showSuggestions && (
-          <SuggestionList
+        {showDropdown && (
+          <SearchGnbDropdown
+            recentSearches={filteredRecentSearches}
             suggestions={suggestions}
             query={debouncedQuery}
-            onSuggestionClick={handleSuggestionClick}
+            onItemClick={handleSuggestionClick}
+            onRemoveRecent={removeSearch}
           />
         )}
       </div>

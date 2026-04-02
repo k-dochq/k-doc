@@ -96,6 +96,7 @@ export function useSearchBarV2({ lang, initialValue, onSearch, searchPath }: Use
     setSearchTerm,
     debouncedQuery,
     showSuggestions,
+    setShowSuggestions,
     suggestions,
     containerRef,
     handleSearch,
