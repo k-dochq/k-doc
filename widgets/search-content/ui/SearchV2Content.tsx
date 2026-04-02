@@ -11,8 +11,8 @@ import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { HospitalDetailTabsHeaderV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDetailTabsHeaderV2';
 import { FilterIconV2 } from 'shared/ui/icons';
-import { HospitalsInfiniteListV2 } from '../hospitals/HospitalsInfiniteListV2';
-import { SearchReviewsInfiniteListV2 } from './SearchReviewsInfiniteListV2';
+import { HospitalsInfiniteListV2 } from 'features/hospital-search';
+import { SearchReviewsInfiniteListV2 } from 'features/search-reviews';
 import { SortFilterDrawer } from 'features/hospital-filter/ui/SortFilterDrawer';
 import { ReviewSortFilterDrawer } from 'features/hospital-reviews/ui/ReviewSortFilterDrawer';
 import { DistrictFilterButtonV2 } from 'features/hospital-filter/ui/DistrictFilterButtonV2';
@@ -42,7 +42,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
     currentSort === HOSPITAL_SORT_OPTIONS.NEWEST ||
     currentSort === HOSPITAL_SORT_OPTIONS.POPULAR
       ? (currentSort as HospitalSortOption)
-      : HOSPITAL_SORT_OPTIONS.POPULAR;
+      : HOSPITAL_SORT_OPTIONS.RECOMMENDED;
 
   const currentReviewSort: ReviewSortOption =
     currentSort === REVIEW_SORT_OPTIONS.RECOMMENDED ||
@@ -50,7 +50,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
     currentSort === REVIEW_SORT_OPTIONS.RATING_LOW ||
     currentSort === REVIEW_SORT_OPTIONS.POPULAR
       ? (currentSort as ReviewSortOption)
-      : REVIEW_SORT_OPTIONS.POPULAR;
+      : REVIEW_SORT_OPTIONS.RECOMMENDED;
 
   const router = useLocalizedRouter();
   const urlSearchParams = useSearchParams();

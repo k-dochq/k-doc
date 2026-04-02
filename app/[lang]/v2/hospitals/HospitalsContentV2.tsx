@@ -3,7 +3,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary, type HospitalCategoryType } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
-import { HospitalsInfiniteListV2 } from './HospitalsInfiniteListV2';
+import { HospitalsInfiniteListV2 } from 'features/hospital-search';
 import { CategorySectionV2 } from 'features/category-filter/ui/CategorySectionV2';
 import { useCategories } from 'features/category-filter';
 import { FilterBarV2 } from 'features/hospital-filter';

@@ -1,7 +1,7 @@
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../../dictionaries';
 import { SearchGnbV2 } from 'widgets/search-gnb';
-import { SearchV2Content } from './SearchV2Content';
+import { SearchV2Content } from 'widgets/search-content';
 
 interface SearchV2PageProps {
   params: Promise<{ lang: Locale }>;
@@ -15,7 +15,7 @@ export default async function SearchV2Page({ params, searchParams }: SearchV2Pag
 
   return (
     <>
-      <SearchGnbV2 dict={dict} />
+      <SearchGnbV2 lang={lang} dict={dict} />
       <SearchV2Content lang={lang} dict={dict} searchParams={resolvedSearchParams} />
     </>
   );
