@@ -3,6 +3,7 @@
 import { useRecentSearches } from 'shared/model/hooks';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { type Dictionary } from 'shared/model/types';
+import { Carousel, CarouselContent, CarouselItem } from 'shared/ui/carousel';
 
 interface RecentSearchesSectionProps {
   dict: Dictionary;
@@ -46,31 +47,62 @@ export function RecentSearchesSection({ dict }: RecentSearchesSectionProps) {
           {dict.search?.recentSearches?.clearAll}
         </button>
       </div>
-      <div
-        className='scrollbar-hide overflow-x-auto overflow-y-hidden'
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
-      >
-        <div className='flex items-center gap-2 ps-5'>
-          {searches.map((term) => (
-            <div key={term} className='flex shrink-0 items-center gap-0.5 rounded-full border border-[#E5E5E5] bg-white py-[6px] pl-3 pr-2'>
-              <button
-                type='button'
-                onClick={() => handleChipClick(term)}
-                className="font-['Pretendard'] text-sm font-medium leading-5 text-[#404040]"
+      <div className='w-full overflow-visible'>
+        <Carousel
+          opts={{
+            align: 'start',
+            dragFree: true,
+            containScroll: 'trimSnaps',
+          }}
+          className='w-full'
+        >
+          <CarouselContent className='py-0'>
+            {searches.map((term, index) => (
+              <CarouselItem
+                key={term}
+                className={`basis-auto ${index === 0 ? 'ps-5' : ''}`}
               >
-                {term}
-              </button>
-              <button
-                type='button'
-                onClick={() => removeSearch(term)}
-                className='flex items-center justify-center'
-              >
-                <XIcon />
-              </button>
-            </div>
-          ))}
-          <div className='w-3 shrink-0' />
-        </div>
+                {index === searches.length - 1 ? (
+                  <div className='pe-5'>
+                    <div className='flex items-center gap-0.5 rounded-full border border-[#E5E5E5] bg-white py-[6px] pl-3 pr-2'>
+                      <button
+                        type='button'
+                        onClick={() => handleChipClick(term)}
+                        className="font-['Pretendard'] text-sm font-medium leading-5 text-[#404040]"
+                      >
+                        {term}
+                      </button>
+                      <button
+                        type='button'
+                        onClick={() => removeSearch(term)}
+                        className='flex items-center justify-center'
+                      >
+                        <XIcon />
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className='flex items-center gap-0.5 rounded-full border border-[#E5E5E5] bg-white py-[6px] pl-3 pr-2'>
+                    <button
+                      type='button'
+                      onClick={() => handleChipClick(term)}
+                      className="font-['Pretendard'] text-sm font-medium leading-5 text-[#404040]"
+                    >
+                      {term}
+                    </button>
+                    <button
+                      type='button'
+                      onClick={() => removeSearch(term)}
+                      className='flex items-center justify-center'
+                    >
+                      <XIcon />
+                    </button>
+                  </div>
+                )}
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </div>
   );

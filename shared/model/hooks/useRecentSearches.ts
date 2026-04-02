@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 const STORAGE_KEY = 'k_search_recent';
+const SYNC_EVENT = 'k_search_recent_changed';
 const MAX_ITEMS = 10;
 
 function loadFromStorage(): string[] {
@@ -14,15 +15,26 @@ function loadFromStorage(): string[] {
   }
 }
 
+function saveAndNotify(next: string[]) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  window.dispatchEvent(new Event(SYNC_EVENT));
+}
+
 export function useRecentSearches() {
   const [searches, setSearches] = useState<string[]>(loadFromStorage);
+
+  useEffect(() => {
+    const sync = () => setSearches(loadFromStorage());
+    window.addEventListener(SYNC_EVENT, sync);
+    return () => window.removeEventListener(SYNC_EVENT, sync);
+  }, []);
 
   const addSearch = useCallback((term: string) => {
     const trimmed = term.trim();
     if (!trimmed) return;
     setSearches((prev) => {
       const next = [trimmed, ...prev.filter((s) => s !== trimmed)].slice(0, MAX_ITEMS);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      saveAndNotify(next);
       return next;
     });
   }, []);
@@ -30,13 +42,13 @@ export function useRecentSearches() {
   const removeSearch = useCallback((term: string) => {
     setSearches((prev) => {
       const next = prev.filter((s) => s !== term);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      saveAndNotify(next);
       return next;
     });
   }, []);
 
   const clearAll = useCallback(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+    saveAndNotify([]);
     setSearches([]);
   }, []);
 
