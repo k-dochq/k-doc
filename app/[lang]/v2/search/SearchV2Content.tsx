@@ -42,7 +42,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
     currentSort === HOSPITAL_SORT_OPTIONS.NEWEST ||
     currentSort === HOSPITAL_SORT_OPTIONS.POPULAR
       ? (currentSort as HospitalSortOption)
-      : HOSPITAL_SORT_OPTIONS.POPULAR;
+      : HOSPITAL_SORT_OPTIONS.RECOMMENDED;
 
   const currentReviewSort: ReviewSortOption =
     currentSort === REVIEW_SORT_OPTIONS.RECOMMENDED ||
@@ -50,7 +50,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
     currentSort === REVIEW_SORT_OPTIONS.RATING_LOW ||
     currentSort === REVIEW_SORT_OPTIONS.POPULAR
       ? (currentSort as ReviewSortOption)
-      : REVIEW_SORT_OPTIONS.POPULAR;
+      : REVIEW_SORT_OPTIONS.RECOMMENDED;
 
   const router = useLocalizedRouter();
   const urlSearchParams = useSearchParams();
