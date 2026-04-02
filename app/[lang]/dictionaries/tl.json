@@ -17,7 +17,26 @@
   },
   "search": {
     "placeholder": "Maghanap ng hospital at mga procedure",
-    "resultTitle": "Mga resulta ng paghahanap"
+    "resultTitle": "Mga resulta ng paghahanap",
+    "categoryTitle": "Maghanap ayon sa Kategorya",
+    "tabs": {
+      "hospital": "Mga Ospital",
+      "review": "Mga Review"
+    },
+    "filter": {
+      "procedure": "Pamamaraan"
+    },
+    "empty": {
+      "title": "Walang resulta ng paghahanap.",
+      "description": "Subukan ang ibang keyword."
+    },
+    "drawer": {
+      "procedure": {
+        "title": "Pamamaraan",
+        "reset": "I-reset",
+        "confirm": "Tapos na"
+      }
+    }
   },
   "hospitalList": {
     "title": "Mga Sikat na Hospital",

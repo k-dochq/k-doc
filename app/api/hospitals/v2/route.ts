@@ -4,6 +4,7 @@ import { type GetHospitalsRequestV2 } from 'entities/hospital/api/entities/types
 import { validateHospitalQueryParams } from 'shared/lib/hospital-query-utils';
 import { localeToAltValue, type DatabaseLocale } from 'shared/lib/localized-text';
 import { type Locale, isValidLocale } from 'shared/config';
+import { type MedicalSpecialtyType } from '@prisma/client';
 
 export async function GET(request: NextRequest) {
   try {
@@ -38,6 +39,13 @@ export async function GET(request: NextRequest) {
       locale = localeToAltValue(parsedParams.lang as Locale);
     }
 
+    // categories 파라미터 파싱 (콤마 구분 복수 전문 분야)
+    const categoriesParam = searchParams.get('categories');
+    const specialtyTypes: MedicalSpecialtyType[] | undefined =
+      categoriesParam
+        ? (categoriesParam.split(',').filter(Boolean) as MedicalSpecialtyType[])
+        : undefined;
+
     // GetHospitalsRequestV2로 변환
     const requestV2: GetHospitalsRequestV2 = {
       page: parsedParams.page,
@@ -54,6 +62,7 @@ export async function GET(request: NextRequest) {
         parsedParams.category && parsedParams.category !== 'RECOMMEND'
           ? (parsedParams.category as GetHospitalsRequestV2['specialtyType'])
           : undefined,
+      specialtyTypes,
     };
 
     // 병원 데이터 조회

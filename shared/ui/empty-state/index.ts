@@ -3,3 +3,4 @@ export * from './EmptyHospitalsState';
 export * from './EmptyReviewsState';
 export * from './EmptyFavoritesState';
 export * from './EmptyLiveReviewsState';
+export * from './SearchEmptyState';

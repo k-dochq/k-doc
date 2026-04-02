@@ -17,7 +17,26 @@
   },
   "search": {
     "placeholder": "Search hospitals, procedures",
-    "resultTitle": "results"
+    "resultTitle": "results",
+    "categoryTitle": "Find by Category",
+    "tabs": {
+      "hospital": "Hospitals",
+      "review": "Reviews"
+    },
+    "filter": {
+      "procedure": "Procedure"
+    },
+    "empty": {
+      "title": "No search results.",
+      "description": "Try searching with a different keyword."
+    },
+    "drawer": {
+      "procedure": {
+        "title": "Procedure",
+        "reset": "Reset",
+        "confirm": "Done"
+      }
+    }
   },
   "hospitalList": {
     "title": "Popular Hospitals",

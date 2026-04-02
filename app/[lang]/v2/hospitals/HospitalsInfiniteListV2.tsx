@@ -1,5 +1,6 @@
 'use client';
 
+import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
 import {
   type Dictionary,
@@ -14,7 +15,7 @@ import { useToggleHospitalLike } from 'entities/hospital/model/useToggleHospital
 import { HospitalsSkeletonV2 } from './HospitalsSkeletonV2';
 import { ErrorState } from 'shared/ui/error-state';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
-import { EmptyHospitalsState } from 'shared/ui/empty-state';
+import { EmptyHospitalsState, SearchEmptyState } from 'shared/ui/empty-state';
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { openDrawer } from 'shared/lib/drawer';
 import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
@@ -27,6 +28,7 @@ interface HospitalsInfiniteListV2Props {
     sort?: HospitalSortOption;
     search?: string;
     districtIds?: string[];
+    categories?: MedicalSpecialtyType[];
   };
 }
 
@@ -35,7 +37,7 @@ export function HospitalsInfiniteListV2({
   dict,
   searchParams,
 }: HospitalsInfiniteListV2Props) {
-  const { category, sort, search, districtIds } = searchParams;
+  const { category, sort, search, districtIds, categories } = searchParams;
   const { user } = useAuth();
 
   // 타입 안전한 파라미터 구성
@@ -44,6 +46,7 @@ export function HospitalsInfiniteListV2({
     sortBy: sort || HOSPITAL_SORT_OPTIONS.POPULAR,
     sortOrder: 'desc' as const,
     category,
+    categories,
     search,
     districtIds,
     lang,
@@ -135,7 +138,7 @@ export function HospitalsInfiniteListV2({
           </div>
         </div>
       ) : (
-        <EmptyHospitalsState dict={dict} />
+        searchParams.search ? <SearchEmptyState dict={dict} /> : <EmptyHospitalsState dict={dict} />
       )}
     </div>
   );

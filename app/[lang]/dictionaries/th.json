@@ -17,7 +17,26 @@
   },
   "search": {
     "placeholder": "ค้นหาโรงพยาบาล ขั้นตอนการรักษา",
-    "resultTitle": "ผลการค้นหา"
+    "resultTitle": "ผลการค้นหา",
+    "categoryTitle": "ค้นหาตามหมวดหมู่",
+    "tabs": {
+      "hospital": "โรงพยาบาล",
+      "review": "รีวิว"
+    },
+    "filter": {
+      "procedure": "หัตถการ"
+    },
+    "empty": {
+      "title": "ไม่พบผลการค้นหา",
+      "description": "ลองค้นหาด้วยคำค้นหาอื่น"
+    },
+    "drawer": {
+      "procedure": {
+        "title": "หัตถการ",
+        "reset": "รีเซ็ต",
+        "confirm": "เสร็จสิ้น"
+      }
+    }
   },
   "hospitalList": {
     "title": "โรงพยาบาลยอดนิยม",
