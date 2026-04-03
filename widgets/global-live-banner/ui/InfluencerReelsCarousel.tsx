@@ -91,14 +91,14 @@ function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale })
       />
 
       {/* Platform badge */}
-      <div className='absolute left-3 top-3 flex items-center gap-0.5 rounded-full bg-[rgba(64,64,64,0.8)] px-2 py-1 backdrop-blur-[2px] rtl:left-auto rtl:right-3'>
+      <div className={`absolute top-3 flex items-center gap-0.5 rounded-full bg-[rgba(64,64,64,0.8)] px-2 py-1 backdrop-blur-[2px] ${lang === 'ar' ? 'right-3' : 'left-3'}`}>
         {platform.icon}
         <span className='text-xs font-semibold leading-4 text-white'>{platform.label}</span>
       </div>
 
       {/* Bottom overlay */}
       <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-12'>
-        <div className='flex flex-col gap-0.5 p-4 text-left rtl:text-right'>
+        <div className={`flex flex-col gap-0.5 p-4 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
           <p className='text-base font-semibold leading-6 text-white'>
             {getLocalizedTitle(video.title, lang)}
           </p>
@@ -119,9 +119,9 @@ export function InfluencerReelsCarousel({ lang }: InfluencerReelsCarouselProps) 
   const duplicated = [...videos, ...videos];
 
   return (
-    <div className='mt-6 w-full overflow-hidden'>
+    <div className='mt-6 w-full overflow-hidden' dir='ltr'>
       <div
-        className='flex w-max animate-scroll-left flex-nowrap gap-3'
+        className={`flex w-max flex-nowrap gap-3 ${lang === 'ar' ? 'animate-scroll-right' : 'animate-scroll-left'}`}
         style={{ willChange: 'transform' }}
       >
         {duplicated.map((video, index) => (
