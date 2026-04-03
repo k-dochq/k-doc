@@ -23,6 +23,7 @@ export function HospitalDetailHeaderV2({
       title={hospitalName || ''}
       fallbackUrl={`/${lang}/v2/hospitals`}
       enableScrollTransparency={enableScrollTransparency}
+      searchLinkAriaLabel={dict.search?.placeholder ?? 'Search'}
       rightContent={
         <HospitalDetailHeaderActionsV2
           hospitalId={hospitalId}

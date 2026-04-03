@@ -13,6 +13,7 @@ interface SearchBarV2Props {
   placeholder?: string;
   onSearch?: (searchTerm: string) => void;
   searchPath?: string; // 기본: /hospitals
+  searchQueryParam?: 'search' | 'q';
 }
 
 export function SearchBarV2({
@@ -22,6 +23,7 @@ export function SearchBarV2({
   placeholder,
   onSearch,
   searchPath = '/hospitals',
+  searchQueryParam = 'search',
 }: SearchBarV2Props) {
   const {
     searchTerm,
@@ -33,7 +35,7 @@ export function SearchBarV2({
     handleKeyDown,
     handleInputChange,
     handleInputFocus,
-  } = useSearchBarV2({ lang, initialValue, onSearch, searchPath });
+  } = useSearchBarV2({ lang, initialValue, onSearch, searchPath, searchQueryParam });
 
   return (
     <div className='relative w-full' ref={containerRef} dir={lang === 'ar' ? 'rtl' : 'ltr'}>

@@ -11,9 +11,17 @@ interface UseSearchBarV2Props {
   initialValue: string;
   onSearch?: (searchTerm: string) => void;
   searchPath: string;
+  /** URL 쿼리 키: 병원 검색 목록은 `search`, 통합 v2 검색은 `q` */
+  searchQueryParam?: 'search' | 'q';
 }
 
-export function useSearchBarV2({ lang, initialValue, onSearch, searchPath }: UseSearchBarV2Props) {
+export function useSearchBarV2({
+  lang,
+  initialValue,
+  onSearch,
+  searchPath,
+  searchQueryParam = 'search',
+}: UseSearchBarV2Props) {
   const [searchTerm, setSearchTerm] = useState(initialValue);
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -62,12 +70,21 @@ export function useSearchBarV2({ lang, initialValue, onSearch, searchPath }: Use
     }
 
     const params = new URLSearchParams(searchParams?.toString() || '');
+    const otherKey = searchQueryParam === 'q' ? 'search' : 'q';
+    params.delete(otherKey);
+
     if (trimmedSearch) {
-      params.set('search', trimmedSearch);
+      params.set(searchQueryParam, trimmedSearch);
     } else {
-      params.delete('search');
+      params.delete(searchQueryParam);
     }
-    params.set('page', '1');
+
+    if (searchQueryParam === 'search') {
+      params.set('page', '1');
+    } else {
+      params.delete('page');
+    }
+
     const queryString = params.toString();
     router.push(`${searchPath}${queryString ? `?${queryString}` : ''}`);
   };
