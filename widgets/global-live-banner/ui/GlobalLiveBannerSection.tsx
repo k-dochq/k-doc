@@ -65,12 +65,12 @@ export function GlobalLiveBannerSection({ lang, dict }: GlobalLiveBannerSectionP
 
       <div className='flex flex-col gap-1'>
         <h2 className='text-2xl font-semibold leading-8 text-white'>
-          <span className='block'>{dict.globalLiveBanner.title1}</span>
-          <span className='block'>{dict.globalLiveBanner.title2}</span>
+          <span className='min-[500px]:block'>{dict.globalLiveBanner.title1}</span>{' '}
+          <span className='min-[500px]:block'>{dict.globalLiveBanner.title2}</span>
         </h2>
         <p className='text-sm font-medium leading-5 text-[#E5E5E5]'>
-          <span className='block'>{dict.globalLiveBanner.subtitle1}</span>
-          <span className='block'>{dict.globalLiveBanner.subtitle2}</span>
+          <span className='min-[500px]:block'>{dict.globalLiveBanner.subtitle1}</span>{' '}
+          <span className='min-[500px]:block'>{dict.globalLiveBanner.subtitle2}</span>
         </p>
       </div>
       </div>
