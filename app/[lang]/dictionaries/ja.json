@@ -54,6 +54,12 @@
       "description": "まもなく新しい病院が追加される予定です。"
     }
   },
+  "globalLiveBanner": {
+    "title1": "K-DOCを利用した",
+    "title2": "グローバル患者のリアル口コミ",
+    "subtitle1": "K-DOCを通じて韓国を訪れたグローバル患者たちが",
+    "subtitle2": "直接体験したリアルな口コミです"
+  },
   "liveReviews": {
     "title": "ライブライフレビュー",
     "empty": {

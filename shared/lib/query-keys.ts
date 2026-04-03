@@ -159,4 +159,11 @@ export const queryKeys = {
     details: () => [...queryKeys.reservations.all, 'detail'] as const,
     detail: (id: string) => [...queryKeys.reservations.details(), id] as const,
   },
+
+  // 인플루언서 영상 관련 쿼리
+  influencerVideos: {
+    all: ['influencer-videos'] as const,
+    list: () => [...queryKeys.influencerVideos.all, 'list'] as const,
+    section: () => [...queryKeys.influencerVideos.all, 'section'] as const,
+  },
 } as const;

@@ -5,6 +5,7 @@ import { EventBannerMainCarouselV2 } from 'widgets/event-banner/ui/EventBannerMa
 import { QuickMenuV2 } from 'features/quick-menu/ui/QuickMenuV2';
 import { HospitalListTitleV2 } from 'widgets/hospital-list/ui/HospitalListTitleV2';
 import { HospitalListV2Container } from 'widgets/hospital-list/ui/HospitalListV2Container';
+import { GlobalLiveBannerSection } from 'widgets/global-live-banner/ui';
 import { LiveReviewV2Container } from 'widgets/live-reviews/ui';
 import { PopularReviewsV2Wrapper } from 'widgets/popular-reviews/ui';
 import { PremiumServiceV2Container } from 'widgets/premium-service/ui';
@@ -45,6 +46,8 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
         <div className='h-4' />
         <HospitalListV2Container lang={lang} dict={dict} />
       </div>
+
+      <GlobalLiveBannerSection lang={lang} dict={dict} />
 
       <div className='bg-primary-200 py-12'>
         <LiveReviewV2Container lang={lang} dict={dict} />

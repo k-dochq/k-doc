@@ -54,6 +54,12 @@
       "description": "Malapit nang magdagdag ng mga bagong hospital."
     }
   },
+  "globalLiveBanner": {
+    "title1": "Tunay na Mga Review ng Global na Pasyente",
+    "title2": "na Gumagamit ng K-DOC",
+    "subtitle1": "Ito ang tunay na mga karanasan ng global na mga pasyente",
+    "subtitle2": "na bumisita sa Korea sa pamamagitan ng K-DOC"
+  },
   "liveReviews": {
     "title": "Mga Totoong Review",
     "empty": {

@@ -54,6 +54,12 @@
       "description": "不久將新增多家醫院。"
     }
   },
+  "globalLiveBanner": {
+    "title1": "K-DOC全球患者",
+    "title2": "真實評價",
+    "subtitle1": "這是透過K-DOC訪問韓國的全球患者",
+    "subtitle2": "直接體驗的真實評價"
+  },
   "liveReviews": {
     "title": "即時生動評論",
     "empty": {
