@@ -33,6 +33,12 @@ interface SearchV2ContentProps {
 const TAB_HOSPITAL = 'hospital';
 const TAB_REVIEW = 'review';
 
+/** 통합 검색 리뷰 탭 정렬 드로어: 인기·추천만 */
+const SEARCH_REVIEW_SORT_OPTIONS = [
+  REVIEW_SORT_OPTIONS.POPULAR,
+  REVIEW_SORT_OPTIONS.RECOMMENDED,
+] as const satisfies readonly ReviewSortOption[];
+
 export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentProps) {
   const q = searchParams.q?.trim() ?? '';
   const currentTab = searchParams.tab === TAB_REVIEW ? TAB_REVIEW : TAB_HOSPITAL;
@@ -45,12 +51,10 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       ? (currentSort as HospitalSortOption)
       : HOSPITAL_SORT_OPTIONS.RECOMMENDED;
 
-  const currentReviewSort: ReviewSortOption =
-    currentSort === REVIEW_SORT_OPTIONS.RECOMMENDED ||
-    currentSort === REVIEW_SORT_OPTIONS.RATING_HIGH ||
-    currentSort === REVIEW_SORT_OPTIONS.RATING_LOW ||
+  /** 통합 검색 리뷰 탭: 허용 값은 인기·추천만 (그 외 sort 쿼리는 무시하고 추천으로 동작) */
+  const searchReviewSort: ReviewSortOption =
     currentSort === REVIEW_SORT_OPTIONS.POPULAR
-      ? (currentSort as ReviewSortOption)
+      ? REVIEW_SORT_OPTIONS.POPULAR
       : REVIEW_SORT_OPTIONS.RECOMMENDED;
 
   const router = useLocalizedRouter();
@@ -106,8 +110,9 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
         <ReviewSortFilterDrawer
           lang={lang}
           dict={dict}
-          currentSort={currentReviewSort}
+          currentSort={searchReviewSort}
           onSelect={handleReviewSortSelect}
+          sortOptions={SEARCH_REVIEW_SORT_OPTIONS}
         />
       ),
     });
@@ -219,7 +224,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
               >
                 <FilterIconV2 className='h-[18px] w-[18px] shrink-0' />
                 <p className='text-sm leading-5 font-semibold text-neutral-700'>
-                  {currentReviewSort === REVIEW_SORT_OPTIONS.RECOMMENDED
+                  {searchReviewSort === REVIEW_SORT_OPTIONS.RECOMMENDED
                     ? (dict.allReviews?.sort?.recommended ?? '')
                     : (dict.allReviews?.sort?.popular ?? '')}
                 </p>
@@ -236,7 +241,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
             lang={lang}
             dict={dict}
             query={q}
-            sort={currentReviewSort}
+            sort={searchReviewSort}
             categories={selectedCategories.length > 0 ? selectedCategories : undefined}
           />
         </>
