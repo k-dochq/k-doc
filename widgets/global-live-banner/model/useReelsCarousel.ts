@@ -7,18 +7,22 @@ import { type Locale } from 'shared/config';
 const SCROLL_SPEED_PX_PER_MS = 0.048;
 
 export function useReelsCarousel(lang: Locale) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  const offsetX = useRef(0);
   const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeftStart = useRef(0);
-  const rafId = useRef<number>(0);
+  const dragStartX = useRef(0);
+  const dragStartOffset = useRef(0);
   const isPaused = useRef(false);
   const lastTimestamp = useRef<number>(0);
+  const rafId = useRef<number>(0);
+  const direction = lang === 'ar' ? 1 : -1;
 
   const animate = useCallback(
     (timestamp: number) => {
-      const el = scrollRef.current;
-      if (!el) {
+      const inner = innerRef.current;
+      if (!inner) {
         rafId.current = requestAnimationFrame(animate);
         return;
       }
@@ -26,70 +30,65 @@ export function useReelsCarousel(lang: Locale) {
       if (!isPaused.current && lastTimestamp.current !== 0) {
         // Cap delta to 50ms to prevent large jumps after tab switching
         const delta = Math.min(timestamp - lastTimestamp.current, 50);
-        const halfWidth = el.scrollWidth / 2;
+        const halfWidth = inner.scrollWidth / 2;
 
-        if (lang === 'ar') {
-          // Arabic: scroll backward; loop when reaching the start
-          if (el.scrollLeft <= 0) {
-            el.scrollLeft += halfWidth;
-          }
-          el.scrollLeft -= SCROLL_SPEED_PX_PER_MS * delta;
-        } else {
-          // LTR: scroll forward; loop when reaching the second half
-          if (el.scrollLeft >= halfWidth) {
-            el.scrollLeft -= halfWidth;
-          }
-          el.scrollLeft += SCROLL_SPEED_PX_PER_MS * delta;
+        offsetX.current += direction * SCROLL_SPEED_PX_PER_MS * delta;
+
+        // Seamless loop: keep offset within [-halfWidth, 0] for LTR, [0, halfWidth] for RTL
+        if (direction === -1 && offsetX.current <= -halfWidth) {
+          offsetX.current += halfWidth;
+        } else if (direction === 1 && offsetX.current >= halfWidth) {
+          offsetX.current -= halfWidth;
         }
+
+        inner.style.transform = `translateX(${offsetX.current}px)`;
       }
 
       lastTimestamp.current = timestamp;
       rafId.current = requestAnimationFrame(animate);
     },
-    [lang],
+    [direction],
   );
 
   useEffect(() => {
-    // Arabic starts at the midpoint so there's room to scroll backward
-    const el = scrollRef.current;
-    if (el && lang === 'ar') {
-      el.scrollLeft = el.scrollWidth / 2;
-    }
     rafId.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafId.current);
-  }, [animate, lang]);
+  }, [animate]);
 
   const onMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
     isPaused.current = true;
-    startX.current = e.pageX - (scrollRef.current?.offsetLeft ?? 0);
-    scrollLeftStart.current = scrollRef.current?.scrollLeft ?? 0;
+    dragStartX.current = e.clientX;
+    dragStartOffset.current = offsetX.current;
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current || !scrollRef.current) return;
+    if (!isDragging.current) return;
     e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const delta = x - startX.current;
-    scrollRef.current.scrollLeft = scrollLeftStart.current - delta;
+    const delta = e.clientX - dragStartX.current;
+    offsetX.current = dragStartOffset.current + delta;
+    if (innerRef.current) {
+      innerRef.current.style.transform = `translateX(${offsetX.current}px)`;
+    }
   };
 
-  const onMouseUp = () => {
+  const onDragEnd = () => {
     isDragging.current = false;
     isPaused.current = false;
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
     isPaused.current = true;
-    startX.current = e.touches[0].pageX - (scrollRef.current?.offsetLeft ?? 0);
-    scrollLeftStart.current = scrollRef.current?.scrollLeft ?? 0;
+    dragStartX.current = e.touches[0].clientX;
+    dragStartOffset.current = offsetX.current;
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    if (!scrollRef.current) return;
-    const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
-    const delta = x - startX.current;
-    scrollRef.current.scrollLeft = scrollLeftStart.current - delta;
+    const delta = e.touches[0].clientX - dragStartX.current;
+    offsetX.current = dragStartOffset.current + delta;
+    if (innerRef.current) {
+      innerRef.current.style.transform = `translateX(${offsetX.current}px)`;
+    }
   };
 
   const onTouchEnd = () => {
@@ -97,12 +96,13 @@ export function useReelsCarousel(lang: Locale) {
   };
 
   return {
-    scrollRef,
+    outerRef,
+    innerRef,
     handlers: {
       onMouseDown,
       onMouseMove,
-      onMouseUp,
-      onMouseLeave: onMouseUp,
+      onMouseUp: onDragEnd,
+      onMouseLeave: onDragEnd,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
