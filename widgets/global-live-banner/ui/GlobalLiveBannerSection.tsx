@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { InfluencerReelsCarousel } from './InfluencerReelsCarousel';
+import { InfluencerSectionButton } from './InfluencerSectionButton';
 
 interface GlobalLiveBannerSectionProps {
   lang: Locale;
@@ -75,6 +76,7 @@ export function GlobalLiveBannerSection({ lang, dict }: GlobalLiveBannerSectionP
       </div>
 
       <InfluencerReelsCarousel lang={lang} />
+      <InfluencerSectionButton lang={lang} />
     </div>
   );
 }

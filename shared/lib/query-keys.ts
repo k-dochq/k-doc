@@ -164,5 +164,6 @@ export const queryKeys = {
   influencerVideos: {
     all: ['influencer-videos'] as const,
     list: () => [...queryKeys.influencerVideos.all, 'list'] as const,
+    section: () => [...queryKeys.influencerVideos.all, 'section'] as const,
   },
 } as const;
