@@ -54,6 +54,12 @@
       "description": "New hospitals will be added soon."
     }
   },
+  "globalLiveBanner": {
+    "title1": "Real Reviews by Global Patients",
+    "title2": "Using K-DOC",
+    "subtitle1": "These are real reviews directly experienced by global patients",
+    "subtitle2": "who visited Korea through K-DOC."
+  },
   "liveReviews": {
     "title": "Live Reviews",
     "empty": {
