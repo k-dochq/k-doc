@@ -72,13 +72,9 @@ function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale })
   const platform = PLATFORM_META[video.platform] ?? PLATFORM_META.INSTAGRAM;
 
   return (
-    <a
-      href={video.externalLink}
-      target='_blank'
-      rel='noopener noreferrer'
+    <div
       className='relative block shrink-0 w-[180px] overflow-hidden rounded-xl'
       style={{ aspectRatio: '180/320' }}
-      draggable={false}
     >
       <video
         src={video.videoUrl}
@@ -109,7 +105,7 @@ function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale })
           </p>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
