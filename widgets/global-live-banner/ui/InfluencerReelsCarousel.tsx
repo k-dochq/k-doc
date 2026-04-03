@@ -22,7 +22,7 @@ export function InfluencerReelsCarousel({ lang }: InfluencerReelsCarouselProps) 
     <div className='mt-6 w-full overflow-hidden cursor-grab active:cursor-grabbing' ref={outerRef} dir='ltr' {...handlers}>
       <div ref={innerRef} className='flex gap-3 w-max select-none will-change-transform'>
         {loopedVideos.map((video, i) => (
-          <InfluencerVideoReelCard key={`${video.id}-${i}`} video={video} lang={lang} />
+          <InfluencerVideoReelCard key={`${video.id}-${i}`} video={video} lang={lang} carouselRef={outerRef} />
         ))}
       </div>
     </div>
