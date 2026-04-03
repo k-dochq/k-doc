@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import AutoScroll from 'embla-carousel-auto-scroll';
 import { type Locale } from 'shared/config';
 import { useInfluencerVideos, type InfluencerVideoItem } from 'features/influencer-videos';
 
@@ -68,7 +69,6 @@ const PLATFORM_META = {
 } as const;
 
 function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const platform = PLATFORM_META[video.platform] ?? PLATFORM_META.INSTAGRAM;
 
   return (
@@ -76,11 +76,11 @@ function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale })
       href={video.externalLink}
       target='_blank'
       rel='noopener noreferrer'
-      className='relative shrink-0 w-[180px] overflow-hidden rounded-xl block'
+      className='relative block shrink-0 w-[180px] overflow-hidden rounded-xl'
       style={{ aspectRatio: '180/320' }}
+      draggable={false}
     >
       <video
-        ref={videoRef}
         src={video.videoUrl}
         className='absolute inset-0 w-full h-full object-cover'
         autoPlay
@@ -91,7 +91,9 @@ function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale })
       />
 
       {/* Platform badge */}
-      <div className={`absolute top-3 flex items-center gap-0.5 rounded-full bg-[rgba(64,64,64,0.8)] px-2 py-1 backdrop-blur-[2px] ${lang === 'ar' ? 'right-3' : 'left-3'}`}>
+      <div
+        className={`absolute top-3 flex items-center gap-0.5 rounded-full bg-[rgba(64,64,64,0.8)] px-2 py-1 backdrop-blur-[2px] ${lang === 'ar' ? 'right-3' : 'left-3'}`}
+      >
         {platform.icon}
         <span className='text-xs font-semibold leading-4 text-white'>{platform.label}</span>
       </div>
@@ -114,19 +116,37 @@ function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale })
 export function InfluencerReelsCarousel({ lang }: InfluencerReelsCarouselProps) {
   const { data: videos } = useInfluencerVideos();
 
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      dragFree: true,
+      align: 'start',
+      containScroll: false,
+      watchDrag: true,
+    },
+    [
+      AutoScroll({
+        speed: 0.8,
+        startDelay: 0,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+        direction: lang === 'ar' ? 'backward' : 'forward',
+      }),
+    ],
+  );
+
   if (!videos || videos.length === 0) return null;
 
-  const duplicated = [...videos, ...videos];
-
   return (
-    <div className='mt-6 w-full overflow-hidden' dir='ltr'>
-      <div
-        className={`flex w-max flex-nowrap gap-3 ${lang === 'ar' ? 'animate-scroll-right' : 'animate-scroll-left'}`}
-        style={{ willChange: 'transform' }}
-      >
-        {duplicated.map((video, index) => (
-          <ReelCard key={`${video.id}-${index}`} video={video} lang={lang} />
-        ))}
+    <div className='mt-6 w-full' dir='ltr'>
+      <div ref={emblaRef} className='overflow-hidden cursor-grab active:cursor-grabbing'>
+        <div className='flex -ml-3'>
+          {videos.map((video) => (
+            <div key={video.id} className='shrink-0 pl-3'>
+              <ReelCard video={video} lang={lang} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
