@@ -66,7 +66,11 @@ export function useReelsCarousel(lang: Locale) {
     if (!isDragging.current) return;
     e.preventDefault();
     const delta = e.clientX - dragStartX.current;
-    offsetX.current = dragStartOffset.current + delta;
+    // LTR: clamp to ≤ 0 (prevent dragging past the start)
+    // RTL: clamp to ≥ 0
+    offsetX.current = direction === -1
+      ? Math.min(0, dragStartOffset.current + delta)
+      : Math.max(0, dragStartOffset.current + delta);
     if (innerRef.current) {
       innerRef.current.style.transform = `translateX(${offsetX.current}px)`;
     }
@@ -85,7 +89,9 @@ export function useReelsCarousel(lang: Locale) {
 
   const onTouchMove = (e: React.TouchEvent) => {
     const delta = e.touches[0].clientX - dragStartX.current;
-    offsetX.current = dragStartOffset.current + delta;
+    offsetX.current = direction === -1
+      ? Math.min(0, dragStartOffset.current + delta)
+      : Math.max(0, dragStartOffset.current + delta);
     if (innerRef.current) {
       innerRef.current.style.transform = `translateX(${offsetX.current}px)`;
     }
