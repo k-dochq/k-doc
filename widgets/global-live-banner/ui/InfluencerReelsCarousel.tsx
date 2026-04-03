@@ -140,9 +140,9 @@ export function InfluencerReelsCarousel({ lang }: InfluencerReelsCarouselProps) 
   return (
     <div className='mt-6 w-full' dir='ltr'>
       <div ref={emblaRef} className='overflow-hidden cursor-grab active:cursor-grabbing'>
-        <div className='flex gap-3'>
+        <div className='flex -ml-3'>
           {videos.map((video) => (
-            <div key={video.id} className='shrink-0'>
+            <div key={video.id} className='shrink-0 pl-3'>
               <ReelCard video={video} lang={lang} />
             </div>
           ))}
