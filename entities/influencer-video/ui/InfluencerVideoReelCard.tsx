@@ -9,9 +9,10 @@ import { PLATFORM_META } from './platform-icons';
 interface InfluencerVideoReelCardProps {
   video: InfluencerVideoItem;
   lang: Locale;
+  carouselRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export function InfluencerVideoReelCard({ video, lang }: InfluencerVideoReelCardProps) {
+export function InfluencerVideoReelCard({ video, lang, carouselRef }: InfluencerVideoReelCardProps) {
   const platform = PLATFORM_META[video.platform] ?? PLATFORM_META.INSTAGRAM;
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -27,12 +28,12 @@ export function InfluencerVideoReelCard({ video, lang }: InfluencerVideoReelCard
           el.pause();
         }
       },
-      { threshold: 0.5 },
+      { root: carouselRef.current, threshold: 0.05 },
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [carouselRef]);
 
   return (
     <div
