@@ -1,7 +1,6 @@
 'use client';
 
-import useEmblaCarousel from 'embla-carousel-react';
-import AutoScroll from 'embla-carousel-auto-scroll';
+import { useRef, useEffect, useCallback } from 'react';
 import { type Locale } from 'shared/config';
 import { useInfluencerVideos, type InfluencerVideoItem } from 'features/influencer-videos';
 
@@ -70,77 +69,169 @@ const PLATFORM_META = {
 
 function ReelCard({ video, lang }: { video: InfluencerVideoItem; lang: Locale }) {
   const platform = PLATFORM_META[video.platform] ?? PLATFORM_META.INSTAGRAM;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
-      className='relative block shrink-0 w-[180px] overflow-hidden rounded-xl'
-      style={{ aspectRatio: '180/320' }}
+      className='relative flex-shrink-0 w-[180px] rounded-xl overflow-hidden bg-black'
+      style={{ aspectRatio: '9/16' }}
     >
       <video
+        ref={videoRef}
         src={video.videoUrl}
-        className='absolute inset-0 w-full h-full object-cover'
-        autoPlay
+        className='w-full h-full object-cover pointer-events-none'
         muted
         loop
         playsInline
         preload='auto'
       />
 
+      {/* Gradient overlay */}
+      <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30' />
+
       {/* Platform badge */}
       <div
-        className={`absolute top-3 flex items-center gap-0.5 rounded-full bg-[rgba(64,64,64,0.8)] px-2 py-1 backdrop-blur-[2px] ${lang === 'ar' ? 'right-3' : 'left-3'}`}
+        className={`absolute top-3 z-10 flex items-center gap-0.5 rounded-full bg-[rgba(64,64,64,0.8)] px-2 py-1 backdrop-blur-[2px] ${lang === 'ar' ? 'right-3' : 'left-3'}`}
       >
         {platform.icon}
         <span className='text-xs font-semibold leading-4 text-white'>{platform.label}</span>
       </div>
 
       {/* Bottom overlay */}
-      <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-12'>
-        <div className={`flex flex-col gap-0.5 p-4 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
-          <p className='text-base font-semibold leading-6 text-white'>
-            {getLocalizedTitle(video.title, lang)}
-          </p>
-          <p className='text-[13px] font-medium leading-[19px] text-[#E5E5E5]'>
-            {maskHandle(video.handle)}
-          </p>
-        </div>
+      <div className={`absolute bottom-0 left-0 right-0 p-4 z-10 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+        <p className='text-base font-semibold leading-6 text-white'>
+          {getLocalizedTitle(video.title, lang)}
+        </p>
+        <p className='text-[13px] font-medium leading-[19px] text-[#E5E5E5]'>
+          {maskHandle(video.handle)}
+        </p>
       </div>
     </div>
   );
 }
 
+// px per millisecond — at 60fps (16.67ms/frame) ≈ 0.8px/frame, same as before
+const SCROLL_SPEED_PX_PER_MS = 0.048;
+
 export function InfluencerReelsCarousel({ lang }: InfluencerReelsCarouselProps) {
   const { data: videos } = useInfluencerVideos();
 
-  const [emblaRef] = useEmblaCarousel(
-    {
-      loop: true,
-      dragFree: true,
-      align: 'start',
-      containScroll: false,
-      watchDrag: true,
-    },
-    [
-      AutoScroll({
-        speed: 0.8,
-        startDelay: 0,
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
-        direction: lang === 'ar' ? 'backward' : 'forward',
-      }),
-    ],
-  );
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftStart = useRef(0);
+  const rafId = useRef<number>(0);
+  const isPaused = useRef(false);
+  const lastTimestamp = useRef<number>(0);
+
+  const animate = useCallback((timestamp: number) => {
+    const el = scrollRef.current;
+    if (!el) {
+      rafId.current = requestAnimationFrame(animate);
+      return;
+    }
+
+    if (!isPaused.current && lastTimestamp.current !== 0) {
+      // Cap delta to 50ms to prevent large jumps after tab switching
+      const delta = Math.min(timestamp - lastTimestamp.current, 50);
+
+      // Infinite loop: reset to first half when reaching second half
+      const halfWidth = el.scrollWidth / 2;
+      if (el.scrollLeft >= halfWidth) {
+        el.scrollLeft -= halfWidth;
+      }
+
+      const direction = lang === 'ar' ? -1 : 1;
+      el.scrollLeft += SCROLL_SPEED_PX_PER_MS * delta * direction;
+    }
+
+    lastTimestamp.current = timestamp;
+    rafId.current = requestAnimationFrame(animate);
+  }, [lang]);
+
+  useEffect(() => {
+    rafId.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId.current);
+  }, [animate]);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    isDragging.current = true;
+    isPaused.current = true;
+    startX.current = e.pageX - (scrollRef.current?.offsetLeft ?? 0);
+    scrollLeftStart.current = scrollRef.current?.scrollLeft ?? 0;
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const delta = x - startX.current;
+    scrollRef.current.scrollLeft = scrollLeftStart.current - delta;
+  };
+
+  const onMouseUp = () => {
+    isDragging.current = false;
+    isPaused.current = false;
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    isPaused.current = true;
+    startX.current = e.touches[0].pageX - (scrollRef.current?.offsetLeft ?? 0);
+    scrollLeftStart.current = scrollRef.current?.scrollLeft ?? 0;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!scrollRef.current) return;
+    const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
+    const delta = x - startX.current;
+    scrollRef.current.scrollLeft = scrollLeftStart.current - delta;
+  };
+
+  const onTouchEnd = () => {
+    isPaused.current = false;
+  };
 
   if (!videos || videos.length === 0) return null;
 
+  // Duplicate cards for seamless infinite loop
+  const loopedVideos = [...videos, ...videos];
+
   return (
-    <div className='mt-6 w-full' dir='ltr'>
-      <div ref={emblaRef} className='overflow-hidden cursor-grab active:cursor-grabbing'>
-        <div className='flex -ml-3'>
-          {videos.map((video) => (
-            <div key={video.id} className='shrink-0 pl-3'>
-              <ReelCard video={video} lang={lang} />
-            </div>
+    <div className='mt-6 w-full relative' dir='ltr'>
+      <div
+        ref={scrollRef}
+        className='overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing'
+        style={{ scrollbarWidth: 'none' }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <div className='flex gap-3 w-max select-none'>
+          {loopedVideos.map((video, i) => (
+            <ReelCard key={`${video.id}-${i}`} video={video} lang={lang} />
           ))}
         </div>
       </div>
