@@ -17,6 +17,10 @@ export function useReelsCarousel(lang: Locale) {
   const isPaused = useRef(false);
   const lastTimestamp = useRef<number>(0);
   const rafId = useRef<number>(0);
+
+  // LTR scrolls left (direction -1): offsetX 0 → -halfWidth → reset to 0
+  // AR  scrolls right (direction +1): offsetX -halfWidth → 0 → reset to -halfWidth
+  // Both operate within [-halfWidth, 0]
   const direction = lang === 'ar' ? 1 : -1;
 
   const animate = useCallback(
@@ -28,17 +32,16 @@ export function useReelsCarousel(lang: Locale) {
       }
 
       if (!isPaused.current && lastTimestamp.current !== 0) {
-        // Cap delta to 50ms to prevent large jumps after tab switching
         const delta = Math.min(timestamp - lastTimestamp.current, 50);
         const halfWidth = inner.scrollWidth / 2;
 
         offsetX.current += direction * SCROLL_SPEED_PX_PER_MS * delta;
 
-        // Seamless loop: keep offset within [-halfWidth, 0] for LTR, [0, halfWidth] for RTL
-        if (direction === -1 && offsetX.current <= -halfWidth) {
-          offsetX.current += halfWidth;
-        } else if (direction === 1 && offsetX.current >= halfWidth) {
-          offsetX.current -= halfWidth;
+        // Seamless loop: both LTR and AR stay within [-halfWidth, 0]
+        if (offsetX.current <= -halfWidth) {
+          offsetX.current += halfWidth; // LTR: hit bottom → reset toward 0
+        } else if (offsetX.current >= 0) {
+          offsetX.current -= halfWidth; // AR: hit top → reset toward -halfWidth
         }
 
         inner.style.transform = `translateX(${offsetX.current}px)`;
@@ -51,9 +54,19 @@ export function useReelsCarousel(lang: Locale) {
   );
 
   useEffect(() => {
+    // AR starts at -halfWidth so the duplicate set is shown first,
+    // then scrolls rightward toward 0 for a seamless loop
+    const inner = innerRef.current;
+    if (inner && lang === 'ar') {
+      offsetX.current = -(inner.scrollWidth / 2);
+      inner.style.transform = `translateX(${offsetX.current}px)`;
+    }
     rafId.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafId.current);
-  }, [animate]);
+  }, [animate, lang]);
+
+  // Both LTR and AR: clamp to ≤ 0 (can't drag past the visible start)
+  const clampOffset = (value: number) => Math.min(0, value);
 
   const onMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
@@ -65,12 +78,8 @@ export function useReelsCarousel(lang: Locale) {
   const onMouseMove = (e: React.MouseEvent) => {
     if (!isDragging.current) return;
     e.preventDefault();
-    const delta = e.clientX - dragStartX.current;
-    // LTR: clamp to ≤ 0 (prevent dragging past the start)
-    // RTL: clamp to ≥ 0
-    offsetX.current = direction === -1
-      ? Math.min(0, dragStartOffset.current + delta)
-      : Math.max(0, dragStartOffset.current + delta);
+    const raw = dragStartOffset.current + (e.clientX - dragStartX.current);
+    offsetX.current = clampOffset(raw);
     if (innerRef.current) {
       innerRef.current.style.transform = `translateX(${offsetX.current}px)`;
     }
@@ -88,10 +97,8 @@ export function useReelsCarousel(lang: Locale) {
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    const delta = e.touches[0].clientX - dragStartX.current;
-    offsetX.current = direction === -1
-      ? Math.min(0, dragStartOffset.current + delta)
-      : Math.max(0, dragStartOffset.current + delta);
+    const raw = dragStartOffset.current + (e.touches[0].clientX - dragStartX.current);
+    offsetX.current = clampOffset(raw);
     if (innerRef.current) {
       innerRef.current.style.transform = `translateX(${offsetX.current}px)`;
     }
