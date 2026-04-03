@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeftIconV2 } from 'shared/ui/icon/ArrowLeftIconV2';
 import { CloseIcon } from 'shared/ui/icon/CloseIcon';
+import { SearchIcon } from 'shared/ui/icons';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 
 interface PageHeaderV2Props {
@@ -14,6 +16,8 @@ interface PageHeaderV2Props {
   enableScrollTransparency?: boolean;
   backgroundColor?: string;
   closeUrl?: string;
+  /** 검색 아이콘 접근성 라벨 (미지정 시 영문 "Search") */
+  searchLinkAriaLabel?: string;
 }
 
 export function PageHeaderV2({
@@ -24,6 +28,7 @@ export function PageHeaderV2({
   enableScrollTransparency = false,
   backgroundColor = 'bg-white',
   closeUrl,
+  searchLinkAriaLabel = 'Search',
 }: PageHeaderV2Props) {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -96,6 +101,9 @@ export function PageHeaderV2({
 
   const styles = getHeaderStyles();
 
+  const searchIconColor =
+    enableScrollTransparency && !isScrolled ? '#ffffff' : '#404040';
+
   return (
     <div
       className={`fixed top-0 left-1/2 z-50 flex h-[58px] w-full -translate-x-1/2 items-center justify-between px-5 transition-all duration-300 ${MAX_MOBILE_WIDTH_CLASS} ${styles.container} ${className}`}
@@ -116,21 +124,27 @@ export function PageHeaderV2({
         </h1>
       </div>
 
-      {/* 오른쪽 컨텐츠 (공유하기, 좋아요 버튼 등) + 닫기 버튼 */}
-      {(rightContent || closeUrl) && (
-        <div className={`flex items-center gap-3 ${styles.text}`}>
-          {rightContent}
-          {closeUrl && (
-            <button
-              onClick={() => router.push(closeUrl)}
-              className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
-              aria-label='Close'
-            >
-              <CloseIcon className={styles.text} />
-            </button>
-          )}
-        </div>
-      )}
+      {/* 검색 → 오른쪽 컨텐츠 → 닫기 */}
+      <div className={`flex items-center gap-3 ${styles.text}`}>
+        <LocaleLink
+          href='/v2/search'
+          className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
+          aria-label={searchLinkAriaLabel}
+        >
+          <SearchIcon color={searchIconColor} />
+        </LocaleLink>
+        {rightContent}
+        {closeUrl && (
+          <button
+            type='button'
+            onClick={() => router.push(closeUrl)}
+            className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
+            aria-label='Close'
+          >
+            <CloseIcon className={styles.text} />
+          </button>
+        )}
+      </div>
     </div>
   );
 }

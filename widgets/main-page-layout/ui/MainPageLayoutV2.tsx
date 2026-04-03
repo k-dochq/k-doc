@@ -29,7 +29,12 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
       <div className='bg-[#F7F7F7]'>
         <EventBannerRibbonCarousel currentLocale={lang} />
         <div className='px-5 py-5'>
-          <SearchBarV2 lang={lang} dict={dict} searchPath='/search/hospitals' />
+          <SearchBarV2
+            lang={lang}
+            dict={dict}
+            searchPath='/v2/search'
+            searchQueryParam='q'
+          />
         </div>
         <EventBannerMainCarouselV2 currentLocale={lang} />
         <div className='py-5'>

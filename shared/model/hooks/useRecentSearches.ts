@@ -17,7 +17,7 @@ function loadFromStorage(): string[] {
 
 function saveAndNotify(next: string[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  window.dispatchEvent(new Event(SYNC_EVENT));
+  setTimeout(() => window.dispatchEvent(new Event(SYNC_EVENT)), 0);
 }
 
 export function useRecentSearches() {

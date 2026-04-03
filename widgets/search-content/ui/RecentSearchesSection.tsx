@@ -24,12 +24,13 @@ function XIcon() {
 }
 
 export function RecentSearchesSection({ dict }: RecentSearchesSectionProps) {
-  const { searches, removeSearch, clearAll } = useRecentSearches();
+  const { searches, addSearch, removeSearch, clearAll } = useRecentSearches();
   const router = useLocalizedRouter();
 
   if (searches.length === 0) return null;
 
   const handleChipClick = (term: string) => {
+    addSearch(term);
     router.push(`/v2/search?q=${encodeURIComponent(term)}`);
   };
 

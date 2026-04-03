@@ -18,6 +18,7 @@ export function DoctorDetailHeaderV2({
 }: DoctorDetailHeaderV2Props) {
   return (
     <PageHeaderV2
+      searchLinkAriaLabel={dict.search?.placeholder ?? 'Search'}
       title={doctorName || ''}
       fallbackUrl={`/${lang}/v2/doctors`}
       rightContent={
