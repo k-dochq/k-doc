@@ -194,6 +194,7 @@ model Review {
   isActive               Boolean?                 @default(true)
   procedureDate          DateTime?
   Comment                Comment[]
+  LiveReview             LiveReview?
   Hospital               Hospital                 @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   MedicalSpecialty       MedicalSpecialty         @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
   User                   User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -651,8 +652,10 @@ model LiveReview {
   isActive           Boolean           @default(true)
   createdAt          DateTime          @default(now())
   updatedAt          DateTime
+  reviewId           String?           @unique @db.Uuid
   Hospital           Hospital          @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   MedicalSpecialty   MedicalSpecialty  @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+  Review             Review?           @relation(fields: [reviewId], references: [id])
   LiveReviewImage    LiveReviewImage[]
 
   @@index([createdAt])
