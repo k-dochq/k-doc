@@ -868,6 +868,33 @@ model InfluencerVideoSection {
   @@schema("public")
 }
 
+model InsightArticle {
+  id          String               @id @db.Uuid
+  slug        String               @unique @db.VarChar(255)
+  title       Json
+  content     Json
+  excerpt     Json?
+  coverImage  String?              @db.VarChar(500)
+  ogImage     String?              @db.VarChar(500)
+  status      InsightArticleStatus @default(DRAFT)
+  viewCount   Int                  @default(0)
+  hashtags    String[]             @default([])
+  hospitalIds String[]             @default([]) @db.Uuid
+  doctorIds   String[]             @default([]) @db.Uuid
+  scheduledAt DateTime?            @db.Timestamptz(6)
+  publishedAt DateTime?            @db.Timestamptz(6)
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime
+  createdBy   String?              @db.Uuid
+  updatedBy   String?              @db.Uuid
+
+  @@index([createdAt])
+  @@index([publishedAt])
+  @@index([scheduledAt])
+  @@index([status])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -1099,6 +1126,15 @@ enum InfluencerVideoPlatform {
   INSTAGRAM
   YOUTUBE
   TIKTOK
+
+  @@schema("public")
+}
+
+enum InsightArticleStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
 
   @@schema("public")
 }
