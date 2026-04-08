@@ -24,6 +24,9 @@ export function buildHospitalOrderBy(
       {
         createdAt: sortOrder,
       },
+      {
+        id: 'asc',
+      },
     ];
   }
 
@@ -53,6 +56,9 @@ export function buildHospitalOrderBy(
       },
     });
   }
+
+  // 동점 시 일관된 순서를 보장하기 위한 tiebreaker
+  orderBy.push({ id: 'asc' });
 
   return orderBy;
 }
