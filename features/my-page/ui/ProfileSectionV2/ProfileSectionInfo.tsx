@@ -27,7 +27,7 @@ export function ProfileSectionInfo({
           </p>
         )}
       </div>
-      <div className='size-[20px] shrink-0 overflow-clip'>
+      <div className='size-[20px] shrink-0 overflow-clip rtl:scale-x-[-1]'>
         <ArrowRightIcon />
       </div>
     </LocaleLink>

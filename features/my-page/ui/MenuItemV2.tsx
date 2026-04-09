@@ -17,7 +17,7 @@ export function MenuItemV2({ title, onClick, disabled = false }: MenuItemV2Props
       className='flex w-full items-center justify-between rounded-xl bg-white p-4 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-50'
     >
       <span className='text-sm font-medium text-neutral-700'>{title}</span>
-      <div className='shrink-0'>
+      <div className='shrink-0 rtl:scale-x-[-1]'>
         <ArrowRightIcon />
       </div>
     </button>
