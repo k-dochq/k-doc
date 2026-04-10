@@ -2125,6 +2125,10 @@
       "deleteAccount": "حذف الحساب",
       "deleteAccountConfirm": "هل أنت متأكد أنك تريد حذف حسابك؟ سيتم تعطيل حسابك وستحتاج إلى التواصل مع خدمة العملاء لإعادة تفعيله.",
       "deleteAccountError": "حدث خطأ أثناء حذف الحساب. يرجى المحاولة مرة أخرى."
+    },
+    "likeReservation": {
+      "favorites": "المفضلة",
+      "reservations": "حجوزاتي"
     }
   },
   "taxiReservation": {

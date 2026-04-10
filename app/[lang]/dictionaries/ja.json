@@ -2125,6 +2125,10 @@
       "deleteAccount": "アカウント削除",
       "deleteAccountConfirm": "アカウントを削除しますか？アカウントは無効化され、再有効化にはカスタマーサービスへの連絡が必要です。",
       "deleteAccountError": "アカウント削除中にエラーが発生しました。再度お試しください。"
+    },
+    "likeReservation": {
+      "favorites": "お気に入り",
+      "reservations": "予約履歴"
     }
   },
   "taxiReservation": {

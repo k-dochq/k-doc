@@ -2125,6 +2125,10 @@
       "deleteAccount": "刪除帳戶",
       "deleteAccountConfirm": "確定要刪除帳戶嗎？帳戶將被停用，需聯絡客服才能重新啟用。",
       "deleteAccountError": "刪除帳戶時發生錯誤，請再試一次。"
+    },
+    "likeReservation": {
+      "favorites": "收藏清單",
+      "reservations": "我的預約"
     }
   },
   "taxiReservation": {
