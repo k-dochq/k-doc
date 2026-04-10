@@ -123,6 +123,14 @@ export const queryKeys = {
       [...queryKeys.notices.lists(), 'infinite', filters] as const,
   },
 
+  // Tips(아티클) 관련 쿼리
+  tips: {
+    all: ['tips'] as const,
+    lists: () => [...queryKeys.tips.all, 'list'] as const,
+    infinite: (filters: Record<string, unknown>) =>
+      [...queryKeys.tips.lists(), 'infinite', filters] as const,
+  },
+
   // 카테고리 관련 쿼리
   categories: {
     all: ['categories'] as const,

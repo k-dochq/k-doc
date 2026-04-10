@@ -1,15 +1,14 @@
-import { type Locale } from 'shared/config';
+import { TipsContent } from './TipsContent';
 
-interface TipsPageProps {
-  params: Promise<{ lang: Locale }>;
-}
-
-export default async function TipsPage({ params }: TipsPageProps) {
-  const { lang } = await params;
-
+export default function TipsPage() {
   return (
-    <div className='px-5 py-6'>
-      {/* TODO: Tips 콘텐츠 구현 */}
+    <div className='px-5'>
+      <img
+        src='/images/tips-top-banner.png'
+        alt='K-DOC Tips'
+        className='w-full'
+      />
+      <TipsContent />
     </div>
   );
 }
