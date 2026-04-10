@@ -11,6 +11,7 @@ import { PopularReviewsV2Wrapper } from 'widgets/popular-reviews/ui';
 import { PremiumServiceV2Container } from 'widgets/premium-service/ui';
 import { YoutubeVideosV2Wrapper } from 'widgets/youtube-videos/ui';
 import { IntroduceYoutubeSection } from 'widgets/introduce-youtube/ui';
+import { MainTipsSection } from 'widgets/main-tips';
 import { getDictionary } from 'app/[lang]/dictionaries';
 import { ContactFloatingButton } from 'features/contact-floating-button';
 
@@ -62,6 +63,8 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
       <div className='py-9'>
         <YoutubeVideosV2Wrapper lang={lang} dict={dict} />
       </div>
+
+      <MainTipsSection lang={lang} dict={dict} />
 
       {(lang === 'th' || lang === 'tl') && <ContactFloatingButton lang={lang} />}
     </div>
