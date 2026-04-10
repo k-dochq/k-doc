@@ -1,4 +1,5 @@
 import { type Locale } from 'shared/config';
+import { getDictionary } from '../dictionaries';
 import { TipsContent } from './TipsContent';
 
 interface TipsPageProps {
@@ -7,6 +8,7 @@ interface TipsPageProps {
 
 export default async function TipsPage({ params }: TipsPageProps) {
   const { lang } = await params;
+  const dict = await getDictionary(lang);
 
   return (
     <div className='px-5'>
@@ -15,7 +17,7 @@ export default async function TipsPage({ params }: TipsPageProps) {
         alt='K-DOC Tips'
         className='w-full'
       />
-      <TipsContent lang={lang} />
+      <TipsContent lang={lang} dict={dict} />
     </div>
   );
 }

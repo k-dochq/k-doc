@@ -36,16 +36,21 @@ interface TipsApiResponse {
   error?: string;
 }
 
+export type TipsSortOption = 'latest' | 'popular';
+
 async function fetchTips({
   pageParam = 1,
   limit = 10,
+  sort = 'latest',
 }: {
   pageParam: number;
   limit?: number;
+  sort?: TipsSortOption;
 }): Promise<TipsResponse> {
   const params = new URLSearchParams({
     page: pageParam.toString(),
     limit: limit.toString(),
+    sort,
   });
 
   const response = await fetch(`/api/tips?${params.toString()}`);
@@ -65,12 +70,13 @@ async function fetchTips({
 
 interface UseInfiniteTipsParams {
   limit?: number;
+  sort?: TipsSortOption;
 }
 
-export function useInfiniteTips({ limit = 10 }: UseInfiniteTipsParams = {}) {
+export function useInfiniteTips({ limit = 10, sort = 'latest' }: UseInfiniteTipsParams = {}) {
   return useInfiniteQuery({
-    queryKey: queryKeys.tips.infinite({ limit }),
-    queryFn: ({ pageParam }) => fetchTips({ pageParam, limit }),
+    queryKey: queryKeys.tips.infinite({ limit, sort }),
+    queryFn: ({ pageParam }) => fetchTips({ pageParam, limit, sort }),
     getNextPageParam: (lastPage) => {
       return lastPage.hasNextPage ? lastPage.currentPage + 1 : undefined;
     },

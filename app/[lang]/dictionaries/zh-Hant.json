@@ -2475,5 +2475,13 @@
     "section7TitleLine2Italic": "醫療",
     "section7TitleLine2Normal": "旅遊",
     "consultationMessage": "K-DOC 支援前往韓國就醫的國際患者醫療旅程。\n\n• 推薦經過驗證的醫療診所\n• 療程諮詢與診所預約\n• 機場接送與 VIP 專車服務\n• 專業醫療口譯人員\n• 術後照護支援\n\n禮賓服務方案適用於透過 K-DOC 預約療程或手術的客戶。\n\nBasic Care – 適合只需要簡單諮詢與診所預約的客戶\nPlus Care – 適合需要專業醫療口譯人員支援的客戶\nPremium Care – 適合需要專業醫療口譯、機場與飯店接送，以及術後照護服務的客戶\n\n請告訴我們您感興趣的療程項目，我們將協助您進行下一步的安排與說明。"
+  },
+  "tips": {
+    "loading": "載入中...",
+    "error": "無法載入資料。",
+    "sort": {
+      "latest": "最新",
+      "popular": "熱門"
+    }
   }
 }

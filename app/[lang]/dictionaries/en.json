@@ -2476,5 +2476,13 @@
     "section7TitleLine2Italic": "Medical",
     "section7TitleLine2Normal": "Travel",
     "consultationMessage": "K-DOC supports the medical journey of international patients visiting Korea.\n\n• Recommendations of verified clinics\n• Consultation and clinic reservations\n• Airport pickup and VIP transportation\n• Professional medical interpreters\n• Post-treatment care\n\nThe concierge service plans are available when you book a procedure or surgery through K-DOC.\n\nBasic Care – For those who only need simple consultation and clinic reservation\nPlus Care – For those who require a professional medical interpreter\nPremium Care – For those who want a professional medical interpreter, airport and hotel pickup, and post-treatment care\n\nPlease let us know the procedure you are interested in, and we will guide you through the next steps."
+  },
+  "tips": {
+    "loading": "Loading...",
+    "error": "Unable to load data.",
+    "sort": {
+      "latest": "Latest",
+      "popular": "Popular"
+    }
   }
 }

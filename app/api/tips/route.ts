@@ -6,10 +6,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
+    const sort = searchParams.get('sort') || 'latest';
 
     const skip = (page - 1) * limit;
 
     const where = { status: 'PUBLISHED' as const };
+
+    const orderBy = sort === 'popular' ? { viewCount: 'desc' as const } : { publishedAt: 'desc' as const };
 
     const [articles, total] = await Promise.all([
       prisma.insightArticle.findMany({
@@ -25,7 +28,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
           viewCount: true,
           publishedAt: true,
         },
-        orderBy: { publishedAt: 'desc' },
+        orderBy,
         skip,
         take: limit,
       }),

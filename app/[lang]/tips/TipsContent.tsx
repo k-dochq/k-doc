@@ -1,16 +1,22 @@
 'use client';
 
+import { useState } from 'react';
 import { type Locale } from 'shared/config';
-import { useInfiniteTips } from 'entities/tip/model/useInfiniteTips';
-import { TipArticleCard } from 'entities/tip/ui/TipArticleCard';
+import { type Dictionary } from 'shared/model/types';
+import { type TipsSortOption, useInfiniteTips } from 'entities/tip/model/useInfiniteTips';
+import { TipArticleList } from 'entities/tip/ui/TipArticleList';
 import { TipArticleCardSkeletonList } from 'entities/tip/ui/TipArticleCardSkeleton';
-import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
+import { TipsSortFilterBar } from 'entities/tip/ui/TipsSortFilterBar';
+import { TipsErrorState } from 'entities/tip/ui/TipsErrorState';
 
 interface TipsContentProps {
   lang: Locale;
+  dict: Dictionary;
 }
 
-export function TipsContent({ lang }: TipsContentProps) {
+export function TipsContent({ lang, dict }: TipsContentProps) {
+  const [sort, setSort] = useState<TipsSortOption>('latest');
+
   const {
     data,
     fetchNextPage,
@@ -18,29 +24,31 @@ export function TipsContent({ lang }: TipsContentProps) {
     isFetchingNextPage,
     isLoading,
     isError,
-  } = useInfiniteTips({ limit: 10 });
+  } = useInfiniteTips({ limit: 10, sort });
 
   const allArticles = data?.pages.flatMap((page) => page.articles) ?? [];
 
-  if (isLoading) {
-    return <TipArticleCardSkeletonList count={5} />;
-  }
-
-  if (isError) {
-    return <div className='py-12 text-center text-sm text-neutral-400'>데이터를 불러올 수 없습니다.</div>;
-  }
-
   return (
-    <div className='flex flex-col gap-4 pt-4'>
-      {allArticles.map((article) => (
-        <TipArticleCard key={article.id} article={article} lang={lang} />
-      ))}
-
-      <InfiniteScrollTrigger
-        onIntersect={fetchNextPage}
-        hasNextPage={hasNextPage ?? false}
-        isFetchingNextPage={isFetchingNextPage}
+    <div>
+      <TipsSortFilterBar
+        dict={dict}
+        currentSort={sort}
+        onSortChange={setSort}
       />
+
+      {isLoading ? (
+        <TipArticleCardSkeletonList count={5} />
+      ) : isError ? (
+        <TipsErrorState dict={dict} />
+      ) : (
+        <TipArticleList
+          articles={allArticles}
+          lang={lang}
+          fetchNextPage={fetchNextPage}
+          hasNextPage={hasNextPage ?? false}
+          isFetchingNextPage={isFetchingNextPage}
+        />
+      )}
     </div>
   );
 }
