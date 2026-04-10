@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
-import { ShareButton } from 'shared/ui/share-button';
+import { TipShareButton } from 'entities/tip/ui/detail/TipShareButton';
 import { getDictionary } from '../../dictionaries';
 import { TipDetailContent } from './TipDetailContent';
 
@@ -17,7 +17,7 @@ export default async function TipDetailPage({ params }: TipDetailPageProps) {
       <PageHeaderV2
         title=''
         fallbackUrl={`/${lang}/tips`}
-        rightContent={<ShareButton />}
+        rightContent={<TipShareButton id={id} lang={lang} />}
       />
       <div className='h-[58px]' />
       <main className='px-5'>
