@@ -1,0 +1,14 @@
+// admin의 tiptap 스타일을 그대로 재사용
+// 모든 셀렉터는 `.tiptap.ProseMirror`를 타겟팅하므로
+// TipContentRenderer의 wrapper에 동일 클래스를 부여해야 함.
+
+@use './_variables.scss';
+@use './tiptap-node/paragraph-node.scss';
+@use './tiptap-node/heading-node.scss';
+@use './tiptap-node/list-node.scss';
+@use './tiptap-node/blockquote-node.scss';
+@use './tiptap-node/code-block-node.scss';
+@use './tiptap-node/horizontal-rule-node.scss';
+@use './tiptap-node/image-node.scss';
+@use './tiptap-node/table/prosemirror-table.scss';
+@use './tiptap-node/table/table-node.scss';
