@@ -2482,6 +2482,7 @@
     "sort": {
       "latest": "최신순",
       "popular": "인기순"
-    }
+    },
+    "detailTitle": "Tips"
   }
 }

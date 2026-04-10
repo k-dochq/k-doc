@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { type TipArticle } from '../model/useInfiniteTips';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { ViewIcon } from './ViewIcon';
 
 interface TipArticleCardProps {
@@ -26,7 +27,7 @@ export function TipArticleCard({ article, lang }: TipArticleCardProps) {
   const title = getLocalizedTitle(article.title as Record<string, string>, lang);
 
   return (
-    <div className='flex items-center gap-3'>
+    <LocaleLink href={`/tip/${article.id}`} locale={lang} className='flex items-center gap-3'>
       {/* 커버이미지 */}
       <div className='h-[100px] w-[150px] shrink-0 overflow-hidden rounded-xl bg-neutral-200'>
         {article.coverImage && (
@@ -64,6 +65,6 @@ export function TipArticleCard({ article, lang }: TipArticleCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </LocaleLink>
   );
 }
