@@ -12,6 +12,7 @@ import { TipDetailDivider } from 'entities/tip/ui/detail/TipDetailDivider';
 import { TipRecommendedHospitals } from 'entities/tip/ui/detail/TipRecommendedHospitals';
 import { TipLearnMoreHospitalsButton } from 'entities/tip/ui/detail/TipLearnMoreHospitalsButton';
 import { TipHashtagList } from 'entities/tip/ui/detail/TipHashtagList';
+import { RecommendedTipsSection } from 'entities/tip/ui/detail/RecommendedTipsSection';
 import { TipsErrorState } from 'entities/tip/ui/TipsErrorState';
 
 interface TipDetailContentProps {
@@ -75,6 +76,14 @@ export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
         <div className='mt-7'>
           <TipHashtagList hashtags={article.hashtags} />
         </div>
+      )}
+      <div className='h-7' />
+      {article.recommendedArticles.length > 0 && (
+        <RecommendedTipsSection
+          articles={article.recommendedArticles}
+          lang={lang}
+          dict={dict}
+        />
       )}
     </div>
   );

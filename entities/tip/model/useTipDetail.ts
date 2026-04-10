@@ -5,6 +5,15 @@ import { type Prisma } from '@prisma/client';
 import { type HospitalCardData } from 'shared/model/types';
 import { queryKeys } from 'shared/lib/query-keys';
 
+export interface RecommendedTipArticle {
+  id: string;
+  slug: string;
+  title: Prisma.JsonValue;
+  coverImage: string | null;
+  publishedAt: string | null;
+  medicalSpecialties: { id: string; name: Prisma.JsonValue }[];
+}
+
 export type TipDetail = Prisma.InsightArticleGetPayload<{
   select: {
     id: true;
@@ -16,6 +25,7 @@ export type TipDetail = Prisma.InsightArticleGetPayload<{
     hashtags: true;
     medicalSpecialtyIds: true;
     hospitalIds: true;
+    recommendedArticleIds: true;
     viewCount: true;
     publishedAt: true;
     status: true;
@@ -23,6 +33,7 @@ export type TipDetail = Prisma.InsightArticleGetPayload<{
 }> & {
   medicalSpecialties: { id: string; name: Prisma.JsonValue }[];
   recommendedHospitals: HospitalCardData[];
+  recommendedArticles: RecommendedTipArticle[];
 };
 
 interface TipDetailApiResponse {

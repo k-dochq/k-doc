@@ -15,7 +15,7 @@ export default async function TipDetailPage({ params }: TipDetailPageProps) {
     <div className='min-h-screen bg-white'>
       <PageHeaderV2 title='' fallbackUrl={`/${lang}/tips`} />
       <div className='h-[58px]' />
-      <main className='px-5 pb-10'>
+      <main className='px-5'>
         <TipDetailContent id={id} lang={lang} dict={dict} />
       </main>
     </div>

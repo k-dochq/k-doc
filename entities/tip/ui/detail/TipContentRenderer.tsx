@@ -1,7 +1,7 @@
 'use client';
 
 import './styles/tip-content.scss';
-import { useMemo } from 'react';
+import { Fragment, type ReactNode, useMemo } from 'react';
 import { renderToReactElement } from '@tiptap/static-renderer/pm/react';
 import { type JSONContent } from '@tiptap/core';
 import { StarterKit } from '@tiptap/starter-kit';
@@ -9,7 +9,6 @@ import { Image } from '@tiptap/extension-image';
 import { TextAlign } from '@tiptap/extension-text-align';
 import { TextStyle, Color } from '@tiptap/extension-text-style';
 import { Highlight } from '@tiptap/extension-highlight';
-import { Underline } from '@tiptap/extension-underline';
 import { Emoji, gitHubEmojis } from '@tiptap/extension-emoji';
 import { Mention } from '@tiptap/extension-mention';
 import { TaskList, TaskItem } from '@tiptap/extension-list';
@@ -34,7 +33,6 @@ const extensions = [
   TextStyle,
   Color,
   Highlight.configure({ multicolor: true }),
-  Underline,
   Subscript,
   Superscript,
   Typography,
@@ -52,15 +50,46 @@ const extensions = [
   Mention,
 ];
 
+// table cell/header는 colspan/rowspan을 colSpan/rowSpan으로 변환해야 함
+const tableCellMapping = (Tag: 'td' | 'th') =>
+  function TableCellRenderer({
+    node,
+    children,
+  }: {
+    node: { attrs?: Record<string, unknown> };
+    children?: ReactNode;
+  }) {
+    const attrs = node.attrs ?? {};
+    const colspan = typeof attrs.colspan === 'number' ? attrs.colspan : undefined;
+    const rowspan = typeof attrs.rowspan === 'number' ? attrs.rowspan : undefined;
+    return (
+      <Tag colSpan={colspan} rowSpan={rowspan}>
+        {children}
+      </Tag>
+    );
+  };
+
+const nodeMapping = {
+  tableCell: tableCellMapping('td'),
+  tableHeader: tableCellMapping('th'),
+};
+
 export function TipContentRenderer({ content }: TipContentRendererProps) {
   const rendered = useMemo(
-    () => renderToReactElement({ extensions, content }),
+    () =>
+      renderToReactElement({
+        extensions,
+        content,
+        options: { nodeMapping },
+      }),
     [content],
   );
 
   return (
     <div className='tip-content'>
-      <div className='tiptap ProseMirror'>{rendered}</div>
+      <div className='tiptap ProseMirror'>
+        <Fragment>{rendered}</Fragment>
+      </div>
     </div>
   );
 }
