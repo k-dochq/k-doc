@@ -6,7 +6,10 @@ import { type Dictionary } from 'shared/model/types';
 import { useTipDetail } from 'entities/tip/model/useTipDetail';
 import { TipDetailHeader } from 'entities/tip/ui/detail/TipDetailHeader';
 import { TipDetailSkeleton } from 'entities/tip/ui/detail/TipDetailSkeleton';
+import { TipCoverImage } from 'entities/tip/ui/detail/TipCoverImage';
 import { TipContentRenderer } from 'entities/tip/ui/detail/TipContentRenderer';
+import { TipDetailDivider } from 'entities/tip/ui/detail/TipDetailDivider';
+import { TipRecommendedHospitals } from 'entities/tip/ui/detail/TipRecommendedHospitals';
 import { TipsErrorState } from 'entities/tip/ui/TipsErrorState';
 
 interface TipDetailContentProps {
@@ -40,10 +43,29 @@ export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
     lang,
   );
 
+  const title = (article.title as Record<string, string>)[
+    lang === 'zh-Hant' ? 'zh' : lang
+  ] ?? article.slug;
+
   return (
     <div>
       <TipDetailHeader article={article} lang={lang} />
-      {localizedContent && <TipContentRenderer content={localizedContent} />}
+      {article.coverImage && <TipCoverImage src={article.coverImage} alt={title} />}
+      {localizedContent && (
+        <div className='mt-5'>
+          <TipContentRenderer content={localizedContent} />
+        </div>
+      )}
+      {article.recommendedHospitals.length > 0 && (
+        <>
+          <TipDetailDivider />
+          <TipRecommendedHospitals
+            hospitals={article.recommendedHospitals}
+            lang={lang}
+            dict={dict}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { type Prisma } from '@prisma/client';
+import { type HospitalCardData } from 'shared/model/types';
 import { queryKeys } from 'shared/lib/query-keys';
 
 export type TipDetail = Prisma.InsightArticleGetPayload<{
@@ -14,12 +15,14 @@ export type TipDetail = Prisma.InsightArticleGetPayload<{
     coverImage: true;
     hashtags: true;
     medicalSpecialtyIds: true;
+    hospitalIds: true;
     viewCount: true;
     publishedAt: true;
     status: true;
   };
 }> & {
   medicalSpecialties: { id: string; name: Prisma.JsonValue }[];
+  recommendedHospitals: HospitalCardData[];
 };
 
 interface TipDetailApiResponse {

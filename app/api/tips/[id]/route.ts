@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
+import { getHospitalsByIds } from 'entities/hospital/api/use-cases/get-hospitals-by-ids';
 
 interface RouteParams {
   params: Promise<{ id: string }>;
@@ -20,6 +21,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams): Promi
         coverImage: true,
         hashtags: true,
         medicalSpecialtyIds: true,
+        hospitalIds: true,
         viewCount: true,
         publishedAt: true,
         status: true,
@@ -46,11 +48,14 @@ export async function GET(_request: NextRequest, { params }: RouteParams): Promi
       .map((specialtyId) => specialtyMap.get(specialtyId))
       .filter(Boolean);
 
+    const recommendedHospitals = await getHospitalsByIds(article.hospitalIds);
+
     return NextResponse.json({
       success: true,
       data: {
         ...article,
         medicalSpecialties,
+        recommendedHospitals,
       },
     });
   } catch (error) {
