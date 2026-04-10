@@ -888,6 +888,7 @@ model InsightArticle {
   createdBy             String?              @db.Uuid
   updatedBy             String?              @db.Uuid
   recommendedArticleIds String[]             @default([]) @db.Uuid
+  medicalSpecialtyIds   String[]             @default([]) @db.Uuid
 
   @@index([createdAt])
   @@index([publishedAt])
