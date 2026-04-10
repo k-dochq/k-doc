@@ -32,12 +32,33 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       prisma.insightArticle.count({ where }),
     ]);
 
+    // medicalSpecialtyIds에서 사용된 모든 ID를 수집하여 한 번에 조회
+    const allSpecialtyIds = [...new Set(articles.flatMap((a) => a.medicalSpecialtyIds))];
+
+    const specialties =
+      allSpecialtyIds.length > 0
+        ? await prisma.medicalSpecialty.findMany({
+            where: { id: { in: allSpecialtyIds } },
+            select: { id: true, name: true },
+          })
+        : [];
+
+    const specialtyMap = new Map(specialties.map((s) => [s.id, s]));
+
+    // 각 아티클에 medicalSpecialties 배열 추가
+    const articlesWithSpecialties = articles.map((article) => ({
+      ...article,
+      medicalSpecialties: article.medicalSpecialtyIds
+        .map((id) => specialtyMap.get(id))
+        .filter(Boolean),
+    }));
+
     const totalPages = Math.ceil(total / limit);
 
     return NextResponse.json({
       success: true,
       data: {
-        articles,
+        articles: articlesWithSpecialties,
         total,
         page,
         limit,

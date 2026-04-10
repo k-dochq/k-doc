@@ -1,6 +1,13 @@
+import { type Locale } from 'shared/config';
 import { TipsContent } from './TipsContent';
 
-export default function TipsPage() {
+interface TipsPageProps {
+  params: Promise<{ lang: Locale }>;
+}
+
+export default async function TipsPage({ params }: TipsPageProps) {
+  const { lang } = await params;
+
   return (
     <div className='px-5'>
       <img
@@ -8,7 +15,7 @@ export default function TipsPage() {
         alt='K-DOC Tips'
         className='w-full'
       />
-      <TipsContent />
+      <TipsContent lang={lang} />
     </div>
   );
 }

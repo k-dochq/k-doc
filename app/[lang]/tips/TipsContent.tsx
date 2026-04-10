@@ -1,9 +1,16 @@
 'use client';
 
+import { type Locale } from 'shared/config';
 import { useInfiniteTips } from 'entities/tip/model/useInfiniteTips';
+import { TipArticleCard } from 'entities/tip/ui/TipArticleCard';
+import { TipArticleCardSkeletonList } from 'entities/tip/ui/TipArticleCardSkeleton';
 import { InfiniteScrollTrigger } from 'shared/ui/infinite-scroll-trigger';
 
-export function TipsContent() {
+interface TipsContentProps {
+  lang: Locale;
+}
+
+export function TipsContent({ lang }: TipsContentProps) {
   const {
     data,
     fetchNextPage,
@@ -16,7 +23,7 @@ export function TipsContent() {
   const allArticles = data?.pages.flatMap((page) => page.articles) ?? [];
 
   if (isLoading) {
-    return <div className='py-12 text-center text-sm text-neutral-400'>로딩 중...</div>;
+    return <TipArticleCardSkeletonList count={5} />;
   }
 
   if (isError) {
@@ -24,16 +31,9 @@ export function TipsContent() {
   }
 
   return (
-    <div>
-      {/* TODO: 아티클 카드 UI 구현 */}
-      <div className='py-4 text-sm text-neutral-500'>
-        {allArticles.length}개의 아티클 로드됨
-      </div>
-
+    <div className='flex flex-col gap-4 pt-4'>
       {allArticles.map((article) => (
-        <div key={article.id} className='border-b py-3 text-sm'>
-          {article.title?.ko ?? article.title?.en ?? article.slug}
-        </div>
+        <TipArticleCard key={article.id} article={article} lang={lang} />
       ))}
 
       <InfiniteScrollTrigger
