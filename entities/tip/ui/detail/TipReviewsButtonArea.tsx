@@ -1,4 +1,4 @@
-import { type Locale } from 'shared/config';
+import { type Locale, MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { LocaleLink } from 'shared/ui/locale-link';
 
@@ -10,7 +10,7 @@ interface TipReviewsButtonAreaProps {
 export function TipReviewsButtonArea({ lang, dict }: TipReviewsButtonAreaProps) {
   return (
     <div
-      className='relative -mx-5 px-5 pt-4 pb-10'
+      className={`fixed right-0 bottom-0 left-0 z-40 mx-auto px-5 pt-4 pb-10 ${MAX_MOBILE_WIDTH_CLASS}`}
       style={{
         background:
           'linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, #FFF 13.84%)',

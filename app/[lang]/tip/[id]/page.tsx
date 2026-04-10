@@ -20,7 +20,7 @@ export default async function TipDetailPage({ params }: TipDetailPageProps) {
         rightContent={<TipShareButton id={id} lang={lang} />}
       />
       <div className='h-[58px]' />
-      <main className='px-5'>
+      <main className='px-5 pb-[112px]'>
         <TipDetailContent id={id} lang={lang} dict={dict} />
       </main>
     </div>
