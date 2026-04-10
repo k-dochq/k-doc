@@ -1,5 +1,6 @@
 import { type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
+import { ShareButton } from 'shared/ui/share-button';
 import { getDictionary } from '../../dictionaries';
 import { TipDetailContent } from './TipDetailContent';
 
@@ -13,7 +14,11 @@ export default async function TipDetailPage({ params }: TipDetailPageProps) {
 
   return (
     <div className='min-h-screen bg-white'>
-      <PageHeaderV2 title='' fallbackUrl={`/${lang}/tips`} />
+      <PageHeaderV2
+        title=''
+        fallbackUrl={`/${lang}/tips`}
+        rightContent={<ShareButton />}
+      />
       <div className='h-[58px]' />
       <main className='px-5'>
         <TipDetailContent id={id} lang={lang} dict={dict} />
