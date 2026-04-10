@@ -4,6 +4,7 @@ import { type JSONContent } from '@tiptap/core';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useTipDetail } from 'entities/tip/model/useTipDetail';
+import { useIncrementTipView } from 'entities/tip/model/useIncrementTipView';
 import { TipDetailHeader } from 'entities/tip/ui/detail/TipDetailHeader';
 import { TipDetailSkeleton } from 'entities/tip/ui/detail/TipDetailSkeleton';
 import { TipCoverImage } from 'entities/tip/ui/detail/TipCoverImage';
@@ -32,6 +33,7 @@ function getLocalizedContent(
 }
 
 export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
+  useIncrementTipView(id);
   const { data: article, isLoading, isError } = useTipDetail(id);
 
   if (isLoading) {
