@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useSearchParams, usePathname } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { useLocalizedRouter } from 'shared/model/hooks';
 import { type TipsSortOption, useInfiniteTips } from 'entities/tip/model/useInfiniteTips';
 import { TipArticleList } from 'entities/tip/ui/TipArticleList';
 import { TipArticleCardSkeletonList } from 'entities/tip/ui/TipArticleCardSkeleton';
@@ -12,10 +13,26 @@ import { TipsErrorState } from 'entities/tip/ui/TipsErrorState';
 interface TipsContentProps {
   lang: Locale;
   dict: Dictionary;
+  initialSort: TipsSortOption;
 }
 
-export function TipsContent({ lang, dict }: TipsContentProps) {
-  const [sort, setSort] = useState<TipsSortOption>('latest');
+function parseSort(value: string | null): TipsSortOption {
+  return value === 'popular' ? 'popular' : 'latest';
+}
+
+export function TipsContent({ lang, dict, initialSort }: TipsContentProps) {
+  const router = useLocalizedRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const sort = parseSort(searchParams?.get('sort') ?? initialSort);
+
+  const handleSortChange = (next: TipsSortOption) => {
+    const params = new URLSearchParams(searchParams?.toString() || '');
+    params.set('sort', next);
+    const basePath = pathname?.replace(/^\/[^/]+/, '') || '/tips';
+    router.replace(`${basePath}?${params.toString()}`);
+  };
 
   const {
     data,
@@ -33,7 +50,7 @@ export function TipsContent({ lang, dict }: TipsContentProps) {
       <TipsSortFilterBar
         dict={dict}
         currentSort={sort}
-        onSortChange={setSort}
+        onSortChange={handleSortChange}
       />
 
       {isLoading ? (
