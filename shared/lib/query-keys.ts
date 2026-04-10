@@ -129,6 +129,8 @@ export const queryKeys = {
     lists: () => [...queryKeys.tips.all, 'list'] as const,
     infinite: (filters: Record<string, unknown>) =>
       [...queryKeys.tips.lists(), 'infinite', filters] as const,
+    details: () => [...queryKeys.tips.all, 'detail'] as const,
+    detail: (id: string) => [...queryKeys.tips.details(), id] as const,
   },
 
   // 카테고리 관련 쿼리

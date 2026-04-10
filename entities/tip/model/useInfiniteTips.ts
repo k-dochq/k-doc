@@ -1,7 +1,7 @@
 'use client';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { type Prisma, type JsonValue } from '@prisma/client';
+import { type Prisma } from '@prisma/client';
 import { queryKeys } from 'shared/lib/query-keys';
 
 export type TipArticle = Prisma.InsightArticleGetPayload<{
@@ -17,7 +17,7 @@ export type TipArticle = Prisma.InsightArticleGetPayload<{
     publishedAt: true;
   };
 }> & {
-  medicalSpecialties: { id: string; name: JsonValue }[];
+  medicalSpecialties: { id: string; name: Prisma.JsonValue }[];
 };
 
 interface TipsResponse {
