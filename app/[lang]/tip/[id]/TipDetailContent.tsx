@@ -13,6 +13,7 @@ import { TipRecommendedHospitals } from 'entities/tip/ui/detail/TipRecommendedHo
 import { TipLearnMoreHospitalsButton } from 'entities/tip/ui/detail/TipLearnMoreHospitalsButton';
 import { TipHashtagList } from 'entities/tip/ui/detail/TipHashtagList';
 import { RecommendedTipsSection } from 'entities/tip/ui/detail/RecommendedTipsSection';
+import { TipReviewsButtonArea } from 'entities/tip/ui/detail/TipReviewsButtonArea';
 import { TipsErrorState } from 'entities/tip/ui/TipsErrorState';
 
 interface TipDetailContentProps {
@@ -85,6 +86,7 @@ export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
           dict={dict}
         />
       )}
+      <TipReviewsButtonArea lang={lang} dict={dict} />
     </div>
   );
 }
