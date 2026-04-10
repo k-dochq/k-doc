@@ -10,6 +10,7 @@ import { TipCoverImage } from 'entities/tip/ui/detail/TipCoverImage';
 import { TipContentRenderer } from 'entities/tip/ui/detail/TipContentRenderer';
 import { TipDetailDivider } from 'entities/tip/ui/detail/TipDetailDivider';
 import { TipRecommendedHospitals } from 'entities/tip/ui/detail/TipRecommendedHospitals';
+import { TipLearnMoreHospitalsButton } from 'entities/tip/ui/detail/TipLearnMoreHospitalsButton';
 import { TipsErrorState } from 'entities/tip/ui/TipsErrorState';
 
 interface TipDetailContentProps {
@@ -64,6 +65,9 @@ export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
             lang={lang}
             dict={dict}
           />
+          <div className='mt-7'>
+            <TipLearnMoreHospitalsButton lang={lang} dict={dict} />
+          </div>
         </>
       )}
     </div>
