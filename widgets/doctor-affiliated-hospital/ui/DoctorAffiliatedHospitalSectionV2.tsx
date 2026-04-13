@@ -4,6 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type DoctorDetail } from '@/lib/queries/doctor';
 import { transformDoctorHospitalToHospitalCard } from '@/lib/utils/doctor-hospital-transform';
+import { LocaleLink } from 'shared/ui/locale-link';
 import { DoctorAffiliatedHospitalCardV2 } from './DoctorAffiliatedHospitalCardV2';
 
 interface DoctorAffiliatedHospitalSectionV2Props {
@@ -29,7 +30,9 @@ export function DoctorAffiliatedHospitalSectionV2({
       <h3 className='text-[18px] leading-[28px] font-semibold text-neutral-700'>
         {dict.doctor.affiliatedHospital}
       </h3>
-      <DoctorAffiliatedHospitalCardV2 hospital={hospitalCardData} lang={lang} dict={dict} />
+      <LocaleLink href={`/hospital/${hospitalCardData.id}`} locale={lang} className='block'>
+        <DoctorAffiliatedHospitalCardV2 hospital={hospitalCardData} lang={lang} dict={dict} />
+      </LocaleLink>
     </div>
   );
 }
