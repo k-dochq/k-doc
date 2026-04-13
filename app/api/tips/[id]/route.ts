@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { type Prisma } from '@prisma/client';
 import { prisma } from '@/shared/lib/prisma';
 import { getHospitalsByIds } from 'entities/hospital/api/use-cases/get-hospitals-by-ids';
+import { getDoctorsByIds } from 'entities/hospital/api/use-cases/get-doctors-by-ids';
 
 interface RouteParams {
   params: Promise<{ id: string }>;
@@ -23,6 +24,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams): Promi
         hashtagsI18n: true,
         medicalSpecialtyIds: true,
         hospitalIds: true,
+        doctorIds: true,
         recommendedArticleIds: true,
         viewCount: true,
         publishedAt: true,
@@ -51,6 +53,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams): Promi
       .filter(Boolean);
 
     const recommendedHospitals = await getHospitalsByIds(article.hospitalIds);
+    const recommendedDoctors = await getDoctorsByIds(article.doctorIds);
 
     // 추천 아티클 + 각 아티클의 medicalSpecialties 함께 조회
     type RecommendedArticleSpecialty = { id: string; name: Prisma.JsonValue };
@@ -115,6 +118,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams): Promi
         ...article,
         medicalSpecialties,
         recommendedHospitals,
+        recommendedDoctors,
         recommendedArticles,
       },
     });

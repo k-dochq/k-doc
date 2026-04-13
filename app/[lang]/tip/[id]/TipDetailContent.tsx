@@ -12,6 +12,7 @@ import { TipCoverImage } from 'entities/tip/ui/detail/TipCoverImage';
 import { TipContentRenderer } from 'entities/tip/ui/detail/TipContentRenderer';
 import { TipDetailDivider } from 'entities/tip/ui/detail/TipDetailDivider';
 import { TipRecommendedHospitals } from 'entities/tip/ui/detail/TipRecommendedHospitals';
+import { TipRecommendedDoctors } from 'entities/tip/ui/detail/TipRecommendedDoctors';
 import { TipLearnMoreHospitalsButton } from 'entities/tip/ui/detail/TipLearnMoreHospitalsButton';
 import { TipHashtagList } from 'entities/tip/ui/detail/TipHashtagList';
 import { RecommendedTipsSection } from 'entities/tip/ui/detail/RecommendedTipsSection';
@@ -73,10 +74,21 @@ export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
             lang={lang}
             dict={dict}
           />
-          <div className='mt-7'>
-            <TipLearnMoreHospitalsButton lang={lang} dict={dict} />
-          </div>
         </>
+      )}
+      {article.recommendedDoctors.length > 0 && (
+        <div className='mt-7'>
+          <TipRecommendedDoctors
+            doctors={article.recommendedDoctors}
+            lang={lang}
+            dict={dict}
+          />
+        </div>
+      )}
+      {article.recommendedHospitals.length > 0 && (
+        <div className='mt-7'>
+          <TipLearnMoreHospitalsButton lang={lang} dict={dict} />
+        </div>
       )}
       {localizedHashtags.length > 0 && (
         <div className='mt-7'>
