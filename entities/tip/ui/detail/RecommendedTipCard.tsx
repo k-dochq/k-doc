@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
@@ -32,12 +33,15 @@ export function RecommendedTipCard({ article, lang }: RecommendedTipCardProps) {
       className='flex flex-col gap-3'
     >
       {/* 커버이미지 */}
-      <div className='aspect-[335/224] w-full overflow-hidden rounded-xl bg-neutral-200'>
+      <div className='relative aspect-[335/224] w-full overflow-hidden rounded-xl bg-neutral-200'>
         {article.coverImage && (
-          <img
+          <Image
             src={article.coverImage}
             alt={title}
-            className='h-full w-full object-cover'
+            fill
+            sizes='(max-width: 500px) 100vw, 500px'
+            loading='lazy'
+            className='object-cover'
           />
         )}
       </div>

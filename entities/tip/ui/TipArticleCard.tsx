@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type TipArticle } from '../model/useInfiniteTips';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
@@ -28,12 +29,15 @@ export function TipArticleCard({ article, lang }: TipArticleCardProps) {
 
   return (
     <LocaleLink href={`/tip/${article.id}`} locale={lang} className='flex items-center gap-3'>
-      {/* 커버이미지 */}
-      <div className='h-[100px] w-[150px] shrink-0 overflow-hidden rounded-xl bg-neutral-200'>
+      {/* 커버이미지 — Next.js Image 최적화 */}
+      <div className='relative h-[100px] w-[150px] shrink-0 overflow-hidden rounded-xl bg-neutral-200'>
         {article.coverImage && (
-          <img
+          <Image
             src={article.coverImage}
             alt={title}
+            width={150}
+            height={100}
+            sizes='150px'
             className='h-full w-full object-cover'
           />
         )}
