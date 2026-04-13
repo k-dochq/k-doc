@@ -22,7 +22,7 @@ export type TipDetail = Prisma.InsightArticleGetPayload<{
     content: true;
     excerpt: true;
     coverImage: true;
-    hashtags: true;
+    hashtagsI18n: true;
     medicalSpecialtyIds: true;
     hospitalIds: true;
     recommendedArticleIds: true;

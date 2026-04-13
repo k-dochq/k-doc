@@ -20,7 +20,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams): Promi
         content: true,
         excerpt: true,
         coverImage: true,
-        hashtags: true,
+        hashtagsI18n: true,
         medicalSpecialtyIds: true,
         hospitalIds: true,
         recommendedArticleIds: true,

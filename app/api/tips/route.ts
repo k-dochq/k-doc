@@ -23,7 +23,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
           title: true,
           excerpt: true,
           coverImage: true,
-          hashtags: true,
+          hashtagsI18n: true,
           medicalSpecialtyIds: true,
           viewCount: true,
           publishedAt: true,

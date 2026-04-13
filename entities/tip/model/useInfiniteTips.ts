@@ -11,7 +11,7 @@ export type TipArticle = Prisma.InsightArticleGetPayload<{
     title: true;
     excerpt: true;
     coverImage: true;
-    hashtags: true;
+    hashtagsI18n: true;
     medicalSpecialtyIds: true;
     viewCount: true;
     publishedAt: true;

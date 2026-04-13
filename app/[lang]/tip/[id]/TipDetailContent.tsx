@@ -5,6 +5,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useTipDetail } from 'entities/tip/model/useTipDetail';
 import { useIncrementTipView } from 'entities/tip/model/useIncrementTipView';
+import { getLocalizedHashtags } from 'entities/tip/lib/getLocalizedHashtags';
 import { TipDetailHeader } from 'entities/tip/ui/detail/TipDetailHeader';
 import { TipDetailSkeleton } from 'entities/tip/ui/detail/TipDetailSkeleton';
 import { TipCoverImage } from 'entities/tip/ui/detail/TipCoverImage';
@@ -53,6 +54,8 @@ export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
     lang === 'zh-Hant' ? 'zh' : lang
   ] ?? article.slug;
 
+  const localizedHashtags = getLocalizedHashtags(article.hashtagsI18n, lang);
+
   return (
     <div>
       <TipDetailHeader article={article} lang={lang} />
@@ -75,9 +78,9 @@ export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
           </div>
         </>
       )}
-      {article.hashtags.length > 0 && (
+      {localizedHashtags.length > 0 && (
         <div className='mt-7'>
-          <TipHashtagList hashtags={article.hashtags} />
+          <TipHashtagList hashtags={localizedHashtags} />
         </div>
       )}
       <div className='h-7' />
