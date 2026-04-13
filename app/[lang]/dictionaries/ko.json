@@ -2125,6 +2125,10 @@
       "deleteAccount": "Delete Account",
       "deleteAccountConfirm": "Are you sure you want to delete your account? Your account will be deactivated and you'll need to contact customer service to reactivate it.",
       "deleteAccountError": "An error occurred while deleting your account. Please try again."
+    },
+    "likeReservation": {
+      "favorites": "찜 목록",
+      "reservations": "내 예약 내역"
     }
   },
   "taxiReservation": {
@@ -2475,5 +2479,21 @@
     "section7TitleLine2Italic": "특별한",
     "section7TitleLine2Normal": "여행",
     "consultationMessage": "K-DOC은 한국을 방문하는 해외 환자의 의료 여정을 지원합니다.\n • 검증된 병원 추천 • 상담 및 병원 예약 • 공항 픽업 및 VIP 이동 • 전문 의료 통역사 • 시술 후 케어\n 컨시어지 서비스 플랜은 K-DOC을 통해 시술 또는 수술을 예약한 경우 이용할 수 있습니다.\n Basic Care – 간단한 상담 및 병원 예약만 원하시는 경우 Plus Care – 전문 의료 통역사를 원하시는 경우 Premium Care – 전문 의료 통역사와 공항 및 호텔 픽업, 시술 후 관리 케어까지 원하시는 경우 \n관심 있는 시술을 알려주시면 다음 절차를 안내해 드리겠습니다."
+  },
+  "tips": {
+    "loading": "로딩 중...",
+    "error": "데이터를 불러올 수 없습니다.",
+    "sort": {
+      "latest": "최신순",
+      "popular": "인기순"
+    },
+    "detailTitle": "Tips",
+    "recommendedHospitals": "추천 병원",
+    "learnMoreHospitals": "병원 더 알아보기",
+    "recommendedArticlesTitle": "이런 팁도 놓치지 마세요",
+    "viewReviews": "후기 보러가기",
+    "mainSectionTitle": "K-DOC Tips",
+    "viewAll": "전체보기",
+    "recommendedDoctors": "추천 의사"
   }
 }

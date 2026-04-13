@@ -5,6 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import { ProfileSectionV2 } from './ProfileSectionV2';
 import { ActivityStatsSectionV2 } from './ActivityStatsSectionV2';
+import { LikeReservationSection } from './LikeReservationSection';
 import { NotificationSectionV2 } from './NotificationSectionV2';
 import { CustomerServiceSectionV2 } from './CustomerServiceSectionV2';
 import { AccountSectionV2 } from './AccountSectionV2';
@@ -27,6 +28,9 @@ export function MyContentV2({ lang, dict }: MyContentV2Props) {
         <ProfileSectionV2 lang={lang} dict={dict} />
         <div className='mt-5'>
           <ActivityStatsSectionV2 lang={lang} dict={dict} />
+        </div>
+        <div className='mt-5'>
+          <LikeReservationSection lang={lang} dict={dict} />
         </div>
         <div className='mt-5'>
           <NotificationSectionV2 lang={lang} dict={dict} />

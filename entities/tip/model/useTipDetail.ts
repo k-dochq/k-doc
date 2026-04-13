@@ -1,0 +1,73 @@
+'use client';
+
+import { useQuery } from '@tanstack/react-query';
+import { type Prisma } from '@prisma/client';
+import { type HospitalCardData } from 'shared/model/types';
+import { type HospitalDoctor } from 'entities/hospital/api/entities/types';
+import { queryKeys } from 'shared/lib/query-keys';
+
+export interface RecommendedTipArticle {
+  id: string;
+  slug: string;
+  title: Prisma.JsonValue;
+  coverImage: string | null;
+  publishedAt: string | null;
+  medicalSpecialties: { id: string; name: Prisma.JsonValue }[];
+}
+
+export type TipDetail = Prisma.InsightArticleGetPayload<{
+  select: {
+    id: true;
+    slug: true;
+    title: true;
+    content: true;
+    excerpt: true;
+    coverImage: true;
+    hashtagsI18n: true;
+    medicalSpecialtyIds: true;
+    hospitalIds: true;
+    doctorIds: true;
+    recommendedArticleIds: true;
+    viewCount: true;
+    publishedAt: true;
+    status: true;
+  };
+}> & {
+  medicalSpecialties: { id: string; name: Prisma.JsonValue }[];
+  recommendedHospitals: HospitalCardData[];
+  recommendedDoctors: HospitalDoctor[];
+  recommendedArticles: RecommendedTipArticle[];
+};
+
+interface TipDetailApiResponse {
+  success: boolean;
+  data: TipDetail;
+  error?: string;
+}
+
+async function fetchTipDetail(slug: string): Promise<TipDetail> {
+  const response = await fetch(`/api/tips/${slug}`);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const result: TipDetailApiResponse = await response.json();
+
+  if (!result.success) {
+    throw new Error(result.error || 'Failed to fetch tip detail');
+  }
+
+  return result.data;
+}
+
+export function useTipDetail(slug: string) {
+  return useQuery({
+    queryKey: queryKeys.tips.detail(slug),
+    queryFn: () => fetchTipDetail(slug),
+    enabled: !!slug,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false,
+  });
+}

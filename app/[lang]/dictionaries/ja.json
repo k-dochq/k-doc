@@ -2125,6 +2125,10 @@
       "deleteAccount": "アカウント削除",
       "deleteAccountConfirm": "アカウントを削除しますか？アカウントは無効化され、再有効化にはカスタマーサービスへの連絡が必要です。",
       "deleteAccountError": "アカウント削除中にエラーが発生しました。再度お試しください。"
+    },
+    "likeReservation": {
+      "favorites": "お気に入り",
+      "reservations": "予約履歴"
     }
   },
   "taxiReservation": {
@@ -2475,5 +2479,21 @@
     "section7TitleLine2Italic": "医療",
     "section7TitleLine2Normal": "旅行",
     "consultationMessage": "K-DOCは、韓国を訪れる海外患者さまの医療の旅をサポートします。\n\n• 検証済みクリニックのご紹介\n• カウンセリングおよびクリニック予約\n• 空港ピックアップおよびVIP送迎サービス\n• 専門医療通訳サポート\n• 施術後のアフターケア\n\nコンシェルジュサービスプランは、\nK-DOCを通じて施術または手術をご予約いただいた場合にご利用いただけます。\n\nBasic Care – 簡単なカウンセリングとクリニック予約のみをご希望の方\nPlus Care – 専門の医療通訳をご希望の方\nPremium Care – 医療通訳、空港・ホテル送迎、施術後ケアまでご希望の方\n\nご希望の施術内容をお知らせいただければ、次のステップについてご案内いたします。"
+  },
+  "tips": {
+    "loading": "読み込み中...",
+    "error": "データを読み込めませんでした。",
+    "sort": {
+      "latest": "最新順",
+      "popular": "人気順"
+    },
+    "detailTitle": "コツ",
+    "recommendedHospitals": "おすすめ病院",
+    "learnMoreHospitals": "病院についてもっと知る",
+    "recommendedArticlesTitle": "このコツもお見逃しなく",
+    "viewReviews": "レビューを見る",
+    "mainSectionTitle": "K-DOC Tips",
+    "viewAll": "すべて見る",
+    "recommendedDoctors": "おすすめの医師"
   }
 }
