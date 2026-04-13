@@ -54,7 +54,9 @@ export function RecommendedTipCard({ article, lang }: RecommendedTipCardProps) {
           tagClassName='px-2 py-0.5'
           textClassName='text-sm leading-5'
         />
-        <p className='text-xl leading-7 font-semibold text-neutral-700'>{title}</p>
+        <p className='line-clamp-2 text-xl leading-7 font-semibold text-neutral-700'>
+          {title}
+        </p>
         {date && (
           <p className='text-sm leading-5 font-medium text-neutral-400'>{date}</p>
         )}
