@@ -30,8 +30,7 @@ export function TipDetailHeader({ article, lang }: TipDetailHeaderProps) {
         specialties={article.medicalSpecialties}
         lang={lang}
         className='justify-center'
-        tagClassName='px-2 py-0.5'
-        textClassName='text-sm leading-5'
+        textClassName='!text-sm !leading-5'
       />
 
       <div className='flex w-full flex-col items-center gap-2'>
