@@ -5,15 +5,15 @@ import { getHospitalsByIds } from 'entities/hospital/api/use-cases/get-hospitals
 import { getDoctorsByIds } from 'entities/hospital/api/use-cases/get-doctors-by-ids';
 
 interface RouteParams {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function GET(_request: NextRequest, { params }: RouteParams): Promise<NextResponse> {
   try {
-    const { id } = await params;
+    const { slug } = await params;
 
     const article = await prisma.insightArticle.findUnique({
-      where: { id },
+      where: { slug },
       select: {
         id: true,
         slug: true,

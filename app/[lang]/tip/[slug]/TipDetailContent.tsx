@@ -20,7 +20,7 @@ import { TipReviewsButtonArea } from 'entities/tip/ui/detail/TipReviewsButtonAre
 import { TipsErrorState } from 'entities/tip/ui/TipsErrorState';
 
 interface TipDetailContentProps {
-  id: string;
+  slug: string;
   lang: Locale;
   dict: Dictionary;
 }
@@ -34,9 +34,9 @@ function getLocalizedContent(
   return (value as JSONContent) ?? null;
 }
 
-export function TipDetailContent({ id, lang, dict }: TipDetailContentProps) {
-  useIncrementTipView(id);
-  const { data: article, isLoading, isError } = useTipDetail(id);
+export function TipDetailContent({ slug, lang, dict }: TipDetailContentProps) {
+  useIncrementTipView(slug);
+  const { data: article, isLoading, isError } = useTipDetail(slug);
 
   if (isLoading) {
     return <TipDetailSkeleton />;

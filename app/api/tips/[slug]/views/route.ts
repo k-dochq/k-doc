@@ -2,17 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
 
 interface RouteParams {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function POST(_request: NextRequest, { params }: RouteParams): Promise<NextResponse> {
   try {
-    const { id } = await params;
+    const { slug } = await params;
 
     const updated = await prisma.insightArticle.update({
-      where: { id },
+      where: { slug },
       data: { viewCount: { increment: 1 } },
-      select: { id: true, viewCount: true },
+      select: { id: true, slug: true, viewCount: true },
     });
 
     return NextResponse.json({ success: true, data: updated });

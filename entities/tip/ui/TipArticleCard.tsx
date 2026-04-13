@@ -28,7 +28,7 @@ export function TipArticleCard({ article, lang }: TipArticleCardProps) {
   const title = getLocalizedTitle(article.title as Record<string, string>, lang);
 
   return (
-    <LocaleLink href={`/tip/${article.id}`} locale={lang} className='flex items-center gap-3'>
+    <LocaleLink href={`/tip/${article.slug}`} locale={lang} className='flex items-center gap-3'>
       {/* 커버이미지 — Next.js Image 최적화 */}
       <div className='relative h-[100px] w-[150px] shrink-0 overflow-hidden rounded-xl bg-neutral-200'>
         {article.coverImage && (

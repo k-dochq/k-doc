@@ -5,7 +5,7 @@ import { ShareButton } from 'shared/ui/share-button';
 import { useTipDetail } from '../../model/useTipDetail';
 
 interface TipShareButtonProps {
-  id: string;
+  slug: string;
   lang: Locale;
 }
 
@@ -14,8 +14,8 @@ function getLocalizedTitle(title: Record<string, string>, lang: Locale): string 
   return title[shortLang] ?? title.ko ?? title.en ?? '';
 }
 
-export function TipShareButton({ id, lang }: TipShareButtonProps) {
-  const { data: article } = useTipDetail(id);
+export function TipShareButton({ slug, lang }: TipShareButtonProps) {
+  const { data: article } = useTipDetail(slug);
 
   const articleTitle = article
     ? getLocalizedTitle(article.title as Record<string, string>, lang)

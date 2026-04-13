@@ -28,7 +28,7 @@ export function RecommendedTipCard({ article, lang }: RecommendedTipCardProps) {
 
   return (
     <LocaleLink
-      href={`/tip/${article.id}`}
+      href={`/tip/${article.slug}`}
       locale={lang}
       className='flex flex-col gap-3'
     >
