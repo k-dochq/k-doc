@@ -889,6 +889,7 @@ model InsightArticle {
   updatedBy             String?              @db.Uuid
   recommendedArticleIds String[]             @default([]) @db.Uuid
   medicalSpecialtyIds   String[]             @default([]) @db.Uuid
+  hashtagsI18n          Json?
 
   @@index([createdAt])
   @@index([publishedAt])
