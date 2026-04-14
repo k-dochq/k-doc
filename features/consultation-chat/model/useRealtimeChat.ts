@@ -6,6 +6,10 @@ import { type RealtimeChannel } from '@supabase/supabase-js';
 import { type ChatMessage } from '../api/entities/types';
 import { fetchChatHistory, sendChatMessage, saveMessageToDatabase } from '../api/chat-api-client';
 import {
+  useMarkAllChatMessagesAsRead,
+  useMarkChatMessageAsRead,
+} from 'lib/queries/consultation-chat-rooms';
+import {
   createRoomId,
   sortMessagesByTime,
   deduplicateMessages,
@@ -23,6 +27,8 @@ interface UseRealtimeChatProps {
 }
 
 export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeChatProps) {
+  const { mutateAsync: markAllAsReadMutation } = useMarkAllChatMessagesAsRead();
+  const { mutateAsync: markMessageAsReadMutation } = useMarkChatMessageAsRead();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isConnected, setIsConnected] = useState(false);
   const [isLoadingHistory, setIsLoadingHistory] = useState(true);
@@ -32,44 +38,33 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
 
   const channelRef = useRef<RealtimeChannel | null>(null);
 
-  // 메시지 읽음 처리 함수
+  // 단일 메시지 읽음 처리 (실시간 수신 시)
   const markMessageAsRead = useCallback(
     async (messageId: string) => {
       try {
-        console.log('📖 Marking message as read:', messageId, 'hospitalId:', hospitalId);
-        // 1. DB 업데이트
-        const response = await fetch('/api/chat/mark-as-read', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messageId, hospitalId }),
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log('✅ Message marked as read:', result);
-
-        // 2. Realtime broadcast
+        await markMessageAsReadMutation({ messageId, hospitalId });
         if (channelRef.current) {
           await channelRef.current.send({
             type: 'broadcast',
             event: 'message:read',
-            payload: {
-              messageId,
-              readAt: new Date().toISOString(),
-              userId,
-            },
+            payload: { messageId, readAt: new Date().toISOString(), userId },
           });
-          console.log('📡 Broadcast sent for message read:', messageId);
         }
       } catch (error) {
         console.error('❌ Failed to mark message as read:', error);
       }
     },
-    [hospitalId, userId],
+    [hospitalId, userId, markMessageAsReadMutation],
   );
+
+  // 채팅방 진입 시 일괄 읽음 처리
+  const markAllAsRead = useCallback(async () => {
+    try {
+      await markAllAsReadMutation(hospitalId);
+    } catch (error) {
+      console.error('❌ Failed to mark all messages as read:', error);
+    }
+  }, [hospitalId, markAllAsReadMutation]);
 
   // 채팅 히스토리 로드
   const loadChatHistory = useCallback(async () => {
@@ -94,15 +89,10 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
       setHasMore(hasMore);
       setNextCursor(nextCursor);
 
-      // 히스토리 로드 후 읽지 않은 관리자 메시지들에 대해 읽음 처리
+      // 채팅방 진입 시 이 방의 모든 unread admin 메시지를 일괄 처리
+      // (페이지네이션 밖의 오래된 unread까지 포함)
       if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
-        const unreadAdminMessages = sortedMessages.filter(
-          (msg) => msg.type === 'admin' && !msg.isRead,
-        );
-        console.log('📋 Found unread admin messages:', unreadAdminMessages.length);
-        for (const msg of unreadAdminMessages) {
-          await markMessageAsRead(msg.id);
-        }
+        await markAllAsRead();
       }
     } catch (error) {
       console.error('❌ Failed to load chat history:', error);
@@ -110,7 +100,7 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     } finally {
       setIsLoadingHistory(false);
     }
-  }, [hospitalId, userId, markMessageAsRead]);
+  }, [hospitalId, userId, markAllAsRead]);
 
   const loadMoreHistory = useCallback(async () => {
     if (!userId || !hospitalId) return;
