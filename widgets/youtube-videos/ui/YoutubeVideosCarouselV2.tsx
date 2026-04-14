@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -55,11 +55,8 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
             const isFirst = index === 0;
             const isLast = index === videos.length - 1;
             return (
-              <>
-                <CarouselItem
-                  key={video.id}
-                  className={`basis-[316px] ${isFirst ? 'ps-5' : 'ps-4'}`}
-                >
+              <React.Fragment key={video.id}>
+                <CarouselItem className={`basis-[316px] ${isFirst ? 'ps-5' : 'ps-4'}`}>
                   <YoutubeVideoCardV2 video={video} lang={lang} dict={dict} />
                 </CarouselItem>
                 {isLast && (
@@ -67,7 +64,7 @@ export function YoutubeVideosCarouselV2({ videos, lang, dict }: YoutubeVideosCar
                     <div className='w-5' />
                   </CarouselItem>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
         </CarouselContent>

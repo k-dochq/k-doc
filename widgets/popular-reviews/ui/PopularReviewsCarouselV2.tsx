@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from 'shared/ui/carousel';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -57,9 +57,8 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
             const isFirst = index === 0;
             const isLast = index === reviews.length - 1;
             return (
-              <>
+              <React.Fragment key={review.id}>
                 <CarouselItem
-                  key={review.id}
                   className={`${isFirst ? 'basis-[306px] ps-5' : 'basis-[302px] ps-4'}`}
                 >
                   <PopularReviewCardV2 review={review} lang={lang} dict={dict} />
@@ -69,7 +68,7 @@ export function PopularReviewsCarouselV2({ reviews, lang, dict }: PopularReviews
                     <div className='w-5' />
                   </CarouselItem>
                 )}
-              </>
+              </React.Fragment>
             );
           })}
         </CarouselContent>

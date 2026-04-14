@@ -81,9 +81,17 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
   return (
     <div className='flex flex-col gap-4 rounded-xl bg-white p-3 shadow-[1px_2px_4px_0px_rgba(0,0,0,0.4)]'>
       {/* 예약 상태 배지 및 병원 썸네일/예약 정보 영역 (클릭 가능) */}
-      <button
+      <div
+        role='button'
+        tabIndex={0}
         onClick={handleViewDetail}
-        className='flex flex-col gap-3 text-left'
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleViewDetail();
+          }
+        }}
+        className='flex cursor-pointer flex-col gap-3 text-left outline-none'
         aria-label='예약 상세 보기'
       >
         {/* 상단: D-day 배지 및 화살표 */}
@@ -130,7 +138,7 @@ export function ReservationItemCard({ reservation, lang, dict }: ReservationItem
             </div>
           </div>
         </div>
-      </button>
+      </div>
 
       {/* 구분선 */}
       <div className='border-t border-[#e5e5e5]' />
