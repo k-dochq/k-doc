@@ -4,7 +4,7 @@ import { Loader2 } from 'lucide-react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { useConciergeConsultation } from 'features/concierge-consultation';
-import { ArrowRightIcon } from './icons/ArrowRightIcon';
+import { ArrowRightLineIcon } from 'shared/ui/arrow-right-line-icon';
 import { CheckCircleIcon } from './icons/CheckCircleIcon';
 import { SparkleIcon } from './icons/SparkleIcon';
 
@@ -68,7 +68,7 @@ export function ConciergePlanCard({ lang, dict }: ConciergePlanCardProps) {
           ) : (
             <>
               <span className='text-[16px] leading-6 font-medium text-white'>{t?.ctaButton}</span>
-              <ArrowRightIcon />
+              <ArrowRightLineIcon color='white' />
             </>
           )}
         </button>
