@@ -11,7 +11,7 @@ export function ConsultationBadge() {
   if (!isAuthenticated || totalUnreadCount === 0) return null;
 
   return (
-    <div className='absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#f31110]'>
+    <div className='absolute top-[-5px] right-[-11px] flex h-4 w-4 items-center justify-center rounded-full bg-[#f31110]'>
       <span className='text-[9px] font-semibold leading-none text-white'>
         {totalUnreadCount > 99 ? '99+' : totalUnreadCount}
       </span>
