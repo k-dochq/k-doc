@@ -85,9 +85,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
             },
           },
         },
-        orderBy: {
-          createdAt: 'desc', // 최신순
-        },
+        orderBy: [
+          { isPinned: 'desc' }, // 상단고정 먼저
+          { createdAt: 'desc' }, // 최신순
+        ],
         skip,
         take: limit,
       }),
