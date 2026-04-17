@@ -49,7 +49,7 @@ export function ContactFloatingButton({ lang }: ContactFloatingButtonProps) {
         />
       )}
 
-      <div className='fixed right-5 bottom-[240px] z-500 md:right-[calc((100%-500px)/2+20px)]'>
+      <div className='fixed right-[max(20px,calc(50vw-250px+20px))] bottom-[240px] z-500'>
         {/* 서브 버튼: 메인 버튼 위에 absolute로 배치 (컨테이너 크기에 영향 안 줌) */}
         <div className='pointer-events-none absolute bottom-full right-0 mb-2.5 flex flex-col items-end gap-2.5'>
         {lang === 'th' ? (
