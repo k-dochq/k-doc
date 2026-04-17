@@ -490,10 +490,12 @@ model Notice {
   createdBy  String?      @db.Uuid
   updatedBy  String?      @db.Uuid
   type       NoticeType?
+  isPinned   Boolean      @default(false)
   NoticeFile NoticeFile[]
 
   @@index([createdAt])
   @@index([isActive])
+  @@index([isPinned])
   @@schema("public")
 }
 
