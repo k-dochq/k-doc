@@ -1,7 +1,9 @@
 'use client';
 
+import { useMemo } from 'react';
 import { MAX_MOBILE_WIDTH_CLASS, type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { type OpeningHours } from 'entities/hospital/api/entities/opening-hours-types';
 import { useConsultationForm } from '../model/useConsultationForm';
 import { GENDER_OPTIONS } from '../model/types';
 import { useConsultationRequest } from '../api/useConsultationRequest';
@@ -16,6 +18,7 @@ import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 import { PrivacyAgreementNotice } from './PrivacyAgreementNotice';
 import { trackLead, trackGenerateLead } from 'shared/lib/analytics';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
+import { getHospitalClosedWeekdays } from '../lib/hospital-closed-weekdays';
 
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
@@ -33,10 +36,25 @@ export interface ConsultationFormV2Props {
   hospitalId: string;
   lang: Locale;
   dict: Dictionary;
+  openingHours?: OpeningHours;
 }
 
-export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV2Props) {
+export function ConsultationFormV2({
+  hospitalId,
+  lang,
+  dict,
+  openingHours,
+}: ConsultationFormV2Props) {
   const { data: userProfile } = useUserProfile();
+  const closedWeekdays = useMemo(() => getHospitalClosedWeekdays(openingHours), [openingHours]);
+  const isPreferredDateDisabled = useMemo(() => {
+    return (date: Date): boolean => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (date < today) return true;
+      return closedWeekdays.has(date.getDay());
+    };
+  }, [closedWeekdays]);
   const { formData, errors, updateField, handleSubmit, isFormValid } = useConsultationForm(
     lang,
     dict,
@@ -298,11 +316,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
           }
           error={errors.preferredDate}
           required
-          disabled={(date) => {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            return date < today;
-          }}
+          disabled={isPreferredDateDisabled}
           helperText={
             (dict.consultation?.request?.form?.preferredDate as { helper?: string } | undefined)
               ?.helper || '병원 스케줄 확인을 위해 꼭 선택해주세요'
@@ -322,11 +336,7 @@ export function ConsultationFormV2({ hospitalId, lang, dict }: ConsultationFormV
           error={errors.preferredDate2}
           required={false}
           hideOptionalText
-          disabled={(date) => {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            return date < today;
-          }}
+          disabled={isPreferredDateDisabled}
           helperText={
             (dict.consultation?.request?.form?.preferredDate2 as { helper?: string } | undefined)
               ?.helper || '첫번째 날짜가 불가능할 경우에만 참고합니다'

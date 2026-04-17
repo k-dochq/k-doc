@@ -49,7 +49,12 @@ export function ConsultationRequestContentV2({
       </div>
 
       {/* 상담 신청 폼 V2 */}
-      <ConsultationFormV2 hospitalId={hospitalId} lang={lang} dict={dict} />
+      <ConsultationFormV2
+        hospitalId={hospitalId}
+        lang={lang}
+        dict={dict}
+        openingHours={hospitalDetail.hospital.openingHours}
+      />
     </div>
   );
 }
