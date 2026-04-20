@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { createClient } from 'shared/lib/supabase/client';
+import { subscribeWithRetry } from 'shared/lib/supabase/realtime-retry';
 import { type RealtimeChannel } from '@supabase/supabase-js';
 import { type ChatMessage } from '../api/entities/types';
 import { fetchChatHistory, sendChatMessage, saveMessageToDatabase } from '../api/chat-api-client';
@@ -228,78 +229,67 @@ export function useRealtimeChat({ hospitalId, userId, userName }: UseRealtimeCha
     //   document.addEventListener('visibilitychange', handleVisibilityChange);
     // }
 
-    // 2. 채널 생성 및 구독
+    // 2. 채널 생성 및 구독 (재시도 포함)
     const channelName = createChannelName(roomId);
     if (!supabase) {
       console.error('Supabase client 생성 실패');
       return;
     }
 
-    const channel = supabase.channel(channelName, {
-      config: {
-        broadcast: {
-          self: true, // 자신이 보낸 메시지도 수신
+    const createChannel = (): RealtimeChannel => {
+      const channel = supabase.channel(channelName, {
+        config: {
+          broadcast: {
+            self: true, // 자신이 보낸 메시지도 수신
+          },
         },
+      });
+
+      channel.on(
+        'broadcast',
+        { event: 'message' },
+        async ({ payload }: { payload: ChatMessage }) => {
+          updateMessages([payload]);
+          if (
+            payload.type === 'admin' &&
+            typeof document !== 'undefined' &&
+            document.visibilityState === 'visible'
+          ) {
+            await markMessageAsRead(payload.id);
+          }
+        },
+      );
+
+      return channel;
+    };
+
+    const handle = subscribeWithRetry({
+      channelFactory: createChannel,
+      onChannel: (channel) => {
+        channelRef.current = channel;
+      },
+      onStatusChange: ({ status, reason }) => {
+        if (status === 'SUBSCRIBED') {
+          setIsConnected(true);
+          setError(null);
+        } else if (status === 'CONNECTING' || status === 'RECONNECTING') {
+          setIsConnected(false);
+        } else if (status === 'FAILED') {
+          setIsConnected(false);
+          setError(
+            reason === 'TIMED_OUT'
+              ? '연결 시간이 초과되었습니다.'
+              : '채팅방 연결에 실패했습니다.',
+          );
+        } else if (status === 'CLOSED') {
+          setIsConnected(false);
+        }
       },
     });
 
-    channelRef.current = channel;
-
-    // 메시지 수신
-    channel.on('broadcast', { event: 'message' }, async ({ payload }: { payload: ChatMessage }) => {
-      console.log(
-        '📨 Received message:',
-        payload.id,
-        'type:',
-        payload.type,
-        'isRead:',
-        payload.isRead,
-      );
-      updateMessages([payload]);
-
-      // 관리자 메시지이고 현재 화면이 보이는 상태라면 자동으로 읽음 처리
-      if (
-        payload.type === 'admin' &&
-        typeof document !== 'undefined' &&
-        document.visibilityState === 'visible'
-      ) {
-        console.log('👁️ Processing admin message read:', payload.id);
-        await markMessageAsRead(payload.id);
-      } else {
-        console.log('⏭️ Skipping read processing:', {
-          type: payload.type,
-          isAdmin: payload.type === 'admin',
-          visibilityState: typeof document !== 'undefined' ? document.visibilityState : 'unknown',
-        });
-      }
-    });
-
-    // 채널 구독
-    channel.subscribe((status) => {
-      if (status === 'SUBSCRIBED') {
-        setIsConnected(true);
-        setError(null);
-      } else if (status === 'CHANNEL_ERROR') {
-        setIsConnected(false);
-        setError('채팅방 연결에 실패했습니다.');
-      } else if (status === 'TIMED_OUT') {
-        setIsConnected(false);
-        setError('연결 시간이 초과되었습니다.');
-      } else if (status === 'CLOSED') {
-        setIsConnected(false);
-      }
-    });
-
-    // 정리
     return () => {
-      if (channelRef.current) {
-        channelRef.current.unsubscribe();
-        channelRef.current = null;
-      }
-      // visibilitychange 이벤트 리스너 제거 (임시 주석처리)
-      // if (typeof document !== 'undefined') {
-      //   document.removeEventListener('visibilitychange', handleVisibilityChange);
-      // }
+      handle.cleanup();
+      channelRef.current = null;
       setIsConnected(false);
     };
   }, [userId, userName, hospitalId, loadChatHistory, updateMessages, markMessageAsRead]);
