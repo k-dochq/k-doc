@@ -142,7 +142,12 @@ export function ReservationDetailContent({
           />
 
           {/* 병원 위치 섹션 */}
-          <HospitalDetailLocationV2 hospital={reservation.hospital} lang={lang} dict={dict} />
+          <HospitalDetailLocationV2
+            hospital={reservation.hospital}
+            lang={lang}
+            dict={dict}
+            hideTitle
+          />
 
           <div className='h-10' />
 

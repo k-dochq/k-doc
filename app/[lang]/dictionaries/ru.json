@@ -191,8 +191,8 @@
     "searchPlaceholder": "Пожалуйста, введите ваш поисковый запрос."
   },
   "hospitalDetailTabs": {
-    "introduction": "Введение в больницу",
-    "procedures": "Подробности процедуры",
+    "introduction": "О клинике",
+    "procedures": "Процедуры",
     "youtube": "ютуб",
     "youtubePreparing": "Ведется подготовка видеоматериала из больницы.",
     "proceduresDetail": "Подробности процедуры",

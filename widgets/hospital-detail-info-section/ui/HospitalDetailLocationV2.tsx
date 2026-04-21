@@ -19,9 +19,15 @@ interface HospitalDetailLocationV2Props {
   hospital: HospitalLocationData;
   lang: Locale;
   dict: Dictionary;
+  hideTitle?: boolean;
 }
 
-export function HospitalDetailLocationV2({ hospital, lang, dict }: HospitalDetailLocationV2Props) {
+export function HospitalDetailLocationV2({
+  hospital,
+  lang,
+  dict,
+  hideTitle = false,
+}: HospitalDetailLocationV2Props) {
   const { copyAddress } = useAddressCopy(dict);
   const hasCoordinates = hospital.latitude && hospital.longitude;
   const addressLang = lang === 'ko' ? 'ko' : 'en';
@@ -48,9 +54,11 @@ export function HospitalDetailLocationV2({ hospital, lang, dict }: HospitalDetai
 
   return (
     <div className='flex flex-col'>
-      <h2 className='text-lg leading-7 font-semibold text-neutral-700'>
-        {dict.hospital.location?.title}
-      </h2>
+      {!hideTitle && (
+        <h2 className='text-lg leading-7 font-semibold text-neutral-700'>
+          {dict.hospital.location?.title}
+        </h2>
+      )}
 
       {/* 지도 영역 */}
       <HospitalDetailMap
