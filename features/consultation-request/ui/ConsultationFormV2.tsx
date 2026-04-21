@@ -14,6 +14,7 @@ import { PhoneNumberFieldV2 } from './PhoneNumberFieldV2';
 import { SelectFieldV2 } from './SelectFieldV2';
 import { TextareaFieldV2 } from './TextareaFieldV2';
 import { FormDatePickerV2 } from './FormDatePickerV2';
+import { FormDatePickerDrawerV2 } from './FormDatePickerDrawerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 import { PrivacyAgreementNotice } from './PrivacyAgreementNotice';
 import { trackLead, trackGenerateLead } from 'shared/lib/analytics';
@@ -305,7 +306,7 @@ export function ConsultationFormV2({
         />
 
         {/* 예약 희망 날짜 */}
-        <FormDatePickerV2
+        <FormDatePickerDrawerV2
           label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
           value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
           onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
@@ -324,7 +325,7 @@ export function ConsultationFormV2({
         />
 
         {/* 예약 희망 날짜2 */}
-        <FormDatePickerV2
+        <FormDatePickerDrawerV2
           label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
           value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
           onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
