@@ -21,11 +21,13 @@
      ===================== */
 .tiptap.ProseMirror {
   // Common list styles
+  // Use logical property so RTL (Arabic) content keeps the same inner padding
+  // and bullet markers stay inside the container.
   ol,
   ul {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    padding-left: 1.5em;
+    padding-inline-start: 1.5em;
 
     &:first-child {
       margin-top: 0;
@@ -125,7 +127,7 @@
 
   // Task lists
   ul[data-type="taskList"] {
-    padding-left: 0.25em;
+    padding-inline-start: 0.25em;
 
     li {
       display: flex;
