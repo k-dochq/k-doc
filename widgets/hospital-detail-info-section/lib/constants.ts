@@ -34,5 +34,5 @@ export const holidayTexts: Record<Locale, string> = {
   hi: 'बंद',
   tl: 'Closed',
   ar: 'مغلق',
-  ru: 'Закрыто',
+  ru: 'Закр.',
 };
