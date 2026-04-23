@@ -2098,6 +2098,14 @@
           "passwordMismatch": "Passwords do not match.",
           "updateFailed": "An error occurred while changing password."
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "Pumili mula sa Album",
+        "delete": "Tanggalin ang Larawan sa Profile",
+        "cancel": "Kanselahin",
+        "deleteConfirmTitle": "Tanggalin ang larawan sa profile?",
+        "deleteConfirmMessage": "Hindi na maibabalik ang larawang natanggal.",
+        "deleteConfirmOk": "Tanggalin"
       }
     },
     "activity": {

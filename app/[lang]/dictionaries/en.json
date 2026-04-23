@@ -2099,6 +2099,14 @@
           "passwordMismatch": "Passwords do not match.",
           "updateFailed": "An error occurred while changing password."
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "Choose from Library",
+        "delete": "Delete Profile Photo",
+        "cancel": "Cancel",
+        "deleteConfirmTitle": "Delete profile photo?",
+        "deleteConfirmMessage": "Once deleted, the photo cannot be recovered.",
+        "deleteConfirmOk": "Delete"
       }
     },
     "activity": {

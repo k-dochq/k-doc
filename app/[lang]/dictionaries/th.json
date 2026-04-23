@@ -2099,6 +2099,14 @@
           "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
           "updateFailed": "เกิดข้อผิดพลาดขณะเปลี่ยนรหัสผ่าน"
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "เลือกจากคลังภาพ",
+        "delete": "ลบรูปโปรไฟล์",
+        "cancel": "ยกเลิก",
+        "deleteConfirmTitle": "ต้องการลบรูปโปรไฟล์หรือไม่?",
+        "deleteConfirmMessage": "รูปที่ลบแล้วไม่สามารถกู้คืนได้",
+        "deleteConfirmOk": "ลบ"
       }
     },
     "activity": {

@@ -2098,6 +2098,14 @@
           "passwordMismatch": "兩次密碼不一致。",
           "updateFailed": "變更密碼時發生錯誤。"
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "從相簿選擇",
+        "delete": "刪除個人頭像",
+        "cancel": "取消",
+        "deleteConfirmTitle": "要刪除個人頭像嗎？",
+        "deleteConfirmMessage": "刪除後將無法復原。",
+        "deleteConfirmOk": "刪除"
       }
     },
     "activity": {

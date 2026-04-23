@@ -2098,6 +2098,14 @@
           "passwordMismatch": "パスワードが一致しません。",
           "updateFailed": "パスワード変更中にエラーが発生しました。"
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "アルバムから選ぶ",
+        "delete": "プロフィール写真を削除",
+        "cancel": "キャンセル",
+        "deleteConfirmTitle": "プロフィール写真を削除しますか？",
+        "deleteConfirmMessage": "削除した写真は復元できません。",
+        "deleteConfirmOk": "削除"
       }
     },
     "activity": {
