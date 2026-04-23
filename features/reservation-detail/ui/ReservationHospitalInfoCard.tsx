@@ -51,7 +51,7 @@ export function ReservationHospitalInfoCard({
       type='button'
     >
       {/* 로고 */}
-      <div className='relative size-[46px] shrink-0 overflow-hidden rounded-full'>
+      <div className='relative size-[46px] shrink-0 overflow-hidden rounded-full border border-neutral-200'>
         <Image
           src={logoImageUrl || DEFAULT_IMAGES.HOSPITAL_LOGO_DEFAULT}
           alt={hospitalName}

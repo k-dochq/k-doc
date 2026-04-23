@@ -26,7 +26,7 @@ export function ChatRoomCardV2({ chatRoom, lang, dict }: ChatRoomCardV2Props) {
       className='flex items-center gap-3 border-b border-neutral-200 py-5'
     >
       {/* 로고 영역 */}
-      <div className='relative h-[46px] w-[46px] flex-shrink-0 overflow-hidden rounded-full'>
+      <div className='relative h-[46px] w-[46px] flex-shrink-0 overflow-hidden rounded-full border border-neutral-200'>
         <img
           src={
             chatRoom.hospitalLogoUrl ||
