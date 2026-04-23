@@ -20,7 +20,7 @@ export function ReservationHospitalInfo({
   return (
     <div className='flex items-center gap-3'>
       {/* 로고 */}
-      <div className='relative size-[46px] shrink-0 overflow-hidden rounded-full'>
+      <div className='relative size-[46px] shrink-0 overflow-hidden rounded-full border border-neutral-200'>
         <Image
           src={logoImageUrl || DEFAULT_IMAGES.HOSPITAL_LOGO_DEFAULT}
           alt={hospitalName}
@@ -30,8 +30,10 @@ export function ReservationHospitalInfo({
       </div>
 
       {/* 병원 이름 및 지역 */}
-      <div className='min-w-0 flex-1 flex flex-col gap-0.5'>
-        <p className='line-clamp-2 text-sm leading-5 font-semibold text-[#404040]'>{hospitalName}</p>
+      <div className='flex min-w-0 flex-1 flex-col gap-0.5'>
+        <p className='line-clamp-2 text-sm leading-5 font-semibold text-[#404040]'>
+          {hospitalName}
+        </p>
         {displayLocationName && (
           <div className='flex min-w-0 items-center gap-1'>
             <p className='shrink-0 text-xs leading-4 font-medium text-[#a3a3a3]'>
