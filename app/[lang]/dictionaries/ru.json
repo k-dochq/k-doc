@@ -2098,6 +2098,14 @@
           "passwordMismatch": "Пароли не совпадают.",
           "updateFailed": "Ошибка при смене пароля."
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "Выбрать из галереи",
+        "delete": "Удалить фото профиля",
+        "cancel": "Отмена",
+        "deleteConfirmTitle": "Удалить фото профиля?",
+        "deleteConfirmMessage": "Удалённую фотографию нельзя восстановить.",
+        "deleteConfirmOk": "Удалить"
       }
     },
     "activity": {

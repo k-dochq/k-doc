@@ -2098,6 +2098,14 @@
           "passwordMismatch": "كلمتا المرور غير متطابقتين.",
           "updateFailed": "حدث خطأ أثناء تغيير كلمة المرور."
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "اختيار من المعرض",
+        "delete": "حذف صورة الملف الشخصي",
+        "cancel": "إلغاء",
+        "deleteConfirmTitle": "هل تريد حذف صورة الملف الشخصي؟",
+        "deleteConfirmMessage": "لا يمكن استرداد الصورة بعد حذفها.",
+        "deleteConfirmOk": "حذف"
       }
     },
     "activity": {

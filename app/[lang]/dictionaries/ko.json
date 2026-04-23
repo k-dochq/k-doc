@@ -2098,6 +2098,14 @@
           "passwordMismatch": "Passwords do not match.",
           "updateFailed": "An error occurred while changing password."
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "사진첩에서 가져오기",
+        "delete": "프로필 사진 삭제",
+        "cancel": "취소",
+        "deleteConfirmTitle": "프로필 사진을 삭제하시겠어요?",
+        "deleteConfirmMessage": "삭제한 사진은 복구할 수 없습니다.",
+        "deleteConfirmOk": "삭제"
       }
     },
     "activity": {

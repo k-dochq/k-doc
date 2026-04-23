@@ -2098,6 +2098,14 @@
           "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
           "updateFailed": "पासवर्ड बदलते समय त्रुटि हुई।"
         }
+      },
+      "imageMenu": {
+        "pickFromAlbum": "गैलरी से चुनें",
+        "delete": "प्रोफ़ाइल फ़ोटो हटाएँ",
+        "cancel": "रद्द करें",
+        "deleteConfirmTitle": "प्रोफ़ाइल फ़ोटो हटाएँ?",
+        "deleteConfirmMessage": "हटाई गई फ़ोटो पुनर्प्राप्त नहीं की जा सकती।",
+        "deleteConfirmOk": "हटाएँ"
       }
     },
     "activity": {
