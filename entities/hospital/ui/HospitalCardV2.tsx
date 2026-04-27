@@ -108,7 +108,7 @@ export function HospitalCardV2({
                   <MedicalSpecialtyTagsV2
                     specialties={hospitalData.medicalSpecialties}
                     lang={lang}
-                    collapseOverflow
+                    maxDisplay={3}
                   />
                 )}
 
