@@ -2,7 +2,7 @@
 
 import { type MedicalSpecialtyType } from '@prisma/client';
 import { type Locale } from 'shared/config';
-import { QUICK_MENU_CATEGORIES_V2 } from 'features/quick-menu/model/categoriesV2';
+import { QUICK_MENU_CATEGORIES_V2 } from 'features/quick-menu/model/categories';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 
 interface ProcedureFilterCategoryListProps {

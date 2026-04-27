@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { type QuickMenuProps } from '../model/types';
-import { QUICK_MENU_CATEGORIES_V2 } from '../model/categoriesV2';
+import { QUICK_MENU_CATEGORIES_V2 } from '../model/categories';
 import { QuickMenuButtonV2 } from './QuickMenuButtonV2';
 import { QuickMenuIndicatorV2 } from './QuickMenuIndicatorV2';
 
