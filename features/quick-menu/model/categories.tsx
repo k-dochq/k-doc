@@ -6,24 +6,40 @@ import {
   LiftingIcon,
   FacialContouringIcon,
   BreastIcon,
-  LiposuctionIcon,
-  HairTransplantIcon,
   StemCellIcon,
-  DermatologyIcon,
-  AllIcon,
-  DentalIcon,
+  LiposuctionIcon,
   BodyIcon,
+  HairTransplantIcon,
+  DermatologyIcon,
+  DentalIcon,
   OtherIcon,
+  AllIcon,
+  EyesIconV2,
+  NoseIconV2,
+  LiftingIconV2,
+  FacialContouringIconV2,
+  BreastIconV2,
+  StemCellIconV2,
+  LiposuctionIconV2,
+  BodyIconV2,
+  HairTransplantIconV2,
+  DermatologyIconV2,
+  DentalIconV2,
+  OtherIconV2,
 } from '../ui/icons';
 
-// 공통 카테고리 데이터
-const COMMON_CATEGORIES: CategoryItem[] = [
-  // 순서: 눈, 코, 리프팅, 안면윤곽, 가슴, 줄기세포, 지방흡입, 바디, 모발이식, 피부과, 치과, 기타
+interface CategoryDef {
+  id: string;
+  type: string;
+  labels: LocalizedText;
+}
+
+// 단일 데이터 소스 — Supabase public."MedicalSpecialty" 테이블 기준
+// 수정 시: 1) DB 업데이트, 2) admin 시트(gid=49150223)도 함께 동기화
+const CATEGORY_DEFS: CategoryDef[] = [
   {
-    id: '3df0bd71-16cb-40c6-b372-ddfde9327aad', // EYES
+    id: '3df0bd71-16cb-40c6-b372-ddfde9327aad',
     type: 'EYES',
-    icon: () => <EyesIcon />,
-    iconSmall: () => <EyesIcon variant='small' />,
     labels: {
       ko_KR: '눈',
       en_US: 'Eyes',
@@ -37,10 +53,8 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '6bbbbde1-4806-4db7-a368-0d73f31fc511', // NOSE
+    id: '6bbbbde1-4806-4db7-a368-0d73f31fc511',
     type: 'NOSE',
-    icon: () => <NoseIcon />,
-    iconSmall: () => <NoseIcon variant='small' />,
     labels: {
       ko_KR: '코',
       en_US: 'Nose',
@@ -54,10 +68,8 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: 'bc0effa1-af1a-4048-8b57-45130bd74820', // LIFTING
+    id: 'bc0effa1-af1a-4048-8b57-45130bd74820',
     type: 'LIFTING',
-    icon: () => <LiftingIcon />,
-    iconSmall: () => <LiftingIcon variant='small' />,
     labels: {
       ko_KR: '리프팅',
       en_US: 'Lifting',
@@ -71,10 +83,8 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '41144648-d60e-4b8a-8cde-cd5e5af62169', // FACIAL_CONTOURING
+    id: '41144648-d60e-4b8a-8cde-cd5e5af62169',
     type: 'FACIAL_CONTOURING',
-    icon: () => <FacialContouringIcon />,
-    iconSmall: () => <FacialContouringIcon variant='small' />,
     labels: {
       ko_KR: '안면윤곽',
       en_US: 'Facial Contouring',
@@ -88,10 +98,8 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '3447ec08-4668-40f9-8b28-52107760e928', // BREAST
+    id: '3447ec08-4668-40f9-8b28-52107760e928',
     type: 'BREAST',
-    icon: () => <BreastIcon />,
-    iconSmall: () => <BreastIcon variant='small' />,
     labels: {
       ko_KR: '가슴',
       en_US: 'Breast',
@@ -105,14 +113,12 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '255d42f9-a589-48f7-b8bc-ec046ff16f29', // STEM_CELL
+    id: '255d42f9-a589-48f7-b8bc-ec046ff16f29',
     type: 'STEM_CELL',
-    icon: () => <StemCellIcon />,
-    iconSmall: () => <StemCellIcon variant='small' />,
     labels: {
       ko_KR: '줄기세포',
       en_US: 'Stem Cell',
-      th_TH: 'เซลล์\nต้นกำเนิด',
+      th_TH: 'สเต็มเซลล์',
       zh_TW: '幹細胞',
       ja_JP: '幹細胞',
       hi_IN: 'स्टेम सेल',
@@ -122,14 +128,12 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '56739781-11f0-412b-8cd9-ef63024f80c2', // LIPOSUCTION
+    id: '56739781-11f0-412b-8cd9-ef63024f80c2',
     type: 'LIPOSUCTION',
-    icon: () => <LiposuctionIcon />,
-    iconSmall: () => <LiposuctionIcon variant='small' />,
     labels: {
       ko_KR: '지방흡입',
       en_US: 'Liposuction',
-      th_TH: 'ศัลยกรรม\nดูดไขมัน',
+      th_TH: 'ดูดไขมัน',
       zh_TW: '抽脂',
       ja_JP: '脂肪吸引',
       hi_IN: 'लिपोसक्शन',
@@ -139,27 +143,23 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890', // BODY
+    id: '649d8f89-479a-4d53-beb9-47c5ebc59b3a',
     type: 'BODY',
-    icon: () => <BodyIcon />,
-    iconSmall: () => <BodyIcon variant='small' />,
     labels: {
       ko_KR: '바디',
       en_US: 'Body',
-      th_TH: 'ศัลยกรรม\nร่างกาย',
+      th_TH: 'รูปร่าง',
       zh_TW: '身體',
       ja_JP: 'ボディ',
-      hi_IN: 'शरीर',
+      hi_IN: 'बॉडी',
       tl_PH: 'Body',
       ar_SA: 'الجسم',
       ru_RU: 'тело',
     } satisfies LocalizedText,
   },
   {
-    id: 'af44669d-002b-45fc-bf4a-b8fe3175e7ae', // HAIR_TRANSPLANT
+    id: 'af44669d-002b-45fc-bf4a-b8fe3175e7ae',
     type: 'HAIR_TRANSPLANT',
-    icon: () => <HairTransplantIcon />,
-    iconSmall: () => <HairTransplantIcon variant='small' />,
     labels: {
       ko_KR: '모발이식',
       en_US: 'Hair Transplant',
@@ -173,10 +173,8 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '24bbf6a7-f34d-4352-af31-90296e8720c0', // DERMATOLOGY
+    id: '24bbf6a7-f34d-4352-af31-90296e8720c0',
     type: 'DERMATOLOGY',
-    icon: () => <DermatologyIcon />,
-    iconSmall: () => <DermatologyIcon variant='small' />,
     labels: {
       ko_KR: '피부과',
       en_US: 'Dermatology',
@@ -190,10 +188,8 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '9cbe9f04-8a8c-4533-b7f3-86f707066bd7', // DENTAL
+    id: '9cbe9f04-8a8c-4533-b7f3-86f707066bd7',
     type: 'DENTAL',
-    icon: () => <DentalIcon />,
-    iconSmall: () => <DentalIcon variant='small' />,
     labels: {
       ko_KR: '치과',
       en_US: 'Dental',
@@ -207,10 +203,8 @@ const COMMON_CATEGORIES: CategoryItem[] = [
     } satisfies LocalizedText,
   },
   {
-    id: 'b2c3d4e5-f6a7-8901-bcde-f23456789012', // ETC
+    id: '52095c86-fbc2-4132-bc27-7d4b451d52d4',
     type: 'ETC',
-    icon: () => <OtherIcon />,
-    iconSmall: () => <OtherIcon variant='small' />,
     labels: {
       ko_KR: '기타',
       en_US: 'Others',
@@ -225,7 +219,81 @@ const COMMON_CATEGORIES: CategoryItem[] = [
   },
 ];
 
-// 전체 카테고리
+function renderV1Icon(type: string, small = false): React.ReactNode {
+  const v = small ? ('small' as const) : undefined;
+  switch (type) {
+    case 'EYES':
+      return <EyesIcon variant={v} />;
+    case 'NOSE':
+      return <NoseIcon variant={v} />;
+    case 'LIFTING':
+      return <LiftingIcon variant={v} />;
+    case 'FACIAL_CONTOURING':
+      return <FacialContouringIcon variant={v} />;
+    case 'BREAST':
+      return <BreastIcon variant={v} />;
+    case 'STEM_CELL':
+      return <StemCellIcon variant={v} />;
+    case 'LIPOSUCTION':
+      return <LiposuctionIcon variant={v} />;
+    case 'BODY':
+      return <BodyIcon variant={v} />;
+    case 'HAIR_TRANSPLANT':
+      return <HairTransplantIcon variant={v} />;
+    case 'DERMATOLOGY':
+      return <DermatologyIcon variant={v} />;
+    case 'DENTAL':
+      return <DentalIcon variant={v} />;
+    case 'ETC':
+      return <OtherIcon variant={v} />;
+    default:
+      return null;
+  }
+}
+
+function renderV2Icon(type: string): React.ReactNode {
+  switch (type) {
+    case 'EYES':
+      return <EyesIconV2 />;
+    case 'NOSE':
+      return <NoseIconV2 />;
+    case 'LIFTING':
+      return <LiftingIconV2 />;
+    case 'FACIAL_CONTOURING':
+      return <FacialContouringIconV2 />;
+    case 'BREAST':
+      return <BreastIconV2 />;
+    case 'STEM_CELL':
+      return <StemCellIconV2 />;
+    case 'LIPOSUCTION':
+      return <LiposuctionIconV2 />;
+    case 'BODY':
+      return <BodyIconV2 />;
+    case 'HAIR_TRANSPLANT':
+      return <HairTransplantIconV2 />;
+    case 'DERMATOLOGY':
+      return <DermatologyIconV2 />;
+    case 'DENTAL':
+      return <DentalIconV2 />;
+    case 'ETC':
+      return <OtherIconV2 />;
+    default:
+      return null;
+  }
+}
+
+const QUICK_MENU_BASE_V1: CategoryItem[] = CATEGORY_DEFS.map((def) => ({
+  ...def,
+  icon: () => renderV1Icon(def.type),
+  iconSmall: () => renderV1Icon(def.type, true),
+}));
+
+const QUICK_MENU_BASE_V2: CategoryItem[] = CATEGORY_DEFS.map((def) => ({
+  ...def,
+  icon: () => renderV2Icon(def.type),
+  iconSmall: () => null,
+}));
+
 const ALL_CATEGORY: CategoryItem = {
   id: 'all',
   type: 'all',
@@ -244,8 +312,11 @@ const ALL_CATEGORY: CategoryItem = {
   } satisfies LocalizedText,
 };
 
-// Quick Menu용 카테고리 (전체 제외)
-export const QUICK_MENU_CATEGORIES: CategoryItem[] = COMMON_CATEGORIES;
+// Quick Menu V1용 카테고리 (전체 제외)
+export const QUICK_MENU_CATEGORIES: CategoryItem[] = QUICK_MENU_BASE_V1;
 
-// 일반용 카테고리 (전체 포함)
-export const CATEGORIES: CategoryItem[] = [...COMMON_CATEGORIES, ALL_CATEGORY];
+// V1 일반용 카테고리 (전체 포함)
+export const CATEGORIES: CategoryItem[] = [...QUICK_MENU_BASE_V1, ALL_CATEGORY];
+
+// Quick Menu V2용 카테고리 (전체 제외)
+export const QUICK_MENU_CATEGORIES_V2: CategoryItem[] = QUICK_MENU_BASE_V2;
