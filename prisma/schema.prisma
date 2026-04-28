@@ -113,6 +113,7 @@ model Hospital {
   isActive                   Boolean?                     @default(true)
   ConsultationMemo           ConsultationMemo[]
   ConsultationMessage        ConsultationMessage[]
+  ConsultationStatus         ConsultationStatus[]
   Doctor                     Doctor[]
   District                   District?                    @relation(fields: [districtId], references: [id], onDelete: Cascade)
   HospitalCategoryAssignment HospitalCategoryAssignment[]
@@ -267,6 +268,7 @@ model User {
   Comment                     Comment[]
   ConsultationMemo            ConsultationMemo[]
   ConsultationMessage         ConsultationMessage[]
+  ConsultationStatus          ConsultationStatus[]
   DoctorLike                  DoctorLike[]
   HospitalLike                HospitalLike[]
   Reservation                 Reservation[]
@@ -900,6 +902,21 @@ model InsightArticle {
   @@schema("public")
 }
 
+model ConsultationStatus {
+  id         String            @id @db.Uuid
+  userId     String            @db.Uuid
+  hospitalId String            @db.Uuid
+  stage      ConsultationStage @default(NEW_INQUIRY)
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime
+  Hospital   Hospital          @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  User       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, hospitalId])
+  @@index([stage])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -1140,6 +1157,14 @@ enum InsightArticleStatus {
   SCHEDULED
   PUBLISHED
   ARCHIVED
+
+  @@schema("public")
+}
+
+enum ConsultationStage {
+  NEW_INQUIRY
+  QUESTION_CREATED
+  RESERVATION_DONE
 
   @@schema("public")
 }
