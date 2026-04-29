@@ -1,5 +1,6 @@
 import { type Locale } from 'shared/config';
 import { extractLocalizedText } from 'shared/lib';
+import { getDoctorNameFromJsonValue } from 'shared/lib/doctor-name';
 import { getDoctorDetail } from 'entities/doctor/api/use-cases/get-doctor-detail';
 import { getDictionary } from '../../dictionaries';
 import { DoctorDetailContentV2 } from '../../v2/doctor/[id]/DoctorDetailContentV2';
@@ -132,7 +133,7 @@ export async function generateMetadata({ params }: V2DoctorDetailPageProps) {
   try {
     const { doctor } = await getDoctorDetail({ id });
 
-    const doctorName = extractLocalizedText(doctor.name, lang) || 'Doctor';
+    const doctorName = getDoctorNameFromJsonValue(doctor.name, lang) || 'Doctor';
     const position = doctor.position
       ? extractLocalizedText(doctor.position, lang)
       : '';
