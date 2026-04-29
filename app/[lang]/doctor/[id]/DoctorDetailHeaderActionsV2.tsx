@@ -23,7 +23,6 @@ export function DoctorDetailHeaderActionsV2({
   const { share, isLoading } = useShare();
 
   const shareTitle = doctorName ? `${doctorName} - K-DOC` : 'K-DOC';
-  const shareText = doctorName ? `${doctorName}${dict.doctor.share.text}` : dict.doctor.share.title;
 
   // 의사 상세 페이지 URL 생성 (v2 경로)
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
@@ -33,7 +32,7 @@ export function DoctorDetailHeaderActionsV2({
     e.preventDefault();
     e.stopPropagation();
 
-    const result = await share({ title: shareTitle, text: shareText, url: shareUrl });
+    const result = await share({ title: shareTitle, url: shareUrl });
 
     if (result.success) {
       switch (result.method) {
