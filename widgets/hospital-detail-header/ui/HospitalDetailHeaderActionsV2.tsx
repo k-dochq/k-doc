@@ -22,9 +22,6 @@ export function HospitalDetailHeaderActionsV2({
   const { share, isLoading } = useShare();
 
   const shareTitle = hospitalName ? `${hospitalName} - K-DOC` : 'K-DOC';
-  const shareText = hospitalName
-    ? `${hospitalName}의 상세 정보를 확인해보세요`
-    : '병원 정보를 확인해보세요';
 
   // 병원 상세 페이지 URL 생성 (v2 경로)
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
@@ -34,7 +31,7 @@ export function HospitalDetailHeaderActionsV2({
     e.preventDefault();
     e.stopPropagation();
 
-    const result = await share({ title: shareTitle, text: shareText, url: shareUrl });
+    const result = await share({ title: shareTitle, url: shareUrl });
 
     if (result.success) {
       switch (result.method) {
