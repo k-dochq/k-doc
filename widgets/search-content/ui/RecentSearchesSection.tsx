@@ -2,11 +2,13 @@
 
 import { useRecentSearches } from 'shared/model/hooks';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { Carousel, CarouselContent, CarouselItem } from 'shared/ui/carousel';
 
 interface RecentSearchesSectionProps {
   dict: Dictionary;
+  lang: Locale;
 }
 
 function XIcon() {
@@ -23,9 +25,10 @@ function XIcon() {
   );
 }
 
-export function RecentSearchesSection({ dict }: RecentSearchesSectionProps) {
+export function RecentSearchesSection({ dict, lang }: RecentSearchesSectionProps) {
   const { searches, addSearch, removeSearch, clearAll } = useRecentSearches();
   const router = useLocalizedRouter();
+  const isRtl = lang === 'ar';
 
   if (searches.length === 0) return null;
 
@@ -54,10 +57,11 @@ export function RecentSearchesSection({ dict }: RecentSearchesSectionProps) {
             align: 'start',
             dragFree: true,
             containScroll: 'trimSnaps',
+            ...(isRtl && { direction: 'rtl' }),
           }}
           className='w-full'
         >
-          <CarouselContent className='gap-2 py-0'>
+          <CarouselContent className='gap-2 py-0' dir={isRtl ? 'rtl' : 'ltr'}>
             {searches.map((term, index) => (
               <CarouselItem
                 key={term}
