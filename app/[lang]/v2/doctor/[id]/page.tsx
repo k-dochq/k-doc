@@ -1,4 +1,5 @@
 import { type Locale } from 'shared/config';
+import { generateDoctorMetadata } from 'entities/doctor/lib/generate-doctor-metadata';
 import { getDictionary } from '../../../dictionaries';
 import { DoctorDetailContentV2 } from './DoctorDetailContentV2';
 
@@ -11,4 +12,9 @@ export default async function V2DoctorDetailPage({ params }: V2DoctorDetailPageP
   const dict = await getDictionary(lang);
 
   return <DoctorDetailContentV2 doctorId={id} lang={lang} dict={dict} />;
+}
+
+export async function generateMetadata({ params }: V2DoctorDetailPageProps) {
+  const { lang, id } = await params;
+  return generateDoctorMetadata({ id, lang, basePath: 'v2/doctor' });
 }
