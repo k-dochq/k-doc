@@ -83,7 +83,11 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
         onClick={() => router.back()}
         className='flex shrink-0 items-center justify-center'
       >
-        <ChevronRightIcon size={24} color='#404040' className='rotate-180' />
+        <ChevronRightIcon
+          size={24}
+          color='#404040'
+          className={lang === 'ar' ? '' : 'rotate-180'}
+        />
       </button>
       <div ref={containerRef} className='relative flex min-w-0 flex-1'>
         <div className='flex min-w-0 flex-1 items-center gap-[6px] rounded-full border border-[#e5e5e5] bg-[#f1f1f1] px-4 py-2'>

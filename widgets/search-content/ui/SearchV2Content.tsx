@@ -121,7 +121,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
   if (!q) {
     return (
       <div className='pb-5'>
-        <RecentSearchesSection dict={dict} />
+        <RecentSearchesSection dict={dict} lang={lang} />
         <div className='flex flex-col gap-4 p-5'>
           <p className="font-['Pretendard'] text-base font-semibold leading-6 text-[#404040]">
             {dict.search?.categoryTitle}
