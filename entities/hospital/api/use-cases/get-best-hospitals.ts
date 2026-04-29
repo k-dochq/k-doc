@@ -74,7 +74,6 @@ export async function getBestHospitals(options: GetBestHospitalsOptions = {}) {
               },
             },
           },
-          take: 3, // 최대 3개의 전문 분야만 표시
         },
         District: {
           select: {
