@@ -40,29 +40,12 @@ function getOgLocale(lang: Locale): string {
 }
 
 /**
- * "Name Position's detailed information" (영어) /
- * "이름 직책 상세 정보" (한국어) 등 언어별 title head 조립.
+ * 의사 이름 + 직책 조립.
+ * mockup 요구: title 은 "${이름} ${직책}" 만 (병원 카드와 같은 단순 형식).
  */
-function buildTitleHead(name: string, position: string, lang: Locale): string {
-  const namePosition = position ? `${name} ${position}` : name;
-
-  // 영어는 소유격 ('s) 으로 붙음 — 공백 없이.
-  if (lang === 'en') {
-    return `${namePosition}'s detailed information`;
-  }
-
-  const suffixByLang: Partial<Record<Locale, string>> = {
-    ko: '상세 정보',
-    th: 'ข้อมูลโดยละเอียด',
-    'zh-Hant': '詳細資訊',
-    ja: '詳細情報',
-    hi: 'विस्तृत जानकारी',
-    tl: 'detalyadong impormasyon',
-    ar: 'معلومات تفصيلية',
-    ru: 'подробная информация',
-  };
-  const suffix = suffixByLang[lang] ?? 'detailed information';
-  return `${namePosition} ${suffix}`;
+function buildTitleHead(name: string, position: string): string {
+  if (!position) return name;
+  return `${name} ${position}`;
 }
 
 /**
@@ -122,19 +105,19 @@ function pickOgImageUrl(
 function buildFallbackTitle(lang: Locale): string {
   switch (lang) {
     case 'ko':
-      return '의사 상세 정보 - K-DOC';
+      return '의사 정보 - K-DOC';
     case 'en':
-      return "Doctor's detailed information - K-DOC";
+      return 'Doctor - K-DOC';
     case 'th':
-      return 'ข้อมูลแพทย์โดยละเอียด - K-DOC';
+      return 'ข้อมูลแพทย์ - K-DOC';
     case 'zh-Hant':
-      return '醫師詳細資訊 - K-DOC';
+      return '醫師資訊 - K-DOC';
     case 'ja':
-      return '医師詳細情報 - K-DOC';
+      return '医師情報 - K-DOC';
     case 'hi':
-      return 'डॉक्टर की विस्तृत जानकारी - K-DOC';
+      return 'डॉक्टर की जानकारी - K-DOC';
     default:
-      return "Doctor's detailed information - K-DOC";
+      return 'Doctor - K-DOC';
   }
 }
 
@@ -154,7 +137,7 @@ export async function generateMetadata({ params }: V2DoctorDetailPageProps) {
       ? extractLocalizedText(doctor.position, lang)
       : '';
 
-    const titleHead = buildTitleHead(doctorName, position, lang);
+    const titleHead = buildTitleHead(doctorName, position);
     const title = `${titleHead} - K-DOC`;
 
     const careerSummary = extractCareerSummary(doctor.career, lang);
