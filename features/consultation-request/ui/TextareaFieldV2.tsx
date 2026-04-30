@@ -1,6 +1,7 @@
 'use client';
 
 import { type TextareaHTMLAttributes } from 'react';
+import { cn } from 'shared/lib/utils';
 import { FieldLabel } from './FieldLabel';
 import { FieldError } from './FieldError';
 import { baseInputClasses, buildStateClass, disabledState } from './form-field-styles';
@@ -34,9 +35,12 @@ export function TextareaFieldV2({
           {...props}
           disabled={disabled}
           maxLength={maxLength}
-          className={`${baseInputClasses} min-h-[120px] resize-none pr-16 pb-10 ${stateClass} ${
-            disabled ? disabledState : 'bg-white'
-          }`}
+          className={cn(
+            baseInputClasses,
+            'min-h-[120px] resize-none pb-8',
+            stateClass,
+            disabled ? disabledState : 'bg-white',
+          )}
         />
         <div className='pointer-events-none absolute right-4 bottom-3 text-sm text-neutral-400'>
           {currentLength}/{maxLength}

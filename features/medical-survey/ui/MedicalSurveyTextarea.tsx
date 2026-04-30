@@ -1,6 +1,7 @@
 'use client';
 
 import { type TextareaHTMLAttributes } from 'react';
+import { cn } from 'shared/lib/utils';
 import {
   baseInputClasses,
   buildStateClass,
@@ -31,7 +32,12 @@ export function MedicalSurveyTextarea({
         value={value}
         placeholder={placeholder}
         maxLength={maxLength}
-        className={`${baseInputClasses} h-[216px] resize-none pr-16 pb-10 ${stateClass} bg-white`}
+        className={cn(
+          baseInputClasses,
+          'h-[216px] resize-none pb-8',
+          stateClass,
+          'bg-white',
+        )}
       />
       <div className='pointer-events-none absolute right-4 bottom-3 text-sm text-neutral-400'>
         {displayLength}/{maxLength}
