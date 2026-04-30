@@ -4,7 +4,7 @@ import { type TextareaHTMLAttributes } from 'react';
 import { cn } from 'shared/lib/utils';
 import { FieldLabel } from './FieldLabel';
 import { FieldError } from './FieldError';
-import { baseInputClasses, buildStateClass, disabledState } from './form-field-styles';
+import { buildWrapperStateClass, disabledState } from './form-field-styles';
 
 type TextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'className'> & {
   label: string;
@@ -25,24 +25,25 @@ export function TextareaFieldV2({
   helperText,
   ...props
 }: TextareaProps) {
-  const stateClass = buildStateClass(props.value, error);
+  const wrapperStateClass = buildWrapperStateClass(props.value, error);
 
   return (
     <div className='flex w-full flex-col gap-2'>
       <FieldLabel label={label} required={required} />
-      <div className='relative'>
+      <div
+        className={cn(
+          'flex w-full flex-col rounded-xl border px-4 py-3.5 transition-colors duration-150',
+          wrapperStateClass,
+          disabled ? disabledState : 'bg-white',
+        )}
+      >
         <textarea
           {...props}
           disabled={disabled}
           maxLength={maxLength}
-          className={cn(
-            baseInputClasses,
-            'min-h-[120px] resize-none pb-8',
-            stateClass,
-            disabled ? disabledState : 'bg-white',
-          )}
+          className='block min-h-[88px] w-full resize-none border-0 bg-transparent p-0 text-sm leading-6 text-neutral-900 placeholder:text-neutral-400 focus:outline-none'
         />
-        <div className='pointer-events-none absolute right-4 bottom-3 text-sm text-neutral-400'>
+        <div className='mt-2 text-right text-sm text-neutral-400'>
           {currentLength}/{maxLength}
         </div>
       </div>
