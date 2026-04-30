@@ -19,3 +19,11 @@ export const buildStateClass = (value: unknown, error?: string): string => {
   if (error) return errorBorder;
   return `${hasValue(value) ? filledBorder : emptyBorder} ${focusClass} text-neutral-900`;
 };
+
+export const wrapperFocusClass = 'focus-within:border-primary-900';
+export const wrapperErrorClass = 'border-[#f31110] focus-within:border-[#f31110]';
+
+export const buildWrapperStateClass = (value: unknown, error?: string): string => {
+  if (error) return wrapperErrorClass;
+  return `${hasValue(value) ? filledBorder : emptyBorder} ${wrapperFocusClass}`;
+};
