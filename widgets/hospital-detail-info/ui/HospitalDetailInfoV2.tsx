@@ -81,7 +81,7 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
                 </div>
               </div>
             </div>
-            <div className='relative flex shrink-0 items-center py-0 pr-0 pl-0.5'>
+            <div className='relative flex shrink-0 items-center p-0'>
               <span className='text-sm leading-5 font-medium text-neutral-400'>
                 {hospitalAddress}
               </span>
