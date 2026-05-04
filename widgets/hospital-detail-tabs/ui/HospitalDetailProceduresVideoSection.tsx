@@ -9,6 +9,7 @@ import { type Dictionary } from 'shared/model/types';
 import { localeToAltValue } from 'shared/lib/localized-text';
 import { loadYouTubeIframeAPI, extractYouTubeVideoId } from 'shared/lib/youtube-iframe-api';
 import { useHospitalVideos } from 'entities/hospital/model/useHospitalVideos';
+import { YoutubeThumbnailPlayButton } from 'entities/youtube-video';
 import { DEFAULT_IMAGES } from 'shared/config/images';
 
 interface HospitalDetailProceduresVideoSectionProps {
@@ -161,6 +162,9 @@ export function HospitalDetailProceduresVideoSection({
                     target.src = DEFAULT_IMAGES.HOSPITAL_DEFAULT;
                   }}
                 />
+                <span className='pointer-events-none absolute inset-0 flex items-center justify-center'>
+                  <YoutubeThumbnailPlayButton />
+                </span>
               </button>
             )}
           </div>

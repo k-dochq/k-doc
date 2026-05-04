@@ -14,3 +14,4 @@ export { YoutubeVideoThumbnail } from './ui/YoutubeVideoThumbnail';
 export { YoutubeVideoEmbedPlayer } from './ui/YoutubeVideoEmbedPlayer';
 export { YoutubeVideoTextContent } from './ui/YoutubeVideoTextContent';
 export { YoutubeVideoMediaContainer } from './ui/YoutubeVideoMediaContainer';
+export { YoutubeThumbnailPlayButton } from './ui/YoutubeThumbnailPlayButton';
