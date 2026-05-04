@@ -4,6 +4,7 @@ import { prisma } from 'shared/lib/prisma';
 import { v4 as uuidv4 } from 'uuid';
 import { extractLocalizedText } from 'shared/lib/localized-text';
 import { type Locale } from 'shared/config';
+import { K_DOC_TEST_HOSPITAL_ID } from 'entities/hospital/api/entities/types';
 
 interface ConsultationRequestBody {
   hospitalId: string;
@@ -48,6 +49,15 @@ function extractLocaleFromRequest(request: NextRequest): Locale {
 
   // 기본값
   return 'ko';
+}
+
+/** 노출(isActive) 여부와 무관하게 상담 채팅을 허용하는 병원 (K-DOC 플랫폼 채팅방) */
+function isHospitalAllowedForConsultationMessaging(
+  hospital: { id: string; isActive: boolean | null } | null,
+): boolean {
+  if (!hospital) return false;
+  if (hospital.isActive === true) return true;
+  return hospital.id === K_DOC_TEST_HOSPITAL_ID;
 }
 
 export async function GET(request: NextRequest) {
@@ -170,13 +180,13 @@ async function handleChatMessage(body: ChatMessageBody, userId: string, _locale:
     return NextResponse.json({ success: false, error: 'MISSING_REQUIRED_FIELDS' }, { status: 400 });
   }
 
-  // 병원 존재 여부 확인 (노출 중인 병원만)
+  // 병원 존재 여부 확인 (일반 병원은 노출 중만; K-DOC 플랫폼 채팅 병원은 비활성이어도 허용)
   const hospital = await prisma.hospital.findUnique({
     where: { id: hospitalId },
     select: { id: true, isActive: true },
   });
 
-  if (!hospital || hospital.isActive !== true) {
+  if (!hospital || !isHospitalAllowedForConsultationMessaging(hospital)) {
     return NextResponse.json({ success: false, error: 'HOSPITAL_NOT_FOUND' }, { status: 404 });
   }
 
@@ -233,13 +243,13 @@ async function handleConsultationRequest(
     return NextResponse.json({ success: false, error: 'MISSING_REQUIRED_FIELDS' }, { status: 400 });
   }
 
-  // 병원 존재 여부 확인 (노출 중인 병원만)
+  // 병원 존재 여부 확인 (일반 병원은 노출 중만; K-DOC 플랫폼 채팅 병원은 비활성이어도 허용)
   const hospital = await prisma.hospital.findUnique({
     where: { id: hospitalId },
     select: { id: true, name: true, isActive: true },
   });
 
-  if (!hospital || hospital.isActive !== true) {
+  if (!hospital || !isHospitalAllowedForConsultationMessaging(hospital)) {
     return NextResponse.json({ success: false, error: 'HOSPITAL_NOT_FOUND' }, { status: 404 });
   }
 
