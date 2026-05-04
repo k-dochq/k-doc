@@ -129,7 +129,6 @@ Disallow: /
 # Make sure to verify normal response/index structure before actual deployment
 ############################
 Sitemap: https://www.k-doc.kr/sitemap.xml
-Sitemap: https://www.k-doc.kr/sitemap_ko.xml
 Sitemap: https://www.k-doc.kr/sitemap_en.xml
 Sitemap: https://www.k-doc.kr/sitemap_th.xml
 Sitemap: https://www.k-doc.kr/sitemap_zh-Hant.xml
