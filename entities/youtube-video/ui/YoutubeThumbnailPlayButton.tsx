@@ -1,4 +1,8 @@
-export function IntroduceYoutubePlayIcon() {
+/**
+ * 유튜브 썸네일 중앙에 표시하는 회색 재생 버튼 (노션 QA 기준).
+ * 썸네일 클릭 영역 위에 `pointer-events-none` 래퍼로 겹쳐 사용합니다.
+ */
+export function YoutubeThumbnailPlayButton() {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -9,7 +13,7 @@ export function IntroduceYoutubePlayIcon() {
       className='shrink-0'
       aria-hidden
     >
-      <g clipPath='url(#introduce-youtube-clip)'>
+      <g clipPath='url(#youtube-thumbnail-play-clip)'>
         <path
           d='M0 8C0 3.58172 3.58172 0 8 0H46C50.4183 0 54 3.58172 54 8V30C54 34.4183 50.4183 38 46 38H8C3.58172 38 0 34.4183 0 30V8Z'
           fill='#404040'
@@ -21,7 +25,7 @@ export function IntroduceYoutubePlayIcon() {
         />
       </g>
       <defs>
-        <clipPath id='introduce-youtube-clip'>
+        <clipPath id='youtube-thumbnail-play-clip'>
           <rect width={54} height={38} fill='white' />
         </clipPath>
       </defs>

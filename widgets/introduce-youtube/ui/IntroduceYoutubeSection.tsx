@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { getIntroduceVideoId } from '../lib/get-introduce-video-id';
 import { loadYouTubeIframeAPI } from 'shared/lib/youtube-iframe-api';
-import { IntroduceYoutubePlayIcon } from './IntroduceYoutubePlayIcon';
+import { YoutubeThumbnailPlayButton } from 'entities/youtube-video';
 
 function getThumbnailSrc(lang: Locale): string {
   if (lang === 'ja') return '/images/main/video_thum_ja.png';
@@ -84,8 +84,8 @@ export function IntroduceYoutubeSection({ lang }: IntroduceYoutubeSectionProps) 
             className='object-cover object-center'
             priority
           />
-          <span className='absolute inset-0 flex items-center justify-center'>
-            <IntroduceYoutubePlayIcon />
+          <span className='pointer-events-none absolute inset-0 flex items-center justify-center'>
+            <YoutubeThumbnailPlayButton />
           </span>
         </button>
       )}

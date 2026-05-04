@@ -3,6 +3,7 @@
 import { type RefObject } from 'react';
 import { YoutubeVideoThumbnail } from './YoutubeVideoThumbnail';
 import { YoutubeVideoEmbedPlayer } from './YoutubeVideoEmbedPlayer';
+import { YoutubeThumbnailPlayButton } from './YoutubeThumbnailPlayButton';
 
 interface YoutubeVideoMediaContainerProps {
   isPlaying: boolean;
@@ -46,6 +47,11 @@ export function YoutubeVideoMediaContainer({
             isClickable={!!videoUrl}
             onError={onThumbnailError}
           />
+          {!!videoUrl && (
+            <div className='pointer-events-none absolute inset-0 flex items-center justify-center'>
+              <YoutubeThumbnailPlayButton />
+            </div>
+          )}
         </div>
       )}
     </div>
