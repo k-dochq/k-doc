@@ -4,6 +4,11 @@
     "cancel": "रद्द करें",
     "today": "आज"
   },
+  "appDownloadBanner": {
+    "message": "अभी K-DOC ऐप इंस्टॉल करें और तेज़, अधिक सुविधाजनक अनुभव पाएं।",
+    "cta": "ऐप पाएं",
+    "closeLabel": "बैनर बंद करें"
+  },
   "quickMenu": {
     "title": "लोकप्रिय उपचार क्षेत्र",
     "error": {

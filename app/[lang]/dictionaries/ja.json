@@ -4,6 +4,11 @@
     "cancel": "キャンセル",
     "today": "今日"
   },
+  "appDownloadBanner": {
+    "message": "今すぐ K-DOC アプリをインストールして、より速く便利にご利用ください。",
+    "cta": "ダウンロード",
+    "closeLabel": "バナーを閉じる"
+  },
   "quickMenu": {
     "title": "人気手術部位",
     "error": {

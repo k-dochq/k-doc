@@ -14,7 +14,7 @@ import {
   RequiredSelect,
   PhoneNumberInput,
 } from './inputs';
-import { DatePicker } from 'shared/ui/simple-date-picker';
+import { FormDatePickerDrawerV2 } from 'features/consultation-request/ui/FormDatePickerDrawerV2';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 
 interface AgreementState {
@@ -194,7 +194,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
         />
 
         {/* 생년월일 입력 (선택) */}
-        <DatePicker
+        <FormDatePickerDrawerV2
           label={dict.auth?.signup?.birthDate || '생년월일'}
           value={formData.birthDate ? new Date(formData.birthDate) : undefined}
           onChange={(date) =>
@@ -207,6 +207,7 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           locale={lang}
           dict={dict}
           required={false}
+          optionalBracketsText={dict.auth?.signup?.optional || '선택'}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
           disabled={(date) => date > new Date()}
         />

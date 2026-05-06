@@ -2,6 +2,7 @@ import { BottomNavigationV2 } from '@/widgets/bottom-navigation';
 import { HeaderV2 } from '@/widgets/header/ui/HeaderV2';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
+import { AppDownloadBanner } from 'widgets/app-download-banner';
 
 interface TipsLayoutProps {
   children: React.ReactNode;
@@ -14,7 +15,10 @@ export default async function TipsLayout({ children, params }: TipsLayoutProps) 
 
   return (
     <div className='min-h-screen bg-white'>
-      <HeaderV2 currentLang={lang} dict={dict} />
+      <div className='sticky top-0 z-50'>
+        <AppDownloadBanner dict={dict} />
+        <HeaderV2 currentLang={lang} dict={dict} sticky={false} />
+      </div>
       <main>{children}</main>
       <div className='h-16' />
       <BottomNavigationV2 currentLang={lang} dict={dict} />

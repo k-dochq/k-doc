@@ -13,7 +13,7 @@ import {
   RequiredSelect,
   PhoneNumberInput,
 } from 'features/email-auth/ui/inputs';
-import { DatePicker } from 'shared/ui/simple-date-picker';
+import { FormDatePickerDrawerV2 } from 'features/consultation-request/ui/FormDatePickerDrawerV2';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 import { useLocalizedRouter } from 'shared/model/hooks/useLocalizedRouter';
 import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
@@ -217,7 +217,7 @@ export function AdditionalInfoForm({
         />
 
         {/* 생년월일 입력 (선택) */}
-        <DatePicker
+        <FormDatePickerDrawerV2
           label={dict.auth?.signup?.birthDate || 'Birth Date'}
           value={formData.birthDate ? new Date(formData.birthDate) : undefined}
           onChange={(date) =>
@@ -230,6 +230,7 @@ export function AdditionalInfoForm({
           locale={lang}
           dict={dict}
           required={false}
+          optionalBracketsText={dict.auth?.signup?.optional || 'Optional'}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
           disabled={(date) => date > new Date()}
         />
