@@ -6,6 +6,7 @@ import { type Dictionary } from 'shared/model/types';
 import { BottomNavigationV2 } from 'widgets/bottom-navigation';
 import { HeaderV2 } from '@/widgets/header/ui/HeaderV2';
 import { PageHeaderV2 } from 'shared/ui/page-header';
+import { AppDownloadBanner } from 'widgets/app-download-banner';
 
 interface ReviewsLayoutClientProps {
   lang: Locale;
@@ -25,7 +26,10 @@ export function ReviewsLayoutClient({ lang, dict, children }: ReviewsLayoutClien
           fallbackUrl={`/${lang}/reviews`}
         />
       ) : (
-        <HeaderV2 currentLang={lang} dict={dict} />
+        <div className='sticky top-0 z-50'>
+          <AppDownloadBanner dict={dict} />
+          <HeaderV2 currentLang={lang} dict={dict} sticky={false} />
+        </div>
       )}
       <main className={isSelectHospital ? 'pt-[58px]' : ''}>{children}</main>
       <div className='h-16' />

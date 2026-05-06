@@ -3,6 +3,7 @@ import { BottomNavigationV2 } from 'widgets/bottom-navigation';
 import { type Locale } from 'shared/config';
 import { getDictionary } from '../dictionaries';
 import { HeaderV2 } from '@/widgets/header/ui/HeaderV2';
+import { AppDownloadBanner } from 'widgets/app-download-banner';
 
 interface HospitalsLayoutProps {
   children: React.ReactNode;
@@ -20,7 +21,10 @@ export default async function HospitalsLayout({ children, params }: HospitalsLay
     //   <BottomNavigation currentLang={lang} dict={dict} />
     // </>
     <div className='min-h-screen bg-white'>
-      <HeaderV2 currentLang={lang} dict={dict} />
+      <div className='sticky top-0 z-50'>
+        <AppDownloadBanner dict={dict} />
+        <HeaderV2 currentLang={lang} dict={dict} sticky={false} />
+      </div>
       <main>{children}</main>
       <div className='h-16' />
       <BottomNavigationV2 currentLang={lang} dict={dict} />
