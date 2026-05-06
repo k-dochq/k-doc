@@ -28,22 +28,18 @@ export function CustomDateInput({
   const [displayValue, setDisplayValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
-  // ISO 날짜 형식 (YYYY-MM-DD)을 표시 형식으로 변환
-  const formatDateForDisplay = (isoDate: string, locale: string): string => {
+  // ISO 날짜 형식 (YYYY-MM-DD) 표시. 모든 로케일에서 국제 표준으로 통일.
+  const formatDateForDisplay = (isoDate: string): string => {
     if (!isoDate) return '';
 
     try {
       const date = new Date(isoDate);
       if (isNaN(date.getTime())) return '';
 
-      // 로케일에 따른 날짜 형식 설정
-      const options: Intl.DateTimeFormatOptions = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      };
-
-      return date.toLocaleDateString(locale, options);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
     } catch {
       return '';
     }
@@ -122,13 +118,12 @@ export function CustomDateInput({
   // 값이 변경될 때 표시 값 업데이트
   useEffect(() => {
     if (value) {
-      const locale = getLocale();
-      const formatted = formatDateForDisplay(value, locale);
+      const formatted = formatDateForDisplay(value);
       setDisplayValue(formatted);
     } else {
       setDisplayValue('');
     }
-  }, [value, dict, localeProp]);
+  }, [value]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -157,7 +152,7 @@ export function CustomDateInput({
       const locale = getLocale();
       const isoDate = parseDisplayToISO(displayValue, locale);
       if (isoDate) {
-        const formatted = formatDateForDisplay(isoDate, locale);
+        const formatted = formatDateForDisplay(isoDate);
         setDisplayValue(formatted);
         onChange(isoDate);
       }
@@ -166,13 +161,8 @@ export function CustomDateInput({
 
   const getPlaceholderText = (): string => {
     if (isFocused) return '';
-
-    const locale = getLocale();
-    if (locale === 'en-US') return 'MM/DD/YYYY';
-    if (locale === 'th-TH') return 'DD/MM/YYYY';
-    if (locale === 'ar-SA') return 'DD/MM/YYYY';
-    // tl locale은 영어 형식 사용
-    return 'YYYY.MM.DD';
+    // 국제 표준 ISO 8601로 모든 로케일 통일
+    return 'YYYY-MM-DD';
   };
 
   return (

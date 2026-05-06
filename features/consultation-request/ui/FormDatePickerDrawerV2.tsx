@@ -38,14 +38,13 @@ const DEFAULT_PLACEHOLDER_BY_LOCALE: Record<Locale, string> = {
   ru: 'Выберите дату',
 };
 
-const formatDisplayDate = (date: Date, locale: Locale): string => {
+// 국제 표준 ISO 8601 (`YYYY-MM-DD`)로 모든 로케일 통일
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const formatDisplayDate = (date: Date, _locale: Locale): string => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
-  if (locale === 'ko') return `${year}년 ${month}월 ${day}일`;
-  if (locale === 'th' || locale === 'ar') return `${day}/${month}/${year}`;
-  if (locale === 'tl') return `${month}/${day}/${year}`;
-  return `${month}/${day}/${year}`;
+  return `${year}-${month}-${day}`;
 };
 
 export function FormDatePickerDrawerV2({

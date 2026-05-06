@@ -3,6 +3,7 @@ import { type Locale } from 'shared/config';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
 import { type RecommendedTipArticle } from '../../model/useTipDetail';
+import { formatDate } from 'shared/lib/date-utils';
 
 interface RecommendedTipCardProps {
   article: RecommendedTipArticle;
@@ -14,17 +15,9 @@ function getLocalizedTitle(title: Record<string, string>, lang: Locale): string 
   return title[shortLang] ?? title.ko ?? title.en ?? '';
 }
 
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}.${m}.${day}`;
-}
-
 export function RecommendedTipCard({ article, lang }: RecommendedTipCardProps) {
   const title = getLocalizedTitle(article.title as Record<string, string>, lang);
-  const date = article.publishedAt ? formatDate(article.publishedAt.toString()) : '';
+  const date = article.publishedAt ? formatDate(article.publishedAt.toString(), lang) : '';
 
   return (
     <LocaleLink

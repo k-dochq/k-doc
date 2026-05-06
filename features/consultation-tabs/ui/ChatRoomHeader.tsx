@@ -1,6 +1,6 @@
 'use client';
 
-import { formatDateSimple } from 'shared/lib/date-utils';
+import { formatDate } from 'shared/lib/date-utils';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 
@@ -20,7 +20,7 @@ export function ChatRoomHeader({ districtName, lastMessageDate, lang, dict }: Ch
           : dict.consultation?.region || '지역'}
       </span>
       {lastMessageDate && (
-        <span className='text-xs text-neutral-400'>{formatDateSimple(lastMessageDate, lang)}</span>
+        <span className='text-xs text-neutral-400'>{formatDate(lastMessageDate, lang)}</span>
       )}
     </div>
   );

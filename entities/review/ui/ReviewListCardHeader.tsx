@@ -4,7 +4,7 @@ import { type Locale } from 'shared/config';
 import { type ReviewCardData } from '../model/types';
 import { UserAvatar } from './UserAvatar';
 import { StarIcon } from 'shared/ui/star-icon/StarIcon';
-import { formatDateSimple, getUserDisplayName } from 'shared/lib';
+import { formatDate, getUserDisplayName } from 'shared/lib';
 
 interface ReviewListCardHeaderProps {
   review: ReviewCardData;
@@ -26,7 +26,7 @@ export function ReviewListCardHeader({ review, lang, className = '' }: ReviewLis
         <div className='flex items-center gap-2'>
           <span className='text-sm font-semibold text-neutral-900'>{userName}</span>
           <span className='text-xs font-medium text-neutral-400'>
-            {formatDateSimple(review.createdAt, lang)}
+            {formatDate(review.createdAt, lang)}
           </span>
         </div>
       </div>

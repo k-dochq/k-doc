@@ -59,14 +59,11 @@ export function FormDatePickerV2({
   const resolvedYearRange = yearRange ?? { from: currentYear, to: currentYear + 5 };
 
   const formatDate = (date: Date): string => {
+    // 국제 표준 ISO 8601 (`YYYY-MM-DD`)로 모든 로케일 통일
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
-    if (locale === 'ko') return `${year}년 ${month}월 ${day}일`;
-    if (locale === 'th') return `${day}/${month}/${year}`;
-    if (locale === 'tl') return `${month}/${day}/${year}`;
-    if (locale === 'ar') return `${day}/${month}/${year}`;
-    return `${month}/${day}/${year}`;
+    return `${year}-${month}-${day}`;
   };
 
   const getPlaceholderText = (): string => {

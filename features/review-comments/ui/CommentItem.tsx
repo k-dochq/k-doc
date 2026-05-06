@@ -7,6 +7,7 @@ import { extractLocalizedText } from 'shared/lib/localized-text';
 import { decodeHtmlEntities } from 'shared/lib/html-entities';
 import { maskNickname } from 'shared/lib/nickname-mask';
 import { UserAvatar } from 'shared/ui';
+import { formatDate as formatDateISO } from 'shared/lib/date-utils';
 import { useDeleteComment } from '../model';
 
 interface CommentItemProps {
@@ -40,7 +41,7 @@ export function CommentItem({ comment, lang, dict, currentUserId, reviewId }: Co
     if (hours < 24) return `${hours}${dict.comments?.time?.hoursAgo || '시간 전'}`;
     if (days < 7) return `${days}${dict.comments?.time?.daysAgo || '일 전'}`;
 
-    return date.toLocaleDateString(lang === 'ko' ? 'ko-KR' : lang === 'en' ? 'en-US' : 'th-TH');
+    return formatDateISO(date, lang);
   };
 
   return (

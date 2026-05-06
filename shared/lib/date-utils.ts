@@ -68,48 +68,16 @@ export const isPastDate = (date: Date): boolean => {
 };
 
 /**
- * 날짜를 로케일에 맞게 포맷팅하는 유틸리티 함수
+ * 날짜를 ISO 8601(`YYYY-MM-DD`) 형식으로 포맷팅한다.
+ * 모든 로케일에서 동일한 표기를 사용하기 위해 국제 표준으로 통일.
+ *
  * @param date - 포맷팅할 날짜
- * @param locale - 로케일 (ko, en, th)
- * @param format - dayjs 포맷 문자열 (기본값: 'YYYY년 M월 D일')
- * @returns 포맷팅된 날짜 문자열
+ * @param _locale - 사용하지 않음. API 호환성을 위해 시그니처는 유지.
+ * @returns `YYYY-MM-DD` 형식의 날짜 문자열
  */
-export function formatDate(
-  date: Date | string,
-  locale: Locale,
-  format: string = 'YYYY년 M월 D일',
-): string {
-  // 로케일별 dayjs locale 설정
-  const dayjsLocales: Record<Locale, string> = {
-    ko: 'ko',
-    en: 'en',
-    th: 'th',
-    'zh-Hant': 'zh-tw',
-    ja: 'ja',
-    hi: 'hi',
-    tl: 'en',
-    ar: 'ar',
-    ru: 'ru',
-  };
-
-  const dayjsLocale = dayjsLocales[locale];
-  const dayjsDate = dayjs(date).locale(dayjsLocale);
-
-  // 로케일별 포맷 설정
-  const localeFormats: Record<Locale, string> = {
-    ko: 'YYYY년 M월 D일',
-    en: 'MMMM D, YYYY',
-    th: 'D MMMM YYYY',
-    'zh-Hant': 'MMMM D, YYYY',
-    ja: 'YYYY年M月D日',
-    hi: 'D MMMM YYYY',
-    tl: 'MMMM D, YYYY',
-    ar: 'D MMMM YYYY',
-    ru: 'D MMMM YYYY',
-  };
-
-  const formatString = localeFormats[locale];
-  return dayjsDate.format(formatString);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function formatDate(date: Date | string, _locale?: Locale): string {
+  return dayjs(date).format('YYYY-MM-DD');
 }
 
 /**

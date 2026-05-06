@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
-import { extractLocalizedText, formatDateSimple, getUserDisplayName } from 'shared/lib';
+import { extractLocalizedText, formatDate, getUserDisplayName } from 'shared/lib';
 import { decodeHtmlEntities } from 'shared/lib/html-entities';
 import { type ReviewCardData } from '../model/types';
 import { Star, User, Calendar } from 'lucide-react';
@@ -135,7 +135,7 @@ export function ReviewCard({ review, lang, dict }: ReviewCardProps) {
           </div>
           <div className='flex items-center space-x-1'>
             <Calendar className='h-3 w-3' />
-            <span>{formatDateSimple(review.createdAt, lang)}</span>
+            <span>{formatDate(review.createdAt, lang)}</span>
           </div>
         </div>
 
