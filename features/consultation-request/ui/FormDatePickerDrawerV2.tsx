@@ -21,6 +21,8 @@ interface FormDatePickerDrawerV2Props {
   required?: boolean;
   yearRange?: { from: number; to: number };
   hideOptionalText?: boolean;
+  /** required=false일 때 라벨 옆 괄호 표시 (예: dict.auth.signup.optional) */
+  optionalBracketsText?: string;
   helperText?: string;
 }
 
@@ -58,6 +60,7 @@ export function FormDatePickerDrawerV2({
   required = true,
   yearRange,
   hideOptionalText,
+  optionalBracketsText,
   helperText,
 }: FormDatePickerDrawerV2Props) {
   const resolvedPlaceholder = placeholder ?? DEFAULT_PLACEHOLDER_BY_LOCALE[locale];
@@ -93,7 +96,9 @@ export function FormDatePickerDrawerV2({
       <FieldLabel
         label={label}
         required={required}
-        optionalText={!required && !hideOptionalText ? '' : undefined}
+        optionalText={
+          !required && !hideOptionalText ? optionalBracketsText : undefined
+        }
       />
 
       <button type='button' onClick={openPicker} className={triggerClasses}>

@@ -16,7 +16,7 @@ import {
   TextareaFieldV2,
 } from './FormFieldsV2';
 import { SubmitButton } from './SubmitButton';
-import { FormDatePickerV2 } from './FormDatePickerV2';
+import { FormDatePickerDrawerV2 } from './FormDatePickerDrawerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 // 아이콘 SVG 컴포넌트들
@@ -254,7 +254,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 생년월일 */}
-      <FormDatePickerV2
+      <FormDatePickerDrawerV2
         label={
           dict.consultation?.request?.form?.birthDate?.label ||
           dict.auth?.signup?.birthDate ||
@@ -290,7 +290,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 예약 희망 날짜 */}
-      <FormDatePickerV2
+      <FormDatePickerDrawerV2
         label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
         value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
         onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
@@ -304,7 +304,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
       />
 
       {/* 예약 희망 날짜2 */}
-      <FormDatePickerV2
+      <FormDatePickerDrawerV2
         label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
         value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
         onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
@@ -315,6 +315,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
         }
         error={errors.preferredDate2}
         required={false}
+        hideOptionalText
       />
 
       {/* 내용 */}

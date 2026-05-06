@@ -13,7 +13,6 @@ import { InputFieldV2 } from './InputFieldV2';
 import { PhoneNumberFieldV2 } from './PhoneNumberFieldV2';
 import { SelectFieldV2 } from './SelectFieldV2';
 import { TextareaFieldV2 } from './TextareaFieldV2';
-import { FormDatePickerV2 } from './FormDatePickerV2';
 import { FormDatePickerDrawerV2 } from './FormDatePickerDrawerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
 import { PrivacyAgreementNotice } from './PrivacyAgreementNotice';
@@ -268,7 +267,7 @@ export function ConsultationFormV2({
         />
 
         {/* 생년월일 */}
-        <FormDatePickerV2
+        <FormDatePickerDrawerV2
           label={
             dict.consultation?.request?.form?.birthDate?.label ||
             dict.auth?.signup?.birthDate ||

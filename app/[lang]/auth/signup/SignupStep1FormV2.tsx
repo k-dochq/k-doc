@@ -4,7 +4,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
 import { SelectFieldV2, PhoneNumberFieldV2 } from 'features/consultation-request/ui/FormFieldsV2';
-import { FormDatePickerV2 } from 'features/consultation-request/ui/FormDatePickerV2';
+import { FormDatePickerDrawerV2 } from 'features/consultation-request/ui/FormDatePickerDrawerV2';
 import {
   type SignupFormData,
   type SignupFormErrors,
@@ -122,7 +122,7 @@ export function SignupStep1FormV2({
           disabled={isBusy}
         />
 
-        <FormDatePickerV2
+        <FormDatePickerDrawerV2
           label={dict.auth?.signup?.birthDate || 'Date of Birth'}
           value={formData.birthDate ? new Date(formData.birthDate) : undefined}
           onChange={(date) =>
@@ -133,6 +133,7 @@ export function SignupStep1FormV2({
           placeholder={dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'}
           error={errors.birthDate}
           required={false}
+          optionalBracketsText={dict.auth?.signup?.optional || 'Optional'}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
           disabled={(date) => date > new Date()}
         />

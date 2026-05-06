@@ -4,6 +4,11 @@
     "cancel": "취소",
     "today": "오늘"
   },
+  "appDownloadBanner": {
+    "message": "지금 K-DOC 앱을 설치하고, 더 빠르고 편리하게 이용해보세요.",
+    "cta": "앱 다운",
+    "closeLabel": "배너 닫기"
+  },
   "quickMenu": {
     "title": "인기 시술 부위",
     "error": {

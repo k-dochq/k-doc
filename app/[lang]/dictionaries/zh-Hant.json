@@ -4,6 +4,11 @@
     "cancel": "取消",
     "today": "今天"
   },
+  "appDownloadBanner": {
+    "message": "立即安裝 K-DOC App，享受更快、更便利的體驗。",
+    "cta": "下載 App",
+    "closeLabel": "關閉橫幅"
+  },
   "quickMenu": {
     "title": "熱門治療區域",
     "error": {

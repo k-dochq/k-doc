@@ -9,12 +9,14 @@ import { SearchIcon } from 'shared/ui/icons';
 interface HeaderV2Props {
   currentLang: Locale;
   dict: Dictionary;
+  /** 부모가 sticky 컨테이너로 감쌀 때 false 로 끌 수 있다. 기본 true. */
+  sticky?: boolean;
 }
 
-export function HeaderV2({ currentLang, dict }: HeaderV2Props) {
+export function HeaderV2({ currentLang, dict, sticky = true }: HeaderV2Props) {
   return (
     <header
-      className='sticky top-0 z-50 w-full bg-white'
+      className={`${sticky ? 'sticky top-0 z-50' : ''} w-full bg-white`}
       dir={currentLang === 'ar' ? 'rtl' : 'ltr'}
     >
       <div className='flex h-[58px] items-center justify-between px-5'>
