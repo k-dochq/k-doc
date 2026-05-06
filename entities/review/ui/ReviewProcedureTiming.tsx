@@ -24,7 +24,7 @@ export function ReviewProcedureTiming({
   dict,
   className = '',
 }: ReviewProcedureTimingProps) {
-  const timingText = formatDate(procedureDate ?? createdAt, lang, 'YYYY년 M월 D일');
+  const timingText = formatDate(procedureDate ?? createdAt, lang);
 
   return (
     <div className={`${className}`}>

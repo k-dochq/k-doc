@@ -4,6 +4,7 @@ import { type TipArticle } from '../model/useInfiniteTips';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { ViewIcon } from './ViewIcon';
+import { formatDate } from 'shared/lib/date-utils';
 
 interface TipArticleCardProps {
   article: TipArticle;
@@ -14,14 +15,6 @@ function getLocalizedTitle(title: Record<string, string>, lang: Locale): string 
   // short locale 매핑: zh-Hant → zh
   const shortLang = lang === 'zh-Hant' ? 'zh' : lang;
   return title[shortLang] ?? title.ko ?? title.en ?? '';
-}
-
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}.${m}.${day}`;
 }
 
 export function TipArticleCard({ article, lang }: TipArticleCardProps) {
@@ -59,7 +52,7 @@ export function TipArticleCard({ article, lang }: TipArticleCardProps) {
         {/* 날짜 + 조회수 */}
         <div className='flex items-start gap-2'>
           <p className='flex-1 text-xs font-medium leading-4 text-neutral-400'>
-            {article.publishedAt ? formatDate(article.publishedAt.toString()) : ''}
+            {article.publishedAt ? formatDate(article.publishedAt.toString(), lang) : ''}
           </p>
           <div className='flex shrink-0 items-center gap-0.5'>
             <ViewIcon />

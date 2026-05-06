@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { MedicalSpecialtyTagsV2 } from 'shared/ui/medical-specialty-tags';
 import { type TipDetail } from '../../model/useTipDetail';
+import { formatDate } from 'shared/lib/date-utils';
 
 interface TipDetailHeaderProps {
   article: TipDetail;
@@ -12,17 +13,9 @@ function getLocalizedTitle(title: Record<string, string>, lang: Locale): string 
   return title[shortLang] ?? title.ko ?? title.en ?? '';
 }
 
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}.${m}.${day}`;
-}
-
 export function TipDetailHeader({ article, lang }: TipDetailHeaderProps) {
   const title = getLocalizedTitle(article.title as Record<string, string>, lang);
-  const date = article.publishedAt ? formatDate(article.publishedAt.toString()) : '';
+  const date = article.publishedAt ? formatDate(article.publishedAt.toString(), lang) : '';
 
   return (
     <div className='flex flex-col items-center gap-2 pt-5 pb-5'>

@@ -6,7 +6,7 @@ import { useNoticeDetail } from '@/entities/notice';
 import { extractLocalizedText } from '@/shared/lib/localized-text';
 import { NoticeContentSection } from '../ui/NoticeContentSection';
 import { NoticeImagesSection } from '../ui/NoticeImagesSection';
-import { formatDateSimple } from '@/shared/lib/date-utils';
+import { formatDate } from '@/shared/lib/date-utils';
 import { NoticeDetailSkeleton } from './ui/NoticeDetailSkeleton';
 
 interface NoticeDetailContentProps {
@@ -47,7 +47,7 @@ function NoticeDetailInner({ noticeId, lang, dict }: NoticeDetailContentProps) {
           <NoticeImagesSection notice={notice} />
 
           {/* 작성일 */}
-          <p className='text-[13px] text-neutral-500'>{formatDateSimple(notice.createdAt, lang)}</p>
+          <p className='text-[13px] text-neutral-500'>{formatDate(notice.createdAt, lang)}</p>
         </div>
       </div>
     </div>
