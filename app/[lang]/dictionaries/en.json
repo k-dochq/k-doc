@@ -2391,6 +2391,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "If edits or deletion are needed for information registered in K-DOC (hospital/doctor/review), please fill out the form below and submit.\nOur team will review and take the necessary action.",
+    "namePlaceholder": "Enter your name",
+    "phonePlaceholder": "Enter your phone number",
+    "emailPlaceholder": "Enter your email",
+    "contentLabel": "Details to Edit/Delete",
+    "contentPlaceholder": "Please describe what should be edited or deleted",
+    "fileLabel": "Attachments",
+    "fileGuide": "You can upload up to 10 files.\nMaximum file size is 10 MB per file.",
+    "addFile": "Add File",
+    "privacyLabel": "Personal Information Collection and Use",
+    "privacyText": "To process your request, we collect and use personal information under Article 15(1)4 of the Personal Information Protection Act.",
+    "submit": "Submit",
+    "success": "Your request has been submitted successfully.",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "Quick consultations and hospital reservations are provided free of charge. Through a free consultation, you can confirm a quote and make a hospital reservation. Concierge services are only charged when you need them.",
     "planCard": {

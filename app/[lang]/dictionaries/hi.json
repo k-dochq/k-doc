@@ -2390,6 +2390,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "यदि K-DOC में पंजीकृत जानकारी (अस्पताल/डॉक्टर/रिव्यू) में संशोधन या हटाने की आवश्यकता है, तो नीचे दिया गया फ़ॉर्म भरकर सबमिट करें।\nहम पुष्टि के बाद आवश्यक कार्रवाई करेंगे।",
+    "namePlaceholder": "अपना नाम दर्ज करें",
+    "phonePlaceholder": "अपना फ़ोन नंबर दर्ज करें",
+    "emailPlaceholder": "अपना ईमेल दर्ज करें",
+    "contentLabel": "संशोधित/हटाने की सामग्री",
+    "contentPlaceholder": "कृपया बताएं क्या संशोधित या हटाना है",
+    "fileLabel": "फ़ाइल संलग्नक",
+    "fileGuide": "अधिकतम 10 फ़ाइलें अपलोड कर सकते हैं।\nप्रत्येक फ़ाइल का अधिकतम आकार 10 MB है।",
+    "addFile": "फ़ाइल जोड़ें",
+    "privacyLabel": "व्यक्तिगत जानकारी संग्रह और उपयोग",
+    "privacyText": "आपके अनुरोध को संसाधित करने के लिए हम व्यक्तिगत जानकारी एकत्र और उपयोग करते हैं।",
+    "submit": "सबमिट करें",
+    "success": "आपका अनुरोध सफलतापूर्वक सबमिट हो गया है।",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "त्वरित परामर्श और अस्पताल आरक्षण निःशुल्क प्रदान किए जाते हैं। निःशुल्क परामर्श के माध्यम से, आप उद्धरण की पुष्टि कर सकते हैं और अस्पताल आरक्षण कर सकते हैं। कंसीयर्ज सेवाएं केवल तब शुल्क लेती हैं जब आपको उनकी आवश्यकता होती है।",
     "planCard": {

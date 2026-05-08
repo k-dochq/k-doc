@@ -2390,6 +2390,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "若您需要修改或刪除 K-DOC 上登錄的資訊（醫院/醫師/評論），請填寫下方表單後提交。\n我們將在確認後進行必要處理。",
+    "namePlaceholder": "請輸入姓名",
+    "phonePlaceholder": "請輸入手機號碼",
+    "emailPlaceholder": "請輸入電子郵件",
+    "contentLabel": "欲修改/刪除內容",
+    "contentPlaceholder": "請說明需要修改或刪除的內容",
+    "fileLabel": "附件",
+    "fileGuide": "最多可上傳 10 個檔案。\n每個檔案上限 10 MB。",
+    "addFile": "新增檔案",
+    "privacyLabel": "個人資料蒐集與使用說明",
+    "privacyText": "為處理您的請求，我們將依個資法規定蒐集並使用個人資料。",
+    "submit": "提交",
+    "success": "您的請求已成功提交。",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "快速諮詢和醫院預約免費提供。透過免費諮詢，您可以確認報價並預約醫院。禮賓服務僅在您需要時才收費。",
     "planCard": {

@@ -2390,6 +2390,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "요청 유형",
+    "requestTypePlaceholder": "요청 유형을 선택해주세요",
+    "requestTypeUpdate": "정보 수정",
+    "requestTypeDelete": "정보 삭제",
+    "description": "K-DOC에 등록되어 있는 정보(병원/의사/리뷰)의 수정 또는 삭제가 필요하신 경우 아래 항목에 내용을 작성하여 제출해주시기 바랍니다.\n담당자 확인 후 필요한 조치를 취하도록 하겠습니다.",
+    "namePlaceholder": "이름을 입력해주세요",
+    "phonePlaceholder": "휴대폰 번호를 입력해주세요",
+    "emailPlaceholder": "이메일을 입력해주세요",
+    "contentLabel": "수정/삭제할 내용",
+    "contentPlaceholder": "수정/삭제할 내용을 알려주세요",
+    "fileLabel": "파일첨부",
+    "fileGuide": "지원되는 파일을 최대 10개까지 업로드하세요.\n파일당 최대 크기는 10 MB입니다.",
+    "addFile": "파일 추가",
+    "privacyLabel": "개인정보 수집 및 이용 안내",
+    "privacyText": "고객 문의 처리를 위해 개인정보 보호법 제15조제1항제4호(계약의 체결/이행)에 따라, 다음과 같은 개인정보를 수집/이용합니다.",
+    "submit": "제출",
+    "success": "요청이 접수되었습니다. 담당자 확인 후 안내드리겠습니다.",
+    "uploading": "업로드 중...",
+    "submitting": "제출 중...",
+    "errors": {
+      "requiredRequestType": "요청 유형을 선택해주세요.",
+      "requiredName": "이름을 입력해주세요.",
+      "requiredPhone": "휴대폰 번호를 입력해주세요.",
+      "requiredEmail": "이메일을 입력해주세요.",
+      "invalidEmail": "이메일 형식이 올바르지 않습니다.",
+      "requiredContent": "수정/삭제할 내용을 입력해주세요.",
+      "maxContent": "내용은 500자 이내로 입력해주세요.",
+      "requiredPrivacy": "개인정보 수집 및 이용 안내에 동의해주세요.",
+      "uploadType": "지원되지 않는 파일 형식입니다.",
+      "uploadSize": "파일 크기는 10MB 이하여야 합니다.",
+      "uploadCount": "파일은 최대 10개까지 첨부할 수 있습니다.",
+      "uploadFail": "파일 업로드에 실패했습니다.",
+      "submitFail": "요청 제출에 실패했습니다."
+    }
+  },
   "concierge": {
     "section3Description": "빠른 상담과 병원 예약은 무료로 제공됩니다. 무료 상담을 통해 견적 확인과 병원 예약이 가능합니다. 컨시어지 서비스는 필요하신 경우에만 결제하시면 됩니다.",
     "planCard": {

@@ -2391,6 +2391,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "หากต้องการแก้ไขหรือลบข้อมูลที่ลงทะเบียนใน K-DOC (โรงพยาบาล/แพทย์/รีวิว) กรุณากรอกแบบฟอร์มด้านล่างและส่งคำขอ\nทีมงานจะตรวจสอบและดำเนินการที่จำเป็น",
+    "namePlaceholder": "กรุณากรอกชื่อ",
+    "phonePlaceholder": "กรุณากรอกหมายเลขโทรศัพท์",
+    "emailPlaceholder": "กรุณากรอกอีเมล",
+    "contentLabel": "รายละเอียดที่ต้องการแก้ไข/ลบ",
+    "contentPlaceholder": "กรุณาระบุรายละเอียดที่ต้องการแก้ไขหรือลบ",
+    "fileLabel": "แนบไฟล์",
+    "fileGuide": "สามารถอัปโหลดได้สูงสุด 10 ไฟล์\nขนาดไฟล์สูงสุด 10 MB ต่อไฟล์",
+    "addFile": "เพิ่มไฟล์",
+    "privacyLabel": "การเก็บและการใช้ข้อมูลส่วนบุคคล",
+    "privacyText": "เพื่อดำเนินการตามคำขอของลูกค้า เราจะเก็บและใช้ข้อมูลส่วนบุคคลตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล",
+    "submit": "Submit",
+    "success": "ส่งคำขอเรียบร้อยแล้ว",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "การปรึกษาอย่างรวดเร็วและการจองโรงพยาบาลให้บริการฟรี ผ่านการปรึกษาฟรี คุณสามารถยืนยันราคาและทำการจองโรงพยาบาลได้ บริการ Concierge คิดค่าบริการเฉพาะเมื่อคุณต้องการเท่านั้น",
     "planCard": {

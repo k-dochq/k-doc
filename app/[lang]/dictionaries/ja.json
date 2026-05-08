@@ -2390,6 +2390,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "K-DOCに登録されている情報（病院/医師/レビュー）の修正または削除が必要な場合は、以下の項目を入力して送信してください。\n担当者が確認後、必要な対応を行います。",
+    "namePlaceholder": "お名前を入力してください",
+    "phonePlaceholder": "携帯番号を入力してください",
+    "emailPlaceholder": "メールアドレスを入力してください",
+    "contentLabel": "修正/削除内容",
+    "contentPlaceholder": "修正または削除したい内容を入力してください",
+    "fileLabel": "ファイル添付",
+    "fileGuide": "最大10個までアップロードできます。\n1ファイルあたり最大10MBです。",
+    "addFile": "ファイル追加",
+    "privacyLabel": "個人情報の収集および利用案内",
+    "privacyText": "お問い合わせ対応のため、個人情報保護法に基づき個人情報を収集・利用します。",
+    "submit": "送信",
+    "success": "リクエストが受け付けられました。",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "迅速な相談と病院予約は無料で提供されます。無料相談を通じて、見積もりの確認と病院予約が可能です。コンシェルジュサービスは必要な場合のみお支払いいただきます。",
     "planCard": {
