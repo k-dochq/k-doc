@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { PageHeader } from 'shared/ui/page-header/PageHeader';
@@ -10,7 +11,7 @@ import { createClient } from 'shared/lib/supabase/client';
 import { STORAGE_CONFIG, STORAGE_PATHS } from 'shared/config/storage';
 import { getAcceptString, isSupportedFileType } from 'shared/config/file-types';
 import { COUNTRY_CODES } from 'entities/country-code';
-import { Check, Paperclip, X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
 interface DataRequestContentProps {
   lang: Locale;
@@ -544,7 +545,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
               </div>
             ) : null}
             <label className='inline-flex h-11 cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-sub-900'>
-              <Paperclip aria-hidden className='h-5 w-5' />
+              <Image src='/icons/file-add.svg' alt='' aria-hidden width={20} height={20} />
               <span>{isUploading ? i18n.uploading : i18n.addFile}</span>
               <input
                 type='file'
