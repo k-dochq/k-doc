@@ -917,6 +917,51 @@ model ConsultationStatus {
   @@schema("public")
 }
 
+model HospitalChangeRequest {
+  id                                 String                               @id @db.Uuid
+  hospitalId                         String?                              @db.Uuid
+  requesterUserId                    String?                              @db.Uuid
+  requesterType                      HospitalChangeRequesterType          @default(GUEST)
+  requestType                        HospitalChangeRequestType
+  status                             HospitalChangeRequestStatus          @default(PENDING)
+  requesterName                      String                               @db.VarChar(100)
+  requesterEmail                     String                               @db.VarChar(255)
+  requesterPhone                     String?                              @db.VarChar(50)
+  platform                           String?                              @db.VarChar(50)
+  content                            String
+  attachmentUrls                     String[]                             @default([])
+  createdAt                          DateTime                             @default(now())
+  updatedAt                          DateTime
+  reviewedAt                         DateTime?                            @db.Timestamptz(6)
+  reviewedBy                         String?                              @db.Uuid
+  rejectReason                       String?
+  HospitalChangeRequestStatusHistory HospitalChangeRequestStatusHistory[]
+
+  @@index([createdAt])
+  @@index([hospitalId])
+  @@index([requestType])
+  @@index([requesterEmail])
+  @@index([requesterUserId])
+  @@index([status])
+  @@schema("public")
+}
+
+model HospitalChangeRequestStatusHistory {
+  id                    String                       @id @db.Uuid
+  requestId             String                       @db.Uuid
+  fromStatus            HospitalChangeRequestStatus?
+  toStatus              HospitalChangeRequestStatus
+  changedBy             String?                      @db.Uuid
+  reason                String?
+  metadata              Json?
+  createdAt             DateTime                     @default(now())
+  HospitalChangeRequest HospitalChangeRequest        @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([requestId])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -1165,6 +1210,30 @@ enum ConsultationStage {
   NEW_INQUIRY
   QUESTION_CREATED
   RESERVATION_DONE
+
+  @@schema("public")
+}
+
+enum HospitalChangeRequestStatus {
+  PENDING
+  REVIEWING
+  APPROVED
+  REJECTED
+  COMPLETED
+
+  @@schema("public")
+}
+
+enum HospitalChangeRequestType {
+  UPDATE
+  DELETE
+
+  @@schema("public")
+}
+
+enum HospitalChangeRequesterType {
+  GUEST
+  USER
 
   @@schema("public")
 }
