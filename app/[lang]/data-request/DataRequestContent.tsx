@@ -29,15 +29,43 @@ interface FormErrors {
   privacy?: string;
 }
 
-const DEFAULT_MESSAGES = {
-  pageTitle: '정보 수정/삭제 요청',
+interface DataRequestMessages {
+  description: string;
+  namePlaceholder: string;
+  phonePlaceholder: string;
+  emailPlaceholder: string;
+  contentLabel: string;
+  contentPlaceholder: string;
+  fileLabel: string;
+  fileGuide: string;
+  addFile: string;
+  privacyLabel: string;
+  privacyText: string;
+  submit: string;
+  success: string;
+  uploading: string;
+  submitting: string;
+  errors: {
+    requiredName: string;
+    requiredPhone: string;
+    requiredEmail: string;
+    invalidEmail: string;
+    requiredContent: string;
+    maxContent: string;
+    requiredPrivacy: string;
+    uploadType: string;
+    uploadSize: string;
+    uploadCount: string;
+    uploadFail: string;
+    submitFail: string;
+  };
+}
+
+const KO_MESSAGES: DataRequestMessages = {
   description:
     'K-DOC에 등록되어 있는 정보(병원/의사/리뷰)의 수정 또는 삭제가 필요하신 경우 아래 항목에 내용을 작성하여 제출해주시기 바랍니다.\n담당자 확인 후 필요한 조치를 취하도록 하겠습니다.',
-  nameLabel: '이름',
   namePlaceholder: '이름을 입력해주세요',
-  phoneLabel: '휴대폰 번호',
   phonePlaceholder: '휴대폰 번호를 입력해주세요',
-  emailLabel: '이메일',
   emailPlaceholder: '이메일을 입력해주세요',
   contentLabel: '수정/삭제할 내용',
   contentPlaceholder: '수정/삭제할 내용을 알려주세요',
@@ -49,6 +77,8 @@ const DEFAULT_MESSAGES = {
     '고객 문의 처리를 위해 개인정보 보호법 제15조제1항제4호(계약의 체결/이행)에 따라, 다음과 같은 개인정보를 수집/이용합니다.',
   submit: '제출',
   success: '요청이 접수되었습니다. 담당자 확인 후 안내드리겠습니다.',
+  uploading: '업로드 중...',
+  submitting: '제출 중...',
   errors: {
     requiredName: '이름을 입력해주세요.',
     requiredPhone: '휴대폰 번호를 입력해주세요.',
@@ -65,16 +95,11 @@ const DEFAULT_MESSAGES = {
   },
 };
 
-const EN_MESSAGES = {
-  ...DEFAULT_MESSAGES,
-  pageTitle: 'Request Edit/Deletion',
+const EN_MESSAGES: DataRequestMessages = {
   description:
     'If edits or deletion are needed for information registered in K-DOC (hospital/doctor/review), please fill out the form below and submit.\nOur team will review and take the necessary action.',
-  nameLabel: 'Name',
   namePlaceholder: 'Enter your name',
-  phoneLabel: 'Phone Number',
   phonePlaceholder: 'Enter your phone number',
-  emailLabel: 'Email',
   emailPlaceholder: 'Enter your email',
   contentLabel: 'Details to Edit/Delete',
   contentPlaceholder: 'Please describe what should be edited or deleted',
@@ -86,6 +111,8 @@ const EN_MESSAGES = {
     'To process your request, we collect and use personal information under Article 15(1)4 of the Personal Information Protection Act.',
   submit: 'Submit',
   success: 'Your request has been submitted successfully.',
+  uploading: 'Uploading...',
+  submitting: 'Submitting...',
   errors: {
     requiredName: 'Please enter your name.',
     requiredPhone: 'Please enter your phone number.',
@@ -102,16 +129,12 @@ const EN_MESSAGES = {
   },
 };
 
-const TH_MESSAGES = {
+const TH_MESSAGES: DataRequestMessages = {
   ...EN_MESSAGES,
-  pageTitle: 'ร้องขอแก้ไข/ลบข้อมูล',
   description:
     'หากต้องการแก้ไขหรือลบข้อมูลที่ลงทะเบียนใน K-DOC (โรงพยาบาล/แพทย์/รีวิว) กรุณากรอกแบบฟอร์มด้านล่างและส่งคำขอ\nทีมงานจะตรวจสอบและดำเนินการที่จำเป็น',
-  nameLabel: 'ชื่อ',
   namePlaceholder: 'กรุณากรอกชื่อ',
-  phoneLabel: 'หมายเลขโทรศัพท์',
   phonePlaceholder: 'กรุณากรอกหมายเลขโทรศัพท์',
-  emailLabel: 'อีเมล',
   emailPlaceholder: 'กรุณากรอกอีเมล',
   contentLabel: 'รายละเอียดที่ต้องการแก้ไข/ลบ',
   contentPlaceholder: 'กรุณาระบุรายละเอียดที่ต้องการแก้ไขหรือลบ',
@@ -121,14 +144,133 @@ const TH_MESSAGES = {
   privacyLabel: 'การเก็บและการใช้ข้อมูลส่วนบุคคล',
   privacyText:
     'เพื่อดำเนินการตามคำขอของลูกค้า เราจะเก็บและใช้ข้อมูลส่วนบุคคลตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล',
-  submit: 'ส่งคำขอ',
   success: 'ส่งคำขอเรียบร้อยแล้ว',
 };
 
-function messagesByLocale(locale: Locale) {
-  if (locale === 'ko') return DEFAULT_MESSAGES;
-  if (locale === 'th') return TH_MESSAGES;
-  return EN_MESSAGES;
+const ZH_HANT_MESSAGES: DataRequestMessages = {
+  ...EN_MESSAGES,
+  description:
+    '若您需要修改或刪除 K-DOC 上登錄的資訊（醫院/醫師/評論），請填寫下方表單後提交。\n我們將在確認後進行必要處理。',
+  namePlaceholder: '請輸入姓名',
+  phonePlaceholder: '請輸入手機號碼',
+  emailPlaceholder: '請輸入電子郵件',
+  contentLabel: '欲修改/刪除內容',
+  contentPlaceholder: '請說明需要修改或刪除的內容',
+  fileLabel: '附件',
+  fileGuide: '最多可上傳 10 個檔案。\n每個檔案上限 10 MB。',
+  addFile: '新增檔案',
+  privacyLabel: '個人資料蒐集與使用說明',
+  privacyText: '為處理您的請求，我們將依個資法規定蒐集並使用個人資料。',
+  submit: '提交',
+  success: '您的請求已成功提交。',
+};
+
+const JA_MESSAGES: DataRequestMessages = {
+  ...EN_MESSAGES,
+  description:
+    'K-DOCに登録されている情報（病院/医師/レビュー）の修正または削除が必要な場合は、以下の項目を入力して送信してください。\n担当者が確認後、必要な対応を行います。',
+  namePlaceholder: 'お名前を入力してください',
+  phonePlaceholder: '携帯番号を入力してください',
+  emailPlaceholder: 'メールアドレスを入力してください',
+  contentLabel: '修正/削除内容',
+  contentPlaceholder: '修正または削除したい内容を入力してください',
+  fileLabel: 'ファイル添付',
+  fileGuide: '最大10個までアップロードできます。\n1ファイルあたり最大10MBです。',
+  addFile: 'ファイル追加',
+  privacyLabel: '個人情報の収集および利用案内',
+  privacyText:
+    'お問い合わせ対応のため、個人情報保護法に基づき個人情報を収集・利用します。',
+  submit: '送信',
+  success: 'リクエストが受け付けられました。',
+};
+
+const HI_MESSAGES: DataRequestMessages = {
+  ...EN_MESSAGES,
+  description:
+    'यदि K-DOC में पंजीकृत जानकारी (अस्पताल/डॉक्टर/रिव्यू) में संशोधन या हटाने की आवश्यकता है, तो नीचे दिया गया फ़ॉर्म भरकर सबमिट करें।\nहम पुष्टि के बाद आवश्यक कार्रवाई करेंगे।',
+  namePlaceholder: 'अपना नाम दर्ज करें',
+  phonePlaceholder: 'अपना फ़ोन नंबर दर्ज करें',
+  emailPlaceholder: 'अपना ईमेल दर्ज करें',
+  contentLabel: 'संशोधित/हटाने की सामग्री',
+  contentPlaceholder: 'कृपया बताएं क्या संशोधित या हटाना है',
+  fileLabel: 'फ़ाइल संलग्नक',
+  fileGuide: 'अधिकतम 10 फ़ाइलें अपलोड कर सकते हैं।\nप्रत्येक फ़ाइल का अधिकतम आकार 10 MB है।',
+  addFile: 'फ़ाइल जोड़ें',
+  privacyLabel: 'व्यक्तिगत जानकारी संग्रह और उपयोग',
+  privacyText: 'आपके अनुरोध को संसाधित करने के लिए हम व्यक्तिगत जानकारी एकत्र और उपयोग करते हैं।',
+  submit: 'सबमिट करें',
+  success: 'आपका अनुरोध सफलतापूर्वक सबमिट हो गया है।',
+};
+
+const TL_MESSAGES: DataRequestMessages = {
+  ...EN_MESSAGES,
+  description:
+    'Kung kailangan ng pag-edit o pag-delete sa impormasyong nakarehistro sa K-DOC (ospital/doktor/review), pakipunan ang form sa ibaba at i-submit.\nSusuriin ito ng aming team at gagawa ng kinakailangang aksyon.',
+  namePlaceholder: 'Ilagay ang iyong pangalan',
+  phonePlaceholder: 'Ilagay ang iyong phone number',
+  emailPlaceholder: 'Ilagay ang iyong email',
+  contentLabel: 'Detalye ng I-eedit/Ide-delete',
+  contentPlaceholder: 'Ilarawan kung ano ang dapat i-edit o i-delete',
+  fileLabel: 'Mga Attachment',
+  fileGuide: 'Maaari kang mag-upload ng hanggang 10 file.\nMaximum na laki ng bawat file ay 10 MB.',
+  addFile: 'Magdagdag ng File',
+  privacyLabel: 'Pagkolekta at Paggamit ng Personal na Impormasyon',
+  privacyText:
+    'Para maproseso ang iyong request, kumokolekta at gumagamit kami ng personal na impormasyon.',
+  submit: 'Isumite',
+  success: 'Matagumpay na naisumite ang iyong request.',
+};
+
+const AR_MESSAGES: DataRequestMessages = {
+  ...EN_MESSAGES,
+  description:
+    'إذا كنت بحاجة إلى تعديل أو حذف المعلومات المسجلة في K-DOC (المستشفى/الطبيب/المراجعة)، يرجى تعبئة النموذج أدناه وإرساله.\nسنقوم بالمراجعة واتخاذ الإجراء اللازم.',
+  namePlaceholder: 'أدخل الاسم',
+  phonePlaceholder: 'أدخل رقم الهاتف',
+  emailPlaceholder: 'أدخل البريد الإلكتروني',
+  contentLabel: 'محتوى التعديل/الحذف',
+  contentPlaceholder: 'يرجى وصف ما يجب تعديله أو حذفه',
+  fileLabel: 'إرفاق ملفات',
+  fileGuide: 'يمكنك رفع حتى 10 ملفات.\nالحد الأقصى لحجم الملف 10 MB.',
+  addFile: 'إضافة ملف',
+  privacyLabel: 'إشعار جمع واستخدام المعلومات الشخصية',
+  privacyText: 'لمعالجة طلبك، نقوم بجمع واستخدام المعلومات الشخصية وفقًا للأنظمة ذات الصلة.',
+  submit: 'إرسال',
+  success: 'تم إرسال طلبك بنجاح.',
+};
+
+const RU_MESSAGES: DataRequestMessages = {
+  ...EN_MESSAGES,
+  description:
+    'Если требуется изменить или удалить информацию, размещённую в K-DOC (клиника/врач/отзыв), заполните форму ниже и отправьте её.\nПосле проверки мы предпримем необходимые действия.',
+  namePlaceholder: 'Введите имя',
+  phonePlaceholder: 'Введите номер телефона',
+  emailPlaceholder: 'Введите email',
+  contentLabel: 'Содержание изменения/удаления',
+  contentPlaceholder: 'Опишите, что нужно изменить или удалить',
+  fileLabel: 'Вложение файлов',
+  fileGuide: 'Можно загрузить до 10 файлов.\nМаксимальный размер одного файла — 10 MB.',
+  addFile: 'Добавить файл',
+  privacyLabel: 'Сбор и использование персональных данных',
+  privacyText:
+    'Для обработки запроса мы собираем и используем персональные данные в соответствии с законом.',
+  submit: 'Отправить',
+  success: 'Ваш запрос успешно отправлен.',
+};
+
+function messagesByLocale(locale: Locale): DataRequestMessages {
+  const byLocale: Record<Locale, DataRequestMessages> = {
+    ko: KO_MESSAGES,
+    en: EN_MESSAGES,
+    th: TH_MESSAGES,
+    'zh-Hant': ZH_HANT_MESSAGES,
+    ja: JA_MESSAGES,
+    hi: HI_MESSAGES,
+    tl: TL_MESSAGES,
+    ar: AR_MESSAGES,
+    ru: RU_MESSAGES,
+  };
+  return byLocale[locale];
 }
 
 function isValidEmail(email: string): boolean {
@@ -148,7 +290,7 @@ function inferRequestType(content: string): 'UPDATE' | 'DELETE' {
   return 'UPDATE';
 }
 
-export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProps) {
+export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   const i18n = useMemo(() => messagesByLocale(lang), [lang]);
   const countryOptions = useMemo(
     () => {
@@ -289,7 +431,7 @@ export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProp
     <div className='min-h-screen bg-white'>
       <PageHeader
         lang={lang}
-        title={i18n.pageTitle}
+        title={dict.footer?.dataRequest || 'Data Request'}
         fallbackUrl={`/${lang}/main`}
         variant='light'
         bgClassName='bg-white border-b border-neutral-200'
@@ -300,7 +442,7 @@ export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProp
 
         <div className='space-y-5'>
           <InputFieldV2
-            label={i18n.nameLabel}
+            label={dict.support?.form?.name?.label || 'Name'}
             required
             type='text'
             value={name}
@@ -310,7 +452,8 @@ export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProp
           />
           <div className='flex w-full flex-col gap-2'>
             <p className='text-base leading-6 font-semibold text-neutral-700'>
-              {i18n.phoneLabel} <span className='text-[#f31110]'>*</span>
+              {dict.consultation?.request?.form?.phoneNumber?.label || 'Phone Number'}{' '}
+              <span className='text-[#f31110]'>*</span>
             </p>
             <div className='flex gap-2'>
               <select
@@ -335,7 +478,7 @@ export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProp
             {errors.phone ? <p className='text-xs text-[#f31110]'>{errors.phone}</p> : null}
           </div>
           <InputFieldV2
-            label={i18n.emailLabel}
+            label={dict.support?.form?.email?.label || 'Email'}
             required
             type='email'
             value={email}
@@ -378,7 +521,7 @@ export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProp
               </div>
             ) : null}
             <label className='inline-flex h-11 cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-sub-900'>
-              <span>{isUploading ? 'Uploading...' : i18n.addFile}</span>
+              <span>{isUploading ? i18n.uploading : i18n.addFile}</span>
               <input
                 type='file'
                 accept={getAcceptString()}
@@ -420,7 +563,7 @@ export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProp
           disabled={!isFormReady}
           className='h-14 w-full rounded-xl bg-sub-900 text-base font-medium text-white disabled:bg-neutral-200 disabled:text-neutral-400'
         >
-          {isSubmitting ? 'Submitting...' : i18n.submit}
+          {isSubmitting ? i18n.submitting : i18n.submit}
         </button>
       </div>
     </div>

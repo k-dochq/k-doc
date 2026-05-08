@@ -82,6 +82,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         platform: 'WEB',
         content,
         attachmentUrls,
+        updatedAt: new Date(),
       },
       select: { id: true },
     });
