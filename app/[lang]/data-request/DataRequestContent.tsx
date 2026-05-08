@@ -10,7 +10,6 @@ import { createClient } from 'shared/lib/supabase/client';
 import { STORAGE_CONFIG, STORAGE_PATHS } from 'shared/config/storage';
 import { getAcceptString, isSupportedFileType } from 'shared/config/file-types';
 import { COUNTRY_CODES } from 'entities/country-code';
-import { RequestTypeField } from './RequestTypeField';
 import { CountryCodePhoneField } from './CountryCodePhoneField';
 import { AttachmentField } from './AttachmentField';
 import { PrivacyAgreementField } from './PrivacyAgreementField';
@@ -26,7 +25,6 @@ interface UploadedFile {
 }
 
 interface FormErrors {
-  requestType?: string;
   name?: string;
   phone?: string;
   email?: string;
@@ -54,7 +52,6 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   );
   const [name, setName] = useState('');
   const [countryCode, setCountryCode] = useState('+66');
-  const [requestType, setRequestType] = useState<'UPDATE' | 'DELETE' | ''>('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [content, setContent] = useState('');
@@ -65,7 +62,6 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isFormReady =
-    requestType &&
     name.trim() &&
     phone.trim() &&
     email.trim() &&
@@ -127,7 +123,6 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   const validate = () => {
     const nextErrors: FormErrors = {};
 
-    if (!requestType) nextErrors.requestType = i18n.errors.requiredRequestType;
     if (!name.trim()) nextErrors.name = i18n.errors.requiredName;
     if (!phone.trim()) nextErrors.phone = i18n.errors.requiredPhone;
     if (!email.trim()) nextErrors.email = i18n.errors.requiredEmail;
@@ -155,7 +150,6 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
           requesterEmail: email.trim(),
           content: content.trim(),
           attachmentUrls: uploadedFiles.map((file) => file.url),
-          requestType,
         }),
       });
 
@@ -164,7 +158,6 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
       }
 
       alert(i18n.success);
-      setRequestType('');
       setName('');
       setPhone('');
       setEmail('');
@@ -194,16 +187,6 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
         <p className='mb-8 whitespace-pre-line text-sm leading-7 text-neutral-500'>{i18n.description}</p>
 
         <div className='space-y-5'>
-          <RequestTypeField
-            label={i18n.requestTypeLabel}
-            placeholder={i18n.requestTypePlaceholder}
-            updateLabel={i18n.requestTypeUpdate}
-            deleteLabel={i18n.requestTypeDelete}
-            value={requestType}
-            error={errors.requestType}
-            onChange={setRequestType}
-          />
-
           <InputFieldV2
             label={dict.support?.form?.name?.label || 'Name'}
             required
