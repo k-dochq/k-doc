@@ -6,8 +6,6 @@ import {
   ContactTitleSectionV2,
   ContactOfficeMapV2,
   ContactOfficeInfoV2,
-  ContactGradientTextV2,
-  ContactButtonSectionV2,
 } from 'features/contact/ui';
 
 interface ContactContentV2Props {
@@ -15,7 +13,7 @@ interface ContactContentV2Props {
   dict: Dictionary;
 }
 
-export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
+export function ContactContentV2({ dict }: ContactContentV2Props) {
   // 하남 본사 정확한 좌표
   const hanamLatitude = 37.5609;
   const hanamLongitude = 127.1928;
@@ -60,11 +58,7 @@ export function ContactContentV2({ lang, dict }: ContactContentV2Props) {
       {/* 서울지사 정보 섹션 */}
       <ContactOfficeInfoV2 title={seoulTitle} address={seoulAddress} dict={dict} />
 
-      {/* 그라데이션 텍스트 섹션 */}
-      <ContactGradientTextV2 dict={dict} />
-
-      {/* 버튼 영역 */}
-      <ContactButtonSectionV2 lang={lang} dict={dict} />
+      {/* 입점 신청 미운영으로 그라데이션 텍스트 + 버튼 영역 숨김 (ContactGradientTextV2, ContactButtonSectionV2) */}
 
       <div className='h-[80px]' />
     </div>
