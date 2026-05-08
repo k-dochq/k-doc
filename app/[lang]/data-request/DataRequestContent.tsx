@@ -1,0 +1,428 @@
+'use client';
+
+import { useMemo, useState } from 'react';
+import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
+import { PageHeader } from 'shared/ui/page-header/PageHeader';
+import { InputFieldV2 } from 'features/consultation-request/ui/InputFieldV2';
+import { TextareaFieldV2 } from 'features/consultation-request/ui/TextareaFieldV2';
+import { createClient } from 'shared/lib/supabase/client';
+import { STORAGE_CONFIG, STORAGE_PATHS } from 'shared/config/storage';
+import { getAcceptString, isSupportedFileType } from 'shared/config/file-types';
+import { COUNTRY_CODES } from 'entities/country-code';
+
+interface DataRequestContentProps {
+  lang: Locale;
+  dict: Dictionary;
+}
+
+interface UploadedFile {
+  name: string;
+  url: string;
+}
+
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+  content?: string;
+  privacy?: string;
+}
+
+const DEFAULT_MESSAGES = {
+  pageTitle: '정보 수정/삭제 요청',
+  description:
+    'K-DOC에 등록되어 있는 정보(병원/의사/리뷰)의 수정 또는 삭제가 필요하신 경우 아래 항목에 내용을 작성하여 제출해주시기 바랍니다.\n담당자 확인 후 필요한 조치를 취하도록 하겠습니다.',
+  nameLabel: '이름',
+  namePlaceholder: '이름을 입력해주세요',
+  phoneLabel: '휴대폰 번호',
+  phonePlaceholder: '휴대폰 번호를 입력해주세요',
+  emailLabel: '이메일',
+  emailPlaceholder: '이메일을 입력해주세요',
+  contentLabel: '수정/삭제할 내용',
+  contentPlaceholder: '수정/삭제할 내용을 알려주세요',
+  fileLabel: '파일첨부',
+  fileGuide: '지원되는 파일을 최대 10개까지 업로드하세요.\n파일당 최대 크기는 10 MB입니다.',
+  addFile: '파일 추가',
+  privacyLabel: '개인정보 수집 및 이용 안내',
+  privacyText:
+    '고객 문의 처리를 위해 개인정보 보호법 제15조제1항제4호(계약의 체결/이행)에 따라, 다음과 같은 개인정보를 수집/이용합니다.',
+  submit: '제출',
+  success: '요청이 접수되었습니다. 담당자 확인 후 안내드리겠습니다.',
+  errors: {
+    requiredName: '이름을 입력해주세요.',
+    requiredPhone: '휴대폰 번호를 입력해주세요.',
+    requiredEmail: '이메일을 입력해주세요.',
+    invalidEmail: '이메일 형식이 올바르지 않습니다.',
+    requiredContent: '수정/삭제할 내용을 입력해주세요.',
+    maxContent: '내용은 500자 이내로 입력해주세요.',
+    requiredPrivacy: '개인정보 수집 및 이용 안내에 동의해주세요.',
+    uploadType: '지원되지 않는 파일 형식입니다.',
+    uploadSize: '파일 크기는 10MB 이하여야 합니다.',
+    uploadCount: '파일은 최대 10개까지 첨부할 수 있습니다.',
+    uploadFail: '파일 업로드에 실패했습니다.',
+    submitFail: '요청 제출에 실패했습니다.',
+  },
+};
+
+const EN_MESSAGES = {
+  ...DEFAULT_MESSAGES,
+  pageTitle: 'Request Edit/Deletion',
+  description:
+    'If edits or deletion are needed for information registered in K-DOC (hospital/doctor/review), please fill out the form below and submit.\nOur team will review and take the necessary action.',
+  nameLabel: 'Name',
+  namePlaceholder: 'Enter your name',
+  phoneLabel: 'Phone Number',
+  phonePlaceholder: 'Enter your phone number',
+  emailLabel: 'Email',
+  emailPlaceholder: 'Enter your email',
+  contentLabel: 'Details to Edit/Delete',
+  contentPlaceholder: 'Please describe what should be edited or deleted',
+  fileLabel: 'Attachments',
+  fileGuide: 'You can upload up to 10 files.\nMaximum file size is 10 MB per file.',
+  addFile: 'Add File',
+  privacyLabel: 'Personal Information Collection and Use',
+  privacyText:
+    'To process your request, we collect and use personal information under Article 15(1)4 of the Personal Information Protection Act.',
+  submit: 'Submit',
+  success: 'Your request has been submitted successfully.',
+  errors: {
+    requiredName: 'Please enter your name.',
+    requiredPhone: 'Please enter your phone number.',
+    requiredEmail: 'Please enter your email.',
+    invalidEmail: 'Invalid email format.',
+    requiredContent: 'Please enter details.',
+    maxContent: 'Please enter up to 500 characters.',
+    requiredPrivacy: 'Please agree to personal information collection and use.',
+    uploadType: 'Unsupported file type.',
+    uploadSize: 'File size must be 10MB or less.',
+    uploadCount: 'You can upload up to 10 files.',
+    uploadFail: 'Failed to upload file.',
+    submitFail: 'Failed to submit request.',
+  },
+};
+
+const TH_MESSAGES = {
+  ...EN_MESSAGES,
+  pageTitle: 'ร้องขอแก้ไข/ลบข้อมูล',
+  description:
+    'หากต้องการแก้ไขหรือลบข้อมูลที่ลงทะเบียนใน K-DOC (โรงพยาบาล/แพทย์/รีวิว) กรุณากรอกแบบฟอร์มด้านล่างและส่งคำขอ\nทีมงานจะตรวจสอบและดำเนินการที่จำเป็น',
+  nameLabel: 'ชื่อ',
+  namePlaceholder: 'กรุณากรอกชื่อ',
+  phoneLabel: 'หมายเลขโทรศัพท์',
+  phonePlaceholder: 'กรุณากรอกหมายเลขโทรศัพท์',
+  emailLabel: 'อีเมล',
+  emailPlaceholder: 'กรุณากรอกอีเมล',
+  contentLabel: 'รายละเอียดที่ต้องการแก้ไข/ลบ',
+  contentPlaceholder: 'กรุณาระบุรายละเอียดที่ต้องการแก้ไขหรือลบ',
+  fileLabel: 'แนบไฟล์',
+  fileGuide: 'สามารถอัปโหลดได้สูงสุด 10 ไฟล์\nขนาดไฟล์สูงสุด 10 MB ต่อไฟล์',
+  addFile: 'เพิ่มไฟล์',
+  privacyLabel: 'การเก็บและการใช้ข้อมูลส่วนบุคคล',
+  privacyText:
+    'เพื่อดำเนินการตามคำขอของลูกค้า เราจะเก็บและใช้ข้อมูลส่วนบุคคลตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล',
+  submit: 'ส่งคำขอ',
+  success: 'ส่งคำขอเรียบร้อยแล้ว',
+};
+
+function messagesByLocale(locale: Locale) {
+  if (locale === 'ko') return DEFAULT_MESSAGES;
+  if (locale === 'th') return TH_MESSAGES;
+  return EN_MESSAGES;
+}
+
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function inferRequestType(content: string): 'UPDATE' | 'DELETE' {
+  const normalized = content.toLowerCase();
+  if (
+    normalized.includes('삭제') ||
+    normalized.includes('delete') ||
+    normalized.includes('remove')
+  ) {
+    return 'DELETE';
+  }
+  return 'UPDATE';
+}
+
+export function DataRequestContent({ lang, dict: _dict }: DataRequestContentProps) {
+  const i18n = useMemo(() => messagesByLocale(lang), [lang]);
+  const countryOptions = useMemo(
+    () => {
+      const dedupedCodes = Array.from(new Set(COUNTRY_CODES.map((country) => country.code)));
+      return dedupedCodes.map((code) => ({
+        value: code,
+        label: code,
+        key: code,
+      }));
+    },
+    [],
+  );
+  const [name, setName] = useState('');
+  const [countryCode, setCountryCode] = useState('+66');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [content, setContent] = useState('');
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isUploading, setIsUploading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const isFormReady =
+    name.trim() &&
+    phone.trim() &&
+    email.trim() &&
+    content.trim() &&
+    content.trim().length <= 500 &&
+    privacyAgreed &&
+    !isUploading &&
+    !isSubmitting;
+
+  const uploadFile = async (file: File) => {
+    if (uploadedFiles.length >= 10) {
+      setErrors((prev) => ({ ...prev, content: undefined }));
+      alert(i18n.errors.uploadCount);
+      return;
+    }
+
+    if (!isSupportedFileType(file.type)) {
+      alert(i18n.errors.uploadType);
+      return;
+    }
+
+    if (file.size > STORAGE_CONFIG.MAX_FILE_SIZE) {
+      alert(i18n.errors.uploadSize);
+      return;
+    }
+
+    setIsUploading(true);
+    try {
+      const supabase = createClient();
+      const ext = file.name.split('.').pop();
+      const safeExt = ext ? `.${ext}` : '';
+      const filePath = `${STORAGE_PATHS.DATA_REQUEST_ATTACHMENTS}/${Date.now()}_${crypto.randomUUID()}${safeExt}`;
+
+      const { data, error } = await supabase.storage
+        .from(STORAGE_CONFIG.BUCKET_NAME)
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false,
+          contentType: file.type,
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from(STORAGE_CONFIG.BUCKET_NAME).getPublicUrl(data.path);
+
+      setUploadedFiles((prev) => [...prev, { name: file.name, url: publicUrl }]);
+    } catch (error) {
+      console.error('Failed to upload attachment:', error);
+      alert(i18n.errors.uploadFail);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const validate = () => {
+    const nextErrors: FormErrors = {};
+
+    if (!name.trim()) nextErrors.name = i18n.errors.requiredName;
+    if (!phone.trim()) nextErrors.phone = i18n.errors.requiredPhone;
+    if (!email.trim()) nextErrors.email = i18n.errors.requiredEmail;
+    else if (!isValidEmail(email.trim())) nextErrors.email = i18n.errors.invalidEmail;
+    if (!content.trim()) nextErrors.content = i18n.errors.requiredContent;
+    else if (content.trim().length > 500) nextErrors.content = i18n.errors.maxContent;
+    if (!privacyAgreed) nextErrors.privacy = i18n.errors.requiredPrivacy;
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/hospital-change-requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          requesterName: name.trim(),
+          requesterPhone: `${countryCode} ${phone.trim()}`,
+          requesterEmail: email.trim(),
+          content: content.trim(),
+          attachmentUrls: uploadedFiles.map((file) => file.url),
+          requestType: inferRequestType(content),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Submit failed');
+      }
+
+      alert(i18n.success);
+      setName('');
+      setPhone('');
+      setEmail('');
+      setContent('');
+      setPrivacyAgreed(false);
+      setUploadedFiles([]);
+      setErrors({});
+    } catch (error) {
+      console.error(error);
+      alert(i18n.errors.submitFail);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className='min-h-screen bg-white'>
+      <PageHeader
+        lang={lang}
+        title={i18n.pageTitle}
+        fallbackUrl={`/${lang}/main`}
+        variant='light'
+        bgClassName='bg-white border-b border-neutral-200'
+      />
+
+      <form id='data-request-form' onSubmit={handleSubmit} className='px-5 pt-5 pb-[132px]'>
+        <p className='mb-8 whitespace-pre-line text-sm leading-7 text-neutral-500'>{i18n.description}</p>
+
+        <div className='space-y-5'>
+          <InputFieldV2
+            label={i18n.nameLabel}
+            required
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder={i18n.namePlaceholder}
+            error={errors.name}
+          />
+          <div className='flex w-full flex-col gap-2'>
+            <p className='text-base leading-6 font-semibold text-neutral-700'>
+              {i18n.phoneLabel} <span className='text-[#f31110]'>*</span>
+            </p>
+            <div className='flex gap-2'>
+              <select
+                value={countryCode}
+                onChange={(e) => setCountryCode(e.target.value)}
+                className='h-[52px] min-w-[80px] rounded-xl border border-neutral-400 bg-white px-3 text-sm text-neutral-700'
+              >
+                {countryOptions.map((option) => (
+                  <option key={option.key} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <input
+                type='tel'
+                value={phone}
+                onChange={(e) => setPhone(e.target.value.replace(/[^0-9]/g, ''))}
+                placeholder={i18n.phonePlaceholder}
+                className='h-[52px] flex-1 rounded-xl border border-neutral-400 bg-white px-4 text-sm text-neutral-700 placeholder:text-neutral-400'
+              />
+            </div>
+            {errors.phone ? <p className='text-xs text-[#f31110]'>{errors.phone}</p> : null}
+          </div>
+          <InputFieldV2
+            label={i18n.emailLabel}
+            required
+            type='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={i18n.emailPlaceholder}
+            error={errors.email}
+          />
+          <TextareaFieldV2
+            label={i18n.contentLabel}
+            required
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder={i18n.contentPlaceholder}
+            currentLength={content.length}
+            maxLength={500}
+            rows={6}
+            error={errors.content}
+          />
+
+          <div className='space-y-3'>
+            <p className='text-base leading-6 font-semibold text-neutral-700'>{i18n.fileLabel}</p>
+            <p className='whitespace-pre-line text-sm leading-5 text-neutral-500'>{i18n.fileGuide}</p>
+            {uploadedFiles.length > 0 ? (
+              <div className='flex flex-wrap gap-2'>
+                {uploadedFiles.map((file) => (
+                  <button
+                    key={file.url}
+                    type='button'
+                    onClick={() =>
+                      setUploadedFiles((prev) => prev.filter((item) => item.url !== file.url))
+                    }
+                    className='inline-flex items-center gap-1 rounded-xl border border-neutral-200 bg-white px-5 py-3 text-sm font-medium text-neutral-700'
+                  >
+                    <span className='max-w-[140px] truncate'>{file.name}</span>
+                    <span aria-hidden className='text-base leading-none text-neutral-500'>
+                      ×
+                    </span>
+                  </button>
+                ))}
+              </div>
+            ) : null}
+            <label className='inline-flex h-11 cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-sub-900'>
+              <span>{isUploading ? 'Uploading...' : i18n.addFile}</span>
+              <input
+                type='file'
+                accept={getAcceptString()}
+                className='hidden'
+                onChange={async (e) => {
+                  const input = e.currentTarget;
+                  const file = input.files?.[0];
+                  if (file) await uploadFile(file);
+                  input.value = '';
+                }}
+                disabled={isUploading || uploadedFiles.length >= 10}
+              />
+            </label>
+          </div>
+
+          <div>
+            <p className='mb-2 text-base leading-6 font-semibold text-neutral-700'>
+              {i18n.privacyLabel} <span className='text-[#f31110]'>*</span>
+            </p>
+            <label className='flex items-start gap-2 rounded-lg'>
+              <input
+                type='checkbox'
+                checked={privacyAgreed}
+                onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                className='mt-0.5 h-5 w-5 accent-[#7657ff]'
+              />
+              <span className='text-sm leading-5 text-neutral-500'>{i18n.privacyText}</span>
+            </label>
+            {errors.privacy ? <p className='mt-2 text-xs text-[#f31110]'>{errors.privacy}</p> : null}
+          </div>
+        </div>
+
+      </form>
+
+      <div className='fixed bottom-0 left-1/2 z-20 w-full max-w-[600px] -translate-x-1/2 border-t border-neutral-200 bg-white px-5 pt-4 pb-10 md:static md:left-auto md:mt-8 md:max-w-none md:translate-x-0 md:border-t-0 md:bg-transparent md:px-5 md:pt-0 md:pb-10'>
+        <button
+          type='submit'
+          form='data-request-form'
+          disabled={!isFormReady}
+          className='h-14 w-full rounded-xl bg-sub-900 text-base font-medium text-white disabled:bg-neutral-200 disabled:text-neutral-400'
+        >
+          {isSubmitting ? 'Submitting...' : i18n.submit}
+        </button>
+      </div>
+    </div>
+  );
+}
