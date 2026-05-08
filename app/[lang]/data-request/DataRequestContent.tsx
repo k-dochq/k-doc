@@ -11,7 +11,7 @@ import { createClient } from 'shared/lib/supabase/client';
 import { STORAGE_CONFIG, STORAGE_PATHS } from 'shared/config/storage';
 import { getAcceptString, isSupportedFileType } from 'shared/config/file-types';
 import { COUNTRY_CODES } from 'entities/country-code';
-import { Check, X } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 interface DataRequestContentProps {
   lang: Locale;
@@ -539,7 +539,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
                     className='inline-flex items-center gap-1 rounded-xl border border-neutral-200 bg-white px-5 py-3 text-sm font-medium text-neutral-700'
                   >
                     <span className='max-w-[140px] truncate'>{file.name}</span>
-                    <X aria-hidden className='h-5 w-5 text-neutral-500' />
+                    <Image src='/icons/file-remove.svg' alt='' aria-hidden width={20} height={20} />
                   </button>
                 ))}
               </div>
