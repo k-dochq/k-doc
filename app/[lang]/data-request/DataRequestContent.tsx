@@ -10,6 +10,7 @@ import { createClient } from 'shared/lib/supabase/client';
 import { STORAGE_CONFIG, STORAGE_PATHS } from 'shared/config/storage';
 import { getAcceptString, isSupportedFileType } from 'shared/config/file-types';
 import { COUNTRY_CODES } from 'entities/country-code';
+import { Check, Paperclip, X } from 'lucide-react';
 
 interface DataRequestContentProps {
   lang: Locale;
@@ -22,6 +23,7 @@ interface UploadedFile {
 }
 
 interface FormErrors {
+  requestType?: string;
   name?: string;
   phone?: string;
   email?: string;
@@ -30,6 +32,10 @@ interface FormErrors {
 }
 
 interface DataRequestMessages {
+  requestTypeLabel: string;
+  requestTypePlaceholder: string;
+  requestTypeUpdate: string;
+  requestTypeDelete: string;
   description: string;
   namePlaceholder: string;
   phonePlaceholder: string;
@@ -46,6 +52,7 @@ interface DataRequestMessages {
   uploading: string;
   submitting: string;
   errors: {
+    requiredRequestType: string;
     requiredName: string;
     requiredPhone: string;
     requiredEmail: string;
@@ -62,6 +69,10 @@ interface DataRequestMessages {
 }
 
 const KO_MESSAGES: DataRequestMessages = {
+  requestTypeLabel: '요청 유형',
+  requestTypePlaceholder: '요청 유형을 선택해주세요',
+  requestTypeUpdate: '정보 수정',
+  requestTypeDelete: '정보 삭제',
   description:
     'K-DOC에 등록되어 있는 정보(병원/의사/리뷰)의 수정 또는 삭제가 필요하신 경우 아래 항목에 내용을 작성하여 제출해주시기 바랍니다.\n담당자 확인 후 필요한 조치를 취하도록 하겠습니다.',
   namePlaceholder: '이름을 입력해주세요',
@@ -80,6 +91,7 @@ const KO_MESSAGES: DataRequestMessages = {
   uploading: '업로드 중...',
   submitting: '제출 중...',
   errors: {
+    requiredRequestType: '요청 유형을 선택해주세요.',
     requiredName: '이름을 입력해주세요.',
     requiredPhone: '휴대폰 번호를 입력해주세요.',
     requiredEmail: '이메일을 입력해주세요.',
@@ -96,6 +108,10 @@ const KO_MESSAGES: DataRequestMessages = {
 };
 
 const EN_MESSAGES: DataRequestMessages = {
+  requestTypeLabel: 'Request Type',
+  requestTypePlaceholder: 'Select request type',
+  requestTypeUpdate: 'Update Information',
+  requestTypeDelete: 'Delete Information',
   description:
     'If edits or deletion are needed for information registered in K-DOC (hospital/doctor/review), please fill out the form below and submit.\nOur team will review and take the necessary action.',
   namePlaceholder: 'Enter your name',
@@ -114,6 +130,7 @@ const EN_MESSAGES: DataRequestMessages = {
   uploading: 'Uploading...',
   submitting: 'Submitting...',
   errors: {
+    requiredRequestType: 'Please select request type.',
     requiredName: 'Please enter your name.',
     requiredPhone: 'Please enter your phone number.',
     requiredEmail: 'Please enter your email.',
@@ -278,18 +295,6 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-function inferRequestType(content: string): 'UPDATE' | 'DELETE' {
-  const normalized = content.toLowerCase();
-  if (
-    normalized.includes('삭제') ||
-    normalized.includes('delete') ||
-    normalized.includes('remove')
-  ) {
-    return 'DELETE';
-  }
-  return 'UPDATE';
-}
-
 export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   const i18n = useMemo(() => messagesByLocale(lang), [lang]);
   const countryOptions = useMemo(
@@ -305,6 +310,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   );
   const [name, setName] = useState('');
   const [countryCode, setCountryCode] = useState('+66');
+  const [requestType, setRequestType] = useState<'UPDATE' | 'DELETE' | ''>('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [content, setContent] = useState('');
@@ -315,6 +321,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isFormReady =
+    requestType &&
     name.trim() &&
     phone.trim() &&
     email.trim() &&
@@ -376,6 +383,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   const validate = () => {
     const nextErrors: FormErrors = {};
 
+    if (!requestType) nextErrors.requestType = i18n.errors.requiredRequestType;
     if (!name.trim()) nextErrors.name = i18n.errors.requiredName;
     if (!phone.trim()) nextErrors.phone = i18n.errors.requiredPhone;
     if (!email.trim()) nextErrors.email = i18n.errors.requiredEmail;
@@ -403,7 +411,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
           requesterEmail: email.trim(),
           content: content.trim(),
           attachmentUrls: uploadedFiles.map((file) => file.url),
-          requestType: inferRequestType(content),
+          requestType,
         }),
       });
 
@@ -412,6 +420,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
       }
 
       alert(i18n.success);
+      setRequestType('');
       setName('');
       setPhone('');
       setEmail('');
@@ -434,13 +443,29 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
         title={dict.footer?.dataRequest || 'Data Request'}
         fallbackUrl={`/${lang}/main`}
         variant='light'
-        bgClassName='bg-white border-b border-neutral-200'
+        bgClassName='bg-white'
       />
 
       <form id='data-request-form' onSubmit={handleSubmit} className='px-5 pt-5 pb-[132px]'>
         <p className='mb-8 whitespace-pre-line text-sm leading-7 text-neutral-500'>{i18n.description}</p>
 
         <div className='space-y-5'>
+          <div className='flex w-full flex-col gap-2'>
+            <p className='text-base leading-6 font-semibold text-neutral-700'>
+              {i18n.requestTypeLabel} <span className='text-[#f31110]'>*</span>
+            </p>
+            <select
+              value={requestType}
+              onChange={(e) => setRequestType(e.target.value as 'UPDATE' | 'DELETE' | '')}
+              className='h-[52px] rounded-xl border border-neutral-400 bg-white px-4 text-sm text-neutral-700'
+            >
+              <option value=''>{i18n.requestTypePlaceholder}</option>
+              <option value='UPDATE'>{i18n.requestTypeUpdate}</option>
+              <option value='DELETE'>{i18n.requestTypeDelete}</option>
+            </select>
+            {errors.requestType ? <p className='text-xs text-[#f31110]'>{errors.requestType}</p> : null}
+          </div>
+
           <InputFieldV2
             label={dict.support?.form?.name?.label || 'Name'}
             required
@@ -513,14 +538,13 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
                     className='inline-flex items-center gap-1 rounded-xl border border-neutral-200 bg-white px-5 py-3 text-sm font-medium text-neutral-700'
                   >
                     <span className='max-w-[140px] truncate'>{file.name}</span>
-                    <span aria-hidden className='text-base leading-none text-neutral-500'>
-                      ×
-                    </span>
+                    <X aria-hidden className='h-5 w-5 text-neutral-500' />
                   </button>
                 ))}
               </div>
             ) : null}
             <label className='inline-flex h-11 cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-sub-900'>
+              <Paperclip aria-hidden className='h-5 w-5' />
               <span>{isUploading ? i18n.uploading : i18n.addFile}</span>
               <input
                 type='file'
@@ -546,8 +570,16 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
                 type='checkbox'
                 checked={privacyAgreed}
                 onChange={(e) => setPrivacyAgreed(e.target.checked)}
-                className='mt-0.5 h-5 w-5 accent-[#7657ff]'
+                className='sr-only'
               />
+              <span
+                aria-hidden
+                className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-[4px] border ${
+                  privacyAgreed ? 'border-[#7657ff] bg-[#7657ff]' : 'border-neutral-300 bg-white'
+                }`}
+              >
+                {privacyAgreed ? <Check className='h-3.5 w-3.5 text-white' /> : null}
+              </span>
               <span className='text-sm leading-5 text-neutral-500'>{i18n.privacyText}</span>
             </label>
             {errors.privacy ? <p className='mt-2 text-xs text-[#f31110]'>{errors.privacy}</p> : null}
