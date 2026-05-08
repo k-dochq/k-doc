@@ -2390,6 +2390,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "Kung kailangan ng pag-edit o pag-delete sa impormasyong nakarehistro sa K-DOC (ospital/doktor/review), pakipunan ang form sa ibaba at i-submit.\nSusuriin ito ng aming team at gagawa ng kinakailangang aksyon.",
+    "namePlaceholder": "Ilagay ang iyong pangalan",
+    "phonePlaceholder": "Ilagay ang iyong phone number",
+    "emailPlaceholder": "Ilagay ang iyong email",
+    "contentLabel": "Detalye ng I-eedit/Ide-delete",
+    "contentPlaceholder": "Ilarawan kung ano ang dapat i-edit o i-delete",
+    "fileLabel": "Mga Attachment",
+    "fileGuide": "Maaari kang mag-upload ng hanggang 10 file.\nMaximum na laki ng bawat file ay 10 MB.",
+    "addFile": "Magdagdag ng File",
+    "privacyLabel": "Pagkolekta at Paggamit ng Personal na Impormasyon",
+    "privacyText": "Para maproseso ang iyong request, kumokolekta at gumagamit kami ng personal na impormasyon.",
+    "submit": "Isumite",
+    "success": "Matagumpay na naisumite ang iyong request.",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "Ang mabilis na konsultasyon at reserbasyon sa ospital ay ibinibigay nang libre. Sa pamamagitan ng libreng konsultasyon, maaari kang kumpirmahin ang isang quote at gumawa ng reserbasyon sa ospital. Ang mga serbisyo ng Concierge ay sinisingil lamang kapag kailangan mo ang mga ito.",
     "planCard": {

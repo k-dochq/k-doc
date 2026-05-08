@@ -2390,6 +2390,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "Если требуется изменить или удалить информацию, размещённую в K-DOC (клиника/врач/отзыв), заполните форму ниже и отправьте её.\nПосле проверки мы предпримем необходимые действия.",
+    "namePlaceholder": "Введите имя",
+    "phonePlaceholder": "Введите номер телефона",
+    "emailPlaceholder": "Введите email",
+    "contentLabel": "Содержание изменения/удаления",
+    "contentPlaceholder": "Опишите, что нужно изменить или удалить",
+    "fileLabel": "Вложение файлов",
+    "fileGuide": "Можно загрузить до 10 файлов.\nМаксимальный размер одного файла — 10 MB.",
+    "addFile": "Добавить файл",
+    "privacyLabel": "Сбор и использование персональных данных",
+    "privacyText": "Для обработки запроса мы собираем и используем персональные данные в соответствии с законом.",
+    "submit": "Отправить",
+    "success": "Ваш запрос успешно отправлен.",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "Быстрые консультации и запись в больницу предоставляются бесплатно. Через бесплатную консультацию можно подтвердить смету и записаться в больницу. Консьерж-услуги оплачиваются только тогда, когда они вам нужны.",
     "planCard": {

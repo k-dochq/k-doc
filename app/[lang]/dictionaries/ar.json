@@ -2390,6 +2390,42 @@
       }
     }
   },
+  "dataRequest": {
+    "requestTypeLabel": "Request Type",
+    "requestTypePlaceholder": "Select request type",
+    "requestTypeUpdate": "Update Information",
+    "requestTypeDelete": "Delete Information",
+    "description": "إذا كنت بحاجة إلى تعديل أو حذف المعلومات المسجلة في K-DOC (المستشفى/الطبيب/المراجعة)، يرجى تعبئة النموذج أدناه وإرساله.\nسنقوم بالمراجعة واتخاذ الإجراء اللازم.",
+    "namePlaceholder": "أدخل الاسم",
+    "phonePlaceholder": "أدخل رقم الهاتف",
+    "emailPlaceholder": "أدخل البريد الإلكتروني",
+    "contentLabel": "محتوى التعديل/الحذف",
+    "contentPlaceholder": "يرجى وصف ما يجب تعديله أو حذفه",
+    "fileLabel": "إرفاق ملفات",
+    "fileGuide": "يمكنك رفع حتى 10 ملفات.\nالحد الأقصى لحجم الملف 10 MB.",
+    "addFile": "إضافة ملف",
+    "privacyLabel": "إشعار جمع واستخدام المعلومات الشخصية",
+    "privacyText": "لمعالجة طلبك، نقوم بجمع واستخدام المعلومات الشخصية وفقًا للأنظمة ذات الصلة.",
+    "submit": "إرسال",
+    "success": "تم إرسال طلبك بنجاح.",
+    "uploading": "Uploading...",
+    "submitting": "Submitting...",
+    "errors": {
+      "requiredRequestType": "Please select request type.",
+      "requiredName": "Please enter your name.",
+      "requiredPhone": "Please enter your phone number.",
+      "requiredEmail": "Please enter your email.",
+      "invalidEmail": "Invalid email format.",
+      "requiredContent": "Please enter details.",
+      "maxContent": "Please enter up to 500 characters.",
+      "requiredPrivacy": "Please agree to personal information collection and use.",
+      "uploadType": "Unsupported file type.",
+      "uploadSize": "File size must be 10MB or less.",
+      "uploadCount": "You can upload up to 10 files.",
+      "uploadFail": "Failed to upload file.",
+      "submitFail": "Failed to submit request."
+    }
+  },
   "concierge": {
     "section3Description": "يتم تقديم الاستشارات السريعة وحجوزات المستشفيات مجانًا. من خلال الاستشارة المجانية، يمكنك تأكيد عرض الأسعار وإجراء حجز المستشفى. تُفرض رسوم خدمات الكونسيرج فقط عند الحاجة إليها.",
     "planCard": {
