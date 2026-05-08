@@ -53,14 +53,13 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
 
       {/* 정보 수정/삭제 요청 */}
       <div className='flex items-center justify-end'>
-        <a
+        <LocaleLink
           href={getDataRequestLink(lang)}
-          target='_blank'
-          rel='noopener noreferrer'
+          locale={lang}
           className='text-right text-xs leading-[16px] font-normal text-[#BABEC4] transition-colors'
         >
           {dict.footer.dataRequest}
-        </a>
+        </LocaleLink>
       </div>
     </div>
   );

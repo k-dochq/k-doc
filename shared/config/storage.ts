@@ -15,4 +15,5 @@ export const STORAGE_PATHS = {
   REVIEW_CREATE_BEFORE: 'review-create/before',
   REVIEW_CREATE_AFTER: 'review-create/after',
   PROFILE_IMAGE: 'profile-images',
+  DATA_REQUEST_ATTACHMENTS: 'data-request-attachments',
 } as const;

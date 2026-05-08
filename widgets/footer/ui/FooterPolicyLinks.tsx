@@ -36,14 +36,13 @@ export function FooterPolicyLinks({ lang, dict }: FooterPolicyLinksProps) {
         >
           {dict.footer.privacyPolicy}
         </LocaleLink>
-        <a
+        <LocaleLink
           href={getDataRequestLink(lang)}
-          target='_blank'
-          rel='noopener noreferrer'
+          locale={lang}
           className='text-neutral-400 transition-colors hover:text-neutral-800'
         >
           {dict.footer.dataRequest}
-        </a>
+        </LocaleLink>
       </div>
     </div>
   );
