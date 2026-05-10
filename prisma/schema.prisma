@@ -1126,6 +1126,8 @@ enum ReservationStatus {
   CONFIRMED
   COMPLETED
   CANCELLED
+  CHANGE_REQUESTED
+  CHANGE_CONFIRMED
 
   @@schema("public")
 }
