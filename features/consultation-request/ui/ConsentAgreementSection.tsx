@@ -40,7 +40,7 @@ function SubCheckIcon() {
     <svg className='h-[14px] w-[14px] shrink-0' viewBox='0 0 14 14' fill='none'>
       <path
         d='M2 7L5.5 10.5L12 3.5'
-        stroke="var(--color-primary-900)"
+        stroke='#A3A3A3'
         strokeWidth='2'
         strokeLinecap='round'
         strokeLinejoin='round'
