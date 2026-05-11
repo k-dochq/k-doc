@@ -26,15 +26,20 @@ export function ReservationStatusHeader({
   const isCancelled = status === 'CANCELLED';
   const isCompleted = status === 'COMPLETED' || isPast;
   const isConfirmed = status === 'CONFIRMED' && !isPast && !isCancelled;
+  const isChangeRequested = status === 'CHANGE_REQUESTED';
+  const isChangeConfirmed = status === 'CHANGE_CONFIRMED';
 
-  // 상태 텍스트 결정
-  const statusText = isCancelled
-    ? dict.consultation?.reservationDetail?.cancelled || '예약 취소됨'
-    : isCompleted
-      ? dict.consultation?.reservationDetail?.completed || '시술 완료'
-      : dict.consultation?.reservationDetail?.confirmed || '예약 완료';
+  const rd = dict.consultation?.reservationDetail;
 
-  // 체크 아이콘 색상 결정 (취소된 경우도 회색)
+  function getStatusText(): string {
+    if (isCancelled) return rd?.cancelled || '예약 취소됨';
+    if (isCompleted) return rd?.completed || '시술 완료';
+    if (isChangeRequested) return rd?.changeRequested || '변경 요청됨';
+    if (isChangeConfirmed) return rd?.changeConfirmed || '변경 확정됨';
+    return rd?.confirmed || '예약 완료';
+  }
+
+  const statusText = getStatusText();
   const checkIconStatus = isCancelled || isCompleted ? 'completed' : 'confirmed';
 
   return (
