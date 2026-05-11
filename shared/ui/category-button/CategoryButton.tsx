@@ -52,7 +52,7 @@ export function CategoryButton({
                 backgroundClip: 'content-box, border-box',
               }
             : {
-                background: 'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%)',
+                background: 'linear-gradient(180deg, #FFF 0%, var(--color-primary-light) 100%)',
               }
         }
       >
