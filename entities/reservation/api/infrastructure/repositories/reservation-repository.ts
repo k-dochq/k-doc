@@ -105,8 +105,12 @@ export class ReservationRepository {
   private async buildReservationsWhereClause(
     userId: string,
     hasReviewed?: boolean,
-  ): Promise<{ userId: string; hospitalId?: { in?: string[]; notIn?: string[] } }> {
-    const baseWhere = { userId };
+  ): Promise<{
+    userId: string;
+    status: { not: string };
+    hospitalId?: { in?: string[]; notIn?: string[] };
+  }> {
+    const baseWhere = { userId, status: { not: 'PAYMENT_PENDING' } };
 
     if (hasReviewed === undefined) {
       return baseWhere;
