@@ -7,6 +7,7 @@ import { useCheckConsultationHistory } from 'features/consultation-request/model
 import { useAuth } from 'shared/lib/auth/useAuth';
 import { openDrawer } from 'shared/lib/drawer';
 import { useCancelReservation } from 'features/reservation-cancel/model/useCancelReservation';
+import { ReservationChangeRequestDrawer } from 'features/reservation-change-request';
 import { LoginRequiredDrawer } from 'shared/ui/login-required-drawer';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from 'shared/lib/query-keys';
@@ -36,6 +37,35 @@ export function ReservationDetailFloatingButtons({
   const queryClient = useQueryClient();
 
   const isCancelled = reservationStatus === 'CANCELLED';
+  const isChangeRequested = reservationStatus === 'CHANGE_REQUESTED';
+  const isChangeRequestable = !isCancelled && !isChangeRequested;
+
+  // 예약 변경 요청 핸들러
+  const handleChangeRequest = async () => {
+    if (!isAuthenticated) {
+      await openDrawer({
+        content: <LoginRequiredDrawer lang={lang} dict={dict} />,
+      });
+      return;
+    }
+
+    await openDrawer({
+      content: (
+        <ReservationChangeRequestDrawer
+          reservationId={reservationId}
+          dict={dict}
+          onSuccess={() => {
+            queryClient.invalidateQueries({
+              queryKey: queryKeys.reservations.detail(reservationId),
+            });
+            queryClient.invalidateQueries({
+              queryKey: queryKeys.reservations.lists(),
+            });
+          }}
+        />
+      ),
+    });
+  };
 
   // 예약 취소 핸들러
   const handleCancelReservation = () => {
@@ -95,28 +125,40 @@ export function ReservationDetailFloatingButtons({
     <div
       className={`fixed right-0 bottom-0 left-0 z-50 mx-auto border-t border-neutral-200 bg-white px-5 pt-4 pb-8 ${MAX_MOBILE_WIDTH_CLASS}`}
     >
-      <div className='flex gap-2'>
-        {/* 예약 취소 버튼 */}
-        <button
-          onClick={handleCancelReservation}
-          disabled={isCancelled || cancelReservation.isPending}
-          className='flex h-14 flex-1 items-center justify-center rounded-xl bg-[#e5e5e5] px-5 py-4 text-base leading-6 font-medium text-[#404040] transition-colors duration-200 hover:bg-[#d5d5d5] disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
-        >
-          {cancelReservation.isPending
-            ? dict.consultation?.loading || '처리 중...'
-            : dict.consultation?.reservationDetail?.cancel || '예약 취소'}
-        </button>
+      <div className='flex flex-col gap-2'>
+        {/* 예약 변경 요청 버튼 */}
+        {isChangeRequestable && (
+          <button
+            onClick={handleChangeRequest}
+            className='flex h-14 w-full items-center justify-center rounded-xl border border-neutral-300 bg-white px-5 py-4 text-base leading-6 font-medium text-[#404040] transition-colors duration-200 hover:bg-neutral-50'
+          >
+            {dict.consultation?.reservationDetail?.changeRequest || '예약 변경 요청'}
+          </button>
+        )}
 
-        {/* 상담하기 버튼 */}
-        <button
-          onClick={handleConsultationRequest}
-          disabled={checkConsultationHistory.isPending}
-          className='bg-sub-900 hover:bg-sub-900/90 flex h-14 flex-1 items-center justify-center rounded-xl px-5 py-4 text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
-        >
-          {checkConsultationHistory.isPending
-            ? dict.hospitalDetailConsultation?.checking || '확인 중...'
-            : dict.consultation?.reservationDetail?.consultation || '상담 하기'}
-        </button>
+        <div className='flex gap-2'>
+          {/* 예약 취소 버튼 */}
+          <button
+            onClick={handleCancelReservation}
+            disabled={isCancelled || cancelReservation.isPending}
+            className='flex h-14 flex-1 items-center justify-center rounded-xl bg-[#e5e5e5] px-5 py-4 text-base leading-6 font-medium text-[#404040] transition-colors duration-200 hover:bg-[#d5d5d5] disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
+          >
+            {cancelReservation.isPending
+              ? dict.consultation?.loading || '처리 중...'
+              : dict.consultation?.reservationDetail?.cancel || '예약 취소'}
+          </button>
+
+          {/* 상담하기 버튼 */}
+          <button
+            onClick={handleConsultationRequest}
+            disabled={checkConsultationHistory.isPending}
+            className='bg-sub-900 hover:bg-sub-900/90 flex h-14 flex-1 items-center justify-center rounded-xl px-5 py-4 text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
+          >
+            {checkConsultationHistory.isPending
+              ? dict.hospitalDetailConsultation?.checking || '확인 중...'
+              : dict.consultation?.reservationDetail?.consultation || '상담 하기'}
+          </button>
+        </div>
       </div>
     </div>
   );
