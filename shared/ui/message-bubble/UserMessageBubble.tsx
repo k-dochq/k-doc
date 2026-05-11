@@ -30,7 +30,7 @@ export function UserMessageBubble({ children, className = '', isRtl = false }: U
       >
         <path
           d='M11.8886 18.8631C6.73688 19.6573 1.6512 16.8201 0 15L7 0V6C7 17.5 12.8793 18.2642 11.8886 18.8631Z'
-          fill='#CD42F3'
+          fill='var(--color-primary-900)'
         />
       </svg>
     </div>
