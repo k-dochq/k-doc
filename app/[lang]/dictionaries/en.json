@@ -994,7 +994,8 @@
     "privacyPolicy": "Privacy Policy",
     "notices": "Notice",
     "contactUs": "Contact Us",
-    "dataRequest": "Request Edit/Deletion"
+    "dataRequest": "Request Edit/Deletion",
+    "reservationPolicy": "Reservation & Service Policy"
   },
   "privacyConsent": {
     "title": "Personal Information Collection/Use Consent",
@@ -2545,5 +2546,125 @@
     "mainSectionTitle": "K-DOC Tips",
     "viewAll": "View all",
     "recommendedDoctors": "Recommended Doctors"
+  },
+  "reservationPolicy": {
+    "section1": {
+      "title": "1. Service Information",
+      "p1": "K-DOC is a platform for booking Korean hospitals and connecting premium medical concierge services.",
+      "p2": "The platform supports hospital consultations, reservation requests, scheduling, and some additional services. Actual medical procedures are performed under the judgment and responsibility of each hospital's medical staff.",
+      "p3": "Whether to proceed with a procedure, the method, cost, and medical decisions may be determined after the hospital consultation."
+    },
+    "section2": {
+      "title": "2. Reservation Application and Confirmation",
+      "items": [
+        "Reservations are finalized after a process of checking and coordinating hospital schedules.",
+        "Availability may change depending on hospital operations.",
+        "Reservation times may be partially adjusted due to hospital circumstances.",
+        "Even after a reservation is confirmed, schedule changes may occur due to hospital schedules, medical staff schedules, or local conditions.",
+        "If contact is unavailable for an extended period during scheduling, the reservation may be automatically cancelled."
+      ],
+      "note": "K-DOC supports schedule coordination with hospitals but does not guarantee specific times or schedules."
+    },
+    "section3": {
+      "title": "3. Concierge Service Guide",
+      "p1": "Concierge service fees may be requested for some reservation and concierge service users.",
+      "intro": "Concierge service fees are used for the following purposes:",
+      "items": [
+        "Securing hospital reservation schedules",
+        "Concierge operation preparation",
+        "Pre-assignment of interpretation and transportation support",
+        "Prevention of no-shows and unauthorized cancellations"
+      ],
+      "p2": "Reservations may be finalized after concierge service fee payment is completed. If payment is not completed, the reservation may be automatically cancelled.",
+      "p3": "Concierge service fees may be operated separately from procedure costs, and final procedure costs are paid directly at the hospital.",
+      "p4": "If concierge service preparation has already begun, some refunds may be restricted."
+    },
+    "section4": {
+      "title": "4. Concierge Service Inclusions",
+      "p1": "Concierge services are provided only to select reservation customers.",
+      "intro": "The following items may be included depending on the selected service or reservation conditions:",
+      "items": [
+        "Professional interpretation support",
+        "Airport and transportation support",
+        "Reservation schedule management",
+        "Hospital visit guidance",
+        "Other premium care services"
+      ],
+      "p2": "The scope of service provision may vary depending on the hospital, reservation content, country, and operational conditions.",
+      "p3": "Some services may be restricted or changed due to local operational conditions and affiliated hospital circumstances."
+    },
+    "section5": {
+      "title": "5. Reservation Change Policy",
+      "items": [
+        "Reservation changes and cancellations must be requested at least 3 days before the scheduled procedure date.",
+        "Whether changes are possible may vary depending on the hospital's reservation status.",
+        "The same time slot may not be available when changing to a desired schedule.",
+        "Schedule re-coordination may be requested depending on the hospital or local operational conditions."
+      ],
+      "note": "K-DOC supports schedule coordination but does not guarantee the availability of specific schedule changes."
+    },
+    "section6": {
+      "title": "6. Reservation Cancellation and Refund Policy",
+      "intro": "Refunds are processed according to the following criteria when a reservation is cancelled.",
+      "tableHeaderTiming": "Cancellation Timing",
+      "tableHeaderRate": "Refund Rate",
+      "row1Timing": "3 or more days before the scheduled procedure",
+      "row1Rate": "90% refund",
+      "row2Timing": "2 days before the scheduled procedure",
+      "row2Rate": "50% refund",
+      "row3Timing": "1 day before the scheduled procedure",
+      "row3Rate": "20% refund",
+      "row4Timing": "Same-day cancellation and no-show",
+      "row4Rate": "No refund",
+      "p1": "Refund processing times may vary depending on the payment method and payment provider's policy.",
+      "p2": "Due to the nature of international payments, exchange rate differences and international transaction fees may occur, and the resulting difference may not be included in the refund."
+    },
+    "section7": {
+      "title": "7. No-Show Policy",
+      "p1": "Failure to visit at the reserved time without prior notice may be considered a no-show.",
+      "intro": "In the event of a no-show:",
+      "items": [
+        "Refunds may be restricted",
+        "Some service usage may be restricted."
+      ],
+      "p2": "Service restrictions may be applied in the event of repeated reservation cancellations or no-shows."
+    },
+    "section8": {
+      "title": "8. Medical and Procedure Information",
+      "items": [
+        "Whether a final procedure is possible is determined after consultation with the hospital's medical staff.",
+        "Procedures may be restricted or changed based on medical consultation results.",
+        "Procedure results and satisfaction may vary individually, and specific results are not guaranteed.",
+        "Results may vary depending on individual health conditions, constitution, and existing medical conditions.",
+        "Procedure results and recovery processes may vary individually.",
+        "Side effects, recovery periods, and results after procedures may vary depending on individual condition."
+      ],
+      "note1": "K-DOC provides platform and reservation support services. Direct responsibility for actual medical procedures and results lies with each hospital.",
+      "note2": "K-DOC is a hospital reservation and operation support platform and does not directly engage in medical acts."
+    },
+    "section9": {
+      "title": "9. Service Restrictions and Scope of Responsibility",
+      "intro": "In the following cases, service provision may be restricted or reservations may be cancelled:",
+      "items": [
+        "Submission of false information",
+        "Repeated reservation cancellations",
+        "Acts that interfere with operations",
+        "Inappropriate behavior toward hospitals and medical staff",
+        "Violation of local laws or operating policies"
+      ],
+      "p1": "In the event of force majeure such as natural disasters, flight delays, changes in national policies, hospital closures, or the spread of infectious diseases, reservation schedules and service provision may be changed or restricted."
+    },
+    "section10": {
+      "title": "10. Policy Change Notice",
+      "p1": "This policy may be changed to improve operational and service policies.",
+      "p2": "If the policy is changed, it may be announced in advance through notices within the platform or separate notifications, and the changed policy will apply from the announced effective date.",
+      "p3": "For significant changes, members may be notified via email or notices within the service.",
+      "effectiveDate": "- Effective Date: May 15, 2026",
+      "p4": "This policy applies from the effective date."
+    },
+    "section11": {
+      "title": "11. Customer Inquiries",
+      "p1": "For inquiries while using the service, you can contact us through the K-DOC customer center or consultation chat."
+    }
   }
 }

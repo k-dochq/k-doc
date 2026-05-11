@@ -34,6 +34,13 @@ export function FooterPolicyLinksV2({ lang, dict }: FooterPolicyLinksV2Props) {
             {dict.footer.privacyPolicy}
           </LocaleLink>
           <LocaleLink
+            href='/reservation-policy'
+            locale={lang}
+            className='shrink-0 transition-colors hover:text-neutral-200'
+          >
+            {dict.footer.reservationPolicy}
+          </LocaleLink>
+          <LocaleLink
             href='/notices'
             locale={lang}
             className='shrink-0 transition-colors hover:text-neutral-200'
