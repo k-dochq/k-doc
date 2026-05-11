@@ -993,7 +993,8 @@
     "privacyPolicy": "Privacy Policy",
     "notices": "Notice",
     "contactUs": "Contact Us",
-    "dataRequest": "Request Edit/Deletion"
+    "dataRequest": "Request Edit/Deletion",
+    "reservationPolicy": "Patakaran sa Reserbasyon at Serbisyo"
   },
   "privacyConsent": {
     "title": "Pahintulot sa pangongolekta/paggamit ng personal na impormasyon",
@@ -2544,5 +2545,125 @@
     "mainSectionTitle": "K-DOC Tips",
     "viewAll": "Tingnan lahat",
     "recommendedDoctors": "Mga Inirerekomendang Doktor"
+  },
+  "reservationPolicy": {
+    "section1": {
+      "title": "1. Impormasyon ng Serbisyo",
+      "p1": "Ang K-DOC ay isang platform para sa pag-book ng mga ospital sa Korea at pagkonekta sa mga premium na serbisyong medikal na concierge.",
+      "p2": "Sinusuportahan ng platform ang mga konsultasyon sa ospital, kahilingan sa reserbasyon, pag-aayos ng iskedyul, at ilang karagdagang serbisyo. Ang mga aktwal na pamamaraang medikal ay isinasagawa sa ilalim ng pagpapasya at responsibilidad ng medikal na kawani ng bawat ospital.",
+      "p3": "Ang posibilidad ng pamamaraan, paraan, gastos, at mga desisyong medikal ay maaaring matukoy pagkatapos ng konsultasyon sa ospital."
+    },
+    "section2": {
+      "title": "2. Aplikasyon at Kumpirmasyon ng Reserbasyon",
+      "items": [
+        "Ang mga reserbasyon ay natapos pagkatapos ng proseso ng pagsusuri at pag-aayos ng iskedyul ng ospital.",
+        "Ang availability ay maaaring magbago depende sa operasyon ng ospital.",
+        "Ang oras ng reserbasyon ay maaaring bahagyang i-adjust dahil sa mga pangyayari sa ospital.",
+        "Kahit pagkatapos makumpirma ang reserbasyon, maaaring magkaroon ng mga pagbabago sa iskedyul dahil sa iskedyul ng ospital, iskedyul ng medikal na kawani, o lokal na kondisyon.",
+        "Kung hindi ma-contact sa mahabang panahon sa panahon ng pag-aayos ng iskedyul, ang reserbasyon ay maaaring awtomatikong makansela."
+      ],
+      "note": "Sinusuportahan ng K-DOC ang pag-aayos ng iskedyul sa mga ospital ngunit hindi ginagarantiyahan ang mga tiyak na oras o iskedyul."
+    },
+    "section3": {
+      "title": "3. Gabay sa Serbisyong Concierge",
+      "p1": "Ang mga bayad sa serbisyong concierge ay maaaring hilingin para sa ilang reserbasyon at mga gumagamit ng serbisyong concierge.",
+      "intro": "Ang mga bayad sa serbisyong concierge ay ginagamit para sa mga sumusunod na layunin:",
+      "items": [
+        "Pagtitiyak ng mga iskedyul ng reserbasyon sa ospital",
+        "Paghahanda ng operasyon ng concierge",
+        "Paunang pagtatalaga ng suporta sa interpretasyon at transportasyon",
+        "Pag-iwas sa mga no-show at hindi awtorisadong pagkansela"
+      ],
+      "p2": "Ang mga reserbasyon ay maaaring matapos pagkatapos makumpleto ang pagbabayad ng bayad sa serbisyong concierge. Kung hindi nakumpleto ang pagbabayad, ang reserbasyon ay maaaring awtomatikong makansela.",
+      "p3": "Ang mga bayad sa serbisyong concierge ay maaaring mag-operate nang hiwalay sa mga gastos sa pamamaraan, at ang mga panghuling gastos sa pamamaraan ay binabayaran nang direkta sa ospital.",
+      "p4": "Kung nagsimula na ang paghahanda ng serbisyong concierge, ang ilang refund ay maaaring limitahan."
+    },
+    "section4": {
+      "title": "4. Mga Kasama sa Serbisyong Concierge",
+      "p1": "Ang mga serbisyong concierge ay ibinibigay lamang sa mga piling customer na may reserbasyon.",
+      "intro": "Ang mga sumusunod na item ay maaaring kasama depende sa napiling serbisyo o mga kondisyon ng reserbasyon:",
+      "items": [
+        "Suporta sa propesyonal na interpretasyon",
+        "Suporta sa paliparan at transportasyon",
+        "Pamamahala ng iskedyul ng reserbasyon",
+        "Gabay sa pagbisita sa ospital",
+        "Iba pang mga premium na serbisyong pag-aalaga"
+      ],
+      "p2": "Ang saklaw ng pagbibigay ng serbisyo ay maaaring mag-iba depende sa ospital, nilalaman ng reserbasyon, bansa, at mga kondisyong operasyonal.",
+      "p3": "Ang ilang serbisyo ay maaaring limitahan o baguhin dahil sa lokal na kondisyong operasyonal at mga pangyayari sa kasamang ospital."
+    },
+    "section5": {
+      "title": "5. Patakaran sa Pagbabago ng Reserbasyon",
+      "items": [
+        "Ang mga pagbabago at pagkansela ng reserbasyon ay dapat hilingin nang hindi bababa sa 3 araw bago ang nakatakdang petsa ng pamamaraan.",
+        "Kung posible ang mga pagbabago ay maaaring mag-iba depende sa katayuan ng reserbasyon ng ospital.",
+        "Ang parehong time slot ay maaaring hindi available kapag nagbago sa nais na iskedyul.",
+        "Maaaring hilingin ang muling pag-aayos ng iskedyul depende sa ospital o lokal na kondisyong operasyonal."
+      ],
+      "note": "Sinusuportahan ng K-DOC ang pag-aayos ng iskedyul ngunit hindi ginagarantiyahan ang availability ng mga tiyak na pagbabago sa iskedyul."
+    },
+    "section6": {
+      "title": "6. Patakaran sa Pagkansela at Refund ng Reserbasyon",
+      "intro": "Ang mga refund ay pinoproseso ayon sa mga sumusunod na pamantayan kapag nakansela ang isang reserbasyon.",
+      "tableHeaderTiming": "Oras ng Pagkansela",
+      "tableHeaderRate": "Rate ng Refund",
+      "row1Timing": "3 o higit pang araw bago ang nakatakdang pamamaraan",
+      "row1Rate": "90% refund",
+      "row2Timing": "2 araw bago ang nakatakdang pamamaraan",
+      "row2Rate": "50% refund",
+      "row3Timing": "1 araw bago ang nakatakdang pamamaraan",
+      "row3Rate": "20% refund",
+      "row4Timing": "Pagkansela sa parehong araw at no-show",
+      "row4Rate": "Walang refund",
+      "p1": "Ang mga oras ng pagproseso ng refund ay maaaring mag-iba depende sa paraan ng pagbabayad at patakaran ng tagabigay ng pagbabayad.",
+      "p2": "Dahil sa kalikasan ng mga internasyonal na pagbabayad, maaaring magkaroon ng mga pagkakaiba sa halaga ng palitan at mga bayad sa internasyonal na transaksyon, at ang resultang pagkakaiba ay maaaring hindi kasama sa refund."
+    },
+    "section7": {
+      "title": "7. Patakaran sa No-Show",
+      "p1": "Ang hindi pagdating sa nakatakdang oras nang walang paunang abiso ay maaaring ituring na no-show.",
+      "intro": "Sa kaganapan ng no-show:",
+      "items": [
+        "Ang mga refund ay maaaring limitahan",
+        "Ang ilang paggamit ng serbisyo ay maaaring limitahan."
+      ],
+      "p2": "Ang mga paghihigpit sa serbisyo ay maaaring ilapat sa kaganapan ng paulit-ulit na pagkansela ng reserbasyon o mga no-show."
+    },
+    "section8": {
+      "title": "8. Impormasyon sa Medikal at Pamamaraan",
+      "items": [
+        "Kung posible ang panghuling pamamaraan ay natutukoy pagkatapos ng konsultasyon sa medikal na kawani ng ospital.",
+        "Ang mga pamamaraan ay maaaring limitahan o baguhin batay sa mga resulta ng medikal na konsultasyon.",
+        "Ang mga resulta ng pamamaraan at kasiyahan ay maaaring mag-iba sa bawat isa, at ang mga tiyak na resulta ay hindi ginagarantiyahan.",
+        "Ang mga resulta ay maaaring mag-iba depende sa mga indibidwal na kondisyon sa kalusugan, konstitusyon, at mga kasalukuyang kondisyong medikal.",
+        "Ang mga resulta ng pamamaraan at mga proseso ng pagbawi ay maaaring mag-iba sa bawat isa.",
+        "Ang mga side effect, mga panahon ng pagbawi, at mga resulta pagkatapos ng mga pamamaraan ay maaaring mag-iba depende sa indibidwal na kondisyon."
+      ],
+      "note1": "Nagbibigay ang K-DOC ng mga serbisyo ng platform at suporta sa reserbasyon. Ang direktang responsibilidad para sa mga aktwal na pamamaraang medikal at mga resulta ay nasa bawat ospital.",
+      "note2": "Ang K-DOC ay isang platform ng suporta sa reserbasyon at operasyon ng ospital at hindi direktang nakikibahagi sa mga gawaing medikal."
+    },
+    "section9": {
+      "title": "9. Mga Paghihigpit sa Serbisyo at Saklaw ng Responsibilidad",
+      "intro": "Sa mga sumusunod na kaso, ang pagbibigay ng serbisyo ay maaaring limitahan o ang mga reserbasyon ay maaaring makansela:",
+      "items": [
+        "Pagsusumite ng maling impormasyon",
+        "Paulit-ulit na pagkansela ng reserbasyon",
+        "Mga kilos na humahadlang sa operasyon",
+        "Hindi naaangkop na pag-uugali sa mga ospital at medikal na kawani",
+        "Paglabag sa mga lokal na batas o mga patakaran sa operasyon"
+      ],
+      "p1": "Sa kaganapan ng force majeure tulad ng mga natural na sakuna, pagkaantala ng flight, mga pagbabago sa pambansang patakaran, pagsasara ng ospital, o pagkalat ng mga nakakahawang sakit, ang mga iskedyul ng reserbasyon at pagbibigay ng serbisyo ay maaaring baguhin o limitahan."
+    },
+    "section10": {
+      "title": "10. Abiso sa Pagbabago ng Patakaran",
+      "p1": "Ang patakarang ito ay maaaring baguhin upang mapabuti ang mga patakaran sa operasyon at serbisyo.",
+      "p2": "Kung ang patakaran ay nagbago, maaari itong ipahayag nang maaga sa pamamagitan ng mga abiso sa loob ng platform o mga hiwalay na abiso, at ang binagong patakaran ay ilalapat mula sa ipinahayag na petsa ng bisa.",
+      "p3": "Para sa mahahalagang pagbabago, ang mga miyembro ay maaaring abisuhan sa pamamagitan ng email o mga abiso sa loob ng serbisyo.",
+      "effectiveDate": "- Petsa ng Bisa: Mayo 15, 2026",
+      "p4": "Ang patakarang ito ay ilalapat mula sa petsa ng bisa."
+    },
+    "section11": {
+      "title": "11. Mga Katanungan ng Customer",
+      "p1": "Para sa mga katanungan habang gumagamit ng serbisyo, maaari kang makipag-ugnayan sa amin sa pamamagitan ng K-DOC customer center o consultation chat."
+    }
   }
 }
