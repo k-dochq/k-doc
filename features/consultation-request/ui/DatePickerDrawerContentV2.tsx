@@ -80,19 +80,19 @@ const TitleCalendarIcon = ({ className }: { className?: string }) => (
   >
     <path
       d='M2.5 9.5H21.5V20.5C21.5 21.0523 21.0523 21.5 20.5 21.5H3.5C2.94771 21.5 2.5 21.0523 2.5 20.5V9.5Z'
-      fill="var(--color-sub-900)"
-      stroke="var(--color-sub-900)"
+      fill="var(--color-primary-900)"
+      stroke="var(--color-primary-900)"
       strokeWidth='1.5'
       strokeLinejoin='round'
     />
     <path
       d='M2.5 5C2.5 4.44771 2.94771 4 3.5 4H20.5C21.0523 4 21.5 4.44771 21.5 5V9.5H2.5V5Z'
-      stroke="var(--color-sub-900)"
+      stroke="var(--color-primary-900)"
       strokeWidth='1.5'
       strokeLinejoin='round'
     />
-    <path d='M8 2.5V6.5' stroke="var(--color-sub-900)" strokeWidth='1.5' strokeLinecap='round' />
-    <path d='M16 2.5V6.5' stroke="var(--color-sub-900)" strokeWidth='1.5' strokeLinecap='round' />
+    <path d='M8 2.5V6.5' stroke="var(--color-primary-900)" strokeWidth='1.5' strokeLinecap='round' />
+    <path d='M16 2.5V6.5' stroke="var(--color-primary-900)" strokeWidth='1.5' strokeLinecap='round' />
     <path
       d='M8 15.5L10.6667 18L16 13'
       stroke='white'

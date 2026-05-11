@@ -13,7 +13,7 @@ export function UserMessageBubble({ children, className = '', isRtl = false }: U
     'box-border content-stretch flex flex-col gap-3 items-start justify-start px-3 py-2 relative rounded-[12px] max-w-[260px] break-words overflow-visible min-w-0';
 
   const userGradientStyle = {
-    background: 'linear-gradient(180deg, var(--color-primary-800) -251.39%, var(--color-primary-900) 226.61%, var(--color-primary-900) 713.89%)',
+    background: 'linear-gradient(180deg, #AE33FB -251.39%, #DA47EF 226.61%, #6544FA 713.89%)',
   };
 
   return (
@@ -30,7 +30,7 @@ export function UserMessageBubble({ children, className = '', isRtl = false }: U
       >
         <path
           d='M11.8886 18.8631C6.73688 19.6573 1.6512 16.8201 0 15L7 0V6C7 17.5 12.8793 18.2642 11.8886 18.8631Z'
-          fill='var(--color-primary-900)'
+          fill='#CD42F3'
         />
       </svg>
     </div>
