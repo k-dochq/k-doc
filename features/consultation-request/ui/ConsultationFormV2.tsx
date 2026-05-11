@@ -15,7 +15,7 @@ import { SelectFieldV2 } from './SelectFieldV2';
 import { TextareaFieldV2 } from './TextareaFieldV2';
 import { FormDatePickerDrawerV2 } from './FormDatePickerDrawerV2';
 import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
-import { PrivacyAgreementNotice } from './PrivacyAgreementNotice';
+import { ConsentAgreementSection } from './ConsentAgreementSection';
 import { trackLead, trackGenerateLead } from 'shared/lib/analytics';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 import { getHospitalClosedWeekdays } from '../lib/hospital-closed-weekdays';
@@ -365,7 +365,12 @@ export function ConsultationFormV2({
 
       <div className='h-8' />
 
-      <PrivacyAgreementNotice dict={dict} />
+      <ConsentAgreementSection
+        checked={formData.agreeToPrivacy}
+        onChange={(checked) => updateField('agreeToPrivacy', checked)}
+        lang={lang}
+        dict={dict}
+      />
 
       {/* 플로팅 CTA */}
       <div

@@ -795,7 +795,10 @@
         },
         "privacyAgreement": {
           "title": "Pahintulot sa pangongolekta at paggamit ng sensitibong impormasyon",
-          "description": "Nabasa ko na at sumasang-ayon ako sa pangongolekta at paggamit ng sensitibong impormasyon para sa pagsulat ng mga review ng paggamot at paggamit ng app."
+          "description": "Nabasa ko na at sumasang-ayon ako sa pangongolekta at paggamit ng sensitibong impormasyon para sa pagsulat ng mga review ng paggamot at paggamit ng app.",
+          "sectionTitle": "Pahintulot sa Konsultasyon at Paggamit ng Serbisyo",
+          "policyTitle": "Pahintulot sa Patakaran ng Reserbasyon at Serbisyo (Kinakailangan)",
+          "sensitiveTitle": "Pahintulot sa Pangongolekta at Paggamit ng Sensitibong Impormasyon (Kinakailangan)"
         },
         "floatingNotice": {
           "highlight": "Mga oras ng pagbisita",

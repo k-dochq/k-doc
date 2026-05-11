@@ -16,7 +16,7 @@ const initialFormData: ConsultationFormData = {
   preferredDate: '',
   preferredDate2: '',
   content: '',
-  agreeToPrivacy: true,
+  agreeToPrivacy: false,
 };
 
 export function useConsultationForm(
@@ -155,7 +155,8 @@ export function useConsultationForm(
       formData.birthDate &&
       formData.countryCode.trim() &&
       formData.phoneNumberOnly.trim() &&
-      formData.preferredDate
+      formData.preferredDate &&
+      formData.agreeToPrivacy
     );
   };
 

@@ -795,7 +795,10 @@
         },
         "privacyAgreement": {
           "title": "機密情報収集利用の同意",
-          "description": "施術後期作成及びアプリ内活用のための機密情報の収集、利用規定を確認し、これに同意します。"
+          "description": "施術後期作成及びアプリ内活用のための機密情報の収集、利用規定を確認し、これに同意します。",
+          "sectionTitle": "相談及びサービス利用同意",
+          "policyTitle": "予約及びサービス方針同意（必須）",
+          "sensitiveTitle": "機密情報収集及び利用同意（必須）"
         },
         "floatingNotice": {
           "highlight": "訪問可能時間",
