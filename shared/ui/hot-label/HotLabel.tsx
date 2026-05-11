@@ -19,8 +19,8 @@ export function HotLabel() {
           y2='11'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stopColor='#FF60F7' />
-          <stop offset='1' stopColor='#AE33FB' />
+          <stop stopColor='var(--color-primary-800)' />
+          <stop offset='1' stopColor='var(--color-primary-900)' />
         </linearGradient>
       </defs>
     </svg>

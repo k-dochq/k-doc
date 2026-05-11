@@ -29,7 +29,7 @@ export function AllIcon({ variant = 'default' }: AllIconProps) {
       />
       <path
         d='M27.3636 1H19.1818C18.278 1 17.5454 1.73262 17.5454 2.63636V10.8182C17.5454 11.7219 18.278 12.4545 19.1818 12.4545H27.3636C28.2674 12.4545 29 11.7219 29 10.8182V2.63636C29 1.73262 28.2674 1 27.3636 1Z'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinejoin='round'
       />

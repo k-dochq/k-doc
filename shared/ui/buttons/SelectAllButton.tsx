@@ -16,7 +16,7 @@ export function SelectAllButton({
         isAllSelected ? 'border-0' : 'border border-neutral-300'
       } ${className || ''}`}
       style={{
-        backgroundColor: isAllSelected ? '#da47ef' : 'transparent',
+        backgroundColor: isAllSelected ? 'var(--color-primary-900)' : 'transparent',
       }}
     >
       {isAllSelected && (

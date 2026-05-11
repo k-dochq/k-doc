@@ -121,7 +121,7 @@ export function HospitalDetailInfoV2({ hospital, lang, dict }: HospitalDetailInf
         {/* 가격 정보 */}
         <div className='flex flex-1 items-center gap-0'>
           <span
-            className={`leading-7 font-semibold text-[#7657FF] ${
+            className={`leading-7 font-semibold text-primary-900 ${
               hospital.prices?.minPrice ? 'text-lg' : 'text-sm'
             }`}
           >

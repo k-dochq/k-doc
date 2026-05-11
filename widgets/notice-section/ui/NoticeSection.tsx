@@ -19,17 +19,17 @@ export function NoticeSection({ lang, dict }: NoticeSectionProps) {
           <div className='bg-[rgba(255,255,255,0.5)] px-5 pt-8 pb-6 backdrop-blur-[6px] backdrop-filter'>
             <div className='flex flex-col items-center gap-6'>
               <div className='flex items-center gap-2'>
-                <div className='flex items-center justify-center rounded bg-[#ae33fb] px-1 py-0.5'>
+                <div className='flex items-center justify-center rounded bg-primary-900 px-1 py-0.5'>
                   <p className='text-xs leading-4 font-semibold text-white'>NEW</p>
                 </div>
-                <p className='text-center text-lg leading-7 font-bold text-[#ae33fb]'>
+                <p className='text-center text-lg leading-7 font-bold text-primary-900'>
                   {noticeDict?.title || '새로운 소식을 확인해보세요!'}
                 </p>
               </div>
 
               <LocaleLink
                 href='/notices'
-                className='flex h-14 w-full items-center justify-center rounded-xl bg-[#da47ef] px-10 py-4'
+                className='flex h-14 w-full items-center justify-center rounded-xl bg-primary-900 px-10 py-4'
               >
                 <p className='text-base leading-6 font-medium text-white'>
                   {noticeDict?.buttonText || '공지사항 보러가기'}

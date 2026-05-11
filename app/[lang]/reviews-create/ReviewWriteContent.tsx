@@ -63,7 +63,7 @@ export function ReviewWriteContent({ lang, dict, hospitalId }: ReviewWriteConten
   if (isLoadingHospital || isLoadingCategories || isAuthLoading) {
     return (
       <div className='flex min-h-screen items-center justify-center'>
-        <Loader2 size={48} className='animate-spin text-[#DA47EF]' />
+        <Loader2 size={48} className='animate-spin text-primary-900' />
       </div>
     );
   }
@@ -81,7 +81,7 @@ export function ReviewWriteContent({ lang, dict, hospitalId }: ReviewWriteConten
           </p>
           <button
             onClick={() => router.push('/reviews/select-hospital')}
-            className='rounded-xl bg-[#DA47EF] px-6 py-3 font-semibold text-white hover:bg-[#C63DD6]'
+            className='rounded-xl bg-primary-900 px-6 py-3 font-semibold text-white hover:bg-primary-900/90'
           >
             {dict.reviewWrite?.error?.retry || 'Go Back'}
           </button>

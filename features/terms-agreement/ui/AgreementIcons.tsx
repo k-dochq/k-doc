@@ -1,7 +1,7 @@
 export function AllAgreeCheckedIcon() {
   return (
     <svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <rect width='20' height='20' rx='4' fill='#7657FF' />
+      <rect width='20' height='20' rx='4' fill="var(--color-primary-900)" />
       <path
         d='M14.6673 6.79169L8.25065 13.2084L5.33398 10.2917'
         stroke='white'
@@ -33,7 +33,7 @@ export function SubAgreeCheckedIcon() {
     <svg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path
         d='M20.5335 9.5083L11.5501 18.4916L7.4668 14.4083'
-        stroke='#7657FF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

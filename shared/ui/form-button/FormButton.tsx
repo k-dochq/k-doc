@@ -24,7 +24,7 @@ export const FormButton = forwardRef<HTMLButtonElement, FormButtonProps>(
           'disabled:cursor-not-allowed disabled:opacity-50',
           {
             // Variants
-            'bg-[#DA47EF] text-white hover:bg-[#C63DE7] focus:ring-[#DA47EF]':
+            'bg-primary-900 text-white hover:bg-primary-900/90 focus:ring-primary-900':
               variant === 'primary',
             'bg-transparent text-neutral-500 hover:text-neutral-700': variant === 'secondary',
             // Sizes

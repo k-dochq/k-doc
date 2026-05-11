@@ -67,28 +67,28 @@ export function LiposuctionIcon({ variant = 'default' }: LiposuctionIconProps) {
         />
         <path
           d='M1.3147 5.3042H8.6048'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M6.16431 7.68001L8.60506 5.30412L6.16431 2.92407'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M44.6854 5.3042H37.3953'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M39.836 7.68001L37.3953 5.30412L39.836 2.92407'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

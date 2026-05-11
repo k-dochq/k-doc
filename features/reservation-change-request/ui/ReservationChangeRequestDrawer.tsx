@@ -95,7 +95,7 @@ export function ReservationChangeRequestDrawer({
       <button
         onClick={handleSubmit}
         disabled={!date || !time || changeRequest.isPending}
-        className='bg-sub-900 hover:bg-sub-900/90 flex h-14 w-full items-center justify-center rounded-xl text-base font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
+        className='bg-primary-900 hover:bg-primary-900/90 flex h-14 w-full items-center justify-center rounded-xl text-base font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
       >
         {changeRequest.isPending
           ? dict.consultation?.loading || '처리 중...'

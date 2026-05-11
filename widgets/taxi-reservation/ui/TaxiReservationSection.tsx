@@ -30,7 +30,7 @@ export function TaxiReservationSection({ lang, dict }: TaxiReservationSectionPro
             href='https://www.intltaxi.co.kr/'
             target='_blank'
             rel='noopener noreferrer'
-            className='flex h-14 flex-1 items-center justify-center rounded-xl bg-[#DA47EF] px-6 text-base font-medium text-white transition-colors'
+            className='flex h-14 flex-1 items-center justify-center rounded-xl bg-primary-900 px-6 text-base font-medium text-white transition-colors'
           >
             <span>{dict.taxiReservation?.internationalTaxi || 'International Taxi'}</span>
           </a>
@@ -40,7 +40,7 @@ export function TaxiReservationSection({ lang, dict }: TaxiReservationSectionPro
             href='https://rides.sng.link/Aw5zn/njuh?_dl=uber%3A%2F%2F&_smtype=3&pcn=download_rider&mvid=b5ea2fc9-50ae-4db6-8c0b-18eb50268f33'
             target='_blank'
             rel='noopener noreferrer'
-            className='flex h-14 flex-1 items-center justify-center rounded-xl bg-[#DA47EF] px-6 text-base font-medium text-white transition-colors'
+            className='flex h-14 flex-1 items-center justify-center rounded-xl bg-primary-900 px-6 text-base font-medium text-white transition-colors'
           >
             <span>{dict.taxiReservation?.uberTaxi || 'Uber Taxi'}</span>
           </a>

@@ -4,7 +4,7 @@ interface StarIconProps {
   height?: number;
 }
 
-export function StarIcon({ color = '#DA47EF', width = 14, height = 13 }: StarIconProps) {
+export function StarIcon({ color = 'var(--color-primary-900)', width = 14, height = 13 }: StarIconProps) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

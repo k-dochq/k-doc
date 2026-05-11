@@ -256,7 +256,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
           type='submit'
           form='data-request-form'
           disabled={!isFormReady}
-          className='h-14 w-full rounded-xl bg-sub-900 text-base font-medium text-white disabled:bg-neutral-200 disabled:text-neutral-400'
+          className='h-14 w-full rounded-xl bg-primary-900 text-base font-medium text-white disabled:bg-neutral-200 disabled:text-neutral-400'
         >
           {isSubmitting ? i18n.submitting : i18n.submit}
         </button>

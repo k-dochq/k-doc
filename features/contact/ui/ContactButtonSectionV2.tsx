@@ -43,7 +43,7 @@ export function ContactButtonSectionV2({ lang, dict }: ContactButtonSectionV2Pro
         href={partnershipFormLink}
         target='_blank'
         rel='noopener noreferrer'
-        className='bg-sub-900 hover:bg-sub-900/90 flex h-14 w-full items-center justify-center rounded-xl px-5 py-4 text-base leading-6 font-medium text-white transition-colors duration-200'
+        className='bg-primary-900 hover:bg-primary-900/90 flex h-14 w-full items-center justify-center rounded-xl px-5 py-4 text-base leading-6 font-medium text-white transition-colors duration-200'
       >
         {dict.contact?.partnershipInquiry?.button || '입점 신청하기'}
       </a>

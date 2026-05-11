@@ -182,7 +182,7 @@ export function CustomDateInput({
           onBlur={handleBlur}
           placeholder={getPlaceholderText()}
           disabled={disabled}
-          className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 pr-10 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+          className='w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 pr-10 text-sm text-neutral-900 focus:border-transparent focus:ring-2 focus:ring-primary-900 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         />
         {/* 달력 아이콘 */}
         <div className='pointer-events-none absolute top-1/2 right-3 -translate-y-1/2'>

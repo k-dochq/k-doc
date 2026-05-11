@@ -45,28 +45,28 @@ export function LiftingIcon({ variant = 'default' }: LiftingIconProps) {
       />
       <path
         d='M25.8194 22.9592C23.7712 27.781 18.9748 31.165 13.3857 31.165'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M23.6182 22.2543L26.7849 21.3533L27.6903 24.505'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M32.4946 26.1467C30.4465 30.9685 25.6501 34.3525 20.061 34.3525'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M30.2935 25.442L33.4602 24.5449L34.3615 27.6967'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

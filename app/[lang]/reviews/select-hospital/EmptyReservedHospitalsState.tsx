@@ -32,7 +32,7 @@ export function EmptyReservedHospitalsState({
 
       <LocaleLink
         href='/hospitals'
-        className='mt-6 rounded-lg bg-[#DA47EF] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#C73AE0]'
+        className='mt-6 rounded-lg bg-primary-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-900/90'
       >
         {dict.reviewWrite?.selectHospital?.empty?.browseButton || 'Browse Hospitals'}
       </LocaleLink>

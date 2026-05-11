@@ -46,7 +46,7 @@ export function FormSelect({
         <button
           type='button'
           onClick={() => setIsOpen(!isOpen)}
-          className={`flex w-full items-center justify-between rounded-xl border bg-white px-4 py-4 text-left text-sm leading-5 focus:border-transparent focus:ring-2 focus:ring-[#da47ef] focus:outline-none ${error ? 'border-red-500' : 'border-neutral-300'} ${!selectedOption ? 'text-neutral-400' : 'text-neutral-900'} `}
+          className={`flex w-full items-center justify-between rounded-xl border bg-white px-4 py-4 text-left text-sm leading-5 focus:border-transparent focus:ring-2 focus:ring-primary-900 focus:outline-none ${error ? 'border-red-500' : 'border-neutral-300'} ${!selectedOption ? 'text-neutral-400' : 'text-neutral-900'} `}
         >
           <span>{selectedOption?.label || placeholder}</span>
           <ChevronDownIcon
@@ -61,7 +61,7 @@ export function FormSelect({
                 key={option.value}
                 type='button'
                 onClick={() => handleSelect(option.value)}
-                className={`w-full px-4 py-3 text-left text-sm leading-5 hover:bg-neutral-50 ${value === option.value ? 'bg-[#da47ef]/10 text-[#da47ef]' : 'text-neutral-900'} first:rounded-t-xl last:rounded-b-xl`}
+                className={`w-full px-4 py-3 text-left text-sm leading-5 hover:bg-neutral-50 ${value === option.value ? 'bg-primary-900/10 text-primary-900' : 'text-neutral-900'} first:rounded-t-xl last:rounded-b-xl`}
               >
                 {option.label}
               </button>

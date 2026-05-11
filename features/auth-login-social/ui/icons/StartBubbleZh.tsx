@@ -26,7 +26,7 @@ export function StartBubbleZh() {
         >
           <stop stop-color='#3E57E2' />
           <stop offset='0.4' stop-color='#B133FF' />
-          <stop offset='1' stop-color='#FF5DCA' />
+          <stop offset='1' stop-color='var(--color-primary-900)' />
         </linearGradient>
       </defs>
     </svg>

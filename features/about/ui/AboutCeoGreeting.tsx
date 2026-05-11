@@ -17,10 +17,10 @@ export function AboutCeoGreeting({ dict }: AboutCeoGreetingProps) {
             </h3>
             <div className='space-y-3'>
               <div className='space-y-0'>
-                <p className='text-xl leading-7 font-bold text-[#DA47EF]'>
+                <p className='text-xl leading-7 font-bold text-primary-900'>
                   {dict.about.ceoGreeting.greeting}
                 </p>
-                <p className='text-xl leading-7 font-bold text-[#DA47EF]'>
+                <p className='text-xl leading-7 font-bold text-primary-900'>
                   {dict.about.ceoGreeting.content[0]}
                 </p>
               </div>

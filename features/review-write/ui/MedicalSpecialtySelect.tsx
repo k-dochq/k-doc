@@ -37,7 +37,7 @@ export function MedicalSpecialtySelect({
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className='w-full appearance-none rounded-xl border-2 border-[#FF60F7] bg-white px-4 py-3 pr-10 text-gray-900 transition-colors focus:border-[#DA47EF] focus:outline-none'
+          className='w-full appearance-none rounded-xl border-2 border-primary-800 bg-white px-4 py-3 pr-10 text-gray-900 transition-colors focus:border-primary-900 focus:outline-none'
         >
           <option value=''>{placeholder}</option>
           {specialties.map((specialty) => (

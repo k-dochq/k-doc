@@ -90,7 +90,7 @@ export function EmailLoginFormV2({ lang, dict, redirectTo }: EmailLoginFormV2Pro
         type='submit'
         loading={isLoading}
         disabled={isLoading}
-        className='bg-sub-900 hover:bg-sub-900 focus:ring-sub-900'
+        className='bg-primary-900 hover:bg-primary-900 focus:ring-primary-900'
       >
         {dict.auth?.login?.loginButton || '로그인'}
       </FormButton>

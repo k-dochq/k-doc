@@ -55,7 +55,7 @@ export function SurveyButton({ data, lang }: SurveyButtonProps) {
       <button
         onClick={handleSurveyClick}
         className='flex w-full items-center justify-center rounded-xl px-5 py-3 transition-opacity hover:opacity-90 active:opacity-80'
-        style={{ backgroundColor: '#7657FF' }}
+        style={{ backgroundColor: "var(--color-primary-900)" }}
       >
         <p className="font-['Pretendard:Medium',sans-serif] text-[14px] leading-[20px] text-white">
           {data.buttonText}

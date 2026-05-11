@@ -26,7 +26,7 @@ export function FormRadioGroup({ label, value, onChange, options, error }: FormR
               value={option.value}
               checked={value === option.value}
               onChange={(e) => onChange(e.target.value)}
-              className='h-4 w-4 border-neutral-300 text-[#da47ef] focus:ring-2 focus:ring-[#da47ef]'
+              className='h-4 w-4 border-neutral-300 text-primary-900 focus:ring-2 focus:ring-primary-900'
             />
             <span className='text-sm leading-5 text-neutral-900'>{option.label}</span>
           </label>

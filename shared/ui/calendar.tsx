@@ -402,7 +402,7 @@ export function Calendar({
               disabled={isDisabled}
               className={`flex h-8 w-8 items-center justify-center rounded-md text-sm transition-colors ${
                 dayIsSelected
-                  ? 'bg-[#da47ef] text-white'
+                  ? 'bg-primary-900 text-white'
                   : dayIsToday
                     ? 'bg-neutral-100 font-medium'
                     : 'hover:bg-neutral-50'

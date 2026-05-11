@@ -92,7 +92,7 @@ export function MedicalSurveyCompleteContent({
         <LocaleLink href={`/chat/${hospitalId}`} className='block'>
           <button
             type='button'
-            className='bg-sub-900 hover:bg-sub-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200'
+            className='bg-primary-900 hover:bg-primary-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200'
           >
             {backToChatButton}
           </button>

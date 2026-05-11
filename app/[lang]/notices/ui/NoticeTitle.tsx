@@ -24,14 +24,14 @@ export function NoticeTitle({ notice, lang, dict, isExpanded, onToggle }: Notice
       type='button'
     >
       {/* 제목 */}
-      <p className='flex-1 text-[16px] leading-[24px] font-bold text-[#da47ef]'>
+      <p className='flex-1 text-[16px] leading-[24px] font-bold text-primary-900'>
         {title || dict.notices.noTitle}
       </p>
 
       {/* 화살표 아이콘 */}
       <div className='flex shrink-0 items-center justify-center'>
         <ChevronDown
-          className={`h-6 w-6 text-[#da47ef] transition-transform duration-200 ${
+          className={`h-6 w-6 text-primary-900 transition-transform duration-200 ${
             isExpanded ? 'rotate-180' : ''
           }`}
         />

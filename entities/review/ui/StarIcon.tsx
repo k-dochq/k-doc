@@ -16,11 +16,11 @@ export function StarIcon({ className = '' }: StarIconProps) {
     >
       <path
         d='M7.9997 2L9.62363 5.98034L13.9149 6.29822L10.6256 9.07617L11.6553 13.25L7.9997 10.9834L4.34415 13.25L5.37378 9.07617L2.08447 6.29822L6.37578 5.98034L7.9997 2Z'
-        fill='#DA47EF'
+        fill="var(--color-primary-900)"
       />
       <path
         d='M7.9997 2L6.37578 5.98034L2.08447 6.29822L5.37378 9.07617L4.34415 13.25L7.9997 10.9834M7.9997 2L9.62363 5.98034L13.9149 6.29822L10.6256 9.07617L11.6553 13.25L7.9997 10.9834'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeLinecap='round'
         strokeLinejoin='round'
       />

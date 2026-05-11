@@ -19,7 +19,7 @@ export function ReviewEditLoadingState({ lang, dict, reviewId }: ReviewEditLoadi
         fallbackUrl={`/${lang}/review/${reviewId}`}
       />
       <div className='flex min-h-screen items-center justify-center pt-[58px]'>
-        <Loader2 size={48} className='animate-spin text-[#DA47EF]' />
+        <Loader2 size={48} className='animate-spin text-primary-900' />
       </div>
     </>
   );

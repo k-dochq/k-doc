@@ -15,7 +15,7 @@ export function PopularReviewCardV2UserInfo({
   return (
     <div className='flex w-full items-center justify-between'>
       <div className='flex items-center gap-[6px]'>
-        <div className='size-5 shrink-0 overflow-hidden rounded-full bg-[#fbceff]'>
+        <div className='size-5 shrink-0 overflow-hidden rounded-full bg-primary-400'>
           <UserAvatar className='size-5' />
         </div>
         <p className='text-sm leading-5 font-medium text-neutral-500'>{userName}</p>

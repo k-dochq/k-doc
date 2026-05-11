@@ -9,7 +9,7 @@ export function QuickMenuIconItem({ label, iconSize = 41 }: QuickMenuIconItemPro
   return (
     <div className='flex flex-col items-center gap-1'>
       <div className='flex size-[60px] shrink-0 items-center justify-center rounded-2xl border border-neutral-200 bg-white'>
-        <EyeIconFigma size={iconSize} iconColor='#404040' arrowColor='#DA47EF' />
+        <EyeIconFigma size={iconSize} iconColor='#404040' arrowColor='var(--color-primary-900)' />
       </div>
       <p className='relative shrink-0 text-center text-xs leading-4 font-medium text-neutral-700'>
         {label}

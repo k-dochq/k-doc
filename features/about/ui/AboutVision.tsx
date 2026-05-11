@@ -33,8 +33,8 @@ export function AboutVision({ dict }: AboutVisionProps) {
                 </div>
                 <div>
                   <div className='flex items-center gap-3'>
-                    <div className='flex h-5 w-5 flex-col items-center justify-center rounded-full bg-[#DA47EF] px-1.5'>
-                      <span className='text-sm leading-5 font-semibold text-[#FCE4FF]'>
+                    <div className='flex h-5 w-5 flex-col items-center justify-center rounded-full bg-primary-900 px-1.5'>
+                      <span className='text-sm leading-5 font-semibold text-primary-light'>
                         {index + 1}
                       </span>
                     </div>

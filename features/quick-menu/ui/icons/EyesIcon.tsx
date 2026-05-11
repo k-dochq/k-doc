@@ -35,14 +35,14 @@ export function EyesIcon({ variant = 'default' }: EyesIconProps) {
       />
       <path
         d='M1.15479 7.12964C1.15479 7.12964 17.9613 -8.97062 37.2084 10.1354'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M32.6869 10.6358L37.8025 10.3149L37.489 5.07977'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

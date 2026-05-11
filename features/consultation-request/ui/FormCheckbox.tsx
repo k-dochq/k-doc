@@ -16,7 +16,7 @@ export function FormCheckbox({ checked, onChange, title, description, error }: F
           type='checkbox'
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
-          className='mt-0.5 h-4 w-4 rounded border-neutral-300 text-[#da47ef] focus:ring-2 focus:ring-[#da47ef]'
+          className='mt-0.5 h-4 w-4 rounded border-neutral-300 text-primary-900 focus:ring-2 focus:ring-primary-900'
         />
         <div className='flex flex-col gap-1 text-xs leading-4'>
           <div className='font-bold text-neutral-900'>{title}</div>

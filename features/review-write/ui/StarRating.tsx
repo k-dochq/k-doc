@@ -12,7 +12,7 @@ interface StarRatingProps {
 export function StarRating({ rating, onRatingChange, label, error }: StarRatingProps) {
   return (
     <div className='flex flex-col items-center gap-0.5'>
-      <label className='text-lg leading-[28px] font-semibold text-[#da47ef]'>{label}</label>
+      <label className='text-lg leading-[28px] font-semibold text-primary-900'>{label}</label>
       <div className='flex gap-0.5'>
         {[1, 2, 3, 4, 5].map((star) => (
           <button

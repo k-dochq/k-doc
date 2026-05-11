@@ -32,7 +32,7 @@ export function PrivacyAgreementField({
         <span
           aria-hidden
           className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-[4px] border ${
-            checked ? 'border-[#7657ff] bg-[#7657ff]' : 'border-neutral-300 bg-white'
+            checked ? 'border-primary-900 bg-primary-900' : 'border-neutral-300 bg-white'
           }`}
         >
           {checked ? <Check className='h-3.5 w-3.5 text-white' /> : null}

@@ -113,7 +113,7 @@ export function ReviewWriteForm({
             value={formData.procedureName}
             onChange={(e) => updateField('procedureName', e.target.value)}
             placeholder={formDict?.procedureNamePlaceholder || ''}
-            className='w-full rounded-xl border-2 border-[#FF60F7] bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-[#DA47EF] focus:outline-none'
+            className='w-full rounded-xl border-2 border-primary-800 bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
           />
           {errors.procedureName && <p className='text-xs text-red-500'>{errors.procedureName}</p>}
         </div>
@@ -138,7 +138,7 @@ export function ReviewWriteForm({
             placeholder={formDict?.contentPlaceholder || ''}
             rows={6}
             maxLength={500}
-            className='w-full resize-none rounded-xl border-2 border-[#FF60F7] bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-[#DA47EF] focus:outline-none'
+            className='w-full resize-none rounded-xl border-2 border-primary-800 bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-primary-900 focus:outline-none'
           />
           <div className='flex items-center justify-between'>
             {errors.content && <p className='text-xs text-red-500'>{errors.content}</p>}
@@ -182,7 +182,7 @@ export function ReviewWriteForm({
             <button
               type='submit'
               disabled={!isValid || isSubmitting || isUploading}
-              className='w-full rounded-xl bg-[#DA47EF] py-4 font-semibold text-white transition-opacity hover:bg-[#C63DD6] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50'
+              className='w-full rounded-xl bg-primary-900 py-4 font-semibold text-white transition-opacity hover:bg-primary-900/90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50'
             >
               {isSubmitting
                 ? formDict?.submitting || 'Submitting...'
@@ -197,8 +197,8 @@ export function ReviewWriteForm({
         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm'>
           <div className='flex flex-col items-center gap-4'>
             <div className='relative'>
-              <div className='h-16 w-16 animate-spin rounded-full border-4 border-[#DA47EF]/20'></div>
-              <div className='absolute inset-0 h-16 w-16 animate-spin rounded-full border-4 border-transparent border-t-[#DA47EF]'></div>
+              <div className='h-16 w-16 animate-spin rounded-full border-4 border-primary-900/20'></div>
+              <div className='absolute inset-0 h-16 w-16 animate-spin rounded-full border-4 border-transparent border-t-primary-900'></div>
             </div>
             <p className='text-base font-semibold text-white drop-shadow-lg'>
               {formDict?.uploading || '업로드중입니다'}

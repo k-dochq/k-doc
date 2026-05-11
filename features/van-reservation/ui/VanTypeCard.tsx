@@ -44,10 +44,10 @@ export function VanTypeCard({ vanInfo, isSelected, onSelect, dict }: VanTypeCard
       onClick={() => onSelect(vanInfo.id)}
       className={cn(
         'w-full rounded-xl border border-white p-4 text-left shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] transition-all',
-        isSelected ? 'border-[#DA47EF] bg-[#fce4ff] shadow-lg' : 'hover:shadow-md',
+        isSelected ? 'border-primary-900 bg-primary-light shadow-lg' : 'hover:shadow-md',
       )}
       style={{
-        background: isSelected ? '#fce4ff' : 'rgba(255, 255, 255, 0.50)',
+        background: isSelected ? 'var(--color-primary-light)' : 'rgba(255, 255, 255, 0.50)',
       }}
     >
       <div className='flex items-start gap-4'>
@@ -66,7 +66,7 @@ export function VanTypeCard({ vanInfo, isSelected, onSelect, dict }: VanTypeCard
         {/* Selection Indicator */}
         {isSelected && (
           <div className='flex-shrink-0'>
-            <div className='flex h-6 w-6 items-center justify-center rounded-full bg-[#DA47EF]'>
+            <div className='flex h-6 w-6 items-center justify-center rounded-full bg-primary-900'>
               <svg className='h-4 w-4 text-white' fill='currentColor' viewBox='0 0 20 20'>
                 <path
                   fillRule='evenodd'
@@ -84,12 +84,12 @@ export function VanTypeCard({ vanInfo, isSelected, onSelect, dict }: VanTypeCard
         <span className='text-sm text-neutral-500'>
           {dict.package?.vanReservation?.serviceType?.oneWay}:
         </span>
-        <span className='text-lg font-bold text-[#DA47EF]'>${vanInfo.basePrice.oneWay}</span>
+        <span className='text-lg font-bold text-primary-900'>${vanInfo.basePrice.oneWay}</span>
         <span className='text-xs text-neutral-400'>|</span>
         <span className='text-sm text-neutral-500'>
           {dict.package?.vanReservation?.serviceType?.hourlyCharter}:
         </span>
-        <span className='text-lg font-bold text-[#DA47EF]'>${vanInfo.basePrice.hourlyCharter}</span>
+        <span className='text-lg font-bold text-primary-900'>${vanInfo.basePrice.hourlyCharter}</span>
       </div>
     </button>
   );

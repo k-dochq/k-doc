@@ -14,7 +14,7 @@ export function Select({ label, error, className, children, ...props }: SelectPr
       <select
         className={cn(
           'w-full rounded-xl border border-neutral-300 bg-white px-4 py-4 pr-10 text-sm text-neutral-900',
-          'focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none',
+          'focus:border-transparent focus:ring-2 focus:ring-primary-900 focus:outline-none',
           'disabled:cursor-not-allowed disabled:opacity-50',
           error && 'border-red-500 focus:ring-red-500',
           className,

@@ -88,7 +88,7 @@ export function CommentForm({ reviewId, lang, dict }: CommentFormProps) {
         <button
           type='submit'
           disabled={!content.trim() || isSubmitting || !isAuthenticated || authLoading}
-          className='text-sm leading-5 font-semibold text-[#da47ef] transition-colors disabled:cursor-not-allowed disabled:text-neutral-300'
+          className='text-sm leading-5 font-semibold text-primary-900 transition-colors disabled:cursor-not-allowed disabled:text-neutral-300'
           style={{ fontFamily: 'Pretendard, sans-serif' }}
         >
           {getButtonText()}

@@ -31,7 +31,7 @@ export function ReviewEditErrorState({ lang, dict, reviewId, error }: ReviewEdit
           </p>
           <button
             onClick={() => router.push(`/review/${reviewId}`)}
-            className='rounded-xl bg-[#DA47EF] px-6 py-3 font-semibold text-white hover:bg-[#C63DD6]'
+            className='rounded-xl bg-primary-900 px-6 py-3 font-semibold text-white hover:bg-primary-900/90'
           >
             {dict.reviewWrite?.error?.retry || 'Go Back'}
           </button>

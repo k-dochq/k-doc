@@ -18,7 +18,7 @@ export function MessageBubble({ children, variant, className = '' }: MessageBubb
   };
 
   const userGradientStyle = {
-    background: 'linear-gradient(180deg, #AE33FB -251.39%, #DA47EF 226.61%, #6544FA 713.89%)',
+    background: 'linear-gradient(180deg, var(--color-primary-800) -251.39%, var(--color-primary-900) 226.61%, var(--color-primary-900) 713.89%)',
   };
 
   return (

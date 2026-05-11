@@ -15,7 +15,7 @@ export function OperatingHoursHeaderV2({ openingHours, lang }: OperatingHoursHea
     const isSunday = index === 6;
     const baseClasses =
       'flex items-center justify-center border-b border-neutral-200 py-2 text-center text-[13px] leading-[19px]';
-    const backgroundClass = isSunday ? 'bg-neutral-100' : 'bg-[#feefff]';
+    const backgroundClass = isSunday ? 'bg-neutral-100' : 'bg-primary-200';
     const textColorClass = isSunday
       ? isClosed
         ? 'text-[#e7000b]'

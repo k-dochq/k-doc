@@ -105,7 +105,7 @@ export function DatePicker({
           <label className='text-sm leading-5 font-medium text-neutral-900'>
             <span>
               {required && (
-                <span style={{ color: '#AE33FB' }}>[{dict?.auth?.signup?.required || '필수'}]</span>
+                <span style={{ color: 'var(--color-primary-900)' }}>[{dict?.auth?.signup?.required || '필수'}]</span>
               )}
               {!required && (
                 <span className='text-neutral-500'>[{dict?.auth?.signup?.optional || '선택'}]</span>
@@ -120,7 +120,7 @@ export function DatePicker({
           onClick={handleButtonClick}
           className={cn(
             'flex w-full items-center justify-between rounded-xl border border-neutral-300 bg-white px-4 py-4 text-left text-sm font-normal',
-            'focus:border-transparent focus:ring-2 focus:ring-[#DA47EF] focus:outline-none',
+            'focus:border-transparent focus:ring-2 focus:ring-primary-900 focus:outline-none',
             'disabled:cursor-not-allowed disabled:opacity-50',
             error && 'border-red-300 focus:ring-red-500',
           )}

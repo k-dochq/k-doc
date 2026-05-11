@@ -78,7 +78,7 @@ export function ReviewWriteFABV2({ lang, dict }: ReviewWriteFABV2Props) {
         <button
           onClick={handleClick}
           disabled={isLoading}
-          className='pointer-events-auto mx-auto flex items-center justify-center gap-1 rounded-full bg-[#7657FF] px-4 py-3 text-white shadow-lg transition-all duration-200 hover:bg-[#152570] hover:shadow-xl active:scale-95 disabled:cursor-not-allowed disabled:opacity-50'
+          className='pointer-events-auto mx-auto flex items-center justify-center gap-1 rounded-full bg-primary-900 px-4 py-3 text-white shadow-lg transition-all duration-200 hover:bg-primary-900/90 hover:shadow-xl active:scale-95 disabled:cursor-not-allowed disabled:opacity-50'
           aria-label={dict.reviewWrite?.fab?.ariaLabel || '시술후기 작성'}
         >
           <svg

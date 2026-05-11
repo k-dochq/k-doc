@@ -112,7 +112,7 @@ export function SearchGnbV2({ lang, dict }: SearchGnbV2Props) {
             </button>
           ) : (
             <button type='button' onClick={() => handleSearch()} className='flex shrink-0 items-center'>
-              <SearchIcon size={20} color='#F15BFF' />
+              <SearchIcon size={20} color='var(--color-primary-900)' />
             </button>
           )}
         </div>

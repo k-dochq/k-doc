@@ -13,7 +13,7 @@ export function UserMessageBubble({ children, className = '', isRtl = false }: U
     'box-border content-stretch flex flex-col gap-3 items-start justify-start px-3 py-2 relative rounded-[12px] max-w-[260px] break-words overflow-visible min-w-0';
 
   const userGradientStyle = {
-    background: 'linear-gradient(180deg, #AE33FB -251.39%, #DA47EF 226.61%, #6544FA 713.89%)',
+    background: 'linear-gradient(180deg, var(--color-primary-800) -251.39%, var(--color-primary-900) 226.61%, var(--color-primary-900) 713.89%)',
   };
 
   return (

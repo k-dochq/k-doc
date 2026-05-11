@@ -33,7 +33,7 @@ export function ConciergePlanTable({ dict }: ConciergePlanTableProps) {
     <section className='w-full py-9'>
       {/* Title */}
       <div className='flex flex-col items-center gap-3 px-5 text-center'>
-        <p className='concierge-title w-full text-[42px] leading-[1.1] text-[#7657ff]'>{t?.section4Title}</p>
+        <p className='concierge-title w-full text-[42px] leading-[1.1] text-primary-900'>{t?.section4Title}</p>
         <p className='w-full text-[14px] leading-5 text-[#737373]'>{t?.section4Description}</p>
       </div>
 

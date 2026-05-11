@@ -19,7 +19,7 @@ export function WriteReviewButton({ onClick, dict, reviewId }: WriteReviewButton
     <button
       onClick={onClick}
       className={`flex h-9 min-w-0 items-center justify-center gap-1 overflow-hidden rounded-lg px-4 py-2 ${
-        isEditReview ? 'bg-neutral-400' : 'bg-sub-900'
+        isEditReview ? 'bg-neutral-400' : 'bg-primary-900'
       }`}
     >
       {/* 펜 아이콘 */}

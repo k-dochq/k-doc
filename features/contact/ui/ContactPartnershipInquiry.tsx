@@ -37,7 +37,7 @@ export function ContactPartnershipInquiry({ lang, dict }: ContactPartnershipInqu
   return (
     <div className='mt-9'>
       {/* 입점 신청 상담 제목 */}
-      <h2 className='text-2xl font-bold' style={{ color: '#AE33FB' }}>
+      <h2 className='text-2xl font-bold' style={{ color: 'var(--color-primary-900)' }}>
         {dict.contact.partnershipInquiry.title}
       </h2>
 
@@ -48,7 +48,7 @@ export function ContactPartnershipInquiry({ lang, dict }: ContactPartnershipInqu
           target='_blank'
           rel='noopener noreferrer'
           className='flex h-14 w-full items-center justify-center gap-2 rounded-xl px-10 text-base leading-6 font-medium text-white'
-          style={{ backgroundColor: '#AE33FB' }}
+          style={{ backgroundColor: 'var(--color-primary-900)' }}
         >
           {dict.contact.partnershipInquiry.button}
         </a>

@@ -32,21 +32,21 @@ export function DentalIcon({ variant = 'normal' }: DentalIconProps) {
           />
           <path
             d='M7.81817 6.01024C5.88168 5.33426 5.33065 4.78659 4.64737 2.85879C3.96723 4.78346 3.4162 5.33113 1.47656 6.01024C3.41305 6.68622 3.96408 7.23389 4.64737 9.16168C5.3275 7.23702 5.87853 6.68935 7.81817 6.01024Z'
-            stroke='#DA47EF'
+            stroke="var(--color-primary-900)"
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M32.5202 17.0923C31.1568 16.6166 30.7695 16.2317 30.2908 14.8766C29.8122 16.2317 29.4249 16.6166 28.0615 17.0923C29.4249 17.568 29.8122 17.9529 30.2908 19.308C30.7695 17.9529 31.1568 17.568 32.5202 17.0923Z'
-            stroke='#DA47EF'
+            stroke="var(--color-primary-900)"
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
           <path
             d='M31.9723 5.82597C29.2959 4.89024 28.5339 4.13289 27.5955 1.47591C26.654 4.13602 25.892 4.89337 23.2188 5.82597C25.8952 6.7617 26.6572 7.51905 27.5955 10.176C28.537 7.51592 29.299 6.75857 31.9723 5.82597Z'
-            stroke='#DA47EF'
+            stroke="var(--color-primary-900)"
             strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
@@ -71,21 +71,21 @@ export function DentalIcon({ variant = 'normal' }: DentalIconProps) {
             />
             <path
               d='M9.19777 7.07087C6.91955 6.2756 6.27128 5.63128 5.46742 3.36328C4.66726 5.6276 4.01899 6.27191 1.73706 7.07087C4.01528 7.86614 4.66356 8.51046 5.46742 10.7785C6.26757 8.51414 6.91585 7.86982 9.19777 7.07087Z'
-              stroke='#DA47EF'
+              stroke="var(--color-primary-900)"
               strokeWidth='1.5'
               strokeLinecap='round'
               strokeLinejoin='round'
             />
             <path
               d='M38.2591 20.1086C36.6551 19.549 36.1995 19.0961 35.6364 17.5019C35.0733 19.0961 34.6177 19.549 33.0137 20.1086C34.6177 20.6683 35.0733 21.1211 35.6364 22.7153C36.1995 21.1211 36.6551 20.6683 38.2591 20.1086Z'
-              stroke='#DA47EF'
+              stroke="var(--color-primary-900)"
               strokeWidth='1.5'
               strokeLinecap='round'
               strokeLinejoin='round'
             />
             <path
               d='M37.6145 6.85408C34.4657 5.75322 33.5692 4.86222 32.4653 1.73636C31.3577 4.8659 30.4612 5.7569 27.3162 6.85408C30.4649 7.95494 31.3614 8.84594 32.4653 11.9718C33.5729 8.84226 34.4694 7.95126 37.6145 6.85408Z'
-              stroke='#DA47EF'
+              stroke="var(--color-primary-900)"
               strokeWidth='1.5'
               strokeLinecap='round'
               strokeLinejoin='round'

@@ -27,7 +27,7 @@ export function ServiceTypeSelector({ selectedType, onSelect, dict }: ServiceTyp
             className={cn(
               'rounded-xl border px-4 py-3 text-center text-sm font-medium shadow-[1px_1px_12px_0_rgba(76,25,168,0.12)] transition-all',
               selectedType === type
-                ? 'border-[#DA47EF] bg-[#DA47EF]/5 text-[#DA47EF]'
+                ? 'border-primary-900 bg-primary-900/5 text-primary-900'
                 : 'border-white text-neutral-700 hover:shadow-md',
             )}
             style={{

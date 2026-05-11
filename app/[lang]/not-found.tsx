@@ -84,7 +84,7 @@ export default function NotFound() {
         <LocaleLink
           href='/'
           locale={lang}
-          className='inline-flex items-center gap-2 rounded-lg bg-[#DA47EF] px-6 py-3 text-white transition-colors hover:bg-[#DA47EF]/90 focus:ring-2 focus:ring-[#DA47EF] focus:ring-offset-2 focus:outline-none'
+          className='inline-flex items-center gap-2 rounded-lg bg-primary-900 px-6 py-3 text-white transition-colors hover:bg-primary-900/90 focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 focus:outline-none'
         >
           <Home className='h-4 w-4' />
           {dict.homeButton}

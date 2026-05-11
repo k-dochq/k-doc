@@ -13,7 +13,7 @@ interface ConsentAgreementSectionProps {
 function CheckboxIcon({ checked }: { checked: boolean }) {
   if (checked) {
     return (
-      <div className='relative h-5 w-5 shrink-0 rounded-[4px] bg-sub-900'>
+      <div className='relative h-5 w-5 shrink-0 rounded-[4px] bg-primary-900'>
         <svg
           className='absolute inset-0 p-[15%]'
           viewBox='0 0 17 17'
@@ -40,7 +40,7 @@ function SubCheckIcon() {
     <svg className='h-[14px] w-[14px] shrink-0' viewBox='0 0 14 14' fill='none'>
       <path
         d='M2 7L5.5 10.5L12 3.5'
-        stroke='#7657FF'
+        stroke="var(--color-primary-900)"
         strokeWidth='2'
         strokeLinecap='round'
         strokeLinejoin='round'

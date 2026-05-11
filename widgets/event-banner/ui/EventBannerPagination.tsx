@@ -21,8 +21,8 @@ export function EventBannerPagination({
             onClick={() => onPageClick?.(index)}
             className={
               index === currentPage
-                ? 'h-2 w-6 rounded-full bg-[#DA47EF] transition-all'
-                : 'h-2 w-2 rounded bg-[#F9D1FF] transition-all hover:bg-[#DA47EF]/50'
+                ? 'h-2 w-6 rounded-full bg-primary-900 transition-all'
+                : 'h-2 w-2 rounded bg-primary-300 transition-all hover:bg-primary-900/50'
             }
             aria-label={`페이지 ${index + 1}로 이동`}
           />

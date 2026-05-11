@@ -1,17 +1,29 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #f15bff;
-  --color-primary-light: #fce4ff;
-  --color-primary-200: #feefff;
-  --color-primary-300: #fcdeff;
-  --color-primary-400: #fbceff;
-  --color-primary-500: #f8adff;
-  --color-primary-600: #f58cff;
-  --color-primary-700: #f47cff;
-  --color-primary-800: #f26bff;
-  --color-primary-900: #f15bff;
-  --color-sub-900: #7657ff;
+  /* Primary — 보라 (Purple) */
+  --color-primary: #7657ff;
+  --color-primary-light: #f1eeff;
+  --color-primary-200: #f1eeff;
+  --color-primary-300: #d9d9ff;
+  --color-primary-400: #c0bfff;
+  --color-primary-500: #a9a5ff;
+  --color-primary-600: #9e97ff;
+  --color-primary-700: #9389ff;
+  --color-primary-800: #897bff;
+  --color-primary-900: #7657ff;
+
+  /* Sub — 핑크 (Pink) */
+  --color-sub: #f15bff;
+  --color-sub-light: #fce4ff;
+  --color-sub-200: #feefff;
+  --color-sub-300: #fcdeff;
+  --color-sub-400: #fbceff;
+  --color-sub-500: #f8adff;
+  --color-sub-600: #f58cff;
+  --color-sub-700: #f47cff;
+  --color-sub-800: #f26bff;
+  --color-sub-900: #f15bff;
 }
 
 /* 베이스 토큰 */
@@ -72,7 +84,7 @@
   }
 
   .bg-gradient-primary {
-    background: linear-gradient(180deg, #ffdbf9 0.19%, #c7a8ff 99.82%);
+    background: linear-gradient(180deg, #f1eeff 0.19%, #c0bfff 99.82%);
   }
 
   /* 모바일 브라우저 viewport height 문제 해결 */
@@ -260,7 +272,7 @@
 }
 
 .animated-border-wrapper {
-  background: #795cf9;
+  background: #7657ff;
   border-radius: 9999px;
 }
 

@@ -17,7 +17,7 @@ export function StemCellIcon({ variant = 'default' }: StemCellIconProps) {
     >
       <path
         d='M17.0665 20.03L10.5298 26.7303'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -25,7 +25,7 @@ export function StemCellIcon({ variant = 'default' }: StemCellIconProps) {
       />
       <path
         d='M21.7295 8.17944L28.6283 15.2506'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -33,7 +33,7 @@ export function StemCellIcon({ variant = 'default' }: StemCellIconProps) {
       />
       <path
         d='M29.8784 2.18872C29.8784 4.78943 31.9353 6.89769 34.4725 6.89769'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -41,7 +41,7 @@ export function StemCellIcon({ variant = 'default' }: StemCellIconProps) {
       />
       <path
         d='M26.4783 6.24027L15.0459 17.9585L19.0876 22.1013L30.5201 10.3831L26.4783 6.24027Z'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -49,7 +49,7 @@ export function StemCellIcon({ variant = 'default' }: StemCellIconProps) {
       />
       <path
         d='M28.4995 8.3115L31.2243 5.51855'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'

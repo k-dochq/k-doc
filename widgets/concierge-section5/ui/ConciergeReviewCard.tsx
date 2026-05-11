@@ -14,7 +14,7 @@ export function ConciergeReviewCard({ title, body, author }: ConciergeReviewCard
       <p className='text-[16px] font-semibold leading-6 text-[#404040]'>{title}</p>
       <div className='flex items-center gap-1'>
         <PersonIcon />
-        <p className='text-[14px] font-semibold leading-5 text-[#7657ff]'>{author}</p>
+        <p className='text-[14px] font-semibold leading-5 text-primary-900'>{author}</p>
       </div>
       <p className='text-[14px] leading-5 text-[#737373]'>{body}</p>
     </div>

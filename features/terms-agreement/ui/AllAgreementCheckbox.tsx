@@ -21,7 +21,7 @@ export function AllAgreementCheckbox({
       onClick={onToggle}
       disabled={disabled}
       className={`flex w-full items-center gap-2 rounded-lg p-4 transition-colors ${
-        checked ? 'border border-[#7657FF] bg-[#f6f4ff]' : 'border border-neutral-200 bg-white'
+        checked ? 'border border-primary-900 bg-[#f6f4ff]' : 'border border-neutral-200 bg-white'
       }`}
     >
       {checked ? <AllAgreeCheckedIcon /> : <AllAgreeUncheckedIcon />}

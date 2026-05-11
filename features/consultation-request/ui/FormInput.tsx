@@ -15,7 +15,7 @@ export function FormInput({ label, error, icon, ...props }: FormInputProps) {
       <div className='relative'>
         <input
           {...props}
-          className={`w-full rounded-xl border bg-white px-4 py-4 text-sm leading-5 placeholder:font-normal placeholder:text-neutral-400 focus:border-transparent focus:ring-2 focus:ring-[#da47ef] focus:outline-none ${error ? 'border-red-500' : 'border-neutral-300'} `}
+          className={`w-full rounded-xl border bg-white px-4 py-4 text-sm leading-5 placeholder:font-normal placeholder:text-neutral-400 focus:border-transparent focus:ring-2 focus:ring-primary-900 focus:outline-none ${error ? 'border-red-500' : 'border-neutral-300'} `}
         />
         {icon && (
           <div className='absolute top-1/2 right-4 h-5 w-5 -translate-y-1/2 text-neutral-400'>

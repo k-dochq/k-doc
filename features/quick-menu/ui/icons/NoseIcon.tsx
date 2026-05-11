@@ -45,14 +45,14 @@ export function NoseIcon({ variant = 'default' }: NoseIconProps) {
       />
       <path
         d='M11.3519 33.2394C7.16976 31.9058 4.76398 27.3486 5.97606 23.0619'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
       <path
         d='M2.59268 24.2952L6.4524 21.6751L9.07448 25.7052'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
