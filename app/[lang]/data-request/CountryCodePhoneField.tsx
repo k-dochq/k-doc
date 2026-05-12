@@ -49,8 +49,8 @@ export function CountryCodePhoneField({
       <p className='text-base leading-6 font-semibold text-neutral-700'>
         {label} <span className='text-[#f31110]'>*</span>
       </p>
-      <div className='flex gap-2'>
-        <div ref={containerRef} className='relative min-w-[80px]'>
+      <div className='flex gap-1'>
+        <div ref={containerRef} className='relative'>
           <button
             type='button'
             onClick={() => setIsOpen((prev) => !prev)}
@@ -61,9 +61,8 @@ export function CountryCodePhoneField({
               src='/icons/select-chevron.svg'
               alt=''
               aria-hidden
-              width={8}
-              height={13}
-              className='h-[13px] w-2 rotate-90'
+              width={20}
+              height={20}
             />
           </button>
           {isOpen ? (

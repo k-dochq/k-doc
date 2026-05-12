@@ -174,7 +174,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   };
 
   return (
-    <div className='min-h-screen bg-white'>
+    <div className='min-h-screen overflow-x-hidden bg-white'>
       <PageHeader
         lang={lang}
         title={dict.footer?.dataRequest || 'Data Request'}
@@ -184,7 +184,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
       />
 
       <form id='data-request-form' onSubmit={handleSubmit} className='px-5 pt-5 pb-[132px]'>
-        <p className='mb-8 whitespace-pre-line text-sm leading-7 text-neutral-500'>{i18n.description}</p>
+        <p className='mb-10 whitespace-pre-line text-sm leading-5 text-neutral-500'>{i18n.description}</p>
 
         <div className='space-y-5'>
           <InputFieldV2
@@ -225,6 +225,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
             maxLength={500}
             rows={6}
             error={errors.content}
+            wrapperClassName='rounded-lg p-4'
           />
 
           <AttachmentField
