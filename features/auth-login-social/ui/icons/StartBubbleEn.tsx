@@ -26,7 +26,7 @@ export function StartBubbleEn() {
         >
           <stop stopColor='#3E57E2' />
           <stop offset='0.4' stopColor='#B133FF' />
-          <stop offset='1' stopColor='var(--color-primary-900)' />
+          <stop offset='1' stopColor='#FF5DCA' />
         </linearGradient>
       </defs>
     </svg>

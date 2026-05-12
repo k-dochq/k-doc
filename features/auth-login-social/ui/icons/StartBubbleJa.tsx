@@ -26,7 +26,7 @@ export function StartBubbleJa() {
         >
           <stop stop-color='#3E57E2' />
           <stop offset='0.4' stop-color='#B133FF' />
-          <stop offset='1' stop-color='var(--color-primary-900)' />
+          <stop offset='1' stop-color='#FF5DCA' />
         </linearGradient>
       </defs>
     </svg>
