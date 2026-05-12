@@ -92,7 +92,7 @@ export function CountryCodePhoneField({
           value={phone}
           onChange={(e) => onPhoneChange(e.target.value.replace(/[^0-9]/g, ''))}
           placeholder={placeholder}
-          className='h-[52px] flex-1 rounded-xl border border-neutral-400 bg-white px-4 text-sm text-neutral-700 placeholder:text-neutral-400 focus:outline-none focus:border-neutral-700'
+          className='h-[52px] flex-1 rounded-xl border border-neutral-400 bg-white px-4 text-sm text-neutral-700 placeholder:text-neutral-400 focus:outline-none focus:border-primary-900'
         />
       </div>
       {error ? <p className='text-xs text-[#f31110]'>{error}</p> : null}
