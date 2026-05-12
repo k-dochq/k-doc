@@ -10,6 +10,7 @@ import { createClient } from 'shared/lib/supabase/client';
 import { STORAGE_CONFIG, STORAGE_PATHS } from 'shared/config/storage';
 import { getAcceptString, isSupportedFileType } from 'shared/config/file-types';
 import { COUNTRY_CODES } from 'entities/country-code';
+import { SelectFieldV2 } from 'features/consultation-request/ui/SelectFieldV2';
 import { CountryCodePhoneField } from './CountryCodePhoneField';
 import { AttachmentField } from './AttachmentField';
 import { PrivacyAgreementField } from './PrivacyAgreementField';
@@ -28,6 +29,7 @@ interface FormErrors {
   name?: string;
   phone?: string;
   email?: string;
+  requestType?: string;
   content?: string;
   privacy?: string;
 }
@@ -50,10 +52,19 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
     },
     [],
   );
+  const requestTypeOptions = useMemo(
+    () => [
+      { value: 'UPDATE', label: i18n.requestTypeUpdate },
+      { value: 'DELETE', label: i18n.requestTypeDelete },
+    ],
+    [i18n.requestTypeUpdate, i18n.requestTypeDelete],
+  );
+
   const [name, setName] = useState('');
   const [countryCode, setCountryCode] = useState('+66');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [requestType, setRequestType] = useState('');
   const [content, setContent] = useState('');
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
@@ -65,6 +76,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
     name.trim() &&
     phone.trim() &&
     email.trim() &&
+    requestType &&
     content.trim() &&
     content.trim().length <= 500 &&
     privacyAgreed &&
@@ -127,6 +139,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
     if (!phone.trim()) nextErrors.phone = i18n.errors.requiredPhone;
     if (!email.trim()) nextErrors.email = i18n.errors.requiredEmail;
     else if (!isValidEmail(email.trim())) nextErrors.email = i18n.errors.invalidEmail;
+    if (!requestType) nextErrors.requestType = i18n.errors.requiredRequestType;
     if (!content.trim()) nextErrors.content = i18n.errors.requiredContent;
     else if (content.trim().length > 500) nextErrors.content = i18n.errors.maxContent;
     if (!privacyAgreed) nextErrors.privacy = i18n.errors.requiredPrivacy;
@@ -148,6 +161,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
           requesterName: name.trim(),
           requesterPhone: `${countryCode} ${phone.trim()}`,
           requesterEmail: email.trim(),
+          requestType,
           content: content.trim(),
           attachmentUrls: uploadedFiles.map((file) => file.url),
         }),
@@ -161,6 +175,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
       setName('');
       setPhone('');
       setEmail('');
+      setRequestType('');
       setContent('');
       setPrivacyAgreed(false);
       setUploadedFiles([]);
@@ -214,6 +229,15 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder={i18n.emailPlaceholder}
             error={errors.email}
+          />
+          <SelectFieldV2
+            label={i18n.requestTypeLabel}
+            required
+            value={requestType}
+            onChange={setRequestType}
+            options={requestTypeOptions}
+            placeholder={i18n.requestTypePlaceholder}
+            error={errors.requestType}
           />
           <TextareaFieldV2
             label={i18n.contentLabel}
