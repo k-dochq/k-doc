@@ -37,6 +37,35 @@ export const formatDateToString = (date: Date): string => {
 };
 
 /**
+ * 날짜(+시간) 문자열을 Date 객체로 변환
+ * YYYY-MM-DD 또는 YYYY-MM-DD HH:mm 형식 모두 처리
+ */
+export const parseDateTimeString = (value: string): Date => {
+  const [datePart, timePart] = value.split(' ');
+  const [year, month, day] = datePart.split('-').map(Number);
+  const d = new Date(year, month - 1, day);
+  if (timePart) {
+    const [h, m] = timePart.split(':').map(Number);
+    d.setHours(h, m, 0, 0);
+  }
+  return d;
+};
+
+/**
+ * Date 객체를 YYYY-MM-DD HH:mm 또는 YYYY-MM-DD 문자열로 변환
+ * 시간이 00:00이면 날짜만 반환
+ */
+export const formatDateTimeToString = (date: Date): string => {
+  const dateStr = formatDateToString(date);
+  const h = date.getHours();
+  const m = date.getMinutes();
+  if (h !== 0 || m !== 0) {
+    return `${dateStr} ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+  }
+  return dateStr;
+};
+
+/**
  * 두 날짜가 같은 날인지 확인
  * @param date1 - 첫 번째 Date 객체
  * @param date2 - 두 번째 Date 객체

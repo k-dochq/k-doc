@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { type Locale } from 'shared/config';
 import { resolveDrawer } from 'shared/lib/drawer';
+import { type OpeningHours } from 'entities/hospital/api/entities/opening-hours-types';
+import { generateTimeSlotsForDate } from 'shared/lib/opening-hours-utils';
 
 interface DatePickerDrawerContentV2Props {
   initialValue?: Date;
@@ -12,6 +14,7 @@ interface DatePickerDrawerContentV2Props {
   titlePlaceholder: string;
   minMonth?: Date;
   maxMonth?: Date;
+  openingHours?: OpeningHours;
 }
 
 const INTL_LOCALE_MAP: Record<Locale, string> = {
@@ -129,6 +132,7 @@ export function DatePickerDrawerContentV2({
   titlePlaceholder,
   minMonth,
   maxMonth,
+  openingHours,
 }: DatePickerDrawerContentV2Props) {
   const intlLocale = INTL_LOCALE_MAP[locale];
   const today = useMemo(() => startOfDay(new Date()), []);
@@ -156,6 +160,12 @@ export function DatePickerDrawerContentV2({
     clampToRange(initialValue ?? today),
   );
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedTime, setSelectedTime] = useState<string | undefined>(undefined);
+
+  const timeSlots = useMemo(
+    () => (openingHours && selected ? generateTimeSlotsForDate(openingHours, selected) : []),
+    [openingHours, selected],
+  );
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -210,6 +220,7 @@ export function DatePickerDrawerContentV2({
   const handleDayClick = (date: Date) => {
     if (disabled?.(date)) return;
     setSelected(date);
+    setSelectedTime(undefined);
   };
 
   const handleSelectMonth = (candidate: Date) => {
@@ -218,8 +229,18 @@ export function DatePickerDrawerContentV2({
   };
 
   const handleConfirm = () => {
-    resolveDrawer(selected);
+    if (!selected) return;
+    if (selectedTime) {
+      const [h, m] = selectedTime.split(':').map(Number);
+      const result = new Date(selected);
+      result.setHours(h, m, 0, 0);
+      resolveDrawer(result);
+    } else {
+      resolveDrawer(selected);
+    }
   };
+
+  const isConfirmDisabled = !selected || (timeSlots.length > 0 && !selectedTime);
 
   return (
     <div className='flex w-full flex-col bg-white pb-10'>
@@ -319,11 +340,36 @@ export function DatePickerDrawerContentV2({
         </div>
       </div>
 
-      <div className='px-5 pt-4'>
+      {timeSlots.length > 0 && (
+        <>
+          <div className='h-[6px] w-full bg-neutral-100 shrink-0' />
+          <div className='flex flex-col gap-5 p-5'>
+            <p className='text-base leading-6 font-semibold text-neutral-700'>시간 선택(KST)</p>
+            <div className='flex gap-2 overflow-x-auto pb-1'>
+              {timeSlots.map((slot) => (
+                <button
+                  key={slot}
+                  type='button'
+                  onClick={() => setSelectedTime(slot)}
+                  className={`shrink-0 rounded-full px-4 py-[6px] text-sm leading-5 font-medium transition-colors ${
+                    selectedTime === slot
+                      ? 'bg-primary-900 text-white'
+                      : 'border border-neutral-200 bg-white text-neutral-700'
+                  }`}
+                >
+                  {slot}
+                </button>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
+      <div className='px-5 pt-4 pb-10'>
         <button
           type='button'
           onClick={handleConfirm}
-          disabled={!selected}
+          disabled={isConfirmDisabled}
           className='bg-primary-900 hover:bg-primary-900/90 flex h-14 w-full items-center justify-center rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
         >
           {confirmLabel}
