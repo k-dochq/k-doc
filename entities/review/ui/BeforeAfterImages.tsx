@@ -21,7 +21,7 @@ export function BeforeAfterImages({
 
   // 기본 이미지 설정
   const defaultImage = {
-    imageUrl: '/images/shared/default_image.png',
+    imageUrl: '/images/shared/default_image_square.png',
     alt: '기본 이미지',
   };
 

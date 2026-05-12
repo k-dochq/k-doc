@@ -39,7 +39,7 @@ export function DualImageDisplay({
       {/* 첫 번째 이미지 (태그 포함) */}
       <div className='relative flex-1 cursor-pointer overflow-hidden' onClick={onFirstImageClick}>
         <Image
-          src={firstImageError ? '/images/shared/default_image.png' : firstImage.imageUrl}
+          src={firstImageError ? '/images/shared/default_image_square.png' : firstImage.imageUrl}
           alt={firstImage.alt || `${type === 'before' ? 'Before' : 'After'} 이미지 1`}
           fill
           className='object-cover'
@@ -55,7 +55,7 @@ export function DualImageDisplay({
         onClick={onSecondImageClick}
       >
         <Image
-          src={secondImageError ? '/images/shared/default_image.png' : secondImage.imageUrl}
+          src={secondImageError ? '/images/shared/default_image_square.png' : secondImage.imageUrl}
           alt={secondImage.alt || `${type === 'before' ? 'Before' : 'After'} 이미지 2`}
           fill
           className='object-cover'
