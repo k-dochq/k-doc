@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "治療前照片",
     "afterPhoto": "術後照片",
+    "beforeLabel": "前",
+    "afterLabel": "後",
     "loginRequired": "請登入查看圖片。"
   },
   "error": {

@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "Before Photo",
     "afterPhoto": "After Photo",
+    "beforeLabel": "Before",
+    "afterLabel": "After",
     "loginRequired": "Please log in\nto view the image."
   },
   "error": {

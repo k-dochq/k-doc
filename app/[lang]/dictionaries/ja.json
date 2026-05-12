@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "施術前の写真",
     "afterPhoto": "施術後の写真",
+    "beforeLabel": "前",
+    "afterLabel": "後",
     "loginRequired": "画像を見るにはログインしてください。"
   },
   "error": {

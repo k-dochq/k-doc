@@ -4,9 +4,10 @@ interface ImageModalHeaderV2Props {
   currentIndex: number;
   totalCount: number;
   onClose: () => void;
+  title?: string;
 }
 
-export function ImageModalHeaderV2({ currentIndex, totalCount, onClose }: ImageModalHeaderV2Props) {
+export function ImageModalHeaderV2({ currentIndex, totalCount, onClose, title }: ImageModalHeaderV2Props) {
   return (
     <div
       className='relative flex h-[58px] w-full items-center justify-center'
@@ -39,7 +40,7 @@ export function ImageModalHeaderV2({ currentIndex, totalCount, onClose }: ImageM
 
       {/* 가운데 페이지 정보 */}
       <p className='text-[16px] leading-[24px] font-semibold text-white'>
-        {currentIndex + 1} of {totalCount}
+        {title ? `${title} (${currentIndex + 1} of ${totalCount})` : `${currentIndex + 1} of ${totalCount}`}
       </p>
     </div>
   );

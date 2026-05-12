@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "Фото до процедуры",
     "afterPhoto": "Фотографии после процедуры",
+    "beforeLabel": "До",
+    "afterLabel": "После",
     "loginRequired": "Для просмотра изображений необходимо войти в систему."
   },
   "error": {

@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "Larawan bago ang paggamot",
     "afterPhoto": "Mga larawan pagkatapos ng pamamaraan",
+    "beforeLabel": "Bago",
+    "afterLabel": "Pagkatapos",
     "loginRequired": "Mangyaring mag-log in upang tingnan ang mga larawan."
   },
   "error": {

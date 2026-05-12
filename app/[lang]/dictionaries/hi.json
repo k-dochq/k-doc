@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "उपचार से पहले की तस्वीर",
     "afterPhoto": "प्रक्रिया के बाद की तस्वीरें",
+    "beforeLabel": "पहले",
+    "afterLabel": "बाद",
     "loginRequired": "चित्र देखने के लिए कृपया लॉग इन करें।"
   },
   "error": {

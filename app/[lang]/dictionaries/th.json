@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "ภาพก่อนการรักษา",
     "afterPhoto": "ภาพหลังการรักษา",
+    "beforeLabel": "ก่อน",
+    "afterLabel": "หลัง",
     "loginRequired": "กรุณาเข้าสู่ระบบ\nเพื่อดูภาพ"
   },
   "error": {

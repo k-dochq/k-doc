@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "صورة قبل العلاج",
     "afterPhoto": "صور ما بعد العملية",
+    "beforeLabel": "قبل",
+    "afterLabel": "بعد",
     "loginRequired": "يرجى تسجيل الدخول لعرض الصور."
   },
   "error": {
