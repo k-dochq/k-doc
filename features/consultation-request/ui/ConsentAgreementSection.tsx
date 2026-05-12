@@ -22,7 +22,7 @@ function CheckboxIcon({ checked }: { checked: boolean }) {
           <path
             d='M3 8.5L6.5 12L14 5'
             stroke='white'
-            strokeWidth='2.5'
+            strokeWidth='1.5'
             strokeLinecap='round'
             strokeLinejoin='round'
           />
@@ -31,7 +31,7 @@ function CheckboxIcon({ checked }: { checked: boolean }) {
     );
   }
   return (
-    <div className='h-5 w-5 shrink-0 rounded-[4px] border border-neutral-300 bg-white' />
+    <div className='h-5 w-5 shrink-0 rounded-[4px] border border-neutral-300 bg-neutral-100' />
   );
 }
 
@@ -41,7 +41,7 @@ function SubCheckIcon() {
       <path
         d='M2 7L5.5 10.5L12 3.5'
         stroke='#A3A3A3'
-        strokeWidth='2'
+        strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
