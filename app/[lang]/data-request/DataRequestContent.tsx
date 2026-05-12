@@ -189,7 +189,7 @@ export function DataRequestContent({ lang, dict }: DataRequestContentProps) {
   };
 
   return (
-    <div className='min-h-screen overflow-x-hidden bg-white'>
+    <div className='min-h-screen overflow-x-clip bg-white'>
       <PageHeader
         lang={lang}
         title={dict.footer?.dataRequest || 'Data Request'}
