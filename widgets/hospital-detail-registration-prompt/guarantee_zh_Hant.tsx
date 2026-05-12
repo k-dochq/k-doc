@@ -52,7 +52,7 @@ export default function GuaranteeZhHant() {
           <feComposite in2='hardAlpha' operator='out' />
           <feColorMatrix
             type='matrix'
-            values='0 0 0 0 0.67317 0 0 0 0 0.0570428 0 0 0 0 0.730675 0 0 0 1 0'
+            values='0 0 0 0 0.23137 0 0 0 0 0.14510 0 0 0 0 0.62353 0 0 0 1 0'
           />
           <feBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_2834_33597' />
           <feBlend
