@@ -101,7 +101,7 @@ export function RecommendedIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <mask
           id='mask0_466_7225'
@@ -150,6 +150,18 @@ export function RecommendedIconInactive() {
         <clipPath id='clip0_466_7225'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -173,7 +185,7 @@ export function EyesIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <mask
           id='mask0_466_5350'
@@ -225,6 +237,18 @@ export function EyesIconInactive() {
         <clipPath id='clip0_466_5350'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -336,7 +360,7 @@ export function NoseIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <path
           d='M29.5897 9.0625C29.5897 9.0625 30.8029 10.6761 29.8609 13.4119C28.916 16.1478 22.5552 23.0147 22.5552 23.0147C19.2857 26.6177 17.542 28.1864 18.3333 29.9633C19.6165 32.8448 23.8676 34.2371 26.1512 34.592'
@@ -385,6 +409,18 @@ export function NoseIconInactive() {
         <clipPath id='clip0_466_5425'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -493,7 +529,7 @@ export function LiftingIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <path
           d='M23.1757 41.5545V36.9891C23.1757 36.9891 18.5885 36.6454 14.9168 35.1636C11.245 33.6785 12.7372 28.1986 12.7372 28.1986L13.656 24.2038L12.0498 22.2615C11.2484 21.0067 12.5092 20.0923 12.5092 20.0923L16.6403 18.9509C20.6541 18.0365 17.7871 14.1552 22.1462 10.1604C22.1462 10.1604 24.2118 8.56183 26.9648 8.44836'
@@ -556,6 +592,18 @@ export function LiftingIconInactive() {
         <clipPath id='clip0_466_5396'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -678,7 +726,7 @@ export function FacialContouringIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <mask
           id='mask0_466_5362'
@@ -792,6 +840,18 @@ export function FacialContouringIconInactive() {
         <clipPath id='clip0_466_5362'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -965,7 +1025,7 @@ export function BreastIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <mask
           id='mask0_466_5310'
@@ -1069,6 +1129,18 @@ export function BreastIconInactive() {
         <clipPath id='clip0_466_5310'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -1232,7 +1304,7 @@ export function StemCellIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <path
           d='M22.1392 24.1917L16.6919 29.7752'
@@ -1323,6 +1395,18 @@ export function StemCellIconInactive() {
         <clipPath id='clip0_466_5444'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -1473,7 +1557,7 @@ export function LiposuctionIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <mask
           id='mask0_466_5407'
@@ -1570,6 +1654,18 @@ export function LiposuctionIconInactive() {
         <clipPath id='clip0_466_5407'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -1713,7 +1809,7 @@ export function BodyIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <mask
           id='mask0_466_5291'
@@ -1813,6 +1909,18 @@ export function BodyIconInactive() {
         <clipPath id='clip0_466_5291'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -1972,7 +2080,7 @@ export function HairTransplantIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <mask
           id='mask0_466_5383'
@@ -2022,6 +2130,18 @@ export function HairTransplantIconInactive() {
         <clipPath id='clip0_466_5383'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -2131,7 +2251,7 @@ export function DermatologyIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <path
           d='M19.3714 8.29492C19.3714 8.29492 14.2321 11.3977 15.357 18.0687C15.357 18.0687 16.1604 20.0855 14.7142 21.9472L11.9823 24.8948C11.9823 24.8948 11.0181 25.6705 12.4644 26.7565L14.0714 27.6873C14.0714 27.6873 13.5893 28.9284 14.3928 30.1695C14.3928 30.1695 13.2279 30.9066 14.5535 32.1863C16.1813 33.7578 14.0714 37.1508 17.6067 37.7713C21.1421 38.3919 27.5699 36.9956 30.7809 32.4966'
@@ -2190,6 +2310,18 @@ export function DermatologyIconInactive() {
         <clipPath id='clip0_466_5337'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -2308,7 +2440,7 @@ export function DentalIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <path
           d='M31.5163 17.1345C29.3369 15.5298 26.787 15.9133 25.0676 16.6037C24.3822 16.8768 23.6197 16.8768 22.9375 16.6037C21.2211 15.9164 18.6682 15.5329 16.4887 17.1345C13.3739 19.4264 14.405 24.7927 15.2385 26.2439C16.072 27.6921 17.1123 33.0921 17.8408 37.7496C17.9334 38.3479 18.1094 38.8817 18.3409 39.3634C19.0479 40.83 21.2798 40.2931 21.2798 38.667V33.2792C21.2798 31.7912 22.4528 30.5148 23.9501 30.4872C25.475 30.4596 26.7222 31.6807 26.7222 33.1903V38.667C26.7222 40.2931 28.9541 40.83 29.661 39.3634C29.8926 38.8817 30.0685 38.3479 30.1611 37.7496C30.8897 33.0921 31.93 27.6921 32.7635 26.2439C33.597 24.7957 34.6281 19.4295 31.5133 17.1345H31.5163Z'
@@ -2350,6 +2482,18 @@ export function DentalIconInactive() {
         <clipPath id='clip0_466_5329'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -2451,7 +2595,7 @@ export function OtherIconInactive() {
         />
         <path
           d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16L0.504883 15.5996C0.713873 7.35729 7.35729 0.713873 15.5996 0.504883L16 0.5Z'
-          stroke="var(--color-primary-500)"
+          stroke='url(#kdoc-cat-gradient)'
         />
         <path
           d='M34.5847 21.5562C36.505 19.1459 36.9706 15.9615 35.9705 13.1778C32.8766 12.0742 29.2839 12.7578 26.8044 15.2257C25.0549 16.9689 24.2035 19.2694 24.2394 21.5535'
@@ -2504,6 +2648,18 @@ export function OtherIconInactive() {
         <clipPath id='clip0_466_5434'>
           <rect width='50' height='50' fill='white' />
         </clipPath>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
       </defs>
     </svg>
   );
@@ -2690,7 +2846,7 @@ export function AllIconInactive() {
       />
       <path
         d='M16 0.5H34C42.5604 0.5 49.5 7.43959 49.5 16V34C49.5 42.5604 42.5604 49.5 34 49.5H16C7.43959 49.5 0.5 42.5604 0.5 34V16C0.5 7.43959 7.43959 0.5 16 0.5Z'
-        stroke="var(--color-primary-500)"
+        stroke='url(#kdoc-cat-gradient)'
       />
       <path
         d='M21.4129 12.8691H14.2947C13.5085 12.8691 12.8711 13.5065 12.8711 14.2928V21.411C12.8711 22.1972 13.5085 22.8346 14.2947 22.8346H21.4129C22.1992 22.8346 22.8365 22.1972 22.8365 21.411V14.2928C22.8365 13.5065 22.1992 12.8691 21.4129 12.8691Z'
@@ -2716,6 +2872,20 @@ export function AllIconInactive() {
         strokeWidth='1.5'
         strokeLinejoin='round'
       />
+      <defs>
+        <linearGradient
+          id='kdoc-cat-gradient'
+          x1='0.5'
+          y1='25'
+          x2='49.5'
+          y2='25'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='var(--color-sub-900)' />
+        </linearGradient>
+      </defs>
     </svg>
   );
 }
