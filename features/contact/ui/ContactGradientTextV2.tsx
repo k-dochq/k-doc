@@ -16,7 +16,7 @@ export function ContactGradientTextV2({ dict }: ContactGradientTextV2Props) {
       <p
         className='text-2xl leading-[32px] font-semibold'
         style={{
-          background: 'linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, #FF5DCA 100%)',
+          background: 'linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, var(--color-sub-900) 100%)',
           backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',

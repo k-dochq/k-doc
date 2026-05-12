@@ -13,10 +13,10 @@ export function ConciergeReviews({ dict, lang }: ConciergeReviewsProps) {
     <section
       className='w-full px-5 pt-12 pb-12'
       style={{
-        background: 'linear-gradient(180deg, #ffffff 13.47%, #7657ff 100%)',
+        background: 'linear-gradient(180deg, #ffffff 13.47%, var(--color-primary-900) 100%)',
       }}
     >
-      <p className='concierge-title whitespace-pre-line text-center text-[42px] leading-[1.1] text-[#7657ff]'>
+      <p className='concierge-title whitespace-pre-line text-center text-[42px] leading-[1.1] text-primary-900'>
         {dict.concierge?.section5Title}
       </p>
 

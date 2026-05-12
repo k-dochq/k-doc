@@ -23,7 +23,7 @@ export function FormTextarea({
         <textarea
           {...props}
           maxLength={maxLength}
-          className={`min-h-[120px] w-full resize-none rounded-xl border bg-white px-4 py-4 text-sm leading-5 placeholder:font-normal placeholder:text-neutral-400 focus:border-transparent focus:ring-2 focus:ring-[#da47ef] focus:outline-none ${error ? 'border-red-500' : 'border-neutral-300'} `}
+          className={`min-h-[120px] w-full resize-none rounded-xl border bg-white px-4 py-4 text-sm leading-5 placeholder:font-normal placeholder:text-neutral-400 focus:border-transparent focus:ring-2 focus:ring-primary-900 focus:outline-none ${error ? 'border-red-500' : 'border-neutral-300'} `}
         />
         <div className='text-right text-[13px] leading-[19px] text-neutral-500'>
           {currentLength}/{maxLength}

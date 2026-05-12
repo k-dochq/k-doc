@@ -22,14 +22,14 @@ export function FloatingPaymentButton({
 
   return (
     <div
-      className={`fixed right-0 bottom-0 left-0 z-50 mx-auto border-t border-neutral-200 bg-[#fce4ff] px-5 pt-4 pb-10 ${MAX_MOBILE_WIDTH_CLASS}`}
+      className={`fixed right-0 bottom-0 left-0 z-50 mx-auto border-t border-neutral-200 bg-primary-light px-5 pt-4 pb-10 ${MAX_MOBILE_WIDTH_CLASS}`}
     >
       <div className='flex items-center justify-between gap-4'>
         <div className='flex-1'>
           <div className='text-sm text-neutral-600'>
             {dict.package?.vanReservation?.price?.total || '총 금액'}
           </div>
-          <div className='text-2xl font-bold text-[#DA47EF]'>
+          <div className='text-2xl font-bold text-primary-900'>
             ${totalPrice} {currency}
           </div>
         </div>
@@ -39,7 +39,7 @@ export function FloatingPaymentButton({
           disabled={!isFormValid}
           className={`rounded-xl px-8 py-4 font-semibold text-white transition-all duration-200 ${
             isFormValid
-              ? 'bg-[#DA47EF] shadow-lg hover:bg-[#C73AE0] hover:shadow-xl'
+              ? 'bg-primary-900 shadow-lg hover:bg-primary-900/90 hover:shadow-xl'
               : 'cursor-not-allowed bg-neutral-300'
           } `}
         >

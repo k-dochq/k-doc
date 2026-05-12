@@ -13,7 +13,7 @@ export function EyeIconFigma({
   className = '',
   size = 40,
   iconColor = '#404040',
-  arrowColor = '#DA47EF',
+  arrowColor = 'var(--color-primary-900)',
 }: EyeIconFigmaProps) {
   // 비율에 맞게 height 계산 (40:26)
   const height = (size * 26) / 40;

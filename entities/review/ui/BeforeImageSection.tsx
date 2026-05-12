@@ -21,7 +21,7 @@ export function BeforeImageSection({
 }: BeforeImageSectionProps) {
   // 기본 이미지 설정 [[memory:8795787]]
   const defaultImage: DefaultImage = {
-    imageUrl: '/images/shared/default_image.png',
+    imageUrl: '/images/shared/default_image_square.png',
     alt: '기본 이미지',
   };
 

@@ -61,7 +61,7 @@ export function DistrictFilterButtonV2({
 
   // 지역이 선택되었을 때 Figma 디자인에 맞는 스타일 적용
   const buttonClassName = hasSelectedDistricts
-    ? 'flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-[#f58cff] bg-[#feefff] px-2 py-1.5'
+    ? 'flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-primary-600 bg-primary-200 px-2 py-1.5'
     : 'flex shrink-0 items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-white px-2 py-1.5';
 
   const textClassName = hasSelectedDistricts

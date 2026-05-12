@@ -140,7 +140,7 @@ export function SupportContent({ lang, dict }: SupportContentProps) {
 
         <button
           type='submit'
-          className='mt-8 h-[52px] w-full rounded-xl bg-sub-900 text-base font-semibold text-white transition-opacity hover:opacity-90'
+          className='mt-8 h-[52px] w-full rounded-xl bg-primary-900 text-base font-semibold text-white transition-opacity hover:opacity-90'
         >
           {dict.support?.form?.submitButton || '제출하기'}
         </button>

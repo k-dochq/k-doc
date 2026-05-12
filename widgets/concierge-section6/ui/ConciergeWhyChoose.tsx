@@ -13,7 +13,7 @@ export function ConciergeWhyChoose({ dict, lang }: ConciergeWhyChooseProps) {
   const t = dict.concierge;
 
   return (
-    <section className='flex w-full flex-col items-center gap-6 bg-[#7657ff] px-5 py-12'>
+    <section className='flex w-full flex-col items-center gap-6 bg-primary-900 px-5 py-12'>
       {/* Title */}
       <p className='concierge-title w-full whitespace-pre-line text-center text-[42px] leading-[1.1] text-white'>
         {t?.section6Title}

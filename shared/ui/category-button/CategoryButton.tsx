@@ -47,12 +47,12 @@ export function CategoryButton({
           isActive
             ? {
                 backgroundImage:
-                  'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%), linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
+                  'linear-gradient(180deg, #FFF 0%, var(--color-primary-light) 100%), linear-gradient(90deg, var(--color-primary-800) 0%, var(--color-primary-900) 100%)',
                 backgroundOrigin: 'border-box',
                 backgroundClip: 'content-box, border-box',
               }
             : {
-                background: 'linear-gradient(180deg, #FFF 0%, #FFD9F9 100%)',
+                background: 'linear-gradient(180deg, #FFF 0%, var(--color-primary-light) 100%)',
               }
         }
       >

@@ -71,8 +71,8 @@ export function HospitalDetailLocationV2({
 
       {/* 주소 영역 */}
       {address && (
-        <div className='space-y-2'>
-          <div className='flex items-start gap-2'>
+        <div className='mt-3 space-y-2'>
+          <div className='flex items-start gap-1'>
             <LocationPinPinkIconV2 className='shrink-0' />
             <p className='min-w-0 text-sm leading-5 whitespace-pre-wrap text-neutral-500'>
               {address}

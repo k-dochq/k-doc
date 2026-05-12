@@ -18,7 +18,7 @@ export function ConciergeSection2({ lang, dict }: ConciergeSection2Props) {
       }}
     >
       <div className='flex w-full max-w-[335px] flex-col items-center gap-3'>
-        <p className='concierge-title w-full text-center text-[32px] leading-[1.1] text-[#7657ff]'>
+        <p className='concierge-title w-full text-center text-[32px] leading-[1.1] text-primary-900'>
           {t.section2Title}
         </p>
         <div className='flex items-center gap-2 text-[14px] leading-5 text-[#737373]'>

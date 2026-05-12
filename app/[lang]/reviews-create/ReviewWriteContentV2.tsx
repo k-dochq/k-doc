@@ -143,7 +143,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
           fallbackUrl={`/${lang}/reviews`}
         />
         <div className='flex min-h-screen items-center justify-center pt-[58px]'>
-          <Loader2 size={48} className='animate-spin text-[#DA47EF]' />
+          <Loader2 size={48} className='animate-spin text-primary-900' />
         </div>
       </>
     );
@@ -167,7 +167,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
             </p>
             <button
               onClick={() => router.push('/reviews/select-hospital')}
-              className='rounded-xl bg-[#DA47EF] px-6 py-3 font-semibold text-white hover:bg-[#C63DD6]'
+              className='rounded-xl bg-primary-900 px-6 py-3 font-semibold text-white hover:bg-primary-900/90'
             >
               {dict.reviewWrite?.error?.retry || 'Go Back'}
             </button>
@@ -298,7 +298,7 @@ export function ReviewWriteContentV2({ lang, dict, hospitalId }: ReviewWriteCont
         <button
           type='submit'
           disabled={!isValid || isSubmitting || isUploading}
-          className='bg-sub-900 hover:bg-sub-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
+          className='bg-primary-900 hover:bg-primary-900/90 h-14 w-full rounded-xl text-base leading-6 font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
         >
           {isSubmitting
             ? formDict?.submitting || 'Submitting...'

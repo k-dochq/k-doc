@@ -13,7 +13,7 @@ export function PopularReviewCardV2BeforeAfter({
   afterImage,
 }: PopularReviewCardV2BeforeAfterProps) {
   const defaultImage = {
-    imageUrl: '/images/shared/default_image.png',
+    imageUrl: '/images/shared/default_image_square.png',
     alt: '기본 이미지',
   };
 

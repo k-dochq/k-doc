@@ -76,7 +76,7 @@ export function NoticePaginationV2({
               onClick={() => onPageChange(page)}
               disabled={isLoading}
               className={`flex size-[36px] items-center justify-center rounded-lg text-lg font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
-                isActive ? 'bg-[#7657ff] text-white' : 'text-neutral-700 hover:bg-neutral-100'
+                isActive ? 'bg-primary-900 text-white' : 'text-neutral-700 hover:bg-neutral-100'
               }`}
               aria-label={`페이지 ${page}`}
               aria-current={isActive ? 'page' : undefined}

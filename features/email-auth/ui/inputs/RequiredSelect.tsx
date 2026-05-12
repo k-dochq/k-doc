@@ -25,14 +25,14 @@ export function RequiredSelect({
     <div className='flex w-full flex-col gap-2'>
       <label className='text-sm leading-5 font-medium text-neutral-900'>
         <span>
-          <span style={{ color: '#AE33FB' }}>[{dict?.auth?.signup?.required || '필수'}]</span>{' '}
+          <span style={{ color: 'var(--color-primary-900)' }}>[{dict?.auth?.signup?.required || '필수'}]</span>{' '}
           {label}
         </span>
       </label>
       <div
         className='rounded-xl p-[2px]'
         style={{
-          background: 'linear-gradient(90deg, #FF60F7 0%, #AE33FB 100%)',
+          background: 'linear-gradient(90deg, var(--color-primary-800) 0%, var(--color-primary-900) 100%)',
         }}
       >
         <select

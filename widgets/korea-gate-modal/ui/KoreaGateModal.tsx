@@ -49,7 +49,7 @@ export function KoreaGateModal() {
           <button
             type='button'
             onClick={handleGoGlobal}
-            className='flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#7657FF] px-5 py-4 text-[16px] leading-6 font-medium text-white'
+            className='flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary-900 px-5 py-4 text-[16px] leading-6 font-medium text-white'
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'

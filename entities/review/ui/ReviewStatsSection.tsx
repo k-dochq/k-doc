@@ -97,7 +97,7 @@ export function ReviewStatsSection({
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align='end'
-          className='rounded-[6px] border border-[rgba(218,71,239,0.2)] bg-white p-1 shadow-md'
+          className='rounded-[6px] border border-primary-900/20 bg-white p-1 shadow-md'
         >
           {user?.id === review.userId && (
             <DropdownMenuItem

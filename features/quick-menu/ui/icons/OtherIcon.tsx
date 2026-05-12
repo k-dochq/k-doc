@@ -18,14 +18,14 @@ export function OtherIcon({ variant = 'default' }: OtherIconProps) {
       <g clipPath='url(#clip0_213_7524)'>
         <path
           d='M29.5022 13.8674C31.8065 10.975 32.3652 7.15368 31.1651 3.81331C27.4524 2.48902 23.1412 3.30929 20.1657 6.27082C18.0663 8.36268 17.0447 11.1233 17.0877 13.8641'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M21.3262 13.6236L26.606 8.36267'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

@@ -13,6 +13,7 @@ interface ImageModalCarouselV2Props {
   isOpen: boolean;
   onClose: () => void;
   onIndexChange?: (index: number) => void;
+  title?: string;
 }
 
 export function ImageModalCarouselV2({
@@ -21,6 +22,7 @@ export function ImageModalCarouselV2({
   isOpen,
   onClose,
   onIndexChange,
+  title,
 }: ImageModalCarouselV2Props) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
@@ -54,6 +56,7 @@ export function ImageModalCarouselV2({
             currentIndex={currentIndex}
             totalCount={images.length}
             onClose={onClose}
+            title={title}
           />
 
           {/* 캐러셀 컨텐츠 */}

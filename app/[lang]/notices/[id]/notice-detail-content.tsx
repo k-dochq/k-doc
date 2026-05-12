@@ -36,7 +36,7 @@ function NoticeDetailInner({ noticeId, lang, dict }: NoticeDetailContentProps) {
       <div className='overflow-hidden rounded-xl border border-white bg-white/50 backdrop-blur-[6px]'>
         <div className='space-y-4 px-4 py-4'>
           {/* 제목 */}
-          <h1 className='text-[18px] leading-[26px] font-bold text-[#da47ef]'>
+          <h1 className='text-[18px] leading-[26px] font-bold text-primary-900'>
             {extractLocalizedText(notice.title, lang) || '제목 없음'}
           </h1>
 

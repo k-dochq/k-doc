@@ -17,7 +17,7 @@ export function ProfileAvatarButton({ profileImgUrl, isBusy, onClick }: ProfileA
       className='relative size-[64px] shrink-0 cursor-pointer rounded-full border-0 p-0 focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed'
       aria-label='프로필 사진 변경'
     >
-      <div className='absolute inset-0 size-[64px] overflow-clip rounded-full bg-[#FBCEFF]'>
+      <div className='absolute inset-0 size-[64px] overflow-clip rounded-full bg-primary-300'>
         {profileImgUrl ? (
           <img
             src={profileImgUrl}

@@ -141,7 +141,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                       }}
                       className='flex w-[60px] flex-col items-center gap-1'
                     >
-                      <div className='flex size-[60px] items-center justify-center rounded-2xl border border-[#f8adff] bg-white'>
+                      <div className='flex size-[60px] items-center justify-center rounded-2xl border border-primary-500 bg-white'>
                         {category.iconSmall()}
                       </div>
                       <p className="w-full text-center font-['Pretendard'] text-xs font-medium leading-4 text-[#404040]">

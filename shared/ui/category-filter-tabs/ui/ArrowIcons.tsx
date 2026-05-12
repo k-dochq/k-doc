@@ -14,7 +14,7 @@ export function LeftArrowIcon({ className = '' }: ArrowIconProps) {
     >
       <path
         d='M12.5 15.834L6.66667 10.0007L12.5 4.16732'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
@@ -35,7 +35,7 @@ export function RightArrowIcon({ className = '' }: ArrowIconProps) {
     >
       <path
         d='M7.5 15.834L13.3333 10.0007L7.5 4.16732'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'

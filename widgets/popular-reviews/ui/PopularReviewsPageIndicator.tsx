@@ -22,7 +22,7 @@ export function PopularReviewsPageIndicator({
     <div className={`flex justify-center ${className}`}>
       <div className='relative w-full'>
         {/* 배경 바 */}
-        <div className='h-[3px] overflow-hidden rounded-full bg-[#FCE4FF]'>
+        <div className='h-[3px] overflow-hidden rounded-full bg-primary-light'>
           {/* 진행 바 */}
           <div
             className='h-full rounded-full bg-primary-900 transition-all duration-300 ease-in-out'

@@ -52,8 +52,8 @@ export function DetailHeartIcon({ isLiked }: DetailHeartIconProps) {
           y2='10.4167'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stopColor='#DA47EF' />
-          <stop offset='1' stopColor='#AE33FB' />
+          <stop stopColor="var(--color-primary-900)" />
+          <stop offset='1' stopColor='var(--color-primary-900)' />
         </linearGradient>
         <linearGradient
           id='paint1_linear_1403_3471'
@@ -74,8 +74,8 @@ export function DetailHeartIcon({ isLiked }: DetailHeartIconProps) {
           y2='10.4167'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stopColor='#DA47EF' />
-          <stop offset='1' stopColor='#AE33FB' />
+          <stop stopColor="var(--color-primary-900)" />
+          <stop offset='1' stopColor='var(--color-primary-900)' />
         </linearGradient>
         <linearGradient
           id='paint3_linear_1403_3471'

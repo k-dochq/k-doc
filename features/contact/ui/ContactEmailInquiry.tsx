@@ -23,7 +23,7 @@ export function ContactEmailInquiry({ dict }: ContactEmailInquiryProps) {
           href='mailto:cs@k-doc.kr'
           target='_blank'
           rel='noopener noreferrer'
-          className='flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#DA47EF] px-10 text-base leading-6 font-medium text-white'
+          className='flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary-900 px-10 text-base leading-6 font-medium text-white'
         >
           {dict.contact.emailInquiry.button}
         </a>

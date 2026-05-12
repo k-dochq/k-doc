@@ -51,7 +51,7 @@ export function AttachmentField({
           ))}
         </div>
       ) : null}
-      <label className='inline-flex h-11 cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-sub-900'>
+      <label className='inline-flex h-11 cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm font-medium text-primary-900'>
         <Image src='/icons/file-add.svg' alt='' aria-hidden width={20} height={20} />
         <span>{isUploading ? uploadingLabel : addFileLabel}</span>
         <input

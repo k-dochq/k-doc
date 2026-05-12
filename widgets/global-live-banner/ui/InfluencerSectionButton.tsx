@@ -26,7 +26,7 @@ export function InfluencerSectionButton({ lang }: InfluencerSectionButtonProps) 
         href={url}
         target='_blank'
         rel='noopener noreferrer'
-        className='flex w-full items-center justify-center rounded-xl bg-[#7657FF] px-5 py-4'
+        className='flex w-full items-center justify-center rounded-xl bg-primary-900 px-5 py-4'
       >
         <span className='text-base font-medium leading-6 text-white'>{label}</span>
       </a>

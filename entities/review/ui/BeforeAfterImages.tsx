@@ -21,7 +21,7 @@ export function BeforeAfterImages({
 
   // 기본 이미지 설정
   const defaultImage = {
-    imageUrl: '/images/shared/default_image.png',
+    imageUrl: '/images/shared/default_image_square.png',
     alt: '기본 이미지',
   };
 
@@ -58,8 +58,7 @@ export function BeforeAfterImages({
           sizes='(max-width: 768px) 45vw, 200px'
         />
         <span
-          className='absolute right-0 bottom-0 rounded-tl-sm rounded-tr-none rounded-br-none rounded-bl-none px-1 py-0.5 text-[11px] font-medium text-white'
-          style={{ backgroundColor: 'rgba(218, 71, 239, 0.70)' }}
+          className='absolute right-0 bottom-0 rounded-tl-sm rounded-tr-none rounded-br-none rounded-bl-none bg-primary-900/70 px-1 py-0.5 text-[11px] font-medium text-white'
         >
           After
         </span>

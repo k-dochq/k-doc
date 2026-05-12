@@ -30,7 +30,7 @@ export function SingleImageDisplay({
       onClick={onImageClick}
     >
       <Image
-        src={imageError ? '/images/shared/default_image.png' : image.imageUrl}
+        src={imageError ? '/images/shared/default_image_square.png' : image.imageUrl}
         alt={image.alt || `${type === 'before' ? 'Before' : 'After'} 이미지`}
         fill
         className='object-cover'

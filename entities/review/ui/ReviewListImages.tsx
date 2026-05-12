@@ -33,6 +33,7 @@ export function ReviewListImages({
 }: ReviewListImagesProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [currentModalIndex, setCurrentModalIndex] = useState(0);
   const router = useLocalizedRouter();
 
   // beforeImages와 afterImages가 모두 빈값이거나 없으면 컴포넌트를 렌더링하지 않음
@@ -69,6 +70,7 @@ export function ReviewListImages({
 
     // 이미지 모달 열기 (beforeImages와 afterImages를 합친 배열 기준 인덱스)
     setSelectedImageIndex(index);
+    setCurrentModalIndex(index);
     setIsModalOpen(true);
   };
 
@@ -109,6 +111,8 @@ export function ReviewListImages({
         initialIndex={selectedImageIndex}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+        title={currentModalIndex < beforeImages.length ? dict.reviewImages?.beforeLabel : dict.reviewImages?.afterLabel}
+        onIndexChange={setCurrentModalIndex}
       />
     </>
   );

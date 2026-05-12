@@ -1,3 +1,4 @@
+import { ReservationStatus } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
 import {
   type ReservationWithHospital,
@@ -105,8 +106,12 @@ export class ReservationRepository {
   private async buildReservationsWhereClause(
     userId: string,
     hasReviewed?: boolean,
-  ): Promise<{ userId: string; hospitalId?: { in?: string[]; notIn?: string[] } }> {
-    const baseWhere = { userId };
+  ): Promise<{
+    userId: string;
+    status: { not: ReservationStatus };
+    hospitalId?: { in?: string[]; notIn?: string[] };
+  }> {
+    const baseWhere = { userId, status: { not: ReservationStatus.PAYMENT_PENDING } };
 
     if (hasReviewed === undefined) {
       return baseWhere;

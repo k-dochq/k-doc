@@ -84,28 +84,28 @@ export function FacialContouringIcon({ variant = 'default' }: FacialContouringIc
         />
         <path
           d='M1.94531 31.5151H9.11604'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M48.5547 31.5151H41.384'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M6.72559 33.9393L9.11583 31.5151L6.72559 29.0908'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M43.7744 33.9393L41.3842 31.5151L43.7744 29.0908'
-          stroke='#DA47EF'
+          stroke="var(--color-primary-900)"
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'

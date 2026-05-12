@@ -17,7 +17,7 @@ export function MoreIcon({ size = 24, className = '' }: MoreIconProps) {
     >
       <path
         d='M11.9925 12H12.0075M6 12H6.01498M17.985 12H18'
-        stroke='#DA47EF'
+        stroke="var(--color-primary-900)"
         strokeWidth='3'
         strokeLinecap='round'
         strokeLinejoin='round'

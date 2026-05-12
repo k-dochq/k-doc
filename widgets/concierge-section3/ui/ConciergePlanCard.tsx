@@ -32,7 +32,7 @@ export function ConciergePlanCard({ lang, dict }: ConciergePlanCardProps) {
     <div
       className='w-full rounded-3xl p-[6px] shadow-[2px_2px_10px_0px_rgba(43,34,183,0.4)]'
       style={{
-        background: 'linear-gradient(90deg, #3e57e2 0%, #b133ff 40%, #ff5dca 100%)',
+        background: 'linear-gradient(90deg, #3e57e2 0%, #b133ff 40%, var(--color-sub-900) 100%)',
       }}
     >
       {/* Recommended badge */}
@@ -61,7 +61,7 @@ export function ConciergePlanCard({ lang, dict }: ConciergePlanCardProps) {
           type='button'
           onClick={handleConsult}
           disabled={isLoading}
-          className='flex h-14 w-full items-center justify-center gap-1 rounded-xl bg-[#7657ff] px-5 py-4 disabled:opacity-70'
+          className='flex h-14 w-full items-center justify-center gap-1 rounded-xl bg-primary-900 px-5 py-4 disabled:opacity-70'
         >
           {isLoading ? (
             <Loader2 className='h-5 w-5 animate-spin text-white' />

@@ -80,10 +80,10 @@ export function AllInOnePackageForm({ lang, dict }: AllInOnePackageFormProps) {
           <button
             type='button'
             onClick={() => updateField('hasPicketing', !formData.hasPicketing)}
-            className='flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-300 transition-all hover:border-[#DA47EF]'
+            className='flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-300 transition-all hover:border-primary-900'
             style={{
-              backgroundColor: formData.hasPicketing ? '#DA47EF' : 'transparent',
-              borderColor: formData.hasPicketing ? '#DA47EF' : '#D1D5DB',
+              backgroundColor: formData.hasPicketing ? 'var(--color-primary-900)' : 'transparent',
+              borderColor: formData.hasPicketing ? 'var(--color-primary-900)' : '#D1D5DB',
             }}
           >
             {formData.hasPicketing && (
@@ -104,7 +104,7 @@ export function AllInOnePackageForm({ lang, dict }: AllInOnePackageFormProps) {
           >
             {dict.package?.vanReservation?.picketing?.label || '피켓팅 서비스'}
           </div>
-          <p className='mt-1 text-sm font-bold text-[#DA47EF]'>
+          <p className='mt-1 text-sm font-bold text-primary-900'>
             {dict.package?.vanReservation?.picketing?.price || '+$4'}
           </p>
         </div>

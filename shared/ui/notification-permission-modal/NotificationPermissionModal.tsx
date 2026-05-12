@@ -62,7 +62,7 @@ export function NotificationPermissionModal({ lang, dict }: NotificationPermissi
             {/* 알림 받기 버튼 */}
             <button
               onClick={handleAccept}
-              className='bg-sub-900 flex w-full items-center justify-center gap-2 rounded-xl px-10 py-4'
+              className='bg-primary-900 flex w-full items-center justify-center gap-2 rounded-xl px-10 py-4'
             >
               <p className='text-base leading-6 font-medium text-white'>
                 {dict.consultation.notificationPermission.acceptButton}

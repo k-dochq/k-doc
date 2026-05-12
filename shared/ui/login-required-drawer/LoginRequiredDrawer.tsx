@@ -86,7 +86,7 @@ export function LoginRequiredDrawer({ lang, dict, redirectPath }: LoginRequiredD
       <div className='flex flex-col gap-4 px-5 pt-4 pb-10'>
         <button
           onClick={handleLogin}
-          className='bg-sub-900 flex h-14 w-full items-center justify-center gap-2 rounded-xl px-5 py-4'
+          className='bg-primary-900 flex h-14 w-full items-center justify-center gap-2 rounded-xl px-5 py-4'
         >
           <p className='text-base leading-6 font-medium text-white'>{loginButtonText}</p>
         </button>

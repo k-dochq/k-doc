@@ -68,7 +68,7 @@ export function NoticeNavigationV2({
       <div className='flex items-center justify-center'>
         <LocaleLink
           href='/notices'
-          className='bg-sub-900 hover:bg-sub-900/90 flex items-center justify-center rounded-full px-16 py-3 text-base font-semibold text-white transition-colors'
+          className='bg-primary-900 hover:bg-primary-900/90 flex items-center justify-center rounded-full px-16 py-3 text-base font-semibold text-white transition-colors'
         >
           {dict.notices.viewList}
         </LocaleLink>

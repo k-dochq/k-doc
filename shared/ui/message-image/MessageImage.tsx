@@ -51,7 +51,7 @@ export function MessageImage({ url, alt = 'Uploaded image', dict }: MessageImage
       >
         {isLoading && (
           <div className='absolute inset-0 flex items-center justify-center'>
-            <div className='h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-[#DA47EF]' />
+            <div className='h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-primary-900' />
           </div>
         )}
         <Image

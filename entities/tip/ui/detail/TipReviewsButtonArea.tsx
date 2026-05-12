@@ -19,7 +19,7 @@ export function TipReviewsButtonArea({ lang, dict }: TipReviewsButtonAreaProps) 
         <LocaleLink
           href='/reviews'
           locale={lang}
-          className='flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#7657ff] px-5 py-4 text-base font-medium leading-6 text-white'
+          className='flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary-900 px-5 py-4 text-base font-medium leading-6 text-white'
         >
           {dict.tips?.viewReviews ?? 'View Reviews'}
         </LocaleLink>

@@ -38,7 +38,7 @@ export function ProcedureFilterCategoryList({
                 onClick={() => onToggle(type)}
                 className={`flex flex-1 items-center gap-2 py-2 ${
                   isLeft ? 'px-5' : 'ps-2 pe-5'
-                } ${isSelected ? 'bg-[#feefff]' : 'bg-white'}`}
+                } ${isSelected ? 'bg-primary-200' : 'bg-white'}`}
               >
                 <div className='flex size-[48px] shrink-0 items-center justify-center'>
                   {category.icon()}

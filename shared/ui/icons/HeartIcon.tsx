@@ -36,8 +36,8 @@ export function HeartIcon({
           y2='10.417'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stopColor='#FF60F7' />
-          <stop offset='1' stopColor='#AE33FB' />
+          <stop stopColor='var(--color-primary-800)' />
+          <stop offset='1' stopColor='var(--color-primary-900)' />
         </linearGradient>
         <linearGradient
           id='paint1_linear_1701_10915'
@@ -47,8 +47,8 @@ export function HeartIcon({
           y2='10.417'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stopColor='#FF60F7' />
-          <stop offset='1' stopColor='#AE33FB' />
+          <stop stopColor='var(--color-primary-800)' />
+          <stop offset='1' stopColor='var(--color-primary-900)' />
         </linearGradient>
       </defs>
     </svg>

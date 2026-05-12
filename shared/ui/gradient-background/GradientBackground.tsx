@@ -14,7 +14,7 @@ interface GradientBackgroundProps {
 }
 
 const DEFAULT_GRADIENT = {
-  start: '#FFDBF9',
+  start: 'var(--color-primary-light)',
   end: '#BD9AFF',
 };
 

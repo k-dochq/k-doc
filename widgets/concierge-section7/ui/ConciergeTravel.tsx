@@ -12,7 +12,7 @@ export function ConciergeTravel({ dict }: ConciergeTravelProps) {
     <section className='flex w-full flex-col items-center gap-6 bg-[#FFF3FF] py-12'>
       {/* Title + Description */}
       <div className='flex w-full flex-col items-center gap-3 px-5 text-center'>
-        <div className='concierge-title w-full text-[42px] leading-[1.1] text-[#7657ff]'>
+        <div className='concierge-title w-full text-[42px] leading-[1.1] text-primary-900'>
           <p className='mb-0'>{t?.section7TitleLine1}</p>
           <p>
             <span className='italic'>{t?.section7TitleLine2Italic} </span>

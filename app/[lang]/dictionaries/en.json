@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "Before Photo",
     "afterPhoto": "After Photo",
+    "beforeLabel": "Before",
+    "afterLabel": "After",
     "loginRequired": "Please log in\nto view the image."
   },
   "error": {
@@ -795,7 +797,10 @@
         },
         "privacyAgreement": {
           "title": "Sensitive Information Collection Agreement",
-          "description": "I have reviewed and agree to the sensitive information collection and usage regulations for writing reviews and app utilization."
+          "description": "I have reviewed and agree to the sensitive information collection and usage regulations for writing reviews and app utilization.",
+          "sectionTitle": "Consultation & Service Agreement",
+          "policyTitle": "Reservation & Service Policy Agreement (Required)",
+          "sensitiveTitle": "Sensitive Information Collection & Usage Agreement (Required)"
         },
         "floatingNotice": {
           "highlight": "Available time",

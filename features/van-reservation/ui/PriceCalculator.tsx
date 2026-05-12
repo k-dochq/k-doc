@@ -50,7 +50,7 @@ export function PriceCalculator({ priceBreakdown, dict }: PriceCalculatorProps) 
           <span className='text-base font-bold text-neutral-900'>
             {dict.package?.vanReservation?.price?.total || '총 금액'}
           </span>
-          <span className='text-xl font-bold text-[#DA47EF]'>{formatPrice(totalPrice)}</span>
+          <span className='text-xl font-bold text-primary-900'>{formatPrice(totalPrice)}</span>
         </div>
       </div>
 

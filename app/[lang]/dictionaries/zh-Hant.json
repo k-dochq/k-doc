@@ -338,6 +338,8 @@
   "reviewImages": {
     "beforePhoto": "治療前照片",
     "afterPhoto": "術後照片",
+    "beforeLabel": "前",
+    "afterLabel": "後",
     "loginRequired": "請登入查看圖片。"
   },
   "error": {
@@ -795,7 +797,10 @@
         },
         "privacyAgreement": {
           "title": "同意收集和使用敏感資訊",
-          "description": "我已閱讀並同意收集和使用敏感資訊以撰寫治療評估和使用該應用程式。"
+          "description": "我已閱讀並同意收集和使用敏感資訊以撰寫治療評估和使用該應用程式。",
+          "sectionTitle": "諮詢及服務使用同意",
+          "policyTitle": "預約及服務政策同意（必填）",
+          "sensitiveTitle": "敏感資訊收集及使用同意（必填）"
         },
         "floatingNotice": {
           "highlight": "探視時間",

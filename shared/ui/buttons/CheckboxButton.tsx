@@ -12,7 +12,7 @@ export function CheckboxButton({ isSelected, onClick, className = '' }: Checkbox
         isSelected ? 'border-0' : 'border border-neutral-300'
       } ${className}`}
       style={{
-        backgroundColor: isSelected ? '#da47ef' : 'transparent',
+        backgroundColor: isSelected ? 'var(--color-primary-900)' : 'transparent',
       }}
     >
       {isSelected && (

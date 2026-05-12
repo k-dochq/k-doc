@@ -12,7 +12,7 @@ export function GlobalLiveBannerSection({ lang, dict }: GlobalLiveBannerSectionP
   return (
     <div
       className='flex flex-col items-center pb-[48px] pt-[48px] text-center'
-      style={{ background: 'linear-gradient(180deg, #7657FF 0%, #3A288E 100%)' }}
+      style={{ background: 'linear-gradient(180deg, var(--color-primary-900) 0%, #3A288E 100%)' }}
     >
       <div className='flex flex-col items-center gap-3 px-5'>
       <div className='flex items-center gap-0.5 rounded-lg bg-[#4733A3] px-2 py-1.5'>
