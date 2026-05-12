@@ -16,9 +16,9 @@ export function UserEditorMessage({ editorContent, formattedTime, lang }: UserEd
       <MessageTime time={formattedTime} />
       <div className='relative flex shrink-0 content-stretch items-end justify-end'>
         <div className='flex flex-row items-end self-stretch'>
-          <UserMessageBubble className='h-full items-end justify-start' isRtl={lang === 'ar'}>
+          <UserMessageBubble className='h-full items-end justify-start' isRtl={lang === 'ar'} variant='link'>
             <div
-              className="relative min-w-0 font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words text-neutral-50 not-italic"
+              className="relative min-w-0 font-['Pretendard:Regular',_sans-serif] text-[14px] leading-[20px] break-words text-neutral-900 not-italic"
               style={{ overflowWrap: 'anywhere', wordBreak: 'break-word' }}
             >
               <EditorContentRenderer htmlContent={editorContent} />
