@@ -61,9 +61,9 @@ export const getPrivacyPolicyLink = (_locale: Locale): string => {
 
 /**
  * 언어에 따른 정보 수정/삭제 요청 링크를 반환합니다.
- * @param locale 언어 설정
- * @returns 해당 언어의 정보 수정/삭제 요청 링크
+ * @param locale 언어 설정 (LocaleLink 사용 시에는 무시됨)
+ * @returns 정보 수정/삭제 요청 내부 페이지 경로
  */
-export const getDataRequestLink = (locale: Locale): string => {
-  return POLICY_LINKS.dataRequest[locale] as string;
+export const getDataRequestLink = (_locale: Locale): string => {
+  return '/data-request';
 };
