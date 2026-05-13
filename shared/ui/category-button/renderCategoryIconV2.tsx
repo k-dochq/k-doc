@@ -1,9 +1,5 @@
-import {
-  RecommendedIconActive,
-  RecommendedIconInactive,
-  AllIconActive,
-  AllIconInactive,
-} from './CategoryIconsV2';
+import { RecommendedIconV2 } from './RecommendedIconV2';
+import { AllIconV2 } from './AllIconV2';
 import {
   EyesIconV2Small,
   NoseIconV2Small,
@@ -54,7 +50,7 @@ function CategoryIconCard({
       className='flex size-[50px] shrink-0 items-center justify-center rounded-2xl'
       style={{
         background: `linear-gradient(${isActive ? 'var(--color-primary-200)' : 'white'}, ${isActive ? 'var(--color-primary-200)' : 'white'}) padding-box, linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, var(--color-sub-900) 100%) border-box`,
-        border: '1px solid transparent',
+        border: `${isActive ? '2px' : '1px'} solid transparent`,
       }}
     >
       {icon()}
@@ -70,9 +66,9 @@ export function renderCategoryIconV2({
 }: RenderCategoryIconV2Props): React.ReactNode {
   if (categoryType === 'all') {
     if (variant === 'all') {
-      return isActive ? <AllIconActive /> : <AllIconInactive />;
+      return <CategoryIconCard icon={() => <AllIconV2 />} isActive={isActive} />;
     }
-    return isActive ? <RecommendedIconActive /> : <RecommendedIconInactive />;
+    return <CategoryIconCard icon={() => <RecommendedIconV2 />} isActive={isActive} />;
   }
 
   const iconFn = CATEGORY_ICON_MAP[categoryType];
