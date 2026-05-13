@@ -252,7 +252,7 @@ export function DatePickerDrawerContentV2({
         <p className='text-lg leading-7 font-semibold text-neutral-700'>{titleText}</p>
       </div>
 
-      <div className='flex flex-col gap-5 px-5'>
+      <div className='flex flex-col gap-5 px-5 pb-5'>
         <div ref={dropdownRef} className='relative'>
           <button
             type='button'
