@@ -17,6 +17,7 @@ import { ReservationHospitalInfoCard } from 'features/reservation-detail/ui/Rese
 import { HospitalDetailLocationV2 } from 'widgets/hospital-detail-info-section/ui/HospitalDetailLocationV2';
 import { ReservationUserInfoTitle } from 'features/reservation-detail/ui/ReservationUserInfoTitle';
 import { ReservationUserInfo } from 'features/reservation-detail/ui/ReservationUserInfo';
+import { ReservationNoticeSection } from 'features/reservation-detail/ui/ReservationNoticeSection';
 import { ReservationDetailSkeleton } from './ReservationDetailSkeleton';
 
 interface ReservationDetailContentProps {
@@ -107,12 +108,12 @@ export function ReservationDetailContent({
             dict={dict}
           />
 
-          <div className='h-10' />
+          <div className='h-8' />
 
           {/* 시술명 섹션 */}
           <ReservationProcedureName procedureName={reservation.procedureName} dict={dict} />
 
-          <div className='h-10' />
+          <div className='h-8' />
 
           {/* 결제정보 섹션 */}
           <ReservationPaymentInfo
@@ -123,7 +124,7 @@ export function ReservationDetailContent({
             dict={dict}
           />
 
-          <div className='h-10' />
+          <div className='h-8' />
 
           {/* 병원정보 타이틀 */}
           <ReservationHospitalInfoTitle dict={dict} />
@@ -149,7 +150,7 @@ export function ReservationDetailContent({
             hideTitle
           />
 
-          <div className='h-10' />
+          <div className='h-8' />
 
           {/* 예약자 정보 타이틀 */}
           <ReservationUserInfoTitle dict={dict} />
@@ -167,6 +168,9 @@ export function ReservationDetailContent({
           />
 
           <div className='h-8' />
+
+          {/* 예약 안내 */}
+          <ReservationNoticeSection dict={dict} />
         </div>
       </div>
 

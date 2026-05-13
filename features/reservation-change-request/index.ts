@@ -1,2 +1,2 @@
-export { ReservationChangeRequestDrawer } from './ui/ReservationChangeRequestDrawer';
 export { useReservationChangeRequest } from './model/useReservationChangeRequest';
+export { useChangeRequestHandler } from './model/useChangeRequestHandler';

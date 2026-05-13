@@ -711,9 +711,20 @@
       "changeRequestSubmit": "Send Change Request",
       "changeRequestSuccess": "Your change request has been sent.",
       "changeRequestError": "Failed to send change request.",
+      "changeRequestReceived": "Natanggap na ang iyong kahilingan sa pagbabago ng reserbasyon.",
+      "changeRequestDateLabel": "Hiniling na Pagbabago ng Iskedyul",
+      "changeRequestInfoMsg": "Ipapaalam namin sa inyo ang availability ng inyong napiling iskedyul sa pamamagitan ng konsultasyon.",
+      "changeRequestConfirm": "Oo",
       "changeRequested": "Change Requested",
       "changeConfirmed": "Change Confirmed",
       "consultation": "Consultation",
+      "notice": {
+        "title": "Abiso sa Reserbasyon",
+        "item1": "Ang iskedyul ng reserbasyon ay magiging pinal pagkatapos ng kumpirmasyon ng ospital.",
+        "item2": "Ang pagbabago at pagkansela ng reserbasyon ay posible hanggang 3 araw bago ang petsa ng reserbasyon.",
+        "item3": "Maaaring kailanganin ang pagsasaayos ng iskedyul depende sa sitwasyon ng ospital.",
+        "item4": "Mangyaring dumating sa oras ng reserbasyon para sa maayos na konsultasyon at pamamaraan."
+      },
       "userInfo": {
         "title": "Impormasyon sa reserbasyon",
         "passportName": "Pangalang Ingles sa pasaporte",

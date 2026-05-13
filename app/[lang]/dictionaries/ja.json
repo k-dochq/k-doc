@@ -711,9 +711,20 @@
       "changeRequestSubmit": "変更申請を送信",
       "changeRequestSuccess": "変更申請が送信されました。",
       "changeRequestError": "変更申請の送信に失敗しました。",
+      "changeRequestReceived": "予約変更のご要望を受け付けました。",
+      "changeRequestDateLabel": "変更希望日程",
+      "changeRequestInfoMsg": "ご選択いただいた日程の予約可否は、ご相談を通じてご案内いたします。",
+      "changeRequestConfirm": "はい",
       "changeRequested": "変更申請中",
       "changeConfirmed": "変更確定",
       "consultation": "相談する",
+      "notice": {
+        "title": "予約案内",
+        "item1": "予約スケジュールは病院の確認後に最終確定されます。",
+        "item2": "予約変更・キャンセルは予約日の3日前まで可能です。",
+        "item3": "病院の都合によりスケジュール調整が必要になる場合があります。",
+        "item4": "スムーズな診察・施術のため、予約時間にお越しください。"
+      },
       "userInfo": {
         "title": "予約者情報",
         "passportName": "パスポート英語名",

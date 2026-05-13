@@ -246,7 +246,7 @@ export function DatePickerDrawerContentV2({
   const isConfirmDisabled = !selected || (timeSlots.length > 0 && !selectedTime);
 
   return (
-    <div className='flex w-full flex-col bg-white pb-10'>
+    <div className='flex w-full flex-col bg-white'>
       <div className='flex items-center gap-2 px-5 py-4'>
         <TitleCalendarIcon className='h-6 w-6' />
         <p className='text-lg leading-7 font-semibold text-neutral-700'>{titleText}</p>
