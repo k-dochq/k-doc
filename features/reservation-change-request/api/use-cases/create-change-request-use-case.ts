@@ -143,6 +143,11 @@ export async function createChangeRequest(
         data: {
           status: ReservationStatus.CHANGE_REQUESTED,
           updatedAt: new Date(),
+          metadata: {
+            ...meta,
+            requestedDate,
+            requestedTime,
+          },
         },
       });
 
