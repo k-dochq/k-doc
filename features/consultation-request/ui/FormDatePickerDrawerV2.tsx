@@ -83,6 +83,7 @@ export function FormDatePickerDrawerV2({
         <DatePickerDrawerContentV2
           initialValue={value}
           locale={locale}
+          dict={dict}
           disabled={disabled}
           confirmLabel={confirmLabel}
           titlePlaceholder={resolvedPlaceholder}

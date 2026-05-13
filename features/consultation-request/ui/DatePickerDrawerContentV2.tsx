@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { type Locale } from 'shared/config';
+import { type Dictionary } from 'shared/model/types';
 import { resolveDrawer } from 'shared/lib/drawer';
 import { type OpeningHours } from 'entities/hospital/api/entities/opening-hours-types';
 import { generateTimeSlotsForDate } from 'shared/lib/opening-hours-utils';
@@ -9,6 +10,7 @@ import { generateTimeSlotsForDate } from 'shared/lib/opening-hours-utils';
 interface DatePickerDrawerContentV2Props {
   initialValue?: Date;
   locale: Locale;
+  dict?: Dictionary;
   disabled?: (date: Date) => boolean;
   confirmLabel: string;
   titlePlaceholder: string;
@@ -127,6 +129,7 @@ const ChevronDownIcon = ({ className }: { className?: string }) => (
 export function DatePickerDrawerContentV2({
   initialValue,
   locale,
+  dict,
   disabled,
   confirmLabel,
   titlePlaceholder,
@@ -340,11 +343,13 @@ export function DatePickerDrawerContentV2({
         </div>
       </div>
 
-      {timeSlots.length > 0 && (
+      {openingHours && (
         <>
           <div className='h-[6px] w-full bg-neutral-100 shrink-0' />
           <div className='flex flex-col gap-5 p-5'>
-            <p className='text-base leading-6 font-semibold text-neutral-700'>시간 선택(KST)</p>
+            <p className='text-base leading-6 font-semibold text-neutral-700'>
+              {dict?.common?.timeSelect ?? '시간 선택(KST)'}
+            </p>
             <div className='flex gap-2 overflow-x-auto pb-1'>
               {timeSlots.map((slot) => (
                 <button

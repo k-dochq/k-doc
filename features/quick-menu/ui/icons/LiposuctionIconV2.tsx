@@ -1,37 +1,37 @@
 export function LiposuctionIconV2() {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='46' height='32' viewBox='0 0 46 32' fill='none'>
-      <g clipPath='url(#clip0_466_7687)'>
+      <g clipPath='url(#clip0_6722_26959)'>
         <path
-          d='M12.7516 1.64404C12.7516 1.64404 12.9714 8.15882 10.7804 12.2139C8.58949 16.2689 7.2778 22.0317 8.5931 30.3561'
+          d='M12.7543 1.64453C12.7543 1.64453 12.9741 8.1593 10.7831 12.2143C8.59218 16.2694 7.28049 22.0322 8.59578 30.3566'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M33.2485 1.64404C33.2485 1.64404 33.0287 8.15882 35.2196 12.2139C37.407 16.2689 38.7223 22.0317 37.407 30.3561'
+          d='M33.2483 1.64453C33.2483 1.64453 33.0285 8.1593 35.2195 12.2143C37.4068 16.2694 38.7221 22.0322 37.4068 30.3566'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M11.0795 12.4248C17.6632 14.8564 28.3369 14.8564 34.9205 12.4248'
+          d='M11.0859 12.4258C17.6696 14.8574 28.3433 14.8574 34.9269 12.4258'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M9.79309 15.6997C9.79309 15.6997 19.5154 18.4019 22.8955 25.0924'
+          d='M9.79688 15.6992C9.79688 15.6992 19.5192 18.4014 22.8993 25.0919'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M36.207 15.6997C36.207 15.6997 26.4847 18.4019 23.1046 25.0924'
+          d='M36.2118 15.6992C36.2118 15.6992 26.4895 18.4014 23.1094 25.0919'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
@@ -45,35 +45,21 @@ export function LiposuctionIconV2() {
           strokeLinejoin='round'
         />
         <path
-          d='M23 6.02246V7.87429'
+          d='M23 6.02344V7.87526'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M1.3147 5.30371H8.6048'
+          d='M1.3125 5.30469H8.6026M6.16406 7.67977L8.60482 5.30387L6.16406 2.92383'
           stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M6.16418 7.67977L8.60494 5.30387L6.16418 2.92383'
-          stroke='var(--color-primary-900)'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-        <path
-          d='M44.6853 5.30371H37.3952'
-          stroke='var(--color-primary-900)'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-        <path
-          d='M39.836 7.67977L37.3952 5.30387L39.836 2.92383'
+          d='M44.6807 5.30469H37.3906M39.8314 2.92383L37.3906 5.30469L39.8314 7.67977'
           stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
@@ -81,7 +67,7 @@ export function LiposuctionIconV2() {
         />
       </g>
       <defs>
-        <clipPath id='clip0_466_7687'>
+        <clipPath id='clip0_6722_26959'>
           <rect width='46' height='32' fill='white' />
         </clipPath>
       </defs>

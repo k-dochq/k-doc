@@ -2,7 +2,8 @@
   "common": {
     "confirm": "проверять",
     "cancel": "отмена",
-    "today": "сегодня"
+    "today": "сегодня",
+    "timeSelect": "Выберите время (KST)"
   },
   "appDownloadBanner": {
     "message": "Установите приложение K-DOC и пользуйтесь сервисом быстрее и удобнее.",

@@ -1,48 +1,48 @@
 export function NoseIconV2() {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='32' height='39' viewBox='0 0 32 39' fill='none'>
-      <path
-        d='M25.5077 1.875C25.5077 1.875 26.9636 3.81132 25.8332 7.09434C24.6993 10.3774 17.0663 18.6176 17.0663 18.6176C13.1429 22.9413 11.0505 24.8236 12.0001 26.956C13.5399 30.4137 18.6412 32.0846 21.3815 32.5104'
-        stroke='#404040'
-        strokeWidth='1.5'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M19.6001 33.02C19.6001 33.02 19.9256 35.0401 18.7112 37.9846'
-        stroke='#404040'
-        strokeWidth='1.5'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M20.5716 28.7716C20.5716 28.7716 23.6654 28.1019 25.2263 30.3221'
-        stroke='#404040'
-        strokeWidth='1.5'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M30.3654 28.8086C30.3654 28.8086 30.4459 32.1753 27.6951 33.8605'
-        stroke='#404040'
-        strokeWidth='1.5'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M10.6019 33.2391C6.41976 31.9055 4.01398 27.3483 5.22606 23.0616'
-        stroke='var(--color-primary-900)'
-        strokeWidth='1.5'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M1.8428 24.2952L5.70252 21.6751L8.3246 25.7052'
-        stroke='var(--color-primary-900)'
-        strokeWidth='1.5'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
+      <g clipPath='url(#clip0_6722_26881)'>
+        <path
+          d='M25.5102 1.875C25.5102 1.875 26.9661 3.81132 25.8356 7.09434C24.7017 10.3774 17.0687 18.6176 17.0687 18.6176C13.1454 22.9413 11.0529 24.8236 12.0025 26.956C13.5424 30.4137 18.6436 32.0846 21.3839 32.5104'
+          stroke='#404040'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+        <path
+          d='M19.601 33.0195C19.601 33.0195 19.9265 35.0396 18.712 37.9841'
+          stroke='#404040'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+        <path
+          d='M20.5719 28.7706C20.5719 28.7706 23.6657 28.1009 25.2266 30.3211'
+          stroke='#404040'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+        <path
+          d='M30.3669 28.8086C30.3669 28.8086 30.4474 32.1753 27.6966 33.8605'
+          stroke='#404040'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+        <path
+          d='M10.5984 33.2393C6.41619 31.9057 4.01041 27.3485 5.22249 23.0618M1.84277 24.2959L5.7025 21.6758L8.32458 25.7059'
+          stroke='var(--color-primary-900)'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+      </g>
+      <defs>
+        <clipPath id='clip0_6722_26881'>
+          <rect width='32' height='39' fill='white' transform='matrix(-1 0 0 1 32 0)' />
+        </clipPath>
+      </defs>
     </svg>
   );
 }

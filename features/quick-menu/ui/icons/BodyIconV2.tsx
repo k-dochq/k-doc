@@ -1,31 +1,31 @@
 export function BodyIconV2() {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='40' height='36' viewBox='0 0 40 36' fill='none'>
-      <g clipPath='url(#clip0_466_7711)'>
+      <g clipPath='url(#clip0_6722_26981)'>
         <path
-          d='M33.9648 15.1195C34.8893 19.206 32.3091 23.2245 29.402 23.8404C26.4949 24.4563 24.3611 21.4347 23.4401 17.3448C22.5156 13.2582 23.1553 9.64804 26.059 9.03557C28.9661 8.4197 33.0403 11.0295 33.9613 15.1195H33.9648Z'
+          d='M33.9649 15.119C34.8895 19.2055 32.3093 23.224 29.4021 23.8399C26.495 24.4558 24.3612 21.4342 23.4402 17.3443C22.5157 13.2577 23.1555 9.64756 26.0591 9.03508C28.9662 8.41921 33.0404 11.029 33.9614 15.119H33.9649Z'
           fill='var(--color-primary-900)'
         />
         <path
-          d='M13.1825 1.62793C13.1825 1.62793 4.09549 14.8199 11.3651 23.6157L12.729 34.3721'
+          d='M13.1831 1.62891C13.1831 1.62891 4.0961 14.8209 11.3657 23.6166L12.7296 34.3731'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M31.8099 1.62793L29.764 9.98477C29.764 9.98477 35.8982 19.4407 29.764 26.0349V34.3721'
+          d='M31.8115 1.62891L29.7656 9.98574C29.7656 9.98574 35.8998 19.4416 29.7656 26.0359V34.3731'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M14.5218 14.9628C14.5218 18.4437 13.534 21.2644 12.3142 21.2644C11.0944 21.2644 10.1066 18.4437 10.1066 14.9628C10.1066 11.4819 11.0944 8.66113 12.3142 8.66113C13.534 8.66113 14.5218 11.4819 14.5218 14.9628Z'
+          d='M14.5246 14.9638C14.5246 18.4446 13.5368 21.2654 12.317 21.2654C11.0972 21.2654 10.1094 18.4446 10.1094 14.9638C10.1094 11.4829 11.0972 8.66211 12.317 8.66211C13.5368 8.66211 14.5246 11.4829 14.5246 14.9638Z'
           fill='var(--color-primary-900)'
         />
         <path
-          d='M11.3651 22.9364V5.88379'
+          d='M11.3672 22.9374V5.88477'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
@@ -33,7 +33,7 @@ export function BodyIconV2() {
           strokeDasharray='1 3'
         />
         <path
-          d='M29.982 27.3382C29.982 27.3382 35.9088 23.7382 35.6767 17.3242C35.4377 10.6891 30.3857 8.57617 30.3857 8.57617'
+          d='M29.9844 27.3401C29.9844 27.3401 35.9111 23.7401 35.6791 17.3262C35.4401 10.6911 30.3881 8.57812 30.3881 8.57812'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
@@ -41,42 +41,21 @@ export function BodyIconV2() {
           strokeDasharray='1 3'
         />
         <path
-          d='M33.8095 7.91037L38.4478 5.57373'
+          d='M33.8125 7.91281L38.4508 5.57617M37.585 8.19194L38.4497 5.57533L35.75 4.73828'
           stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M37.583 8.19048L38.4477 5.57386L35.748 4.73682'
+          d='M0.90625 9.29883H7.51859M5.30469 7.16211L7.51859 9.29883L5.30469 11.4306'
           stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M0.907043 9.29736H7.51938'
-          stroke='var(--color-primary-900)'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-        <path
-          d='M5.30579 11.4301L7.51962 9.29773L5.30579 7.16162'
-          stroke='var(--color-primary-900)'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-        <path
-          d='M0.907043 21.9307H7.51938'
-          stroke='var(--color-primary-900)'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-        />
-        <path
-          d='M5.30579 24.0634L7.51962 21.931L5.30579 19.7949'
+          d='M0.90625 21.9316H7.51859M5.30469 19.7949L7.51859 21.9316L5.30469 24.0634'
           stroke='var(--color-primary-900)'
           strokeWidth='1.5'
           strokeLinecap='round'
@@ -84,7 +63,7 @@ export function BodyIconV2() {
         />
       </g>
       <defs>
-        <clipPath id='clip0_466_7711'>
+        <clipPath id='clip0_6722_26981'>
           <rect width='40' height='36' fill='white' />
         </clipPath>
       </defs>

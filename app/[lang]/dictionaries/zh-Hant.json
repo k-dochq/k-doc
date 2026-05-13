@@ -2,7 +2,8 @@
   "common": {
     "confirm": "查看",
     "cancel": "取消",
-    "today": "今天"
+    "today": "今天",
+    "timeSelect": "選擇時間 (KST)"
   },
   "appDownloadBanner": {
     "message": "立即安裝 K-DOC App，享受更快、更便利的體驗。",
