@@ -49,7 +49,7 @@ const formatDisplayDate = (date: Date, _locale: Locale): string => {
   const h = date.getHours();
   const m = date.getMinutes();
   if (h !== 0 || m !== 0) {
-    return `${dateStr} ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    return `${dateStr} ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')} (KST)`;
   }
 
   return dateStr;

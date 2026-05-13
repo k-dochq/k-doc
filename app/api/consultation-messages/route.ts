@@ -301,10 +301,10 @@ ${messages.consultationRequest?.nationality || dict.default.auth?.signup?.nation
 ${messages.consultationRequest?.gender || '성별'}: ${messages.genders?.[gender] || gender}
 ${messages.consultationRequest?.birthDate || '생년월일'}: ${birthDate}
 ${messages.consultationRequest?.phoneNumber || '휴대폰번호'}: ${countryCode} ${phoneNumberOnly}
-${messages.consultationRequest?.preferredDate || '예약 희망날짜'}: ${preferredDate}${
+${messages.consultationRequest?.preferredDate || '예약 희망날짜'}: ${preferredDate} (KST)${
       preferredDate2
         ? `
-${messages.consultationRequest?.preferredDate2 || '예약 희망날짜2'}: ${preferredDate2}`
+${messages.consultationRequest?.preferredDate2 || '예약 희망날짜2'}: ${preferredDate2} (KST)`
         : ''
     }${
       content
