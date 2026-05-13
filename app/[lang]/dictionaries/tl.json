@@ -2,7 +2,8 @@
   "common": {
     "confirm": "tseke",
     "cancel": "Cancel",
-    "today": "ngayon"
+    "today": "ngayon",
+    "timeSelect": "Pumili ng Oras (KST)"
   },
   "appDownloadBanner": {
     "message": "I-install ang K-DOC app ngayon para sa mas mabilis at mas maginhawang karanasan.",

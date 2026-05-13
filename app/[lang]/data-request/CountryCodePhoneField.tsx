@@ -49,8 +49,8 @@ export function CountryCodePhoneField({
       <p className='text-base leading-6 font-semibold text-neutral-700'>
         {label} <span className='text-[#f31110]'>*</span>
       </p>
-      <div className='flex gap-2'>
-        <div ref={containerRef} className='relative min-w-[80px]'>
+      <div className='flex gap-1'>
+        <div ref={containerRef} className='relative'>
           <button
             type='button'
             onClick={() => setIsOpen((prev) => !prev)}
@@ -61,9 +61,8 @@ export function CountryCodePhoneField({
               src='/icons/select-chevron.svg'
               alt=''
               aria-hidden
-              width={8}
-              height={13}
-              className='h-[13px] w-2 rotate-90'
+              width={20}
+              height={20}
             />
           </button>
           {isOpen ? (
@@ -93,7 +92,7 @@ export function CountryCodePhoneField({
           value={phone}
           onChange={(e) => onPhoneChange(e.target.value.replace(/[^0-9]/g, ''))}
           placeholder={placeholder}
-          className='h-[52px] flex-1 rounded-xl border border-neutral-400 bg-white px-4 text-sm text-neutral-700 placeholder:text-neutral-400'
+          className='h-[52px] flex-1 rounded-xl border border-neutral-400 bg-white px-4 text-sm text-neutral-700 placeholder:text-neutral-400 focus:outline-none focus:border-primary-900'
         />
       </div>
       {error ? <p className='text-xs text-[#f31110]'>{error}</p> : null}

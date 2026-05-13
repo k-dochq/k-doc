@@ -6,7 +6,7 @@ import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { type HospitalSortOption, HOSPITAL_SORT_OPTIONS } from 'shared/model/types/hospital-query';
 import { type ReviewSortOption, REVIEW_SORT_OPTIONS } from 'shared/model/types/review-query';
-import { QUICK_MENU_CATEGORIES } from 'features/quick-menu/model/categories';
+import { QUICK_MENU_CATEGORIES_V2 } from 'features/quick-menu/model/categories';
 import { getLocalizedTextByLocale } from 'shared/model/types/common';
 import { HospitalDetailTabsHeaderV2 } from 'widgets/hospital-detail-tabs/ui/HospitalDetailTabsHeaderV2';
 import { FilterIconV2 } from 'shared/ui/icons';
@@ -129,7 +129,7 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
           <div className='flex flex-col gap-3'>
             {[0, 1, 2].map((rowIndex) => (
               <div key={rowIndex} className='flex items-start justify-between'>
-                {QUICK_MENU_CATEGORIES.slice(rowIndex * 4, rowIndex * 4 + 4).map((category) => {
+                {QUICK_MENU_CATEGORIES_V2.slice(rowIndex * 4, rowIndex * 4 + 4).map((category) => {
                   const label = getLocalizedTextByLocale(category.labels, lang);
                   return (
                     <button
@@ -141,8 +141,15 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
                       }}
                       className='flex w-[60px] flex-col items-center gap-1'
                     >
-                      <div className='flex size-[60px] items-center justify-center rounded-2xl border border-primary-500 bg-white'>
-                        {category.iconSmall()}
+                      <div
+                        className='flex size-[60px] items-center justify-center rounded-2xl bg-white'
+                        style={{
+                          background:
+                            'linear-gradient(white, white) padding-box, linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, var(--color-sub-900) 100%) border-box',
+                          border: '1px solid transparent',
+                        }}
+                      >
+                        {category.icon()}
                       </div>
                       <p className="w-full text-center font-['Pretendard'] text-xs font-medium leading-4 text-[#404040]">
                         {label}

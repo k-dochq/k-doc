@@ -14,7 +14,7 @@ import { PhoneNumberFieldV2 } from './PhoneNumberFieldV2';
 import { SelectFieldV2 } from './SelectFieldV2';
 import { TextareaFieldV2 } from './TextareaFieldV2';
 import { FormDatePickerDrawerV2 } from './FormDatePickerDrawerV2';
-import { parseLocalDate, formatDateToString } from 'shared/lib/date-utils';
+import { parseDateTimeString, formatDateTimeToString } from 'shared/lib/date-utils';
 import { ConsentAgreementSection } from './ConsentAgreementSection';
 import { trackLead, trackGenerateLead } from 'shared/lib/analytics';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
@@ -307,8 +307,8 @@ export function ConsultationFormV2({
         {/* 예약 희망 날짜 */}
         <FormDatePickerDrawerV2
           label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
-          value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
-          onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
+          value={formData.preferredDate ? parseDateTimeString(formData.preferredDate) : undefined}
+          onChange={(date) => updateField('preferredDate', date ? formatDateTimeToString(date) : '')}
           locale={lang}
           dict={dict}
           placeholder={
@@ -321,13 +321,14 @@ export function ConsultationFormV2({
             (dict.consultation?.request?.form?.preferredDate as { helper?: string } | undefined)
               ?.helper || '병원 스케줄 확인을 위해 꼭 선택해주세요'
           }
+          openingHours={openingHours}
         />
 
         {/* 예약 희망 날짜2 */}
         <FormDatePickerDrawerV2
           label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
-          value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
-          onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
+          value={formData.preferredDate2 ? parseDateTimeString(formData.preferredDate2) : undefined}
+          onChange={(date) => updateField('preferredDate2', date ? formatDateTimeToString(date) : '')}
           locale={lang}
           dict={dict}
           placeholder={
@@ -341,6 +342,7 @@ export function ConsultationFormV2({
             (dict.consultation?.request?.form?.preferredDate2 as { helper?: string } | undefined)
               ?.helper || '첫번째 날짜가 불가능할 경우에만 참고합니다'
           }
+          openingHours={openingHours}
         />
 
         {/* 내용 */}

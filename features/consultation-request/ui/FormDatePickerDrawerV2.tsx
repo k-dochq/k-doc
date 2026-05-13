@@ -2,6 +2,7 @@
 
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { type OpeningHours } from 'entities/hospital/api/entities/opening-hours-types';
 import { openDrawer } from 'shared/lib/drawer';
 import { FieldLabel } from './FieldLabel';
 import { FieldError } from './FieldError';
@@ -24,6 +25,7 @@ interface FormDatePickerDrawerV2Props {
   /** required=false일 때 라벨 옆 괄호 표시 (예: dict.auth.signup.optional) */
   optionalBracketsText?: string;
   helperText?: string;
+  openingHours?: OpeningHours;
 }
 
 const DEFAULT_PLACEHOLDER_BY_LOCALE: Record<Locale, string> = {
@@ -38,13 +40,19 @@ const DEFAULT_PLACEHOLDER_BY_LOCALE: Record<Locale, string> = {
   ru: 'Выберите дату',
 };
 
-// 국제 표준 ISO 8601 (`YYYY-MM-DD`)로 모든 로케일 통일
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const formatDisplayDate = (date: Date, _locale: Locale): string => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+  const dateStr = `${year}-${month}-${day}`;
+
+  const h = date.getHours();
+  const m = date.getMinutes();
+  if (h !== 0 || m !== 0) {
+    return `${dateStr} ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')} (KST)`;
+  }
+
+  return dateStr;
 };
 
 export function FormDatePickerDrawerV2({
@@ -61,6 +69,7 @@ export function FormDatePickerDrawerV2({
   hideOptionalText,
   optionalBracketsText,
   helperText,
+  openingHours,
 }: FormDatePickerDrawerV2Props) {
   const resolvedPlaceholder = placeholder ?? DEFAULT_PLACEHOLDER_BY_LOCALE[locale];
   const confirmLabel = dict?.common?.confirm ?? '확인';
@@ -74,11 +83,13 @@ export function FormDatePickerDrawerV2({
         <DatePickerDrawerContentV2
           initialValue={value}
           locale={locale}
+          dict={dict}
           disabled={disabled}
           confirmLabel={confirmLabel}
           titlePlaceholder={resolvedPlaceholder}
           minMonth={minMonth}
           maxMonth={maxMonth}
+          openingHours={openingHours}
         />
       ),
     });

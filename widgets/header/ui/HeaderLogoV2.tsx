@@ -6,8 +6,8 @@ export function HeaderLogoV2() {
       <Image
         src='/logo_3d.png'
         alt='K-DOC'
-        width={105}
-        height={26}
+        width={109}
+        height={30}
         priority
       />
     </div>

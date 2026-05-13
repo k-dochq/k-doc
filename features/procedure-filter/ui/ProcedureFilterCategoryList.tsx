@@ -41,7 +41,7 @@ export function ProcedureFilterCategoryList({
                 } ${isSelected ? 'bg-primary-200' : 'bg-white'}`}
               >
                 <div className='flex size-[48px] shrink-0 items-center justify-center'>
-                  {category.icon()}
+                  {category.iconSmall()}
                 </div>
                 <p className="min-w-0 flex-1 text-left font-['Pretendard'] text-[13px] font-normal leading-[19px] text-[#404040]">
                   {label}

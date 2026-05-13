@@ -25,3 +25,17 @@ export { HairTransplantIconV2 } from './HairTransplantIconV2';
 export { DermatologyIconV2 } from './DermatologyIconV2';
 export { DentalIconV2 } from './DentalIconV2';
 export { OtherIconV2 } from './OtherIconV2';
+
+// V2 Small Icons (for procedure filter drawer)
+export { EyesIconV2Small } from './EyesIconV2Small';
+export { NoseIconV2Small } from './NoseIconV2Small';
+export { LiftingIconV2Small } from './LiftingIconV2Small';
+export { FacialContouringIconV2Small } from './FacialContouringIconV2Small';
+export { BreastIconV2Small } from './BreastIconV2Small';
+export { StemCellIconV2Small } from './StemCellIconV2Small';
+export { LiposuctionIconV2Small } from './LiposuctionIconV2Small';
+export { BodyIconV2Small } from './BodyIconV2Small';
+export { HairTransplantIconV2Small } from './HairTransplantIconV2Small';
+export { DermatologyIconV2Small } from './DermatologyIconV2Small';
+export { DentalIconV2Small } from './DentalIconV2Small';
+export { OtherIconV2Small } from './OtherIconV2Small';

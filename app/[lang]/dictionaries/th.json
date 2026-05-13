@@ -2,7 +2,8 @@
   "common": {
     "confirm": "ตกลง",
     "cancel": "ยกเลิก",
-    "today": "วันนี้"
+    "today": "วันนี้",
+    "timeSelect": "เลือกเวลา (KST)"
   },
   "appDownloadBanner": {
     "message": "ติดตั้งแอป K-DOC ตอนนี้เพื่อประสบการณ์ที่รวดเร็วและสะดวกยิ่งขึ้น",

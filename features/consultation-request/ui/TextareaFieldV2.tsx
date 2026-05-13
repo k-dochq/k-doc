@@ -13,6 +13,7 @@ type TextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'classNam
   maxLength?: number;
   currentLength?: number;
   helperText?: string;
+  wrapperClassName?: string;
 };
 
 export function TextareaFieldV2({
@@ -23,6 +24,7 @@ export function TextareaFieldV2({
   currentLength = 0,
   disabled,
   helperText,
+  wrapperClassName,
   ...props
 }: TextareaProps) {
   const wrapperStateClass = buildWrapperStateClass(props.value, error);
@@ -35,6 +37,7 @@ export function TextareaFieldV2({
           'flex w-full flex-col rounded-xl border px-4 py-3.5 transition-colors duration-150',
           wrapperStateClass,
           disabled ? disabledState : 'bg-white',
+          wrapperClassName,
         )}
       >
         <textarea

@@ -1,35 +1,63 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { resolveDrawer } from 'shared/lib/drawer';
+import { useHospitalDetail } from 'entities/hospital/model/useHospitalDetail';
+import { getHospitalClosedWeekdays } from 'features/consultation-request/lib/hospital-closed-weekdays';
+import { FormDatePickerDrawerV2 } from 'features/consultation-request/ui/FormDatePickerDrawerV2';
+import { formatDateToString } from 'shared/lib/date-utils';
 import { useReservationChangeRequest } from '../model/useReservationChangeRequest';
 
 interface ReservationChangeRequestDrawerProps {
   reservationId: string;
+  hospitalId: string;
+  lang: Locale;
   dict: Dictionary;
   onSuccess?: () => void;
 }
 
 export function ReservationChangeRequestDrawer({
   reservationId,
+  hospitalId,
+  lang,
   dict,
   onSuccess,
 }: ReservationChangeRequestDrawerProps) {
   const rd = dict.consultation?.reservationDetail;
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  const [selectedDateTime, setSelectedDateTime] = useState<Date | undefined>(undefined);
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(
     null,
+  );
+
+  const { data: hospitalDetail } = useHospitalDetail(hospitalId);
+  const openingHours = hospitalDetail?.hospital?.openingHours;
+
+  const closedWeekdays = useMemo(() => getHospitalClosedWeekdays(openingHours), [openingHours]);
+  const isDateDisabled = useMemo(
+    () =>
+      (date: Date): boolean => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (date < today) return true;
+        return closedWeekdays.has(date.getDay());
+      },
+    [closedWeekdays],
   );
 
   const changeRequest = useReservationChangeRequest();
 
   const handleSubmit = () => {
-    if (!date || !time) return;
+    if (!selectedDateTime) return;
+
+    const requestedDate = formatDateToString(selectedDateTime);
+    const h = selectedDateTime.getHours();
+    const m = selectedDateTime.getMinutes();
+    const requestedTime = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
 
     changeRequest.mutate(
-      { reservationId, requestedDate: date, requestedTime: time },
+      { reservationId, requestedDate, requestedTime },
       {
         onSuccess: () => {
           setFeedback({
@@ -49,40 +77,23 @@ export function ReservationChangeRequestDrawer({
     );
   };
 
-  const today = new Date().toISOString().split('T')[0];
-
   return (
     <div className='flex flex-col gap-5 px-5 pb-8 pt-6'>
       <h2 className='text-lg font-semibold text-[#404040]'>
         {rd?.changeRequestTitle || '예약 변경 요청'}
       </h2>
 
-      <div className='flex flex-col gap-4'>
-        <div className='flex flex-col gap-1.5'>
-          <label className='text-sm font-medium text-[#737373]'>
-            {rd?.changeRequestNewDate || '변경 날짜'}
-          </label>
-          <input
-            type='date'
-            min={today}
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className='h-12 w-full rounded-xl border border-neutral-200 px-4 text-base text-[#404040] focus:border-neutral-400 focus:outline-none'
-          />
-        </div>
-
-        <div className='flex flex-col gap-1.5'>
-          <label className='text-sm font-medium text-[#737373]'>
-            {rd?.changeRequestNewTime || '변경 시간'}
-          </label>
-          <input
-            type='time'
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            className='h-12 w-full rounded-xl border border-neutral-200 px-4 text-base text-[#404040] focus:border-neutral-400 focus:outline-none'
-          />
-        </div>
-      </div>
+      <FormDatePickerDrawerV2
+        label={rd?.changeRequestNewDate || '변경 날짜 및 시간'}
+        value={selectedDateTime}
+        onChange={(date) => setSelectedDateTime(date)}
+        locale={lang}
+        dict={dict}
+        placeholder='날짜와 시간을 선택해주세요'
+        disabled={isDateDisabled}
+        required
+        openingHours={openingHours}
+      />
 
       {feedback && (
         <p
@@ -94,7 +105,7 @@ export function ReservationChangeRequestDrawer({
 
       <button
         onClick={handleSubmit}
-        disabled={!date || !time || changeRequest.isPending}
+        disabled={!selectedDateTime || changeRequest.isPending}
         className='bg-primary-900 hover:bg-primary-900/90 flex h-14 w-full items-center justify-center rounded-xl text-base font-medium text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-neutral-200 disabled:text-neutral-400'
       >
         {changeRequest.isPending

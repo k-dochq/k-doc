@@ -33,6 +33,46 @@ export function formatTimeString(timeString: string): string {
   return timeString;
 }
 
+const DAY_KEYS = [
+  'sunday',
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+] as const;
+
+/**
+ * 주어진 날짜의 요일 진료시간 기준으로 30분 단위 시간 슬롯을 생성합니다.
+ */
+export function generateTimeSlotsForDate(openingHours: OpeningHours, date: Date): string[] {
+  const dayKey = DAY_KEYS[date.getDay()];
+  const schedule = openingHours[dayKey];
+
+  if (!schedule || schedule.holiday || !schedule.openTime || !schedule.closeTime) {
+    return [];
+  }
+
+  const parseMinutes = (t: string): number => {
+    const formatted = formatTimeString(t);
+    const [h, m] = formatted.split(':').map(Number);
+    return h * 60 + m;
+  };
+
+  const start = parseMinutes(schedule.openTime);
+  const end = parseMinutes(schedule.closeTime);
+  const slots: string[] = [];
+
+  for (let minutes = start; minutes < end; minutes += 30) {
+    const h = Math.floor(minutes / 60).toString().padStart(2, '0');
+    const m = (minutes % 60).toString().padStart(2, '0');
+    slots.push(`${h}:${m}`);
+  }
+
+  return slots;
+}
+
 /**
  * 운영시간을 포맷팅하는 함수
  */

@@ -2,7 +2,8 @@
   "common": {
     "confirm": "जाँच करना",
     "cancel": "रद्द करें",
-    "today": "आज"
+    "today": "आज",
+    "timeSelect": "समय चुनें (KST)"
   },
   "appDownloadBanner": {
     "message": "अभी K-DOC ऐप इंस्टॉल करें और तेज़, अधिक सुविधाजनक अनुभव पाएं।",

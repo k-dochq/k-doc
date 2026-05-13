@@ -53,6 +53,8 @@ export function ReservationDetailFloatingButtons({
       content: (
         <ReservationChangeRequestDrawer
           reservationId={reservationId}
+          hospitalId={hospitalId}
+          lang={lang}
           dict={dict}
           onSuccess={() => {
             queryClient.invalidateQueries({
