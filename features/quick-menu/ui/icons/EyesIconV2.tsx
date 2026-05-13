@@ -21,11 +21,25 @@ export function EyesIconV2() {
       />
       <path
         d='M1.15625 7.13087C1.15625 7.13087 17.9628 -8.9694 37.2099 10.1367M32.6869 10.6382L37.8025 10.3174L37.489 5.08222'
-        stroke='var(--color-primary-900)'
+        stroke='url(#paint0_linear_6722_28507)'
         strokeWidth='1.5'
         strokeLinecap='round'
         strokeLinejoin='round'
       />
+      <defs>
+        <linearGradient
+          id='paint0_linear_6722_28507'
+          x1='1.15625'
+          y1='5.71365'
+          x2='37.8025'
+          y2='5.71365'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='#FF5DCA' />
+        </linearGradient>
+      </defs>
     </svg>
   );
 }

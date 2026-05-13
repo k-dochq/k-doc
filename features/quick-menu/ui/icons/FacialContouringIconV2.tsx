@@ -1,7 +1,7 @@
 export function FacialContouringIconV2() {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='49' height='40' viewBox='0 0 49 40' fill='none'>
-      <g clipPath='url(#clip0_6722_26908)'>
+    <svg xmlns='http://www.w3.org/2000/svg' width={49} height={40} viewBox='0 0 49 40' fill='none'>
+      <g clipPath='url(#clip0_6722_28544)'>
         <path
           d='M38.3564 16.1537V29.4597C38.3564 34.4055 34.7145 38.7867 29.8806 38.7867H19.1245C14.2868 38.7867 10.6563 34.4016 10.6563 29.4597V16.1537C10.6524 8.33265 16.8505 1.99219 24.5006 1.99219H24.5044C32.1546 1.99219 38.3564 8.33265 38.3564 16.1537Z'
           stroke='#404040'
@@ -70,21 +70,45 @@ export function FacialContouringIconV2() {
         />
         <path
           d='M1.19531 31.5156H8.36604M5.97656 33.9383L8.36681 31.5141L5.97656 29.0898'
-          stroke='var(--color-primary-900)'
+          stroke='url(#paint0_linear_6722_28544)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M47.8048 31.5156H40.6341M43.0235 33.9383L40.6333 31.5141L43.0235 29.0898'
-          stroke='var(--color-primary-900)'
+          d='M47.8043 31.5156H40.6336M43.0231 33.9383L40.6328 31.5141L43.0231 29.0898'
+          stroke='url(#paint1_linear_6722_28544)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
       </g>
       <defs>
-        <clipPath id='clip0_6722_26908'>
+        <linearGradient
+          id='paint0_linear_6722_28544'
+          x1='1.19531'
+          y1='31.5141'
+          x2='8.36681'
+          y2='31.5141'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='#FF5DCA' />
+        </linearGradient>
+        <linearGradient
+          id='paint1_linear_6722_28544'
+          x1='40.6328'
+          y1='31.5141'
+          x2='47.8043'
+          y2='31.5141'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#FF5DCA' />
+          <stop offset='0.596154' stopColor='#B133FF' />
+          <stop offset='1' stopColor='#3E57E2' />
+        </linearGradient>
+        <clipPath id='clip0_6722_28544'>
           <rect width='49' height='40' fill='white' />
         </clipPath>
       </defs>

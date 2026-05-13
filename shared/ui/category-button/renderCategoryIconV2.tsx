@@ -3,31 +3,21 @@ import {
   RecommendedIconInactive,
   AllIconActive,
   AllIconInactive,
-  EyesIconActive,
-  EyesIconInactive,
-  NoseIconActive,
-  NoseIconInactive,
-  LiftingIconActive,
-  LiftingIconInactive,
-  FacialContouringIconActive,
-  FacialContouringIconInactive,
-  BreastIconActive,
-  BreastIconInactive,
-  StemCellIconActive,
-  StemCellIconInactive,
-  LiposuctionIconActive,
-  LiposuctionIconInactive,
-  BodyIconActive,
-  BodyIconInactive,
-  HairTransplantIconActive,
-  HairTransplantIconInactive,
-  DermatologyIconActive,
-  DermatologyIconInactive,
-  DentalIconActive,
-  DentalIconInactive,
-  OtherIconActive,
-  OtherIconInactive,
 } from './CategoryIconsV2';
+import {
+  EyesIconV2Small,
+  NoseIconV2Small,
+  LiftingIconV2Small,
+  FacialContouringIconV2Small,
+  BreastIconV2Small,
+  StemCellIconV2Small,
+  LiposuctionIconV2Small,
+  BodyIconV2Small,
+  HairTransplantIconV2Small,
+  DermatologyIconV2Small,
+  DentalIconV2Small,
+  OtherIconV2Small,
+} from 'features/quick-menu/ui/icons';
 
 interface RenderCategoryIconV2Props {
   categoryType: string;
@@ -36,70 +26,60 @@ interface RenderCategoryIconV2Props {
   variant?: 'recommend' | 'all';
 }
 
+const CATEGORY_ICON_MAP: Record<string, () => React.ReactNode> = {
+  EYES: () => <EyesIconV2Small />,
+  NOSE: () => <NoseIconV2Small />,
+  LIFTING: () => <LiftingIconV2Small />,
+  FACIAL_CONTOURING: () => <FacialContouringIconV2Small />,
+  BREAST: () => <BreastIconV2Small />,
+  STEM_CELL: () => <StemCellIconV2Small />,
+  LIPOSUCTION: () => <LiposuctionIconV2Small />,
+  BODY: () => <BodyIconV2Small />,
+  HAIR_TRANSPLANT: () => <HairTransplantIconV2Small />,
+  DERMATOLOGY: () => <DermatologyIconV2Small />,
+  DENTAL: () => <DentalIconV2Small />,
+  ETC: () => <OtherIconV2Small />,
+  OTHER: () => <OtherIconV2Small />,
+};
+
+function CategoryIconCard({
+  icon,
+  isActive,
+}: {
+  icon: () => React.ReactNode;
+  isActive: boolean;
+}) {
+  return (
+    <div
+      className='flex size-[50px] shrink-0 items-center justify-center rounded-2xl'
+      style={{
+        background: `linear-gradient(${isActive ? 'var(--color-primary-200)' : 'white'}, ${isActive ? 'var(--color-primary-200)' : 'white'}) padding-box, linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, var(--color-sub-900) 100%) border-box`,
+        border: '1px solid transparent',
+      }}
+    >
+      {icon()}
+    </div>
+  );
+}
+
 export function renderCategoryIconV2({
   categoryType,
   isActive,
   fallbackIcon,
   variant = 'recommend',
 }: RenderCategoryIconV2Props): React.ReactNode {
-  const isRecommended = categoryType === 'all';
-
-  if (isRecommended) {
+  if (categoryType === 'all') {
     if (variant === 'all') {
       return isActive ? <AllIconActive /> : <AllIconInactive />;
     }
     return isActive ? <RecommendedIconActive /> : <RecommendedIconInactive />;
   }
 
-  if (categoryType === 'EYES') {
-    return isActive ? <EyesIconActive /> : <EyesIconInactive />;
+  const iconFn = CATEGORY_ICON_MAP[categoryType];
+  if (iconFn) {
+    return <CategoryIconCard icon={iconFn} isActive={isActive} />;
   }
 
-  if (categoryType === 'NOSE') {
-    return isActive ? <NoseIconActive /> : <NoseIconInactive />;
-  }
-
-  if (categoryType === 'LIFTING') {
-    return isActive ? <LiftingIconActive /> : <LiftingIconInactive />;
-  }
-
-  if (categoryType === 'FACIAL_CONTOURING') {
-    return isActive ? <FacialContouringIconActive /> : <FacialContouringIconInactive />;
-  }
-
-  if (categoryType === 'BREAST') {
-    return isActive ? <BreastIconActive /> : <BreastIconInactive />;
-  }
-
-  if (categoryType === 'STEM_CELL') {
-    return isActive ? <StemCellIconActive /> : <StemCellIconInactive />;
-  }
-
-  if (categoryType === 'LIPOSUCTION') {
-    return isActive ? <LiposuctionIconActive /> : <LiposuctionIconInactive />;
-  }
-
-  if (categoryType === 'BODY') {
-    return isActive ? <BodyIconActive /> : <BodyIconInactive />;
-  }
-
-  if (categoryType === 'HAIR_TRANSPLANT') {
-    return isActive ? <HairTransplantIconActive /> : <HairTransplantIconInactive />;
-  }
-
-  if (categoryType === 'DERMATOLOGY') {
-    return isActive ? <DermatologyIconActive /> : <DermatologyIconInactive />;
-  }
-
-  if (categoryType === 'DENTAL') {
-    return isActive ? <DentalIconActive /> : <DentalIconInactive />;
-  }
-
-  if (categoryType === 'ETC' || categoryType === 'OTHER') {
-    return isActive ? <OtherIconActive /> : <OtherIconInactive />;
-  }
-
-  // 기타 카테고리는 fallback 아이콘 사용
   if (fallbackIcon) {
     return (
       <div className='flex h-[50px] w-[50px] items-center justify-center'>{fallbackIcon()}</div>

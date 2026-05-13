@@ -1,7 +1,7 @@
 export function BreastIconV2() {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='44' height='38' viewBox='0 0 44 38' fill='none'>
-      <g clipPath='url(#clip0_6722_26924)'>
+    <svg xmlns='http://www.w3.org/2000/svg' width={44} height={38} viewBox='0 0 44 38' fill='none'>
+      <g clipPath='url(#clip0_6722_28562)'>
         <path
           d='M22.2931 20.7268C22.2931 24.0693 18.265 26.5594 14.9102 26.3684C12.0932 26.2081 9.75971 23.9604 9.4824 21.1295C9.36065 19.888 9.62444 18.7182 10.1655 17.7222C10.7201 16.7024 10.8622 15.5053 10.5071 14.4002L10.0336 12.9336'
           stroke='#404040'
@@ -60,21 +60,45 @@ export function BreastIconV2() {
         />
         <path
           d='M34.4141 29.7777C38.1104 29.3071 40.7279 25.8998 40.2612 22.1719M42.3279 23.0799L40.0756 20.9551L37.9688 23.2232'
-          stroke='var(--color-primary-900)'
+          stroke='url(#paint0_linear_6722_28562)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
           d='M9.58854 29.7777C5.89221 29.3071 3.27467 25.8998 3.74137 22.1719M1.67188 23.0799L3.92079 20.9551L6.02767 23.2232'
-          stroke='var(--color-primary-900)'
+          stroke='url(#paint1_linear_6722_28562)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
       </g>
       <defs>
-        <clipPath id='clip0_6722_26924'>
+        <linearGradient
+          id='paint0_linear_6722_28562'
+          x1='35.4719'
+          y1='27.7289'
+          x2='45.9179'
+          y2='23.6592'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='#FF5DCA' />
+        </linearGradient>
+        <linearGradient
+          id='paint1_linear_6722_28562'
+          x1='10.4038'
+          y1='29.9766'
+          x2='6.33512'
+          y2='19.5297'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='#FF5DCA' />
+        </linearGradient>
+        <clipPath id='clip0_6722_28562'>
           <rect width='44' height='38' fill='white' />
         </clipPath>
       </defs>

@@ -1,10 +1,10 @@
 export function OtherIconV2() {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36' fill='none'>
-      <g clipPath='url(#clip0_6722_27030)'>
+    <svg xmlns='http://www.w3.org/2000/svg' width={36} height={36} viewBox='0 0 36 36' fill='none'>
+      <g clipPath='url(#clip0_6722_28670)'>
         <path
           d='M29.5017 13.8667C31.806 10.9743 32.3648 7.15301 31.1646 3.81264C27.4519 2.48835 23.1407 3.30862 20.1652 6.27015C18.0658 8.362 17.0443 11.1226 17.0872 13.8634M21.3281 13.6242L26.608 8.36328'
-          stroke='var(--color-primary-900)'
+          stroke='url(#paint0_linear_6722_28670)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -43,7 +43,19 @@ export function OtherIconV2() {
         />
       </g>
       <defs>
-        <clipPath id='clip0_6722_27030'>
+        <linearGradient
+          id='paint0_linear_6722_28670'
+          x1='17.0859'
+          y1='8.53296'
+          x2='31.7793'
+          y2='8.53296'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='#FF5DCA' />
+        </linearGradient>
+        <clipPath id='clip0_6722_28670'>
           <rect width='36' height='36' fill='white' />
         </clipPath>
       </defs>

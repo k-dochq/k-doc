@@ -40,15 +40,8 @@ export function ProcedureFilterCategoryList({
                   isLeft ? 'px-5' : 'ps-2 pe-5'
                 } ${isSelected ? 'bg-primary-200' : 'bg-white'}`}
               >
-                <div
-                  className='flex size-[48px] shrink-0 items-center justify-center rounded-2xl bg-white'
-                  style={{
-                    background:
-                      'linear-gradient(white, white) padding-box, linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, var(--color-sub-900) 100%) border-box',
-                    border: '1px solid transparent',
-                  }}
-                >
-                  {category.icon()}
+                <div className='flex size-[48px] shrink-0 items-center justify-center'>
+                  {category.iconSmall()}
                 </div>
                 <p className="min-w-0 flex-1 text-left font-['Pretendard'] text-[13px] font-normal leading-[19px] text-[#404040]">
                   {label}

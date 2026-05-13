@@ -1,9 +1,9 @@
 export function StemCellIconV2() {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='40' height='41' viewBox='0 0 40 41' fill='none'>
+    <svg xmlns='http://www.w3.org/2000/svg' width={40} height={41} viewBox='0 0 40 41' fill='none'>
       <path
         d='M16.5602 20.0293L10.0234 26.7296M21.2188 8.17773L28.1175 15.2489M29.375 2.1875C29.375 4.78821 31.4319 6.89647 33.9691 6.89647M27.9922 8.31052L30.7169 5.51758M14.5391 17.9573L25.9715 6.23903L30.0132 10.3818L18.5808 22.1L14.5391 17.9573Z'
-        stroke='var(--color-primary-900)'
+        stroke='url(#paint0_linear_6722_28577)'
         strokeWidth='1.5'
         strokeMiterlimit='10'
         strokeLinecap='round'
@@ -32,6 +32,20 @@ export function StemCellIconV2() {
       <ellipse cx='15.7005' cy='30.9374' rx='0.802083' ry='0.822135' fill='#404040' />
       <ellipse cx='33.3021' cy='30.9374' rx='0.802083' ry='0.822135' fill='#404040' />
       <ellipse cx='6.69271' cy='30.9374' rx='0.802083' ry='0.822135' fill='#404040' />
+      <defs>
+        <linearGradient
+          id='paint0_linear_6722_28577'
+          x1='10.0234'
+          y1='14.4585'
+          x2='33.9691'
+          y2='14.4585'
+          gradientUnits='userSpaceOnUse'
+        >
+          <stop stopColor='#3E57E2' />
+          <stop offset='0.4' stopColor='#B133FF' />
+          <stop offset='1' stopColor='#FF5DCA' />
+        </linearGradient>
+      </defs>
     </svg>
   );
 }

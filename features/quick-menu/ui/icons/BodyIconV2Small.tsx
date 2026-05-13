@@ -1,39 +1,31 @@
-export function BodyIconV2() {
+export function BodyIconV2Small() {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width={40} height={36} viewBox='0 0 40 36' fill='none'>
-      <g clipPath='url(#clip0_6722_28619)'>
+    <svg xmlns='http://www.w3.org/2000/svg' width={32} height={29} viewBox='0 0 32 29' fill='none'>
+      <g clipPath='url(#clip0_6722_29205)'>
         <path
-          d='M33.9649 15.119C34.8895 19.2055 32.3093 23.224 29.4021 23.8399C26.495 24.4558 24.3612 21.4342 23.4402 17.3443C22.5157 13.2577 23.1555 9.64756 26.0591 9.03508C28.9662 8.41921 33.0404 11.029 33.9614 15.119H33.9649Z'
-          fill='url(#paint0_linear_6722_28619)'
+          d='M27.172 12.0952C27.9116 15.3644 25.8474 18.5792 23.5217 19.0719C21.196 19.5646 19.489 17.1474 18.7522 13.8754C18.0126 10.6062 18.5244 7.71804 20.8473 7.22807C23.173 6.73537 26.4323 8.82322 27.1691 12.0952H27.172Z'
+          fill='url(#paint0_linear_6722_29205)'
         />
         <path
-          d='M13.1831 1.62891C13.1831 1.62891 4.0961 14.8209 11.3657 23.6166L12.7296 34.3731'
+          d='M10.5469 1.30273C10.5469 1.30273 3.27727 11.8563 9.09295 18.8929L10.1841 27.4981'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M31.8115 1.62891L29.7656 9.98574C29.7656 9.98574 35.8998 19.4416 29.7656 26.0359V34.3731'
+          d='M25.4492 1.30273L23.8125 7.98821C23.8125 7.98821 28.7198 15.5529 23.8125 20.8283V27.4981'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M14.5246 14.9638C14.5246 18.4446 13.5368 21.2654 12.317 21.2654C11.0972 21.2654 10.1094 18.4446 10.1094 14.9638C10.1094 11.4829 11.0972 8.66211 12.317 8.66211C13.5368 8.66211 14.5246 11.4829 14.5246 14.9638Z'
-          fill='url(#paint1_linear_6722_28619)'
+          d='M11.62 11.971C11.62 14.7557 10.8298 17.0123 9.85397 17.0123C8.87813 17.0123 8.08789 14.7557 8.08789 11.971C8.08789 9.18631 8.87813 6.92969 9.85397 6.92969C10.8298 6.92969 11.62 9.18631 11.62 11.971Z'
+          fill='url(#paint1_linear_6722_29205)'
         />
         <path
-          d='M11.3672 22.9374V5.88477'
-          stroke='#404040'
-          strokeWidth='1.5'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeDasharray='1 3'
-        />
-        <path
-          d='M29.9844 27.3401C29.9844 27.3401 35.9111 23.7401 35.6791 17.3262C35.4401 10.6911 30.3881 8.57812 30.3881 8.57812'
+          d='M9.09375 18.3491V4.70703'
           stroke='#404040'
           strokeWidth='1.5'
           strokeLinecap='round'
@@ -41,22 +33,30 @@ export function BodyIconV2() {
           strokeDasharray='1 3'
         />
         <path
-          d='M33.8125 7.91281L38.4508 5.57617M37.585 8.19194L38.4497 5.57533L35.75 4.73828'
-          stroke='url(#paint2_linear_6722_28619)'
+          d='M23.9883 21.8709C23.9883 21.8709 28.7297 18.9909 28.5441 13.8598C28.3529 8.55169 24.3112 6.86133 24.3112 6.86133'
+          stroke='#404040'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeDasharray='1 3'
+        />
+        <path
+          d='M27.0498 6.33064L30.7604 4.46133M30.0678 6.55394L30.7596 4.46065L28.5998 3.79102'
+          stroke='url(#paint2_linear_6722_29205)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M0.90625 9.29883H7.51859M5.30469 7.16211L7.51859 9.29883L5.30469 11.4306'
-          stroke='url(#paint3_linear_6722_28619)'
+          d='M0.724609 7.43984H6.01448M4.24336 5.73047L6.01448 7.43984L4.24336 9.14526'
+          stroke='url(#paint3_linear_6722_29205)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
         />
         <path
-          d='M0.90625 21.9316H7.51859M5.30469 19.7949L7.51859 21.9316L5.30469 24.0634'
-          stroke='url(#paint4_linear_6722_28619)'
+          d='M0.724609 17.5453H6.01448M4.24336 15.8359L6.01448 17.5453L4.24336 19.2507'
+          stroke='url(#paint4_linear_6722_29205)'
           strokeWidth='1.5'
           strokeLinecap='round'
           strokeLinejoin='round'
@@ -64,11 +64,11 @@ export function BodyIconV2() {
       </g>
       <defs>
         <linearGradient
-          id='paint0_linear_6722_28619'
-          x1='34.1559'
-          y1='16.4325'
-          x2='23.0469'
-          y2='16.4325'
+          id='paint0_linear_6722_29205'
+          x1='27.3247'
+          y1='13.146'
+          x2='18.4375'
+          y2='13.146'
           gradientUnits='userSpaceOnUse'
         >
           <stop stopColor='#3E57E2' />
@@ -76,11 +76,11 @@ export function BodyIconV2() {
           <stop offset='1' stopColor='#FF5DCA' />
         </linearGradient>
         <linearGradient
-          id='paint1_linear_6722_28619'
-          x1='7'
-          y1='14.9638'
-          x2='14.5246'
-          y2='14.9638'
+          id='paint1_linear_6722_29205'
+          x1='5.60039'
+          y1='11.971'
+          x2='11.62'
+          y2='11.971'
           gradientUnits='userSpaceOnUse'
         >
           <stop stopColor='#3E57E2' />
@@ -88,11 +88,11 @@ export function BodyIconV2() {
           <stop offset='1' stopColor='#FF5DCA' />
         </linearGradient>
         <linearGradient
-          id='paint2_linear_6722_28619'
-          x1='33.8125'
-          y1='6.46511'
-          x2='38.4508'
-          y2='6.46511'
+          id='paint2_linear_6722_29205'
+          x1='27.0498'
+          y1='5.17248'
+          x2='30.7604'
+          y2='5.17248'
           gradientUnits='userSpaceOnUse'
         >
           <stop stopColor='#3E57E2' />
@@ -100,11 +100,11 @@ export function BodyIconV2() {
           <stop offset='1' stopColor='#FF5DCA' />
         </linearGradient>
         <linearGradient
-          id='paint3_linear_6722_28619'
-          x1='0.90625'
-          y1='9.29635'
-          x2='7.51859'
-          y2='9.29635'
+          id='paint3_linear_6722_29205'
+          x1='0.724609'
+          y1='7.43786'
+          x2='6.01448'
+          y2='7.43786'
           gradientUnits='userSpaceOnUse'
         >
           <stop stopColor='#3E57E2' />
@@ -112,19 +112,19 @@ export function BodyIconV2() {
           <stop offset='1' stopColor='#FF5DCA' />
         </linearGradient>
         <linearGradient
-          id='paint4_linear_6722_28619'
-          x1='0.90625'
-          y1='21.9292'
-          x2='7.51859'
-          y2='21.9292'
+          id='paint4_linear_6722_29205'
+          x1='0.724609'
+          y1='17.5433'
+          x2='6.01448'
+          y2='17.5433'
           gradientUnits='userSpaceOnUse'
         >
           <stop stopColor='#3E57E2' />
           <stop offset='0.4' stopColor='#B133FF' />
           <stop offset='1' stopColor='#FF5DCA' />
         </linearGradient>
-        <clipPath id='clip0_6722_28619'>
-          <rect width='40' height='36' fill='white' />
+        <clipPath id='clip0_6722_29205'>
+          <rect width='32' height='28.8' fill='white' />
         </clipPath>
       </defs>
     </svg>

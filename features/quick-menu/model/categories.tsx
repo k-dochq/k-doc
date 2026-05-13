@@ -26,6 +26,18 @@ import {
   DermatologyIconV2,
   DentalIconV2,
   OtherIconV2,
+  EyesIconV2Small,
+  NoseIconV2Small,
+  LiftingIconV2Small,
+  FacialContouringIconV2Small,
+  BreastIconV2Small,
+  StemCellIconV2Small,
+  LiposuctionIconV2Small,
+  BodyIconV2Small,
+  HairTransplantIconV2Small,
+  DermatologyIconV2Small,
+  DentalIconV2Small,
+  OtherIconV2Small,
 } from '../ui/icons';
 
 interface CategoryDef {
@@ -282,6 +294,37 @@ function renderV2Icon(type: string): React.ReactNode {
   }
 }
 
+function renderV2IconSmall(type: string): React.ReactNode {
+  switch (type) {
+    case 'EYES':
+      return <EyesIconV2Small />;
+    case 'NOSE':
+      return <NoseIconV2Small />;
+    case 'LIFTING':
+      return <LiftingIconV2Small />;
+    case 'FACIAL_CONTOURING':
+      return <FacialContouringIconV2Small />;
+    case 'BREAST':
+      return <BreastIconV2Small />;
+    case 'STEM_CELL':
+      return <StemCellIconV2Small />;
+    case 'LIPOSUCTION':
+      return <LiposuctionIconV2Small />;
+    case 'BODY':
+      return <BodyIconV2Small />;
+    case 'HAIR_TRANSPLANT':
+      return <HairTransplantIconV2Small />;
+    case 'DERMATOLOGY':
+      return <DermatologyIconV2Small />;
+    case 'DENTAL':
+      return <DentalIconV2Small />;
+    case 'ETC':
+      return <OtherIconV2Small />;
+    default:
+      return null;
+  }
+}
+
 const QUICK_MENU_BASE_V1: CategoryItem[] = CATEGORY_DEFS.map((def) => ({
   ...def,
   icon: () => renderV1Icon(def.type),
@@ -291,7 +334,7 @@ const QUICK_MENU_BASE_V1: CategoryItem[] = CATEGORY_DEFS.map((def) => ({
 const QUICK_MENU_BASE_V2: CategoryItem[] = CATEGORY_DEFS.map((def) => ({
   ...def,
   icon: () => renderV2Icon(def.type),
-  iconSmall: () => null,
+  iconSmall: () => renderV2IconSmall(def.type),
 }));
 
 const ALL_CATEGORY: CategoryItem = {
