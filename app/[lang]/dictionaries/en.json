@@ -711,9 +711,20 @@
       "changeRequestSubmit": "Send Change Request",
       "changeRequestSuccess": "Your change request has been sent.",
       "changeRequestError": "Failed to send change request.",
+      "changeRequestReceived": "Your reservation change request has been received.",
+      "changeRequestDateLabel": "Requested Change Schedule",
+      "changeRequestInfoMsg": "We will inform you of the availability of your selected schedule through consultation.",
+      "changeRequestConfirm": "Yes",
       "changeRequested": "Change Requested",
       "changeConfirmed": "Change Confirmed",
       "consultation": "Consultation",
+      "notice": {
+        "title": "Reservation Notice",
+        "item1": "The reservation schedule will be finalized after hospital confirmation.",
+        "item2": "Reservation changes and cancellations are possible up to 3 days before the reservation date.",
+        "item3": "Schedule adjustments may be necessary depending on the hospital's circumstances.",
+        "item4": "Please arrive at the reserved time for smooth consultation and procedure."
+      },
       "userInfo": {
         "title": "Reservation User Information",
         "passportName": "Passport Name (English)",

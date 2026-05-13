@@ -711,9 +711,20 @@
       "changeRequestSubmit": "변경 요청 전송",
       "changeRequestSuccess": "변경 요청이 전송되었습니다.",
       "changeRequestError": "변경 요청 전송에 실패했습니다.",
+      "changeRequestReceived": "예약 변경 요청이 접수되었습니다.",
+      "changeRequestDateLabel": "변경 요청 일정",
+      "changeRequestInfoMsg": "선택하신 일정의 예약 가능 여부는 상담을 통해 안내드릴 예정입니다.",
+      "changeRequestConfirm": "예",
       "changeRequested": "변경 요청됨",
       "changeConfirmed": "변경 확정됨",
       "consultation": "상담 하기",
+      "notice": {
+        "title": "예약 안내",
+        "item1": "예약 일정은 병원 확인 후 최종 확정됩니다.",
+        "item2": "예약 변경 및 취소는 예약일 기준 3일 전까지 가능합니다.",
+        "item3": "병원 사정에 따라 일정 조율이 필요할 수 있습니다.",
+        "item4": "원활한 상담 및 시술 진행을 위해 예약 시간에 맞춰 방문 부탁드립니다."
+      },
       "userInfo": {
         "title": "예약자 정보",
         "passportName": "여권 영문 이름",

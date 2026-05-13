@@ -711,9 +711,20 @@
       "changeRequestSubmit": "發送變更申請",
       "changeRequestSuccess": "變更申請已發送。",
       "changeRequestError": "無法發送變更申請。",
+      "changeRequestReceived": "您的預約變更請求已成功受理。",
+      "changeRequestDateLabel": "變更請求時間",
+      "changeRequestInfoMsg": "我們將通過諮詢告知您所選時間的預約可行性。",
+      "changeRequestConfirm": "是",
       "changeRequested": "已申請變更",
       "changeConfirmed": "已確認變更",
       "consultation": "獲取建議",
+      "notice": {
+        "title": "預約須知",
+        "item1": "預約時間將在醫院確認後最終確定。",
+        "item2": "預約變更及取消須在預約日前3天前完成。",
+        "item3": "可能需要根據醫院情況調整時間安排。",
+        "item4": "為確保諮詢及療程順利進行，請準時於預約時間到達。"
+      },
       "userInfo": {
         "title": "預訂資訊",
         "passportName": "護照上的英文姓名",
