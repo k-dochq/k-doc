@@ -704,7 +704,7 @@
       "transferDate": "تاريخ ووقت التحويل",
       "hospitalInfo": "معلومات المستشفى",
       "cancel": "إلغاء الحجز",
-      "changeRequest": "طلب تغيير الجدول",
+      "changeRequest": "تغيير الحجز",
       "changeRequestTitle": "طلب تغيير الحجز",
       "changeRequestNewDate": "التاريخ الجديد",
       "changeRequestNewTime": "الوقت الجديد",

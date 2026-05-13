@@ -704,7 +704,7 @@
       "transferDate": "วันที่โอนเงิน",
       "hospitalInfo": "ข้อมูลโรงพยาบาล",
       "cancel": "ยกเลิกการจอง",
-      "changeRequest": "ขอเปลี่ยนแปลงตารางนัดหมาย",
+      "changeRequest": "เปลี่ยนการจอง",
       "changeRequestTitle": "ขอเปลี่ยนแปลงการจอง",
       "changeRequestNewDate": "วันที่ใหม่",
       "changeRequestNewTime": "เวลาใหม่",
