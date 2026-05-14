@@ -22,7 +22,8 @@
     "export-dicts": "tsx scripts/export-dictionaries-to-xlsx.ts",
     "export-faq": "tsx scripts/export-faq-to-csv.ts",
     "import-faq": "tsx scripts/import-faq-from-sheets.ts",
-    "read-xlsx": "tsx scripts/read-translation-xlsx.ts"
+    "read-xlsx": "tsx scripts/read-translation-xlsx.ts",
+    "generate:sitemaps": "tsx scripts/generate-sitemaps.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.71",
