@@ -135,3 +135,5 @@ Sitemap: https://www.k-doc.kr/sitemap_zh-Hant.xml
 Sitemap: https://www.k-doc.kr/sitemap_ja.xml
 Sitemap: https://www.k-doc.kr/sitemap_hi.xml
 Sitemap: https://www.k-doc.kr/sitemap_tl.xml
+Sitemap: https://www.k-doc.kr/sitemap_ar.xml
+Sitemap: https://www.k-doc.kr/sitemap_ru.xml
