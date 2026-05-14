@@ -42,6 +42,13 @@
     padding: 1em;
     font-size: 1rem;
     border-radius: 6px/0.375rem;
+    box-sizing: border-box;
+    max-width: 100%;
+    /* 긴 한 줄(잘못 codeBlock으로 넣은 인용문 등)이 뷰포트 밖으로 밀지 않도록 */
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    overflow-x: auto;
 
     code {
       background-color: transparent;
