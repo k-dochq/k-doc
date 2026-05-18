@@ -12,6 +12,7 @@ interface PageHeaderV2Props {
   title: string;
   fallbackUrl?: string;
   rightContent?: React.ReactNode;
+  centerContent?: React.ReactNode;
   className?: string;
   enableScrollTransparency?: boolean;
   backgroundColor?: string;
@@ -24,6 +25,7 @@ export function PageHeaderV2({
   title,
   fallbackUrl,
   rightContent,
+  centerContent,
   className = '',
   enableScrollTransparency = false,
   backgroundColor = 'bg-white',
@@ -116,12 +118,14 @@ export function PageHeaderV2({
         >
           <ArrowLeftIconV2 className={`${styles.text} rtl:scale-x-[-1]`} width={24} height={24} />
         </button>
-        {/* 제목 */}
-        <h1
-          className={`text-lg leading-tight font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
-        >
-          {title}
-        </h1>
+        {/* 로고 또는 제목 */}
+        {centerContent ?? (
+          <h1
+            className={`text-lg leading-tight font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
+          >
+            {title}
+          </h1>
+        )}
       </div>
 
       {/* 검색 → 오른쪽 컨텐츠 → 닫기 */}

@@ -1,5 +1,7 @@
 import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
 import { type Locale } from 'shared/config';
 import { prisma } from '@/shared/lib/prisma';
 import { PageHeaderV2 } from 'shared/ui/page-header';
@@ -70,6 +72,11 @@ export default async function TipDetailPage({ params }: TipDetailPageProps) {
       <PageHeaderV2
         title=''
         fallbackUrl={`/${lang}/tips`}
+        centerContent={
+          <Link href={`/${lang}`}>
+            <Image src='/logo_3d.png' alt='K-DOC' width={109} height={30} priority />
+          </Link>
+        }
         rightContent={<TipShareButton slug={slug} lang={lang} />}
       />
       <div className='h-[58px]' />
