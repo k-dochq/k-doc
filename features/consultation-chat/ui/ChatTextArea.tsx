@@ -56,11 +56,11 @@ export const ChatTextArea = forwardRef<ChatTextAreaRef, ChatTextAreaProps>(
           placeholder={placeholder}
           disabled={disabled}
           rows={1}
-          className="flex w-full resize-none overflow-hidden border-none bg-transparent font-['Pretendard:Medium',_sans-serif] text-[14px] text-neutral-900 outline-none placeholder:text-neutral-400"
+          className="flex w-full resize-none overflow-hidden border-none bg-transparent font-['Pretendard:Medium',_sans-serif] text-sm text-neutral-900 outline-none placeholder:text-neutral-400"
           style={{
             minHeight: '28px',
             maxHeight: '120px',
-            lineHeight: '28px',
+            lineHeight: '20px',
             paddingTop: '0',
             paddingBottom: '0',
           }}
