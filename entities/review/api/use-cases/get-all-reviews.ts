@@ -13,7 +13,7 @@ export async function getAllReviews({
   page = 1,
   limit = 10,
   category,
-  sort = 'recommended',
+  sort = 'latest',
   seed,
   offset,
   hospitalId,

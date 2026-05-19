@@ -33,10 +33,10 @@ interface SearchV2ContentProps {
 const TAB_HOSPITAL = 'hospital';
 const TAB_REVIEW = 'review';
 
-/** 통합 검색 리뷰 탭 정렬 드로어: 인기·추천만 */
+/** 통합 검색 리뷰 탭 정렬 드로어: 인기·최신만 */
 const SEARCH_REVIEW_SORT_OPTIONS = [
   REVIEW_SORT_OPTIONS.POPULAR,
-  REVIEW_SORT_OPTIONS.RECOMMENDED,
+  REVIEW_SORT_OPTIONS.LATEST,
 ] as const satisfies readonly ReviewSortOption[];
 
 export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentProps) {
@@ -51,11 +51,11 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
       ? (currentSort as HospitalSortOption)
       : HOSPITAL_SORT_OPTIONS.RECOMMENDED;
 
-  /** 통합 검색 리뷰 탭: 허용 값은 인기·추천만 (그 외 sort 쿼리는 무시하고 추천으로 동작) */
+  /** 통합 검색 리뷰 탭: 허용 값은 인기·최신만 (그 외 sort 쿼리는 무시하고 최신으로 동작) */
   const searchReviewSort: ReviewSortOption =
     currentSort === REVIEW_SORT_OPTIONS.POPULAR
       ? REVIEW_SORT_OPTIONS.POPULAR
-      : REVIEW_SORT_OPTIONS.RECOMMENDED;
+      : REVIEW_SORT_OPTIONS.LATEST;
 
   const router = useLocalizedRouter();
   const urlSearchParams = useSearchParams();
@@ -231,9 +231,9 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
               >
                 <FilterIconV2 className='h-[18px] w-[18px] shrink-0' />
                 <p className='text-sm leading-5 font-semibold text-neutral-700'>
-                  {searchReviewSort === REVIEW_SORT_OPTIONS.RECOMMENDED
-                    ? (dict.allReviews?.sort?.recommended ?? '')
-                    : (dict.allReviews?.sort?.popular ?? '')}
+                  {searchReviewSort === REVIEW_SORT_OPTIONS.POPULAR
+                    ? (dict.allReviews?.sort?.popular ?? '')
+                    : (dict.allReviews?.sort?.latest ?? '')}
                 </p>
               </button>
               <ProcedureFilterButton

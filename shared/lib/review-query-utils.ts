@@ -41,7 +41,7 @@ export interface DbReviewQueryParams {
 export const DEFAULT_REVIEW_QUERY_PARAMS = {
   page: 1,
   limit: 10,
-  sort: REVIEW_SORT_OPTIONS.RECOMMENDED,
+  sort: REVIEW_SORT_OPTIONS.LATEST,
 } as const;
 
 /**

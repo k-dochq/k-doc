@@ -244,7 +244,7 @@
     "sort": {
       "popular": "Популярные",
       "recommended": "Рекомендуемые",
-      "latest": "Новые",
+      "latest": "Сначала новые",
       "ratingHigh": "Высокий рейтинг",
       "ratingLow": "Низкий рейтинг"
     }
@@ -616,7 +616,7 @@
   },
   "hospitalSort": {
     "popular": "Популярные",
-    "recommended": "Рекомендуемые",
+    "recommended": "Больше отзывов",
     "newest": "Новые"
   },
   "review": {
