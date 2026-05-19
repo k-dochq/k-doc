@@ -38,7 +38,7 @@ export default async function V2HospitalReviewsPage({
   const sortParam = resolvedSearchParams.sort;
   const isValidSort =
     sortParam && Object.values(REVIEW_SORT_OPTIONS).includes(sortParam as ReviewSortOption);
-  const sort = (isValidSort ? sortParam : REVIEW_SORT_OPTIONS.LATEST) as ReviewSortOption;
+  const sort = (isValidSort ? sortParam : REVIEW_SORT_OPTIONS.POPULAR) as ReviewSortOption;
 
   return <HospitalReviewsContentV2 hospitalId={id} lang={lang} dict={dict} sort={sort} />;
 }

@@ -27,7 +27,7 @@ export function ReviewsContentV2({ lang, dict, searchParams }: ReviewsContentV2P
 
   // sort 파라미터 처리 (기본값: 추천순)
   const currentSort: ReviewSortOption =
-    (searchParams.sort as ReviewSortOption) || REVIEW_SORT_OPTIONS.LATEST;
+    (searchParams.sort as ReviewSortOption) || REVIEW_SORT_OPTIONS.POPULAR;
 
   return (
     <div className=''>

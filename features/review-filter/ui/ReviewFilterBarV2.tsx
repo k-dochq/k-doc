@@ -32,7 +32,7 @@ export function ReviewFilterBarV2({ lang, dict, currentSort }: ReviewFilterBarV2
       case REVIEW_SORT_OPTIONS.RATING_LOW:
         return dict.allReviews?.sort?.ratingLow ?? '';
       default:
-        return dict.allReviews?.sort?.latest ?? '';
+        return dict.allReviews?.sort?.popular ?? '';
     }
   };
 

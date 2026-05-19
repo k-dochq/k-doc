@@ -49,13 +49,13 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
     currentSort === HOSPITAL_SORT_OPTIONS.NEWEST ||
     currentSort === HOSPITAL_SORT_OPTIONS.POPULAR
       ? (currentSort as HospitalSortOption)
-      : HOSPITAL_SORT_OPTIONS.RECOMMENDED;
+      : HOSPITAL_SORT_OPTIONS.POPULAR;
 
-  /** 통합 검색 리뷰 탭: 허용 값은 인기·최신만 (그 외 sort 쿼리는 무시하고 최신으로 동작) */
+  /** 통합 검색 리뷰 탭: 허용 값은 인기·최신만 (그 외 sort 쿼리는 무시하고 인기순으로 동작) */
   const searchReviewSort: ReviewSortOption =
-    currentSort === REVIEW_SORT_OPTIONS.POPULAR
-      ? REVIEW_SORT_OPTIONS.POPULAR
-      : REVIEW_SORT_OPTIONS.LATEST;
+    currentSort === REVIEW_SORT_OPTIONS.LATEST
+      ? REVIEW_SORT_OPTIONS.LATEST
+      : REVIEW_SORT_OPTIONS.POPULAR;
 
   const router = useLocalizedRouter();
   const urlSearchParams = useSearchParams();
