@@ -11,7 +11,7 @@ export function buildReviewOrderBy(
   sort: ReviewSortOption,
   seed?: string,
 ): ReviewOrderBy | undefined {
-  if (sort === 'recommended' && seed) {
+  if (sort === 'popular' && seed) {
     return undefined;
   }
 

@@ -39,7 +39,7 @@ export async function getAllReviews({
     });
 
     let reviewIds: string[] | undefined;
-    if (sort === 'recommended' && seed) {
+    if (sort === 'popular' && seed) {
       reviewIds = await fetchRandomOrderedReviewIds({
         seed,
         limit,
