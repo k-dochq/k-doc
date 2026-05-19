@@ -28,7 +28,7 @@ export function buildReviewOrderBy(
         { createdAt: 'desc' as const },
       ];
     case 'latest':
-      return [imageFirst, { createdAt: 'desc' as const }];
+      return [{ createdAt: 'desc' as const }];
     case 'rating_high':
       return [imageFirst, { rating: 'desc' as const }];
     case 'rating_low':
