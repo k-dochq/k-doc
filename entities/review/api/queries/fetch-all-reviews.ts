@@ -25,7 +25,7 @@ export async function fetchAllReviews({
   pageParam = 1,
   limit = 10,
   category,
-  sort = 'recommended',
+  sort = 'popular',
   seed,
   hospitalId,
   likedOnly = false,

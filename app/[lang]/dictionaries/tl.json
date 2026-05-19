@@ -244,7 +244,7 @@
     "sort": {
       "popular": "Popular",
       "recommended": "Recommended",
-      "latest": "Newest",
+      "latest": "Latest",
       "ratingHigh": "Highest Rating",
       "ratingLow": "Lowest Rating"
     }
@@ -616,7 +616,7 @@
   },
   "hospitalSort": {
     "popular": "Popular",
-    "recommended": "Recommended",
+    "recommended": "Most Reviewed",
     "newest": "Newest"
   },
   "review": {

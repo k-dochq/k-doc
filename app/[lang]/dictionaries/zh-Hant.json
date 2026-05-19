@@ -616,7 +616,7 @@
   },
   "hospitalSort": {
     "popular": "熱門",
-    "recommended": "推薦",
+    "recommended": "評價最多",
     "newest": "最新"
   },
   "review": {

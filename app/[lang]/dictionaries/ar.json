@@ -616,7 +616,7 @@
   },
   "hospitalSort": {
     "popular": "الأكثر شيوعًا",
-    "recommended": "موصى به",
+    "recommended": "الأكثر تقييماً",
     "newest": "الأحدث"
   },
   "review": {

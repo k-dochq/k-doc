@@ -9,7 +9,7 @@ import { resolveDrawer } from 'shared/lib/drawer';
 /** 정렬 드로어 기본 노출 순서 (전체 옵션). 호출부에서 `sortOptions`로 덮어쓸 수 있음. */
 export const DEFAULT_REVIEW_SORT_FILTER_OPTIONS = [
   REVIEW_SORT_OPTIONS.POPULAR,
-  REVIEW_SORT_OPTIONS.RECOMMENDED,
+  REVIEW_SORT_OPTIONS.LATEST,
   REVIEW_SORT_OPTIONS.RATING_HIGH,
   REVIEW_SORT_OPTIONS.RATING_LOW,
 ] as const satisfies readonly ReviewSortOption[];

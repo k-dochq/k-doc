@@ -31,7 +31,7 @@ export function AllReviewsContent({ lang, dict, searchParams }: AllReviewsConten
   // 정렬 파라미터 처리 - 타입 안전하게 변환
   const currentSort: ReviewSortOption =
     searchParams.sort === REVIEW_SORT_OPTIONS.POPULAR ||
-    searchParams.sort === REVIEW_SORT_OPTIONS.RECOMMENDED
+    searchParams.sort === REVIEW_SORT_OPTIONS.LATEST
       ? (searchParams.sort as ReviewSortOption)
       : REVIEW_SORT_OPTIONS.POPULAR;
 

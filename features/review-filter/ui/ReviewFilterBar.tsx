@@ -18,8 +18,8 @@ export function ReviewFilterBar({ lang, dict }: ReviewFilterBarProps) {
       isDefault: true,
     },
     {
-      value: REVIEW_SORT_OPTIONS.RECOMMENDED,
-      label: dict.allReviews.sort.recommended,
+      value: REVIEW_SORT_OPTIONS.LATEST,
+      label: dict.allReviews.sort.latest,
     },
   ];
 

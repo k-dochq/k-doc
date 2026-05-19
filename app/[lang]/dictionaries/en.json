@@ -616,7 +616,7 @@
   },
   "hospitalSort": {
     "popular": "Popular",
-    "recommended": "Recommended",
+    "recommended": "Most Reviewed",
     "newest": "Newest"
   },
   "review": {

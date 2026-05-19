@@ -23,7 +23,7 @@ export interface UseInfiniteAllReviewsParams {
 export function useInfiniteAllReviews({
   limit = 10,
   category,
-  sort = 'recommended',
+  sort = 'popular',
   hospitalId,
   likedOnly = false,
   initialData,
@@ -43,7 +43,7 @@ export function useInfiniteAllReviews({
         limit,
         category,
         sort,
-        seed: sort === REVIEW_SORT_OPTIONS.RECOMMENDED ? seedRef.current : undefined,
+        seed: sort === REVIEW_SORT_OPTIONS.POPULAR ? seedRef.current : undefined,
         hospitalId,
         likedOnly,
       }),

@@ -29,7 +29,7 @@ export function ReviewDetailCardV2Shell({
 
   const queryParams = {
     limit: 10,
-    sort: REVIEW_SORT_OPTIONS.RECOMMENDED,
+    sort: REVIEW_SORT_OPTIONS.POPULAR,
   };
 
   const toggleLikeMutation = useToggleReviewLike({ queryParams });

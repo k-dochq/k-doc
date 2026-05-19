@@ -25,8 +25,8 @@ export function ReviewFilterBarV2({ lang, dict, currentSort, hospitalId }: Revie
     switch (currentSort) {
       case REVIEW_SORT_OPTIONS.POPULAR:
         return dict.allReviews?.sort?.popular || '인기순';
-      case REVIEW_SORT_OPTIONS.RECOMMENDED:
-        return dict.allReviews?.sort?.recommended || '추천순';
+      case REVIEW_SORT_OPTIONS.LATEST:
+        return dict.allReviews?.sort?.latest || '최신순';
       case REVIEW_SORT_OPTIONS.RATING_HIGH:
         return dict.allReviews?.sort?.ratingHigh || '별점 높은 순';
       case REVIEW_SORT_OPTIONS.RATING_LOW:

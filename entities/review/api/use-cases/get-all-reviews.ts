@@ -13,7 +13,7 @@ export async function getAllReviews({
   page = 1,
   limit = 10,
   category,
-  sort = 'recommended',
+  sort = 'popular',
   seed,
   offset,
   hospitalId,
@@ -39,7 +39,7 @@ export async function getAllReviews({
     });
 
     let reviewIds: string[] | undefined;
-    if (sort === 'recommended' && seed) {
+    if (sort === 'popular' && seed) {
       reviewIds = await fetchRandomOrderedReviewIds({
         seed,
         limit,
