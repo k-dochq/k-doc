@@ -111,6 +111,7 @@ export function ConsultationChatContentV2({
     <ConsultationChatMainV2
       lang={lang}
       dict={dict}
+      hospitalId={hospitalId}
       hospitalName={hospitalName}
       hospitalImageUrl={hospitalLogoUrl}
       messages={messages}

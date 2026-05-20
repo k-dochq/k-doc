@@ -10,6 +10,7 @@ import { type ChatMessage } from '../api/entities/types';
 interface ConsultationChatMainV2Props {
   lang: Locale;
   dict: Dictionary;
+  hospitalId: string;
   hospitalName: string;
   hospitalImageUrl?: string;
   messages: ChatMessage[];
@@ -23,6 +24,7 @@ interface ConsultationChatMainV2Props {
 export function ConsultationChatMainV2({
   lang,
   dict,
+  hospitalId,
   hospitalName,
   hospitalImageUrl,
   messages,
@@ -34,7 +36,12 @@ export function ConsultationChatMainV2({
 }: ConsultationChatMainV2Props) {
   return (
     <div className='flex h-screen flex-col bg-white'>
-      <PageHeaderV2 title={hospitalName} fallbackUrl={`/${lang}/consultation`} closeUrl='/' />
+      <PageHeaderV2
+        title={hospitalName}
+        titleHref={`/v2/hospital/${hospitalId}`}
+        fallbackUrl={`/${lang}/consultation`}
+        closeUrl='/'
+      />
 
       <div className='h-[58px]' />
 
@@ -42,6 +49,7 @@ export function ConsultationChatMainV2({
         messages={messages}
         hospitalName={hospitalName}
         hospitalImageUrl={hospitalImageUrl}
+        hospitalId={hospitalId}
         isLoading={isLoadingHistory}
         lang={lang}
         dict={dict}

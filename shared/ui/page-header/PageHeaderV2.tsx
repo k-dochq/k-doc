@@ -10,6 +10,7 @@ import { MAX_MOBILE_WIDTH_CLASS } from 'shared/config';
 
 interface PageHeaderV2Props {
   title: string;
+  titleHref?: string;
   fallbackUrl?: string;
   rightContent?: React.ReactNode;
   centerContent?: React.ReactNode;
@@ -23,6 +24,7 @@ interface PageHeaderV2Props {
 
 export function PageHeaderV2({
   title,
+  titleHref,
   fallbackUrl,
   rightContent,
   centerContent,
@@ -120,11 +122,20 @@ export function PageHeaderV2({
         </button>
         {/* 로고 또는 제목 */}
         {centerContent ?? (
-          <h1
-            className={`text-lg leading-tight font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
-          >
-            {title}
-          </h1>
+          titleHref ? (
+            <LocaleLink
+              href={titleHref}
+              className={`text-lg leading-tight font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
+            >
+              {title}
+            </LocaleLink>
+          ) : (
+            <h1
+              className={`text-lg leading-tight font-semibold transition-opacity duration-300 ${styles.text} ${styles.title}`}
+            >
+              {title}
+            </h1>
+          )
         )}
       </div>
 

@@ -13,6 +13,7 @@ interface HospitalMessageProps {
   message: ChatMessage;
   hospitalName: string;
   hospitalImageUrl?: string;
+  hospitalId?: string;
   showHeader?: boolean;
   lang: Locale;
   dict: Dictionary;
@@ -22,11 +23,13 @@ export function HospitalMessage({
   message,
   hospitalName,
   hospitalImageUrl,
+  hospitalId,
   showHeader = true,
   lang,
   dict,
 }: HospitalMessageProps) {
   const formattedTime = formatMessageTime(message.timestamp);
+  const hospitalHref = hospitalId ? `/v2/hospital/${hospitalId}` : undefined;
 
   // returnUrl을 현재 URL의 경로로 설정 (pathname만)
   const returnUrl = typeof window !== 'undefined' ? window.location.pathname : undefined;
@@ -40,6 +43,7 @@ export function HospitalMessage({
         formattedTime={formattedTime}
         hospitalName={hospitalName}
         hospitalImageUrl={hospitalImageUrl}
+        hospitalHref={hospitalHref}
         showHeader={showHeader}
         dict={dict}
       />
@@ -53,6 +57,7 @@ export function HospitalMessage({
         formattedTime={formattedTime}
         hospitalName={hospitalName}
         hospitalImageUrl={hospitalImageUrl}
+        hospitalHref={hospitalHref}
         showHeader={showHeader}
         lang={lang}
       />
@@ -65,6 +70,7 @@ export function HospitalMessage({
       formattedTime={formattedTime}
       hospitalName={hospitalName}
       hospitalImageUrl={hospitalImageUrl}
+      hospitalHref={hospitalHref}
       showHeader={showHeader}
       lang={lang}
       dict={dict}

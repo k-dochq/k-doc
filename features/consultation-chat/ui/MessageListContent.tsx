@@ -14,6 +14,7 @@ interface MessageListContentProps {
   messages: ChatMessage[];
   hospitalName: string;
   hospitalImageUrl?: string;
+  hospitalId?: string;
   lang: Locale;
   isLoading?: boolean;
   hasMore?: boolean;
@@ -25,6 +26,7 @@ export function MessageListContent({
   messages,
   hospitalName,
   hospitalImageUrl,
+  hospitalId,
   lang,
   isLoading = false,
   hasMore,
@@ -113,6 +115,7 @@ export function MessageListContent({
                   message={message}
                   hospitalName={hospitalName}
                   hospitalImageUrl={hospitalImageUrl}
+                  hospitalId={hospitalId}
                   showHeader={shouldShowHeader(index)}
                   lang={lang}
                   dict={dict}
