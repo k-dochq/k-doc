@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from 'shared/lib/prisma';
-import { type EventBannerType } from '@prisma/client';
+import { type EventBannerType, type BannerPlatform } from '@prisma/client';
 
 export const revalidate = 1200; // 20분
 
@@ -12,11 +12,14 @@ export async function GET(request: NextRequest) {
     const isActiveParam = url.searchParams.get('isActive');
     // isActive 미지정 시 기본값: 활성 배너만 반환 (공개용 일관성). ?isActive=false 로 비활성 포함 조회 가능.
     const isActive: boolean = isActiveParam?.toLowerCase() !== 'false';
+    const platformParam = url.searchParams.get('platform');
+    const platform = platformParam ? (platformParam as BannerPlatform) : undefined;
 
     const banners = await prisma.eventBanner.findMany({
       where: {
         ...(type && { type }),
         isActive,
+        ...(platform && { platforms: { has: platform } }),
       },
       include: {
         EventBannerImage: true,

@@ -37,8 +37,24 @@ export function isIOS(): boolean {
 }
 
 /**
+ * 현재 환경이 Android인지 확인합니다.
+ */
+export function isAndroid(): boolean {
+  if (typeof window === 'undefined') return false;
+
+  return /android/i.test(window.navigator.userAgent);
+}
+
+/**
  * 현재 환경이 Expo WebView이면서 iOS인지 확인합니다.
  */
 export function isExpoWebViewOnIOS(): boolean {
   return isExpoWebView() && isIOS();
+}
+
+/**
+ * 현재 환경이 Expo WebView이면서 Android인지 확인합니다.
+ */
+export function isExpoWebViewOnAndroid(): boolean {
+  return isExpoWebView() && isAndroid();
 }

@@ -4,6 +4,7 @@ import { useActiveBanners } from 'entities/event-banner/api/queries/get-active-b
 import { EventBannerRibbonContent } from './EventBannerRibbonContent';
 import { type EventBannerCarouselProps, type EventBannerWithImage } from '../model/types';
 import { LOADING_RIBBON_BANNERS } from 'widgets/event-banner/model/loading-ribbon-banners';
+import { useBannerPlatform } from 'shared/model/hooks/useBannerPlatform';
 
 function mapBannersToLocalizedImages({
   banners,
@@ -47,7 +48,8 @@ export function EventBannerRibbonCarousel({
   currentLocale,
   className = '',
 }: EventBannerCarouselProps) {
-  const { data: banners, isLoading, error } = useActiveBanners({ type: 'RIBBON' });
+  const platform = useBannerPlatform();
+  const { data: banners, isLoading, error } = useActiveBanners({ type: 'RIBBON', platform });
 
   const validBanners = mapBannersToLocalizedImages({
     banners: banners ?? [],

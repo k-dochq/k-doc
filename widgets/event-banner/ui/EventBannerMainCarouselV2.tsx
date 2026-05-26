@@ -4,6 +4,7 @@ import { useActiveBanners } from 'entities/event-banner/api/queries/get-active-b
 import { EventBannerMainContentV2 } from './EventBannerMainContentV2';
 import { type EventBannerCarouselProps, type EventBannerWithImage } from '../model/types';
 import { LOADING_MAIN_BANNERS } from 'widgets/event-banner/model/loading-main-banners';
+import { useBannerPlatform } from 'shared/model/hooks/useBannerPlatform';
 
 function mapBannersToLocalizedImages({
   banners,
@@ -51,7 +52,8 @@ export function EventBannerMainCarouselV2({
   currentLocale,
   className = '',
 }: EventBannerCarouselProps) {
-  const { data: banners, isLoading, error } = useActiveBanners({ type: 'MAIN' });
+  const platform = useBannerPlatform();
+  const { data: banners, isLoading, error } = useActiveBanners({ type: 'MAIN', platform });
 
   const validBanners = mapBannersToLocalizedImages({
     banners: banners ?? [],
