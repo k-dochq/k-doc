@@ -601,6 +601,7 @@ model EventBanner {
   createdBy        String?            @db.Uuid
   updatedBy        String?            @db.Uuid
   type             EventBannerType?
+  platforms        BannerPlatform[]   @default([WEB, IOS, ANDROID])
   EventBannerImage EventBannerImage[]
 
   @@index([endDate])
@@ -1236,6 +1237,14 @@ enum HospitalChangeRequestType {
 enum HospitalChangeRequesterType {
   GUEST
   USER
+
+  @@schema("public")
+}
+
+enum BannerPlatform {
+  WEB
+  IOS
+  ANDROID
 
   @@schema("public")
 }
