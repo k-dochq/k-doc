@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from 'shared/lib/prisma';
-import { type EventBannerType } from '@prisma/client';
+import { type EventBannerType, type BannerPlatform } from '@prisma/client';
 
 export const revalidate = 1200; // 20분 (1200초)
 
@@ -9,6 +9,8 @@ export async function GET(request: NextRequest) {
     const url = new URL(request.url);
     const typeParam = url.searchParams.get('type');
     const type = typeParam ? (typeParam as EventBannerType) : undefined;
+    const platformParam = url.searchParams.get('platform');
+    const platform = platformParam ? (platformParam as BannerPlatform) : undefined;
 
     const now = new Date();
     const banners = await prisma.eventBanner.findMany({
@@ -17,6 +19,7 @@ export async function GET(request: NextRequest) {
         startDate: { lte: now },
         OR: [{ endDate: null }, { endDate: { gte: now } }],
         ...(type && { type }),
+        ...(platform && { platforms: { has: platform } }),
       },
       include: {
         EventBannerImage: true,
