@@ -8,8 +8,7 @@ interface AppDownloadBannerProps {
   dict: Dictionary;
 }
 
-// TODO: 임시 비활성화 — 정식 오픈 시점에 아래 `return null;` 한 줄 삭제하면 다시 노출됨.
-const TEMPORARILY_DISABLED = true;
+const TEMPORARILY_DISABLED = false;
 
 export function AppDownloadBanner({ dict }: AppDownloadBannerProps) {
   const { visible, dismiss } = useAppDownloadBanner();
