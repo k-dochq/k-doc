@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { type Locale } from 'shared/config';
 import { prisma } from '@/shared/lib/prisma';
+import { getTipDetail } from 'entities/tip/api/use-cases/get-tip-detail';
+import { type TipDetail } from 'entities/tip/model/useTipDetail';
 import { PageHeaderV2 } from 'shared/ui/page-header';
 import { TipShareButton } from 'entities/tip/ui/detail/TipShareButton';
 import { getDictionary } from '../../dictionaries';
@@ -58,14 +60,14 @@ export async function generateMetadata({ params }: TipDetailPageProps): Promise<
 export default async function TipDetailPage({ params }: TipDetailPageProps) {
   const { lang, slug } = await params;
 
-  // slug 존재 여부 확인 — 없으면 404
-  const exists = await prisma.insightArticle.findUnique({
-    where: { slug },
-    select: { id: true },
-  });
-  if (!exists) notFound();
+  // 서버에서 상세 데이터를 미리 조회 — 없으면 404
+  const article = await getTipDetail(slug);
+  if (!article) notFound();
 
   const dict = await getDictionary(lang);
+
+  // fetch 응답과 동일하게 직렬화(Date -> ISO string)하여 hydration mismatch 방지
+  const initialArticle = JSON.parse(JSON.stringify(article)) as TipDetail;
 
   return (
     <div className='min-h-screen bg-white'>
@@ -81,7 +83,7 @@ export default async function TipDetailPage({ params }: TipDetailPageProps) {
       />
       <div className='h-[58px]' />
       <main className='px-5 pb-[112px]'>
-        <TipDetailContent slug={slug} lang={lang} dict={dict} />
+        <TipDetailContent slug={slug} lang={lang} dict={dict} initialArticle={initialArticle} />
       </main>
     </div>
   );

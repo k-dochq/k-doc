@@ -3,7 +3,7 @@
 import { type JSONContent } from '@tiptap/core';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { useTipDetail } from 'entities/tip/model/useTipDetail';
+import { useTipDetail, type TipDetail } from 'entities/tip/model/useTipDetail';
 import { useIncrementTipView } from 'entities/tip/model/useIncrementTipView';
 import { getLocalizedHashtags } from 'entities/tip/lib/getLocalizedHashtags';
 import { TipDetailHeader } from 'entities/tip/ui/detail/TipDetailHeader';
@@ -23,37 +23,30 @@ interface TipDetailContentProps {
   slug: string;
   lang: Locale;
   dict: Dictionary;
+  initialArticle?: TipDetail;
 }
 
-function getLocalizedContent(
-  content: Record<string, unknown>,
-  lang: Locale,
-): JSONContent | null {
+function getLocalizedContent(content: Record<string, unknown>, lang: Locale): JSONContent | null {
   const shortLang = lang === 'zh-Hant' ? 'zh' : lang;
   const value = content[shortLang] ?? content.ko ?? content.en;
   return (value as JSONContent) ?? null;
 }
 
-export function TipDetailContent({ slug, lang, dict }: TipDetailContentProps) {
+export function TipDetailContent({ slug, lang, dict, initialArticle }: TipDetailContentProps) {
   useIncrementTipView(slug);
-  const { data: article, isLoading, isError } = useTipDetail(slug);
+  const { data, isLoading } = useTipDetail(slug, initialArticle);
 
-  if (isLoading) {
-    return <TipDetailSkeleton />;
+  // 서버에서 받은 initialArticle을 우선 사용해 SSR HTML에 본문이 포함되도록 함(SEO)
+  const article = data ?? initialArticle;
+
+  if (!article) {
+    return isLoading ? <TipDetailSkeleton /> : <TipsErrorState dict={dict} />;
   }
 
-  if (isError || !article) {
-    return <TipsErrorState dict={dict} />;
-  }
+  const localizedContent = getLocalizedContent(article.content as Record<string, unknown>, lang);
 
-  const localizedContent = getLocalizedContent(
-    article.content as Record<string, unknown>,
-    lang,
-  );
-
-  const title = (article.title as Record<string, string>)[
-    lang === 'zh-Hant' ? 'zh' : lang
-  ] ?? article.slug;
+  const title =
+    (article.title as Record<string, string>)[lang === 'zh-Hant' ? 'zh' : lang] ?? article.slug;
 
   const localizedHashtags = getLocalizedHashtags(article.hashtagsI18n, lang);
 
@@ -78,11 +71,7 @@ export function TipDetailContent({ slug, lang, dict }: TipDetailContentProps) {
       )}
       {article.recommendedDoctors.length > 0 && (
         <div className='mt-7'>
-          <TipRecommendedDoctors
-            doctors={article.recommendedDoctors}
-            lang={lang}
-            dict={dict}
-          />
+          <TipRecommendedDoctors doctors={article.recommendedDoctors} lang={lang} dict={dict} />
         </div>
       )}
       {article.recommendedHospitals.length > 0 && (
@@ -97,11 +86,7 @@ export function TipDetailContent({ slug, lang, dict }: TipDetailContentProps) {
       )}
       <div className='h-7' />
       {article.recommendedArticles.length > 0 && (
-        <RecommendedTipsSection
-          articles={article.recommendedArticles}
-          lang={lang}
-          dict={dict}
-        />
+        <RecommendedTipsSection articles={article.recommendedArticles} lang={lang} dict={dict} />
       )}
       <TipReviewsButtonArea lang={lang} dict={dict} />
     </div>

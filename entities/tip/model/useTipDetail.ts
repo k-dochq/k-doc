@@ -61,11 +61,12 @@ async function fetchTipDetail(slug: string): Promise<TipDetail> {
   return result.data;
 }
 
-export function useTipDetail(slug: string) {
+export function useTipDetail(slug: string, initialData?: TipDetail) {
   return useQuery({
     queryKey: queryKeys.tips.detail(slug),
     queryFn: () => fetchTipDetail(slug),
     enabled: !!slug,
+    initialData,
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
     refetchOnWindowFocus: false,
