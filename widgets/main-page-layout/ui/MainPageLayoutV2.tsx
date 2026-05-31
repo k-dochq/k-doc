@@ -13,7 +13,7 @@ import { YoutubeVideosV2Wrapper } from 'widgets/youtube-videos/ui';
 import { IntroduceYoutubeSection } from 'widgets/introduce-youtube/ui';
 import { MainTipsSection } from 'widgets/main-tips';
 import { getDictionary } from 'app/[lang]/dictionaries';
-import { ContactFloatingButton } from 'features/contact-floating-button';
+import { KdocFloatingButton } from 'features/kdoc-consultation-floating';
 
 interface MainPageLayoutV2Props {
   lang: Locale;
@@ -66,7 +66,7 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
 
       <MainTipsSection lang={lang} dict={dict} />
 
-      {(lang === 'th' || lang === 'tl') && <ContactFloatingButton lang={lang} />}
+      <KdocFloatingButton lang={lang} />
     </div>
   );
 }
