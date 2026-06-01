@@ -2691,5 +2691,36 @@
       "title": "11. 고객 문의",
       "p1": "서비스 이용 중 문의사항은 K-DOC 고객센터 또는 상담 채팅을 통해 문의하실 수 있습니다."
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "subtitle": "빠르게 답변 받으실 수 있어요",
+      "backLabel": "뒤로가기",
+      "closeLabel": "닫기"
+    },
+    "welcome": "안녕하세요, 고객님 😀\nK-DOC 1:1 채팅 상담센터입니다.\n\n궁금하신 사항을 선택해주세요 😊\n해당하는 문의가 없는 경우 [기타]를\n선택해 주세요.\n\n운영시간(KST) - 토, 일, 공휴일 제외\n평일 09:00 ~ 18:00",
+    "categories": {
+      "PLASTIC_SURGERY": "성형 상담",
+      "DERMATOLOGY_AESTHETIC": "피부 시술 상담",
+      "CONCIERGE_RESERVATION": "컨시어지 문의",
+      "OTHER_INQUIRY": "기타"
+    },
+    "guestForm": {
+      "infoMessage": "원활한 상담 진행을 위해 정보를 입력해주세요.\n오프라인 상태가 되면 이메일로 답변 알림을 보내드려요.\n\n(수집된 개인정보는 상담 답변 알림 목적으로만 이용되고, 삭제 요청을 주시기 전까지 상담 답변 알림을 받을 수 없어요.)",
+      "nameLabel": "이름",
+      "emailLabel": "이메일",
+      "nationalityLabel": "국적",
+      "placeholder": "입력해주세요",
+      "saveButton": "저장",
+      "savingButton": "연결 중...",
+      "savedMessage": "정보가 저장되었습니다 😊\n상담 내용을 입력해주세요.\n필요한 경우 사진도 함께 업로드할 수 있습니다.\n순차적으로 답변 도와드릴게요.",
+      "editButton": "정보 수정하기"
+    },
+    "input": {
+      "placeholder": "무엇이든 물어보세요!",
+      "cameraLabel": "카메라",
+      "sendLabel": "전송"
+    },
+    "loading": "메시지를 불러오는 중..."
   }
 }

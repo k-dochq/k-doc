@@ -2691,5 +2691,36 @@
       "title": "11. お客様のお問い合わせ",
       "p1": "サービスご利用中のお問い合わせは、K-DOCカスタマーセンターまたは相談チャットよりお問い合わせください。"
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "subtitle": "迅速な回答をお届けします",
+      "backLabel": "戻る",
+      "closeLabel": "閉じる"
+    },
+    "welcome": "こんにちは！😀\nK-DOC 1:1チャット相談センターへようこそ。\n\nご相談内容をお選びください 😊\n該当するものがない場合は [その他] をお選びください。\n\n営業時間 (KST) - 土日祝日を除く\n平日 09:00 ~ 18:00",
+    "categories": {
+      "PLASTIC_SURGERY": "美容整形相談",
+      "DERMATOLOGY_AESTHETIC": "皮膚・美容相談",
+      "CONCIERGE_RESERVATION": "コンシェルジュ・予約",
+      "OTHER_INQUIRY": "その他のお問い合わせ"
+    },
+    "guestForm": {
+      "infoMessage": "スムーズなご相談のために、情報をご入力ください。\nオフライン中はメールで回答通知をお送りします。\n\n(収集した個人情報は相談回答通知のみを目的として使用し、削除のご要望をいただくまで保持されます。)",
+      "nameLabel": "お名前",
+      "emailLabel": "メールアドレス",
+      "nationalityLabel": "国籍",
+      "placeholder": "入力してください",
+      "saveButton": "保存",
+      "savingButton": "接続中...",
+      "savedMessage": "情報が保存されました 😊\nご相談内容をご入力ください。\n必要に応じて写真もアップロードできます。\n順次ご回答いたします。",
+      "editButton": "情報を修正する"
+    },
+    "input": {
+      "placeholder": "何でもお聞きください！",
+      "cameraLabel": "カメラ",
+      "sendLabel": "送信"
+    },
+    "loading": "メッセージを読み込み中..."
   }
 }

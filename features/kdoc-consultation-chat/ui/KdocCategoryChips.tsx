@@ -1,21 +1,27 @@
-import { CATEGORIES, type KdocChatCategory } from '../lib/chat-constants';
+import { type Dictionary } from 'shared/model/types';
+import { CATEGORY_KEYS, type KdocChatCategory } from '../lib/chat-constants';
 
 interface KdocCategoryChipsProps {
-  onSelect: (category: KdocChatCategory) => void;
+  dict: Dictionary;
+  onSelect: (category: KdocChatCategory, label: string) => void;
 }
 
-export function KdocCategoryChips({ onSelect }: KdocCategoryChipsProps) {
+export function KdocCategoryChips({ dict, onSelect }: KdocCategoryChipsProps) {
+  const labels = dict.kdocChat.categories;
   return (
     <div className='mb-4 flex flex-col items-start gap-2 pl-[38px]'>
-      {CATEGORIES.map((cat) => (
-        <button
-          key={cat.key}
-          onClick={() => onSelect(cat.key)}
-          className='rounded-full border border-[#c0bfff] bg-[#f1eeff] px-4 py-2 text-sm font-medium text-[#7657ff]'
-        >
-          {cat.label}
-        </button>
-      ))}
+      {CATEGORY_KEYS.map((key) => {
+        const label = labels[key];
+        return (
+          <button
+            key={key}
+            onClick={() => onSelect(key, label)}
+            className='rounded-full border border-[#c0bfff] bg-[#f1eeff] px-4 py-2 text-sm font-medium text-[#7657ff]'
+          >
+            {label}
+          </button>
+        );
+      })}
     </div>
   );
 }

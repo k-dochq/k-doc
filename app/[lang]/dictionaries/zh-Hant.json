@@ -2691,5 +2691,36 @@
       "title": "11. 客戶諮詢",
       "p1": "使用服務過程中如有疑問，可通過K-DOC客戶中心或諮詢聊天聯繫我們。"
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "subtitle": "快速獲得回覆",
+      "backLabel": "返回",
+      "closeLabel": "關閉"
+    },
+    "welcome": "您好！😀\n歡迎來到 K-DOC 1:1 聊天諮詢。\n\n請選擇您的諮詢項目 😊\n如果沒有符合的項目，請選擇 [其他]\n\n服務時間 (KST) - 不含週末及節假日\n週一至週五 09:00 ~ 18:00",
+    "categories": {
+      "PLASTIC_SURGERY": "整形手術諮詢",
+      "DERMATOLOGY_AESTHETIC": "皮膚美容諮詢",
+      "CONCIERGE_RESERVATION": "禮賓服務與預約",
+      "OTHER_INQUIRY": "其他諮詢"
+    },
+    "guestForm": {
+      "infoMessage": "請輸入您的資料以順利進行諮詢。\n離線時我們將以電子郵件通知您。\n\n（您的個人資料僅用於諮詢回覆通知，在您提出刪除請求前將予以保留。）",
+      "nameLabel": "姓名",
+      "emailLabel": "電子郵件",
+      "nationalityLabel": "國籍",
+      "placeholder": "請輸入",
+      "saveButton": "儲存",
+      "savingButton": "連接中...",
+      "savedMessage": "您的資料已儲存 😊\n請輸入諮詢內容。\n如有需要，您也可以上傳照片。\n我們將依序回覆。",
+      "editButton": "修改資料"
+    },
+    "input": {
+      "placeholder": "歡迎提問！",
+      "cameraLabel": "相機",
+      "sendLabel": "發送"
+    },
+    "loading": "正在載入訊息..."
   }
 }

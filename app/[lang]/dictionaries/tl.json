@@ -2691,5 +2691,36 @@
       "title": "11. Mga Katanungan ng Customer",
       "p1": "Para sa mga katanungan habang gumagamit ng serbisyo, maaari kang makipag-ugnayan sa amin sa pamamagitan ng K-DOC customer center o consultation chat."
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "subtitle": "Makakuha ng mabilis na sagot",
+      "backLabel": "Bumalik",
+      "closeLabel": "Isara"
+    },
+    "welcome": "Kumusta! 😀\nMaligayang pagdating sa K-DOC 1:1 Chat Consultation.\n\nMangyaring piliin ang inyong katanungan 😊\nKung hindi nakalista ang inyong katanungan, piliin ang [Iba pa]\n\nOras ng Operasyon (KST) - Hindi kasama ang katapusan ng linggo at pista opisyal\nLunes-Biyernes 09:00 ~ 18:00",
+    "categories": {
+      "PLASTIC_SURGERY": "Plastic Surgery",
+      "DERMATOLOGY_AESTHETIC": "Dermatology & Aesthetic",
+      "CONCIERGE_RESERVATION": "Concierge & Reservation",
+      "OTHER_INQUIRY": "Iba pang Katanungan"
+    },
+    "guestForm": {
+      "infoMessage": "Mangyaring ilagay ang inyong impormasyon para sa maayos na konsultasyon.\nMagpapadala kami ng email na abiso kapag nag-offline kayo.\n\n(Ang inyong personal na impormasyon ay gagamitin lamang para sa mga abiso ng sagot sa konsultasyon at hindi maaaring tanggalin hanggang hindi kayo humihiling.)",
+      "nameLabel": "Pangalan",
+      "emailLabel": "Email",
+      "nationalityLabel": "Nasyonalidad",
+      "placeholder": "Mangyaring ilagay",
+      "saveButton": "I-save",
+      "savingButton": "Nagkokonekta...",
+      "savedMessage": "Nai-save na ang inyong impormasyon 😊\nMangyaring ilagay ang nilalaman ng inyong konsultasyon.\nMaaari din kayong mag-upload ng mga larawan kung kinakailangan.\nSasagutin namin sa pagkakasunod.",
+      "editButton": "I-edit ang impormasyon"
+    },
+    "input": {
+      "placeholder": "Itanong ang kahit ano!",
+      "cameraLabel": "Camera",
+      "sendLabel": "Ipadala"
+    },
+    "loading": "Nilo-load ang mga mensahe..."
   }
 }

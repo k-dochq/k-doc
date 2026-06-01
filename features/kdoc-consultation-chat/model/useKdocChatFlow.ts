@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from 'shared/lib/supabase/client';
-import { CATEGORIES, type KdocChatCategory, type KdocChatPhase } from '../lib/chat-constants';
+import { type KdocChatCategory, type KdocChatPhase } from '../lib/chat-constants';
 import { useKdocThreads, useCreateKdocThread } from 'lib/queries/kdoc-chat';
 import { getGuestThreadId, setGuestThreadId } from '../lib/guest-thread-storage';
 
@@ -15,11 +15,12 @@ interface GuestInfo {
 interface UseKdocChatFlowReturn {
   phase: KdocChatPhase;
   selectedCategory: KdocChatCategory | null;
+  selectedCategoryLabel: string | null;
   threadId: string | null;
   isCreatingThread: boolean;
   guestInfo: GuestInfo;
   setGuestInfo: (info: Partial<GuestInfo>) => void;
-  handleCategorySelect: (category: KdocChatCategory) => Promise<void>;
+  handleCategorySelect: (category: KdocChatCategory, label: string) => Promise<void>;
   handleGuestSubmit: () => Promise<void>;
   handleEditGuestInfo: () => void;
 }
@@ -29,6 +30,7 @@ const supabase = createClient();
 export function useKdocChatFlow(): UseKdocChatFlowReturn {
   const [phase, setPhase] = useState<KdocChatPhase>('category');
   const [selectedCategory, setSelectedCategory] = useState<KdocChatCategory | null>(null);
+  const [selectedCategoryLabel, setSelectedCategoryLabel] = useState<string | null>(null);
   const [threadId, setThreadId] = useState<string | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [guestInfo, setGuestInfoState] = useState<GuestInfo>({
@@ -75,6 +77,7 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
   const createAndEnterThread = async (
     category: KdocChatCategory,
     guest?: Partial<GuestInfo>,
+    categoryLabel?: string,
   ): Promise<void> => {
     try {
       const thread = await createThread({
@@ -89,12 +92,12 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
         setGuestThreadId(thread.id);
       }
 
-      // 카테고리 선택을 첫 메시지로 저장
-      const categoryLabel = CATEGORIES.find((c) => c.key === category)?.label ?? category;
+      // 카테고리 선택을 첫 메시지로 저장 (label은 현재 언어로 표시)
+      const label = categoryLabel ?? category;
       await fetch(`/api/kdoc-chat/thread/${thread.id}/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: categoryLabel }),
+        body: JSON.stringify({ content: label }),
       });
 
       setThreadId(thread.id);
@@ -104,9 +107,10 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
     }
   };
 
-  const handleCategorySelect = async (category: KdocChatCategory): Promise<void> => {
+  const handleCategorySelect = async (category: KdocChatCategory, label: string): Promise<void> => {
     if (selectedCategory) return;
     setSelectedCategory(category);
+    setSelectedCategoryLabel(label);
 
     const { data: { session } } = await supabase.auth.getSession();
     const isGuest = !session?.user?.id || session.user.is_anonymous;
@@ -114,18 +118,18 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
     if (isGuest) {
       setPhase('guest_form');
     } else {
-      await createAndEnterThread(category);
+      await createAndEnterThread(category, undefined, label);
     }
   };
 
   const handleGuestSubmit = async (): Promise<void> => {
     if (!guestInfo.name.trim() || !guestInfo.email.trim() || !guestInfo.nationality.trim()) return;
     if (!selectedCategory) return;
-    await createAndEnterThread(selectedCategory, {
-      name: guestInfo.name.trim(),
-      email: guestInfo.email.trim(),
-      nationality: guestInfo.nationality.trim(),
-    });
+    await createAndEnterThread(
+      selectedCategory,
+      { name: guestInfo.name.trim(), email: guestInfo.email.trim(), nationality: guestInfo.nationality.trim() },
+      selectedCategoryLabel ?? undefined,
+    );
   };
 
   const handleEditGuestInfo = (): void => {
@@ -135,6 +139,7 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
   return {
     phase,
     selectedCategory,
+    selectedCategoryLabel,
     threadId,
     isCreatingThread,
     guestInfo,

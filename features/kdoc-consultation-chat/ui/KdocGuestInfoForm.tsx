@@ -1,3 +1,5 @@
+import { type Dictionary } from 'shared/model/types';
+
 function PencilIcon() {
   return (
     <svg width='16' height='16' viewBox='0 0 12 12' fill='none'>
@@ -16,38 +18,42 @@ interface GuestInfo {
 }
 
 interface KdocGuestInfoFormProps {
+  dict: Dictionary;
   guestInfo: GuestInfo;
   isSubmitting: boolean;
   onChangeInfo: (partial: Partial<GuestInfo>) => void;
   onSubmit: () => void;
 }
 
-// 입력 폼 (제출 전)
 export function KdocGuestInfoForm({
+  dict,
   guestInfo,
   isSubmitting,
   onChangeInfo,
   onSubmit,
 }: KdocGuestInfoFormProps) {
+  const t = dict.kdocChat.guestForm;
   const isValid =
     guestInfo.name.trim() && guestInfo.email.trim() && guestInfo.nationality.trim();
+
+  const fields = [
+    { key: 'name' as const, label: t.nameLabel, type: 'text' },
+    { key: 'email' as const, label: t.emailLabel, type: 'email' },
+    { key: 'nationality' as const, label: t.nationalityLabel, type: 'text' },
+  ];
 
   return (
     <div className='mb-4 pl-[38px]'>
       <div className='rounded-2xl border border-[#e5e5e5] bg-white p-5'>
         <div className='flex flex-col gap-3'>
-          {([
-            { key: 'name' as const, label: '이름', type: 'text' },
-            { key: 'email' as const, label: '이메일', type: 'email' },
-            { key: 'nationality' as const, label: '국적', type: 'text' },
-          ]).map(({ key, label, type }) => (
+          {fields.map(({ key, label, type }) => (
             <div key={key} className='flex flex-col gap-1'>
               <label className='text-sm font-medium text-[#404040]'>{label}</label>
               <input
                 type={type}
                 value={guestInfo[key]}
                 onChange={(e) => onChangeInfo({ [key]: e.target.value })}
-                placeholder='입력해주세요'
+                placeholder={t.placeholder}
                 className='rounded-lg border border-[#e5e5e5] px-3 py-[10px] text-sm text-[#404040] outline-none placeholder:text-[#a3a3a3] focus:border-[#7657ff]'
               />
             </div>
@@ -57,7 +63,7 @@ export function KdocGuestInfoForm({
             disabled={!isValid || isSubmitting}
             className='mt-1 rounded-xl py-3 text-sm font-medium disabled:bg-[#e5e5e5] disabled:text-[#a3a3a3] enabled:bg-[#7657ff] enabled:text-white'
           >
-            {isSubmitting ? '연결 중...' : '저장'}
+            {isSubmitting ? t.savingButton : t.saveButton}
           </button>
         </div>
       </div>
@@ -65,22 +71,25 @@ export function KdocGuestInfoForm({
   );
 }
 
-// 제출 후 read-only 카드 (Figma 정확히 일치)
 interface KdocGuestInfoCardProps {
+  dict: Dictionary;
   guestInfo: GuestInfo;
   onEdit: () => void;
 }
 
-export function KdocGuestInfoCard({ guestInfo, onEdit }: KdocGuestInfoCardProps) {
+export function KdocGuestInfoCard({ dict, guestInfo, onEdit }: KdocGuestInfoCardProps) {
+  const t = dict.kdocChat.guestForm;
+  const fields = [
+    { label: t.nameLabel, value: guestInfo.name },
+    { label: t.emailLabel, value: guestInfo.email },
+    { label: t.nationalityLabel, value: guestInfo.nationality },
+  ];
+
   return (
     <div className='mb-4 flex flex-col gap-[18px] pl-[38px]'>
       <div className='rounded-2xl border border-[#e5e5e5] bg-white p-5'>
         <div className='flex flex-col gap-3'>
-          {([
-            { label: '이름', value: guestInfo.name },
-            { label: '이메일', value: guestInfo.email },
-            { label: '국적', value: guestInfo.nationality },
-          ]).map(({ label, value }) => (
+          {fields.map(({ label, value }) => (
             <div key={label} className='flex flex-col gap-1'>
               <p className='text-sm font-semibold text-[#404040]'>{label}</p>
               <p className='text-sm text-[#737373]'>{value}</p>
@@ -91,10 +100,10 @@ export function KdocGuestInfoCard({ guestInfo, onEdit }: KdocGuestInfoCardProps)
       <button
         onClick={onEdit}
         className='flex items-center gap-[6px]'
-        aria-label='정보 수정하기'
+        aria-label={t.editButton}
       >
         <PencilIcon />
-        <span className='text-sm font-semibold text-[#737373]'>정보 수정하기</span>
+        <span className='text-sm font-semibold text-[#737373]'>{t.editButton}</span>
       </button>
     </div>
   );
