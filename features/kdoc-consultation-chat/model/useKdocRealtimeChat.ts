@@ -1,19 +1,11 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { createClient } from 'shared/lib/supabase/client';
-import { type RealtimeChannel } from '@supabase/supabase-js';
+import { useQueryClient } from '@tanstack/react-query';
+import { useKdocMessages, useSendKdocMessage, kdocChatKeys, type KdocMessage } from 'lib/queries/kdoc-chat';
 
-export interface KdocMessage {
-  id: string;
-  threadId: string;
-  senderType: 'USER' | 'ADMIN';
-  content: string;
-  adminName: string | null;
-  isRead: boolean | null;
-  readAt: string | null;
-  createdAt: string;
-}
+export type { KdocMessage };
 
 interface UseKdocRealtimeChatProps {
   threadId: string | null;
@@ -22,31 +14,19 @@ interface UseKdocRealtimeChatProps {
 const supabase = createClient();
 
 export function useKdocRealtimeChat({ threadId }: UseKdocRealtimeChatProps) {
-  const [messages, setMessages] = useState<KdocMessage[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const channelRef = useRef<RealtimeChannel | null>(null);
+  const queryClient = useQueryClient();
+  const channelRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
 
-  // 메시지 히스토리 로드
-  const loadHistory = useCallback(async () => {
-    if (!threadId) return;
-    setIsLoading(true);
-    try {
-      const res = await fetch(`/api/kdoc-chat/thread/${threadId}/messages?limit=50`);
-      const data = await res.json();
-      if (data.success) setMessages(data.messages);
-    } catch (e) {
-      setError('메시지를 불러오지 못했습니다.');
-    } finally {
-      setIsLoading(false);
-    }
-  }, [threadId]);
+  // 메시지 히스토리 (TanStack Query)
+  const { data: messages = [], isLoading } = useKdocMessages(threadId);
 
-  // 메시지 전송 (낙관적 업데이트)
-  const sendMessage = useCallback(async (content: string) => {
+  // 메시지 전송 (TanStack Mutation)
+  const { mutateAsync: sendMessageMutation } = useSendKdocMessage(threadId);
+
+  const sendMessage = async (content: string) => {
     if (!threadId || !content.trim()) return;
 
+    // 낙관적 업데이트: 전송 전 즉시 UI에 표시
     const optimistic: KdocMessage = {
       id: crypto.randomUUID(),
       threadId,
@@ -58,31 +38,25 @@ export function useKdocRealtimeChat({ threadId }: UseKdocRealtimeChatProps) {
       createdAt: new Date().toISOString(),
     };
 
-    setMessages((prev) => [...prev, optimistic]);
+    queryClient.setQueryData<KdocMessage[]>(
+      kdocChatKeys.messages(threadId),
+      (prev) => (prev ? [...prev, optimistic] : [optimistic]),
+    );
 
     try {
-      const res = await fetch(`/api/kdoc-chat/thread/${threadId}/messages`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content }),
-      });
-      const data = await res.json();
-      if (!data.success) {
-        // 낙관적 업데이트 롤백
-        setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
-        setError('메시지 전송에 실패했습니다.');
-      }
+      await sendMessageMutation(content);
     } catch {
-      setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
-      setError('메시지 전송에 실패했습니다.');
+      // 실패 시 낙관적 업데이트 롤백
+      queryClient.setQueryData<KdocMessage[]>(
+        kdocChatKeys.messages(threadId),
+        (prev) => (prev ?? []).filter((m) => m.id !== optimistic.id),
+      );
     }
-  }, [threadId]);
+  };
 
-  // Postgres Changes 구독
+  // Postgres Changes 구독 — admin 메시지 실시간 수신
   useEffect(() => {
     if (!threadId) return;
-
-    loadHistory();
 
     const channel = supabase
       .channel(`kdoc-chat-${threadId}`)
@@ -96,39 +70,42 @@ export function useKdocRealtimeChat({ threadId }: UseKdocRealtimeChatProps) {
         },
         (payload) => {
           const newMsg = payload.new as KdocMessage;
-          setMessages((prev) => {
-            // 낙관적 업데이트와 중복 제거 (content + senderType 기준)
-            const isDuplicate = prev.some(
-              (m) =>
-                m.senderType === newMsg.senderType &&
-                m.content === newMsg.content &&
-                Math.abs(new Date(m.createdAt).getTime() - new Date(newMsg.createdAt).getTime()) < 3000,
-            );
-            if (isDuplicate) {
-              return prev.map((m) =>
-                m.senderType === newMsg.senderType &&
-                m.content === newMsg.content &&
-                m.id !== newMsg.id
-                  ? { ...newMsg }
-                  : m,
+          queryClient.setQueryData<KdocMessage[]>(
+            kdocChatKeys.messages(threadId),
+            (prev) => {
+              if (!prev) return [newMsg];
+              // 낙관적 업데이트와 중복 제거
+              const isDuplicate = prev.some(
+                (m) =>
+                  m.senderType === newMsg.senderType &&
+                  m.content === newMsg.content &&
+                  Math.abs(
+                    new Date(m.createdAt).getTime() - new Date(newMsg.createdAt).getTime(),
+                  ) < 3000,
               );
-            }
-            return [...prev, newMsg];
-          });
+              if (isDuplicate) {
+                return prev.map((m) =>
+                  m.senderType === newMsg.senderType &&
+                  m.content === newMsg.content &&
+                  m.id !== newMsg.id
+                    ? newMsg
+                    : m,
+                );
+              }
+              return [...prev, newMsg];
+            },
+          );
         },
       )
-      .subscribe((status) => {
-        setIsConnected(status === 'SUBSCRIBED');
-      });
+      .subscribe();
 
     channelRef.current = channel;
 
     return () => {
       channel.unsubscribe();
       channelRef.current = null;
-      setIsConnected(false);
     };
-  }, [threadId, loadHistory]);
+  }, [threadId, queryClient]);
 
-  return { messages, isLoading, isConnected, error, sendMessage };
+  return { messages, isLoading, sendMessage };
 }

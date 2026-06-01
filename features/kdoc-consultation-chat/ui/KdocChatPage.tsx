@@ -9,7 +9,7 @@ import { formatTime, formatTodayLabel } from '../lib/chat-time-utils';
 import { CATEGORIES } from '../lib/chat-constants';
 import { KdocChatGnb } from './KdocChatGnb';
 import { KdocCategoryChips } from './KdocCategoryChips';
-import { KdocGuestInfoForm } from './KdocGuestInfoForm';
+import { KdocGuestInfoForm, KdocGuestInfoCard } from './KdocGuestInfoForm';
 import { KdocAdminMessageBubble, KdocUserMessageBubble } from './KdocMessageBubble';
 import { KdocChatInput } from './KdocChatInput';
 import { KdocMsgAvatar } from './icons/KdocChatIcons';
@@ -34,6 +34,7 @@ export function KdocChatPage({ lang }: KdocChatPageProps) {
     setGuestInfo,
     handleCategorySelect,
     handleGuestSubmit,
+    handleEditGuestInfo,
   } = useKdocChatFlow();
 
   const { messages, isLoading, sendMessage } = useKdocRealtimeChat({ threadId });
@@ -62,8 +63,8 @@ export function KdocChatPage({ lang }: KdocChatPageProps) {
         {/* 카테고리 칩 */}
         {phase === 'category' && <KdocCategoryChips onSelect={handleCategorySelect} />}
 
-        {/* 게스트 폼 */}
-        {phase === 'guest_form' && selectedCategory && (
+        {/* 게스트 폼 (입력 단계) */}
+        {(phase === 'guest_form' || phase === 'guest_submitted') && selectedCategory && (
           <>
             <KdocUserMessageBubble
               content={CATEGORIES.find((c) => c.key === selectedCategory)?.label ?? ''}
@@ -73,12 +74,26 @@ export function KdocChatPage({ lang }: KdocChatPageProps) {
               content={'원활한 상담 진행을 위해 정보를 입력해주세요.\n오프라인 상태가 되면 이메일로 답변 알림을 보내드려요.'}
               createdAt={new Date()}
             />
-            <KdocGuestInfoForm
-              guestInfo={guestInfo}
-              isSubmitting={isCreatingThread}
-              onChangeInfo={setGuestInfo}
-              onSubmit={handleGuestSubmit}
-            />
+            {phase === 'guest_form' ? (
+              <KdocGuestInfoForm
+                guestInfo={guestInfo}
+                isSubmitting={isCreatingThread}
+                onChangeInfo={setGuestInfo}
+                onSubmit={handleGuestSubmit}
+              />
+            ) : (
+              <KdocGuestInfoCard
+                guestInfo={guestInfo}
+                onEdit={handleEditGuestInfo}
+              />
+            )}
+            {/* 제출 완료 후 K-DOC 확인 메시지 */}
+            {phase === 'guest_submitted' && (
+              <KdocAdminMessageBubble
+                content={'정보가 저장되었습니다 😊\n상담 내용을 입력해주세요.\n필요한 경우 사진도 함께 업로드할 수 있습니다.\n순차적으로 답변 도와드릴게요.'}
+                createdAt={new Date()}
+              />
+            )}
           </>
         )}
 
@@ -109,7 +124,7 @@ export function KdocChatPage({ lang }: KdocChatPageProps) {
         <div ref={bottomRef} />
       </div>
 
-      {phase === 'chat' && <KdocChatInput onSend={sendMessage} />}
+      {(phase === 'chat' || phase === 'guest_submitted') && <KdocChatInput onSend={sendMessage} />}
     </>
   );
 }

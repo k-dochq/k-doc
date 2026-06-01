@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createClient } from 'shared/lib/supabase/client';
-import { type KdocChatCategory, type KdocChatPhase } from '../lib/chat-constants';
+import { CATEGORIES, type KdocChatCategory, type KdocChatPhase } from '../lib/chat-constants';
+import { useKdocThreads, useCreateKdocThread } from 'lib/queries/kdoc-chat';
+import { getGuestThreadId, setGuestThreadId } from '../lib/guest-thread-storage';
 
 interface GuestInfo {
   name: string;
@@ -19,6 +21,7 @@ interface UseKdocChatFlowReturn {
   setGuestInfo: (info: Partial<GuestInfo>) => void;
   handleCategorySelect: (category: KdocChatCategory) => Promise<void>;
   handleGuestSubmit: () => Promise<void>;
+  handleEditGuestInfo: () => void;
 }
 
 const supabase = createClient();
@@ -27,7 +30,7 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
   const [phase, setPhase] = useState<KdocChatPhase>('category');
   const [selectedCategory, setSelectedCategory] = useState<KdocChatCategory | null>(null);
   const [threadId, setThreadId] = useState<string | null>(null);
-  const [isCreatingThread, setIsCreatingThread] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [guestInfo, setGuestInfoState] = useState<GuestInfo>({
     name: '',
     email: '',
@@ -38,36 +41,66 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
     setGuestInfoState((prev) => ({ ...prev, ...partial }));
   };
 
-  const createThread = async (
+  // 세션 확인 + 기존 thread 복원
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      const loggedIn = !!session?.user?.id && !session.user.is_anonymous;
+      setIsLoggedIn(loggedIn);
+
+      if (!loggedIn) {
+        // 비회원: localStorage에서 threadId 복원
+        const savedId = getGuestThreadId();
+        if (savedId) {
+          setThreadId(savedId);
+          setPhase('chat');
+        }
+      }
+    });
+  }, []);
+
+  // 회원: DB에서 활성 thread 복원
+  const { data: threads } = useKdocThreads({ enabled: isLoggedIn });
+
+  useEffect(() => {
+    if (!threads || threadId) return;
+    const active = threads.find((t) => t.status === 'ACTIVE');
+    if (active) {
+      setThreadId(active.id);
+      setPhase('chat');
+    }
+  }, [threads, threadId]);
+
+  const { mutateAsync: createThread, isPending: isCreatingThread } = useCreateKdocThread();
+
+  const createAndEnterThread = async (
     category: KdocChatCategory,
     guest?: Partial<GuestInfo>,
   ): Promise<void> => {
-    setIsCreatingThread(true);
     try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user?.id) {
-        await supabase.auth.signInAnonymously();
+      const thread = await createThread({
+        category,
+        guestName: guest?.name,
+        guestEmail: guest?.email,
+        guestNationality: guest?.nationality,
+      });
+
+      // 비회원: localStorage에 저장
+      if (guest) {
+        setGuestThreadId(thread.id);
       }
 
-      const res = await fetch('/api/kdoc-chat/thread', {
+      // 카테고리 선택을 첫 메시지로 저장
+      const categoryLabel = CATEGORIES.find((c) => c.key === category)?.label ?? category;
+      await fetch(`/api/kdoc-chat/thread/${thread.id}/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          category,
-          guestName: guest?.name,
-          guestEmail: guest?.email,
-          guestNationality: guest?.nationality,
-        }),
+        body: JSON.stringify({ content: categoryLabel }),
       });
-      const data = await res.json();
-      if (data.success) {
-        setThreadId(data.thread.id);
-        setPhase('chat');
-      }
+
+      setThreadId(thread.id);
+      setPhase(guest ? 'guest_submitted' : 'chat');
     } catch (e) {
       console.error('thread 생성 실패', e);
-    } finally {
-      setIsCreatingThread(false);
     }
   };
 
@@ -76,23 +109,27 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
     setSelectedCategory(category);
 
     const { data: { session } } = await supabase.auth.getSession();
-    const isAnonymous = session?.user?.is_anonymous ?? true;
+    const isGuest = !session?.user?.id || session.user.is_anonymous;
 
-    if (isAnonymous) {
+    if (isGuest) {
       setPhase('guest_form');
     } else {
-      await createThread(category);
+      await createAndEnterThread(category);
     }
   };
 
   const handleGuestSubmit = async (): Promise<void> => {
     if (!guestInfo.name.trim() || !guestInfo.email.trim() || !guestInfo.nationality.trim()) return;
     if (!selectedCategory) return;
-    await createThread(selectedCategory, {
+    await createAndEnterThread(selectedCategory, {
       name: guestInfo.name.trim(),
       email: guestInfo.email.trim(),
       nationality: guestInfo.nationality.trim(),
     });
+  };
+
+  const handleEditGuestInfo = (): void => {
+    setPhase('guest_form');
   };
 
   return {
@@ -104,5 +141,6 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
     setGuestInfo,
     handleCategorySelect,
     handleGuestSubmit,
+    handleEditGuestInfo,
   };
 }

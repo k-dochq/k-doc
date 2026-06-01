@@ -10,15 +10,14 @@ interface CreateThreadBody {
   guestNationality?: string;
 }
 
-// POST /api/kdoc-chat/thread — thread 생성
+// POST /api/kdoc-chat/thread — thread 생성 (회원/비회원 모두 허용)
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
     const { data: { session } } = await supabase.auth.getSession();
 
-    if (!session?.user?.id) {
-      return NextResponse.json({ success: false, error: 'UNAUTHORIZED' }, { status: 401 });
-    }
+    // 비회원이면 userId null, 회원이면 session userId 사용
+    const userId = session?.user?.id ?? null;
 
     const body: CreateThreadBody = await request.json();
     const { category, guestName, guestEmail, guestNationality } = body;
@@ -27,17 +26,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'MISSING_CATEGORY' }, { status: 400 });
     }
 
-    // 비회원(anonymous)이면 게스트 정보 필수
-    const isAnonymous = session.user.is_anonymous;
-    if (isAnonymous && (!guestName || !guestEmail || !guestNationality)) {
-      return NextResponse.json({ success: false, error: 'MISSING_GUEST_INFO' }, { status: 400 });
-    }
-
     const thread = await prisma.kdocChatThread.create({
       data: {
         id: uuidv4(),
         category,
-        userId: session.user.id,
+        userId,
         guestName: guestName ?? null,
         guestEmail: guestEmail ?? null,
         guestNationality: guestNationality ?? null,
@@ -52,7 +45,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET /api/kdoc-chat/thread — 현재 사용자의 활성 thread 조회
+// GET /api/kdoc-chat/thread — 회원의 활성 thread 목록 조회
 export async function GET() {
   try {
     const supabase = await createClient();

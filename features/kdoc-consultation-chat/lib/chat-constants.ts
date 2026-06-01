@@ -4,7 +4,7 @@ export type KdocChatCategory =
   | 'CONCIERGE_RESERVATION'
   | 'OTHER_INQUIRY';
 
-export type KdocChatPhase = 'category' | 'guest_form' | 'chat';
+export type KdocChatPhase = 'category' | 'guest_form' | 'guest_submitted' | 'chat';
 
 export const CATEGORIES: { key: KdocChatCategory; label: string }[] = [
   { key: 'PLASTIC_SURGERY', label: '성형 상담' },

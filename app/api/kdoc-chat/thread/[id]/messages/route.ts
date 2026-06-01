@@ -7,27 +7,27 @@ interface RouteParams {
   params: Promise<{ id: string }>;
 }
 
-// GET /api/kdoc-chat/thread/[id]/messages — 메시지 목록 (커서 페이지네이션)
+// GET /api/kdoc-chat/thread/[id]/messages — 메시지 목록
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const supabase = await createClient();
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (!session?.user?.id) {
-      return NextResponse.json({ success: false, error: 'UNAUTHORIZED' }, { status: 401 });
-    }
-
     const { id: threadId } = await params;
     const { searchParams } = new URL(request.url);
     const limitParam = searchParams.get('limit');
     const cursor = searchParams.get('cursor');
 
-    // 접근 권한: 본인 thread만 조회 가능
-    const thread = await prisma.kdocChatThread.findFirst({
-      where: { id: threadId, userId: session.user.id },
-    });
+    // thread 존재 확인 (회원/비회원 모두 threadId만으로 접근 가능 — UUID가 접근 키)
+    const thread = await prisma.kdocChatThread.findUnique({ where: { id: threadId } });
     if (!thread) {
       return NextResponse.json({ success: false, error: 'THREAD_NOT_FOUND' }, { status: 404 });
+    }
+
+    // 회원 thread는 본인 세션 검증
+    if (thread.userId !== null) {
+      const supabase = await createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user?.id !== thread.userId) {
+        return NextResponse.json({ success: false, error: 'UNAUTHORIZED' }, { status: 401 });
+      }
     }
 
     const limit = Math.min(Math.max(parseInt(limitParam || '50', 10) || 50, 1), 100);
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
     const hasMore = messages.length > limit;
     const sliced = hasMore ? messages.slice(0, -1) : messages;
-    const ordered = sliced.reverse(); // 오래된→최신순
+    const ordered = sliced.reverse();
     const nextCursor = hasMore ? ordered[0]?.createdAt?.toISOString() : null;
 
     return NextResponse.json({ success: true, messages: ordered, hasMore, nextCursor });
@@ -56,13 +56,6 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 // POST /api/kdoc-chat/thread/[id]/messages — 메시지 전송
 export async function POST(request: NextRequest, { params }: RouteParams) {
   try {
-    const supabase = await createClient();
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (!session?.user?.id) {
-      return NextResponse.json({ success: false, error: 'UNAUTHORIZED' }, { status: 401 });
-    }
-
     const { id: threadId } = await params;
     const { content } = await request.json();
 
@@ -70,13 +63,20 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
       return NextResponse.json({ success: false, error: 'MISSING_CONTENT' }, { status: 400 });
     }
 
-    // 접근 권한 확인
-    const thread = await prisma.kdocChatThread.findFirst({
-      where: { id: threadId, userId: session.user.id },
-    });
+    const thread = await prisma.kdocChatThread.findUnique({ where: { id: threadId } });
     if (!thread) {
       return NextResponse.json({ success: false, error: 'THREAD_NOT_FOUND' }, { status: 404 });
     }
+
+    // 회원 thread는 본인 세션 검증
+    if (thread.userId !== null) {
+      const supabase = await createClient();
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user?.id !== thread.userId) {
+        return NextResponse.json({ success: false, error: 'UNAUTHORIZED' }, { status: 401 });
+      }
+    }
+
     if (thread.status === 'CLOSED') {
       return NextResponse.json({ success: false, error: 'THREAD_CLOSED' }, { status: 403 });
     }
@@ -91,7 +91,6 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
       },
     });
 
-    // thread updatedAt 갱신
     await prisma.kdocChatThread.update({
       where: { id: threadId },
       data: { updatedAt: new Date() },
