@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useActiveBanners } from 'entities/event-banner/api/queries/get-active-banners';
 import { EventBannerMainContentV2 } from './EventBannerMainContentV2';
 import { type EventBannerCarouselProps, type EventBannerWithImage } from '../model/types';
@@ -55,10 +56,10 @@ export function EventBannerMainCarouselV2({
   const platform = useBannerPlatform();
   const { data: banners, isLoading, error } = useActiveBanners({ type: 'MAIN', platform });
 
-  const validBanners = mapBannersToLocalizedImages({
-    banners: banners ?? [],
-    currentLocale,
-  });
+  const validBanners = useMemo(() => {
+    const mapped = mapBannersToLocalizedImages({ banners: banners ?? [], currentLocale });
+    return [...mapped].sort(() => Math.random() - 0.5);
+  }, [banners, currentLocale]);
 
   const loadingBanners = mapBannersToLocalizedImages({
     banners: LOADING_MAIN_BANNERS,
