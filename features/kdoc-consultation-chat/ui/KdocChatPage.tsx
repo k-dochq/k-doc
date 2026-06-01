@@ -71,7 +71,7 @@ export function KdocChatPage({ lang }: KdocChatPageProps) {
               createdAt={new Date()}
             />
             <KdocAdminMessageBubble
-              content={'원활한 상담 진행을 위해 정보를 입력해주세요.\n오프라인 상태가 되면 이메일로 답변 알림을 보내드려요.'}
+              content={'원활한 상담 진행을 위해 정보를 입력해주세요.\n오프라인 상태가 되면 이메일로 답변 알림을 보내드려요.\n\n(수집된 개인정보는 상담 답변 알림 목적으로만 이용되고, 삭제 요청을 주시기 전까지 상담 답변 알림을 받을 수 없어요.)'}
               createdAt={new Date()}
             />
             {phase === 'guest_form' ? (

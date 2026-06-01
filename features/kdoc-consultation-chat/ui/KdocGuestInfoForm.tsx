@@ -33,7 +33,7 @@ export function KdocGuestInfoForm({
     guestInfo.name.trim() && guestInfo.email.trim() && guestInfo.nationality.trim();
 
   return (
-    <div className='mb-4 flex flex-col gap-2 pl-[38px]'>
+    <div className='mb-4 pl-[38px]'>
       <div className='rounded-2xl border border-[#e5e5e5] bg-white p-5'>
         <div className='flex flex-col gap-3'>
           {([
@@ -42,24 +42,25 @@ export function KdocGuestInfoForm({
             { key: 'nationality' as const, label: '국적', type: 'text' },
           ]).map(({ key, label, type }) => (
             <div key={key} className='flex flex-col gap-1'>
-              <label className='text-sm font-semibold text-[#404040]'>{label}</label>
+              <label className='text-sm font-medium text-[#404040]'>{label}</label>
               <input
                 type={type}
                 value={guestInfo[key]}
                 onChange={(e) => onChangeInfo({ [key]: e.target.value })}
-                className='border-b border-[#e5e5e5] py-1 text-sm text-[#404040] outline-none focus:border-[#7657ff]'
+                placeholder='입력해주세요'
+                className='rounded-lg border border-[#e5e5e5] px-3 py-[10px] text-sm text-[#404040] outline-none placeholder:text-[#a3a3a3] focus:border-[#7657ff]'
               />
             </div>
           ))}
+          <button
+            onClick={onSubmit}
+            disabled={!isValid || isSubmitting}
+            className='mt-1 rounded-xl py-3 text-sm font-medium disabled:bg-[#e5e5e5] disabled:text-[#a3a3a3] enabled:bg-[#7657ff] enabled:text-white'
+          >
+            {isSubmitting ? '연결 중...' : '저장'}
+          </button>
         </div>
       </div>
-      <button
-        onClick={onSubmit}
-        disabled={!isValid || isSubmitting}
-        className='ml-auto text-sm font-semibold text-[#7657ff] disabled:text-[#a3a3a3]'
-      >
-        {isSubmitting ? '연결 중...' : '상담 시작하기'}
-      </button>
     </div>
   );
 }
