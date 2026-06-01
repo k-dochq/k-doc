@@ -31,36 +31,30 @@ export function KdocFloatingButton({ lang }: KdocFloatingButtonProps) {
   };
 
   return (
-    <button
-      onClick={handleClick}
+    <div
       className='fixed bottom-[88px] left-[max(20px,calc(50vw-230px))] z-[500] flex h-14 w-[236px] items-center gap-2 rounded-full px-4 py-2 shadow-[0px_2px_4px_rgba(0,0,0,0.2)]'
-      style={{
-        background: 'linear-gradient(94deg, #3E57E2 0%, #B133FF 40%, #FF5DCA 100%)',
-      }}
-      aria-label='K-DOC 무료 상담 시작하기'
+      style={{ background: 'linear-gradient(94deg, #3E57E2 0%, #B133FF 40%, #FF5DCA 100%)' }}
     >
-      {/* 채팅 아이콘 */}
-      <KdocChatFloatingIcon className='h-10 w-10 shrink-0' />
+      {/* 채팅 아이콘 + 텍스트 — 클릭 시 채팅으로 이동 */}
+      <button
+        onClick={handleClick}
+        className='flex flex-1 items-center gap-2 overflow-hidden'
+        aria-label='K-DOC 무료 상담 시작하기'
+      >
+        <KdocChatFloatingIcon className='h-10 w-10 shrink-0' />
+        <div className='flex flex-col items-start overflow-hidden'>
+          <span className='whitespace-nowrap text-base font-semibold leading-6 text-white'>Free Consultation</span>
+          <span className='whitespace-nowrap text-[11px] leading-[14px] text-white'>with K-DOC</span>
+        </div>
+      </button>
 
-      {/* 텍스트 */}
-      <div className='flex flex-col items-start overflow-hidden'>
-        <span className='whitespace-nowrap text-base font-semibold leading-6 text-white'>Free Consultation</span>
-        <span className='whitespace-nowrap text-[11px] leading-[14px] text-white'>with K-DOC</span>
-      </div>
-
-      {/* X 닫기 버튼 */}
+      {/* X 닫기 */}
       <button
         onClick={handleClose}
         className='ml-auto shrink-0 p-1'
         aria-label='상담 버튼 닫기'
       >
-        <svg
-          width='9'
-          height='9'
-          viewBox='0 0 9 9'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
+        <svg width='9' height='9' viewBox='0 0 9 9' fill='none'>
           <path
             d='M4.5 4.5L0.5 0.5M4.5 4.5L8.5 8.5M4.5 4.5L8.5 0.5M4.5 4.5L0.5 8.5'
             stroke='#F5F5F5'
@@ -69,6 +63,6 @@ export function KdocFloatingButton({ lang }: KdocFloatingButtonProps) {
           />
         </svg>
       </button>
-    </button>
+    </div>
   );
 }

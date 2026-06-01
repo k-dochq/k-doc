@@ -79,30 +79,23 @@
 
 ## Phase 2 — 백엔드 스키마 + API 연결
 
-### DB-01 · Prisma 스키마
-- [ ] DB-01-1 `KdocThreadStatus` enum: `ACTIVE` / `PENDING` / `CLOSED`
-- [ ] DB-01-2 `KdocChatCategory` enum: `PLASTIC_SURGERY` / `DERMATOLOGY_AESTHETIC` / `CONCIERGE_RESERVATION` / `OTHER_INQUIRY`
-- [ ] DB-01-3 `KdocChatThread` 모델 — id, status, category, guestName, guestEmail, guestNationality, userId(→User?), signupInviteSentAt, createdAt, updatedAt
-- [ ] DB-01-4 `KdocChatMessage` 모델 — id, threadId(→Thread), senderType, content, adminName, isRead, readAt, createdAt
-- [ ] DB-01-5 `KdocChatMeta` 모델 (1:1 with Thread) — referrerPage, deviceType, os, browser, utmCampaign, utmMedium, firstResponseAt, lastResponseAt, autoCloseAt
-- [ ] DB-01-6 `AdminBookmarkedHospital` 모델 — adminUserId + hospitalId (unique)
-- [ ] DB-01-7 `RecommendationTemplate` 모델 — name, hospitalIds[], createdBy
-- [ ] DB-01-8 `PushSubscription` 모델 — userId?, threadId?, endpoint, p256dh, auth
-- [ ] DB-01-9 `User` 모델에 `consultationPushEnabled`, `consultationEmailEnabled` 컬럼 추가
-- [ ] DB-01-10 마이그레이션 실행
+### DB-01 · Prisma 스키마 ✅ 2026-06-01 완료
+- [x] `KdocThreadStatus`, `KdocChatCategory` enum 추가
+- [x] `KdocChatThread`, `KdocChatMessage` 모델 추가 (admin/prisma/schema.prisma)
+- [x] 마이그레이션 완료 (사용자 직접 실행)
 
-### DB-02 · 사용자 API
-- [ ] DB-02-1 `POST /api/kdoc-chat/thread` — thread 생성 (카테고리 + 게스트 정보 + 메타 저장)
-- [ ] DB-02-2 `GET /api/kdoc-chat/thread` — 현재 사용자 활성 thread 목록
-- [ ] DB-02-3 `GET /api/kdoc-chat/thread/[id]/messages` — 메시지 목록 (커서 페이지네이션)
-- [ ] DB-02-4 `POST /api/kdoc-chat/thread/[id]/messages` — 메시지 발송
-- [ ] DB-02-5 게스트 인증 헬퍼 — Supabase `signInAnonymously()` (`shared/lib/auth/guest-auth.ts`)
-- [ ] DB-02-6 이메일 머지 로직 — 회원가입 완료 시 guestEmail 매칭 thread → userId 업데이트
+### DB-02 · 사용자 API ✅ 2026-06-01 완료
+- [x] `POST /api/kdoc-chat/thread` — thread 생성 (anonymous signIn 포함)
+- [x] `GET /api/kdoc-chat/thread` — 활성 thread 목록
+- [x] `GET /api/kdoc-chat/thread/[id]/messages` — 메시지 목록 (커서 페이지네이션)
+- [x] `POST /api/kdoc-chat/thread/[id]/messages` — 메시지 발송
+- [x] 비회원: 카테고리 선택 → `signInAnonymously()` → thread 생성 → 채팅
+- [ ] DB-02-6 이메일 머지 로직 — 회원가입 시 guestEmail 매칭 thread.userId 업데이트
 
-### DB-03 · Realtime 구독
-- [ ] DB-03-1 `useKdocRealtimeChat.ts` — Supabase realtime 구독 훅 (기존 `useRealtimeChat.ts` 패턴)
-- [ ] DB-03-2 게스트(anonymous) RLS 정책 설정 — 본인 threadId만 접근 허용
-- [ ] DB-03-3 UI-05 채팅창에 realtime 연결
+### DB-03 · Realtime 구독 ✅ 2026-06-01 완료
+- [x] `useKdocRealtimeChat.ts` — Postgres Changes 방식 (INSERT on KdocChatMessage filtered by threadId)
+- [x] UI 실제 API 연결 완료 (mock state 제거)
+- [ ] DB-03-2 RLS 정책 설정 — 본인 threadId만 접근 허용
 
 ---
 
