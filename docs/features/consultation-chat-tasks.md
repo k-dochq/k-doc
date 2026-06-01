@@ -25,55 +25,55 @@
 > 이 Phase는 mock 데이터 기반으로 화면을 먼저 완성한다.
 > Prisma 스키마 / API 연결은 Phase 2에서 붙인다.
 
-### UI-01 · 플로팅 버튼 (`features/kdoc-consultation-floating`)
+### UI-01 · 플로팅 버튼 (`features/kdoc-consultation-floating`) ✅ 2026-06-01 완료
 - [x] UI-01-1 `floating-cooldown.ts` — localStorage cooldown 유틸
   - `isDismissed(): boolean` (3시간 이내 숨김 여부)
   - `dismiss(): void` (현재 시각 저장)
-- [x] UI-01-2 `KdocFloatingButton.tsx` — 메인 버튼 컴포넌트
-  - 기존 `ContactKIcon` 재사용 (동일 디자인)
-  - X 닫기 클릭 시 `dismiss()` 호출, 버튼 숨김
-  - cooldown 중이면 렌더 안 함
+- [x] UI-01-2 `KdocFloatingButton.tsx` — pill 형태 버튼 (Figma 기반)
+  - 그라디언트 배경: linear-gradient(94deg, #3E57E2 → #B133FF → #FF5DCA)
+  - 채팅 아이콘 SVG (`KdocChatFloatingIcon.tsx`) + "Free Consultation / with K-DOC" 텍스트
+  - X 닫기 클릭 시 `dismiss()` 호출, 버튼 숨김 (3시간 cooldown)
   - 클릭 시 `/[lang]/kdoc-chat` 라우트로 이동
+  - 위치: `fixed bottom-[88px] left-[max(20px,calc(50vw-230px))]`
 - [x] UI-01-3 `MainPageLayoutV2.tsx` 수정
-  - `{(lang === 'th' || lang === 'tl') && <ContactFloatingButton />}` 제거
+  - th/tl 전용 `ContactFloatingButton` 제거
   - 모든 언어에서 `<KdocFloatingButton lang={lang} />` 노출로 교체
 
-### UI-02 · K-DOC 상담 랜딩 (`app/[lang]/kdoc-chat`)
+### UI-02 · 채팅 라우트 + 자동 진입 흐름 (`app/[lang]/kdoc-chat`) ✅ 2026-06-01 완료
+> ⚠️ Figma 확인 결과 별도 "환영 카드 랜딩 페이지" 없음. 플로팅 버튼 클릭 → 채팅창 바로 오픈.
+> 채팅 시작 시 K-DOC 자동 메시지로 카테고리 선택 → 비회원 정보 수집 → 실제 채팅 순으로 진행.
+
 - [x] UI-02-1 라우트 생성: `app/[lang]/kdoc-chat/page.tsx`
-- [x] UI-02-2 `KdocChatLanding.tsx` — 환영 카드 + CTA
-  - K 로고/일러스트
-  - 타이틀: "K-DOC 무료 상담"
-  - 설명 텍스트
-  - "무료 상담 시작하기" 버튼 → 카테고리 선택으로 이동
-  - 기존 상담내역 있으면 "이전 상담 이어가기" 링크도 노출 (mock)
+- [x] UI-02-2 `KdocChatPage.tsx` — 채팅창 전체 레이아웃
+  - 헤더: ← 뒤로가기 + "K-DOC" 타이틀 + X 닫기
+  - 날짜 구분선
+  - 메시지 목록 영역
+  - 입력창 (비회원 정보 수집 단계에서는 form, 이후 일반 텍스트 입력)
 
-### UI-03 · 카테고리 선택 (`features/kdoc-consultation-chat/ui/CategorySelect.tsx`)
-- [x] UI-03-1 4개 카테고리 칩 UI
-  - Plastic Surgery / Dermatology & Aesthetic / Concierge & Reservation / Other Inquiry
-  - 선택 시 강조(보라색 테두리)
-  - "다음" 버튼 → 회원이면 채팅창 / 비회원이면 게스트 폼으로
-- [x] UI-03-2 회원/비회원 분기 (`KdocChatFlow.tsx` — `useAuth` + `is_anonymous` + `user_metadata.nationality`)
-  - 회원 + 국적 있음(5a) → 채팅창 바로
-  - 회원 + 국적 없음(5b) → 국적 입력 1필드
-  - 비회원(5c) → 게스트 폼
+### UI-03 · 채팅 초기 흐름 — 카테고리 + 게스트 폼 (채팅 안에서) ✅ 2026-06-01 완료
+> Figma: 카테고리 선택과 게스트 정보 수집이 모두 채팅 버블 안에서 이루어짐.
 
-### UI-04 · 게스트 정보 폼 (`features/kdoc-consultation-chat/ui/GuestInfoForm.tsx`)
-- [x] UI-04-1 이름 / 이메일 / 국적 3필드 입력 폼
-  - 모두 필수 — 하나라도 비면 "시작하기" 버튼 비활성(회색), 모두 채우면 보라색 활성
-  - 국적은 자유 텍스트
-- [x] UI-04-2 5b 케이스: 국적 1필드만 입력하는 간소화 화면 (`NationalityForm.tsx`)
+- [x] UI-03-1 K-DOC 자동 웰컴 메시지 버블
+  - "안녕하세요, 고객님 😊 K-DOC 1:1 채팅 상담입니다."
+  - 운영시간 안내 (평일 09:00-18:00 KST, 토일공휴일 제외)
+- [x] UI-03-2 카테고리 칩 퀵리플라이 (채팅 버블 하단)
+  - 성형 상담 / 피부 시술 상담 / 컨시어지 문의 / 기타
+  - 선택 시 사용자 버블로 전송, 칩 비활성화
+- [ ] UI-03-3 회원/비회원 분기 (현재 mock — Phase 2 API 연결 후 실제 분기)
+  - 회원 + 국적 있음(5a) → 카테고리 선택 후 바로 실제 채팅
+  - 회원 + 국적 없음(5b) → 국적 입력 인라인 폼 1필드
+  - 비회원(5c) → 이름/이메일/국적 인라인 폼 (채팅 안)
+- [x] UI-03-4 비회원 인라인 폼
+  - 이름 / 이메일 / 국적 3필드 (모두 필수)
+  - 제출 버튼 → 실제 채팅 시작
 
-### UI-05 · 채팅창 (`features/kdoc-consultation-chat/ui/KdocChatMain.tsx`)
-- [x] UI-05-1 채팅창 레이아웃 — 헤더 + 메시지 목록 + 입력창
-  - 헤더: "K-DOC 상담" 타이틀 + 카테고리 + 운영중 뱃지 (mock)
-  - 메시지 목록: 기존 `MessageList`, `UserMessage`, `HospitalMessage` 컴포넌트 재사용
-  - 입력창: 기존 `ChatInput` 재사용
-- [x] UI-05-2 mock 메시지 + 사용자 메시지 입력 로컬 state로 렌더링
-
-### UI-06 · 진입 흐름 전체 연결
-- [x] UI-06-1 `KdocChatFlow.tsx` — 플로팅 버튼 → 랜딩 → 카테고리 → (분기) → 채팅창 전체 step 기반 라우팅
-- [x] UI-06-2 뒤로가기 버튼 — 각 step에서 이전 step으로 이동
-- [ ] UI-06-3 "새 상담" 중복 경고 모달 — Phase 2 API 연결 후 구현
+### UI-04 · 채팅창 본체 (`features/kdoc-consultation-chat/ui/KdocChatPage.tsx`) ✅ 2026-06-01 완료
+- [x] UI-04-1 GNB: h-58px px-5, K_purple+K_pink 겹침 아이콘(40×40), 16px semibold, 12px #a3a3a3
+- [x] UI-04-2 K-DOC 버블: bg-[#f5f5f5] rounded-xl, 32px 아바타, pl-[38px] 들여쓰기
+- [x] UI-04-3 카테고리 칩: content-width items-start, bg-[#f1eeff] border-[#c0bfff]
+- [x] UI-04-4 유저 버블: gradient #8b45f6→#6544fa, text-[#fafafa]
+- [x] UI-04-5 입력창: 카메라 아이콘 + placeholder + 전송 아이콘(그라디언트)
+- [x] UI-04-6 Figma 직접 확인으로 픽셀 수준 보정 완료 (2026-06-01)
 
 ---
 
