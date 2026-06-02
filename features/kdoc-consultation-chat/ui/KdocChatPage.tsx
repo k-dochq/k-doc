@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
@@ -25,7 +25,6 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
 
   const {
     phase,
-    selectedCategory,
     selectedCategoryLabel,
     threadId,
     isCreatingThread,
@@ -34,13 +33,35 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
     handleCategorySelect,
     handleGuestSubmit,
     handleEditGuestInfo,
+    transitionToChat,
   } = useKdocChatFlow();
 
   const { messages, isLoading, sendMessage } = useKdocRealtimeChat({ threadId });
 
+  // guest_submitted → chat 전환 + 메시지 전송을 묶어서 처리
+  const handleSend = useCallback(
+    (text: string) => {
+      if (phase === 'guest_submitted') {
+        transitionToChat();
+      }
+      sendMessage(text);
+    },
+    [phase, transitionToChat, sendMessage],
+  );
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, phase]);
+
+  const hasGuestInfo = !!(guestInfo.name || guestInfo.email || guestInfo.nationality);
+
+  // chat phase에서 비회원은 카테고리 메시지를 로컬로 렌더하므로 DB 첫 메시지 중복 제외
+  const chatMessages =
+    phase === 'chat' && hasGuestInfo && selectedCategoryLabel
+      ? messages.filter(
+          (m, i) => !(i === 0 && m.senderType === 'USER' && m.content === selectedCategoryLabel),
+        )
+      : messages;
 
   return (
     <>
@@ -64,42 +85,43 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
           <KdocCategoryChips dict={dict} onSelect={handleCategorySelect} />
         )}
 
-        {/* 비회원 게스트 폼 플로우 */}
-        {(phase === 'guest_form' || phase === 'guest_submitted') && selectedCategoryLabel && (
-          <>
-            <KdocUserMessageBubble content={selectedCategoryLabel} createdAt={new Date()} />
-            <KdocAdminMessageBubble content={t.guestForm.infoMessage} createdAt={new Date()} />
-            {phase === 'guest_form' ? (
-              <KdocGuestInfoForm
-                dict={dict}
-                guestInfo={guestInfo}
-                isSubmitting={isCreatingThread}
-                onChangeInfo={setGuestInfo}
-                onSubmit={handleGuestSubmit}
-              />
-            ) : (
-              <KdocGuestInfoCard
-                dict={dict}
-                guestInfo={guestInfo}
-                onEdit={handleEditGuestInfo}
-              />
-            )}
-            {phase === 'guest_submitted' && (
-              <KdocAdminMessageBubble
-                content={t.guestForm.savedMessage}
-                createdAt={new Date()}
-              />
-            )}
-          </>
-        )}
+        {/* 비회원 게스트 폼 플로우 (guest_form / guest_submitted / chat 히스토리) */}
+        {(phase === 'guest_form' || phase === 'guest_submitted' || (phase === 'chat' && hasGuestInfo)) &&
+          selectedCategoryLabel && (
+            <>
+              <KdocUserMessageBubble content={selectedCategoryLabel} createdAt={new Date()} />
+              <KdocAdminMessageBubble content={t.guestForm.infoMessage} createdAt={new Date()} />
+              {phase === 'guest_form' ? (
+                <KdocGuestInfoForm
+                  dict={dict}
+                  guestInfo={guestInfo}
+                  isSubmitting={isCreatingThread}
+                  onChangeInfo={setGuestInfo}
+                  onSubmit={handleGuestSubmit}
+                />
+              ) : (
+                <>
+                  <KdocGuestInfoCard
+                    dict={dict}
+                    guestInfo={guestInfo}
+                    onEdit={handleEditGuestInfo}
+                  />
+                  <KdocAdminMessageBubble
+                    content={t.guestForm.savedMessage}
+                    createdAt={new Date()}
+                  />
+                </>
+              )}
+            </>
+          )}
 
-        {/* 실제 메시지 목록 */}
+        {/* chat phase — DB 메시지 목록 */}
         {phase === 'chat' && (
           <>
             {isLoading && (
               <p className='py-4 text-center text-xs text-[#a3a3a3]'>{t.loading}</p>
             )}
-            {messages.map((msg) =>
+            {chatMessages.map((msg) =>
               msg.senderType === 'USER' ? (
                 <KdocUserMessageBubble
                   key={msg.id}
@@ -121,7 +143,7 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
       </div>
 
       {(phase === 'chat' || phase === 'guest_submitted') && (
-        <KdocChatInput dict={dict} onSend={sendMessage} />
+        <KdocChatInput dict={dict} onSend={handleSend} />
       )}
     </>
   );

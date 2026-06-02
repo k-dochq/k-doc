@@ -131,16 +131,7 @@ export function useCreateKdocThread() {
 
 /** 메시지 전송 */
 export function useSendKdocMessage(threadId: string | null) {
-  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (content: string) => postSendMessage({ threadId: threadId!, content }),
-    onSuccess: (newMessage) => {
-      if (!threadId) return;
-      // 낙관적 업데이트: 캐시에 바로 추가
-      queryClient.setQueryData<KdocMessage[]>(
-        kdocChatKeys.messages(threadId),
-        (prev) => (prev ? [...prev, newMessage] : [newMessage]),
-      );
-    },
   });
 }

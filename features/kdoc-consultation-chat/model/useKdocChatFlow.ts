@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { createClient } from 'shared/lib/supabase/client';
 import { type KdocChatCategory, type KdocChatPhase } from '../lib/chat-constants';
 import { useKdocThreads, useCreateKdocThread } from 'lib/queries/kdoc-chat';
-import { getGuestThreadId, setGuestThreadId } from '../lib/guest-thread-storage';
+import { getGuestSession, setGuestSession } from '../lib/guest-thread-storage';
 
 interface GuestInfo {
   name: string;
@@ -23,6 +23,7 @@ interface UseKdocChatFlowReturn {
   handleCategorySelect: (category: KdocChatCategory, label: string) => Promise<void>;
   handleGuestSubmit: () => Promise<void>;
   handleEditGuestInfo: () => void;
+  transitionToChat: () => void;
 }
 
 const supabase = createClient();
@@ -50,10 +51,12 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
       setIsLoggedIn(loggedIn);
 
       if (!loggedIn) {
-        // 비회원: localStorage에서 threadId 복원
-        const savedId = getGuestThreadId();
-        if (savedId) {
-          setThreadId(savedId);
+        // 비회원: localStorage에서 전체 세션 복원
+        const saved = getGuestSession();
+        if (saved) {
+          setThreadId(saved.threadId);
+          setSelectedCategoryLabel(saved.categoryLabel);
+          setGuestInfoState(saved.guestInfo);
           setPhase('chat');
         }
       }
@@ -87,12 +90,20 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
         guestNationality: guest?.nationality,
       });
 
-      // 비회원: localStorage에 저장
+      // 비회원: threadId + guestInfo + categoryLabel 모두 localStorage에 저장
       if (guest) {
-        setGuestThreadId(thread.id);
+        setGuestSession({
+          threadId: thread.id,
+          categoryLabel: categoryLabel ?? category,
+          guestInfo: {
+            name: guest.name ?? '',
+            email: guest.email ?? '',
+            nationality: guest.nationality ?? '',
+          },
+        });
       }
 
-      // 카테고리 선택을 첫 메시지로 저장 (label은 현재 언어로 표시)
+      // 카테고리 선택을 첫 메시지로 저장 (현재 언어 label 사용)
       const label = categoryLabel ?? category;
       await fetch(`/api/kdoc-chat/thread/${thread.id}/messages`, {
         method: 'POST',
@@ -136,6 +147,10 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
     setPhase('guest_form');
   };
 
+  const transitionToChat = (): void => {
+    setPhase('chat');
+  };
+
   return {
     phase,
     selectedCategory,
@@ -147,5 +162,6 @@ export function useKdocChatFlow(): UseKdocChatFlowReturn {
     handleCategorySelect,
     handleGuestSubmit,
     handleEditGuestInfo,
+    transitionToChat,
   };
 }
