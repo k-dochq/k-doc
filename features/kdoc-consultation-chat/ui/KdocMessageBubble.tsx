@@ -19,8 +19,8 @@ export function KdocAdminMessageBubble({ content, createdAt }: KdocAdminMessageB
         <span className='text-sm font-semibold text-[#404040]'>K-DOC</span>
       </div>
       <div className='flex items-end gap-2 pl-[38px]'>
-        <div className='rounded-xl bg-[#f5f5f5] px-3 py-2'>
-          <p className='whitespace-pre-line text-sm text-[#404040]'>{content}</p>
+        <div className='max-w-[75%] rounded-xl bg-[#f5f5f5] px-3 py-2'>
+          <p className='whitespace-pre-line text-sm text-[#404040] [overflow-wrap:anywhere]'>{content}</p>
         </div>
         <span className='shrink-0 text-xs text-[#737373]'>{formatTime(createdAt)}</span>
       </div>
@@ -34,10 +34,10 @@ export function KdocUserMessageBubble({ content, createdAt }: KdocUserMessageBub
       <div className='flex items-end gap-2'>
         <span className='shrink-0 text-xs text-[#737373]'>{formatTime(createdAt)}</span>
         <div
-          className='rounded-xl px-3 py-2'
+          className='max-w-[75%] rounded-xl px-3 py-2'
           style={{ background: 'linear-gradient(to bottom, #8b45f6, #6544fa)' }}
         >
-          <p className='whitespace-pre-line text-sm text-[#fafafa]'>{content}</p>
+          <p className='whitespace-pre-line text-sm text-[#fafafa] [overflow-wrap:anywhere]'>{content}</p>
         </div>
       </div>
     </div>
