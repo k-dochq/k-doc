@@ -97,21 +97,25 @@
 
 ## Phase 3 — 어드민 UI
 
-### ADMIN-01 · thread 목록
-- [ ] ADMIN-01-1 어드민 라우트 `app/admin/kdoc-consultations/page.tsx`
-- [ ] ADMIN-01-2 어드민 API `GET /api/admin/kdoc-chat/threads`
-- [ ] ADMIN-01-3 목록 UI — 3탭(진행중/보류중/종료됨) + 카드 리스트
+### ADMIN-01 · thread 목록 ✅ 2026-06-02 완료
+- [x] ADMIN-01-1 상담관리 페이지에 기존 상담 / K-DOC 상담 탭 2개로 통합 (`app/admin/consultations/page.tsx`)
+- [x] ADMIN-01-2 어드민 API `GET /api/admin/kdoc-chat/threads` (status 필터 + 페이지네이션)
+- [x] ADMIN-01-3 목록 UI — 3탭(진행중/보류중/종료됨) + 카드 리스트 (`features/kdoc-consultations/`)
 
-### ADMIN-02 · 상세 패널 + 메타
-- [ ] ADMIN-02-1 어드민 API `GET /api/admin/kdoc-chat/threads/[id]`
-- [ ] ADMIN-02-2 `AdminKdocChatMain.tsx` — 채팅 패널 (기존 `AdminConsultationChat` 패턴)
-- [ ] ADMIN-02-3 `KdocChatMetaPanel.tsx` — 우측 메타데이터 사이드바 (룰 #55 전 항목)
-- [ ] ADMIN-02-4 매니저 답변 API `POST /api/admin/kdoc-chat/threads/[id]/messages`
+### ADMIN-02 · 상세 패널 + 메타 ✅ 2026-06-02 완료
+- [x] ADMIN-02-1 어드민 API `GET /api/admin/kdoc-chat/threads/[id]`
+- [x] ADMIN-02-2 `AdminKdocChatMain.tsx` — 채팅 패널 (`AdminKdocConsultationChat` + `KdocAdminMessageList` + `KdocAdminChatInput`)
+- [x] ADMIN-02-3 `KdocChatMetaPanel.tsx` — 우측 메타데이터 사이드바 (상태·카테고리·시각·이름·이메일·국적·회원여부)
+- [x] ADMIN-02-4 매니저 답변 API `POST /api/admin/kdoc-chat/threads/[id]/messages`
+- [x] `useKdocAdminChat.ts` — TanStack Query + 낙관적 업데이트 + Supabase Realtime 구독
+- [x] `/admin/consultations/kdoc/[threadId]` 상세 페이지 라우트
 
-### ADMIN-03 · 상태 변경
-- [ ] ADMIN-03-1 `PATCH /api/admin/kdoc-chat/threads/[id]/status`
-- [ ] ADMIN-03-2 "보류" 버튼 + 사유 드롭다운 (병원 확인 중 / 내부 검토 / 기타)
-- [ ] ADMIN-03-3 "상담 완료" 버튼 + 사용자 자동 완료 메시지 발송
+### ADMIN-03 · 상태 변경 ✅ 2026-06-02 완료
+- [x] ADMIN-03-1 `PATCH /api/admin/kdoc-chat/threads/[id]/status`
+- [x] ADMIN-03-2 "보류" 버튼 + 사유 드롭다운 (병원 확인 중 / 내부 검토 / 기타)
+- [x] ADMIN-03-3 "상담 완료" 버튼 + 사용자 자동 완료 메시지 발송
+- [x] `KdocStatusButtons.tsx` — 보류/완료 모달 + "진행중으로 복귀" 버튼
+- [x] `useKdocStatusChange.ts` — mutation + autoMessage 캐시 즉시 반영
 
 ### ADMIN-04 · 추천 병원 카드 패널
 - [ ] ADMIN-04-1 `AdminBookmarkedHospital` / `RecommendationTemplate` CRUD API
@@ -167,6 +171,18 @@
 
 ---
 
+## 버그 수정 이력
+
+### BUG-01 · 메시지 중복 표시 ✅ 2026-06-02 수정
+- **원인**: `useSendKdocMessage.onSuccess`에서 실제 메시지를 캐시에 재추가 → optimistic + real + Realtime 3중 추가로 중복 발생
+- **수정**: `lib/queries/kdoc-chat.ts` — `useSendKdocMessage.onSuccess` 제거. Realtime subscription이 optimistic → real 단일 교체로 처리
+
+### BUG-02 · chat phase 전환 시 히스토리 소실 ✅ 2026-06-02 수정
+- **원인**: `guest_submitted` → `chat` phase 전환 시 로컬 메시지(카테고리 버블·안내문·저장완료)가 사라지고 DB 첫 메시지(카테고리)가 중복 노출
+- **수정**: `KdocChatPage.tsx` — `chat` phase에서도 pre-chat 히스토리 로컬 렌더 유지, DB 첫 카테고리 메시지 중복 필터링
+
+---
+
 ## 진행 현황
 
 | Phase | 태스크 | 상태 |
@@ -175,13 +191,14 @@
 | Phase 1 (사용자 UI) | UI-01 ~ UI-05 | `[x]` 완료 (회원 5b 분기만 미구현) |
 | Phase 2 (백엔드) | DB-01 ~ DB-03 | `[x]` 완료 (머지 로직·RLS 제외) |
 | Phase 2.5 (다국어) | I18N-01 | `[x]` kdocChat 9개 언어 완료 |
-| Phase 3 (어드민 UI) | ADMIN-01 ~ ADMIN-05 | `[ ]` 미시작 |
+| Phase 3 (어드민 UI) | ADMIN-01 ~ ADMIN-05 | `[~]` ADMIN-01·02·03 완료, ADMIN-04 착수 예정 |
 | Phase 4 (알림/자동화) | NOTIFY-01 ~ NOTIFY-04 | `[ ]` 미시작 |
 | Phase 5 (파일/QA) | FILE-01, QA-01 | `[ ]` 미시작 |
 
 ## 다음 세션 시작점
 
-**Phase 3 — 어드민 UI** 착수 (ADMIN-01부터)
-- k-doc 어드민 레포(`/Users/leegibbeum/repos/admin`)에 kdoc-chat 관리 화면 구현
-- 기존 `admin/features/chat` 패턴 참고
-- 요구사항 §2.15 (메타데이터), §2.14 (상태 머신), §2.3 (운영시간) 참고
+**ADMIN-04** — 추천 병원 카드 패널 (어드민 레포 `/Users/leegibbeum/repos/admin`)
+- ADMIN-04-1 `AdminBookmarkedHospital` / `RecommendationTemplate` CRUD API
+- ADMIN-04-2 "병원 추천" 버튼 → 3탭 패널 (검색/템플릿/즐겨찾기)
+- ADMIN-04-3 선택 트레이 + 일괄 발송 UI
+- ADMIN-04-4 카드 캐러셀 메시지 페이로드 + 사용자 채팅창 렌더링
