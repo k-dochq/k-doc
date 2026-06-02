@@ -11,6 +11,7 @@ import { KdocChatGnb } from './KdocChatGnb';
 import { KdocCategoryChips } from './KdocCategoryChips';
 import { KdocGuestInfoForm, KdocGuestInfoCard } from './KdocGuestInfoForm';
 import { KdocAdminMessageBubble, KdocUserMessageBubble } from './KdocMessageBubble';
+import { KdocHospitalCarousel, parseHospitalCards } from './KdocHospitalCarousel';
 import { KdocChatInput } from './KdocChatInput';
 
 interface KdocChatPageProps {
@@ -121,21 +122,32 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
             {isLoading && (
               <p className='py-4 text-center text-xs text-[#a3a3a3]'>{t.loading}</p>
             )}
-            {chatMessages.map((msg) =>
-              msg.senderType === 'USER' ? (
-                <KdocUserMessageBubble
-                  key={msg.id}
-                  content={msg.content}
-                  createdAt={msg.createdAt}
-                />
-              ) : (
+            {chatMessages.map((msg) => {
+              if (msg.senderType === 'USER') {
+                return (
+                  <KdocUserMessageBubble
+                    key={msg.id}
+                    content={msg.content}
+                    createdAt={msg.createdAt}
+                  />
+                );
+              }
+              const hospitals = parseHospitalCards(msg.content);
+              if (hospitals) {
+                return (
+                  <div key={msg.id} className='flex justify-start py-1'>
+                    <KdocHospitalCarousel hospitals={hospitals} />
+                  </div>
+                );
+              }
+              return (
                 <KdocAdminMessageBubble
                   key={msg.id}
                   content={msg.content}
                   createdAt={msg.createdAt}
                 />
-              ),
-            )}
+              );
+            })}
           </>
         )}
 
