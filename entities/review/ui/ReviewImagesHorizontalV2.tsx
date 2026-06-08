@@ -39,6 +39,7 @@ export function ReviewImagesHorizontalV2({
 }: ReviewImagesHorizontalV2Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [currentModalIndex, setCurrentModalIndex] = useState(0);
   const router = useLocalizedRouter();
 
   // 전체 이미지 없으면 렌더링 안 함
@@ -72,6 +73,7 @@ export function ReviewImagesHorizontalV2({
     }
 
     setSelectedImageIndex(index);
+    setCurrentModalIndex(index);
     setIsModalOpen(true);
   };
 
@@ -105,6 +107,8 @@ export function ReviewImagesHorizontalV2({
         initialIndex={selectedImageIndex}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
+        title={currentModalIndex < beforeImages.length ? dict.reviewImages?.beforeLabel : dict.reviewImages?.afterLabel}
+        onIndexChange={setCurrentModalIndex}
       />
     </>
   );
