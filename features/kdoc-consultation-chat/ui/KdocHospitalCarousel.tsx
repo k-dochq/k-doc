@@ -1,30 +1,44 @@
 'use client';
 
-import { Star, MapPin } from 'lucide-react';
+import { type Locale } from 'shared/config';
+import { type Dictionary, type HospitalCardData } from 'shared/model/types';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from 'shared/ui/carousel';
+import { HospitalCardV2 } from 'entities/hospital/ui/HospitalCardV2';
 
 export interface HospitalCardItem {
   id: string;
   nameKo: string;
   nameEn: string;
   districtKo: string;
+  thumbnailImageUrl: string | null;
+  minPrice: number | null;
+  maxPrice: number | null;
   rating: number;
   reviewCount: number;
+  badges: string[];
+  specialties: Array<{ id: string; nameKo: string; nameEn: string; specialtyType: string }>;
 }
 
 interface KdocHospitalCarouselProps {
   hospitals: HospitalCardItem[];
+  lang: Locale;
+  dict: Dictionary;
 }
 
-export function parseHospitalCards(content: string): HospitalCardItem[] | null {
+export interface HospitalCardsPayload {
+  text?: string;
+  hospitals: HospitalCardItem[];
+}
+
+export function parseHospitalCards(content: string): HospitalCardsPayload | null {
   try {
     const parsed = JSON.parse(content);
     if (parsed?.type === 'hospitalCards' && Array.isArray(parsed.hospitals)) {
-      return parsed.hospitals;
+      return { text: parsed.text, hospitals: parsed.hospitals };
     }
     return null;
   } catch {
@@ -32,38 +46,40 @@ export function parseHospitalCards(content: string): HospitalCardItem[] | null {
   }
 }
 
-export function KdocHospitalCarousel({ hospitals }: KdocHospitalCarouselProps) {
+function toHospitalCardData(h: HospitalCardItem): HospitalCardData {
+  return {
+    id: h.id,
+    name: { ko_KR: h.nameKo, en_US: h.nameEn },
+    address: { ko_KR: h.districtKo },
+    thumbnailImageUrl: h.thumbnailImageUrl ?? null,
+    prices: h.minPrice != null ? { minPrice: h.minPrice, maxPrice: h.maxPrice ?? undefined } : null,
+    rating: h.rating,
+    reviewCount: h.reviewCount,
+    discountRate: null,
+    badge: h.badges?.length ? h.badges : null,
+    displayLocationName: h.districtKo ? { ko_KR: h.districtKo } : null,
+    medicalSpecialties: h.specialties?.map((s) => ({
+      id: s.id,
+      name: { ko_KR: s.nameKo, en_US: s.nameEn },
+      specialtyType: s.specialtyType,
+      order: null,
+    })) ?? [],
+  };
+}
+
+export function KdocHospitalCarousel({ hospitals, lang, dict }: KdocHospitalCarouselProps) {
   return (
     <div className='w-[260px]'>
       <Carousel opts={{ align: 'start', dragFree: true }}>
         <CarouselContent className='-ml-3'>
           {hospitals.map((h) => (
-            <CarouselItem key={h.id} className='pl-3 basis-[200px]'>
-              <div className='flex flex-col gap-2 rounded-2xl border border-[#e5e5e5] bg-white p-4 shadow-sm'>
-                <div className='flex h-16 w-full items-center justify-center rounded-xl bg-[#f5f3ff]'>
-                  <span className='text-2xl'>🏥</span>
-                </div>
-                <div className='space-y-1'>
-                  <p className='line-clamp-2 text-sm font-semibold leading-tight text-gray-900'>
-                    {h.nameKo || h.nameEn}
-                  </p>
-                  {h.districtKo && (
-                    <div className='flex items-center gap-1 text-xs text-gray-400'>
-                      <MapPin className='h-3 w-3 shrink-0' />
-                      <span className='truncate'>{h.districtKo}</span>
-                    </div>
-                  )}
-                  {h.rating > 0 && (
-                    <div className='flex items-center gap-1 text-xs text-gray-500'>
-                      <Star className='h-3 w-3 fill-yellow-400 text-yellow-400 shrink-0' />
-                      <span>{h.rating.toFixed(1)}</span>
-                      {h.reviewCount > 0 && (
-                        <span className='text-gray-400'>({h.reviewCount})</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
+            <CarouselItem key={h.id} className='pl-3 basis-[175px]'>
+              <HospitalCardV2
+                hospital={toHospitalCardData(h)}
+                lang={lang}
+                dict={dict}
+                showLikeButton={false}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>

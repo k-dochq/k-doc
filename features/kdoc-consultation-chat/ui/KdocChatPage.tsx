@@ -132,11 +132,16 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
                   />
                 );
               }
-              const hospitals = parseHospitalCards(msg.content);
-              if (hospitals) {
+              const parsed = parseHospitalCards(msg.content);
+              if (parsed) {
                 return (
-                  <div key={msg.id} className='flex justify-start py-1'>
-                    <KdocHospitalCarousel hospitals={hospitals} />
+                  <div key={msg.id} className='flex flex-col gap-2 py-1'>
+                    {parsed.text && (
+                      <KdocAdminMessageBubble content={parsed.text} createdAt={msg.createdAt} />
+                    )}
+                    <div className='flex justify-start'>
+                      <KdocHospitalCarousel hospitals={parsed.hospitals} lang={lang} dict={dict} />
+                    </div>
                   </div>
                 );
               }

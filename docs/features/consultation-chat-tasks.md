@@ -117,16 +117,18 @@
 - [x] `KdocStatusButtons.tsx` — 보류/완료 모달 + "진행중으로 복귀" 버튼
 - [x] `useKdocStatusChange.ts` — mutation + autoMessage 캐시 즉시 반영
 
-### ADMIN-04 · 추천 병원 카드 패널
-- [ ] ADMIN-04-1 `AdminBookmarkedHospital` / `RecommendationTemplate` CRUD API
-- [ ] ADMIN-04-2 "병원 추천" 버튼 → 3탭 패널 (검색/템플릿/즐겨찾기)
-- [ ] ADMIN-04-3 선택 트레이 + 일괄 발송 UI
-- [ ] ADMIN-04-4 카드 캐러셀 메시지 페이로드 + 사용자 채팅창 렌더링
+### ADMIN-04 · 추천 병원 카드 패널 ✅ 2026-06-02 완료 (검색+발송만, 템플릿/즐겨찾기 제외)
+- [-] ADMIN-04-1 `AdminBookmarkedHospital` / `RecommendationTemplate` CRUD API — 스킵 (나중에)
+- [-] ADMIN-04-2 "병원 추천" 버튼 → 3탭 패널 — 검색 탭만 구현
+- [x] ADMIN-04-3 선택 트레이 + 일괄 발송 UI (`KdocHospitalSearchPanel.tsx`)
+- [x] ADMIN-04-4 카드 캐러셀 메시지 페이로드 + 사용자 채팅창 렌더링
+  - admin: payload `{"type":"hospitalCards","hospitals":[...]}` 저장, 카드 미리보기
+  - k-doc: `KdocHospitalCarousel.tsx` + `KdocChatPage.tsx` 파싱 렌더
 
-### ADMIN-05 · 회원가입 유도 버튼
-- [ ] ADMIN-05-1 `[회원가입 유도]` 버튼 (비회원 thread만 활성)
-- [ ] ADMIN-05-2 UTM 링크 빌더 + 자동 메시지 발송 API
-- [ ] ADMIN-05-3 발송 후 "발송됨" 상태 표시 + 재발송 확인 모달
+### ADMIN-05 · 회원가입 유도 버튼 ✅ 2026-06-02 완료
+- [x] ADMIN-05-1 `[회원가입 유도]` 버튼 (비회원 thread만 노출)
+- [x] ADMIN-05-2 UTM 링크 빌더 + 자동 메시지 발송 API (9개 언어, thread 카테고리→utm_campaign)
+- [x] ADMIN-05-3 "가입유도 발송됨" 상태 표시 + 재발송 확인 모달
 
 ---
 
@@ -181,6 +183,14 @@
 - **원인**: `guest_submitted` → `chat` phase 전환 시 로컬 메시지(카테고리 버블·안내문·저장완료)가 사라지고 DB 첫 메시지(카테고리)가 중복 노출
 - **수정**: `KdocChatPage.tsx` — `chat` phase에서도 pre-chat 히스토리 로컬 렌더 유지, DB 첫 카테고리 메시지 중복 필터링
 
+### BUG-03 · 병원 캐러셀 가로 스크롤 버그 ✅ 2026-06-02 수정
+- **원인**: `overflow-x-auto` + `max-w-[280px]` 조합으로 가로 스크롤 안 됨
+- **수정**: `KdocHospitalCarousel.tsx` — Embla Carousel (`dragFree`) 기반으로 교체
+
+### BUG-04 · 메시지 버블 긴 URL/텍스트 오버플로우 ✅ 2026-06-02 수정
+- **원인**: `whitespace-pre-line`만 있고 `overflow-wrap` 미처리 → 공백 없는 긴 URL이 버블 밖으로 넘침
+- **수정**: k-doc `KdocMessageBubble.tsx` + admin `KdocAdminMessageList.tsx` — `max-w-[75%]` + `[overflow-wrap:anywhere]` 추가
+
 ---
 
 ## 진행 현황
@@ -191,14 +201,27 @@
 | Phase 1 (사용자 UI) | UI-01 ~ UI-05 | `[x]` 완료 (회원 5b 분기만 미구현) |
 | Phase 2 (백엔드) | DB-01 ~ DB-03 | `[x]` 완료 (머지 로직·RLS 제외) |
 | Phase 2.5 (다국어) | I18N-01 | `[x]` kdocChat 9개 언어 완료 |
-| Phase 3 (어드민 UI) | ADMIN-01 ~ ADMIN-05 | `[~]` ADMIN-01·02·03 완료, ADMIN-04 착수 예정 |
+| Phase 3 (어드민 UI) | ADMIN-01 ~ ADMIN-05 | `[x]` ADMIN-01~05 완료 |
 | Phase 4 (알림/자동화) | NOTIFY-01 ~ NOTIFY-04 | `[ ]` 미시작 |
 | Phase 5 (파일/QA) | FILE-01, QA-01 | `[ ]` 미시작 |
 
 ## 다음 세션 시작점
 
-**ADMIN-04** — 추천 병원 카드 패널 (어드민 레포 `/Users/leegibbeum/repos/admin`)
-- ADMIN-04-1 `AdminBookmarkedHospital` / `RecommendationTemplate` CRUD API
-- ADMIN-04-2 "병원 추천" 버튼 → 3탭 패널 (검색/템플릿/즐겨찾기)
-- ADMIN-04-3 선택 트레이 + 일괄 발송 UI
-- ADMIN-04-4 카드 캐러셀 메시지 페이로드 + 사용자 채팅창 렌더링
+**Phase 4 — 알림/자동화**
+
+우선순위 순:
+
+1. **NOTIFY-01 슬랙 알림** (k-doc 레포) — 가장 빠르고 운영 임팩트 큼
+   - `shared/lib/slack/send-kdoc-chat-notification.ts`
+   - `POST /api/kdoc-chat/thread` 에 슬랙 알림 연결
+   - 환경변수 `SLACK_KDOC_CHAT_WEBHOOK_URL` Vercel 등록
+
+2. **NOTIFY-02~03 웹푸시** — 인프라 구축 필요 (VAPID 키, Service Worker, soft prompt)
+
+3. **NOTIFY-04 Cron** — 48h 보류 자동전환, 7일 자동종료 (Vercel Cron)
+
+**미완료 항목** (언제든 착수 가능):
+- UI-03-3 회원 5b — 국적 1필드만 입력 분기
+- DB-02-6 이메일 머지 로직
+- DB-03-2 RLS 정책
+- ADMIN-04 템플릿/즐겨찾기 (스키마 추가 필요, 추후)
