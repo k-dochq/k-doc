@@ -271,6 +271,7 @@ model User {
   ConsultationStatus          ConsultationStatus[]
   DoctorLike                  DoctorLike[]
   HospitalLike                HospitalLike[]
+  KdocChatThread              KdocChatThread[]
   Reservation                 Reservation[]
   Review                      Review[]
   ReviewLike                  ReviewLike[]
@@ -963,6 +964,45 @@ model HospitalChangeRequestStatusHistory {
   @@schema("public")
 }
 
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model KdocChatMessage {
+  id             String         @id @db.Uuid
+  threadId       String         @db.Uuid
+  senderType     SenderType
+  content        String
+  adminName      String?        @db.VarChar(255)
+  isRead         Boolean?       @default(false)
+  readAt         DateTime?      @db.Timestamptz(6)
+  createdAt      DateTime       @default(now())
+  KdocChatThread KdocChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+
+  @@index([isRead])
+  @@index([threadId, createdAt])
+  @@index([threadId])
+  @@schema("public")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model KdocChatThread {
+  id                 String            @id @db.Uuid
+  status             KdocThreadStatus  @default(ACTIVE)
+  category           KdocChatCategory
+  userId             String?           @db.Uuid
+  guestName          String?           @db.VarChar(100)
+  guestEmail         String?           @db.VarChar(255)
+  guestNationality   String?           @db.VarChar(100)
+  signupInviteSentAt DateTime?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime
+  KdocChatMessage    KdocChatMessage[]
+  User               User?             @relation(fields: [userId], references: [id])
+
+  @@index([createdAt])
+  @@index([status])
+  @@index([userId])
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -1245,6 +1285,23 @@ enum BannerPlatform {
   WEB
   IOS
   ANDROID
+
+  @@schema("public")
+}
+
+enum KdocChatCategory {
+  PLASTIC_SURGERY
+  DERMATOLOGY_AESTHETIC
+  CONCIERGE_RESERVATION
+  OTHER_INQUIRY
+
+  @@schema("public")
+}
+
+enum KdocThreadStatus {
+  ACTIVE
+  PENDING
+  CLOSED
 
   @@schema("public")
 }
