@@ -37,6 +37,7 @@ function mapBannersToLocalizedImages({
               id: banner.id,
               title: banner.title as EventBannerWithImage['title'],
               linkUrl: banner.linkUrl,
+              order: (banner as { order?: number | null }).order ?? null,
               currentImage: {
                 imageUrl: image.imageUrl,
                 alt: image.alt,
@@ -58,7 +59,15 @@ export function EventBannerMainCarouselV2({
 
   const validBanners = useMemo(() => {
     const mapped = mapBannersToLocalizedImages({ banners: banners ?? [], currentLocale });
-    return [...mapped].sort(() => Math.random() - 0.5);
+    // order가 지정된 배너: 오름차순 고정
+    const fixed = mapped
+      .filter((b) => b.order != null)
+      .sort((a, b) => a.order! - b.order!);
+    // order가 null인 배너: 랜덤 셔플
+    const random = mapped
+      .filter((b) => b.order == null)
+      .sort(() => Math.random() - 0.5);
+    return [...fixed, ...random];
   }, [banners, currentLocale]);
 
   const loadingBanners = mapBannersToLocalizedImages({

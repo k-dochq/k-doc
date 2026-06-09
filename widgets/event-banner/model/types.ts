@@ -49,6 +49,7 @@ export interface EventBannerWithImage {
   id: string;
   title: Prisma.JsonValue;
   linkUrl: string | null;
+  order: number | null;
   currentImage: {
     imageUrl: string;
     alt: string | null;
