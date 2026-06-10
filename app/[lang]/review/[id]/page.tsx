@@ -110,11 +110,10 @@ export async function generateMetadata({ params }: ReviewDetailPageProps) {
     const { review } = await getReviewDetail({ reviewId: id, skipViewCountIncrement: true });
     const dict = await getDictionary(lang);
 
-    const reviewTitle = extractLocalizedText(review.content, lang)?.slice(0, 50) || '시술후기';
     const hospitalName = extractLocalizedText(review.hospital.name, lang) || '병원';
 
     return {
-      title: `${reviewTitle} - ${hospitalName} | ${dict.reviewDetail?.title || '시술후기'}`,
+      title: `${hospitalName} | ${dict.reviewDetail?.title || '시술후기'}`,
       description:
         extractLocalizedText(review.content, lang)?.slice(0, 160) ||
         `${hospitalName}의 시술후기를 확인하세요.`,

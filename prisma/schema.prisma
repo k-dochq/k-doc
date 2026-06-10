@@ -593,7 +593,7 @@ model EventBanner {
   id               String             @id @db.Uuid
   title            Json
   linkUrl          String?            @db.VarChar(500)
-  order            Int                @default(0)
+  order            Int?
   isActive         Boolean            @default(true)
   startDate        DateTime           @default(now()) @db.Timestamptz(6)
   endDate          DateTime?          @db.Timestamptz(6)
@@ -964,6 +964,7 @@ model HospitalChangeRequestStatusHistory {
   @@schema("public")
 }
 
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model KdocChatMessage {
   id             String         @id @db.Uuid
   threadId       String         @db.Uuid
@@ -981,6 +982,7 @@ model KdocChatMessage {
   @@schema("public")
 }
 
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model KdocChatThread {
   id                 String            @id @db.Uuid
   status             KdocThreadStatus  @default(ACTIVE)

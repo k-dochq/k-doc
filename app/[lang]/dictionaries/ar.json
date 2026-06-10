@@ -5,11 +5,6 @@
     "today": "اليوم",
     "timeSelect": "اختر الوقت (KST)"
   },
-  "appDownloadBanner": {
-    "message": "ثبّت تطبيق K-DOC الآن للحصول على تجربة أسرع وأكثر سلاسة.",
-    "cta": "حمّل التطبيق",
-    "closeLabel": "إغلاق البانر"
-  },
   "quickMenu": {
     "title": "مناطق العلاج الشائعة",
     "error": {

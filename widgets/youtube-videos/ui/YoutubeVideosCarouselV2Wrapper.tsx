@@ -39,7 +39,7 @@ function YoutubeVideosCarouselV2Content({
     return <div className='py-8 text-center text-gray-500'>{dict.youtube.empty.message}</div>;
   }
 
-  return <YoutubeVideosCarouselV2 videos={videosData.videos} lang={lang} dict={dict} />;
+  return <YoutubeVideosCarouselV2 key={selectedCategory ?? 'all'} videos={videosData.videos} lang={lang} dict={dict} />;
 }
 
 export function YoutubeVideosCarouselV2Wrapper({

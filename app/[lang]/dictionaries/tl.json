@@ -5,11 +5,6 @@
     "today": "ngayon",
     "timeSelect": "Pumili ng Oras (KST)"
   },
-  "appDownloadBanner": {
-    "message": "I-install ang K-DOC app ngayon para sa mas mabilis at mas maginhawang karanasan.",
-    "cta": "Kunin",
-    "closeLabel": "Isara ang banner"
-  },
   "quickMenu": {
     "title": "Mga sikat na lugar ng paggamot",
     "error": {
