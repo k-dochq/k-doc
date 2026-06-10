@@ -33,7 +33,7 @@ export function KdocFloatingButton({ lang }: KdocFloatingButtonProps) {
   return (
     <div
       className='fixed bottom-[88px] left-[max(20px,calc(50vw-230px))] z-[500] flex h-14 w-[236px] items-center gap-2 rounded-full px-4 py-2 shadow-[0px_2px_4px_rgba(0,0,0,0.2)]'
-      style={{ background: 'linear-gradient(94deg, #3E57E2 0%, #B133FF 40%, #FF5DCA 100%)' }}
+      style={{ background: 'linear-gradient(104.63deg, #3E57E2 0%, #B133FF 40%, #FF5DCA 100%)' }}
     >
       {/* 채팅 아이콘 + 텍스트 — 클릭 시 채팅으로 이동 */}
       <button

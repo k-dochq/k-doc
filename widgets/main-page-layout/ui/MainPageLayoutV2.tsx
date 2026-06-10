@@ -13,7 +13,8 @@ import { YoutubeVideosV2Wrapper } from 'widgets/youtube-videos/ui';
 import { IntroduceYoutubeSection } from 'widgets/introduce-youtube/ui';
 import { MainTipsSection } from 'widgets/main-tips';
 import { getDictionary } from 'app/[lang]/dictionaries';
-import { KdocFloatingButton } from 'features/kdoc-consultation-floating';
+// 상담 개편(feature/상담개편) 작업 중 — develop 머지 시 진입점 노출 방지를 위해 임시 숨김. 출시 시 주석 해제.
+// import { KdocFloatingButton } from 'features/kdoc-consultation-floating';
 
 interface MainPageLayoutV2Props {
   lang: Locale;
@@ -66,7 +67,8 @@ export async function MainPageLayoutV2({ lang }: MainPageLayoutV2Props) {
 
       <MainTipsSection lang={lang} dict={dict} />
 
-      <KdocFloatingButton lang={lang} />
+      {/* 상담 개편 작업 중 — 임시 숨김 (위 import 주석과 함께 출시 시 해제) */}
+      {/* <KdocFloatingButton lang={lang} /> */}
     </div>
   );
 }
