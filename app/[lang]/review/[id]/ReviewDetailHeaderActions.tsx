@@ -3,9 +3,10 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
 import { ReviewLikeButtonV2 } from '@/features/review-like/ui/ReviewLikeButtonV2';
-import { MoreVerticalIcon } from 'shared/ui/icons';
+import { MoreVerticalIcon, ShareIconV2 } from 'shared/ui/icons';
 import { openDrawer } from 'shared/lib/drawer';
 import { useAuth } from 'shared/lib/auth/useAuth';
+import { useShare } from 'shared/lib/hooks/useShare';
 import { ReviewActionDrawer } from './ReviewActionDrawer';
 
 interface ReviewDetailHeaderActionsProps {
@@ -22,9 +23,17 @@ export function ReviewDetailHeaderActions({
   dict,
 }: ReviewDetailHeaderActionsProps) {
   const { user } = useAuth();
+  const { share, isLoading } = useShare();
 
-  // 내가 작성한 리뷰인지 확인
   const isMyReview = user?.id === reviewUserId;
+
+  const handleShare = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    await share({ title: 'K-DOC', url });
+  };
 
   const handleMoreClick = async () => {
     await openDrawer({
@@ -34,10 +43,20 @@ export function ReviewDetailHeaderActions({
 
   return (
     <div className='flex items-center gap-3'>
-      {/* 좋아요 버튼 */}
+      <div className='md:hidden'>
+        <button
+          onClick={handleShare}
+          className={`flex items-center justify-center p-0 ${isLoading ? 'opacity-50' : ''}`}
+          aria-label='공유하기'
+          disabled={isLoading}
+          type='button'
+        >
+          <ShareIconV2 />
+        </button>
+      </div>
+
       <ReviewLikeButtonV2 reviewId={reviewId} locale={locale} dict={dict} />
 
-      {/* 내가 작성한 리뷰인 경우 햄버거 버튼 표시 */}
       {isMyReview && (
         <button
           onClick={handleMoreClick}
