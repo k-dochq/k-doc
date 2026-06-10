@@ -5,11 +5,6 @@
     "today": "Today",
     "timeSelect": "Select Time (KST)"
   },
-  "appDownloadBanner": {
-    "message": "Install the K-DOC app for a faster, more convenient experience.",
-    "cta": "Get App",
-    "closeLabel": "Dismiss banner"
-  },
   "quickMenu": {
     "title": "Popular Treatment Areas",
     "error": {
