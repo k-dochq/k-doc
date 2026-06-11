@@ -788,13 +788,13 @@
           "anytime": "kailan man"
         },
         "preferredDate": {
-          "label": "Mas gustong petsa ng reserbasyon",
-          "placeholder": "Pumili ng petsa",
+          "label": "Mas gustong petsa at oras ng reserbasyon",
+          "placeholder": "Pumili ng petsa at oras",
           "helper": "Mangyaring piliin upang tingnan ang iskedyul ng hospital"
         },
         "preferredDate2": {
-          "label": "Mas gustong petsa ng reserbasyon 2",
-          "placeholder": "Pumili ng petsa",
+          "label": "Mas gustong petsa at oras ng reserbasyon 2",
+          "placeholder": "Pumili ng petsa at oras",
           "helper": "Pakitandaan lamang kung hindi posible ang unang date."
         },
         "content": {
@@ -870,6 +870,11 @@
             "MALE": "lalaki",
             "FEMALE": "babae"
           }
+        }
+      },
+      "errors": {
+        "preferredDate": {
+          "required": "Mangyaring pumili ng mas gustong petsa at oras ng reserbasyon."
         }
       }
     },
