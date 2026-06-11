@@ -740,7 +740,7 @@
 | T8 | Thread 생성 API + 운영시간 분기 + 완료 메시지 | ✅ 완료 | useKdocChatFlow.ts + /api/kdoc-chat/thread | 운영시간 내/외 CMS 완료 메시지 ADMIN 메시지로 저장 |
 | T9 | 슬랙 알림 (thread 생성 시) | ⏸ 보류 | - | incoming webhook URL 미발급 — 인프라 준비 후 착수 |
 | T10 | 접수 후 채팅 화면 + realtime | ⬜ 예정 | - | guest_submitted 이후 실시간 채팅 화면 |
-| T11 | Admin 상담 목록 + 채팅 검토 | ⬜ 예정 | - | |
+| T11 | Admin 상담 목록 + 채팅 검토 | ✅ 완료 | admin/features/kdoc-consultations/lib/types.ts | CATEGORY_LABELS PRD 개편 레이블로 업데이트 |
 | T12 | 매니저 답변 시 이메일 알림 | ⬜ 예정 | - | |
 | T13 | [메인 메뉴] 상시 버튼 + 뒤로가기/닫기 네비 | ⬜ 예정 | - | 어느 phase에서도 메인 메뉴로 돌아올 수 있는 버튼 |
 | T14 | 웹푸시 (PWA/SW/VAPID) | ⬜ 예정 | - | |
