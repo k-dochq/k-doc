@@ -50,7 +50,7 @@ export function KdocNationalityDrawer({ dict }: KdocNationalityDrawerProps) {
   };
 
   return (
-    <div className='flex h-full flex-col bg-white px-5'>
+    <div className='flex h-[75vh] flex-col bg-white px-5'>
       {/* 헤더 */}
       <div className='flex items-center justify-between py-3'>
         <p className='text-lg font-bold text-[#404040]'>{t.nationalityLabel}</p>
