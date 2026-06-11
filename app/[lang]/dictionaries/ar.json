@@ -2722,6 +2722,10 @@
       "sendLabel": "إرسال",
       "attachLabel": "إرفاق ملف"
     },
-    "loading": "جارٍ تحميل الرسائل..."
+    "loading": "جارٍ تحميل الرسائل...",
+    "faq": {
+      "consultButton": "استشارة",
+      "mainMenuButton": "القائمة الرئيسية"
+    }
   }
 }

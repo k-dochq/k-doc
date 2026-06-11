@@ -143,7 +143,8 @@
 
 ## Phase 4 — 알림/자동화
 
-### NOTIFY-01 · 슬랙 신규 상담 알림
+### NOTIFY-01 · 슬랙 신규 상담 알림 ⏸ 보류 (2026-06-11)
+> 사용자 지시: "슬랙 알림은 나중에" — Phase 4 중 이 항목만 후순위 보류. 인프라(webhook URL)가 준비되면 착수.
 - [ ] NOTIFY-01-1 `shared/lib/slack/send-kdoc-chat-notification.ts`
 - [ ] NOTIFY-01-2 thread 생성 API에서 슬랙 알림 호출
 - [ ] NOTIFY-01-3 환경변수 `SLACK_KDOC_CHAT_WEBHOOK_URL` 등록

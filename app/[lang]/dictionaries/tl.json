@@ -2722,6 +2722,10 @@
       "sendLabel": "Ipadala",
       "attachLabel": "Mag-attach ng file"
     },
-    "loading": "Nilo-load ang mga mensahe..."
+    "loading": "Nilo-load ang mga mensahe...",
+    "faq": {
+      "consultButton": "Kumonsulta",
+      "mainMenuButton": "Pangunahing Menu"
+    }
   }
 }

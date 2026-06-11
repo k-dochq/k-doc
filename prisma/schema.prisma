@@ -1003,6 +1003,53 @@ model KdocChatThread {
   @@schema("public")
 }
 
+model ChatbotCompletionMessage {
+  id        String   @id
+  isInHours Boolean  @unique
+  content   Json
+  updatedAt DateTime
+
+  @@schema("public")
+}
+
+model ChatbotMenu {
+  id                 String               @id
+  key                KdocChatCategory     @unique
+  order              Int
+  isEnabled          Boolean              @default(true)
+  hasSubMenu         Boolean              @default(false)
+  labels             Json
+  prompts            Json
+  updatedAt          DateTime
+  ChatbotMenuFaqItem ChatbotMenuFaqItem[]
+
+  @@schema("public")
+}
+
+model ChatbotMenuFaqItem {
+  id                String      @id
+  menuId            String
+  order             Int
+  isEnabled         Boolean     @default(true)
+  showConsultButton Boolean     @default(true)
+  showMenuButton    Boolean     @default(true)
+  titles            Json
+  contents          Json
+  updatedAt         DateTime
+  ChatbotMenu       ChatbotMenu @relation(fields: [menuId], references: [id], onDelete: Cascade)
+
+  @@index([menuId, order])
+  @@schema("public")
+}
+
+model ChatbotWelcomeMessage {
+  id        String   @id
+  content   Json
+  updatedAt DateTime
+
+  @@schema("public")
+}
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN

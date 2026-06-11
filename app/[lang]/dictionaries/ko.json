@@ -2722,6 +2722,10 @@
       "sendLabel": "전송",
       "attachLabel": "파일 첨부"
     },
-    "loading": "메시지를 불러오는 중..."
+    "loading": "메시지를 불러오는 중...",
+    "faq": {
+      "consultButton": "상담 신청",
+      "mainMenuButton": "메인 메뉴"
+    }
   }
 }

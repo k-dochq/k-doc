@@ -2722,6 +2722,10 @@
       "sendLabel": "發送",
       "attachLabel": "附加檔案"
     },
-    "loading": "正在載入訊息..."
+    "loading": "正在載入訊息...",
+    "faq": {
+      "consultButton": "諮詢",
+      "mainMenuButton": "主選單"
+    }
   }
 }

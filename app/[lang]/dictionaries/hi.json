@@ -2722,6 +2722,10 @@
       "sendLabel": "भेजें",
       "attachLabel": "फ़ाइल संलग्न करें"
     },
-    "loading": "संदेश लोड हो रहे हैं..."
+    "loading": "संदेश लोड हो रहे हैं...",
+    "faq": {
+      "consultButton": "परामर्श",
+      "mainMenuButton": "मुख्य मेनू"
+    }
   }
 }

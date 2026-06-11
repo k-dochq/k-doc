@@ -2723,6 +2723,10 @@
       "sendLabel": "ส่ง",
       "attachLabel": "แนบไฟล์"
     },
-    "loading": "กำลังโหลดข้อความ..."
+    "loading": "กำลังโหลดข้อความ...",
+    "faq": {
+      "consultButton": "ปรึกษา",
+      "mainMenuButton": "เมนูหลัก"
+    }
   }
 }

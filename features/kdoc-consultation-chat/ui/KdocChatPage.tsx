@@ -4,14 +4,19 @@ import { useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { useKdocCmsContent } from '../model/useKdocCmsContent';
 import { useKdocChatFlow } from '../model/useKdocChatFlow';
 import { useKdocRealtimeChat } from '../model/useKdocRealtimeChat';
 import { formatTodayLabel } from '../lib/chat-time-utils';
 import { KdocChatGnb } from './KdocChatGnb';
+import { KdocWelcomeSkeleton, KdocMenuSkeleton } from './KdocChatSkeleton';
 import { KdocMainMenu } from './KdocMainMenu';
+import { KdocFreeInputPhase } from './KdocFreeInputPhase';
+import { KdocServiceFaqMenu } from './KdocServiceFaqMenu';
 import { KdocGuestInfoForm, KdocGuestInfoCard } from './KdocGuestInfoForm';
 import { KdocAdminMessageBubble, KdocUserMessageBubble } from './KdocMessageBubble';
 import { KdocHospitalCarousel, parseHospitalCards } from './KdocHospitalCarousel';
+import { KdocConversationHistory } from './KdocConversationHistory';
 import { KdocChatInput } from './KdocChatInput';
 
 interface KdocChatPageProps {
@@ -24,30 +29,40 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
   const t = dict.kdocChat;
 
+  const { data: cmsContent, isPending: isCmsLoading } = useKdocCmsContent(lang);
+
   const {
     phase,
+    selectedCategory,
     selectedCategoryLabel,
+    freeInputMessage,
     threadId,
     isCreatingThread,
     guestInfo,
     setGuestInfo,
     handleCategorySelect,
+    handleFreeInputSubmit,
+    handleFaqConsult,
+    handleBackToMainMenu,
     handleGuestSubmit,
     handleEditGuestInfo,
     transitionToChat,
-  } = useKdocChatFlow();
+  } = useKdocChatFlow(cmsContent ?? null);
 
   const { messages, isLoading, sendMessage } = useKdocRealtimeChat({ threadId });
 
-  // guest_submitted → chat 전환 + 메시지 전송을 묶어서 처리
   const handleSend = useCallback(
     (text: string) => {
+      if (phase === 'free_input') {
+        handleFreeInputSubmit(text);
+        return;
+      }
       if (phase === 'guest_submitted') {
         transitionToChat();
       }
       sendMessage(text);
     },
-    [phase, transitionToChat, sendMessage],
+    [phase, handleFreeInputSubmit, transitionToChat, sendMessage],
   );
 
   useEffect(() => {
@@ -56,6 +71,12 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
 
   const hasGuestInfo = !!(guestInfo.name || guestInfo.email || guestInfo.nationality);
 
+  const welcomeText = cmsContent?.welcome ?? (isCmsLoading ? '' : t.welcome);
+
+  const selectedCmsMenu = selectedCategory
+    ? cmsContent?.menus.find((m) => m.key === selectedCategory)
+    : null;
+
   // chat phase에서 비회원은 카테고리 메시지를 로컬로 렌더하므로 DB 첫 메시지 중복 제외
   const chatMessages =
     phase === 'chat' && hasGuestInfo && selectedCategoryLabel
@@ -63,6 +84,11 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
           (m, i) => !(i === 0 && m.senderType === 'USER' && m.content === selectedCategoryLabel),
         )
       : messages;
+
+  const showInput =
+    phase === 'chat' ||
+    phase === 'guest_submitted' ||
+    phase === 'free_input';
 
   return (
     <>
@@ -80,18 +106,50 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
         </div>
 
         {/* 웰컴 메시지 */}
-        <KdocAdminMessageBubble content={t.welcome} createdAt={new Date()} />
+        {isCmsLoading ? (
+          <KdocWelcomeSkeleton />
+        ) : (
+          welcomeText && <KdocAdminMessageBubble content={welcomeText} createdAt={new Date()} />
+        )}
 
         {/* 메인 메뉴 */}
         {phase === 'main_menu' && (
-          <KdocMainMenu dict={dict} onSelect={handleCategorySelect} />
+          isCmsLoading ? (
+            <KdocMenuSkeleton />
+          ) : (
+            <KdocMainMenu dict={dict} cmsMenus={cmsContent?.menus ?? null} onSelect={handleCategorySelect} />
+          )
         )}
 
-        {/* 비회원 게스트 폼 플로우 (guest_form / guest_submitted / chat 히스토리) */}
+        {/* free_input 단계: CMS 프롬프트 표시 */}
+        {phase === 'free_input' && selectedCategoryLabel && selectedCmsMenu && (
+          <KdocFreeInputPhase
+            selectedCategoryLabel={selectedCategoryLabel}
+            cmsPrompt={selectedCmsMenu.prompt}
+          />
+        )}
+
+        {/* faq_subtree 단계: FAQ 서비스 안내 메뉴 */}
+        {phase === 'faq_subtree' && selectedCategoryLabel && selectedCmsMenu && (
+          <KdocServiceFaqMenu
+            dict={dict}
+            selectedCategoryLabel={selectedCategoryLabel}
+            faqItems={selectedCmsMenu.faqItems}
+            isSubmitting={isCreatingThread}
+            onConsult={handleFaqConsult}
+            onMainMenu={handleBackToMainMenu}
+          />
+        )}
+
+        {/* 비회원 게스트 폼 플로우 */}
         {(phase === 'guest_form' || phase === 'guest_submitted' || (phase === 'chat' && hasGuestInfo)) &&
           selectedCategoryLabel && (
             <>
-              <KdocUserMessageBubble content={selectedCategoryLabel} createdAt={new Date()} />
+              <KdocConversationHistory
+                categoryLabel={selectedCategoryLabel}
+                freeInputMessage={freeInputMessage}
+                cmsPrompt={selectedCmsMenu?.prompt}
+              />
               <KdocAdminMessageBubble content={t.guestForm.infoMessage} createdAt={new Date()} />
               {phase === 'guest_form' ? (
                 <KdocGuestInfoForm
@@ -160,9 +218,7 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
         <div ref={bottomRef} />
       </div>
 
-      {(phase === 'chat' || phase === 'guest_submitted') && (
-        <KdocChatInput dict={dict} onSend={handleSend} />
-      )}
+      {showInput && <KdocChatInput dict={dict} onSend={handleSend} />}
     </>
   );
 }

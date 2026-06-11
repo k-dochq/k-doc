@@ -2723,6 +2723,10 @@
       "sendLabel": "Send",
       "attachLabel": "Attach file"
     },
-    "loading": "Loading messages..."
+    "loading": "Loading messages...",
+    "faq": {
+      "consultButton": "Consult",
+      "mainMenuButton": "Main Menu"
+    }
   }
 }

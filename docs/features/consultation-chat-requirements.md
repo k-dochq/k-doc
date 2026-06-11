@@ -710,7 +710,7 @@
 
 ## 13. 개발 진행 현황 (feature/상담개편 브랜치, 2026-06-11~)
 
-> 피그마 화면별로 쪼개서 진행. 각 항목은 커밋 완료 시 ✅ 표시.
+> 유저 플로우 순서로 진행. 각 항목은 완료 시 ✅ 표시.
 
 ### 13.1 화면별 진행 상태
 
@@ -719,15 +719,32 @@
 | 1 | GNB 재설계 | ✅ 완료 | `10dd009d` | 피그마 아바타, 운영상태 dot, border 제거 |
 | 2 | 메인 메뉴 재구성 | ✅ 완료 | `db1b0c7b` | 4버튼, 웰컴 메시지, 9개 언어 |
 | 3 | 입력 폼 (국적 드롭다운) | ✅ 완료 | `3a9…` | 자유텍스트 → drawer 검색 select |
-| 4 | 입력 바 (아이콘/shadow) | ✅ 완료 | `tbd` | 카메라→paperclip 아이콘, drop-shadow |
-| - | Admin CMS | ⬜ 예정 | - | 별도 트랙, 범위 큼 |
+| 4 | 입력 바 (아이콘/shadow) | ✅ 완료 | `f456db4e` | 카메라→paperclip 아이콘, drop-shadow |
 
-### 13.2 3번 입력 폼 세부 단위
+### 13.2 태스크별 진행 상태 (유저 플로우 기준)
 
-| 단위 | 내용 | 상태 |
-|---|---|---|
-| 3-1 | dict 키 추가 + `KdocNationalityDrawer` 컴포넌트 신규 | ✅ 완료 |
-| 3-2 | `KdocGuestInfoForm` 국적 필드 → 드로어 트리거 버튼 교체 | ✅ 완료 |
+| T# | 항목 | 상태 | 경로 | 비고 |
+|---|---|---|---|---|
+| T1-a | Admin CMS 스키마 (Prisma) | ✅ 완료 | `admin/prisma/schema.prisma` | ChatbotWelcomeMessage / ChatbotMenu / ChatbotMenuFaqItem / ChatbotCompletionMessage 4개 모델 |
+| T1-b | Admin CMS seed 스크립트 | ✅ 완료 | `admin/prisma/seed-chatbot-cms.ts` | 9개 로케일 × 4개 메뉴 × FAQ 4종 × 완료메시지 2종 |
+| T1-c | Admin CMS API routes | ✅ 완료 | `admin/app/api/admin/chatbot-cms/` | GET 전체 / PUT welcome · menu · faq · completion |
+| T1-d | Admin CMS UI | ✅ 완료 | `admin/features/chatbot-cms/` + `admin/app/admin/chatbot-cms/page.tsx` | 4탭(웰컴/메뉴/FAQ/완료메시지), LocaleTabEditor, 사이드바 Bot 아이콘 추가 |
+| T4-a | k-doc 공개 CMS API | ✅ 완료 | `k-doc/app/api/chatbot-cms/route.ts` | `GET /api/chatbot-cms?locale=ko` — JSON 컬럼에서 단일 로케일 추출 |
+| T4-b | `useKdocCmsContent` 훅 | ✅ 완료 | `features/kdoc-consultation-chat/model/useKdocCmsContent.ts` | tanstack query, staleTime 5분 |
+| T4-c | chat-constants phase 추가 | ✅ 완료 | `features/kdoc-consultation-chat/lib/chat-constants.ts` | `free_input` · `faq_subtree` 추가 |
+| T4-d | `useKdocChatFlow` phase 라우팅 | ✅ 완료 | `features/kdoc-consultation-chat/model/useKdocChatFlow.ts` | 메뉴 선택 후 hasSubMenu 분기, handleFreeInputSubmit · handleFaqConsult · handleBackToMainMenu 추가 |
+| T4-e | `KdocFreeInputPhase` UI | ✅ 완료 | `features/kdoc-consultation-chat/ui/KdocFreeInputPhase.tsx` | 유저 선택 버블 + CMS 프롬프트 버블 |
+| T5 | `KdocServiceFaqMenu` UI | ✅ 완료 | `features/kdoc-consultation-chat/ui/KdocServiceFaqMenu.tsx` | FAQ 항목 선택 → 내용 펼침 → [상담 신청][메인 메뉴] 버튼 |
+| T6 | free_input 메시지 버블 표시 | ⬜ 예정 | - | 메시지 전송 후 버블 표시 → guest_form 전환 |
+| T7 | 입력 유효성 + 에러 UI | ⬜ 예정 | - | 이름 1자+/이메일 정규식/국적 필수, Figma 에러 UI |
+| T8 | Thread 생성 API + 운영시간 분기 + 완료 메시지 | ⬜ 예정 | - | 운영시간 내/외 CMS 완료 메시지 표시 |
+| T9 | 슬랙 알림 (thread 생성 시) | ⬜ 예정 | - | incoming webhook |
+| T10 | 접수 후 채팅 화면 + realtime | ⬜ 예정 | - | |
+| T11 | Admin 상담 목록 + 채팅 검토 | ⬜ 예정 | - | |
+| T12 | 매니저 답변 시 이메일 알림 | ⬜ 예정 | - | |
+| T13 | [메인 메뉴] 상시 버튼 + 뒤로가기/닫기 네비 | ⬜ 예정 | - | |
+| T14 | 웹푸시 (PWA/SW/VAPID) | ⬜ 예정 | - | |
+| T15 | UTM 링크 추적 | ⬜ 예정 | - | |
 
 ### 13.3 기술 메모
 
@@ -735,6 +752,9 @@
 - **DB 영향 없음**: `KdocChatCategory` Prisma enum 유지 (라벨만 변경)
 - **phase 명 변경**: `'category'` → `'main_menu'` (constants/hook/page 모두 반영됨)
 - **국적 저장값**: 변경 전 자유텍스트 → 변경 후 영어 국가명 (`COUNTRY_CODES[].name`)
+- **CMS 스키마 소유권**: admin 프로젝트가 마이그레이션 소유. k-doc은 `prisma db pull`로 동기화
+- **CMS 데이터 흐름**: admin CMS → DB (JSON 다국어 컬럼) → k-doc `/api/chatbot-cms?locale=` → `useKdocCmsContent` (tanstack) → UI
+- **스켈레톤**: CMS 로딩 중 `KdocWelcomeSkeleton` + `KdocMenuSkeleton` 표시 (`animate-pulse`)
 
 ---
 
