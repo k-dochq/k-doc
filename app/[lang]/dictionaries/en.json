@@ -2716,7 +2716,13 @@
       "editButton": "Edit information",
       "nationalitySearchPlaceholder": "Search country",
       "nationalityAllCountries": "All Countries",
-      "nationalitySelectPlaceholder": "Select your nationality"
+      "nationalitySelectPlaceholder": "Select your nationality",
+      "errors": {
+        "nameRequired": "Please enter your name",
+        "emailRequired": "Please enter your email",
+        "emailInvalid": "Please enter a valid email address",
+        "nationalityRequired": "Please select your nationality"
+      }
     },
     "input": {
       "placeholder": "Ask us anything!",

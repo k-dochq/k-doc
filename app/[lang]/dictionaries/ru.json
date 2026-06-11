@@ -2715,7 +2715,13 @@
       "editButton": "Редактировать данные",
       "nationalitySearchPlaceholder": "Поиск страны",
       "nationalityAllCountries": "Все страны",
-      "nationalitySelectPlaceholder": "Выберите вашу национальность"
+      "nationalitySelectPlaceholder": "Выберите вашу национальность",
+      "errors": {
+        "nameRequired": "Пожалуйста, введите ваше имя",
+        "emailRequired": "Пожалуйста, введите ваш email",
+        "emailInvalid": "Пожалуйста, введите корректный email",
+        "nationalityRequired": "Пожалуйста, выберите вашу национальность"
+      }
     },
     "input": {
       "placeholder": "Спрашивайте что угодно!",

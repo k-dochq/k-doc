@@ -2715,7 +2715,13 @@
       "editButton": "修改資料",
       "nationalitySearchPlaceholder": "搜尋國家",
       "nationalityAllCountries": "所有國家",
-      "nationalitySelectPlaceholder": "請選擇您的國籍"
+      "nationalitySelectPlaceholder": "請選擇您的國籍",
+      "errors": {
+        "nameRequired": "請輸入您的姓名",
+        "emailRequired": "請輸入您的電子郵件",
+        "emailInvalid": "請輸入有效的電子郵件地址",
+        "nationalityRequired": "請選擇您的國籍"
+      }
     },
     "input": {
       "placeholder": "歡迎提問！",

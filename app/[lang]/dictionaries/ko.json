@@ -2715,7 +2715,13 @@
       "editButton": "정보 수정하기",
       "nationalitySearchPlaceholder": "검색어를 입력해주세요",
       "nationalityAllCountries": "전체 국가",
-      "nationalitySelectPlaceholder": "국적을 선택해주세요"
+      "nationalitySelectPlaceholder": "국적을 선택해주세요",
+      "errors": {
+        "nameRequired": "이름을 입력해주세요",
+        "emailRequired": "이메일을 입력해주세요",
+        "emailInvalid": "올바른 이메일 형식이 아닙니다",
+        "nationalityRequired": "국적을 선택해주세요"
+      }
     },
     "input": {
       "placeholder": "무엇이든 물어보세요!",

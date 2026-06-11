@@ -2715,7 +2715,13 @@
       "editButton": "जानकारी संपादित करें",
       "nationalitySearchPlaceholder": "देश खोजें",
       "nationalityAllCountries": "सभी देश",
-      "nationalitySelectPlaceholder": "अपनी राष्ट्रीयता चुनें"
+      "nationalitySelectPlaceholder": "अपनी राष्ट्रीयता चुनें",
+      "errors": {
+        "nameRequired": "कृपया अपना नाम दर्ज करें",
+        "emailRequired": "कृपया अपना ईमेल दर्ज करें",
+        "emailInvalid": "कृपया एक वैध ईमेल पता दर्ज करें",
+        "nationalityRequired": "कृपया अपनी राष्ट्रीयता चुनें"
+      }
     },
     "input": {
       "placeholder": "कुछ भी पूछें!",

@@ -2715,7 +2715,13 @@
       "editButton": "情報を修正する",
       "nationalitySearchPlaceholder": "国を検索",
       "nationalityAllCountries": "すべての国",
-      "nationalitySelectPlaceholder": "国籍を選択してください"
+      "nationalitySelectPlaceholder": "国籍を選択してください",
+      "errors": {
+        "nameRequired": "お名前を入力してください",
+        "emailRequired": "メールアドレスを入力してください",
+        "emailInvalid": "正しいメールアドレスを入力してください",
+        "nationalityRequired": "国籍を選択してください"
+      }
     },
     "input": {
       "placeholder": "何でもお聞きください！",

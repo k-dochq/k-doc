@@ -1,8 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { type Dictionary } from 'shared/model/types';
 import { openDrawer } from 'shared/lib/drawer';
 import { KdocNationalityDrawer } from './KdocNationalityDrawer';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function PencilIcon() {
   return (
@@ -43,6 +46,24 @@ interface KdocGuestInfoFormProps {
   onSubmit: () => void;
 }
 
+interface FieldErrors {
+  name: string;
+  email: string;
+  nationality: string;
+}
+
+function validate(guestInfo: GuestInfo, t: Dictionary['kdocChat']['guestForm']): FieldErrors {
+  return {
+    name: guestInfo.name.trim() ? '' : t.errors.nameRequired,
+    email: !guestInfo.email.trim()
+      ? t.errors.emailRequired
+      : !EMAIL_REGEX.test(guestInfo.email.trim())
+        ? t.errors.emailInvalid
+        : '',
+    nationality: guestInfo.nationality.trim() ? '' : t.errors.nationalityRequired,
+  };
+}
+
 export function KdocGuestInfoForm({
   dict,
   guestInfo,
@@ -51,10 +72,21 @@ export function KdocGuestInfoForm({
   onSubmit,
 }: KdocGuestInfoFormProps) {
   const t = dict.kdocChat.guestForm;
-  const isValid =
-    guestInfo.name.trim() && guestInfo.email.trim() && guestInfo.nationality.trim();
+  const [touched, setTouched] = useState<Record<keyof FieldErrors, boolean>>({
+    name: false,
+    email: false,
+    nationality: false,
+  });
+
+  const errors = validate(guestInfo, t);
+  const hasError = Object.values(errors).some(Boolean);
+  const isValid = !hasError;
+
+  const touch = (field: keyof FieldErrors) =>
+    setTouched((prev) => ({ ...prev, [field]: true }));
 
   const handleNationalitySelect = async () => {
+    touch('nationality');
     const selected = await openDrawer<string>({
       content: <KdocNationalityDrawer dict={dict} />,
     });
@@ -62,6 +94,9 @@ export function KdocGuestInfoForm({
       onChangeInfo({ nationality: selected });
     }
   };
+
+  const inputBorder = (field: keyof FieldErrors) =>
+    touched[field] && errors[field] ? 'border-[#ef4444]' : 'border-[#e5e5e5]';
 
   return (
     <div className='mb-4 pl-[38px]'>
@@ -74,9 +109,13 @@ export function KdocGuestInfoForm({
               type='text'
               value={guestInfo.name}
               onChange={(e) => onChangeInfo({ name: e.target.value })}
+              onBlur={() => touch('name')}
               placeholder={t.placeholder}
-              className='rounded-lg border border-[#e5e5e5] px-3 py-[10px] text-sm text-[#404040] outline-none placeholder:text-[#a3a3a3] focus:border-[#7657ff]'
+              className={`rounded-lg border px-3 py-[10px] text-sm text-[#404040] outline-none placeholder:text-[#a3a3a3] focus:border-[#7657ff] ${inputBorder('name')}`}
             />
+            {touched.name && errors.name && (
+              <p className='text-xs text-[#ef4444]'>{errors.name}</p>
+            )}
           </div>
 
           {/* 이메일 */}
@@ -86,9 +125,13 @@ export function KdocGuestInfoForm({
               type='email'
               value={guestInfo.email}
               onChange={(e) => onChangeInfo({ email: e.target.value })}
+              onBlur={() => touch('email')}
               placeholder={t.placeholder}
-              className='rounded-lg border border-[#e5e5e5] px-3 py-[10px] text-sm text-[#404040] outline-none placeholder:text-[#a3a3a3] focus:border-[#7657ff]'
+              className={`rounded-lg border px-3 py-[10px] text-sm text-[#404040] outline-none placeholder:text-[#a3a3a3] focus:border-[#7657ff] ${inputBorder('email')}`}
             />
+            {touched.email && errors.email && (
+              <p className='text-xs text-[#ef4444]'>{errors.email}</p>
+            )}
           </div>
 
           {/* 국적 — 드로어 트리거 */}
@@ -97,13 +140,16 @@ export function KdocGuestInfoForm({
             <button
               type='button'
               onClick={handleNationalitySelect}
-              className='flex items-center justify-between rounded-lg border border-[#e5e5e5] px-3 py-[10px] text-left text-sm'
+              className={`flex items-center justify-between rounded-lg border px-3 py-[10px] text-left text-sm ${inputBorder('nationality')}`}
             >
               <span className={guestInfo.nationality ? 'text-[#404040]' : 'text-[#a3a3a3]'}>
                 {guestInfo.nationality || t.nationalitySelectPlaceholder}
               </span>
               <ChevronDownIcon />
             </button>
+            {touched.nationality && errors.nationality && (
+              <p className='text-xs text-[#ef4444]'>{errors.nationality}</p>
+            )}
           </div>
 
           <button

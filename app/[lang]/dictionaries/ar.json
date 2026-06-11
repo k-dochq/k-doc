@@ -2715,7 +2715,13 @@
       "editButton": "تعديل المعلومات",
       "nationalitySearchPlaceholder": "ابحث عن دولة",
       "nationalityAllCountries": "جميع الدول",
-      "nationalitySelectPlaceholder": "اختر جنسيتك"
+      "nationalitySelectPlaceholder": "اختر جنسيتك",
+      "errors": {
+        "nameRequired": "الرجاء إدخال اسمك",
+        "emailRequired": "الرجاء إدخال بريدك الإلكتروني",
+        "emailInvalid": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
+        "nationalityRequired": "الرجاء تحديد جنسيتك"
+      }
     },
     "input": {
       "placeholder": "اسألنا أي شيء!",

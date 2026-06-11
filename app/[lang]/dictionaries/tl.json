@@ -2715,7 +2715,13 @@
       "editButton": "I-edit ang impormasyon",
       "nationalitySearchPlaceholder": "Maghanap ng bansa",
       "nationalityAllCountries": "Lahat ng Bansa",
-      "nationalitySelectPlaceholder": "Piliin ang iyong nasyonalidad"
+      "nationalitySelectPlaceholder": "Piliin ang iyong nasyonalidad",
+      "errors": {
+        "nameRequired": "Mangyaring ilagay ang iyong pangalan",
+        "emailRequired": "Mangyaring ilagay ang iyong email",
+        "emailInvalid": "Mangyaring maglagay ng wastong email",
+        "nationalityRequired": "Mangyaring piliin ang iyong nasyonalidad"
+      }
     },
     "input": {
       "placeholder": "Itanong ang kahit ano!",

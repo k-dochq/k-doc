@@ -2716,7 +2716,13 @@
       "editButton": "แก้ไขข้อมูล",
       "nationalitySearchPlaceholder": "ค้นหาประเทศ",
       "nationalityAllCountries": "ทุกประเทศ",
-      "nationalitySelectPlaceholder": "เลือกสัญชาติของคุณ"
+      "nationalitySelectPlaceholder": "เลือกสัญชาติของคุณ",
+      "errors": {
+        "nameRequired": "กรุณากรอกชื่อของคุณ",
+        "emailRequired": "กรุณากรอกอีเมล",
+        "emailInvalid": "กรุณากรอกอีเมลที่ถูกต้อง",
+        "nationalityRequired": "กรุณาเลือกสัญชาติ"
+      }
     },
     "input": {
       "placeholder": "ถามอะไรก็ได้!",
