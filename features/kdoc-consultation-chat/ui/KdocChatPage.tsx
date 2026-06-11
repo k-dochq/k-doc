@@ -77,9 +77,9 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
     ? cmsContent?.menus.find((m) => m.key === selectedCategory)
     : null;
 
-  // chat phase에서 비회원은 카테고리 메시지를 로컬로 렌더하므로 DB 첫 메시지 중복 제외
+  // 비회원은 카테고리 메시지를 로컬로 렌더하므로 DB 첫 메시지 중복 제외
   const chatMessages =
-    phase === 'chat' && hasGuestInfo && selectedCategoryLabel
+    (phase === 'chat' || phase === 'guest_submitted') && hasGuestInfo && selectedCategoryLabel
       ? messages.filter(
           (m, i) => !(i === 0 && m.senderType === 'USER' && m.content === selectedCategoryLabel),
         )
@@ -141,7 +141,7 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
           />
         )}
 
-        {/* 비회원 게스트 폼 플로우 */}
+        {/* 비회원 게스트 폼 플로우 — 대화 이력 + 안내 메시지 + 폼/카드 */}
         {(phase === 'guest_form' || phase === 'guest_submitted' || (phase === 'chat' && hasGuestInfo)) &&
           selectedCategoryLabel && (
             <>
@@ -160,23 +160,17 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
                   onSubmit={handleGuestSubmit}
                 />
               ) : (
-                <>
-                  <KdocGuestInfoCard
-                    dict={dict}
-                    guestInfo={guestInfo}
-                    onEdit={handleEditGuestInfo}
-                  />
-                  <KdocAdminMessageBubble
-                    content={t.guestForm.savedMessage}
-                    createdAt={new Date()}
-                  />
-                </>
+                <KdocGuestInfoCard
+                  dict={dict}
+                  guestInfo={guestInfo}
+                  onEdit={handleEditGuestInfo}
+                />
               )}
             </>
           )}
 
-        {/* chat phase — DB 메시지 목록 */}
-        {phase === 'chat' && (
+        {/* guest_submitted / chat phase — DB 메시지 목록 (realtime) */}
+        {(phase === 'guest_submitted' || phase === 'chat') && (
           <>
             {isLoading && (
               <p className='py-4 text-center text-xs text-[#a3a3a3]'>{t.loading}</p>
