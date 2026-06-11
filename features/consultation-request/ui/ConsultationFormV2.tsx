@@ -20,6 +20,20 @@ import { trackLead, trackGenerateLead } from 'shared/lib/analytics';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 import { getHospitalClosedWeekdays } from '../lib/hospital-closed-weekdays';
 
+/** "YYYY-MM-DD" 문자열을 로컬 시간 기준 Date로 파싱 (UTC offset 오염 방지) */
+function parseLocalDate(dateStr: string): Date {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+/** Date를 로컬 시간 기준 "YYYY-MM-DD" 문자열로 변환 */
+function formatLocalDate(date: Date): string {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
 // 아이콘 SVG 컴포넌트들
 const UserIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -273,9 +287,9 @@ export function ConsultationFormV2({
             dict.auth?.signup?.birthDate ||
             '생년월일'
           }
-          value={formData.birthDate ? new Date(formData.birthDate) : undefined}
+          value={formData.birthDate ? parseLocalDate(formData.birthDate) : undefined}
           onChange={(date) =>
-            updateField('birthDate', date ? date.toISOString().split('T')[0] : '')
+            updateField('birthDate', date ? formatLocalDate(date) : '')
           }
           locale={lang}
           dict={dict}
@@ -306,7 +320,7 @@ export function ConsultationFormV2({
 
         {/* 예약 희망 날짜 */}
         <FormDatePickerDrawerV2
-          label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
+          label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 일시'}
           value={formData.preferredDate ? parseDateTimeString(formData.preferredDate) : undefined}
           onChange={(date) => updateField('preferredDate', date ? formatDateTimeToString(date) : '')}
           locale={lang}
@@ -326,7 +340,7 @@ export function ConsultationFormV2({
 
         {/* 예약 희망 날짜2 */}
         <FormDatePickerDrawerV2
-          label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
+          label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 일시 2'}
           value={formData.preferredDate2 ? parseDateTimeString(formData.preferredDate2) : undefined}
           onChange={(date) => updateField('preferredDate2', date ? formatDateTimeToString(date) : '')}
           locale={lang}

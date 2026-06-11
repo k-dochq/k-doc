@@ -40,7 +40,19 @@ const DEFAULT_PLACEHOLDER_BY_LOCALE: Record<Locale, string> = {
   ru: 'Выберите дату',
 };
 
-const formatDisplayDate = (date: Date, _locale: Locale): string => {
+const LOCALE_TO_BCP47: Record<Locale, string> = {
+  ko: 'ko-KR',
+  en: 'en-US',
+  th: 'th-TH',
+  'zh-Hant': 'zh-Hant-TW',
+  ja: 'ja-JP',
+  hi: 'hi-IN',
+  tl: 'fil-PH',
+  ar: 'ar-SA',
+  ru: 'ru-RU',
+};
+
+const formatDisplayDate = (date: Date, locale: Locale): string => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
@@ -49,7 +61,10 @@ const formatDisplayDate = (date: Date, _locale: Locale): string => {
   const h = date.getHours();
   const m = date.getMinutes();
   if (h !== 0 || m !== 0) {
-    return `${dateStr} ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')} (KST)`;
+    const weekday = new Intl.DateTimeFormat(LOCALE_TO_BCP47[locale], {
+      weekday: 'short',
+    }).format(date);
+    return `${dateStr} (${weekday}) ${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')} (KST)`;
   }
 
   return dateStr;
