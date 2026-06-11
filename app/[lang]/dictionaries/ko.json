@@ -2689,6 +2689,9 @@
   },
   "kdocChat": {
     "gnb": {
+      "title": "K-DOC 상담",
+      "statusOpen": "상담 가능 시간",
+      "statusClosedFormat": "운영시간 외 · {schedule}부터",
       "subtitle": "빠르게 답변 받으실 수 있어요",
       "backLabel": "뒤로가기",
       "closeLabel": "닫기"

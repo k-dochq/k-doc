@@ -2689,6 +2689,9 @@
   },
   "kdocChat": {
     "gnb": {
+      "title": "K-DOC 相談",
+      "statusOpen": "相談受付中",
+      "statusClosedFormat": "営業時間外 · {schedule}から",
       "subtitle": "迅速な回答をお届けします",
       "backLabel": "戻る",
       "closeLabel": "閉じる"

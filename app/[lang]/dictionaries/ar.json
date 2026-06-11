@@ -2689,6 +2689,9 @@
   },
   "kdocChat": {
     "gnb": {
+      "title": "استشارة K-DOC",
+      "statusOpen": "متاح الآن",
+      "statusClosedFormat": "خارج ساعات العمل · يفتح {schedule}",
       "subtitle": "احصل على رد سريع",
       "backLabel": "رجوع",
       "closeLabel": "إغلاق"

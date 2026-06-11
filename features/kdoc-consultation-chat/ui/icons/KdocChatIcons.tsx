@@ -26,36 +26,6 @@ export function CloseIcon() {
   );
 }
 
-export function KdocHeaderIcon() {
-  return (
-    <div className='relative h-10 w-10 shrink-0'>
-      {/* K_purple */}
-      <svg className='absolute left-0 top-[3px]' width='24' height='24' viewBox='0 0 24 24' fill='none'>
-        <path
-          d='M0 12C0 5.373 5.373 0 12 0C18.627 0 24 5.373 24 12C24 18.627 18.627 24 12 24C5.373 24 0 18.627 0 12Z'
-          fill='#D9D9FF'
-        />
-        <path
-          d='M7.333 17.335V6.668H10.066V10.881L13.254 6.668H16.161L12.827 10.801L16.667 17.247H13.759L11.227 13.007L10.066 14.378V17.335H7.333Z'
-          fill='#7657FF'
-        />
-      </svg>
-      {/* K_pink */}
-      <svg className='absolute left-[15px] top-[13px]' width='24' height='24' viewBox='0 0 26 26' fill='none'>
-        <path
-          d='M13 0.5C19.904 0.5 25.5 6.096 25.5 13C25.5 19.904 19.904 25.5 13 25.5C6.096 25.5 0.5 19.904 0.5 13C0.5 6.096 6.096 0.5 13 0.5Z'
-          fill='#FCDEFF'
-          stroke='white'
-        />
-        <path
-          d='M8.333 18.335V7.668H11.066V11.881L14.254 7.668H17.161L13.827 11.881L17.667 18.247H14.759L12.227 14.007L11.066 15.378V18.335H8.333Z'
-          fill='#F15BFF'
-        />
-      </svg>
-    </div>
-  );
-}
-
 export function KdocMsgAvatar() {
   return (
     <div className='h-8 w-8 shrink-0 overflow-hidden rounded-full border border-[#e5e5e5] bg-[#001872]'>

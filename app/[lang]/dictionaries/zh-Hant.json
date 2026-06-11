@@ -2689,6 +2689,9 @@
   },
   "kdocChat": {
     "gnb": {
+      "title": "K-DOC 諮詢",
+      "statusOpen": "諮詢服務中",
+      "statusClosedFormat": "非營業時間 · {schedule} 開始",
       "subtitle": "快速獲得回覆",
       "backLabel": "返回",
       "closeLabel": "關閉"

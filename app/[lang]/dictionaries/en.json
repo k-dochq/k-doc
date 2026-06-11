@@ -2690,6 +2690,9 @@
   },
   "kdocChat": {
     "gnb": {
+      "title": "K-DOC Consultation",
+      "statusOpen": "Available now",
+      "statusClosedFormat": "Closed · Opens {schedule}",
       "subtitle": "Get a quick response",
       "backLabel": "Back",
       "closeLabel": "Close"

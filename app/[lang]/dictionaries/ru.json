@@ -2689,6 +2689,9 @@
   },
   "kdocChat": {
     "gnb": {
+      "title": "Консультация K-DOC",
+      "statusOpen": "Доступно сейчас",
+      "statusClosedFormat": "Вне рабочего времени · с {schedule}",
       "subtitle": "Получите быстрый ответ",
       "backLabel": "Назад",
       "closeLabel": "Закрыть"

@@ -68,6 +68,7 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
     <>
       <KdocChatGnb
         dict={dict}
+        lang={lang}
         onBack={() => router.back()}
         onClose={() => router.push(`/${lang}`)}
       />

@@ -2689,6 +2689,9 @@
   },
   "kdocChat": {
     "gnb": {
+      "title": "K-DOC Konsultasyon",
+      "statusOpen": "Available ngayon",
+      "statusClosedFormat": "Sarado · Magbubukas {schedule}",
       "subtitle": "Makakuha ng mabilis na sagot",
       "backLabel": "Bumalik",
       "closeLabel": "Isara"
