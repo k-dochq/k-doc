@@ -4,7 +4,7 @@ export type KdocChatCategory =
   | 'CONCIERGE_RESERVATION'
   | 'OTHER_INQUIRY';
 
-export type KdocChatPhase = 'category' | 'guest_form' | 'guest_submitted' | 'chat';
+export type KdocChatPhase = 'main_menu' | 'guest_form' | 'guest_submitted' | 'chat';
 
 export const CATEGORY_KEYS: KdocChatCategory[] = [
   'PLASTIC_SURGERY',

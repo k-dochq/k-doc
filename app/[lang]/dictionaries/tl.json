@@ -2696,11 +2696,11 @@
       "backLabel": "Bumalik",
       "closeLabel": "Isara"
     },
-    "welcome": "Kumusta! 😀\nMaligayang pagdating sa K-DOC 1:1 Chat Consultation.\n\nMangyaring piliin ang inyong katanungan 😊\nKung hindi nakalista ang inyong katanungan, piliin ang [Iba pa]\n\nOras ng Operasyon (KST) - Hindi kasama ang katapusan ng linggo at pista opisyal\nLunes-Biyernes 09:00 ~ 18:00",
+    "welcome": "Kumusta 😀\nIto ang K-DOC Consultation Center.\n\nGinagabayan namin kayo sa lahat ng bagay, mula sa pag-rekumenda ng mga na-verify na ospital sa Korea hanggang sa reservasyon, interpretasyon, at serbisyong concierge.\n\nMangyaring piliin ang opsyong kailangan ninyo mula sa menu sa ibaba. 😊",
     "categories": {
-      "PLASTIC_SURGERY": "Plastic Surgery",
-      "DERMATOLOGY_AESTHETIC": "Dermatology & Aesthetic",
-      "CONCIERGE_RESERVATION": "Concierge & Reservation",
+      "PLASTIC_SURGERY": "Makakuha ng Rekomendasyon ng Ospital",
+      "DERMATOLOGY_AESTHETIC": "Gabay sa Serbisyo ng K-DOC",
+      "CONCIERGE_RESERVATION": "K-DOC Concierge Service",
       "OTHER_INQUIRY": "Iba pang Katanungan"
     },
     "guestForm": {

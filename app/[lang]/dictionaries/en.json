@@ -2697,12 +2697,12 @@
       "backLabel": "Back",
       "closeLabel": "Close"
     },
-    "welcome": "Hello! 😀\nWelcome to K-DOC 1:1 Chat Consultation.\n\nPlease select your inquiry 😊\nIf your question isn't listed, please select [Other Inquiry].\n\nOperating Hours (KST) - Excluding weekends & holidays\nWeekdays 09:00 ~ 18:00",
+    "welcome": "Hello 😀\nThis is the K-DOC Consultation Center.\n\nWe guide you through everything from recommending verified hospitals in Korea to reservations, interpretation, and concierge services.\n\nPlease select the option you need from the menu below. 😊",
     "categories": {
-      "PLASTIC_SURGERY": "Plastic Surgery",
-      "DERMATOLOGY_AESTHETIC": "Dermatology & Aesthetic",
-      "CONCIERGE_RESERVATION": "Concierge & Reservation",
-      "OTHER_INQUIRY": "Other Inquiry"
+      "PLASTIC_SURGERY": "Get Hospital Recommendations",
+      "DERMATOLOGY_AESTHETIC": "K-DOC Service Guide",
+      "CONCIERGE_RESERVATION": "K-DOC Concierge Service",
+      "OTHER_INQUIRY": "Other Inquiries"
     },
     "guestForm": {
       "infoMessage": "Please enter your information for a smooth consultation.\nWe'll send you an email notification when you go offline.\n\n(Your personal information will only be used for consultation reply notifications and cannot be deleted until you request it.)",

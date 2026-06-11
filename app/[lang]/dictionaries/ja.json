@@ -2696,11 +2696,11 @@
       "backLabel": "戻る",
       "closeLabel": "閉じる"
     },
-    "welcome": "こんにちは！😀\nK-DOC 1:1チャット相談センターへようこそ。\n\nご相談内容をお選びください 😊\n該当するものがない場合は [その他] をお選びください。\n\n営業時間 (KST) - 土日祝日を除く\n平日 09:00 ~ 18:00",
+    "welcome": "こんにちは 😀\nK-DOC相談センターです。\n\n韓国の認証された病院のご紹介から、ご予約・通訳・コンシェルジュまで、すべてをご案内いたします。\n\n下のメニューからご希望の項目をお選びください。 😊",
     "categories": {
-      "PLASTIC_SURGERY": "美容整形相談",
-      "DERMATOLOGY_AESTHETIC": "皮膚・美容相談",
-      "CONCIERGE_RESERVATION": "コンシェルジュ・予約",
+      "PLASTIC_SURGERY": "病院を探す",
+      "DERMATOLOGY_AESTHETIC": "K-DOCサービスガイド",
+      "CONCIERGE_RESERVATION": "K-DOCコンシェルジュサービス",
       "OTHER_INQUIRY": "その他のお問い合わせ"
     },
     "guestForm": {

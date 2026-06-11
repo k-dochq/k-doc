@@ -1,12 +1,12 @@
 import { type Dictionary } from 'shared/model/types';
 import { CATEGORY_KEYS, type KdocChatCategory } from '../lib/chat-constants';
 
-interface KdocCategoryChipsProps {
+interface KdocMainMenuProps {
   dict: Dictionary;
   onSelect: (category: KdocChatCategory, label: string) => void;
 }
 
-export function KdocCategoryChips({ dict, onSelect }: KdocCategoryChipsProps) {
+export function KdocMainMenu({ dict, onSelect }: KdocMainMenuProps) {
   const labels = dict.kdocChat.categories;
   return (
     <div className='mb-4 flex flex-col items-start gap-2 pl-[38px]'>

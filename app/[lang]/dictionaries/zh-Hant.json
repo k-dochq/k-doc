@@ -2696,11 +2696,11 @@
       "backLabel": "返回",
       "closeLabel": "關閉"
     },
-    "welcome": "您好！😀\n歡迎來到 K-DOC 1:1 聊天諮詢。\n\n請選擇您的諮詢項目 😊\n如果沒有符合的項目，請選擇 [其他]\n\n服務時間 (KST) - 不含週末及節假日\n週一至週五 09:00 ~ 18:00",
+    "welcome": "您好 😀\n這裡是K-DOC諮詢中心。\n\n我們為您提供從韓國認證醫院推薦到預約、口譯及禮賓服務的全方位指引。\n\n請從下方選單選擇您需要的項目。 😊",
     "categories": {
-      "PLASTIC_SURGERY": "整形手術諮詢",
-      "DERMATOLOGY_AESTHETIC": "皮膚美容諮詢",
-      "CONCIERGE_RESERVATION": "禮賓服務與預約",
+      "PLASTIC_SURGERY": "取得醫院推薦",
+      "DERMATOLOGY_AESTHETIC": "K-DOC 服務指南",
+      "CONCIERGE_RESERVATION": "K-DOC 禮賓服務",
       "OTHER_INQUIRY": "其他諮詢"
     },
     "guestForm": {

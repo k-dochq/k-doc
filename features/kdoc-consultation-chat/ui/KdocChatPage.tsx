@@ -8,7 +8,7 @@ import { useKdocChatFlow } from '../model/useKdocChatFlow';
 import { useKdocRealtimeChat } from '../model/useKdocRealtimeChat';
 import { formatTodayLabel } from '../lib/chat-time-utils';
 import { KdocChatGnb } from './KdocChatGnb';
-import { KdocCategoryChips } from './KdocCategoryChips';
+import { KdocMainMenu } from './KdocMainMenu';
 import { KdocGuestInfoForm, KdocGuestInfoCard } from './KdocGuestInfoForm';
 import { KdocAdminMessageBubble, KdocUserMessageBubble } from './KdocMessageBubble';
 import { KdocHospitalCarousel, parseHospitalCards } from './KdocHospitalCarousel';
@@ -82,9 +82,9 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
         {/* 웰컴 메시지 */}
         <KdocAdminMessageBubble content={t.welcome} createdAt={new Date()} />
 
-        {/* 카테고리 칩 */}
-        {phase === 'category' && (
-          <KdocCategoryChips dict={dict} onSelect={handleCategorySelect} />
+        {/* 메인 메뉴 */}
+        {phase === 'main_menu' && (
+          <KdocMainMenu dict={dict} onSelect={handleCategorySelect} />
         )}
 
         {/* 비회원 게스트 폼 플로우 (guest_form / guest_submitted / chat 히스토리) */}

@@ -29,7 +29,7 @@ interface UseKdocChatFlowReturn {
 const supabase = createClient();
 
 export function useKdocChatFlow(): UseKdocChatFlowReturn {
-  const [phase, setPhase] = useState<KdocChatPhase>('category');
+  const [phase, setPhase] = useState<KdocChatPhase>('main_menu');
   const [selectedCategory, setSelectedCategory] = useState<KdocChatCategory | null>(null);
   const [selectedCategoryLabel, setSelectedCategoryLabel] = useState<string | null>(null);
   const [threadId, setThreadId] = useState<string | null>(null);
