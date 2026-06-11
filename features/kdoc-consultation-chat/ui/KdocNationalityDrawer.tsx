@@ -83,7 +83,7 @@ export function KdocNationalityDrawer({ dict }: KdocNationalityDrawerProps) {
         </div>
         {filtered.map((country) => (
           <button
-            key={country.code}
+            key={country.name}
             onClick={() => handleSelect(country.name)}
             className='flex w-full items-center py-2 text-left'
           >
