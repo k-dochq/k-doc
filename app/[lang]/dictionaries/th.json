@@ -2713,7 +2713,10 @@
       "saveButton": "บันทึก",
       "savingButton": "กำลังเชื่อมต่อ...",
       "savedMessage": "บันทึกข้อมูลของคุณแล้ว 😊\nกรุณากรอกรายละเอียดการปรึกษาของคุณ\nคุณยังสามารถอัปโหลดรูปภาพได้หากต้องการ\nเราจะตอบตามลำดับ",
-      "editButton": "แก้ไขข้อมูล"
+      "editButton": "แก้ไขข้อมูล",
+      "nationalitySearchPlaceholder": "ค้นหาประเทศ",
+      "nationalityAllCountries": "ทุกประเทศ",
+      "nationalitySelectPlaceholder": "เลือกสัญชาติของคุณ"
     },
     "input": {
       "placeholder": "ถามอะไรก็ได้!",

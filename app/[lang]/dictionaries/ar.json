@@ -2712,7 +2712,10 @@
       "saveButton": "حفظ",
       "savingButton": "جارٍ الاتصال...",
       "savedMessage": "تم حفظ معلوماتك 😊\nيرجى إدخال محتوى استشارتك.\nيمكنك أيضاً تحميل الصور إذا لزم الأمر.\nسنرد بالترتيب.",
-      "editButton": "تعديل المعلومات"
+      "editButton": "تعديل المعلومات",
+      "nationalitySearchPlaceholder": "ابحث عن دولة",
+      "nationalityAllCountries": "جميع الدول",
+      "nationalitySelectPlaceholder": "اختر جنسيتك"
     },
     "input": {
       "placeholder": "اسألنا أي شيء!",

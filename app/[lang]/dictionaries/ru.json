@@ -2712,7 +2712,10 @@
       "saveButton": "Сохранить",
       "savingButton": "Подключение...",
       "savedMessage": "Ваши данные сохранены 😊\nПожалуйста, введите содержание вашей консультации.\nВы также можете загрузить фотографии при необходимости.\nМы ответим в порядке очереди.",
-      "editButton": "Редактировать данные"
+      "editButton": "Редактировать данные",
+      "nationalitySearchPlaceholder": "Поиск страны",
+      "nationalityAllCountries": "Все страны",
+      "nationalitySelectPlaceholder": "Выберите вашу национальность"
     },
     "input": {
       "placeholder": "Спрашивайте что угодно!",

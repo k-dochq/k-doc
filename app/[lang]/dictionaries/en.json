@@ -2713,7 +2713,10 @@
       "saveButton": "Save",
       "savingButton": "Connecting...",
       "savedMessage": "Your information has been saved 😊\nPlease enter your consultation.\nYou can also upload photos if needed.\nWe will respond in order.",
-      "editButton": "Edit information"
+      "editButton": "Edit information",
+      "nationalitySearchPlaceholder": "Search country",
+      "nationalityAllCountries": "All Countries",
+      "nationalitySelectPlaceholder": "Select your nationality"
     },
     "input": {
       "placeholder": "Ask us anything!",

@@ -2712,7 +2712,10 @@
       "saveButton": "I-save",
       "savingButton": "Nagkokonekta...",
       "savedMessage": "Nai-save na ang inyong impormasyon 😊\nMangyaring ilagay ang nilalaman ng inyong konsultasyon.\nMaaari din kayong mag-upload ng mga larawan kung kinakailangan.\nSasagutin namin sa pagkakasunod.",
-      "editButton": "I-edit ang impormasyon"
+      "editButton": "I-edit ang impormasyon",
+      "nationalitySearchPlaceholder": "Maghanap ng bansa",
+      "nationalityAllCountries": "Lahat ng Bansa",
+      "nationalitySelectPlaceholder": "Piliin ang iyong nasyonalidad"
     },
     "input": {
       "placeholder": "Itanong ang kahit ano!",

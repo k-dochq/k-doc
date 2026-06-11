@@ -2712,7 +2712,10 @@
       "saveButton": "सहेजें",
       "savingButton": "कनेक्ट हो रहा है...",
       "savedMessage": "आपकी जानकारी सहेज ली गई है 😊\nकृपया अपना परामर्श विषय दर्ज करें।\nआवश्यकता हो तो फ़ोटो भी अपलोड कर सकते हैं।\nहम क्रमशः उत्तर देंगे।",
-      "editButton": "जानकारी संपादित करें"
+      "editButton": "जानकारी संपादित करें",
+      "nationalitySearchPlaceholder": "देश खोजें",
+      "nationalityAllCountries": "सभी देश",
+      "nationalitySelectPlaceholder": "अपनी राष्ट्रीयता चुनें"
     },
     "input": {
       "placeholder": "कुछ भी पूछें!",
