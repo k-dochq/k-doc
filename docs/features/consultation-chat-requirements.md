@@ -735,14 +735,14 @@
 | T4-d | `useKdocChatFlow` phase 라우팅 | ✅ 완료 | `features/kdoc-consultation-chat/model/useKdocChatFlow.ts` | 메뉴 선택 후 hasSubMenu 분기, handleFreeInputSubmit · handleFaqConsult · handleBackToMainMenu 추가 |
 | T4-e | `KdocFreeInputPhase` UI | ✅ 완료 | `features/kdoc-consultation-chat/ui/KdocFreeInputPhase.tsx` | 유저 선택 버블 + CMS 프롬프트 버블 |
 | T5 | `KdocServiceFaqMenu` UI | ✅ 완료 | `features/kdoc-consultation-chat/ui/KdocServiceFaqMenu.tsx` | FAQ 항목 선택 → 내용 펼침 → [상담 신청][메인 메뉴] 버튼 |
-| T6 | free_input 메시지 버블 표시 | ⬜ 예정 | - | 메시지 전송 후 버블 표시 → guest_form 전환 |
-| T7 | 입력 유효성 + 에러 UI | ⬜ 예정 | - | 이름 1자+/이메일 정규식/국적 필수, Figma 에러 UI |
-| T8 | Thread 생성 API + 운영시간 분기 + 완료 메시지 | ⬜ 예정 | - | 운영시간 내/외 CMS 완료 메시지 표시 |
-| T9 | 슬랙 알림 (thread 생성 시) | ⬜ 예정 | - | incoming webhook |
-| T10 | 접수 후 채팅 화면 + realtime | ⬜ 예정 | - | |
+| T6 | free_input 메시지 버블 표시 | ✅ 완료 | KdocConversationHistory.tsx | free_input→guest_form 전환 시 대화 이력 유지 |
+| T7 | 입력 유효성 + 에러 UI | ✅ 완료 | KdocGuestInfoForm.tsx | 이름/이메일/국적 blur 시 에러, 버튼 disabled |
+| T8 | Thread 생성 API + 운영시간 분기 + 완료 메시지 | ✅ 완료 | useKdocChatFlow.ts + /api/kdoc-chat/thread | 운영시간 내/외 CMS 완료 메시지 ADMIN 메시지로 저장 |
+| T9 | 슬랙 알림 (thread 생성 시) | ⏸ 보류 | - | incoming webhook URL 미발급 — 인프라 준비 후 착수 |
+| T10 | 접수 후 채팅 화면 + realtime | ⬜ 예정 | - | guest_submitted 이후 실시간 채팅 화면 |
 | T11 | Admin 상담 목록 + 채팅 검토 | ⬜ 예정 | - | |
 | T12 | 매니저 답변 시 이메일 알림 | ⬜ 예정 | - | |
-| T13 | [메인 메뉴] 상시 버튼 + 뒤로가기/닫기 네비 | ⬜ 예정 | - | |
+| T13 | [메인 메뉴] 상시 버튼 + 뒤로가기/닫기 네비 | ⬜ 예정 | - | 어느 phase에서도 메인 메뉴로 돌아올 수 있는 버튼 |
 | T14 | 웹푸시 (PWA/SW/VAPID) | ⬜ 예정 | - | |
 | T15 | UTM 링크 추적 | ⬜ 예정 | - | |
 
