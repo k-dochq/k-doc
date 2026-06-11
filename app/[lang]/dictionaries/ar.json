@@ -2719,8 +2719,8 @@
     },
     "input": {
       "placeholder": "اسألنا أي شيء!",
-      "cameraLabel": "الكاميرا",
-      "sendLabel": "إرسال"
+      "sendLabel": "إرسال",
+      "attachLabel": "إرفاق ملف"
     },
     "loading": "جارٍ تحميل الرسائل..."
   }

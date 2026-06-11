@@ -2720,8 +2720,8 @@
     },
     "input": {
       "placeholder": "ถามอะไรก็ได้!",
-      "cameraLabel": "กล้อง",
-      "sendLabel": "ส่ง"
+      "sendLabel": "ส่ง",
+      "attachLabel": "แนบไฟล์"
     },
     "loading": "กำลังโหลดข้อความ..."
   }

@@ -2719,8 +2719,8 @@
     },
     "input": {
       "placeholder": "歡迎提問！",
-      "cameraLabel": "相機",
-      "sendLabel": "發送"
+      "sendLabel": "發送",
+      "attachLabel": "附加檔案"
     },
     "loading": "正在載入訊息..."
   }

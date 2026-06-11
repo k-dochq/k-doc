@@ -2719,8 +2719,8 @@
     },
     "input": {
       "placeholder": "कुछ भी पूछें!",
-      "cameraLabel": "कैमरा",
-      "sendLabel": "भेजें"
+      "sendLabel": "भेजें",
+      "attachLabel": "फ़ाइल संलग्न करें"
     },
     "loading": "संदेश लोड हो रहे हैं..."
   }

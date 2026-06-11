@@ -2719,8 +2719,8 @@
     },
     "input": {
       "placeholder": "Спрашивайте что угодно!",
-      "cameraLabel": "Камера",
-      "sendLabel": "Отправить"
+      "sendLabel": "Отправить",
+      "attachLabel": "Прикрепить файл"
     },
     "loading": "Загрузка сообщений..."
   }

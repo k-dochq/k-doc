@@ -2719,8 +2719,8 @@
     },
     "input": {
       "placeholder": "무엇이든 물어보세요!",
-      "cameraLabel": "카메라",
-      "sendLabel": "전송"
+      "sendLabel": "전송",
+      "attachLabel": "파일 첨부"
     },
     "loading": "메시지를 불러오는 중..."
   }

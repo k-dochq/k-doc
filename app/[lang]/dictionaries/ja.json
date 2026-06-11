@@ -2719,8 +2719,8 @@
     },
     "input": {
       "placeholder": "何でもお聞きください！",
-      "cameraLabel": "カメラ",
-      "sendLabel": "送信"
+      "sendLabel": "送信",
+      "attachLabel": "ファイルを添付"
     },
     "loading": "メッセージを読み込み中..."
   }

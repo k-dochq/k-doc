@@ -2719,8 +2719,8 @@
     },
     "input": {
       "placeholder": "Itanong ang kahit ano!",
-      "cameraLabel": "Camera",
-      "sendLabel": "Ipadala"
+      "sendLabel": "Ipadala",
+      "attachLabel": "Mag-attach ng file"
     },
     "loading": "Nilo-load ang mga mensahe..."
   }

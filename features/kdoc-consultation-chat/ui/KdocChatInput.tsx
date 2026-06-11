@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { type Dictionary } from 'shared/model/types';
-import { CameraIcon, SendIcon } from './icons/KdocChatIcons';
+import { PaperclipIcon, SendIcon } from './icons/KdocChatIcons';
 
 interface KdocChatInputProps {
   dict: Dictionary;
@@ -19,10 +19,10 @@ export function KdocChatInput({ dict, onSend }: KdocChatInputProps) {
   };
 
   return (
-    <div className='flex items-center gap-2 border-t border-[#e5e5e5] bg-white px-5 pb-8 pt-4'>
+    <div className='flex items-center gap-2 border-t border-[#e5e5e5] bg-white px-5 pb-8 pt-4 drop-shadow-[0_8px_8px_rgba(0,0,0,0.24)]'>
       <div className='flex flex-1 items-center gap-2'>
-        <button className='shrink-0' aria-label={t.cameraLabel}>
-          <CameraIcon />
+        <button className='shrink-0' aria-label={t.attachLabel}>
+          <PaperclipIcon />
         </button>
         <input
           type='text'

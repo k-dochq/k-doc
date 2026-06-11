@@ -2720,8 +2720,8 @@
     },
     "input": {
       "placeholder": "Ask us anything!",
-      "cameraLabel": "Camera",
-      "sendLabel": "Send"
+      "sendLabel": "Send",
+      "attachLabel": "Attach file"
     },
     "loading": "Loading messages..."
   }
