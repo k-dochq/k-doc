@@ -8,6 +8,8 @@ interface CreateThreadBody {
   guestName?: string;
   guestEmail?: string;
   guestNationality?: string;
+  /** 운영시간 분기에 따른 CMS 완료 메시지 — 제공 시 어드민 메시지로 자동 저장 */
+  autoReplyMessage?: string;
 }
 
 // POST /api/kdoc-chat/thread — thread 생성 (회원/비회원 모두 허용)
@@ -20,7 +22,7 @@ export async function POST(request: NextRequest) {
     const userId = session?.user?.id ?? null;
 
     const body: CreateThreadBody = await request.json();
-    const { category, guestName, guestEmail, guestNationality } = body;
+    const { category, guestName, guestEmail, guestNationality, autoReplyMessage } = body;
 
     if (!category) {
       return NextResponse.json({ success: false, error: 'MISSING_CATEGORY' }, { status: 400 });
@@ -37,6 +39,17 @@ export async function POST(request: NextRequest) {
         updatedAt: new Date(),
       },
     });
+
+    if (autoReplyMessage?.trim()) {
+      await prisma.kdocChatMessage.create({
+        data: {
+          id: uuidv4(),
+          threadId: thread.id,
+          senderType: 'ADMIN',
+          content: autoReplyMessage.trim(),
+        },
+      });
+    }
 
     return NextResponse.json({ success: true, thread });
   } catch (error) {

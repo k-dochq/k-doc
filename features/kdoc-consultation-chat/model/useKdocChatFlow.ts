@@ -5,6 +5,7 @@ import { createClient } from 'shared/lib/supabase/client';
 import { type KdocChatCategory, type KdocChatPhase } from '../lib/chat-constants';
 import { useKdocThreads, useCreateKdocThread } from 'lib/queries/kdoc-chat';
 import { getGuestSession, setGuestSession } from '../lib/guest-thread-storage';
+import { checkBusinessHoursInKorea } from 'shared/lib/business-hours';
 import { type CmsContent } from './useKdocCmsContent';
 
 interface GuestInfo {
@@ -89,11 +90,17 @@ export function useKdocChatFlow(cmsContent: CmsContent | null): UseKdocChatFlowR
     categoryLabel?: string,
   ): Promise<void> => {
     try {
+      const { isBusinessHours } = checkBusinessHoursInKorea();
+      const autoReplyMessage = isBusinessHours
+        ? cmsContent?.completionMessages.inHours
+        : cmsContent?.completionMessages.outOfHours;
+
       const thread = await createThread({
         category,
         guestName: guest?.name,
         guestEmail: guest?.email,
         guestNationality: guest?.nationality,
+        autoReplyMessage,
       });
 
       if (guest) {

@@ -65,6 +65,7 @@ async function postCreateThread(params: {
   guestName?: string;
   guestEmail?: string;
   guestNationality?: string;
+  autoReplyMessage?: string;
 }): Promise<KdocThread> {
   const res = await fetch('/api/kdoc-chat/thread', {
     method: 'POST',
