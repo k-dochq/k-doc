@@ -788,13 +788,13 @@
           "anytime": "Anytime"
         },
         "preferredDate": {
-          "label": "Preferred Date",
-          "placeholder": "Please select a date",
+          "label": "Preferred Date & Time",
+          "placeholder": "Please select a date and time",
           "helper": "Please select so the hospital can check their schedule."
         },
         "preferredDate2": {
-          "label": "Preferred Date 2",
-          "placeholder": "Please select a date",
+          "label": "Preferred Date & Time 2",
+          "placeholder": "Please select a date and time",
           "helper": "Used only if the first date is unavailable."
         },
         "content": {
@@ -870,6 +870,11 @@
             "MALE": "Male",
             "FEMALE": "Female"
           }
+        }
+      },
+      "errors": {
+        "preferredDate": {
+          "required": "Please select a preferred date and time."
         }
       }
     },

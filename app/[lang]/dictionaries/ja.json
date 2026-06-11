@@ -788,13 +788,13 @@
           "anytime": "いつでも"
         },
         "preferredDate": {
-          "label": "予約希望日",
-          "placeholder": "日付を選択してください",
+          "label": "予約希望日時",
+          "placeholder": "日付と時間を選択してください",
           "helper": "病院のスケジュールを確認するために必ず選択してください"
         },
         "preferredDate2": {
-          "label": "予約希望日2",
-          "placeholder": "日付を選択してください",
+          "label": "予約希望日時 2",
+          "placeholder": "日付と時間を選択してください",
           "helper": "最初の日付が不可能な場合にのみ注意してください"
         },
         "content": {
@@ -870,6 +870,11 @@
             "MALE": "男性",
             "FEMALE": "女性"
           }
+        }
+      },
+      "errors": {
+        "preferredDate": {
+          "required": "予約希望日時を選択してください。"
         }
       }
     },

@@ -788,13 +788,13 @@
           "anytime": "每當"
         },
         "preferredDate": {
-          "label": "首選預訂日期",
-          "placeholder": "請選擇日期",
+          "label": "首選預訂日期時間",
+          "placeholder": "請選擇日期和時間",
           "helper": "請點選查看醫院排班表"
         },
         "preferredDate2": {
-          "label": "首選預訂日期 2",
-          "placeholder": "請選擇日期",
+          "label": "首選預訂日期時間 2",
+          "placeholder": "請選擇日期和時間",
           "helper": "請注意，僅當第一次約會無法成行時才適用。"
         },
         "content": {
@@ -870,6 +870,11 @@
             "MALE": "男性",
             "FEMALE": "女性"
           }
+        }
+      },
+      "errors": {
+        "preferredDate": {
+          "required": "請選擇首選預訂日期時間。"
         }
       }
     },
