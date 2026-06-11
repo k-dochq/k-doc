@@ -51,6 +51,17 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
 
   const { messages, isLoading, sendMessage } = useKdocRealtimeChat({ threadId });
 
+  // phase에 따라 뒤로가기 동작 분기
+  // main_menu/guest_submitted/chat → 채팅창 밖으로 나가기
+  // free_input/faq_subtree/guest_form → 메인 메뉴로 복귀
+  const handleBack = useCallback(() => {
+    if (phase === 'main_menu' || phase === 'guest_submitted' || phase === 'chat') {
+      router.back();
+    } else {
+      handleBackToMainMenu();
+    }
+  }, [phase, router, handleBackToMainMenu]);
+
   const handleSend = useCallback(
     (text: string) => {
       if (phase === 'free_input') {
@@ -95,7 +106,7 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
       <KdocChatGnb
         dict={dict}
         lang={lang}
-        onBack={() => router.back()}
+        onBack={handleBack}
         onClose={() => router.push(`/${lang}`)}
       />
 
@@ -121,12 +132,22 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
           )
         )}
 
-        {/* free_input 단계: CMS 프롬프트 표시 */}
+        {/* free_input 단계: CMS 프롬프트 + 메인 메뉴 버튼 */}
         {phase === 'free_input' && selectedCategoryLabel && selectedCmsMenu && (
-          <KdocFreeInputPhase
-            selectedCategoryLabel={selectedCategoryLabel}
-            cmsPrompt={selectedCmsMenu.prompt}
-          />
+          <>
+            <KdocFreeInputPhase
+              selectedCategoryLabel={selectedCategoryLabel}
+              cmsPrompt={selectedCmsMenu.prompt}
+            />
+            <div className='mb-4 flex items-start pl-[38px]'>
+              <button
+                onClick={handleBackToMainMenu}
+                className='rounded-full border border-[#e5e5e5] bg-white px-4 py-2 text-sm font-medium text-[#737373]'
+              >
+                {t.faq.mainMenuButton}
+              </button>
+            </div>
+          </>
         )}
 
         {/* faq_subtree 단계: FAQ 서비스 안내 메뉴 */}
@@ -152,13 +173,23 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
               />
               <KdocAdminMessageBubble content={t.guestForm.infoMessage} createdAt={new Date()} />
               {phase === 'guest_form' ? (
-                <KdocGuestInfoForm
-                  dict={dict}
-                  guestInfo={guestInfo}
-                  isSubmitting={isCreatingThread}
-                  onChangeInfo={setGuestInfo}
-                  onSubmit={handleGuestSubmit}
-                />
+                <>
+                  <KdocGuestInfoForm
+                    dict={dict}
+                    guestInfo={guestInfo}
+                    isSubmitting={isCreatingThread}
+                    onChangeInfo={setGuestInfo}
+                    onSubmit={handleGuestSubmit}
+                  />
+                  <div className='mb-4 flex justify-center'>
+                    <button
+                      onClick={handleBackToMainMenu}
+                      className='text-xs text-[#a3a3a3] underline underline-offset-2'
+                    >
+                      {t.faq.mainMenuButton}
+                    </button>
+                  </div>
+                </>
               ) : (
                 <KdocGuestInfoCard
                   dict={dict}
