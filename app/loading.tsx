@@ -6,7 +6,7 @@ export default function Loading() {
       <div className='flex flex-col items-center space-y-6'>
         {/* K-DOC 로고 with 애니메이션 */}
         <div className='text-primary animate-bounce'>
-          <HeaderLogo />
+          <HeaderLogo priority={false} />
         </div>
 
         {/* 로딩 텍스트 */}

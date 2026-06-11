@@ -1,6 +1,10 @@
 import Image from 'next/image';
 
-export function HeaderLogo() {
+interface HeaderLogoProps {
+  priority?: boolean;
+}
+
+export function HeaderLogo({ priority = true }: HeaderLogoProps) {
   return (
     <div className='flex items-center'>
       <Image
@@ -8,7 +12,7 @@ export function HeaderLogo() {
         alt='K-DOC'
         width={105}
         height={26}
-        priority
+        priority={priority}
       />
     </div>
   );
