@@ -788,12 +788,12 @@
           "anytime": "언제든지"
         },
         "preferredDate": {
-          "label": "예약 희망 날짜",
+          "label": "예약 희망 일시",
           "placeholder": "날짜를 선택해주세요",
           "helper": "병원 스케줄 확인을 위해 꼭 선택해주세요"
         },
         "preferredDate2": {
-          "label": "예약 희망 날짜2",
+          "label": "예약 희망 일시 2",
           "placeholder": "날짜를 선택해주세요",
           "helper": "첫번째 날짜가 불가능할 경우에만 참고합니다"
         },
@@ -831,7 +831,7 @@
             "invalid": "올바른 휴대폰 번호를 입력해주세요."
           },
           "preferredDate": {
-            "required": "예약 희망 날짜를 선택해주세요."
+            "required": "예약 희망 일시를 선택해주세요."
           },
           "content": {
             "required": "상담 내용을 입력해주세요.",

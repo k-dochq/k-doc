@@ -291,7 +291,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
 
       {/* 예약 희망 날짜 */}
       <FormDatePickerDrawerV2
-        label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 날짜'}
+        label={dict.consultation?.request?.form?.preferredDate?.label || '예약 희망 일시'}
         value={formData.preferredDate ? parseLocalDate(formData.preferredDate) : undefined}
         onChange={(date) => updateField('preferredDate', date ? formatDateToString(date) : '')}
         locale={lang}
@@ -305,7 +305,7 @@ export function ConsultationForm({ hospitalId, lang, dict }: ConsultationFormPro
 
       {/* 예약 희망 날짜2 */}
       <FormDatePickerDrawerV2
-        label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 날짜2'}
+        label={dict.consultation?.request?.form?.preferredDate2?.label || '예약 희망 일시 2'}
         value={formData.preferredDate2 ? parseLocalDate(formData.preferredDate2) : undefined}
         onChange={(date) => updateField('preferredDate2', date ? formatDateToString(date) : '')}
         locale={lang}
