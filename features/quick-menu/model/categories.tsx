@@ -7,12 +7,10 @@ import {
   FacialContouringIcon,
   BreastIcon,
   StemCellIcon,
-  LiposuctionIcon,
-  BodyIcon,
+  BodyLineIcon,
   HairTransplantIcon,
   DermatologyIcon,
   DentalIcon,
-  OtherIcon,
   AllIcon,
   EyesIconV2,
   NoseIconV2,
@@ -20,24 +18,20 @@ import {
   FacialContouringIconV2,
   BreastIconV2,
   StemCellIconV2,
-  LiposuctionIconV2,
-  BodyIconV2,
+  BodyLineIconV2,
   HairTransplantIconV2,
   DermatologyIconV2,
   DentalIconV2,
-  OtherIconV2,
   EyesIconV2Small,
   NoseIconV2Small,
   LiftingIconV2Small,
   FacialContouringIconV2Small,
   BreastIconV2Small,
   StemCellIconV2Small,
-  LiposuctionIconV2Small,
-  BodyIconV2Small,
+  BodyLineIconV2Small,
   HairTransplantIconV2Small,
   DermatologyIconV2Small,
   DentalIconV2Small,
-  OtherIconV2Small,
 } from '../ui/icons';
 
 interface CategoryDef {
@@ -140,33 +134,18 @@ const CATEGORY_DEFS: CategoryDef[] = [
     } satisfies LocalizedText,
   },
   {
-    id: '56739781-11f0-412b-8cd9-ef63024f80c2',
-    type: 'LIPOSUCTION',
+    id: '578f29f1-e24d-47ba-85f2-f55061351ab3',
+    type: 'BODY_LINE',
     labels: {
-      ko_KR: '지방흡입',
-      en_US: 'Liposuction',
-      th_TH: 'ดูดไขมัน',
-      zh_TW: '抽脂',
-      ja_JP: '脂肪吸引',
-      hi_IN: 'लिपोसक्शन',
-      tl_PH: 'Liposuction',
-      ar_SA: 'شفط الدهون',
-      ru_RU: 'Липосакция',
-    } satisfies LocalizedText,
-  },
-  {
-    id: '649d8f89-479a-4d53-beb9-47c5ebc59b3a',
-    type: 'BODY',
-    labels: {
-      ko_KR: '바디',
+      ko_KR: '바디라인',
       en_US: 'Body',
       th_TH: 'รูปร่าง',
-      zh_TW: '身體',
+      zh_TW: '體雕',
       ja_JP: 'ボディ',
       hi_IN: 'बॉडी',
       tl_PH: 'Body',
-      ar_SA: 'الجسم',
-      ru_RU: 'тело',
+      ar_SA: 'القوام',
+      ru_RU: 'Фигура',
     } satisfies LocalizedText,
   },
   {
@@ -214,21 +193,6 @@ const CATEGORY_DEFS: CategoryDef[] = [
       ru_RU: 'Стомат',
     } satisfies LocalizedText,
   },
-  {
-    id: '52095c86-fbc2-4132-bc27-7d4b451d52d4',
-    type: 'ETC',
-    labels: {
-      ko_KR: '기타',
-      en_US: 'Others',
-      th_TH: 'อื่นๆ',
-      zh_TW: '其他',
-      ja_JP: 'その他',
-      hi_IN: 'अन्य',
-      tl_PH: 'Others',
-      ar_SA: 'أخرى',
-      ru_RU: 'и т. д.',
-    } satisfies LocalizedText,
-  },
 ];
 
 function renderV1Icon(type: string, small = false): React.ReactNode {
@@ -246,18 +210,14 @@ function renderV1Icon(type: string, small = false): React.ReactNode {
       return <BreastIcon variant={v} />;
     case 'STEM_CELL':
       return <StemCellIcon variant={v} />;
-    case 'LIPOSUCTION':
-      return <LiposuctionIcon variant={v} />;
-    case 'BODY':
-      return <BodyIcon variant={v} />;
+    case 'BODY_LINE':
+      return <BodyLineIcon variant={v} />;
     case 'HAIR_TRANSPLANT':
       return <HairTransplantIcon variant={v} />;
     case 'DERMATOLOGY':
       return <DermatologyIcon variant={v} />;
     case 'DENTAL':
       return <DentalIcon variant={v} />;
-    case 'ETC':
-      return <OtherIcon variant={v} />;
     default:
       return null;
   }
@@ -277,18 +237,14 @@ function renderV2Icon(type: string): React.ReactNode {
       return <BreastIconV2 />;
     case 'STEM_CELL':
       return <StemCellIconV2 />;
-    case 'LIPOSUCTION':
-      return <LiposuctionIconV2 />;
-    case 'BODY':
-      return <BodyIconV2 />;
+    case 'BODY_LINE':
+      return <BodyLineIconV2 />;
     case 'HAIR_TRANSPLANT':
       return <HairTransplantIconV2 />;
     case 'DERMATOLOGY':
       return <DermatologyIconV2 />;
     case 'DENTAL':
       return <DentalIconV2 />;
-    case 'ETC':
-      return <OtherIconV2 />;
     default:
       return null;
   }
@@ -308,18 +264,14 @@ function renderV2IconSmall(type: string): React.ReactNode {
       return <BreastIconV2Small />;
     case 'STEM_CELL':
       return <StemCellIconV2Small />;
-    case 'LIPOSUCTION':
-      return <LiposuctionIconV2Small />;
-    case 'BODY':
-      return <BodyIconV2Small />;
+    case 'BODY_LINE':
+      return <BodyLineIconV2Small />;
     case 'HAIR_TRANSPLANT':
       return <HairTransplantIconV2Small />;
     case 'DERMATOLOGY':
       return <DermatologyIconV2Small />;
     case 'DENTAL':
       return <DentalIconV2Small />;
-    case 'ETC':
-      return <OtherIconV2Small />;
     default:
       return null;
   }
