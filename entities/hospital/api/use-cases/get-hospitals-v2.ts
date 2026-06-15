@@ -27,6 +27,12 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
         MedicalSpecialty: true;
       };
     };
+    HospitalSpecialtyBadge: {
+      select: {
+        medicalSpecialtyId: true;
+        badge: true;
+      };
+    };
     HospitalLike: {
       select: {
         userId: true;
@@ -203,6 +209,12 @@ export async function getHospitalsV2(
             },
           },
         },
+        HospitalSpecialtyBadge: {
+          select: {
+            medicalSpecialtyId: true,
+            badge: true,
+          },
+        },
         HospitalLike: {
           select: {
             userId: true,
@@ -230,9 +242,36 @@ export async function getHospitalsV2(
       take: limit,
     });
 
+    // 선택된 specialtyType에 매칭되는 MedicalSpecialty ID 목록 조회 (카테고리 배지 결정에 사용)
+    const specialtyIdsByType = specialtyType
+      ? await prisma.medicalSpecialty
+          .findMany({
+            where: { specialtyType },
+            select: { id: true },
+          })
+          .then((rows) => new Set(rows.map((r) => r.id)))
+      : null;
+
     // 데이터 변환 - HospitalCardData 타입으로 변환
     const transformedHospitals: HospitalCardData[] = hospitals.map((hospital) => {
       const likedUserIds = hospital.HospitalLike.map((like) => like.userId);
+
+      // 카테고리별 배지: 선택된 specialtyType에 해당하는 HospitalSpecialtyBadge 우선 사용
+      // 여러 매칭(부모+하위 카테고리)이 있을 때 HOT > BEST 순으로 우선 적용
+      const resolvedBadge = (() => {
+        if (!specialtyIdsByType || !hospital.HospitalSpecialtyBadge?.length) {
+          return hospital.badge;
+        }
+        const matching = hospital.HospitalSpecialtyBadge.filter((sb) =>
+          specialtyIdsByType.has(sb.medicalSpecialtyId),
+        );
+        if (!matching.length) return hospital.badge;
+        return (
+          matching.find((sb) => sb.badge.includes('HOT'))?.badge ??
+          matching.find((sb) => sb.badge.includes('BEST'))?.badge ??
+          matching[0].badge
+        );
+      })();
 
       return {
         id: hospital.id,
@@ -278,7 +317,7 @@ export async function getHospitalsV2(
         hospitalImages: hospital.HospitalImage,
         latitude: hospital.latitude,
         longitude: hospital.longitude,
-        badge: hospital.badge,
+        badge: resolvedBadge,
       };
     });
 
