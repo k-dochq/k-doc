@@ -120,6 +120,7 @@ model Hospital {
   HospitalImage              HospitalImage[]
   HospitalLike               HospitalLike[]
   HospitalMedicalSpecialty   HospitalMedicalSpecialty[]
+  HospitalSpecialtyBadge     HospitalSpecialtyBadge[]
   LiveReview                 LiveReview[]
   Product                    Product[]
   Reservation                Reservation[]
@@ -342,6 +343,7 @@ model MedicalSpecialty {
   parentSpecialtyId        String?                    @db.Uuid
   DoctorMedicalSpecialty   DoctorMedicalSpecialty[]
   HospitalMedicalSpecialty HospitalMedicalSpecialty[]
+  HospitalSpecialtyBadge   HospitalSpecialtyBadge[]
   LiveReview               LiveReview[]
   MedicalSpecialty         MedicalSpecialty?          @relation("MedicalSpecialtyToMedicalSpecialty", fields: [parentSpecialtyId], references: [id], onDelete: Cascade)
   other_MedicalSpecialty   MedicalSpecialty[]         @relation("MedicalSpecialtyToMedicalSpecialty")
@@ -1000,6 +1002,69 @@ model KdocChatThread {
   @@index([createdAt])
   @@index([status])
   @@index([userId])
+  @@schema("public")
+}
+
+model ChatbotCompletionMessage {
+  id        String   @id
+  isInHours Boolean  @unique
+  content   Json
+  updatedAt DateTime
+
+  @@schema("public")
+}
+
+model ChatbotMenu {
+  id                 String               @id
+  key                KdocChatCategory     @unique
+  order              Int
+  isEnabled          Boolean              @default(true)
+  hasSubMenu         Boolean              @default(false)
+  labels             Json
+  prompts            Json
+  updatedAt          DateTime
+  ChatbotMenuFaqItem ChatbotMenuFaqItem[]
+
+  @@schema("public")
+}
+
+model ChatbotMenuFaqItem {
+  id                String      @id
+  menuId            String
+  order             Int
+  isEnabled         Boolean     @default(true)
+  showConsultButton Boolean     @default(true)
+  showMenuButton    Boolean     @default(true)
+  titles            Json
+  contents          Json
+  updatedAt         DateTime
+  ChatbotMenu       ChatbotMenu @relation(fields: [menuId], references: [id], onDelete: Cascade)
+
+  @@index([menuId, order])
+  @@schema("public")
+}
+
+model ChatbotWelcomeMessage {
+  id        String   @id
+  content   Json
+  updatedAt DateTime
+
+  @@schema("public")
+}
+
+model HospitalSpecialtyBadge {
+  id                 String           @id @db.Uuid
+  hospitalId         String           @db.Uuid
+  medicalSpecialtyId String           @db.Uuid
+  badge              String[]         @default([])
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime
+  Hospital           Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+
+  @@unique([hospitalId, medicalSpecialtyId])
+  @@index([hospitalId])
+  @@index([medicalSpecialtyId])
   @@schema("public")
 }
 
