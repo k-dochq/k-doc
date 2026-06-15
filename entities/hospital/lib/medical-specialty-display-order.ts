@@ -11,12 +11,14 @@ export const MEDICAL_SPECIALTY_DISPLAY_ORDER: readonly MedicalSpecialtyType[] = 
   'FACIAL_CONTOURING', // 4. 안면윤곽
   'BREAST', // 5. 가슴
   'STEM_CELL', // 6. 줄기세포
-  'LIPOSUCTION', // 7. 지방흡입
-  'BODY', // 8. 바디
-  'HAIR_TRANSPLANT', // 9. 모발이식
-  'DERMATOLOGY', // 10. 피부과
-  'DENTAL', // 11. 치과
-  'ETC', // 12. 기타 (그 외 LIPS, CHIN, CHEEKS, FOREHEAD 등)
+  'BODY_LINE', // 7. 바디라인
+  'HAIR_TRANSPLANT', // 8. 모발이식
+  'DERMATOLOGY', // 9. 피부과
+  'DENTAL', // 10. 치과
+  // LIPOSUCTION, BODY, ETC: 퀵메뉴 미노출 (기존 태그 하위호환을 위해 display order 유지)
+  'LIPOSUCTION', // 지방흡입 (하위호환)
+  'BODY', // 바디 (하위호환)
+  'ETC', // 기타 (하위호환, LIPS/CHIN/CHEEKS/FOREHEAD 등 포함)
 ] as const;
 
 const ORDER_INDEX_MAP = new Map<string, number>(

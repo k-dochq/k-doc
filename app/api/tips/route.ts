@@ -41,8 +41,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const specialties =
       allSpecialtyIds.length > 0
         ? await prisma.medicalSpecialty.findMany({
-            where: { id: { in: allSpecialtyIds } },
-            select: { id: true, name: true },
+            where: {
+              id: { in: allSpecialtyIds },
+              specialtyType: { notIn: ['LIPOSUCTION', 'BODY', 'ETC'] },
+            },
+            select: { id: true, name: true, specialtyType: true },
           })
         : [];
 

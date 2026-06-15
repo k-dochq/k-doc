@@ -11,6 +11,7 @@ export { AllIcon } from './AllIcon';
 export { DentalIcon } from './DentalIcon';
 export { BodyIcon } from './BodyIcon';
 export { OtherIcon } from './OtherIcon';
+export { BodyLineIcon } from './BodyLineIcon';
 
 // V2 Icons
 export { EyesIconV2 } from './EyesIconV2';
@@ -21,6 +22,7 @@ export { BreastIconV2 } from './BreastIconV2';
 export { StemCellIconV2 } from './StemCellIconV2';
 export { LiposuctionIconV2 } from './LiposuctionIconV2';
 export { BodyIconV2 } from './BodyIconV2';
+export { BodyLineIconV2 } from './BodyLineIconV2';
 export { HairTransplantIconV2 } from './HairTransplantIconV2';
 export { DermatologyIconV2 } from './DermatologyIconV2';
 export { DentalIconV2 } from './DentalIconV2';
@@ -35,6 +37,7 @@ export { BreastIconV2Small } from './BreastIconV2Small';
 export { StemCellIconV2Small } from './StemCellIconV2Small';
 export { LiposuctionIconV2Small } from './LiposuctionIconV2Small';
 export { BodyIconV2Small } from './BodyIconV2Small';
+export { BodyLineIconV2Small } from './BodyLineIconV2Small';
 export { HairTransplantIconV2Small } from './HairTransplantIconV2Small';
 export { DermatologyIconV2Small } from './DermatologyIconV2Small';
 export { DentalIconV2Small } from './DentalIconV2Small';
