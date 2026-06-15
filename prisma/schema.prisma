@@ -1184,6 +1184,7 @@ enum MedicalSpecialtyType {
   DENTAL
   BODY
   ETC
+  BODY_LINE
 
   @@schema("public")
 }
