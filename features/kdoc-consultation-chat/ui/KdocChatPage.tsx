@@ -132,22 +132,12 @@ export function KdocChatPage({ lang, dict }: KdocChatPageProps) {
           )
         )}
 
-        {/* free_input 단계: CMS 프롬프트 + 메인 메뉴 버튼 */}
+        {/* free_input 단계: CMS 프롬프트 */}
         {phase === 'free_input' && selectedCategoryLabel && selectedCmsMenu && (
-          <>
-            <KdocFreeInputPhase
-              selectedCategoryLabel={selectedCategoryLabel}
-              cmsPrompt={selectedCmsMenu.prompt}
-            />
-            <div className='mb-4 flex items-start pl-[38px]'>
-              <button
-                onClick={handleBackToMainMenu}
-                className='rounded-full border border-[#e5e5e5] bg-white px-4 py-2 text-sm font-medium text-[#737373]'
-              >
-                {t.faq.mainMenuButton}
-              </button>
-            </div>
-          </>
+          <KdocFreeInputPhase
+            selectedCategoryLabel={selectedCategoryLabel}
+            cmsPrompt={selectedCmsMenu.prompt}
+          />
         )}
 
         {/* faq_subtree 단계: FAQ 서비스 안내 메뉴 */}
