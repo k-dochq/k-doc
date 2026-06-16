@@ -289,6 +289,9 @@ export const HARDCODED_SORT_ORDER: Record<string, string[]> = {
  * BEST 그룹 (각 카테고리 중 하나라도 BEST 배지가 있는 병원)
  */
 export const HARDCODED_RECOMMEND_ORDER: string[] = [
+  // ── 고정 1등 ─────────────────────────────────────────────────
+  'ffda0620-c254-44db-8b13-ef4ef5d368e5', // 압구정미라클의원 (무조건 1순위)
+
   // ── BEST 그룹 ────────────────────────────────────────────────
   '51f4c2ff-e0e6-4999-a1e1-9a0a81d4e223', // 슈가성형외과의원
   'b753dfd2-d560-433e-94f8-decc471ada73', // 마인드성형외과의원
@@ -307,7 +310,6 @@ export const HARDCODED_RECOMMEND_ORDER: string[] = [
   '87a12623-0b3e-427a-877b-f5e2678d1ffb', // 모앤라인성형외과의원
   'b7eb552c-0855-4aed-965d-f66bcb46b645', // 에이블룸성형외과의원
   'eca3cbc9-a2bb-4459-8966-a7091dd0678d', // V&MJ피부과의원
-  'ffda0620-c254-44db-8b13-ef4ef5d368e5', // 압구정미라클의원
   '78978a8f-57ca-41c2-9208-141b2bcc9ecb', // 닥터송포유의원
   'aa104f49-80b2-4ecc-9f1d-e7f640b8a083', // 청담쥬넥스의원
   '57690891-90a9-43c2-935f-be59d81873d5', // 셀이즈의원
