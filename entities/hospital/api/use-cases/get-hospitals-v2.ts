@@ -12,6 +12,12 @@ import { type HospitalCardData, parseLocalizedText, parsePriceInfo } from 'share
 import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
 import { buildHospitalOrderBy } from '../lib/build-hospital-order-by';
 import { searchHospitalIds } from 'shared/lib/meilisearch';
+import {
+  HARDCODED_BADGES,
+  HARDCODED_RECOMMEND_ORDER,
+  getRecommendBadge,
+  sortHospitalsByHardcodedOrder,
+} from '../../lib/hardcoded-hospital-badges';
 
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
@@ -58,8 +64,6 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
   };
 }>;
 
-// 추천 카테고리 ID (하드코딩)
-const RECOMMENDED_CATEGORY_ID = '893fa5bd-dc1d-48c7-ac46-78e72742d32c';
 
 export async function getHospitalsV2(
   request: GetHospitalsRequestV2 = {},
@@ -148,17 +152,9 @@ export async function getHospitalsV2(
               },
             ]
           : []),
-        // 추천 카테고리 필터링
+        // 추천 카테고리 필터링: 하드코딩된 ID 목록으로 조회
         ...(category === 'RECOMMEND'
-          ? [
-              {
-                HospitalCategoryAssignment: {
-                  some: {
-                    categoryId: RECOMMENDED_CATEGORY_ID,
-                  },
-                },
-              },
-            ]
+          ? [{ id: { in: HARDCODED_RECOMMEND_ORDER } }]
           : []),
       ],
     };
@@ -169,10 +165,13 @@ export async function getHospitalsV2(
     // 정렬 로직 구성
     const orderBy = buildHospitalOrderBy(sortBy, sortOrder);
 
+    // 하드코딩 정렬이 필요한 경우: 카테고리 필터 또는 추천 탭
+    const useHardcodedSort = !!specialtyType || category === 'RECOMMEND';
+
     // 병원 데이터 조회
     const hospitals: HospitalWithRelations[] = await prisma.hospital.findMany({
       where,
-      orderBy,
+      orderBy: useHardcodedSort ? undefined : orderBy,
       include: {
         HospitalImage: {
           where: {
@@ -238,48 +237,50 @@ export async function getHospitalsV2(
           },
         },
       },
-      skip: offset,
-      take: limit,
+      skip: useHardcodedSort ? undefined : offset,
+      take: useHardcodedSort ? undefined : limit,
     });
 
-    // 선택된 specialtyType에 매칭되는 MedicalSpecialty ID 목록 조회 (카테고리 배지 결정에 사용)
-    const specialtyIdsByType = specialtyType
-      ? await prisma.medicalSpecialty
-          .findMany({
-            where: { specialtyType },
-            select: { id: true },
-          })
-          .then((rows) => new Set(rows.map((r) => r.id)))
-      : null;
+    // 하드코딩 정렬이 필요할 때: 인메모리 정렬 후 페이지네이션
+    const sortedHospitals = (() => {
+      if (!useHardcodedSort) return hospitals;
+
+      if (category === 'RECOMMEND') {
+        // 추천 탭: HARDCODED_RECOMMEND_ORDER 순서대로 (이미 BEST→HOT 정렬됨)
+        const indexMap = new Map(HARDCODED_RECOMMEND_ORDER.map((id, i) => [id, i]));
+        const sorted = [...hospitals].sort((a, b) => {
+          const posA = indexMap.get(a.id) ?? Infinity;
+          const posB = indexMap.get(b.id) ?? Infinity;
+          return posA - posB;
+        });
+        return sorted.slice(offset, offset + limit);
+      }
+
+      // 카테고리 필터: BEST→HOT→없음 순 정렬
+      return sortHospitalsByHardcodedOrder(hospitals, specialtyType!).slice(
+        offset,
+        offset + limit,
+      );
+    })();
 
     // 데이터 변환 - HospitalCardData 타입으로 변환
-    const transformedHospitals: HospitalCardData[] = hospitals.map((hospital) => {
+    const transformedHospitals: HospitalCardData[] = sortedHospitals.map((hospital) => {
       const likedUserIds = hospital.HospitalLike.map((like) => like.userId);
 
-      // 카테고리별 배지: 선택된 specialtyType에 해당하는 HospitalSpecialtyBadge 우선 사용
-      // 여러 매칭(부모+하위 카테고리)이 있을 때 HOT > BEST 순으로 우선 적용
-      // 카테고리 필터가 없는 경우(추천탭 등)만 글로벌 hospital.badge 폴백 사용
+      // 배지 결정:
+      // - 카테고리 필터: 해당 카테고리의 하드코딩 배지 (없으면 null)
+      // - 추천 탭: 모든 카테고리 중 BEST 우선, 없으면 HOT (없으면 null)
+      // - 그 외(전체 목록 등): 글로벌 hospital.badge 사용
       const resolvedBadge = (() => {
-        if (!specialtyIdsByType) {
-          // 카테고리 필터 없음 → 글로벌 배지 사용
-          return hospital.badge;
+        if (specialtyType) {
+          const hardcoded = HARDCODED_BADGES[hospital.id]?.[specialtyType];
+          return hardcoded ? [hardcoded] : null;
         }
-        if (!hospital.HospitalSpecialtyBadge?.length) {
-          // 카테고리 필터 있음, 카테고리별 배지 없음 → 배지 없음
-          return null;
+        if (category === 'RECOMMEND') {
+          const badge = getRecommendBadge(hospital.id);
+          return badge ? [badge] : null;
         }
-        const matching = hospital.HospitalSpecialtyBadge.filter((sb) =>
-          specialtyIdsByType.has(sb.medicalSpecialtyId),
-        );
-        if (!matching.length) {
-          // 카테고리 필터 있음, 해당 카테고리 배지 없음 → 배지 없음
-          return null;
-        }
-        return (
-          matching.find((sb) => sb.badge.includes('HOT'))?.badge ??
-          matching.find((sb) => sb.badge.includes('BEST'))?.badge ??
-          matching[0].badge
-        );
+        return hospital.badge;
       })();
 
       return {
