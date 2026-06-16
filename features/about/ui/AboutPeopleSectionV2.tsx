@@ -19,33 +19,12 @@ const PEOPLE_IMAGE_MAP: Record<Locale, string> = {
   ar: '/images/k-doc_make_ar.png',
 };
 
-function splitDescriptionText(description: { part1: string; highlight: string; part2: string }) {
-  const { part1, highlight, part2 } = description;
-
-  const cjkPeriodIdx = part2.indexOf('。');
-  const westernPeriodIdx = part2.indexOf('. ');
-
-  let headingEnd = '';
-  let bodyText = part2;
-
-  if (cjkPeriodIdx >= 0 && (westernPeriodIdx < 0 || cjkPeriodIdx <= westernPeriodIdx)) {
-    headingEnd = part2.slice(0, cjkPeriodIdx + 1);
-    bodyText = part2.slice(cjkPeriodIdx + 1).trim();
-  } else if (westernPeriodIdx >= 0) {
-    headingEnd = part2.slice(0, westernPeriodIdx + 1);
-    bodyText = part2.slice(westernPeriodIdx + 2).trim();
-  }
-
-  return {
-    heading: part1 + highlight + headingEnd,
-    bodyText,
-  };
-}
-
 export function AboutPeopleSectionV2({ lang, dict }: AboutPeopleSectionV2Props) {
   const { subtitle, description } = dict.about;
   const imageSrc = PEOPLE_IMAGE_MAP[lang] ?? '/images/k-doc_make_en.png';
-  const { heading, bodyText } = splitDescriptionText(description);
+  // part1 = 첫 번째 문단(헤딩), part2 = 두 번째 문단(본문)
+  const heading = description.part1;
+  const bodyText = description.part2;
 
   return (
     <div className='relative overflow-hidden'>

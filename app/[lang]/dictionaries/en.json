@@ -1964,9 +1964,9 @@
     "title": "About Us",
     "subtitle": "The People Behind K-DOC",
     "description": {
-      "part1": "K-DOC is a service planned by a team of medical professionals from ",
-      "highlight": "top universities worldwide",
-      "part2": ", led by Dr. Woo Jung-ho, a global authority in the medical field. Our headquarters, located in a landmark building in Apgujeong, leads global beauty trends, and Dr. Woo, widely known as the 'Master of Thread Lifting' even in Japan, has been featured in prominent international media such as FOX TV News."
+      "part1": "K-DOC is a service conceived by world-class medical professionals from the world's top universities, led by CEO Woo Jung Ho, a globally recognized authority in the medical field.",
+      "highlight": "",
+      "part2": "Our headquarters, located in the landmark building in Apgujeong, leads global beauty trends. Dr. Woo, widely renowned in Japan as a 'master of thread lifting', has also been featured in prominent international media including FOX TV News."
     },
     "profiles": {
       "woo": {
@@ -1978,19 +1978,19 @@
       }
     },
     "ceoGreeting": {
-      "title": "CEO Greetings",
+      "title": "CEO greetings",
       "name": "President Woo Jung Ho M.D.",
-      "greeting": "Hello,",
+      "greeting": "Hello.",
       "content": [
         "Thank you for visiting K-DOC.",
-        "K-DOC is Korea's premier medical beauty platform, created to guide foreign patients in selecting only the top 10% of plastic surgery and dermatology clinics in Korea—clinics you can truly trust—while also offering exclusive discount benefits.",
-        "Our management team includes myself, Dr. Woo Jung Ho, M.D., a world-renowned authority in thread lifting and non-invasive aesthetic procedures, along with Dr. Park Jong Hyeon, M.D., and other distinguished medical professionals educated at some of the world's leading universities. Together, we take great pride in planning and operating this platform. Above all, K-DOC is designed to guide international patients, including those from Thailand, toward safe, verified, and trustworthy medical services in Korea—ensuring that you experience the very best of Korean medical expertise.",
-        "Through this platform, you will have access to reliable information on Korea's most reputable aesthetic clinics, authentic treatment reviews, and comprehensive services—from hospital booking and professional interpretation to post-treatment care—all in one place.",
-        "K-DOC is not merely an information platform. We aspire to be your trusted and convenient partner in your Korean medical beauty journey, providing each and every client with tailored solutions and a safe, satisfying experience.",
-        "We sincerely hope you can experience Korea's advanced aesthetic medical technologies safely, without risk, and with complete peace of mind. K-DOC will be with you every step of the way toward greater beauty, confidence, and health.",
+        "K-DOC is Korea's premier cosmetic medical platform, designed not only to guide international patients in confidently selecting from the top 10% of Korea's plastic surgery and dermatology clinics, but also to help them access exclusive discount benefits.",
+        "The K-DOC team takes pride in being a platform planned and operated directly by medical professionals from the world's top universities, including myself, Woo Jung Ho M.D. — a globally recognized authority in non-incisional thread lifting — along with Park Jong Hyeon M.D. and others. It was designed with the primary goal of guiding patients in Thailand and other international patients to safe, verified Korean medical services.",
+        "Through this platform, you can access reliable information on Korean cosmetic surgery clinics, trustworthy procedure reviews, and everything from hospital reservations to professional interpretation and post-procedure care — all in one place.",
+        "K-DOC is not merely an information platform — it aims to be your trusted and convenient companion for your cosmetic medical journey in Korea. We will provide each and every client with the optimal solution and a satisfying, worry-free medical experience.",
+        "We hope you can safely experience Korea's exceptional cosmetic medical technology without any risk, and K-DOC will accompany you on your journey toward confident beauty and health.",
         "GOD BLESS YOU !!",
         "Thank you.",
-        "Dr. Woo Jung Ho Chief Executive Officer",
+        "Woo Jung Ho, President & CEO",
         "K-DOC Corp."
       ]
     },
@@ -2028,25 +2028,25 @@
       "sgiLabel": "Insured by Seoul Guarantee Insurance (SGI)"
     },
     "governmentCertified": {
-      "title": "Government Certified\nMedical Tourism\nPlatform",
-      "description": "K-DOC is a foreign patient attraction company officially registered with the Korea Health Industry Development Institute (KHIDI) under the Ministry of Health and Welfare, and is an officially certified platform that has passed the strict screening standards of national institutions.\n\nIn addition, we are enrolled in Seoul Guarantee Insurance (SGI) 100 million won license guarantee insurance to provide safe and reliable medical services to foreign patients.",
+      "title": "Government Certified Medical Tourism Platform",
+      "description": "K-DOC is an officially registered international patient attraction company under the Korea Health Industry Development Institute (KHIDI), affiliated with the Ministry of Health and Welfare. It is an officially certified platform that has passed rigorous government screening standards. K-DOC is also enrolled in Seoul Guarantee Insurance (SGI) with a 100 million KRW licensing guarantee, providing safe and reliable medical services to international patients.",
       "certificateLabel": "Certificate of Registration for Foreign Patient Attraction Business",
-      "sgiLabel": "License Guarantee Insurance Certificate (SGI)"
+      "sgiLabel": "Licensing Guarantee Insurance Policy (SGI)"
     },
     "visionV2": {
-      "subtitle": "Becoming the standard for medical choices\nthat patients worldwide can trust",
+      "subtitle": "Setting the Standard for Trusted Medical Choices Worldwide",
       "sections": [
         {
           "title": "Global Medical Platform",
-          "description": "K-DOC carefully selects only the top 10% of plastic surgery and dermatology clinics in Korea to help global customers choose with confidence based on trust."
+          "description": "K-DOC is a platform that carefully selects only the top 10% of Korea's plastic surgery and dermatology clinics, helping customers around the world make confident, trustworthy choices."
         },
         {
           "title": "Your Trusted Choice",
-          "description": "We help you easily check desired procedures and hospital information in Korea at a glance, and choose with confidence through real review comparisons. You can conveniently experience all processes in one place, from reservations to interpretation and post-procedure care."
+          "description": "We help you easily check information on procedures and hospitals in Korea at a glance, and choose with confidence through real review comparisons. From reservations to interpretation and post-procedure care, you can conveniently experience every step in one place."
         },
         {
           "title": "Curated Clinics & Hospitals",
-          "description": "Only Korea's leading plastic surgery and dermatology clinics and hospitals that have been carefully selected through strict criteria are part of K-DOC. Global customers can experience high-quality plastic surgery services through a safe system through medical institutions that have undergone K-DOC's verification process."
+          "description": "Only Korea's leading plastic surgery and dermatology clinics and hospitals, selected through rigorous standards, are part of K-DOC. Global clients can experience high-quality cosmetic services through K-DOC's verified medical institutions within a safe system."
         }
       ]
     }
