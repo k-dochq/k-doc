@@ -8,3 +8,5 @@ export { AboutContentV2 } from './AboutContentV2';
 export { AboutCertificationImagesV2 } from './AboutCertificationImagesV2';
 export { AboutVisionV2 } from './AboutVisionV2';
 export { AboutTaglineV2 } from './AboutTaglineV2';
+export { AboutPeopleSectionV2 } from './AboutPeopleSectionV2';
+export { AboutCeoGreetingV2 } from './AboutCeoGreetingV2';

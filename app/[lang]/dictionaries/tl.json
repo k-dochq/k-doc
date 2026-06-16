@@ -1961,11 +1961,11 @@
   },
   "about": {
     "title": "Tungkol sa kompanya",
-    "subtitle": "Mga taong gumagawa ng K-DOC",
+    "subtitle": "Mga Taong Gumagawa ng K-DOC",
     "description": {
-      "part1": "Ang K-DOC ay pinamumunuan ng CEO na si Woo Jung-ho, isang kilalang awtoridad sa larangan ng medisina sa buong mundo. ",
-      "highlight": "Isang serbisyong pinlano ng mga medikal na propesyonal mula sa pinakamahusay na mga unibersidad sa mundo.",
-      "part2": "Matatagpuan sa isang makasaysayang gusali sa Apgujeong, ang punong-tanggapan ng kumpanya ay nangunguna sa mga pandaigdigang uso sa kagandahan. Si Dr. Woo, na kilala sa Japan bilang &quot;Master of Thread Lifting,&quot; ay itinampok din sa mga prestihiyosong internasyonal na outlet ng media, kabilang ang FOX TV News."
+      "part1": "Ang K-DOC ay isang serbisyong pinlano ng mga world-class na medikal na propesyonal mula sa pinakamahuhusay na unibersidad sa buong mundo, na pinamumunuan ng CEO Woo Jung Ho, isang kinikilalang awtoridad sa larangan ng medisina.",
+      "highlight": "",
+      "part2": "Ang aming punong tanggapan, na matatagpuan sa landmark na gusali sa Apgujeong, ay nangunguna sa mga pandaigdigang trend sa kagandahan. Si Dr. Woo, na kilala sa Japan bilang 'master ng thread lifting', ay naitampok din sa kilalang internasyonal na media kabilang ang FOX TV News."
     },
     "profiles": {
       "woo": {
@@ -1978,18 +1978,18 @@
     },
     "ceoGreeting": {
       "title": "Mensahe ng CEO",
-      "name": "Pangulong Woo Jung Ho MD",
-      "greeting": "Hello สวัสดีครับ",
+      "name": "President Woo Jung Ho M.D.",
+      "greeting": "Kumusta.",
       "content": [
         "Salamat sa pagbisita sa K-DOC.",
-        "Ang K-DOC ay ang nangungunang platapormang medikal para sa plastic surgery sa Korea, na idinisenyo upang tulungan ang mga Thai na pumili ng nangungunang 5% ng mga klinika para sa plastic surgery at dermatology sa Korea nang may kumpiyansa, at magbigay pa ng mga diskwento.",
-        "Ipinagmamalaki ng pangkat ng pamamahala ng K-DOC ang serbisyo nito sa platform, na direktang pinlano at pinapatakbo ng isang pangkat ng mga propesyonal sa medisina, kabilang ako, si MD Woo Jung Ho, isang kilalang awtoridad sa mundo sa larangan ng non-incisional thread lifting, at si MD Park Jong Hyeon, isang nagtapos sa ilan sa mga nangungunang paaralan ng medisina sa mundo. Ang aming prayoridad ay magbigay sa mga pasyenteng Thai at internasyonal ng access sa ligtas at napatunayang mga serbisyong medikal lamang ng Korea.",
-        "Ang platform na ito ay nagbibigay ng impormasyon tungkol sa mga pinaka-pinagkakatiwalaang hospital ng cosmetic surgery sa Korea, maaasahang mga review ng paggamot, at lahat ng bagay mula sa mga reserbasyon sa hospital hanggang sa walang putol na interpretasyon at pangangalaga pagkatapos ng pamamaraan—lahat sa iisang lugar.",
-        "Ang K-DOC ay hindi lamang isang plataporma ng impormasyon; layunin nitong maging isang mapagkakatiwalaan at maginhawang kasama sa iyong paglalakbay sa medisina para sa kagandahan sa Korea. Sinisikap naming bigyan ang bawat customer ng pinakamainam na solusyon at isang kasiya-siya at mapagkakatiwalaang karanasan sa medisina.",
-        "Umaasa kaming maranasan ninyo ang natatanging teknolohiya ng medical plastic surgery sa Korea nang ligtas at walang panganib, at sasamahan kayo ng K-DOC sa inyong paglalakbay tungo sa may kumpiyansang kagandahan at kalusugan.",
-        "Pagpalain ka ng Diyos!!",
-        "salamat",
-        "Dr. Woo Jung Ho, CEO",
+        "Ang K-DOC ay ang nangungunang cosmetic medical platform ng Korea, na dinisenyo upang gabayan ang mga dayuhang pasyente sa pagpili mula sa nangungunang 10% na mga klinika ng plastic surgery at dermatology sa Korea, at matulungan silang makatanggap ng mga espesyal na diskwento.",
+        "Ipinagmamalaki ng pangkat ng K-DOC na ito ay isang platform na direktang pinlano at pinapatakbo ng mga medikal na propesyonal mula sa pinakamahuhusay na unibersidad sa buong mundo, kabilang si Woo Jung Ho M.D. at Park Jong Hyeon M.D. Ito ay dinisenyo upang gabayan ang mga pasyente sa Thailand at sa buong mundo sa ligtas at napatunayan na mga serbisyong medikal ng Korea.",
+        "Sa pamamagitan ng platform na ito, maaari kang ma-access ang maaasahang impormasyon tungkol sa mga cosmetic surgery clinic sa Korea, mapagkakatiwalaang mga review, at lahat mula sa pagpapareserba hanggang sa propesyonal na interpretasyon at pag-aalaga pagkatapos ng pamamaraan — lahat sa isang lugar.",
+        "Ang K-DOC ay hindi lamang isang platform ng impormasyon — layunin nitong maging pinagkakatiwalaang at maginhawang kasama sa iyong cosmetic medical na paglalakbay sa Korea. Magbibigay kami sa bawat kliyente ng pinakamainam na solusyon at isang kasiya-siya, walang-alalahanin na karanasan sa medisina.",
+        "Umaasa kaming maranasan mo ang natatanging cosmetic medical technology ng Korea nang ligtas at walang panganib, at sasamahan ka ng K-DOC sa iyong paglalakbay patungo sa kumpiyansa na kagandahan at kalusugan.",
+        "GOD BLESS YOU !!",
+        "Salamat.",
+        "Woo Jung Ho, President & CEO",
         "K-DOC Corp."
       ]
     },
@@ -2027,25 +2027,25 @@
       "sgiLabel": "Garantiya ng Lisensya, Mga Seguro, at Seguro (SGI)"
     },
     "governmentCertified": {
-      "title": "Plataporma ng Turismo Medikal na Sertipikado ng Gobyerno",
-      "description": "Ang K-DOC ay isang kompanyang opisyal na nakarehistro sa Korea Health Industry Development Institute (KHIDI) sa ilalim ng Ministry of Health and Welfare bilang isang kompanyang umaakit ng mga internasyonal na pasyente. Ito ay isang opisyal na sertipikadong plataporma na nakapasa sa mahigpit na pamantayan ng gobyerno para sa screening. Bukod pa rito, ito ay may seguro sa Seoul Guarantee Insurance (SGI) na nagkakahalaga ng KRW 100 milyon sa mga garantiya sa paglilisensya at pag-apruba, na tinitiyak ang ligtas at maaasahang serbisyong medikal para sa mga internasyonal na pasyente.",
-      "certificateLabel": "Sertipiko ng Pagpaparehistro sa Negosyo ng Pag-akit ng Dayuhang Pasyente",
-      "sgiLabel": "Garantiya ng Lisensya, Mga Seguro, at Seguro (SGI)"
+      "title": "Government Certified Medical Tourism Platform",
+      "description": "Ang K-DOC ay isang opisyal na nakarehistrong kumpanya sa ilalim ng Korea Health Industry Development Institute (KHIDI) ng Ministri ng Kalusugan at Kapakanan, at isang opisyal na sertipikadong platform na pumasa sa mahigpit na pamantayan ng gobyerno. Naka-enroll din ang K-DOC sa Seoul Guarantee Insurance (SGI) na may 100 milyong KRW na insurance para sa mga internasyonal na pasyente.",
+      "certificateLabel": "Sertipiko ng Rehistrasyon para sa Negosyong Pag-akit ng mga Dayuhang Pasyente",
+      "sgiLabel": "Patakaran sa Insurance na Garantiya ng Lisensya (SGI)"
     },
     "visionV2": {
-      "subtitle": "Maging isang mapagkakatiwalaang pagpipilian sa pangangalagang pangkalusugan para sa mga pasyente sa buong mundo.",
+      "subtitle": "Nagiging Pamantayan ng Pinagkakatiwalaang Medikal na Pagpipilian para sa Buong Mundo",
       "sections": [
         {
-          "title": "Pandaigdigang Platapormang Medikal",
-          "description": "Ang K-DOC ay isang plataporma na maingat na pumipili lamang ng nangungunang 10% ng mga klinika ng plastic surgery at dermatology sa Korea, na tumutulong sa mga customer sa buong mundo na piliin ang mga ito nang may kumpiyansa at tiwala."
+          "title": "Global Medical Platform",
+          "description": "Ang K-DOC ay isang platform na maingat na pumipili lamang sa nangungunang 10% na mga klinika ng plastic surgery at dermatology sa Korea, na tumutulong sa mga customer sa buong mundo na gumawa ng mapagkakatiwalaang pagpipilian."
         },
         {
-          "title": "Ang Iyong Mapagkakatiwalaang Pagpipilian",
-          "description": "Tinutulungan ka naming gumawa ng isang kumpiyansang pagpili sa pamamagitan ng pagbibigay ng komprehensibong impormasyon tungkol sa mga ninanais na pamamaraan at mga hospital sa Korea at paghahambing ng mga aktwal na pagsusuri. Mula sa mga reserbasyon hanggang sa interpretasyon at pangangalaga pagkatapos ng pamamaraan, madali mong mararanasan ang buong proseso sa isang lugar."
+          "title": "Your Trusted Choice",
+          "description": "Tinutulungan ka naming tingnan ang impormasyon tungkol sa mga pamamaraan at ospital sa Korea sa isang tingin, at pumili nang may kumpiyansa sa pamamagitan ng paghahambing ng mga tunay na review. Mula sa pagpapareserba hanggang sa interpretasyon at pag-aalaga pagkatapos ng pamamaraan, maaari mong maranasan ang bawat hakbang sa isang lugar."
         },
         {
-          "title": "Mga Klinika at Hospital na Pinili",
-          "description": "Tampok lamang ng K-DOC ang mga nangungunang klinika, dermatologist, at hospital ng Korea na pinili ayon sa mahigpit na pamantayan. Maaaring makaranas ang mga pandaigdigang kostumer ng mataas na kalidad na serbisyo ng plastic surgery sa pamamagitan ng isang ligtas na sistema sa mga institusyong medikal na nakapasa sa proseso ng beripikasyon ng K-DOC."
+          "title": "Curated Clinics & Hospitals",
+          "description": "Ang mga nangungunang klinika ng plastic surgery at dermatology at mga ospital sa Korea lamang, na pinili sa pamamagitan ng mahigpit na pamantayan, ang bahagi ng K-DOC. Ang mga pandaigdigang kliyente ay makakaranas ng mataas na kalidad na mga serbisyo sa pamamagitan ng mga na-verify na institusyong medikal ng K-DOC."
         }
       ]
     }
