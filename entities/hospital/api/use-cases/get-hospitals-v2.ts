@@ -258,14 +258,23 @@ export async function getHospitalsV2(
 
       // 카테고리별 배지: 선택된 specialtyType에 해당하는 HospitalSpecialtyBadge 우선 사용
       // 여러 매칭(부모+하위 카테고리)이 있을 때 HOT > BEST 순으로 우선 적용
+      // 카테고리 필터가 없는 경우(추천탭 등)만 글로벌 hospital.badge 폴백 사용
       const resolvedBadge = (() => {
-        if (!specialtyIdsByType || !hospital.HospitalSpecialtyBadge?.length) {
+        if (!specialtyIdsByType) {
+          // 카테고리 필터 없음 → 글로벌 배지 사용
           return hospital.badge;
+        }
+        if (!hospital.HospitalSpecialtyBadge?.length) {
+          // 카테고리 필터 있음, 카테고리별 배지 없음 → 배지 없음
+          return null;
         }
         const matching = hospital.HospitalSpecialtyBadge.filter((sb) =>
           specialtyIdsByType.has(sb.medicalSpecialtyId),
         );
-        if (!matching.length) return hospital.badge;
+        if (!matching.length) {
+          // 카테고리 필터 있음, 해당 카테고리 배지 없음 → 배지 없음
+          return null;
+        }
         return (
           matching.find((sb) => sb.badge.includes('HOT'))?.badge ??
           matching.find((sb) => sb.badge.includes('BEST'))?.badge ??
