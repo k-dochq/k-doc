@@ -35,7 +35,7 @@ export function AboutTaglineV2() {
   });
 
   return (
-    <div className='px-8 py-[83px]'>
+    <div className='px-8 py-[83px]' style={{ fontFamily: 'var(--font-pretendard), sans-serif' }}>
       <div className='flex w-fit flex-col gap-3'>
         {taglines.map((tagline, index) => {
           // 첫 번째 문장: Connecting + travel 비디오
