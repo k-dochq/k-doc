@@ -3,6 +3,7 @@ export { AboutDescription } from './AboutDescription';
 export { AboutCertification } from './AboutCertification';
 export { AboutCeoGreeting } from './AboutCeoGreeting';
 export { AboutSeoulOffice } from './AboutSeoulOffice';
+export { AboutSeoulOfficeV2 } from './AboutSeoulOfficeV2';
 export { AboutVision } from './AboutVision';
 export { AboutContentV2 } from './AboutContentV2';
 export { AboutCertificationImagesV2 } from './AboutCertificationImagesV2';
