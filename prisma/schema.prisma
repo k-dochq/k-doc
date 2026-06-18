@@ -117,6 +117,7 @@ model Hospital {
   Doctor                     Doctor[]
   District                   District?                    @relation(fields: [districtId], references: [id], onDelete: Cascade)
   HospitalCategoryAssignment HospitalCategoryAssignment[]
+  HospitalCurationEntry      HospitalCurationEntry[]
   HospitalImage              HospitalImage[]
   HospitalLike               HospitalLike[]
   HospitalMedicalSpecialty   HospitalMedicalSpecialty[]
@@ -1059,12 +1060,43 @@ model HospitalSpecialtyBadge {
   badge              String[]         @default([])
   createdAt          DateTime         @default(now())
   updatedAt          DateTime
+  order              Int?
   Hospital           Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
 
   @@unique([hospitalId, medicalSpecialtyId])
   @@index([hospitalId])
   @@index([medicalSpecialtyId])
+  @@schema("public")
+}
+
+model HospitalCurationEntry {
+  id                   String               @id @db.Uuid
+  listId               String               @db.Uuid
+  hospitalId           String               @db.Uuid
+  position             Int
+  isVisible            Boolean              @default(true)
+  badge                String?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime
+  Hospital             Hospital             @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  HospitalCurationList HospitalCurationList @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  @@unique([listId, hospitalId])
+  @@index([listId, isVisible, position])
+  @@schema("public")
+}
+
+model HospitalCurationList {
+  id                    String                  @id @db.Uuid
+  category              String
+  sortType              String
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime
+  HospitalCurationEntry HospitalCurationEntry[]
+
+  @@unique([category, sortType])
+  @@index([category, sortType])
   @@schema("public")
 }
 
