@@ -216,9 +216,7 @@ export async function getHospitalsV2(
         return { hospitals: [], totalCount: 0, currentPage: page, totalPages: 0, hasNextPage: false };
       }
 
-      // ── 카테고리탭 + 추천탭: HospitalCurationEntry.position 기준 정렬 ──────
-      // RECOMMEND 탭은 스크립트에서 전체 BEST → 전체 HOT 순으로 position을 부여하므로
-      // position ASC만으로 BEST→HOT 순서가 자연스럽게 유지됨
+      // position ASC 순서로만 조회 — 스크립트에서 이미 BEST→HOT→뱃지없음 순으로 position 부여
       const entryWhere = {
         listId: list.id,
         isVisible: true,
@@ -235,16 +233,20 @@ export async function getHospitalsV2(
           orderBy: { position: 'asc' },
           skip: offset,
           take: limit,
-          select: {
-            badge: true,
-            Hospital: { include: buildHospitalInclude() },
-          },
+          select: { badge: true, Hospital: { include: buildHospitalInclude() } },
         }),
       ]);
 
       const transformedHospitals = entries.map((entry) => {
         const hospital = entry.Hospital as unknown as HospitalWithRelations;
-        return transformHospital(hospital, entry.badge ? [entry.badge] : null);
+        // 추천탭: hospital.badge(기본 뱃지) / 카테고리탭: entry.badge(큐레이션 뱃지)
+        const badge =
+          category === 'RECOMMEND'
+            ? ((hospital.badge as string[]) ?? null)
+            : entry.badge
+              ? [entry.badge]
+              : null;
+        return transformHospital(hospital, badge);
       });
 
       const totalPages = Math.ceil(totalCount / limit);
