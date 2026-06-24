@@ -13,6 +13,16 @@ import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
 import { buildHospitalOrderBy } from '../lib/build-hospital-order-by';
 import { searchHospitalIds } from 'shared/lib/meilisearch';
 
+// k-doc sort 파라미터 → admin HospitalCurationList.sortType 변환
+function toAdminSortType(sortBy: string): string {
+  const map: Record<string, string> = {
+    popular: 'POPULAR',
+    recommended: 'RECOMMENDED',
+    newest: 'NEWEST',
+  };
+  return map[sortBy] ?? 'POPULAR';
+}
+
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
   include: {
@@ -25,6 +35,12 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
     HospitalMedicalSpecialty: {
       include: {
         MedicalSpecialty: true;
+      };
+    };
+    HospitalSpecialtyBadge: {
+      select: {
+        medicalSpecialtyId: true;
+        badge: true;
       };
     };
     HospitalLike: {
@@ -52,8 +68,97 @@ type HospitalWithRelations = Prisma.HospitalGetPayload<{
   };
 }>;
 
-// 추천 카테고리 ID (하드코딩)
-const RECOMMENDED_CATEGORY_ID = '893fa5bd-dc1d-48c7-ac46-78e72742d32c';
+function buildHospitalInclude() {
+  return {
+    HospitalImage: {
+      where: { isActive: true },
+      orderBy: [{ imageType: 'asc' }, { order: 'asc' }] as { imageType: 'asc' }[],
+      select: { imageType: true, imageUrl: true },
+    },
+    HospitalMedicalSpecialty: {
+      include: {
+        MedicalSpecialty: {
+          select: {
+            id: true,
+            name: true,
+            specialtyType: true,
+            description: true,
+            order: true,
+            isActive: true,
+            createdAt: true,
+            updatedAt: true,
+            parentSpecialtyId: true,
+          },
+        },
+      },
+      where: { MedicalSpecialty: { isActive: true } },
+    },
+    HospitalSpecialtyBadge: {
+      select: { medicalSpecialtyId: true, badge: true },
+    },
+    HospitalLike: { select: { userId: true } },
+    District: {
+      select: {
+        id: true,
+        name: true,
+        displayName: true,
+        countryCode: true,
+        level: true,
+        order: true,
+        parentId: true,
+      },
+    },
+    _count: { select: { HospitalLike: true, Review: true } },
+  };
+}
+
+function transformHospital(hospital: HospitalWithRelations, resolvedBadge: string[] | null) {
+  const likedUserIds = hospital.HospitalLike.map((like) => like.userId);
+  return {
+    id: hospital.id,
+    name: parseLocalizedText(hospital.name),
+    address: parseLocalizedText(hospital.address),
+    prices: parsePriceInfo(hospital.prices),
+    rating: hospital.rating,
+    reviewCount: hospital._count.Review,
+    thumbnailImageUrl: getHospitalThumbnailImageUrl(hospital.HospitalImage),
+    discountRate: hospital.discountRate,
+    medicalSpecialties:
+      hospital.HospitalMedicalSpecialty?.map((hms) => ({
+        id: hms.MedicalSpecialty.id,
+        name: parseLocalizedText(hms.MedicalSpecialty.name),
+        specialtyType: hms.MedicalSpecialty.specialtyType,
+        parentSpecialtyId: hms.MedicalSpecialty.parentSpecialtyId ?? undefined,
+        order: hms.MedicalSpecialty.order ?? undefined,
+      })) || [],
+    displayLocationName: parseLocalizedText(hospital.displayLocationName || '{}'),
+    district: hospital.District
+      ? {
+          id: hospital.District.id,
+          name: hospital.District.name,
+          displayName: hospital.District.displayName,
+          countryCode: hospital.District.countryCode,
+          level: hospital.District.level,
+          order: hospital.District.order,
+          parentId: hospital.District.parentId,
+        }
+      : null,
+    likeCount: hospital._count.HospitalLike,
+    likedUserIds,
+    isLiked: false,
+    bookmarkCount: hospital.bookmarkCount,
+    viewCount: hospital.viewCount,
+    approvalStatusType: hospital.approvalStatusType,
+    ranking: hospital.ranking,
+    createdAt: hospital.createdAt,
+    updatedAt: hospital.updatedAt,
+    mainImageUrl: getHospitalMainImageUrl(hospital.HospitalImage),
+    hospitalImages: hospital.HospitalImage,
+    latitude: hospital.latitude,
+    longitude: hospital.longitude,
+    badge: resolvedBadge,
+  };
+}
 
 export async function getHospitalsV2(
   request: GetHospitalsRequestV2 = {},
@@ -92,205 +197,126 @@ export async function getHospitalsV2(
       };
     }
 
-    // 필터 조건 설정
+    // ─────────────────────────────────────────────────────────────────
+    // 큐레이션 기반 정렬: 추천탭 또는 카테고리탭, 검색 없는 경우
+    // admin 정렬관리의 position 순서를 그대로 사용
+    // ─────────────────────────────────────────────────────────────────
+    const isCurationTab = (!!specialtyType || category === 'RECOMMEND') && !search;
+
+    if (isCurationTab) {
+      const curationCategory = category === 'RECOMMEND' ? 'RECOMMEND' : specialtyType!;
+      const adminSortType = toAdminSortType(sortBy);
+
+      const list = await prisma.hospitalCurationList.findUnique({
+        where: { category_sortType: { category: curationCategory, sortType: adminSortType } },
+        select: { id: true },
+      });
+
+      if (!list) {
+        return { hospitals: [], totalCount: 0, currentPage: page, totalPages: 0, hasNextPage: false };
+      }
+
+      // position ASC 순서로만 조회 — 스크립트에서 이미 BEST→HOT→뱃지없음 순으로 position 부여
+      const entryWhere = {
+        listId: list.id,
+        isVisible: true,
+        Hospital: {
+          isActive: true,
+          ...(districtIds && districtIds.length > 0 ? { districtId: { in: districtIds } } : {}),
+        },
+      };
+
+      const [totalCount, entries] = await Promise.all([
+        prisma.hospitalCurationEntry.count({ where: entryWhere }),
+        prisma.hospitalCurationEntry.findMany({
+          where: entryWhere,
+          orderBy: { position: 'asc' },
+          skip: offset,
+          take: limit,
+          select: { badge: true, Hospital: { include: buildHospitalInclude() } },
+        }),
+      ]);
+
+      const transformedHospitals = entries.map((entry) => {
+        const hospital = entry.Hospital as unknown as HospitalWithRelations;
+        // 추천탭: hospital.badge(기본 뱃지) / 카테고리탭: entry.badge(큐레이션 뱃지)
+        const badge =
+          category === 'RECOMMEND'
+            ? ((hospital.badge as string[]) ?? null)
+            : entry.badge
+              ? [entry.badge]
+              : null;
+        return transformHospital(hospital, badge);
+      });
+
+      const totalPages = Math.ceil(totalCount / limit);
+      return {
+        hospitals: transformedHospitals as unknown as Hospital[],
+        totalCount,
+        currentPage: page,
+        totalPages,
+        hasNextPage: page < totalPages,
+      };
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // 일반 DB 정렬: 검색(Meilisearch) 또는 기타 필터 조건
+    // ─────────────────────────────────────────────────────────────────
     const where: Prisma.HospitalWhereInput = {
       isActive: true,
-      rating: {
-        gte: minRating,
-      },
-      // 검색 조건과 카테고리 필터를 AND 조건으로 결합
+      rating: { gte: minRating },
       AND: [
-        // Meilisearch 검색 결과 ID 필터
         ...(meilisearchIds !== null ? [{ id: { in: meilisearchIds } }] : []),
-        // 진료 부위 필터링 (단일)
         ...(specialtyType
           ? [
               {
                 HospitalMedicalSpecialty: {
                   some: {
-                    MedicalSpecialty: {
-                      specialtyType: specialtyType,
-                      isActive: true,
-                    },
+                    MedicalSpecialty: { specialtyType: specialtyType, isActive: true },
                   },
                 },
               },
             ]
           : []),
-        // 진료 부위 복수 필터링
         ...(specialtyTypes && specialtyTypes.length > 0
           ? [
               {
                 HospitalMedicalSpecialty: {
                   some: {
-                    MedicalSpecialty: {
-                      specialtyType: { in: specialtyTypes },
-                      isActive: true,
-                    },
+                    MedicalSpecialty: { specialtyType: { in: specialtyTypes }, isActive: true },
                   },
                 },
               },
             ]
           : []),
-        // 지역 필터링
         ...(districtIds && districtIds.length > 0
-          ? [
-              {
-                districtId: {
-                  in: districtIds,
-                },
-              },
-            ]
-          : []),
-        // 추천 카테고리 필터링
-        ...(category === 'RECOMMEND'
-          ? [
-              {
-                HospitalCategoryAssignment: {
-                  some: {
-                    categoryId: RECOMMENDED_CATEGORY_ID,
-                  },
-                },
-              },
-            ]
+          ? [{ districtId: { in: districtIds } }]
           : []),
       ],
     };
 
-    // 총 개수 조회
-    const totalCount = await prisma.hospital.count({ where });
+    const [totalCount, hospitals] = await Promise.all([
+      prisma.hospital.count({ where }),
+      prisma.hospital.findMany({
+        where,
+        orderBy: buildHospitalOrderBy(sortBy, sortOrder),
+        include: buildHospitalInclude(),
+        skip: offset,
+        take: limit,
+      }),
+    ]);
 
-    // 정렬 로직 구성
-    const orderBy = buildHospitalOrderBy(sortBy, sortOrder);
-
-    // 병원 데이터 조회
-    const hospitals: HospitalWithRelations[] = await prisma.hospital.findMany({
-      where,
-      orderBy,
-      include: {
-        HospitalImage: {
-          where: {
-            isActive: true,
-          },
-          orderBy: [
-            { imageType: 'asc' }, // MAIN이 먼저 오도록
-            { order: 'asc' },
-          ],
-          select: {
-            imageType: true,
-            imageUrl: true,
-          },
-        },
-        HospitalMedicalSpecialty: {
-          include: {
-            MedicalSpecialty: {
-              select: {
-                id: true,
-                name: true,
-                specialtyType: true,
-                description: true,
-                order: true,
-                isActive: true,
-                createdAt: true,
-                updatedAt: true,
-                parentSpecialtyId: true,
-              },
-            },
-          },
-          where: {
-            MedicalSpecialty: {
-              isActive: true,
-            },
-          },
-        },
-        HospitalLike: {
-          select: {
-            userId: true,
-          },
-        },
-        District: {
-          select: {
-            id: true,
-            name: true,
-            displayName: true,
-            countryCode: true,
-            level: true,
-            order: true,
-            parentId: true,
-          },
-        },
-        _count: {
-          select: {
-            HospitalLike: true,
-            Review: true,
-          },
-        },
-      },
-      skip: offset,
-      take: limit,
-    });
-
-    // 데이터 변환 - HospitalCardData 타입으로 변환
-    const transformedHospitals: HospitalCardData[] = hospitals.map((hospital) => {
-      const likedUserIds = hospital.HospitalLike.map((like) => like.userId);
-
-      return {
-        id: hospital.id,
-        name: parseLocalizedText(hospital.name),
-        address: parseLocalizedText(hospital.address),
-        prices: parsePriceInfo(hospital.prices),
-        rating: hospital.rating,
-        reviewCount: hospital._count.Review, // 실제 리뷰 개수 사용
-        thumbnailImageUrl: getHospitalThumbnailImageUrl(hospital.HospitalImage),
-        discountRate: hospital.discountRate,
-        medicalSpecialties:
-          hospital.HospitalMedicalSpecialty?.map((hms) => ({
-            id: hms.MedicalSpecialty.id,
-            name: parseLocalizedText(hms.MedicalSpecialty.name),
-            specialtyType: hms.MedicalSpecialty.specialtyType,
-            parentSpecialtyId: hms.MedicalSpecialty.parentSpecialtyId ?? undefined,
-            order: hms.MedicalSpecialty.order ?? undefined,
-          })) || [],
-        displayLocationName: parseLocalizedText(hospital.displayLocationName || '{}'),
-        district: hospital.District
-          ? {
-              id: hospital.District.id,
-              name: hospital.District.name,
-              displayName: hospital.District.displayName,
-              countryCode: hospital.District.countryCode,
-              level: hospital.District.level,
-              order: hospital.District.order,
-              parentId: hospital.District.parentId,
-            }
-          : null,
-        // 좋아요 관련 필드 추가
-        likeCount: hospital._count.HospitalLike,
-        likedUserIds,
-        isLiked: false, // 기본값으로 false 설정 (클라이언트에서 처리)
-        // Hospital 타입과의 호환성을 위한 추가 필드들
-        bookmarkCount: hospital.bookmarkCount,
-        viewCount: hospital.viewCount,
-        approvalStatusType: hospital.approvalStatusType,
-        ranking: hospital.ranking,
-        createdAt: hospital.createdAt,
-        updatedAt: hospital.updatedAt,
-        mainImageUrl: getHospitalMainImageUrl(hospital.HospitalImage),
-        hospitalImages: hospital.HospitalImage,
-        latitude: hospital.latitude,
-        longitude: hospital.longitude,
-        badge: hospital.badge,
-      };
-    });
+    const transformedHospitals = (hospitals as HospitalWithRelations[]).map((hospital) =>
+      transformHospital(hospital, hospital.badge),
+    );
 
     const totalPages = Math.ceil(totalCount / limit);
-    const hasNextPage = page < totalPages;
-
     return {
-      hospitals: transformedHospitals as unknown as Hospital[], // 타입 호환성을 위해 안전한 캐스팅
+      hospitals: transformedHospitals as unknown as Hospital[],
       totalCount,
       currentPage: page,
       totalPages,
-      hasNextPage,
+      hasNextPage: page < totalPages,
     };
   } catch (error) {
     throw handleDatabaseError(error, 'getHospitalsV2');

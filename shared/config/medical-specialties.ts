@@ -10,12 +10,10 @@ export const MEDICAL_SPECIALTY_TYPES: readonly MedicalSpecialtyType[] = [
   'FACIAL_CONTOURING',
   'BREAST',
   'STEM_CELL',
-  'LIPOSUCTION',
-  'BODY',
+  'BODY_LINE',
   'HAIR_TRANSPLANT',
   'DERMATOLOGY',
   'DENTAL',
-  'ETC',
 ] as const;
 
 /**

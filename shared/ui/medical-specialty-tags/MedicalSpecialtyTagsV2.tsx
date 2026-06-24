@@ -5,6 +5,7 @@ import { MedicalSpecialtyTagV2 } from './MedicalSpecialtyTagV2';
 interface MedicalSpecialty {
   id: string;
   name: any; // Prisma.JsonValue
+  specialtyType?: string;
 }
 
 interface MedicalSpecialtyTagsV2Props {
@@ -27,6 +28,9 @@ interface MedicalSpecialtyTagsV2Props {
 const COLLAPSE_THRESHOLD = 4;
 const VISIBLE_WHEN_COLLAPSED = 2;
 
+/** 퀵메뉴에서 숨긴 레거시 카테고리 — 태그로도 노출하지 않음 */
+const HIDDEN_SPECIALTY_TYPES = new Set(['LIPOSUCTION', 'BODY', 'ETC']);
+
 /**
  * 진료부위 태그 목록 컴포넌트 V2
  * HospitalCardV2CategoryTag와 동일한 스타일
@@ -40,15 +44,19 @@ export function MedicalSpecialtyTagsV2({
   tagClassName = '',
   textClassName = '',
 }: MedicalSpecialtyTagsV2Props) {
-  if (!specialties || specialties.length === 0) {
+  const visibleSpecialtiesByType = specialties.filter(
+    (s) => !s.specialtyType || !HIDDEN_SPECIALTY_TYPES.has(s.specialtyType),
+  );
+
+  if (!visibleSpecialtiesByType || visibleSpecialtiesByType.length === 0) {
     return null;
   }
 
-  const shouldCollapse = collapseOverflow && specialties.length >= COLLAPSE_THRESHOLD;
+  const shouldCollapse = collapseOverflow && visibleSpecialtiesByType.length >= COLLAPSE_THRESHOLD;
   const visibleSpecialties = shouldCollapse
-    ? specialties.slice(0, VISIBLE_WHEN_COLLAPSED)
-    : specialties;
-  const overflowCount = shouldCollapse ? specialties.length - VISIBLE_WHEN_COLLAPSED : 0;
+    ? visibleSpecialtiesByType.slice(0, VISIBLE_WHEN_COLLAPSED)
+    : visibleSpecialtiesByType;
+  const overflowCount = shouldCollapse ? visibleSpecialtiesByType.length - VISIBLE_WHEN_COLLAPSED : 0;
 
   return (
     <div className={`flex flex-wrap gap-1 ${className}`}>

@@ -117,9 +117,11 @@ model Hospital {
   Doctor                     Doctor[]
   District                   District?                    @relation(fields: [districtId], references: [id], onDelete: Cascade)
   HospitalCategoryAssignment HospitalCategoryAssignment[]
+  HospitalCurationEntry      HospitalCurationEntry[]
   HospitalImage              HospitalImage[]
   HospitalLike               HospitalLike[]
   HospitalMedicalSpecialty   HospitalMedicalSpecialty[]
+  HospitalSpecialtyBadge     HospitalSpecialtyBadge[]
   LiveReview                 LiveReview[]
   Product                    Product[]
   Reservation                Reservation[]
@@ -342,6 +344,7 @@ model MedicalSpecialty {
   parentSpecialtyId        String?                    @db.Uuid
   DoctorMedicalSpecialty   DoctorMedicalSpecialty[]
   HospitalMedicalSpecialty HospitalMedicalSpecialty[]
+  HospitalSpecialtyBadge   HospitalSpecialtyBadge[]
   LiveReview               LiveReview[]
   MedicalSpecialty         MedicalSpecialty?          @relation("MedicalSpecialtyToMedicalSpecialty", fields: [parentSpecialtyId], references: [id], onDelete: Cascade)
   other_MedicalSpecialty   MedicalSpecialty[]         @relation("MedicalSpecialtyToMedicalSpecialty")
@@ -1050,6 +1053,54 @@ model ChatbotWelcomeMessage {
   @@schema("public")
 }
 
+model HospitalSpecialtyBadge {
+  id                 String           @id @db.Uuid
+  hospitalId         String           @db.Uuid
+  medicalSpecialtyId String           @db.Uuid
+  badge              String[]         @default([])
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime
+  order              Int?
+  Hospital           Hospital         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  MedicalSpecialty   MedicalSpecialty @relation(fields: [medicalSpecialtyId], references: [id], onDelete: Cascade)
+
+  @@unique([hospitalId, medicalSpecialtyId])
+  @@index([hospitalId])
+  @@index([medicalSpecialtyId])
+  @@schema("public")
+}
+
+model HospitalCurationEntry {
+  id                   String               @id @db.Uuid
+  listId               String               @db.Uuid
+  hospitalId           String               @db.Uuid
+  position             Int
+  isVisible            Boolean              @default(true)
+  badge                String?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime
+  Hospital             Hospital             @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  HospitalCurationList HospitalCurationList @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  @@unique([listId, hospitalId])
+  @@index([listId, isVisible, position])
+  @@schema("public")
+}
+
+model HospitalCurationList {
+  id                    String                  @id @db.Uuid
+  category              String
+  sortType              String
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime
+  HospitalCurationEntry HospitalCurationEntry[]
+
+  @@unique([category, sortType])
+  @@index([category, sortType])
+  @@schema("public")
+}
+
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN
@@ -1166,6 +1217,7 @@ enum MedicalSpecialtyType {
   DENTAL
   BODY
   ETC
+  BODY_LINE
 
   @@schema("public")
 }
