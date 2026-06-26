@@ -2699,7 +2699,11 @@
       "statusClosedFormat": "Sarado · Magbubukas {schedule}",
       "subtitle": "Makakuha ng mabilis na sagot",
       "backLabel": "Bumalik",
-      "closeLabel": "Isara"
+      "menuLabel": "Kasaysayan ng Konsultasyon",
+      "emptyHistory": "Walang kasaysayan ng konsultasyon.",
+      "noMessages": "Wala pang mensahe.",
+      "historyLoadError": "Hindi ma-load ang listahan.",
+      "newInquiry": "Bagong Katanungan"
     },
     "welcome": "Kumusta 😀\nIto ang K-DOC Consultation Center.\n\nGinagabayan namin kayo sa lahat ng bagay, mula sa pag-rekumenda ng mga na-verify na ospital sa Korea hanggang sa reservasyon, interpretasyon, at serbisyong concierge.\n\nMangyaring piliin ang opsyong kailangan ninyo mula sa menu sa ibaba. 😊",
     "categories": {

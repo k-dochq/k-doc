@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { type Dictionary } from 'shared/model/types';
 import { type CmsFaqItem } from '../model/useKdocCmsContent';
+import { type FaqSelectedItem } from '../model/useKdocChatFlow';
 import { KdocAdminMessageBubble, KdocUserMessageBubble } from './KdocMessageBubble';
 
 interface KdocServiceFaqMenuProps {
@@ -10,8 +11,8 @@ interface KdocServiceFaqMenuProps {
   selectedCategoryLabel: string;
   faqItems: CmsFaqItem[];
   isSubmitting: boolean;
-  onConsult: () => void;
-  onMainMenu: () => void;
+  onConsult: (item: FaqSelectedItem) => void;
+  onMainMenu: (context: { faqItem: FaqSelectedItem | null; returnLabel: string }) => void;
 }
 
 export function KdocServiceFaqMenu({
@@ -48,28 +49,46 @@ export function KdocServiceFaqMenu({
       {selectedItem && (
         <>
           <KdocUserMessageBubble content={selectedItem.title} createdAt={new Date()} />
-          <KdocAdminMessageBubble content={selectedItem.content} createdAt={new Date()} />
-
-          {/* 액션 버튼 */}
-          <div className='mb-4 flex flex-wrap items-start gap-2 pl-[38px]'>
-            {selectedItem.showConsultButton && (
-              <button
-                onClick={onConsult}
-                disabled={isSubmitting}
-                className='rounded-full border border-[#c0bfff] bg-[#f1eeff] px-4 py-2 text-sm font-medium text-[#7657ff] disabled:opacity-50'
-              >
-                {t.consultButton}
-              </button>
+          <KdocAdminMessageBubble content={selectedItem.content} createdAt={new Date()}>
+            {(selectedItem.showConsultButton || selectedItem.showMenuButton) && (
+              <div className='flex flex-col gap-2 pb-1'>
+                {selectedItem.showConsultButton && (
+                  <button
+                    onClick={() => onConsult({
+                      title: selectedItem.title,
+                      content: selectedItem.content,
+                      consultLabel: t.consultButton,
+                      mainMenuLabel: t.mainMenuButton,
+                      showConsultButton: selectedItem.showConsultButton,
+                      showMenuButton: selectedItem.showMenuButton,
+                    })}
+                    disabled={isSubmitting}
+                    className='w-full rounded-lg bg-[#7657ff] px-5 py-3 text-sm font-medium leading-5 text-white disabled:opacity-50'
+                  >
+                    {t.consultButton}
+                  </button>
+                )}
+                {selectedItem.showMenuButton && (
+                  <button
+                    onClick={() => onMainMenu({
+                      faqItem: {
+                        title: selectedItem.title,
+                        content: selectedItem.content,
+                        consultLabel: t.consultButton,
+                        mainMenuLabel: t.mainMenuButton,
+                        showConsultButton: selectedItem.showConsultButton,
+                        showMenuButton: selectedItem.showMenuButton,
+                      },
+                      returnLabel: t.mainMenuButton,
+                    })}
+                    className='w-full rounded-lg border border-[#7657ff] bg-white px-5 py-3 text-sm font-medium leading-5 text-[#7657ff]'
+                  >
+                    {t.mainMenuButton}
+                  </button>
+                )}
+              </div>
             )}
-            {selectedItem.showMenuButton && (
-              <button
-                onClick={onMainMenu}
-                className='rounded-full border border-[#e5e5e5] bg-white px-4 py-2 text-sm font-medium text-[#737373]'
-              >
-                {t.mainMenuButton}
-              </button>
-            )}
-          </div>
+          </KdocAdminMessageBubble>
         </>
       )}
     </>

@@ -2699,7 +2699,11 @@
       "statusClosedFormat": "営業時間外 · {schedule}から",
       "subtitle": "迅速な回答をお届けします",
       "backLabel": "戻る",
-      "closeLabel": "閉じる"
+      "menuLabel": "相談履歴",
+      "emptyHistory": "相談履歴がありません。",
+      "noMessages": "まだメッセージがありません。",
+      "historyLoadError": "履歴を読み込めませんでした。",
+      "newInquiry": "新規お問い合わせ"
     },
     "welcome": "こんにちは 😀\nK-DOC相談センターです。\n\n韓国の認証された病院のご紹介から、ご予約・通訳・コンシェルジュまで、すべてをご案内いたします。\n\n下のメニューからご希望の項目をお選びください。 😊",
     "categories": {

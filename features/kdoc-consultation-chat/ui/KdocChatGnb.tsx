@@ -3,14 +3,14 @@
 import Image from 'next/image';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { BackArrowIcon, CloseIcon } from './icons/KdocChatIcons';
+import { BackArrowIcon, HamburgerIcon } from './icons/KdocChatIcons';
 import { useOperatingStatus } from '../lib/use-operating-status';
 
 interface KdocChatGnbProps {
   dict: Dictionary;
   lang: Locale;
   onBack: () => void;
-  onClose: () => void;
+  onMenu: () => void;
 }
 
 /** 다음 운영 개시 요일 표기를 위한 로케일별 Intl 태그 */
@@ -26,7 +26,7 @@ const INTL_LOCALE: Record<Locale, string> = {
   ru: 'ru-RU',
 };
 
-export function KdocChatGnb({ dict, lang, onBack, onClose }: KdocChatGnbProps) {
+export function KdocChatGnb({ dict, lang, onBack, onMenu }: KdocChatGnbProps) {
   const t = dict.kdocChat.gnb;
   const status = useOperatingStatus();
 
@@ -85,11 +85,11 @@ export function KdocChatGnb({ dict, lang, onBack, onClose }: KdocChatGnbProps) {
         </div>
       </div>
       <button
-        onClick={onClose}
+        onClick={onMenu}
         className='flex h-6 w-6 items-center justify-center'
-        aria-label={t.closeLabel}
+        aria-label={t.menuLabel}
       >
-        <CloseIcon />
+        <HamburgerIcon />
       </button>
     </header>
   );

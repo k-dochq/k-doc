@@ -12,6 +12,20 @@ export function BackArrowIcon() {
   );
 }
 
+export function HamburgerIcon() {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
+      <path
+        d='M3.00037 5H21.0004M2.99805 12H20.998M3.00037 19H21.0004'
+        stroke='#404040'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </svg>
+  );
+}
+
 export function CloseIcon() {
   return (
     <svg width='14' height='14' viewBox='0 0 13.5 13.5' fill='none'>

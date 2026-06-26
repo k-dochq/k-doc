@@ -2699,7 +2699,11 @@
       "statusClosedFormat": "非營業時間 · {schedule} 開始",
       "subtitle": "快速獲得回覆",
       "backLabel": "返回",
-      "closeLabel": "關閉"
+      "menuLabel": "諮詢紀錄",
+      "emptyHistory": "暫無諮詢紀錄。",
+      "noMessages": "尚無訊息。",
+      "historyLoadError": "無法載入紀錄。",
+      "newInquiry": "新增諮詢"
     },
     "welcome": "您好 😀\n這裡是K-DOC諮詢中心。\n\n我們為您提供從韓國認證醫院推薦到預約、口譯及禮賓服務的全方位指引。\n\n請從下方選單選擇您需要的項目。 😊",
     "categories": {

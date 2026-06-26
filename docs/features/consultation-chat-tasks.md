@@ -59,6 +59,29 @@
   - 버튼: 폼 카드 밖 텍스트링크 → 카드 안 full-width 버튼
   - 버튼 텍스트: "상담 시작하기" → "저장" (비활성 #e5e5e5, 활성 #7657ff)
   - K-DOC 안내 메시지: 개인정보 안내문 추가
+- [x] UI-04-6 GNB X버튼 → 햄버거 버튼 교체 (2026-06-25)
+  - `KdocChatIcons.tsx` — `HamburgerIcon` 추가
+  - `KdocChatGnb.tsx` — `onClose` → `onMenu` prop, `CloseIcon` → `HamburgerIcon`
+  - 9개 언어 dictionary `closeLabel` → `menuLabel` 업데이트
+
+### UI-06 · 상담내역 페이지 🆕 2026-06-25 착수
+- [x] UI-06-1 라우트 생성: `app/[lang]/kdoc-consultation-history/page.tsx`
+- [x] UI-06-2 `KdocConsultationHistoryPage.tsx` — 빈 껍데기 (GNB + 빈 상태 메시지)
+- [x] UI-06-3 GNB 햄버거 클릭 시 `/kdoc-consultation-history` 이동 (`useLocalizedRouter`)
+- [x] UI-06-4 상담내역 목록 구현 (2026-06-25)
+  - `GET /api/kdoc-chat/thread` 확장: `lastMessageContent` / `lastMessageDate` / `lastMessageSenderType` 포함, `?guestIds=` 파라미터로 게스트 thread 조회 지원
+  - `KdocThread` 타입 확장 + `useKdocThreadHistory` 훅 (로그인 유저 목록 + 게스트 localStorage threadId 병합)
+  - `KdocThreadCard` — K-DOC 아바타, 카테고리명, 마지막 메시지 미리보기, 날짜
+  - `KdocThreadSkeleton`, `KdocThreadList` 컴포넌트
+  - `KdocConsultationHistoryPage` — GNB + `KdocThreadList`
+- [x] UI-06-5 thread 카드 클릭 시 `/kdoc-chat?threadId=xxx` 이동, 해당 스레드 바로 로드
+  - `app/[lang]/kdoc-chat/page.tsx` — `searchParams.threadId` 수신 → `KdocChatPage`로 전달
+  - `useKdocChatFlow(initialThreadId)` — `initialThreadId` 있으면 바로 `chat` phase 진입, 기존 복원 로직 skip
+- [x] UI-06-6 "새 문의하기" 버튼 (2026-06-25)
+  - 상담내역 GNB 우측에 보라색 pill 버튼 추가
+  - 클릭 시 `/kdoc-chat?new=true` 이동
+  - `useKdocChatFlow(forceNew)` — `forceNew=true` 시 localStorage·DB thread 복원 전체 skip, `main_menu`에서 시작
+  - thread 생성은 사용자가 메뉴 → 입력 → (폼) → 제출 후에만 발생하도록 보장
 
 ### UI-05 · 게스트 저장 후 채팅 진입 플로우 ✅ 2026-06-02 완료
 - [x] UI-05-1 `guest_submitted` phase — KdocGuestInfoCard + "정보가 저장되었습니다" 버블 + 입력창
@@ -217,7 +240,7 @@
 
 ## 다음 세션 시작점
 
-**T11 — Admin 상담 목록 + 채팅 검토** 또는 **T13 — [메인 메뉴] 상시 버튼 + 뒤로가기/닫기 네비**
+**UI-06-4 상담내역 목록 구현** 또는 **Phase 4 — 알림/자동화**
 
 **Phase 4 — 알림/자동화**
 

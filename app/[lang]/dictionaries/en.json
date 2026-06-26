@@ -2700,7 +2700,11 @@
       "statusClosedFormat": "Closed · Opens {schedule}",
       "subtitle": "Get a quick response",
       "backLabel": "Back",
-      "closeLabel": "Close"
+      "menuLabel": "Consultation History",
+      "emptyHistory": "No consultation history.",
+      "noMessages": "No messages yet.",
+      "historyLoadError": "Failed to load history.",
+      "newInquiry": "New Inquiry"
     },
     "welcome": "Hello 😀\nThis is the K-DOC Consultation Center.\n\nWe guide you through everything from recommending verified hospitals in Korea to reservations, interpretation, and concierge services.\n\nPlease select the option you need from the menu below. 😊",
     "categories": {

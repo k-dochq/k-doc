@@ -54,10 +54,12 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 }
 
 // POST /api/kdoc-chat/thread/[id]/messages — 메시지 전송
+// senderType: 'USER'(기본) | 'ADMIN' (CMS 자동응답 등 앱 제어 메시지용)
 export async function POST(request: NextRequest, { params }: RouteParams) {
   try {
     const { id: threadId } = await params;
-    const { content } = await request.json();
+    const { content, senderType: rawSenderType } = await request.json();
+    const senderType: 'USER' | 'ADMIN' = rawSenderType === 'ADMIN' ? 'ADMIN' : 'USER';
 
     if (!content?.trim()) {
       return NextResponse.json({ success: false, error: 'MISSING_CONTENT' }, { status: 400 });
@@ -68,8 +70,8 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
       return NextResponse.json({ success: false, error: 'THREAD_NOT_FOUND' }, { status: 404 });
     }
 
-    // 회원 thread는 본인 세션 검증
-    if (thread.userId !== null) {
+    // 회원 thread는 본인 세션 검증 (USER 메시지 전송 시)
+    if (thread.userId !== null && senderType === 'USER') {
       const supabase = await createClient();
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user?.id !== thread.userId) {
@@ -85,7 +87,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
       data: {
         id: uuidv4(),
         threadId,
-        senderType: 'USER',
+        senderType,
         content: content.trim(),
         createdAt: new Date(),
       },

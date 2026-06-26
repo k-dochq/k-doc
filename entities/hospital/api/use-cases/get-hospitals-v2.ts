@@ -1,4 +1,4 @@
-import { type Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import { prisma } from 'shared/lib/prisma';
 import { handleDatabaseError } from 'shared/lib';
 import {
@@ -8,7 +8,7 @@ import {
 } from '../entities/types';
 import { DEFAULT_HOSPITAL_QUERY_PARAMS } from 'shared/model/types/hospital-query';
 import { getHospitalMainImageUrl } from '../../lib/image-utils';
-import { type HospitalCardData, parseLocalizedText, parsePriceInfo } from 'shared/model/types';
+import { parseLocalizedText, parsePriceInfo } from 'shared/model/types';
 import { getHospitalThumbnailImageUrl } from '../../lib/image-utils';
 import { buildHospitalOrderBy } from '../lib/build-hospital-order-by';
 import { searchHospitalIds } from 'shared/lib/meilisearch';
@@ -26,45 +26,17 @@ function toAdminSortType(sortBy: string): string {
 // Prisma 타입 정의
 type HospitalWithRelations = Prisma.HospitalGetPayload<{
   include: {
-    HospitalImage: {
-      select: {
-        imageType: true;
-        imageUrl: true;
-      };
-    };
-    HospitalMedicalSpecialty: {
-      include: {
-        MedicalSpecialty: true;
-      };
-    };
-    HospitalSpecialtyBadge: {
-      select: {
-        medicalSpecialtyId: true;
-        badge: true;
-      };
-    };
-    HospitalLike: {
-      select: {
-        userId: true;
-      };
-    };
+    HospitalImage: { select: { imageType: true; imageUrl: true } };
+    HospitalMedicalSpecialty: { include: { MedicalSpecialty: true } };
+    HospitalSpecialtyBadge: { select: { medicalSpecialtyId: true; badge: true } };
+    HospitalLike: { select: { userId: true } };
     District: {
       select: {
-        id: true;
-        name: true;
-        displayName: true;
-        countryCode: true;
-        level: true;
-        order: true;
-        parentId: true;
+        id: true; name: true; displayName: true; countryCode: true;
+        level: true; order: true; parentId: true;
       };
     };
-    _count: {
-      select: {
-        HospitalLike: true;
-        Review: true;
-      };
-    };
+    _count: { select: { HospitalLike: true; Review: true } };
   };
 }>;
 
@@ -79,33 +51,20 @@ function buildHospitalInclude() {
       include: {
         MedicalSpecialty: {
           select: {
-            id: true,
-            name: true,
-            specialtyType: true,
-            description: true,
-            order: true,
-            isActive: true,
-            createdAt: true,
-            updatedAt: true,
+            id: true, name: true, specialtyType: true, description: true,
+            order: true, isActive: true, createdAt: true, updatedAt: true,
             parentSpecialtyId: true,
           },
         },
       },
       where: { MedicalSpecialty: { isActive: true } },
     },
-    HospitalSpecialtyBadge: {
-      select: { medicalSpecialtyId: true, badge: true },
-    },
+    HospitalSpecialtyBadge: { select: { medicalSpecialtyId: true, badge: true } },
     HospitalLike: { select: { userId: true } },
     District: {
       select: {
-        id: true,
-        name: true,
-        displayName: true,
-        countryCode: true,
-        level: true,
-        order: true,
-        parentId: true,
+        id: true, name: true, displayName: true, countryCode: true,
+        level: true, order: true, parentId: true,
       },
     },
     _count: { select: { HospitalLike: true, Review: true } },
@@ -160,6 +119,82 @@ function transformHospital(hospital: HospitalWithRelations, resolvedBadge: strin
   };
 }
 
+type CurationRow = {
+  id: string;
+  position: number | null;
+  curation_badge: string | null;
+};
+
+/**
+ * Hospital LEFT JOIN HospitalCurationEntry 방식으로 DB에서 직접 정렬/페이지네이션.
+ * - 큐레이션 등록 병원: position ASC
+ * - 미등록 병원: position NULLS LAST → rating DESC 보조 정렬
+ */
+async function fetchSortedHospitalPage(params: {
+  curationCategory: string | undefined;
+  adminSortType: string;
+  specialtyType?: string;
+  specialtyTypes?: string[];
+  districtIds?: string[];
+  limit: number;
+  offset: number;
+}): Promise<{ rows: CurationRow[]; totalCount: number }> {
+  const { curationCategory, adminSortType, specialtyType, specialtyTypes, districtIds, limit, offset } = params;
+
+  // 큐레이션 리스트 서브쿼리: 없으면 NULL (LEFT JOIN이 전부 NULL 반환 → NULLS LAST로 뒤 배치)
+  const listSubquery = curationCategory
+    ? Prisma.sql`(SELECT id FROM "HospitalCurationList" WHERE category = ${curationCategory} AND "sortType" = ${adminSortType} LIMIT 1)`
+    : Prisma.sql`NULL::uuid`;
+
+  // 진료과 필터 (단일 or 복수)
+  const specialtyFilter =
+    specialtyType
+      ? Prisma.sql`AND EXISTS (
+          SELECT 1 FROM "HospitalMedicalSpecialty" hms
+          JOIN "MedicalSpecialty" ms ON ms.id = hms."medicalSpecialtyId"
+          WHERE hms."hospitalId" = h.id AND ms."specialtyType" = ${specialtyType} AND ms."isActive" = true
+        )`
+      : specialtyTypes && specialtyTypes.length > 0
+        ? Prisma.sql`AND EXISTS (
+            SELECT 1 FROM "HospitalMedicalSpecialty" hms
+            JOIN "MedicalSpecialty" ms ON ms.id = hms."medicalSpecialtyId"
+            WHERE hms."hospitalId" = h.id AND ms."specialtyType" = ANY(${specialtyTypes}::text[]) AND ms."isActive" = true
+          )`
+        : Prisma.empty;
+
+  // 지역 필터
+  const districtFilter =
+    districtIds && districtIds.length > 0
+      ? Prisma.sql`AND h."districtId" = ANY(${districtIds}::uuid[])`
+      : Prisma.empty;
+
+  const [countResult, rows] = await Promise.all([
+    prisma.$queryRaw<[{ count: bigint }]>`
+      SELECT COUNT(*) AS count
+      FROM "Hospital" h
+      WHERE h."isActive" = true
+      ${specialtyFilter}
+      ${districtFilter}
+    `,
+    prisma.$queryRaw<CurationRow[]>`
+      SELECT h.id, e.position, e.badge AS curation_badge
+      FROM "Hospital" h
+      LEFT JOIN "HospitalCurationEntry" e
+        ON  e."hospitalId" = h.id
+        AND e."listId"     = ${listSubquery}
+        AND e."isVisible"  = true
+      WHERE h."isActive" = true
+      ${specialtyFilter}
+      ${districtFilter}
+      ORDER BY e.position ASC NULLS LAST, h.rating DESC
+      LIMIT  ${limit}
+      OFFSET ${offset}
+    `,
+  ]);
+
+  return { rows, totalCount: Number(countResult[0].count) };
+}
+
 export async function getHospitalsV2(
   request: GetHospitalsRequestV2 = {},
 ): Promise<GetHospitalsResponse> {
@@ -175,83 +210,50 @@ export async function getHospitalsV2(
       minRating = DEFAULT_HOSPITAL_QUERY_PARAMS.minRating,
       search,
       districtIds,
-      locale,
     } = request;
 
     const offset = (page - 1) * limit;
 
-    // 검색어가 있으면 Meilisearch에서 매칭 병원 ID 조회
-    let meilisearchIds: string[] | null = null;
+    // ─────────────────────────────────────────────────────────────────
+    // 검색 경로: Meilisearch + 일반 DB 쿼리 (기존 로직 유지)
+    // ─────────────────────────────────────────────────────────────────
     if (search) {
-      meilisearchIds = await searchHospitalIds(search);
-    }
-
-    // 검색 결과가 없으면 빈 응답 반환
-    if (meilisearchIds !== null && meilisearchIds.length === 0) {
-      return {
-        hospitals: [],
-        totalCount: 0,
-        currentPage: page,
-        totalPages: 0,
-        hasNextPage: false,
-      };
-    }
-
-    // ─────────────────────────────────────────────────────────────────
-    // 큐레이션 기반 정렬: 추천탭 또는 카테고리탭, 검색 없는 경우
-    // admin 정렬관리의 position 순서를 그대로 사용
-    // ─────────────────────────────────────────────────────────────────
-    const isCurationTab = (!!specialtyType || category === 'RECOMMEND') && !search;
-
-    if (isCurationTab) {
-      const curationCategory = category === 'RECOMMEND' ? 'RECOMMEND' : specialtyType!;
-      const adminSortType = toAdminSortType(sortBy);
-
-      const list = await prisma.hospitalCurationList.findUnique({
-        where: { category_sortType: { category: curationCategory, sortType: adminSortType } },
-        select: { id: true },
-      });
-
-      if (!list) {
+      const meilisearchIds = await searchHospitalIds(search);
+      if (meilisearchIds !== null && meilisearchIds.length === 0) {
         return { hospitals: [], totalCount: 0, currentPage: page, totalPages: 0, hasNextPage: false };
       }
 
-      // position ASC 순서로만 조회 — 스크립트에서 이미 BEST→HOT→뱃지없음 순으로 position 부여
-      const entryWhere = {
-        listId: list.id,
-        isVisible: true,
-        Hospital: {
-          isActive: true,
-          ...(districtIds && districtIds.length > 0 ? { districtId: { in: districtIds } } : {}),
-        },
+      const where: Prisma.HospitalWhereInput = {
+        isActive: true,
+        rating: { gte: minRating },
+        AND: [
+          ...(meilisearchIds !== null ? [{ id: { in: meilisearchIds } }] : []),
+          ...(specialtyType
+            ? [{ HospitalMedicalSpecialty: { some: { MedicalSpecialty: { specialtyType, isActive: true } } } }]
+            : []),
+          ...(specialtyTypes && specialtyTypes.length > 0
+            ? [{ HospitalMedicalSpecialty: { some: { MedicalSpecialty: { specialtyType: { in: specialtyTypes }, isActive: true } } } }]
+            : []),
+          ...(districtIds && districtIds.length > 0 ? [{ districtId: { in: districtIds } }] : []),
+        ],
       };
 
-      const [totalCount, entries] = await Promise.all([
-        prisma.hospitalCurationEntry.count({ where: entryWhere }),
-        prisma.hospitalCurationEntry.findMany({
-          where: entryWhere,
-          orderBy: { position: 'asc' },
+      const [totalCount, hospitals] = await Promise.all([
+        prisma.hospital.count({ where }),
+        prisma.hospital.findMany({
+          where,
+          orderBy: buildHospitalOrderBy(sortBy, sortOrder),
+          include: buildHospitalInclude(),
           skip: offset,
           take: limit,
-          select: { badge: true, Hospital: { include: buildHospitalInclude() } },
         }),
       ]);
 
-      const transformedHospitals = entries.map((entry) => {
-        const hospital = entry.Hospital as unknown as HospitalWithRelations;
-        // 추천탭: hospital.badge(기본 뱃지) / 카테고리탭: entry.badge(큐레이션 뱃지)
-        const badge =
-          category === 'RECOMMEND'
-            ? ((hospital.badge as string[]) ?? null)
-            : entry.badge
-              ? [entry.badge]
-              : null;
-        return transformHospital(hospital, badge);
-      });
-
       const totalPages = Math.ceil(totalCount / limit);
       return {
-        hospitals: transformedHospitals as unknown as Hospital[],
+        hospitals: (hospitals as HospitalWithRelations[]).map((h) =>
+          transformHospital(h, h.badge),
+        ) as unknown as Hospital[],
         totalCount,
         currentPage: page,
         totalPages,
@@ -260,55 +262,56 @@ export async function getHospitalsV2(
     }
 
     // ─────────────────────────────────────────────────────────────────
-    // 일반 DB 정렬: 검색(Meilisearch) 또는 기타 필터 조건
+    // 비검색 경로: Hospital LEFT JOIN CurationEntry
+    // DB가 position 정렬 + 페이지네이션을 직접 처리
     // ─────────────────────────────────────────────────────────────────
-    const where: Prisma.HospitalWhereInput = {
-      isActive: true,
-      rating: { gte: minRating },
-      AND: [
-        ...(meilisearchIds !== null ? [{ id: { in: meilisearchIds } }] : []),
-        ...(specialtyType
-          ? [
-              {
-                HospitalMedicalSpecialty: {
-                  some: {
-                    MedicalSpecialty: { specialtyType: specialtyType, isActive: true },
-                  },
-                },
-              },
-            ]
-          : []),
-        ...(specialtyTypes && specialtyTypes.length > 0
-          ? [
-              {
-                HospitalMedicalSpecialty: {
-                  some: {
-                    MedicalSpecialty: { specialtyType: { in: specialtyTypes }, isActive: true },
-                  },
-                },
-              },
-            ]
-          : []),
-        ...(districtIds && districtIds.length > 0
-          ? [{ districtId: { in: districtIds } }]
-          : []),
-      ],
-    };
+    const curationCategory = category === 'RECOMMEND' ? 'RECOMMEND' : specialtyType;
+    const adminSortType = toAdminSortType(sortBy);
 
-    const [totalCount, hospitals] = await Promise.all([
-      prisma.hospital.count({ where }),
-      prisma.hospital.findMany({
-        where,
-        orderBy: buildHospitalOrderBy(sortBy, sortOrder),
-        include: buildHospitalInclude(),
-        skip: offset,
-        take: limit,
-      }),
-    ]);
+    const { rows, totalCount } = await fetchSortedHospitalPage({
+      curationCategory,
+      adminSortType,
+      specialtyType,
+      specialtyTypes,
+      districtIds,
+      limit,
+      offset,
+    });
 
-    const transformedHospitals = (hospitals as HospitalWithRelations[]).map((hospital) =>
-      transformHospital(hospital, hospital.badge),
-    );
+    if (rows.length === 0) {
+      return { hospitals: [], totalCount, currentPage: page, totalPages: 0, hasNextPage: false };
+    }
+
+    // 페이지 ID 목록 + 큐레이션 데이터 Map
+    const pageIds = rows.map((r) => r.id);
+    const curationMap = new Map(rows.map((r) => [r.id, r]));
+
+    // Relations는 Prisma로 로드 (ID 교집합 → 쿼리 최소화)
+    const hospitalsRaw = await prisma.hospital.findMany({
+      where: { id: { in: pageIds } },
+      include: buildHospitalInclude(),
+    });
+
+    // DB 정렬 순서 복원 (findMany는 순서 보장 안 함)
+    const hospitalMap = new Map(hospitalsRaw.map((h) => [h.id, h]));
+
+    const transformedHospitals = pageIds
+      .map((id) => {
+        const hospital = hospitalMap.get(id);
+        if (!hospital) return null;
+
+        const entry = curationMap.get(id);
+        // 추천탭: hospital.badge(기본 배지), 카테고리탭: curation entry.badge
+        const badge =
+          category === 'RECOMMEND'
+            ? ((hospital.badge as string[]) ?? null)
+            : entry?.curation_badge
+              ? [entry.curation_badge]
+              : null;
+
+        return transformHospital(hospital as unknown as HospitalWithRelations, badge);
+      })
+      .filter(Boolean);
 
     const totalPages = Math.ceil(totalCount / limit);
     return {

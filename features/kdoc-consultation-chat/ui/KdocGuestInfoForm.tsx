@@ -32,7 +32,7 @@ function ChevronDownIcon() {
   );
 }
 
-interface GuestInfo {
+export interface GuestInfo {
   name: string;
   email: string;
   nationality: string;

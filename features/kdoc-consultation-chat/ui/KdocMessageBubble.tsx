@@ -1,9 +1,11 @@
+import { type ReactNode } from 'react';
 import { KdocMsgAvatar } from './icons/KdocChatIcons';
 import { formatTime } from '../lib/chat-time-utils';
 
 interface KdocAdminMessageBubbleProps {
   content: string;
   createdAt: string | Date;
+  children?: ReactNode;
 }
 
 interface KdocUserMessageBubbleProps {
@@ -48,19 +50,25 @@ function UserTail() {
         flexShrink: 0,
         overflow: 'visible',
         display: 'block',
-        marginLeft: '-0.5px',
+        marginLeft: '-11px',
         alignSelf: 'flex-end',
       }}
     >
+      <defs>
+        <linearGradient id='user-tail-gradient' x1='8.20862' y1='0' x2='8.20862' y2='20.3225' gradientUnits='userSpaceOnUse'>
+          <stop stopColor='#6E44F9' />
+          <stop offset='1' stopColor='#6744FA' />
+        </linearGradient>
+      </defs>
       <path
         d='M16.3048 20.1846C11.1048 20.9846 5.97148 18.1212 4.30482 16.2879C6.02269 12.1914 -4.5831 2.24186 2.4169 2.24148C4.03551 2.24148 5.41797 -1.9986 11.3048 1.1846C11.326 2.47144 11.3048 6.92582 11.3048 7.6842C11.3048 18.1842 17.3048 19.5813 16.3048 20.1846Z'
-        fill='#6544fa'
+        fill='url(#user-tail-gradient)'
       />
     </svg>
   );
 }
 
-export function KdocAdminMessageBubble({ content, createdAt }: KdocAdminMessageBubbleProps) {
+export function KdocAdminMessageBubble({ content, createdAt, children }: KdocAdminMessageBubbleProps) {
   return (
     <div className='mb-4 flex flex-col gap-1'>
       <div className='flex items-center gap-2'>
@@ -68,10 +76,17 @@ export function KdocAdminMessageBubble({ content, createdAt }: KdocAdminMessageB
         <span className='text-sm font-semibold text-[#404040]'>K-DOC</span>
       </div>
       <div className='flex items-end gap-2 pl-[38px]'>
-        <div className='flex max-w-[75%] items-start'>
+        <div className={`flex items-start ${children ? 'w-full' : ''} max-w-[245px]`}>
           <AdminTail />
-          <div className='relative z-10 rounded-xl bg-[#f5f5f5] px-3 py-2'>
-            <p className='whitespace-pre-line text-sm text-[#404040] [overflow-wrap:anywhere]'>{content}</p>
+          <div className='relative z-10 flex-1 rounded-xl bg-[#f5f5f5] px-3 py-2'>
+            {children ? (
+              <div className='flex flex-col gap-3'>
+                <p className='whitespace-pre-line text-sm text-[#404040] break-words'>{content}</p>
+                {children}
+              </div>
+            ) : (
+              <p className='whitespace-pre-line text-sm text-[#404040] break-words'>{content}</p>
+            )}
           </div>
         </div>
         <span className='shrink-0 text-xs text-[#737373]'>{formatTime(createdAt)}</span>
@@ -90,7 +105,7 @@ export function KdocUserMessageBubble({ content, createdAt }: KdocUserMessageBub
             className='rounded-xl px-3 py-2'
             style={{ background: 'linear-gradient(to bottom, #8b45f6, #6544fa)' }}
           >
-            <p className='whitespace-pre-line text-sm text-[#fafafa] [overflow-wrap:anywhere]'>{content}</p>
+            <p className='whitespace-pre-line text-sm text-[#fafafa] break-words'>{content}</p>
           </div>
           <UserTail />
         </div>

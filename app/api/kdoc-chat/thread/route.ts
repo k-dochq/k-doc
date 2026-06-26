@@ -8,8 +8,6 @@ interface CreateThreadBody {
   guestName?: string;
   guestEmail?: string;
   guestNationality?: string;
-  /** 운영시간 분기에 따른 CMS 완료 메시지 — 제공 시 어드민 메시지로 자동 저장 */
-  autoReplyMessage?: string;
 }
 
 // POST /api/kdoc-chat/thread — thread 생성 (회원/비회원 모두 허용)
@@ -22,7 +20,7 @@ export async function POST(request: NextRequest) {
     const userId = session?.user?.id ?? null;
 
     const body: CreateThreadBody = await request.json();
-    const { category, guestName, guestEmail, guestNationality, autoReplyMessage } = body;
+    const { category, guestName, guestEmail, guestNationality } = body;
 
     if (!category) {
       return NextResponse.json({ success: false, error: 'MISSING_CATEGORY' }, { status: 400 });
@@ -40,17 +38,6 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    if (autoReplyMessage?.trim()) {
-      await prisma.kdocChatMessage.create({
-        data: {
-          id: uuidv4(),
-          threadId: thread.id,
-          senderType: 'ADMIN',
-          content: autoReplyMessage.trim(),
-        },
-      });
-    }
-
     return NextResponse.json({ success: true, thread });
   } catch (error) {
     console.error('POST /api/kdoc-chat/thread error:', error);
@@ -58,9 +45,57 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET /api/kdoc-chat/thread — 회원의 활성 thread 목록 조회
-export async function GET() {
+const threadWithLastMessageArgs = {
+  orderBy: { updatedAt: 'desc' as const },
+  include: {
+    KdocChatMessage: {
+      orderBy: { createdAt: 'desc' as const },
+      take: 1,
+    },
+  },
+} as const;
+
+type RawThreadWithMessage = Awaited<
+  ReturnType<typeof prisma.kdocChatThread.findMany<typeof threadWithLastMessageArgs>>
+>[number];
+
+function serializeThread(t: RawThreadWithMessage) {
+  const last = t.KdocChatMessage[0] ?? null;
+  return {
+    id: t.id,
+    status: t.status,
+    category: t.category,
+    userId: t.userId,
+    guestName: t.guestName,
+    guestEmail: t.guestEmail,
+    guestNationality: t.guestNationality,
+    createdAt: t.createdAt,
+    updatedAt: t.updatedAt,
+    lastMessageContent: last?.content ?? null,
+    lastMessageDate: last?.createdAt ?? null,
+    lastMessageSenderType: last?.senderType ?? null,
+  };
+}
+
+// GET /api/kdoc-chat/thread — thread 목록 조회
+// ?guestIds=id1,id2  → 특정 ID 배열로 조회 (비회원 localStorage 스레드용)
+// (파라미터 없음)    → 로그인 유저의 전체 목록 조회
+export async function GET(request: NextRequest) {
   try {
+    const { searchParams } = new URL(request.url);
+    const guestIdsParam = searchParams.get('guestIds');
+
+    // 게스트 ID 지정 조회 (인증 불필요 — UUID 추측 불가)
+    if (guestIdsParam) {
+      const ids = guestIdsParam.split(',').filter(Boolean).slice(0, 20);
+      const raw = await prisma.kdocChatThread.findMany({
+        where: { id: { in: ids } },
+        ...threadWithLastMessageArgs,
+      });
+      return NextResponse.json({ success: true, threads: raw.map(serializeThread) });
+    }
+
+    // 로그인 유저 목록 조회
     const supabase = await createClient();
     const { data: { session } } = await supabase.auth.getSession();
 
@@ -68,13 +103,13 @@ export async function GET() {
       return NextResponse.json({ success: false, error: 'UNAUTHORIZED' }, { status: 401 });
     }
 
-    const threads = await prisma.kdocChatThread.findMany({
+    const raw = await prisma.kdocChatThread.findMany({
       where: { userId: session.user.id },
-      orderBy: { createdAt: 'desc' },
-      take: 10,
+      take: 50,
+      ...threadWithLastMessageArgs,
     });
 
-    return NextResponse.json({ success: true, threads });
+    return NextResponse.json({ success: true, threads: raw.map(serializeThread) });
   } catch (error) {
     console.error('GET /api/kdoc-chat/thread error:', error);
     return NextResponse.json({ success: false, error: 'INTERNAL_SERVER_ERROR' }, { status: 500 });
