@@ -5,6 +5,7 @@ import { type Dictionary } from 'shared/model/types';
 import { type ChatMessage } from '../api/entities/types';
 import { formatMessageTime } from '../lib/chat-utils';
 import { analyzeMessageContent } from '../lib/message-content-handler';
+import { getConsultationHospitalDetailHref } from '../lib/consultation-hospital-link';
 import { HospitalPictureMessage } from './HospitalPictureMessage';
 import { HospitalEditorMessage } from './HospitalEditorMessage';
 import { HospitalTextMessage } from './HospitalTextMessage';
@@ -29,7 +30,7 @@ export function HospitalMessage({
   dict,
 }: HospitalMessageProps) {
   const formattedTime = formatMessageTime(message.timestamp);
-  const hospitalHref = hospitalId ? `/v2/hospital/${hospitalId}` : undefined;
+  const hospitalHref = getConsultationHospitalDetailHref(hospitalId);
 
   // returnUrl을 현재 URL의 경로로 설정 (pathname만)
   const returnUrl = typeof window !== 'undefined' ? window.location.pathname : undefined;
