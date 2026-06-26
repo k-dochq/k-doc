@@ -69,7 +69,7 @@ export default function NotFound() {
         {/* K-DOC 로고 */}
         <div className='mb-8 flex justify-center'>
           <div className='text-primary'>
-            <HeaderLogo />
+            <HeaderLogo priority={false} />
           </div>
         </div>
 

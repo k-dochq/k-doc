@@ -8,6 +8,11 @@ import {
   getNextBusinessDayInKorea,
 } from './korean-holidays';
 
+/** 운영 개시 시각 (한국 시간 09:00) */
+export const OPEN_HOUR = 9;
+/** 운영 종료 시각 (한국 시간 18:00) */
+export const CLOSE_HOUR = 18;
+
 export interface KoreaTimeComponents {
   year: number;
   month: number;
@@ -124,4 +129,36 @@ export function checkBusinessHoursInKorea(): {
     isPublicHoliday,
     nextBusinessDay,
   };
+}
+
+/**
+ * 현재(한국 시간) 기준 다음 운영 개시 시각(09:00 KST)을 Date로 반환합니다.
+ * - 오늘이 영업일(평일·비공휴일)이고 09:00 이전 → 오늘 09:00
+ * - 그 외(영업종료 후 / 주말 / 공휴일) → 다음 영업일 09:00
+ * 현재 운영 중이면 null.
+ */
+export function getNextOpenInKorea(): Date | null {
+  const k = getKoreaTimeComponents();
+
+  const todayKorea = new Date(
+    `${k.year}-${String(k.month).padStart(2, '0')}-${String(k.day).padStart(2, '0')}T00:00:00+09:00`,
+  );
+  const todayIsBusinessDay = isWeekday(k.dayOfWeek) && !isKoreanPublicHoliday(todayKorea);
+
+  // 운영 중이면 다음 개시 시각 없음
+  if (todayIsBusinessDay && isBusinessHours(k.hours, k.minutes)) {
+    return null;
+  }
+
+  // 오늘이 영업일이고 아직 개시 전(09:00 이전) → 오늘 09:00
+  const beforeOpen = k.hours * 60 + k.minutes < OPEN_HOUR * 60;
+  if (todayIsBusinessDay && beforeOpen) {
+    return new Date(
+      `${k.year}-${String(k.month).padStart(2, '0')}-${String(k.day).padStart(2, '0')}T${String(OPEN_HOUR).padStart(2, '0')}:00:00+09:00`,
+    );
+  }
+
+  // 그 외 → 다음 영업일 09:00 (getNextBusinessDayInKorea는 해당일 00:00 KST 반환)
+  const nextBusinessDay = getNextBusinessDayInKorea(new Date());
+  return new Date(nextBusinessDay.getTime() + OPEN_HOUR * 60 * 60 * 1000);
 }
