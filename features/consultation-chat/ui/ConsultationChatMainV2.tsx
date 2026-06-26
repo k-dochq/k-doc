@@ -6,6 +6,7 @@ import { PageHeaderV2 } from 'shared/ui/page-header/PageHeaderV2';
 import { MessageList } from './MessageList';
 import { ChatInput } from './ChatInput';
 import { type ChatMessage } from '../api/entities/types';
+import { getConsultationHospitalDetailHref } from '../lib/consultation-hospital-link';
 
 interface ConsultationChatMainV2Props {
   lang: Locale;
@@ -38,7 +39,7 @@ export function ConsultationChatMainV2({
     <div className='flex h-screen flex-col bg-white'>
       <PageHeaderV2
         title={hospitalName}
-        titleHref={`/v2/hospital/${hospitalId}`}
+        titleHref={getConsultationHospitalDetailHref(hospitalId)}
         fallbackUrl={`/${lang}/consultation`}
         closeUrl='/'
       />
