@@ -147,18 +147,23 @@ async function fetchSortedHospitalPage(params: {
     : Prisma.sql`NULL::uuid`;
 
   // 진료과 필터 (단일 or 복수)
+  // specialtyType 컬럼은 PostgreSQL enum("MedicalSpecialtyType")이므로 ::text 캐스팅 필요
   const specialtyFilter =
     specialtyType
       ? Prisma.sql`AND EXISTS (
           SELECT 1 FROM "HospitalMedicalSpecialty" hms
           JOIN "MedicalSpecialty" ms ON ms.id = hms."medicalSpecialtyId"
-          WHERE hms."hospitalId" = h.id AND ms."specialtyType" = ${specialtyType} AND ms."isActive" = true
+          WHERE hms."hospitalId" = h.id
+            AND ms."specialtyType"::text = ${specialtyType}
+            AND ms."isActive" = true
         )`
       : specialtyTypes && specialtyTypes.length > 0
         ? Prisma.sql`AND EXISTS (
             SELECT 1 FROM "HospitalMedicalSpecialty" hms
             JOIN "MedicalSpecialty" ms ON ms.id = hms."medicalSpecialtyId"
-            WHERE hms."hospitalId" = h.id AND ms."specialtyType" = ANY(${specialtyTypes}::text[]) AND ms."isActive" = true
+            WHERE hms."hospitalId" = h.id
+              AND ms."specialtyType"::text = ANY(${specialtyTypes}::text[])
+              AND ms."isActive" = true
           )`
         : Prisma.empty;
 
