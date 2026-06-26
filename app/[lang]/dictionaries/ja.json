@@ -2691,5 +2691,56 @@
       "title": "11. お客様のお問い合わせ",
       "p1": "サービスご利用中のお問い合わせは、K-DOCカスタマーセンターまたは相談チャットよりお問い合わせください。"
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "title": "K-DOC 相談",
+      "statusOpen": "相談受付中",
+      "statusClosedFormat": "営業時間外 · {schedule}から",
+      "subtitle": "迅速な回答をお届けします",
+      "backLabel": "戻る",
+      "menuLabel": "相談履歴",
+      "emptyHistory": "相談履歴がありません。",
+      "noMessages": "まだメッセージがありません。",
+      "historyLoadError": "履歴を読み込めませんでした。",
+      "newInquiry": "新規お問い合わせ"
+    },
+    "welcome": "こんにちは 😀\nK-DOC相談センターです。\n\n韓国の認証された病院のご紹介から、ご予約・通訳・コンシェルジュまで、すべてをご案内いたします。\n\n下のメニューからご希望の項目をお選びください。 😊",
+    "categories": {
+      "PLASTIC_SURGERY": "病院を探す",
+      "DERMATOLOGY_AESTHETIC": "K-DOCサービスガイド",
+      "CONCIERGE_RESERVATION": "K-DOCコンシェルジュサービス",
+      "OTHER_INQUIRY": "その他のお問い合わせ"
+    },
+    "guestForm": {
+      "infoMessage": "スムーズなご相談のために、情報をご入力ください。\nオフライン中はメールで回答通知をお送りします。\n\n(収集した個人情報は相談回答通知のみを目的として使用し、削除のご要望をいただくまで保持されます。)",
+      "nameLabel": "お名前",
+      "emailLabel": "メールアドレス",
+      "nationalityLabel": "国籍",
+      "placeholder": "入力してください",
+      "saveButton": "保存",
+      "savingButton": "接続中...",
+      "savedMessage": "情報が保存されました 😊\nご相談内容をご入力ください。\n必要に応じて写真もアップロードできます。\n順次ご回答いたします。",
+      "editButton": "情報を修正する",
+      "nationalitySearchPlaceholder": "国を検索",
+      "nationalityAllCountries": "すべての国",
+      "nationalitySelectPlaceholder": "国籍を選択してください",
+      "errors": {
+        "nameRequired": "お名前を入力してください",
+        "emailRequired": "メールアドレスを入力してください",
+        "emailInvalid": "正しいメールアドレスを入力してください",
+        "nationalityRequired": "国籍を選択してください"
+      }
+    },
+    "input": {
+      "placeholder": "何でもお聞きください！",
+      "sendLabel": "送信",
+      "attachLabel": "ファイルを添付"
+    },
+    "loading": "メッセージを読み込み中...",
+    "faq": {
+      "consultButton": "相談する",
+      "mainMenuButton": "メインメニュー"
+    }
   }
 }

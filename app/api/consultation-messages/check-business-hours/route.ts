@@ -4,7 +4,7 @@ import {
   type CheckBusinessHoursResponse,
   type CheckBusinessHoursDetectedLanguage,
 } from 'features/consultation-chat/api/entities/types';
-import { checkBusinessHoursInKorea } from 'features/consultation-chat/api/lib/business-hours-utils';
+import { checkBusinessHoursInKorea } from 'shared/lib/business-hours';
 import { detectLanguage } from 'features/consultation-chat/api/lib/language-detection-utils';
 import {
   getAutoResponseMessage,

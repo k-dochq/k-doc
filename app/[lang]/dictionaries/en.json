@@ -2692,5 +2692,56 @@
       "title": "11. Customer Inquiries",
       "p1": "For inquiries while using the service, you can contact us through the K-DOC customer center or consultation chat."
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "title": "K-DOC Consultation",
+      "statusOpen": "Available now",
+      "statusClosedFormat": "Closed · Opens {schedule}",
+      "subtitle": "Get a quick response",
+      "backLabel": "Back",
+      "menuLabel": "Consultation History",
+      "emptyHistory": "No consultation history.",
+      "noMessages": "No messages yet.",
+      "historyLoadError": "Failed to load history.",
+      "newInquiry": "New Inquiry"
+    },
+    "welcome": "Hello 😀\nThis is the K-DOC Consultation Center.\n\nWe guide you through everything from recommending verified hospitals in Korea to reservations, interpretation, and concierge services.\n\nPlease select the option you need from the menu below. 😊",
+    "categories": {
+      "PLASTIC_SURGERY": "Get Hospital Recommendations",
+      "DERMATOLOGY_AESTHETIC": "K-DOC Service Guide",
+      "CONCIERGE_RESERVATION": "K-DOC Concierge Service",
+      "OTHER_INQUIRY": "Other Inquiries"
+    },
+    "guestForm": {
+      "infoMessage": "Please enter your information for a smooth consultation.\nWe'll send you an email notification when you go offline.\n\n(Your personal information will only be used for consultation reply notifications and cannot be deleted until you request it.)",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "nationalityLabel": "Nationality",
+      "placeholder": "Please enter",
+      "saveButton": "Save",
+      "savingButton": "Connecting...",
+      "savedMessage": "Your information has been saved 😊\nPlease enter your consultation.\nYou can also upload photos if needed.\nWe will respond in order.",
+      "editButton": "Edit information",
+      "nationalitySearchPlaceholder": "Search country",
+      "nationalityAllCountries": "All Countries",
+      "nationalitySelectPlaceholder": "Select your nationality",
+      "errors": {
+        "nameRequired": "Please enter your name",
+        "emailRequired": "Please enter your email",
+        "emailInvalid": "Please enter a valid email address",
+        "nationalityRequired": "Please select your nationality"
+      }
+    },
+    "input": {
+      "placeholder": "Ask us anything!",
+      "sendLabel": "Send",
+      "attachLabel": "Attach file"
+    },
+    "loading": "Loading messages...",
+    "faq": {
+      "consultButton": "Consult",
+      "mainMenuButton": "Main Menu"
+    }
   }
 }

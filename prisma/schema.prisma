@@ -1100,6 +1100,7 @@ model HospitalCurationList {
   @@schema("public")
 }
 
+
 enum AdminGrade {
   STAFF
   SUPER_ADMIN

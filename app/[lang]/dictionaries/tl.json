@@ -2691,5 +2691,56 @@
       "title": "11. Mga Katanungan ng Customer",
       "p1": "Para sa mga katanungan habang gumagamit ng serbisyo, maaari kang makipag-ugnayan sa amin sa pamamagitan ng K-DOC customer center o consultation chat."
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "title": "K-DOC Konsultasyon",
+      "statusOpen": "Available ngayon",
+      "statusClosedFormat": "Sarado · Magbubukas {schedule}",
+      "subtitle": "Makakuha ng mabilis na sagot",
+      "backLabel": "Bumalik",
+      "menuLabel": "Kasaysayan ng Konsultasyon",
+      "emptyHistory": "Walang kasaysayan ng konsultasyon.",
+      "noMessages": "Wala pang mensahe.",
+      "historyLoadError": "Hindi ma-load ang listahan.",
+      "newInquiry": "Bagong Katanungan"
+    },
+    "welcome": "Kumusta 😀\nIto ang K-DOC Consultation Center.\n\nGinagabayan namin kayo sa lahat ng bagay, mula sa pag-rekumenda ng mga na-verify na ospital sa Korea hanggang sa reservasyon, interpretasyon, at serbisyong concierge.\n\nMangyaring piliin ang opsyong kailangan ninyo mula sa menu sa ibaba. 😊",
+    "categories": {
+      "PLASTIC_SURGERY": "Makakuha ng Rekomendasyon ng Ospital",
+      "DERMATOLOGY_AESTHETIC": "Gabay sa Serbisyo ng K-DOC",
+      "CONCIERGE_RESERVATION": "K-DOC Concierge Service",
+      "OTHER_INQUIRY": "Iba pang Katanungan"
+    },
+    "guestForm": {
+      "infoMessage": "Mangyaring ilagay ang inyong impormasyon para sa maayos na konsultasyon.\nMagpapadala kami ng email na abiso kapag nag-offline kayo.\n\n(Ang inyong personal na impormasyon ay gagamitin lamang para sa mga abiso ng sagot sa konsultasyon at hindi maaaring tanggalin hanggang hindi kayo humihiling.)",
+      "nameLabel": "Pangalan",
+      "emailLabel": "Email",
+      "nationalityLabel": "Nasyonalidad",
+      "placeholder": "Mangyaring ilagay",
+      "saveButton": "I-save",
+      "savingButton": "Nagkokonekta...",
+      "savedMessage": "Nai-save na ang inyong impormasyon 😊\nMangyaring ilagay ang nilalaman ng inyong konsultasyon.\nMaaari din kayong mag-upload ng mga larawan kung kinakailangan.\nSasagutin namin sa pagkakasunod.",
+      "editButton": "I-edit ang impormasyon",
+      "nationalitySearchPlaceholder": "Maghanap ng bansa",
+      "nationalityAllCountries": "Lahat ng Bansa",
+      "nationalitySelectPlaceholder": "Piliin ang iyong nasyonalidad",
+      "errors": {
+        "nameRequired": "Mangyaring ilagay ang iyong pangalan",
+        "emailRequired": "Mangyaring ilagay ang iyong email",
+        "emailInvalid": "Mangyaring maglagay ng wastong email",
+        "nationalityRequired": "Mangyaring piliin ang iyong nasyonalidad"
+      }
+    },
+    "input": {
+      "placeholder": "Itanong ang kahit ano!",
+      "sendLabel": "Ipadala",
+      "attachLabel": "Mag-attach ng file"
+    },
+    "loading": "Nilo-load ang mga mensahe...",
+    "faq": {
+      "consultButton": "Kumonsulta",
+      "mainMenuButton": "Pangunahing Menu"
+    }
   }
 }

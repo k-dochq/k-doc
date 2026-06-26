@@ -2691,5 +2691,56 @@
       "title": "11. استفسارات العملاء",
       "p1": "للاستفسارات أثناء استخدام الخدمة، يمكنك التواصل معنا من خلال مركز خدمة عملاء K-DOC أو دردشة الاستشارة."
     }
+  },
+  "kdocChat": {
+    "gnb": {
+      "title": "استشارة K-DOC",
+      "statusOpen": "متاح الآن",
+      "statusClosedFormat": "خارج ساعات العمل · يفتح {schedule}",
+      "subtitle": "احصل على رد سريع",
+      "backLabel": "رجوع",
+      "menuLabel": "سجل الاستشارات",
+      "emptyHistory": "لا يوجد سجل استشارات.",
+      "noMessages": "لا توجد رسائل بعد.",
+      "historyLoadError": "فشل تحميل السجل.",
+      "newInquiry": "استفسار جديد"
+    },
+    "welcome": "مرحباً 😀\nهذا مركز استشارات K-DOC.\n\nنرشدك في كل خطوة، بدءاً من التوصية بمستشفيات معتمدة في كوريا إلى الحجز والترجمة وخدمات الكونسيرج.\n\nيرجى اختيار الخيار الذي تحتاجه من القائمة أدناه. 😊",
+    "categories": {
+      "PLASTIC_SURGERY": "الحصول على توصيات المستشفيات",
+      "DERMATOLOGY_AESTHETIC": "دليل خدمات K-DOC",
+      "CONCIERGE_RESERVATION": "خدمة الكونسيرج K-DOC",
+      "OTHER_INQUIRY": "استفسارات أخرى"
+    },
+    "guestForm": {
+      "infoMessage": "يرجى إدخال معلوماتك لاستشارة سلسة.\nسنرسل لك إشعاراً بالبريد الإلكتروني عند عدم الاتصال بالإنترنت.\n\n(ستُستخدم معلوماتك الشخصية فقط لإشعارات الرد على الاستشارة ولن تُحذف حتى تطلب ذلك.)",
+      "nameLabel": "الاسم",
+      "emailLabel": "البريد الإلكتروني",
+      "nationalityLabel": "الجنسية",
+      "placeholder": "يرجى الإدخال",
+      "saveButton": "حفظ",
+      "savingButton": "جارٍ الاتصال...",
+      "savedMessage": "تم حفظ معلوماتك 😊\nيرجى إدخال محتوى استشارتك.\nيمكنك أيضاً تحميل الصور إذا لزم الأمر.\nسنرد بالترتيب.",
+      "editButton": "تعديل المعلومات",
+      "nationalitySearchPlaceholder": "ابحث عن دولة",
+      "nationalityAllCountries": "جميع الدول",
+      "nationalitySelectPlaceholder": "اختر جنسيتك",
+      "errors": {
+        "nameRequired": "الرجاء إدخال اسمك",
+        "emailRequired": "الرجاء إدخال بريدك الإلكتروني",
+        "emailInvalid": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
+        "nationalityRequired": "الرجاء تحديد جنسيتك"
+      }
+    },
+    "input": {
+      "placeholder": "اسألنا أي شيء!",
+      "sendLabel": "إرسال",
+      "attachLabel": "إرفاق ملف"
+    },
+    "loading": "جارٍ تحميل الرسائل...",
+    "faq": {
+      "consultButton": "استشارة",
+      "mainMenuButton": "القائمة الرئيسية"
+    }
   }
 }
