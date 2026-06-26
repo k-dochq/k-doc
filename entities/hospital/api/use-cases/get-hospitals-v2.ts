@@ -125,10 +125,17 @@ type CurationRow = {
   curation_badge: string | null;
 };
 
+// 어드민에서 "추천" HospitalCategory 의 UUID (하드코딩 – DB 마이그레이션 없이 변경 불가)
+const RECOMMENDED_CATEGORY_ID = '893fa5bd-dc1d-48c7-ac46-78e72742d32c';
+
 /**
  * Hospital LEFT JOIN HospitalCurationEntry 방식으로 DB에서 직접 정렬/페이지네이션.
- * - 큐레이션 등록 병원: position ASC
- * - 미등록 병원: position NULLS LAST → rating DESC 보조 정렬
+ *
+ * 카테고리 필터 전략:
+ *  - RECOMMEND 탭: HospitalCategoryAssignment(추천 카테고리 할당)로 필터
+ *                  → 큐레이션은 정렬(position) + 배지 전용
+ *  - EYES 등 전문분야 탭: MedicalSpecialty.specialtyType으로 필터
+ *                         → 큐레이션은 정렬(position) + 배지 전용
  */
 async function fetchSortedHospitalPage(params: {
   curationCategory: string | undefined;
@@ -146,8 +153,20 @@ async function fetchSortedHospitalPage(params: {
     ? Prisma.sql`(SELECT id FROM "HospitalCurationList" WHERE category = ${curationCategory} AND "sortType" = ${adminSortType} LIMIT 1)`
     : Prisma.sql`NULL::uuid`;
 
-  // 진료과 필터 (단일 or 복수)
+  // ── RECOMMEND 탭 필터 ──────────────────────────────────────────────────────
+  // 추천 카테고리가 할당된 병원만 표시 (HospitalCategoryAssignment 기반)
+  const recommendFilter =
+    curationCategory === 'RECOMMEND'
+      ? Prisma.sql`AND EXISTS (
+          SELECT 1 FROM "HospitalCategoryAssignment" hca
+          WHERE hca."hospitalId" = h.id
+            AND hca."categoryId" = ${RECOMMENDED_CATEGORY_ID}::uuid
+        )`
+      : Prisma.empty;
+
+  // ── 전문분야 탭 필터 ───────────────────────────────────────────────────────
   // specialtyType 컬럼은 PostgreSQL enum("MedicalSpecialtyType")이므로 ::text 캐스팅 필요
+  // RECOMMEND일 때는 specialtyType/specialtyTypes가 undefined이므로 자동으로 Prisma.empty
   const specialtyFilter =
     specialtyType
       ? Prisma.sql`AND EXISTS (
@@ -178,6 +197,7 @@ async function fetchSortedHospitalPage(params: {
       SELECT COUNT(*) AS count
       FROM "Hospital" h
       WHERE h."isActive" = true
+      ${recommendFilter}
       ${specialtyFilter}
       ${districtFilter}
     `,
@@ -189,6 +209,7 @@ async function fetchSortedHospitalPage(params: {
         AND e."listId"     = ${listSubquery}
         AND e."isVisible"  = true
       WHERE h."isActive" = true
+      ${recommendFilter}
       ${specialtyFilter}
       ${districtFilter}
       ORDER BY e.position ASC NULLS LAST, h.rating DESC
