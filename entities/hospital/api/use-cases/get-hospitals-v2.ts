@@ -192,6 +192,18 @@ async function fetchSortedHospitalPage(params: {
       ? Prisma.sql`AND h."districtId" = ANY(${districtIds}::uuid[])`
       : Prisma.empty;
 
+  // ── 정렬 기준 ──────────────────────────────────────────────────────────────
+  //  - 인기순(POPULAR): 큐레이션 position 기준 (admin 수동 정렬)
+  //  - 최신순(NEWEST): 병원 등록일 내림차순
+  //  - 리뷰많은순(RECOMMENDED): 리뷰 수 내림차순
+  // (멤버십은 LEFT JOIN + 할당 필터라 큐레이션 등록 여부와 무관하게 모두 노출됨)
+  const orderClause =
+    adminSortType === 'NEWEST'
+      ? Prisma.sql`ORDER BY h."createdAt" DESC, h.id ASC`
+      : adminSortType === 'RECOMMENDED'
+        ? Prisma.sql`ORDER BY (SELECT COUNT(*) FROM "Review" r WHERE r."hospitalId" = h.id) DESC, h.id ASC`
+        : Prisma.sql`ORDER BY e.position ASC NULLS LAST, h.rating DESC`;
+
   const [countResult, rows] = await Promise.all([
     prisma.$queryRaw<[{ count: bigint }]>`
       SELECT COUNT(*) AS count
@@ -212,7 +224,7 @@ async function fetchSortedHospitalPage(params: {
       ${recommendFilter}
       ${specialtyFilter}
       ${districtFilter}
-      ORDER BY e.position ASC NULLS LAST, h.rating DESC
+      ${orderClause}
       LIMIT  ${limit}
       OFFSET ${offset}
     `,
