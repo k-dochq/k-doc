@@ -126,47 +126,41 @@ export function SearchV2Content({ lang, dict, searchParams }: SearchV2ContentPro
           <p className="font-['Pretendard'] text-base font-semibold leading-6 text-[#404040]">
             {dict.search?.categoryTitle}
           </p>
+          {/* 메인 홈(QuickMenuV2)과 동일한 5×2 배열 */}
           <div className='flex flex-col gap-3'>
-            {Array.from({ length: Math.ceil(QUICK_MENU_CATEGORIES_V2.length / 4) }).map(
-              (_, rowIndex) => {
-                const rowItems = QUICK_MENU_CATEGORIES_V2.slice(rowIndex * 4, rowIndex * 4 + 4);
-                const isPartialRow = rowItems.length < 4;
-                return (
-                  <div
-                    key={rowIndex}
-                    className={`flex items-start ${isPartialRow ? 'justify-start gap-x-[calc((100%-240px)/3)]' : 'justify-between'}`}
-                  >
-                    {rowItems.map((category) => {
-                      const label = getLocalizedTextByLocale(category.labels, lang);
-                      return (
-                        <button
-                          key={category.type}
-                          type='button'
-                          onClick={() => {
-                            addSearch(label);
-                            router.push(`/v2/search?q=${encodeURIComponent(label)}`);
+            {[QUICK_MENU_CATEGORIES_V2.slice(0, 5), QUICK_MENU_CATEGORIES_V2.slice(5, 10)].map(
+              (rowItems, rowIndex) => (
+                <div key={rowIndex} className='grid grid-cols-5'>
+                  {rowItems.map((category) => {
+                    const label = getLocalizedTextByLocale(category.labels, lang);
+                    return (
+                      <button
+                        key={category.type}
+                        type='button'
+                        onClick={() => {
+                          addSearch(label);
+                          router.push(`/v2/search?q=${encodeURIComponent(label)}`);
+                        }}
+                        className='flex flex-col items-center gap-1'
+                      >
+                        <div
+                          className='flex size-[60px] items-center justify-center rounded-2xl bg-white'
+                          style={{
+                            background:
+                              'linear-gradient(white, white) padding-box, linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, var(--color-sub-900) 100%) border-box',
+                            border: '1px solid transparent',
                           }}
-                          className='flex w-[60px] flex-col items-center gap-1'
                         >
-                          <div
-                            className='flex size-[60px] items-center justify-center rounded-2xl bg-white'
-                            style={{
-                              background:
-                                'linear-gradient(white, white) padding-box, linear-gradient(90deg, #3E57E2 0%, #B133FF 40%, var(--color-sub-900) 100%) border-box',
-                              border: '1px solid transparent',
-                            }}
-                          >
-                            {category.icon()}
-                          </div>
-                          <p className="w-full text-center font-['Pretendard'] text-xs font-medium leading-4 text-[#404040]">
-                            {label}
-                          </p>
-                        </button>
-                      );
-                    })}
-                  </div>
-                );
-              },
+                          {category.icon()}
+                        </div>
+                        <span className='line-clamp-2 overflow-hidden text-center text-xs font-medium leading-4 whitespace-pre-line text-neutral-700'>
+                          {label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              ),
             )}
           </div>
         </div>
