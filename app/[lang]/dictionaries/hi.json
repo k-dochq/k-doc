@@ -460,7 +460,7 @@
         "privacyPolicy": "गोपनीयता नीति (आवश्यक)",
         "marketingNotifications": "इवेंट/सेवा लाभ सूचनाएँ",
         "requiredError": "कृपया आवश्यक शर्तों से सहमत हों।",
-        "agreeAndStart": "सभी से सहमत होकर शुरू करें"
+        "agreeAndStart": "शुरू करें"
       },
       "placeholders": {
         "email": "अपना ईमेल दर्ज करें",

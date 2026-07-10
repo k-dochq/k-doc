@@ -460,7 +460,7 @@
         "privacyPolicy": "سياسة الخصوصية (إلزامي)",
         "marketingNotifications": "إشعارات مزايا الفعاليات/الخدمة",
         "requiredError": "يرجى الموافقة على البنود الإلزامية.",
-        "agreeAndStart": "الموافقة على الكل والبدء"
+        "agreeAndStart": "ابدأ"
       },
       "placeholders": {
         "email": "أدخل بريدك الإلكتروني",

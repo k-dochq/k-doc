@@ -460,7 +460,7 @@
         "privacyPolicy": "Privacy Policy (Required)",
         "marketingNotifications": "Event/Service Benefit Notifications",
         "requiredError": "Please agree to the required terms.",
-        "agreeAndStart": "Agree to all and start"
+        "agreeAndStart": "시작하기"
       },
       "placeholders": {
         "email": "your-email@example.com",

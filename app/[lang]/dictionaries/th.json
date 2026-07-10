@@ -460,7 +460,7 @@
         "privacyPolicy": "นโยบายความเป็นส่วนตัว (จำเป็น)",
         "marketingNotifications": "การแจ้งเตือนสิทธิประโยชน์/บริการ",
         "requiredError": "โปรดยอมรับข้อตกลงที่จำเป็น",
-        "agreeAndStart": "ยอมรับทั้งหมดและเริ่มต้น"
+        "agreeAndStart": "เริ่มต้น"
       },
       "placeholders": {
         "email": "กรอกอีเมลของคุณ",
