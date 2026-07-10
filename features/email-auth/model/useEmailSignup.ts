@@ -8,6 +8,7 @@ import { generateNickname } from 'shared/lib/nickname-generator';
 import { trackSignUpComplete, trackCompleteRegistration } from 'shared/lib/analytics';
 import { getFirstTouch, clearFirstTouch } from 'shared/lib/marketing-attribution';
 import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
+import { normalizePassportName } from 'shared/lib/validation/passport-name';
 
 interface UseEmailSignupParams {
   locale: Locale;
@@ -65,7 +66,9 @@ export function useEmailSignup({ locale, dict }: UseEmailSignupParams): UseEmail
         nickname: nicknameResult.display, // 생성된 닉네임 추가
         locale: userLocale, // locale 추가
       };
-      if (signupData.passportName) metadata.passport_name = signupData.passportName;
+      // 여권 영문 이름은 선택 입력 — 빈 값(공백만 포함)이면 저장하지 않음
+      const normalizedPassportName = normalizePassportName(signupData.passportName ?? '');
+      if (normalizedPassportName) metadata.passport_name = normalizedPassportName;
       if (signupData.nationality) metadata.nationality = signupData.nationality;
       if (signupData.gender) metadata.gender = signupData.gender;
       if (signupData.countryCode) metadata.country_code = signupData.countryCode;

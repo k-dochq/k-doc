@@ -12,6 +12,7 @@ import { trackSignUpComplete, trackCompleteRegistration } from 'shared/lib/analy
 import { AdditionalInfoStep1FormV2 } from 'features/social-auth/ui/AdditionalInfoStep1FormV2';
 import { AdditionalInfoStep2V2 } from 'features/social-auth/ui/AdditionalInfoStep2V2';
 import { localeToDatabaseLocale } from 'shared/lib/utils/locale-mapper';
+import { normalizePassportName } from 'shared/lib/validation/passport-name';
 
 interface AdditionalInfoContentV2Props {
   lang: Locale;
@@ -136,7 +137,8 @@ export function AdditionalInfoContentV2({
     const marketingAttribution = getFirstTouch();
 
     updateProfile({
-      passportName: formData.passportName,
+      // 선택 입력 — 빈 값이면 저장하지 않도록 undefined로 전달
+      passportName: normalizePassportName(formData.passportName),
       nationality: formData.nationality,
       gender: formData.gender,
       genderType: genderType,
@@ -189,7 +191,9 @@ export function AdditionalInfoContentV2({
           onSubmit={handleFinalSubmit}
           isBusy={isBusy}
           isRequiredAgreementsValid={isRequiredAgreementsValid}
-          error={error?.message || dict.auth?.signup?.errors?.updateProfileError || undefined}
+          error={
+            error ? error.message || dict.auth?.signup?.errors?.updateProfileError : undefined
+          }
         />
       )}
     </div>

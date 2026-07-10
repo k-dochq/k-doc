@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { validatePassportName } from 'shared/lib/validation/passport-name';
 
 export interface SignupFormData {
   email: string;
@@ -84,11 +85,10 @@ export function useSignupForm({ lang, dict }: UseSignupFormParams) {
         dict.auth?.signup?.errors?.passwordMismatch || '비밀번호가 일치하지 않습니다.';
     }
 
-    // 여권 영문 이름 검증 (필수)
-    if (!formData.passportName.trim()) {
-      newErrors.passportName =
-        dict.auth?.signup?.errors?.passportNameRequired ||
-        '여권상의 영문 이름을 입력하지 않으면 치료 이용이 제한될 수 있습니다.';
+    // 여권 영문 이름 검증 (선택) — 빈 값 허용, 입력한 경우에만 형식 검증
+    const passportNameError = validatePassportName(formData.passportName, dict);
+    if (passportNameError) {
+      newErrors.passportName = passportNameError;
     }
 
     // 성별 검증 (선택)
@@ -106,7 +106,8 @@ export function useSignupForm({ lang, dict }: UseSignupFormParams) {
       formData.password === formData.confirmPassword &&
       formData.password.length >= 8 &&
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
-      formData.passportName.trim()
+      // passportName은 선택사항 — 비어 있어도 되고, 입력했다면 형식이 올바라야 함
+      !validatePassportName(formData.passportName, dict)
       // gender는 선택사항이므로 검증에서 제외
     );
   };

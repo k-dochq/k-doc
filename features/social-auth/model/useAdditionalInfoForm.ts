@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
+import { validatePassportName } from 'shared/lib/validation/passport-name';
 
 export interface AdditionalInfoFormData {
   passportName: string;
@@ -52,19 +53,10 @@ export function useAdditionalInfoForm({ lang, dict }: UseAdditionalInfoFormParam
   const validateForm = (): boolean => {
     const newErrors: AdditionalInfoFormErrors = {};
 
-    // 여권 영문 이름 검증 (필수)
-    if (!formData.passportName.trim()) {
-      newErrors.passportName =
-        dict.auth?.signup?.errors?.passportNameRequired ||
-        'Treatment access may be limited without passport name in English.';
-    } else if (formData.passportName.trim().length < 2) {
-      newErrors.passportName =
-        dict.auth?.signup?.errors?.passportNameTooShort ||
-        'Passport name should be at least 2 characters.';
-    } else if (!/^[a-zA-Z\s]+$/.test(formData.passportName)) {
-      newErrors.passportName =
-        dict.auth?.signup?.errors?.passportNameInvalid ||
-        'Passport name should only contain English letters.';
+    // 여권 영문 이름 검증 (선택) — 빈 값 허용, 입력한 경우에만 형식 검증
+    const passportNameError = validatePassportName(formData.passportName, dict);
+    if (passportNameError) {
+      newErrors.passportName = passportNameError;
     }
 
     // 성별 검증 (선택)
@@ -75,7 +67,8 @@ export function useAdditionalInfoForm({ lang, dict }: UseAdditionalInfoFormParam
   };
 
   const isFormValid = (): boolean => {
-    return formData.passportName.trim() !== '';
+    // 필수 항목 없음. passportName은 비어 있어도 되고, 입력했다면 형식이 올바라야 함
+    return !validatePassportName(formData.passportName, dict);
     // gender는 선택사항이므로 검증에서 제외
   };
 
