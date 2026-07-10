@@ -132,7 +132,6 @@ export function SignupStep1FormV2({
           placeholder={dict.auth?.signup?.placeholders?.birthDate || 'Select your date of birth'}
           error={errors.birthDate}
           required={false}
-          optionalBracketsText={dict.auth?.signup?.optional || 'Optional'}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
           disabled={(date) => date > new Date()}
         />

@@ -207,7 +207,6 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
           locale={lang}
           dict={dict}
           required={false}
-          optionalBracketsText={dict.auth?.signup?.optional || '선택'}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
           disabled={(date) => date > new Date()}
         />
