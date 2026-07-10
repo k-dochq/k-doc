@@ -46,8 +46,7 @@ export function AdditionalInfoStep2V2({
   const allTitle =
     dict.auth?.signup?.termsAgreement?.allAgreed || 'Agree to all terms and conditions';
 
-  const agreeAndStartLabel =
-    dict.auth?.signup?.termsAgreement?.agreeAndStart || 'Agree to all and start';
+  const agreeAndStartLabel = dict.auth?.signup?.termsAgreement?.agreeAndStart || 'Get Started';
 
   return (
     <>

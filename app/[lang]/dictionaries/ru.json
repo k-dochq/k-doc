@@ -460,7 +460,7 @@
         "privacyPolicy": "Политика конфиденциальности (обязательно)",
         "marketingNotifications": "Уведомления о выгодах и сервисах",
         "requiredError": "Согласитесь с обязательными условиями.",
-        "agreeAndStart": "Принять всё и начать"
+        "agreeAndStart": "Начать"
       },
       "placeholders": {
         "email": "Введите email",

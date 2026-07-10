@@ -460,7 +460,7 @@
         "privacyPolicy": "プライバシーポリシー（必須）",
         "marketingNotifications": "イベント／サービス特典のお知らせ",
         "requiredError": "必須項目に同意してください。",
-        "agreeAndStart": "すべて同意して開始"
+        "agreeAndStart": "はじめる"
       },
       "placeholders": {
         "email": "メールアドレスを入力",
