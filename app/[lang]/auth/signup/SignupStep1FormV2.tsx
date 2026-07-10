@@ -90,7 +90,6 @@ export function SignupStep1FormV2({
 
         <InputFieldV2
           label={dict.auth?.signup?.passportName || 'Passport Name (English)'}
-          required
           type='text'
           value={formData.passportName}
           onChange={(e) => onUpdateField('passportName', e.target.value)}

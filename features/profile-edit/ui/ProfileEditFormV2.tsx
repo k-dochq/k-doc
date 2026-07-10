@@ -10,6 +10,7 @@ import { FormDatePickerDrawerV2 } from 'features/consultation-request/ui/FormDat
 import { useUserProfile, useUpdateUserProfile } from 'features/user-profile';
 import { COUNTRY_CODES, getCountryName } from 'entities/country-code';
 import { LocaleLink } from 'shared/ui/locale-link';
+import { validatePassportName } from 'shared/lib/validation/passport-name';
 
 interface ProfileEditFormV2Props {
   lang: Locale;
@@ -157,11 +158,10 @@ export function ProfileEditFormV2({
     // Validation (optional for edit form)
     const newErrors: ProfileEditFormErrors = {};
 
-    // 여권 영문 이름은 필수일 수 있음 (회원가입과 동일)
-    if (!formData.passportName.trim()) {
-      newErrors.passportName =
-        dict.auth?.signup?.errors?.passportNameRequired ||
-        'Treatment access may be limited without passport name in English.';
+    // 여권 영문 이름은 선택 (회원가입과 동일) — 입력한 경우에만 형식 검증
+    const passportNameError = validatePassportName(formData.passportName, dict);
+    if (passportNameError) {
+      newErrors.passportName = passportNameError;
     }
 
     setErrors(newErrors);

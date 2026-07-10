@@ -76,7 +76,6 @@ export function AdditionalInfoStep1FormV2({
 
         <InputFieldV2
           label={dict.auth?.signup?.passportName || '여권 영문 이름'}
-          required
           type='text'
           value={formData.passportName}
           onChange={(e) => onUpdateField('passportName', e.target.value)}
