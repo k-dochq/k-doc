@@ -122,7 +122,6 @@ export function AdditionalInfoStep1FormV2({
           }
           error={errors.birthDate}
           required={false}
-          optionalBracketsText={dict.auth?.signup?.optional || '선택'}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
           disabled={(date) => date > new Date()}
         />

@@ -230,7 +230,6 @@ export function AdditionalInfoForm({
           locale={lang}
           dict={dict}
           required={false}
-          optionalBracketsText={dict.auth?.signup?.optional || 'Optional'}
           yearRange={{ from: 1950, to: new Date().getFullYear() }}
           disabled={(date) => date > new Date()}
         />
