@@ -21,7 +21,7 @@ export default async function HospitalsLayout({ children, params }: HospitalsLay
     // </>
     <div className='min-h-screen bg-white'>
       <div className='sticky top-0 z-50'>
-        <HeaderV2 currentLang={lang} dict={dict} sticky={false} />
+        <HeaderV2 currentLang={lang} dict={dict} sticky={false} showSearch />
       </div>
       <main>{children}</main>
       <div className='h-16' />

@@ -64,6 +64,7 @@ async function ReviewDetailContent({ reviewId, lang, dict }: ReviewDetailContent
         <PageHeaderV2
           title={title}
           fallbackUrl={`/${lang}/reviews`}
+          showSearch
           rightContent={
             <ReviewDetailHeaderActions
               reviewId={review.id}

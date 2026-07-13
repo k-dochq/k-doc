@@ -25,7 +25,7 @@ export default async function MainLayout({ children, params }: MainLayoutProps) 
     // </>
     <div className='min-h-screen bg-white'>
       <div className='sticky top-0 z-50'>
-        <HeaderV2 currentLang={lang} dict={dict} sticky={false} />
+        <HeaderV2 currentLang={lang} dict={dict} sticky={false} showSearch />
       </div>
       <main>{children}</main>
       <FooterV2 lang={lang} dict={dict} />

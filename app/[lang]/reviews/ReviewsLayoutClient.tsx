@@ -26,7 +26,7 @@ export function ReviewsLayoutClient({ lang, dict, children }: ReviewsLayoutClien
         />
       ) : (
         <div className='sticky top-0 z-50'>
-          <HeaderV2 currentLang={lang} dict={dict} sticky={false} />
+          <HeaderV2 currentLang={lang} dict={dict} sticky={false} showSearch />
         </div>
       )}
       <main className={isSelectHospital ? 'pt-[58px]' : ''}>{children}</main>
