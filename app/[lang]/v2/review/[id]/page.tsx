@@ -30,6 +30,7 @@ export default async function V2ReviewDetailPage({ params }: V2ReviewDetailPageP
       <PageHeaderV2
         title={title}
         fallbackUrl={`/${lang}/reviews`}
+        showSearch
         rightContent={<ReviewLikeButtonV2 reviewId={review.id} locale={lang} dict={dict} />}
         // 투명 처리 옵션 기본 false
         enableScrollTransparency={false}

@@ -14,7 +14,7 @@ export default async function ConsultationLayout({ children, params }: Consultat
 
   return (
     <div className='min-h-screen bg-white'>
-      <HeaderV2 currentLang={lang} dict={dict} />
+      <HeaderV2 currentLang={lang} dict={dict} showSearch />
       <main>{children}</main>
       <div className='h-16' />
       <BottomNavigationV2 currentLang={lang} dict={dict} />

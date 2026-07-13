@@ -18,6 +18,8 @@ interface PageHeaderV2Props {
   enableScrollTransparency?: boolean;
   backgroundColor?: string;
   closeUrl?: string;
+  /** 검색 아이콘 노출 여부. 검색이 필요한 페이지에서만 true. 기본 false. */
+  showSearch?: boolean;
   /** 검색 아이콘 접근성 라벨 (미지정 시 영문 "Search") */
   searchLinkAriaLabel?: string;
 }
@@ -32,6 +34,7 @@ export function PageHeaderV2({
   enableScrollTransparency = false,
   backgroundColor = 'bg-white',
   closeUrl,
+  showSearch = false,
   searchLinkAriaLabel = 'Search',
 }: PageHeaderV2Props) {
   const router = useRouter();
@@ -141,13 +144,15 @@ export function PageHeaderV2({
 
       {/* 검색 → 오른쪽 컨텐츠 → 닫기 */}
       <div className={`flex items-center gap-3 ${styles.text}`}>
-        <LocaleLink
-          href='/v2/search'
-          className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
-          aria-label={searchLinkAriaLabel}
-        >
-          <SearchIcon color={searchIconColor} />
-        </LocaleLink>
+        {showSearch && (
+          <LocaleLink
+            href='/v2/search'
+            className={`flex h-6 w-6 items-center justify-center rounded-full transition-colors ${styles.button}`}
+            aria-label={searchLinkAriaLabel}
+          >
+            <SearchIcon color={searchIconColor} />
+          </LocaleLink>
+        )}
         {rightContent}
         {closeUrl && (
           <button

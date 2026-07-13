@@ -11,9 +11,11 @@ interface HeaderV2Props {
   dict: Dictionary;
   /** 부모가 sticky 컨테이너로 감쌀 때 false 로 끌 수 있다. 기본 true. */
   sticky?: boolean;
+  /** 검색 아이콘 노출 여부. 검색이 필요한 페이지에서만 true. 기본 false. */
+  showSearch?: boolean;
 }
 
-export function HeaderV2({ currentLang, dict, sticky = true }: HeaderV2Props) {
+export function HeaderV2({ currentLang, dict, sticky = true, showSearch = false }: HeaderV2Props) {
   return (
     <header
       className={`${sticky ? 'sticky top-0 z-50' : ''} w-full bg-white`}
@@ -24,13 +26,15 @@ export function HeaderV2({ currentLang, dict, sticky = true }: HeaderV2Props) {
           <HeaderLogoV2 />
         </LocaleLink>
         <div className='flex items-center gap-3'>
-          <LocaleLink
-            href='/v2/search'
-            className='flex h-6 w-6 items-center justify-center rounded-lg text-neutral-900'
-            aria-label={dict.search?.placeholder ?? 'Search'}
-          >
-            <SearchIcon />
-          </LocaleLink>
+          {showSearch && (
+            <LocaleLink
+              href='/v2/search'
+              className='flex h-6 w-6 items-center justify-center rounded-lg text-neutral-900'
+              aria-label={dict.search?.placeholder ?? 'Search'}
+            >
+              <SearchIcon />
+            </LocaleLink>
+          )}
           <HeaderLanguageSwitcherV2 currentLang={currentLang} />
           <HeaderProfileV2 lang={currentLang} dict={dict} />
         </div>
