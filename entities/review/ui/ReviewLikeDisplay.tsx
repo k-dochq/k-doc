@@ -2,7 +2,6 @@
 
 import { HeartIcon } from 'shared/ui/icons/HeartIcon';
 import { HeartOutlineIcon } from 'shared/ui/icons/HeartOutlineIcon';
-import { LoadingIcon } from 'shared/ui/loading-icon';
 
 interface ReviewLikeDisplayProps {
   count: number;
@@ -28,18 +27,12 @@ export function ReviewLikeDisplay({
           onClick?.(e);
         }
       }}
-      className={`flex items-center gap-1 ${className} ${isLoading ? 'cursor-not-allowed' : ''}`}
+      className={`flex items-center gap-1 ${className} ${isLoading ? 'cursor-not-allowed opacity-60' : ''}`}
       type='button'
       disabled={isLoading}
     >
-      {isLoading ? (
-        <LoadingIcon size={16} className='text-neutral-400' />
-      ) : (
-        <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
-      )}
-      <span className={`text-sm font-medium text-neutral-900 ${isLoading ? 'opacity-70' : ''}`}>
-        {count.toLocaleString()}
-      </span>
+      <div>{isLiked ? <HeartIcon /> : <HeartOutlineIcon />}</div>
+      <span className='text-sm font-medium text-neutral-900'>{count.toLocaleString()}</span>
     </button>
   );
 }

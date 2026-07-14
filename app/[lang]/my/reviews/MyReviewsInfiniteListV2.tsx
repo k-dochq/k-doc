@@ -22,11 +22,12 @@ interface MyReviewsInfiniteListV2Props {
 export function MyReviewsInfiniteListV2({ lang, dict }: MyReviewsInfiniteListV2Props) {
   const { user } = useAuth();
 
-  // 좋아요 토글 뮤테이션 (queryParams는 invalidation을 위해만 사용)
+  // 좋아요 토글 뮤테이션
   const toggleLikeMutation = useToggleReviewLike({
     queryParams: {
       limit: 10,
     },
+    userId: user?.id,
   });
 
   // 추천 토글 뮤테이션
@@ -34,6 +35,7 @@ export function MyReviewsInfiniteListV2({ lang, dict }: MyReviewsInfiniteListV2P
     queryParams: {
       limit: 10,
     },
+    userId: user?.id,
   });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =

@@ -32,16 +32,20 @@ export async function getAllReviews({
       hasBothImages,
     });
 
-    const orderBy = buildReviewOrderBy(sort, seed);
+    // likedOnly인 경우 좋아요 필터(whereCondition)를 반드시 적용해야 하므로,
+    // 전체 리뷰 대상 랜덤 정렬(seed 기반) 경로는 사용하지 않는다.
+    const effectiveSeed = likedOnly ? undefined : seed;
+
+    const orderBy = buildReviewOrderBy(sort, effectiveSeed);
 
     const totalCount = await prisma.review.count({
       where: whereCondition,
     });
 
     let reviewIds: string[] | undefined;
-    if (sort === 'popular' && seed) {
+    if (sort === 'popular' && effectiveSeed) {
       reviewIds = await fetchRandomOrderedReviewIds({
-        seed,
+        seed: effectiveSeed,
         limit,
         offset: calculatedOffset,
         category,
