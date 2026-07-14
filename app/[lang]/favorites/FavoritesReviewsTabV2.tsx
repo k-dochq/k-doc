@@ -30,10 +30,10 @@ export function FavoritesReviewsTabV2({ lang, dict, user }: FavoritesReviewsTabV
   };
 
   // 좋아요 토글 뮤테이션
-  const toggleLikeMutation = useToggleReviewLike({ queryParams });
+  const toggleLikeMutation = useToggleReviewLike({ queryParams, userId: user?.id });
 
   // 추천 토글 뮤테이션
-  const toggleRecommendMutation = useToggleReviewRecommend({ queryParams });
+  const toggleRecommendMutation = useToggleReviewRecommend({ queryParams, userId: user?.id });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteAllReviews(queryParams);

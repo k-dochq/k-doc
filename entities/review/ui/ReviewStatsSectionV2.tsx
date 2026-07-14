@@ -8,7 +8,6 @@ import { HeartIconV2Detail } from 'shared/ui/icons/HeartIconV2Detail';
 import { HeartOutlineIconV2Detail } from 'shared/ui/icons/HeartOutlineIconV2Detail';
 import { ThumbsUpIconV2 } from 'shared/ui/icons/ThumbsUpIconV2';
 import { ThumbsUpFilledIconV2 } from 'shared/ui/icons/ThumbsUpFilledIconV2';
-import { LoadingIcon } from 'shared/ui/loading-icon';
 import { LocaleLink } from 'shared/ui/locale-link';
 import { type Dictionary } from 'shared/model/types';
 
@@ -67,14 +66,12 @@ export function ReviewStatsSectionV2({
         {/* 추천 */}
         <button
           onClick={handleRecommendClick}
-          className='flex items-center gap-1'
+          className={`flex items-center gap-1 ${isRecommendLoading ? 'opacity-60' : ''}`}
           type='button'
           disabled={isRecommendLoading}
           aria-label={isRecommendedByUser ? '추천 취소' : '추천'}
         >
-          {isRecommendLoading ? (
-            <LoadingIcon size={20} className='text-neutral-400' />
-          ) : isRecommendedByUser ? (
+          {isRecommendedByUser ? (
             <ThumbsUpFilledIconV2 width={20} height={20} />
           ) : (
             <ThumbsUpIconV2 width={20} height={20} />
@@ -87,14 +84,12 @@ export function ReviewStatsSectionV2({
         {/* 좋아요 */}
         <button
           onClick={handleLikeClick}
-          className='flex items-center gap-1'
+          className={`flex items-center gap-1 ${isLikeLoading ? 'opacity-60' : ''}`}
           type='button'
           disabled={isLikeLoading}
           aria-label={isLiked ? '좋아요 취소' : '좋아요'}
         >
-          {isLikeLoading ? (
-            <LoadingIcon size={20} className='text-neutral-400' />
-          ) : isLiked ? (
+          {isLiked ? (
             <HeartIconV2Detail width={20} height={20} />
           ) : (
             <HeartOutlineIconV2Detail width={20} height={20} />

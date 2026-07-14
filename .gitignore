@@ -54,3 +54,6 @@ scripts/transform-review.ts
 .claude/
 .windsurf/
 .cursor/
+
+/docs/
+/ai영상/

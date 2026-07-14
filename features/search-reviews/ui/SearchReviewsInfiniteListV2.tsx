@@ -35,8 +35,14 @@ export function SearchReviewsInfiniteListV2({
 
   const queryParams = { query, limit: 10, categories, sort };
 
-  const toggleLikeMutation = useToggleReviewLike({ queryParams: { limit: 10, sort } });
-  const toggleRecommendMutation = useToggleReviewRecommend({ queryParams: { limit: 10, sort } });
+  const toggleLikeMutation = useToggleReviewLike({
+    queryParams: { limit: 10, sort },
+    userId: user?.id,
+  });
+  const toggleRecommendMutation = useToggleReviewRecommend({
+    queryParams: { limit: 10, sort },
+    userId: user?.id,
+  });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
     useInfiniteSearchReviews(queryParams);

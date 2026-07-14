@@ -32,8 +32,8 @@ export function ReviewDetailCardV2Shell({
     sort: REVIEW_SORT_OPTIONS.POPULAR,
   };
 
-  const toggleLikeMutation = useToggleReviewLike({ queryParams });
-  const toggleRecommendMutation = useToggleReviewRecommend({ queryParams });
+  const toggleLikeMutation = useToggleReviewLike({ queryParams, userId: user?.id });
+  const toggleRecommendMutation = useToggleReviewRecommend({ queryParams, userId: user?.id });
 
   const handleToggleLike = async (reviewId: string) => {
     if (!user) {
