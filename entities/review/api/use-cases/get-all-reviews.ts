@@ -1,11 +1,9 @@
 import { prisma } from 'shared/lib/prisma';
-import {
-  type GetAllReviewsParams,
-  type GetAllReviewsResponse,
-} from '../../model/types';
+import { type GetAllReviewsParams, type GetAllReviewsResponse } from '../../model/types';
 import { buildReviewWhereCondition } from '../infrastructure/build-review-where-condition';
 import { buildReviewOrderBy } from '../infrastructure/build-review-order-by';
 import { fetchRandomOrderedReviewIds } from '../infrastructure/fetch-random-ordered-review-ids';
+import { fetchLikedOrderedReviewIds } from '../infrastructure/fetch-liked-ordered-review-ids';
 import { REVIEW_LIST_INCLUDE } from '../infrastructure/review-list-include';
 import { transformReviewToCardData } from '../infrastructure/services/review-transform-service';
 
@@ -43,7 +41,16 @@ export async function getAllReviews({
     });
 
     let reviewIds: string[] | undefined;
-    if (sort === 'popular' && effectiveSeed) {
+    if (likedOnly && userId) {
+      // 찜한 리뷰 목록은 병원/의사 찜 목록과 동일하게 "최근에 찜한 순"으로 정렬한다.
+      reviewIds = await fetchLikedOrderedReviewIds({
+        userId,
+        limit,
+        offset: calculatedOffset,
+        category,
+        hospitalId,
+      });
+    } else if (sort === 'popular' && effectiveSeed) {
       reviewIds = await fetchRandomOrderedReviewIds({
         seed: effectiveSeed,
         limit,
@@ -54,11 +61,9 @@ export async function getAllReviews({
     }
 
     const reviews = await prisma.review.findMany({
-      where: reviewIds
-        ? { id: { in: reviewIds } }
-        : whereCondition,
+      where: reviewIds ? { id: { in: reviewIds } } : whereCondition,
       include: REVIEW_LIST_INCLUDE,
-      orderBy: reviewIds ? undefined : orderBy ?? undefined,
+      orderBy: reviewIds ? undefined : (orderBy ?? undefined),
       take: reviewIds ? undefined : limit,
       skip: reviewIds ? undefined : calculatedOffset,
     });

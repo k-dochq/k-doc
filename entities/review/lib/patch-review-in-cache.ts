@@ -108,6 +108,57 @@ export function removeReviewFromLikedOnlyLists(queryClient: QueryClient, reviewI
   );
 }
 
+function upsertReviewAtFront(reviews: ReviewCardData[], review: ReviewCardData): ReviewCardData[] {
+  const withoutExisting = reviews.filter((r) => r.id !== review.id);
+  return [review, ...withoutExisting];
+}
+
+/**
+ * 찜(좋아요)한 리뷰만 모아 보여주는 목록(likedOnly 필터가 걸린 캐시)에
+ * 새로 찜한 리뷰를 "최근에 찜한 순" 맨 앞에 즉시 추가한다.
+ * (다른 페이지에서 좋아요를 눌러도, 찜 탭에 진입했을 때 새로고침 없이
+ * 바로 반영되도록 하기 위함)
+ */
+export function addReviewToLikedOnlyLists(queryClient: QueryClient, review: ReviewCardData): void {
+  queryClient.setQueriesData<unknown>(
+    {
+      predicate: (query) =>
+        Array.isArray(query.queryKey) &&
+        query.queryKey[0] === 'reviews' &&
+        isLikedOnlyQueryKey(query.queryKey),
+    },
+    (oldData: unknown) => {
+      if (!oldData || typeof oldData !== 'object') return oldData;
+
+      // 무한 스크롤 목록 캐시: 새 리뷰는 항상 첫 페이지 맨 앞에 추가하고,
+      // 뒤쪽 페이지에 같은 리뷰가 남아있다면 중복이 생기지 않도록 제거한다.
+      if (Array.isArray((oldData as ReviewInfinitePageLike).pages)) {
+        const data = oldData as ReviewInfinitePageLike;
+        if (data.pages.length === 0) return data;
+
+        return {
+          ...data,
+          pages: data.pages.map((page, index) => {
+            if (!Array.isArray(page?.reviews)) return page;
+            if (index === 0) {
+              return { ...page, reviews: upsertReviewAtFront(page.reviews, review) };
+            }
+            return { ...page, reviews: page.reviews.filter((r) => r.id !== review.id) };
+          }),
+        };
+      }
+
+      // 단일 목록 응답 캐시: { reviews: [...] }
+      if (Array.isArray((oldData as ReviewListPageLike).reviews)) {
+        const data = oldData as ReviewListPageLike;
+        return { ...data, reviews: upsertReviewAtFront(data.reviews, review) };
+      }
+
+      return oldData;
+    },
+  );
+}
+
 /**
  * 좋아요/추천 토글 시 리뷰 목록 전체를 invalidate/refetch하지 않고,
  * 캐시에 이미 올라와 있는 리뷰 목록·상세 데이터에서 해당 리뷰만 직접 갱신한다.
