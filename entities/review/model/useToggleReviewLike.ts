@@ -7,6 +7,7 @@ import {
   toggleLikedState,
   findReviewInCache,
   removeReviewFromLikedOnlyLists,
+  addReviewToLikedOnlyLists,
 } from '../lib/patch-review-in-cache';
 
 interface UseToggleReviewLikeParams {
@@ -93,8 +94,14 @@ export function useToggleReviewLike({
           toggleLikedState(review, userId, nextIsLiked),
         );
 
-        // 찜(좋아요) 취소 시, 찜한 리뷰만 모아 보여주는 목록에서는 즉시 제거한다.
-        if (!nextIsLiked) {
+        if (nextIsLiked) {
+          // 찜(좋아요) 시, 찜한 리뷰만 모아 보여주는 목록(캐시가 이미 존재한다면)에
+          // 새로고침 없이도 즉시 추가되도록 한다.
+          if (current) {
+            addReviewToLikedOnlyLists(queryClient, toggleLikedState(current, userId, true));
+          }
+        } else {
+          // 찜(좋아요) 취소 시, 찜한 리뷰만 모아 보여주는 목록에서는 즉시 제거한다.
           removeReviewFromLikedOnlyLists(queryClient, reviewId);
         }
       }
@@ -108,7 +115,14 @@ export function useToggleReviewLike({
           toggleLikedState(review, userId, data.isLiked),
         );
 
-        if (!data.isLiked) {
+        if (data.isLiked) {
+          // onMutate 시점에 캐시에서 리뷰를 찾지 못해 추가되지 않았을 수 있으므로,
+          // 서버 응답 이후 최신 캐시 데이터로 한 번 더 보장한다.
+          const current = findReviewInCache(queryClient, reviewId);
+          if (current) {
+            addReviewToLikedOnlyLists(queryClient, current);
+          }
+        } else {
           removeReviewFromLikedOnlyLists(queryClient, reviewId);
         }
       }
