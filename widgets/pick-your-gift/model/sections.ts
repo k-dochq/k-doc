@@ -27,7 +27,7 @@ export const PICK_YOUR_GIFT_SECTIONS: EventSection[] = [
   { id: '4_option2', width: 1500, height: 2804, alt: 'Option 2 — Korea Han-River experience' },
   { id: '5_option_notice', width: 1500, height: 2376, alt: 'Option terms of use' },
   { id: '6_how', width: 1500, height: 3142, alt: 'How to get your gift' },
-  { id: '7_faq', width: 1500, height: 6628, alt: 'Frequently asked questions' },
+  { id: '7_faq', width: 1500, height: 5684, alt: 'Frequently asked questions' },
   { id: '8_full_banner', width: 1500, height: 1300, alt: 'Ready to choose your gift' },
   { id: '9_final_notice', width: 1500, height: 2724, alt: 'Terms and conditions' },
 ];
