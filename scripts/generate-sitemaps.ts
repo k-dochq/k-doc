@@ -22,6 +22,14 @@ const LOCALE_FILES: { fileSuffix: string; pathLocale: string }[] = [
   { fileSuffix: 'ru', pathLocale: 'ru' },
 ];
 
+/**
+ * 사이트맵에 넣는 이벤트 페이지.
+ *
+ * 진행 중인 이벤트만 둔다. 종료되면 여기서 빼야 색인에 남지 않는다.
+ * `/event/pick-your-gift` 는 free-great-gift 로 대체된 테스트 페이지라 넣지 않는다.
+ */
+const EVENT_PAGES = ['free-great-gift'] as const;
+
 const HOSPITAL_LIST_CATEGORIES = [
   'EYES',
   'NOSE',
@@ -165,6 +173,11 @@ async function main() {
     urls.push({ loc: p('/tips'), priority: '0.80' });
     urls.push({ loc: p('/about'), priority: '0.80' });
     urls.push({ loc: p('/contact'), priority: '0.80' });
+
+    // 이벤트 페이지 — 언어별 이미지가 준비된 페이지만 올린다
+    for (const slug of EVENT_PAGES) {
+      urls.push({ loc: p(`/event/${slug}`), priority: '0.80' });
+    }
 
     urls.push({ loc: p('/notices'), priority: '0.70' });
     for (const n of notices) {
