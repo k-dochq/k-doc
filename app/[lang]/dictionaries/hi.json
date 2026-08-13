@@ -2378,6 +2378,9 @@
   "donation": {
     "floatingButton": "क्लिनिक खोजें व परामर्श लें"
   },
+  "freeGreatGift": {
+    "floatingButton": "क्लिनिक खोजें"
+  },
   "support": {
     "pageTitle": "संपर्क करें",
     "form": {

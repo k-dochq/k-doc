@@ -2378,6 +2378,9 @@
   "donation": {
     "floatingButton": "Find Clinics & Consult"
   },
+  "freeGreatGift": {
+    "floatingButton": "병원 찾기"
+  },
   "support": {
     "pageTitle": "문의하기",
     "form": {

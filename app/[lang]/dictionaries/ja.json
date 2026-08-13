@@ -2378,6 +2378,9 @@
   "donation": {
     "floatingButton": "クリニック検索 ・ 相談"
   },
+  "freeGreatGift": {
+    "floatingButton": "病院を探す"
+  },
   "support": {
     "pageTitle": "お問い合わせ",
     "form": {

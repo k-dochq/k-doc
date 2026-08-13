@@ -2378,6 +2378,9 @@
   "donation": {
     "floatingButton": "البحث عن العيادات و الاستشارة"
   },
+  "freeGreatGift": {
+    "floatingButton": "ابحث عن عيادتك"
+  },
   "support": {
     "pageTitle": "اتصل بنا",
     "form": {

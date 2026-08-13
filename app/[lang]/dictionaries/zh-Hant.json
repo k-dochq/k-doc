@@ -2378,6 +2378,9 @@
   "donation": {
     "floatingButton": "尋找診所並諮詢"
   },
+  "freeGreatGift": {
+    "floatingButton": "尋找醫院"
+  },
   "support": {
     "pageTitle": "聯絡我們",
     "form": {
