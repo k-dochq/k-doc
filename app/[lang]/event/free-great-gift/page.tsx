@@ -1,6 +1,7 @@
 import { type Locale } from 'shared/config';
 import { PageHeaderV2 } from 'shared/ui/page-header';
-import { FreeGreatGiftSections } from 'widgets/free-great-gift';
+import { FreeGreatGiftFloatingButton, FreeGreatGiftSections } from 'widgets/free-great-gift';
+import { getDictionary } from '../../dictionaries';
 
 interface FreeGreatGiftPageProps {
   params: Promise<{ lang: Locale }>;
@@ -8,6 +9,7 @@ interface FreeGreatGiftPageProps {
 
 export default async function FreeGreatGiftPage({ params }: FreeGreatGiftPageProps) {
   const { lang } = await params;
+  const dict = await getDictionary(lang);
 
   return (
     <div>
@@ -16,6 +18,9 @@ export default async function FreeGreatGiftPage({ params }: FreeGreatGiftPagePro
       {/* 고정 헤더 높이만큼 여백 */}
       <div className='h-[58px]' />
       <FreeGreatGiftSections lang={lang} />
+      {/* 하단 고정 버튼이 마지막 섹션을 가리지 않도록 버튼 높이만큼 여백 */}
+      {/* <div className='h-[120px]' /> */}
+      <FreeGreatGiftFloatingButton label={dict.freeGreatGift.floatingButton} />
     </div>
   );
 }

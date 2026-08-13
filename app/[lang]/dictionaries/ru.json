@@ -2378,6 +2378,9 @@
   "donation": {
     "floatingButton": "Найти клинику и консультацию"
   },
+  "freeGreatGift": {
+    "floatingButton": "Найти клинику"
+  },
   "support": {
     "pageTitle": "Связаться с нами",
     "form": {

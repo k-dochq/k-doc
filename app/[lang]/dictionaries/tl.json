@@ -2378,6 +2378,9 @@
   "donation": {
     "floatingButton": "Find Clinics & Consult"
   },
+  "freeGreatGift": {
+    "floatingButton": "Maghanap ng klinika"
+  },
   "support": {
     "pageTitle": "Makipag-ugnayan sa Amin",
     "form": {
