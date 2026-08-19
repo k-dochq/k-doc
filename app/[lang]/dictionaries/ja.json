@@ -2379,7 +2379,8 @@
     "floatingButton": "クリニック検索 ・ 相談"
   },
   "freeGreatGift": {
-    "floatingButton": "病院を探す"
+    "floatingButton": "特典について相談する",
+    "consultationMessage": "👋 K-DOC へようこそ！\n$100 ギフトイベントへのご参加ありがとうございます！\n🎁 特典を受け取るには、ご関心のある施術または手術についてお知らせください。\n専任コーディネーターが最適な病院をご推薦し、$100 ギフト特典の受け取り方法をご案内させていただきます。"
   },
   "support": {
     "pageTitle": "お問い合わせ",

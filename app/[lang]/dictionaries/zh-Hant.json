@@ -2379,7 +2379,8 @@
     "floatingButton": "尋找診所並諮詢"
   },
   "freeGreatGift": {
-    "floatingButton": "尋找醫院"
+    "floatingButton": "諮詢並領取優惠",
+    "consultationMessage": "👋 歡迎來到 K-DOC！\n感謝您參與我們的 $100 禮物活動！\n🎁 如想獲得您的優惠，請告訴我們您有興趣的手術或療程\n我們專屬協調員會為您推薦最合適的醫院，並說明您可以獲得的 $100 禮物優惠。"
   },
   "support": {
     "pageTitle": "聯絡我們",
