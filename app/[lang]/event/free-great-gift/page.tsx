@@ -20,7 +20,7 @@ export default async function FreeGreatGiftPage({ params }: FreeGreatGiftPagePro
       <FreeGreatGiftSections lang={lang} />
       {/* 하단 고정 버튼이 마지막 섹션을 가리지 않도록 버튼 높이만큼 여백 */}
       {/* <div className='h-[120px]' /> */}
-      <FreeGreatGiftFloatingButton label={dict.freeGreatGift.floatingButton} />
+      <FreeGreatGiftFloatingButton lang={lang} dict={dict} />
     </div>
   );
 }

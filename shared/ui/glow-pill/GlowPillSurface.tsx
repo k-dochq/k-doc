@@ -31,7 +31,7 @@ export function GlowPillSurface() {
 }
 
 /** 화면 하단 고정 컨테이너에 쓰는 클래스 (버튼 높이 62px + 상하 여백) */
-export const GLOW_PILL_BAR_HEIGHT_CLASS = 'h-[120px]';
+export const GLOW_PILL_BAR_HEIGHT_CLASS = 'h-[94px]';
 
 /** 버튼 자체에 쓰는 클래스 */
 export const GLOW_PILL_BUTTON_CLASS =
