@@ -1,7 +1,5 @@
 export { FreeGreatGiftSections } from './ui/FreeGreatGiftSections';
 export type { FreeGreatGiftSectionsProps } from './ui/FreeGreatGiftSections';
-export { EventSectionImage } from './ui/EventSectionImage';
-export type { EventSectionImageProps } from './ui/EventSectionImage';
 export { FreeGreatGiftFloatingButton } from './ui/FreeGreatGiftFloatingButton';
 export type { FreeGreatGiftFloatingButtonProps } from './ui/FreeGreatGiftFloatingButton';
 export { SECTION_IDS, SECTION_ALTS } from './model/sections';
