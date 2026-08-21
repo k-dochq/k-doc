@@ -9,7 +9,7 @@ export interface BeautyLuckyDrawFloatingButtonProps {
 }
 
 /**
- * 이벤트 페이지 하단 고정 CTA. 병원 검색(/v2/search)으로 보낸다.
+ * 이벤트 페이지 하단 고정 CTA. 병원 검색(/hospitals)으로 보낸다.
  *
  * 스타일은 UID 디자인 운영 파일의 핑크 버튼(node 8883:22027)을 따른다 —
  * 핑크 라디얼 그라데이션 + 밝은 핑크 보더 + 우상단 흰색 광택.
@@ -22,7 +22,7 @@ export function BeautyLuckyDrawFloatingButton({ lang, dict }: BeautyLuckyDrawFlo
       className={`fixed bottom-0 left-1/2 z-50 h-[94px] w-full -translate-x-1/2 px-5 ${MAX_MOBILE_WIDTH_CLASS}`}
     >
       <LocaleLink
-        href='/v2/search'
+        href='/hospitals'
         className='relative flex h-[62px] w-full items-center justify-center overflow-hidden rounded-full border-2 border-[#ff7fb3] px-6'
       >
         {/* 핑크 라디얼 그라데이션 배경 */}
