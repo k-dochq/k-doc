@@ -20,9 +20,14 @@ export function DynamicEventFloatingButton({ label, link, lang }: DynamicEventFl
 
   const inner = (
     <>
-      {/* 핑크 라디얼 그라데이션 배경 */}
+      {/* 보더: border-image 는 라운드 코너와 함께 쓸 수 없어 레이어로 그린다 */}
       <div
         className='pointer-events-none absolute inset-0 rounded-[inherit]'
+        style={{ background: 'linear-gradient(97deg, #FF7FB3 0%, #FF005B 100%)' }}
+      />
+      {/* 본체: 2px 안쪽 — 남는 테두리가 곧 그라데이션 보더가 된다 */}
+      <div
+        className='pointer-events-none absolute inset-[2px] rounded-full'
         style={{
           background:
             'radial-gradient(140% 340% at 55% 0%, #FF94B9 0%, #FF6F9D 16%, #FF4980 32%, #DF245C 66%, #D0124A 83%, #C00038 100%)',
@@ -37,7 +42,7 @@ export function DynamicEventFloatingButton({ label, link, lang }: DynamicEventFl
   );
 
   const buttonClass =
-    'relative flex h-[62px] w-full items-center justify-center overflow-hidden rounded-full border-2 border-[#ff7fb3] px-6';
+    'relative flex h-[62px] w-full items-center justify-center overflow-hidden rounded-full px-6';
 
   return (
     <div
