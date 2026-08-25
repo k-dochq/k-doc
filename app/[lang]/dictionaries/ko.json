@@ -2382,9 +2382,6 @@
     "floatingButton": "혜택 상담받기",
     "consultationMessage": "👋 K-DOC에 오신 것을 환영합니다!\n$100 기프트 이벤트에 참여해 주셔서 감사합니다!\n🎁 원하시는 혜택을 받으시려면, 관심 있는 시술 또는 수술을 알려주세요.\n전담 코디네이터가 가장 적합한 병원을 추천해 드리고, 받으실 수 있는 $100 기프트 혜택을 안내해 드리겠습니다."
   },
-  "beautyLuckyDraw": {
-    "floatingButton": "병원 찾고 상담 신청하기"
-  },
   "support": {
     "pageTitle": "문의하기",
     "form": {
