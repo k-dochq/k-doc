@@ -47,17 +47,15 @@ export function SignupForm({ lang, dict, redirectTo }: SignupFormProps) {
   });
 
   // 국가 코드를 국적 키로 매핑하는 함수
-  const getNationalityKey = (countryCode: string): string => {
-    const country = COUNTRY_CODES.find((c) => c.code === countryCode);
-    if (!country) return '';
-
-    // 국가명을 snake_case로 변환
-    return country.name.toLowerCase().replace(/\s+/g, '_');
-  };
+  // 국적 값은 국가명 기반 snake_case. 전화 코드로 역조회하면 코드가 중복되는
+  // 국가(+1: 캐나다·미국·자메이카·도미니카공화국, +7: 카자흐스탄·러시아)가
+  // 전부 첫 매칭 국가로 뒤바뀐다.
+  const getNationalityKey = (countryName: string): string =>
+    countryName.toLowerCase().replace(/\s+/g, '_');
 
   // 국적 옵션 생성
   const nationalityOptions = COUNTRY_CODES.map((country) => ({
-    value: getNationalityKey(country.code),
+    value: getNationalityKey(country.name),
     label: getCountryName(country),
     countryCode: country.code,
   }));
