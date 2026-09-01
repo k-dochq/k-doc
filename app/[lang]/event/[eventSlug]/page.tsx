@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation';
 import { type Locale } from 'shared/config';
-import { PageHeaderV2 } from 'shared/ui/page-header';
 import { getActiveEventPage } from 'entities/event-page';
 import {
   DynamicEventFloatingButton,
+  DynamicEventHeader,
   DynamicEventSections,
   pickLocalizedText,
 } from 'widgets/dynamic-event-page';
@@ -28,7 +28,7 @@ export default async function DynamicEventPage({ params }: DynamicEventPageProps
 
   return (
     <div>
-      <PageHeaderV2 title={title} fallbackUrl={`/${lang}/main`} />
+      <DynamicEventHeader title={title} />
       {/* 고정 헤더 높이만큼 여백 */}
       <div className='h-[58px]' />
       <DynamicEventSections eventPage={eventPage} lang={lang} />
