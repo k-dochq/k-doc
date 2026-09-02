@@ -3,10 +3,10 @@ import { type Locale } from 'shared/config';
 import { getActiveEventPage } from 'entities/event-page';
 import {
   DynamicEventFloatingButton,
-  DynamicEventHeader,
   DynamicEventSections,
   pickLocalizedText,
 } from 'widgets/dynamic-event-page';
+import { EventHeader } from 'widgets/event-header';
 
 /** 어드민 수정이 바로 반영되어야 하므로 항상 요청 시점에 렌더한다 */
 export const dynamic = 'force-dynamic';
@@ -28,7 +28,7 @@ export default async function DynamicEventPage({ params }: DynamicEventPageProps
 
   return (
     <div>
-      <DynamicEventHeader title={title} />
+      <EventHeader title={title} />
       {/* 고정 헤더 높이만큼 여백 */}
       <div className='h-[58px]' />
       <DynamicEventSections eventPage={eventPage} lang={lang} />

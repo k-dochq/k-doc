@@ -1,6 +1,6 @@
 import { type Locale } from 'shared/config';
 import { type Dictionary } from 'shared/model/types';
-import { PageHeaderV2 } from 'shared/ui/page-header';
+import { EventHeader } from 'widgets/event-header';
 import { ConciergeHero } from 'widgets/concierge-hero';
 import { ConciergeSection2 } from 'widgets/concierge-section2';
 import { ConciergeSection3 } from 'widgets/concierge-section3';
@@ -20,7 +20,7 @@ interface ConciergeContentProps {
 export function ConciergeContent({ lang, dict }: ConciergeContentProps) {
   return (
     <div className='min-h-screen bg-white' dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      <PageHeaderV2 title='K-DOC Concierge Services' fallbackUrl={`/${lang}/main`} />
+      <EventHeader title='K-DOC Concierge Services' />
       <div className='h-[58px]' />
 
       <ConciergeHero lang={lang} dict={dict} />
